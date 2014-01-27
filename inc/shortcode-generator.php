@@ -1,7 +1,7 @@
 <?php
 
 function mm_add_button( $icons ) {
-	$img = plugins_url( "mojo-marketplace-wp-plugin/" ) . "img/mojo-icon-22.png";
+	$img = plugin_dir_url( dirname( __FILE__ ) ) . "img/mojo-icon-22.png";
 	$id = 'mm_sg_container';
 	$title = '';
 	$icons .= "<a class='thickbox button' title='" . $title . "' href='#TB_inline?width=640&inlineId=" . $id . "'>
@@ -14,7 +14,7 @@ function mm_add_inline_popup_content() {
 ?>
 <div id="mm_sg_container" style="display:none;">
 	<div class="mm_sg_header">
-		<img style="margin: 0 auto;" src="<?php echo plugins_url( "mojo-marketplace-wp-plugin/" ) . "img/mojo-sg-header.png"; ?>" />
+		<img style="margin: 0 auto;" src="<?php echo plugin_dir_url( dirname( __FILE__ ) ) . "img/mojo-sg-header.png"; ?>" />
 		
 	</div>
 	<form id="mojo-sg-form">
