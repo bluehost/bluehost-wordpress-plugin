@@ -9,7 +9,7 @@ function mm_menu_icon() {
 	?>
 	<style type="text/css">
 		li.toplevel_page_mojo-themes .wp-menu-image{
-			background-image: url( '<?php echo plugins_url( "mojo-marketplace/" ) . "img/mojo-icon-22.png"; ?>' );
+			background-image: url( '<?php echo plugins_url( "mojo-marketplace-wp-plugin/" ) . "img/mojo-icon-22.png"; ?>' );
 			background-position: 7px;
 			background-repeat: no-repeat;
 		}
