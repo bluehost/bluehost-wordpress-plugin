@@ -1,0 +1,76 @@
+img.mojo-thumbnail:hover {
+	/* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	/* IE 5-7 */
+	filter: alpha(opacity=80);
+	/* Netscape */
+	-moz-opacity: 0.8;
+	/* Safari 1.x */
+	-khtml-opacity: 0.8;
+	/* Good browsers */
+	opacity: 0.8;
+}
+.mm-btn-primary{
+	background: linear-gradient(to bottom, #71BA00 0px, #71BA00 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: 1px solid #548C00;
+	border-radius: 4px;
+	color: #FFFFFF !important;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75);
+	cursor: pointer;
+}
+.mm-btn-primary:hover{
+	background: linear-gradient(to bottom, #62A100 0px, #62A100 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#mojo-sg-form{
+	position: relative;
+	top: 66px;
+}
+#mojo-sg-form p{
+	line-height: 2.8rem;
+	padding-left: 25px;
+}
+#mojo-sg-form .mm-btn-primary{
+	display: block;
+	margin: 0 auto;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 20px;
+	padding: 14px 30px;
+}
+#TB_title{
+	background-color: #3B3F41 !important;
+}
+#mojo-sg-form label{
+	width: 200px;
+	display: inline-block;
+	margin: 10px 0;
+	font-size: 14px;
+}
+#mojo-sg-form select{
+	width: 160px;
+	display: inline-block;
+}
+#mojo-sg-form input[type="submit"] {
+	cursor: pointer;
+}
+.mm_sg_header{
+	background-color: #3B3F41;
+	left: 0;
+	position: absolute;
+	top: 27px;
+	width: 670px;
+	padding-bottom: 10px;
+}
+.mm_sg_header img{
+	display: block;
+	margin: 0 auto;
+}
+.available-theme{position:relative;}
+.available-theme .price{
+	position: absolute;
+	right: 25px;
+	font-size: 18px;
+}
+@media only screen and (max-width: 1200px) {
+	.action-center{max-width: 70px;}
+}
