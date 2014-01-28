@@ -232,8 +232,6 @@ class GitHub_Updater_GitHub_API extends GitHub_Updater {
 	 * @return base64 decoded CHANGES.md or false
 	 */
 	public function get_remote_changes( $changes ) {
-		if ( ! class_exists( 'MarkdownExtra_Parser' ) )
-			require_once 'markdown.php';
 
 		$response = get_site_transient( 'ghu-' . md5( $this->type->repo . 'changes' ) );
 
@@ -248,11 +246,7 @@ class GitHub_Updater_GitHub_API extends GitHub_Updater {
 		if ( ! $response ) return false;
 		if ( isset( $response->message ) ) return false;
 
-		if ( function_exists( 'Markdown' ) ) {
-			$changelog = Markdown( base64_decode( $response->content ) );
-		} else {
-			$changelog = '<pre>' . base64_decode( $response->content ) . '</pre>';
-		}
+		$changelog = '<pre>' . base64_decode( $response->content ) . '</pre>';
 
 		$this->type->sections['changelog'] = $changelog;
 	}
