@@ -1,10 +1,14 @@
 <?php
 
-function mm_aff_setup() {
-	$aff = get_option( 'mm_master_aff', ( defined( 'MMAFF' ) ? MMAFF : '' ) );
-	update_option( 'mm_master_aff', $aff );
+function mm_setup() {
+	if( ! get_option( 'mm_master_aff' ) ) {
+		update_option( 'mm_master_aff', ( defined( 'MMAFF' ) ? MMAFF : '' ) );	
+	}
+	if( ! get_option( 'mm_install_date' ) ) {
+		update_option( 'mm_install_date', date( 'M d, Y' ) );
+	}
 }
-add_action( 'admin_init', 'mm_aff_setup' );
+add_action( 'admin_init', 'mm_setup' );
 
 function mm_api( $args = array(), $query = array() ) {
 	$api_url = "http://mojomarketplace.com/api/v1/";
