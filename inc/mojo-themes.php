@@ -7,6 +7,7 @@ function mm_add_theme_button() {
 	jQuery( document ).ready( function() {
 		jQuery( '.add-new-h2' ).html( 'WordPress.org Themes' );
 		jQuery( '.add-new-h2' ).before( '<a class="add-new-h2" href="admin.php?page=mojo-themes">MOJO Themes</a>' );
+		jQuery( '.add-new-h2:nth-of-type(2)' ).after( '<a class="add-new-h2" href="theme-install.php?tab=upload">Add New</a>' );
 	} );
 	</script>
 	<?php
