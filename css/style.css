@@ -71,6 +71,13 @@ img.mojo-thumbnail:hover {
 	right: 25px;
 	font-size: 18px;
 }
-@media only screen and (max-width: 1200px) {
-	.action-center{max-width: 70px;}
+.available-theme .action-links li{
+	margin-right: 4px;
+	padding-right: 4px;
+	height: 34px;
+}
+
+.available-theme .action-links li a, .available-theme .action-links li .price{
+	display: inline-block;
+    padding: 5px 0;
 }
