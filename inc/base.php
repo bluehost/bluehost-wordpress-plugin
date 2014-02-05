@@ -53,3 +53,4 @@ function mm_clear_transients() {
 	}
 }
 add_action( 'wp_login', 'mm_clear_transients' );
+add_action( 'pre_current_active_plugins', 'mm_clear_transients' );
