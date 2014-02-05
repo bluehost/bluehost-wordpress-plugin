@@ -46,3 +46,10 @@ function mm_build_link( $url, $args = array() ) {
 	$url = $url . '?' . $query;
 	return $url;
 }
+
+function mm_clear_transients() {
+	if( is_admin() ) {
+		delete_transient( 'mojo-api-calls' );
+	}
+}
+add_action( 'wp_login', 'mm_clear_transients' );
