@@ -1,6 +1,7 @@
 .mojo-items-wrap{
 	border: 1px solid #CACACA;
 	border-radius: 4px;
+	margin-bottom: 10px;
 }
 .mojo-items-wrap .item{
 	display:block;

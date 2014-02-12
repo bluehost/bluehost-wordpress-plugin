@@ -80,10 +80,8 @@ class MOJO_Widget extends WP_Widget {
 		}
 		?>
 
-		<!--
 		<label for="<?php echo $this->get_field_name( 'mojo-aff-id' ); ?>">Affiliate ID:</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'mojo-aff-id' ); ?>" name="<?php echo $this->get_field_name( 'mojo-aff-id' ); ?>" type="text" value="<?php echo esc_attr( $instance['mojo-aff-id'] ); ?>" />
-		-->
 		
 		</p>
 		<?php
@@ -109,32 +107,35 @@ class MOJO_Widget extends WP_Widget {
 
 		$items = mm_api( $instance, $query );
 		
-		/*if there are no popular items show default*/
-		if( strlen( $items['body'] ) < $instance['mojo-quantity'] AND $instance['mojo-items'] == 'popular' ) {
-			$items = mm_api();
-		}
-		$items = json_decode( $items['body'] );
-		$aff_id = ( isset( $instance['mojo-aff-id'] ) AND strlen( $instance['mojo-aff-id'] ) > 0 ) ? $instance['mojo-aff-id'] : '';
-		$content = "";
-		$count = 0;
-		foreach ( $items as $item ) {
-			$item->name = apply_filters( 'mm_item_name', $item->name );
-			$content .= '<div class="mojo-widget-item wp-caption" style="margin:15px 0px;">';
-			$content .= '<a target="_blank" href="' . mm_build_link( $item->page_url, array( 'r' => $aff_id, 'utm_medium'=>'plugin_widget', 'utm_content' => 'item_thumbnail' ) ) . '"><img style="display:block;margin: 0 auto;max-width: 100%;" src="'. $item->images->{$instance['mojo-image-size']} . '"  /></a>';
-			if( 'on' == $instance['mojo-preview'] ) {
-				$content .= '<a target="_blank" class="mojo-widget-preview" href="' . mm_build_link( $item->page_url, array( 'r' => $aff_id, 'utm_medium'=>'plugin_widget', 'utm' => 'item_thumbnail_hover_preview' ) ) . '"><img src="' . $item->images->preview_url . '" /></a>';
+		if( ! is_wp_error( $items ) ) {
+
+			/*if there are no popular items show default*/
+			if( strlen( $items['body'] ) < $instance['mojo-quantity'] AND $instance['mojo-items'] == 'popular' ) {
+				$items = mm_api();
 			}
-			$content .= '<p class="wp-caption-text">' . $item->name . '</p>';
-			$content .= '</div>';
-			$count++;
+			$items = json_decode( $items['body'] );
+			$aff_id = ( isset( $instance['mojo-aff-id'] ) AND strlen( $instance['mojo-aff-id'] ) > 0 ) ? $instance['mojo-aff-id'] : '';
+			$content = "";
+			$count = 0;
+			foreach ( $items as $item ) {
+				$item->name = apply_filters( 'mm_item_name', $item->name );
+				$content .= '<div class="mojo-widget-item wp-caption" style="margin:15px 0px;">';
+				$content .= '<a target="_blank" href="' . mm_build_link( $item->page_url, array( 'r' => $aff_id, 'utm_medium'=>'plugin_widget', 'utm_content' => 'item_thumbnail' ) ) . '"><img style="display:block;margin: 0 auto;max-width: 100%;" src="'. $item->images->{$instance['mojo-image-size']} . '"  /></a>';
+				if( 'on' == $instance['mojo-preview'] ) {
+					$content .= '<a target="_blank" class="mojo-widget-preview" href="' . mm_build_link( $item->page_url, array( 'r' => $aff_id, 'utm_medium'=>'plugin_widget', 'utm' => 'item_thumbnail_hover_preview' ) ) . '"><img src="' . $item->images->preview_url . '" /></a>';
+				}
+				$content .= '<p class="wp-caption-text">' . $item->name . '</p>';
+				$content .= '</div>';
+				$count++;
+			}
+			$title = apply_filters( 'widget_title', $instance['mojo-title'] );
+			echo $args['before_widget'];
+			if( ! empty( $title ) ) {
+				echo $args['before_title'] . $title . $args['after_title'];
+			}
+			echo $content;
+			echo $args['after_widget'];
 		}
-		$title = apply_filters( 'widget_title', $instance['mojo-title'] );
-		echo $args['before_widget'];
-		if( ! empty( $title ) ) {
-			echo $args['before_title'] . $title . $args['after_title'];
-		}
-		echo $content;
-		echo $args['after_widget'];
 	}
 }
 
