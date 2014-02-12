@@ -28,7 +28,9 @@ function mm_api( $args = array(), $query = array() ) {
 	$request_url = $request_url . '?' . $query;
 	if( false === ( $transient = get_transient( 'mojo-api-calls' ) ) OR ! isset( $transient[ md5( $request_url ) ] ) ) {
 		$transient[ md5( $request_url ) ] = wp_remote_get( $request_url );
-		set_transient( 'mojo-api-calls', $transient, DAY_IN_SECONDS );
+		if( ! is_wp_error( $transient[ md5( $request_url ) ] ) ) {
+			set_transient( 'mojo-api-calls', $transient, DAY_IN_SECONDS );	
+		}
 	}
 	return $transient[ md5( $request_url ) ];
 }
