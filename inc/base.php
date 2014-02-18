@@ -43,8 +43,8 @@ function mm_build_link( $url, $args = array() ) {
 		'utm_content'	=> '', //specific location
 		'r'				=> get_option( 'mm_master_aff' ),
 	);
-	$args = wp_parse_args( $args, $defaults );
-	$query = http_build_query( array_filter( $args ) );
+	$args = wp_parse_args( array_filter( $args ), array_filter( $defaults ) );
+	$query = http_build_query(  $args );
 	$url = $url . '?' . $query;
 	return $url;
 }

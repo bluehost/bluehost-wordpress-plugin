@@ -18,7 +18,16 @@ function mm_add_inline_popup_content() {
 		
 	</div>
 	<form id="mojo-sg-form">
-		<p>I would like to display 
+		<p>I would like to display
+			<select name="mojo-sg-quantity" class="mojo-sg-quantity" style="width:40px;">
+				<?php
+				for ( $i = 1; $i <= 10; $i++ ) { 
+					?>
+				<option value='<?php echo $i; ?>' <?php selected( 3, $i, true ); ?>><?php echo $i; ?></option>
+					<?php
+				}
+				?>
+			</select>
 			<select name="mojo-sg-platform" class="mojo-sg-platform">
 				<option value='wordpress' selected>WordPress</option>
 				<option value='joomla'>Joomla</option>
@@ -39,16 +48,8 @@ function mm_add_inline_popup_content() {
 		</p>
 			<hr/>
 		<p>
-			How many would you like to display? 
-			<select name="mojo-sg-quantity" class="mojo-sg-quantity">
-				<?php
-				for ( $i = 1; $i <= 10; $i++ ) { 
-					?>
-				<option value='<?php echo $i; ?>' <?php selected( 3, $i, true ); ?>><?php echo $i; ?></option>
-					<?php
-				}
-				?>
-			</select>
+			Want a specific seller?
+			<input type="text" name="mojo-sg-seller" class="mojo-sg-seller" />
 		<br/>
 			Would you like to add your affiliate id?
 			<input type="text" name="mojo-sg-aff" class="mojo-sg-aff" />
@@ -79,7 +80,8 @@ jQuery( document ).ready( function() {
 		var item = jQuery( '.mojo-sg-items' ).val(); 
 		var quantity = jQuery( '.mojo-sg-quantity' ).val(); 
 		var aff = jQuery( '.mojo-sg-aff' ).val(); 
-		return "[mojoitem platform='" + platform + "' type='" + type + "' item='" + item + "' quantity='" + quantity + "' aff='" + aff + "']";
+		var seller = jQuery( '.mojo-sg-seller' ).val();
+		return "[mojoitem platform='" + platform + "' type='" + type + "' item='" + item + "' quantity='" + quantity + "' seller='" + seller + "' aff='" + aff + "']";
 	}
 	
 	jQuery( '#mojo-sg-form' ).submit( function( e ) {       
@@ -109,7 +111,8 @@ function mm_item_shortcode( $atts ) {
 		'type' 			=> 'themes',
 		'item'	 		=> 'recent',
 		'quantity'		=> 1,
-		'aff'			=> ( defined( 'MMAFF' ) ) ? MMAFF : ""
+		'aff'			=> ( defined( 'MMAFF' ) ) ? MMAFF : "",
+		'seller'		=> ''
 	);
 	$atts = wp_parse_args( $atts, $defaults );
 
@@ -120,7 +123,7 @@ function mm_item_shortcode( $atts ) {
 	);
 	$content = "<div class='mojo-items-wrap'>";
 
-	$response = mm_api( $args, array( 'count' => $atts['quantity'] ) );
+	$response = mm_api( $args, array( 'count' => $atts['quantity'], 'seller' => $atts['seller'] ) );
 	if( ! is_wp_error( $response ) ) {
 		$items = json_decode( $response['body'] );
 		foreach ( $items as $item ) {

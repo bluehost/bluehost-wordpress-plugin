@@ -106,13 +106,14 @@ class MOJO_Widget extends WP_Widget {
 		}
 
 		$items = mm_api( $instance, $query );
+		/*if there are no popular items show default*/
+		if( strlen( $items['body'] ) < $instance['mojo-quantity'] AND $instance['mojo-items'] == 'popular' ) {
+			$items = mm_api();
+		}
 		
 		if( ! is_wp_error( $items ) ) {
 
-			/*if there are no popular items show default*/
-			if( strlen( $items['body'] ) < $instance['mojo-quantity'] AND $instance['mojo-items'] == 'popular' ) {
-				$items = mm_api();
-			}
+			
 			$items = json_decode( $items['body'] );
 			$aff_id = ( isset( $instance['mojo-aff-id'] ) AND strlen( $instance['mojo-aff-id'] ) > 0 ) ? $instance['mojo-aff-id'] : '';
 			$content = "";
