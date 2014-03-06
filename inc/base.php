@@ -46,7 +46,7 @@ function mm_build_link( $url, $args = array() ) {
 	$args = wp_parse_args( array_filter( $args ), array_filter( $defaults ) );
 	$query = http_build_query(  $args );
 	$url = $url . '?' . $query;
-	return $url;
+	return esc_url( $url );
 }
 
 function mm_clear_transients() {
