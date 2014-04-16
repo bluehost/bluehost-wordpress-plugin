@@ -41,5 +41,4 @@ function mm_load_updater() {
 		new GitHub_Plugin_Updater;
 	}
 }
-add_action( 'admin_head-plugins.php', 'mm_load_updater' );
-add_action( 'admin_head-update-core.php', 'mm_load_updater' );
+add_action( 'admin_init', 'mm_load_updater' );
