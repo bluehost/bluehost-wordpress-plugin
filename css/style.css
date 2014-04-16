@@ -10,16 +10,34 @@ img.mojo-thumbnail:hover {
 	/* Good browsers */
 	opacity: 0.8;
 }
+input.mm-btn-primary{
+	padding: 2px 10px;
+	line-height: 24px;
+	font-size:16px;
+}
 .mm-btn-primary{
-	background: linear-gradient(to bottom, #71BA00 0px, #71BA00 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-	border: 1px solid #548C00;
-	border-radius: 4px;
-	color: #FFFFFF !important;
-	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75);
+	-moz-user-select: none;
+	background-color: #EEEEEE;
+	background-image: none;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.15);
 	cursor: pointer;
+	display: inline-block;
+	font-size: 16px;
+	padding: 6px 8px;
+	line-height: 16px;
+	text-align: center;
+	text-decoration: none;
+	transform: translateZ(0px);
+	transition: background-color 300ms ease-in-out 0s;
+	vertical-align: middle;
+	white-space: nowrap;
+	background-color: #92C933;
+	color: #fff;
 }
 .mm-btn-primary:hover{
-	background: linear-gradient(to bottom, #62A100 0px, #62A100 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	background-color: #74A029;
 }
 #mojo-sg-form{
 	position: relative;
@@ -65,19 +83,48 @@ img.mojo-thumbnail:hover {
 	display: block;
 	margin: 0 auto;
 }
-.available-theme{position:relative;}
-.available-theme .price{
-	position: absolute;
-	right: 25px;
-	font-size: 18px;
-}
-.available-theme .action-links li{
-	margin-right: 4px;
-	padding-right: 4px;
-	height: 34px;
+
+.toplevel_page_mojo-themes .theme-browser .theme{
+	background: none repeat scroll 0 0 #fff;
 }
 
-.available-theme .action-links li a, .available-theme .action-links li .price{
+.toplevel_page_mojo-themes .theme-browser .theme .theme-screenshot:after{
+	padding-top: 60%;
+}
+
+.toplevel_page_mojo-themes .theme-browser .theme .mojo-theme-actions{
+	position: relative;
+	opacity: 1;
+}
+
+.toplevel_page_mojo-themes .theme-browser .theme .mojo-theme-actions .button-secondary,
+.toplevel_page_mojo-themes .theme-browser .theme .mojo-theme-actions .mm-btn-primary{
+	margin: 5px 0 5px 5px;
+}
+
+.toplevel_page_mojo-themes .theme-browser .theme .mojo-theme-actions form{
 	display: inline-block;
-    padding: 5px 0;
+}
+
+.toplevel_page_mojo-themes .theme-browser .theme .mojo-theme-actions .price{
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding: 10px;
+	font-size: 1rem;
+	padding: 15px 10px;
+}
+
+.wp-full-overlay-sidebar{
+	box-shadow: 0px 0px 10px 0px #000;
+}
+
+.admin_page_mojo-theme-preview .theme-details .theme-version,
+.admin_page_mojo-theme-preview .theme-details .theme-updated,
+.admin_page_mojo-theme-preview .theme-details .theme-sales {
+	margin: 15px 0;
+	display: block;
+	text-align: left;
+	float: none;
 }

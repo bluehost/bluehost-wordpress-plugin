@@ -15,6 +15,17 @@ function mm_add_theme_button() {
 }
 add_action( 'admin_head-themes.php', 'mm_add_theme_button' );
 
+function mm_add_premium_link() {
+	?>
+	<script type="text/javascript">
+	jQuery( document ).ready( function() {
+		jQuery( '.theme-navigation .theme-section:nth-of-type(3)' ).after( '<a style="text-decoration: none;" onclick="location.href=\'admin.php?page=mojo-themes\'" class="theme-section" data-sort="premium">Premium</a>' );
+	} );
+	</script>
+	<?php
+}
+add_action( 'admin_head-theme-install.php', 'mm_add_premium_link' );
+
 function mm_add_theme_page() {
 	add_theme_page( 'MOJO Themes', 'MOJO Themes', 'install_themes', 'mojo-themes', 'mm_theme_page' );
 }
@@ -36,6 +47,24 @@ function mm_theme_page() {
 	} );
 	</script>
 	<?php
+}
+
+function mm_theme_preview_page() {
+	?>
+	<style type="text/css">
+	.wp-full-overlay-sidebar .wp-full-overlay-header {
+		padding:15px;
+	}
+	.install-theme-info{
+		display: block;
+	}
+	.wp-full-overlay-main iframe{
+		width: 100%;
+		height: 100%;
+	}
+	</style>
+	<?php
+	require( dirname( plugin_dir_path( __FILE__ ) ) . '/pages/theme-preview.php' );
 }
 
 //Help the theme authors with the capital P ;)

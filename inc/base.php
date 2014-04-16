@@ -25,7 +25,9 @@ function mm_api( $args = array(), $query = array() ) {
 	$query = wp_parse_args( $query, $default_query );
 	$query = http_build_query( array_filter( $query ) );
 	$request_url = $api_url . $args['mojo-items'] . '/' . $args['mojo-platform'] . '/' . $args['mojo-type'];
-	$request_url = $request_url . '?' . $query;
+	if( isset( $query['count'] ) || isset( $query['seller'] ) ) {
+		$request_url = $request_url . '?' . $query;
+	}
 	if( false === ( $transient = get_transient( 'mojo-api-calls' ) ) OR ! isset( $transient[ md5( $request_url ) ] ) ) {
 		$transient[ md5( $request_url ) ] = wp_remote_get( $request_url );
 		if( ! is_wp_error( $transient[ md5( $request_url ) ] ) ) {
@@ -44,7 +46,7 @@ function mm_build_link( $url, $args = array() ) {
 		'r'				=> get_option( 'mm_master_aff' ),
 	);
 	$args = wp_parse_args( array_filter( $args ), array_filter( $defaults ) );
-	$query = http_build_query(  $args );
+	$query = http_build_query( $args );
 	$url = $url . '?' . $query;
 	return esc_url( $url );
 }
