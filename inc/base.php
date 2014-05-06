@@ -58,3 +58,17 @@ function mm_clear_transients() {
 }
 add_action( 'wp_login', 'mm_clear_transients' );
 add_action( 'pre_current_active_plugins', 'mm_clear_transients' );
+
+
+function mm_cron() {
+	if ( ! wp_next_scheduled( 'mm_cron_twicedaily' ) ) {
+		wp_schedule_event( time(), 'twicedaily', 'mm_cron_twicedaily' );
+	}
+	if ( ! wp_next_scheduled( 'mm_cron_daily' ) ) {
+		wp_schedule_event( time(), 'daily', 'mm_cron_daily' );
+	}
+	if ( ! wp_next_scheduled( 'mm_cron_hourly' ) ) {
+		wp_schedule_event( time(), 'hourly', 'mm_cron_hourly' );
+	}
+}
+add_action( 'admin_init', 'mm_cron' );
