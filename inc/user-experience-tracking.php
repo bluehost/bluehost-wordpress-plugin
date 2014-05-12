@@ -6,7 +6,17 @@ This file tracks basic user actions to improve the user experience.
 function mm_ux_log( $args = array() ) {
 	$url = "https://ssl.google-analytics.com/collect";
 	global $title;
+
+	if (empty($_SERVER['REQUEST_URI'])) {
+		return;
+	}
+
 	$path = explode( 'wp-admin', $_SERVER['REQUEST_URI'] );
+
+	if (empty($path) || empty($path[1])) {
+		return;
+	}
+
 	$defaults = array(
 		'v'		=> '1',
 		'tid'	=> 'UA-39246514-3',
