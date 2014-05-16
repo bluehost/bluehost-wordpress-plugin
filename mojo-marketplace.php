@@ -13,7 +13,9 @@ GitHub Branch: production
 
 //Do not access file directly
 if ( ! defined( 'WPINC' ) ) { die; }
-
+if( file_exists( plugin_dir_path( __FILE__ ) . 'inc/brand.php' ) ) {
+	require_once( plugin_dir_path( __FILE__ ) . 'inc/brand.php' );
+}
 require_once( plugin_dir_path( __FILE__ ) . 'inc/base.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'inc/menu.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'inc/themes-widget.php' );

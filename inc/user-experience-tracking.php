@@ -154,6 +154,9 @@ function mm_ux_log_theme_category_mojo() {
 add_action( 'admin_footer', 'mm_ux_log_theme_category_mojo' );
 
 function mm_ux_log_plugin_version() {
+	if( ! function_exists( 'get_plugin_data' ) ) {
+		return;
+	}
 	$plugin_dir = plugin_dir_path( dirname( __FILE__ ) );
 	$plugin = get_plugin_data( $plugin_dir . 'mojo-marketplace.php' );
 	$event = array(
