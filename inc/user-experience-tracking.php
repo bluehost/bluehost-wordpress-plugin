@@ -38,6 +38,9 @@ function mm_ux_log( $args = array() ) {
 		'el'	=> '', //event label
 		'ev'	=> ''  //event value
 	);
+	if( isset( $_SERVER['REMOTE_IP'] ) ) {
+		$defaults['uip'] = $_SERVER['REMOTE_IP'];
+	}
 	$params = wp_parse_args( $args, $defaults );
 	$query = http_build_query( array_filter( $params ) );
 	$args = array(
@@ -154,9 +157,6 @@ function mm_ux_log_theme_category_mojo() {
 add_action( 'admin_footer', 'mm_ux_log_theme_category_mojo' );
 
 function mm_ux_log_plugin_version() {
-	if( ! function_exists( 'get_plugin_data' ) ) {
-		return;
-	}
 	$plugin_dir = plugin_dir_path( dirname( __FILE__ ) );
 	$plugin = get_plugin_data( $plugin_dir . 'mojo-marketplace.php' );
 	$event = array(
@@ -165,9 +165,11 @@ function mm_ux_log_plugin_version() {
 		'ea'	=> 'plugin_version',
 		'el'	=> $plugin['Version']
 	);
-	mm_ux_log( $event );
+	$events = get_option( 'mm_cron', array() );
+	$events['daily'][$event['ea']] = $event;
+	update_option( 'mm_cron', $events );
 }
-add_action( 'mm_cron_daily', 'mm_ux_log_plugin_version' );
+add_action( 'admin_footer-index.php', 'mm_ux_log_plugin_version' );
 
 function mm_ux_log_wp_version() {
 	global $wp_version;
@@ -177,9 +179,11 @@ function mm_ux_log_wp_version() {
 		'ea'	=> 'wp_version',
 		'el'	=> $wp_version
 	);
-	mm_ux_log( $event );
+	$events = get_option( 'mm_cron', array() );
+	$events['daily'][$event['ea']] = $event;
+	update_option( 'mm_cron', $events );
 }
-add_action( 'mm_cron_daily', 'mm_ux_log_wp_version' );
+add_action( 'admin_footer-index.php', 'mm_ux_log_wp_version' );
 
 function mm_ux_log_plugin_count() {
 	$plugins = get_option( 'active_plugins' );
@@ -189,9 +193,11 @@ function mm_ux_log_plugin_count() {
 		'ea'	=> 'plugin_count',
 		'el'	=> count( $plugins )
 	);
-	mm_ux_log( $event );
+	$events = get_option( 'mm_cron', array() );
+	$events['daily'][$event['ea']] = $event;
+	update_option( 'mm_cron', $events );
 }
-add_action( 'mm_cron_daily', 'mm_ux_log_plugin_count' );
+add_action( 'admin_footer-index.php', 'mm_ux_log_plugin_count' );
 
 function mm_ux_log_theme_count() {
 	$theme_root = get_theme_root();
@@ -208,9 +214,38 @@ function mm_ux_log_theme_count() {
 		'ea'	=> 'theme_count',
 		'el'	=> $count
 	);
-	mm_ux_log( $event );
+	$events = get_option( 'mm_cron', array() );
+	$events['daily'][$event['ea']] = $event;
+	update_option( 'mm_cron', $events );
 }
-add_action( 'mm_cron_daily', 'mm_ux_log_theme_count' );
+add_action( 'admin_footer-index.php', 'mm_ux_log_theme_count' );
+
+function mm_ux_log_scheduled_events_twicedaily() {
+	$events = get_option( 'mm_cron', array( 'twicedaily' => array() ) );
+	$twicedaily_events = $events['twicedaily'];
+	foreach ( $twicedaily_events as $event => $details ) {
+		mm_ux_log( $details );
+	}
+}
+add_action( 'mm_cron_twicedaily', 'mm_ux_log_scheduled_events_twicedaily' );
+
+function mm_ux_log_scheduled_events_daily() {
+	$events = get_option( 'mm_cron', array( 'daily' => array() ) );
+	$daily_events = $events['daily'];
+	foreach ( $daily_events as $event => $details ) {
+		mm_ux_log( $details );
+	}
+}
+add_action( 'mm_cron_daily', 'mm_ux_log_scheduled_events_daily' );
+
+function mm_ux_log_scheduled_events_hourly() {
+	$events = get_option( 'mm_cron', array( 'hourly' => array() ) );
+	$hourly_events = $events['hourly'];
+	foreach ( $hourly_events as $event => $details ) {
+		mm_ux_log( $details );
+	}
+}
+add_action( 'mm_cron_hourly', 'mm_ux_log_scheduled_events_daily' );
 
 function mm_ux_log_plugin_search() {
 	if( isset( $_GET['tab'] ) && isset( $_GET['s'] ) ) {
