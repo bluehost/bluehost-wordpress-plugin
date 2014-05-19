@@ -245,7 +245,7 @@ function mm_ux_log_scheduled_events_hourly() {
 		mm_ux_log( $details );
 	}
 }
-add_action( 'mm_cron_hourly', 'mm_ux_log_scheduled_events_daily' );
+add_action( 'mm_cron_hourly', 'mm_ux_log_scheduled_events_hourly' );
 
 function mm_ux_log_plugin_search() {
 	if( isset( $_GET['tab'] ) && isset( $_GET['s'] ) ) {
