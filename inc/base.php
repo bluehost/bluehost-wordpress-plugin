@@ -59,7 +59,6 @@ function mm_clear_transients() {
 add_action( 'wp_login', 'mm_clear_transients' );
 add_action( 'pre_current_active_plugins', 'mm_clear_transients' );
 
-
 function mm_cron() {
 	if ( ! wp_next_scheduled( 'mm_cron_twicedaily' ) ) {
 		wp_schedule_event( time(), 'twicedaily', 'mm_cron_twicedaily' );
@@ -72,3 +71,10 @@ function mm_cron() {
 	}
 }
 add_action( 'admin_init', 'mm_cron' );
+
+function mm_slug_to_title( $slug ) {
+	$words = explode( '-', $slug );
+	$capital_words = array_map( 'ucfirst', $words );
+	$title = implode( ' ', $capital_words );
+	return $title;
+}

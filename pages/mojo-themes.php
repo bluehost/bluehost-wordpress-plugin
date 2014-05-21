@@ -1,32 +1,10 @@
 <div class="wrap">
 	<h2><?php echo apply_filters( 'mm_before_page_title', "" ); ?> MOJO Marketplace - Themes <a class="add-new-h2" target="_blank" href="<?php echo mm_build_link( 'http://mojomarketplace.com/themes/wordpress', array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'browse_all_themes_button' ) ); ?>">Browse All Themes &rarr;</a></h2>
 
-	<?php 
-	global $wp_version;
-	if( $wp_version < '3.9' ) {
-		?>
-		<a href="admin.php?page=mojo-themes&amp;items=popular">Popular</a> | <a href="admin.php?page=mojo-themes&amp;items=recent">Recent</a>
-		<?php
-	} else {
-		?>
-		<div class="theme-navigation">
-			<!--<span class="theme-count">30</span>-->
-			<a data-sort="popular" class="theme-section <?php if( ! isset( $_GET[ 'items' ] ) || $_GET['items'] == 'popular' ){ echo 'current'; }?>" href="admin.php?page=mojo-themes&amp;items=popular" style="text-decoration: none;">Popular</a>
-			<a data-sort="latest" class="theme-section <?php if( $_GET['items'] == 'recent' ){ echo 'current'; }?>" href="admin.php?page=mojo-themes&amp;items=recent" style="text-decoration: none;">Latest</a>
-			<a data-sort="responsive" class="theme-section <?php if( $_GET['items'] == 'responsive' ){ echo 'current'; }?>" href="admin.php?page=mojo-themes&amp;items=responsive" style="text-decoration: none;">Responsive</a>
-			<a data-sort="business" class="theme-section <?php if( $_GET['items'] == 'business' ){ echo 'current'; }?>" href="admin.php?page=mojo-themes&amp;items=business" style="text-decoration: none;">Business</a>
-			<a data-sort="ecommerce" class="theme-section <?php if( $_GET['items'] == 'ecommerce' ){ echo 'current'; }?>" href="admin.php?page=mojo-themes&amp;items=ecommerce" style="text-decoration: none;">Ecommerce</a>
-			<a data-sort="photography" class="theme-section <?php if( $_GET['items'] == 'photography' ){ echo 'current'; }?>" href="admin.php?page=mojo-themes&amp;items=photography" style="text-decoration: none;">Photography</a>
-			<a data-sort="real-estate" class="theme-section <?php if( $_GET['items'] == 'real-estate' ){ echo 'current'; }?>" href="admin.php?page=mojo-themes&amp;items=real-estate" style="text-decoration: none;">Real Estate</a>
-			<a data-sort="restaurant" class="theme-section <?php if( $_GET['items'] == 'restaurant' ){ echo 'current'; }?>" href="admin.php?page=mojo-themes&amp;items=restaurant" style="text-decoration: none;">Restaurant</a>
-		</div>
-		<?php
-	}
-	?>
-	<div class='themes theme-browser'>
 	<?php
 	$api_args = array();
 	$api_query = array();
+	
 	$accepted_categories = array(
 		'popular',
 		'recent',
@@ -36,12 +14,35 @@
 		'photography',
 		'real-estate',
 		'restaurant'
-		);
+	);
+	$accepted_categories = apply_filters( 'mm_themes_accepted_categories', $accepted_categories );
+
 	if( isset( $_GET['items'] )  && in_array( $_GET['items'], $accepted_categories ) ) {
 		$api_args['mojo-items'] = $_GET['items'];
 	} else {
-		$api_args['mojo-items'] = 'popular';
+		$api_args['mojo-items'] = $accepted_categories[0];
 	}
+
+	global $wp_version;
+	if( $wp_version < '3.9' ) {
+		?>
+		<a href="admin.php?page=mojo-themes&amp;items=popular">Popular</a> | <a href="admin.php?page=mojo-themes&amp;items=recent">Recent</a>
+		<?php
+	} else {
+		echo '<div class="theme-navigation">';
+		foreach ( $accepted_categories as $category ) {
+			if( $api_args['mojo-items'] == $category ) {
+				$current = 'current';
+			} else {
+				$current = '';
+			}
+			echo '<a data-sort="' . $category . '" class="theme-section ' . $current . '" href="admin.php?page=mojo-themes&amp;items=' . $category . '" style="text-decoration: none;">' . mm_slug_to_title( $category ). '</a>';
+		}
+		echo '</div>';
+	}
+	?>
+	<div class='themes theme-browser'>
+	<?php
 
 	if( isset( $_GET['seller'] ) ) {
 		$api_query['seller'] = esc_attr( $_GET['seller'] );
@@ -55,7 +56,7 @@
 			'mojo-platform' 	=> 'wordpress',
 			'mojo-type' 		=> $api_args['mojo-items'],
 			'mojo-items' 		=> 'category_items'
-			);
+		);
 		$request = mm_api( $cat_args );
 	}
 	
