@@ -101,7 +101,6 @@ add_action( 'admin_footer-page-new.php', 'mm_sg_js' );
 add_action( 'admin_footer-post.php', 'mm_sg_js' );
 add_action( 'admin_footer-page.php', 'mm_sg_js' );
 add_action( 'admin_footer-widgets.php', 'mm_sg_js' );
-add_action( 'admin_footer-index.php', 'mm_sg_js' );
 
 function mm_item_shortcode( $atts ) {
 	global $use_mm_styles;
