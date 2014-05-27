@@ -67,7 +67,6 @@ add_action( 'admin_footer-page-new.php', 'mm_add_inline_popup_content' );
 add_action( 'admin_footer-post.php', 'mm_add_inline_popup_content' );
 add_action( 'admin_footer-page.php', 'mm_add_inline_popup_content' );
 add_action( 'admin_footer-widgets.php', 'mm_add_inline_popup_content' );
-add_action( 'admin_footer-index.php', 'mm_add_inline_popup_content' );
 
 
 function mm_sg_js() {
