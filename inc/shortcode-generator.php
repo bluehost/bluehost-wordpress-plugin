@@ -21,9 +21,9 @@ function mm_add_inline_popup_content() {
 		<p>I would like to display
 			<select name="mojo-sg-quantity" class="mojo-sg-quantity" style="width:40px;">
 				<?php
-				for ( $i = 1; $i <= 10; $i++ ) { 
+				for ( $i = 1; $i <= apply_filters( 'mm_sg_max_qty_themes', 10 ); $i++ ) { 
 					?>
-				<option value='<?php echo $i; ?>' <?php selected( 3, $i, true ); ?>><?php echo $i; ?></option>
+				<option value='<?php echo $i; ?>' <?php selected( apply_filters( 'mm_sg_default_qty_themes', 3 ), $i, true ); ?>><?php echo $i; ?></option>
 					<?php
 				}
 				?>
