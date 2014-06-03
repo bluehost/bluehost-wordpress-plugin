@@ -429,7 +429,7 @@ function mm_jetpack_log_photon_enabled() {
 }
 add_action( 'jetpack_activate_module_photon', 'mm_jetpack_log_photon_enabled' );
 
-function mm_jetpack_log_likes_enabled( $module ) {
+function mm_jetpack_log_likes_enabled() {
 	$event = array(
 		't'		=> 'event',
 		'ec'	=> 'jetpack_event',
@@ -440,7 +440,7 @@ function mm_jetpack_log_likes_enabled( $module ) {
 }
 add_action( 'jetpack_activate_module_likes', 'mm_jetpack_log_likes_enabled' );
 
-function mm_jetpack_log_publicize_enabled( $module ) {
+function mm_jetpack_log_publicize_enabled() {
 	$event = array(
 		't'		=> 'event',
 		'ec'	=> 'jetpack_event',
