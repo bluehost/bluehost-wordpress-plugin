@@ -20,7 +20,7 @@ function mm_ab_test_inclusion_none() {
 		set_transient( 'mm_test', array( 'key' => 'none' ), $duration );
 	}
 }
-add_action( 'shutdown', 'mm_ab_test_inclusion_none' );
+add_action( 'wp_logout', 'mm_ab_test_inclusion_none' );
 
 function mm_ab_test_file( $test_name, $file, $original, $test, $audience = 10, $duration = WEEK_IN_SECONDS  ) {
 	if( strpos( $file, $original ) ) {
