@@ -13,18 +13,22 @@ GitHub Branch: production
 
 //Do not access file directly
 if ( ! defined( 'WPINC' ) ) { die; }
-if( file_exists( plugin_dir_path( __FILE__ ) . 'inc/brand.php' ) ) {
-	require_once( plugin_dir_path( __FILE__ ) . 'inc/brand.php' );
-}
-require_once( plugin_dir_path( __FILE__ ) . 'inc/base.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'inc/menu.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'inc/themes-widget.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'inc/shortcode-generator.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'inc/mojo-themes.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'inc/styles.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'inc/jetpack.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'inc/user-experience-tracking.php' );
 
+define( 'MM_BASE_DIR', dirname( __FILE__ ) . "/" );
+define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
+
+if( file_exists( MM_BASE_DIR . 'inc/brand.php' ) ) {
+	require_once( MM_BASE_DIR . 'inc/brand.php' );
+}
+require_once( MM_BASE_DIR . 'inc/base.php' );
+require_once( MM_BASE_DIR . 'inc/menu.php' );
+require_once( MM_BASE_DIR . 'inc/themes-widget.php' );
+require_once( MM_BASE_DIR . 'inc/shortcode-generator.php' );
+require_once( MM_BASE_DIR . 'inc/mojo-themes.php' );
+require_once( MM_BASE_DIR . 'inc/styles.php' );
+require_once( MM_BASE_DIR . 'inc/jetpack.php' );
+require_once( MM_BASE_DIR . 'inc/user-experience-tracking.php' );
+require_once( MM_BASE_DIR . 'inc/tests.php' );
 
 // Load base classes for github updater only in the admin and only with cap
 function mm_load_updater() {
@@ -33,13 +37,13 @@ function mm_load_updater() {
 		Check class_exist because this could be loaded in a different plugin
 		*/
 		if( ! class_exists( 'GitHub_Updater' ) ) { 
-			require_once( plugin_dir_path( __FILE__ ) . 'updater/class-github-updater.php' );
+			require_once( MM_BASE_DIR . 'updater/class-github-updater.php' );
 		}
 		if( ! class_exists( 'GitHub_Updater_GitHub_API' ) ) {
-			require_once( plugin_dir_path( __FILE__ ) . 'updater/class-github-api.php' );
+			require_once( MM_BASE_DIR . 'updater/class-github-api.php' );
 		}
 		if( ! class_exists( 'GitHub_Plugin_Updater' ) ) {
-			require_once( plugin_dir_path( __FILE__ ) . 'updater/class-plugin-updater.php' );
+			require_once( MM_BASE_DIR . 'updater/class-plugin-updater.php' );
 		}
 		new GitHub_Plugin_Updater;
 	}

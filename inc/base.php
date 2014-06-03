@@ -37,7 +37,7 @@ function mm_api( $args = array(), $query = array() ) {
 	return $transient[ md5( $request_url ) ];
 }
 
-function mm_build_link( $url, $args = array() ) {
+function mm_build_link( $url, $args = array(), $tracking = false ) {
 	$defaults = array(
 		'utm_source'	=> 'mojo_wp_plugin', //this should always be mojo_wp_plugin
 		'utm_campaign'	=> 'mojo_wp_plugin',
@@ -48,7 +48,16 @@ function mm_build_link( $url, $args = array() ) {
 	$args = wp_parse_args( array_filter( $args ), array_filter( $defaults ) );
 	$query = http_build_query( $args );
 	$url = $url . '?' . $query;
-	return esc_url( $url );
+
+	if( ! $tracking ) {
+		return esc_url( $url );
+	} else {
+		$endpoint = MM_BASE_URL . "e.php";
+		$action = $tracking;
+		$destination = $url;
+		$nonce = wp_create_nonce ( 'mm_nonce-' . $action );
+		return $endpoint . "?" . 'action=' . $action . '&nonce=' . $nonce . '&destination=' . $destination;
+	}
 }
 
 function mm_clear_transients() {
@@ -77,4 +86,16 @@ function mm_slug_to_title( $slug ) {
 	$capital_words = array_map( 'ucfirst', $words );
 	$title = implode( ' ', $capital_words );
 	return $title;
+}
+
+function mm_title_to_slug( $title ) {
+	$words = explode( ' ', $title );
+	$lowercase_words = array_map( 'strtolower', $words );
+	$slug = implode( '-', $lowercase_words );
+	return $slug;
+}
+
+function mm_require( $file ) {
+	$file = apply_filters( 'mm_require_file', $file );
+	require( $file );
 }

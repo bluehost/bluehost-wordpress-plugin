@@ -19,7 +19,7 @@ function mm_add_premium_link() {
 	?>
 	<script type="text/javascript">
 	jQuery( document ).ready( function() {
-		jQuery( '.theme-navigation .theme-section:nth-of-type(3)' ).after( '<a style="text-decoration: none;" onclick="location.href=\'admin.php?page=mojo-themes\'" class="theme-section" data-sort="premium">Premium</a>' );
+		jQuery( '.theme-navigation .theme-section:nth-of-type(3)' ).after( '<a style="text-decoration: none;" onclick="location.href=\'admin.php?page=mojo-themes&btn=appearance_premium\'" class="theme-section" data-sort="premium">Premium</a>' );
 	} );
 	</script>
 	<?php
@@ -33,7 +33,7 @@ add_action( 'admin_menu', 'mm_add_theme_page' );
 
 function mm_theme_page() {
 	add_thickbox();
-	require( dirname( plugin_dir_path( __FILE__ ) ) . '/pages/mojo-themes.php' );
+	mm_require( dirname( plugin_dir_path( __FILE__ ) ) . '/pages/mojo-themes.php' );
 	?>
 	<script type="text/javascript">
 	jQuery( '.thickbox' ).each( function( index, value ) {
@@ -64,7 +64,7 @@ function mm_theme_preview_page() {
 	}
 	</style>
 	<?php
-	require( dirname( plugin_dir_path( __FILE__ ) ) . '/pages/theme-preview.php' );
+	mm_require( dirname( plugin_dir_path( __FILE__ ) ) . '/pages/theme-preview.php' );
 }
 
 //Help the theme authors with the capital P ;)

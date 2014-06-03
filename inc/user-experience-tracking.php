@@ -5,6 +5,7 @@ This file tracks basic user actions to improve the user experience.
 
 function mm_ux_log( $args = array() ) {
 	$url = "https://ssl.google-analytics.com/collect";
+	
 	global $title;
 
 	if ( empty( $_SERVER['REQUEST_URI'] ) ) {
@@ -14,9 +15,9 @@ function mm_ux_log( $args = array() ) {
 	$path = explode( 'wp-admin', $_SERVER['REQUEST_URI'] );
 
 	if ( empty( $path ) || empty( $path[1] ) ) {
-		return;
+		$path = array( "", " " );
 	}
-
+	
 	$defaults = array(
 		'v'		=> '1',
 		'tid'	=> 'UA-39246514-3',
@@ -38,9 +39,17 @@ function mm_ux_log( $args = array() ) {
 		'el'	=> '', //event label
 		'ev'	=> ''  //event value
 	);
+
+	$test = get_transient( 'mm_test', '' );
+
+	if( isset( $test['key'] ) && isset( $test['name'] ) ) {
+		$defaults['cm'] = $defaults['cm'] . "_" . $test['name'] . "_" . $test['key'];
+	}
+
 	if( isset( $_SERVER['REMOTE_IP'] ) ) {
 		$defaults['uip'] = $_SERVER['REMOTE_IP'];
 	}
+
 	$params = wp_parse_args( $args, $defaults );
 	$query = http_build_query( array_filter( $params ) );
 	$args = array(
@@ -99,7 +108,6 @@ function mm_ux_log_activated() {
 		'ec'	=> 'plugin_status',
 		'ea'	=> 'activated',
 		'el'	=> 'Install date: ' . get_option( 'mm_install_date', date( 'M d, Y' ) ),
-
 	);
 	mm_ux_log( $event );
 }
@@ -110,13 +118,23 @@ register_deactivation_hook( $plugin_dir . "mojo-marketplace.php", 'mm_ux_log_dea
 function mm_ux_log_theme_preview() {
 	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-theme-preview" ) {
 		global $theme;
-		$event = array(
-			't'		=> 'event',
-			'ec'	=> 'theme_preview',
-			'ea'	=> esc_attr( $_GET['items'] ),
-			'el'	=> $theme->name
-		);
-		mm_ux_log( $event );
+		if( ! isset( $_GET['details'] ) ) {
+			$event = array(
+				't'		=> 'event',
+				'ec'	=> 'theme_preview',
+				'ea'	=> esc_attr( $_GET['items'] ),
+				'el'	=> $theme->name
+			);
+			mm_ux_log( $event );
+		} else {
+			$event = array(
+				't'		=> 'event',
+				'ec'	=> 'theme_details',
+				'ea'	=> esc_attr( $_GET['items'] ),
+				'el'	=> $theme->name
+			);
+			mm_ux_log( $event );
+		}
 	}
 }
 add_action( 'admin_footer', 'mm_ux_log_theme_preview' );
@@ -263,7 +281,6 @@ add_action( 'admin_footer-plugin-install.php', 'mm_ux_log_plugin_search' );
 function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 	$status = array( 'draft', 'pending', 'publish', 'new', 'future', 'private', 'trash' );
 	if ( $old_status !== $new_status && in_array( $new_status, $status ) ) {
-		//Status has changed
 		$event = array(
 			't'		=> 'event',
 			'ec'	=> 'user_action',
@@ -274,3 +291,116 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 	}
 }
 add_action( 'transition_post_status', 'mm_ux_log_content_status', 10, 3 );
+
+
+/**
+ * Here are some log events that make use of the endpoint.
+ */
+function mm_ux_log_buy_now_clicks_category() {
+	if( isset( $_GET['page'] ) && $_GET['page'] == 'mojo-themes' ) {
+		?>
+		<script type="text/javascript">
+			jQuery( 'form.buy_now' ).click( function() {
+				var item = jQuery( this ).attr('class');
+				var endpoint = "<?php echo MM_BASE_URL . 'e.php'; ?>";
+				var single_item = item.replace( 'buy_now ', '' );
+				var parent = jQuery( this ).parent( '.mojo-theme-actions' );
+				var value = parent.children( '.price' ).text();
+				var nonce = "<?php echo wp_create_nonce( 'mm_nonce-buy_now_click' ); ?>";
+				jQuery.ajax( endpoint + "?action=buy_now_click&item=" + single_item + "&value=" + value + "&nonce=" + nonce );
+			} );
+		</script>
+		<?php
+	}
+}
+add_action( 'admin_footer', 'mm_ux_log_buy_now_clicks_category' );
+
+function mm_ux_log_buy_now_clicks_preview() {
+	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-theme-preview" ) {
+		global $theme;
+		?>
+		<script type="text/javascript">
+			jQuery( 'form .mm-btn-primary' ).click( function() {
+				var item = "item_preview_<?php echo mm_title_to_slug( $theme->name ); ?>";
+				var endpoint = "<?php echo MM_BASE_URL . 'e.php'; ?>";
+				var value = "<?php echo $theme->prices->single_domain_license; ?>";
+				var nonce = "<?php echo wp_create_nonce( 'mm_nonce-buy_now_click' ); ?>";
+				jQuery.ajax( endpoint + "?action=buy_now_click&item=" + item + "&value=" + value + "&nonce=" + nonce );
+			} );
+		</script>
+		<?php
+	}
+}
+add_action( 'admin_footer', 'mm_ux_log_buy_now_clicks_preview' );
+
+function mm_ux_log_service_outbound() {
+	if( isset( $_GET['page'] ) && $_GET['page'] == 'mojo-services' ) {
+		$event = array(
+			't'		=> 'event',
+			'ec'	=> 'user_action',
+			'ea'	=> 'link_click',
+			'el'	=> 'mojo_services_outbound'
+		);
+		mm_ux_log( $event );
+	}
+}
+add_action( 'admin_init', 'mm_ux_log_service_outbound', 5 );
+
+function mm_endpoint_filter_buy_now_click( $approved_actions ) {
+	$approved_actions[] = "buy_now_click";
+	return $approved_actions;
+}
+add_filter( 'mm_approved_endpoint_action', 'mm_endpoint_filter_buy_now_click' );
+
+function mm_endpoint_action_buy_now_click() {
+	if( wp_verify_nonce( $_GET['nonce'], 'mm_nonce-buy_now_click' ) ) {
+		$event = array(
+				't'		=> 'event',
+				'ec'	=> 'user_action',
+				'ea'	=> 'buy_now_click',
+				'el'	=> esc_url( $_GET['item'] ),
+				'ev'	=> esc_attr( str_replace( '$', '', $_GET['value'] ) )
+			);
+		mm_ux_log( $event );
+	} else {
+		wp_die( 'Invalid Nonce' );
+	}
+}
+add_action( 'mm_endpoint-buy_now_click', 'mm_endpoint_action_buy_now_click' );
+
+function mm_endpoint_filter_browse_all_themes( $approved_actions ) {
+	$approved_actions[] = "browse_all_themes";
+	return $approved_actions;
+}
+add_filter( 'mm_approved_endpoint_action', 'mm_endpoint_filter_browse_all_themes' );
+
+function mm_endpoint_action_browse_all_themes() {
+	if( wp_verify_nonce( $_GET['nonce'], 'mm_nonce-browse_all_themes' ) ) {
+		$event = array(
+			't'		=> 'event',
+			'ec'	=> 'user_action',
+			'ea'	=> 'link_click',
+			'el'	=> 'browse_all_themes'
+		);
+		mm_ux_log( $event );
+		wp_redirect( $_GET['destination'] );
+	} else {
+		wp_die( 'Invalid Nonce' );
+	}
+}
+add_action( 'mm_endpoint-browse_all_themes', 'mm_endpoint_action_browse_all_themes' );
+
+function mm_ux_log_btn_click() {
+	if( isset($_GET['page'] ) && $_GET['page'] == "mojo-themes" ) {
+		if( isset( $_GET['btn'] ) ) {
+			$event = array(
+			't'		=> 'event',
+			'ec'	=> 'user_action',
+			'ea'	=> 'link_click',
+			'el'	=> esc_attr( $_GET['btn'] )
+		);
+		mm_ux_log( $event );
+		}
+	}
+}
+add_action( 'admin_footer', 'mm_ux_log_btn_click' );
