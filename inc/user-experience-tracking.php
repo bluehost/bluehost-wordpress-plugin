@@ -450,3 +450,14 @@ function mm_jetpack_log_publicize_enabled() {
 	mm_ux_log( $event );
 }
 add_action( 'jetpack_activate_module_publicize', 'mm_jetpack_log_publicize_enabled' );
+
+function mm_jetpack_log_publicized( $submit_post, $post_id, $service_name, $connection ){
+	$event = array(
+		't'		=> 'event',
+		'ec'	=> 'jetpack_event',
+		'ea'	=> 'publicized',
+		'el'	=> $service_name
+	);
+	mm_ux_log( $event );
+}
+add_action( 'publicize_save_meta', 'mm_jetpack_log_publicized', 10, 4 );
