@@ -292,6 +292,19 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 }
 add_action( 'transition_post_status', 'mm_ux_log_content_status', 10, 3 );
 
+function mm_ux_log_comment_status( $new_status, $old_status, $comment ) {
+	$status = array( 'deleted', 'approved', 'unapproved', 'spam' );
+	if ( $old_status !== $new_status && in_array( $new_status, $status ) ) {
+		$event = array(
+			't'		=> 'event',
+			'ec'	=> 'user_action',
+			'ea'	=> 'comment_status',
+			'el'	=> $new_status
+		);
+		mm_ux_log( $event );
+	}
+}
+add_action( 'transition_comment_status', 'mm_ux_log_comment_status', 10, 3 );
 
 /**
  * Here are some log events that make use of the endpoint.
@@ -391,16 +404,49 @@ function mm_endpoint_action_browse_all_themes() {
 add_action( 'mm_endpoint-browse_all_themes', 'mm_endpoint_action_browse_all_themes' );
 
 function mm_ux_log_btn_click() {
-	if( isset($_GET['page'] ) && $_GET['page'] == "mojo-themes" ) {
+	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-themes" ) {
 		if( isset( $_GET['btn'] ) ) {
 			$event = array(
-			't'		=> 'event',
-			'ec'	=> 'user_action',
-			'ea'	=> 'link_click',
-			'el'	=> esc_attr( $_GET['btn'] )
-		);
-		mm_ux_log( $event );
+				't'		=> 'event',
+				'ec'	=> 'user_action',
+				'ea'	=> 'link_click',
+				'el'	=> esc_attr( $_GET['btn'] )
+			);
+			mm_ux_log( $event );
 		}
 	}
 }
 add_action( 'admin_footer', 'mm_ux_log_btn_click' );
+
+function mm_jetpack_log_photon_enabled() {
+	$event = array(
+		't'		=> 'event',
+		'ec'	=> 'jetpack_event',
+		'ea'	=> 'module_enabled',
+		'el'	=> 'photon'
+	);
+	mm_ux_log( $event );
+}
+add_action( 'jetpack_activate_module_photon', 'mm_jetpack_log_photon_enabled' );
+
+function mm_jetpack_log_likes_enabled( $module ) {
+	$event = array(
+		't'		=> 'event',
+		'ec'	=> 'jetpack_event',
+		'ea'	=> 'module_enabled',
+		'el'	=> 'likes'
+	);
+	mm_ux_log( $event );
+}
+add_action( 'jetpack_activate_module_likes', 'mm_jetpack_log_likes_enabled' );
+
+function mm_jetpack_log_publicize_enabled( $module ) {
+	$event = array(
+		't'		=> 'event',
+		'ec'	=> 'jetpack_event',
+		'ea'	=> 'module_enabled',
+		'el'	=> 'publicize'
+	);
+	mm_ux_log( $event );
+}
+add_action( 'jetpack_activate_module_publicize', 'mm_jetpack_log_publicize_enabled' );
