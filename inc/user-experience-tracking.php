@@ -371,7 +371,7 @@ function mm_endpoint_action_buy_now_click() {
 				't'		=> 'event',
 				'ec'	=> 'user_action',
 				'ea'	=> 'buy_now_click',
-				'el'	=> esc_url( $_GET['item'] ),
+				'el'	=> esc_attr( $_GET['item'] ),
 				'ev'	=> esc_attr( str_replace( '$', '', $_GET['value'] ) )
 			);
 		mm_ux_log( $event );
