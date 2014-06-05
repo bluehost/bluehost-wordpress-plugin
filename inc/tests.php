@@ -2,8 +2,11 @@
 function mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) {
 	if( false === ( $test = get_transient( 'mm_test', false ) ) ) {
 		$score = rand( 0, 99 );
-		if( $audience > $score ) {
+		$previous_tests = get_option( 'mm_previous_tests', array() );
+		if( $audience > $score && ! in_array( $test_name, $previous_tests ) ) {
 			set_transient( 'mm_test', array( 'name' => $test_name, 'key' => $key ), $duration );
+			$previous_tests[] = $test_name;
+			update_option( 'mm_previous_tests', $previous_tests );
 			return true;
 		}
 	} else {
@@ -46,16 +49,6 @@ function mm_ab_test_content( $test_name, $original, $test, $audience = 10, $dura
 }
 
 /* Few example tests
-function mm_themes_style_large() {
-	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-themes" ) {
-		$styles = "<style type='text/css'>.theme-browser .theme{ margin: 1% !important; width: 48% !important;}</style>";
-		$duration = WEEK_IN_SECONDS * 2;
-		if( mm_ab_test_inclusion( 'large_themes', md5( $styles ), 10, $duration ) ) {
-			echo $styles;
-		}
-	}
-}
-add_action( 'admin_head', 'mm_themes_style_large' );
 
 function mm_themes_ab( $file ) {
 	return mm_ab_test_file( 'themes_page', $file, 'pages/mojo-themes.php', 'tests/mojo-themes.php' );
@@ -79,3 +72,14 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 */
 
 /* Start individual tests*/
+
+function mm_themes_style_large() {
+	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-themes" ) {
+		$styles = "<style type='text/css'>.theme-browser .theme{ margin: 1% !important; width: 48% !important;}</style>";
+		$duration = WEEK_IN_SECONDS * 2;
+		if( mm_ab_test_inclusion( 'large_themes', md5( $styles ), 10, $duration ) ) {
+			echo $styles;
+		}
+	}
+}
+add_action( 'admin_head', 'mm_themes_style_large' );
