@@ -77,7 +77,7 @@ function mm_themes_style_large() {
 	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-themes" ) {
 		$styles = "<style type='text/css'>.theme-browser .theme{ margin: 1% !important; width: 48% !important;}</style>";
 		$duration = WEEK_IN_SECONDS * 2;
-		if( mm_ab_test_inclusion( 'large_themes', md5( $styles ), 10, $duration ) ) {
+		if( mm_ab_test_inclusion( 'large_themes', md5( $styles ), 50, $duration ) ) {
 			echo $styles;
 		}
 	}
