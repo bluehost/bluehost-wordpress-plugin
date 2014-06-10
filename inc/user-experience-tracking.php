@@ -289,6 +289,15 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 		);
 		mm_ux_log( $event );
 	}
+	if( $post->ID == 3 && $old_status != 'publish' && $new_status == 'publish' ) {
+		$event = array(
+			't'		=> 'event',
+			'ec'	=> 'user_action',
+			'ea'	=> 'first_post',
+			'el'	=> $post->post_type
+		);
+		mm_ux_log( $event );
+	}
 }
 add_action( 'transition_post_status', 'mm_ux_log_content_status', 10, 3 );
 

@@ -6,6 +6,15 @@ function mm_setup() {
 	}
 	if( ! get_option( 'mm_install_date' ) ) {
 		update_option( 'mm_install_date', date( 'M d, Y' ) );
+		if( function_exists( 'mm_ux_log' ) ) {
+			$event = array(
+				't'		=> 'event',
+				'ec'	=> 'plugin_status',
+				'ea'	=> 'installed',
+				'el'	=> 'Install date: ' . get_option( 'mm_install_date', date( 'M d, Y' ) ),
+			);
+			mm_ux_log( $event );
+		}
 	}
 }
 add_action( 'admin_init', 'mm_setup' );
@@ -54,9 +63,8 @@ function mm_build_link( $url, $args = array(), $tracking = false ) {
 	} else {
 		$endpoint = MM_BASE_URL . "e.php";
 		$action = $tracking;
-		$destination = $url;
-		$nonce = wp_create_nonce ( 'mm_nonce-' . $action );
-		return $endpoint . "?" . 'action=' . $action . '&nonce=' . $nonce . '&destination=' . $destination;
+		$nonce = wp_create_nonce( 'mm_nonce-' . $action );
+		return $endpoint . "?" . 'action=' . $action . '&nonce=' . $nonce . '&destination=' . $url;
 	}
 }
 
