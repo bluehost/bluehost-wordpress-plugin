@@ -17,10 +17,8 @@ function mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) {
 		}
 	} else {
 		if( $test['key'] === $key ) {
-			echo "key matches";
 			return true;
 		}
-		echo "key does not match";
 	}
 	return false;
 }
