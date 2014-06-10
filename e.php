@@ -4,7 +4,7 @@ require_once( '../../../wp-load.php' );
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 /* if the plugin isn't active do not run any of the actions */
-if ( ! is_plugin_active( 'mojo-marketplace/mojo-marketplace.php' ) ) {
+if ( ! is_plugin_active( 'mojo-marketplace/mojo-marketplace.php' ) && ! is_plugin_active( 'mojo-marketplace-wp-plugin/mojo-marketplace.php' ) ) {
 	exit;
 } else {
 	$mm_approved_action = apply_filters( 'mm_approved_endpoint_action', array() );
