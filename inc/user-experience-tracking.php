@@ -427,8 +427,7 @@ function mm_ux_log_browse_all_themes() {
 	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-themes" ) {
 		?>
 		<script type="text/javascript">
-			jQuery( 'form .mm-btn-primary' ).click( function() {
-				alert( 'browse_all_themes' );
+			jQuery( 'h2 .add-new-h2' ).click( function() {
 				var endpoint = "<?php echo MM_BASE_URL . 'e.php'; ?>";
 				var nonce = "<?php echo wp_create_nonce( 'mm_nonce-browse_all_themes' ); ?>";
 				jQuery.ajax( endpoint + "?action=browse_all_themes&nonce=" + nonce );
