@@ -111,7 +111,7 @@ function mm_themes_style_large() {
 		
 		</style>";
 		$duration = WEEK_IN_SECONDS * 2;
-		if( mm_ab_test_inclusion( 'large_themes', md5( $styles ), 100, $duration ) ) {
+		if( mm_ab_test_inclusion( 'large_themes', md5( $styles ), 50, $duration ) ) {
 			echo $styles;
 		}
 	}
