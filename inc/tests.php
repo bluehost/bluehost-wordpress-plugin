@@ -1,9 +1,15 @@
 <?php
 function mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) {
 	if( false === ( $test = get_transient( 'mm_test', false ) ) ) {
-		$score = rand( 0, 99 );
 		$previous_tests = get_option( 'mm_previous_tests', array() );
-		if( $audience > $score && ! in_array( $test_name, $previous_tests ) ) {
+		
+		if( in_array( $test_name, $previous_tests ) ) {
+			return false;
+		}
+		
+		$score = rand( 0, 99 );
+		
+		if( $audience > $score ) {
 			set_transient( 'mm_test', array( 'name' => $test_name, 'key' => $key ), $duration );
 			$previous_tests[] = $test_name;
 			update_option( 'mm_previous_tests', $previous_tests );
@@ -11,8 +17,10 @@ function mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) {
 		}
 	} else {
 		if( $test['key'] === $key ) {
+			echo "key matches";
 			return true;
 		}
+		echo "key does not match";
 	}
 	return false;
 }
@@ -75,9 +83,35 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 
 function mm_themes_style_large() {
 	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-themes" ) {
-		$styles = "<style type='text/css'>.theme-browser .theme{ margin: 1% !important; width: 48% !important;}</style>";
+		$styles = "
+		<style type='text/css'>
+		.theme-browser .theme{ 
+			margin: 1% !important; 
+			width: 48% !important;
+		}
+		.theme-browser h3.theme-name{
+			box-shadow: 0 0 0 !important;
+			display: inline-block;
+			
+		}
+		.theme-browser .mojo-theme-actions{
+			display: inline-block;
+			position: absolute !important;
+			right: 15px !important;
+			bottom: 10px !important;
+		}
+		.theme-browser .mojo-theme-actions .price{
+			position: relative !important;
+			padding: 5px !important;
+		}
+		.theme-browser .mojo-theme-actions .mm-btn-primary,
+		.theme-browser .mojo-theme-actions .button-secondary{
+			margin: 5px 15px !important;
+		}
+		
+		</style>";
 		$duration = WEEK_IN_SECONDS * 2;
-		if( mm_ab_test_inclusion( 'large_themes', md5( $styles ), 50, $duration ) ) {
+		if( mm_ab_test_inclusion( 'large_themes', md5( $styles ), 100, $duration ) ) {
 			echo $styles;
 		}
 	}

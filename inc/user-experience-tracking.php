@@ -198,7 +198,7 @@ function mm_ux_log_wp_version() {
 		'el'	=> $wp_version
 	);
 	$events = get_option( 'mm_cron', array() );
-	$events['daily'][$event['ea']] = $event;
+	$events['weekly'][$event['ea']] = $event;
 	update_option( 'mm_cron', $events );
 }
 add_action( 'admin_footer-index.php', 'mm_ux_log_wp_version' );
@@ -212,7 +212,7 @@ function mm_ux_log_plugin_count() {
 		'el'	=> count( $plugins )
 	);
 	$events = get_option( 'mm_cron', array() );
-	$events['daily'][$event['ea']] = $event;
+	$events['monthly'][$event['ea']] = $event;
 	update_option( 'mm_cron', $events );
 }
 add_action( 'admin_footer-index.php', 'mm_ux_log_plugin_count' );
@@ -233,10 +233,42 @@ function mm_ux_log_theme_count() {
 		'el'	=> $count
 	);
 	$events = get_option( 'mm_cron', array() );
-	$events['daily'][$event['ea']] = $event;
+	$events['monthly'][$event['ea']] = $event;
 	update_option( 'mm_cron', $events );
 }
 add_action( 'admin_footer-index.php', 'mm_ux_log_theme_count' );
+
+function mm_ux_log_current_theme() {
+	$theme = get_option( 'stylesheet' );
+	$event = array(
+		't'		=> 'event',
+		'ec'	=> 'scheduled',
+		'ea'	=> 'theme_count',
+		'el'	=> $theme
+	);
+	$events = get_option( 'mm_cron', array() );
+	$events['monthly'][$event['ea']] = $event;
+	update_option( 'mm_cron', $events );
+}
+add_action( 'admin_footer-index.php', 'mm_ux_log_current_theme' );
+
+function mm_ux_log_scheduled_events_weekly() {
+	$events = get_option( 'mm_cron', array( 'weekly' => array() ) );
+	$weekly_events = $events['weekly'];
+	foreach ( $weekly_events as $event => $details ) {
+		mm_ux_log( $details );
+	}
+}
+add_action( 'mm_cron_weekly', 'mm_ux_log_scheduled_events_weekly' );
+
+function mm_ux_log_scheduled_events_monthly() {
+	$events = get_option( 'mm_cron', array( 'monthly' => array() ) );
+	$monthly_events = $events['monthly'];
+	foreach ( $monthly_events as $event => $details ) {
+		mm_ux_log( $details );
+	}
+}
+add_action( 'mm_cron_monthly', 'mm_ux_log_scheduled_events_monthly' );
 
 function mm_ux_log_scheduled_events_twicedaily() {
 	$events = get_option( 'mm_cron', array( 'twicedaily' => array() ) );
@@ -289,6 +321,7 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 		);
 		mm_ux_log( $event );
 	}
+	//first post is 3 beause of the example post and page.
 	if( $post->ID == 3 && $old_status != 'publish' && $new_status == 'publish' ) {
 		$event = array(
 			't'		=> 'event',
