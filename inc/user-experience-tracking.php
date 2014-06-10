@@ -423,6 +423,24 @@ function mm_endpoint_action_buy_now_click() {
 }
 add_action( 'mm_endpoint-buy_now_click', 'mm_endpoint_action_buy_now_click' );
 
+function mm_ux_log_browse_all_themes() {
+	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-themes" ) {
+		?>
+		<script type="text/javascript">
+			jQuery( 'form .mm-btn-primary' ).click( function() {
+				alert( 'browse_all_themes' );
+				var endpoint = "<?php echo MM_BASE_URL . 'e.php'; ?>";
+				var nonce = "<?php echo wp_create_nonce( 'mm_nonce-browse_all_themes' ); ?>";
+				jQuery.ajax( endpoint + "?action=browse_all_themes&nonce=" + nonce );
+			} );
+		</script>
+		<?php
+	}
+}
+add_action( 'admin_footer', 'mm_ux_log_browse_all_themes' );
+
+
+
 function mm_endpoint_filter_browse_all_themes( $approved_actions ) {
 	$approved_actions[] = "browse_all_themes";
 	return $approved_actions;
@@ -438,9 +456,6 @@ function mm_endpoint_action_browse_all_themes() {
 			'el'	=> 'browse_all_themes'
 		);
 		mm_ux_log( $event );
-		wp_redirect( $_GET['destination'] );
-	} else {
-		wp_die( 'Invalid Nonce' );
 	}
 }
 add_action( 'mm_endpoint-browse_all_themes', 'mm_endpoint_action_browse_all_themes' );

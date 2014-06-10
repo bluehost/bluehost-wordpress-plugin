@@ -58,6 +58,9 @@ function mm_build_link( $url, $args = array(), $tracking = false ) {
 	$query = http_build_query( $args );
 	$url = $url . '?' . $query;
 
+	return esc_url( $url );
+	
+	/* Tracking seems to be getting blocked by hosts maybe mod_sec. Find better method.
 	if( ! $tracking ) {
 		return esc_url( $url );
 	} else {
@@ -66,6 +69,7 @@ function mm_build_link( $url, $args = array(), $tracking = false ) {
 		$nonce = wp_create_nonce( 'mm_nonce-' . $action );
 		return $endpoint . "?" . 'action=' . $action . '&nonce=' . $nonce . '&destination=' . $url;
 	}
+	*/
 }
 
 function mm_clear_transients() {
