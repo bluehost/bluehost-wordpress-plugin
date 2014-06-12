@@ -55,6 +55,13 @@ function mm_build_link( $url, $args = array(), $tracking = false ) {
 		'r'				=> get_option( 'mm_master_aff' ),
 	);
 	$args = wp_parse_args( array_filter( $args ), array_filter( $defaults ) );
+
+	$test = get_transient( 'mm_test', '' );
+
+	if( isset( $test['key'] ) && isset( $test['name'] ) ) {
+		$args['utm_medium'] = $args['utm_medium'] . "_" . $test['name'] . "_" . $test['key'];
+	}
+
 	$query = http_build_query( $args );
 	$url = $url . '?' . $query;
 	
