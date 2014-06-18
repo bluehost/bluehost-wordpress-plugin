@@ -355,7 +355,7 @@ function mm_ux_log_buy_now_clicks_category() {
 	if( isset( $_GET['page'] ) && ( $_GET['page'] == 'mojo-themes' || $_GET['page'] == 'mojo-services' ) ) {
 		?>
 		<script type="text/javascript">
-			jQuery( 'form.buy_now' ).click( function() {
+			jQuery( 'form.buy_now' ).submit( function() {
 				var item = jQuery( this ).attr('class');
 				var endpoint = "<?php echo MM_BASE_URL . 'e.php'; ?>";
 				var single_item = item.replace( 'buy_now ', '' );

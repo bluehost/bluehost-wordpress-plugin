@@ -112,7 +112,7 @@
 					<h3 class="theme-name"><?php echo $item->name; ?></h3>
 
 					<div class="mojo-theme-actions">
-						<form method="POST" target="_blank" action="<?php echo mm_build_link( "https://www.mojomarketplace.com/cart", array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'item_' . $api_args['mojo-items'] . '_buy_now_button' ) ); ?>" class="buy_now <?php echo 'item_' . $api_args['mojo-items'] . '_buy_now_' . mm_title_to_slug( $item->name ) ;?>">
+						<form class="buy_now" method="POST" target="_blank" action="<?php echo mm_build_link( "https://www.mojomarketplace.com/cart", array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'item_' . $api_args['mojo-items'] . '_buy_now_button' ) ); ?>" class="buy_now <?php echo 'item_' . $api_args['mojo-items'] . '_buy_now_' . mm_title_to_slug( $item->name ) ;?>">
 						<input type="hidden" name="data[CartItem][item_id]" value="<?php echo $item->id; ?>"/>
 						<input class="mm-btn-primary" type="submit" value="Buy Now"/>
 						</form>
