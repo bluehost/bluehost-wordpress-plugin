@@ -352,7 +352,7 @@ add_action( 'transition_comment_status', 'mm_ux_log_comment_status', 10, 3 );
  * Here are some log events that make use of the endpoint.
  */
 function mm_ux_log_buy_now_clicks_category() {
-	if( isset( $_GET['page'] ) && $_GET['page'] == 'mojo-themes' ) {
+	if( isset( $_GET['page'] ) && ( $_GET['page'] == 'mojo-themes' || $_GET['page'] == 'mojo-services' ) ) {
 		?>
 		<script type="text/javascript">
 			jQuery( 'form.buy_now' ).click( function() {
