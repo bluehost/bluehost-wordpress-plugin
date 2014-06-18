@@ -83,7 +83,6 @@ input.mm-btn-primary{
 	display: block;
 	margin: 0 auto;
 }
-
 .toplevel_page_mojo-themes .theme-browser .theme{
 	background: none repeat scroll 0 0 #fff;
 }
@@ -93,13 +92,7 @@ input.mm-btn-primary{
 }
 
 .toplevel_page_mojo-themes .theme-browser .theme .mojo-theme-actions{
-	position: relative;
 	opacity: 1;
-}
-
-.toplevel_page_mojo-themes .theme-browser .theme .mojo-theme-actions .button-secondary,
-.toplevel_page_mojo-themes .theme-browser .theme .mojo-theme-actions .mm-btn-primary{
-	margin: 5px 0 5px 5px;
 }
 
 .toplevel_page_mojo-themes .theme-browser .theme .mojo-theme-actions form{
@@ -108,12 +101,7 @@ input.mm-btn-primary{
 
 .toplevel_page_mojo-themes .theme-browser .theme .mojo-theme-actions .price{
 	display: inline-block;
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	padding: 10px;
 	font-size: 1rem;
-	padding: 15px 10px;
 }
 
 .wp-full-overlay-sidebar{
@@ -128,3 +116,155 @@ input.mm-btn-primary{
 	text-align: left;
 	float: none;
 }
+
+
+/*Styles from theme_large test */
+
+.toplevel_page_mojo-themes .theme-browser .theme{ 
+	margin: 1%; 
+	width: 49%;
+}
+.toplevel_page_mojo-themes .theme-browser .theme:nth-of-type(odd){ 
+	margin: 0 1% 2% 0; 
+	width: 49%;
+}
+.toplevel_page_mojo-themes .theme-browser .theme:nth-of-type(even){ 
+	margin: 0 0 2% 1%; 
+	width: 49%;
+}
+.toplevel_page_mojo-themes .theme-browser h3.theme-name{
+	box-shadow: 0 0 0;
+	display: inline-block;
+	max-width: 45%;
+}
+.toplevel_page_mojo-themes .theme-browser .mojo-theme-actions{
+	display: inline-block;
+	position: absolute;
+	right: 15px;
+	bottom: 10px;
+}
+.toplevel_page_mojo-themes .theme-browser .mojo-theme-actions .price{
+	position: relative;
+	padding: 5px;
+}
+.toplevel_page_mojo-themes .theme-browser .mojo-theme-actions .mm-btn-primary,
+.toplevel_page_mojo-themes .theme-browser .mojo-theme-actions .button-secondary{
+	margin: 5px 10px;
+}
+@media screen and (max-width: 640px) {
+	.toplevel_page_mojo-themes .theme-browser .theme,
+	.toplevel_page_mojo-themes .theme-browser .theme:nth-of-type(odd),
+	.toplevel_page_mojo-themes .theme-browser .theme:nth-of-type(even) {
+		margin: 1% 0; 
+		width: 100%;
+	}
+}
+@media screen and (max-width: 1200px) {
+	.toplevel_page_mojo-themes .theme-browser h3.theme-name {
+		visibility: hidden;
+	}
+}
+/* End of themes_large */
+
+
+/*MOJO Services*/
+
+.marketplace_page_mojo-services .service-browser .service {
+	border: 1px solid #dedede;
+	box-shadow: 0 1px 1px -1px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+	cursor: pointer;
+	float: left;
+	margin: 0 4% 4% 0;
+	position: relative;
+	width: 30.6%;
+}
+.marketplace_page_mojo-services .service-browser .service .service-screenshot img {
+	height: auto;
+	transition: opacity 0.2s ease-in-out 0s;
+	width: 100%;
+
+}
+.marketplace_page_mojo-services .service-browser .service .service-screenshot:after {
+	display: block;
+}
+.marketplace_page_mojo-services .service-browser .service{
+	background: none repeat scroll 0 0 #fff;
+}
+
+.marketplace_page_mojo-services .service-browser .service .service-screenshot:after{
+	padding-top: 60%;
+}
+
+.marketplace_page_mojo-services .service-browser .service .mojo-service-actions{
+	opacity: 1;
+}
+
+.marketplace_page_mojo-services .service-browser .service .mojo-service-actions form{
+	display: inline-block;
+}
+
+.marketplace_page_mojo-services .service-browser .service .mojo-service-actions .price{
+	display: inline-block;
+	font-size: 1rem;
+}
+
+.marketplace_page_mojo-services .service-browser{
+	margin-top: 25px;
+}
+
+.marketplace_page_mojo-services .service-browser .service{ 
+	margin: 1%; 
+	width: 49%;
+}
+.marketplace_page_mojo-services .service-browser .service:nth-of-type(odd){ 
+	margin: 0 1% 2% 0; 
+	width: 49%;
+}
+.marketplace_page_mojo-services .service-browser .service:nth-of-type(even){ 
+	margin: 0 0 2% 1%; 
+	width: 49%;
+}
+.marketplace_page_mojo-services .service-browser h3.service-name{
+	box-shadow: 0 0 0;
+	display: inline-block;
+	max-width: 45%;
+	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.65);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1) inset;
+    font-size: 15px;
+    font-weight: 600;
+    height: 18px;
+    margin: 0;
+    overflow: hidden;
+    padding: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.marketplace_page_mojo-services .service-browser .mojo-service-actions{
+	display: inline-block;
+	position: absolute;
+	right: 15px;
+	bottom: 10px;
+}
+.marketplace_page_mojo-services .service-browser .mojo-service-actions .price{
+	position: relative;
+	padding: 5px;
+}
+.marketplace_page_mojo-services .service-browser .mojo-service-actions .mm-btn-primary,
+.marketplace_page_mojo-services .service-browser .mojo-service-actions .button-secondary{
+	margin: 5px 10px;
+}
+@media screen and (max-width: 640px) {
+	.marketplace_page_mojo-services .service-browser .service,
+	.marketplace_page_mojo-services .service-browser .service:nth-of-type(odd),
+	.marketplace_page_mojo-services .service-browser .service:nth-of-type(even) {
+		margin: 1% 0; 
+		width: 100%;
+	}
+}
+@media screen and (max-width: 1200px) {
+	.marketplace_page_mojo-services .service-browser h3.service-name {
+		visibility: hidden;
+	}
+}
+/*End MOJO Services*/

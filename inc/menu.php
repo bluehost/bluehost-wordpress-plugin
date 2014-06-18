@@ -59,13 +59,5 @@ function mm_services_menu() {
 add_action( 'admin_menu', 'mm_services_menu' );
 
 function mm_services_page() {
-	/*This page will exist in the future*/
+	mm_require( MM_BASE_DIR . 'pages/mojo-services.php' );
 }
-
-function mm_temp_redirect() {
-	/*This will only exist until mm_services_page is ready */
-	if( isset( $_GET['page'] ) && $_GET['page'] == 'mojo-services' ) {
-		wp_redirect( mm_build_link( 'http://www.mojomarketplace.com/services/all/wordpress', array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'services_page' ) ) );
-	}
-}
-add_action( 'admin_init', 'mm_temp_redirect' );

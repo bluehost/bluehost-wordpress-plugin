@@ -7,7 +7,7 @@ function mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) {
 			return false;
 		}
 		
-		$score = rand( 0, 99 );
+		$score = mt_rand( 0, 99 );
 		
 		if( $audience > $score ) {
 			set_transient( 'mm_test', array( 'name' => $test_name, 'key' => $key ), $duration );
@@ -79,39 +79,53 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 
 /* Start individual tests*/
 
-function mm_themes_style_large() {
-	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-themes" ) {
-		$styles = "
-		<style type='text/css'>
-		.theme-browser .theme{ 
-			margin: 1% !important; 
-			width: 48% !important;
-		}
-		.theme-browser h3.theme-name{
-			box-shadow: 0 0 0 !important;
-			display: inline-block;
-			
-		}
-		.theme-browser .mojo-theme-actions{
-			display: inline-block;
-			position: absolute !important;
-			right: 15px !important;
-			bottom: 10px !important;
-		}
-		.theme-browser .mojo-theme-actions .price{
-			position: relative !important;
-			padding: 5px !important;
-		}
-		.theme-browser .mojo-theme-actions .mm-btn-primary,
-		.theme-browser .mojo-theme-actions .button-secondary{
-			margin: 5px 15px !important;
-		}
-		
-		</style>";
-		$duration = WEEK_IN_SECONDS * 2;
-		if( mm_ab_test_inclusion( 'large_themes', md5( $styles ), 50, $duration ) ) {
-			echo $styles;
+function mm_add_plugin_patterns( $patterns ) {
+	$patterns['/commerce/i'] = array( 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/services/all/ecommerce' );
+	$patterns['/shop/i'] = array( 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/services/all/ecommerce' );
+	$patterns['/store/i'] = array( 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/services/all/ecommerce' );
+	$patterns['/checkout/i'] = array( 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/services/all/ecommerce' );
+	$patterns['/credit/i'] = array( 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/services/all/ecommerce' );
+	$patterns['/sell/i'] = array( 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/services/all/ecommerce' );
+	$patterns['/analytics/i'] = array( 'name' => 'Google Analytics', 'url' => 'https://www.mojomarketplace.com/item/add-google-analytics-to-your-wordpress-site' );
+	$patterns['/stats/i'] = array( 'name' => 'Google Analytics', 'url' => 'https://www.mojomarketplace.com/item/add-google-analytics-to-your-wordpress-site' );
+	$patterns['/sitemap/i'] = array( 'name' => 'Sitemap', 'url' => 'https://www.mojomarketplace.com/item/add-an-seo-friendly-sitemap-to-your-wordpress-site' );
+	$patterns['/seo/i'] = array( 'name' => 'SEO Sitemap', 'url' => 'https://www.mojomarketplace.com/item/add-an-seo-friendly-sitemap-to-your-wordpress-site' );
+	$patterns['/buddypress/i'] = array( 'name' => 'BuddyPress', 'url' => 'https://www.mojomarketplace.com/item/install-and-setup-buddypress-wordpress-plugin' );
+	$patterns['/bbpress/i'] = array( 'name' => 'bbPress', 'url' => 'https://www.mojomarketplace.com/item/install-and-setup-bbpress-wordpress-plugin' );
+	$patterns['/bb press/i'] = array( 'name' => 'bbPress', 'url' => 'https://www.mojomarketplace.com/item/install-and-setup-bbpress-wordpress-plugin' );
+	$patterns['/contact/i'] = array( 'name' => 'Contact Forms', 'url' => 'https://www.mojomarketplace.com/item/create-a-wordpress-contact-form' );
+	$patterns['/form/i'] = array( 'name' => 'Contact Forms', 'url' => 'https://www.mojomarketplace.com/item/create-a-wordpress-contact-form' );
+	$patterns['/map/i'] = array( 'name' => 'Google Maps', 'url' => 'https://www.mojomarketplace.com/item/add-a-google-map-to-my-wordpress-site' );
+	$patterns['/locat/i'] = array( 'name' => 'Google Maps', 'url' => 'https://www.mojomarketplace.com/item/add-a-google-map-to-my-wordpress-site' );
+	return $patterns;
+}
+add_filter( 'mm_search_plugin_patterns', 'mm_add_plugin_patterns' );
+
+function mm_check_search_value( $search ) {
+	$patterns = apply_filters( 'mm_search_plugin_patterns', array() );
+	foreach ( $patterns as $pattern => $plugin ) {
+		if( preg_match( $pattern, $search ) ) {
+			return $plugin;
 		}
 	}
+	return false;
 }
-add_action( 'admin_head', 'mm_themes_style_large' );
+
+function mm_plugin_search_notice() {
+	if( isset( $_GET['s'] )  && $plugin = mm_check_search_value( $_GET['s'] ) ) {
+		$link = mm_build_link( $plugin['url'], array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'plugin_search' ) );
+		?>
+		<div class="updated">
+        	<p>Did you know? MOJO Marketplace has a <a target="_blank" href="<?php echo $link; ?>">service</a> for <a target="_blank" href="<?php echo $link; ?>"><?php echo $plugin['name']; ?></a></p>
+    	</div>
+		<?php
+	}
+}
+
+function mm_plugin_search_offer() {
+	$duration = WEEK_IN_SECONDS * 3;
+	if( isset( $_GET['s'] ) && mm_ab_test_inclusion( 'search_services', md5( 'mm_plugin_search_notice' ), 50, $duration ) ) {
+		add_action( 'admin_notices', 'mm_plugin_search_notice' );
+	}
+}
+add_action( 'admin_head-plugin-install.php', 'mm_plugin_search_offer' );

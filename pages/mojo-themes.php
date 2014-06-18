@@ -37,7 +37,9 @@
 				$current = '';
 			}
 			echo '<a data-sort="' . $category . '" class="theme-section ' . $current . '" href="admin.php?page=mojo-themes&amp;items=' . $category . '" style="text-decoration: none;">' . mm_slug_to_title( $category ). '</a>';
+			
 		}
+		echo '| <a  class="theme-section" href="admin.php?page=mojo-services">Services</a>';
 		echo '</div>';
 	}
 	?>
@@ -94,7 +96,6 @@
 							<li><div class="price">$<?php echo $item->prices->single_domain_license; ?></div></li>
 						</ul>
 					</div>
-					
 				</div>
 				<?php
 			} else {
