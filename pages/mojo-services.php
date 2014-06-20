@@ -51,8 +51,6 @@ if( is_wp_error( $result ) ) {
 			</div>
 		</div>
 		<?php
-		} else {
-			echo $item->id;
 		}
 	}
 }
