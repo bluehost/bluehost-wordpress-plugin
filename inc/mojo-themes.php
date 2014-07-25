@@ -1,7 +1,7 @@
 <?php
 
 function mm_add_theme_button() {
-	if( !isset( $_GET['page'] ) ) {
+	if( ! isset( $_GET['page'] ) ) {
 	?>
 	<script type="text/javascript">
 	jQuery( document ).ready( function() {
@@ -33,7 +33,7 @@ add_action( 'admin_menu', 'mm_add_theme_page' );
 
 function mm_theme_page() {
 	add_thickbox();
-	mm_require( dirname( plugin_dir_path( __FILE__ ) ) . '/pages/mojo-themes.php' );
+	mm_require( MM_BASE_DIR . '/pages/mojo-themes.php' );
 	?>
 	<script type="text/javascript">
 	jQuery( '.thickbox' ).each( function( index, value ) {
@@ -64,7 +64,7 @@ function mm_theme_preview_page() {
 	}
 	</style>
 	<?php
-	mm_require( dirname( plugin_dir_path( __FILE__ ) ) . '/pages/theme-preview.php' );
+	mm_require( MM_BASE_DIR . '/pages/theme-preview.php' );
 }
 
 //Help the theme authors with the capital P ;)

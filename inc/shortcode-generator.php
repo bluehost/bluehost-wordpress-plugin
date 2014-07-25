@@ -1,11 +1,13 @@
 <?php
 
 function mm_add_button( $icons ) {
-	$img = plugin_dir_url( dirname( __FILE__ ) ) . "img/mojo-icon-22.png";
+	$img = MM_BASE_URL . "img/mojo-icon-22.png";
 	$id = 'mm_sg_container';
 	$title = '';
-	$icons .= "<a class='thickbox button' title='" . $title . "' href='#TB_inline?width=640&inlineId=" . $id . "'>
-	<img style='position:relative; bottom: 2px;' src='" . $img . "' /> Shortcodes</a>";
+	if( isset( $_SERVER['PHP_SELF'] ) && strpos( $_SERVER['PHP_SELF'], 'post.php' ) || 
+		isset( $_SERVER['SCRIPT_NAME'] ) && strpos( $_SERVER['SCRIPT_NAME'], 'post.php' ) ) {
+		$icons .= "<a class='thickbox button' title='" . $title . "' href='#TB_inline?width=640&inlineId=" . $id . "'><img style='position:relative; bottom: 2px;' src='" . $img . "' /> Shortcodes</a>";
+	} 
 	return $icons;
 }
 add_action( 'media_buttons_context', 'mm_add_button' );
@@ -14,7 +16,7 @@ function mm_add_inline_popup_content() {
 ?>
 <div id="mm_sg_container" style="display:none;">
 	<div class="mm_sg_header">
-		<img style="margin: 0 auto;" src="<?php echo plugin_dir_url( dirname( __FILE__ ) ) . "img/mojo-sg-header.png"; ?>" />
+		<img style="margin: 0 auto;" src="<?php echo MM_BASE_URL . "img/mojo-sg-header.png"; ?>" />
 		
 	</div>
 	<form id="mojo-sg-form">
@@ -86,7 +88,6 @@ jQuery( document ).ready( function() {
 	jQuery( '#mojo-sg-form' ).submit( function( e ) {       
 		e.preventDefault();
 		var shortcode = mm_build_shortcode();
-		var position = jQuery( '.mojo-sg-position' ).val();
 		window.parent.send_to_editor( shortcode );
 		//Close window
 		parent.tb_remove();

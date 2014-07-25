@@ -24,10 +24,21 @@
 	}
 
 	global $wp_version;
-	if( $wp_version < '3.9' ) {
-		?>
-		<a href="admin.php?page=mojo-themes&amp;items=popular">Popular</a> | <a href="admin.php?page=mojo-themes&amp;items=recent">Recent</a>
-		<?php
+	if( version_compare( $wp_version, '3.9.9' ) >= 0 ) {
+		echo '<div class="wp-filter theme-navigation">';
+		echo '<ul class="wp-filter-links">';
+		foreach ( $accepted_categories as $category ) {
+			if( $api_args['mojo-items'] == $category ) {
+				$current = 'current';
+			} else {
+				$current = '';
+			}
+			echo '<li>';
+			echo '<a data-sort="' . $category . '" class="wp-filter-link theme-section ' . $current . '" href="admin.php?page=mojo-themes&amp;items=' . $category . '" style="text-decoration: none;">' . mm_slug_to_title( $category ). '</a>';
+			echo '</li>';
+		}
+		echo '| <a  class="theme-section wp-filter-link" href="admin.php?page=mojo-services">Services</a>';
+		echo '</div>';
 	} else {
 		echo '<div class="theme-navigation">';
 		foreach ( $accepted_categories as $category ) {

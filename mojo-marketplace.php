@@ -2,7 +2,7 @@
 /*
 Plugin Name: MOJO Marketplace
 Description: This plugin adds shortcodes, widgets, and themes to your WordPress site.
-Version: 0.5.8
+Version: 0.5.9
 Author: Mike Hansen
 Author URI: http://mikehansen.me?utm_campaign=plugin&utm_source=mojo_wp_plugin
 License: GPLv2 or later
@@ -14,7 +14,7 @@ GitHub Branch: production
 //Do not access file directly
 if ( ! defined( 'WPINC' ) ) { die; }
 
-define( 'MM_BASE_DIR', dirname( __FILE__ ) . "/" );
+define( 'MM_BASE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
 
 if( file_exists( MM_BASE_DIR . 'inc/brand.php' ) ) {
@@ -26,8 +26,10 @@ require_once( MM_BASE_DIR . 'inc/themes-widget.php' );
 require_once( MM_BASE_DIR . 'inc/shortcode-generator.php' );
 require_once( MM_BASE_DIR . 'inc/mojo-themes.php' );
 require_once( MM_BASE_DIR . 'inc/styles.php' );
+require_once( MM_BASE_DIR . 'inc/plugin-search.php' );
 require_once( MM_BASE_DIR . 'inc/jetpack.php' );
 require_once( MM_BASE_DIR . 'inc/user-experience-tracking.php' );
+require_once( MM_BASE_DIR . 'inc/notifications.php' );
 require_once( MM_BASE_DIR . 'inc/tests.php' );
 
 // Load base classes for github updater only in the admin and only with cap

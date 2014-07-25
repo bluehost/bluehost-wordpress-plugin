@@ -26,30 +26,30 @@ if( ! is_object( $theme ) || is_a( $theme, 'WP_Error' ) ) {
 					<?php
 					if( ! isset( $_GET['details'] ) ) {
 						?>
-						<a class="button-secondary" href="admin.php?page=mojo-theme-preview&amp;id=<?php echo esc_attr( $_GET['id'] ); ?>&amp;items=<?php echo esc_attr( $_GET['items'] ); ?>&amp;details=true">Details</a>
+						<a class="button-secondary" href="admin.php?page=mojo-theme-preview&amp;id=<?php esc_attr_e( $_GET['id'] ); ?>&amp;items=<?php esc_attr_e( $_GET['items'] ); ?>&amp;details=true">Details</a>
 						<?php
 					} else {
 						?>
-						<a class="button-secondary" href="admin.php?page=mojo-theme-preview&amp;id=<?php echo esc_attr( $_GET['id'] ); ?>&amp;items=<?php echo esc_attr( $_GET['items'] ); ?>">Demo</a>
+						<a class="button-secondary" href="admin.php?page=mojo-theme-preview&amp;id=<?php esc_attr_e( $_GET['id'] ); ?>&amp;items=<?php esc_attr_e( $_GET['items'] ); ?>">Demo</a>
 						<?php
 					}
 					?>
 					<form style="display: inline-block; float: right;line-height: 0;" method="POST" action="<?php echo mm_build_link( "https://www.mojomarketplace.com/cart", array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'preview_' . esc_attr( $_GET['items'] ) . '_buy_now_button' ) ); ?>">
-						<input type="hidden" name="data[CartItem][item_id]" value="<?php echo $theme->id; ?>" />
+						<input type="hidden" name="data[CartItem][item_id]" value="<?php esc_attr_e( $theme->id ); ?>" />
 						<input class="mm-btn-primary" type="submit" value="Buy Now" />
 					</form>
 				</div>
 				<div class="wp-full-overlay-sidebar-content">
 					<div class="install-theme-info">
-						<h3 class="theme-name"><?php echo $theme->name; ?></h3>
+						<h3 class="theme-name"><?php esc_html_e( $theme->name ); ?></h3>
 						<span class="theme-by">By <a target="_blank" href="<?php echo mm_build_link( $theme->seller_url, array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'preview_' . esc_attr( $_GET['items'] ) . '_seller_link' ) ); ?>"><?php echo $theme->seller_name; ?></a></span>
 
-						<img alt="" src="<?php echo $theme->images->square_thumbnail_url; ?>" class="theme-screenshot">
+						<img alt="" src="<?php esc_attr_e( $theme->images->square_thumbnail_url ); ?>" class="theme-screenshot">
 
 						<div class="theme-details">
-							<div class="theme-version">Version: <?php echo $theme->version; ?></div>
-							<div class="theme-updated">Updated: <?php echo $theme->modified; ?></div>
-							<div class="theme-sales">Sales: <?php echo $theme->sales_count; ?></div>
+							<div class="theme-version">Version: <?php esc_html_e( $theme->version ); ?></div>
+							<div class="theme-updated">Updated: <?php esc_html_e( $theme->modified ); ?></div>
+							<div class="theme-sales">Sales: <?php esc_html_e( $theme->sales_count ); ?></div>
 							<!--<div class="theme-description"></div>-->
 						</div>
 					</div>

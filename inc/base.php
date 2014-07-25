@@ -37,7 +37,7 @@ function mm_api( $args = array(), $query = array() ) {
 	if( isset( $query['count'] ) || isset( $query['seller'] ) ) {
 		$request_url = $request_url . '?' . $query;
 	}
-	if( false === ( $transient = get_transient( 'mojo-api-calls' ) ) OR ! isset( $transient[ md5( $request_url ) ] ) ) {
+	if( false === ( $transient = get_transient( 'mojo-api-calls' ) ) || ! isset( $transient[ md5( $request_url ) ] ) ) {
 		$transient[ md5( $request_url ) ] = wp_remote_get( $request_url );
 		if( ! is_wp_error( $transient[ md5( $request_url ) ] ) ) {
 			set_transient( 'mojo-api-calls', $transient, DAY_IN_SECONDS );	
@@ -61,10 +61,11 @@ function mm_build_link( $url, $args = array(), $tracking = false ) {
 	if( isset( $test['key'] ) && isset( $test['name'] ) ) {
 		$args['utm_medium'] = $args['utm_medium'] . "_" . $test['name'] . "_" . $test['key'];
 	}
-
-	$query = http_build_query( $args );
-	$url = $url . '?' . $query;
 	
+	$args = wp_parse_args( array_filter( $args ), array_filter( $defaults ) );
+
+	$url = add_query_arg( $args, $url );
+
 	return esc_url( $url );
 	/* Tracking still broken
 	if( ! $tracking ) {
@@ -87,17 +88,37 @@ add_action( 'wp_login', 'mm_clear_transients' );
 add_action( 'pre_current_active_plugins', 'mm_clear_transients' );
 
 function mm_cron() {
-	if ( ! wp_next_scheduled( 'mm_cron_twicedaily' ) ) {
-		wp_schedule_event( time(), 'twicedaily', 'mm_cron_twicedaily' );
+	if ( ! wp_next_scheduled( 'mm_cron_monthly' ) ) {
+		wp_schedule_event( time(), 'monthly', 'mm_cron_monthly' );
+	}
+	if ( ! wp_next_scheduled( 'mm_cron_weekly' ) ) {
+		wp_schedule_event( time(), 'weekly', 'mm_cron_weekly' );
 	}
 	if ( ! wp_next_scheduled( 'mm_cron_daily' ) ) {
 		wp_schedule_event( time(), 'daily', 'mm_cron_daily' );
+	}
+	if ( ! wp_next_scheduled( 'mm_cron_twicedaily' ) ) {
+		wp_schedule_event( time(), 'twicedaily', 'mm_cron_twicedaily' );
 	}
 	if ( ! wp_next_scheduled( 'mm_cron_hourly' ) ) {
 		wp_schedule_event( time(), 'hourly', 'mm_cron_hourly' );
 	}
 }
 add_action( 'admin_init', 'mm_cron' );
+
+function mm_cron_schedules( $shedules ) {
+	$schedules['weekly'] = array(
+		'interval' => 604800,
+		'display' => __( 'Once Weekly' )
+	);
+	$schedules['monthly'] = array(
+		'interval' => 2635200,
+		'display' => __( 'Once a month' )
+	);
+	return $schedules;
+}
+add_filter( 'cron_schedules', 'mm_cron_schedules' ); 
+
 
 function mm_slug_to_title( $slug ) {
 	$words = explode( '-', $slug );
@@ -115,5 +136,14 @@ function mm_title_to_slug( $title ) {
 
 function mm_require( $file ) {
 	$file = apply_filters( 'mm_require_file', $file );
-	require( $file );
+	if( file_exists( $file ) ) {
+		require( $file );
+	}
+	return $file;
 }
+
+function mm_safe_hosts( $hosts ) {
+	$hosts[] = "mojomarketplace.com";
+	return $hosts;
+}
+add_filter( 'allowed_redirect_hosts', 'mm_safe_hosts' );
