@@ -85,7 +85,10 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 
 function mm_jetpack_start_test() {
 	$file = MM_BASE_DIR . 'tests/jetpack-start/jetpack-start.php';
-	if( file_exists( $file ) && mm_ab_test_inclusion( 'jetpack-start-4.0', md5( $file ), 20, WEEK_IN_SECONDS * 4 ) ) {
+	if( file_exists( $file ) && 
+		mm_ab_test_inclusion( 'jetpack-start-4.0', md5( $file ), 20, WEEK_IN_SECONDS * 4 ) &&
+		mm_jetpack_bluehost_only()
+		) {
 		require( $file );
 	} else {
 		//dont show a user jetpack start later in life
@@ -94,6 +97,10 @@ function mm_jetpack_start_test() {
 }
 add_action( 'init', 'mm_jetpack_start_test', 5 );
 
+function mm_jetpack_bluehost_only() {
+	$host = @exec( 'hostname' );
+	return ( stripos( $host, 'bluehost' ) ) ? true : false;
+}
 /* function mm_jetpack_start_themes( $themes ) {
 
 	include_once( ABSPATH . 'wp-admin/includes/theme-install.php' );
