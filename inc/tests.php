@@ -29,7 +29,7 @@ function mm_ab_test_inclusion_none() {
 		set_transient( 'mm_test', array( 'key' => 'none' ), $duration );
 	}
 }
-add_action( 'wp_logout', 'mm_ab_test_inclusion_none' );
+add_action( 'wp_logout', 'mm_ab_test_inclusion_none', 99 );
 
 function mm_ab_test_file( $test_name, $file, $original, $test, $audience = 10, $duration = WEEK_IN_SECONDS  ) {
 	if( strpos( $file, $original ) ) {
@@ -79,53 +79,66 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 
 /* Start individual tests*/
 
-function mm_add_plugin_patterns( $patterns ) {
-	$patterns['/commerce/i'] = array( 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/services/all/ecommerce' );
-	$patterns['/shop/i'] = array( 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/services/all/ecommerce' );
-	$patterns['/store/i'] = array( 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/services/all/ecommerce' );
-	$patterns['/checkout/i'] = array( 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/services/all/ecommerce' );
-	$patterns['/credit/i'] = array( 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/services/all/ecommerce' );
-	$patterns['/sell/i'] = array( 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/services/all/ecommerce' );
-	$patterns['/analytics/i'] = array( 'name' => 'Google Analytics', 'url' => 'https://www.mojomarketplace.com/item/add-google-analytics-to-your-wordpress-site' );
-	$patterns['/stats/i'] = array( 'name' => 'Google Analytics', 'url' => 'https://www.mojomarketplace.com/item/add-google-analytics-to-your-wordpress-site' );
-	$patterns['/sitemap/i'] = array( 'name' => 'Sitemap', 'url' => 'https://www.mojomarketplace.com/item/add-an-seo-friendly-sitemap-to-your-wordpress-site' );
-	$patterns['/seo/i'] = array( 'name' => 'SEO Sitemap', 'url' => 'https://www.mojomarketplace.com/item/add-an-seo-friendly-sitemap-to-your-wordpress-site' );
-	$patterns['/buddypress/i'] = array( 'name' => 'BuddyPress', 'url' => 'https://www.mojomarketplace.com/item/install-and-setup-buddypress-wordpress-plugin' );
-	$patterns['/bbpress/i'] = array( 'name' => 'bbPress', 'url' => 'https://www.mojomarketplace.com/item/install-and-setup-bbpress-wordpress-plugin' );
-	$patterns['/bb press/i'] = array( 'name' => 'bbPress', 'url' => 'https://www.mojomarketplace.com/item/install-and-setup-bbpress-wordpress-plugin' );
-	$patterns['/contact/i'] = array( 'name' => 'Contact Forms', 'url' => 'https://www.mojomarketplace.com/item/create-a-wordpress-contact-form' );
-	$patterns['/form/i'] = array( 'name' => 'Contact Forms', 'url' => 'https://www.mojomarketplace.com/item/create-a-wordpress-contact-form' );
-	$patterns['/map/i'] = array( 'name' => 'Google Maps', 'url' => 'https://www.mojomarketplace.com/item/add-a-google-map-to-my-wordpress-site' );
-	$patterns['/locat/i'] = array( 'name' => 'Google Maps', 'url' => 'https://www.mojomarketplace.com/item/add-a-google-map-to-my-wordpress-site' );
-	return $patterns;
-}
-add_filter( 'mm_search_plugin_patterns', 'mm_add_plugin_patterns' );
+/**
+ * Should Jetpack Starter perform well, we would move this stuff to inc/jetpack.php.
+ */
 
-function mm_check_search_value( $search ) {
-	$patterns = apply_filters( 'mm_search_plugin_patterns', array() );
-	foreach ( $patterns as $pattern => $plugin ) {
-		if( preg_match( $pattern, $search ) ) {
-			return $plugin;
+function mm_jetpack_start_test() {
+	$file = MM_BASE_DIR . 'tests/jetpack-start/jetpack-start.php';
+	if( file_exists( $file ) && mm_ab_test_inclusion( 'jetpack-start-4.0', md5( $file ), 20, WEEK_IN_SECONDS * 4 ) ) {
+		require( $file );
+	} else {
+		//dont show a user jetpack start later in life
+		add_option( 'jpstart_wizard_has_run', true );
+	}
+}
+add_action( 'init', 'mm_jetpack_start_test', 5 );
+
+/* function mm_jetpack_start_themes( $themes ) {
+
+	include_once( ABSPATH . 'wp-admin/includes/theme-install.php' );
+	$installed_themes = search_theme_directories( true );
+	$uninstalled_themes = array();
+	
+	foreach( $themes as $theme ) {
+		if( ! array_key_exists( $theme, $installed_themes ) ) {
+			//theme is not installed
+			$uninstalled_themes[] = $theme;
 		}
 	}
-	return false;
+	
+	set_transient( 'jps_uninstalled_themes', $uninstalled_themes, WEEK_IN_SECONDS );
+	
+	return array_diff( $themes, $uninstalled_themes );
 }
+add_filter( 'jetpack_start_themes', 'mm_jetpack_start_themes' );*/
 
-function mm_plugin_search_notice() {
-	if( isset( $_GET['s'] )  && $plugin = mm_check_search_value( $_GET['s'] ) ) {
-		$link = mm_build_link( $plugin['url'], array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'plugin_search' ) );
-		?>
-		<div class="updated">
-        	<p>Did you know? MOJO Marketplace has a <a target="_blank" href="<?php echo $link; ?>">service</a> for <a target="_blank" href="<?php echo $link; ?>"><?php echo $plugin['name']; ?></a></p>
-    	</div>
-		<?php
+function mm_jetpack_start_onboarding() {
+	$mm_test = get_transient( 'mm_test', array( 'name' => 'none' ) );
+	if( ! get_option( 'jpstart_wizard_has_run' ) && 
+		! isset( $_GET['jps_wizard_start'] )  && 
+		! get_option( 'jps_started' ) &&
+		$mm_test['name'] == 'jetpack-start-4.0' ) {
+		add_option( 'jps_started', time() );
+		wp_safe_redirect( admin_url( '?jps_wizard_start' ) );
 	}
 }
+add_action( 'admin_init', 'mm_jetpack_start_onboarding', 10 );
 
-function mm_plugin_search_offer() {
-	$duration = WEEK_IN_SECONDS * 3;
-	if( isset( $_GET['s'] ) && mm_ab_test_inclusion( 'search_services', md5( 'mm_plugin_search_notice' ), 50, $duration ) ) {
-		add_action( 'admin_notices', 'mm_plugin_search_notice' );
+function mm_jetpack_remove_themes_step( $steps ) {
+	for ( $i = 0; $i < count( $steps ); $i++ ) { 
+		if( is_a( $steps[ $i ], 'Jetpack_Start_Step_select_theme' ) ) {
+			unset( $steps[ $i ] );
+		}
+	}
+	return $steps;
+}
+add_filter( 'jetpack_start_steps', 'mm_jetpack_remove_themes_step' );
+
+function mm_spam_test() {
+	$file = MM_BASE_DIR . 'tests/spam-prevention.php';
+	if( file_exists( $file ) && mm_ab_test_inclusion( 'spam-prevention-v1', md5( $file ), 20, WEEK_IN_SECONDS * 4 ) ) {
+		require( $file );
 	}
 }
-add_action( 'admin_head-plugin-install.php', 'mm_plugin_search_offer' );
+add_action( 'init', 'mm_spam_test', 8 );

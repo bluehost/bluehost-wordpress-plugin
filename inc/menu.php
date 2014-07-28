@@ -14,7 +14,7 @@ function mm_menu_icon() {
 	?>
 	<style type="text/css">
 		li.toplevel_page_mojo-themes .wp-menu-image{
-			background-image: url( '<?php echo plugin_dir_url( dirname( __FILE__ ) ) . "img/mojo-icon-22.png"; ?>' );
+			background-image: url( '<?php echo MM_BASE_URL . "img/mojo-icon-22.png"; ?>' );
 			background-position: 7px;
 			background-repeat: no-repeat;
 		}
@@ -25,33 +25,33 @@ add_action( 'admin_head','mm_menu_icon' );
 
 function mm_add_tool_bar_items( $admin_bar ) {
 	$admin_bar->add_menu( array(
-		'id'    => 'mojo-marketplace',
+		'id' => 'mojo-marketplace',
 		'title' => 'MOJO Marketplace',
-		'href'  => site_url() . '/wp-admin/admin.php?page=mojo-themes',
-		'meta'  => array(
+		'href' => admin_url( 'admin.php?page=mojo-themes' ),
+		'meta' => array(
 			'title' => __( 'MOJO Marketplace' )
 		),
 	) );
 	$admin_bar->add_menu( array(
-		'id'    => 'mojo-themes',
+		'id' => 'mojo-themes',
 		'title' => 'MOJO Themes',
 		'parent'=> 'mojo-marketplace',
-		'href'  => site_url() . '/wp-admin/admin.php?page=mojo-themes',
-		'meta'  => array(
+		'href' => admin_url( 'admin.php?page=mojo-themes' ),
+		'meta' => array(
 			'title' => __( 'MOJO Themes' )
 		),
 	) );
 	$admin_bar->add_menu( array(
-		'id'    => 'mojo-services',
+		'id' => 'mojo-services',
 		'title' => 'MOJO Services',
 		'parent'=> 'mojo-marketplace',
-		'href'  => site_url() . '/wp-admin/admin.php?page=mojo-services',
-		'meta'  => array(
+		'href' => admin_url( 'admin.php?page=mojo-services' ),
+		'meta' => array(
 			'title' => __( 'MOJO Services' )
 		),
 	) );
 }
-add_action('admin_bar_menu', 'mm_add_tool_bar_items', 100);
+add_action( 'admin_bar_menu', 'mm_add_tool_bar_items', 100 );
 
 function mm_services_menu() {
 	add_submenu_page( 'mojo-themes', 'MOJO Services', 'MOJO Services', 'manage_options', 'mojo-services', 'mm_services_page' );
