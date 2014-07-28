@@ -21,6 +21,7 @@ function mm_add_plugin_search_patterns( $patterns ) {
 	$patterns['/locat/i'] = array( 'name' => 'Google Maps', 'url' => 'https://www.mojomarketplace.com/item/add-a-google-map-to-my-wordpress-site' );
 	$patterns['/secur/i'] = array( 'name' => 'Securing Your WordPress Site', 'url' => 'https://www.mojomarketplace.com/item/make-my-wordpress-site-secure' );
 	$patterns['/hack/i'] = array( 'name' => 'Securing Your WordPress Site', 'url' => 'https://www.mojomarketplace.com/item/make-my-wordpress-site-secure' );
+	$patterns['/fence/i'] = array( 'name' => 'Securing Your WordPress Site', 'url' => 'https://www.mojomarketplace.com/item/make-my-wordpress-site-secure' );
 	return $patterns;
 }
 add_filter( 'mm_plugin_search_patterns', 'mm_add_plugin_search_patterns' );
