@@ -251,7 +251,7 @@ function mm_ux_log_current_theme() {
 	$event = array(
 		't'		=> 'event',
 		'ec'	=> 'scheduled',
-		'ea'	=> 'theme_count',
+		'ea'	=> 'current_theme',
 		'el'	=> $theme
 	);
 	$events = get_option( 'mm_cron', array() );
