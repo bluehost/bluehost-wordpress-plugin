@@ -52,8 +52,13 @@ function mm_ux_log( $args = array() ) {
 		$params['cm'] = $params['cm'] . "_" . $test['name'] . "_" . $test['key'];
 	}
 
+	//use test account for testing
+	if( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		$params['tid'] = 'UA-19617272-27'; 
+	}
+
 	$params['z'] = (int) str_pad( mt_rand( 0, 999999999999 ), 12, "0" );
-	
+
 	$query = http_build_query( array_filter( $params ) );
 	
 	$args = array(
@@ -64,7 +69,7 @@ function mm_ux_log( $args = array() ) {
 	
 	wp_remote_post( $url, $args );
 }
-add_action( 'admin_footer', 'mm_ux_log', 90 );
+add_action( 'admin_footer', 'mm_ux_log', 9 );
 
 function mm_ux_log_start() {
 	$session = array(
@@ -267,8 +272,10 @@ add_action( 'mm_cron_weekly', 'mm_ux_log_scheduled_events_weekly' );
 function mm_ux_log_scheduled_events_monthly() {
 	$events = get_option( 'mm_cron', array( 'monthly' => array() ) );
 	$monthly_events = $events['monthly'];
-	foreach ( $monthly_events as $event => $details ) {
-		mm_ux_log( $details );
+	if( count( $events['monthly'] ) >= 1 ) {
+		foreach ( $monthly_events as $event => $details ) {
+			mm_ux_log( $details );
+		}
 	}
 }
 add_action( 'mm_cron_monthly', 'mm_ux_log_scheduled_events_monthly' );
@@ -276,8 +283,10 @@ add_action( 'mm_cron_monthly', 'mm_ux_log_scheduled_events_monthly' );
 function mm_ux_log_scheduled_events_twicedaily() {
 	$events = get_option( 'mm_cron', array( 'twicedaily' => array() ) );
 	$twicedaily_events = $events['twicedaily'];
-	foreach ( $twicedaily_events as $event => $details ) {
-		mm_ux_log( $details );
+	if( count( $events['twicedaily'] ) >= 1 ) {
+		foreach ( $twicedaily_events as $event => $details ) {
+			mm_ux_log( $details );
+		}
 	}
 }
 add_action( 'mm_cron_twicedaily', 'mm_ux_log_scheduled_events_twicedaily' );
@@ -285,8 +294,10 @@ add_action( 'mm_cron_twicedaily', 'mm_ux_log_scheduled_events_twicedaily' );
 function mm_ux_log_scheduled_events_daily() {
 	$events = get_option( 'mm_cron', array( 'daily' => array() ) );
 	$daily_events = $events['daily'];
-	foreach ( $daily_events as $event => $details ) {
-		mm_ux_log( $details );
+	if( count( $events['daily'] ) >= 1 ) {
+		foreach ( $daily_events as $event => $details ) {
+			mm_ux_log( $details );
+		}
 	}
 }
 add_action( 'mm_cron_daily', 'mm_ux_log_scheduled_events_daily' );
@@ -294,8 +305,10 @@ add_action( 'mm_cron_daily', 'mm_ux_log_scheduled_events_daily' );
 function mm_ux_log_scheduled_events_hourly() {
 	$events = get_option( 'mm_cron', array( 'hourly' => array() ) );
 	$hourly_events = $events['hourly'];
-	foreach ( $hourly_events as $event => $details ) {
-		mm_ux_log( $details );
+	if( count( $events['hourly'] ) >= 1 ) {
+		foreach ( $hourly_events as $event => $details ) {
+			mm_ux_log( $details );
+		}
 	}
 }
 add_action( 'mm_cron_hourly', 'mm_ux_log_scheduled_events_hourly' );

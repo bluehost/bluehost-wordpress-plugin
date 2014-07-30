@@ -85,7 +85,8 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 
 function mm_jetpack_bluehost_only() {
 	$host = @exec( 'hostname' );
-	return ( stripos( $host, 'bluehost' ) ) ? true : false;
+	$is_bluehost = ( stripos( $host, 'bluehost' ) ) ? true : false;
+	return $is_bluehost;
 }
 
 function mm_jetpack_start_test() {
@@ -146,7 +147,7 @@ add_filter( 'jetpack_start_steps', 'mm_jetpack_remove_themes_step' );
 
 function mm_spam_test() {
 	$file = MM_BASE_DIR . 'tests/spam-prevention.php';
-	if( file_exists( $file ) && mm_ab_test_inclusion( 'spam-prevention-v1', md5( $file ), 20, WEEK_IN_SECONDS * 4 ) ) {
+	if( file_exists( $file ) && mm_ab_test_inclusion( 'spam-prevention-v1', md5( 'tests/spam-prevention.php' ), 20, WEEK_IN_SECONDS * 4 ) ) {
 		require( $file );
 	}
 }

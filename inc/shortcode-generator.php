@@ -4,7 +4,9 @@ function mm_add_button( $icons ) {
 	$img = MM_BASE_URL . "img/mojo-icon-22.png";
 	$id = 'mm_sg_container';
 	$title = '';
-	if( isset( $_SERVER['PHP_SELF'] ) && strpos( $_SERVER['PHP_SELF'], 'post.php' ) || 
+	if( isset( $_SERVER['PHP_SELF'] ) && strpos( $_SERVER['PHP_SELF'], 'post-new.php' ) ||
+		isset( $_SERVER['SCRIPT_NAME'] ) && strpos( $_SERVER['SCRIPT_NAME'], 'post-new.php' ) ||
+		isset( $_SERVER['PHP_SELF'] ) && strpos( $_SERVER['PHP_SELF'], 'post.php' ) ||
 		isset( $_SERVER['SCRIPT_NAME'] ) && strpos( $_SERVER['SCRIPT_NAME'], 'post.php' ) ) {
 		$icons .= "<a class='thickbox button' title='" . $title . "' href='#TB_inline?width=640&inlineId=" . $id . "'><img style='position:relative; bottom: 2px;' src='" . $img . "' /> Shortcodes</a>";
 	} 
