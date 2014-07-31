@@ -35,8 +35,8 @@ function mm_spam_stop_forum_spam_api( $args = array() ) {
 					
 					$blocked = false;
 					
-					if( isset( $data->ip->confidence ) && $data->ip->confidence > get_option( 'mm_confidence_ip', 80 ) ) { $blocked = 'ip';	} 
-					if( isset( $data->username->confidence ) && $data->username->confidence > get_option( 'mm_confidence_username', 99 ) ) { $blocked = 'username';	} 
+					if( isset( $data->ip->confidence ) && $data->ip->confidence > get_option( 'mm_confidence_ip', 80 ) ) { $blocked = 'ip';	}
+					if( isset( $data->username->confidence ) && $data->username->confidence > get_option( 'mm_confidence_username', 99 ) ) { $blocked = 'username';	}
 					if( isset( $data->email->confidence ) && $data->email->confidence > get_option( 'mm_confidence_email', 80 ) ) {	$blocked = 'email';	}
 					
 					if( $blocked ) {
@@ -44,7 +44,7 @@ function mm_spam_stop_forum_spam_api( $args = array() ) {
 							't'		=> 'event',
 							'ec'	=> 'scheduled',
 							'ea'	=> 'spam_blocked_' . $blocked,
-							'el'	=> 1
+							'el'	=> 0
 						);
 						if( isset( $events['weekly'][ $event['ea'] ] ) ) {
 							$events['weekly'][ $event['ea'] ]['el']++;
