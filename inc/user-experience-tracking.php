@@ -57,7 +57,7 @@ function mm_ux_log( $args = array() ) {
 		$params['tid'] = 'UA-19617272-27'; 
 	}
 
-	$params['z'] = (int) str_pad( mt_rand( 0, 999999999999 ), 12, "0" );
+	$params['z'] = (int) mt_rand( 100000000000, 999999999999 );
 
 	$query = http_build_query( array_filter( $params ) );
 	
@@ -263,9 +263,19 @@ add_action( 'admin_footer-index.php', 'mm_ux_log_current_theme' );
 function mm_ux_log_scheduled_events_weekly() {
 	$events = get_option( 'mm_cron', array( 'weekly' => array() ) );
 	$weekly_events = $events['weekly'];
-	foreach ( $weekly_events as $event => $details ) {
-		mm_ux_log( $details );
+	if( count( $events['weekly'] ) >= 1 ) {
+		foreach ( $weekly_events as $event => $details ) {
+			if( isset( $details['keep'] ) ) {
+				if( $details['keep'] === false ) {
+					unset( $weekly_events[ $event ] );
+				}
+				unset( $details['keep'] );
+			}
+			mm_ux_log( $details );
+		}
 	}
+	$events['weekly'] = $weekly_events;
+	update_option( 'mm_cron', $events );
 }
 add_action( 'mm_cron_weekly', 'mm_ux_log_scheduled_events_weekly' );
 
@@ -274,8 +284,16 @@ function mm_ux_log_scheduled_events_monthly() {
 	$monthly_events = $events['monthly'];
 	if( count( $events['monthly'] ) >= 1 ) {
 		foreach ( $monthly_events as $event => $details ) {
+			if( isset( $details['keep'] ) ) {
+				if( $details['keep'] === false ) {
+					unset( $monthly_events[ $event ] );
+				}
+			unset( $details['keep'] );
+			}
 			mm_ux_log( $details );
 		}
+		$events['monthly'] = $monthly_events;
+		update_option( 'mm_cron', $events );
 	}
 }
 add_action( 'mm_cron_monthly', 'mm_ux_log_scheduled_events_monthly' );
@@ -285,8 +303,16 @@ function mm_ux_log_scheduled_events_twicedaily() {
 	$twicedaily_events = $events['twicedaily'];
 	if( count( $events['twicedaily'] ) >= 1 ) {
 		foreach ( $twicedaily_events as $event => $details ) {
+			if( isset( $details['keep'] ) ) {
+				if( $details['keep'] === false ) {
+					unset( $twicedaily_events[ $event ] );
+				}
+			unset( $details['keep'] );
+			}
 			mm_ux_log( $details );
 		}
+		$events['twicedaily'] = $twicedaily_events;
+		update_option( 'mm_cron', $events );
 	}
 }
 add_action( 'mm_cron_twicedaily', 'mm_ux_log_scheduled_events_twicedaily' );
@@ -296,8 +322,16 @@ function mm_ux_log_scheduled_events_daily() {
 	$daily_events = $events['daily'];
 	if( count( $events['daily'] ) >= 1 ) {
 		foreach ( $daily_events as $event => $details ) {
+			if( isset( $details['keep'] ) ) {
+				if( $details['keep'] === false ) {
+					unset( $daily_events[ $event ] );
+				}
+			unset( $details['keep'] );
+			}
 			mm_ux_log( $details );
 		}
+		$events['daily'] = $daily_events;
+		update_option( 'mm_cron', $events );
 	}
 }
 add_action( 'mm_cron_daily', 'mm_ux_log_scheduled_events_daily' );
@@ -307,8 +341,16 @@ function mm_ux_log_scheduled_events_hourly() {
 	$hourly_events = $events['hourly'];
 	if( count( $events['hourly'] ) >= 1 ) {
 		foreach ( $hourly_events as $event => $details ) {
+			if( isset( $details['keep'] ) ) {
+				if( $details['keep'] === false ) {
+					unset( $hourly_events[ $event ] );
+				}
+			unset( $details['keep'] );
+			}
 			mm_ux_log( $details );
 		}
+		$events['hourly'] = $hourly_events;
+		update_option( 'mm_cron', $events );
 	}
 }
 add_action( 'mm_cron_hourly', 'mm_ux_log_scheduled_events_hourly' );
@@ -531,6 +573,18 @@ function mm_jetpack_log_publicized( $submit_post, $post_id, $service_name, $conn
 	mm_ux_log( $event );
 }
 add_action( 'publicize_save_meta', 'mm_jetpack_log_publicized', 10, 4 );
+
+function mm_jetpack_log_connected( $entry ) {
+	if ( 'register' == $entry['code'] ) {
+		$event = array(
+			't'		=> 'event',
+			'ec'	=> 'jetpack_event',
+			'ea'	=> 'connected'
+		);
+		mm_ux_log( $event );
+	}
+}
+add_action( 'jetpack_log_entry', 'mm_jetpack_log_connected', 10, 1 );
 
 function mm_jetpack_log_jps_time() {
 	if( isset( $_GET['welcome-screen-hide'] ) ) {
