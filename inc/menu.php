@@ -24,32 +24,34 @@ function mm_menu_icon() {
 add_action( 'admin_head','mm_menu_icon' );
 
 function mm_add_tool_bar_items( $admin_bar ) {
-	$admin_bar->add_menu( array(
-		'id' => 'mojo-marketplace',
-		'title' => 'MOJO Marketplace',
-		'href' => admin_url( 'admin.php?page=mojo-themes' ),
-		'meta' => array(
-			'title' => __( 'MOJO Marketplace' )
-		),
-	) );
-	$admin_bar->add_menu( array(
-		'id' => 'mojo-themes',
-		'title' => 'MOJO Themes',
-		'parent'=> 'mojo-marketplace',
-		'href' => admin_url( 'admin.php?page=mojo-themes' ),
-		'meta' => array(
-			'title' => __( 'MOJO Themes' )
-		),
-	) );
-	$admin_bar->add_menu( array(
-		'id' => 'mojo-services',
-		'title' => 'MOJO Services',
-		'parent'=> 'mojo-marketplace',
-		'href' => admin_url( 'admin.php?page=mojo-services' ),
-		'meta' => array(
-			'title' => __( 'MOJO Services' )
-		),
-	) );
+	if( current_user_can( 'manage_options' ) ) {
+		$admin_bar->add_menu( array(
+			'id' => 'mojo-marketplace',
+			'title' => 'MOJO Marketplace',
+			'href' => admin_url( 'admin.php?page=mojo-themes' ),
+			'meta' => array(
+				'title' => __( 'MOJO Marketplace' )
+			),
+		) );
+		$admin_bar->add_menu( array(
+			'id' => 'mojo-themes',
+			'title' => 'MOJO Themes',
+			'parent'=> 'mojo-marketplace',
+			'href' => admin_url( 'admin.php?page=mojo-themes' ),
+			'meta' => array(
+				'title' => __( 'MOJO Themes' )
+			),
+		) );
+		$admin_bar->add_menu( array(
+			'id' => 'mojo-services',
+			'title' => 'MOJO Services',
+			'parent'=> 'mojo-marketplace',
+			'href' => admin_url( 'admin.php?page=mojo-services' ),
+			'meta' => array(
+				'title' => __( 'MOJO Services' )
+			),
+		) );
+	}
 }
 add_action( 'admin_bar_menu', 'mm_add_tool_bar_items', 100 );
 
