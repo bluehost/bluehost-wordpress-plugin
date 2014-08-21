@@ -35,8 +35,10 @@ function mm_api( $args = array(), $query = array() ) {
 	$query = http_build_query( array_filter( $query ) );
 	$request_url = $api_url . $args['mojo-items'] . '/' . $args['mojo-platform'] . '/' . $args['mojo-type'];
 	if( isset( $query['count'] ) || isset( $query['seller'] ) ) {
+		$request_url = rtrim( $request_url, '/' );
 		$request_url = $request_url . '?' . $query;
 	}
+
 	if( false === ( $transient = get_transient( 'mojo-api-calls' ) ) || ! isset( $transient[ md5( $request_url ) ] ) ) {
 		$transient[ md5( $request_url ) ] = wp_remote_get( $request_url );
 		if( ! is_wp_error( $transient[ md5( $request_url ) ] ) ) {
@@ -140,6 +142,15 @@ function mm_require( $file ) {
 		require( $file );
 	}
 	return $file;
+}
+
+function mm_minify( $content ) {
+	$content = str_replace( "\r", "", $content );
+	$content = str_replace( "\n", "", $content );
+	$content = str_replace( "\t", "", $content );
+	$content = str_replace( "  ", " ", $content );
+	$content = trim( $content );
+	return $content;
 }
 
 function mm_safe_hosts( $hosts ) {
