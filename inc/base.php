@@ -39,13 +39,15 @@ function mm_api( $args = array(), $query = array() ) {
 		$request_url = $request_url . '?' . $query;
 	}
 
-	if( false === ( $transient = get_transient( 'mojo-api-calls' ) ) || ! isset( $transient[ md5( $request_url ) ] ) ) {
-		$transient[ md5( $request_url ) ] = wp_remote_get( $request_url );
-		if( ! is_wp_error( $transient[ md5( $request_url ) ] ) ) {
-			set_transient( 'mojo-api-calls', $transient, DAY_IN_SECONDS );	
+	$key = md5( $request_url );
+
+	if( false === ( $transient = get_transient( 'mm_api_calls' ) ) || ! isset( $transient[ $key ] ) ) {
+		$transient[ $key ] = wp_remote_get( $request_url );
+		if( ! is_wp_error( $transient[ $key ] ) ) {
+			set_transient( 'mm_api_calls', $transient, DAY_IN_SECONDS );	
 		}
 	}
-	return $transient[ md5( $request_url ) ];
+	return $transient[ $key ];
 }
 
 function mm_build_link( $url, $args = array(), $tracking = false ) {
