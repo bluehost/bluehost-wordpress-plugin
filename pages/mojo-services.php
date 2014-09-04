@@ -4,7 +4,7 @@ $api_args = array(
 	'mojo-type' 		=> '',
 	'mojo-items' 		=> 'popular-services'
 );
-$result = mm_api( $api_args, array( 'count' => '' ) );
+$result = mm_api( $api_args, array( 'count' => '30' ) );
 ?>
 <div class="wrap">
 	<h2><?php echo apply_filters( 'mm_before_page_title', "" ); ?> MOJO Marketplace - Services <a class="add-new-h2" target="_blank" href="<?php echo mm_build_link( 'http://mojomarketplace.com/services/all/wordpress', array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'browse_all_services_button' ), 'browse_all_services' ); ?>">Browse All Services &rarr;</a></h2>
@@ -19,7 +19,6 @@ if( is_wp_error( $result ) ) {
 
 	foreach ( $items as $item ) {
 		$item->name = apply_filters( 'mm_item_name', $item->name );
-
 		?>
 		<div class="service" tabindex="0">
 			<div class="service-screenshot">
