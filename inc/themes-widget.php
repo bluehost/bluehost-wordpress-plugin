@@ -5,16 +5,16 @@ This file creates the widget for themes
 
 class MOJO_Widget extends WP_Widget {
 	var $defaults = array(
-			'mojo-title' => 'Mojo Marketplace',
-			'mojo-platform' => 'wordpress',
-			'mojo-type' => 'themes',
-			'mojo-items' => 'recent',
-			'mojo-image-size' => 'thumbnail',
-			'mojo-quantity' => '3',
-			'mojo-preview' => 'off',
-			'mojo-seller' => '',
-			'mojo-aff-id' => ''
-			);
+		'mojo-title' => 'Mojo Marketplace',
+		'mojo-platform' => 'wordpress',
+		'mojo-type' => 'themes',
+		'mojo-items' => 'recent',
+		'mojo-image-size' => 'thumbnail',
+		'mojo-quantity' => '3',
+		'mojo-preview' => 'off',
+		'mojo-seller' => '',
+		'mojo-aff-id' => ''
+	);
 	public function __construct() {
 		parent::__construct(
 			'mojo_widget',
@@ -25,7 +25,7 @@ class MOJO_Widget extends WP_Widget {
 	public function form( $instance ) {
 		$instance = wp_parse_args( $instance, $this->defaults );
 		?>
-		<label for="<?php echo $this->get_field_name( 'mojo-title' ); ?>">Title:</label> 
+		<label for="<?php echo $this->get_field_name( 'mojo-title' ); ?>">Title:</label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'mojo-title' ); ?>" name="<?php echo $this->get_field_name( 'mojo-title' ); ?>" type="text" value="<?php echo esc_attr( $instance['mojo-title'] ); ?>" />
 		
 		<label for="<?php echo $this->get_field_name( 'mojo-platform' ); ?>">Platform:</label> 
