@@ -215,16 +215,18 @@ input.mm-btn-primary{
 
 .marketplace_page_mojo-services .service-browser .service{ 
 	margin: 1%; 
-	width: 49%;
+	width: 23%;
 }
-.marketplace_page_mojo-services .service-browser .service:nth-of-type(odd){ 
+/*
+.marketplace_page_mojo-services .service-browser .service:nth-of-type(odd) { 
 	margin: 0 1% 2% 0; 
-	width: 49%;
+	width: 24%;
 }
-.marketplace_page_mojo-services .service-browser .service:nth-of-type(even){ 
+.marketplace_page_mojo-services .service-browser .service:nth-of-type(even) { 
 	margin: 0 0 2% 1%; 
-	width: 49%;
+	width: 24%;
 }
+*/
 .marketplace_page_mojo-services .service-browser h3.service-name{
 	box-shadow: 0 0 0;
 	display: inline-block;
@@ -238,6 +240,7 @@ input.mm-btn-primary{
 	padding: 15px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	visibility: hidden;
 }
 .marketplace_page_mojo-services .service-browser .mojo-service-actions{
 	display: inline-block;
