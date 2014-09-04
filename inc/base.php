@@ -84,13 +84,13 @@ function mm_build_link( $url, $args = array(), $tracking = false ) {
 	*/
 }
 
-function mm_clear_transients() {
+function mm_clear_api_calls() {
 	if( is_admin() ) {
 		delete_transient( 'mojo-api-calls' );
 	}
 }
-add_action( 'wp_login', 'mm_clear_transients' );
-add_action( 'pre_current_active_plugins', 'mm_clear_transients' );
+add_action( 'wp_login', 'mm_clear_api_calls' );
+add_action( 'pre_current_active_plugins', 'mm_clear_api_calls' );
 
 function mm_cron() {
 	if ( ! wp_next_scheduled( 'mm_cron_monthly' ) ) {
