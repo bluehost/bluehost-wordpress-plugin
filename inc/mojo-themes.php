@@ -19,7 +19,7 @@ function mm_add_premium_link() {
 	?>
 	<script type="text/javascript">
 	jQuery( document ).ready( function() {
-		jQuery( '.theme-navigation .theme-section:nth-of-type(3)' ).after( '<a style="text-decoration: none;" onclick="location.href=\'admin.php?page=mojo-themes&btn=appearance_premium\'" class="theme-section" data-sort="premium">Premium</a>' );
+		jQuery( '.wp-filter .filter-links li:last-of-type' ).after( '<li><a style="text-decoration: none;" onclick="location.href=\'admin.php?page=mojo-themes&btn=appearance_premium\'">Premium</a></li>' );
 	} );
 	</script>
 	<?php
