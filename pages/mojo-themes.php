@@ -25,8 +25,8 @@
 
 	global $wp_version;
 	if( version_compare( $wp_version, '3.9.9' ) >= 0 ) {
-		echo '<div class="wp-filter theme-navigation">';
-		echo '<ul class="wp-filter-links">';
+		echo '<div class="wp-filter">';
+		echo '<ul class="filter-links">';
 		foreach ( $accepted_categories as $category ) {
 			if( $api_args['mojo-items'] == $category ) {
 				$current = 'current';
@@ -97,7 +97,6 @@
 								<input class="mm-btn-primary" type="submit" value="Buy Now"/>
 								</form>
 							</li>
-
 							<li>
 								<a target="_blank" title="Demo : <?php echo $item->name; ?>" href="<?php echo mm_build_link( $item->demo_url, array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'item_view_demo_link', 'TB_iframe' => 'true', 'width' => '1200', 'height' => '800' ) ); ?>" class="install-theme-preview thickbox">View Demo</a>
 							</li>
