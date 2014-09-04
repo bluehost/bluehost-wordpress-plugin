@@ -6,15 +6,16 @@ function mm_setup() {
 	}
 	if( ! get_option( 'mm_install_date' ) ) {
 		update_option( 'mm_install_date', date( 'M d, Y' ) );
-		if( function_exists( 'mm_ux_log' ) ) {
-			$event = array(
-				't'		=> 'event',
-				'ec'	=> 'plugin_status',
-				'ea'	=> 'installed',
-				'el'	=> 'Install date: ' . get_option( 'mm_install_date', date( 'M d, Y' ) ),
-			);
-			mm_ux_log( $event );
-		}
+		$event = array(
+			't'		=> 'event',
+			'ec'	=> 'plugin_status',
+			'ea'	=> 'installed',
+			'el'	=> 'Install date: ' . get_option( 'mm_install_date', date( 'M d, Y' ) ),
+			'keep'	=> false
+		);
+		$events = get_option( 'mm_cron', array() );
+		$events['hourly'][ $event['ea'] ] = $event;
+		update_option( 'mm_cron', $events );
 	}
 }
 add_action( 'admin_init', 'mm_setup' );
