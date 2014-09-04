@@ -541,6 +541,19 @@ function mm_ux_log_btn_click() {
 }
 add_action( 'admin_footer', 'mm_ux_log_btn_click' );
 
+function mm_jetpack_jps_action() {
+	if( isset( $_GET['jps_wp_action'] ) ) {
+		$event = array(
+			't'		=> 'event',
+			'ec'	=> 'jetpack_event',
+			'ea'	=> 'jps_action',
+			'el'	=> $_GET['jps_wp_action']
+		);
+		mm_ux_log( $event );
+	}
+}
+add_action( 'admin_init', 'mm_jetpack_jps_action' );
+
 function mm_jetpack_log_module_enabled( $module ) {
 	$event = array(
 		't'		=> 'event',
