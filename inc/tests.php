@@ -94,7 +94,7 @@ function mm_jetpack_start_test() {
 	$file = MM_BASE_DIR . 'tests/jetpack-start/jetpack-start.php';
 	if( file_exists( $file ) && 
 		mm_jetpack_bluehost_only() &&
-		mm_ab_test_inclusion( 'jetpack-start-v6', md5( $file ), 20, WEEK_IN_SECONDS * 4 )		
+		mm_ab_test_inclusion( 'jetpack-start-v6', md5( 'jetpack-start-v6' ), 20, WEEK_IN_SECONDS * 4 )		
 		) {
 		require( $file );
 	} else {
