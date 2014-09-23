@@ -29,7 +29,7 @@ function mm_ab_test_inclusion_none() {
 		set_transient( 'mm_test', array( 'key' => 'none' ), $duration );
 	}
 }
-add_action( 'wp_logout', 'mm_ab_test_inclusion_none', 99 );
+add_action( 'admin_footer', 'mm_ab_test_inclusion_none', 99 );
 
 function mm_ab_test_file( $test_name, $file, $original, $test, $audience = 10, $duration = WEEK_IN_SECONDS  ) {
 	if( strpos( $file, $original ) ) {
@@ -85,22 +85,18 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 
 
 function mm_jetpack_bluehost_only() {
-	$host = @exec( 'hostname' );
+	$host = gethostname();
 	$is_bluehost = ( stripos( $host, 'bluehost' ) ) ? true : false;
 	return $is_bluehost;
 }
 
 function mm_jetpack_start_test() {
 	$file = MM_BASE_DIR . 'tests/jetpack-start/jetpack-start.php';
-	if( file_exists( $file ) && 
-		mm_jetpack_bluehost_only() &&
-		mm_ab_test_inclusion( 'jetpack-start-v6', md5( 'jetpack-start-v6' ), 20, WEEK_IN_SECONDS * 4 )		
-		) {
-		require( $file );
-	} else {
-		mm_ab_test_inclusion( 'jetpack-start-exempt-v6', md5( 'jetpack-start-exempt-v6' ), 25, WEEK_IN_SECONDS * 4 );
-		//dont show a user jetpack start later in life
-		add_option( 'jpstart_wizard_has_run', true );
+	if( file_exists( $file ) && mm_jetpack_bluehost_only() ) {
+		if( ! mm_ab_test_inclusion( 'jetpack-start-v6.1', md5( 'jetpack-start-v6.1' ), 20, WEEK_IN_SECONDS * 4 ) ) {
+			mm_ab_test_inclusion( 'jetpack-start-exempt-v6.1', md5( 'jetpack-start-exempt-v6.1' ), 25, WEEK_IN_SECONDS * 4 );
+			add_option( 'jpstart_wizard_has_run', true );
+		}
 	}
 }
 add_action( 'init', 'mm_jetpack_start_test', 5 );
