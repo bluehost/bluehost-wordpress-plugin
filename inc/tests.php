@@ -85,7 +85,7 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 
 
 function mm_jetpack_bluehost_only() {
-	$host = gethostname();
+	$host = @exec( 'hostname' );
 	$is_bluehost = ( stripos( $host, 'bluehost' ) ) ? true : false;
 	return $is_bluehost;
 }
