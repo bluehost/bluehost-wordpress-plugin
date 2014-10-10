@@ -35,10 +35,10 @@ function mm_api( $args = array(), $query = array() ) {
 	$query = wp_parse_args( $query, $default_query );
 	$query = http_build_query( array_filter( $query ) );
 	$request_url = $api_url . $args['mojo-items'] . '/' . $args['mojo-platform'] . '/' . $args['mojo-type'];
-	if( isset( $query['count'] ) || isset( $query['seller'] ) ) {
-		$request_url = rtrim( $request_url, '/' );
-		$request_url = $request_url . '?' . $query;
-	}
+	
+	$request_url = rtrim( $request_url, '/' );
+	$request_url = $request_url . '?' . $query;
+
 
 	$key = md5( $request_url );
 
