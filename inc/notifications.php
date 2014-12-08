@@ -4,6 +4,7 @@
  */
 
 function mm_notification_api( $args = array() ) {
+	
 	$url = "https://mojomarketplace.com/api/v2/notifications";
 	$default_args = array(
 		"context" => "mojo-marketplace-wordpress-plugin",
@@ -18,11 +19,17 @@ function mm_notification_api( $args = array() ) {
 		)
 	);
 	$args = wp_parse_args( $args, $default_args );
-	$results = wp_remote_get( $url, $args );
-	$json = json_decode( $results['body'] );
-	if( is_wp_error( $results ) || strlen( $results['body'] ) < 200 || ! $json ) {
+	$url .= '?' . http_build_query( $args );
+	$results = wp_remote_get( $url );
+
+	if( is_wp_error( $results ) || strlen( $results['body'] ) < 200 ) {
 		return false;
 	}
+
+	$json = json_decode( $results['body'] );
+
+	if( ! $json ) return false;
+
 	return $json;
 	/*Sample response from API
 
