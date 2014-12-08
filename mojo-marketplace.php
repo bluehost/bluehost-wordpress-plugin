@@ -32,6 +32,7 @@ require_once( MM_BASE_DIR . 'inc/user-experience-tracking.php' );
 require_once( MM_BASE_DIR . 'inc/notifications.php' );
 require_once( MM_BASE_DIR . 'inc/spam-prevention.php' );
 require_once( MM_BASE_DIR . 'inc/tests.php' );
+require_once( MM_BASE_DIR . 'inc/updates.php' );
 
 // Load base classes for github updater only in the admin and only with cap
 function mm_load_updater() {
