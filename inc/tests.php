@@ -88,8 +88,8 @@ function mm_jetpack_bluehost_only() {
 function mm_jetpack_start_test() {
 	$file = MM_BASE_DIR . 'tests/jetpack-start/jetpack-start.php';
 	if( file_exists( $file ) && mm_jetpack_bluehost_only() ) {
-		if( ! mm_ab_test_inclusion( 'jetpack-start-v6.1', md5( 'jetpack-start-v6.1' ), 20, WEEK_IN_SECONDS * 4 ) ) {
-			mm_ab_test_inclusion( 'jetpack-start-exempt-v6.1', md5( 'jetpack-start-exempt-v6.1' ), 25, WEEK_IN_SECONDS * 4 );
+		if( ! mm_ab_test_inclusion( 'jetpack-start-v6.1.1', md5( 'jetpack-start-v6.1.1' ), 30, WEEK_IN_SECONDS * 4 ) ) {
+			mm_ab_test_inclusion( 'jetpack-start-exempt-v6.1.1', md5( 'jetpack-start-exempt-v6.1.1' ), 43, WEEK_IN_SECONDS * 4 );
 			add_option( 'jpstart_wizard_has_run', true );
 		}
 	}
@@ -239,8 +239,7 @@ add_action( 'admin_head-plugin-install.php', 'mm_plugin_search_offer', 40 );
 function mm_test_load_search_test() {
 	//at this point there should be 60% of the base left then we take 33%(really20) then 50% of the remaining 40 then 100% of the remaining 20
 	//this should give us a 20/20/20 test
-	mm_ab_test_inclusion( 'plugin-search-banner', md5( 'plugin-search-banner' ), 33, WEEK_IN_SECONDS * 4 );
-	mm_ab_test_inclusion( 'plugin-search-result', md5( 'plugin-search-result' ), 50, WEEK_IN_SECONDS * 4 );
-	mm_ab_test_inclusion( 'plugin-search-notice', md5( 'plugin-search-notice' ), 100, WEEK_IN_SECONDS * 4 );
+	mm_ab_test_inclusion( 'plugin-search-banner', md5( 'plugin-search-banner' ), 50, WEEK_IN_SECONDS * 4 );
+	mm_ab_test_inclusion( 'plugin-search-result', md5( 'plugin-search-result' ), 100, WEEK_IN_SECONDS * 4 );
 }
 add_action( 'admin_init', 'mm_test_load_search_test' );
