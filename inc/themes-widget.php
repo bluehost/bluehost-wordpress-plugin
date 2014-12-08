@@ -113,7 +113,6 @@ class MOJO_Widget extends WP_Widget {
 		
 		if( ! is_wp_error( $items ) ) {
 
-			
 			$items = json_decode( $items['body'] );
 			$aff_id = ( isset( $instance['mojo-aff-id'] ) AND strlen( $instance['mojo-aff-id'] ) > 0 ) ? $instance['mojo-aff-id'] : '';
 			$content = "";

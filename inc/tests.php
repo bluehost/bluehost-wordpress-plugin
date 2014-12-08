@@ -3,9 +3,7 @@ function mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) {
 	if( false === ( $test = get_transient( 'mm_test', false ) ) ) {
 		$previous_tests = get_option( 'mm_previous_tests', array() );
 		
-		if( in_array( $test_name, $previous_tests ) ) {
-			return false;
-		}
+		if( in_array( $test_name, $previous_tests ) ) { return false; }
 		
 		$score = mt_rand( 0, 99 );
 		
@@ -15,10 +13,8 @@ function mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) {
 			update_option( 'mm_previous_tests', $previous_tests );
 			return true;
 		}
-	} else {
-		if( $test['key'] === $key ) {
-			return true;
-		}
+	} else if( $test['key'] === $key ) {
+		return true;
 	}
 	return false;
 }
@@ -47,8 +43,7 @@ function mm_ab_test_file( $test_name, $file, $original, $test, $audience = 10, $
 
 function mm_ab_test_content( $test_name, $original, $test, $audience = 10, $duration = WEEK_IN_SECONDS ) {
 	$key = md5( serialize( $test ) );
-	$inclusion = mm_ab_test_inclusion( $test_name, $key, $audience, $duration );
-	if( $inclusion ) {
+	if( mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) ) {
 		return $test;
 	}
 	return $original;
@@ -80,7 +75,7 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 /* Start individual tests*/
 
 /**
- * Should Jetpack Starter perform well, we would move this stuff to inc/jetpack.php.
+ * Should Jetpack Start perform well, we would move this stuff to inc/jetpack.php.
  */
 
 
@@ -126,9 +121,9 @@ add_filter( 'jetpack_start_steps', 'mm_jetpack_remove_themes_step' );
 //following test for service search
 function mm_plugin_search_offer() {
 
-	$mm_test = get_transient( 'mm_test', array( 'name' => 'none' ) );
-
 	if( isset( $_GET['s'] ) && $plugin = mm_check_plugin_search_value( $_GET['s'] ) ) {
+
+		$mm_test = get_transient( 'mm_test', array( 'name' => 'none' ) );
 		$link = mm_build_link( $plugin['url'], array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'plugin_search' ) );
 		
 		switch ( $mm_test['name'] ) {

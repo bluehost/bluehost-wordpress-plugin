@@ -2,7 +2,7 @@
 
 function mm_setup() {
 	if( ! get_option( 'mm_master_aff' ) ) {
-		update_option( 'mm_master_aff', ( defined( 'MMAFF' ) ? MMAFF : '' ) );	
+		update_option( 'mm_master_aff', ( defined( 'MMAFF' ) ? MMAFF : '' ) );
 	}
 	if( ! get_option( 'mm_install_date' ) ) {
 		update_option( 'mm_install_date', date( 'M d, Y' ) );
@@ -39,13 +39,12 @@ function mm_api( $args = array(), $query = array() ) {
 	$request_url = rtrim( $request_url, '/' );
 	$request_url = $request_url . '?' . $query;
 
-
 	$key = md5( $request_url );
 
 	if( false === ( $transient = get_transient( 'mm_api_calls' ) ) || ! isset( $transient[ $key ] ) ) {
 		$transient[ $key ] = wp_remote_get( $request_url );
 		if( ! is_wp_error( $transient[ $key ] ) ) {
-			set_transient( 'mm_api_calls', $transient, DAY_IN_SECONDS );	
+			set_transient( 'mm_api_calls', $transient, DAY_IN_SECONDS );
 		}
 	}
 	return $transient[ $key ];
