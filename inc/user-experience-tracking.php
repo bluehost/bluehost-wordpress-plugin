@@ -22,8 +22,8 @@ function mm_ux_log( $args = array() ) {
 		'v'		=> '1',
 		'tid'	=> 'UA-39246514-3',
 		't'		=> 'pageview', //hit type
-		'cid' 	=> md5( get_option( 'siteurl' ) ),
-		'uid'	=> md5( get_option( 'siteurl' ) . get_current_user_id() ), //user
+		'cid'	=> md5( get_option( 'siteurl' ) ),
+		'uid'	=> md5( get_option( 'siteurl' ) . get_current_user_id() ),
 		'cn'	=> 'mojo_wp_plugin', //campaign name
 		'cs'	=> 'mojo_wp_plugin', //campaign source
 		'cm'	=> 'plugin_admin', //campaign medium
@@ -262,8 +262,8 @@ add_action( 'admin_footer-index.php', 'mm_ux_log_current_theme' );
 
 function mm_ux_log_scheduled_events_weekly() {
 	$events = get_option( 'mm_cron', array( 'weekly' => array() ) );
-	$weekly_events = $events['weekly'];
-	if( count( $events['weekly'] ) >= 1 ) {
+	if( isset( $events['weekly'] ) && count( $events['weekly'] ) >= 1 ) {
+		$weekly_events = $events['weekly'];
 		foreach ( $weekly_events as $event => $details ) {
 			if( isset( $details['keep'] ) ) {
 				if( $details['keep'] === false ) {
@@ -281,8 +281,8 @@ add_action( 'mm_cron_weekly', 'mm_ux_log_scheduled_events_weekly' );
 
 function mm_ux_log_scheduled_events_monthly() {
 	$events = get_option( 'mm_cron', array( 'monthly' => array() ) );
-	$monthly_events = $events['monthly'];
-	if( count( $events['monthly'] ) >= 1 ) {
+	if( isset( $events['monthly'] ) && count( $events['monthly'] ) >= 1 ) {
+		$monthly_events = $events['monthly'];
 		foreach ( $monthly_events as $event => $details ) {
 			if( isset( $details['keep'] ) ) {
 				if( $details['keep'] === false ) {
@@ -300,8 +300,8 @@ add_action( 'mm_cron_monthly', 'mm_ux_log_scheduled_events_monthly' );
 
 function mm_ux_log_scheduled_events_twicedaily() {
 	$events = get_option( 'mm_cron', array( 'twicedaily' => array() ) );
-	$twicedaily_events = $events['twicedaily'];
-	if( count( $events['twicedaily'] ) >= 1 ) {
+	if( isset( $events['twicedaily'] ) && count( $events['twicedaily'] ) >= 1 ) {
+		$twicedaily_events = $events['twicedaily'];
 		foreach ( $twicedaily_events as $event => $details ) {
 			if( isset( $details['keep'] ) ) {
 				if( $details['keep'] === false ) {
@@ -319,8 +319,8 @@ add_action( 'mm_cron_twicedaily', 'mm_ux_log_scheduled_events_twicedaily' );
 
 function mm_ux_log_scheduled_events_daily() {
 	$events = get_option( 'mm_cron', array( 'daily' => array() ) );
-	$daily_events = $events['daily'];
-	if( count( $events['daily'] ) >= 1 ) {
+	if( isset( $events['daily'] ) && count( $events['daily'] ) >= 1 ) {
+		$daily_events = $events['daily'];
 		foreach ( $daily_events as $event => $details ) {
 			if( isset( $details['keep'] ) ) {
 				if( $details['keep'] === false ) {
@@ -338,8 +338,8 @@ add_action( 'mm_cron_daily', 'mm_ux_log_scheduled_events_daily' );
 
 function mm_ux_log_scheduled_events_hourly() {
 	$events = get_option( 'mm_cron', array( 'hourly' => array() ) );
-	$hourly_events = $events['hourly'];
-	if( count( $events['hourly'] ) >= 1 ) {
+	if( isset( $events['hourly'] ) && count( $events['hourly'] ) >= 1 ) {
+		$hourly_events = $events['hourly'];
 		foreach ( $hourly_events as $event => $details ) {
 			if( isset( $details['keep'] ) ) {
 				if( $details['keep'] === false ) {
