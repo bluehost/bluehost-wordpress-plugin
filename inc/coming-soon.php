@@ -57,19 +57,18 @@ function mm_cs_meta() {
 	return;
 }
 
-
 function mm_cs_content() {
 	echo mm_minify( "
 <!DOCTYPE html>
 <html>
 <head>
 <title>" . get_option( 'blogname' ) . " &mdash; Coming Soon</title>
-<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 " . mm_cs_meta() . "
 <style type='text/css'>
 body{
 	background-color: #2D2A25;
-	background-image: url( http://mojomarketplace.com/img/mojo-landing-bg.jpg );
+	background-image: url( https://mojomarketplace.com/img/mojo-landing-bg.jpg );
 	background-position: top right;
 	background-repeat: no-repeat;
 	font-family: 'Montserrat', sans-serif;
@@ -83,7 +82,7 @@ a{
 	max-width: 900px;
 	margin: 0 auto;
 }
-#logo{height: auto;width: 204px;padding: 20px 10px 10px 10px;max-width: 90%;}
+#logo{height: auto;width: 204px;padding: 30px 10px 10px 10px;max-width: 90%;}
 .cta{
 	background-color: #93C933;
 	color: #35393A;
@@ -136,7 +135,7 @@ footer li{
 </head>
 <body>
 <div id='wrap'>
-	<a target='_blank' href='https://mojomarketplace.com?utm_source=mojo_wp_plugin&utm_campaign=mojo_wp_plugin&utm_medium=plugin_landing&utm_content=logo'><img src='http://www.mojomarketplace.com/img/mojo-retina-logo.png' id='logo' /></a>
+	<a target='_blank' href='https://mojomarketplace.com?utm_source=mojo_wp_plugin&utm_campaign=mojo_wp_plugin&utm_medium=plugin_landing&utm_content=logo'><img src='https://www.mojomarketplace.com/img/mojo-retina-logo.png' id='logo' /></a>
 	<div class='content'>
 		<h1>I just installed WordPress <span>free</span> at</h1>
 		<p>MOJO Marketplace &mdash; a leader in <strong>Themes</strong>, <strong>Plugins</strong>, and <strong>Professional Services</strong>&hellip;</p>
