@@ -140,7 +140,7 @@ function mm_item_shortcode( $atts ) {
 
 				<div class="item-title">
 					<h3 class="title">
-						<a target="_blank" href="' . mm_build_link( $item->page_url, array( 'utm_medium' => 'plugin_shorcode', 'utm_content' => 'item_title_link', 'r' => $atts['aff'] ) ) . '">' . $item->name . '</a>
+						<a target="_blank" href="' . mm_build_link( $item->page_url, array( 'utm_medium' => 'plugin_shortcode', 'utm_content' => 'item_title_link', 'r' => $atts['aff'] ) ) . '">' . $item->name . '</a>
 					</h3>
 
 					<h5 class="author">
@@ -156,7 +156,7 @@ function mm_item_shortcode( $atts ) {
 					</div>
 
 					<div class="add-to-cart">
-						<form accept-charset="utf-8" method="post" id="CartItemRouteForm" target="_blank" enctype="multipart-data" action="' . mm_build_link( 'http://mojomarketplace.com/cart', array( 'utm_medium' => 'plugin_shorcode', 'utm_content' => 'item_add_to_cart_button' ) ) . '">
+						<form accept-charset="utf-8" method="post" id="CartItemRouteForm" target="_blank" enctype="multipart-data" action="' . mm_build_link( 'http://mojomarketplace.com/cart', array( 'utm_medium' => 'plugin_shortcode', 'utm_content' => 'item_add_to_cart_button' ) ) . '">
 							<input type="hidden" id="CartItemItemId" value="' . $item->id . '" name="data[CartItem][item_id]">
 							<button class="mm-btn-primary" type="submit">Add to Cart</button>
 						</form>
