@@ -192,10 +192,23 @@ function mm_ux_log_plugin_version() {
 		'el'	=> $plugin['Version']
 	);
 	$events = get_option( 'mm_cron', array() );
-	$events['daily'][$event['ea']] = $event;
+	$events['daily'][ $event['ea'] ] = $event;
 	update_option( 'mm_cron', $events );
 }
 add_action( 'admin_footer-index.php', 'mm_ux_log_plugin_version' );
+
+function mm_ux_log_php_version() {
+	$event = array(
+		't'		=> 'event',
+		'ec'	=> 'scheduled',
+		'ea'	=> 'php_version',
+		'el'	=> phpversion()
+	);
+	$events = get_option( 'mm_cron', array() );
+	$events['monthly'][ $event['ea'] ] = $event;
+	update_option( 'mm_cron', $events );
+}
+add_action( 'admin_footer-index.php', 'mm_ux_log_php_version' );
 
 function mm_ux_log_wp_version() {
 	global $wp_version;
