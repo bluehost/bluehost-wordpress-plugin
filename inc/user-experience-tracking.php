@@ -57,16 +57,17 @@ function mm_ux_log( $args = array() ) {
 		$params['tid'] = 'UA-19617272-27'; 
 	}
 
-	$params['z'] = (int) mt_rand( 100000000000, 999999999999 );
+	$z = (int) mt_rand( 100000000000, 999999999999 );
 
 	$query = http_build_query( array_filter( $params ) );
-	
+
 	$args = array(
 		'body'		=> $query,
 		'method'	=> 'POST',
 		'blocking'	=> false
 	);
-	
+
+	$url = add_query_arg( array( 'z' => $z ), $url );
 	wp_remote_post( $url, $args );
 }
 add_action( 'admin_footer', 'mm_ux_log', 9 );
