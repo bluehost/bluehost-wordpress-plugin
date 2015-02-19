@@ -76,10 +76,21 @@ function mm_check_plugin_search_value( $search ) {
 function mm_plugin_search_notice() {
 	if( isset( $_GET['s'] )  && $plugin = mm_check_plugin_search_value( $_GET['s'] ) ) {
 		$link = mm_build_link( $plugin['url'], array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'plugin_search' ) );
-		?>
-		<div class="updated">
-			<p>Did you know? MOJO Marketplace has a <a target="_blank" href="<?php echo $link; ?>">service</a> for <a target="_blank" href="<?php echo $link; ?>"><?php echo $plugin['name']; ?></a></p>
-		</div>
-		<?php
+		$plugin_html = '
+		<div style="display: inline-block;background-color: #D54E21;margin-left: -20px;padding-right: 20px;width: 100%;">
+			<p style="font-size: 1.2rem;color: #fff;padding-left: 20px;">
+				Did you know MOJO Marketplace has <a style="color:#fff;" href="' . $link . '">Pro Services</a> for ' . $plugin['name']. '? <a style="color: #fff; font-size: .8rem; margin: 15px;" href="' . $link . '">Click here for more</a>
+			</p>
+		</div>';
+
+		$plugin_html = mm_minify( $plugin_html );
+
+		echo "
+		<script type='text/javascript'>
+			jQuery( document ).ready( function( jQuery ) {
+				jQuery( '#wpbody' ).before( '" . $plugin_html . "' );
+			} );
+		</script>";
 	}
 }
+add_action( 'admin_notices', 'mm_plugin_search_notice' );
