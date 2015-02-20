@@ -131,6 +131,21 @@ footer ul{
 footer li{
 	height: 26px;
 }
+#what-is-this-content{
+	display:none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -200px;
+	margin-left: -200px;
+	width: 300px;
+	height: 200px;
+	background-color: #fff;
+	color: #aaa;
+	padding: 50px;
+}
+#what-is-this-content a{width: 50%;display:inline-block;color: #666;text-align:center;}
+.footer-actions a{width: 50%; text-align:center; display:inline-block;}
 </style>
 </head>
 <body>
@@ -169,9 +184,28 @@ footer li{
 				<li><a target='_blank' href='https://www.mojomarketplace.com/how-it-works/faq?utm_source=mojo_wp_plugin&utm_campaign=mojo_wp_plugin&utm_medium=plugin_landing&utm_content=faqs'>FAQs</a></li>
 			</ul>
 		</div>
+		<div class='footer-actions'>
+			<a href='" . admin_url() . "'>Login</a>
+			<a href='#' id='what-is-this'  onClick='what_is_this_show()'>What is this?</a>
+		</div>
 	</footer>
 </div>
-
+<div id='what-is-this-content'>
+	<p>This is the default coming soon page for this site because it was installed via MOJO Marketplace.</p>
+	<p>If you are the site owner and are finished building the site you can click the link in the banner of the administration panel to disable it.</p>
+	<div>
+		<a href='#' onClick='what_is_this_hide()'>close</a>
+		<a href='" . admin_url() . "'>login</a>
+	</div>
+</div>
+<script type='text/javascript'>
+function what_is_this_show() {
+	document.getElementById('what-is-this-content').style.display = 'block';
+}
+function what_is_this_hide() {
+	document.getElementById('what-is-this-content').style.display = 'none';
+}
+</script>
 </body>
 </html>" );
 }
