@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) { die; }
 define( 'MM_BASE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
 
-if( file_exists( MM_BASE_DIR . 'inc/brand.php' ) ) {
+if ( file_exists( MM_BASE_DIR . 'inc/brand.php' ) ) {
 	require_once( MM_BASE_DIR . 'inc/brand.php' );
 }
 require_once( MM_BASE_DIR . 'inc/base.php' );
@@ -41,13 +41,13 @@ function mm_load_updater() {
 		/*
 		Check class_exist because this could be loaded in a different plugin
 		*/
-		if( ! class_exists( 'GitHub_Updater' ) ) { 
+		if ( ! class_exists( 'GitHub_Updater' ) ) {
 			require_once( MM_BASE_DIR . 'updater/class-github-updater.php' );
 		}
-		if( ! class_exists( 'GitHub_Updater_GitHub_API' ) ) {
+		if ( ! class_exists( 'GitHub_Updater_GitHub_API' ) ) {
 			require_once( MM_BASE_DIR . 'updater/class-github-api.php' );
 		}
-		if( ! class_exists( 'GitHub_Plugin_Updater' ) ) {
+		if ( ! class_exists( 'GitHub_Plugin_Updater' ) ) {
 			require_once( MM_BASE_DIR . 'updater/class-plugin-updater.php' );
 		}
 		new GitHub_Plugin_Updater;
