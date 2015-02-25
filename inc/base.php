@@ -152,11 +152,7 @@ function mm_safe_hosts( $hosts ) {
 add_filter( 'allowed_redirect_hosts', 'mm_safe_hosts' );
 
 function mm_better_news_feed( $feed ) {
-	return 'http://pipes.yahoo.com/pipes/pipe.run?_id=161916f31923c3d05ca9eeadb8510257&_render=rss';
+	return 'http://feeds.feedburner.com/wp-pipes';
 }
 add_filter( 'dashboard_secondary_feed', 'mm_better_news_feed' );
-
-function mm_better_news_link( $link ) {
-	return 'http://pipes.yahoo.com/pipes/pipe.info?_id=161916f31923c3d05ca9eeadb8510257';
-}
-add_filter( 'dashboard_secondary_link', 'mm_better_news_link' );
+add_filter( 'dashboard_secondary_link', 'mm_better_news_feed' );
