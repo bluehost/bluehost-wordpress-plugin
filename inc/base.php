@@ -156,3 +156,8 @@ function mm_better_news_feed( $feed ) {
 }
 add_filter( 'dashboard_secondary_feed', 'mm_better_news_feed' );
 add_filter( 'dashboard_secondary_link', 'mm_better_news_feed' );
+
+function mm_adjust_feed_transient_lifetime( $lifetime ) {
+	return 10800;
+}
+add_filter( 'wp_feed_cache_transient_lifetime', 'mm_adjust_feed_transient_lifetime' );
