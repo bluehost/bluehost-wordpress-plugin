@@ -88,9 +88,11 @@ function mm_jetpack_bluehost_only() {
 function mm_jetpack_start_test() {
 	$file = MM_BASE_DIR . 'tests/jetpack-start/jetpack-start.php';
 	if( file_exists( $file ) && mm_jetpack_bluehost_only() ) {
-		if( ! mm_ab_test_inclusion( 'jetpack-start-v6.2', md5( 'jetpack-start-v6.2' ), 30, WEEK_IN_SECONDS * 4 ) ) {
-			mm_ab_test_inclusion( 'jetpack-start-exempt-v6.2', md5( 'jetpack-start-exempt-v6.2' ), 43, WEEK_IN_SECONDS * 4 );
+		if( ! mm_ab_test_inclusion( 'jetpack-start-v7', md5( 'jetpack-start-v7' ), 30, WEEK_IN_SECONDS * 4 ) ) {
+			mm_ab_test_inclusion( 'jetpack-start-exempt-v7', md5( 'jetpack-start-exempt-v7' ), 43, WEEK_IN_SECONDS * 4 );
 			add_option( 'jpstart_wizard_has_run', true );
+		} else {
+			require( $file );
 		}
 	}
 }
@@ -101,7 +103,7 @@ function mm_jetpack_start_onboarding() {
 	if( ! get_option( 'jpstart_wizard_has_run' ) && 
 		! isset( $_GET['jps_wizard_start'] )  && 
 		! get_option( 'jps_started' ) &&
-		$mm_test['name'] == 'jetpack-start-v6' ) {
+		$mm_test['name'] == 'jetpack-start-v7' ) {
 		add_option( 'jps_started', time() );
 		wp_safe_redirect( admin_url( '?jps_wizard_start' ) );
 	}
