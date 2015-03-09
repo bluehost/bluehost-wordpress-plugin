@@ -98,18 +98,6 @@ function mm_jetpack_start_test() {
 }
 add_action( 'init', 'mm_jetpack_start_test', 5 );
 
-function mm_jetpack_start_onboarding() {
-	$mm_test = get_transient( 'mm_test', array( 'name' => 'none' ) );
-	if( ! get_option( 'jpstart_wizard_has_run' ) && 
-		! isset( $_GET['jps_wizard_start'] )  && 
-		! get_option( 'jps_started' ) &&
-		$mm_test['name'] == 'jetpack-start-v7' ) {
-		add_option( 'jps_started', time() );
-		wp_safe_redirect( admin_url( '?jps_wizard_start' ) );
-	}
-}
-add_action( 'admin_init', 'mm_jetpack_start_onboarding', 10 );
-
 function mm_jetpack_remove_themes_step( $steps ) {
 	for ( $i = 0; $i < count( $steps ); $i++ ) {
 		if( is_a( $steps[ $i ], 'Jetpack_Start_Step_select_theme' ) ) {
