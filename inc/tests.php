@@ -87,8 +87,8 @@ function mm_jetpack_bluehost_only() {
 
 function mm_jetpack_start_test() {
 	$file = MM_BASE_DIR . 'tests/jetpack-start/jetpack-start.php';
-	if( file_exists( $file ) && mm_jetpack_bluehost_only() ) {
-		if( ! mm_ab_test_inclusion( 'jetpack-start-v7', md5( 'jetpack-start-v7' ), 30, WEEK_IN_SECONDS * 4 ) ) {
+	if ( file_exists( $file ) && mm_jetpack_bluehost_only() ) {
+		if ( ! mm_ab_test_inclusion( 'jetpack-start-v7', md5( 'jetpack-start-v7' ), 30, WEEK_IN_SECONDS * 4 ) ) {
 			mm_ab_test_inclusion( 'jetpack-start-exempt-v7', md5( 'jetpack-start-exempt-v7' ), 43, WEEK_IN_SECONDS * 4 );
 			add_option( 'jpstart_wizard_has_run', true );
 		} else {
@@ -100,10 +100,18 @@ add_action( 'init', 'mm_jetpack_start_test', 5 );
 
 function mm_jetpack_remove_themes_step( $steps ) {
 	for ( $i = 0; $i < count( $steps ); $i++ ) {
-		if( is_a( $steps[ $i ], 'Jetpack_Start_Step_select_theme' ) ) {
+		if ( is_a( $steps[ $i ], 'Jetpack_Start_Step_select_theme' ) ) {
 			unset( $steps[ $i ] );
 		}
 	}
 	return $steps;
 }
 add_filter( 'jetpack_start_steps', 'mm_jetpack_remove_themes_step' );
+
+function mm_editor_prompt_test() {
+	$file = MM_BASE_DIR . 'tests/editor-prompt.php';
+	if ( file_exists( $file ) && mm_ab_test_inclusion( 'editor-prompt', md5( 'editor-prompt' ), 20, WEEK_IN_SECONDS * 4 ) ) {
+		mm_require( $file );
+	}
+}
+add_action( 'init', 'mm_editor_prompt_test' );
