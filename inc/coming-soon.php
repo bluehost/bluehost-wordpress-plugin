@@ -185,7 +185,7 @@ footer li{
 			</ul>
 		</div>
 		<div class='footer-actions'>
-			<a href='" . admin_url() . "'>Login</a>
+			<a href='" . site_url( 'wp-login.php' ) . "'>Login</a>
 			<a href='#' id='what-is-this'  onClick='what_is_this_show()'>What is this?</a>
 		</div>
 	</footer>
@@ -195,7 +195,7 @@ footer li{
 	<p>If you are the site owner and are finished building the site you can click the link in the banner of the administration panel to disable it.</p>
 	<div>
 		<a href='#' onClick='what_is_this_hide()'>close</a>
-		<a href='" . admin_url() . "'>login</a>
+		<a href='" . site_url( 'wp-login.php' ) . "'>login</a>
 	</div>
 </div>
 <script type='text/javascript'>
