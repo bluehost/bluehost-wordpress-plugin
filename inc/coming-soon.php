@@ -150,7 +150,7 @@ footer li{
 </head>
 <body>
 <div id='wrap'>
-	<a target='_blank' href='https://mojomarketplace.com?utm_source=mojo_wp_plugin&utm_campaign=mojo_wp_plugin&utm_medium=plugin_landing&utm_content=logo'><img src='https://www.mojomarketplace.com/img/mojo-retina-logo.png' id='logo' /></a>
+	<a target='_blank' href='https://mojomarketplace.com?utm_source=mojo_wp_plugin&utm_campaign=mojo_wp_plugin&utm_medium=plugin_landing&utm_content=logo'><img alt='WordPress Themes' src='https://www.mojomarketplace.com/img/mojo-retina-logo.png' id='logo' /></a>
 	<div class='content'>
 		<h1>I just installed WordPress <span>free</span> at</h1>
 		<p>MOJO Marketplace &mdash; a leader in <strong>Themes</strong>, <strong>Plugins</strong>, and <strong>Professional Services</strong>&hellip;</p>
