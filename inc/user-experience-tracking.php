@@ -405,7 +405,7 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 	}
 
 	//fifth post is 7 because of the example post and page.
-	if( $post->ID == 7 && $old_status != 'publish' && $new_status == 'publish' ) {
+	if( $post->ID == 7 ) {
 		$event = array(
 			't'		=> 'event',
 			'ec'	=> 'user_action',
