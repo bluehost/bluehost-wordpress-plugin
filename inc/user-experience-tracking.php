@@ -393,8 +393,8 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 		);
 		mm_ux_log( $event );
 	}
-	//first post is 3 beause of the example post and page.
-	if( $post->ID == 3 && $old_status != 'publish' && $new_status == 'publish' ) {
+	//first post is 3 because of the example post and page.
+	if( $post->ID == 3 ) {
 		$event = array(
 			't'		=> 'event',
 			'ec'	=> 'user_action',
@@ -404,7 +404,7 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 		mm_ux_log( $event );
 	}
 
-	//fifth post is 7 beause of the example post and page.
+	//fifth post is 7 because of the example post and page.
 	if( $post->ID == 7 && $old_status != 'publish' && $new_status == 'publish' ) {
 		$event = array(
 			't'		=> 'event',
