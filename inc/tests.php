@@ -3,24 +3,24 @@ function mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) {
 	if( false === ( $test = get_transient( 'mm_test', false ) ) ) {
 		$previous_tests = get_option( 'mm_previous_tests', array() );
 		
-		if( in_array( $test_name, $previous_tests ) ) { return false; }
+		if ( in_array( $test_name, $previous_tests ) ) { return false; }
 		
 		$score = mt_rand( 0, 99 );
 		
-		if( $audience > $score ) {
+		if ( $audience > $score ) {
 			set_transient( 'mm_test', array( 'name' => $test_name, 'key' => $key ), $duration );
 			$previous_tests[] = $test_name;
 			update_option( 'mm_previous_tests', $previous_tests );
 			return true;
 		}
-	} else if( $test['key'] === $key ) {
+	} else if ( $test['key'] === $key ) {
 		return true;
 	}
 	return false;
 }
 
 function mm_ab_test_inclusion_none() {
-	if( is_admin() && false === get_transient( 'mm_test', false ) ) {
+	if ( is_admin() && false === get_transient( 'mm_test', false ) ) {
 		$duration = WEEK_IN_SECONDS * 4;
 		set_transient( 'mm_test', array( 'key' => 'none' ), $duration );
 	}
@@ -28,7 +28,7 @@ function mm_ab_test_inclusion_none() {
 add_action( 'admin_footer', 'mm_ab_test_inclusion_none', 99 );
 
 function mm_ab_test_file( $test_name, $file, $original, $test, $audience = 10, $duration = WEEK_IN_SECONDS  ) {
-	if( strpos( $file, $original ) ) {
+	if ( strpos( $file, $original ) ) {
 		$key = md5( serialize( $test ) );
 		$inclusion = mm_ab_test_inclusion( $test_name, $key, $audience, $duration );
 
@@ -43,7 +43,7 @@ function mm_ab_test_file( $test_name, $file, $original, $test, $audience = 10, $
 
 function mm_ab_test_content( $test_name, $original, $test, $audience = 10, $duration = WEEK_IN_SECONDS ) {
 	$key = md5( serialize( $test ) );
-	if( mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) ) {
+	if ( mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) ) {
 		return $test;
 	}
 	return $original;
@@ -78,7 +78,6 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
  * Should Jetpack Start perform well, we would move this stuff to inc/jetpack.php.
  */
 
-
 function mm_jetpack_bluehost_only() {
 	$host = @exec( 'hostname' );
 	$is_bluehost = ( stripos( $host, 'bluehost' ) ) ? true : false;
@@ -88,8 +87,8 @@ function mm_jetpack_bluehost_only() {
 function mm_jetpack_start_test() {
 	$file = MM_BASE_DIR . 'tests/jetpack-start/jetpack-start.php';
 	if ( file_exists( $file ) && mm_jetpack_bluehost_only() ) {
-		if ( ! mm_ab_test_inclusion( 'jetpack-start-v7', md5( 'jetpack-start-v7' ), 30, WEEK_IN_SECONDS * 4 ) ) {
-			mm_ab_test_inclusion( 'jetpack-start-exempt-v7', md5( 'jetpack-start-exempt-v7' ), 43, WEEK_IN_SECONDS * 4 );
+		if ( ! mm_ab_test_inclusion( 'jetpack-start-v7', md5( 'jetpack-start-v7' ), 25, WEEK_IN_SECONDS * 4 ) ) {
+			mm_ab_test_inclusion( 'jetpack-start-exempt-v7', md5( 'jetpack-start-exempt-v7' ), 33, WEEK_IN_SECONDS * 4 );
 			add_option( 'jpstart_wizard_has_run', true );
 		} else {
 			require( $file );
@@ -108,10 +107,25 @@ function mm_jetpack_remove_themes_step( $steps ) {
 }
 add_filter( 'jetpack_start_steps', 'mm_jetpack_remove_themes_step' );
 
-function mm_editor_prompt_test() {
-	$file = MM_BASE_DIR . 'tests/editor-prompt.php';
-	if ( file_exists( $file ) && mm_ab_test_inclusion( 'editor-prompt', md5( 'editor-prompt' ), 20, WEEK_IN_SECONDS * 4 ) ) {
-		mm_require( $file );
+/*
+Introduce a modified version of JPS
+*/
+function mm_jetpack_start_modified_test() {
+	$file = MM_BASE_DIR . 'tests/jetpack-start/jetpack-start.php';
+	if ( file_exists( $file ) && mm_jetpack_bluehost_only() ) {
+		if ( mm_ab_test_inclusion( 'jetpack-start-modified-v7', md5( 'jetpack-start-modified-v7' ), 20, WEEK_IN_SECONDS * 4 ) ) {
+			require( $file );
+		}
 	}
 }
-add_action( 'init', 'mm_editor_prompt_test' );
+add_action( 'init', 'mm_jetpack_start_modified_test', 4 );
+
+function mm_jetpack_remove_all_steps( $steps ) {
+	$test = get_transient( 'mm_test', false );
+	if( isset( $test['name'] ) && $test['name'] === 'jetpack-start-modified-v7' ) {
+		$steps = array();
+	}
+	return $steps;
+}
+add_filter( 'jetpack_start_steps', 'mm_jetpack_remove_all_steps' );
+
