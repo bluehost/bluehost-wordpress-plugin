@@ -386,20 +386,20 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 	$status = array( 'draft', 'pending', 'publish', 'new', 'future', 'private', 'trash' );
 	if ( $old_status !== $new_status && in_array( $new_status, $status ) ) {
 		$event = array(
-			't'		=> 'event',
-			'ec'	=> 'user_action',
-			'ea'	=> 'content_status',
-			'el'	=> $new_status
+			't'     => 'event',
+			'ec'    => 'user_action',
+			'ea'    => 'content_status',
+			'el'    => $new_status
 		);
 		mm_ux_log( $event );
 	}
 	//first post is 3 because of the example post and page.
 	if( $post->ID == 3 ) {
 		$event = array(
-			't'		=> 'event',
-			'ec'	=> 'user_action',
-			'ea'	=> 'first_post',
-			'el'	=> $post->post_type
+			't'     => 'event',
+			'ec'    => 'user_action',
+			'ea'    => 'first_post',
+			'el'    => $post->post_type
 		);
 		mm_ux_log( $event );
 	}
@@ -407,10 +407,10 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 	//fifth post is 7 because of the example post and page.
 	if( $post->ID == 7 ) {
 		$event = array(
-			't'		=> 'event',
-			'ec'	=> 'user_action',
-			'ea'	=> 'fifth_post',
-			'el'	=> $post->post_type
+			't'     => 'event',
+			'ec'    => 'user_action',
+			'ea'    => 'fifth_post',
+			'el'    => $post->post_type
 		);
 		mm_ux_log( $event );
 	}
@@ -568,10 +568,10 @@ add_action( 'jetpack_start_welcome_panel_action', 'mm_jetpack_jps_action' );
 
 function mm_jetpack_log_module_enabled( $module ) {
 	$event = array(
-		't'		=> 'event',
-		'ec'	=> 'jetpack_event',
-		'ea'	=> 'module_enabled',
-		'el'	=> $module
+		't'     => 'event',
+		'ec'    => 'jetpack_event',
+		'ea'    => 'module_enabled',
+		'el'    => $module
 	);
 	mm_ux_log( $event );
 }
@@ -579,10 +579,10 @@ add_action( 'jetpack_pre_activate_module', 'mm_jetpack_log_module_enabled', 10, 
 
 function mm_jetpack_log_module_disabled( $module ) {
 	$event = array(
-		't'		=> 'event',
-		'ec'	=> 'jetpack_event',
-		'ea'	=> 'module_disabled',
-		'el'	=> $module
+		't'     => 'event',
+		'ec'    => 'jetpack_event',
+		'ea'    => 'module_disabled',
+		'el'    => $module
 	);
 	mm_ux_log( $event );
 }
@@ -590,10 +590,10 @@ add_action( 'jetpack_pre_deactivate_module', 'mm_jetpack_log_module_disabled', 1
 
 function mm_jetpack_log_publicized( $submit_post, $post_id, $service_name, $connection ) {
 	$event = array(
-		't'		=> 'event',
-		'ec'	=> 'jetpack_event',
-		'ea'	=> 'publicized',
-		'el'	=> $service_name
+		't'     => 'event',
+		'ec'    => 'jetpack_event',
+		'ea'    => 'publicized',
+		'el'    => $service_name
 	);
 	mm_ux_log( $event );
 }
@@ -602,9 +602,9 @@ add_action( 'publicize_save_meta', 'mm_jetpack_log_publicized', 10, 4 );
 function mm_jetpack_log_connected( $entry ) {
 	if ( 'register' == $entry['code'] ) {
 		$event = array(
-			't'		=> 'event',
-			'ec'	=> 'jetpack_event',
-			'ea'	=> 'connected'
+			't'     => 'event',
+			'ec'    => 'jetpack_event',
+			'ea'    => 'connected'
 		);
 		mm_ux_log( $event );
 	}
@@ -618,10 +618,10 @@ function mm_jetpack_log_jps_time() {
 			$now = time();
 			$completion_time = $now - $start_time;
 			$event = array(
-				't'		=> 'event',
-				'ec'	=> 'jetpack_event',
-				'ea'	=> 'jps_completion_time',
-				'el'	=> $completion_time
+				't'     => 'event',
+				'ec'    => 'jetpack_event',
+				'ea'    => 'jps_completion_time',
+				'el'    => $completion_time
 			);
 			mm_ux_log( $event );
 		}
