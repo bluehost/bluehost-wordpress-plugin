@@ -115,10 +115,7 @@ add_filter( 'cron_schedules', 'mm_cron_schedules' );
 
 
 function mm_slug_to_title( $slug ) {
-	$words = explode( '-', $slug );
-	$capital_words = array_map( 'ucfirst', $words );
-	$title = implode( ' ', $capital_words );
-	return $title;
+	return ucwords( str_replace( '-', ' ', $slug ) );
 }
 
 function mm_title_to_slug( $title ) {
