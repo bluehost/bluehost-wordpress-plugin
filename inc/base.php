@@ -119,10 +119,7 @@ function mm_slug_to_title( $slug ) {
 }
 
 function mm_title_to_slug( $title ) {
-	$words = explode( ' ', $title );
-	$lowercase_words = array_map( 'strtolower', $words );
-	$slug = implode( '-', $lowercase_words );
-	return $slug;
+	return sanitize_title( $title );
 }
 
 function mm_require( $file ) {
