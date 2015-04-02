@@ -102,11 +102,11 @@ add_action( 'admin_init', 'mm_cron' );
 
 function mm_cron_schedules( $shedules ) {
 	$schedules['weekly'] = array(
-		'interval' => 604800,
+		'interval' => WEEK_IN_SECONDS,
 		'display' => __( 'Once Weekly' )
 	);
 	$schedules['monthly'] = array(
-		'interval' => 2635200,
+		'interval' => 4 * WEEK_IN_SECONDS,
 		'display' => __( 'Once a month' )
 	);
 	return $schedules;
@@ -158,6 +158,6 @@ add_filter( 'dashboard_secondary_feed', 'mm_better_news_feed' );
 add_filter( 'dashboard_secondary_link', 'mm_better_news_feed' );
 
 function mm_adjust_feed_transient_lifetime( $lifetime ) {
-	return 10800;
+	return 3 * HOUR_IN_SECONDS;
 }
 add_filter( 'wp_feed_cache_transient_lifetime', 'mm_adjust_feed_transient_lifetime' );
