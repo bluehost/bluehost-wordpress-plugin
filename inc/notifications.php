@@ -88,11 +88,11 @@ function mm_build_notification( $notice, $id ) {
 		$background = "";
 	}
 
-	$notice = "<div class='mojo-notice' " . $background . ">";
-	$notice .= "<a href='" . admin_url( "?mojo-dismiss-notice=" . esc_attr( $id ) ) . "' class='mojo-dismiss dashicons dashicons-dismiss' alt='dismiss'></a>";
-	$notice .= wp_kses_post( $notice->message );
-	$notice .= "</div>";
-	return $notice;
+	$output = "<div class='mojo-notice' " . $background . ">";
+	$output .= "<a href='" . admin_url( "?mojo-dismiss-notice=" . esc_attr( $id ) ) . "' class='mojo-dismiss dashicons dashicons-dismiss' alt='dismiss'></a>";
+	$output .= wp_kses_post( $notice->message );
+	$output .= "</div>";
+	return $output;
 }
 
 function mm_dismiss_notice() {
