@@ -4,17 +4,17 @@
  */
 
 function mm_cs_login_check() {
-	if( get_option( 'mm_install_date' ) === date( 'M d, Y' )  && ! get_option( 'mm_coming_soon' ) ){
+	if ( get_option( 'mm_install_date' ) === date( 'M d, Y' )  && ! get_option( 'mm_coming_soon' ) ){
 		update_option( 'mm_coming_soon', 'true' );
 	}
 }
 add_action( 'init', 'mm_cs_login_check', 11 );
 
 function mm_cs_notice_display() {
-	if( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
+	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
 		?>
 		<div class='updated'>
-			<p>Your site is currently displaying a "Coming Soon" page. Once you are ready to launch your site <a href='<?php echo add_query_arg( array( 'mm_cs_launch' => true ) );?>'>click here</a>.</p>
+			<p>Your site is currently displaying a "Coming Soon" page. Once you are ready to launch your site <a href='<?php echo esc_url( add_query_arg( array( 'mm_cs_launch' => true ) ) );?>'>click here</a>.</p>
 		</div>
 		<?php
 	}
@@ -24,13 +24,13 @@ add_action( 'admin_notices', 'mm_cs_notice_display' );
 function mm_cs_notice_launch_message() {
 	?>
 		<div class='updated'>
-			<p>Congratulations. Your site is now live, <a target='_blank' href='<?php echo get_option( 'siteurl' );?>'>click here</a> to view it.</p>
+			<p>Congratulations. Your site is now live, <a target='_blank' href='<?php echo esc_url( get_option( 'siteurl' ) ); ?>'>click here</a> to view it.</p>
 		</div>
 	<?php
 }
 
 function mm_cs_notice_launch() {
-	if( isset( $_GET['mm_cs_launch'] ) ) {
+	if ( isset( $_GET['mm_cs_launch'] ) ) {
 		update_option( 'mm_coming_soon', 'false' );
 		add_action( 'admin_notices', 'mm_cs_notice_launch_message' );
 	}
@@ -38,9 +38,9 @@ function mm_cs_notice_launch() {
 add_action( 'admin_init', 'mm_cs_notice_launch' );
 
 function mm_cs_load() {
-	if( ! is_user_logged_in() ) {
+	if ( ! is_user_logged_in() ) {
 		$coming_soon = get_option( 'mm_coming_soon', 'false' );
-		if( 'true' === $coming_soon ) {
+		if ( 'true' === $coming_soon ) {
 			mm_cs_content();
 			die();
 		}
@@ -50,12 +50,42 @@ add_action( 'template_redirect', 'mm_cs_load' );
 
 function mm_cs_meta() {
 	$meta = wp_remote_get( 'http://mojomarketplace.com/api/v1/meta/landing_page' );
-	if( is_wp_error( $meta ) ) {return;}
-	if( isset( $meta['body'] ) && $meta['body'] != "" ) {
+	if ( is_wp_error( $meta ) ) {return;}
+	if ( isset( $meta['body'] ) && $meta['body'] != '' ) {
 		return "<meta name='robots' content='noindex, nofollow' />";
 	}
 	return;
 }
+
+function mm_cs_enabled_callback( $args ) {
+		$value = get_option( $args['field'], 'false' );
+		echo "On <input type='radio' name='" . esc_attr( $args['field'] ) . "' value='true'" . checked( $value, 'true', false ) . " />";
+		echo "Off <input type='radio' name='" . esc_attr( $args['field'] ) . "' value='false'" . checked( $value, 'false', false ) . " />";
+}
+
+function mm_cs_settings() {
+	$section_name = 'mm_cs_settings_section';
+	$section_hook = 'general';
+
+	add_settings_section(
+		$section_name, //Section
+		'MOJO Coming Soon', //Title
+		'__return_false', //section description callback
+		$section_hook //Setting Hook
+	);
+
+	add_settings_field(
+		'mm_coming_soon',
+		'Enable',
+		'mm_cs_enabled_callback',
+		$section_hook,
+		$section_name,
+		array( 'field' => 'mm_coming_soon' )
+	);
+	register_setting( 'general', 'mm_coming_soon' );
+
+}
+add_action( 'admin_init', 'mm_cs_settings' );
 
 function mm_cs_content() {
 	echo mm_minify( "
@@ -150,7 +180,7 @@ footer li{
 </head>
 <body>
 <div id='wrap'>
-	<a target='_blank' href='https://mojomarketplace.com?utm_source=mojo_wp_plugin&utm_campaign=mojo_wp_plugin&utm_medium=plugin_landing&utm_content=logo'><img alt='WordPress Themes' src='https://www.mojomarketplace.com/img/mojo-retina-logo.png' id='logo' /></a>
+	<a target='_blank' href='https://mojomarketplace.com?utm_source=mojo_wp_plugin&utm_campaign=mojo_wp_plugin&utm_medium=plugin_landing&utm_content=logo'><img src='https://www.mojomarketplace.com/img/mojo-retina-logo.png' alt='WordPress Themes' id='logo' /></a>
 	<div class='content'>
 		<h1>I just installed WordPress <span>free</span> at</h1>
 		<p>MOJO Marketplace &mdash; a leader in <strong>Themes</strong>, <strong>Plugins</strong>, and <strong>Professional Services</strong>&hellip;</p>
@@ -186,7 +216,7 @@ footer li{
 		</div>
 		<div class='footer-actions'>
 			<a href='" . site_url( 'wp-login.php' ) . "'>Login</a>
-			<a href='#' id='what-is-this'  onClick='what_is_this_show()'>What is this?</a>
+			<a href='#' id='what-is-this' onClick='what_is_this_show()'>What is this?</a>
 		</div>
 	</footer>
 </div>
