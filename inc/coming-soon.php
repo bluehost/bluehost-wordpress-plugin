@@ -4,7 +4,7 @@
  */
 
 function mm_cs_login_check() {
-	if ( get_option( 'mm_install_date' ) === date( 'M d, Y' )  && ! get_option( 'mm_coming_soon' ) ){
+	if ( get_option( 'mm_install_date' ) === date( 'M d, Y' )  && ! get_option( 'mm_coming_soon' ) ) {
 		update_option( 'mm_coming_soon', 'true' );
 	}
 }
@@ -88,6 +88,11 @@ function mm_cs_settings() {
 add_action( 'admin_init', 'mm_cs_settings' );
 
 function mm_cs_content() {
+	if ( stripos( @exec( 'hostname' ), 'bluehost' ) ) {
+		$powered_by = "<div class='powered-by'>Powered by <a href='http://bluehost.com'>Bluehost</a></div>";
+	} else {
+		$powered_by = "";
+	}
 	echo mm_minify( "
 <!DOCTYPE html>
 <html>
@@ -128,13 +133,10 @@ a{
 	font-size: 1.2rem;
 	padding: 0 15px;
 }
-.ghost{ 
-	border: 1px solid #fff;
-	font-size: 22px;
-	margin: 90px auto;
-	max-width: 260px;
-	padding: 20px 30px;
-	text-align: center;
+.powered-by {
+	text-align: right;
+	padding: 50px;
+	font-size: 12px;
 }
 h1 span{
 	color: #93C933;
@@ -174,17 +176,76 @@ footer li{
 	color: #aaa;
 	padding: 50px;
 }
+.btn{display: inline-block;margin-top:50px;text-align:center;padding: 10px 50px; border-radius: 3px;}
+.green{
+	color: #343537;
+	background: #92c835; /* Old browsers */
+	background: -moz-linear-gradient(top,  #92c835 0%, #6d9628 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#92c835), color-stop(100%,#6d9628)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #92c835 0%,#6d9628 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #92c835 0%,#6d9628 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #92c835 0%,#6d9628 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #92c835 0%,#6d9628 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92c835', endColorstr='#6d9628',GradientType=0 ); /* IE6-9 */	
+}
 #what-is-this-content a{width: 50%;display:inline-block;color: #666;text-align:center;}
 .footer-actions a{width: 50%; text-align:center; display:inline-block;}
+.split-content > div:first-of-type{
+	padding-right: 10%;
+}
+.split-content > div{
+	width: 40%;
+	display: inline-block;
+	vertical-align: top;
+	padding: 50px 80px 0 0;
+	font-family: Arial;
+	font-weight: lighter;
+	line-height: 1.8rem;
+}
+#wrap .highlight{color:#90C534;}
+@media (max-width: 859px) {
+	.split-content > div{
+		width: 100%;
+		box-sizing: border-box;
+		padding: 5% 20%;
+	}
+	.btn{
+		width: 122px;
+		display:block;
+		margin: 50px auto;
+	}
+	footer .col {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 5%;
+		text-align:center;
+	}
+}
 </style>
 </head>
 <body>
 <div id='wrap'>
-	<a target='_blank' href='https://mojomarketplace.com?utm_source=mojo_wp_plugin&utm_campaign=mojo_wp_plugin&utm_medium=plugin_landing&utm_content=logo'><img src='https://www.mojomarketplace.com/img/mojo-retina-logo.png' alt='WordPress Themes' id='logo' /></a>
 	<div class='content'>
-		<h1>I just installed WordPress <span>free</span> at</h1>
-		<p>MOJO Marketplace &mdash; a leader in <strong>Themes</strong>, <strong>Plugins</strong>, and <strong>Professional Services</strong>&hellip;</p>
-		<div class='ghost'>" . get_option( 'blogname' ) . " coming soon&hellip;</div>
+		<h1>Website Coming Soon</h1>
+		<p>This page is used to test the proper operation of your recent <a class='highlight' href='https://www.mojomarketplace.com/explore?utm_source=mojo_wp_plugin&utm_campaign=mojo_wp_plugin&utm_medium=plugin_landing&utm_content=description_link'>MOJO Marketplace</a> installation of WordPress! If you can read this page it means your installation was successful!</p>
+		<a class='btn green' href='" . site_url( 'wp-login.php' ) . "'>Admin Login</a>
+		<div class='split-content'>
+			<div>
+				<h3>Just visiting?</h3>
+				<p>
+					The owner of this website is working on making this site awesome. Why not <a class='highlight' href='#' onclick='bookmark();'>bookmark it</a> and come back again later. We are sure you will not be disappointed.
+				</p>
+			</div>
+			<div>
+				<h3>Are you the Site Owner?</h3>
+				<p>
+					You should <a class='highlight' href='" . site_url( 'wp-login.php' ) . "'>login</a> to your WordPress installation and prepare your site for launch.
+				</p>
+				<p>
+					To launch your site just click the link in the banner at the top of the screen.
+				</p>
+			</div>
+		</div>
 	</div>
 	<footer>
 		<div class='col'>
@@ -219,6 +280,7 @@ footer li{
 			<a href='#' id='what-is-this' onClick='what_is_this_show()'>What is this?</a>
 		</div>
 	</footer>
+	" . $powered_by . "
 </div>
 <div id='what-is-this-content'>
 	<p>This is the default coming soon page for this site because it was installed via MOJO Marketplace.</p>
@@ -234,6 +296,20 @@ function what_is_this_show() {
 }
 function what_is_this_hide() {
 	document.getElementById('what-is-this-content').style.display = 'none';
+}
+function bookmark() {
+	var title = '" . get_bloginfo( 'name', 'display' ) . "';
+	var url = '" . site_url() . "';
+	if ( window.sidebar && window.sidebar.addPanel ) {
+		window.sidebar.addPanel( title, href, '' );
+	} else if( window.external && ( 'AddFavorite' in window.external ) ) {
+		window.external.AddFavorite( href,title );
+	} else if( window.opera && window.print ) {
+		this.title=title;
+		return true;
+	} else {
+		alert( 'Press ' + (navigator.userAgent.toLowerCase().indexOf( 'mac' ) != - 1 ? 'Command/Cmd' : 'CTRL' ) + ' + D to bookmark this page.' );
+	}
 }
 </script>
 </body>
