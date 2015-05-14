@@ -611,20 +611,48 @@ function mm_jetpack_log_connected( $entry ) {
 }
 add_action( 'jetpack_log_entry', 'mm_jetpack_log_connected', 10, 1 );
 
-function mm_jetpack_log_jps_time() {
-	if( isset( $_GET['welcome-screen-hide'] ) ) {
-		$start_time = get_option( 'jps_started', false );
-		if( $start_time ) {
-			$now = time();
-			$completion_time = $now - $start_time;
-			$event = array(
-				't'     => 'event',
-				'ec'    => 'jetpack_event',
-				'ea'    => 'jps_completion_time',
-				'el'    => $completion_time
-			);
-			mm_ux_log( $event );
-		}
+/* JPS v8 specific events */
+
+function mm_jps_started() {
+	update_option( 'jps_started', time() );
+}
+add_action( 'jps_started', 'mm_jps_started' );
+
+function mm_jps_step_skipped( $step, $data ) {
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'jetpack_event',
+		'ea'    => 'step_skipped_' . $step,
+		'el'    => $step,
+	);
+	mm_ux_log( $event );
+}
+add_action( 'jps_step_skipped', 'mm_jps_step_skipped', 10, 2 );
+
+function mm_jps_step_complete( $step, $data ) {
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'jetpack_event',
+		'ea'    => 'step_complete_' . $step,
+		'el'    => $step,
+	);
+
+	if ( 'design' == $step && isset( $data['themeId'] ) ) {
+		$event['el'] = $data['themeId'];
+	}
+
+	mm_ux_log( $event );
+
+	if ( isset( $data['completion'] ) && 100 == $data['completion'] ) {
+		$started = get_option( 'jps_started', time() );
+		$completion = time() - $started;
+		$event = array(
+			't'  => 'event',
+			'ec' => 'jetpack_event',
+			'ea' => 'jps_completion_time',
+			'el' => $completion,
+		);
+		mm_ux_log( $event );
 	}
 }
-add_action( 'admin_init', 'mm_jetpack_log_jps_time' );
+add_action( 'jps_step_complete', 'mm_jps_step_complete', 10, 2 );
