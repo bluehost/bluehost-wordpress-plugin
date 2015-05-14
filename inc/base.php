@@ -38,7 +38,6 @@ function mm_api( $args = array(), $query = array() ) {
 
 	$request_url = rtrim( $request_url, '/' );
 	$request_url = $request_url . '?' . $query;
-
 	$key = md5( $request_url );
 
 	if ( false === ( $transient = get_transient( 'mm_api_calls' ) ) || ! isset( $transient[ $key ] ) ) {
@@ -113,6 +112,37 @@ function mm_cron_schedules( $shedules ) {
 }
 add_filter( 'cron_schedules', 'mm_cron_schedules' );
 
+function mm_all_api_calls() {
+	$calls = array(
+		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'themes', 'mojo-items' => 'popular' ),
+		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'themes', 'mojo-items' => 'recent' ),
+
+		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'responsive', 'mojo-items' => 'category_items' ),
+		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'business', 'mojo-items' => 'category_items' ),
+		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'ecommerce', 'mojo-items' => 'category_items' ),
+		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'photography', 'mojo-items' => 'category_items' ),
+		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'real-estate', 'mojo-items' => 'category_items' ),
+		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'restaurant', 'mojo-items' => 'category_items' ),
+
+		array( 'mojo-platform' => 'wordpress', 'mojo-type' => '', 'mojo-items' => 'popular-services' ),
+
+	);
+	foreach ( $calls as $call ) {
+		mm_api( $call );
+	}
+	die;
+}
+add_action( 'wp_ajax_all-api-calls', 'mm_all_api_calls' );
+
+function mm_preload_api_calls() {
+	//this makes the themes/services pages load much quicker
+	//without effect on the user
+	$admin_ajax = admin_url( 'admin-ajax.php' );
+	$params = array( 'action' => 'all-api-calls' );
+	$url = $admin_ajax . '?' . http_build_query( $params );
+	$res = wp_remote_get( $url, array( 'blocking' => false, 'timeout' => 0.1 ) );
+}
+add_action( 'admin_footer-index.php', 'mm_preload_api_calls', 99 );
 
 function mm_slug_to_title( $slug ) {
 	$words = explode( '-', $slug );
