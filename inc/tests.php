@@ -96,36 +96,3 @@ function mm_jetpack_start_test() {
 	}
 }
 add_action( 'init', 'mm_jetpack_start_test', 5 );
-
-function mm_jetpack_remove_themes_step( $steps ) {
-	for ( $i = 0; $i < count( $steps ); $i++ ) {
-		if ( is_a( $steps[ $i ], 'Jetpack_Start_Step_select_theme' ) ) {
-			unset( $steps[ $i ] );
-		}
-	}
-	return $steps;
-}
-add_filter( 'jetpack_start_steps', 'mm_jetpack_remove_themes_step' );
-
-/*
-Introduce a modified version of JPS
-*/
-function mm_jetpack_start_modified_test() {
-	$file = MM_BASE_DIR . 'tests/jetpack-start/jetpack-start.php';
-	if ( file_exists( $file ) && mm_jetpack_bluehost_only() ) {
-		if ( mm_ab_test_inclusion( 'jetpack-start-modified-v7', md5( 'jetpack-start-modified-v7' ), 20, WEEK_IN_SECONDS * 4 ) ) {
-			require( $file );
-		}
-	}
-}
-add_action( 'init', 'mm_jetpack_start_modified_test', 4 );
-
-function mm_jetpack_remove_all_steps( $steps ) {
-	$test = get_transient( 'mm_test', false );
-	if( isset( $test['name'] ) && $test['name'] === 'jetpack-start-modified-v7' ) {
-		$steps = array();
-	}
-	return $steps;
-}
-add_filter( 'jetpack_start_steps', 'mm_jetpack_remove_all_steps' );
-
