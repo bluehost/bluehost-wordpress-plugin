@@ -643,16 +643,17 @@ function mm_jps_step_complete( $step, $data ) {
 
 	mm_ux_log( $event );
 
-	if ( isset( $data['completion'] ) && 100 == $data['completion'] ) {
+	if ( isset( $data['completion'] ) ) {
 		$started = get_option( 'jps_started', time() );
 		$completion = time() - $started;
 		$event = array(
 			't'  => 'event',
 			'ec' => 'jetpack_event',
-			'ea' => 'jps_completion_time',
+			'ea' => 'jps_completion_time_' . $step,
 			'el' => $completion,
 		);
 		mm_ux_log( $event );
 	}
 }
 add_action( 'jps_step_complete', 'mm_jps_step_complete', 10, 2 );
+
