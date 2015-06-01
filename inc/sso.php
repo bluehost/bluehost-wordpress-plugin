@@ -1,6 +1,6 @@
 <?php
 function mm_sso_check () {
-	if ( ! isset( $_GET['salt'] ) || ! isset( $_GET['nonce'] ) || ! isset( $_GET['userid'] ) ) { mm_sso_req_login(); }
+	if ( ! isset( $_GET['salt'] ) || ! isset( $_GET['nonce'] ) || ! isset( $_GET['user'] ) ) { mm_sso_req_login(); }
 	if ( mm_sso_check_blocked() ) { mm_sso_req_login(); }
 	$nonce = esc_attr( $_GET['nonce'] );
 	$salt = esc_attr( $_GET['salt'] );
