@@ -4,10 +4,16 @@ function mm_sso_check () {
 	if ( mm_sso_check_blocked() ) { mm_sso_req_login(); }
 	$nonce = esc_attr( $_GET['nonce'] );
 	$salt = esc_attr( $_GET['salt'] );
-	$user_id = (int)$_GET['userid'];
+	$user = esc_attr( $_GET['user'] );
 	$hash = base64_encode( hash( 'sha256', $nonce . $salt, true ) );
 	if ( get_transient( 'mm_sso' ) == $hash ) {
-		$user = get_user_by( 'id', $user_id );
+		if ( is_email( $user ) ) {
+			$user = get_user_by( 'email', $user );
+		} else {
+
+			$user = get_user_by( 'id', (int)$user );
+		}
+
 		if ( is_a( $user, 'WP_User' ) ) {
 			wp_set_current_user( $user->ID, $user->user_login );
 			wp_set_auth_cookie( $user->ID );
