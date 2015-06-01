@@ -5,7 +5,8 @@ function mm_sso_check () {
 	$nonce = esc_attr( $_GET['nonce'] );
 	$salt = esc_attr( $_GET['salt'] );
 	$user = esc_attr( $_GET['user'] );
-	$hash = base64_encode( hash( 'sha256', $nonce . $salt, true ) );
+	$hash = base64_encode( hash( 'sha256', $nonce . $salt, false ) );
+	$hash = substr( $hash, 0, 64 );
 	if ( get_transient( 'mm_sso' ) == $hash ) {
 		if ( is_email( $user ) ) {
 			$user = get_user_by( 'email', $user );
