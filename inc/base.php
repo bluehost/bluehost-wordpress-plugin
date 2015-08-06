@@ -99,7 +99,7 @@ function mm_cron() {
 }
 add_action( 'admin_init', 'mm_cron' );
 
-function mm_cron_schedules( $shedules ) {
+function mm_cron_schedules( $schedules ) {
 	$schedules['weekly'] = array(
 		'interval' => 604800,
 		'display' => __( 'Once Weekly' )
