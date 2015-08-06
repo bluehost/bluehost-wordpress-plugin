@@ -162,8 +162,9 @@ function mm_require( $file ) {
 	$file = apply_filters( 'mm_require_file', $file );
 	if ( file_exists( $file ) ) {
 		require( $file );
+		return $file;
 	}
-	return $file;
+	return false;
 }
 
 function mm_minify( $content ) {
@@ -191,3 +192,4 @@ function mm_adjust_feed_transient_lifetime( $lifetime ) {
 	return 10800;
 }
 add_filter( 'wp_feed_cache_transient_lifetime', 'mm_adjust_feed_transient_lifetime' );
+
