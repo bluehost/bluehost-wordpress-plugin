@@ -72,6 +72,7 @@ function mm_ux_log( $args = array() ) {
 	wp_remote_post( $url, $args );
 }
 add_action( 'admin_footer', 'mm_ux_log', 9 );
+add_action( 'customize_controls_print_footer_scripts', 'mm_ux_log' );
 
 function mm_ux_log_start() {
 	$session = array(
