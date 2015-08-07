@@ -5,7 +5,7 @@ This file tracks basic user actions to improve the user experience.
 
 function mm_ux_log( $args = array() ) {
 	$url = "https://ssl.google-analytics.com/collect";
-	
+
 	global $title;
 
 	if ( empty( $_SERVER['REQUEST_URI'] ) ) {
@@ -17,7 +17,7 @@ function mm_ux_log( $args = array() ) {
 	if ( empty( $path ) || empty( $path[1] ) ) {
 		$path = array( "", " " );
 	}
-	
+
 	$defaults = array(
 		'v'		=> '1',
 		'tid'	=> 'UA-39246514-3',
@@ -54,7 +54,7 @@ function mm_ux_log( $args = array() ) {
 
 	//use test account for testing
 	if( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-		$params['tid'] = 'UA-19617272-27'; 
+		$params['tid'] = 'UA-19617272-27';
 	}
 
 	$z = wp_rand( 0, 1000000000 );
