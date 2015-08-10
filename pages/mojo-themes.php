@@ -23,7 +23,7 @@
 		$api_args['mojo-items'] = $accepted_categories[0];
 	}
 
-	if ( ! in_array( 'woocommerce/woocommerce.php', get_option( 'active_plugins', array() ) ) ) {
+	if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 		echo '<div class="wp-filter">';
 		echo '<ul class="filter-links">';
 		foreach ( $accepted_categories as $category ) {
