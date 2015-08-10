@@ -21,7 +21,7 @@ function mm_setup() {
 add_action( 'init', 'mm_setup' );
 
 function mm_api( $args = array(), $query = array() ) {
-	$api_url = 'http://mojomarketplace.com/api/v1/';
+	$api_url = 'http://api.mojomarketplace.com/api/v1/';
 	$default_args = array(
 		'mojo-platform' 	=> 'wordpress',
 		'mojo-type' 		=> 'themes',

@@ -49,7 +49,7 @@ function mm_cs_load() {
 add_action( 'template_redirect', 'mm_cs_load' );
 
 function mm_cs_meta() {
-	$meta = wp_remote_get( 'http://mojomarketplace.com/api/v1/meta/landing_page' );
+	$meta = wp_remote_get( 'http://api.mojomarketplace.com/api/v1/meta/landing_page' );
 	if ( is_wp_error( $meta ) ) {return;}
 	if ( isset( $meta['body'] ) && $meta['body'] != '' ) {
 		return "<meta name='robots' content='noindex, nofollow' />";

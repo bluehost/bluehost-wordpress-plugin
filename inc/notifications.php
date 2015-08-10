@@ -4,8 +4,8 @@
  */
 
 function mm_notification_api( $args = array() ) {
-	
-	$url = "https://mojomarketplace.com/api/v2/notifications";
+
+	$url = "https://api.mojomarketplace.com/api/v2/notifications";
 	$default_args = array(
 		"context" => "mojo-marketplace-wordpress-plugin",
 		"identification" => array(
