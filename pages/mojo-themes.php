@@ -1,5 +1,5 @@
 <div class="wrap">
-	<h2><?php echo apply_filters( 'mm_before_page_title', '' ); ?> MOJO Marketplace - Themes <a class="add-new-h2" target="_blank" href="<?php echo mm_build_link( 'http://mojomarketplace.com/themes/wordpress', array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'browse_all_themes_button' ), 'browse_all_themes' ); ?>">Browse All Themes &rarr;</a></h2>
+	<h2><?php echo apply_filters( 'mm_before_page_title', '' ); ?> MOJO Marketplace - Themes <a class="add-new-h2" target="_blank" href="<?php echo mm_build_link( 'https://www.mojomarketplace.com/themes/wordpress', array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'browse_all_themes_button' ), 'browse_all_themes' ); ?>">Browse All Themes &rarr;</a></h2>
 
 	<?php
 	$api_args = array();

@@ -7,7 +7,7 @@ $api_args = array(
 $result = mm_api( $api_args, array( 'count' => '30' ) );
 ?>
 <div class="wrap">
-	<h2><?php echo apply_filters( 'mm_before_page_title', "" ); ?> MOJO Marketplace - Services <a class="add-new-h2" target="_blank" href="<?php echo mm_build_link( 'http://mojomarketplace.com/services/all/wordpress', array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'browse_all_services_button' ), 'browse_all_services' ); ?>">Browse All Services &rarr;</a></h2>
+	<h2><?php echo apply_filters( 'mm_before_page_title', "" ); ?> MOJO Marketplace - Services <a class="add-new-h2" target="_blank" href="<?php echo mm_build_link( 'https://www.mojomarketplace.com/services/all/wordpress', array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'browse_all_services_button' ), 'browse_all_services' ); ?>">Browse All Services &rarr;</a></h2>
 <?php
 if( is_wp_error( $result ) ) {
 	echo "<div class='error'><p>Unable to fetch services. The API may be down. Please try again later.</p></div>";
