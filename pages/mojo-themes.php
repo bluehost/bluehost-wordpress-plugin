@@ -39,7 +39,7 @@
 		echo '| <a  class="theme-section wp-filter-link" href="admin.php?page=mojo-services">Services</a>';
 		echo '</div>';
 	} else {
-		$api_args['mojo-items'] = 'ecommerce';
+		$api_args['mojo-items'] = 'woocommerce';
 	}
 
 	?>
