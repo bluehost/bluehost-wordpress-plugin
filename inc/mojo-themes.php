@@ -5,9 +5,9 @@ function mm_add_theme_button() {
 	?>
 	<script type="text/javascript">
 	jQuery( document ).ready( function() {
-		jQuery( '.add-new-h2' ).html( 'WordPress.org Themes' );
-		jQuery( '.add-new-h2' ).before( '<a class="add-new-h2" href="admin.php?page=mojo-themes">MOJO Themes</a>' );
-		jQuery( '.add-new-h2:nth-of-type(2)' ).after( '<a class="add-new-h2" href="theme-install.php?upload">Add New</a>' );
+		jQuery( '.page-title-action' ).html( 'WordPress.org Themes' );
+		jQuery( '.page-title-action' ).before( '<a class="add-new-h2" href="admin.php?page=mojo-themes">MOJO Themes</a>' );
+		jQuery( '.page-title-action:nth-of-type(2)' ).after( '<a class="add-new-h2" href="theme-install.php?upload">Add New</a>' );
 	} );
 	</script>
 	<?php
