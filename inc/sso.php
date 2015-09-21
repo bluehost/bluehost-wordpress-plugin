@@ -11,7 +11,6 @@ function mm_sso_check () {
 		if ( is_email( $user ) ) {
 			$user = get_user_by( 'email', $user );
 		} else {
-
 			$user = get_user_by( 'id', (int)$user );
 		}
 
@@ -20,6 +19,7 @@ function mm_sso_check () {
 			wp_set_auth_cookie( $user->ID );
 			do_action( 'wp_login', $user->user_login );
 			delete_transient( 'mm_sso' );
+			do_action( 'mmsso_success' );
 			wp_safe_redirect( admin_url() );
 		} else {
 			mm_sso_req_login();
@@ -34,6 +34,7 @@ add_action( 'wp_ajax_nopriv_mmsso-check', 'mm_sso_check' );
 add_action( 'wp_ajax_mmsso-check', 'mm_sso_check' );
 
 function mm_sso_req_login() {
+	do_action( 'mmsso_fail' );
 	wp_safe_redirect( wp_login_url() );
 }
 

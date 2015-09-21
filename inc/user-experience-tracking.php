@@ -701,3 +701,25 @@ function mm_ux_auto_core_upgrade() {
 	mm_ux_log( $event );
 }
 add_action( 'pre_update_option_auto_updater.lock', 'mm_ux_auto_core_upgrade' );
+
+function mm_sso_success() {
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'user_action',
+		'ea'    => 'sso',
+		'el'    => 'success',
+	);
+	mm_ux_log( $event );
+}
+add_action( 'mmsso_success', 'mm_sso_success' );
+
+function mm_sso_fail() {
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'user_action',
+		'ea'    => 'sso',
+		'el'    => 'fail',
+	);
+	mm_ux_log( $event );
+}
+add_action( 'mmsso_fail', 'mm_sso_fail' );
