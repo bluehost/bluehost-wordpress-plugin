@@ -648,43 +648,6 @@ function mm_jps_step_complete( $step, $data ) {
 }
 add_action( 'jps_step_complete', 'mm_jps_step_complete', 10, 2 );
 
-
-function mm_ux_churn() {
-	if ( ! $churn_data = get_option( 'mm_churn' ) ) {
-		$churn_data = array(
-			'ip'     => $_SERVER['REMOTE_ADDR'],
-			'whoami' => @exec( 'whoami' ),
-			'tests'  => implode( ', ', get_option( 'mm_previous_tests' ) )
-		);
-		update_option( 'mm_churn', $churn_data );
-	} else {
-		$changed = false;
-		if ( isset( $churn_data['ip'] ) && $churn_data['ip'] != $_SERVER['REMOTE_ADDR'] ) {
-			$changed = 'ip';
-		}
-
-		if ( isset( $churn_data['whoami'] ) && $churn_data['whoami'] != @exec( 'whoami' ) ) {
-			$changed = 'whoami';
-		}
-
-		if ( isset( $churn_data['tests'] ) && $churn_data['tests'] != json_encode( get_option( 'mm_previous_tests' ) ) ) {
-			$churn_data['tests'] = implode( ', ',  get_option( 'mm_previous_tests' ) );
-			update_option( 'mm_churn', $churn_data );
-		}
-
-		if ( $changed ) {
-			$event = array(
-				't'     => 'event',
-				'ec'    => 'scheduled',
-				'ea'    => 'churn_' . $changed,
-				'el'    => $churn_data['tests'],
-			);
-			mm_ux_log( $event );
-		}
-	}
-}
-add_action( 'mm_cron_weekly', 'mm_ux_churn' );
-
 function mm_jps_step_viewed( $step ) {
 	update_option( 'jps_current_step', $step );
 	$event = array(
