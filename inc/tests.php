@@ -2,11 +2,11 @@
 function mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) {
 	if( false === ( $test = get_transient( 'mm_test', false ) ) ) {
 		$previous_tests = get_option( 'mm_previous_tests', array() );
-		
+
 		if ( in_array( $test_name, $previous_tests ) ) { return false; }
-		
+
 		$score = mt_rand( 0, 99 );
-		
+
 		if ( $audience > $score ) {
 			set_transient( 'mm_test', array( 'name' => $test_name, 'key' => $key ), $duration );
 			$previous_tests[] = $test_name;
