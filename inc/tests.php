@@ -87,8 +87,8 @@ function mm_jetpack_bluehost_only() {
 function mm_jetpack_start_test() {
 	$file = MM_BASE_DIR . 'tests/jetpack-start/jetpack-start.php';
 	if ( file_exists( $file ) && mm_jetpack_bluehost_only() ) {
-		if ( ! mm_ab_test_inclusion( 'jetpack-start-v9', md5( 'jetpack-start-v9' ), 25, WEEK_IN_SECONDS * 4 ) ) {
-			mm_ab_test_inclusion( 'jetpack-start-exempt-v9', md5( 'jetpack-start-exempt-v9' ), 33, WEEK_IN_SECONDS * 4 );
+		if ( ! mm_ab_test_inclusion( 'jetpack-start-v10', md5( 'jetpack-start-v10' ), 25, WEEK_IN_SECONDS * 4 ) ) {
+			mm_ab_test_inclusion( 'jetpack-start-exempt-v10', md5( 'jetpack-start-exempt-v10' ), 33, WEEK_IN_SECONDS * 4 );
 			add_option( 'jpstart_wizard_has_run', true );
 		} else {
 			mm_require( $file );

@@ -74,7 +74,7 @@ function mm_build_link( $url, $args = array() ) {
 
 function mm_clear_api_calls() {
 	if ( is_admin() ) {
-		delete_transient( 'mojo-api-calls' );
+		delete_transient( 'mojo_api_calls' );
 	}
 }
 add_action( 'wp_login', 'mm_clear_api_calls' );
