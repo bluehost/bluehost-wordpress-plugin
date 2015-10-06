@@ -62,14 +62,15 @@ function mm_ux_log( $args = array() ) {
 	$query = http_build_query( array_filter( $params ) );
 
 	$args = array(
-		'body'		=> $query,
-		'method'	=> 'POST',
-		'blocking'	=> false,
+		'body'      => $query,
+		'method'    => 'POST',
+		'blocking'  => false,
 		'timeout'   => 0.1,
 	);
 
 	$url = add_query_arg( array( 'z' => $z ), $url );
 	wp_remote_post( $url, $args );
+	do_action( 'mm_ux_log', $params );
 }
 add_action( 'admin_footer', 'mm_ux_log', 9 );
 add_action( 'customize_controls_print_footer_scripts', 'mm_ux_log' );
