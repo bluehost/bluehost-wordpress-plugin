@@ -40,7 +40,7 @@ function mm_ux_log( $args = array() ) {
 		'ev'	=> '', //event value
 	);
 
-	if( isset( $_SERVER['REMOTE_ADDR'] ) ) {
+	if ( isset( $_SERVER['REMOTE_ADDR'] ) ) {
 		$defaults['uip'] = $_SERVER['REMOTE_ADDR'];
 	}
 
@@ -48,12 +48,12 @@ function mm_ux_log( $args = array() ) {
 
 	$test = get_transient( 'mm_test', '' );
 
-	if( isset( $test['key'] ) && isset( $test['name'] ) ) {
+	if ( isset( $test['key'] ) && isset( $test['name'] ) ) {
 		$params['cm'] = $params['cm'] . "_" . $test['name'] . "_" . $test['key'];
 	}
 
 	//use test account for testing
-	if( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 		$params['tid'] = 'UA-19617272-27';
 	}
 
@@ -76,11 +76,11 @@ add_action( 'customize_controls_print_footer_scripts', 'mm_ux_log' );
 
 function mm_ux_log_start() {
 	$session = array(
-		'sc'	=> 'start'
+		'sc' => 'start',
 	);
 	mm_ux_log( $session );
 	$event = array(
-		't' => 'event',
+		't'  => 'event',
 		'ec' => 'user_action',
 		'ea' => 'login',
 	);
@@ -90,13 +90,13 @@ add_action( 'wp_login', 'mm_ux_log_start' );
 
 function mm_ux_log_end() {
 	$session = array(
-		'sc'	=> 'end'
+		'sc' => 'end',
 	);
 	mm_ux_log( $session );
 	$user = get_user_by( 'id', get_current_user_id() );
 	$role = $user->roles;
 	$event = array(
-		't' => 'event',
+		't'  => 'event',
 		'ec' => 'user_action',
 		'ea' => 'logout',
 		'el' => $role[0],
@@ -155,7 +155,7 @@ function mm_ux_log_theme_category_org() {
 	if( isset( $_GET['browse'] ) ) {
 		$category = esc_attr( $_GET['browse'] );
 	} else {
-		$category = "featured";
+		$category = 'featured';
 	}
 	$event = array(
 		't'		=> 'event',
