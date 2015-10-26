@@ -20,7 +20,11 @@ function mm_sso_check () {
 			do_action( 'wp_login', $user->user_login );
 			delete_transient( 'mm_sso' );
 			do_action( 'mmsso_success' );
-			wp_safe_redirect( admin_url() );
+			if ( isset ( $_GET['redirect'] ) ) {
+				$page = esc_url_raw( $_GET['redirect'] );
+			} else {
+				$page = '';
+			}
 		} else {
 			mm_sso_req_login();
 		}
