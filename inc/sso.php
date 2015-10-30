@@ -25,6 +25,7 @@ function mm_sso_check () {
 			} else {
 				$page = '';
 			}
+			wp_safe_redirect( admin_url( $page ) );
 		} else {
 			mm_sso_req_login();
 		}
