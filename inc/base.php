@@ -74,7 +74,7 @@ function mm_build_link( $url, $args = array() ) {
 
 function mm_clear_api_calls() {
 	if ( is_admin() ) {
-		delete_transient( 'mojo_api_calls' );
+		delete_transient( 'mojo-api-calls' );
 	}
 }
 add_action( 'wp_login', 'mm_clear_api_calls' );
@@ -192,4 +192,3 @@ function mm_adjust_feed_transient_lifetime( $lifetime ) {
 	return 10800;
 }
 add_filter( 'wp_feed_cache_transient_lifetime', 'mm_adjust_feed_transient_lifetime' );
-
