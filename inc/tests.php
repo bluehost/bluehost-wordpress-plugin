@@ -1,6 +1,6 @@
 <?php
 function mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) {
-	if( false === ( $test = get_transient( 'mm_test', false ) ) ) {
+	if ( false === ( $test = get_transient( 'mm_test', false ) ) ) {
 		$previous_tests = get_option( 'mm_previous_tests', array() );
 
 		if ( in_array( $test_name, $previous_tests ) ) { return false; }
@@ -34,7 +34,7 @@ function mm_ab_test_file( $test_name, $file, $original, $test, $audience = 10, $
 
 		$test_file = str_replace( $original, $test, $file );
 
-		if( $inclusion && file_exists( $test_file ) ) {
+		if ( $inclusion && file_exists( $test_file ) ) {
 			$file = $test_file;
 		}
 	}
@@ -84,16 +84,30 @@ function mm_jetpack_bluehost_only() {
 	return $is_bluehost;
 }
 
-function mm_jetpack_start_test() {
-	$file = MM_BASE_DIR . 'tests/jetpack-start/jetpack-start.php';
+function mm_jetpack_onboarding_test() {
+	$file = MM_BASE_DIR . 'tests/jetpack-onboarding/jetpack-onboarding.php';
 	if ( file_exists( $file ) && mm_jetpack_bluehost_only() ) {
-		if ( ! mm_ab_test_inclusion( 'jetpack-start-v10', md5( 'jetpack-start-v10' ), 25, WEEK_IN_SECONDS * 4 ) ) {
-			mm_ab_test_inclusion( 'jetpack-start-exempt-v10', md5( 'jetpack-start-exempt-v10' ), 33, WEEK_IN_SECONDS * 4 );
+		if ( ! mm_ab_test_inclusion( 'jetpack-onboarding-v1', md5( 'jetpack-onboarding-v1' ), 90, WEEK_IN_SECONDS * 4 ) ) {
+			mm_ab_test_inclusion( 'jetpack-onboarding-exempt-v1', md5( 'jetpack-onboarding-exempt-v1' ), 100, WEEK_IN_SECONDS * 4 );
 			add_option( 'jpstart_wizard_has_run', true );
 		} else {
+			/*
+			This is to avoid the issue with WC dismissing the welcome screen
+			*/
+			if ( false == get_option( 'mm_wc_screen_hack' ) ) {
+				update_user_meta( get_current_user_id(), 'show_welcome_panel', 1 );
+			}
 			mm_require( $file );
-			mm_require( MM_BASE_DIR . 'tests/jetpack-start-tracks/jetpack-start-tracks.php' );
+			mm_require( MM_BASE_DIR . 'tests/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
 		}
 	}
 }
-add_action( 'init', 'mm_jetpack_start_test', 5 );
+add_action( 'init', 'mm_jetpack_onboarding_test', 99 );
+
+function mm_wc_hack( $null, $object_id, $meta_key, $meta_value ) {
+	if ( 'show_welcome_panel' == $meta_key && 0 == $meta_value ) {
+		update_option( 'mm_wc_screen_hack', true );
+	}
+	return null;
+}
+add_filter( 'updated_user_metadata', 'mm_wc_hack', 10, 4 );
