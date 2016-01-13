@@ -91,7 +91,7 @@ function mm_cs_content() {
 	if ( stripos( @exec( 'hostname' ), 'bluehost' ) ) {
 		$powered_by = "<div class='powered-by'>Powered by <a href='http://bluehost.com'>Bluehost</a></div>";
 	} else {
-		$powered_by = "";
+		$powered_by = '';
 	}
 	echo mm_minify( "
 <!DOCTYPE html>
