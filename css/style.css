@@ -169,7 +169,9 @@ input.mm-btn-primary{
 
 /*MOJO Services*/
 
-.marketplace_page_mojo-services .service-browser .service {
+.marketplace_page_mojo-services .service-browser .service,
+.marketplace_page_mojo-plugins  .plugin-browser .plugin,
+.plugins_page_plugins-mojo  .plugin-browser .plugin{
 	border: 1px solid #dedede;
 	box-shadow: 0 1px 1px -1px rgba(0, 0, 0, 0.1);
 	box-sizing: border-box;
@@ -179,55 +181,67 @@ input.mm-btn-primary{
 	position: relative;
 	width: 30.6%;
 }
-.marketplace_page_mojo-services .service-browser .service .service-screenshot img {
+.marketplace_page_mojo-services .service-browser .service .service-screenshot img,
+.marketplace_page_mojo-plugins .plugin-browser .plugin .plugin-screenshot img,
+.plugins_page_plugins-mojo .plugin-browser .plugin .plugin-screenshot img{
 	height: auto;
 	transition: opacity 0.2s ease-in-out 0s;
 	width: 100%;
 
 }
-.marketplace_page_mojo-services .service-browser .service .service-screenshot:after {
+.marketplace_page_mojo-services .service-browser .service .service-screenshot:after,
+.marketplace_page_mojo-plugins .plugin-browser .plugin .plugin-screenshot:after,
+.plugins_page_plugins-mojo .plugin-browser .plugin .plugin-screenshot:after {
 	display: block;
 }
-.marketplace_page_mojo-services .service-browser .service{
+.marketplace_page_mojo-services .service-browser .service,
+.marketplace_page_mojo-plugins .plugin-browser .plugin,
+.plugins_page_plugins-mojo .plugin-browser .plugin{
 	background: none repeat scroll 0 0 #fff;
 }
 
-.marketplace_page_mojo-services .service-browser .service .service-screenshot:after{
+.marketplace_page_mojo-services .service-browser .service .service-screenshot:after,
+.marketplace_page_mojo-plugins .plugin-browser .plugin .plugin-screenshot:after,
+.plugins_page_plugins-mojo .plugin-browser .plugin .plugin-screenshot:after{
 	padding-top: 60%;
 }
 
-.marketplace_page_mojo-services .service-browser .service .mojo-service-actions{
+.marketplace_page_mojo-services .service-browser .service .mojo-service-actions,
+.marketplace_page_mojo-plugins .plugin-browser .plugin .mojo-plugin-actions,
+.plugins_page_plugins-mojo .plugin-browser .plugin .mojo-plugin-actions{
 	opacity: 1;
 }
 
-.marketplace_page_mojo-services .service-browser .service .mojo-service-actions form{
+.marketplace_page_mojo-services .service-browser .service .mojo-service-actions form,
+.marketplace_page_mojo-plugins .plugin-browser .plugin .mojo-plugin-actions form,
+.plugins_page_plugins-mojo .plugin-browser .plugin .mojo-plugin-actions form{
 	display: inline-block;
 }
 
-.marketplace_page_mojo-services .service-browser .service .mojo-service-actions .price{
+.marketplace_page_mojo-services .service-browser .service .mojo-service-actions .price,
+.marketplace_page_mojo-plugins .plugin-browser .plugin .mojo-plugin-actions .price,
+.plugins_page_plugins-mojo .plugin-browser .plugin .mojo-plugin-actions .price{
 	display: inline-block;
 	font-size: 1rem;
 }
 
-.marketplace_page_mojo-services .service-browser{
+.marketplace_page_mojo-services .service-browser,
+.marketplace_page_mojo-plugins .plugin-browser,
+.plugins_page_plugins-mojo .plugin-browser{
 	margin-top: 25px;
 }
 
 .marketplace_page_mojo-services .service-browser .service{ 
-	margin: 1%; 
+	margin: 1%;
 	width: 23%;
 }
-/*
-.marketplace_page_mojo-services .service-browser .service:nth-of-type(odd) { 
-	margin: 0 1% 2% 0; 
-	width: 24%;
+.marketplace_page_mojo-plugins .plugin-browser .plugin,
+.plugins_page_plugins-mojo .plugin-browser .plugin{
+	margin: 1%;
 }
-.marketplace_page_mojo-services .service-browser .service:nth-of-type(even) { 
-	margin: 0 0 2% 1%; 
-	width: 24%;
-}
-*/
-.marketplace_page_mojo-services .service-browser h3.service-name{
+.marketplace_page_mojo-services .service-browser h3.service-name,
+.marketplace_page_mojo-plugins .plugin-browser h3.plugin-name,
+.plugins_page_plugins-mojo .plugin-browser h3.plugin-name{
 	box-shadow: 0 0 0;
 	display: inline-block;
 	max-width: 45%;
@@ -242,30 +256,46 @@ input.mm-btn-primary{
 	white-space: nowrap;
 	visibility: hidden;
 }
-.marketplace_page_mojo-services .service-browser .mojo-service-actions{
+.marketplace_page_mojo-services .service-browser .mojo-service-actions,
+.marketplace_page_mojo-plugins .plugin-browser .mojo-plugin-actions,
+.plugins_page_plugins-mojo .plugin-browser .mojo-plugin-actions{
 	display: inline-block;
 	position: absolute;
 	right: 15px;
 	bottom: 10px;
 }
-.marketplace_page_mojo-services .service-browser .mojo-service-actions .price{
+.marketplace_page_mojo-services .service-browser .mojo-service-actions .price,
+.marketplace_page_mojo-plugins .plugin-browser .mojo-plugin-actions .price,
+.plugins_page_plugins-mojo .plugin-browser .mojo-plugin-actions .price{
 	position: relative;
 	padding: 5px;
 }
 .marketplace_page_mojo-services .service-browser .mojo-service-actions .mm-btn-primary,
-.marketplace_page_mojo-services .service-browser .mojo-service-actions .button-secondary{
+.marketplace_page_mojo-services .service-browser .mojo-service-actions .button-secondary,
+.marketplace_page_mojo-plugins .plugin-browser .mojo-plugin-actions .mm-btn-primary,
+.marketplace_page_mojo-plugins .plugin-browser .mojo-plugin-actions .button-secondary,
+.plugins_page_plugins-mojo .plugin-browser .mojo-plugin-actions .mm-btn-primary,
+.plugins_page_plugins-mojo .plugin-browser .mojo-plugin-actions .button-secondary{
 	margin: 5px 10px;
 }
 @media screen and (max-width: 640px) {
 	.marketplace_page_mojo-services .service-browser .service,
 	.marketplace_page_mojo-services .service-browser .service:nth-of-type(odd),
-	.marketplace_page_mojo-services .service-browser .service:nth-of-type(even) {
+	.marketplace_page_mojo-services .service-browser .service:nth-of-type(even),
+	.marketplace_page_mojo-plugins .plugin-browser .plugin,
+	.marketplace_page_mojo-plugins .plugin-browser .plugin:nth-of-type(odd),
+	.marketplace_page_mojo-plugins .plugin-browser .plugin:nth-of-type(even),
+	.plugins_page_plugins-mojo .plugin-browser .plugin,
+	.plugins_page_plugins-mojo .plugin-browser .plugin:nth-of-type(odd),
+	.plugins_page_plugins-mojo .plugin-browser .plugin:nth-of-type(even) {
 		margin: 1% 0; 
 		width: 100%;
 	}
 }
 @media screen and (max-width: 1200px) {
-	.marketplace_page_mojo-services .service-browser h3.service-name {
+	.marketplace_page_mojo-services .service-browser h3.service-name,
+	.marketplace_page_mojo-plugins .plugin-browser h3.plugin-name,
+	.plugins_page_plugins-mojo .plugin-browser h3.plugin-name {
 		visibility: hidden;
 	}
 }
