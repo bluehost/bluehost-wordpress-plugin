@@ -1,7 +1,7 @@
 <?php
 
 function mm_setup() {
-	if ( ! get_option( 'mm_master_aff' ) ) {
+	if ( '' === get_option( 'mm_master_aff' ) || (defined( 'MMAFF' ) && MMAFF != get_option( 'mm_master_aff' ) ) ) {
 		update_option( 'mm_master_aff', ( defined( 'MMAFF' ) ? MMAFF : '' ) );
 	}
 	if ( ! get_option( 'mm_install_date' ) ) {
