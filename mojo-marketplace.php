@@ -40,7 +40,9 @@ mm_require( MM_BASE_DIR . 'inc/sso.php' );
 
 // Load base classes for github updater only in the admin and only with cap
 function mm_load_updater() {
-	if ( is_admin() ) {
+	if ( file_exists( MM_BASE_DIR . 'updater.php' ) ) {
+		mm_require( MM_BASE_DIR . 'updater.php' );
+	} else if ( is_admin() ) {
 		/*
 		Check class_exist because this could be loaded in a different plugin
 		*/
