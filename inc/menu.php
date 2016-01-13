@@ -5,6 +5,12 @@ function mm_main_menu() {
 }
 add_action( 'admin_menu', 'mm_main_menu' );
 
+function mm_main_menu_fix_subdomain_label() {
+	global $submenu;
+	$submenu['mojo-themes'][0][0] = 'Themes';
+}
+add_action( 'admin_menu', 'mm_main_menu_fix_subdomain_label', 11 );
+
 function mm_preview_menu() {
 	add_submenu_page( null, 'Theme Preview', 'Theme Preview', 'manage_options', 'mojo-theme-preview', 'mm_theme_preview_page' );
 }
