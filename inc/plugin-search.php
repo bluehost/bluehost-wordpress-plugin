@@ -1,6 +1,10 @@
 <?php
 
 function mm_add_plugin_search_patterns( $patterns ) {
+	$response = wp_remote_get( 'https://www.mojomarketplace.com/mojo-assets/json/search-patterns.json' );
+	if ( ! is_wp_error( $response ) && $patterns = json_decode( $response['body'], 1 ) ) {
+		return $patterns;
+	}
 	$patterns['/woo/i'] = array( 'id' => '530782e3-1388-4e6a-a8ac-6f7b0a140b28', 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/item/integrate-woocommerce-onto-wordpress-site' );
 	$patterns['/commerce/i'] = array( 'id' => '530782e3-1388-4e6a-a8ac-6f7b0a140b28', 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/item/integrate-woocommerce-onto-wordpress-site' );
 	$patterns['/shop/i'] = array( 'id' => '530782e3-1388-4e6a-a8ac-6f7b0a140b28', 'name' => 'WooCommerce', 'url' => 'https://www.mojomarketplace.com/item/integrate-woocommerce-onto-wordpress-site' );
