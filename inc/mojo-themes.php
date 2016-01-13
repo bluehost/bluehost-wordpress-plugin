@@ -18,8 +18,8 @@ add_action( 'admin_head-themes.php', 'mm_add_theme_button' );
 function mm_add_premium_link() {
 	?>
 	<script type="text/javascript">
-	jQuery( document ).ready( function() {
-		jQuery( '.wp-filter .filter-links li:last-of-type' ).after( '<li><a style="text-decoration: none;" onclick="location.href=\'admin.php?page=mojo-themes&btn=appearance_premium\'">Premium</a></li>' );
+	jQuery( document ).ready( function( $ ) {
+		$( '.wp-filter .filter-links li:last-of-type' ).after( '<li><a style="text-decoration: none;" onclick="location.href=\'admin.php?page=mojo-themes&btn=appearance_premium\'">Premium</a></li>' );
 	} );
 	</script>
 	<?php
