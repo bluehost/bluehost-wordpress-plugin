@@ -145,17 +145,11 @@ function mm_preload_api_calls() {
 add_action( 'admin_footer-index.php', 'mm_preload_api_calls', 99 );
 
 function mm_slug_to_title( $slug ) {
-	$words = explode( '-', $slug );
-	$capital_words = array_map( 'ucfirst', $words );
-	$title = implode( ' ', $capital_words );
-	return $title;
+	return ucwords( str_replace( '-', ' ', $slug ) );
 }
 
 function mm_title_to_slug( $title ) {
-	$words = explode( ' ', $title );
-	$lowercase_words = array_map( 'strtolower', $words );
-	$slug = implode( '-', $lowercase_words );
-	return $slug;
+	return sanitize_title( $title );
 }
 
 function mm_require( $file ) {
