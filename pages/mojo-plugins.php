@@ -3,12 +3,12 @@ $request_url = 'http://www.mojomarketplace.com/api/v2/items';
 $query = http_build_query( array( 'type' => 'plugins', 'category' => 'wordpress' ) );
 $request_url .= '?' . $query;
 $key = md5( $key );
-//if ( false === ( $transient = get_transient( 'mm_api_calls' ) ) || ! isset( $transient[ $key ] ) ) {
+if ( false === ( $transient = get_transient( 'mm_api_calls' ) ) || ! isset( $transient[ $key ] ) ) {
 	$transient[ $key ] = wp_remote_get( $request_url );
 	if ( ! is_wp_error( $transient[ $key ] ) ) {
 		set_transient( 'mm_api_calls', $transient, DAY_IN_SECONDS );
 	}
-//}
+}
 $plugins = $transient[ $key ];
 ?>
 <div class="wrap">
