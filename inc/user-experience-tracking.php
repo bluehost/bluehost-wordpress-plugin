@@ -48,12 +48,12 @@ function mm_ux_log( $args = array() ) {
 
 	$test = get_transient( 'mm_test', '' );
 
-	if ( isset( $test['key'] ) && isset( $test['name'] ) ) {
+	if( isset( $test['key'] ) && isset( $test['name'] ) ) {
 		$params['cm'] = $params['cm'] . "_" . $test['name'] . "_" . $test['key'];
 	}
 
 	//use test account for testing
-	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+	if( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 		$params['tid'] = 'UA-19617272-27';
 	}
 
@@ -62,15 +62,15 @@ function mm_ux_log( $args = array() ) {
 	$query = http_build_query( array_filter( $params ) );
 
 	$args = array(
-		'body'      => $query,
-		'method'    => 'POST',
-		'blocking'  => false,
+		'body'		=> $query,
+		'method'	=> 'POST',
+		'blocking'	=> false,
 		'timeout'   => 0.1,
 	);
 
 	$url = add_query_arg( array( 'z' => $z ), $url );
 	wp_remote_post( $url, $args );
-	do_action( 'mm_ux_log', $params );
+	do_action( 'mm_ux_log', $params, $args, $url );
 }
 add_action( 'admin_footer', 'mm_ux_log', 9 );
 add_action( 'customize_controls_print_footer_scripts', 'mm_ux_log' );
