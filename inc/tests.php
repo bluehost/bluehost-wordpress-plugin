@@ -102,7 +102,7 @@ function mm_jetpack_onboarding_test() {
 		}
 	}
 }
-add_action( 'init', 'mm_jetpack_onboarding_test', 99 );
+add_action( 'init', 'mm_jetpack_onboarding_test', 9 );
 
 function mm_wc_hack( $null, $object_id, $meta_key, $meta_value ) {
 	if ( 'show_welcome_panel' == $meta_key && 0 == $meta_value ) {
