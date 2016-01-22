@@ -9,7 +9,7 @@ function mm_frontend_style() {
 	global $use_mm_styles;
 	if( $use_mm_styles ) {
 		?>
-		<link rel='stylesheet' id='mojo-frontent-css'  href='<?php echo MM_BASE_URL . 'css/front-end.css'; ?>' type='text/css' media='all' />
+		<link rel='stylesheet' id='mojo-frontent-css'  href='<?php echo MM_ASSETS_URL . 'css/front-end.css'; ?>' type='text/css' media='all' />
 		<?php
 	}
 }
