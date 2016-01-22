@@ -49,14 +49,14 @@ if( ! is_object( $theme ) || is_a( $theme, 'WP_Error' ) ) {
 						<div class="theme-details">
 							<div class="theme-version">Version: <?php esc_html_e( $theme->version ); ?></div>
 							<div class="theme-updated">Updated: <?php esc_html_e( $theme->modified ); ?></div>
-							<div class="theme-sales">Sales: <?php esc_html_e( $theme->sales_count ); ?></div>
+							<div class="theme-sales">Sales: <?php esc_html_e( number_format( $theme->sales_count ) ); ?></div>
 							<!--<div class="theme-description"></div>-->
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="wp-full-overlay-main">
-				<?php 
+				<?php
 				if( ! isset( $_GET['details'] ) ) {
 					?>
 					<iframe src="<?php echo mm_build_link( $theme->demo_url, array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'preview_' . esc_attr( $_GET['items'] ) . '_view_demo' ) ); ?>"></iframe>
@@ -70,16 +70,16 @@ if( ! is_object( $theme ) || is_a( $theme, 'WP_Error' ) ) {
 			</div>
 		</div>
 	<?php
-	} 
+	}
 	?>
 </div>
 
-<?php 
+<?php
 global $title;
-if( empty( $title ) ) { 
+if( empty( $title ) ) {
 	if( isset( $_GET['details'] ) ) {
 		$title = "Details : " . $theme->name;
 	} else {
 		$title = "Demo : " . $theme->name;
 	}
-} 
+}
