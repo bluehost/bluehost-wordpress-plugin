@@ -23,7 +23,6 @@ if ( file_exists( MM_BASE_DIR . 'inc/brand.php' ) ) {
 require_once( MM_BASE_DIR . 'inc/base.php' );
 require_once( MM_BASE_DIR . 'inc/churn.php' );
 require_once( MM_BASE_DIR . 'inc/menu.php' );
-require_once( MM_BASE_DIR . 'inc/themes-widget.php' );
 require_once( MM_BASE_DIR . 'inc/shortcode-generator.php' );
 require_once( MM_BASE_DIR . 'inc/mojo-themes.php' );
 require_once( MM_BASE_DIR . 'inc/styles.php' );
