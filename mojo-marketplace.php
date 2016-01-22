@@ -2,7 +2,7 @@
 /*
 Plugin Name: MOJO Marketplace
 Description: This plugin adds shortcodes, widgets, and themes to your WordPress site.
-Version: 0.7.3
+Version: 0.7.4
 Author: Mike Hansen
 Author URI: http://mikehansen.me?utm_campaign=plugin&utm_source=mojo_wp_plugin
 License: GPLv2 or later
@@ -11,7 +11,7 @@ GitHub Plugin URI: mojoness/mojo-marketplace-wp-plugin
 GitHub Branch: production
 */
 
-//Do not access file directly
+// Do not access file directly!
 if ( ! defined( 'WPINC' ) ) { die; }
 
 define( 'MM_BASE_DIR', plugin_dir_path( __FILE__ ) );
