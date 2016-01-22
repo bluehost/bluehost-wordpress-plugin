@@ -443,12 +443,11 @@ function mm_ux_log_buy_now_clicks_category() {
 		<script type="text/javascript">
 			jQuery( 'form.buy_now' ).submit( function() {
 				var item = jQuery( this ).attr('class');
-				var endpoint = "<?php echo MM_BASE_URL . 'e.php'; ?>";
 				var single_item = item.replace( 'buy_now ', '' );
 				var parent = jQuery( this ).parent( '.mojo-theme-actions' );
 				var value = parent.children( '.price' ).text();
 				var nonce = "<?php echo wp_create_nonce( 'mm_nonce-buy_now_click' ); ?>";
-				jQuery.ajax( endpoint + "?action=buy_now_click&item=" + single_item + "&value=" + value + "&nonce=" + nonce );
+				jQuery.ajax( ajaxurl + "?action=mm_buy_now_click&item=" + single_item + "&value=" + value + "&nonce=" + nonce );
 			} );
 		</script>
 		<?php
@@ -463,10 +462,9 @@ function mm_ux_log_buy_now_clicks_preview() {
 		<script type="text/javascript">
 			jQuery( 'form .mm-btn-primary' ).click( function() {
 				var item = "item_preview_<?php echo mm_title_to_slug( $theme->name ); ?>";
-				var endpoint = "<?php echo MM_BASE_URL . 'e.php'; ?>";
 				var value = "<?php echo $theme->prices->single_domain_license; ?>";
 				var nonce = "<?php echo wp_create_nonce( 'mm_nonce-buy_now_click' ); ?>";
-				jQuery.ajax( endpoint + "?action=buy_now_click&item=" + item + "&value=" + value + "&nonce=" + nonce );
+				jQuery.ajax( ajaxurl + "?action=mm_buy_now_click&item=" + item + "&value=" + value + "&nonce=" + nonce );
 			} );
 		</script>
 		<?php
@@ -487,12 +485,6 @@ function mm_ux_log_service_outbound() {
 }
 add_action( 'admin_init', 'mm_ux_log_service_outbound', 5 );
 
-function mm_endpoint_filter_buy_now_click( $approved_actions ) {
-	$approved_actions[] = "buy_now_click";
-	return $approved_actions;
-}
-add_filter( 'mm_approved_endpoint_action', 'mm_endpoint_filter_buy_now_click' );
-
 function mm_endpoint_action_buy_now_click() {
 	if( wp_verify_nonce( $_GET['nonce'], 'mm_nonce-buy_now_click' ) ) {
 		$event = array(
@@ -507,28 +499,21 @@ function mm_endpoint_action_buy_now_click() {
 		wp_die( 'Invalid Nonce' );
 	}
 }
-add_action( 'mm_endpoint-buy_now_click', 'mm_endpoint_action_buy_now_click' );
+add_action( 'wp_ajax_mm_buy_now_click', 'mm_endpoint_action_buy_now_click' );
 
 function mm_ux_log_browse_all_themes() {
 	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-themes" ) {
 		?>
 		<script type="text/javascript">
 			jQuery( 'h2 .add-new-h2' ).click( function() {
-				var endpoint = "<?php echo MM_BASE_URL . 'e.php'; ?>";
 				var nonce = "<?php echo wp_create_nonce( 'mm_nonce-browse_all_themes' ); ?>";
-				jQuery.ajax( endpoint + "?action=browse_all_themes&nonce=" + nonce );
+				jQuery.ajax( ajaxurl + "?action=mm_browse_all_themes&nonce=" + nonce );
 			} );
 		</script>
 		<?php
 	}
 }
 add_action( 'admin_footer', 'mm_ux_log_browse_all_themes' );
-
-function mm_endpoint_filter_browse_all_themes( $approved_actions ) {
-	$approved_actions[] = "browse_all_themes";
-	return $approved_actions;
-}
-add_filter( 'mm_approved_endpoint_action', 'mm_endpoint_filter_browse_all_themes' );
 
 function mm_endpoint_action_browse_all_themes() {
 	if( wp_verify_nonce( $_GET['nonce'], 'mm_nonce-browse_all_themes' ) ) {
@@ -541,7 +526,7 @@ function mm_endpoint_action_browse_all_themes() {
 		mm_ux_log( $event );
 	}
 }
-add_action( 'mm_endpoint-browse_all_themes', 'mm_endpoint_action_browse_all_themes' );
+add_action( 'wp_ajax_mm_browse_all_themes', 'mm_endpoint_action_browse_all_themes' );
 
 function mm_ux_log_btn_click() {
 	if( isset( $_GET['page'] ) && $_GET['page'] == 'mojo-themes' ) {
