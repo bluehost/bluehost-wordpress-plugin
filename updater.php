@@ -35,7 +35,7 @@ add_filter( 'pre_set_site_transient_update_plugins', 'mm_check_for_plugin_update
 
 function mm_plugin_api_call( $def, $action, $args ) {
 
-	if ( $args->slug != MM_PLUGIN_SLUG ) {
+	if ( isset( $args->slug ) && $args->slug != MM_PLUGIN_SLUG ) {
 		return $def;
 	}
 
