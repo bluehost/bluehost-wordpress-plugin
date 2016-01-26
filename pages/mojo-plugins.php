@@ -2,7 +2,7 @@
 $request_url = 'http://www.mojomarketplace.com/api/v2/items';
 $query = http_build_query( array( 'type' => 'plugins', 'category' => 'wordpress' ) );
 $request_url .= '?' . $query;
-$key = md5( $key );
+$key = md5( $request_url );
 if ( false === ( $transient = get_transient( 'mm_api_calls' ) ) || ! isset( $transient[ $key ] ) ) {
 	$transient[ $key ] = wp_remote_get( $request_url );
 	if ( ! is_wp_error( $transient[ $key ] ) ) {
