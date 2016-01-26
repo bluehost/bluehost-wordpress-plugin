@@ -63,7 +63,7 @@ function mm_add_tool_bar_items( $admin_bar ) {
 			'parent' => 'mojo-marketplace',
 			'href'   => admin_url( 'admin.php?page=mojo-plugins' ),
 			'meta'   => array(
-				'title' => __( 'Services' )
+				'title' => __( 'Plugins' )
 			),
 		) );
 	}
