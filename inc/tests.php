@@ -84,26 +84,6 @@ function mm_jetpack_bluehost_only() {
 	return $is_bluehost;
 }
 
-function mm_jetpack_onboarding_test() {
-	$file = MM_BASE_DIR . 'tests/jetpack-onboarding/jetpack-onboarding.php';
-	if ( file_exists( $file ) && mm_jetpack_bluehost_only() ) {
-		if ( ! mm_ab_test_inclusion( 'jetpack-onboarding-v1', md5( 'jetpack-onboarding-v1' ), 90, WEEK_IN_SECONDS * 4 ) ) {
-			mm_ab_test_inclusion( 'jetpack-onboarding-exempt-v1', md5( 'jetpack-onboarding-exempt-v1' ), 100, WEEK_IN_SECONDS * 4 );
-			add_option( 'jpstart_wizard_has_run', true );
-		} else {
-			/*
-			This is to avoid the issue with WC dismissing the welcome screen
-			*/
-			if ( false == get_option( 'mm_wc_screen_hack' ) ) {
-				update_user_meta( get_current_user_id(), 'show_welcome_panel', 1 );
-			}
-			mm_require( $file );
-			mm_require( MM_BASE_DIR . 'tests/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
-		}
-	}
-}
-add_action( 'init', 'mm_jetpack_onboarding_test', 9 );
-
 function mm_wc_hack( $null, $object_id, $meta_key, $meta_value ) {
 	if ( 'show_welcome_panel' == $meta_key && 0 == $meta_value ) {
 		update_option( 'mm_wc_screen_hack', true );
@@ -111,3 +91,8 @@ function mm_wc_hack( $null, $object_id, $meta_key, $meta_value ) {
 	return null;
 }
 add_filter( 'updated_user_metadata', 'mm_wc_hack', 10, 4 );
+
+function mm_jpo_test( $file ) {
+	return mm_ab_test_file( 'jetpack-onboarding-v1.1', $file, 'vendor/jetpack/jetpack-start/jetpack-start.php', 'tests/jetpack-onboarding/jetpack-onboarding.php', 25, DAY_IN_SECONDS * 90 );
+}
+add_filter( 'mm_require_file', 'mm_jpo_test' );

@@ -37,6 +37,10 @@ require_once( MM_BASE_DIR . 'inc/coming-soon.php' );
 require_once( MM_BASE_DIR . 'inc/tests.php' );
 require_once( MM_BASE_DIR . 'inc/editor-prompt.php' );
 mm_require( MM_BASE_DIR . 'inc/sso.php' );
+if ( mm_jetpack_bluehost_only() ) {
+	mm_require( MM_BASE_DIR . 'vendor/jetpack/jetpack-start/jetpack-start.php' );
+	mm_require( MM_BASE_DIR . 'vendor/jetpack/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
+}
 
 // Load base classes for github updater only in the admin and only with cap
 function mm_load_updater() {
