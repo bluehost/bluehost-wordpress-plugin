@@ -96,3 +96,9 @@ function mm_jpo_test( $file ) {
 	return mm_ab_test_file( 'jetpack-onboarding-v1.1', $file, 'vendor/jetpack/jetpack-start/jetpack-start.php', 'tests/jetpack-onboarding/jetpack-onboarding.php', 25, DAY_IN_SECONDS * 90 );
 }
 add_filter( 'mm_require_file', 'mm_jpo_test' );
+
+function mm_jpo_test_exempt() {
+	if ( mm_ab_test_inclusion( 'jetpack-onboarding-v1.1-exempt', md5( 'jetpack-onboarding-v1-exempt' ), 33, DAY_IN_SECONDS * 90 ) ) {
+		add_option( 'jpstart_wizard_has_run', true );
+	}
+}
