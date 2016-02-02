@@ -17,7 +17,7 @@ function mm_sso_check () {
 		if ( is_a( $user, 'WP_User' ) ) {
 			wp_set_current_user( $user->ID, $user->user_login );
 			wp_set_auth_cookie( $user->ID );
-			do_action( 'wp_login', $user->user_login );
+			do_action( 'wp_login', $user->user_login, $user );
 			delete_transient( 'mm_sso' );
 			do_action( 'mmsso_success' );
 			if ( isset ( $_GET['redirect'] ) ) {
