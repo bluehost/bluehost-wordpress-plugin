@@ -13,11 +13,11 @@ function mm_auto_update_make_bool( $value, $default = false ) {
 function mm_auto_update_callback( $args ) {
 	if( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) || AUTOMATIC_UPDATER_DISABLED === false ) {
 		$defaults = array(
-			'allow_major_auto_core_updates' => 'false',
+			'allow_major_auto_core_updates' => 'true',
 			'allow_minor_auto_core_updates' => 'true',
-			'auto_update_plugin'            => 'false', 
-			'auto_update_theme'             => 'false', 
-			'auto_update_translation'       => 'true'
+			'auto_update_plugin'            => 'true',
+			'auto_update_theme'             => 'true',
+			'auto_update_translation'       => 'true',
 		);
 		$value = get_option( $args['field'], $defaults[ $args['field'] ] );
 		echo "On <input type='radio' name='" . $args['field'] . "' value='true'" . checked( $value, 'true', false ) . " />";
