@@ -11,7 +11,7 @@ function mm_auto_update_make_bool( $value, $default = true ) {
 }
 
 function mm_auto_update_callback( $args ) {
-	if( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) || AUTOMATIC_UPDATER_DISABLED === false ) {
+	if ( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) || AUTOMATIC_UPDATER_DISABLED === false ) {
 		$defaults = array(
 			'allow_major_auto_core_updates' => 'true',
 			'allow_minor_auto_core_updates' => 'true',
@@ -26,9 +26,9 @@ function mm_auto_update_callback( $args ) {
 }
 
 function mm_auto_update_register_settings() {
-	$section_name = "mm_auto_update_settings_section";
-	$section_hook = "general";
-	if( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) ) {
+	$section_name = 'mm_auto_update_settings_section';
+	$section_hook = 'general';
+	if ( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) ) {
 		add_settings_section(
 			$section_name, //Section
 			'MOJO Auto Update Manager', //Title
@@ -37,7 +37,7 @@ function mm_auto_update_register_settings() {
 		);
 	}
 
-	if( ! defined( 'WP_AUTO_UPDATE_CORE' ) ) {
+	if ( ! defined( 'WP_AUTO_UPDATE_CORE' ) ) {
 		add_settings_field(
 			'allow_major_auto_core_updates',
 			'Core Major',
@@ -49,7 +49,7 @@ function mm_auto_update_register_settings() {
 		register_setting( 'general', 'allow_major_auto_core_updates' );
 	}
 
-	if( ! defined( 'WP_AUTO_UPDATE_CORE' ) ) {
+	if ( ! defined( 'WP_AUTO_UPDATE_CORE' ) ) {
 		add_settings_field(
 			'allow_minor_auto_core_updates',
 			'Core Minor',
@@ -96,7 +96,7 @@ add_action( 'admin_init', 'mm_auto_update_register_settings' );
 function mm_auto_update_configure() {
 
 	//Enable Major Auto Updates on new installs
-	if( get_option( 'mm_install_date' ) == date( 'M d, Y' ) && false == get_option( 'allow_major_auto_core_updates', false ) ) {
+	if ( get_option( 'mm_install_date' ) == date( 'M d, Y' ) && false == get_option( 'allow_major_auto_core_updates', false ) ) {
 		update_option( 'allow_major_auto_core_updates', 'true' );
 	}
 
@@ -109,8 +109,8 @@ function mm_auto_update_configure() {
 	);
 
 	//only change setting if the updater is not disabled
-	if( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) || AUTOMATIC_UPDATER_DISABLED === false ) {
-		if( defined( 'WP_AUTO_UPDATE_CORE' ) ) {
+	if ( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) || AUTOMATIC_UPDATER_DISABLED === false ) {
+		if ( defined( 'WP_AUTO_UPDATE_CORE' ) ) {
 			switch ( WP_AUTO_UPDATE_CORE ) {
 				case true:
 					$settings['allow_major_auto_core_updates'] = true;
@@ -129,9 +129,9 @@ function mm_auto_update_configure() {
 
 		$settings = array_map( 'mm_auto_update_make_bool', $settings );
 
-		foreach( $settings as $name => $value ) {
+		foreach ( $settings as $name => $value ) {
 
-			if( $value ) {
+			if ( $value ) {
 				add_filter( $name, '__return_true' );
 			} else {
 				add_filter( $name, '__return_false' );
