@@ -3,7 +3,7 @@
 	Auto Update Major on New Installs and default for all other with a setting section to customize.
 */
 
-function mm_auto_update_make_bool( $value, $default = false ) {
+function mm_auto_update_make_bool( $value, $default = true ) {
 	if( $value === 'false' ) { $value = false; }
 	if( $value === 'true' ) { $value = true; }
 	if( $value !== true && $value !== false ) { $value = $default; }
@@ -38,10 +38,10 @@ function mm_auto_update_register_settings() {
 	}
 
 	if( ! defined( 'WP_AUTO_UPDATE_CORE' ) ) {
-		add_settings_field( 
-			'allow_major_auto_core_updates', 
-			'Core Major', 
-			'mm_auto_update_callback', 
+		add_settings_field(
+			'allow_major_auto_core_updates',
+			'Core Major',
+			'mm_auto_update_callback',
 			$section_hook,
 			$section_name,
 			array( 'field' => 'allow_major_auto_core_updates' )
@@ -50,10 +50,10 @@ function mm_auto_update_register_settings() {
 	}
 
 	if( ! defined( 'WP_AUTO_UPDATE_CORE' ) ) {
-		add_settings_field( 
-			'allow_minor_auto_core_updates', 
-			'Core Minor', 
-			'mm_auto_update_callback', 
+		add_settings_field(
+			'allow_minor_auto_core_updates',
+			'Core Minor',
+			'mm_auto_update_callback',
 			$section_hook,
 			$section_name,
 			array( 'field' => 'allow_minor_auto_core_updates' )
@@ -61,30 +61,30 @@ function mm_auto_update_register_settings() {
 		register_setting( 'general', 'allow_minor_auto_core_updates' );
 	}
 
-	add_settings_field( 
-		'auto_update_theme', 
-		'Themes', 
-		'mm_auto_update_callback', 
+	add_settings_field(
+		'auto_update_theme',
+		'Themes',
+		'mm_auto_update_callback',
 		$section_hook,
 		$section_name,
 		array( 'field' => 'auto_update_theme' )
 	);
 	register_setting( 'general', 'auto_update_theme' );
 
-	add_settings_field( 
-		'auto_update_plugin', 
-		'Plugins', 
-		'mm_auto_update_callback', 
+	add_settings_field(
+		'auto_update_plugin',
+		'Plugins',
+		'mm_auto_update_callback',
 		$section_hook,
 		$section_name,
 		array( 'field' => 'auto_update_plugin' )
 	);
 	register_setting( 'general', 'auto_update_plugin' );
 
-	add_settings_field( 
-		'auto_update_translation', 
-		'Translations', 
-		'mm_auto_update_callback', 
+	add_settings_field(
+		'auto_update_translation',
+		'Translations',
+		'mm_auto_update_callback',
 		$section_hook,
 		$section_name,
 		array( 'field' => 'auto_update_translation' )
@@ -99,12 +99,12 @@ function mm_auto_update_configure() {
 	if( get_option( 'mm_install_date' ) == date( 'M d, Y' ) && false == get_option( 'allow_major_auto_core_updates', false ) ) {
 		update_option( 'allow_major_auto_core_updates', 'true' );
 	}
-	
+
 	$settings  = array(
-		'allow_major_auto_core_updates' => get_option( 'allow_major_auto_core_updates', false ),
+		'allow_major_auto_core_updates' => get_option( 'allow_major_auto_core_updates', true ),
 		'allow_minor_auto_core_updates' => get_option( 'allow_minor_auto_core_updates', true ),
-		'auto_update_plugin'            => get_option( 'auto_update_plugin', false ), 
-		'auto_update_theme'             => get_option( 'auto_update_theme', false ), 
+		'auto_update_plugin'            => get_option( 'auto_update_plugin', true ),
+		'auto_update_theme'             => get_option( 'auto_update_theme', true ),
 		'auto_update_translation'       => get_option( 'auto_update_translation', true )
 	);
 
@@ -121,7 +121,7 @@ function mm_auto_update_configure() {
 					$settings['allow_minor_auto_core_updates'] = false;
 					break;
 				default:
-					$settings['allow_major_auto_core_updates'] = false;
+					$settings['allow_major_auto_core_updates'] = true;
 					$settings['allow_minor_auto_core_updates'] = true;
 					break;
 			}
@@ -130,13 +130,13 @@ function mm_auto_update_configure() {
 		$settings = array_map( 'mm_auto_update_make_bool', $settings );
 
 		foreach( $settings as $name => $value ) {
-		
+
 			if( $value ) {
 				add_filter( $name, '__return_true' );
 			} else {
 				add_filter( $name, '__return_false' );
 			}
-		
+
 		}
 	}
 }
