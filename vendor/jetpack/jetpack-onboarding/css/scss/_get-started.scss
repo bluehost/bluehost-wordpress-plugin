@@ -1,0 +1,14 @@
+.welcome__container {
+	.welcome__get-started--callout {
+		margin: 20px 0;
+
+		@media ( max-width: 600px ) {
+			margin-bottom: 15px;
+			font-size: 15px;
+		}
+
+		@media ( max-width: 320px ) {
+			font-size: 13px;
+		}
+	}
+}
