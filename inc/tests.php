@@ -31,11 +31,10 @@ add_action( 'admin_footer', 'mm_ab_test_inclusion_none', 99 );
 function mm_ab_test_file( $test_name, $file, $original, $test, $audience = 10, $duration = WEEK_IN_SECONDS  ) {
 	if ( strpos( $file, $original ) ) {
 		$key = md5( serialize( $test ) );
-		$inclusion = mm_ab_test_inclusion( $test_name, $key, $audience, $duration );
 
 		$test_file = str_replace( $original, $test, $file );
 
-		if ( $inclusion && file_exists( $test_file ) ) {
+		if ( file_exists( $test_file ) && mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) ) {
 			$file = $test_file;
 		}
 	}
