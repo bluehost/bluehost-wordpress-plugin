@@ -1,6 +1,7 @@
 <?php
 function mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) {
 	if ( false === ( $test = get_transient( 'mm_test', false ) ) ) {
+
 		$previous_tests = get_option( 'mm_previous_tests', array() );
 
 		if ( in_array( $test_name, $previous_tests ) ) { return false; }
@@ -73,32 +74,20 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 */
 
 /* Start individual tests*/
-
-/**
- * Should Jetpack Start perform well, we would move this stuff to inc/jetpack.php.
- */
-
 function mm_jetpack_bluehost_only() {
 	$host = @exec( 'hostname' );
 	$is_bluehost = ( stripos( $host, 'bluehost' ) ) ? true : false;
 	return $is_bluehost;
 }
 
-function mm_wc_hack( $null, $object_id, $meta_key, $meta_value ) {
-	if ( 'show_welcome_panel' == $meta_key && 0 == $meta_value ) {
-		update_option( 'mm_wc_screen_hack', true );
-	}
-	return null;
-}
-add_filter( 'updated_user_metadata', 'mm_wc_hack', 10, 4 );
-
 function mm_jpo_test( $file ) {
-	return mm_ab_test_file( 'jetpack-onboarding-v1.1', $file, 'vendor/jetpack/jetpack-start/jetpack-start.php', 'tests/jetpack-onboarding/jetpack-onboarding.php', 25, DAY_IN_SECONDS * 90 );
+	return mm_ab_test_file( 'jetpack-onboarding-v1.1', $file, 'vendor/jetpack/jetpack-onboarding/jetpack-onboarding.php', 'tests/jetpack-onboarding/jetpack-onboarding.php', 25, DAY_IN_SECONDS * 90 );
 }
 add_filter( 'mm_require_file', 'mm_jpo_test' );
 
 function mm_jpo_test_exempt() {
 	if ( mm_ab_test_inclusion( 'jetpack-onboarding-v1.1-exempt', md5( 'jetpack-onboarding-v1-exempt' ), 33, DAY_IN_SECONDS * 90 ) ) {
-		add_option( 'jpstart_wizard_has_run', true );
+		update_option( 'jpo_disabled', 1 );
 	}
 }
+add_action( 'init', 'mm_jpo_test_exempt', 9 );
