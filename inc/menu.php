@@ -81,7 +81,7 @@ function mm_services_page() {
 
 function mm_plugins_menu() {
 	add_submenu_page( 'mojo-themes', 'Plugins', 'Plugins', 'manage_options', 'mojo-plugins', 'mm_plugins_page' );
-	add_plugins_page( 'MOJO Plugins', 'MOJO Plugins', 'manage_options', 'plugins-mojo', 'mm_plugins_page' );
+	add_plugins_page( 'Premium Plugins', 'Premium Plugins', 'manage_options', 'plugins-mojo', 'mm_plugins_page' );
 }
 add_action( 'admin_menu', 'mm_plugins_menu' );
 
