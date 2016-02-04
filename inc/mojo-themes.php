@@ -27,7 +27,7 @@ function mm_add_premium_link() {
 add_action( 'admin_head-theme-install.php', 'mm_add_premium_link' );
 
 function mm_add_theme_page() {
-	add_theme_page( 'MOJO Themes', 'MOJO Themes', 'install_themes', 'mojo-themes', 'mm_theme_page' );
+	add_theme_page( 'Premium Themes', 'Premium Themes', 'install_themes', 'mojo-themes', 'mm_theme_page' );
 }
 add_action( 'admin_menu', 'mm_add_theme_page' );
 
