@@ -41,25 +41,5 @@ if ( mm_jetpack_bluehost_only() ) {
 	mm_require( MM_BASE_DIR . 'vendor/jetpack/jetpack-start/jetpack-start.php' );
 	mm_require( MM_BASE_DIR . 'vendor/jetpack/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
 }
+mm_require( MM_BASE_DIR . 'updater.php' );
 
-// Load base classes for github updater only in the admin and only with cap
-function mm_load_updater() {
-	if ( file_exists( MM_BASE_DIR . 'updater.php' ) ) {
-		mm_require( MM_BASE_DIR . 'updater.php' );
-	} else if ( is_admin() ) {
-		/*
-		Check class_exist because this could be loaded in a different plugin
-		*/
-		if ( ! class_exists( 'GitHub_Updater' ) ) {
-			require_once( MM_BASE_DIR . 'updater/class-github-updater.php' );
-		}
-		if ( ! class_exists( 'GitHub_Updater_GitHub_API' ) ) {
-			require_once( MM_BASE_DIR . 'updater/class-github-api.php' );
-		}
-		if ( ! class_exists( 'GitHub_Plugin_Updater' ) ) {
-			require_once( MM_BASE_DIR . 'updater/class-plugin-updater.php' );
-		}
-		new GitHub_Plugin_Updater;
-	}
-}
-add_action( 'admin_init', 'mm_load_updater' );
