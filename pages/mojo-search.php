@@ -10,6 +10,8 @@ $query = array(
 	'order'     => 'score',
 );
 $response = mm_api_cache( add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/search' ) );
+
+
 if ( ! is_wp_error( $response ) ) {
 	$body = json_decode( $response['body'] );
 	$items = $body->items;
@@ -57,7 +59,7 @@ if ( ! is_wp_error( $response ) ) {
 							<form class="navbar-form form-inline navbar-right text-right" role="search" action="admin.php" method="GET">
 								<div class="form-group">
 									<input type="hidden" name="page" value="mojo-search" />
-									<input name="search" type="text" class="form-control input-lg" placeholder="Search Themes, Plugins &amp; Services">
+									<input name="search" value="<?php if ( isset($_GET['search']) ) { echo $_GET['search']; } ?>" type="text" class="form-control input-lg" placeholder="Search Themes, Plugins &amp; Services">
 								</div>
 								<button type="submit" class="btn btn-info btn-lg">Search</button>
 							</form>
@@ -69,49 +71,64 @@ if ( ! is_wp_error( $response ) ) {
 						<div class="inner-holder">
 							<div class="nav-holder clearfix">
 								<ul class="nav navbar-nav justified-nav">
-									<?php
-									switch ( $type ) {
-										case 'Premium Plugins':
-											?>
-											<li><a href="admin.php?page=mojo-plugins&items=accounting">Accounting</a></li>
-											<li><a href="admin.php?page=mojo-plugins&items=advertising">Advertising</a></li>
-											<li><a href="admin.php?page=mojo-plugins&items=ecommerce">Ecommerce</a></li>
-											<li><a href="admin.php?page=mojo-plugins&items=media">Media</a></li>
-											<li><a href="admin.php?page=mojo-plugins&items=responsive">Responsive</a></li>
-											<li><a href="admin.php?page=mojo-plugins&items=shipping">Shipping</a></li>
-											<li><a href="admin.php?page=mojo-plugins&items=utilities">Utilities</a></li>
-											<li><a href="admin.php?page=mojo-services">Professional Services</a></li>
-											<li><a href="admin.php?page=mojo-themes">Premium Themes</a></li>
-											<?php
-											break;
-
-										case 'Professional Services':
-											?>
-											<li><a href="admin.php?page=mojo-services&items=analytics">Analytics</a></li>
-											<li><a href="admin.php?page=mojo-services&items=ecommerce">Ecommerce</a></li>
-											<li><a href="admin.php?page=mojo-services&items=security">Security</a></li>
-											<li><a href="admin.php?page=mojo-services&items=seo">SEO</a></li>
-											<li><a href="admin.php?page=mojo-services&items=web-design">Web Design</a></li>
-											<li><a href="admin.php?page=mojo-services&items=web-development">Web Development</a></li>
-											<li><a href="admin.php?page=mojo-themes">Premium Themes</a></li>
-											<li><a href="admin.php?page=mojo-plugins">Premium Plugins</a></li>
-											<?php
-											break;
-
-										default:
-											?>
-											<li><a href="admin.php?page=mojo-themes&items=popular">Popular</a></li>
-											<li><a href="admin.php?page=mojo-themes&items=recent">New Items</a></li>
-											<li><a href="admin.php?page=mojo-themes&items=business">Business</a></li>
-											<li><a href="admin.php?page=mojo-themes&items=ecommerce">Ecommerce</a></li>
-											<li><a href="admin.php?page=mojo-themes&items=real-estate">Real Estate</a></li>
-											<li><a href="admin.php?page=mojo-services">Professional Services</a></li>
-											<li><a href="admin.php?page=mojo-plugins">Premium Plugins</a></li>
-											<?php
-											break;
-									}
-									?>
-
+									<li <?php if ( 'mojo-themes' == $_GET['page'] ) {echo 'class="active"';} ?>>
+										<a href="admin.php?page=mojo-themes">Themes</a>
+										<div class="dropdown">
+											<ul class="menu">
+												<li class="popular"><a href="#"><strong>Popular</strong></a></li>
+												<li><a href="admin.php?page=mojo-themes&items=blog">Blog</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=business">Business</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=church">Church</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=woocommerce">WooCommerce</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=fashion">Fashion</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=fitness">Fitness</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=health">Health</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=landing-page">Landing Page</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=magazine">Magazine</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=photography">Photography</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=portfolio">Portfolio</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=real-estate">Real Estate</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=restaurant">Restaurant</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=sports">Sports</a></li>
+												<li><a href="admin.php?page=mojo-themes&items=travel">Travel</a></li>
+											</ul>
+										</div>
+									</li>
+									<li <?php if ( 'mojo-plugins' == $_GET['page'] ) {echo 'class="active"';} ?>>
+										<a href="admin.php?page=mojo-plugins">Plugins</a>
+										<div class="dropdown">
+											<ul class="menu">
+												<li class="popular"><a href="#"><strong>Popular</strong></a></li>
+												<li><a href="admin.php?page=mojo-plugins&items=woocommerce">WooCommerce</a></li>
+												<li><a href="admin.php?page=mojo-plugins&items=slider">Slider</a></li>
+											</ul>
+										</div>
+									</li>
+									<li <?php if ( 'mojo-services' == $_GET['page'] ) {echo 'class="active"';} ?>>
+										<a href="admin.php?page=mojo-services">Services</a>
+										<div class="dropdown">
+											<ul class="menu">
+												<li class="popular"><a href="#"><strong>Popular</strong></a></li>
+												<li><a href="#">Analytics</a></li>
+												<li><a href="#">Training</a></li>
+												<li><a href="#">Backup</a></li>
+												<li><a href="#">Optimization</a></li>
+												<li><a href="#">Security</a></li>
+												<li><a href="#">Membership</a></li>
+												<li><a href="#">Setup/Configure</a></li>
+											</ul>
+										</div>
+									</li>
+									<li <?php if ( 'mojo-graphics' == $_GET['page'] ) {echo 'class="active"';} ?>>
+										<a href="admin.php?page=mojo-graphics">Graphics</a>
+										<div class="dropdown">
+											<ul class="menu">
+												<li class="popular"><a href="#"><strong>Popular</strong></a></li>
+												<li><a href="admin.php?page=mojo-graphics&items=logos">Stock Logos</a></li>
+												<li><a href="admin.php?page=mojo-graphics&items=business-cards">Business Cards</a></li>
+											</ul>
+										</div>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -126,8 +143,8 @@ if ( ! is_wp_error( $response ) ) {
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-12 col-sm-8">
-							<ol class="breadcrumb">
-								<li>Search</li>
+							<ol class="breadcrumb search">
+								<li>Search Results for: </li>
 								<li class="active"><?php echo ucwords( $search ); ?></li>
 							</ol>
 						</div>
@@ -166,6 +183,8 @@ if ( ! is_wp_error( $response ) ) {
 									<div class="description-box">
 										<h2><?php echo apply_filters( 'the_title', $item->name ); ?></h2>
 										<?php if ( isset( $item->short_description ) ) { echo $item->short_description; } ?>
+										<p><?php echo '<strong>Type</strong>: ' . $item->type; ?></p>
+										<p><?php echo '<strong>Category</strong>: ' . $item->category; ?></p>
 										<?php mm_stars( $item->rating, $item->sales_count ); ?>
 									</div>
 								</div>
