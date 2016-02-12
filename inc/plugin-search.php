@@ -70,7 +70,7 @@ add_filter( 'mm_plugin_search_patterns', 'mm_add_plugin_search_patterns' );
 function mm_check_plugin_search_value( $search ) {
 	$patterns = apply_filters( 'mm_plugin_search_patterns', array() );
 	foreach ( $patterns as $pattern => $plugin ) {
-		if( preg_match( $pattern, $search ) ) {
+		if ( preg_match( $pattern, $search ) ) {
 			return $plugin;
 		}
 	}

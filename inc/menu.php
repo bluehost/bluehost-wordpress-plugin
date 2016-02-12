@@ -66,6 +66,15 @@ function mm_add_tool_bar_items( $admin_bar ) {
 				'title' => __( 'Plugins' )
 			),
 		) );
+		$admin_bar->add_menu( array(
+			'id'     => 'mojo-graphics',
+			'title'  => 'Graphics',
+			'parent' => 'mojo-marketplace',
+			'href'   => admin_url( 'admin.php?page=mojo-graphics' ),
+			'meta'   => array(
+				'title' => __( 'Graphics' )
+			),
+		) );
 	}
 }
 add_action( 'admin_bar_menu', 'mm_add_tool_bar_items', 100 );
@@ -81,10 +90,60 @@ function mm_services_page() {
 
 function mm_plugins_menu() {
 	add_submenu_page( 'mojo-themes', 'Plugins', 'Plugins', 'manage_options', 'mojo-plugins', 'mm_plugins_page' );
-	add_plugins_page( 'Premium Plugins', 'Premium Plugins', 'manage_options', 'plugins-mojo', 'mm_plugins_page' );
+	add_plugins_page( 'Premium Plugins', 'Premium Plugins', 'manage_options', 'plugins-mojo', '__return_false' );
 }
 add_action( 'admin_menu', 'mm_plugins_menu' );
 
 function mm_plugins_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-plugins.php' );
 }
+
+function mm_plugins_premium_link() {
+	?>
+	<script type="text/javascript">
+	jQuery( document ).ready( function( $ ) {
+		$( '.wp-filter .filter-links li:last-of-type' ).after( '<li><a style="text-decoration: none;" onclick="location.href=\'admin.php?page=mojo-plugins\'">Premium</a></li>' );
+	} );
+	</script>
+	<?php
+}
+add_action( 'admin_head-plugin-install.php', 'mm_plugins_premium_link' );
+
+function mm_graphics_menu() {
+	add_submenu_page( 'mojo-themes', 'Graphics', 'Graphics', 'manage_options', 'mojo-graphics', 'mm_graphics_page' );
+}
+add_action( 'admin_menu', 'mm_graphics_menu' );
+
+function mm_graphics_page() {
+	mm_require( MM_BASE_DIR . 'pages/mojo-graphics.php' );
+}
+
+function mm_item_menu() {
+	add_submenu_page( null, 'Single Item', 'Single Item', 'manage_options', 'mojo-single-item', 'mm_single_item_page' );
+}
+add_action( 'admin_menu', 'mm_item_menu' );
+
+function mm_single_item_page() {
+	mm_require( MM_BASE_DIR . 'pages/single-item.php' );
+}
+
+function mm_item_search_menu() {
+	add_submenu_page( null, 'Search Items', 'Search Items', 'manage_options', 'mojo-search', 'mm_item_search_page' );
+}
+add_action( 'admin_menu', 'mm_item_search_menu' );
+
+function mm_item_search_page() {
+	mm_require( MM_BASE_DIR . 'pages/mojo-search.php' );
+}
+
+function mm_menu_redirects() {
+	if ( isset( $_GET['page'] ) ) {
+		if ( 'themes-mojo' == $_GET['page'] ) {
+			wp_safe_redirect( admin_url( 'admin.php?page=mojo-themes' ), '301' );
+		}
+		if ( 'plugins-mojo' == $_GET['page'] ) {
+			wp_safe_redirect( admin_url( 'admin.php?page=mojo-plugins' ), '301' );
+		}
+	}
+}
+add_action( 'admin_init', 'mm_menu_redirects' );

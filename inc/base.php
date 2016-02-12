@@ -38,10 +38,14 @@ function mm_api( $args = array(), $query = array() ) {
 
 	$request_url = rtrim( $request_url, '/' );
 	$request_url = $request_url . '?' . $query;
-	$key = md5( $request_url );
 
+	return mm_api_cache( $request_url );
+}
+
+function mm_api_cache( $api_url ) {
+	$key = md5( $api_url );
 	if ( false === ( $transient = get_transient( 'mm_api_calls' ) ) || ! isset( $transient[ $key ] ) ) {
-		$transient[ $key ] = wp_remote_get( $request_url );
+		$transient[ $key ] = wp_remote_get( $api_url );
 		if ( ! is_wp_error( $transient[ $key ] ) ) {
 			set_transient( 'mm_api_calls', $transient, DAY_IN_SECONDS );
 		}
@@ -186,3 +190,46 @@ function mm_adjust_feed_transient_lifetime( $lifetime ) {
 	return 3 * HOUR_IN_SECONDS;
 }
 add_filter( 'wp_feed_cache_transient_lifetime', 'mm_adjust_feed_transient_lifetime' );
+
+function mm_stars( $rating = 4.5, $sales = 0 ) {
+	if ( ! is_numeric( $rating ) || 0 == $rating ) { return; }
+	?>
+	<div class="star-rating">
+		<ul class="list-unstyled list-inline">
+			<?php
+			$rating_half = round( $rating * 2 ) / 2;
+			$stars = ( 0 == $rating_half) ? 5 : 0;
+			for ( $i = 0; $i < floor( $rating_half ); $i++ ) {
+				$stars++;
+				?>
+				<li><a href="#"><span class="dashicons dashicons-star-filled"></span></a></li>
+				<?php
+			}
+			if ( false !== strpos( $rating_half, '.' ) ) {
+				$stars++;
+				?>
+				<li><a href="#"><span class="dashicons dashicons-star-half"></span></a></li>
+				<?php
+			}
+			if ( $stars < 5 ) {
+				$empty_stars = 5 - $stars;
+				for ( $i = 0; $i < $empty_stars; $i++ ) {
+					?>
+					<li><a href="#"><span class="dashicons dashicons-star-empty"></span></a></li>
+					<?php
+				}
+			}
+			?>
+		</ul>
+		<span class="rating-label"><span class="count"><?php echo $rating_half; ?></span> Stars
+		<?php
+		if ( 0 !== $sales ) {
+			?>
+			<span class="sales-count">(<?php echo number_format( $sales ); ?> Sales)</span>
+			<?php
+		}
+		?>
+		</span>
+	</div>
+	<?php
+}
