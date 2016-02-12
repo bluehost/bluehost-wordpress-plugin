@@ -43,7 +43,7 @@ if ( ! is_wp_error( $response ) ) {
 ?>
 <div id="mojo-wrapper">
 	<header id="header" class="navbar navbar-default">
-		<div class="header-block bg-cover" style="background-image: url('<?php echo esc_url( MM_BASE_URL . 'img/tmp/header-bg-001.jpg' ); ?> );">
+		<div class="header-block bg-cover" style="background-image: url( '<?php echo esc_url( MM_BASE_URL . 'img/tmp/header-bg-001.jpg' ); ?>' );">
 			<span data-srcset="<?php echo esc_url( MM_BASE_URL .'img/tmp/header-bg-001.jpg' ); ?>, <?php echo esc_url( MM_BASE_URL . 'img/tmp/header-bg-001-2x.jpg' ); ?> 2x"></span>
 			<nav>
 				<div class="container">
