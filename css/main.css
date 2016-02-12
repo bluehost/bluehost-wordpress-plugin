@@ -285,6 +285,10 @@ dl.dl-horizontal dt {
 	margin: 0;
 }
 
+.item-pagination {
+	margin: 20px;
+	text-align: center;
+}
 /* star rating styles */
 
 .star-rating {
@@ -803,6 +807,81 @@ dl.dl-horizontal dt {
 
 #sidebar h3 {
 	margin: 0 0 28px;
+}
+
+.pagination, .pagination ul {
+    border-spacing: 0 !important;
+    margin: 0;
+    padding: 0;
+}
+.pagination::before, .pagination ul::before, .pagination::after, .pagination ul::after {
+    content: "";
+    display: table;
+}
+.pagination::after, .pagination ul::after {
+    clear: both;
+}
+.pagination li, .pagination .pagniation-link, .pagination .pagination--box, .pagination .pagination--prev, .pagination .pagination--next {
+    display: block;
+    float: left;
+}
+.pagination a, .pagination .pagination--link {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #ffffff;
+    border-color: #e6e6e6;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 0 1px 1px;
+    color: #8c8c8c;
+    display: block;
+    font-size: 14px;
+    list-style-type: none;
+    padding: 5px 12px;
+    text-decoration: none;
+}
+.pagination a:hover, .pagination .pagination--link:hover {
+    background-color: #f3f3f3;
+    color: #181818;
+}
+.pagination a .icon-angle-right, .pagination .pagination--link .icon-angle-right, .pagination a .icon-angle-left, .pagination .pagination--link .icon-angle-left {
+    position: relative;
+    top: 2px;
+}
+.pagination .disabled {
+    color: #8c8c8c;
+    font-size: 14px;
+    opacity: 0.5;
+    text-decoration: none;
+}
+.pagination .disabled:first-child a {
+    border-radius: 4px 0 0 4px;
+}
+.pagination .disabled:first-child {
+    border-right: 0 none;
+}
+.pagination .disabled:last-child {
+    border-left: 0 none;
+}
+.pagination .active a, .pagination li.current {
+    background-color: #ebebeb;
+    color: #181818;
+    font-weight: 700;
+}
+.pagination li.current {
+    border: 1px solid #e6e6e6;
+    font-size: 14px;
+    padding: 5px 12px;
+}
+.pagination .prev a, .pagination .pagination--prev a {
+    border-radius: 4px 0 0 4px;
+}
+.pagination .next a, .pagination .pagination--next a {
+    border-left-width: 1px;
+    border-radius: 0 4px 4px 0;
+    border-right-width: 1px;
 }
 
 /* sidebar widget styles */

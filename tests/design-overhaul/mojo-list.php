@@ -3,7 +3,13 @@ $type = str_replace( 'mojo-', '', $_GET['page'] );
 $query = array(
 	'category' => 'wordpress',
 	'type'     => $type,
+	'count'    => 20,
 );
+if ( isset( $_GET['paged'] ) && is_numeric( $_GET['paged']) ) {
+	$query['page'] = (int) $_GET['paged'];
+} else {
+	$query['page'] = 1;
+}
 
 if ( 'services' == $type || 'graphics' == $type ) {
 	unset( $query['category'] );
@@ -37,8 +43,8 @@ if ( ! is_wp_error( $response ) ) {
 	if ( isset( $_GET['items'] ) && 'security-1' == $_GET['items'] ) {
 		$_GET['items'] = 'security';
 	}
-	$body = json_decode( $response['body'] );
-	$items = $body->items;
+	$api = json_decode( $response['body'] );
+	$items = $api->items;
 
 ?>
 <div id="mojo-wrapper">
@@ -250,7 +256,7 @@ if ( ! is_wp_error( $response ) ) {
 											<span class="price-number">$<span><?php echo number_format( $item->prices->single_domain_license ); ?></span></span>
 										</div>
 										<div class="btn-group-vertical" role="group">
-											<a href="admin.php?page=mojo-single-item&item_id=<?php echo $item->id; ?>" class="btn btn-primary btn-lg">Details</a>
+											<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item->id ), admin_url( 'admin.php' ) ) ); ?>" class="btn btn-primary btn-lg">Details</a>
 											<a href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ) ); ?>" class="btn btn-success btn-lg">Buy Now</a>
 										</div>
 									</div>
@@ -263,15 +269,57 @@ if ( ! is_wp_error( $response ) ) {
 					</div>
 				</div>
 			</div>
+			<div class="alignright">
+				<nav class="pagination">
+					<ul class="group">
+						<?php
+						$pagination_start = $api->page - 5;
+						$pagination_end = $api->page + 5;
+						if ( $api->page < 5 ) {
+							$pagination_extra = 10 - $api->page;
+							$pagination_end = $api->page + $pagination_extra;
+						}
+						if ( $pagination_start < 1 ) {
+							$pagination_start = 1;
+						}
+						if ( $api->pageCount - $pagination_start < 10 && $api->pageCount - 10 > 1 ) {
+							$pagination_start = $api->pageCount - 10;
+						}
+						if ( $pagination_end > $api->pageCount ) {
+							$pagination_end = $api->pageCount;
+						}
+						?>
+						<li class="prev">
+							<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $api->page - 1 ) ) ); ?>"><span class="dashicons dashicons-arrow-left"></span></a>
+						</li>
+						<?php
+						for ( $i = $pagination_start;  $i <= $pagination_end;  $i++ ) {
+							?>
+							<li<?php if ( $i == $api->page ) { echo " class='active'";}?> >
+								<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $i ) ) ); ?>"><?php echo $i; ?></a>
+							</li>
+							<?php
+						}
+						?>
+						<li class="next">
+							<?php
+							$next_num = ( $api->page + 1 >= $api->pageCount ) ? $api->pageCount : $api->page + 1 ;
+							?>
+							<a rel="next" href="<?php echo esc_url( add_query_arg( array( 'paged' => $next_num ) ) ); ?>">
+								<span class="dashicons dashicons-arrow-right"></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
 		</div>
 	</main>
 </div>
 	<?php
 }
-	/*<!-- include jQuery library from CDN -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" defer></script>
-	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js" defer><\/script>')</script>
-	<!-- include bootstrap JavaScript -->
-	<script src="js/bootstrap.min.js" defer></script>
-	<!-- include custom JavaScript -->
-	<script src="js/jquery.main.js" defer></script>*/
+/*
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" defer></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js" defer><\/script>')</script>
+<script src="js/bootstrap.min.js" defer></script>
+<script src="js/jquery.main.js" defer></script>
+*/
