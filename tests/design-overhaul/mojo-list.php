@@ -34,15 +34,17 @@ if ( 'graphics' == $type && isset( $query['itemcategory'] ) ) {
 $api_url = add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/items' );
 $response = mm_api_cache( $api_url );
 if ( ! is_wp_error( $response ) ) {
-	if ( isset( $_GET['items'] ) && 'security-1' == $_GET['items'] ) $_GET['items'] = 'security';
+	if ( isset( $_GET['items'] ) && 'security-1' == $_GET['items'] ) {
+		$_GET['items'] = 'security';
+	}
 	$body = json_decode( $response['body'] );
 	$items = $body->items;
 
 ?>
 <div id="mojo-wrapper">
 	<header id="header" class="navbar navbar-default">
-		<div class="header-block bg-cover" style="background-image: url('<?php echo MM_BASE_URL; ?>img/tmp/header-bg-001.jpg');">
-			<span data-srcset="<?php echo MM_BASE_URL; ?>img/tmp/header-bg-001.jpg, <?php echo MM_BASE_URL; ?>img/tmp/header-bg-001-2x.jpg 2x"></span>
+		<div class="header-block bg-cover" style="background-image: url('<?php echo esc_url( MM_BASE_URL . 'img/tmp/header-bg-001.jpg' ); ?> );">
+			<span data-srcset="<?php echo esc_url( MM_BASE_URL .'img/tmp/header-bg-001.jpg' ); ?>, <?php echo esc_url( MM_BASE_URL . 'img/tmp/header-bg-001-2x.jpg' ); ?> 2x"></span>
 			<nav>
 				<div class="container">
 					<div class="inner-holder">
@@ -76,9 +78,9 @@ if ( ! is_wp_error( $response ) ) {
 						</div>
 						<div class="header-holder clearfix">
 							<a class="navbar-brand" href="#">
-								<img src="<?php echo MM_BASE_URL; ?>img/tmp/logo-icon.svg" width="250" height="42" alt="MOJO marketplace">
+								<img src="<?php echo esc_url( MM_BASE_URL . 'img/tmp/logo-icon.svg' ); ?>" width="250" height="42" alt="MOJO marketplace">
 							</a>
-							<form class="navbar-form form-inline navbar-right text-right" role="search" action="admin.php" method="GET">
+							<form class="navbar-form form-inline navbar-right text-right" role="search" action="<?php echo esc_url( admin_url( 'admin.php' ) ); ?>" method="GET">
 								<div class="form-group">
 									<input type="hidden" name="page" value="mojo-search" />
 									<input name="search" type="text" class="form-control input-lg" placeholder="Search Themes, Plugins &amp; Services">
@@ -141,7 +143,7 @@ if ( ! is_wp_error( $response ) ) {
 											</ul>
 										</div>
 									</li>
-									<li <?php if ( 'mojo-graphics' == $_GET['page'] ) {echo 'class="active"';} ?>>
+									<li <?php if ( 'mojo-graphics' == $_GET['page'] ) { echo 'class="active"'; } ?>>
 										<a href="admin.php?page=mojo-graphics">Graphics</a>
 										<div class="dropdown">
 											<ul class="menu">
@@ -168,23 +170,21 @@ if ( ! is_wp_error( $response ) ) {
 						<div class="col-xs-12 col-sm-8">
 							<ol class="breadcrumb">
 
-									<?php if ( !isset($_GET['items']) & $type !== 'graphics') {
-										echo 'WordPress ' . ucfirst( $type );
-									} ?>
+							<?php if ( ! isset( $_GET['items'] ) && $type !== 'graphics' ) {
+								echo '<li>WordPress ' . ucfirst( $type ) . '</li>';
+							} ?>
 
-									<?php if ( !isset($_GET['items']) & $type == 'graphics') {
-										echo ucfirst( $type );
-									} ?>
+							<?php if ( ! isset( $_GET['items'] ) && $type == 'graphics' ) {
+								echo '<li>' . ucfirst( $type ) . '</li>';
+							} ?>
 
-									<?php if ( isset( $_GET['items'] )& $type !== 'graphics' ) : ?>
-										<li><a href="admin.php?page=mojo-<?php echo $type; ?>">WordPress <?php echo ucfirst( $type ); ?></a></li>
-									<?php endif; ?>
+							<?php if ( isset( $_GET['items'] ) && $type !== 'graphics' ) : ?>
+								<li><a href="admin.php?page=mojo-<?php echo $type; ?>">WordPress <?php echo ucfirst( $type ); ?></a></li>
+							<?php endif; ?>
 
-									<?php if ( isset( $_GET['items'] )& $type == 'graphics' ) : ?>
-										<li><a href="admin.php?page=mojo-<?php echo $type; ?>"><?php echo ucfirst( $type ); ?></a></li>
-									<?php endif; ?>
-
-
+							<?php if ( isset( $_GET['items'] ) && $type == 'graphics' ) : ?>
+								<li><a href="admin.php?page=mojo-<?php echo $type; ?>"><?php echo ucfirst( $type ); ?></a></li>
+							<?php endif; ?>
 								<?php
 								if ( isset( $_GET['items'] ) ) {
 									?>
