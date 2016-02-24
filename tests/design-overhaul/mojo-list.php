@@ -30,7 +30,6 @@ if ( isset( $_GET['sort'] ) ) {
 	if ( 'recent' == $_GET['sort'] || 'popular' == $_GET['sort'] ) {
 		$query['order'] = $_GET['sort'];
 	}
-	//Logo | Business Cards
 }
 if ( 'graphics' == $type && isset( $query['itemcategory'] ) ) {
 	$query['category'] = $query['itemcategory'];
@@ -105,7 +104,7 @@ if ( ! is_wp_error( $response ) ) {
 										<a href="admin.php?page=mojo-themes">Themes</a>
 										<div class="dropdown">
 											<ul class="menu">
-												<li class="popular"><a href="#"><strong>Popular</strong></a></li>
+												<li class="popular"><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes', 'sort' => 'popular' ), admin_url( 'admin.php' ) ) ); ?>"><strong>Popular</strong></a></li>
 												<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes', 'items' => 'blog' ),         admin_url( 'admin.php' ) ) ); ?>">Blog</a></li>
 												<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes', 'items' => 'business' ),     admin_url( 'admin.php' ) ) ); ?>">Business</a></li>
 												<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes', 'items' => 'church' ),       admin_url( 'admin.php' ) ) ); ?>">Church</a></li>
@@ -128,7 +127,7 @@ if ( ! is_wp_error( $response ) ) {
 										<a href="admin.php?page=mojo-plugins">Plugins</a>
 										<div class="dropdown">
 											<ul class="menu">
-												<li class="popular"><a href="#"><strong>Popular</strong></a></li>
+												<li class="popular"><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-plugins', 'sort' => 'popular' ), admin_url( 'admin.php' ) ) ); ?>"><strong>Popular</strong></a></li>
 												<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-plugins', 'items' => 'woocommerce' ), admin_url( 'admin.php' ) ) ); ?>">WooCommerce</a></li>
 												<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-plugins', 'items' => 'slider' ),      admin_url( 'admin.php' ) ) ); ?>">Slider</a></li>
 											</ul>
@@ -138,7 +137,7 @@ if ( ! is_wp_error( $response ) ) {
 										<a href="admin.php?page=mojo-services">Services</a>
 										<div class="dropdown">
 											<ul class="menu">
-												<li class="popular"><a href="#"><strong>Popular</strong></a></li>
+												<li class="popular"><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-services', 'sort' => 'popular' ), admin_url( 'admin.php' ) ) ); ?>"><strong>Popular</strong></a></li>
 												<li><a href="#">Analytics</a></li>
 												<li><a href="#">Training</a></li>
 												<li><a href="#">Backup</a></li>
@@ -153,7 +152,7 @@ if ( ! is_wp_error( $response ) ) {
 										<a href="admin.php?page=mojo-graphics">Graphics</a>
 										<div class="dropdown">
 											<ul class="menu">
-												<li class="popular"><a href="#"><strong>Popular</strong></a></li>
+												<li class="popular"><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-graphics', 'sort' => 'popular' ), admin_url( 'admin.php' ) ) ); ?>"><strong>Popular</strong></a></li>
 												<li><a href="admin.php?page=mojo-graphics&items=logo">Stock Logos</a></li>
 												<li><a href="admin.php?page=mojo-graphics&items=business-cards">Business Cards</a></li>
 											</ul>
