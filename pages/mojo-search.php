@@ -33,18 +33,12 @@ if ( ! is_wp_error( $response ) ) {
 					<div class="list-group">
 					<?php
 
-					if ( count( $items ) == 0 ) {
-						?>
-						<div class="col-xs-12 col-sm-4 col-md-5">
-							<h3>No results for : <?php echo $search; ?></h3>
-						</div>
-						<?php
-					}
-
+					$results = 0;
 					foreach ( $items as $item ) {
 						if ( '0' == $item->prices->single_domain_license ) { continue; }
 						$whitelist = array( 'Logo','All','Business Cards', 'WordPress' );
 						if ( ! in_array( $item->category, $whitelist ) ) { continue; }
+						$results++;
 						?>
 						<div class="list-group-item theme-item">
 							<div class="row">
@@ -75,6 +69,13 @@ if ( ! is_wp_error( $response ) ) {
 									</div>
 								</div>
 							</div>
+						</div>
+						<?php
+					}
+					if ( $results === 0 ) {
+						?>
+						<div class="col-xs-12 col-sm-4 col-md-5">
+							<h3>No results for : <?php echo $search; ?></h3>
 						</div>
 						<?php
 					}
