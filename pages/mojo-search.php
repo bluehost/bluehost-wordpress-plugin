@@ -33,6 +33,14 @@ if ( ! is_wp_error( $response ) ) {
 					<div class="list-group">
 					<?php
 
+					if ( count( $items ) == 0 ) {
+						?>
+						<div class="col-xs-12 col-sm-4 col-md-5">
+							<h3>No results for : <?php echo $search; ?></h3>
+						</div>
+						<?php
+					}
+
 					foreach ( $items as $item ) {
 						if ( '0' == $item->prices->single_domain_license ) { continue; }
 						//TODO: this should be a whitelist not a blacklist
