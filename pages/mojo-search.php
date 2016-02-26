@@ -24,7 +24,7 @@ if ( ! is_wp_error( $response ) ) {
 						<div class="col-xs-12 col-sm-8">
 							<ol class="breadcrumb search">
 								<li>Search Results for: </li>
-								<li class="active"><?php echo ucwords( $search ); ?></li>
+								<li class="active"><?php echo $search; ?></li>
 							</ol>
 						</div>
 					</div>
