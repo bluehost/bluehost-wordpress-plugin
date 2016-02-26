@@ -911,6 +911,13 @@ dl.dl-horizontal dt {
 	display: block;
 }
 
+.provider-avatar{
+	width: 36px;
+	height: 36px;
+	border-radius: 18px;
+	margin-right: 15px;
+}
+
 /* ---------------------------------------------------------
    3. Styles for responsive breakpoints
    ---------------------------------------------------------*/

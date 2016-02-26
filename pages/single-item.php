@@ -196,15 +196,15 @@ if ( ! is_wp_error( $response ) ) {
 									echo apply_filters( 'the_content', $item->description );
 									?>
 									<div class="hidden-xs widget text-center" style="border-width: 2px;">
-									<div class="price">
-										<span class="price-number">$<span><?php echo number_format( $item->prices->single_domain_license ); ?></span></span>
-										<span class="currency">USD</span>
+										<div class="price">
+											<span class="price-number">$<span><?php echo number_format( $item->prices->single_domain_license ); ?></span></span>
+											<span class="currency">USD</span>
+										</div>
+										<div class="btn-box">
+											<a class="btn btn-success btn-lg" href="">Buy Now</a>
+										</div>
+										<span class="price-option">One Time Fee</span>
 									</div>
-									<div class="btn-box">
-										<a class="btn btn-success btn-lg" href="">Buy Now</a>
-									</div>
-									<span class="price-option">One Time Fee</span>
-								</div>
 								</div>
 							</div>
 						</div>
@@ -239,22 +239,18 @@ if ( ! is_wp_error( $response ) ) {
 												}
 											?>
 											</dd>
-										<?php
-										if ( 'Professional Services' == $item->type ) {
-											?>
-										<i><small>Providers are prescreened and selected by MOJO</small></i>
-											<?php
-										}
-										?>
 									</dl>
-									<?php /*
-									<dl class="dl-horizontal">
-										<dt>Categories:</dt>
-											<dd><a href="#">WordPress</a>, <a href="#">Web Design</a>, <a href="#">Web Development</a></dd>
-									</dl>
-									<span class="turnaround">Expected Turn Around Time. <br> 3 Business Days.</span>
-									*/ ?>
 								</div>
+								<?php if ( 'Professional Services' == $item->type ) { ?>
+								<div class="widget">
+									<h3>Providers</h3>
+									<div class="avatar-block">
+										<div class="avatar"><img class="provider-avatar" src="https://www.gravatar.com/avatar/<?php echo md5( strtolower( trim( $item->service_provider->email ) ) ); ?>?s=36" /></div>
+										<div class="name"><?php echo $item->service_provider->username; ?> </div>
+									</div>
+									<i><small>Providers are prescreened and selected by MOJO.</small></i>
+								</div>
+								<?php } ?>
 							</aside>
 						</div>
 					</div>
