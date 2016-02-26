@@ -99,18 +99,7 @@ if ( ! is_wp_error( $response ) ) {
 							</ol>
 						</div>
 						<div class="col-xs-12 col-sm-4">
-							<!-- <form class="form-horizontal">
-								<label class="control-label" for="sort_select">Sort By</label>
-								<span class="fake-select">
-									<select id="sort_select" class="form-control input-sm">
-										<option>Most Popular</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-									</select>
-								</span>
-							</form> -->
+
 						</div>
 					</div>
 				</div>
@@ -134,7 +123,7 @@ if ( ! is_wp_error( $response ) ) {
 											<span class="currency">USD</span>
 										</div>
 										<div class="btn-box">
-											<a class="btn btn-success btn-lg" href="">Buy Now</a>
+											<a class="btn btn-success btn-lg" href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_single_bottom' ) ); ?>">Buy Now</a>
 										</div>
 										<span class="price-option">One Time Fee</span>
 									</div>
@@ -149,7 +138,7 @@ if ( ! is_wp_error( $response ) ) {
 										<span class="currency">USD</span>
 									</div>
 									<div class="btn-box">
-										<a href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ) ); ?>" class="btn btn-success btn-lg">Buy Now</a>
+										<a href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_single_sidebar' ) ); ?>" class="btn btn-success btn-lg">Buy Now</a>
 									</div>
 									<span class="price-option">One Time Fee</span>
 								</div>
@@ -163,7 +152,7 @@ if ( ! is_wp_error( $response ) ) {
 										<dt>Sales:</dt>
 											<dd>
 											<?php
-												if ( $item->sales_count < 10 ) {
+												if ( ( $item->created_timestamp > time() - WEEK_IN_SECONDS * 4 ) && $item->sales_count < 10 ) {
 													echo 'New Item!';
 												} else if ( ( $item->created_timestamp > time() - WEEK_IN_SECONDS * 4 ) && $item->sales_count > 10) {
 													echo 'Popular New Item! (' . $item->sales_count . ')';

@@ -78,20 +78,6 @@ if ( ! is_wp_error( $response ) ) {
 								<li class="active"><?php echo ucwords( $search ); ?></li>
 							</ol>
 						</div>
-						<!-- <div class="col-xs-12 col-sm-4">
-							<form class="form-horizontal">
-								<label class="control-label" for="sort_select">Sort By</label>
-								<span class="fake-select">
-									<select id="sort_select" class="form-control input-sm">
-										<option>Most Popular</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-									</select>
-								</span>
-							</form>
-						</div> -->
 					</div>
 				</div>
 				<div class="panel-body">
@@ -105,7 +91,7 @@ if ( ! is_wp_error( $response ) ) {
 						<div class="list-group-item theme-item">
 							<div class="row">
 								<div class="col-xs-12 col-sm-4 col-md-5">
-									<a href="admin.php?page=mojo-theme-preview&id=<?php echo $item->id; ?>&items=popular">
+									<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item->id ), admin_url( 'admin.php' ) ) ); ?>">
 										<img class="img-responsive" src="<?php echo $item->images->preview_url; ?>" alt="image description" width="367" height="205">
 									</a>
 								</div>
@@ -125,8 +111,8 @@ if ( ! is_wp_error( $response ) ) {
 											<span class="price-number">$<span><?php echo number_format( $item->prices->single_domain_license ); ?></span></span>
 										</div>
 										<div class="btn-group-vertical" role="group">
-											<a href="admin.php?page=mojo-single-item&item_id=<?php echo $item->id; ?>" class="btn btn-primary btn-lg">Details</a>
-											<a href="#" class="btn btn-success btn-lg">Buy Now</a>
+											<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item->id ), admin_url( 'admin.php' ) ) ); ?>" class="btn btn-primary btn-lg">Details</a>
+											<a href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_search' ) ); ?>" class="btn btn-success btn-lg">Buy Now</a>
 										</div>
 									</div>
 								</div>
@@ -143,10 +129,3 @@ if ( ! is_wp_error( $response ) ) {
 </div>
 	<?php
 }
-	/*<!-- include jQuery library from CDN -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" defer></script>
-	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js" defer><\/script>')</script>
-	<!-- include bootstrap JavaScript -->
-	<script src="js/bootstrap.min.js" defer></script>
-	<!-- include custom JavaScript -->
-	<script src="js/jquery.main.js" defer></script>*/
