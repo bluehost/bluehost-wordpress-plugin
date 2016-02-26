@@ -36,7 +36,7 @@
 						<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-graphics' ), admin_url( 'admin.php' ) ) ); ?>">Graphics</a>
 						<div class="dropdown">
 							<ul class="menu">
-								<li class="popular"><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-graphics' ), admin_url( 'admin.php' ) ) ); ?>"><strong>Popular</strong></a></li>
+								<li class="popular"><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-graphics', 'sort' => 'popular' ), admin_url( 'admin.php' ) ) ); ?>"><strong>Popular</strong></a></li>
 								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-graphics', 'items' => 'logo' ), admin_url( 'admin.php' ) ) ); ?>">Stock Logos</a></li>
 								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-graphics', 'items' => 'business-cards' ), admin_url( 'admin.php' ) ) ); ?>">Business Cards</a></li>
 							</ul>
