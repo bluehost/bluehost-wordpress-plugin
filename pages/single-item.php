@@ -22,11 +22,11 @@ if ( ! is_wp_error( $response ) ) {
 								<li>
 									<?php
 									switch ( $item->type ) {
-										case 'Themes &amp; Templates':
+										case 'WordPress Themes &amp; Templates':
 											echo '<a href="admin.php?page=mojo-themes">Themes</a>';
 											break;
 
-										case 'Plugins &amp; Extensions':
+										case 'WordPress Plugins &amp; Extensions':
 											echo '<a href="admin.php?page=mojo-plugins">Plugins</a>';
 											break;
 
@@ -39,7 +39,7 @@ if ( ! is_wp_error( $response ) ) {
 											break;
 
 										default:
-											echo '<a href="admin.php?page=mojo-themes">Items</a>';
+											echo '<a href="admin.php?page=mojo-themes">WordPress Items</a>';
 											break;
 									}
 									?>
