@@ -22,12 +22,12 @@ if ( ! is_wp_error( $response ) ) {
 								<li>
 									<?php
 									switch ( $item->type ) {
-										case 'WordPress Themes &amp; Templates':
-											echo '<a href="admin.php?page=mojo-themes">Themes</a>';
+										case 'Themes &amp; Templates':
+											echo '<a href="admin.php?page=mojo-themes">WordPress Themes</a>';
 											break;
 
-										case 'WordPress Plugins &amp; Extensions':
-											echo '<a href="admin.php?page=mojo-plugins">Plugins</a>';
+										case 'Plugins &amp; Extensions':
+											echo '<a href="admin.php?page=mojo-plugins">WordPress Plugins</a>';
 											break;
 
 										case 'Professional Services':
