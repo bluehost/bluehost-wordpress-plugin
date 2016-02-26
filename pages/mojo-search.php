@@ -66,74 +66,7 @@ if ( ! is_wp_error( $response ) ) {
 						</div>
 					</div>
 				</div>
-				<div class="collapse navbar-collapse" id="navbar-collapse-1">
-					<div class="container">
-						<div class="inner-holder">
-							<div class="nav-holder clearfix">
-								<ul class="nav navbar-nav justified-nav">
-									<li <?php if ( 'mojo-themes' == $_GET['page'] ) {echo 'class="active"';} ?>>
-										<a href="admin.php?page=mojo-themes">Themes</a>
-										<div class="dropdown">
-											<ul class="menu">
-												<li class="popular"><a href="#"><strong>Popular</strong></a></li>
-												<li><a href="admin.php?page=mojo-themes&items=blog">Blog</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=business">Business</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=church">Church</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=woocommerce">WooCommerce</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=fashion">Fashion</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=fitness">Fitness</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=health">Health</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=landing-page">Landing Page</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=magazine">Magazine</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=photography">Photography</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=portfolio">Portfolio</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=real-estate">Real Estate</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=restaurant">Restaurant</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=sports">Sports</a></li>
-												<li><a href="admin.php?page=mojo-themes&items=travel">Travel</a></li>
-											</ul>
-										</div>
-									</li>
-									<li <?php if ( 'mojo-plugins' == $_GET['page'] ) {echo 'class="active"';} ?>>
-										<a href="admin.php?page=mojo-plugins">Plugins</a>
-										<div class="dropdown">
-											<ul class="menu">
-												<li class="popular"><a href="#"><strong>Popular</strong></a></li>
-												<li><a href="admin.php?page=mojo-plugins&items=woocommerce">WooCommerce</a></li>
-												<li><a href="admin.php?page=mojo-plugins&items=slider">Slider</a></li>
-											</ul>
-										</div>
-									</li>
-									<li <?php if ( 'mojo-services' == $_GET['page'] ) {echo 'class="active"';} ?>>
-										<a href="admin.php?page=mojo-services">Services</a>
-										<div class="dropdown">
-											<ul class="menu">
-												<li class="popular"><a href="#"><strong>Popular</strong></a></li>
-												<li><a href="#">Analytics</a></li>
-												<li><a href="#">Training</a></li>
-												<li><a href="#">Backup</a></li>
-												<li><a href="#">Optimization</a></li>
-												<li><a href="#">Security</a></li>
-												<li><a href="#">Membership</a></li>
-												<li><a href="#">Setup/Configure</a></li>
-											</ul>
-										</div>
-									</li>
-									<li <?php if ( 'mojo-graphics' == $_GET['page'] ) {echo 'class="active"';} ?>>
-										<a href="admin.php?page=mojo-graphics">Graphics</a>
-										<div class="dropdown">
-											<ul class="menu">
-												<li class="popular"><a href="#"><strong>Popular</strong></a></li>
-												<li><a href="admin.php?page=mojo-graphics&items=logos">Stock Logos</a></li>
-												<li><a href="admin.php?page=mojo-graphics&items=business-cards">Business Cards</a></li>
-											</ul>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
+				<?php mm_require( MM_BASE_DIR . 'pages/navigation.php' ); ?>
 			</nav>
 		</div>
 	</header>
