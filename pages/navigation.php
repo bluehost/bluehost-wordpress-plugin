@@ -4,7 +4,7 @@
 			<div class="nav-holder clearfix">
 				<ul class="nav navbar-nav justified-nav">
 					<li <?php if ( 'mojo-themes' == $_GET['page'] ) { echo 'class="active"'; } ?>>
-						<a href="admin.php?page=mojo-themes">Themes</a>
+						<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes' ), admin_url( 'admin.php' ) ) ); ?>">Themes</a>
 						<div class="dropdown">
 							<ul class="menu">
 								<li class="popular"><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes', 'items' => 'popular' ), admin_url( 'admin.php' ) ) ); ?>"><strong>Popular</strong></a></li>
@@ -27,7 +27,7 @@
 						</div>
 					</li>
 					<li <?php if ( 'mojo-plugins' == $_GET['page'] ) { echo 'class="active"'; } ?>>
-						<a href="admin.php?page=mojo-plugins">Plugins</a>
+						<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-plugins' ), admin_url( 'admin.php' ) ) ); ?>">Plugins</a>
 						<div class="dropdown">
 							<ul class="menu">
 								<li class="popular"><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-plugins', 'items' => 'popular' ), admin_url( 'admin.php' ) ) ); ?>"><strong>Popular</strong></a></li>
@@ -37,15 +37,15 @@
 						</div>
 					</li>
 					<li <?php if ( 'mojo-services' == $_GET['page'] ) { echo 'class="active"'; } ?>>
-						<a href="admin.php?page=mojo-services">Services</a>
+						<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-services' ), admin_url( 'admin.php' ) ) ); ?>">Services</a>
 					</li>
 					<li <?php if ( 'mojo-graphics' == $_GET['page'] ) { echo 'class="active"'; } ?>>
-						<a href="admin.php?page=mojo-graphics">Graphics</a>
+						<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-graphics' ), admin_url( 'admin.php' ) ) ); ?>">Graphics</a>
 						<div class="dropdown">
 							<ul class="menu">
-								<li class="popular"><a href="admin.php?page=mojo-graphics"><strong>Popular</strong></a></li>
-								<li><a href="admin.php?page=mojo-graphics&items=logo">Stock Logos</a></li>
-								<li><a href="admin.php?page=mojo-graphics&items=business-cards">Business Cards</a></li>
+								<li class="popular"><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-graphics' ), admin_url( 'admin.php' ) ) ); ?>"><strong>Popular</strong></a></li>
+								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-graphics', 'items' => 'logo' ), admin_url( 'admin.php' ) ) ); ?>">Stock Logos</a></li>
+								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-graphics', 'items' => 'business-cards' ), admin_url( 'admin.php' ) ) ); ?>">Business Cards</a></li>
 							</ul>
 						</div>
 					</li>
