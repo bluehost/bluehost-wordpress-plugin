@@ -1,7 +1,5 @@
 <?php
-//$id = '565f5981-f638-4d4c-9ea8-1c320a141f39'; //Plugin
-$search = $_GET['search'];
-//$item_type = $_GET['type'];
+$search = ( isset( $_GET['search'] ) ) ? sanitize_title_for_query( $_GET['search'] ) : '';
 $query = array(
 	'item_type' => 'all',
 	'query'     => $search,
@@ -10,7 +8,6 @@ $query = array(
 	'order'     => 'score',
 );
 $response = mm_api_cache( add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/search' ) );
-
 
 if ( ! is_wp_error( $response ) ) {
 	$body = json_decode( $response['body'] );
@@ -59,7 +56,7 @@ if ( ! is_wp_error( $response ) ) {
 							<form class="navbar-form form-inline navbar-right text-right" role="search" action="admin.php" method="GET">
 								<div class="form-group">
 									<input type="hidden" name="page" value="mojo-search" />
-									<input name="search" value="<?php if ( isset($_GET['search']) ) { echo $_GET['search']; } ?>" type="text" class="form-control input-lg" placeholder="Search Themes, Plugins &amp; Services">
+									<input name="search" value="<?php echo esc_attr( $search ); ?>" type="text" class="form-control input-lg" placeholder="Search Themes, Plugins &amp; Services">
 								</div>
 								<button type="submit" class="btn btn-info btn-lg">Search</button>
 							</form>
