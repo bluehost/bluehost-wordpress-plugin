@@ -43,8 +43,8 @@ if ( ! is_wp_error( $response ) ) {
 
 					foreach ( $items as $item ) {
 						if ( '0' == $item->prices->single_domain_license ) { continue; }
-						//TODO: this should be a whitelist not a blacklist
-						if ( 'Drupal' == $item->category || 'Joomla' == $item->category ) { continue; }
+						$whitelist = array( 'Logo','All','Business Cards', 'WordPress' );
+						if ( ! in_array( $item->category, $whitelist ) ) { continue; }
 						?>
 						<div class="list-group-item theme-item">
 							<div class="row">
