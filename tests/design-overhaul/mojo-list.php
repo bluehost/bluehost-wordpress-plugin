@@ -1,6 +1,6 @@
 <?php
 $type = str_replace( 'mojo-', '', $_GET['page'] );
-$type = sanitize_title( $type );
+$type = sanitize_title_for_query( $type );
 $query = array(
 	'category' => 'wordpress',
 	'type'     => $type,
