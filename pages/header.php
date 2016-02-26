@@ -33,7 +33,7 @@
 							</div>
 						</div>
 						<div class="header-holder clearfix">
-							<a class="navbar-brand" href="#">
+							<a class="navbar-brand" href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes' ), admin_url( 'admin.php' ) ) ); ?>">
 								<img src="<?php echo MM_BASE_URL; ?>img/tmp/logo-icon.svg" width="250" height="42" alt="MOJO marketplace">
 							</a>
 							<form class="navbar-form form-inline navbar-right text-right" role="search" action="admin.php" method="GET">
