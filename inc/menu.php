@@ -49,21 +49,21 @@ function mm_add_tool_bar_items( $admin_bar ) {
 			),
 		) );
 		$admin_bar->add_menu( array(
-			'id'     => 'mojo-services',
-			'title'  => 'Services',
-			'parent' => 'mojo-marketplace',
-			'href'   => admin_url( 'admin.php?page=mojo-services' ),
-			'meta'   => array(
-				'title' => __( 'Services' )
-			),
-		) );
-		$admin_bar->add_menu( array(
 			'id'     => 'mojo-plugins',
 			'title'  => 'Plugins',
 			'parent' => 'mojo-marketplace',
 			'href'   => admin_url( 'admin.php?page=mojo-plugins' ),
 			'meta'   => array(
 				'title' => __( 'Plugins' )
+			),
+		) );
+		$admin_bar->add_menu( array(
+			'id'     => 'mojo-services',
+			'title'  => 'Services',
+			'parent' => 'mojo-marketplace',
+			'href'   => admin_url( 'admin.php?page=mojo-services' ),
+			'meta'   => array(
+				'title' => __( 'Services' )
 			),
 		) );
 		$admin_bar->add_menu( array(
@@ -79,15 +79,6 @@ function mm_add_tool_bar_items( $admin_bar ) {
 }
 add_action( 'admin_bar_menu', 'mm_add_tool_bar_items', 100 );
 
-function mm_services_menu() {
-	add_submenu_page( 'mojo-themes', 'Services', 'Services', 'manage_options', 'mojo-services', 'mm_services_page' );
-}
-add_action( 'admin_menu', 'mm_services_menu' );
-
-function mm_services_page() {
-	mm_require( MM_BASE_DIR . 'pages/mojo-services.php' );
-}
-
 function mm_plugins_menu() {
 	add_submenu_page( 'mojo-themes', 'Plugins', 'Plugins', 'manage_options', 'mojo-plugins', 'mm_plugins_page' );
 	add_plugins_page( 'Premium Plugins', 'Premium Plugins', 'manage_options', 'plugins-mojo', '__return_false' );
@@ -96,6 +87,15 @@ add_action( 'admin_menu', 'mm_plugins_menu' );
 
 function mm_plugins_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-plugins.php' );
+}
+
+function mm_services_menu() {
+	add_submenu_page( 'mojo-themes', 'Services', 'Services', 'manage_options', 'mojo-services', 'mm_services_page' );
+}
+add_action( 'admin_menu', 'mm_services_menu' );
+
+function mm_services_page() {
+	mm_require( MM_BASE_DIR . 'pages/mojo-services.php' );
 }
 
 function mm_plugins_premium_link() {
