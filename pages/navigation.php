@@ -28,13 +28,6 @@
 					</li>
 					<li <?php if ( 'mojo-plugins' == $_GET['page'] ) { echo 'class="active"'; } ?>>
 						<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-plugins' ), admin_url( 'admin.php' ) ) ); ?>">Plugins</a>
-						<div class="dropdown">
-							<ul class="menu">
-								<li class="popular"><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-plugins', 'items' => 'popular' ), admin_url( 'admin.php' ) ) ); ?>"><strong>Popular</strong></a></li>
-								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-plugins', 'items' => 'woocommerce' ), admin_url( 'admin.php' ) ) ); ?>">WooCommerce</a></li>
-								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-plugins', 'items' => 'slider' ),      admin_url( 'admin.php' ) ) ); ?>">Slider</a></li>
-							</ul>
-						</div>
 					</li>
 					<li <?php if ( 'mojo-services' == $_GET['page'] ) { echo 'class="active"'; } ?>>
 						<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-services' ), admin_url( 'admin.php' ) ) ); ?>">Services</a>
