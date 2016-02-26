@@ -3,7 +3,7 @@
  * @package MOJO Marketplace WP Plugin
  */
 
-$id = $_GET['item_id'];
+$id = sanitize_title_for_query( $_GET['item_id'] );
 $response = wp_remote_get( 'https://api.mojomarketplace.com/api/v2/items/' . $id );
 if ( ! is_wp_error( $response ) ) {
 	$body = json_decode( $response['body'] );

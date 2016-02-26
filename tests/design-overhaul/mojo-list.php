@@ -1,5 +1,6 @@
 <?php
 $type = str_replace( 'mojo-', '', $_GET['page'] );
+$type = sanitize_title( $type );
 $query = array(
 	'category' => 'wordpress',
 	'type'     => $type,
@@ -16,19 +17,19 @@ if ( 'services' == $type || 'graphics' == $type ) {
 }
 
 if ( isset( $_GET['seller'] ) ) {
-	$query['seller'] = $_GET['seller'];
+	$query['seller'] = sanitize_title_for_query( $_GET['seller'] );
 }
 
 if ( isset( $_GET['items'] ) ) {
 	if ( 'recent' == $_GET['items'] || 'popular' == $_GET['items'] ) {
-		$query['order'] = $_GET['items'];
+		$query['order'] = sanitize_title_for_query( $_GET['items'] );
 	} else {
-		$query['itemcategory'] = $_GET['items'];
+		$query['itemcategory'] = sanitize_title_for_query( $_GET['items'] );
 	}
 }
 if ( isset( $_GET['sort'] ) ) {
 	if ( 'recent' == $_GET['sort'] || 'popular' == $_GET['sort'] ) {
-		$query['order'] = $_GET['sort'];
+		$query['order'] = sanitize_title_for_query( $_GET['sort'] );
 	}
 }
 if ( 'graphics' == $type && isset( $query['itemcategory'] ) ) {
@@ -116,11 +117,11 @@ if ( ! is_wp_error( $response ) ) {
 							} ?>
 
 							<?php if ( isset( $_GET['items'] ) && $type !== 'graphics' ) : ?>
-								<li><a href="admin.php?page=mojo-<?php echo $type; ?>">WordPress <?php echo ucfirst( $type ); ?></a></li>
+								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-' . $type ), admin_url( 'admin.php' ) ) ); ?>">WordPress <?php echo ucfirst( $type ); ?></a></li>
 							<?php endif; ?>
 
 							<?php if ( isset( $_GET['items'] ) && $type == 'graphics' ) : ?>
-								<li><a href="admin.php?page=mojo-<?php echo $type; ?>"><?php echo ucfirst( $type ); ?></a></li>
+								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-' . $type ), admin_url( 'admin.php' ) ) ); ?>"><?php echo ucfirst( $type ); ?></a></li>
 							<?php endif; ?>
 								<?php
 								if ( isset( $_GET['items'] ) ) {
@@ -131,41 +132,27 @@ if ( ! is_wp_error( $response ) ) {
 								?>
 							</ol>
 						</div>
-						<!-- <div class="col-xs-12 col-sm-4">
-							<form class="form-horizontal">
-								<label class="control-label" for="sort_select">Sort By</label>
-								<span class="fake-select">
-									<select id="sort_select" class="form-control input-sm">
-										<option>Most Popular</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-									</select>
-								</span>
-							</form>
-						</div> -->
 					</div>
 				</div>
 				<div class="panel-body">
 					<div class="list-group">
 					<?php
 					foreach ( $items as $item ) {
-						if ( '0' == $item->prices->single_domain_license ) {continue;}
+						if ( '0' == $item->prices->single_domain_license ) { continue; }
 						?>
 						<div class="list-group-item theme-item">
 							<div class="row">
 								<div class="col-xs-12 col-sm-4 col-md-5">
 									<?php
 									if ( 'themes' == $type ) {
-										$link = 'admin.php?page=mojo-theme-preview&id=' . $item->id . '&items=';
 										if ( isset( $_GET['items'] ) ) {
-											$link .= $_GET['items'];
+											$items = sanitize_title_for_query( $_GET['items'] );
 										} else {
-											$link .= 'popular';
+											$items = 'popular';
 										}
+										$link = add_query_arg( array( 'page' => 'mojo-theme-preview', 'id' => $item->id, 'items' => $items ), admin_url( 'admin.php' ) );
 									} else {
-										$link = 'admin.php?page=mojo-single-item&item_id=' . $item->id;
+										$link = add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item->id ), admin_url( 'admin.php' ) );
 									}
 									?>
 									<a href="<?php echo $link; ?>">
@@ -176,7 +163,7 @@ if ( ! is_wp_error( $response ) ) {
 									<div class="description-box">
 										<h2><a href="<?php echo $link; ?>"><?php echo apply_filters( 'mm_item_name', $item->name ); ?></a></h2>
 										<?php if ( isset( $item->short_description ) ) { echo $item->short_description; } ?>
-										<p><?php if ( isset( $item->tags ) ) { echo '<strong>Tags: </strong>' . substr($item->tags, 0, 120) . '...'; } ?></p>
+										<p><?php if ( isset( $item->tags ) ) { echo '<strong>Tags: </strong>' . substr( $item->tags, 0, 120 ) . '&hellip;'; } ?></p>
 										<?php mm_stars( $item->rating, $item->sales_count ); ?>
 									</div>
 								</div>
@@ -248,9 +235,3 @@ if ( ! is_wp_error( $response ) ) {
 </div>
 	<?php
 }
-/*
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" defer></script>
-<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js" defer><\/script>')</script>
-<script src="js/bootstrap.min.js" defer></script>
-<script src="js/jquery.main.js" defer></script>
-*/
