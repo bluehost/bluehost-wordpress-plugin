@@ -1,15 +1,12 @@
 <?php
 $search = ( isset( $_GET['search'] ) ) ? sanitize_title_for_query( $_GET['search'] ) : '';
 $query = array(
-	'item_type' => 'all',
+	'item_type' => ( isset( $_GET['item_type'] ) ) ? sanitize_title_for_query( $_GET['item_type'] ) : 'all',
 	'query'     => $search,
 	'category'  => 'wordpress',
 	'size'      => 150,
 	'order'     => 'score',
 );
-if ( isset( $_GET['item_type'] ) && in_array( $_GET['item_type'], array( 'themes', 'plugins', 'services', 'graphics' ) ) ) {
-	$query['item_type'] = sanitize_title_for_query( $_GET['item_type'] );
-}
 $response = mm_api_cache( add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/search' ) );
 
 if ( ! is_wp_error( $response ) ) {
