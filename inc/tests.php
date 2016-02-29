@@ -73,7 +73,7 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 */
 
 /* Start individual tests*/
-function mm_jetpack_bluehost_only() {return true;
+function mm_jetpack_bluehost_only() {
 	$host = @exec( 'hostname' );
 	$is_bluehost = ( stripos( $host, 'bluehost' ) ) ? true : false;
 	return $is_bluehost;
@@ -90,7 +90,8 @@ function mm_jpo_test_exempt() {
 add_action( 'init', 'mm_jpo_test_exempt', 9 );*/
 
 function mm_design_test() {
-	mm_ab_test_inclusion( 'mojo-design-overhaul-1', md5( 'mojo-design-overhaul-1' ), 100, DAY_IN_SECONDS * 90 );
+	mm_ab_test_inclusion( 'mojo-design-overhaul-1', md5( 'mojo-design-overhaul-1' ), 40, DAY_IN_SECONDS * 90 );
+	mm_ab_test_inclusion( 'mojo-design-overhaul-1-exempt', md5( 'mojo-design-overhaul-1-exempt' ), 66, DAY_IN_SECONDS * 90 );
 }
 add_action( 'init', 'mm_design_test', 8 );
 
