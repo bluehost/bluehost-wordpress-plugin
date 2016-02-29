@@ -32,12 +32,11 @@ if ( ! is_wp_error( $response ) ) {
 								<label for="sort_select" class="control-label">Sort By</label>
 								<span class="fake-select">
 									<select class="form-control input-sm" id="sort_select">
-										<?php if ( ! isset( $_GET['item_type'] ) ) { $_GET['item_type'] = 'all';} ?>
-										<option value='all'<?php selected( 'all', $_GET['item_type'] ); ?>>Select</option>
-										<option value='themes'<?php selected( 'themes', $_GET['item_type'] ); ?>>Themes</option>
-										<option value='plugins'<?php selected( 'plugins', $_GET['item_type'] ); ?>>Plugins</option>
-										<option value='services'<?php selected( 'services', $_GET['item_type'] ); ?>>Services</option>
-										<option value='graphics'<?php selected( 'graphics', $_GET['item_type'] ); ?>>Graphics</option>
+										<option value='all'<?php selected( 'all', $query['item_type'] ); ?>>Select</option>
+										<option value='themes'<?php selected( 'themes', $query['item_type'] ); ?>>Themes</option>
+										<option value='plugins'<?php selected( 'plugins', $query['item_type'] ); ?>>Plugins</option>
+										<option value='services'<?php selected( 'services', $query['item_type'] ); ?>>Services</option>
+										<option value='graphics'<?php selected( 'graphics', $query['item_type'] ); ?>>Graphics</option>
 									</select>
 								</span>
 							</form>
