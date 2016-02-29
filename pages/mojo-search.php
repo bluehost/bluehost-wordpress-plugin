@@ -4,9 +4,12 @@ $query = array(
 	'item_type' => 'all',
 	'query'     => $search,
 	'category'  => 'wordpress',
-	'size'      => 50,
+	'size'      => 150,
 	'order'     => 'score',
 );
+if ( isset( $_GET['item_type'] ) && in_array( $_GET['item_type'], array( 'themes', 'plugins', 'services', 'graphics' ) ) ) {
+	$query['item_type'] = sanitize_title_for_query( $_GET['item_type'] );
+}
 $response = mm_api_cache( add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/search' ) );
 
 if ( ! is_wp_error( $response ) ) {
@@ -27,6 +30,21 @@ if ( ! is_wp_error( $response ) ) {
 								<li class="active"><?php echo $search; ?></li>
 							</ol>
 						</div>
+						<div class="col-xs-12 col-sm-4">
+							<form class="form-horizontal search-sort">
+								<label for="sort_select" class="control-label">Sort By</label>
+								<span class="fake-select">
+									<select class="form-control input-sm" id="sort_select">
+										<?php if ( ! isset( $_GET['item_type'] ) ) { $_GET['item_type'] = '';} ?>
+										<option value=''<?php selected( '', $_GET['item_type'] ); ?>>Select</option>
+										<option value='themes'<?php selected( 'themes', $_GET['item_type'] ); ?>>Themes</option>
+										<option value='plugins'<?php selected( 'plugins', $_GET['item_type'] ); ?>>Plugins</option>
+										<option value='services'<?php selected( 'services', $_GET['item_type'] ); ?>>Services</option>
+										<option value='graphics'<?php selected( 'graphics', $_GET['item_type'] ); ?>>Graphics</option>
+									</select>
+								</span>
+							</form>
+						</div>
 					</div>
 				</div>
 				<div class="panel-body">
@@ -39,8 +57,25 @@ if ( ! is_wp_error( $response ) ) {
 						$whitelist = array( 'Logo','All','Business Cards', 'WordPress' );
 						if ( ! in_array( $item->category, $whitelist ) ) { continue; }
 						$results++;
+						switch ( $item->type ) {
+							case 'Logos &amp; Graphics':
+								$class = 'graphics';
+								break;
+							case 'Themes &amp; Templates':
+								$class = 'themes';
+								break;
+							case 'Professional Services':
+								$class = 'services';
+								break;
+							case 'Plugins &amp; Extensions':
+								$class = 'plugins';
+								break;
+							default:
+								$class = 'default';
+								break;
+						}
 						?>
-						<div class="list-group-item theme-item">
+						<div class="list-group-item theme-item<?php echo ' ' . $class . '-sort'; ?>">
 							<div class="row">
 								<div class="col-xs-12 col-sm-4 col-md-5">
 									<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item->id ), admin_url( 'admin.php' ) ) ); ?>">
@@ -72,7 +107,7 @@ if ( ! is_wp_error( $response ) ) {
 						</div>
 						<?php
 					}
-					if ( $results === 0 ) {
+					if ( 0 === $results ) {
 						?>
 						<div class="col-xs-12 col-sm-4 col-md-5">
 							<h3>No results for : <?php echo $search; ?></h3>
@@ -86,5 +121,12 @@ if ( ! is_wp_error( $response ) ) {
 		</div>
 	</main>
 </div>
+<script type="text/javascript">
+jQuery( document ).ready( function( $ ) {
+	$( '.search-sort #sort_select' ).change( function() {
+		window.location.href = window.location.href + '&item_type=' + this.value;
+	} );
+} );
+</script>
 	<?php
 }

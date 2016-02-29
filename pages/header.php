@@ -39,7 +39,7 @@
 							<form class="navbar-form form-inline navbar-right text-right" role="search" action="admin.php" method="GET">
 								<div class="form-group">
 									<input type="hidden" name="page" value="mojo-search" />
-									<input name="search" type="text" class="form-control input-lg" placeholder="Search Themes, Plugins &amp; Extensions">
+									<input name="search" type="text" class="form-control input-lg" placeholder="Search Themes, Plugins, &amp; Services">
 								</div>
 								<button type="submit" class="btn btn-info btn-lg">Search</button>
 							</form>

@@ -5,6 +5,7 @@ $query = array(
 	'category' => 'wordpress',
 	'type'     => $type,
 	'count'    => 20,
+	'order'     => 'sales',
 );
 if ( isset( $_GET['paged'] ) && is_numeric( $_GET['paged'] ) ) {
 	$query['page'] = (int) $_GET['paged'];

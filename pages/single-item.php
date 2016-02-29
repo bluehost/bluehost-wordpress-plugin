@@ -44,7 +44,14 @@ if ( ! is_wp_error( $response ) ) {
 									}
 									?>
 								</li>
-								<li class="active"><?php echo substr( $item->name, 0, 50 ); ?></li>
+								<li class="active">
+								<?php
+								echo substr( $item->name, 0, 42 );
+								if ( strlen( $item->name ) != strlen( substr( $item->name, 0, 42 ) ) ) {
+									echo '&hellip;';
+								}
+								?>
+								</li>
 							</ol>
 						</div>
 						<div class="col-xs-12 col-sm-4">
@@ -98,6 +105,7 @@ if ( ! is_wp_error( $response ) ) {
 											<dd> <?php echo date( 'F j, Y', $item->created_timestamp );?></dd>
 										<dt>Updated:</dt>
 											<dd> <?php echo date( 'F j, Y', $item->modified_timestamp );?></dd>
+										<?php if ( 'Professional Services' != $item->type ) { ?>
 										<dt>Sales:</dt>
 											<dd>
 											<?php
@@ -110,6 +118,7 @@ if ( ! is_wp_error( $response ) ) {
 												}
 											?>
 											</dd>
+										<?php } ?>
 									</dl>
 								</div>
 								<?php if ( 'Professional Services' == $item->type ) { ?>
