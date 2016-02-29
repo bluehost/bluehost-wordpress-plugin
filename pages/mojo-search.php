@@ -32,8 +32,8 @@ if ( ! is_wp_error( $response ) ) {
 								<label for="sort_select" class="control-label">Sort By</label>
 								<span class="fake-select">
 									<select class="form-control input-sm" id="sort_select">
-										<?php if ( ! isset( $_GET['item_type'] ) ) { $_GET['item_type'] = '';} ?>
-										<option value=''<?php selected( '', $_GET['item_type'] ); ?>>Select</option>
+										<?php if ( ! isset( $_GET['item_type'] ) ) { $_GET['item_type'] = 'all';} ?>
+										<option value='all'<?php selected( '', $_GET['item_type'] ); ?>>Select</option>
 										<option value='themes'<?php selected( 'themes', $_GET['item_type'] ); ?>>Themes</option>
 										<option value='plugins'<?php selected( 'plugins', $_GET['item_type'] ); ?>>Plugins</option>
 										<option value='services'<?php selected( 'services', $_GET['item_type'] ); ?>>Services</option>
