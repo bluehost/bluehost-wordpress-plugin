@@ -40,6 +40,9 @@ function mm_plugin_api_call( $def, $action, $args ) {
 	}
 
 	$plugin_info = get_site_transient( 'update_plugins' );
+	if ( ! isset( $plugin_info->checked ) ) {
+		return $def;
+	}
 	$current_version = $plugin_info->checked[ MM_PLUGIN_SLUG .'/mojo-marketplace.php' ];
 	$args->version = $current_version;
 	$request_string = mm_prepare_request( $action, $args );
