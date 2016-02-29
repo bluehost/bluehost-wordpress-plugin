@@ -57,25 +57,8 @@ if ( ! is_wp_error( $response ) ) {
 						$whitelist = array( 'Logo','All','Business Cards', 'WordPress' );
 						if ( ! in_array( $item->category, $whitelist ) ) { continue; }
 						$results++;
-						switch ( $item->type ) {
-							case 'Logos &amp; Graphics':
-								$class = 'graphics';
-								break;
-							case 'Themes &amp; Templates':
-								$class = 'themes';
-								break;
-							case 'Professional Services':
-								$class = 'services';
-								break;
-							case 'Plugins &amp; Extensions':
-								$class = 'plugins';
-								break;
-							default:
-								$class = 'default';
-								break;
-						}
 						?>
-						<div class="list-group-item theme-item<?php echo ' ' . $class . '-sort'; ?>">
+						<div class="list-group-item theme-item">
 							<div class="row">
 								<div class="col-xs-12 col-sm-4 col-md-5">
 									<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item->id ), admin_url( 'admin.php' ) ) ); ?>">
