@@ -233,3 +233,51 @@ function mm_stars( $rating = 4.5, $sales = 0 ) {
 	</div>
 	<?php
 }
+
+function mm_pagination( $page = 1, $total_pages = 1 ) {
+	?>
+	<div class="alignright">
+		<nav class="pagination">
+			<ul class="group">
+				<?php
+				$pagination_start = $page - 5;
+				$pagination_end = $page + 5;
+				if ( $page < 5 ) {
+					$pagination_extra = 10 - $page;
+					$pagination_end = $page + $pagination_extra;
+				}
+				if ( $pagination_start < 1 ) {
+					$pagination_start = 1;
+				}
+				if ( $total_pages - $pagination_start < 10 && $total_pages - 10 > 1 ) {
+					$pagination_start = $total_pages - 10;
+				}
+				if ( $pagination_end > $total_pages ) {
+					$pagination_end = $total_pages;
+				}
+				?>
+				<li class="prev">
+					<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $page - 1 ) ) ); ?>"><span class="dashicons dashicons-arrow-left"></span></a>
+				</li>
+				<?php
+				for ( $i = $pagination_start;  $i <= $pagination_end;  $i++ ) {
+					?>
+					<li<?php if ( $i == $page ) { echo " class='active'";}?> >
+						<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $i ) ) ); ?>"><?php echo $i; ?></a>
+					</li>
+					<?php
+				}
+				?>
+				<li class="next">
+					<?php
+					$next_num = ( $page + 1 >= $total_pages ) ? $total_pages : $page + 1 ;
+					?>
+					<a rel="next" href="<?php echo esc_url( add_query_arg( array( 'paged' => $next_num ) ) ); ?>">
+						<span class="dashicons dashicons-arrow-right"></span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<?php
+}

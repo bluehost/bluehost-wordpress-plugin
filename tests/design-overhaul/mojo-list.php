@@ -1,6 +1,5 @@
 <?php
-$type = str_replace( 'mojo-', '', $_GET['page'] );
-$type = sanitize_title_for_query( $type );
+$type = str_replace( 'mojo-', '', sanitize_title_for_query( wp_unslash( $_GET['page'] ) ) );
 $query = array(
 	'category' => 'wordpress',
 	'type'     => $type,
@@ -137,49 +136,7 @@ if ( ! is_wp_error( $response ) ) {
 					</div>
 				</div>
 			</div>
-			<div class="alignright">
-				<nav class="pagination">
-					<ul class="group">
-						<?php
-						$pagination_start = $api->page - 5;
-						$pagination_end = $api->page + 5;
-						if ( $api->page < 5 ) {
-							$pagination_extra = 10 - $api->page;
-							$pagination_end = $api->page + $pagination_extra;
-						}
-						if ( $pagination_start < 1 ) {
-							$pagination_start = 1;
-						}
-						if ( $api->pageCount - $pagination_start < 10 && $api->pageCount - 10 > 1 ) {
-							$pagination_start = $api->pageCount - 10;
-						}
-						if ( $pagination_end > $api->pageCount ) {
-							$pagination_end = $api->pageCount;
-						}
-						?>
-						<li class="prev">
-							<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $api->page - 1 ) ) ); ?>"><span class="dashicons dashicons-arrow-left"></span></a>
-						</li>
-						<?php
-						for ( $i = $pagination_start;  $i <= $pagination_end;  $i++ ) {
-							?>
-							<li<?php if ( $i == $api->page ) { echo " class='active'";}?> >
-								<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $i ) ) ); ?>"><?php echo $i; ?></a>
-							</li>
-							<?php
-						}
-						?>
-						<li class="next">
-							<?php
-							$next_num = ( $api->page + 1 >= $api->pageCount ) ? $api->pageCount : $api->page + 1 ;
-							?>
-							<a rel="next" href="<?php echo esc_url( add_query_arg( array( 'paged' => $next_num ) ) ); ?>">
-								<span class="dashicons dashicons-arrow-right"></span>
-							</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
+			<?php mm_pagination( $api->page, $api->pageCount ); ?>
 		</div>
 	</main>
 </div>
