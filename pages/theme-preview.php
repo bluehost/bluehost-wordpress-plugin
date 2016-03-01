@@ -22,7 +22,7 @@ if ( is_wp_error( $theme ) ) {
 	<div class="wp-full-overlay expanded" id="theme-installer" style="display: block;">
 		<div class="wp-full-overlay-sidebar">
 			<div class="wp-full-overlay-header">
-				<a href="<?php echo add_query_arg( array( 'page' => 'mojo-themes', 'items' => esc_attr( $items ) ), admin_url( 'admin.php' ) ); ?>" class="theme-preview-close">
+				<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes', 'items' => esc_attr( $items ) ), admin_url( 'admin.php' ) ) ); ?>" class="theme-preview-close">
 					<span class="pull-right dashicons dashicons-no-alt"></span>
 				</a>
 			</div>
@@ -34,7 +34,7 @@ if ( is_wp_error( $theme ) ) {
 					<?php mm_stars( $theme->rating, $theme->sales_count ); ?>
 					<div class="theme-details text-center">
 						<div role="group" class="btn-group-horizontal">
-							<a class="btn btn-primary" href="<?php echo add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item_id ), admin_url( 'admin.php' ) );?>">Details</a>
+							<a class="btn btn-primary" href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item_id ), admin_url( 'admin.php' ) ) ); ?>">Details</a>
 							<a class="btn btn-success" href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item_id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_preview' ) ); ?>">Buy Now</a>
 						</div>
 						<br/>
