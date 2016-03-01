@@ -85,12 +85,10 @@ if ( is_wp_error( $theme ) ) {
 <script type="text/javascript">
 jQuery( document ).ready( function( $ ) {
 	$( 'a.theme-preview-other-link' ).hover( function() {
-		//$( '#preview-screenshot a' ).attr( 'href', $( this ).attr( 'href' ) );
 		$( '#preview-screenshot img' ).attr( 'src', $( this ).data( 'preview' ) );
 		$( '#preview-screenshot' ).fadeIn();
 	} );
 	$( 'a.theme-preview-other-link' ).mouseleave( function() {
-		//$( '#preview-screenshot a' ).attr( 'href', '' );
 		$( '#preview-screenshot img' ).attr( 'src', '' );
 		$( '#preview-screenshot' ).hide();
 	} );
