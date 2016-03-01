@@ -313,3 +313,18 @@ div.mojo-notice .mojo-dismiss{
 	top: 0;
 	color: #92c933;
 }
+.theme-preview-logo{
+	margin: 10px;
+}
+.theme-related{
+	position: absolute;
+	bottom: 0px;
+	max-width: 250px;
+}
+.theme-preview-close{
+	color: #5b5b5b;
+}
+.theme-preview-other-themes{
+	width: 100%;
+	margin: 5px;
+}
