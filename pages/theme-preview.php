@@ -68,9 +68,7 @@ if ( is_wp_error( $theme ) ) {
 						}
 						?>
 							<div id="preview-screenshot">
-								<a href="">
 									<img src="" />
-								</a>
 							</div>
 						</div>
 					</div>
@@ -87,12 +85,12 @@ if ( is_wp_error( $theme ) ) {
 <script type="text/javascript">
 jQuery( document ).ready( function( $ ) {
 	$( 'a.theme-preview-other-link' ).hover( function() {
-		$( '#preview-screenshot a' ).attr( 'href', $( this ).attr( 'href' ) );
+		//$( '#preview-screenshot a' ).attr( 'href', $( this ).attr( 'href' ) );
 		$( '#preview-screenshot img' ).attr( 'src', $( this ).data( 'preview' ) );
 		$( '#preview-screenshot' ).fadeIn();
 	} );
-	$( '#preview-screenshot a' ).mouseout( function() {
-		$( '#preview-screenshot a' ).attr( 'href', '' );
+	$( 'a.theme-preview-other-link' ).mouseleave( function() {
+		//$( '#preview-screenshot a' ).attr( 'href', '' );
 		$( '#preview-screenshot img' ).attr( 'src', '' );
 		$( '#preview-screenshot' ).hide();
 	} );

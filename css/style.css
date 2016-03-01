@@ -331,7 +331,7 @@ div.mojo-notice .mojo-dismiss{
 #preview-screenshot{
 	display: none;
 	position: absolute;
-	bottom: 0px;
+	bottom: 130px;
 	width: 290px;
 }
 #preview-screenshot img{
