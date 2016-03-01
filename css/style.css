@@ -328,3 +328,12 @@ div.mojo-notice .mojo-dismiss{
 	width: 100%;
 	margin: 5px;
 }
+#preview-screenshot{
+	display: none;
+	position: absolute;
+	bottom: 0px;
+	width: 290px;
+}
+#preview-screenshot img{
+	width: 100%;
+}
