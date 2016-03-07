@@ -144,6 +144,8 @@ function mm_all_api_calls() {
 		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=popular&page=1',
 		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1&category=logo',
 		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1&category=business-cards',
+
+		'https://api.mojomarketplace.com/mojo-plugin-assets/json/search-patterns.json',
 	);
 	foreach ( $calls as $call ) {
 		mm_api_cache( $call );

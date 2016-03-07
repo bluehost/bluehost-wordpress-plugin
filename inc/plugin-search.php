@@ -1,7 +1,7 @@
 <?php
 
 function mm_add_plugin_search_patterns( $patterns ) {
-	$response = wp_remote_get( 'https://www.mojomarketplace.com/mojo-assets/json/search-patterns.json' );
+	$response = mm_api_cache( 'https://api.mojomarketplace.com/mojo-plugin-assets/json/search-patterns.json' );
 	if ( ! is_wp_error( $response ) && $patterns = json_decode( $response['body'], 1 ) ) {
 		return $patterns;
 	}
