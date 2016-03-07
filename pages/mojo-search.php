@@ -63,7 +63,7 @@ if ( ! is_wp_error( $response ) ) {
 								</div>
 								<div class="col-xs-12 col-sm-5 col-md-5">
 									<div class="description-box">
-										<h2><?php echo apply_filters( 'the_title', $item->name ); ?></h2>
+										<h2><a href="<?php echo $link; ?>"><?php echo apply_filters( 'mm_item_name', $item->name ); ?></a></h2>
 										<?php if ( isset( $item->short_description ) ) { echo $item->short_description; } ?>
 										<p><?php echo '<strong>Type</strong>: ' . $item->type; ?></p>
 										<p><?php echo '<strong>Category</strong>: ' . $item->category; ?></p>
