@@ -118,21 +118,35 @@ add_filter( 'cron_schedules', 'mm_cron_schedules' );
 
 function mm_all_api_calls() {
 	$calls = array(
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'themes', 'mojo-items' => 'popular' ),
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'themes', 'mojo-items' => 'recent' ),
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=popular&page=1',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=blog',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=business',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=church',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=woocommerce',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=fashion',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=fitness',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=health',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=landing-page',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=magazine',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=photography',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=portfolio',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=real-estate',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=restaurant',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=sports',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=travel',
 
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'responsive', 'mojo-items' => 'category_items' ),
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'business', 'mojo-items' => 'category_items' ),
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'ecommerce', 'mojo-items' => 'category_items' ),
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'photography', 'mojo-items' => 'category_items' ),
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'real-estate', 'mojo-items' => 'category_items' ),
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'restaurant', 'mojo-items' => 'category_items' ),
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=plugins&count=20&order=sales&page=1',
 
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => '', 'mojo-items' => 'popular-services' ),
+		'https://api.mojomarketplace.com/api/v2/items?type=services&count=20&order=sales&page=1',
 
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1',
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=popular&page=1',
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1&category=logo',
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1&category=business-cards',
 	);
 	foreach ( $calls as $call ) {
-		mm_api( $call );
+		mm_api_cache( $call );
 	}
 	die;
 }
