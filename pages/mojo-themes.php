@@ -1,100 +1,144 @@
-<div class="wrap">
-	<h2><?php echo apply_filters( 'mm_before_page_title', '' ); ?> MOJO Marketplace - Themes <a class="add-new-h2" target="_blank" href="<?php echo mm_build_link( 'https://www.mojomarketplace.com/themes/wordpress', array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'browse_all_themes_button' ), 'browse_all_themes' ); ?>">Browse All Themes &rarr;</a></h2>
+<?php
+$type = str_replace( 'mojo-', '', sanitize_title_for_query( wp_unslash( $_GET['page'] ) ) );
+$query = array(
+	'category' => 'wordpress',
+	'type'     => $type,
+	'count'    => 20,
+	'order'     => 'sales',
+);
+if ( isset( $_GET['paged'] ) && is_numeric( $_GET['paged'] ) ) {
+	$query['page'] = (int) $_GET['paged'];
+} else {
+	$query['page'] = 1;
+}
 
-	<?php
-	$api_args = array();
-	$api_query = array();
+if ( 'services' == $type || 'graphics' == $type ) {
+	unset( $query['category'] );
+}
 
-	$accepted_categories = array(
-		'popular',
-		'recent',
-		'responsive',
-		'business',
-		'ecommerce',
-		'photography',
-		'real-estate',
-		'restaurant',
-	);
-	$accepted_categories = array_unique( apply_filters( 'mm_themes_accepted_categories', $accepted_categories ) );
+if ( isset( $_GET['seller'] ) ) {
+	$query['seller'] = sanitize_title_for_query( $_GET['seller'] );
+}
 
-	if ( isset( $_GET['items'] )  && in_array( $_GET['items'], $accepted_categories ) ) {
-		$api_args['mojo-items'] = esc_attr( $_GET['items'] );
+if ( isset( $_GET['items'] ) ) {
+	if ( 'recent' == $_GET['items'] || 'popular' == $_GET['items'] ) {
+		$query['order'] = sanitize_title_for_query( $_GET['items'] );
 	} else {
-		$api_args['mojo-items'] = $accepted_categories[0];
+		$query['itemcategory'] = sanitize_title_for_query( $_GET['items'] );
 	}
-
-	if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-		echo '<div class="wp-filter">';
-		echo '<ul class="filter-links">';
-		foreach ( $accepted_categories as $category ) {
-			if ( $api_args['mojo-items'] == $category ) {
-				$current = 'current';
-			} else {
-				$current = '';
-			}
-			echo '<li>';
-			echo '<a data-sort="' . esc_attr( $category ) . '" class="wp-filter-link theme-section ' . esc_attr( $current ) . '" href="admin.php?page=mojo-themes&amp;items=' . esc_attr( $category ) . '" style="text-decoration: none;">' . esc_html( mm_slug_to_title( $category ) ) . '</a>';
-			echo '</li>';
-		}
-		echo '| <a  class="theme-section wp-filter-link" href="admin.php?page=mojo-services">Services</a>';
-		echo '</div>';
-	} else {
-		$api_args['mojo-items'] = 'woocommerce';
+}
+if ( isset( $_GET['sort'] ) ) {
+	if ( 'recent' == $_GET['sort'] || 'popular' == $_GET['sort'] ) {
+		$query['order'] = sanitize_title_for_query( $_GET['sort'] );
 	}
+}
+if ( 'graphics' == $type && isset( $query['itemcategory'] ) ) {
+	$query['category'] = $query['itemcategory'];
+	unset( $query['itemcategory'] );
+}
 
-	?>
-	<div class='themes theme-browser'>
-	<?php
-
-	if ( isset( $_GET['seller'] ) ) {
-		$api_query['seller'] = esc_attr( $_GET['seller'] );
+$api_url = add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/items' );
+$response = mm_api_cache( $api_url );
+if ( ! is_wp_error( $response ) ) {
+	if ( isset( $_GET['items'] ) && 'security-1' == $_GET['items'] ) {
+		$_GET['items'] = 'security';
 	}
+	$api = json_decode( $response['body'] );
+	$items = $api->items;
 
-	if ( in_array( $api_args['mojo-items'], array( 'recent', 'popular' ) ) ) {
-		$request = mm_api( $api_args, $api_query );
-	} else {
-		//switch API to category_items
-		$cat_args = array(
-			'mojo-platform' 	=> 'wordpress',
-			'mojo-type' 		=> $api_args['mojo-items'],
-			'mojo-items' 		=> 'category_items',
-		);
-		$request = mm_api( $cat_args );
-	}
+?>
+<div id="mojo-wrapper">
+	<?php mm_require( MM_BASE_DIR . 'pages/header.php' ); ?>
+	<main id="main">
+		<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-12 col-sm-8">
+							<ol class="breadcrumb">
 
-	if ( is_wp_error( $request ) ) {
-		echo "<div class='error'><p>Unable to fetch themes. The API may be down. Please try again later.</p></div>";
-	} else {
-		$items = json_decode( $request['body'] );
+							<?php if ( ! isset( $_GET['items'] ) && $type !== 'graphics' ) {
+								echo '<li>WordPress ' . ucfirst( $type ) . '</li>';
+							} ?>
 
-		foreach ( $items as $item ) {
-			$item->name = apply_filters( 'mm_item_name', $item->name );
+							<?php if ( ! isset( $_GET['items'] ) && $type == 'graphics' ) {
+								echo '<li>' . ucfirst( $type ) . '</li>';
+							} ?>
 
-			?>
-			<div class="theme" tabindex="0" aria-describedby="responsive-action responsive-name">
+							<?php if ( isset( $_GET['items'] ) && $type !== 'graphics' ) : ?>
+								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-' . $type ), admin_url( 'admin.php' ) ) ); ?>">WordPress <?php echo ucfirst( $type ); ?></a></li>
+							<?php endif; ?>
 
-				<div class="theme-screenshot">
-					<a href="admin.php?page=mojo-theme-preview&amp;id=<?php echo esc_attr( $item->id ); ?>&amp;items=<?php echo esc_attr( $api_args['mojo-items'] ); ?>">
-						<img class="mojo-thumbnail" alt="<?php echo esc_attr( $item->name ); ?>" src="<?php echo esc_url( $item->images->preview_url ); ?>">
-					</a>
+							<?php if ( isset( $_GET['items'] ) && $type == 'graphics' ) : ?>
+								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-' . $type ), admin_url( 'admin.php' ) ) ); ?>"><?php echo ucfirst( $type ); ?></a></li>
+							<?php endif; ?>
+								<?php
+								if ( isset( $_GET['items'] ) ) {
+									?>
+									<li class="active"><?php echo mm_slug_to_title( $_GET['items'] ); ?></li>
+									<?php
+								}
+								?>
+							</ol>
+						</div>
+					</div>
 				</div>
-
-				<div class="theme-author">By <a target="_blank" href="<?php echo mm_build_link( $item->seller_url, array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'item_seller_link' ) ); ?>"><?php echo esc_html( $item->seller_name ); ?></a></div>
-				<h3 class="theme-name"><?php echo esc_html( $item->name ); ?></h3>
-
-				<div class="mojo-theme-actions">
-					<form class="buy_now" method="POST" target="_blank" action="<?php echo mm_build_link( 'https://www.mojomarketplace.com/cart', array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'item_' . esc_attr( $api_args['mojo-items'] ) . '_buy_now_button' ) ); ?>" class="buy_now <?php echo 'item_' . esc_attr( $api_args['mojo-items'] ) . '_buy_now_' . mm_title_to_slug( $item->name );?>">
-					<input type="hidden" name="data[CartItem][item_id]" value="<?php echo esc_attr( $item->id ); ?>"/>
-					<input class="mm-btn-primary" type="submit" value="Buy Now"/>
-					</form>
-
-					<a href="admin.php?page=mojo-theme-preview&amp;id=<?php echo esc_attr( $item->id ); ?>&amp;items=<?php echo esc_attr( $api_args['mojo-items'] ); ?>" class="button button-secondary install-theme-preview">Preview</a>
-					<div class="price">$<?php echo esc_html( $item->prices->single_domain_license ); ?></div>
+				<div class="panel-body">
+					<div class="list-group">
+					<?php
+					foreach ( $items as $item ) {
+						if ( '0' == $item->prices->single_domain_license ) { continue; }
+						?>
+						<div class="list-group-item theme-item">
+							<div class="row">
+								<div class="col-xs-12 col-sm-4 col-md-5">
+									<?php
+									if ( 'themes' == $type ) {
+										if ( isset( $_GET['items'] ) ) {
+											$items = sanitize_title_for_query( $_GET['items'] );
+										} else {
+											$items = 'popular';
+										}
+										$link = add_query_arg( array( 'page' => 'mojo-theme-preview', 'id' => $item->id, 'items' => $items ), admin_url( 'admin.php' ) );
+									} else {
+										$link = add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item->id ), admin_url( 'admin.php' ) );
+									}
+									?>
+									<a href="<?php echo $link; ?>">
+										<img class="img-responsive" src="<?php echo $item->images->preview_url; ?>" alt="image description" width="367" height="205">
+									</a>
+								</div>
+								<div class="col-xs-12 col-sm-5 col-md-5">
+									<div class="description-box">
+										<h2><a href="<?php echo $link; ?>"><?php echo apply_filters( 'mm_item_name', $item->name ); ?></a></h2>
+										<?php if ( isset( $item->short_description ) ) { echo $item->short_description; } ?>
+										<p><?php if ( isset( $item->tags ) ) { echo '<strong>Tags: </strong>' . substr( $item->tags, 0, 120 ) . '&hellip;'; } ?></p>
+										<?php mm_stars( $item->rating, $item->sales_count ); ?>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-3 col-md-2">
+									<div class="text-center info-box">
+										<div class="price">
+											<span class="currency">USD</span>
+											<span class="price-number">$<span><?php echo number_format( $item->prices->single_domain_license ); ?></span></span>
+										</div>
+										<div class="btn-group-vertical" role="group">
+											<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item->id ), admin_url( 'admin.php' ) ) ); ?>" class="btn btn-primary btn-lg">Details</a>
+											<a href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_list' ) ); ?>" class="btn btn-success btn-lg">Buy Now</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<?php
+					}
+					?>
+					</div>
 				</div>
 			</div>
-			<?php
-		}
-	}
-	?>
-	</div>
+			<?php mm_pagination( $api->page, $api->pageCount ); ?>
+		</div>
+	</main>
 </div>
+	<?php
+}
