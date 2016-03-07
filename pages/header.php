@@ -1,6 +1,6 @@
 <header id="header" class="navbar navbar-default">
-		<div class="header-block bg-cover" style="background-image: url('<?php echo MM_BASE_URL; ?>img/tmp/header-bg-001.jpg');">
-			<span data-srcset="<?php echo MM_BASE_URL; ?>img/tmp/header-bg-001.jpg, <?php echo MM_BASE_URL; ?>img/tmp/header-bg-001-2x.jpg 2x"></span>
+		<div class="header-block bg-cover" style="background-image: url('<?php echo MM_ASSETS_URL; ?>img/header-bg-001.jpg');">
+			<span data-srcset="<?php echo MM_ASSETS_URL; ?>img/header-bg-001.jpg, <?php echo MM_ASSETS_URL; ?>img/header-bg-001-2x.jpg 2x"></span>
 			<nav>
 				<div class="container">
 					<div class="inner-holder">
@@ -34,7 +34,7 @@
 						</div>
 						<div class="header-holder clearfix">
 							<a class="navbar-brand" href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes' ), admin_url( 'admin.php' ) ) ); ?>">
-								<img src="<?php echo MM_BASE_URL; ?>img/tmp/logo-icon.svg" width="250" height="42" alt="MOJO marketplace">
+								<img src="<?php echo MM_ASSETS_URL; ?>img/logo-icon.svg" width="250" height="42" alt="MOJO marketplace">
 							</a>
 							<form class="navbar-form form-inline navbar-right text-right" role="search" action="admin.php" method="GET">
 								<div class="form-group">
