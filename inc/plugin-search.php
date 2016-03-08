@@ -24,18 +24,19 @@ function mm_plugin_search_notice() {
 		if ( strlen( $plugin['id'] ) > 5 ) {
 			$link = add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $plugin['id'] ), admin_url( 'admin.php' ) );
 		}
+		$link = esc_url( $link );
 		$buy_now_btn = ( isset( $plugin['buy_now_btn'] ) ) ? $plugin['buy_now_btn']  : 'Buy Now';
 		$buy_now = ( isset( $plugin['id'] ) ) ? mm_build_link( add_query_arg( array( 'item_id' => $plugin['id'] ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_search' ) ) : '';
-
 		if ( '' === $buy_now ) {
 			$buy_now = ( isset( $plugin['buy_now_link'] ) ) ? $plugin['buy_now_link'] : '';
 		}
-
+		$buy_now = esc_url( $buy_now );
 		$image = ( isset( $plugin['img'] ) ) ? $plugin['img'] : 'https://marketplace-images-production.s3-us-west-2.amazonaws.com/vault/items/thumbnail-54340948-aff4-41d1-b5d4-0cf10a141528-260x156-i5o1C.jpg';
 		$title = ( isset( $plugin['title'] ) ) ? $plugin['title'] : $plugin['name'];
 		$short_desc = ( isset( $plugin['short_desc'] ) ) ? $plugin['short_desc'] : '';
 		$author = ( isset( $plugin['author'] ) ) ? $plugin['author'] : 'MOJO Marketplace';
 		$author_url = ( isset( $plugin['author_url'] ) ) ? $plugin['author_url'] : 'http://www.mojomarketplace.com';
+		$author_url = esc_url( $author_url );
 		$plugin_html = '<div class="plugin-card">
 							<div class="plugin-card-top">
 								<a target="_blank" href="' . $link . '" class="plugin-icon" style="background-image: url(' . $image . ');background-position: center;">&nbsp;</a>
