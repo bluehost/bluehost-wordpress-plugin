@@ -46,8 +46,8 @@ if ( ! is_wp_error( $response ) ) {
 								</li>
 								<li class="active">
 								<?php
-								echo substr( $item->name, 0, 42 );
-								if ( strlen( $item->name ) != strlen( substr( $item->name, 0, 42 ) ) ) {
+								echo substr( apply_filters( 'mm_item_name', $item->name ), 0, 41 );
+								if ( strlen( $item->name ) != strlen( substr( $item->name, 0, 41 ) ) ) {
 									echo '&hellip;';
 								}
 								?>
