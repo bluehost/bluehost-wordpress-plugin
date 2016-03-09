@@ -7,8 +7,6 @@ Author: Mike Hansen
 Author URI: http://mikehansen.me?utm_campaign=plugin&utm_source=mojo_wp_plugin
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-GitHub Plugin URI: mojoness/mojo-marketplace-wp-plugin
-GitHub Branch: production
 */
 
 // Do not access file directly!
