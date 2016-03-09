@@ -172,13 +172,17 @@ function mm_title_to_slug( $title ) {
 	return sanitize_title( $title );
 }
 
-function mm_require( $file ) {
-	$file = apply_filters( 'mm_require_file', $file );
+function mm_require( $original ) {
+	$file = apply_filters( 'mm_require_file', $original );
 	if ( file_exists( $file ) ) {
 		require( $file );
 		return $file;
+	} elseif ( file_exists( $original ) ) {
+		require( $original );
+		return $original;
+	} else {
+		return false;
 	}
-	return false;
 }
 
 function mm_minify( $content ) {
