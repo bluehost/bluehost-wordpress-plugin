@@ -72,5 +72,11 @@ function mm_themes_categories( $accepted_categories ) {
 add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 */
 
+function mm_jetpack_bluehost_only() {
+	$host = @exec( 'hostname' );
+	$is_bluehost = ( stripos( $host, 'bluehost' ) ) ? true : false;
+	return $is_bluehost;
+}
+
 /* Start individual tests */
 mm_require( MM_BASE_DIR . 'tests/loader.php' );
