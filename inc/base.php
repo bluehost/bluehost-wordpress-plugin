@@ -38,10 +38,14 @@ function mm_api( $args = array(), $query = array() ) {
 
 	$request_url = rtrim( $request_url, '/' );
 	$request_url = $request_url . '?' . $query;
-	$key = md5( $request_url );
 
+	return mm_api_cache( $request_url );
+}
+
+function mm_api_cache( $api_url ) {
+	$key = md5( $api_url );
 	if ( false === ( $transient = get_transient( 'mm_api_calls' ) ) || ! isset( $transient[ $key ] ) ) {
-		$transient[ $key ] = wp_remote_get( $request_url );
+		$transient[ $key ] = wp_remote_get( $api_url );
 		if ( ! is_wp_error( $transient[ $key ] ) ) {
 			set_transient( 'mm_api_calls', $transient, DAY_IN_SECONDS );
 		}
@@ -74,7 +78,7 @@ function mm_build_link( $url, $args = array() ) {
 
 function mm_clear_api_calls() {
 	if ( is_admin() ) {
-		delete_transient( 'mojo-api-calls' );
+		delete_transient( 'mojo_api_calls' );
 	}
 }
 add_action( 'wp_login', 'mm_clear_api_calls' );
@@ -102,11 +106,11 @@ add_action( 'admin_init', 'mm_cron' );
 function mm_cron_schedules( $schedules ) {
 	$schedules['weekly'] = array(
 		'interval' => WEEK_IN_SECONDS,
-		'display' => __( 'Once Weekly' )
+		'display' => __( 'Once Weekly' ),
 	);
 	$schedules['monthly'] = array(
 		'interval' => 4 * WEEK_IN_SECONDS,
-		'display' => __( 'Once a month' )
+		'display' => __( 'Once a month' ),
 	);
 	return $schedules;
 }
@@ -114,21 +118,37 @@ add_filter( 'cron_schedules', 'mm_cron_schedules' );
 
 function mm_all_api_calls() {
 	$calls = array(
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'themes', 'mojo-items' => 'popular' ),
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'themes', 'mojo-items' => 'recent' ),
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=popular&page=1',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=blog',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=business',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=church',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=woocommerce',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=fashion',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=fitness',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=health',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=landing-page',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=magazine',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=photography',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=portfolio',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=real-estate',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=restaurant',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=sports',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=travel',
 
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'responsive', 'mojo-items' => 'category_items' ),
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'business', 'mojo-items' => 'category_items' ),
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'ecommerce', 'mojo-items' => 'category_items' ),
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'photography', 'mojo-items' => 'category_items' ),
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'real-estate', 'mojo-items' => 'category_items' ),
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => 'restaurant', 'mojo-items' => 'category_items' ),
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=plugins&count=20&order=sales&page=1',
 
-		array( 'mojo-platform' => 'wordpress', 'mojo-type' => '', 'mojo-items' => 'popular-services' ),
+		'https://api.mojomarketplace.com/api/v2/items?type=services&count=20&order=sales&page=1',
 
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1',
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=popular&page=1',
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1&category=logo',
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1&category=business-cards',
+
+		'https://api.mojomarketplace.com/mojo-plugin-assets/json/search-patterns.json',
 	);
 	foreach ( $calls as $call ) {
-		mm_api( $call );
+		mm_api_cache( $call );
 	}
 	die;
 }
@@ -186,3 +206,94 @@ function mm_adjust_feed_transient_lifetime( $lifetime ) {
 	return 3 * HOUR_IN_SECONDS;
 }
 add_filter( 'wp_feed_cache_transient_lifetime', 'mm_adjust_feed_transient_lifetime' );
+
+function mm_stars( $rating = 4.5, $sales = 0 ) {
+	if ( ! is_numeric( $rating ) || 0 == $rating ) { return; }
+	?>
+	<div class="star-rating">
+		<ul class="list-unstyled list-inline">
+			<?php
+			$rating_half = round( $rating * 2 ) / 2;
+			$stars = ( 0 == $rating_half) ? 5 : 0;
+			for ( $i = 0; $i < floor( $rating_half ); $i++ ) {
+				$stars++;
+				?>
+				<li><a href="#"><span class="dashicons dashicons-star-filled"></span></a></li>
+				<?php
+			}
+			if ( false !== strpos( $rating_half, '.' ) ) {
+				$stars++;
+				?>
+				<li><a href="#"><span class="dashicons dashicons-star-half"></span></a></li>
+				<?php
+			}
+			if ( $stars < 5 ) {
+				$empty_stars = 5 - $stars;
+				for ( $i = 0; $i < $empty_stars; $i++ ) {
+					?>
+					<li><a href="#"><span class="dashicons dashicons-star-empty"></span></a></li>
+					<?php
+				}
+			}
+			?>
+		</ul>
+		<span class="rating-label"><span class="count"><?php echo $rating_half; ?></span> Stars
+		<?php
+		if ( 0 !== $sales ) {
+			?>
+			<span class="sales-count">(<?php echo number_format( $sales ); ?> Sales)</span>
+			<?php
+		}
+		?>
+		</span>
+	</div>
+	<?php
+}
+
+function mm_pagination( $page = 1, $total_pages = 1 ) {
+	?>
+	<div class="alignright">
+		<nav class="pagination">
+			<ul class="group">
+				<?php
+				$pagination_start = $page - 5;
+				$pagination_end = $page + 5;
+				if ( $page < 5 ) {
+					$pagination_extra = 10 - $page;
+					$pagination_end = $page + $pagination_extra;
+				}
+				if ( $pagination_start < 1 ) {
+					$pagination_start = 1;
+				}
+				if ( $total_pages - $pagination_start < 10 && $total_pages - 10 > 1 ) {
+					$pagination_start = $total_pages - 10;
+				}
+				if ( $pagination_end > $total_pages ) {
+					$pagination_end = $total_pages;
+				}
+				?>
+				<li class="prev">
+					<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $page - 1 ) ) ); ?>"><span class="dashicons dashicons-arrow-left"></span></a>
+				</li>
+				<?php
+				for ( $i = $pagination_start;  $i <= $pagination_end;  $i++ ) {
+					?>
+					<li<?php if ( $i == $page ) { echo " class='active'";}?> >
+						<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $i ) ) ); ?>"><?php echo $i; ?></a>
+					</li>
+					<?php
+				}
+				?>
+				<li class="next">
+					<?php
+					$next_num = ( $page + 1 >= $total_pages ) ? $total_pages : $page + 1 ;
+					?>
+					<a rel="next" href="<?php echo esc_url( add_query_arg( array( 'paged' => $next_num ) ) ); ?>">
+						<span class="dashicons dashicons-arrow-right"></span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<?php
+}

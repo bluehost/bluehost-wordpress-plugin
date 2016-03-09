@@ -1,5 +1,5 @@
 <?php
-function mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) {
+function mm_ab_test_inclusion( $test_name, $key, $audience = 10, $duration = WEEK_IN_SECONDS ) {
 	if ( false === ( $test = get_transient( 'mm_test', false ) ) ) {
 
 		$previous_tests = get_option( 'mm_previous_tests', array() );
@@ -88,4 +88,3 @@ function mm_jpo_test_exempt() {
 	mm_ab_test_inclusion( 'jetpack-onboarding-v1.1.1-exempt', md5( 'jetpack-onboarding-v1-exempt' ), 25, DAY_IN_SECONDS * 90 );
 }
 add_action( 'init', 'mm_jpo_test_exempt', 9 );
-

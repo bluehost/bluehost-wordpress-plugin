@@ -6,8 +6,8 @@ function mm_add_theme_button() {
 	<script type="text/javascript">
 	jQuery( document ).ready( function() {
 		jQuery( '.page-title-action' ).html( 'WordPress.org Themes' );
-		jQuery( '.page-title-action' ).before( '<a class="add-new-h2" href="admin.php?page=mojo-themes">MOJO Themes</a>' );
-		jQuery( '.page-title-action:nth-of-type(2)' ).after( '<a class="add-new-h2" href="theme-install.php?upload">Add New</a>' );
+		jQuery( '.page-title-action' ).before( '<a class="add-new-h2" href="admin.php?page=mojo-themes">Premium Themes</a>' );
+		jQuery( '.page-title-action:nth-of-type(2)' ).after( '<a class="add-new-h2" href="theme-install.php?upload">Upload</a>' );
 	} );
 	</script>
 	<?php
@@ -27,12 +27,12 @@ function mm_add_premium_link() {
 add_action( 'admin_head-theme-install.php', 'mm_add_premium_link' );
 
 function mm_add_theme_page() {
-	add_theme_page( 'Premium Themes', 'Premium Themes', 'install_themes', 'mojo-themes', 'mm_theme_page' );
+	add_theme_page( 'Premium Themes', 'Premium Themes', 'install_themes', 'themes-mojo', '__return_false' );
 }
 add_action( 'admin_menu', 'mm_add_theme_page' );
 
 function mm_theme_page() {
-	mm_require( MM_BASE_DIR . '/pages/mojo-themes.php' );
+	mm_require( MM_BASE_DIR . 'pages/mojo-themes.php' );
 }
 
 function mm_theme_preview_page() {
