@@ -78,7 +78,7 @@ function mm_build_link( $url, $args = array() ) {
 
 function mm_clear_api_calls() {
 	if ( is_admin() ) {
-		delete_transient( 'mojo-api-calls' );
+		delete_transient( 'mojo_api_calls' );
 	}
 }
 add_action( 'wp_login', 'mm_clear_api_calls' );
@@ -106,11 +106,11 @@ add_action( 'admin_init', 'mm_cron' );
 function mm_cron_schedules( $schedules ) {
 	$schedules['weekly'] = array(
 		'interval' => WEEK_IN_SECONDS,
-		'display' => __( 'Once Weekly' )
+		'display' => __( 'Once Weekly' ),
 	);
 	$schedules['monthly'] = array(
 		'interval' => 4 * WEEK_IN_SECONDS,
-		'display' => __( 'Once a month' )
+		'display' => __( 'Once a month' ),
 	);
 	return $schedules;
 }
