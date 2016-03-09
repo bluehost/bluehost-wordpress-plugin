@@ -4,7 +4,7 @@
  */
 
 $id = sanitize_title_for_query( $_GET['item_id'] );
-$response = wp_remote_get( 'https://api.mojomarketplace.com/api/v2/items/' . $id );
+$response = mm_api_cache( 'https://api.mojomarketplace.com/api/v2/items/' . $id );
 if ( ! is_wp_error( $response ) ) {
 	$body = json_decode( $response['body'] );
 	$item = $body->items[0];
