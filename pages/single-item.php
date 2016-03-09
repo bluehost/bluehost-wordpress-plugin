@@ -128,7 +128,7 @@ if ( ! is_wp_error( $response ) ) {
 										<div class="avatar"><img class="provider-avatar" src="https://www.gravatar.com/avatar/<?php echo md5( strtolower( trim( $item->service_provider->email ) ) ); ?>?s=36" /></div>
 										<div class="name"><?php echo $item->service_provider->username; ?> </div>
 									</div>
-									<i><small>Providers are prescreened and selected by MOJO.</small></i>
+									<i><small>Providers are all prescreened and approved.</small></i>
 								</div>
 								<?php } ?>
 							</aside>
