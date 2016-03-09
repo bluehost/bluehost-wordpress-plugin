@@ -23,23 +23,23 @@ if ( ! is_wp_error( $response ) ) {
 									<?php
 									switch ( $item->type ) {
 										case 'Themes &amp; Templates':
-											echo '<a href="admin.php?page=mojo-themes">WordPress Themes</a>';
+											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-themes' ), admin_url( 'admin.php' ) ) ) . '">WordPress Themes</a>';
 											break;
 
 										case 'Plugins &amp; Extensions':
-											echo '<a href="admin.php?page=mojo-plugins">WordPress Plugins</a>';
+											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-plugins' ), admin_url( 'admin.php' ) ) ) . '">WordPress Plugins</a>';
 											break;
 
 										case 'Professional Services':
-											echo '<a href="admin.php?page=mojo-services">Services</a>';
+											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-services' ), admin_url( 'admin.php' ) ) ) . '">Services</a>';
 											break;
 
 										case 'Logos &amp; Graphics':
-											echo '<a href="admin.php?page=mojo-graphics">Graphics</a>';
+											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-graphics' ), admin_url( 'admin.php' ) ) ) . '">Graphics</a>';
 											break;
 
 										default:
-											echo '<a href="admin.php?page=mojo-themes">WordPress Items</a>';
+											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-themes' ), admin_url( 'admin.php' ) ) ) . '">WordPress Items</a>';
 											break;
 									}
 									?>
