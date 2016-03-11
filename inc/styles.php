@@ -6,8 +6,9 @@ function mm_admin_style() {
 		wp_enqueue_style( 'mojo-admin-bootstrap-css', MM_ASSETS_URL . 'css/bootstrap.css' );
 		wp_enqueue_style( 'mojo-admin-main-css', MM_ASSETS_URL . 'css/main.css' );
 	}
+	wp_enqueue_script( 'mojo-admin-nice-notices', MM_BASE_URL . 'tmp/nice-notices.js', array( 'jquery' ), MM_VERSION );
 }
-add_action( 'admin_head', 'mm_admin_style' );
+add_action( 'admin_init', 'mm_admin_style' );
 
 function mm_frontend_style() {
 	//Only run this if there is a shortcode on the page.
@@ -19,3 +20,24 @@ function mm_frontend_style() {
 	}
 }
 add_action( 'wp_footer', 'mm_frontend_style' );
+
+function mm_nice_notice_styles() {
+	?>
+	<style type="text/css">
+		.mojo-notice{
+			color: #fff;
+			display: none;
+			margin-left: -20px;
+			padding-right: 20px;
+			padding-left: 20px;
+			width: 100%;
+			font-weight: bold;
+		}
+		.mojo-notice a{color: #fff;}
+		.mojo-notice-error{background-color:#F2744B;}
+		.mojo-notice-success{background-color:#6BBA72;}
+		.mojo-notice-info{background-color:#75B9D8;}
+	</style>
+	<?php
+}
+add_action( 'admin_head', 'mm_nice_notice_styles' );

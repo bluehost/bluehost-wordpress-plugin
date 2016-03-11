@@ -13,7 +13,7 @@ add_action( 'init', 'mm_cs_login_check', 11 );
 function mm_cs_notice_display() {
 	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
 		?>
-		<div class='updated'>
+		<div class='notice updated'>
 			<p>Your site is currently displaying a "Coming Soon" page. Once you are ready to launch your site <a href='<?php echo esc_url( add_query_arg( array( 'mm_cs_launch' => true ) ) );?>'>click here</a>.</p>
 		</div>
 		<?php
@@ -23,7 +23,7 @@ add_action( 'admin_notices', 'mm_cs_notice_display' );
 
 function mm_cs_notice_launch_message() {
 	?>
-		<div class='updated'>
+		<div class='notice updated'>
 			<p>Congratulations. Your site is now live, <a target='_blank' href='<?php echo esc_url( get_option( 'siteurl' ) ); ?>'>click here</a> to view it.</p>
 		</div>
 	<?php
@@ -186,7 +186,7 @@ footer li{
 	background: -o-linear-gradient(top,  #92c835 0%,#6d9628 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top,  #92c835 0%,#6d9628 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #92c835 0%,#6d9628 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92c835', endColorstr='#6d9628',GradientType=0 ); /* IE6-9 */	
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92c835', endColorstr='#6d9628',GradientType=0 ); /* IE6-9 */
 }
 #what-is-this-content a{width: 50%;display:inline-block;color: #666;text-align:center;}
 .footer-actions a{width: 50%; text-align:center; display:inline-block;}
