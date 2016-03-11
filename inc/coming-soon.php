@@ -13,7 +13,7 @@ add_action( 'init', 'mm_cs_login_check', 11 );
 function mm_cs_notice_display() {
 	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
 		?>
-		<div class='notice updated'>
+		<div class='notice notice-info'>
 			<p>Your site is currently displaying a "Coming Soon" page. Once you are ready to launch your site <a href='<?php echo esc_url( add_query_arg( array( 'mm_cs_launch' => true ) ) );?>'>click here</a>.</p>
 		</div>
 		<?php

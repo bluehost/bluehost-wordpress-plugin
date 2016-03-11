@@ -24,16 +24,18 @@ add_action( 'wp_footer', 'mm_frontend_style' );
 function mm_nice_notice_styles() {
 	?>
 	<style type="text/css">
-		.mojo-notice{
+		.mojo-nice-notice{
 			color: #fff;
 			display: none;
 			margin-left: -20px;
 			padding-left: 20px;
 			width: 100%;
 			font-weight: bold;
+			float: right;
 		}
-		.mojo-notice a{color: #fff;}
-		.mojo-notice-error{background-color:#F2744B;}
+		.mojo-nice-notice p{margin: 1em 0;}
+		.mojo-nice-notice a{color: #fff;}
+		.mojo-notice-error{background-color:#EF524A;}
 		.mojo-notice-success{background-color:#6BBA72;}
 		.mojo-notice-info{background-color:#75B9D8;}
 	</style>

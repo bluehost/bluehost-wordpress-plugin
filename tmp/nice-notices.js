@@ -15,17 +15,17 @@ jQuery( document ).ready( function( $ ) {
 		$( this ).hide();
 	} );
 	if ( notice_error != '' ) {
-		$( '#wpbody' ).before( '<div class="mojo-notice mojo-notice-error">' + notice_error + '</div>' );
+		$( '#wpbody' ).before( '<div class="mojo-nice-notice mojo-notice-error">' + notice_error + '</div>' );
 		$( '.mojo-notice-error' ).fadeIn();
 		$( '.mojo-notice-error' ).css( 'display', 'inline-block' );
 	}
 	if ( notice_success != '' ) {
-		$( '#wpbody' ).before( '<div class="mojo-notice mojo-notice-success">' + notice_success + '</div>' );
+		$( '#wpbody' ).before( '<div class="mojo-nice-notice mojo-notice-success">' + notice_success + '</div>' );
 		$( '.mojo-notice-success' ).fadeIn('slow');
 		$( '.mojo-notice-success' ).css( 'display', 'inline-block' );
 	}
 	if ( notice_info != '' ) {
-		$( '#wpbody' ).before( '<div class="mojo-notice mojo-notice-info">' + notice_info + '</div>' );
+		$( '#wpbody' ).before( '<div class="mojo-nice-notice mojo-notice-info">' + notice_info + '</div>' );
 		$( '.mojo-notice-info' ).fadeIn();
 		$( '.mojo-notice-info' ).css( 'display', 'inline-block' );
 	}
