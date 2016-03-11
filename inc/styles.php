@@ -24,17 +24,23 @@ add_action( 'wp_footer', 'mm_frontend_style' );
 function mm_nice_notice_styles() {
 	?>
 	<style type="text/css">
-		.mojo-nice-notice{
-			color: #fff;
-			display: none;
-			margin-left: -20px;
-			padding-left: 20px;
+		.mojo-nice-notice-wrap{
 			width: 100%;
-			font-weight: bold;
 			float: right;
+			display: none;
+			color: #fff;
+			font-weight: bold;
+			padding-left: 20px;
+			margin-left: -20px;
+		}
+		.mojo-nice-notice{
+			padding-left: 20px;
+			margin-left: -20px;
+			width: 100%;
+			display: inline-block;
 		}
 		.mojo-nice-notice p{margin: 1em 0;}
-		.mojo-nice-notice a{color: #fff;}
+		.mojo-nice-notice a{color: #fff;text-decoration: underline;}
 		.mojo-notice-error{background-color:#EF524A;}
 		.mojo-notice-success{background-color:#6BBA72;}
 		.mojo-notice-info{background-color:#75B9D8;}
