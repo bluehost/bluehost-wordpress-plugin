@@ -28,7 +28,6 @@ function mm_nice_notice_styles() {
 			color: #fff;
 			display: none;
 			margin-left: -20px;
-			padding-right: 20px;
 			padding-left: 20px;
 			width: 100%;
 			font-weight: bold;
