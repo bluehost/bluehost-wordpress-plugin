@@ -18,7 +18,7 @@ jQuery( document ).ready( function( $ ) {
 		$( this ).hide();
 		notice_count++;
 	} );
-	if ( '' != notice_error || '' != notice_success || '' != notice_info ) {
+	if ( notice_count > 0 ) {
 		$( '#wpbody' ).before( '<div class="mojo-nice-notice-wrap"></div>' );
 	}
 	if ( '' != notice_error ) {
@@ -30,7 +30,7 @@ jQuery( document ).ready( function( $ ) {
 	if ( '' != notice_info ) {
 		$( '.mojo-nice-notice-wrap' ).append( '<div class="mojo-nice-notice mojo-notice-info">' + notice_info + '</div>' );
 	}
-	if ( '' != notice_error || '' != notice_success || '' != notice_info ) {
+	if ( notice_count > 0 ) {
 		$( '.mojo-nice-notice-wrap' ).slideDown( 400 + ( 400 * notice_count ) );
 		$( '#wpbody' ).before( '<div class="clear"></div>' );
 	}
