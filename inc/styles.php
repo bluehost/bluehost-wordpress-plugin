@@ -30,10 +30,10 @@ function mm_nice_notice_styles() {
 			display: none;
 			color: #fff;
 			font-weight: bold;
-			padding-left: 20px;
 			margin-left: -20px;
 		}
 		.mojo-nice-notice{
+			float: right;
 			padding-left: 20px;
 			margin-left: -20px;
 			width: 100%;
