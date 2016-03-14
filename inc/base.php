@@ -255,6 +255,7 @@ function mm_stars( $rating = 4.5, $sales = 0 ) {
 }
 
 function mm_pagination( $page = 1, $total_pages = 1 ) {
+	if ( 1 == $total_pages ) { return; }
 	?>
 	<div class="alignright">
 		<nav class="pagination">
