@@ -7,7 +7,7 @@ $api_url = 'https://api.mojomarketplace.com/api/v2/items/' . $item_id;
 $items = ( isset( $_GET['items'] ) ) ? esc_attr( $_GET['items'] ): '';
 $theme = mm_api_cache( $api_url );
 
-$other_viewed = mm_api_cache( add_query_arg( array( 'type' => 'themes', 'order' => 'random', 'count' => 4 ), 'https://api.mojomarketplace.com/api/v2/items' ) );
+$other_viewed = mm_api_cache( add_query_arg( array( 'category' => 'wordpress', 'type' => 'themes', 'order' => 'random', 'count' => 4 ), 'https://api.mojomarketplace.com/api/v2/items' ) );
 
 if ( is_wp_error( $theme ) ) {
 	echo "<div class='error'><p>Unable to load theme preview. <a href='admin.php?page=mojo-themes&items=" . esc_attr( $_GET['items'] ) . "'>Return to themes</a></p></div>";
