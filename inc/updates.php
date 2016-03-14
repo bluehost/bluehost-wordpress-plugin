@@ -4,9 +4,9 @@
 */
 
 function mm_auto_update_make_bool( $value, $default = true ) {
-	if( $value === 'false' ) { $value = false; }
-	if( $value === 'true' ) { $value = true; }
-	if( $value !== true && $value !== false ) { $value = $default; }
+	if ( 'false' === $value ) { $value = false; }
+	if ( 'true' === $value ) { $value = true; }
+	if ( true !== $value && false !== $value ) { $value = $default; }
 	return $value;
 }
 
@@ -30,10 +30,10 @@ function mm_auto_update_register_settings() {
 	$section_hook = 'general';
 	if ( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) ) {
 		add_settings_section(
-			$section_name, //Section
-			'MOJO Auto Update Manager', //Title
-			'__return_false', //section description callback
-			$section_hook //Setting Hook
+			$section_name,
+			'MOJO Auto Update Manager',
+			'__return_false',
+			$section_hook
 		);
 	}
 
