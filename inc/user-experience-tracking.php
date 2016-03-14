@@ -591,78 +591,6 @@ function mm_jetpack_log_connected( $entry ) {
 }
 add_action( 'jetpack_log_entry', 'mm_jetpack_log_connected', 10, 1 );
 
-/* JPS v8 specific events */
-
-function mm_jps_started() {
-	update_option( 'jps_started', time() );
-}
-add_action( 'jps_started', 'mm_jps_started' );
-
-function mm_jps_step_skipped( $step, $data ) {
-	$event = array(
-		't'     => 'event',
-		'ec'    => 'jetpack_event',
-		'ea'    => 'step_skipped_' . $step,
-		'el'    => $step,
-	);
-	mm_ux_log( $event );
-}
-add_action( 'jps_step_skipped', 'mm_jps_step_skipped', 10, 2 );
-
-function mm_jps_step_complete( $step, $data ) {
-	$event = array(
-		't'     => 'event',
-		'ec'    => 'jetpack_event',
-		'ea'    => 'step_complete_' . $step,
-		'el'    => $step,
-	);
-
-	if ( 'design' == $step && isset( $data['themeId'] ) ) {
-		$event['el'] = $data['themeId'];
-	}
-
-	mm_ux_log( $event );
-
-	if ( isset( $data['completion'] ) ) {
-		$started = get_option( 'jps_started', time() );
-		$completion = time() - $started;
-		$event = array(
-			't'  => 'event',
-			'ec' => 'jetpack_event',
-			'ea' => 'jps_completion_time_' . $step,
-			'el' => $completion,
-		);
-		mm_ux_log( $event );
-	}
-}
-add_action( 'jps_step_complete', 'mm_jps_step_complete', 10, 2 );
-
-function mm_jps_step_viewed( $step ) {
-	update_option( 'jps_current_step', $step );
-	$event = array(
-		't'     => 'event',
-		'ec'    => 'jetpack_event',
-		'ea'    => 'jps_view',
-		'el'    => $step,
-	);
-	mm_ux_log( $event );
-}
-add_action( 'jps_step_viewed','mm_jps_step_viewed' );
-
-function mm_jps_dismiss_welcome( $null, $object_id, $meta_key, $meta_value ) {
-	if ( 'show_welcome_panel' == $meta_key && 0 == $meta_value ) {
-		$event = array(
-			't'     => 'event',
-			'ec'    => 'user_action',
-			'ea'    => 'jps_dismiss',
-			'el'    => get_option( 'jps_current_step', 'initial' ),
-		);
-		mm_ux_log( $event );
-	}
-	return null;
-}
-add_filter( 'updated_user_metadata', 'mm_jps_dismiss_welcome', 10, 4 );
-
 function mm_ux_site_launched( $new_option, $old_option ) {
 	if ( $old_option != $new_option && 'true' == $new_option ) {
 		$install_time = strtotime( get_option( 'mm_install_date', date( 'M d, Y' ) ) );
@@ -677,7 +605,6 @@ function mm_ux_site_launched( $new_option, $old_option ) {
 	return $new_option;
 }
 add_filter( 'pre_update_option_mm_coming_soon', 'mm_ux_site_launched', 10, 2 );
-
 
 function mm_ux_auto_core_upgrade() {
 	global $wp_version;
