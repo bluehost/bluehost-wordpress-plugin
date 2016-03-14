@@ -55,9 +55,10 @@ function mm_churn() {
 			'ip'       => $_SERVER['REMOTE_ADDR'],
 			'username' => @exec( 'whoami' ),
 			'test'     => $test,
+			'host'     => get_option( 'mm_host', '' ),
 		);
 		$args = array(
-			'body'		=> http_build_query( $details ),
+			'body'		=> http_build_query( array_filter( $details ) ),
 			'method'	=> 'POST',
 			'blocking'	=> false,
 			'timeout'   => 0.1,
