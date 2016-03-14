@@ -4,7 +4,7 @@ This file tracks basic user actions to improve the user experience.
 */
 
 function mm_ux_log( $args = array() ) {
-	$url = "https://ssl.google-analytics.com/collect";
+	$url = 'https://ssl.google-analytics.com/collect';
 
 	global $title;
 
@@ -15,29 +15,31 @@ function mm_ux_log( $args = array() ) {
 	$path = explode( 'wp-admin', $_SERVER['REQUEST_URI'] );
 
 	if ( empty( $path ) || empty( $path[1] ) ) {
-		$path = array( "", " " );
+		$path = array( '', ' ' );
 	}
 
 	$defaults = array(
 		'v'		=> '1',
 		'tid'	=> 'UA-39246514-3',
-		't'		=> 'pageview', //hit type
+		't'		=> 'pageview',
 		'cid'	=> md5( get_option( 'siteurl' ) ),
 		'uid'	=> md5( get_option( 'siteurl' ) . get_current_user_id() ),
-		'cn'	=> 'mojo_wp_plugin', //campaign name
-		'cs'	=> 'mojo_wp_plugin', //campaign source
-		'cm'	=> 'plugin_admin', //campaign medium
-		'ul'	=> get_locale(), //language
-		'dp'	=> $path[1], //path
-		'sc'	=> '', //start or end
+		'cn'	=> 'mojo_wp_plugin',
+		'cs'	=> 'mojo_wp_plugin',
+		'cm'	=> 'plugin_admin',
+		'ul'	=> get_locale(),
+		'dp'	=> $path[1],
+		'sc'	=> '',
 		'ua'	=> @$_SERVER['HTTP_USER_AGENT'],
 		'dl'	=> $path[1],
 		'dh'	=> get_option( 'siteurl' ),
-		'dt'	=> $title, //title
-		'ec'	=> '', //event category
-		'ea'	=> '', //event action
-		'el'	=> '', //event label
-		'ev'	=> '', //event value
+		'dt'	=> $title,
+		'ec'	=> '',
+		'ea'	=> '',
+		'el'	=> '',
+		'ev'	=> '',
+		'cd1'   => ( defined( 'MM_VERSION' ) ) ? MM_VERSION : '',
+		'cd2'   => get_option( 'mm_brand', '' ),
 	);
 
 	if ( isset( $_SERVER['REMOTE_ADDR'] ) ) {
@@ -48,12 +50,11 @@ function mm_ux_log( $args = array() ) {
 
 	$test = get_transient( 'mm_test', '' );
 
-	if( isset( $test['key'] ) && isset( $test['name'] ) ) {
-		$params['cm'] = $params['cm'] . "_" . $test['name'] . "_" . $test['key'];
+	if ( isset( $test['key'] ) && isset( $test['name'] ) ) {
+		$params['cm'] = $params['cm'] . '_' . $test['name'] . '_' . $test['key'];
 	}
 
-	//use test account for testing
-	if( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 		$params['tid'] = 'UA-19617272-27';
 	}
 
@@ -129,14 +130,14 @@ register_activation_hook( MM_BASE_DIR . "mojo-marketplace.php", 'mm_ux_log_activ
 register_deactivation_hook( MM_BASE_DIR . "mojo-marketplace.php", 'mm_ux_log_deactivated' );
 
 function mm_ux_log_theme_preview() {
-	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-theme-preview" ) {
+	if ( isset( $_GET['page'] ) && 'mojo-theme-preview' == $_GET['page'] ) {
 		global $theme;
-		if( ! isset( $_GET['details'] ) ) {
+		if ( ! isset( $_GET['details'] ) ) {
 			$event = array(
 				't'		=> 'event',
 				'ec'	=> 'theme_preview',
 				'ea'	=> esc_attr( $_GET['items'] ),
-				'el'	=> $theme->name
+				'el'	=> $theme->name,
 			);
 			mm_ux_log( $event );
 		} else {
@@ -144,7 +145,7 @@ function mm_ux_log_theme_preview() {
 				't'		=> 'event',
 				'ec'	=> 'theme_details',
 				'ea'	=> esc_attr( $_GET['items'] ),
-				'el'	=> $theme->name
+				'el'	=> $theme->name,
 			);
 			mm_ux_log( $event );
 		}
@@ -153,7 +154,7 @@ function mm_ux_log_theme_preview() {
 add_action( 'admin_footer', 'mm_ux_log_theme_preview' );
 
 function mm_ux_log_theme_category_org() {
-	if( isset( $_GET['browse'] ) ) {
+	if ( isset( $_GET['browse'] ) ) {
 		$category = esc_attr( $_GET['browse'] );
 	} else {
 		$category = 'featured';
@@ -162,25 +163,25 @@ function mm_ux_log_theme_category_org() {
 		't'		=> 'event',
 		'ec'	=> 'theme_category',
 		'ea'	=> 'org',
-		'el'	=> $category
+		'el'	=> $category,
 	);
 	mm_ux_log( $event );
 }
 add_action( 'admin_footer-theme-install.php', 'mm_ux_log_theme_category_org' );
 
 function mm_ux_log_theme_category_mojo() {
-	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-themes" ) {
-		if( isset( $_GET['items'] ) ) {
+	if ( isset( $_GET['page'] ) && 'mojo-themes' == $_GET['page'] ) {
+		if ( isset( $_GET['items'] ) ) {
 			$category = esc_attr( $_GET['items'] );
 		} else {
-			$category = "popular";
+			$category = 'popular';
 		}
 
 		$event = array(
 			't'		=> 'event',
 			'ec'	=> 'theme_category',
 			'ea'	=> 'mojo',
-			'el'	=> $category
+			'el'	=> $category,
 		);
 		mm_ux_log( $event );
 	}
@@ -193,7 +194,7 @@ function mm_ux_log_plugin_version() {
 		't'		=> 'event',
 		'ec'	=> 'scheduled',
 		'ea'	=> 'plugin_version',
-		'el'	=> $plugin['Version']
+		'el'	=> $plugin['Version'],
 	);
 	$events = get_option( 'mm_cron', array() );
 	$events['daily'][ $event['ea'] ] = $event;
@@ -206,7 +207,7 @@ function mm_ux_log_php_version() {
 		't'		=> 'event',
 		'ec'	=> 'scheduled',
 		'ea'	=> 'php_version',
-		'el'	=> phpversion()
+		'el'	=> phpversion(),
 	);
 	$events = get_option( 'mm_cron', array() );
 	$events['monthly'][ $event['ea'] ] = $event;
@@ -220,10 +221,10 @@ function mm_ux_log_wp_version() {
 		't'		=> 'event',
 		'ec'	=> 'scheduled',
 		'ea'	=> 'wp_version',
-		'el'	=> $wp_version
+		'el'	=> $wp_version,
 	);
 	$events = get_option( 'mm_cron', array() );
-	$events['weekly'][$event['ea']] = $event;
+	$events['weekly'][ $event['ea'] ] = $event;
 	update_option( 'mm_cron', $events );
 }
 add_action( 'admin_footer-index.php', 'mm_ux_log_wp_version' );
@@ -234,7 +235,7 @@ function mm_ux_log_plugin_count() {
 		't'		=> 'event',
 		'ec'	=> 'scheduled',
 		'ea'	=> 'plugin_count',
-		'el'	=> count( $plugins )
+		'el'	=> count( $plugins ),
 	);
 	$events = get_option( 'mm_cron', array() );
 	$events['monthly'][$event['ea']] = $event;
@@ -244,10 +245,10 @@ add_action( 'admin_footer-index.php', 'mm_ux_log_plugin_count' );
 
 function mm_ux_log_theme_count() {
 	$theme_root = get_theme_root();
-	$files = glob( $theme_root . "/*" );
+	$files = glob( $theme_root . '/*' );
 	$count = 0;
 	foreach ( $files as $file ) {
-		if( is_dir( $file ) ) {
+		if ( is_dir( $file ) ) {
 			$count++;
 		}
 	}
@@ -255,7 +256,7 @@ function mm_ux_log_theme_count() {
 		't'		=> 'event',
 		'ec'	=> 'scheduled',
 		'ea'	=> 'theme_count',
-		'el'	=> $count
+		'el'	=> $count,
 	);
 	$events = get_option( 'mm_cron', array() );
 	$events['monthly'][$event['ea']] = $event;
@@ -269,21 +270,21 @@ function mm_ux_log_current_theme() {
 		't'		=> 'event',
 		'ec'	=> 'scheduled',
 		'ea'	=> 'current_theme',
-		'el'	=> $theme
+		'el'	=> $theme,
 	);
 	$events = get_option( 'mm_cron', array() );
-	$events['monthly'][$event['ea']] = $event;
+	$events['monthly'][ $event['ea'] ] = $event;
 	update_option( 'mm_cron', $events );
 }
 add_action( 'admin_footer-index.php', 'mm_ux_log_current_theme' );
 
 function mm_ux_log_scheduled_events_weekly() {
 	$events = get_option( 'mm_cron', array( 'weekly' => array() ) );
-	if( isset( $events['weekly'] ) && count( $events['weekly'] ) >= 1 ) {
+	if ( isset( $events['weekly'] ) && count( $events['weekly'] ) >= 1 ) {
 		$weekly_events = $events['weekly'];
 		foreach ( $weekly_events as $event => $details ) {
-			if( isset( $details['keep'] ) ) {
-				if( $details['keep'] === false ) {
+			if ( isset( $details['keep'] ) ) {
+				if ( false === $details['keep'] ) {
 					unset( $weekly_events[ $event ] );
 				}
 				unset( $details['keep'] );
@@ -298,14 +299,14 @@ add_action( 'mm_cron_weekly', 'mm_ux_log_scheduled_events_weekly' );
 
 function mm_ux_log_scheduled_events_monthly() {
 	$events = get_option( 'mm_cron', array( 'monthly' => array() ) );
-	if( isset( $events['monthly'] ) && count( $events['monthly'] ) >= 1 ) {
+	if ( isset( $events['monthly'] ) && count( $events['monthly'] ) >= 1 ) {
 		$monthly_events = $events['monthly'];
 		foreach ( $monthly_events as $event => $details ) {
-			if( isset( $details['keep'] ) ) {
-				if( $details['keep'] === false ) {
+			if ( isset( $details['keep'] ) ) {
+				if ( false === $details['keep'] ) {
 					unset( $monthly_events[ $event ] );
 				}
-			unset( $details['keep'] );
+				unset( $details['keep'] );
 			}
 			mm_ux_log( $details );
 		}
@@ -317,14 +318,14 @@ add_action( 'mm_cron_monthly', 'mm_ux_log_scheduled_events_monthly' );
 
 function mm_ux_log_scheduled_events_twicedaily() {
 	$events = get_option( 'mm_cron', array( 'twicedaily' => array() ) );
-	if( isset( $events['twicedaily'] ) && count( $events['twicedaily'] ) >= 1 ) {
+	if ( isset( $events['twicedaily'] ) && count( $events['twicedaily'] ) >= 1 ) {
 		$twicedaily_events = $events['twicedaily'];
 		foreach ( $twicedaily_events as $event => $details ) {
-			if( isset( $details['keep'] ) ) {
-				if( $details['keep'] === false ) {
+			if ( isset( $details['keep'] ) ) {
+				if ( false === $details['keep'] ) {
 					unset( $twicedaily_events[ $event ] );
 				}
-			unset( $details['keep'] );
+				unset( $details['keep'] );
 			}
 			mm_ux_log( $details );
 		}
@@ -336,14 +337,14 @@ add_action( 'mm_cron_twicedaily', 'mm_ux_log_scheduled_events_twicedaily' );
 
 function mm_ux_log_scheduled_events_daily() {
 	$events = get_option( 'mm_cron', array( 'daily' => array() ) );
-	if( isset( $events['daily'] ) && count( $events['daily'] ) >= 1 ) {
+	if ( isset( $events['daily'] ) && count( $events['daily'] ) >= 1 ) {
 		$daily_events = $events['daily'];
 		foreach ( $daily_events as $event => $details ) {
-			if( isset( $details['keep'] ) ) {
-				if( $details['keep'] === false ) {
+			if ( isset( $details['keep'] ) ) {
+				if ( false === $details['keep'] ) {
 					unset( $daily_events[ $event ] );
 				}
-			unset( $details['keep'] );
+				unset( $details['keep'] );
 			}
 			mm_ux_log( $details );
 		}
@@ -355,14 +356,14 @@ add_action( 'mm_cron_daily', 'mm_ux_log_scheduled_events_daily' );
 
 function mm_ux_log_scheduled_events_hourly() {
 	$events = get_option( 'mm_cron', array( 'hourly' => array() ) );
-	if( isset( $events['hourly'] ) && count( $events['hourly'] ) >= 1 ) {
+	if ( isset( $events['hourly'] ) && count( $events['hourly'] ) >= 1 ) {
 		$hourly_events = $events['hourly'];
 		foreach ( $hourly_events as $event => $details ) {
-			if( isset( $details['keep'] ) ) {
-				if( $details['keep'] === false ) {
+			if ( isset( $details['keep'] ) ) {
+				if ( false === $details['keep'] ) {
 					unset( $hourly_events[ $event ] );
 				}
-			unset( $details['keep'] );
+				unset( $details['keep'] );
 			}
 			mm_ux_log( $details );
 		}
@@ -373,12 +374,12 @@ function mm_ux_log_scheduled_events_hourly() {
 add_action( 'mm_cron_hourly', 'mm_ux_log_scheduled_events_hourly' );
 
 function mm_ux_log_plugin_search() {
-	if( isset( $_GET['tab'] ) && isset( $_GET['s'] ) ) {
+	if ( isset( $_GET['tab'] ) && isset( $_GET['s'] ) ) {
 		$event = array(
 			't'		=> 'event',
 			'ec'	=> 'user_action',
 			'ea'	=> 'plugin_search',
-			'el'	=> esc_attr( $_GET['s'] )
+			'el'	=> esc_attr( $_GET['s'] ),
 		);
 		mm_ux_log( $event );
 	}
@@ -392,17 +393,17 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 			't'     => 'event',
 			'ec'    => 'user_action',
 			'ea'    => 'content_status',
-			'el'    => $new_status
+			'el'    => $new_status,
 		);
 		mm_ux_log( $event );
 	}
 	//first post is 3 because of the example post and page.
-	if( $post->ID == 3 ) {
+	if ( 3 == $post->ID ) {
 		$event = array(
 			't'     => 'event',
 			'ec'    => 'user_action',
 			'ea'    => 'first_post',
-			'el'    => $post->post_type
+			'el'    => $post->post_type,
 		);
 		mm_ux_log( $event );
 	}
@@ -413,7 +414,7 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 			't'     => 'event',
 			'ec'    => 'user_action',
 			'ea'    => 'fifth_post',
-			'el'    => $post->post_type
+			'el'    => $post->post_type,
 		);
 		mm_ux_log( $event );
 	}
@@ -427,7 +428,7 @@ function mm_ux_log_comment_status( $new_status, $old_status, $comment ) {
 			't'		=> 'event',
 			'ec'	=> 'user_action',
 			'ea'	=> 'comment_status',
-			'el'	=> $new_status
+			'el'	=> $new_status,
 		);
 		mm_ux_log( $event );
 	}
@@ -438,7 +439,7 @@ add_action( 'transition_comment_status', 'mm_ux_log_comment_status', 10, 3 );
  * Here are some log events that make use of the endpoint.
  */
 function mm_ux_log_buy_now_clicks_category() {
-	if( isset( $_GET['page'] ) && ( $_GET['page'] == 'mojo-themes' || $_GET['page'] == 'mojo-services' ) ) {
+	if ( isset( $_GET['page'] ) && ( 'mojo-themes' == $_GET['page'] || 'mojo-services' == $_GET['page'] ) ) {
 		?>
 		<script type="text/javascript">
 			jQuery( 'form.buy_now' ).submit( function() {
@@ -456,7 +457,7 @@ function mm_ux_log_buy_now_clicks_category() {
 add_action( 'admin_footer', 'mm_ux_log_buy_now_clicks_category' );
 
 function mm_ux_log_buy_now_clicks_preview() {
-	if( isset( $_GET['page'] ) && $_GET['page'] == "mojo-theme-preview" ) {
+	if ( isset( $_GET['page'] ) && 'mojo-theme-preview' == $_GET['page'] ) {
 		global $theme;
 		?>
 		<script type="text/javascript">
@@ -473,12 +474,12 @@ function mm_ux_log_buy_now_clicks_preview() {
 add_action( 'admin_footer', 'mm_ux_log_buy_now_clicks_preview' );
 
 function mm_ux_log_service_outbound() {
-	if( isset( $_GET['page'] ) && $_GET['page'] == 'mojo-services' ) {
+	if ( isset( $_GET['page'] ) && 'mojo-services' == $_GET['page'] ) {
 		$event = array(
 			't'		=> 'event',
 			'ec'	=> 'user_action',
 			'ea'	=> 'link_click',
-			'el'	=> 'mojo_services_outbound'
+			'el'	=> 'mojo_services_outbound',
 		);
 		mm_ux_log( $event );
 	}
@@ -492,7 +493,7 @@ function mm_endpoint_action_buy_now_click() {
 				'ec'	=> 'user_action',
 				'ea'	=> 'buy_now_click',
 				'el'	=> esc_attr( $_GET['item'] ),
-				'ev'	=> esc_attr( str_replace( '$', '', $_GET['value'] ) )
+				'ev'	=> esc_attr( str_replace( '$', '', $_GET['value'] ) ),
 			);
 		mm_ux_log( $event );
 	} else {
@@ -503,7 +504,7 @@ function mm_endpoint_action_buy_now_click() {
 add_action( 'wp_ajax_mm_buy_now_click', 'mm_endpoint_action_buy_now_click' );
 
 function mm_ux_log_browse_all_themes() {
-	if ( isset( $_GET['page'] ) && $_GET['page'] == 'mojo-themes' ) {
+	if ( isset( $_GET['page'] ) && 'mojo-themes' == $_GET['page'] ) {
 		?>
 		<script type="text/javascript">
 			jQuery( 'h2 .add-new-h2' ).click( function() {
@@ -522,7 +523,7 @@ function mm_endpoint_action_browse_all_themes() {
 			't'		=> 'event',
 			'ec'	=> 'user_action',
 			'ea'	=> 'link_click',
-			'el'	=> 'browse_all_themes'
+			'el'	=> 'browse_all_themes',
 		);
 		mm_ux_log( $event );
 	}
@@ -531,13 +532,13 @@ function mm_endpoint_action_browse_all_themes() {
 add_action( 'wp_ajax_mm_browse_all_themes', 'mm_endpoint_action_browse_all_themes' );
 
 function mm_ux_log_btn_click() {
-	if( isset( $_GET['page'] ) && $_GET['page'] == 'mojo-themes' ) {
-		if( isset( $_GET['btn'] ) ) {
+	if ( isset( $_GET['page'] ) && 'mojo-themes' == $_GET['page'] ) {
+		if ( isset( $_GET['btn'] ) ) {
 			$event = array(
 				't'		=> 'event',
 				'ec'	=> 'user_action',
 				'ea'	=> 'link_click',
-				'el'	=> esc_attr( $_GET['btn'] )
+				'el'	=> esc_attr( $_GET['btn'] ),
 			);
 			mm_ux_log( $event );
 		}
@@ -550,7 +551,7 @@ function mm_jetpack_log_module_enabled( $module ) {
 		't'     => 'event',
 		'ec'    => 'jetpack_event',
 		'ea'    => 'module_enabled',
-		'el'    => $module
+		'el'    => $module,
 	);
 	mm_ux_log( $event );
 }
@@ -561,7 +562,7 @@ function mm_jetpack_log_module_disabled( $module ) {
 		't'     => 'event',
 		'ec'    => 'jetpack_event',
 		'ea'    => 'module_disabled',
-		'el'    => $module
+		'el'    => $module,
 	);
 	mm_ux_log( $event );
 }
@@ -572,7 +573,7 @@ function mm_jetpack_log_publicized( $submit_post, $post_id, $service_name, $conn
 		't'     => 'event',
 		'ec'    => 'jetpack_event',
 		'ea'    => 'publicized',
-		'el'    => $service_name
+		'el'    => $service_name,
 	);
 	mm_ux_log( $event );
 }
@@ -583,7 +584,7 @@ function mm_jetpack_log_connected( $entry ) {
 		$event = array(
 			't'     => 'event',
 			'ec'    => 'jetpack_event',
-			'ea'    => 'connected'
+			'ea'    => 'connected',
 		);
 		mm_ux_log( $event );
 	}
