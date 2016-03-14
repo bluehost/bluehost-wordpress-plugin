@@ -435,44 +435,6 @@ function mm_ux_log_comment_status( $new_status, $old_status, $comment ) {
 }
 add_action( 'transition_comment_status', 'mm_ux_log_comment_status', 10, 3 );
 
-/**
- * Here are some log events that make use of the endpoint.
- */
-function mm_ux_log_buy_now_clicks_category() {
-	if ( isset( $_GET['page'] ) && ( 'mojo-themes' == $_GET['page'] || 'mojo-services' == $_GET['page'] ) ) {
-		?>
-		<script type="text/javascript">
-			jQuery( 'form.buy_now' ).submit( function() {
-				var item = jQuery( this ).attr('class');
-				var single_item = item.replace( 'buy_now ', '' );
-				var parent = jQuery( this ).parent( '.mojo-theme-actions' );
-				var value = parent.children( '.price' ).text();
-				var nonce = "<?php echo wp_create_nonce( 'mm_nonce-buy_now_click' ); ?>";
-				jQuery.ajax( ajaxurl + "?action=mm_buy_now_click&item=" + single_item + "&value=" + value + "&nonce=" + nonce );
-			} );
-		</script>
-		<?php
-	}
-}
-add_action( 'admin_footer', 'mm_ux_log_buy_now_clicks_category' );
-
-function mm_ux_log_buy_now_clicks_preview() {
-	if ( isset( $_GET['page'] ) && 'mojo-theme-preview' == $_GET['page'] ) {
-		global $theme;
-		?>
-		<script type="text/javascript">
-			jQuery( 'form .mm-btn-primary' ).click( function() {
-				var item = "item_preview_<?php echo mm_title_to_slug( $theme->name ); ?>";
-				var value = "<?php echo $theme->prices->single_domain_license; ?>";
-				var nonce = "<?php echo wp_create_nonce( 'mm_nonce-buy_now_click' ); ?>";
-				jQuery.ajax( ajaxurl + "?action=mm_buy_now_click&item=" + item + "&value=" + value + "&nonce=" + nonce );
-			} );
-		</script>
-		<?php
-	}
-}
-add_action( 'admin_footer', 'mm_ux_log_buy_now_clicks_preview' );
-
 function mm_ux_log_service_outbound() {
 	if ( isset( $_GET['page'] ) && 'mojo-services' == $_GET['page'] ) {
 		$event = array(
