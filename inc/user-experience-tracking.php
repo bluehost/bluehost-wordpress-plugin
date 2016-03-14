@@ -4,7 +4,7 @@ This file tracks basic user actions to improve the user experience.
 */
 
 function mm_ux_log( $args = array() ) {
-	$url = "https://ssl.google-analytics.com/collect";
+	$url = 'https://ssl.google-analytics.com/collect';
 
 	global $title;
 
@@ -15,29 +15,29 @@ function mm_ux_log( $args = array() ) {
 	$path = explode( 'wp-admin', $_SERVER['REQUEST_URI'] );
 
 	if ( empty( $path ) || empty( $path[1] ) ) {
-		$path = array( "", " " );
+		$path = array( '', ' ' );
 	}
 
 	$defaults = array(
 		'v'		=> '1',
 		'tid'	=> 'UA-39246514-3',
-		't'		=> 'pageview', //hit type
+		't'		=> 'pageview',
 		'cid'	=> md5( get_option( 'siteurl' ) ),
 		'uid'	=> md5( get_option( 'siteurl' ) . get_current_user_id() ),
-		'cn'	=> 'mojo_wp_plugin', //campaign name
-		'cs'	=> 'mojo_wp_plugin', //campaign source
-		'cm'	=> 'plugin_admin', //campaign medium
-		'ul'	=> get_locale(), //language
-		'dp'	=> $path[1], //path
-		'sc'	=> '', //start or end
+		'cn'	=> 'mojo_wp_plugin',
+		'cs'	=> 'mojo_wp_plugin',
+		'cm'	=> 'plugin_admin',
+		'ul'	=> get_locale(),
+		'dp'	=> $path[1],
+		'sc'	=> '',
 		'ua'	=> @$_SERVER['HTTP_USER_AGENT'],
 		'dl'	=> $path[1],
 		'dh'	=> get_option( 'siteurl' ),
-		'dt'	=> $title, //title
-		'ec'	=> '', //event category
-		'ea'	=> '', //event action
-		'el'	=> '', //event label
-		'ev'	=> '', //event value
+		'dt'	=> $title,
+		'ec'	=> '',
+		'ea'	=> '',
+		'el'	=> '',
+		'ev'	=> '',
 		'cd1'   => ( defined( 'MM_VERSION' ) ) ? MM_VERSION : '',
 		'cd2'   => get_option( 'mm_brand' ),
 	);
@@ -50,12 +50,11 @@ function mm_ux_log( $args = array() ) {
 
 	$test = get_transient( 'mm_test', '' );
 
-	if( isset( $test['key'] ) && isset( $test['name'] ) ) {
-		$params['cm'] = $params['cm'] . "_" . $test['name'] . "_" . $test['key'];
+	if ( isset( $test['key'] ) && isset( $test['name'] ) ) {
+		$params['cm'] = $params['cm'] . '_' . $test['name'] . '_' . $test['key'];
 	}
 
-	//use test account for testing
-	if( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 		$params['tid'] = 'UA-19617272-27';
 	}
 
