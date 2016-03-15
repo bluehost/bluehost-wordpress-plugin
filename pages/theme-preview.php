@@ -79,22 +79,19 @@ if ( is_wp_error( $theme ) ) {
 			<iframe src="<?php echo mm_build_link( $theme->demo_url, array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'preview_view_demo' ) ); ?>"></iframe>
 		</div>
 	</div>
-	<?php
-}
-?>
-<script type="text/javascript">
-jQuery( document ).ready( function( $ ) {
-	$( 'a.theme-preview-other-link' ).hover( function() {
-		$( '#preview-screenshot img' ).attr( 'src', $( this ).data( 'preview' ) );
-		$( '#preview-screenshot' ).fadeIn();
+		<script type="text/javascript">
+	jQuery( document ).ready( function( $ ) {
+		$( 'a.theme-preview-other-link' ).hover( function() {
+			$( '#preview-screenshot img' ).attr( 'src', $( this ).data( 'preview' ) );
+			$( '#preview-screenshot' ).fadeIn();
+		} );
+		$( 'a.theme-preview-other-link' ).mouseleave( function() {
+			$( '#preview-screenshot img' ).attr( 'src', '' );
+			$( '#preview-screenshot' ).hide();
+		} );
 	} );
-	$( 'a.theme-preview-other-link' ).mouseleave( function() {
-		$( '#preview-screenshot img' ).attr( 'src', '' );
-		$( '#preview-screenshot' ).hide();
-	} );
-} );
-</script>
+	</script>
 </div>
-
-<?php
-$title = 'Demo : ' . $theme->name;
+	<?php
+	$title = 'Demo : ' . $theme->name;
+}
