@@ -132,23 +132,13 @@ register_deactivation_hook( MM_BASE_DIR . "mojo-marketplace.php", 'mm_ux_log_dea
 function mm_ux_log_theme_preview() {
 	if ( isset( $_GET['page'] ) && 'mojo-theme-preview' == $_GET['page'] ) {
 		global $theme;
-		if ( ! isset( $_GET['details'] ) ) {
-			$event = array(
-				't'		=> 'event',
-				'ec'	=> 'theme_preview',
-				'ea'	=> esc_attr( $_GET['items'] ),
-				'el'	=> $theme->name,
-			);
-			mm_ux_log( $event );
-		} else {
-			$event = array(
-				't'		=> 'event',
-				'ec'	=> 'theme_details',
-				'ea'	=> esc_attr( $_GET['items'] ),
-				'el'	=> $theme->name,
-			);
-			mm_ux_log( $event );
-		}
+		$event = array(
+			't'		=> 'event',
+			'ec'	=> 'theme_preview',
+			'ea'	=> esc_attr( $_GET['items'] ),
+			'el'	=> $theme->name,
+		);
+		mm_ux_log( $event );
 	}
 }
 add_action( 'admin_footer', 'mm_ux_log_theme_preview' );
