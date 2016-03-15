@@ -130,8 +130,8 @@ register_activation_hook( MM_BASE_DIR . "mojo-marketplace.php", 'mm_ux_log_activ
 register_deactivation_hook( MM_BASE_DIR . "mojo-marketplace.php", 'mm_ux_log_deactivated' );
 
 function mm_ux_log_theme_preview() {
-	if ( isset( $_GET['page'] ) && 'mojo-theme-preview' == $_GET['page'] ) {
-		global $theme;
+	global $theme;
+	if ( isset( $_GET['page'] ) && 'mojo-theme-preview' == $_GET['page'] && ! is_wp_error( $theme ) ) {
 		$event = array(
 			't'		=> 'event',
 			'ec'	=> 'theme_preview',
