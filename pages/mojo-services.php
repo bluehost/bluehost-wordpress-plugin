@@ -12,7 +12,7 @@ if ( isset( $_GET['paged'] ) && is_numeric( $_GET['paged'] ) ) {
 	$query['page'] = 1;
 }
 
-if ( 'services' == $type || 'graphics' == $type ) {
+if ( 'services' == $type ) {
 	unset( $query['category'] );
 }
 
