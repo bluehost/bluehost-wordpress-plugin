@@ -12,10 +12,6 @@ if ( isset( $_GET['paged'] ) && is_numeric( $_GET['paged'] ) ) {
 	$query['page'] = 1;
 }
 
-if ( 'services' == $type || 'graphics' == $type ) {
-	unset( $query['category'] );
-}
-
 if ( isset( $_GET['seller'] ) ) {
 	$query['seller'] = sanitize_title_for_query( $_GET['seller'] );
 }
@@ -31,10 +27,6 @@ if ( isset( $_GET['sort'] ) ) {
 	if ( 'recent' == $_GET['sort'] || 'popular' == $_GET['sort'] ) {
 		$query['order'] = sanitize_title_for_query( $_GET['sort'] );
 	}
-}
-if ( 'graphics' == $type && isset( $query['itemcategory'] ) ) {
-	$query['category'] = $query['itemcategory'];
-	unset( $query['itemcategory'] );
 }
 
 $api_url = add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/items' );

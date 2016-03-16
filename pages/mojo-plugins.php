@@ -24,10 +24,6 @@ if ( isset( $_GET['sort'] ) ) {
 		$query['order'] = sanitize_title_for_query( $_GET['sort'] );
 	}
 }
-if ( 'graphics' == $type && isset( $query['itemcategory'] ) ) {
-	$query['category'] = $query['itemcategory'];
-	unset( $query['itemcategory'] );
-}
 
 $api_url = add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/items' );
 $response = mm_api_cache( $api_url );
