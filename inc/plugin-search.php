@@ -58,7 +58,7 @@ function mm_plugin_search_result() {
 								</div>
 								<div class="desc column-description">
 									<p>' . $short_desc . '</p>
-									<p class="authors"> <cite>By <a href="' . $author_url . '">' . $author . '</a></cite></p>
+									<p class="authors"> <cite>By <a href="' . $author_url . '" target="_blank">' . $author . '</a></cite></p>
 								</div>
 							</div>
 							<div class="plugin-card-bottom">
