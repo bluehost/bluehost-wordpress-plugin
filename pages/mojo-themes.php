@@ -79,6 +79,19 @@ if ( ! is_wp_error( $response ) ) {
 								?>
 							</ol>
 						</div>
+						<div class="col-xs-12 col-sm-4">
+							<form class="form-horizontal theme-sort">
+								<label for="sort_select" class="control-label">Sort By</label>
+								<span class="fake-select">
+									<select class="form-control input-sm" id="sort_select">
+										<option value=''>Select</option>
+										<option value='price'<?php selected( 'price', $query['order'] ); ?>>Price</option>
+										<option value='latest'<?php selected( 'latest', $query['order'] ); ?>>Latest</option>
+										<option value='random'<?php selected( 'random', $query['order'] ); ?>>Random</option>
+									</select>
+								</span>
+							</form>
+						</div>
 					</div>
 				</div>
 				<div class="panel-body">
@@ -138,5 +151,12 @@ if ( ! is_wp_error( $response ) ) {
 		</div>
 	</main>
 </div>
+<script type="text/javascript">
+jQuery( document ).ready( function( $ ) {
+	$( '.theme-sort #sort_select' ).change( function() {
+		window.location.href = window.location.href + '&sort=' + this.value;
+	} );
+} );
+</script>
 	<?php
 }
