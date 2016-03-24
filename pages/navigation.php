@@ -7,7 +7,7 @@
 						<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes' ), admin_url( 'admin.php' ) ) ); ?>">Themes</a>
 						<div class="dropdown">
 							<ul class="menu">
-								<li class="popular"><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes', 'items' => 'popular' ), admin_url( 'admin.php' ) ) ); ?>"><strong>Popular</strong></a></li>
+								<li class="popular"><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes', 'sort' => 'popular' ), admin_url( 'admin.php' ) ) ); ?>"><strong>Popular</strong></a></li>
 								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes', 'items' => 'blog' ),         admin_url( 'admin.php' ) ) ); ?>">Blog</a></li>
 								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes', 'items' => 'business' ),     admin_url( 'admin.php' ) ) ); ?>">Business</a></li>
 								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes', 'items' => 'church' ),       admin_url( 'admin.php' ) ) ); ?>">Church</a></li>

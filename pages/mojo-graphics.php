@@ -17,16 +17,11 @@ if ( 'services' == $type || 'graphics' == $type ) {
 }
 
 if ( isset( $_GET['items'] ) ) {
-	if ( 'recent' == $_GET['items'] || 'popular' == $_GET['items'] ) {
-		$query['order'] = sanitize_title_for_query( $_GET['items'] );
-	} else {
-		$query['itemcategory'] = sanitize_title_for_query( $_GET['items'] );
-	}
+	$query['itemcategory'] = sanitize_title_for_query( $_GET['items'] );
 }
+
 if ( isset( $_GET['sort'] ) ) {
-	if ( 'recent' == $_GET['sort'] || 'popular' == $_GET['sort'] ) {
-		$query['order'] = sanitize_title_for_query( $_GET['sort'] );
-	}
+	$query['order'] = sanitize_title_for_query( $_GET['sort'] );
 }
 
 if ( 'graphics' == $type && isset( $query['itemcategory'] ) ) {
@@ -35,7 +30,11 @@ if ( 'graphics' == $type && isset( $query['itemcategory'] ) ) {
 }
 
 $api_url = add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/items' );
-$response = mm_api_cache( $api_url );
+if ( 'random' != $query['order'] ) {
+	$response = mm_api_cache( $api_url );
+} else {
+	$response = wp_remote_get( $api_url );
+}
 if ( ! is_wp_error( $response ) ) {
 	if ( isset( $_GET['items'] ) && 'security-1' == $_GET['items'] ) {
 		$_GET['items'] = 'security';
@@ -80,6 +79,19 @@ if ( ! is_wp_error( $response ) ) {
 								}
 								?>
 							</ol>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<form class="form-horizontal graphics-sort">
+								<label for="sort_select" class="control-label">Sort By</label>
+								<span class="fake-select">
+									<select class="form-control input-sm" id="sort_select">
+										<option value='sales'>Select</option>
+										<option value='price'<?php selected( 'price', $query['order'] ); ?>>Price</option>
+										<option value='latest'<?php selected( 'latest', $query['order'] ); ?>>Latest</option>
+										<option value='random'<?php selected( 'random', $query['order'] ); ?>>Random</option>
+									</select>
+								</span>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -140,5 +152,12 @@ if ( ! is_wp_error( $response ) ) {
 		</div>
 	</main>
 </div>
+<script type="text/javascript">
+jQuery( document ).ready( function( $ ) {
+	$( '.graphics-sort #sort_select' ).change( function() {
+		window.location.href = window.location.href + '&sort=' + this.value;
+	} );
+} );
+</script>
 	<?php
 }

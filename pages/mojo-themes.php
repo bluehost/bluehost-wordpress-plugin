@@ -16,21 +16,24 @@ if ( isset( $_GET['seller'] ) ) {
 	$query['seller'] = sanitize_title_for_query( $_GET['seller'] );
 }
 
-if ( isset( $_GET['items'] ) ) {
-	if ( 'recent' == $_GET['items'] || 'popular' == $_GET['items'] ) {
-		$query['order'] = sanitize_title_for_query( $_GET['items'] );
-	} else {
-		$query['itemcategory'] = sanitize_title_for_query( $_GET['items'] );
-	}
+if ( isset( $_GET['items'] ) && 'popular' != $_GET['items'] ) {
+	$query['itemcategory'] = sanitize_title_for_query( $_GET['items'] );
 }
-if ( isset( $_GET['sort'] ) ) {
-	if ( 'recent' == $_GET['sort'] || 'popular' == $_GET['sort'] ) {
-		$query['order'] = sanitize_title_for_query( $_GET['sort'] );
-	}
+
+if ( isset( $_GET['items'] ) && 'popular' == $_GET['items'] ) {
+	$_GET['sort'] = 'popular';
+}
+
+if ( isset( $_GET['sort'] ) && ! empty( $_GET['sort'] ) ) {
+	$query['order'] = sanitize_title_for_query( $_GET['sort'] );
 }
 
 $api_url = add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/items' );
-$response = mm_api_cache( $api_url );
+if ( 'random' != $query['order'] ) {
+	$response = mm_api_cache( $api_url );
+} else {
+	$response = wp_remote_get( $api_url );
+}
 if ( ! is_wp_error( $response ) ) {
 	if ( isset( $_GET['items'] ) && 'security-1' == $_GET['items'] ) {
 		$_GET['items'] = 'security';
