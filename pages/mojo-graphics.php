@@ -5,7 +5,9 @@ $query = array(
 	'type'     => $type,
 	'count'    => 20,
 	'order'     => 'sales',
+	'direction' => ( isset( $_GET['direction'] ) ) ? $_GET['direction'] : '',
 );
+
 if ( isset( $_GET['paged'] ) && is_numeric( $_GET['paged'] ) ) {
 	$query['page'] = (int) $_GET['paged'];
 } else {
@@ -20,7 +22,7 @@ if ( isset( $_GET['items'] ) ) {
 	$query['itemcategory'] = sanitize_title_for_query( $_GET['items'] );
 }
 
-if ( isset( $_GET['sort'] ) ) {
+if ( isset( $_GET['sort'] ) && ! empty( $_GET['sort'] ) ) {
 	$query['order'] = sanitize_title_for_query( $_GET['sort'] );
 }
 
@@ -28,7 +30,7 @@ if ( 'graphics' == $type && isset( $query['itemcategory'] ) ) {
 	$query['category'] = $query['itemcategory'];
 	unset( $query['itemcategory'] );
 }
-
+$query = array_filter( $query );
 $api_url = add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/items' );
 if ( 'random' != $query['order'] ) {
 	$response = mm_api_cache( $api_url );
@@ -87,10 +89,11 @@ if ( ! is_wp_error( $response ) ) {
 									<select class="form-control input-sm" id="sort_select">
 										<option value=''>Select</option>
 										<option value='price'<?php selected( 'price', $query['order'] ); ?>>Price</option>
-										<option value='latest'<?php selected( 'latest', $query['order'] ); ?>>Latest</option>
+										<option value='latest'<?php selected( 'latest', $query['order'] ); ?>>Date Added</option>
 										<option value='random'<?php selected( 'random', $query['order'] ); ?>>Random</option>
 									</select>
 								</span>
+								<a href='#' class='sort-direction'><span class="dashicons dashicons-sort"></span></a>
 							</form>
 						</div>
 					</div>
@@ -156,6 +159,15 @@ if ( ! is_wp_error( $response ) ) {
 jQuery( document ).ready( function( $ ) {
 	$( '.graphics-sort #sort_select' ).change( function() {
 		window.location.href = window.location.href + '&sort=' + this.value;
+	} );
+	$( '.graphics-sort a.sort-direction' ).click( function( link ) {
+		link.preventDefault();
+		var dir = location.search.split( 'direction=' )[1];
+		if ( 'undefined' == typeof( dir ) || 'asc' == dir ) {
+			window.location.href = window.location.href + '&direction=desc';
+		} else {
+			window.location.href = window.location.href + '&direction=asc';
+		}
 	} );
 } );
 </script>

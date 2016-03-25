@@ -1,20 +1,23 @@
 <?php
 $type = str_replace( 'mojo-', '', sanitize_title_for_query( wp_unslash( $_GET['page'] ) ) );
 $query = array(
-	'category' => 'wordpress',
-	'type'     => $type,
-	'count'    => 20,
+	'category'  => 'wordpress',
+	'type'      => $type,
+	'count'     => 20,
+	'direction' => '',
 );
-$valid_args = array(
-	'seller',
-	'items',
-	'count',
+$valid_user_args = array(
+	'seller'    => true,
+	'items'     => true,
+	'count'     => true,
+	'direction' => true,
 );
 
 $query['page'] = ( isset( $_GET['paged'] ) && is_numeric( $_GET['paged'] ) ) ? $_GET['paged'] : '';
 $query['order'] = ( isset( $_GET['sort'] ) && ! empty( $_GET['sort'] ) ) ? $_GET['sort'] : 'sales';
 $query['itemcategory'] = ( isset( $_GET['items'] )  && 'popular' != $_GET['items'] ) ? $_GET['items'] : '';
-$user_args = array_intersect_assoc( $valid_args, $_GET );
+
+$user_args = array_intersect_key( $_GET, $valid_user_args );
 $query = wp_parse_args( $user_args, $query );
 $query = array_map( 'sanitize_title_for_query', $query );
 $query = array_filter( $query );
@@ -60,10 +63,11 @@ if ( ! is_wp_error( $response ) ) {
 									<select class="form-control input-sm" id="sort_select">
 										<option value=''>Select</option>
 										<option value='price'<?php selected( 'price', $query['order'] ); ?>>Price</option>
-										<option value='latest'<?php selected( 'latest', $query['order'] ); ?>>Latest</option>
+										<option value='latest'<?php selected( 'latest', $query['order'] ); ?>>Date Added</option>
 										<option value='random'<?php selected( 'random', $query['order'] ); ?>>Random</option>
 									</select>
 								</span>
+								<a href='#' class='sort-direction'><span class="dashicons dashicons-sort"></span></a>
 							</form>
 						</div>
 					</div>
@@ -130,6 +134,15 @@ if ( ! is_wp_error( $response ) ) {
 jQuery( document ).ready( function( $ ) {
 	$( '.theme-sort #sort_select' ).change( function() {
 		window.location.href = window.location.href + '&sort=' + this.value;
+	} );
+	$( '.theme-sort a.sort-direction' ).click( function( link ) {
+		link.preventDefault();
+		var dir = location.search.split( 'direction=' )[1];
+		if ( 'undefined' == typeof( dir ) || 'asc' == dir ) {
+			window.location.href = window.location.href + '&direction=desc';
+		} else {
+			window.location.href = window.location.href + '&direction=asc';
+		}
 	} );
 } );
 </script>
