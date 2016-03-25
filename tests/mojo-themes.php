@@ -4,29 +4,20 @@ $query = array(
 	'category' => 'wordpress',
 	'type'     => $type,
 	'count'    => 20,
-	'order'     => 'sales',
 );
-if ( isset( $_GET['paged'] ) && is_numeric( $_GET['paged'] ) ) {
-	$query['page'] = (int) $_GET['paged'];
-} else {
-	$query['page'] = 1;
-}
+$valid_args = array(
+	'seller',
+	'items',
+	'count',
+);
 
-if ( isset( $_GET['seller'] ) ) {
-	$query['seller'] = sanitize_title_for_query( $_GET['seller'] );
-}
-
-if ( isset( $_GET['items'] ) && 'popular' != $_GET['items'] ) {
-	$query['itemcategory'] = sanitize_title_for_query( $_GET['items'] );
-}
-
-if ( isset( $_GET['items'] ) && 'popular' == $_GET['items'] ) {
-	$_GET['sort'] = 'popular';
-}
-
-if ( isset( $_GET['sort'] ) && ! empty( $_GET['sort'] ) ) {
-	$query['order'] = sanitize_title_for_query( $_GET['sort'] );
-}
+$query['page'] = ( isset( $_GET['paged'] ) && is_numeric( $_GET['paged'] ) ) ? $_GET['paged'] : '';
+$query['order'] = ( isset( $_GET['sort'] ) && ! empty( $_GET['sort'] ) ) ? $_GET['sort'] : 'sales';
+$query['itemcategory'] = ( isset( $_GET['items'] )  && 'popular' != $_GET['items'] ) ? $_GET['items'] : '';
+$user_args = array_intersect_assoc( $valid_args, $_GET );
+$query = wp_parse_args( $user_args, $query );
+$query = array_map( 'sanitize_title_for_query', $query );
+$query = array_filter( $query );
 
 $api_url = add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/items' );
 if ( 'random' != $query['order'] ) {
@@ -34,13 +25,10 @@ if ( 'random' != $query['order'] ) {
 } else {
 	$response = wp_remote_get( $api_url );
 }
+
 if ( ! is_wp_error( $response ) ) {
-	if ( isset( $_GET['items'] ) && 'security-1' == $_GET['items'] ) {
-		$_GET['items'] = 'security';
-	}
 	$api = json_decode( $response['body'] );
 	$items = $api->items;
-
 ?>
 <div id="mojo-wrapper">
 	<?php mm_require( MM_BASE_DIR . 'pages/header.php' ); ?>
@@ -146,4 +134,6 @@ jQuery( document ).ready( function( $ ) {
 } );
 </script>
 	<?php
+} else {
+	//TODO display nice error message that the api is down.
 }
