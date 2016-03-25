@@ -29,7 +29,7 @@ if ( ! is_wp_error( $response ) ) {
 						</div>
 						<div class="col-xs-12 col-sm-4">
 							<form class="form-horizontal search-sort">
-								<label for="sort_select" class="control-label">Sort By</label>
+								<label for="sort_select" class="control-label">Filter By</label>
 								<span class="fake-select">
 									<select class="form-control input-sm" id="sort_select">
 										<option value='all'<?php selected( 'all', $query['item_type'] ); ?>>Select</option>
