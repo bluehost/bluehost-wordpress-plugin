@@ -71,7 +71,6 @@ if ( ! is_wp_error( $response ) ) {
 									<select class="form-control input-sm" id="sort_select">
 										<option value=''>Select</option>
 										<option value='price'<?php selected( 'price', $query['order'] ); ?>>Price</option>
-										<option value='sales'<?php selected( 'sales', $query['order'] ); ?>>Sales</option>
 										<option value='latest'<?php selected( 'latest', $query['order'] ); ?>>Date Added</option>
 										<option value='random'<?php selected( 'random', $query['order'] ); ?>>Random</option>
 									</select>
