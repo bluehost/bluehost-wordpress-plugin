@@ -1,10 +1,20 @@
 <?php
 function mm_sso_check () {
-	if ( ! isset( $_GET['salt'] ) || ! isset( $_GET['nonce'] ) || ! isset( $_GET['user'] ) ) { mm_sso_req_login(); }
+	if ( ! isset( $_GET['salt'] ) || ! isset( $_GET['nonce'] ) ) { mm_sso_req_login(); }
 	if ( mm_sso_check_blocked() ) { mm_sso_req_login(); }
 	$nonce = esc_attr( $_GET['nonce'] );
 	$salt = esc_attr( $_GET['salt'] );
-	$user = esc_attr( $_GET['user'] );
+	if ( isset( $_GET['user'] ) ) {
+		$user = esc_attr( $_GET['user'] );
+	} else {
+		$user = get_users( array( 'role' => 'administrator', 'number' => 1 ) );
+		if ( is_array( $user ) && is_a( $user[0], 'WP_User' ) ) {
+			$user = $user[0];
+			$user = $user->ID;
+		} else {
+			$user = 0;
+		}
+	}
 	$hash = base64_encode( hash( 'sha256', $nonce . $salt, false ) );
 	$hash = substr( $hash, 0, 64 );
 	if ( get_transient( 'mm_sso' ) == $hash ) {
