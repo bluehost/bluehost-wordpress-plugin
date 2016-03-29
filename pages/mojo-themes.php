@@ -47,7 +47,10 @@ if ( ! is_wp_error( $response ) ) {
 <div id="mojo-wrapper">
 	<?php mm_require( MM_BASE_DIR . 'pages/header.php' ); ?>
 	<div class="container">
-		<?php mm_pagination( $api->page, $api->pageCount ); ?>
+		<?php
+		mm_partner_offers( 'themes-banner-top' );
+		mm_pagination( $api->page, $api->pageCount );
+		?>
 	</div>
 	<main id="main">
 		<div class="container">
@@ -150,7 +153,10 @@ if ( ! is_wp_error( $response ) ) {
 					</div>
 				</div>
 			</div>
-			<?php mm_pagination( $api->page, $api->pageCount ); ?>
+			<?php
+			mm_partner_offers( 'themes-banner-bottom' );
+			mm_pagination( $api->page, $api->pageCount );
+			?>
 		</div>
 	</main>
 </div>

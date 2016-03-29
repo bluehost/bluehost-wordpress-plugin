@@ -24,18 +24,22 @@ if ( ! is_wp_error( $response ) ) {
 									switch ( $item->type ) {
 										case 'Themes &amp; Templates':
 											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-themes' ), admin_url( 'admin.php' ) ) ) . '">WordPress Themes</a>';
+											$partner_type = 'themes';
 											break;
 
 										case 'Plugins &amp; Extensions':
 											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-plugins' ), admin_url( 'admin.php' ) ) ) . '">WordPress Plugins</a>';
+											$partner_type = 'plugins';
 											break;
 
 										case 'Professional Services':
 											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-services' ), admin_url( 'admin.php' ) ) ) . '">Services</a>';
+											$partner_type = 'services';
 											break;
 
 										case 'Logos &amp; Graphics':
 											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-graphics' ), admin_url( 'admin.php' ) ) ) . '">Graphics</a>';
+											$partner_type = 'graphics';
 											break;
 
 										default:
@@ -131,6 +135,14 @@ if ( ! is_wp_error( $response ) ) {
 									<i><small>Providers are all prescreened and approved.</small></i>
 								</div>
 								<?php } ?>
+								<?php
+									if ( isset( $partner_type ) ) {
+										$partner_offer = mm_partner_offers( $partner_type . '-single-item', false );
+										if ( strlen( $partner_offer ) > 5 ) {
+											echo sprintf( '<div class="widget">%s</div>', $partner_offer );
+										}
+									}
+								?>
 							</aside>
 						</div>
 					</div>

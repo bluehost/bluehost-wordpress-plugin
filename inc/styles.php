@@ -48,3 +48,64 @@ function mm_nice_notice_styles() {
 	<?php
 }
 add_action( 'admin_head', 'mm_nice_notice_styles' );
+
+function mm_partner_styles() {
+	?>
+	<style type="text/css">
+		.mm-partner-themes-banner-top,
+		.mm-partner-themes-banner-bottom,
+		.mm-partner-plugins-banner-top,
+		.mm-partner-plugins-banner-bottom,
+		.mm-partner-services-banner-top,
+		.mm-partner-services-banner-bottom,
+		.mm-partner-graphics-banner-top,
+		.mm-partner-graphics-banner-bottom {
+			float: left;
+			max-width: 500px;
+			max-height: 100px;
+			overflow: hidden;
+		}
+		.mm-partner-themes-banner-top a,
+		.mm-partner-themes-banner-bottom a,
+		.mm-partner-plugins-banner-top a,
+		.mm-partner-plugins-banner-bottom a,
+		.mm-partner-services-banner-top a,
+		.mm-partner-services-banner-bottom a,
+		.mm-partner-graphics-banner-top a,
+		.mm-partner-graphics-banner-bottom a{
+			display: inline-block;
+		}
+		.mm-partner-themes-banner-top img,
+		.mm-partner-themes-banner-bottom img,
+		.mm-partner-plugins-banner-top img,
+		.mm-partner-plugins-banner-bottom img,
+		.mm-partner-services-banner-top img,
+		.mm-partner-services-banner-bottom img,
+		.mm-partner-graphics-banner-top img,
+		.mm-partner-graphics-banner-bottom img{
+			width: 100%;
+		}
+		.mm-partner-themes-banner-top img:hover,
+		.mm-partner-themes-banner-bottom img:hover,
+		.mm-partner-plugins-banner-top img:hover,
+		.mm-partner-plugins-banner-bottom img:hover,
+		.mm-partner-services-banner-top img:hover,
+		.mm-partner-services-banner-bottom img:hover,
+		.mm-partner-graphics-banner-top img:hover,
+		.mm-partner-graphics-banner-bottom img:hover,
+		.mm-partner-themes-single-item img:hover,
+		.mm-partner-plugins-single-item img:hover,
+		.mm-partner-services-single-item img:hover,
+		.mm-partner-graphics-single-item img:hover {
+			opacity: 0.8;
+		}
+		.mm-partner-themes-single-item img,
+		.mm-partner-plugins-single-item img,
+		.mm-partner-services-single-item img,
+		.mm-partner-graphics-single-item img {
+			width: 100%;
+		}
+	</style>
+	<?php
+}
+add_action( 'admin_head', 'mm_partner_styles' );
