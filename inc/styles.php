@@ -25,17 +25,17 @@ function mm_nice_notice_styles() {
 	?>
 	<style type="text/css">
 		.mojo-nice-notice-wrap{
-			width: 100%;
+			font-family: "Open Sans",sans-serif;
+			width: 102%;
 			float: right;
 			display: none;
 			color: #fff;
 			font-weight: bold;
-			margin-left: -20px;
+			padding-left: 20px;
 		}
 		.mojo-nice-notice{
 			float: right;
-			padding-left: 20px;
-			margin-left: -20px;
+			text-indent: 25px;
 			width: 100%;
 			display: inline-block;
 		}
