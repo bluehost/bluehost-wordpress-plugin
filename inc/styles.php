@@ -4,8 +4,8 @@ function mm_admin_style() {
 		wp_enqueue_style( 'mojo-admin-css', MM_ASSETS_URL . 'css/style.css' );
 		wp_enqueue_style( 'mojo-admin-roboto-css', 'https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500' );
 		wp_enqueue_style( 'mojo-admin-bootstrap-css', MM_ASSETS_URL . 'css/bootstrap.css' );
-		wp_enqueue_style( 'mojo-admin-main-css', MM_ASSETS_URL . 'css/main.css' );
 	}
+	wp_enqueue_style( 'mojo-admin-main-css', MM_ASSETS_URL . 'css/main.css' );
 	wp_enqueue_script( 'mojo-admin-nice-notices', MM_ASSETS_URL . 'js/nice-notices.js', array( 'jquery' ), MM_VERSION );
 }
 add_action( 'admin_init', 'mm_admin_style' );
