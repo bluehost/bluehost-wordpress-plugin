@@ -4,8 +4,8 @@ function mm_admin_style() {
 		wp_enqueue_style( 'mojo-admin-css', MM_ASSETS_URL . 'css/style.css' );
 		wp_enqueue_style( 'mojo-admin-roboto-css', 'https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500' );
 		wp_enqueue_style( 'mojo-admin-bootstrap-css', MM_ASSETS_URL . 'css/bootstrap.css' );
+		wp_enqueue_style( 'mojo-admin-main-css', MM_ASSETS_URL . 'css/main.css' );
 	}
-	wp_enqueue_style( 'mojo-admin-main-css', MM_ASSETS_URL . 'css/main.css' );
 	wp_enqueue_script( 'mojo-admin-nice-notices', MM_ASSETS_URL . 'js/nice-notices.js', array( 'jquery' ), MM_VERSION );
 }
 add_action( 'admin_init', 'mm_admin_style' );
@@ -20,3 +20,32 @@ function mm_frontend_style() {
 	}
 }
 add_action( 'wp_footer', 'mm_frontend_style' );
+
+
+function mm_nice_notice_styles() {
+	?>
+	<style type="text/css">
+	.mojo-nice-notice-wrap{
+		font-family: "Open Sans",sans-serif;
+		width: 103%;
+		float: right;
+		display: none;
+		color: #fff;
+		font-weight: bold;
+		padding-left: 20px;
+	}
+	.mojo-nice-notice{
+		float: right;
+		text-indent: 45px;
+		width: 100%;
+		display: inline-block;
+	}
+	.mojo-nice-notice p{margin: 1em 0;}
+	.mojo-nice-notice a{color: #fff;text-decoration: underline;}
+	.mojo-notice-error{background-color:#EF524A;}
+	.mojo-notice-success{background-color:#6BBA72;}
+	.mojo-notice-info{background-color:#75B9D8;}
+	</style>
+	<?php
+}
+add_action( 'admin_head', 'mm_nice_notice_styles' );
