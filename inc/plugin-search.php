@@ -22,8 +22,9 @@ function mm_check_plugin_search_value( $search ) {
 
 function mm_plugin_search_result() {
 	if ( isset( $_GET['s'] ) && $plugin = mm_check_plugin_search_value( $_GET['s'] ) ) {
+		$plugin = array_filter( $plugin );
 		$link = $plugin['url'];
-		if ( strlen( $plugin['id'] ) > 5 ) {
+		if ( isset( $plugin['id'] ) && strlen( $plugin['id'] ) > 5 ) {
 			$link = add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $plugin['id'] ), admin_url( 'admin.php' ) );
 		}
 		$link = mm_build_link( $link, array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'plugin_search_more_details' ) );
@@ -47,11 +48,9 @@ function mm_plugin_search_result() {
 									<div class="action-links">
 										<ul class="plugin-action-buttons">';
 
-		if ( strlen( $plugin['id'] ) > 5 ) {
-			$plugin_html .= '<li>
-				<a href="' . $buy_now . '" class="button">' . $buy_now_btn . '</a>
-			</li>';
-		}
+		$plugin_html .= '<li>
+			<a href="' . $buy_now . '" class="button">' . $buy_now_btn . '</a>
+		</li>';
 
 		$plugin_html .= '<li><a href="' . $link . '">More Details</a></li>';
 
