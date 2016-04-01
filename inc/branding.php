@@ -1,7 +1,6 @@
 <?php
 
 function mm_brand( $format = '%s' ) {
-	update_option( 'mm_brand', 'iPage' );
 	$mm_brand = get_option( 'mm_brand', 'default' );
 	$brands = mm_api_cache( MM_ASSETS_URL . 'json/branding.json' );
 	if ( ! is_wp_error( $brands ) && $brands = json_decode( $brands['body'] ) ) {
