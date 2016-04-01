@@ -1,6 +1,6 @@
 <header id="header" class="navbar navbar-default">
-		<div class="header-block bg-cover" style="background-image: url('<?php echo MM_ASSETS_URL; ?>img/header-bg-001.jpg');">
-			<span data-srcset="<?php echo MM_ASSETS_URL; ?>img/header-bg-001.jpg, <?php echo MM_ASSETS_URL; ?>img/header-bg-001-2x.jpg 2x"></span>
+		<div class="header-block bg-cover" style="background-image: url('<?php echo mm_brand( MM_ASSETS_URL . 'img/header-bg-%s.jpg' ); ?>');">
+			<span data-srcset="<?php echo mm_brand( MM_ASSETS_URL . 'img/header-bg-%s.jpg' ); ?>, <?php echo mm_brand( MM_ASSETS_URL . 'img/header-bg-%s-2x.jpg' );?> 2x"></span>
 			<nav>
 				<div class="container">
 					<div class="inner-holder">
@@ -18,6 +18,7 @@
 								<span class="icon-bar hidden-sm hidden-xs"></span>
 								<span class="icon-bar hidden-sm hidden-xs"></span>
 							</button>
+							<!--<span class="powered">Powered By <a href="#"><img height="16" width="156" alt="Mojo Marketplace" src="<?php echo mm_brand( MM_ASSETS_URL . 'img/logo-icon-%s.svg' ); ?>"></a></span>-->
 							<div class="dropdown-menu">
 								<div class="avatar-block">
 									<div class="avatar"><a href="#"><i class="icon-avatar"></i></a></div>
@@ -34,7 +35,7 @@
 						</div>
 						<div class="header-holder clearfix">
 							<a class="navbar-brand" href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-themes' ), admin_url( 'admin.php' ) ) ); ?>">
-								<img src="<?php echo MM_ASSETS_URL; ?>img/logo-icon.svg" width="250" height="42" alt="MOJO marketplace">
+								<img src="<?php echo mm_brand( MM_ASSETS_URL . 'img/logo-icon-%s.svg' ); ?>" width="250" height="42" alt="Marketplace">
 							</a>
 							<form class="navbar-form form-inline navbar-right text-right" role="search" action="admin.php" method="GET">
 								<div class="form-group">

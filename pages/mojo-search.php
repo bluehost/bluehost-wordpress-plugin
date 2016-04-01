@@ -14,7 +14,7 @@ if ( ! is_wp_error( $response ) ) {
 	$items = $body->items;
 	$type = 'search';
 ?>
-<div id="mojo-wrapper">
+<div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 	<?php mm_require( MM_BASE_DIR . 'pages/header.php' ); ?>
 	<main id="main">
 		<div class="container">
@@ -94,6 +94,7 @@ if ( ! is_wp_error( $response ) ) {
 						<?php
 					}
 					?>
+					<br style="clear: both"/><span class="alignright powered"><a href="<?php echo mm_build_link( 'https://www.mojomarketplace.com' ); ?>"><img height="16" width="156" alt="Mojo Marketplace" src="<?php echo MM_ASSETS_URL . 'img/logo-dark.svg'; ?>"></a></span>
 					</div>
 				</div>
 			</div>

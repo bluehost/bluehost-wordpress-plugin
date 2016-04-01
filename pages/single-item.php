@@ -10,7 +10,7 @@ if ( ! is_wp_error( $response ) ) {
 	$item = $body->items[0];
 	$type = $item->type;
 ?>
-<div id="mojo-wrapper">
+<div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 	<?php mm_require( MM_BASE_DIR . 'pages/header.php' ); ?>
 	<main id="main">
 		<div class="container">
@@ -148,6 +148,7 @@ if ( ! is_wp_error( $response ) ) {
 					</div>
 				</div>
 			</div>
+			<br style="clear: both"/><span class="alignright powered"><a href="<?php echo mm_build_link( 'https://www.mojomarketplace.com' ); ?>"><img height="16" width="156" alt="Mojo Marketplace" src="<?php echo MM_ASSETS_URL . 'img/logo-dark.svg'; ?>"></a></span>
 		</div>
 	</main>
 </div>
