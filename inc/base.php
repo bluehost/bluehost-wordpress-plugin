@@ -57,7 +57,7 @@ function mm_build_link( $url, $args = array() ) {
 	$defaults = array(
 		'utm_source'	=> 'mojo_wp_plugin', //this should always be mojo_wp_plugin
 		'utm_campaign'	=> 'mojo_wp_plugin',
-		'utm_medium'	=> 'plugin_', //(plugin_admin, plugin_widget, plugin_shortcode)
+		'utm_medium'	=> 'plugin_admin', //(plugin_admin, plugin_widget, plugin_shortcode)
 		'utm_content'	=> '', //specific location
 		'r'				=> get_option( 'mm_master_aff' ),
 	);
