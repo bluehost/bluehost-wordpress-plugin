@@ -39,7 +39,8 @@ function mm_ux_log( $args = array() ) {
 		'el'	=> '',
 		'ev'	=> '',
 		'cd1'   => ( defined( 'MM_VERSION' ) ) ? MM_VERSION : '',
-		'cd2'   => get_option( 'mm_brand', '' ),
+		'cd2'   => mm_brand(),
+		'cd3'   => get_option( 'mm_host', '' ),
 	);
 
 	if ( isset( $_SERVER['REMOTE_ADDR'] ) ) {
