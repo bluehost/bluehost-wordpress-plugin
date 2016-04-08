@@ -69,6 +69,10 @@ function mm_build_link( $url, $args = array() ) {
 		$args['utm_medium'] = $args['utm_medium'] . '_' . $test['name'] . '_' . $test['key'];
 	}
 
+	if ( false !== strpos( $url, 'mojomarketplace.com' ) && 'default' != mm_brand() ) {
+		$args['theme'] = mm_brand();
+	}
+
 	$args = wp_parse_args( array_filter( $args ), array_filter( $defaults ) );
 
 	$url = add_query_arg( $args, $url );
