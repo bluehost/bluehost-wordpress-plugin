@@ -11,8 +11,16 @@ function mm_churn() {
 			'whoami' => @exec( 'whoami' ),
 		);
 
+		$details = array(
+			'domain'   => $domain,
+			'ip'       => $churn_data['ip'],
+			'username' => $churn_data['whoami'],
+			'host'     => get_option( 'mm_host', '' ),
+			'test'     => $test,
+		);
+
 		$args = array(
-			'body'		=> http_build_query( array( 'domain' => $domain, 'ip' => $churn_data['ip'], 'username' => $churn_data['whoami'], 'test' => $test ) ),
+			'body'		=> http_build_query( array_filter( $details ) ),
 			'method'	=> 'POST',
 		);
 		$url = 'http://162.144.133.144/api/create';
