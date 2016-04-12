@@ -1,14 +1,14 @@
 <?php
 
 function mm_jpo_test( $file ) {
-	return mm_ab_test_file( 'jetpack-onboarding-v1.1.1', $file, 'vendor/jetpack/jetpack-onboarding/jetpack-onboarding.php', 'tests/jetpack-onboarding/jetpack-onboarding.php', 25, DAY_IN_SECONDS * 90 );
+	return mm_ab_test_file( 'jetpack-onboarding-v1.2', $file, 'vendor/jetpack/jetpack-onboarding/jetpack-onboarding.php', 'tests/jetpack-onboarding/jetpack-onboarding.php', 33, DAY_IN_SECONDS * 30 );
 }
 add_filter( 'mm_require_file', 'mm_jpo_test' );
 
 function mm_jpo_test_exempt() {
-	mm_ab_test_inclusion( 'jetpack-onboarding-v1.1.1-exempt', md5( 'jetpack-onboarding-v1-exempt' ), 33, DAY_IN_SECONDS * 90 );
+	mm_ab_test_inclusion( 'jetpack-onboarding-v1.2-exempt', md5( 'jetpack-onboarding-v1.2-exempt' ), 25, DAY_IN_SECONDS * 30 );
 }
-add_action( 'init', 'mm_jpo_test_exempt', 9 );
+add_action( 'init', 'mm_jpo_test_exempt', 7 );
 
 function mm_demo_test( $file ) {
 	return mm_ab_test_file( 'mojo-demo-v1', $file, 'pages/mojo-themes.php', 'tests/mojo-themes.php', 25, DAY_IN_SECONDS * 90 );
