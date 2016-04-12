@@ -10,7 +10,6 @@ require_once( plugin_dir_path( __FILE__ ) . 'lib/tracks/client.php');
 
 class JetpackOnboardingTracking {
 	static $product_name = 'jpo';
-	static $vendor_code = 'BH';
 
 	static function track_jpo_usage() {
 		add_action( 'jpo_started', array(__CLASS__, 'track_started'), 1, 0 );
@@ -92,7 +91,8 @@ class JetpackOnboardingTracking {
 		$data['_via_ip'] = $_SERVER['REMOTE_ADDR'];
 		$data['_lg']     = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 		$data['blog_url'] = $site_url;
-		$data['jpphp_vendor'] = self::$vendor_code;
+		$data['jpphp_vendor'] = JETPACK_ONBOARDING_VENDOR_CODE;
+		$data['jpphp_product'] = JETPACK_ONBOARDING_PRODUCT_CODE;
 
 		if ( false !== ( $bh_mm_test_value = get_transient( 'mm_test' ) ) ) {
 			$data['bh_mm_test_key'] = $bh_mm_test_value['key'];
