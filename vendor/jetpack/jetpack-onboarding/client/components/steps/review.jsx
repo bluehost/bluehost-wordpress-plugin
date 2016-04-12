@@ -35,11 +35,9 @@ var AdvancedSettingsStep = React.createClass({
 		this.setState(getSiteState());
 	},
 
-	handleSkipTo: function( slug ) {
-		return function( event ) {
-			event.preventDefault();
-			SetupProgressActions.skipToStep( slug );
-		};
+	handleSkipTo: function( slug, event ) {
+		event.preventDefault();
+		SetupProgressActions.setCurrentStep( slug );
 	},
 
 	handleDismiss: function( event ) {
@@ -53,11 +51,12 @@ var AdvancedSettingsStep = React.createClass({
 			contactProps.href = this.state.contactUrl;
 		} else {
 			contactProps.href = '#';
-			contactProps.onClick = this.handleSkipTo( Paths.CONTACT_PAGE_STEP_SLUG );
+			contactProps.onClick = this.handleSkipTo.bind(this, Paths.CONTACT_PAGE_STEP_SLUG );
 		}
 		return (
 			<WelcomeSection id="welcome__review">
-				<div className="welcome__dismiss"><a href="#" onClick={ this.handleDismiss }><Dashicon name="dismiss" /> Dismiss</a></div>
+				<div className="welcome__dismiss">
+					<a href="#" onClick={ this.handleDismiss }><Dashicon name="dismiss" /><span className='screen-reader-text'>Dismiss</span></a></div>
 
 				<h1>Let&apos;s launch <em>{this.state.site_title}</em></h1>
 				<p className="welcome__callout welcome__review--callout">Great Work!</p>
@@ -65,8 +64,8 @@ var AdvancedSettingsStep = React.createClass({
 				<div className="welcome__review-cols">
 					<div className="welcome__review-col">
 						<ul className="welcome__review-list">
-							<li><Dashicon name="yes" /> Title and description <a href="#" onClick={ this.handleSkipTo( Paths.SITE_TITLE_STEP_SLUG ) }>(edit)</a></li>
-							<li><Dashicon name="yes" /> Homepage layout <a href="#" onClick={ this.handleSkipTo( Paths.IS_BLOG_STEP_SLUG ) }>(edit)</a>
+							<li><Dashicon name="yes" /> Title and description <a href="#" onClick={ this.handleSkipTo.bind(this, Paths.SITE_TITLE_STEP_SLUG ) }>(edit)</a></li>
+							<li><Dashicon name="yes" /> Homepage layout <a href="#" onClick={ this.handleSkipTo.bind(this, Paths.IS_BLOG_STEP_SLUG ) }>(edit)</a>
 							{ this.state.layout !== 'blog' ?
 								<ul>
 									<li><a href={ this.state.welcomeUrl }>Edit your Welcome page</a></li>
@@ -81,15 +80,15 @@ var AdvancedSettingsStep = React.createClass({
 							<li><Dashicon name="yes" />
 							{ this.state.isJPConnected ?
 								<a href={ JPS.steps.advanced_settings.jetpack_dash }>Jetpack: </a> :
-								<a href="#" onClick={ this.handleSkipTo( Paths.JETPACK_MODULES_STEP_SLUG ) }>Connect Jetpack: </a>
+								<a href="#" onClick={ this.handleSkipTo.bind(this, Paths.JETPACK_MODULES_STEP_SLUG ) }>Connect Jetpack: </a>
 							}
 							increase visitors and improve security</li>
 						</ul>
 					</div>
 
 					<div className="welcome__review-col welcome__review-themes">
-						<img src={ `${ JPS.base_url }/img/review__themes.png` } />
-						<p><Button href={ JPS.steps.advanced_settings.customize_url } primary>Choose a Theme</Button></p>
+						<img src={ `${ JPS.base_url }/img/jpo-themes.png` } />
+						<p><Button href={ JPS.steps.advanced_settings.customize_url } >Customize your site</Button></p>
 					</div>
 				</div>
 			</WelcomeSection>

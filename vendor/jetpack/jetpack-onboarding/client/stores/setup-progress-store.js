@@ -4,8 +4,7 @@
 
 var AppDispatcher = require('../dispatcher/app-dispatcher'),
   EventEmitter = require('events').EventEmitter,
-  JPSConstants = require('../constants/jetpack-onboarding-constants'),
-  WPAjax = require('../utils/wp-ajax');
+  JPSConstants = require('../constants/jetpack-onboarding-constants');
 
 var CHANGE_EVENT = 'change';
 
@@ -80,7 +79,8 @@ function ensureValidStepSlug() {
 
     var pendingStep = getNextPendingStep();
     if ( pendingStep !== null ) {
-      window.location.hash = 'welcome/steps/'+pendingStep.slug;
+      var hash = 'welcome/steps/'+pendingStep.slug;
+      window.history.pushState(null, document.title, window.location.pathname + '#' + hash);
     }    
   }
 }
@@ -95,14 +95,19 @@ function selectNextPendingStep() {
 function getNextPendingStep() {
   // if the _next_ step is neverSkip, we proceed to it
   var stepIndex = currentStepIndex();
-  if ( stepIndex ) {
+  if ( stepIndex !== false ) {
     if ( _steps[stepIndex+1] && _steps[stepIndex+1].neverSkip === true ) {
       return _steps[stepIndex+1];
     }
   }
 
   // otherwise find the next uncompleted, unskipped step
-  return _.findWhere( _steps, { completed: false, skipped: false } );
+  var nextPendingStep = _.findWhere( _steps, { completed: false, skipped: false } );
+  return nextPendingStep;
+}
+
+function getPendingStepAfter( fromStep ) {
+
 }
 
 function currentStepSlug() {
@@ -117,6 +122,10 @@ function currentStepSlug() {
 
 function currentStepIndex() {
   var slug = currentStepSlug();
+  return getStepIndex(slug);
+}
+
+function getStepIndex(slug) {
   for ( var i=0; i<_steps.length; i++ ) {
     if ( _steps[i].slug === slug ) {
       return i;
@@ -126,9 +135,8 @@ function currentStepIndex() {
 }
 
 function select(stepSlug) {
-  window.location.hash = 'welcome/steps/'+stepSlug;
-  // record analytics
-  WPAjax.post(JPS.step_actions.view, { step: stepSlug }, { quiet: true });
+  var hash = 'welcome/steps/'+stepSlug;
+  window.history.pushState(null, document.title, window.location.pathname + '#' + hash);
 }
 
 //reset everything back to defaults
@@ -186,6 +194,11 @@ var SetupProgressStore = _.extend({}, EventEmitter.prototype, {
   removeChangeListener: function(callback) {
     this.removeListener( CHANGE_EVENT, callback );
   }
+});
+
+// force a navigation refresh when the URL changes
+window.addEventListener("popstate", function(){
+    SetupProgressStore.emitChange();
 });
 
 // Register callback to handle all updates

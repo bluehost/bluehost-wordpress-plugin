@@ -9,8 +9,8 @@ function getSiteLayoutState() {
 	return {
 		site_title: SiteStore.getTitle(),
 		layout: SiteStore.getLayout(),
-		siteScreenshot: `${ JPS.base_url }/img/layout__site-blog.png`,
-		blogScreenshot: `${ JPS.base_url }/img/layout__blog.png`,
+		siteScreenshot: `${ JPS.base_url }/img/jpo-layout-static.jpg`,
+		blogScreenshot: `${ JPS.base_url }/img/jpo-layout-news.jpg`,
 	};
 }
 
@@ -33,12 +33,16 @@ var HomepageStep = React.createClass( {
 	},
 
 	handleSetLayout: function( e ) {
-		this.setState( { layout: jQuery( e.currentTarget ).val() } );
+		let layout = jQuery( e.currentTarget ).val();
+		this.setState( { layout: layout } );
+		SetupProgressActions.submitLayoutStep( layout );
 	},
 
-	handleSubmit: function( e ) {
+	skipStep: function( e ) {
 		e.preventDefault();
-		SetupProgressActions.submitLayoutStep( this.state.layout );
+		let layout = 'blog';
+		this.setState( { layout: layout } );
+		SetupProgressActions.submitLayoutStep( layout );
 	},
 
 	render: function() {
@@ -46,7 +50,7 @@ var HomepageStep = React.createClass( {
 			<WelcomeSection id="welcome__homepage">
 				<h1>Let&apos;s launch <em>{ this.state.site_title }</em></h1>
 				<p className="welcome__callout welcome__homepage--callout">What should visitors see on your homepage?</p>
-				<form onSubmit={ this.handleSubmit }>
+				<form>
 					<div className="welcome__homepage-cols">
 						<div className={ classNames( { 'welcome__homepage-col': true, 'is-selected': this.state.layout === 'blog' } ) }>
 							<label>
@@ -63,10 +67,9 @@ var HomepageStep = React.createClass( {
 							</label>
 						</div>
 					</div>
-
-					<p className="welcome__submit">
-						<Button primary type="submit">Next Step &rarr;</Button>
-					</p>
+					<div className="welcome__submit">
+						<Button className="welcome__skip-link" onClick={ this.skipStep }>Skip this step</Button>
+					</div>
 				</form>
 			</WelcomeSection>
 		);

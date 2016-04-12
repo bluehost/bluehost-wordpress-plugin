@@ -14,7 +14,8 @@ function getJetpackState() {
 		site_title: SiteStore.getTitle(),
 		jetpackConfigured: SiteStore.getJetpackConfigured(),
 		jumpstartEnabled: SiteStore.getJetpackJumpstartEnabled(),
-		modulesEnabled: SiteStore.getActiveModuleSlugs()
+		modulesEnabled: SiteStore.getActiveModuleSlugs(),
+		settingsUrl: SiteStore.getJetpackSettingsUrl()
 	};
 }
 
@@ -35,13 +36,19 @@ var JetpackJumpstart = React.createClass({
 	getInitialState: function() {
 		var state = getJetpackState();
 		state.showMoreModules = false;
+		state.jetpackConnecting = false;
 		return state;
 	},
 
 	handleJetpackConnect: function (e) {
 		e.preventDefault();
 
-		SiteActions.configureJetpack( Paths.REVIEW_STEP_SLUG );
+		this.setState( { jetpackConnecting: true } );
+		SiteActions
+			.configureJetpack( Paths.REVIEW_STEP_SLUG )
+			.always(function() {
+				this.setState( { jetpackConnecting: false } );
+			}.bind( this ) );
 	},
 
 	handleNext: function (e) {
@@ -58,12 +65,14 @@ var JetpackJumpstart = React.createClass({
 				{ this.state.jetpackConfigured ?
 					<div>
 						<p>Congratulations! You&apos;ve enabled Jetpack and unlocked dozens of powerful features.</p>
-						<p><a href="#">Check out the settings page…</a></p>
-						<p><Button style={{float: 'right'}} color="blue" onClick={this.handleNext}>Next Step &rarr;</Button></p>
+						<p><a href={ this.state.settingsUrl }>Check out the settings page…</a></p>
+						<div className="welcome__submit">
+							<Button primary onClick={this.handleNext}>Next Step</Button>
+						</div>
 					</div> :
-					<div>
-						<p><Button onClick={ this.handleJetpackConnect } primary>Connect to WordPress.com</Button></p>
-						<p><SkipButton /></p>
+					<div className='welcome__submit'>
+						<Button disabled={this.state.jetpackConnecting} onClick={ this.handleJetpackConnect } primary>{ this.state.jetpackConnecting ? 'Connecting' : 'Connect' } to WordPress.com</Button>
+						{ !this.state.jetpackConnecting && <SkipButton /> }
 					</div>
 				}
 			</WelcomeSection>

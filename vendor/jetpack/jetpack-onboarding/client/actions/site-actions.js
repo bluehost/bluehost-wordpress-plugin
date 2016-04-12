@@ -20,9 +20,7 @@ var SiteActions = {
 	    });
 	},
 
-	saveTitleAndDescription: function() {
-		var title = SiteStore.getTitle();
-		var description = SiteStore.getDescription();
+	saveTitleAndDescription: function( title, description ) {
 		
 		WPAjax.
 			post( JPS.site_actions.set_title, { title: title, description: description } ).
@@ -31,10 +29,12 @@ var SiteActions = {
 			});
 
 		jQuery('#wp-admin-bar-site-name .ab-item').html(title);
+		
 		// FlashActions.notice( "Set title to '"+title+"' and description to '"+description+"'" );
 		AppDispatcher.dispatch({
 			actionType: JPSConstants.SITE_SAVE_TITLE_AND_DESCRIPTION,
-			title: title
+			title: title,
+			description: description
 	    });
 
 		return jQuery.Deferred().resolve(); // XXX HACK
@@ -94,20 +94,26 @@ var SiteActions = {
 	},
 
 	setLayout: function( layoutName ) {
-	
+
 		WPAjax.
 			post( JPS.site_actions.set_layout, { layout: layoutName } ).
-			fail( function (msg ) {
+			done( function ( page_info ){
+				AppDispatcher.dispatch( {
+					actionType: JPSConstants.SITE_CREATE_LAYOUT_PAGES,
+					data: page_info
+				} );
+			} ).
+			fail( function (msg ){
 				FlashActions.error("Error setting layout: "+msg);
-			});
+			} );
 
 		// FlashActions.notice("Set layout to "+layoutName);
-		AppDispatcher.dispatch({
+		AppDispatcher.dispatch( {
 			actionType: JPSConstants.SITE_SET_LAYOUT,
 			layout: layoutName
-	    });
+		} );
 
-	    return jQuery.Deferred().resolve(); // XXX HACK
+		return jQuery.Deferred().resolve(); // XXX HACK
 	},
 
 	createContactUsPage: function( contactPage ) {
@@ -118,7 +124,7 @@ var SiteActions = {
 				AppDispatcher.dispatch({
 					actionType: JPSConstants.SITE_CREATE_CONTACT_US_PAGE,
 					data: page_info
-				});		
+				});
 			}).
 			fail( function( msg ) {
 				FlashActions.error("Error creating contact us page: "+msg);
@@ -135,7 +141,6 @@ var SiteActions = {
 	},
 
 	configureJetpack: function(return_to_step) {
-		SpinnerActions.show("Connecting to WordPress.com");
 		return WPAjax.
 			post( JPS.site_actions.configure_jetpack, { return_to_step: return_to_step } ).
 			done( function ( data ) {
@@ -145,13 +150,10 @@ var SiteActions = {
 
 				if ( data.next ) {
 					window.location.replace(data.next);
-				} else {
-					SpinnerActions.hide();
 				}
 			}).
 			fail( function ( msg ) {
 				FlashActions.error("Error enabling Jetpack: "+msg);
-				SpinnerActions.hide();
 			});
 	},
 
