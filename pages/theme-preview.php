@@ -27,7 +27,7 @@ if ( is_wp_error( $theme ) ) {
 				</a>
 			</div>
 			<div class="wp-full-overlay-sidebar-content">
-				<img class="theme-preview-logo" src="<?php echo MM_ASSETS_URL . 'img/logo-dark.svg'; ?>" />
+				<img class="theme-preview-logo" src="<?php echo mm_brand( MM_ASSETS_URL . 'img/logo-preview-%s.svg' ); ?>" />
 				<div class="install-theme-info">
 					<h3 class="theme-name"><?php esc_html_e( $theme->name ); ?></h3>
 					<br/>
