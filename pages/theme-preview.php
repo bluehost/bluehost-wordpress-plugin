@@ -15,7 +15,7 @@ if ( is_wp_error( $theme ) ) {
 	$theme = json_decode( $theme['body'] );
 	$theme = $theme->items[0];
 ?>
-<div class="wrap">
+<div class="wrap <?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php
 	$theme->name = apply_filters( 'mm_item_name', $theme->name );
 	?>
