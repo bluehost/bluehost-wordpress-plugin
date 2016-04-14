@@ -145,13 +145,26 @@ function mm_partner_offers( $location, $echo = true ) {
 		$offers = json_decode( $offers['body'] );
 		if ( isset( $offers->{ $location } ) ) {
 			$offer = $offers->{ $location };
-			$offer_display = '<div class="mm-partner-offer mm-partner-%s"><a href="%s" target="_blank"><img src="%s" /></a></div>';
-			$offer_display = sprintf( $offer_display, sanitize_title( $location ), esc_url( $offer->url ), esc_url( $offer->img ) );
-			if ( $echo ) {
-				echo $offer_display;
-			} else {
-				return $offer_display;
+		}
+	}
+
+	if ( 'default' != mm_brand() ) {
+		$branded_offers = mm_api_cache( 'https://api.mojomarketplace.com/mojo-plugin-assets/json/mojo-partner-offers-' . mm_brand() . '.json' );
+		if ( ! is_wp_error( $branded_offers ) && null !== json_decode( $branded_offers['body'] ) ) {
+			$branded_offers = json_decode( $branded_offers['body'] );
+			if ( isset( $branded_offers->{ $location } )  && ! empty( $branded_offers->{ $location } ) ) {
+				$offer = $branded_offers->{ $location };
 			}
+		}
+	}
+
+	if ( isset( $offer ) && is_object( $offer ) && isset( $offer->url ) && isset( $offer->img ) ) {
+		$offer_display = '<div class="mm-partner-offer mm-partner-%s"><a href="%s" target="_blank"><img src="%s" /></a></div>';
+		$offer_display = sprintf( $offer_display, sanitize_title( $location ), esc_url( $offer->url ), esc_url( $offer->img ) );
+		if ( $echo ) {
+			echo $offer_display;
+		} else {
+			return $offer_display;
 		}
 	}
 }
