@@ -6,7 +6,6 @@ function mm_admin_style() {
 		wp_enqueue_style( 'mojo-admin-bootstrap-css', MM_ASSETS_URL . 'css/bootstrap.css' );
 		wp_enqueue_style( 'mojo-admin-main-css', MM_ASSETS_URL . 'css/main.css' );
 	}
-	wp_enqueue_script( 'mojo-admin-nice-notices', MM_ASSETS_URL . 'js/nice-notices.js', array( 'jquery' ), MM_VERSION );
 }
 add_action( 'admin_init', 'mm_admin_style' );
 
