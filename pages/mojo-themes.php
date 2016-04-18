@@ -1,48 +1,37 @@
 <?php
 $type = str_replace( 'mojo-', '', sanitize_title_for_query( wp_unslash( $_GET['page'] ) ) );
 $query = array(
-	'category' => 'wordpress',
-	'type'     => $type,
-	'count'    => 20,
-	'order'     => 'sales',
-	'direction' => ( isset( $_GET['direction'] ) ) ? $_GET['direction'] : '',
+	'category'  => 'wordpress',
+	'type'      => $type,
+	'count'     => 20,
+	'direction' => '',
 );
-if ( isset( $_GET['paged'] ) && is_numeric( $_GET['paged'] ) ) {
-	$query['page'] = (int) $_GET['paged'];
-} else {
-	$query['page'] = 1;
-}
+$valid_user_args = array(
+	'seller'    => true,
+	'items'     => true,
+	'count'     => true,
+	'direction' => true,
+);
 
-if ( isset( $_GET['seller'] ) ) {
-	$query['seller'] = sanitize_title_for_query( $_GET['seller'] );
-}
+$query['page'] = ( isset( $_GET['paged'] ) && is_numeric( $_GET['paged'] ) ) ? $_GET['paged'] : '';
+$query['order'] = ( isset( $_GET['sort'] ) && ! empty( $_GET['sort'] ) ) ? $_GET['sort'] : 'sales';
+$query['itemcategory'] = ( isset( $_GET['items'] )  && 'popular' != $_GET['items'] ) ? $_GET['items'] : '';
 
-if ( isset( $_GET['items'] ) && 'popular' != $_GET['items'] ) {
-	$query['itemcategory'] = sanitize_title_for_query( $_GET['items'] );
-}
-
-if ( isset( $_GET['items'] ) && 'popular' == $_GET['items'] ) {
-	$_GET['sort'] = 'popular';
-}
-
-if ( isset( $_GET['sort'] ) && ! empty( $_GET['sort'] ) ) {
-	$query['order'] = sanitize_title_for_query( $_GET['sort'] );
-}
-
+$user_args = array_intersect_key( $_GET, $valid_user_args );
+$query = wp_parse_args( $user_args, $query );
+$query = array_map( 'sanitize_title_for_query', $query );
 $query = array_filter( $query );
+
 $api_url = add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/items' );
 if ( 'random' != $query['order'] ) {
 	$response = mm_api_cache( $api_url );
 } else {
 	$response = wp_remote_get( $api_url );
 }
+
 if ( ! is_wp_error( $response ) ) {
-	if ( isset( $_GET['items'] ) && 'security-1' == $_GET['items'] ) {
-		$_GET['items'] = 'security';
-	}
 	$api = json_decode( $response['body'] );
 	$items = $api->items;
-
 ?>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 	<?php mm_require( MM_BASE_DIR . 'pages/header.php' ); ?>
@@ -54,27 +43,13 @@ if ( ! is_wp_error( $response ) ) {
 	</div>
 	<main id="main">
 		<div class="container">
+
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-12 col-sm-8">
 							<ol class="breadcrumb">
-
-							<?php if ( ! isset( $_GET['items'] ) && $type !== 'graphics' ) {
-								echo '<li>WordPress ' . ucfirst( $type ) . '</li>';
-							} ?>
-
-							<?php if ( ! isset( $_GET['items'] ) && $type == 'graphics' ) {
-								echo '<li>' . ucfirst( $type ) . '</li>';
-							} ?>
-
-							<?php if ( isset( $_GET['items'] ) && $type !== 'graphics' ) : ?>
-								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-' . $type ), admin_url( 'admin.php' ) ) ); ?>">WordPress <?php echo ucfirst( $type ); ?></a></li>
-							<?php endif; ?>
-
-							<?php if ( isset( $_GET['items'] ) && $type == 'graphics' ) : ?>
-								<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-' . $type ), admin_url( 'admin.php' ) ) ); ?>"><?php echo ucfirst( $type ); ?></a></li>
-							<?php endif; ?>
+								<li>WordPress Themes</li>
 								<?php
 								if ( isset( $_GET['items'] ) ) {
 									?>
@@ -91,7 +66,7 @@ if ( ! is_wp_error( $response ) ) {
 									<select class="form-control input-sm" id="sort_select">
 										<option value=''>Select</option>
 										<option value='price'<?php selected( 'price', $query['order'] ); ?>>Price</option>
-										<option value='latest'<?php selected( 'latest', $query['order'] ); ?>>Latest</option>
+										<option value='latest'<?php selected( 'latest', $query['order'] ); ?>>Date Added</option>
 										<option value='random'<?php selected( 'random', $query['order'] ); ?>>Random</option>
 									</select>
 								</span>
@@ -123,11 +98,12 @@ if ( ! is_wp_error( $response ) ) {
 									?>
 									<a href="<?php echo $link; ?>">
 										<img class="img-responsive" src="<?php echo $item->images->preview_url; ?>" alt="image description" width="367" height="205">
+										<span class="preview-overlay dashicons dashicons-search"></span>
 									</a>
 								</div>
 								<div class="col-xs-12 col-sm-5 col-md-5">
 									<div class="description-box">
-										<h2><a href="<?php echo $link; ?>"><?php echo apply_filters( 'mm_item_name', $item->name ); ?></a></h2>
+										<h2><a href="<?php echo add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item->id ), admin_url( 'admin.php' ) ); ?>"><?php echo apply_filters( 'mm_item_name', $item->name ); ?></a></h2>
 										<?php if ( isset( $item->short_description ) ) { echo $item->short_description; } ?>
 										<p><?php if ( isset( $item->tags ) ) { echo '<strong>Tags: </strong>' . substr( $item->tags, 0, 120 ) . '&hellip;'; } ?></p>
 										<?php mm_stars( $item->rating, $item->sales_count ); ?>
@@ -140,7 +116,7 @@ if ( ! is_wp_error( $response ) ) {
 											<span class="price-number">$<span><?php echo number_format( $item->prices->single_domain_license ); ?></span></span>
 										</div>
 										<div class="btn-group-vertical" role="group">
-											<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item->id ), admin_url( 'admin.php' ) ) ); ?>" class="btn btn-primary btn-lg">Details</a>
+											<a href="<?php echo add_query_arg( array( 'page' => 'mojo-theme-preview', 'id' => $item->id, 'items' => $items ), admin_url( 'admin.php' ) ); ?>" class="btn btn-primary btn-lg">Demo</a>
 											<a href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_list' ) ); ?>" class="btn btn-success btn-lg" data-price="<?php echo number_format( $item->prices->single_domain_license ); ?>" data-view="themes_list">Buy Now</a>
 										</div>
 									</div>
@@ -178,4 +154,6 @@ jQuery( document ).ready( function( $ ) {
 } );
 </script>
 	<?php
+} else {
+	//TODO display nice error message that the api is down.
 }
