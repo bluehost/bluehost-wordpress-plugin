@@ -21,6 +21,7 @@ if ( file_exists( MM_BASE_DIR . 'inc/brand.php' ) ) {
 	require_once( MM_BASE_DIR . 'inc/brand.php' );
 }
 require_once( MM_BASE_DIR . 'inc/base.php' );
+require_once( MM_BASE_DIR . 'inc/checkout.php' );
 require_once( MM_BASE_DIR . 'inc/churn.php' );
 require_once( MM_BASE_DIR . 'inc/menu.php' );
 require_once( MM_BASE_DIR . 'inc/shortcode-generator.php' );
