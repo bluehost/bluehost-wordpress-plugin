@@ -83,7 +83,7 @@ if ( ! is_wp_error( $response ) ) {
 											<span class="currency">USD</span>
 										</div>
 										<div class="btn-box">
-											<a class="btn btn-success btn-lg" href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_single_bottom' ) ); ?>">Buy Now</a>
+											<a class="btn btn-success btn-lg mm_buy_now" data-id="<?php echo $item->id; ?>" href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_single_bottom' ) ); ?>">Buy Now</a>
 										</div>
 										<span class="price-option">One Time Fee</span>
 									</div>
@@ -98,7 +98,7 @@ if ( ! is_wp_error( $response ) ) {
 										<span class="currency">USD</span>
 									</div>
 									<div class="btn-box">
-										<a href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_single_sidebar' ) ); ?>" class="btn btn-success btn-lg" data-price="<?php echo number_format( $item->prices->single_domain_license ); ?>" data-view="single_item">Buy Now</a>
+										<a href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_single_sidebar' ) ); ?>" class="btn btn-success btn-lg mm_buy_now" data-id="<?php echo $item->id; ?>" data-price="<?php echo number_format( $item->prices->single_domain_license ); ?>" data-view="single_item">Buy Now</a>
 									</div>
 									<span class="price-option">One Time Fee</span>
 								</div>
