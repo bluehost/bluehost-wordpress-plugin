@@ -33,7 +33,7 @@ function mm_buy_now() {
 add_action( 'wp_ajax_mm_buy_now', 'mm_buy_now' );
 
 function _mm_login(){
-	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) ) {
+	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) && false == get_transient( '_mm_session_token' ) ) {
 		$args = array(
 			'headers' => array(
 				'AuthType'            => 'Token',
@@ -44,8 +44,7 @@ function _mm_login(){
 		if ( ! is_wp_error( $session ) && isset( $session['response']['code'] ) && 200 == $session['response']['code'] ) {
 			$session_data = json_decode( $session['body'] );
 			if ( property_exists( $session_data, 'status' ) && 'success' == $session_data->status && property_exists( $session_data, 'token' ) ) {
-				delete_transient( '_mm_session_token' );
-				set_transient( '_mm_session_token', $session_data->token, HOUR_IN_SECONDS * 4 );
+				set_transient( '_mm_session_token', $session_data->token, HOUR_IN_SECONDS );
 			}
 		}
 	}
