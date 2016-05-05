@@ -5,7 +5,7 @@ $args = array(
 		'x-api'    => get_transient( '_mm_session_token' ),
 	),
 );
-$api_url = 'https://api.mojomarketplace.com/api/v2/user_purchases';
+$api_url = add_query_arg( array('type' => 'all' ), 'https://api.mojomarketplace.com/api/v2/user_purchased_items' );
 $response = wp_remote_get( $api_url, $args );
 if ( ! is_wp_error( $response ) && $purchases = json_decode( $response['body'] ) ) {
 	$items = $purchases->items;
@@ -40,7 +40,7 @@ if ( ! is_wp_error( $response ) && $purchases = json_decode( $response['body'] )
 							?>
 						<div class="list-group-item theme-item">
 							<div class="row">
-								<div class="col-xs-12 col-sm-4 col-md-5">
+								<div class="col-xs-12 col-sm-4 col-md-4">
 									<img class="img-responsive" src="<?php echo $item->images->preview_url; ?>" alt="image description" width="367" height="205">
 								</div>
 								<div class="col-xs-12 col-sm-5 col-md-5">
@@ -51,9 +51,9 @@ if ( ! is_wp_error( $response ) && $purchases = json_decode( $response['body'] )
 										<?php mm_stars( $item->rating, $item->sales_count ); ?>
 									</div>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-2">
+								<div class="col-xs-12 col-sm-3 col-md-3">
 									<div class="text-center info-box">
-										<?php if ( ! $item->is_service ) { ?>
+										<?php if ( false === $item->is_service ) { ?>
 										<div class="btn-group-vertical" role="group">
 											<div class="dropdown">
 												<button class="btn btn-success btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
@@ -77,8 +77,14 @@ if ( ! is_wp_error( $response ) && $purchases = json_decode( $response['body'] )
 											<?php
 											echo '<div>' . get_avatar( $item->service_provider->email, 60 ) . '</div>';
 											echo $item->service_provider->first_name;
+											$start_service_link = 'https://www.mojomarketplace.com/redirect-login';
+											$start_service_params = array(
+												'token' => get_transient( '_mm_session_token' ),
+												'url'   => 'https://www.mojomarketplace.com/account/credentials/' . $item->id . '/' . $item->service_details->id,
+											);
+											$start_service_link = add_query_arg( $start_service_params, $start_service_link );
 											?>
-											<a href="mailto: <?php echo $item->service_provider->email; ?>" class="btn btn-success btn-lg">Contact</a>
+											<a href="<?php echo esc_url( $start_service_link ); ?>" class="btn btn-success btn-lg" target="_blank">Start Service</a>
 										<?php } ?>
 
 									</div>
