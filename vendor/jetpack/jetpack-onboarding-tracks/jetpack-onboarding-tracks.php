@@ -12,33 +12,32 @@ class JetpackOnboardingTracking {
 	static $product_name = 'jpo';
 
 	static function track_jpo_usage() {
-		add_action( 'jpo_started', array(__CLASS__, 'track_started'), 1, 0 );
+		add_action( 'jpo_started', array(__CLASS__, 'track_started'), 1, 1 );
 		add_action( 'jpo_disabled', array(__CLASS__, 'track_disabled'), 1, 0 );
 		add_action( 'jpo_firstrun', array(__CLASS__, 'track_firstrun'), 1, 0 );
 		add_action( 'jpo_step_skipped', array(__CLASS__, 'track_step_skipped'), 1, 1 );
 		add_action( 'jpo_step_viewed', array(__CLASS__, 'track_step_viewed'), 1, 1 );
 		add_action( 'jpo_step_complete', array(__CLASS__, 'track_step_complete'), 1, 2 );
 		add_action( 'jpo_contact_page_built', array(__CLASS__, 'track_contact_page_built'), 1, 0 );
-		add_action( 'update_user_metadata', array(__CLASS__, 'track_welcome_closed'), 2, 5 );
+		add_action( 'jpo_closed', array(__CLASS__, 'track_closed'), 1, 0 );
+		add_action( 'jpo_opened', array(__CLASS__, 'track_opened'), 1, 0 );
 	}
 
-	static function track_welcome_closed( $null, $object_id, $meta_key, $meta_value, $prev_value ) { 
-		if ( 'show_welcome_panel' == $meta_key ) {
-		   if ( 0 == $meta_value ) {
-				self::record_user_event('wizard_hidden', array());
-			} else {
-				self::record_user_event('wizard_shown', array());
-			}
-		}
-		return null;
+	static function track_closed() { 
+		self::record_user_event('wizard_hidden', array());
+	}
+
+	// TODO - how?
+	static function track_opened() {
+		self::record_user_event('wizard_shown', array());
 	}
 
 	static function track_firstrun() {
 		self::record_user_event('wizard_viewed', array());
 	}
 
-	static function track_started() {
-		self::record_user_event('wizard_started', array());
+	static function track_started( $site_type ) {
+		self::record_user_event('wizard_started', array( 'site_type' => $site_type ));
 	}
 
 	static function track_disabled() {
