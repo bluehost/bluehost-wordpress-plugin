@@ -106,6 +106,11 @@ jQuery( document ).ready( function( $ ) {
 	$( '.search-sort #sort_select' ).change( function() {
 		window.location.href = window.location.href + '&item_type=' + this.value;
 	} );
+	$( '.dropdown-toggle').on( 'hover', function() {
+		$( this ).parent().addClass( 'open' );
+		$( this ).attr( 'aria-expanded', 'true' );
+	} );
+
 } );
 </script>
 	<?php
