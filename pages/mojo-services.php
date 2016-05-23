@@ -124,7 +124,7 @@ if ( ! is_wp_error( $response ) ) {
 										</div>
 										<div class="btn-group-vertical" role="group">
 											<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item->id ), admin_url( 'admin.php' ) ) ); ?>" class="btn btn-primary btn-lg">Details</a>
-											<a href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_list' ) ); ?>" class="btn btn-success btn-lg" data-price="<?php echo number_format( $item->prices->single_domain_license ); ?>" data-view="services_list">Buy Now</a>
+											<a href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_list' ) ); ?>" class="btn btn-success btn-lg mm_buy_now" data-id="<?php echo $item->id; ?>" data-price="<?php echo number_format( $item->prices->single_domain_license ); ?>" data-view="services_list">Buy Now</a>
 										</div>
 									</div>
 								</div>
@@ -144,21 +144,25 @@ if ( ! is_wp_error( $response ) ) {
 		</div>
 	</main>
 </div>
-	<script type="text/javascript">
-	jQuery( document ).ready( function( $ ) {
-		$( '.services-sort #sort_select' ).change( function() {
-			window.location.href = window.location.href + '&sort=' + this.value;
-		} );
-		$( '.services-sort a.sort-direction' ).click( function( link ) {
-			link.preventDefault();
-			var dir = location.search.split( 'direction=' )[1];
-			if ( 'undefined' == typeof( dir ) || 'asc' == dir ) {
-				window.location.href = window.location.href + '&direction=desc';
-			} else {
-				window.location.href = window.location.href + '&direction=asc';
-			}
-		} );
+<script type="text/javascript">
+jQuery( document ).ready( function( $ ) {
+	$( '.services-sort #sort_select' ).change( function() {
+		window.location.href = window.location.href + '&sort=' + this.value;
 	} );
-	</script>
+	$( '.services-sort a.sort-direction' ).click( function( link ) {
+		link.preventDefault();
+		var dir = location.search.split( 'direction=' )[1];
+		if ( 'undefined' == typeof( dir ) || 'asc' == dir ) {
+			window.location.href = window.location.href + '&direction=desc';
+		} else {
+			window.location.href = window.location.href + '&direction=asc';
+		}
+	} );
+	$( '.dropdown-toggle').on( 'hover', function() {
+		$( this ).parent().addClass( 'open' );
+		$( this ).attr( 'aria-expanded', 'true' );
+	} );
+} );
+</script>
 	<?php
 }

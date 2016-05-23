@@ -35,7 +35,7 @@ if ( is_wp_error( $theme ) ) {
 					<div class="theme-details text-center">
 						<div role="group" class="btn-group-horizontal">
 							<a class="btn btn-primary" href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item_id ), admin_url( 'admin.php' ) ) ); ?>">Details</a>
-							<a class="btn btn-success" href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item_id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_preview' ) ); ?>">Buy Now</a>
+							<a class="btn btn-success mm_buy_now" href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item_id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_preview' ) ); ?>">Buy Now</a>
 						</div>
 						<br/>
 						<div class="price">
@@ -79,7 +79,7 @@ if ( is_wp_error( $theme ) ) {
 			<iframe src="<?php echo mm_build_link( $theme->demo_url, array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'preview_view_demo' ) ); ?>"></iframe>
 		</div>
 	</div>
-		<script type="text/javascript">
+	<script type="text/javascript">
 	jQuery( document ).ready( function( $ ) {
 		$( 'a.theme-preview-other-link' ).hover( function() {
 			$( '#preview-screenshot img' ).attr( 'src', $( this ).data( 'preview' ) );

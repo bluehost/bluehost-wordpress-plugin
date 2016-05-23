@@ -16,6 +16,11 @@ function mm_preview_menu() {
 }
 add_action( 'admin_menu', 'mm_preview_menu' );
 
+function mm_my_purchases_menu() {
+	add_submenu_page( null, 'My Purchases', 'My Purchases', 'manage_options', 'mojo-purchases', 'mm_my_purchases_page' );
+}
+add_action( 'admin_menu', 'mm_my_purchases_menu' );
+
 function mm_menu_icon() {
 	?>
 	<style type="text/css">
@@ -134,6 +139,10 @@ add_action( 'admin_menu', 'mm_item_search_menu' );
 
 function mm_item_search_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-search.php' );
+}
+
+function mm_my_purchases_page() {
+	mm_require( MM_BASE_DIR . 'pages/mojo-purchases.php' );
 }
 
 function mm_menu_redirects() {

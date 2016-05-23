@@ -426,23 +426,6 @@ function mm_ux_log_comment_status( $new_status, $old_status, $comment ) {
 }
 add_action( 'transition_comment_status', 'mm_ux_log_comment_status', 10, 3 );
 
-function mm_ux_log_buy_now_clicks_preview() {
-	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) ) {
-		global $theme;
-		?>
-		<script type="text/javascript">
-			jQuery( '.btn.btn-success' ).click( function( $ ) {
-				var view = $( this ).data( 'view' );
-				var value = $( this ).data( 'price' );
-				var nonce = "<?php echo wp_create_nonce( 'mm_nonce-buy_now_click' ); ?>";
-				$.ajax( ajaxurl + "?action=mm_buy_now_click&view=" + view + "&value=" + value + "&nonce=" + nonce );
-			} );
-		</script>
-		<?php
-	}
-}
-add_action( 'admin_footer', 'mm_ux_log_buy_now_clicks_preview' );
-
 function mm_ux_log_service_outbound() {
 	if ( isset( $_GET['page'] ) && 'mojo-services' == $_GET['page'] ) {
 		$event = array(

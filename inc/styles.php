@@ -5,6 +5,8 @@ function mm_admin_style() {
 		wp_enqueue_style( 'mojo-admin-roboto-css', 'https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500' );
 		wp_enqueue_style( 'mojo-admin-bootstrap-css', MM_ASSETS_URL . 'css/bootstrap.css' );
 		wp_enqueue_style( 'mojo-admin-main-css', MM_ASSETS_URL . 'css/main.css' );
+		wp_enqueue_script( 'mojo-admin-main-js', MM_ASSETS_URL . 'js/main.js', 'jquery' );
+		wp_enqueue_script( 'mojo-admin-bootstrap-js', MM_ASSETS_URL . 'js/bootstrap.min.js', 'jquery' );
 	}
 }
 add_action( 'admin_init', 'mm_admin_style' );
