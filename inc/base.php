@@ -310,6 +310,9 @@ function mm_pagination( $page = 1, $total_pages = 1 ) {
 }
 
 function _mm_login() {
+	if ( ! current_user_can( 'administrator' ) ) {
+		return;
+	}
 	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) && false == get_transient( '_mm_session_token' ) ) {
 		$args = array(
 			'headers' => array(
