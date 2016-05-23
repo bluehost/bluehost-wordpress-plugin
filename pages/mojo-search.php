@@ -96,7 +96,7 @@ if ( ! is_wp_error( $response ) ) {
 					?>
 					</div>
 				</div>
-				<br style="clear: both"/><span class="alignright powered"><a href="<?php echo mm_build_link( 'https://www.mojomarketplace.com' ); ?>"><img height="16" width="156" alt="Mojo Marketplace" src="<?php echo MM_ASSETS_URL . 'img/logo-dark.svg'; ?>"></a></span>
+
 			</div>
 		</div>
 	</main>

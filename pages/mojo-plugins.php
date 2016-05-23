@@ -145,7 +145,7 @@ if ( ! is_wp_error( $response ) ) {
 			mm_partner_offers( 'plugins-banner-bottom' );
 			mm_pagination( $api->page, $api->pageCount );
 			?>
-			<br style="clear: both"/><span class="alignright powered"><a href="<?php echo mm_build_link( 'https://www.mojomarketplace.com' ); ?>"><img height="16" width="156" alt="Mojo Marketplace" src="<?php echo MM_ASSETS_URL . 'img/logo-dark.svg'; ?>"></a></span>
+
 		</div>
 	</main>
 </div>
