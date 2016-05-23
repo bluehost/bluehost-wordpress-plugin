@@ -90,7 +90,7 @@ if ( ! is_wp_error( $response ) ) {
 								<label for="sort_select" class="control-label">Sort By</label>
 								<span class="fake-select">
 									<select class="form-control input-sm" id="sort_select">
-										<option value=''>Select</option>
+										<option value=''>Popular</option>
 										<option value='price'<?php selected( 'price', $query['order'] ); ?>>Price</option>
 										<option value='latest'<?php selected( 'latest', $query['order'] ); ?>>Date Added</option>
 										<option value='random'<?php selected( 'random', $query['order'] ); ?>>Random</option>
