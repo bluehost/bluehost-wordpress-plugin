@@ -80,6 +80,15 @@ function mm_add_tool_bar_items( $admin_bar ) {
 				'title' => __( 'Graphics' )
 			),
 		) );
+		$admin_bar->add_menu( array(
+			'id'     => 'mojo-business-tools',
+			'title'  => 'Business Tools',
+			'parent' => 'mojo-marketplace',
+			'href'   => admin_url( 'admin.php?page=mojo-business-tools' ),
+			'meta'   => array(
+				'title' => __( 'Business Tools' )
+			),
+		) );
 	}
 }
 add_action( 'admin_bar_menu', 'mm_add_tool_bar_items', 100 );
@@ -121,6 +130,15 @@ add_action( 'admin_menu', 'mm_graphics_menu' );
 
 function mm_graphics_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-graphics.php' );
+}
+
+function mm_business_tools_menu() {
+	add_submenu_page( 'mojo-themes', 'Business Tools', 'Business Tools', 'manage_options', 'mojo-business-tools', 'mm_business_tools_page' );
+}
+add_action( 'admin_menu', 'mm_business_tools_menu' );
+
+function mm_business_tools_page() {
+	mm_require( MM_BASE_DIR . 'pages/mojo-business-tools.php' );
 }
 
 function mm_item_menu() {
