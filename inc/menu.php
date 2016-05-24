@@ -7,7 +7,9 @@ add_action( 'admin_menu', 'mm_main_menu' );
 
 function mm_main_menu_fix_subdomain_label() {
 	global $submenu;
-	$submenu['mojo-themes'][0][0] = 'Themes';
+	if ( isset( $submenu['mojo-themes'] ) && is_array( $submenu['mojo-themes'] ) ) {
+		$submenu['mojo-themes'][0][0] = 'Themes';
+	}
 }
 add_action( 'admin_menu', 'mm_main_menu_fix_subdomain_label', 11 );
 
