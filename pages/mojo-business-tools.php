@@ -61,8 +61,8 @@ if ( ! is_wp_error( $response ) ) {
 								<div class="col-xs-12 col-sm-3 col-md-2">
 									<div class="text-center info-box">
 										<div class="btn-group-vertical" role="group">
-											<a href="<?php echo esc_url( $item->page_url ); ?>" target="_blank" class="btn btn-primary btn-lg">Learn More</a>
-											<a href="<?php echo esc_url( $item->page_url ); ?>" target="_blank" class="btn btn-success btn-lg" data-id="<?php echo $item->id; ?>" data-price="<?php echo number_format( $item->prices->single_domain_license ); ?>" data-view="business_tools_list">Get Started</a>
+											<a href="<?php echo mm_build_link( $item->page_url, array( 'utm_content' => 'learn_more_list' ) ); ?>" target="_blank" class="btn btn-primary btn-lg">Learn More</a>
+											<a href="<?php echo mm_build_link( $item->page_url, array( 'utm_content' => 'get_started_list' ) ); ?>" target="_blank" class="btn btn-success btn-lg" data-id="<?php echo $item->id; ?>" data-view="business_tools_list">Get Started</a>
 										</div>
 									</div>
 								</div>
