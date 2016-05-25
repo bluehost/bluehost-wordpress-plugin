@@ -42,6 +42,7 @@
 							</ul>
 						</div>
 					</li>
+					<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-business-tools' ), admin_url( 'admin.php' ) ) ); ?>">Business Tools</a></li>
 				</ul>
 			</div>
 		</div>
