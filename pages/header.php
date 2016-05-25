@@ -20,7 +20,7 @@
 								<span class="icon-bar hidden-sm hidden-xs"></span>
 							</button>
 							<?php if ( 'default' != mm_brand() ) { ?>
-							<span class="powered">Powered By <a href="#"><img height="16" width="156" alt="Mojo Marketplace" src="<?php echo mm_brand( MM_ASSETS_URL . 'img/logo.svg' ); ?>"></a></span>
+							<span class="powered">Powered By <a href="<?php echo mm_build_link( 'https://www.mojomarketplace.com', array( 'utm_content' => 'powered_by_link' ) ); ?>" target="_blank"><img height="16" width="156" alt="Mojo Marketplace" src="<?php echo mm_brand( MM_ASSETS_URL . 'img/logo.svg' ); ?>"></a></span>
 							<?php } ?>
 							<div class="dropdown-menu">
 								<div class="avatar-block">
