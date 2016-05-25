@@ -48,21 +48,21 @@ if ( ! is_wp_error( $response ) ) {
 						<div class="list-group-item theme-item">
 							<div class="row">
 								<div class="col-xs-12 col-sm-4 col-md-5">
-									<a href="<?php echo $link; ?>">
-										<img class="img-responsive" src="<?php echo $item->images->thumbnail_url; ?>" alt="image description" width="367" height="205">
+									<a href="<?php echo esc_url( $link ); ?>">
+										<img class="img-responsive" src="<?php echo esc_url( $item->images->thumbnail_url ); ?>" alt="image description" width="367" height="205">
 									</a>
 								</div>
 								<div class="col-xs-12 col-sm-5 col-md-5">
 									<div class="description-box">
-										<h2><a href="<?php echo $item->page_url; ?>"><?php echo apply_filters( 'mm_item_name', $item->name ); ?></a></h2>
+										<h2><a href="<?php echo esc_url( $item->page_url ); ?>"><?php echo apply_filters( 'mm_item_name', $item->name ); ?></a></h2>
 										<?php if ( isset( $item->short_description ) ) { echo $item->short_description; } ?>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-3 col-md-2">
 									<div class="text-center info-box">
 										<div class="btn-group-vertical" role="group">
-											<a href="<?php echo $item->page_url; ?>" class="btn btn-primary btn-lg">Learn More</a>
-											<a href="<?php echo $item->page_url; ?>" class="btn btn-success btn-lg mm_buy_now" data-id="<?php echo $item->id; ?>" data-price="<?php echo number_format( $item->prices->single_domain_license ); ?>" data-view="business_tools_list">Get Started</a>
+											<a href="<?php echo esc_url( $item->page_url ); ?>" target="_blank" class="btn btn-primary btn-lg">Learn More</a>
+											<a href="<?php echo esc_url( $item->page_url ); ?>" target="_blank" class="btn btn-success btn-lg" data-id="<?php echo $item->id; ?>" data-price="<?php echo number_format( $item->prices->single_domain_license ); ?>" data-view="business_tools_list">Get Started</a>
 										</div>
 									</div>
 								</div>
