@@ -77,12 +77,17 @@ if ( ! is_wp_error( $response ) && $purchases = json_decode( $response['body'] )
 											<?php
 											echo '<div>' . get_avatar( $item->service_provider->email, 60 ) . '</div>';
 											echo $item->service_provider->first_name;
-											$start_service_link = 'https://www.mojomarketplace.com/redirect-login';
-											$start_service_params = array(
-												'token' => get_transient( '_mm_session_token' ),
-												'url'   => 'https://www.mojomarketplace.com/account/credentials/' . $item->id . '/' . $item->service_details->id,
-											);
-											$start_service_link = add_query_arg( $start_service_params, $start_service_link );
+											if ( property_exists( $item, 'service_details' ) ) {
+												$start_service_link = 'https://www.mojomarketplace.com/redirect-login';
+												$start_service_params = array(
+													'token' => get_transient( '_mm_session_token' ),
+													'url'   => 'https://www.mojomarketplace.com/account/credentials/' . $item->id . '/' . $item->service_details->id,
+												);
+												$start_service_link = add_query_arg( $start_service_params, $start_service_link );
+											} else {
+												$start_service_link = add_query_arg( array( 'ticket_form_id' => '66029' ), 'https://mojosupport.zendesk.com/hc/en-us/requests/new' );
+											}
+
 											?>
 											<a href="<?php echo esc_url( $start_service_link ); ?>" class="btn btn-success btn-lg" target="_blank">Start Service</a>
 										<?php } ?>
