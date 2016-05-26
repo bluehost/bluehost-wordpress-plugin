@@ -4,7 +4,7 @@ function mm_main_menu() {
 	$icon_hash = get_option( 'mm_icon_hash', false );
 	if ( false === $icon_hash ) {
 		$brand = mm_brand();
-		$icon_raw = wp_remote_get( MM_ASSETS_URL . 'img/icons/' . $brand . '-white.svg' );
+		$icon_raw = wp_remote_get( MM_ASSETS_URL . 'img/icons/' . $brand . '-icon.svg' );
 		if ( ! is_wp_error( $icon_raw ) ) {
 			$icon_hash = base64_encode( $icon_raw['body'] );
 			set_option( 'mm_icon_hash', $icon_hash, WEEK_IN_SECONDS * 4 );
