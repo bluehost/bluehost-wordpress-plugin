@@ -49,7 +49,7 @@ if ( ! is_wp_error( $response ) ) {
 							<div class="row">
 								<div class="col-xs-12 col-sm-4 col-md-5">
 									<a href="<?php echo esc_url( $link ); ?>">
-										<img class="img-responsive" src="<?php echo esc_url( $item->images->thumbnail_url ); ?>" alt="image description" width="367" height="205">
+										<img class="img-responsive" src="<?php echo esc_url( $item->images->preview_url ); ?>" alt="image description" width="367" height="205">
 									</a>
 								</div>
 								<div class="col-xs-12 col-sm-5 col-md-5">
