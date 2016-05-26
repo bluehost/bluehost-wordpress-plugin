@@ -1,7 +1,16 @@
 <?php
 
 function mm_main_menu() {
-	add_menu_page( 'Marketplace', 'Marketplace', 'manage_options', 'mojo-themes', 'mm_theme_page', 'div', 59 );
+	$icon_hash = get_option( 'mm_icon_hash', false );
+	if ( false === $icon_hash ) {
+		$brand = mm_brand();
+		$icon_raw = wp_remote_get( MM_ASSETS_URL . 'img/icons/' . $brand . '-white.svg' );
+		if ( ! is_wp_error( $icon_raw ) ) {
+			$icon_hash = base64_encode( $icon_raw['body'] );
+			set_option( 'mm_icon_hash', $icon_hash, WEEK_IN_SECONDS * 4 );
+		}
+	}
+	add_menu_page( 'Marketplace', 'Marketplace', 'manage_options', 'mojo-themes', 'mm_theme_page', 'data:image/svg+xml;base64, ' . $icon_hash, 59 );
 }
 add_action( 'admin_menu', 'mm_main_menu' );
 
