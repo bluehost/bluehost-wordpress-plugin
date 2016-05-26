@@ -7,7 +7,7 @@ function mm_main_menu() {
 		$icon_raw = wp_remote_get( MM_ASSETS_URL . 'img/icons/' . $brand . '-icon.svg' );
 		if ( ! is_wp_error( $icon_raw ) ) {
 			$icon_hash = base64_encode( $icon_raw['body'] );
-			set_option( 'mm_icon_hash', $icon_hash, WEEK_IN_SECONDS * 4 );
+			update_option( 'mm_icon_hash', $icon_hash, WEEK_IN_SECONDS * 4 );
 		}
 	}
 	add_menu_page( 'Marketplace', 'Marketplace', 'manage_options', 'mojo-themes', 'mm_theme_page', 'data:image/svg+xml;base64, ' . $icon_hash, 59 );
