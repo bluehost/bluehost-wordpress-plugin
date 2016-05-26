@@ -136,12 +136,12 @@ if ( ! is_wp_error( $response ) ) {
 								</div>
 								<?php } ?>
 								<?php
-									if ( isset( $partner_type ) ) {
-										$partner_offer = mm_partner_offers( $partner_type . '-single-item', false );
-										if ( strlen( $partner_offer ) > 5 ) {
-											echo sprintf( '<div class="widget">%s</div>', $partner_offer );
-										}
+								if ( isset( $partner_type ) ) {
+									$partner_offer = mm_partner_offers( $partner_type . '-single-item', false );
+									if ( strlen( $partner_offer ) > 5 ) {
+										echo sprintf( '<div class="widget">%s</div>', $partner_offer );
 									}
+								}
 								?>
 							</aside>
 						</div>
