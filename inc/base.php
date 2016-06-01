@@ -150,6 +150,8 @@ function mm_all_api_calls() {
 		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1&category=logo',
 		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1&category=business-cards',
 
+		'https://api.mojomarketplace.com/api/v2/items?type=business-tools&count=20&page=1',
+
 		'https://api.mojomarketplace.com/mojo-plugin-assets/json/search-patterns.json',
 		'https://api.mojomarketplace.com/mojo-plugin-assets/json/mojo-partner-offers.json',
 	);
