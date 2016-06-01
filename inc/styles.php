@@ -11,6 +11,15 @@ function mm_admin_style() {
 }
 add_action( 'admin_init', 'mm_admin_style' );
 
+function mm_admin_body_class( $classes ) {
+	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) ) {
+		$classes .= ' mojo-admin-page ';
+
+	}
+    return $classes;
+}
+add_filter( 'admin_body_class', 'mm_admin_body_class' );
+
 function mm_frontend_style() {
 	//Only run this if there is a shortcode on the page.
 	global $use_mm_styles;
