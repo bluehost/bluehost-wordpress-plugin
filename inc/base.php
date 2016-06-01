@@ -171,7 +171,9 @@ function mm_preload_api_calls() {
 add_action( 'admin_footer-index.php', 'mm_preload_api_calls', 99 );
 
 function mm_slug_to_title( $slug ) {
-	return ucwords( str_replace( '-', ' ', $slug ) );
+	$slug = ucwords( str_replace( '-', ' ', $slug ) );
+	//fun fact: capital_P_dangit( 'Wordpress' ) does not return 'WordPress'
+	return str_replace( 'Wordpress', 'WordPress', $slug );
 }
 
 function mm_title_to_slug( $title ) {
