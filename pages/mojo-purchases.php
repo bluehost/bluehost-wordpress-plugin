@@ -43,7 +43,7 @@ if ( ! is_wp_error( $response ) && $purchases = json_decode( $response['body'] )
 								<div class="col-xs-12 col-sm-4 col-md-4">
 									<img class="img-responsive" src="<?php echo $item->images->preview_url; ?>" alt="image description" width="367" height="205">
 								</div>
-								<div class="col-xs-12 col-sm-5 col-md-5">
+								<div class="col-xs-12 col-sm-5 col-md-6">
 									<div class="description-box">
 										<h2><?php echo $item->name; ?></h2>
 										<?php if ( isset( $item->short_description ) ) { echo $item->short_description; } ?>
@@ -51,7 +51,7 @@ if ( ! is_wp_error( $response ) && $purchases = json_decode( $response['body'] )
 										<?php mm_stars( $item->rating, $item->sales_count ); ?>
 									</div>
 								</div>
-								<div class="col-xs-12 col-sm-3 col-md-3">
+								<div class="col-xs-12 col-sm-3 col-md-2">
 									<div class="text-center info-box">
 										<?php if ( false === $item->is_service ) { ?>
 										<div class="btn-group-vertical" role="group">
