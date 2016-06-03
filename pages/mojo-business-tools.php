@@ -48,7 +48,7 @@ if ( ! is_wp_error( $response ) ) {
 						<div class="list-group-item theme-item">
 							<div class="row">
 								<div class="col-xs-12 col-sm-4 col-md-5">
-									<a href="<?php echo esc_url( $link ); ?>">
+									<a href="<?php echo mm_build_link( $item->page_url, array( 'utm_content' => 'preview_image_list' ) ); ?>">
 										<img class="img-responsive" src="<?php echo esc_url( $item->images->preview_url ); ?>" alt="image description" width="367" height="205">
 									</a>
 								</div>
