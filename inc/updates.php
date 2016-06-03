@@ -133,4 +133,4 @@ function mm_auto_update_configure() {
 		}
 	}
 }
-add_action( 'init', 'mm_auto_update_configure', 5 );
+add_action( 'plugins_loaded', 'mm_auto_update_configure', 5 );
