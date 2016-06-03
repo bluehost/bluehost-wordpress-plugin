@@ -137,22 +137,6 @@ if ( ! is_wp_error( $response ) ) {
 		</div>
 	</main>
 </div>
-<script type="text/javascript">
-jQuery( document ).ready( function( $ ) {
-	$( '.theme-sort #sort_select' ).change( function() {
-		window.location.href = window.location.href + '&sort=' + this.value;
-	} );
-	$( '.theme-sort a.sort-direction' ).click( function( link ) {
-		link.preventDefault();
-		var dir = location.search.split( 'direction=' )[1];
-		if ( 'undefined' == typeof( dir ) || 'asc' == dir ) {
-			window.location.href = window.location.href + '&direction=desc';
-		} else {
-			window.location.href = window.location.href + '&direction=asc';
-		}
-	} );
-} );
-</script>
 	<?php
 } else {
 	//TODO display nice error message that the api is down.

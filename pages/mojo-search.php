@@ -101,12 +101,5 @@ if ( ! is_wp_error( $response ) ) {
 		</div>
 	</main>
 </div>
-<script type="text/javascript">
-jQuery( document ).ready( function( $ ) {
-	$( '.search-sort #sort_select' ).change( function() {
-		window.location.href = window.location.href + '&item_type=' + this.value;
-	} );
-} );
-</script>
 	<?php
 }
