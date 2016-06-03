@@ -176,10 +176,6 @@ jQuery( document ).ready( function( $ ) {
 			window.location.href = window.location.href + '&direction=asc';
 		}
 	} );
-	$( '.dropdown-toggle').on( 'hover', function() {
-		$( this ).parent().addClass( 'open' );
-		$( this ).attr( 'aria-expanded', 'true' );
-	} );
 } );
 </script>
 	<?php

@@ -152,14 +152,5 @@ if ( ! is_wp_error( $response ) ) {
 		</div>
 	</main>
 </div>
-<script type="text/javascript">
-jQuery( document ).ready( function () {
-	$( '.dropdown-toggle').on( 'hover', function() {
-		$( this ).parent().addClass( 'open' );
-		$( this ).attr( 'aria-expanded', 'true' );
-	} );
-
-} );
-</script>
 	<?php
 }
