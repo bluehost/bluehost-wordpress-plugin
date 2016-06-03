@@ -17,7 +17,7 @@ if ( ! is_wp_error( $response ) ) {
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="row">
-						<div class="col-xs-12 col-sm-8">
+						<div class="col-xs-12 col-sm-12">
 							<ol class="breadcrumb">
 								<li>
 									<?php
@@ -57,9 +57,6 @@ if ( ! is_wp_error( $response ) ) {
 								?>
 								</li>
 							</ol>
-						</div>
-						<div class="col-xs-12 col-sm-4">
-
 						</div>
 					</div>
 				</div>
