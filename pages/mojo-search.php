@@ -8,14 +8,15 @@ $query = array(
 	'order'     => 'score',
 );
 $response = mm_api_cache( add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/search' ) );
-
-if ( ! is_wp_error( $response ) ) {
-	$body = json_decode( $response['body'] );
-	$items = $body->items;
-	$type = 'search';
 ?>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
-	<?php mm_require( MM_BASE_DIR . 'pages/header.php' ); ?>
+	<?php
+	mm_require( MM_BASE_DIR . 'pages/header.php' );
+	if ( ! is_wp_error( $response ) ) {
+		$body = json_decode( $response['body'] );
+		$items = $body->items;
+		$type = 'search';
+	?>
 	<main id="main">
 		<div class="container">
 			<div class="panel panel-default">
@@ -100,6 +101,10 @@ if ( ! is_wp_error( $response ) ) {
 			</div>
 		</div>
 	</main>
-</div>
+
 	<?php
-}
+	} else {
+		mm_require( MM_BASE_DIR . 'pages/api-unavailable.php' );
+	}
+?>
+</div>

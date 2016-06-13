@@ -5,13 +5,15 @@
 
 $id = sanitize_title_for_query( $_GET['item_id'] );
 $response = mm_api_cache( 'https://api.mojomarketplace.com/api/v2/items/' . $id );
-if ( ! is_wp_error( $response ) ) {
-	$body = json_decode( $response['body'] );
-	$item = $body->items[0];
-	$type = $item->type;
 ?>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
-	<?php mm_require( MM_BASE_DIR . 'pages/header.php' ); ?>
+	<?php
+	mm_require( MM_BASE_DIR . 'pages/header.php' );
+	if ( ! is_wp_error( $response ) ) {
+		$body = json_decode( $response['body'] );
+		$item = $body->items[0];
+		$type = $item->type;
+	?>
 	<main id="main">
 		<div class="container">
 			<div class="panel panel-default">
@@ -148,6 +150,9 @@ if ( ! is_wp_error( $response ) ) {
 
 		</div>
 	</main>
-</div>
 	<?php
-}
+	} else {
+		mm_require( MM_BASE_DIR . 'pages/api-unavailable.php' );
+	}
+	?>
+</div>

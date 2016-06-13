@@ -24,16 +24,18 @@ if ( $query['order'] != 'random' ) {
 } else {
 	$response = wp_remote_get( $api_url );
 }
-if ( ! is_wp_error( $response ) ) {
-	if ( isset( $_GET['items'] ) && 'security-1' == $_GET['items'] ) {
-		$_GET['items'] = 'security';
-	}
-	$api = json_decode( $response['body'] );
-	$items = $api->items;
-
 ?>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
-	<?php mm_require( MM_BASE_DIR . 'pages/header.php' ); ?>
+	<?php
+	mm_require( MM_BASE_DIR . 'pages/header.php' );
+	if ( ! is_wp_error( $response ) ) {
+		if ( isset( $_GET['items'] ) && 'security-1' == $_GET['items'] ) {
+			$_GET['items'] = 'security';
+		}
+		$api = json_decode( $response['body'] );
+		$items = $api->items;
+
+	?>
 	<div class="container">
 		<?php
 		mm_partner_offers( 'plugins-banner-top' );
@@ -148,6 +150,10 @@ if ( ! is_wp_error( $response ) ) {
 
 		</div>
 	</main>
-</div>
+
 	<?php
-}
+	} else {
+		mm_require( MM_BASE_DIR . 'pages/api-unavailable.php' );
+	}
+?>
+</div>
