@@ -14,7 +14,6 @@ add_action( 'admin_init', 'mm_admin_style' );
 function mm_admin_body_class( $classes ) {
 	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) ) {
 		$classes .= ' mojo-admin-page ';
-
 	}
     return $classes;
 }
