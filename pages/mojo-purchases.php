@@ -7,11 +7,13 @@ $args = array(
 );
 $api_url = add_query_arg( array('type' => 'all' ), 'https://api.mojomarketplace.com/api/v2/user_purchased_items' );
 $response = wp_remote_get( $api_url, $args );
-if ( ! is_wp_error( $response ) && $purchases = json_decode( $response['body'] ) ) {
-	$items = $purchases->items;
 ?>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
-	<?php mm_require( MM_BASE_DIR . 'pages/header.php' ); ?>
+	<?php
+	mm_require( MM_BASE_DIR . 'pages/header.php' );
+	if ( ! is_wp_error( $response ) && $purchases = json_decode( $response['body'] ) ) {
+		$items = $purchases->items;
+	?>
 	<div class="container">
 		<?php mm_partner_offers( 'purchases-banner-top' ); ?>
 	</div>
@@ -106,6 +108,10 @@ if ( ! is_wp_error( $response ) && $purchases = json_decode( $response['body'] )
 			<br style="clear: both"/><span class="alignright powered"><a href="<?php echo mm_build_link( 'https://www.mojomarketplace.com' ); ?>"><img height="16" width="156" alt="Mojo Marketplace" src="<?php echo MM_ASSETS_URL . 'img/logo-dark.svg'; ?>"></a></span>
 		</div>
 	</main>
-</div>
+
 <?php
-}
+	} else {
+		mm_require( MM_BASE_DIR . 'pages/api-unavailable.php' );
+	}
+?>
+</div>
