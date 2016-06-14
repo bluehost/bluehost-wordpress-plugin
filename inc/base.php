@@ -16,7 +16,6 @@ function mm_setup() {
 		$events = get_option( 'mm_cron', array() );
 		$events['hourly'][ $event['ea'] ] = $event;
 		update_option( 'mm_cron', $events );
-		update_user_meta( 1, 'show_welcome_screen', 1 );
 	}
 }
 add_action( 'init', 'mm_setup' );
