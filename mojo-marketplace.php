@@ -17,9 +17,6 @@ define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
 define( 'MM_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/' );
 define( 'MM_VERSION', '0.8.2' );
 
-if ( file_exists( MM_BASE_DIR . 'inc/brand.php' ) ) {
-	require_once( MM_BASE_DIR . 'inc/brand.php' );
-}
 require_once( MM_BASE_DIR . 'inc/base.php' );
 require_once( MM_BASE_DIR . 'inc/checkout.php' );
 require_once( MM_BASE_DIR . 'inc/churn.php' );
