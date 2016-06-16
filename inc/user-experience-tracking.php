@@ -439,23 +439,6 @@ function mm_ux_log_service_outbound() {
 }
 add_action( 'admin_init', 'mm_ux_log_service_outbound', 5 );
 
-function mm_endpoint_action_buy_now_click() {
-	if ( wp_verify_nonce( $_GET['nonce'], 'mm_nonce-buy_now_click' ) ) {
-		$event = array(
-				't'		=> 'event',
-				'ec'	=> 'user_action',
-				'ea'	=> 'buy_now_click',
-				'el'	=> esc_attr( $_GET['view'] ),
-				'ev'	=> esc_attr( $_GET['value'] ),
-			);
-		mm_ux_log( $event );
-	} else {
-		wp_die( 'Invalid Nonce' );
-	}
-	die();
-}
-add_action( 'wp_ajax_mm_buy_now_click', 'mm_endpoint_action_buy_now_click' );
-
 function mm_ux_log_browse_all_themes() {
 	if ( isset( $_GET['page'] ) && 'mojo-themes' == $_GET['page'] ) {
 		?>
