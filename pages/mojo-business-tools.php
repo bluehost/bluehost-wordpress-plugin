@@ -54,7 +54,7 @@ $response = mm_api_cache( $api_url );
 								</div>
 								<div class="col-xs-12 col-sm-5 col-md-5">
 									<div class="description-box">
-										<h2><a href="<?php echo esc_url( $item->page_url ); ?>"><?php echo apply_filters( 'mm_item_name', $item->name ); ?></a></h2>
+										<h2><a href="<?php echo mm_build_link( $item->page_url, array( 'utm_content' => 'title_list' ) ); ?>"><?php echo apply_filters( 'mm_item_name', $item->name ); ?></a></h2>
 										<?php if ( isset( $item->short_description ) ) { echo $item->short_description; } ?>
 									</div>
 								</div>
