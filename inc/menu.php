@@ -151,7 +151,6 @@ function mm_my_purchases_menu() {
 	if ( false !== get_transient( '_mm_session_token' ) ) {
 		add_submenu_page( 'mojo-themes', 'My Purchases', 'My Purchases', 'manage_options', 'mojo-purchases', 'mm_my_purchases_page' );
 	}
-
 }
 add_action( 'admin_menu', 'mm_my_purchases_menu' );
 
