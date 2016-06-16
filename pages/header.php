@@ -29,7 +29,7 @@
 									<div class="name"><a href="#"><?php echo $user->data->display_name; ?></a></div>
 								</div>
 								<ul class="projects-nav list-unstyled">
-									<li><a href="<?php echo add_query_arg( array( 'page' => 'mojo-purchases' ), admin_url() ); ?>">Purchases</a></li>
+									<li><a href="<?php echo add_query_arg( array( 'page' => 'mojo-purchases' ), admin_url( 'admin.php' ) ); ?>">Purchases</a></li>
 								</ul>
 							</div>
 						</div>
