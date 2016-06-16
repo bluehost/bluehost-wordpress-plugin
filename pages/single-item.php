@@ -140,6 +140,10 @@ $response = mm_api_cache( 'https://api.mojomarketplace.com/api/v2/items/' . $id 
 									if ( strlen( $partner_offer ) > 5 ) {
 										echo sprintf( '<div class="widget">%s</div>', $partner_offer );
 									}
+									$partner_offer_2 = mm_partner_offers( $partner_type . '-single-item-2', false );
+									if ( strlen( $partner_offer_2 ) > 5 ) {
+										echo sprintf( '<div class="widget">%s</div>', $partner_offer_2 );
+									}
 								}
 								?>
 							</aside>
