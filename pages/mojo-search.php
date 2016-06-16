@@ -1,7 +1,7 @@
 <?php
 $search = ( isset( $_GET['search'] ) ) ? sanitize_title_for_query( $_GET['search'] ) : '';
 $query = array(
-	'item_type' => ( isset( $_GET['item_type'] ) ) ? sanitize_title_for_query( $_GET['item_type'] ) : 'all',
+	'item_type' => ( isset( $_GET['sort'] ) ) ? sanitize_title_for_query( $_GET['sort'] ) : 'themes',
 	'query'     => $search,
 	'category'  => 'wordpress',
 	'size'      => 150,
@@ -33,7 +33,7 @@ $response = mm_api_cache( add_query_arg( $query, 'https://api.mojomarketplace.co
 								<label for="sort_select" class="control-label">Filter By</label>
 								<span class="fake-select">
 									<select class="form-control input-sm" id="sort_select">
-										<option value='all'<?php selected( 'all', $query['item_type'] ); ?>>Select</option>
+										<option value='all'<?php selected( 'all', $query['item_type'] ); ?>>All</option>
 										<option value='themes'<?php selected( 'themes', $query['item_type'] ); ?>>Themes</option>
 										<option value='plugins'<?php selected( 'plugins', $query['item_type'] ); ?>>Plugins</option>
 										<option value='services'<?php selected( 'services', $query['item_type'] ); ?>>Services</option>
