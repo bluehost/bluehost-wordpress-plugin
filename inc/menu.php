@@ -27,11 +27,6 @@ function mm_preview_menu() {
 }
 add_action( 'admin_menu', 'mm_preview_menu' );
 
-function mm_my_purchases_menu() {
-	add_submenu_page( null, 'My Purchases', 'My Purchases', 'manage_options', 'mojo-purchases', 'mm_my_purchases_page' );
-}
-add_action( 'admin_menu', 'mm_my_purchases_menu' );
-
 function mm_menu_icon() {
 	?>
 	<style type="text/css">
@@ -151,6 +146,14 @@ add_action( 'admin_menu', 'mm_business_tools_menu' );
 function mm_business_tools_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-business-tools.php' );
 }
+
+function mm_my_purchases_menu() {
+	if ( false !== get_transient( '_mm_session_token' ) ) {
+		add_submenu_page( 'mojo-themes', 'My Purchases', 'My Purchases', 'manage_options', 'mojo-purchases', 'mm_my_purchases_page' );
+	}
+
+}
+add_action( 'admin_menu', 'mm_my_purchases_menu' );
 
 function mm_item_menu() {
 	add_submenu_page( null, 'Single Item', 'Single Item', 'manage_options', 'mojo-single-item', 'mm_single_item_page' );
