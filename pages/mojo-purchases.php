@@ -39,6 +39,7 @@ $response = wp_remote_get( $api_url, $args );
 					<div class="list-group">
 					<?php
 						foreach ( $items as $item ) {
+							mm_record_transaction( $item );
 							?>
 						<div class="list-group-item theme-item">
 							<div class="row">

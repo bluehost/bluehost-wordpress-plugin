@@ -24,10 +24,59 @@ function mm_buy_now() {
 	$response = wp_remote_post( 'https://api.mojomarketplace.com/api/v2/create_order', $args );
 	if ( ! is_wp_error( $response ) && isset( $response['body'] ) ) {
 		$order = json_decode( $response['body'] );
+		$pending_transactions = get_transient( 'mm_pending_transaction' );
+		if ( property_exists( $order, 'order' ) && property_exists( $order->order, 'Order' ) && property_exists( $order->order->Order, 'id' ) ) {
+			if ( is_array( $pending_transactions ) ) {
+				$pending_transactions[] = $order->order->Order->id;
+			} else {
+				$pending_transactions = array( $order->order->Order->id );
+			}
+			set_transient( 'mm_pending_transaction', $pending_transactions, DAY_IN_SECONDS );
+		}
 		echo json_encode( $order );
+		$checkout_type = 'paypal';
 	} else {
 		echo '{"status":"error","error":"Unable to process order."}';
+		$checkout_type = 'mojo';
 	}
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'user_action',
+		'ea'    => 'checkout_type',
+		'el'    => $checkout_type,
+	);
+	mm_ux_log( $event );
 	die;
 }
 add_action( 'wp_ajax_mm_buy_now', 'mm_buy_now' );
+
+function mm_record_transaction( $item ) {
+	$pending_transactions = get_transient( 'mm_pending_transaction' );
+	if ( false == $pending_transactions ) { return; }
+	if ( property_exists( $item, 'order_details' ) ) {
+		$order = $item->order_details;
+	} else {
+		return;
+	}
+	if ( property_exists( $order, 'id' ) && in_array( $order->id, $pending_transactions ) ) {
+		$transaction = array(
+			'ti' => $order->id,
+			'ta' => get_option( 'mm_master_aff', '' ),
+			'tr' => $order->order_total,
+			'in' => $item->name,
+			'ip' => $order->order_total,
+			'iq' => $item->sales_count,
+			'ic' => $item->id,
+			'iv' => $item->type,
+			'cu' => 'USD',
+		);
+		$key = array_search( $order->id, $pending_transactions );
+		unset( $pending_transactions['key'] );
+		if ( ! empty( $pending_transactions ) ) {
+			set_transient( 'mm_pending_transaction', $pending_transactions, DAY_IN_SECONDS );
+		} else {
+			delete_transient( 'mm_pending_transaction' );
+		}
+	}
+	return;
+}
