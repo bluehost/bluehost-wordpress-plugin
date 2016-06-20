@@ -71,7 +71,7 @@ function mm_record_transaction( $item ) {
 			'cu' => 'USD',
 		);
 		$key = array_search( $order->id, $pending_transactions );
-		unset( $pending_transactions['key'] );
+		unset( $pending_transactions[ $key ] );
 		if ( ! empty( $pending_transactions ) ) {
 			set_transient( 'mm_pending_transaction', $pending_transactions, DAY_IN_SECONDS );
 		} else {
