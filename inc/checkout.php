@@ -32,18 +32,17 @@ function mm_buy_now() {
 				$pending_transactions = array( $order->order->Order->id );
 			}
 			set_transient( 'mm_pending_transaction', $pending_transactions, DAY_IN_SECONDS );
+			$checkout_type = 'paypal';
 		}
 		echo json_encode( $order );
-		$checkout_type = 'paypal';
 	} else {
 		echo '{"status":"error","error":"Unable to process order."}';
-		$checkout_type = 'mojo';
 	}
 	$event = array(
 		't'     => 'event',
 		'ec'    => 'user_action',
 		'ea'    => 'checkout_type',
-		'el'    => $checkout_type,
+		'el'    => ( isset( $checkout_type ) ) ? $checkout_type : 'mojo',
 	);
 	mm_ux_log( $event );
 	die;
