@@ -69,6 +69,7 @@ function mm_record_transaction( $item ) {
 			'iv' => $item->type,
 			'cu' => 'USD',
 		);
+		mm_ux_log( $transaction );
 		$key = array_search( $order->id, $pending_transactions );
 		unset( $pending_transactions[ $key ] );
 		if ( ! empty( $pending_transactions ) ) {
