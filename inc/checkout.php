@@ -31,7 +31,7 @@ function mm_buy_now() {
 			} else {
 				$pending_transactions = array( $order->order->Order->id );
 			}
-			set_transient( 'mm_pending_transaction', $pending_transactions, DAY_IN_SECONDS );
+			set_transient( 'mm_pending_transaction', $pending_transactions, DAY_IN_SECONDS * 7 );
 			$checkout_type = 'paypal';
 		}
 		echo json_encode( $order );
