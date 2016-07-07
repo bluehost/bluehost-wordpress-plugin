@@ -59,6 +59,7 @@ function mm_record_transaction( $item ) {
 	}
 	if ( property_exists( $order, 'id' ) && in_array( $order->id, $pending_transactions ) ) {
 		$transaction = array(
+			't'  => 'transaction',
 			'ti' => $order->id,
 			'ta' => get_option( 'mm_master_aff', '' ),
 			'tr' => $order->order_total,
