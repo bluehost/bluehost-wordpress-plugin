@@ -73,7 +73,6 @@ function mm_plugin_search_result() {
 		<script type='text/javascript'>
 			jQuery( document ).ready( function( $ ) {
 				$( '#the-list' ).prepend( '" . $plugin_html . "' );
-				$( '.plugin-card:last-of-type' ).hide();
 				$( '.no-plugin-results' ).hide();
 			} );
 		</script>";
