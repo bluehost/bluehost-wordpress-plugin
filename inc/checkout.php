@@ -63,14 +63,18 @@ function mm_record_transaction( $item ) {
 			'ti' => $order->id,
 			'ta' => get_option( 'mm_master_aff', '' ),
 			'tr' => $order->order_total,
-			'in' => $item->name,
-			'ip' => $order->order_total,
-			'iq' => $item->sales_count,
-			'ic' => $item->id,
-			'iv' => $item->type,
 			'cu' => 'USD',
 		);
 		mm_ux_log( $transaction );
+		$item = array(
+			't' => 'item',
+			'in' => $item->name,
+			'ip' => $item->prices->single_domain_license,
+			'iq' => $item->sales_count,
+			'ic' => $item->id,
+			'iv' => $item->type,
+		);
+		mm_ux_log( $item );
 		$key = array_search( $order->id, $pending_transactions );
 		unset( $pending_transactions[ $key ] );
 		if ( ! empty( $pending_transactions ) ) {
