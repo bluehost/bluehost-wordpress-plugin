@@ -40,3 +40,4 @@ if ( mm_jetpack_bluehost_only() ) {
 	mm_require( MM_BASE_DIR . 'vendor/jetpack/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
 }
 mm_require( MM_BASE_DIR . 'updater.php' );
+mm_require( MM_BASE_DIR . 'inc/cli.php' );
