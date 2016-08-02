@@ -21,7 +21,7 @@ function mm_spam_stop_forum_spam_api( $args = array() ) {
 		$result = wp_remote_get( $query );
 		if ( ! is_wp_error( $result ) ) {
 
-			if ( strlen( $result['body'] ) < 10 || 200 !== $result['response']['code'] ) {
+			if ( strlen( $result['body'] ) < 10 || 200 != $result['response']['code'] ) {
 				return false;
 			}
 
