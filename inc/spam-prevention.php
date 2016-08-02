@@ -119,3 +119,49 @@ function mm_spam_add_moderation_words( $words ) {
 	return $words;
 }
 add_filter( 'option_moderation_keys', 'mm_spam_add_moderation_words' );
+
+function mm_preprocess_new_comment($commentdata) {
+    $user_identity = md5( get_the_user_ip().time() );
+    if( !isset( $_POST['is_valid_comment'] ) && trim( $_POST['is_valid_comment'] )== $user_identity ) {
+        die( 'You Lose! Good Day Sir!' );
+    }
+    return $commentdata;
+}
+
+function mm_get_the_user_ip() {
+    if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+        //check ip from share internet
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+        //to check ip is pass from proxy
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+      return apply_filters( 'dm_get_ip', $ip );
+}
+
+if() {
+    add_action( 'mm_preprocess_comment', 'mm_preprocess_new_comment' );
+    add_action( 'mm_comment_form_after', 'mm_comment_spam_prevention', 20 );
+
+}
+
+function mm_comment_spam_prevention(){
+    $userIdesntity = md5(get_the_user_ip().time());
+    ?>
+    
+    var mForm = jQuery('.comment-form');
+    
+    mForm.find('input[type=submit]').on('click', function(e){
+        e.preventDefault();
+        jQuery.ajax({
+            url: mForm.attr('action') + '?' + mForm.serialize() + '&is_valid_comment=',
+            method: 'post'
+        }).done(function( data ) {
+        })
+        .fail(function() {
+            alert( "error" );
+        });
+    });
+}
