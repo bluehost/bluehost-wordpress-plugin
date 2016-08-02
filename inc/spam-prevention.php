@@ -32,13 +32,13 @@ function mm_spam_stop_forum_spam_api( $args = array() ) {
 				}
 
 				if( isset( $data->ip ) || isset( $data->email ) || isset( $data->username ) ) {
-					
+
 					$blocked = false;
-					
+
 					if( isset( $data->ip->confidence ) && $data->ip->confidence > get_option( 'mm_confidence_ip', 75 ) ) { $blocked = 'ip';	}
 					if( isset( $data->username->confidence ) && $data->username->confidence > get_option( 'mm_confidence_username', 95 ) ) { $blocked = 'username';	}
 					if( isset( $data->email->confidence ) && $data->email->confidence > get_option( 'mm_confidence_email', 75 ) ) {	$blocked = 'email';	}
-					
+
 					if( $blocked ) {
 						$event = array(
 							't'		=> 'event',
@@ -81,7 +81,7 @@ function mm_spam_check_comment( $approved, $comment ) {
 	}
 
 	$check = array( 'ip' => $comment['comment_author_IP'] );
-	
+
 	if( isset( $comment['comment_author_email'] ) && is_email( $comment['comment_author_email'] ) ) {
 		$check['email'] = $comment['comment_author_email'];
 	}
@@ -120,48 +120,24 @@ function mm_spam_add_moderation_words( $words ) {
 }
 add_filter( 'option_moderation_keys', 'mm_spam_add_moderation_words' );
 
-function mm_preprocess_new_comment($commentdata) {
-    $user_identity = md5( get_the_user_ip().time() );
-    if( !isset( $_POST['is_valid_comment'] ) && trim( $_POST['is_valid_comment'] )== $user_identity ) {
-        die( 'You Lose! Good Day Sir!' );
-    }
-    return $commentdata;
+function mm_preprocess_new_comment( $commentdata ) {
+	$spam_key = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] );
+	if ( ! isset( $_POST['js-spam-prevention'] ) || $_POST['js-spam-prevention'] !== $spam_key ) {
+		die( 'You Lose! Good Day Sir!' );
+	}
+	return $commentdata;
 }
+add_action( 'preprocess_comment', 'mm_preprocess_new_comment' );
 
-function mm_get_the_user_ip() {
-    if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
-        //check ip from share internet
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-        //to check ip is pass from proxy
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    } else {
-        $ip = $_SERVER['REMOTE_ADDR'];
-    }
-      return apply_filters( 'dm_get_ip', $ip );
+function mm_comment_spam_prevention() {
+	$spam_key = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] );
+	?>
+	<script type="text/javascript">
+		jQuery( document ).ready( function( $ ) {
+			document.cookie = "js-spam-prevention=1;";
+			$( '.comment-form' ).append( '<input type="hidden" name="js-spam-prevention" value="<?php echo $spam_key; ?>"/>' );
+		} );
+	</script>
+	<?php
 }
-
-if() {
-    add_action( 'mm_preprocess_comment', 'mm_preprocess_new_comment' );
-    add_action( 'mm_comment_form_after', 'mm_comment_spam_prevention', 20 );
-
-}
-
-function mm_comment_spam_prevention(){
-    $userIdesntity = md5(get_the_user_ip().time());
-    ?>
-    
-    var mForm = jQuery('.comment-form');
-    
-    mForm.find('input[type=submit]').on('click', function(e){
-        e.preventDefault();
-        jQuery.ajax({
-            url: mForm.attr('action') + '?' + mForm.serialize() + '&is_valid_comment=',
-            method: 'post'
-        }).done(function( data ) {
-        })
-        .fail(function() {
-            alert( "error" );
-        });
-    });
-}
+add_action( 'comment_form_after', 'mm_comment_spam_prevention', 20 );
