@@ -8,7 +8,7 @@ function mm_spam_stop_forum_spam_api( $args = array() ) {
 	$defaults = array(
 		'ip' 			=> ( isset( $_SERVER['REMOTE_ADDR'] ) ) ? $_SERVER['REMOTE_ADDR'] : '',
 		'email'			=> '',
-		'username'		=> ''
+		'username'		=> '',
 	);
 	$url = 'http://www.stopforumspam.com/api?';
 	$args = wp_parse_args( $args, $defaults );
@@ -17,36 +17,36 @@ function mm_spam_stop_forum_spam_api( $args = array() ) {
 	$args = array_filter( $args );
 	$query = $url . http_build_query( $args );
 	$key = md5( $query );
-	if( false === ( $transient = get_transient( 'mm_spam_' . $key ) ) ) {
+	if ( false === ( $transient = get_transient( 'mm_spam_' . $key ) ) ) {
 		$result = wp_remote_get( $query );
-		if( ! is_wp_error( $result ) ) {
+		if ( ! is_wp_error( $result ) ) {
 
-			if( strlen( $result['body'] ) < 10 || ! $result['response']['code'] == 200 ) {
+			if ( strlen( $result['body'] ) < 10 || 200 !== $result['response']['code'] ) {
 				return false;
 			}
 
-			if( $data = json_decode( $result['body'] ) ) {
+			if ( $data = json_decode( $result['body'] ) ) {
 				// it is json. continue
-				if( $data->success != 1 ) {
+				if ( $data->success != 1 ) {
 					return false;
 				}
 
-				if( isset( $data->ip ) || isset( $data->email ) || isset( $data->username ) ) {
+				if ( isset( $data->ip ) || isset( $data->email ) || isset( $data->username ) ) {
 
 					$blocked = false;
 
-					if( isset( $data->ip->confidence ) && $data->ip->confidence > get_option( 'mm_confidence_ip', 75 ) ) { $blocked = 'ip';	}
-					if( isset( $data->username->confidence ) && $data->username->confidence > get_option( 'mm_confidence_username', 95 ) ) { $blocked = 'username';	}
-					if( isset( $data->email->confidence ) && $data->email->confidence > get_option( 'mm_confidence_email', 75 ) ) {	$blocked = 'email';	}
+					if ( isset( $data->ip->confidence ) && $data->ip->confidence > get_option( 'mm_confidence_ip', 75 ) ) { $blocked = 'ip';	}
+					if ( isset( $data->username->confidence ) && $data->username->confidence > get_option( 'mm_confidence_username', 95 ) ) { $blocked = 'username';	}
+					if ( isset( $data->email->confidence ) && $data->email->confidence > get_option( 'mm_confidence_email', 75 ) ) {	$blocked = 'email';	}
 
-					if( $blocked ) {
+					if ( $blocked ) {
 						$event = array(
 							't'		=> 'event',
 							'ec'	=> 'scheduled',
 							'ea'	=> 'spam_blocked_' . $blocked,
-							'el'	=> 0
+							'el'	=> 0,
 						);
-						if( isset( $events['weekly'][ $event['ea'] ] ) ) {
+						if ( isset( $events['weekly'][ $event['ea'] ] ) ) {
 							$events['weekly'][ $event['ea'] ]['el']++;
 						} else {
 							$events['weekly'][ $event['ea'] ] = $event;
@@ -68,7 +68,7 @@ function mm_spam_stop_forum_spam_api( $args = array() ) {
 
 //check ip on login pageload
 function mm_spam_check_ip_init() {
-	if( mm_spam_stop_forum_spam_api() ) {
+	if ( mm_spam_stop_forum_spam_api() ) {
 		wp_die( '<center>Your IP is on a <a href="http://stopforumspam.com">Spam Blacklist</a>.</center>', 'MOJO Spam Prevention' );
 	}
 }
@@ -76,17 +76,17 @@ add_action( 'login_init', 'mm_spam_check_ip_init' );
 
 function mm_spam_check_comment( $approved, $comment ) {
 
-	if( ! empty( $comment['user_ID'] ) && get_user_by( 'id', $comment['user_ID'] ) ) {
+	if ( ! empty( $comment['user_ID'] ) && get_user_by( 'id', $comment['user_ID'] ) ) {
 		return $approved;
 	}
 
 	$check = array( 'ip' => $comment['comment_author_IP'] );
 
-	if( isset( $comment['comment_author_email'] ) && is_email( $comment['comment_author_email'] ) ) {
+	if ( isset( $comment['comment_author_email'] ) && is_email( $comment['comment_author_email'] ) ) {
 		$check['email'] = $comment['comment_author_email'];
 	}
 
-	if( isset( $comment['comment_author'] ) ) {
+	if ( isset( $comment['comment_author'] ) ) {
 		$check['username'] = $comment['comment_author'];
 	}
 
@@ -95,7 +95,7 @@ function mm_spam_check_comment( $approved, $comment ) {
 add_action( 'pre_comment_approved' , 'mm_spam_check_comment', 99, 2 );
 
 function mm_spam_add_blacklist_words( $words ) {
-	if( isset( $_SERVER['PHP_SELF'] ) && strpos( $_SERVER['PHP_SELF'], '/options' ) || isset( $_SERVER['SCRIPT_NAME'] ) && strpos( $_SERVER['SCRIPT_NAME'], '/options' ) ) {
+	if ( isset( $_SERVER['PHP_SELF'] ) && strpos( $_SERVER['PHP_SELF'], '/options' ) || isset( $_SERVER['SCRIPT_NAME'] ) && strpos( $_SERVER['SCRIPT_NAME'], '/options' ) ) {
 		return $words;
 	}
 	$words = explode( "\n", $words );
@@ -108,7 +108,7 @@ function mm_spam_add_blacklist_words( $words ) {
 add_filter( 'option_blacklist_keys', 'mm_spam_add_blacklist_words' );
 
 function mm_spam_add_moderation_words( $words ) {
-	if( isset( $_SERVER['PHP_SELF'] ) && strpos( $_SERVER['PHP_SELF'], '/options' ) || isset( $_SERVER['SCRIPT_NAME'] ) && strpos( $_SERVER['SCRIPT_NAME'], '/options' ) ) {
+	if ( isset( $_SERVER['PHP_SELF'] ) && strpos( $_SERVER['PHP_SELF'], '/options' ) || isset( $_SERVER['SCRIPT_NAME'] ) && strpos( $_SERVER['SCRIPT_NAME'], '/options' ) ) {
 		return $words;
 	}
 	$words = explode( "\n", $words );
@@ -120,24 +120,23 @@ function mm_spam_add_moderation_words( $words ) {
 }
 add_filter( 'option_moderation_keys', 'mm_spam_add_moderation_words' );
 
-function mm_preprocess_new_comment( $commentdata ) {
+function mm_spam_preprocess_new_comment( $commentdata ) {
 	$spam_key = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] );
 	if ( ! isset( $_POST['js-spam-prevention'] ) || $_POST['js-spam-prevention'] !== $spam_key ) {
 		die( 'You Lose! Good Day Sir!' );
 	}
 	return $commentdata;
 }
-add_action( 'preprocess_comment', 'mm_preprocess_new_comment' );
+add_action( 'preprocess_comment', 'mm_spam_preprocess_new_comment' );
 
-function mm_comment_spam_prevention() {
+function mm_spam_comment_spam_prevention() {
 	$spam_key = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] );
 	?>
 	<script type="text/javascript">
 		jQuery( document ).ready( function( $ ) {
-			document.cookie = "js-spam-prevention=1;";
 			$( '.comment-form' ).append( '<input type="hidden" name="js-spam-prevention" value="<?php echo $spam_key; ?>"/>' );
 		} );
 	</script>
 	<?php
 }
-add_action( 'comment_form_after', 'mm_comment_spam_prevention', 20 );
+add_action( 'comment_form_after', 'mm_spam_comment_spam_prevention', 20 );
