@@ -89,25 +89,60 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 	}
 
 	/**
-     * Remove Orphaned Postmeta.
-     *
-     * @param  null  $args        Unused.
-     * @param  array $assoc_args  Unused.
-     */
-    public function remove_orphan_post_meta ( $args,  $assoc_args ) {
-        global $wpdb;
-        $sql = 'DELETE pm
-            FROM ' . $wpdb->base_prefix . 'postmeta pm
-            LEFT JOIN ' . $wpdb->base_prefix . 'posts wp ON wp.ID = pm.post_id
-            WHERE wp.ID IS NULL';
-        $result = $wpdb->query( $sql );
-        if ( false === $result ) {
-            WP_CLI::error( 'Unable to remove orphaned postmeta.' );
-        } elseif ( 0 === $result ) {
-            WP_CLI::log( 'No orphaned postmeta found.' );
-        } else {
-            WP_CLI::success( 'Successfully removed ' . $result . ' orphaned postmeta records.' );
-        }
-    }
+	 * Remove Orphaned Postmeta.
+	 *
+	 * @param  null  $args        Unused.
+	 * @param  array $assoc_args  Unused.
+	 */
+	public function remove_orphan_post_meta( $args, $assoc_args ) {
+		global $wpdb;
+		$sql = 'DELETE pm
+			FROM ' . $wpdb->base_prefix . 'postmeta pm
+			LEFT JOIN ' . $wpdb->base_prefix . 'posts wp ON wp.ID = pm.post_id
+			WHERE wp.ID IS NULL';
+		$result = $wpdb->query( $sql );
+		if ( false === $result ) {
+			WP_CLI::error( 'Unable to remove orphaned postmeta.' );
+		} elseif ( 0 === $result ) {
+			WP_CLI::log( 'No orphaned postmeta found.' );
+		} else {
+			WP_CLI::success( 'Successfully removed ' . $result . ' orphaned postmeta records.' );
+		}
+	}
+
+	/**
+	 * Display Digest of Info.
+	 *
+	 * @param  null  $args        Unused.
+	 * @param  array $assoc_args  Unused.
+	 */
+	public function digest( $args, $assoc_args ) {
+		global $wp_version;
+		$details = array();
+		$details['WP VERSION'] = $wp_version;
+		$details['PHP VERSION'] = phpversion();
+		$details['ACTIVE THEME'] = get_option( 'stylesheet' );
+		$details['ACTIVE PLUGINS'] = count( get_option( 'active_plugins' ) );
+		$details['TOTAL PLUGINS'] = count( get_plugins() );
+		$details['TOTAL THEMES'] = count( wp_get_themes() );
+		$options = wp_load_alloptions();
+		$all_transients = 0;
+		$all_options = 0;
+		foreach ( $options as $name => $value ) {
+			if ( false !== strpos( $name, 'transient' ) ) {
+				$all_transients++;
+			} else {
+				$all_options++;
+			}
+		}
+		$details['ALL OPTIONS'] = $all_options;
+		$details['ALL TRANSIENTS'] = $all_transients;
+		$output = '/' . str_pad( '', 56, '*' ) . "/\n";
+		foreach ( $details as $name => $value ) {
+			$output .= ' *' . str_pad( $name, 20, ' ', STR_PAD_LEFT ) . ' : ' . str_pad( $value, 30, ' ', STR_PAD_LEFT ) . " * \n";
+		}
+		$output .= '/' . str_pad( '', 56, '*' ) . "/\n";
+		echo $output;
+	}
 }
 WP_CLI::add_command( 'mojo', 'WP_MOJO_Commands' );
