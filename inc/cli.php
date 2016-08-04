@@ -51,7 +51,11 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 		set_transient( 'mm_sso', $hash, MINUTE_IN_SECONDS * $minutes );
 
 		$link = add_query_arg( $params, admin_url( 'admin-ajax.php' ) );
-		WP_CLI::success( 'Single use login link valid for ' . $minutes . " minutes: \n" . $link );
+		if ( ! isset( $assoc_args['url-only'] ) ) {
+			WP_CLI::success( 'Single use login link valid for ' . $minutes . " minutes: \n" . $link );
+		} else {
+			WP_CLI::log( $link );
+		}
 	}
 
 	/**

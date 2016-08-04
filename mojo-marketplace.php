@@ -29,6 +29,7 @@ require_once( MM_BASE_DIR . 'inc/jetpack.php' );
 require_once( MM_BASE_DIR . 'inc/user-experience-tracking.php' );
 require_once( MM_BASE_DIR . 'inc/notifications.php' );
 require_once( MM_BASE_DIR . 'inc/spam-prevention.php' );
+require_once( MM_BASE_DIR . 'inc/staging.php' );
 require_once( MM_BASE_DIR . 'inc/updates.php' );
 require_once( MM_BASE_DIR . 'inc/coming-soon.php' );
 require_once( MM_BASE_DIR . 'inc/tests.php' );

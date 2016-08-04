@@ -14,6 +14,12 @@ function mm_main_menu() {
 }
 add_action( 'admin_menu', 'mm_main_menu' );
 
+function mm_staging_menu() {
+	$icon_hash = '';
+	add_menu_page( 'Hosting', 'Hosting', 'manage_options', 'mojo-staging', 'mm_staging_page', 'data:image/svg+xml;base64, ' . $icon_hash, -10 );
+}
+add_action( 'admin_menu', 'mm_staging_menu' );
+
 function mm_main_menu_fix_subdomain_label() {
 	global $submenu;
 	if ( isset( $submenu['mojo-themes'] ) && is_array( $submenu['mojo-themes'] ) ) {
