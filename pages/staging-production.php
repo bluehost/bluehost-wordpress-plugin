@@ -43,6 +43,8 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 						<div class="col-xs-12 col-sm-4">
 							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_sso_staging">Go To Staging Site</button>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-xs-12 col-sm-12">
 							<p>Ready to deploy your changes? Go to your staging site and deploy from the administration panel.</p>
 						</div>
@@ -62,15 +64,19 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-xs-12 col-sm-6">
+						<div class="col-xs-12 col-sm-6 text-center">
 							<h2>Clone Production To Staging</h2>
-							giant image
+							<div style="height: 150px;">
+								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/production-to-staging.png' ); ?>" />
+							</div>
 							<p>Copy your current production site and your settings to your staging environment.</p>
 							<button class="btn btn-primary btn-lg staging-action" data-staging-action="mm_clone">Clone</button>
 						</div>
-						<div class="col-xs-12 col-sm-6">
+						<div class="col-xs-12 col-sm-6 text-center">
 							<h2>Destroy Staging Environment</h2>
-							giant image
+							<div style="height: 150px;">
+								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/destroy-staging.png' ); ?>" />
+							</div>
 							<p>Need to start fresh? This will completely remove your current staging environment.</p>
 							<button class="btn btn-primary btn-lg staging-action" data-staging-action="mm_destroy">Destroy Staging</button>
 						</div>

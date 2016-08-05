@@ -1,6 +1,21 @@
 <?php
 if ( ! defined( 'WPINC' ) ) { die; }
 
+function mm_staging_dashboard_widgets() {
+	if ( false == get_option( 'staging_environment' ) ) {
+		wp_add_dashboard_widget(
+			'mojo-staging',
+			'Staging Site Setup',
+			'mm_staging_dashboard_display'
+		);
+	}
+}
+add_action( 'wp_dashboard_setup', 'mm_staging_dashboard_widgets' );
+
+function mm_staging_dashboard_display() {
+	mm_require( MM_BASE_DIR . 'pages/dashboard-staging-widget.php' );
+}
+
 function mm_staging_page() {
 	$env = get_option( 'staging_environment' );
 	switch ( $env ) {

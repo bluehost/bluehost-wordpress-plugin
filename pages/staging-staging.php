@@ -60,26 +60,38 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+						<div class="col-xs-12 col-sm-6 col-sm-offset-3  text-center">
 							<h2>Deploy Staging To Production</h2>
-							giant image
+							<br/>
+							<img class="img-responsive" src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/staging-to-production.png' ); ?>" />
+							<br/>
 							<p>Ready to make your changes live? These options will push the changes you've made on staging up to your produciton site.</p>
 						</div>
 					</div>
+					<br/>
 					<div class="row">
-						<div class="col-xs-12 col-sm-4">
-							giant image
+						<div class="col-xs-12 col-sm-4 text-center">
+							<div style="height: 150px;">
+								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/database.png' ); ?>" />
+							</div>
 							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_deploy_files">Deploy Files Only</button>
+							<br/>
 							<p>This will only upload the files you've changed (ie. html or css files). It will not upload any changes you've made to your staging database.</p>
 						</div>
-						<div class="col-xs-12 col-sm-4">
-							giant image
+						<div class="col-xs-12 col-sm-4 text-center">
+							<div style="height: 150px;">
+								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/files-db.png' ); ?>" />
+							</div>
 							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_deploy_files_db">Deploy Files &amp; Database</button>
+							<br/>
 							<p>Deploy all changes you've made to the file system and database of your website.</p>
 						</div>
-						<div class="col-xs-12 col-sm-4">
-							giant image
+						<div class="col-xs-12 col-sm-4 text-center">
+							<div style="height: 150px;">
+								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/database.png' ); ?>" />
+							</div>
 							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_deploy_db">Deploy Database Only</button>
+							<br/>
 							<p>Only upload changes you've made to the database on your staging server. For example, adding a new blog post to your website is a database change.</p>
 						</div>
 					</div>
