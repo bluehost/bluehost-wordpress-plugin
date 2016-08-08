@@ -5,6 +5,21 @@ if ( ! defined( 'WPINC' ) ) { die; }
 <?php
 require_once( MM_BASE_DIR . 'pages/header-small.php' );
 ?>
+<style type="text/css">
+#mm-message {
+	position: fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	margin: 0 auto;
+	min-width: 320px;
+	max-width: 500px;
+	padding: 10px 30px;
+	background-color: rgba( 0, 0, 0, 0.7);
+	color: #fff;
+	text-align: center;
+}
+</style>
 	<main id="main">
 		<div class="container">
 			<div class="panel panel-default">
@@ -18,6 +33,11 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 					</div>
 				</div>
 				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12">
+							<p>Below are the details of your staging environment.</p>
+						</div>
+					</div>
 					<div class="row">
 						<div class="col-xs-12 col-sm-8">
 							<?php
@@ -41,9 +61,6 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 						</div>
 						<div class="col-xs-12 col-sm-4">
 							<button class="btn btn-primary btn-lg staging-action" data-staging-action="mm_sso_production">Go To Production Site</button>
-						</div>
-						<div class="col-xs-12 col-sm-12">
-							<p>Ready to deploy your changes? Go to your staging site and deploy from the administration panel.</p>
 						</div>
 					</div>
 				</div>
@@ -72,27 +89,27 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 					<div class="row">
 						<div class="col-xs-12 col-sm-4 text-center">
 							<div style="height: 150px;">
-								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/database.png' ); ?>" />
+								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/files.png' ); ?>" />
 							</div>
-							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_deploy_files">Deploy Files Only</button>
+							<button class="btn btn-success btn-lg mm-modal" data-mm-modal="deploy-files">Deploy Files Only</button>
 							<br/>
-							<p>This will only upload the files you've changed (ie. html or css files). It will not upload any changes you've made to your staging database.</p>
+							<p>This will only upload the files you&#8217;ve changed (ie. html or css files). It will not upload any changes you've made to your staging database.</p>
 						</div>
 						<div class="col-xs-12 col-sm-4 text-center">
 							<div style="height: 150px;">
 								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/files-db.png' ); ?>" />
 							</div>
-							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_deploy_files_db">Deploy Files &amp; Database</button>
+							<button class="btn btn-success btn-lg mm-modal" data-mm-modal="deploy-files-database">Deploy Files &amp; Database</button>
 							<br/>
-							<p>Deploy all changes you've made to the file system and database of your website.</p>
+							<p>Deploy all changes you&#8217;ve made to the file system and database of your website.</p>
 						</div>
 						<div class="col-xs-12 col-sm-4 text-center">
 							<div style="height: 150px;">
 								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/database.png' ); ?>" />
 							</div>
-							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_deploy_db">Deploy Database Only</button>
+							<button class="btn btn-success btn-lg mm-modal" data-mm-modal="deploy-database">Deploy Database Only</button>
 							<br/>
-							<p>Only upload changes you've made to the database on your staging server. For example, adding a new blog post to your website is a database change.</p>
+							<p>Only upload changes you&#8217;ve made to the database on your staging server. For example, adding a new blog post to your website is a database change.</p>
 						</div>
 					</div>
 				</div>
@@ -131,14 +148,43 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 					<a class="staging-action" data-staging-action="mm_restore_state" href="#">Restore</a>
 				</div>
 			</div> */ ?>
-			<br style="clear: both"/><span class="alignright powered"><a href="<?php echo mm_build_link( 'https://www.mojomarketplace.com' ); ?>"><img height="16" width="156" alt="Mojo Marketplace" src="<?php echo MM_ASSETS_URL . 'img/logo-dark.svg'; ?>"></a></span>
 		</div>
 	</main>
 </div>
 
 <script type="text/javascript">
 jQuery( document ).ready( function ( $ ) {
-	$( '.staging-action' ).click( function() {
+	$( 'body' ).on( 'click', '.mm-close-modal', function() {
+		$( '#mm-modal-wrap' ).fadeOut('slow', function() {
+			$( '#mm-modal-wrap' ).remove();
+		} );
+	} );
+	$( 'body' ).on( 'click', '.mm-modal', function () {
+		if ( typeof $( this ).data( 'mm-modal' ) !== 'undefined' ) {
+			var interim_data = {
+				'action': 'mm_modal',
+				'template': $( this ).data( 'mm-modal' )
+			}
+			$.post( ajaxurl, interim_data, function( modal_content ) {
+				$( '#mojo-wrapper' ).append( modal_content );
+				$( '#mm-modal-wrap' ).fadeIn( 'slow' );
+			} );
+		}
+	} );
+
+	$( 'body' ).on( 'click', '.staging-action', function() {
+		if ( typeof $( this ).data( 'interim' ) !== 'undefined' ) {
+			var interim_data = {
+				'action': 'mm_interim',
+				'template': $( this ).data( 'interim' )
+			}
+			$.post( ajaxurl, interim_data, function( interim_content ) {
+				$( '#main' ).fadeOut( 'slow', function() {
+					$('#main').html( interim_content );
+					$('#main').fadeIn( 'slow' );
+				} );
+			} );
+		}
 		$( this ).append( ' <img class="staging-action-loader" src="https://api.mojomarketplace.com/mojo-plugin-assets/img/loader.svg"/>' );
 		$( '.staging-action' ).prop( 'disabled', true );
 		var data = {
@@ -160,7 +206,14 @@ jQuery( document ).ready( function ( $ ) {
 			}
 
 			if ( response.status == 'error' && typeof response.message !== 'undefined' ) {
-				alert( response.message );
+				$( '#mojo-wrapper' ).append( '<div id="mm-message" class="mm-error" style="display:none;">' + response.message + '</div>' );
+				$( '#mm-message' ).fadeIn( 'slow', function() {
+					setTimeout( function() {
+						$( '#mm-message' ).fadeOut( 'fast', function() {
+							$( '#mm-message' ).remove();
+						} );
+					}, 8000 );
+				} );
 			}
 
 			if ( typeof response.new_tab !== 'undefined' ) {
@@ -173,11 +226,19 @@ jQuery( document ).ready( function ( $ ) {
 			}
 
 			if ( response.status == 'success' && typeof response.message !== 'undefined' ) {
-				console.log( response.message );
+				$( '#mojo-wrapper' ).append( '<div id="mm-message" class="mm-success" style="display:none;">' + response.message + '</div>' );
+				$( '#mm-message' ).fadeIn( 'slow', function() {
+					setTimeout( function() {
+						$( '#mm-message' ).fadeOut( 'fast', function() {
+							$( '#mm-message' ).remove();
+						} );
+					}, 8000 );
+				} );
 			}
 
 			$( '.staging-action' ).prop( 'disabled',false );
 			$( '.staging-action-loader' ).remove();
+			$( '#mm-modal-wrap' ).remove();
 		} );
 	} );
 } );

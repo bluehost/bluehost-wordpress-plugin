@@ -25,6 +25,8 @@ function create {
 	wp option update staging_environment staging --autoload=false
 	wp search-replace $PRODUCTION_URL $STAGING_URL --skip-themes --skip-plugins
 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR
+	wp option update mm_coming_soon 'true' --path=$STAGING_DIR
+	wp rewrite flush --path=$STAGING_DIR
 	#fire email here from mojo cli to site admin
 	clear
 	echo \{\"status\" :\"success\",\"message\":\"Staging website created successfully.\",\"reload\":\"true\"\}
@@ -43,6 +45,8 @@ function clone {
 	wp core download --version=$WP_VER --force
 	wp search-replace $PRODUCTION_URL $STAGING_URL --skip-themes --skip-plugins
 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR
+	wp option update mm_coming_soon 'true' --path=$STAGING_DIR
+	wp rewrite flush --path=$STAGING_DIR
 	git add .
 	git commit -m 'Clone From Production' --quiet
 	clear
@@ -79,6 +83,7 @@ function deploy_files_db {
 	wp option update staging_environment production --autoload=false --path=$PRODUCTION_DIR
 	wp search-replace $STAGING_URL $PRODUCTION_URL --path=$PRODUCTION_DIR
 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR
+	wp option delete mm_coming_soon --path=$PRODUCTION_DIR
 
 	clear
 	echo \{\"status\" :\"success\",\"message\":\"Files and DB deployed successfully.\"\}
@@ -93,7 +98,8 @@ function deploy_db {
 	rm $STAGING_DIR/export.sql --force
 	wp option update staging_environment production --autoload=false --path=$PRODUCTION_DIR
 	wp option update staging_config "$CONFIG" --format=json --path=$PRODUCTION_DIR
-	#clear
+	wp option delete mm_coming_soon --path=$PRODUCTION_DIR
+	clear
 	echo \{\"status\" :\"success\",\"message\":\"Database deployed successfully.\"\}
 }
 

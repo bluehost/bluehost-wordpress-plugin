@@ -1,6 +1,10 @@
 <?php
 if ( ! defined( 'WPINC' ) ) { die; }
 
+function mm_is_staging() {
+	return ( get_option( 'staging_environment' ) == 'staging' ) ? true : false;
+}
+
 function mm_staging_dashboard_widgets() {
 	if ( false == get_option( 'staging_environment' ) ) {
 		wp_add_dashboard_widget(
@@ -8,6 +12,17 @@ function mm_staging_dashboard_widgets() {
 			'Staging Site Setup',
 			'mm_staging_dashboard_display'
 		);
+		global $wp_meta_boxes;
+
+		$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+
+		$widget_backup = array( 'mojo-staging' => $normal_dashboard['mojo-staging'] );
+
+		unset( $normal_dashboard['mojo-staging'] );
+
+		$sorted_dashboard = array_merge( $widget_backup, $normal_dashboard );
+
+		$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 	}
 }
 add_action( 'wp_dashboard_setup', 'mm_staging_dashboard_widgets' );
@@ -75,7 +90,6 @@ function mm_cl( $command ) {
 }
 
 function mm_check_admin() {
-
 	if ( ! current_user_can( 'manage_options' ) ) {
 		$response = array(
 			'status'  => 'error',
@@ -101,34 +115,27 @@ function mm_check_env( $env ) {
 }
 
 function mm_test_service() {
-	echo mm_cl( 'type staging' );
-	//handle whatever response happens
+	//make sure all requirements are met.
 }
 add_action( 'wp_ajax_mm_test_service', 'mm_test_service' );
 
 function mm_create() {
-
 	mm_check_env( false );
-
+	set_transient( 'mm_fresh_staging', true, 300 );
 	echo mm_cl( 'create' );
-	//store location info on success
 	die;
 }
 add_action( 'wp_ajax_mm_create', 'mm_create' );
 
 function mm_clone() {
-
 	mm_check_env( 'production' );
-
 	echo mm_cl( 'clone' );
-
 	die;
 }
 add_action( 'wp_ajax_mm_clone', 'mm_clone' );
 
 function mm_deploy_files() {
 	mm_check_env( 'staging' );
-	//array( 'files', 'filmm_db', 'filmm_dbmerge' )
 	echo mm_cl( 'deploy_files' );
 	die;
 }
@@ -136,7 +143,6 @@ add_action( 'wp_ajax_mm_deploy_files', 'mm_deploy_files' );
 
 function mm_deploy_files_db() {
 	mm_check_env( 'staging' );
-	//array( 'files', 'filmm_db', 'filmm_dbmerge' )
 	echo mm_cl( 'deploy_files_db' );
 	die;
 }
@@ -144,37 +150,28 @@ add_action( 'wp_ajax_mm_deploy_files_db', 'mm_deploy_files_db' );
 
 function mm_deploy_db() {
 	mm_check_env( 'staging' );
-	//array( 'files', 'filmm_db', 'filmm_dbmerge' )
 	echo mm_cl( 'deploy_db' );
 	die;
 }
 add_action( 'wp_ajax_mm_deploy_db', 'mm_deploy_db' );
 
 function mm_destroy() {
-
 	mm_check_env( 'production' );
-
 	echo mm_cl( 'destroy' );
 	die;
 }
 add_action( 'wp_ajax_mm_destroy', 'mm_destroy' );
 
 function mm_save_state() {
-
 	mm_check_env( 'staging' );
-
 	echo mm_cl( 'save_state' );
-
 	die;
 }
 add_action( 'wp_ajax_mm_save_state', 'mm_save_state' );
 
 function mm_restore_state() {
-
 	mm_check_env( 'staging' );
-
 	echo mm_cl( 'restore_state' );
-
 	die;
 }
 add_action( 'wp_ajax_mm_restore_state', 'mm_restore_state' );
@@ -192,3 +189,54 @@ function mm_sso_staging() {
 	die;
 }
 add_action( 'wp_ajax_mm_sso_staging', 'mm_sso_staging' );
+
+function mm_interim() {
+	if ( isset( $_POST['template'] ) ) {
+		$interim = MM_BASE_DIR . 'pages/interim-' . sanitize_file_name( $_POST['template'] ) . '.php';
+		if ( file_exists( $interim ) ) {
+			mm_require( $interim );
+		}
+	}
+	die;
+}
+add_action( 'wp_ajax_mm_interim', 'mm_interim' );
+
+function mm_modal() {
+	if ( isset( $_POST['template'] ) ) {
+		$interim = MM_BASE_DIR . 'pages/modal-' . sanitize_file_name( $_POST['template'] ) . '.php';
+		if ( file_exists( $interim ) ) {
+			?>
+			<div id="mm-modal-wrap">
+				<style type="text/css">
+					#mm-modal-wrap {
+						display: none;
+						position: fixed;
+						z-index: 1;
+						left: 0;
+						top: 0;
+						width: 100%;
+						height: 100%;
+						overflow: auto;
+						background-color: rgb( 0, 0, 0 );
+						background-color: rgba( 0, 0, 0, 0.4 );
+					}
+
+					/* Modal Content/Box */
+					#mm-modal-wrap .container {
+						background-color: #fefefe;
+						margin: 15% auto;
+						padding: 20px;
+						border: 1px solid #888;
+						width: 30%;
+					}
+				</style>
+				<?php
+				mm_require( $interim );
+				?>
+			</div>
+			<?php
+		}
+	}
+	die;
+}
+add_action( 'wp_ajax_mm_modal', 'mm_modal' );

@@ -1,0 +1,747 @@
+diff --git a/inc/staging.php b/inc/staging.php
+index cc183b3..14df85b 100644
+--- a/inc/staging.php
++++ b/inc/staging.php
+@@ -1,6 +1,10 @@
+ <?php
+ if ( ! defined( 'WPINC' ) ) { die; }
+ 
++function mm_is_staging() {
++	return ( get_option( 'staging_environment' ) == 'staging' ) ? true : false;
++}
++
+ function mm_staging_dashboard_widgets() {
+ 	if ( false == get_option( 'staging_environment' ) ) {
+ 		wp_add_dashboard_widget(
+@@ -8,6 +12,17 @@ function mm_staging_dashboard_widgets() {
+ 			'Staging Site Setup',
+ 			'mm_staging_dashboard_display'
+ 		);
++		global $wp_meta_boxes;
++
++		$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
++
++		$widget_backup = array( 'mojo-staging' => $normal_dashboard['mojo-staging'] );
++
++		unset( $normal_dashboard['mojo-staging'] );
++
++		$sorted_dashboard = array_merge( $widget_backup, $normal_dashboard );
++
++		$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+ 	}
+ }
+ add_action( 'wp_dashboard_setup', 'mm_staging_dashboard_widgets' );
+@@ -75,7 +90,6 @@ function mm_cl( $command ) {
+ }
+ 
+ function mm_check_admin() {
+-
+ 	if ( ! current_user_can( 'manage_options' ) ) {
+ 		$response = array(
+ 			'status'  => 'error',
+@@ -101,34 +115,27 @@ function mm_check_env( $env ) {
+ }
+ 
+ function mm_test_service() {
+-	echo mm_cl( 'type staging' );
+-	//handle whatever response happens
++	//make sure all requirements are met.
+ }
+ add_action( 'wp_ajax_mm_test_service', 'mm_test_service' );
+ 
+ function mm_create() {
+-
+ 	mm_check_env( false );
+-
++	set_transient( 'mm_fresh_staging', true, 300 );
+ 	echo mm_cl( 'create' );
+-	//store location info on success
+ 	die;
+ }
+ add_action( 'wp_ajax_mm_create', 'mm_create' );
+ 
+ function mm_clone() {
+-
+ 	mm_check_env( 'production' );
+-
+ 	echo mm_cl( 'clone' );
+-
+ 	die;
+ }
+ add_action( 'wp_ajax_mm_clone', 'mm_clone' );
+ 
+ function mm_deploy_files() {
+ 	mm_check_env( 'staging' );
+-	//array( 'files', 'filmm_db', 'filmm_dbmerge' )
+ 	echo mm_cl( 'deploy_files' );
+ 	die;
+ }
+@@ -136,7 +143,6 @@ add_action( 'wp_ajax_mm_deploy_files', 'mm_deploy_files' );
+ 
+ function mm_deploy_files_db() {
+ 	mm_check_env( 'staging' );
+-	//array( 'files', 'filmm_db', 'filmm_dbmerge' )
+ 	echo mm_cl( 'deploy_files_db' );
+ 	die;
+ }
+@@ -144,37 +150,28 @@ add_action( 'wp_ajax_mm_deploy_files_db', 'mm_deploy_files_db' );
+ 
+ function mm_deploy_db() {
+ 	mm_check_env( 'staging' );
+-	//array( 'files', 'filmm_db', 'filmm_dbmerge' )
+ 	echo mm_cl( 'deploy_db' );
+ 	die;
+ }
+ add_action( 'wp_ajax_mm_deploy_db', 'mm_deploy_db' );
+ 
+ function mm_destroy() {
+-
+ 	mm_check_env( 'production' );
+-
+ 	echo mm_cl( 'destroy' );
+ 	die;
+ }
+ add_action( 'wp_ajax_mm_destroy', 'mm_destroy' );
+ 
+ function mm_save_state() {
+-
+ 	mm_check_env( 'staging' );
+-
+ 	echo mm_cl( 'save_state' );
+-
+ 	die;
+ }
+ add_action( 'wp_ajax_mm_save_state', 'mm_save_state' );
+ 
+ function mm_restore_state() {
+-
+ 	mm_check_env( 'staging' );
+-
+ 	echo mm_cl( 'restore_state' );
+-
+ 	die;
+ }
+ add_action( 'wp_ajax_mm_restore_state', 'mm_restore_state' );
+@@ -192,3 +189,54 @@ function mm_sso_staging() {
+ 	die;
+ }
+ add_action( 'wp_ajax_mm_sso_staging', 'mm_sso_staging' );
++
++function mm_interim() {
++	if ( isset( $_POST['template'] ) ) {
++		$interim = MM_BASE_DIR . 'pages/interim-' . sanitize_file_name( $_POST['template'] ) . '.php';
++		if ( file_exists( $interim ) ) {
++			mm_require( $interim );
++		}
++	}
++	die;
++}
++add_action( 'wp_ajax_mm_interim', 'mm_interim' );
++
++function mm_modal() {
++	if ( isset( $_POST['template'] ) ) {
++		$interim = MM_BASE_DIR . 'pages/modal-' . sanitize_file_name( $_POST['template'] ) . '.php';
++		if ( file_exists( $interim ) ) {
++			?>
++			<div id="mm-modal-wrap">
++				<style type="text/css">
++					#mm-modal-wrap {
++						display: none;
++						position: fixed;
++						z-index: 1;
++						left: 0;
++						top: 0;
++						width: 100%;
++						height: 100%;
++						overflow: auto;
++						background-color: rgb( 0, 0, 0 );
++						background-color: rgba( 0, 0, 0, 0.4 );
++					}
++
++					/* Modal Content/Box */
++					#mm-modal-wrap .container {
++						background-color: #fefefe;
++						margin: 15% auto;
++						padding: 20px;
++						border: 1px solid #888;
++						width: 30%;
++					}
++				</style>
++				<?php
++				mm_require( $interim );
++				?>
++			</div>
++			<?php
++		}
++	}
++	die;
++}
++add_action( 'wp_ajax_mm_modal', 'mm_modal' );
+diff --git a/lib/staging.sh b/lib/staging.sh
+index e6fc5fe..02ee428 100644
+--- a/lib/staging.sh
++++ b/lib/staging.sh
+@@ -25,6 +25,8 @@ function create {
+ 	wp option update staging_environment staging --autoload=false
+ 	wp search-replace $PRODUCTION_URL $STAGING_URL --skip-themes --skip-plugins
+ 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR
++	wp option update mm_coming_soon 'true' --path=$STAGING_DIR
++	wp rewrite flush --path=$STAGING_DIR
+ 	#fire email here from mojo cli to site admin
+ 	clear
+ 	echo \{\"status\" :\"success\",\"message\":\"Staging website created successfully.\",\"reload\":\"true\"\}
+@@ -43,6 +45,8 @@ function clone {
+ 	wp core download --version=$WP_VER --force
+ 	wp search-replace $PRODUCTION_URL $STAGING_URL --skip-themes --skip-plugins
+ 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR
++	wp option update mm_coming_soon 'true' --path=$STAGING_DIR
++	wp rewrite flush --path=$STAGING_DIR
+ 	git add .
+ 	git commit -m 'Clone From Production' --quiet
+ 	clear
+@@ -79,6 +83,7 @@ function deploy_files_db {
+ 	wp option update staging_environment production --autoload=false --path=$PRODUCTION_DIR
+ 	wp search-replace $STAGING_URL $PRODUCTION_URL --path=$PRODUCTION_DIR
+ 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR
++	wp option delete mm_coming_soon --path=$PRODUCTION_DIR
+ 
+ 	clear
+ 	echo \{\"status\" :\"success\",\"message\":\"Files and DB deployed successfully.\"\}
+@@ -93,7 +98,8 @@ function deploy_db {
+ 	rm $STAGING_DIR/export.sql --force
+ 	wp option update staging_environment production --autoload=false --path=$PRODUCTION_DIR
+ 	wp option update staging_config "$CONFIG" --format=json --path=$PRODUCTION_DIR
+-	#clear
++	wp option delete mm_coming_soon --path=$PRODUCTION_DIR
++	clear
+ 	echo \{\"status\" :\"success\",\"message\":\"Database deployed successfully.\"\}
+ }
+ 
+diff --git a/pages/staging-create.php b/pages/staging-create.php
+index 7941e7c..51494a3 100644
+--- a/pages/staging-create.php
++++ b/pages/staging-create.php
+@@ -5,18 +5,33 @@ if ( ! defined( 'WPINC' ) ) { die; }
+ <?php
+ require_once( MM_BASE_DIR . 'pages/header-small.php' );
+ ?>
++<style type="text/css">
++#mm-message {
++	position: fixed;
++	bottom:0;
++	left:0;
++	right:0;
++	margin: 0 auto;
++	min-width: 320px;
++	max-width: 500px;
++	padding: 10px 30px;
++	background-color: rgba( 0, 0, 0, 0.7);
++	color: #fff;
++	text-align: center;
++}
++</style>
+ 	<main id="main">
+ 		<div class="container">
+ 			<div class="panel panel-default">
+ 				<div class="panel-body">
+ 					<div class="row">
+ 						<div class="col-xs-12 col-sm-5">
+-							<h1>What's a staging site?</h1>
++							<h1>What&#8217;s a staging site?</h1>
+ 							<br/>
+ 							<p style="font-size: 18px;">A staging site allows you to make and save changes without your public site being affected.</p>
+-							<p style="font-size: 18px;">Once you've perfected your site in the staging environment you can deploy it to production so everyone can see your changes.</p>
++							<p style="font-size: 18px;">Once you&#8217;ve perfected your site in the staging environment you can deploy it to production so everyone can see your changes.</p>
+ 							<br/><br/><br/>
+-							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_create">Create Staging Site</button>
++							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_create" data-interim="staging-create">Create Staging Site</button>
+ 						</div>
+ 						<div class="col-xs-12 col-sm-6 col-sm-offset-1">
+ 							<img class="img-responsive" src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/staging-diagram.jpg' ); ?>" />
+@@ -24,15 +39,42 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
+ 					</div>
+ 				</div>
+ 			</div>
+-			<br style="clear: both"/><span class="alignright powered"><a href="<?php echo mm_build_link( 'https://www.mojomarketplace.com' ); ?>"><img height="16" width="156" alt="Mojo Marketplace" src="<?php echo MM_ASSETS_URL . 'img/logo-dark.svg'; ?>"></a></span>
+ 		</div>
+ 	</main>
+-
+ </div>
+ 
+ <script type="text/javascript">
+ jQuery( document ).ready( function ( $ ) {
+-	$( '.staging-action' ).click( function( ) {
++	$( 'body' ).on( 'click', '.mm-close-modal', function() {
++		$( '#mm-modal-wrap' ).fadeOut('slow', function() {
++			$( '#mm-modal-wrap' ).remove();
++		} );
++	} );
++	$( 'body' ).on( 'click', '.mm-modal', function () {
++		if ( typeof $( this ).data( 'mm-modal' ) !== 'undefined' ) {
++			var interim_data = {
++				'action': 'mm_modal',
++				'template': $( this ).data( 'mm-modal' )
++			}
++			$.post( ajaxurl, interim_data, function( modal_content ) {
++				$( '#mojo-wrapper' ).append( modal_content );
++				$( '#mm-modal-wrap' ).fadeIn( 'slow' );
++			} );
++		}
++	} );
++	$( 'body' ).on( 'click', '.staging-action', function() {
++		if ( typeof $( this ).data( 'interim' ) !== 'undefined' ) {
++			var interim_data = {
++				'action': 'mm_interim',
++				'template': $( this ).data( 'interim' )
++			}
++			$.post( ajaxurl, interim_data, function( interim_content ) {
++				$( '#main' ).fadeOut( 'slow', function() {
++					$('#main').html( interim_content );
++					$('#main').fadeIn( 'slow' );
++				} );
++			} );
++		}
+ 		$( this ).append( ' <img class="staging-action-loader" src="https://api.mojomarketplace.com/mojo-plugin-assets/img/loader.svg"/>' );
+ 		$( '.staging-action' ).prop( 'disabled', true );
+ 		var data = {
+@@ -54,7 +96,14 @@ jQuery( document ).ready( function ( $ ) {
+ 			}
+ 
+ 			if ( response.status == 'error' && typeof response.message !== 'undefined' ) {
+-				alert( response.message );
++				$( '#mojo-wrapper' ).append( '<div id="mm-message" class="mm-error" style="display:none;">' + response.message + '</div>' );
++				$( '#mm-message' ).fadeIn( 'slow', function() {
++					setTimeout( function() {
++						$( '#mm-message' ).fadeOut( 'fast', function() {
++							$( '#mm-message' ).remove();
++						} );
++					}, 8000 );
++				} );
+ 			}
+ 
+ 			if ( typeof response.new_tab !== 'undefined' ) {
+@@ -67,11 +116,19 @@ jQuery( document ).ready( function ( $ ) {
+ 			}
+ 
+ 			if ( response.status == 'success' && typeof response.message !== 'undefined' ) {
+-				console.log( response.message );
++				$( '#mojo-wrapper' ).append( '<div id="mm-message" class="mm-success" style="display:none;">' + response.message + '</div>' );
++				$( '#mm-message' ).fadeIn( 'slow', function() {
++					setTimeout( function() {
++						$( '#mm-message' ).fadeOut( 'fast', function() {
++							$( '#mm-message' ).remove();
++						} );
++					}, 8000 );
++				} );
+ 			}
+ 
+ 			$( '.staging-action' ).prop( 'disabled',false );
+ 			$( '.staging-action-loader' ).remove();
++			$( '#mm-modal-wrap' ).remove();
+ 		} );
+ 
+ 	} );
+diff --git a/pages/staging-production.php b/pages/staging-production.php
+index 6002d8c..0829818 100644
+--- a/pages/staging-production.php
++++ b/pages/staging-production.php
+@@ -5,21 +5,134 @@ if ( ! defined( 'WPINC' ) ) { die; }
+ <?php
+ require_once( MM_BASE_DIR . 'pages/header-small.php' );
+ ?>
++<style type="text/css">
++#mm-message {
++	position: fixed;
++	bottom:0;
++	left:0;
++	right:0;
++	margin: 0 auto;
++	min-width: 320px;
++	max-width: 500px;
++	padding: 10px 30px;
++	background-color: rgba( 0, 0, 0, 0.7);
++	color: #fff;
++	text-align: center;
++}
++</style>
+ 	<main id="main">
+ 		<div class="container">
+ 			<div class="panel panel-default">
+-				<?php //if it just happened show a checkbox thing here; ?>
+ 				<div class="panel-heading">
++					<?php
++					if ( isset( $_GET['staging-created'] ) || get_transient( 'mm_fresh_staging' ) ) {
++						delete_transient( 'mm_fresh_staging' );
++					?>
++					<div class="row">
++						<style type="text/css">
++							#staging-success .checkmark {
++							  width: 150px;
++							  margin: 0 auto;
++							  padding-top: 40px;
++							}
++
++							#staging-success .path {
++							  stroke-dasharray: 1000;
++							  stroke-dashoffset: 0;
++							  animation: dash 3s ease-in-out;
++							  -webkit-animation: dash 3s ease-in-out;
++							}
++
++							#staging-success .spin {
++							  animation: spin 3s;
++							  -webkit-animation: spin 3s;
++							  transform-origin: 50% 50%;
++							  -webkit-transform-origin: 50% 50%;
++							}
++
++							@-webkit-keyframes dash {
++							 0% {
++							   stroke-dashoffset: 1000;
++							 }
++							 100% {
++							   stroke-dashoffset: 0;
++							 }
++							}
++
++							@keyframes dash {
++							 0% {
++							   stroke-dashoffset: 1000;
++							 }
++							 100% {
++							   stroke-dashoffset: 0;
++							 }
++							}
++
++							@-webkit-keyframes spin {
++							  0% {
++							    -webkit-transform: rotate(0deg);
++							  }
++							  100% {
++							    -webkit-transform: rotate(360deg);
++							  }
++							}
++
++							@keyframes spin {
++							  0% {
++							    -webkit-transform: rotate(0deg);
++							  }
++							  100% {
++							    -webkit-transform: rotate(360deg);
++							  }
++							}
++
++							@-webkit-keyframes text {
++							  0% {
++							    opacity: 0; }
++							  100% {
++							    opacity: 1;
++							  }
++
++							@keyframes text {
++							  0% {
++							    opacity: 0; }
++							  100% {
++							    opacity: 1;
++							  }
++							}
++						</style>
++						<div id="staging-success" class="col-xs-12 col-sm-12 text-center">
++							<div class="checkmark">
++								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
++								viewBox="0 0 161.2 161.2" enable-background="new 0 0 161.2 161.2" xml:space="preserve">
++									<path class="path" fill="none" stroke="#8ad332 " stroke-miterlimit="10" d="M425.9,52.1L425.9,52.1c-2.2-2.6-6-2.6-8.3-0.1l-42.7,46.2l-14.3-16.4
++								c-2.3-2.7-6.2-2.7-8.6-0.1c-1.9,2.1-2,5.6-0.1,7.7l17.6,20.3c0.2,0.3,0.4,0.6,0.6,0.9c1.8,2,4.4,2.5,6.6,1.4c0.7-0.3,1.4-0.8,2-1.5
++								c0.3-0.3,0.5-0.6,0.7-0.9l46.3-50.1C427.7,57.5,427.7,54.2,425.9,52.1z"/>
++									<circle class="path" fill="none" stroke="#8bd331 " stroke-width="4" stroke-miterlimit="10" cx="80.6" cy="80.6" r="62.1"/>
++									<polyline class="path" fill="none" stroke="#8ad332 " stroke-width="7" stroke-linecap="round" stroke-miterlimit="10" points="113,52.8
++								74.1,108.4 48.2,86.4 "/>
++									<circle class="spin" fill="none" stroke="#8ad332 " stroke-width="4" stroke-miterlimit="10" stroke-dasharray="12.2175,12.2175" cx="80.6" cy="80.6" r="73.9"/>
++								</svg>
++							</div>
++							<h1>Your staging environment is ready!</h1>
++						</div>
++					</div>
++					<?php } ?>
+ 					<div class="row">
+ 						<div class="col-xs-12 col-sm-12">
+ 							<ol class="breadcrumb">
+-								<li>Staging Environment</li>
++								<li>Production Environment</li>
+ 							</ol>
+ 						</div>
+ 					</div>
+ 				</div>
+ 				<div class="panel-body">
+ 					<div class="row">
++						<div class="col-xs-12 col-sm-12">
++							<p>Below are the details of your staging environment.</p>
++						</div>
++					</div>
++					<div class="row">
+ 						<div class="col-xs-12 col-sm-8">
+ 							<?php
+ 							$config = get_option( 'staging_config' );
+@@ -83,22 +196,48 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
+ 					</div>
+ 				</div>
+ 			</div>
+-
+-			<br style="clear: both"/><span class="alignright powered"><a href="<?php echo mm_build_link( 'https://www.mojomarketplace.com' ); ?>"><img height="16" width="156" alt="Mojo Marketplace" src="<?php echo MM_ASSETS_URL . 'img/logo-dark.svg'; ?>"></a></span>
+ 		</div>
+ 	</main>
+ </div>
+ 
+ <script type="text/javascript">
+ jQuery( document ).ready( function ( $ ) {
+-	$( '.staging-action' ).click( function() {
++	$( 'body' ).on( 'click', '.mm-close-modal', function() {
++		$( '#mm-modal-wrap' ).fadeOut('slow', function() {
++			$( '#mm-modal-wrap' ).remove();
++		} );
++	} );
++	$( 'body' ).on( 'click', '.mm-modal', function () {
++		if ( typeof $( this ).data( 'mm-modal' ) !== 'undefined' ) {
++			var interim_data = {
++				'action': 'mm_modal',
++				'template': $( this ).data( 'mm-modal' )
++			}
++			$.post( ajaxurl, interim_data, function( modal_content ) {
++				$( '#mojo-wrapper' ).append( modal_content );
++				$( '#mm-modal-wrap' ).fadeIn( 'slow' );
++			} );
++		}
++	} );
++	$( 'body' ).on( 'click', '.staging-action', function() {
++		if ( typeof $( this ).data( 'interim' ) !== 'undefined' ) {
++			var interim_data = {
++				'action': 'mm_interim',
++				'template': $( this ).data( 'interim' )
++			}
++			$.post( ajaxurl, interim_data, function( interim_content ) {
++				$( '#main' ).fadeOut( 'slow', function() {
++					$('#main').html( interim_content );
++					$('#main').fadeIn( 'slow' );
++				} );
++			} );
++		}
+ 		$( this ).append( ' <img class="staging-action-loader" src="https://api.mojomarketplace.com/mojo-plugin-assets/img/loader.svg"/>' );
+ 		$( '.staging-action' ).prop( 'disabled', true );
+ 		var data = {
+ 			'action': $( this ).data( 'staging-action' )
+ 		};
+ 		$.post( ajaxurl, data, function( response ) {
+-			console.log( response );
+ 
+ 			try {
+ 				response = JSON.parse( response );
+@@ -106,14 +245,19 @@ jQuery( document ).ready( function ( $ ) {
+ 				response = {status:"error", message:"Invalid JSON response."};
+ 			}
+ 
+-			console.log( response );
+-
+ 			if ( typeof response.status == 'undefined' ) {
+ 				response = {status:"error", message:"Unable to make the request."};
+ 			}
+ 
+ 			if ( response.status == 'error' && typeof response.message !== 'undefined' ) {
+-				alert( response.message );
++				$( '#mojo-wrapper' ).append( '<div id="mm-message" class="mm-error" style="display:none;">' + response.message + '</div>' );
++				$( '#mm-message' ).fadeIn( 'slow', function() {
++					setTimeout( function() {
++						$( '#mm-message' ).fadeOut( 'fast', function() {
++							$( '#mm-message' ).remove();
++						} );
++					}, 8000 );
++				} );
+ 			}
+ 
+ 			if ( typeof response.new_tab !== 'undefined' ) {
+@@ -126,11 +270,18 @@ jQuery( document ).ready( function ( $ ) {
+ 			}
+ 
+ 			if ( response.status == 'success' && typeof response.message !== 'undefined' ) {
+-				console.log( response.message );
++				$( '#mojo-wrapper' ).append( '<div id="mm-message" class="mm-success" style="display:none;">' + response.message + '</div>' );
++				$( '#mm-message' ).fadeIn( 'slow', function() {
++					setTimeout( function() {
++						$( '#mm-message' ).fadeOut( 'fast', function() {
++							$( '#mm-message' ).remove();
++						} );
++					}, 8000 );
++				} );
+ 			}
+-
+ 			$( '.staging-action' ).prop( 'disabled',false );
+ 			$( '.staging-action-loader' ).remove();
++			$( '#mm-modal-wrap' ).remove();
+ 		} );
+ 	} );
+ } );
+diff --git a/pages/staging-staging.php b/pages/staging-staging.php
+index 7ab743c..2a15e1f 100644
+--- a/pages/staging-staging.php
++++ b/pages/staging-staging.php
+@@ -5,6 +5,21 @@ if ( ! defined( 'WPINC' ) ) { die; }
+ <?php
+ require_once( MM_BASE_DIR . 'pages/header-small.php' );
+ ?>
++<style type="text/css">
++#mm-message {
++	position: fixed;
++	bottom:0;
++	left:0;
++	right:0;
++	margin: 0 auto;
++	min-width: 320px;
++	max-width: 500px;
++	padding: 10px 30px;
++	background-color: rgba( 0, 0, 0, 0.7);
++	color: #fff;
++	text-align: center;
++}
++</style>
+ 	<main id="main">
+ 		<div class="container">
+ 			<div class="panel panel-default">
+@@ -19,6 +34,11 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
+ 				</div>
+ 				<div class="panel-body">
+ 					<div class="row">
++						<div class="col-xs-12 col-sm-12">
++							<p>Below are the details of your staging environment.</p>
++						</div>
++					</div>
++					<div class="row">
+ 						<div class="col-xs-12 col-sm-8">
+ 							<?php
+ 							$config = get_option( 'staging_config' );
+@@ -42,9 +62,6 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
+ 						<div class="col-xs-12 col-sm-4">
+ 							<button class="btn btn-primary btn-lg staging-action" data-staging-action="mm_sso_production">Go To Production Site</button>
+ 						</div>
+-						<div class="col-xs-12 col-sm-12">
+-							<p>Ready to deploy your changes? Go to your staging site and deploy from the administration panel.</p>
+-						</div>
+ 					</div>
+ 				</div>
+ 			</div>
+@@ -72,27 +89,27 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
+ 					<div class="row">
+ 						<div class="col-xs-12 col-sm-4 text-center">
+ 							<div style="height: 150px;">
+-								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/database.png' ); ?>" />
++								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/files.png' ); ?>" />
+ 							</div>
+-							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_deploy_files">Deploy Files Only</button>
++							<button class="btn btn-success btn-lg mm-modal" data-mm-modal="deploy-files">Deploy Files Only</button>
+ 							<br/>
+-							<p>This will only upload the files you've changed (ie. html or css files). It will not upload any changes you've made to your staging database.</p>
++							<p>This will only upload the files you&#8217;ve changed (ie. html or css files). It will not upload any changes you've made to your staging database.</p>
+ 						</div>
+ 						<div class="col-xs-12 col-sm-4 text-center">
+ 							<div style="height: 150px;">
+ 								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/files-db.png' ); ?>" />
+ 							</div>
+-							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_deploy_files_db">Deploy Files &amp; Database</button>
++							<button class="btn btn-success btn-lg mm-modal" data-mm-modal="deploy-files-database">Deploy Files &amp; Database</button>
+ 							<br/>
+-							<p>Deploy all changes you've made to the file system and database of your website.</p>
++							<p>Deploy all changes you&#8217;ve made to the file system and database of your website.</p>
+ 						</div>
+ 						<div class="col-xs-12 col-sm-4 text-center">
+ 							<div style="height: 150px;">
+ 								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/database.png' ); ?>" />
+ 							</div>
+-							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_deploy_db">Deploy Database Only</button>
++							<button class="btn btn-success btn-lg mm-modal" data-mm-modal="deploy-database">Deploy Database Only</button>
+ 							<br/>
+-							<p>Only upload changes you've made to the database on your staging server. For example, adding a new blog post to your website is a database change.</p>
++							<p>Only upload changes you&#8217;ve made to the database on your staging server. For example, adding a new blog post to your website is a database change.</p>
+ 						</div>
+ 					</div>
+ 				</div>
+@@ -131,14 +148,43 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
+ 					<a class="staging-action" data-staging-action="mm_restore_state" href="#">Restore</a>
+ 				</div>
+ 			</div> */ ?>
+-			<br style="clear: both"/><span class="alignright powered"><a href="<?php echo mm_build_link( 'https://www.mojomarketplace.com' ); ?>"><img height="16" width="156" alt="Mojo Marketplace" src="<?php echo MM_ASSETS_URL . 'img/logo-dark.svg'; ?>"></a></span>
+ 		</div>
+ 	</main>
+ </div>
+ 
+ <script type="text/javascript">
+ jQuery( document ).ready( function ( $ ) {
+-	$( '.staging-action' ).click( function() {
++	$( 'body' ).on( 'click', '.mm-close-modal', function() {
++		$( '#mm-modal-wrap' ).fadeOut('slow', function() {
++			$( '#mm-modal-wrap' ).remove();
++		} );
++	} );
++	$( 'body' ).on( 'click', '.mm-modal', function () {
++		if ( typeof $( this ).data( 'mm-modal' ) !== 'undefined' ) {
++			var interim_data = {
++				'action': 'mm_modal',
++				'template': $( this ).data( 'mm-modal' )
++			}
++			$.post( ajaxurl, interim_data, function( modal_content ) {
++				$( '#mojo-wrapper' ).append( modal_content );
++				$( '#mm-modal-wrap' ).fadeIn( 'slow' );
++			} );
++		}
++	} );
++
++	$( 'body' ).on( 'click', '.staging-action', function() {
++		if ( typeof $( this ).data( 'interim' ) !== 'undefined' ) {
++			var interim_data = {
++				'action': 'mm_interim',
++				'template': $( this ).data( 'interim' )
++			}
++			$.post( ajaxurl, interim_data, function( interim_content ) {
++				$( '#main' ).fadeOut( 'slow', function() {
++					$('#main').html( interim_content );
++					$('#main').fadeIn( 'slow' );
++				} );
++			} );
++		}
+ 		$( this ).append( ' <img class="staging-action-loader" src="https://api.mojomarketplace.com/mojo-plugin-assets/img/loader.svg"/>' );
+ 		$( '.staging-action' ).prop( 'disabled', true );
+ 		var data = {
+@@ -160,7 +206,14 @@ jQuery( document ).ready( function ( $ ) {
+ 			}
+ 
+ 			if ( response.status == 'error' && typeof response.message !== 'undefined' ) {
+-				alert( response.message );
++				$( '#mojo-wrapper' ).append( '<div id="mm-message" class="mm-error" style="display:none;">' + response.message + '</div>' );
++				$( '#mm-message' ).fadeIn( 'slow', function() {
++					setTimeout( function() {
++						$( '#mm-message' ).fadeOut( 'fast', function() {
++							$( '#mm-message' ).remove();
++						} );
++					}, 8000 );
++				} );
+ 			}
+ 
+ 			if ( typeof response.new_tab !== 'undefined' ) {
+@@ -173,11 +226,19 @@ jQuery( document ).ready( function ( $ ) {
+ 			}
+ 
+ 			if ( response.status == 'success' && typeof response.message !== 'undefined' ) {
+-				console.log( response.message );
++				$( '#mojo-wrapper' ).append( '<div id="mm-message" class="mm-success" style="display:none;">' + response.message + '</div>' );
++				$( '#mm-message' ).fadeIn( 'slow', function() {
++					setTimeout( function() {
++						$( '#mm-message' ).fadeOut( 'fast', function() {
++							$( '#mm-message' ).remove();
++						} );
++					}, 8000 );
++				} );
+ 			}
+ 
+ 			$( '.staging-action' ).prop( 'disabled',false );
+ 			$( '.staging-action-loader' ).remove();
++			$( '#mm-modal-wrap' ).remove();
+ 		} );
+ 	} );
+ } );
