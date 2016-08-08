@@ -16,7 +16,7 @@
 					<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/to-production.png' ); ?>" />
 					<p style="font-size: 18px;">Are you sure you want to deploy the database changes to production?</p>
 					<button class="btn btn-primary btn-lg mm-close-modal" >Cancel Deployment</button>
-					<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_deploy_files_db">Yes! Let&#8217;s Deploy</button>
+					<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_deploy_db">Yes! Let&#8217;s Deploy</button>
 				</div>
 			</div>
 		</div>
