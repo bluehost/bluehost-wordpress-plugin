@@ -15,8 +15,16 @@ function mm_main_menu() {
 add_action( 'admin_menu', 'mm_main_menu' );
 
 function mm_staging_menu() {
-	$icon_hash = '';
-	add_menu_page( 'Hosting', 'Hosting', 'manage_options', 'mojo-staging', 'mm_staging_page', 'data:image/svg+xml;base64, ' . $icon_hash, -10 );
+	$icon_hash = get_transient( 'mm_icon_hash', false );
+	if ( false === $icon_hash ) {
+		$brand = mm_brand();
+		$icon_raw = wp_remote_get( MM_ASSETS_URL . 'img/icons/' . $brand . '-icon.svg' );
+		if ( ! is_wp_error( $icon_raw ) ) {
+			$icon_hash = base64_encode( $icon_raw['body'] );
+			set_transient( 'mm_icon_hash', $icon_hash, WEEK_IN_SECONDS );
+		}
+	}
+	add_menu_page( 'Staging', 'Staging', 'manage_options', 'mojo-staging', 'mm_staging_page', 'data:image/svg+xml;base64, ' . $icon_hash, -10 );
 }
 add_action( 'admin_menu', 'mm_staging_menu' );
 
@@ -101,6 +109,13 @@ function mm_add_tool_bar_items( $admin_bar ) {
 				'title' => __( 'Business Tools' )
 			),
 		) );
+		if ( mm_is_staging() ) {
+			$args = array(
+				'id'    => 'mojo-staging',
+				'title' => '<div style="background-color: red;padding: 0px 5px;">Staging</div>',
+			);
+			$admin_bar->add_node( $args );
+		}
 	}
 }
 add_action( 'admin_bar_menu', 'mm_add_tool_bar_items', 100 );
