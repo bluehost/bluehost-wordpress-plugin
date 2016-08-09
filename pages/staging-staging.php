@@ -80,7 +80,7 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 						<div class="col-xs-12 col-sm-6 col-sm-offset-3  text-center">
 							<h2>Deploy Staging To Production</h2>
 							<br/>
-							<img class="img-responsive" src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/staging-to-production.png' ); ?>" />
+							<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/staging-to-production.png' ); ?>" />
 							<br/>
 							<p>Ready to make your changes live? These options will push the changes you've made on staging up to your produciton site.</p>
 						</div>
