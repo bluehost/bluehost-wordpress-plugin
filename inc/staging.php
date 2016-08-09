@@ -50,6 +50,10 @@ function mm_staging_page() {
 
 function mm_cl( $command ) {
 	mm_check_admin();
+	if ( false !== get_transient( 'mm_staging_lock' ) ) {
+		echo json_encode( array( 'status' => 'error', 'message' => 'Staging action is locked by another command.' ) );
+		die;
+	}
 	$command = array( $command );
 	$token = wp_generate_password( 32, false );
 	set_transient( 'staging_auth_token', $token, 30 );
@@ -85,7 +89,12 @@ function mm_cl( $command ) {
 		die;
 	}
 
+	set_transient( 'mm_staging_lock', $command, MINUTE_IN_SECONDS * 5 );
+
 	$response = exec( MM_BASE_DIR . 'lib/staging.sh ' . $command );
+
+	delete_transient( 'mm_staging_lock' );
+
 	return $response;
 }
 
