@@ -134,7 +134,8 @@ function restore_state {
 function revisions {
 	clear
 	cd $STAGING_DIR
-	git log --pretty=oneline -10
+	LOG=`git log --pretty=format:'%h,%ad,%s;' -10`
+	echo $LOG
 }
 
 function sso_staging {
@@ -176,6 +177,15 @@ CONFIG=`wp option get staging_config --format=json --path=$PRODUCTION_DIR`
 DB="wordpress_trunk"
 DB_USER="wp"
 DB_PASS="wp"
+
+LOCK=`wp transient get mm_staging_lock --path=$PRODUCTION_DIR`
+
+if [ false != $LOCK ]
+	then
+	error 'Staging action is locked by another command'
+fi
+
+wp transient set mm_staging_lock "$@" 120 --path=$PRODUCTION_DIR
 
 $1
 
