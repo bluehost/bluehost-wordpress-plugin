@@ -12,15 +12,14 @@ function create {
 	git init || error 'Unable to initialize git.'
 	rsync -r --exclude=.git $PRODUCTION_DIR/wp-content/* $STAGING_DIR/wp-content || error 'Unable to move wp-content folder.'
 	wp core download --version=$WP_VER --force || error 'Unable to install WordPress in staging directory.'
-	git add . || error 'Unable to add files to git.'
 	DB_PREFIX=`wp eval 'global $wpdb;echo $wpdb->prefix;' --path=$PRODUCTION_DIR`
 	wp core config --dbname=$DB --dbuser=$DB_USER --dbpass=$DB_PASS --dbprefix=$DB_PREFIX --skip-themes --skip-plugins || error 'Unable to configure WordPress.'
 	git config --global user.email "staging@domain.com"
 	git config --global user.name "Endurance Staging"
-	git commit -m 'Create Staging Environment' --quiet
 	wp db reset --yes --skip-themes --skip-plugins || error 'Unable to reset database.'
 	wp db import $STAGING_DIR/export.sql --skip-themes --skip-plugins || error 'Unable to import database.'
 	rm $STAGING_DIR/export.sql --force
+	save_state 'Create Staging Environment'
 	wp option update staging_environment staging --autoload=false || error 'Unable to set environment.'
 	wp search-replace $PRODUCTION_URL $STAGING_URL --skip-themes --skip-plugins || error 'Unable to update URL on staging.'
 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR || error 'Unable to import global config on staging.'
@@ -46,8 +45,7 @@ function clone {
 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR || error 'Unable to import global config on staging.'
 	wp option update mm_coming_soon 'true' --path=$STAGING_DIR || error 'Unable to enable the coming soon page on staging.'
 	wp rewrite flush --path=$STAGING_DIR || error 'Unable to flush rewrite rules.'
-	git add . || error 'Unable to add files to git.'
-	git commit -m 'Clone From Production' --quiet
+	save_state 'Clone From Production'
 	clear
 	echo \{\"status\" :\"success\",\"message\":\"Website cloned successfully.\"\}
 }
@@ -140,7 +138,7 @@ function sso_production {
 
 function error {
 	echo \{\"status\":\"error\",\"message\":\"$1\",\"reload\":\"true\"\}
-	wp transient delete mm_staging_lock --path=$PRODUCTION_DIR
+	wp transient delete mm_staging_lock --path=$PRODUCTION_DIR --quiet
 	exit
 }
 
@@ -149,7 +147,7 @@ function auth {
 	if [ "$1" != "$TOKEN" ] && [ false != "$TOKEN" ]
 		then
 		echo \{\"status\":\"error\",\"message\":\"Unable to authenticate the action.\"\}
-		wp transient delete staging_auth
+		wp transient delete staging_auth --quiet
 		exit
 	fi
 	wp transient delete staging_auth
@@ -170,7 +168,7 @@ DB_PASS="wp"
 
 $1
 
-wp transient delete mm_staging_lock --path=$PRODUCTION_DIR
+wp transient delete mm_staging_lock --path=$PRODUCTION_DIR --quiet
 
 # $1 is function
 # $2 is auth TOKEN
