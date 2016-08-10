@@ -10,7 +10,7 @@ function create {
 	echo 'wp-config.php' > .gitignore
 	echo '.gitignore' >> .gitignore
 	git init || error 'Unable to initialize git.'
-	rsync -r --exclude=.git $PRODUCTION_DIR/wp-content/* $STAGING_DIR/wp-content || error 'Unable to move wp-content folder.'
+	move_files $PRODUCTION_DIR $STAGING_DIR
 	wp core download --version=$WP_VER --force || error 'Unable to install WordPress in staging directory.'
 	DB_PREFIX=`wp eval 'global $wpdb;echo $wpdb->prefix;' --path=$PRODUCTION_DIR`
 	wp core config --dbname=$DB --dbuser=$DB_USER --dbpass=$DB_PASS --dbprefix=$DB_PREFIX --skip-themes --skip-plugins || error 'Unable to configure WordPress.'
@@ -39,7 +39,7 @@ function clone {
 	wp db import $STAGING_DIR/export.sql --skip-themes --skip-plugins || error 'Unable to import database.'
 	rm $STAGING_DIR/export.sql --force
 	wp option update staging_environment staging --autoload=false || error 'Unable to set environment.'
-	rsync -r --exclude=.git $PRODUCTION_DIR/wp-content/* $STAGING_DIR/wp-content || error 'Unable to move wp-content folder.'
+	move_files $PRODUCTION_DIR $STAGING_DIR
 	wp core download --version=$WP_VER --force || error 'Unable to install WordPress in staging directory.'
 	wp search-replace $PRODUCTION_URL $STAGING_URL --skip-themes --skip-plugins || error 'Unable to update URL on staging.'
 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR || error 'Unable to import global config on staging.'
@@ -57,7 +57,7 @@ function deploy_files {
 	rm -r $PRODUCTION_DIR/wp-content/themes --force || error 'Unable to remove themes on production.'
 	rm -r $PRODUCTION_DIR/wp-content/plugins --force || error 'Unable to remove plugins on production.'
 	wp core download --version=$WP_VER --force --path=$PRODUCTION_DIR || error 'Unable to move WordPress files.'
-	rsync -r --exclude=.git $STAGING_DIR/wp-content/* $PRODUCTION_DIR/wp-content/ || error 'Unable to move themes or plugins to production.'
+	move_files $STAGING_DIR $PRODUCTION_DIR
 	clear
 	echo \{\"status\" :\"success\",\"message\":\"Files deployed successfully.\"\}
 }
@@ -101,6 +101,17 @@ function destroy {
 		clear
 		echo \{\"status\":\"success\",\"message\":\"Staging website destroyed.\",\"reload\":\"true\"\}
 	fi
+}
+
+function move_files {
+	FROM=$1
+	TO=$2
+	mkdir -p $TO/wp-content/uploads || error 'Unable to create uploads folder.'
+	mkdir -p $TO/wp-content/themes || error 'Unable to create themes folder.'
+	mkdir -p $TO/wp-content/plugins || error 'Unable to create plugins folder.'
+	rsync -r --exclude=.git $FROM/wp-content/uploads/* $TO/wp-content/uploads || error 'Unable to move uploads folder.'
+	rsync -r --exclude=.git $FROM/wp-content/themes/* $TO/wp-content/themes || error 'Unable to move themes folder.'
+	rsync -r --exclude=.git $FROM/wp-content/plugins/* $TO/wp-content/plugins || error 'Unable to move plugins folder.'
 }
 
 function save_state {
