@@ -48,7 +48,7 @@ function mm_staging_page() {
 	}
 }
 
-function mm_cl( $command ) {
+function mm_cl( $command, $args = null ) {
 	mm_check_admin();
 	$command = array( $command );
 	$token = wp_generate_password( 32, false );
@@ -72,11 +72,16 @@ function mm_cl( $command ) {
 	$command[] = $config['production_url'];
 	$command[] = $config['staging_url'];
 
+	if ( ! is_null( $args ) && is_array( $args ) ) {
+		$args = array_values( $args );
+		$command = array_merge( $command, $args );
+	}
+
 	array_map( 'escapeshellcmd', $command );
 	$command = implode( ' ', $command );
 
 	if ( false !== strpos( $command, ';' ) ) {
-		echo json_encode( array( 'status' => 'error', 'message' => 'Invalid character in command (\').' ) );
+		echo json_encode( array( 'status' => 'error', 'message' => 'Invalid character in command (;).' ) );
 		die;
 	}
 
@@ -84,8 +89,6 @@ function mm_cl( $command ) {
 		echo json_encode( array( 'status' => 'error', 'message' => 'Invalid character in command (&&).' ) );
 		die;
 	}
-
-	set_transient( 'mm_staging_lock', $command, MINUTE_IN_SECONDS * 5 );
 
 	$response = exec( MM_BASE_DIR . 'lib/staging.sh ' . $command );
 
@@ -96,7 +99,7 @@ function mm_check_admin() {
 	if ( ! current_user_can( 'manage_options' ) ) {
 		$response = array(
 			'status'  => 'error',
-			'message' => 'Invalid User Permissions.',
+			'message' => 'Invalid user permissions.',
 		);
 		echo json_encode( $response );
 		die;
@@ -110,7 +113,7 @@ function mm_check_env( $env ) {
 	} else {
 		$response = array(
 			'status'  => 'error',
-			'message' => 'Invalid Environment for Command.',
+			'message' => 'Invalid environment for command.',
 		);
 		echo json_encode( $response );
 		die;
