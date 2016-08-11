@@ -1,5 +1,16 @@
 #!/bin/bash
 
+function auth {
+	TOKEN=`wp transient get staging_auth_token`
+	if [ "$1" != "$TOKEN" || -z "$TOKEN" ]
+		then
+		echo \{\"status\":\"error\",\"message\":\"Unable to authenticate the action.\"\}
+		wp transient delete staging_auth --quiet
+		exit
+	fi
+	wp transient delete staging_auth
+}
+
 function create {
 	cd $PRODUCTION_DIR || error 'Unable to move to production directory.'
 	WP_VER=`wp core version`
@@ -104,8 +115,8 @@ function destroy {
 }
 
 function move_files {
-	FROM=$1
-	TO=$2
+	FROM="$1"
+	TO="$2"
 	mkdir -p $TO/wp-content/uploads || error 'Unable to create uploads folder.'
 	mkdir -p $TO/wp-content/themes || error 'Unable to create themes folder.'
 	mkdir -p $TO/wp-content/plugins || error 'Unable to create plugins folder.'
@@ -118,13 +129,25 @@ function save_state {
 	cd $STAGING_DIR || error 'Unable to move to staging directory.'
 	wp db export $STAGING_DIR/export.sql --add-drop-table --path=$STAGING_DIR || error 'Unable to export database to save point.'
 	git add . || error 'Unable to add files to git.'
-	git commit -m " $1"
+	if [ -z "$1" ]
+		then
+			MESSAGE='Staging Save State'
+		else
+			MESSAGE="$1"
+	fi
+	git commit -m "$MESSAGE"
 	rm $STAGING_DIR/export.sql --force
 	clear
 	echo \{\"status\" :\"success\",\"message\":\"Restoration point added.\"\}
 }
 
 function restore_state {
+	if [ -z "$1" ]
+		then
+			error 'No revision provided.'
+		else
+			error 'Add code here to check that revision exists.'
+	fi
 	#git checkout revision $1
 	wp db import $STAGING_DIR/export.sql --path=$STAGING_DIR || error 'Unable to import database from save point.'
 	rm $STAGING_DIR/export.sql --force
@@ -154,17 +177,6 @@ function error {
 	exit
 }
 
-function auth {
-	TOKEN=`wp transient get staging_auth_token`
-	if [ "$1" != "$TOKEN" ] && [ false != "$TOKEN" ]
-		then
-		echo \{\"status\":\"error\",\"message\":\"Unable to authenticate the action.\"\}
-		wp transient delete staging_auth --quiet
-		exit
-	fi
-	wp transient delete staging_auth
-}
-
 #everything must auth.
 auth $2
 
@@ -178,14 +190,13 @@ DB="wordpress_trunk"
 DB_USER="wp"
 DB_PASS="wp"
 
-LOCK=`wp transient get mm_staging_lock --path=$PRODUCTION_DIR`
-
-if [ false != $LOCK ]
+LOCK=`wp transient get mm_staging_lock --path=$PRODUCTION_DIR --quiet`
+if [ -n "$LOCK" ]
 	then
 	error 'Staging action is locked by another command'
 fi
 
-wp transient set mm_staging_lock "$@" 120 --path=$PRODUCTION_DIR
+wp transient set mm_staging_lock "$@" 120 --path=$PRODUCTION_DIR --quiet
 
 $1
 
