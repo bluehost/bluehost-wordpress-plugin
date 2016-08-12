@@ -135,8 +135,8 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 						<div class="col-xs-12 col-sm-8">
 							<p>Save the current staging environment or restore a previously saved staging environement.</p>
 						</div>
-						<div class="col-xs-12 col-sm-4">
-							<button class="btn btn-primary btn-md staging-action" data-staging-action="mm_save_state">Add Restoration Point</button>
+						<div class="col-xs-12 col-sm-4 text-right">
+							<button class="btn btn-primary btn-lg staging-action" data-staging-action="mm_save_state">Add Restoration Point</button>
 						</div>
 					</div>
 					<div class="row">
@@ -158,6 +158,15 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 
 <script type="text/javascript">
 jQuery( document ).ready( function ( $ ) {
+	$( '#staging-revisions-loader img' ).ready( function() {
+		var revisions_data = {
+			'action': 'mm_revisions'
+		}
+		$.post( ajaxurl, revisions_data, function( revisions ) {
+			$( '#staging-revisions-loader' ).after( revisions );
+			$( '#staging-revisions-loader' ).remove();
+		} );
+	} );
 	$( 'body' ).on( 'click', '.mm-close-modal', function() {
 		$( '#mm-modal-wrap' ).fadeOut('slow', function() {
 			$( '#mm-modal-wrap' ).remove();
@@ -165,11 +174,11 @@ jQuery( document ).ready( function ( $ ) {
 	} );
 	$( 'body' ).on( 'click', '.mm-modal', function () {
 		if ( typeof $( this ).data( 'mm-modal' ) !== 'undefined' ) {
-			var interim_data = {
+			var modal_data = {
 				'action': 'mm_modal',
 				'template': $( this ).data( 'mm-modal' )
 			}
-			$.post( ajaxurl, interim_data, function( modal_content ) {
+			$.post( ajaxurl, modal_data, function( modal_content ) {
 				$( '#mojo-wrapper' ).append( modal_content );
 				$( '#mm-modal-wrap' ).fadeIn( 'slow' );
 			} );

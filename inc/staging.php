@@ -120,6 +120,14 @@ function mm_check_env( $env ) {
 	}
 }
 
+function mm_set_auth() {
+	mm_check_admin();
+	if ( isset( $_POST['token'] ) ) {
+		set_transient( 'staging_auth_token', esc_attr( $_POST['token'] ), 60 );
+	}
+}
+add_action( 'wp_ajax_mm_set_auth', 'mm_set_auth' );
+
 function mm_test_service() {
 	//make sure all requirements are met.
 }
@@ -181,6 +189,22 @@ function mm_restore_state() {
 	die;
 }
 add_action( 'wp_ajax_mm_restore_state', 'mm_restore_state' );
+
+function mm_revisions() {
+	mm_check_env( 'staging' );
+	$revisions = mm_cl( 'revisions' );
+	$revisions = explode( ';', $revisions );
+	$output = '';
+	foreach ( $revisions as $revision ) {
+		$revision = explode( ',', $revision );
+		if ( array_search( '', $revision ) === false ) {
+			$output .= '<tr><td>' . $revision[2] . '</td><td>' . $revision[1] . '</td><td class="text-right"><button class="btn btn-primary btn-lg staging-action" data-staging-action="mm_restore_state" data-staging-revision="' . $revision[0] . '">Restore</button></td></tr>';
+		}
+	}
+	echo $output;
+	die;
+}
+add_action( 'wp_ajax_mm_revisions', 'mm_revisions' );
 
 function mm_sso_production() {
 	mm_check_env( 'staging' );

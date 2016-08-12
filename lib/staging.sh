@@ -180,7 +180,7 @@ function sso_production {
 }
 
 function error {
-	echo \{\"status\":\"error\",\"message\":\"$1\",\"reload\":\"true\"\}
+	echo \{\"status\":\"error\",\"message\":\"$1\"\}
 	wp transient delete mm_staging_lock --path=$PRODUCTION_DIR --quiet
 	exit
 }
