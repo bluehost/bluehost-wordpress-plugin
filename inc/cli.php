@@ -25,21 +25,28 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 			if ( isset( $assoc_args['role'] ) ) {
 				$user = get_users( array( 'role' => 'administrator', 'number' => 1 ) );
 				if ( is_array( $user ) && is_a( $user[0], 'WP_User' ) ) {
-					$params['id'] = $user[0]->ID;
+					$params['user'] = $user[0]->ID;
 				}
 			}
 
 			if ( isset( $assoc_args['email'] ) ) {
 				$user = get_user_by( 'email', $assoc_args['email'] );
 				if ( is_a( $user, 'WP_User' ) ) {
-					$params['id'] = $user->ID;
+					$params['user'] = $user->ID;
 				}
 			}
 
 			if ( isset( $assoc_args['username'] ) ) {
 				$user = get_user_by( 'login', $assoc_args['username'] );
 				if ( is_a( $user, 'WP_User' ) ) {
-					$params['id'] = $user->ID;
+					$params['user'] = $user->ID;
+				}
+			}
+
+			if ( isset( $assoc_args['id'] ) ) {
+				$user = get_user_by( 'ID', $assoc_args['id'] );
+				if ( is_a( $user, 'WP_User' ) ) {
+					$params['user'] = $user->ID;
 				}
 			}
 
