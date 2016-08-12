@@ -206,7 +206,7 @@ fi
 
 wp transient set mm_staging_lock "$@" 120 --path=$PRODUCTION_DIR --quiet
 
-$1 $7
+$1 "$7"
 
 wp transient delete mm_staging_lock --path=$PRODUCTION_DIR --quiet
 
