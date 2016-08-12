@@ -162,12 +162,20 @@ function revisions {
 }
 
 function sso_staging {
-	LINK=`wp mojo sso --url-only --path=$STAGING_DIR`
+	if [ -z $1 ]
+		then
+		error 'No user provided.'
+	fi
+	LINK=`wp mojo sso --url-only --id=$1 --path=$STAGING_DIR`
 	echo \{\"status\":\"success\",\"new_tab\":\"$LINK\&redirect=admin.php\?page=mojo-staging\"\}
 }
 
 function sso_production {
-	LINK=`wp mojo sso --url-only --path=$PRODUCTION_DIR`
+	if [ -z $1 ]
+		then
+		error 'No user provided.'
+	fi
+	LINK=`wp mojo sso --url-only --id=$1 --path=$PRODUCTION_DIR`
 	echo \{\"status\":\"success\",\"new_tab\":\"$LINK\&redirect=admin.php\?page=mojo-staging\"\}
 }
 
@@ -198,7 +206,7 @@ fi
 
 wp transient set mm_staging_lock "$@" 120 --path=$PRODUCTION_DIR --quiet
 
-$1
+$1 $7
 
 wp transient delete mm_staging_lock --path=$PRODUCTION_DIR --quiet
 

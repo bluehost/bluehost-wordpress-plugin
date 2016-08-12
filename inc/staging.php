@@ -184,14 +184,14 @@ add_action( 'wp_ajax_mm_restore_state', 'mm_restore_state' );
 
 function mm_sso_production() {
 	mm_check_env( 'staging' );
-	echo mm_cl( 'sso_production' );
+	echo mm_cl( 'sso_production', array( get_current_user_id() ) );
 	die;
 }
 add_action( 'wp_ajax_mm_sso_production', 'mm_sso_production' );
 
 function mm_sso_staging() {
 	mm_check_env( 'production' );
-	echo mm_cl( 'sso_staging' );
+	echo mm_cl( 'sso_staging', array( get_current_user_id() ) );
 	die;
 }
 add_action( 'wp_ajax_mm_sso_staging', 'mm_sso_staging' );
