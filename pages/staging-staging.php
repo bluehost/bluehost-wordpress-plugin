@@ -115,7 +115,12 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 				</div>
 			</div>
 
-			<?php /*<div class="panel panel-default">
+			<?php
+			$revisions = mm_cl( 'revisions' );
+			$revisions = explode( ';', $revisions );
+			if ( is_array( $revisions ) ) {
+			?>
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12">
@@ -131,23 +136,22 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 							<p>Save the current staging environment or restore a previously saved staging environement.</p>
 						</div>
 						<div class="col-xs-12 col-sm-4">
-							<a class="staging-action" data-staging-action="mm_save_state" href="#">Add Restoration Point</a>
+							<button class="btn btn-primary btn-md staging-action" data-staging-action="mm_save_state">Add Restoration Point</button>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-xs-12 col-sm-12">
 							<table class="table">
-								<tr><th>Name</th><th>Creation Date</th><th>&nbsp;</th></tr>
-								<?php
-								// For each restoration point we need to add a record.
-								?>
+								<tr><th>Message</th><th>Date</th><th>&nbsp;</th></tr>
+								<tr id="staging-revisions-loader"><td colspan="3" class="text-center"><img src="<?php echo MM_BASE_URL . 'tmp/img/loader-balls.svg';?>"/></td></tr>
 							</table>
 						</div>
 					</div>
-
-					<a class="staging-action" data-staging-action="mm_restore_state" href="#">Restore</a>
 				</div>
-			</div> */ ?>
+			</div>
+			<?php
+			}
+			?>
 		</div>
 	</main>
 </div>
