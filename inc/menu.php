@@ -112,7 +112,7 @@ function mm_add_tool_bar_items( $admin_bar ) {
 		if ( mm_is_staging() ) {
 			$args = array(
 				'id'    => 'mojo-staging',
-				'title' => '<div style="background-color: red;padding: 0px 5px;">Staging</div>',
+				'title' => '<div style="background-color: #ce0000; padding: 0px 5px;">Staging Environment</div>',
 			);
 			$admin_bar->add_node( $args );
 		}
