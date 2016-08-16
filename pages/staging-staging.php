@@ -157,15 +157,24 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 </div>
 
 <script type="text/javascript">
-jQuery( document ).ready( function ( $ ) {
-	$( '#staging-revisions-loader img' ).ready( function() {
+function mm_load_revisions() {
+	jQuery( document ).ready( function ( $ ) {
+		$( '.staging-revision' ).remove();
+		$( '#staging-revisions-loader' ).fadeIn();
 		var revisions_data = {
 			'action': 'mm_revisions'
 		}
 		$.post( ajaxurl, revisions_data, function( revisions ) {
-			$( '#staging-revisions-loader' ).after( revisions );
-			$( '#staging-revisions-loader' ).remove();
+			$( '#staging-revisions-loader' ).fadeOut( 'slow', function() {
+				$( '#staging-revisions-loader' ).after( revisions );
+				$( '.staging-revision' ).fadeIn( 'slow' );
+			} );
 		} );
+	} );
+}
+jQuery( document ).ready( function ( $ ) {
+	$( '#staging-revisions-loader img' ).ready( function() {
+		mm_load_revisions();
 	} );
 	$( 'body' ).on( 'click', '.mm-close-modal', function() {
 		$( '#mm-modal-wrap' ).fadeOut('slow', function() {
@@ -212,7 +221,9 @@ jQuery( document ).ready( function ( $ ) {
 				response = {status:"error", message:"Invalid JSON response."};
 			}
 
-			console.log( response );
+			if ( typeof response.callback !== 'undefined' ) {
+				window[ response.callback ]();
+			}
 
 			if ( typeof response.status == 'undefined' ) {
 				response = {status:"error", message:"Unable to make the request."};
