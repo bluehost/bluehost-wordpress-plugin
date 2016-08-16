@@ -190,8 +190,17 @@ function error {
 	exit
 }
 
+function lock_check {
+	LOCK=`wp transient get mm_staging_lock --path=$PRODUCTION_DIR --quiet`
+	if [ -n "$LOCK" ]
+		then
+		error 'Staging action is locked by another command'
+	fi
+}
+
 #everything must auth.
 auth $2
+lock_check
 
 PRODUCTION_DIR=$3
 STAGING_DIR=$4
@@ -203,11 +212,7 @@ DB="wordpress_trunk"
 DB_USER="wp"
 DB_PASS="wp"
 
-LOCK=`wp transient get mm_staging_lock --path=$PRODUCTION_DIR --quiet`
-if [ -n "$LOCK" ]
-	then
-	error 'Staging action is locked by another command'
-fi
+
 
 wp transient set mm_staging_lock "$@" 120 --path=$PRODUCTION_DIR --quiet
 
