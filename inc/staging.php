@@ -185,7 +185,7 @@ add_action( 'wp_ajax_mm_save_state', 'mm_save_state' );
 
 function mm_restore_state() {
 	mm_check_env( 'staging' );
-	echo mm_cl( 'restore_state' );
+	echo mm_cl( 'restore_state', array( esc_attr( $_POST['param1'] ) ) );
 	die;
 }
 add_action( 'wp_ajax_mm_restore_state', 'mm_restore_state' );
@@ -198,7 +198,7 @@ function mm_revisions() {
 	foreach ( $revisions as $revision ) {
 		$revision = explode( ',', $revision );
 		if ( array_search( '', $revision ) === false ) {
-			$output .= '<tr><td>' . $revision[2] . '</td><td>' . $revision[1] . '</td><td class="text-right"><button class="btn btn-primary btn-lg staging-action" data-staging-action="mm_restore_state" data-staging-revision="' . $revision[0] . '">Restore</button></td></tr>';
+			$output .= '<tr class="staging-revision"><td>' . $revision[2] . '</td><td>' . $revision[1] . '</td><td class="text-right"><button class="btn btn-primary btn-lg staging-action" data-staging-action="mm_restore_state" data-staging-param1="' . trim( $revision[0] ) . '">Restore</button></td></tr>';
 		}
 	}
 	echo $output;

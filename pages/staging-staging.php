@@ -177,7 +177,7 @@ jQuery( document ).ready( function ( $ ) {
 		mm_load_revisions();
 	} );
 	$( 'body' ).on( 'click', '.mm-close-modal', function() {
-		$( '#mm-modal-wrap' ).fadeOut('slow', function() {
+		$( '#mm-modal-wrap' ).fadeOut( 'slow', function() {
 			$( '#mm-modal-wrap' ).remove();
 		} );
 	} );
@@ -202,8 +202,8 @@ jQuery( document ).ready( function ( $ ) {
 			}
 			$.post( ajaxurl, interim_data, function( interim_content ) {
 				$( '#main' ).fadeOut( 'slow', function() {
-					$('#main').html( interim_content );
-					$('#main').fadeIn( 'slow' );
+					$( '#main' ).html( interim_content );
+					$( '#main' ).fadeIn( 'slow' );
 				} );
 			} );
 		}
@@ -212,8 +212,15 @@ jQuery( document ).ready( function ( $ ) {
 		var data = {
 			'action': $( this ).data( 'staging-action' )
 		};
+
+		if ( typeof $( this ).data( 'staging-param1' ) !== 'undefined' ) {
+			var extra_params = {
+				'param1' : $( this ).data( 'staging-param1' )
+			}
+			$.extend( data, extra_params );
+		}
+
 		$.post( ajaxurl, data, function( response ) {
-			console.log( response );
 
 			try {
 				response = JSON.parse( response );

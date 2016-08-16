@@ -138,7 +138,7 @@ function save_state {
 	git commit -m "$MESSAGE"
 	rm $STAGING_DIR/export.sql --force
 	clear
-	echo \{\"status\" :\"success\",\"message\":\"Restoration point added.\"\}
+	echo \{\"status\" :\"success\",\"message\":\"Restoration point added.\",\"callback\":\"mm_load_revisions\"\}
 }
 
 function restore_state {
@@ -146,12 +146,17 @@ function restore_state {
 		then
 			error 'No revision provided.'
 		else
-			error 'Add code here to check that revision exists.'
+			EXIST=`git cat-file -t $1`
+			if [ "$EXIST" == "commit" ]
+				then
+					git checkout $1 || error 'Unable to restore files from revision.'
+					wp db import $STAGING_DIR/export.sql --path=$STAGING_DIR || error 'Unable to import database from save point.'
+					rm $STAGING_DIR/export.sql --force
+					echo \{\"status\" :\"success\",\"message\":\"State restored successfully...\",\"callback\":\"mm_load_revisions\"\}
+				else
+					error 'Unable to locate revision.'
+			fi
 	fi
-	#git checkout revision $1
-	wp db import $STAGING_DIR/export.sql --path=$STAGING_DIR || error 'Unable to import database from save point.'
-	rm $STAGING_DIR/export.sql --force
-	echo \{\"status\" :\"success\",\"message\":\"State restored successfully...\"\}
 }
 
 function revisions {
@@ -216,3 +221,4 @@ wp transient delete mm_staging_lock --path=$PRODUCTION_DIR --quiet
 # $4 is staging dir
 # $5 is production url
 # $6 is staging url
+# $7 is function param 1
