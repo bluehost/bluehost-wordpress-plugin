@@ -149,9 +149,11 @@ function restore_state {
 			EXIST=`git cat-file -t $1`
 			if [ "$EXIST" == "commit" ]
 				then
+					SESSIONS=`wp user meta get $USER_ID session_tokens --format=json`
 					git checkout $1 || error 'Unable to restore files from revision.'
 					wp db import $STAGING_DIR/export.sql --path=$STAGING_DIR || error 'Unable to import database from save point.'
 					rm $STAGING_DIR/export.sql --force
+					wp user meta update $USER_ID session_tokens $SESSIONS --format=json
 					echo \{\"status\" :\"success\",\"message\":\"State restored successfully...\",\"callback\":\"mm_load_revisions\"\}
 				else
 					error 'Unable to locate revision.'
@@ -198,14 +200,28 @@ function lock_check {
 	fi
 }
 
+function compatibility_check {
+	if [ -z `type wp` ]
+		then
+		error 'WPCLI is not available'
+	fi
+
+	if [ -z `type git` ]
+		then
+		error 'Git is not available'
+	fi
+}
+
 #everything must auth.
 auth $2
 lock_check
+compatibility_check
 
 PRODUCTION_DIR=$3
 STAGING_DIR=$4
 PRODUCTION_URL=$5
 STAGING_URL=$6
+USER_ID=$7
 CONFIG=`wp option get staging_config --format=json --path=$PRODUCTION_DIR`
 
 DB="wordpress_trunk"
@@ -216,7 +232,7 @@ DB_PASS="wp"
 
 wp transient set mm_staging_lock "$@" 120 --path=$PRODUCTION_DIR --quiet
 
-$1 "$7"
+$1 "$8"
 
 wp transient delete mm_staging_lock --path=$PRODUCTION_DIR --quiet
 
@@ -226,4 +242,5 @@ wp transient delete mm_staging_lock --path=$PRODUCTION_DIR --quiet
 # $4 is staging dir
 # $5 is production url
 # $6 is staging url
-# $7 is function param 1
+# $7 is current user id
+# $8 is function param 1
