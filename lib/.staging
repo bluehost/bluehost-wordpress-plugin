@@ -40,7 +40,7 @@ function create {
 	wp rewrite flush --path=$STAGING_DIR || error 'Unable to flush rewrite rules.'
 	#fire email here from mojo cli to site admin
 	clear
-	echo \{\"status\" :\"success\",\"message\":\"Staging website created successfully.\"\}
+	echo \{\"status\" :\"success\",\"message\":\"Staging website created successfully.\",\"reload\":\"true\"\}
 }
 
 function clone {

@@ -91,7 +91,7 @@ function mm_cl( $command, $args = null ) {
 		die;
 	}
 
-	$response = exec( MM_BASE_DIR . 'lib/staging.sh ' . $command );
+	$response = exec( MM_BASE_DIR . 'lib/.staging ' . $command );
 
 	return $response;
 }
