@@ -52,7 +52,7 @@ function mm_cl( $command, $args = null ) {
 	mm_check_admin();
 	$command = array( $command );
 	$token = wp_generate_password( 32, false );
-	set_transient( 'staging_auth_token', $token, 30 );
+	set_transient( 'staging_auth_token', $token, 60 );
 	$command[] = $token;
 	$config = get_option( 'staging_config' );
 	if ( false == $config || ! isset( $config['production_dir'] ) || ! isset( $config['staging_dir'] ) ) {
@@ -71,6 +71,7 @@ function mm_cl( $command, $args = null ) {
 	$command[] = $config['staging_dir'];
 	$command[] = $config['production_url'];
 	$command[] = $config['staging_url'];
+	$command[] = get_current_user_id();
 
 	if ( ! is_null( $args ) && is_array( $args ) ) {
 		$args = array_values( $args );
@@ -119,19 +120,6 @@ function mm_check_env( $env ) {
 		die;
 	}
 }
-
-function mm_set_auth() {
-	mm_check_admin();
-	if ( isset( $_POST['token'] ) ) {
-		set_transient( 'staging_auth_token', esc_attr( $_POST['token'] ), 60 );
-	}
-}
-add_action( 'wp_ajax_mm_set_auth', 'mm_set_auth' );
-
-function mm_test_service() {
-	//make sure all requirements are met.
-}
-add_action( 'wp_ajax_mm_test_service', 'mm_test_service' );
 
 function mm_create() {
 	mm_check_env( false );

@@ -1,14 +1,16 @@
 #!/bin/bash
 
-function auth {
-	TOKEN=`wp transient get staging_auth_token`
-	if [ "$1" != "$TOKEN" || -z "$TOKEN" ]
+# --debug  2>&1
+
+function auth_action {
+	cd $PRODUCTION_DIR
+	TOKEN=`wp transient get staging_auth_token --path=$PRODUCTION_DIR`
+	if [ "$1" !== "$TOKEN" || -z "$TOKEN" ]
 		then
-		echo \{\"status\":\"error\",\"message\":\"Unable to authenticate the action.\"\}
-		wp transient delete staging_auth --quiet
-		exit
+		wp transient delete staging_auth_token --path=$PRODUCTION_DIR
+		error 'Unable to authenticate the action.'
 	fi
-	wp transient delete staging_auth
+	wp transient delete staging_auth_token --path=$PRODUCTION_DIR
 }
 
 function create {
@@ -16,7 +18,7 @@ function create {
 	WP_VER=`wp core version`
 	mkdir -p $STAGING_DIR || error 'Unable to create staging directory.'
 	wp db export $STAGING_DIR/export.sql --add-drop-table --skip-themes --skip-plugins || error 'Unable to export database.'
-	wp option update staging_environment production --autoload=false || error 'Unable to set environment.'
+	wp option update staging_environment production  || error 'Unable to set environment.'
 	cd $STAGING_DIR || error 'Unable to move to staging directory.'
 	echo 'wp-config.php' > .gitignore
 	echo '.gitignore' >> .gitignore
@@ -31,14 +33,14 @@ function create {
 	wp db import $STAGING_DIR/export.sql --skip-themes --skip-plugins || error 'Unable to import database.'
 	rm $STAGING_DIR/export.sql --force
 	save_state 'Create Staging Environment'
-	wp option update staging_environment staging --autoload=false || error 'Unable to set environment.'
+	wp option update staging_environment staging || error 'Unable to set environment.'
 	wp search-replace $PRODUCTION_URL $STAGING_URL --skip-themes --skip-plugins || error 'Unable to update URL on staging.'
 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR || error 'Unable to import global config on staging.'
 	wp option update mm_coming_soon 'true' --path=$STAGING_DIR || error 'Unable to enable the coming soon page on staging.'
 	wp rewrite flush --path=$STAGING_DIR || error 'Unable to flush rewrite rules.'
 	#fire email here from mojo cli to site admin
 	clear
-	echo \{\"status\" :\"success\",\"message\":\"Staging website created successfully.\",\"reload\":\"true\"\}
+	echo \{\"status\" :\"success\",\"message\":\"Staging website created successfully.\"\}
 }
 
 function clone {
@@ -46,10 +48,11 @@ function clone {
 	wp db export $STAGING_DIR/export.sql --add-drop-table || error 'Unable to export database.'
 	WP_VER=`wp core version`
 	cd $STAGING_DIR || error 'Unable to move to staging directory.'
+	SESSIONS=`wp user meta get $USER_ID session_tokens --format=json`
 	wp db reset --yes --skip-themes --skip-plugins || error 'Unable to reset database.'
 	wp db import $STAGING_DIR/export.sql --skip-themes --skip-plugins || error 'Unable to import database.'
-	rm $STAGING_DIR/export.sql --force
-	wp option update staging_environment staging --autoload=false || error 'Unable to set environment.'
+	wp user meta update $USER_ID session_tokens "$SESSIONS" --format=json
+	wp option update staging_environment staging || error 'Unable to set environment.'
 	move_files $PRODUCTION_DIR $STAGING_DIR
 	wp core download --version=$WP_VER --force || error 'Unable to install WordPress in staging directory.'
 	wp search-replace $PRODUCTION_URL $STAGING_URL --skip-themes --skip-plugins || error 'Unable to update URL on staging.'
@@ -57,6 +60,7 @@ function clone {
 	wp option update mm_coming_soon 'true' --path=$STAGING_DIR || error 'Unable to enable the coming soon page on staging.'
 	wp rewrite flush --path=$STAGING_DIR || error 'Unable to flush rewrite rules.'
 	save_state 'Clone From Production'
+	rm $STAGING_DIR/export.sql --force
 	clear
 	echo \{\"status\" :\"success\",\"message\":\"Website cloned successfully.\"\}
 }
@@ -70,7 +74,7 @@ function deploy_files {
 	wp core download --version=$WP_VER --force --path=$PRODUCTION_DIR || error 'Unable to move WordPress files.'
 	move_files $STAGING_DIR $PRODUCTION_DIR
 	clear
-	echo \{\"status\" :\"success\",\"message\":\"Files deployed successfully.\"\}
+	echo \{\"status\" :\"success\",\"message\":\"Files deployed successfully.\",\"callback\":\"mm_load_revisions\"\}
 }
 
 function deploy_db {
@@ -80,18 +84,18 @@ function deploy_db {
 	wp db import $STAGING_DIR/export.sql --path=$PRODUCTION_DIR || error 'Unable to import database.'
 	wp search-replace "$STAGING_URL" "$PRODUCTION_URL" --path=$PRODUCTION_DIR || error 'Unable to update URL on production.'
 	rm $STAGING_DIR/export.sql --force
-	wp option update staging_environment production --autoload=false --path=$PRODUCTION_DIR || error 'Unable to set environment.'
+	wp option update staging_environment production --path=$PRODUCTION_DIR || error 'Unable to set environment.'
 	wp option update staging_config "$CONFIG" --format=json --path=$PRODUCTION_DIR || error 'Unable to import global config on production.'
 	wp option delete mm_coming_soon --path=$PRODUCTION_DIR || error 'Unable to disable coming soon page.'
 	clear
-	echo \{\"status\" :\"success\",\"message\":\"Database deployed successfully.\"\}
+	echo \{\"status\" :\"success\",\"message\":\"Database deployed successfully.\",\"callback\":\"mm_load_revisions\"\}
 }
 
 function deploy_files_db {
 	deploy_files
 	deploy_db
 	clear
-	echo \{\"status\" :\"success\",\"message\":\"Files and Database deployed successfully.\"\}
+	echo \{\"status\" :\"success\",\"message\":\"Files and Database deployed successfully.\",\"callback\":\"mm_load_revisions\"\}
 }
 
 function deploy_files_dbmerge {
@@ -153,7 +157,7 @@ function restore_state {
 					git checkout $1 || error 'Unable to restore files from revision.'
 					wp db import $STAGING_DIR/export.sql --path=$STAGING_DIR || error 'Unable to import database from save point.'
 					rm $STAGING_DIR/export.sql --force
-					wp user meta update $USER_ID session_tokens $SESSIONS --format=json
+					wp user meta update $USER_ID session_tokens "$SESSIONS" --format=json -path=$STAGING_DIR
 					echo \{\"status\" :\"success\",\"message\":\"State restored successfully...\",\"callback\":\"mm_load_revisions\"\}
 				else
 					error 'Unable to locate revision.'
@@ -212,10 +216,10 @@ function compatibility_check {
 	fi
 }
 
-#everything must auth.
-auth $2
-lock_check
 compatibility_check
+#everything must auth.
+auth_action $2
+lock_check
 
 PRODUCTION_DIR=$3
 STAGING_DIR=$4
@@ -224,11 +228,16 @@ STAGING_URL=$6
 USER_ID=$7
 CONFIG=`wp option get staging_config --format=json --path=$PRODUCTION_DIR`
 
+if [[ `pwd` == *"staging"* ]]
+	then
+		CURRENT_DIR=$STAGING_DIR
+	else
+		CURRENT_DIR=$PRODUCTION_DIR
+fi
+
 DB="wordpress_trunk"
 DB_USER="wp"
 DB_PASS="wp"
-
-
 
 wp transient set mm_staging_lock "$@" 120 --path=$PRODUCTION_DIR --quiet
 
