@@ -3,14 +3,14 @@
 # --debug  2>&1
 
 function auth_action {
-	cd $PRODUCTION_DIR
-	TOKEN=`wp transient get staging_auth_token --path=$PRODUCTION_DIR`
+	cd $CURRENT_DIR
+	TOKEN=`wp transient get staging_auth_token --path=$CURRENT_DIR`
 	if [ "$1" != "$TOKEN" ] || [ -z "$TOKEN" ]
 		then
-		wp transient delete staging_auth_token --path=$PRODUCTION_DIR
+		wp transient delete staging_auth_token --path=$CURRENT_DIR
 		error 'Unable to authenticate the action.'
 	fi
-	wp transient delete staging_auth_token --path=$PRODUCTION_DIR
+	wp transient delete staging_auth_token --path=$CURRENT_DIR
 }
 
 function create {
@@ -222,19 +222,19 @@ PRODUCTION_URL=$5
 STAGING_URL=$6
 USER_ID=$7
 
-compatibility_check
-#everything must auth.
-auth_action $2
-lock_check
-
-CONFIG=`wp option get staging_config --format=json --path=$PRODUCTION_DIR`
-
 if [[ `pwd` == *"staging"* ]]
 	then
 		CURRENT_DIR=$STAGING_DIR
 	else
 		CURRENT_DIR=$PRODUCTION_DIR
 fi
+
+compatibility_check
+#everything must auth.
+auth_action $2
+lock_check
+
+CONFIG=`wp option get staging_config --format=json --path=$PRODUCTION_DIR`
 
 DB="wordpress_trunk"
 DB_USER="wp"
