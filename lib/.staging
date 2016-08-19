@@ -146,6 +146,7 @@ function save_state {
 }
 
 function restore_state {
+	cd $STAGING_DIR
 	if [ -z "$1" ]
 		then
 			error 'No revision provided.'
@@ -157,8 +158,8 @@ function restore_state {
 					git checkout $1 || error 'Unable to restore files from revision.'
 					wp db import $STAGING_DIR/export.sql --path=$STAGING_DIR || error 'Unable to import database from save point.'
 					rm $STAGING_DIR/export.sql --force
-					wp user meta update $USER_ID session_tokens "$SESSIONS" --format=json -path=$STAGING_DIR
-					echo \{\"status\" :\"success\",\"message\":\"State restored successfully...\",\"callback\":\"mm_load_revisions\"\}
+					wp user meta update $USER_ID session_tokens "$SESSIONS" --format=json --path=$STAGING_DIR
+					echo \{\"status\" :\"success\",\"message\":\"State restored successfully.\",\"callback\":\"mm_load_revisions\"\}
 				else
 					error 'Unable to locate revision.'
 			fi
