@@ -7,7 +7,6 @@ function auth_action {
 	TOKEN=`wp transient get staging_auth_token --path=$PRODUCTION_DIR`
 	if [ "$1" != "$TOKEN" ] || [ -z "$TOKEN" ]
 		then
-		error "T:$TOKEN 1:$1"
 		wp transient delete staging_auth_token --path=$PRODUCTION_DIR
 		error 'Unable to authenticate the action.'
 	fi
