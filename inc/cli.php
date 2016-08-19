@@ -229,7 +229,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 				break;
 
 			case 'deploy_files_db':
-				$json_response = mm_cl( 'destroy' );
+				$json_response = mm_cl( 'deploy_files_db' );
 				break;
 
 			case 'save_state':
