@@ -5,8 +5,9 @@
 function auth_action {
 	cd $PRODUCTION_DIR
 	TOKEN=`wp transient get staging_auth_token --path=$PRODUCTION_DIR`
-	if [ "$1" !== "$TOKEN" || -z "$TOKEN" ]
+	if [ "$1" != "$TOKEN" ] || [ -z "$TOKEN" ]
 		then
+		error "T:$TOKEN 1:$1"
 		wp transient delete staging_auth_token --path=$PRODUCTION_DIR
 		error 'Unable to authenticate the action.'
 	fi
@@ -205,27 +206,28 @@ function lock_check {
 }
 
 function compatibility_check {
-	if [ -z `type wp` ]
+	if [[ -z `type wp` ]]
 		then
 		error 'WPCLI is not available'
 	fi
 
-	if [ -z `type git` ]
+	if [[ -z `type git` ]]
 		then
 		error 'Git is not available'
 	fi
 }
-
-compatibility_check
-#everything must auth.
-auth_action $2
-lock_check
 
 PRODUCTION_DIR=$3
 STAGING_DIR=$4
 PRODUCTION_URL=$5
 STAGING_URL=$6
 USER_ID=$7
+
+compatibility_check
+#everything must auth.
+auth_action $2
+lock_check
+
 CONFIG=`wp option get staging_config --format=json --path=$PRODUCTION_DIR`
 
 if [[ `pwd` == *"staging"* ]]
@@ -239,7 +241,7 @@ DB="wordpress_trunk"
 DB_USER="wp"
 DB_PASS="wp"
 
-wp transient set mm_staging_lock "$@" 120 --path=$PRODUCTION_DIR --quiet
+wp transient set mm_staging_lock "true" 120 --path=$PRODUCTION_DIR --quiet
 
 $1 "$8"
 

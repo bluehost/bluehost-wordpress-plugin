@@ -168,5 +168,93 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 		$output .= ' +' . str_pad( '', 21, '-' ) . '+' . str_pad( '', 32, '-' ) . "+ \n";
 		echo $output;
 	}
+
+	public function staging( $args, $assoc_args ) {
+		$valid_actions = array(
+			'create',
+			'clone',
+			'destroy',
+			'sso_staging',
+			'deploy_files',
+			'deploy_db',
+			'deploy_files_db',
+			'save_state',
+			'restore_state',
+			'sso_production',
+		);
+		if ( ! is_array( $args ) || ! isset( $args[0] ) ) {
+			WP_CLI::error( 'No function provided.' );
+		}
+		if ( ! in_array( $args[0], $valid_actions ) ) {
+			WP_CLI::error( 'Invalid function.' );
+		}
+		switch ( $args[0] ) {
+			case 'create':
+				set_transient( 'mm_fresh_staging', true, 300 );
+				$json_response = mm_cl( 'create' );
+				break;
+
+			case 'clone':
+				$json_response = mm_cl( 'clone' );
+				break;
+
+			case 'destroy':
+				$json_response = mm_cl( 'destroy' );
+				break;
+
+			case 'sso_staging':
+				$user = get_users( array( 'role' => 'administrator', 'number' => 1 ) );
+				if ( is_array( $user ) && is_a( $user[0], 'WP_User' ) ) {
+					$user = $user[0];
+					$user = $user->ID;
+				}
+				$json_response = mm_cl( 'sso_staging', array( $user ) );
+				break;
+
+			case 'sso_production':
+				$user = get_users( array( 'role' => 'administrator', 'number' => 1 ) );
+				if ( is_array( $user ) && is_a( $user[0], 'WP_User' ) ) {
+					$user = $user[0];
+					$user = $user->ID;
+				}
+				$json_response = mm_cl( 'sso_production', array( $user ) );
+				break;
+
+			case 'deploy_files':
+				$json_response = mm_cl( 'deploy_files' );
+				break;
+
+			case 'deploy_db':
+				$json_response = mm_cl( 'deploy_db' );
+				break;
+
+			case 'deploy_files_db':
+				$json_response = mm_cl( 'destroy' );
+				break;
+
+			case 'save_state':
+				$json_response = mm_cl( 'save_state' );
+				break;
+
+			case 'restore_state':
+				if ( ! isset( $assoc_args['revision'] ) ) {
+					WP_CLI::error( 'Revision not provided.' );
+				}
+				$json_response = mm_cl( 'restore_state', array( esc_attr( $assoc_args['revision'] ) ) );
+				break;
+		}
+		$json_response = preg_replace( '/[^[:print:]]/', '',$json_response );
+		$json_response = str_replace( '[H[2J', '', $json_response );
+
+		if ( $response = json_decode( $json_response ) ) {
+			if ( 'success' == $response->status ) {
+				WP_CLI::success( $response->message );
+			} else {
+				WP_CLI::error( $response->message );
+			}
+		} else {
+			WP_CLI::error( 'Invalid JSON response.' );
+		}
+	}
 }
 WP_CLI::add_command( 'mojo', 'WP_MOJO_Commands' );

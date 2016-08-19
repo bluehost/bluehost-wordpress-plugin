@@ -49,7 +49,6 @@ function mm_staging_page() {
 }
 
 function mm_cl( $command, $args = null ) {
-	mm_check_admin();
 	$command = array( $command );
 	$token = wp_generate_password( 32, false );
 	set_transient( 'staging_auth_token', $token, 60 );
@@ -122,6 +121,7 @@ function mm_check_env( $env ) {
 }
 
 function mm_create() {
+	mm_check_admin();
 	mm_check_env( false );
 	set_transient( 'mm_fresh_staging', true, 300 );
 	echo mm_cl( 'create' );
@@ -130,6 +130,7 @@ function mm_create() {
 add_action( 'wp_ajax_mm_create', 'mm_create' );
 
 function mm_clone() {
+	mm_check_admin();
 	mm_check_env( 'production' );
 	echo mm_cl( 'clone' );
 	die;
@@ -137,6 +138,7 @@ function mm_clone() {
 add_action( 'wp_ajax_mm_clone', 'mm_clone' );
 
 function mm_deploy_files() {
+	mm_check_admin();
 	mm_check_env( 'staging' );
 	echo mm_cl( 'deploy_files' );
 	die;
@@ -144,6 +146,7 @@ function mm_deploy_files() {
 add_action( 'wp_ajax_mm_deploy_files', 'mm_deploy_files' );
 
 function mm_deploy_files_db() {
+	mm_check_admin();
 	mm_check_env( 'staging' );
 	echo mm_cl( 'deploy_files_db' );
 	die;
@@ -151,6 +154,7 @@ function mm_deploy_files_db() {
 add_action( 'wp_ajax_mm_deploy_files_db', 'mm_deploy_files_db' );
 
 function mm_deploy_db() {
+	mm_check_admin();
 	mm_check_env( 'staging' );
 	echo mm_cl( 'deploy_db' );
 	die;
@@ -158,6 +162,7 @@ function mm_deploy_db() {
 add_action( 'wp_ajax_mm_deploy_db', 'mm_deploy_db' );
 
 function mm_destroy() {
+	mm_check_admin();
 	mm_check_env( 'production' );
 	echo mm_cl( 'destroy' );
 	die;
@@ -165,6 +170,7 @@ function mm_destroy() {
 add_action( 'wp_ajax_mm_destroy', 'mm_destroy' );
 
 function mm_save_state() {
+	mm_check_admin();
 	mm_check_env( 'staging' );
 	echo mm_cl( 'save_state' );
 	die;
@@ -172,6 +178,7 @@ function mm_save_state() {
 add_action( 'wp_ajax_mm_save_state', 'mm_save_state' );
 
 function mm_restore_state() {
+	mm_check_admin();
 	mm_check_env( 'staging' );
 	echo mm_cl( 'restore_state', array( esc_attr( $_POST['param1'] ) ) );
 	die;
@@ -179,6 +186,7 @@ function mm_restore_state() {
 add_action( 'wp_ajax_mm_restore_state', 'mm_restore_state' );
 
 function mm_revisions() {
+	mm_check_admin();
 	mm_check_env( 'staging' );
 	$revisions = mm_cl( 'revisions' );
 	$revisions = explode( ';', $revisions );
@@ -195,6 +203,7 @@ function mm_revisions() {
 add_action( 'wp_ajax_mm_revisions', 'mm_revisions' );
 
 function mm_sso_production() {
+	mm_check_admin();
 	mm_check_env( 'staging' );
 	echo mm_cl( 'sso_production', array( get_current_user_id() ) );
 	die;
