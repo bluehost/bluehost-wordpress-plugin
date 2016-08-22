@@ -45,14 +45,20 @@ function create {
 function clone {
 	cd $PRODUCTION_DIR || error 'Unable to move to production directory.'
 	STAGING_TABLES=`wp db tables --all-tables-with-prefix --format=csv --path=$STAGING_DIR`
+	WP_VER=`wp core version`
+	if [ "0" != "$USER_ID" ]
+		then
+		SESSIONS=`wp user meta get $USER_ID session_tokens --format=json --path=$STAGING_DIR`
+	fi
 	wp db query "DROP TABLE $STAGING_TABLES;" --path=$STAGING_DIR || error 'Unable to drop staging tables.'
 	wp db export $STAGING_DIR/.export-sql --add-drop-table || error 'Unable to export database.'
 	sed -i -e "s/$DB_PREFIX/staging_$DB_PREFIX/g" $STAGING_DIR/.export-sql
-	WP_VER=`wp core version`
 	cd $STAGING_DIR || error 'Unable to move to staging directory.'
-	SESSIONS=`wp user meta get $USER_ID session_tokens --format=json`
 	wp db import $STAGING_DIR/.export-sql --skip-themes --skip-plugins || error 'Unable to import database.'
-	wp user meta update $USER_ID session_tokens "$SESSIONS" --format=json
+	if [ "0" != "$USER_ID" ]
+		then
+		wp user meta update $USER_ID session_tokens "$SESSIONS" --format=json
+	fi
 	wp option update staging_environment staging || error 'Unable to set environment.'
 	move_files $PRODUCTION_DIR $STAGING_DIR
 	wp core download --version=$WP_VER --force || error 'Unable to install WordPress in staging directory.'
@@ -159,11 +165,17 @@ function restore_state {
 			EXIST=`git cat-file -t $1`
 			if [ "$EXIST" == "commit" ]
 				then
-					SESSIONS=`wp user meta get $USER_ID session_tokens --format=json`
+					if [ "0" != "$USER_ID" ]
+						then
+						SESSIONS=`wp user meta get $USER_ID session_tokens --format=json`
+					fi
 					git checkout $1 || error 'Unable to restore files from revision.'
 					wp db import $STAGING_DIR/.export-sql --path=$STAGING_DIR || error 'Unable to import database from save point.'
 					rm $STAGING_DIR/.export-sql --force
-					wp user meta update $USER_ID session_tokens "$SESSIONS" --format=json --path=$STAGING_DIR
+					if [ "0" != "$USER_ID" ]
+						then
+						wp user meta update $USER_ID session_tokens "$SESSIONS" --format=json --path=$STAGING_DIR
+					fi
 					echo \{\"status\" :\"success\",\"message\":\"State restored successfully.\",\"callback\":\"mm_load_revisions\"\}
 				else
 					error 'Unable to locate revision.'
