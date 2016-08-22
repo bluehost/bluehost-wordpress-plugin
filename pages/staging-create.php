@@ -81,15 +81,12 @@ jQuery( document ).ready( function ( $ ) {
 			'action': $( this ).data( 'staging-action' )
 		};
 		$.post( ajaxurl, data, function( response ) {
-			console.log( response );
 
 			try {
 				response = JSON.parse( response );
 			} catch (e) {
 				response = {status:"error", message:"Invalid JSON response."};
 			}
-
-			console.log( response );
 
 			if ( typeof response.status == 'undefined' ) {
 				response = {status:"error", message:"Unable to make the request."};
@@ -125,12 +122,10 @@ jQuery( document ).ready( function ( $ ) {
 					}, 8000 );
 				} );
 			}
-
 			$( '.staging-action' ).prop( 'disabled',false );
 			$( '.staging-action-loader' ).remove();
 			$( '#mm-modal-wrap' ).remove();
 		} );
-
 	} );
 } );
 </script>
