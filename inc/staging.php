@@ -31,23 +31,6 @@ function mm_staging_dashboard_display() {
 	mm_require( MM_BASE_DIR . 'pages/dashboard-staging-widget.php' );
 }
 
-function mm_staging_page() {
-	$env = get_option( 'staging_environment' );
-	switch ( $env ) {
-		case 'production':
-			require_once( MM_BASE_DIR . 'pages/staging-production.php' );
-			break;
-
-		case 'staging':
-			require_once( MM_BASE_DIR . 'pages/staging-staging.php' );
-			break;
-
-		default:
-			require_once( MM_BASE_DIR . 'pages/staging-create.php' );
-			break;
-	}
-}
-
 function mm_cl( $command, $args = null ) {
 	$command = array( $command );
 	$token = wp_generate_password( 32, false );
