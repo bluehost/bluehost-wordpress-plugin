@@ -28,7 +28,7 @@ function create {
 	wp core config --dbname=$DB --dbuser=$DB_USER --dbpass=$DB_PASS --dbprefix=staging_$DB_PREFIX --skip-themes --skip-plugins || error 'Unable to configure WordPress.'
 	git config --global user.email "staging@domain.com"
 	git config --global user.name "Endurance Staging"
-	sed -i -e "s/$DB_PREFIX/staging_$DB_PREFIX/g" $STAGING_DIR/.export-sql
+	sed -i -e "s/$DB_PREFIX/staging_$DB_PREFIX/g" $STAGING_DIR/.export-sql || error 'Unable to update prefix.'
 	wp db import $STAGING_DIR/.export-sql --skip-themes --skip-plugins || error 'Unable to import database.'
 	save_state 'Create Staging Environment'
 	rm $STAGING_DIR/.export-sql --force
@@ -52,7 +52,7 @@ function clone {
 	fi
 	wp db query "DROP TABLE $STAGING_TABLES;" --path=$STAGING_DIR || error 'Unable to drop staging tables.'
 	wp db export $STAGING_DIR/.export-sql --add-drop-table || error 'Unable to export database.'
-	sed -i -e "s/$DB_PREFIX/staging_$DB_PREFIX/g" $STAGING_DIR/.export-sql
+	sed -i -e "s/$DB_PREFIX/staging_$DB_PREFIX/g" $STAGING_DIR/.export-sql || error 'Unable to update prefix.'
 	cd $STAGING_DIR || error 'Unable to move to staging directory.'
 	wp db import $STAGING_DIR/.export-sql --skip-themes --skip-plugins || error 'Unable to import database.'
 	if [ "0" != "$USER_ID" ]
@@ -89,7 +89,7 @@ function deploy_db {
 	save_state 'Save then Deploy Database'
 	wp db query "DROP TABLE $PRODUCTION_TABLES;" --path=$STAGING_DIR || error 'Unable to drop staging tables.'
 	wp db export $STAGING_DIR/.export-sql --add-drop-table || error 'Unable to export database.'
-	sed -i -e "s/staging_$DB_PREFIX/$DB_PREFIX/g" $STAGING_DIR/.export-sql
+	sed -i -e "s/staging_$DB_PREFIX/$DB_PREFIX/g" $STAGING_DIR/.export-sql || error 'Unable to update prefix.'
 	wp db import $STAGING_DIR/.export-sql --path=$PRODUCTION_DIR || error 'Unable to import database.'
 	wp search-replace "$STAGING_URL" "$PRODUCTION_URL" --path=$PRODUCTION_DIR || error 'Unable to update URL on production.'
 	rm $STAGING_DIR/.export-sql --force
