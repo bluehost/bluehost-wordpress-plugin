@@ -17,6 +17,11 @@ function mm_main_menu() {
 		$menu_position = 59;
 		$menu_name = 'Marketplace';
 	}
+
+	if ( 'BlueHost' == $menu_name ) {
+		$menu_name = 'Bluehost';
+	}
+
 	add_menu_page( $menu_name, $menu_name, 'manage_options', 'mojo-themes', 'mm_theme_page', 'data:image/svg+xml;base64, ' . $icon_hash, $menu_position );
 }
 add_action( 'admin_menu', 'mm_main_menu' );
@@ -156,6 +161,7 @@ function mm_staging_page() {
 			require_once( MM_BASE_DIR . 'pages/staging-create.php' );
 			break;
 	}
+	echo "<a target='_blank' href='https://goo.gl/forms/HNmqYgRkpzu9KQfM2' style='z-index: 10;position: fixed; padding: 4px 10px; color: #fff;background-color: #000;right:0px;bottom:0px;'>Staging Feedback</a>";
 }
 
 function mm_my_purchases_menu() {
