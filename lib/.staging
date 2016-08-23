@@ -170,6 +170,8 @@ function restore_state {
 						SESSIONS=$(wp user meta get $USER_ID session_tokens --format=json)
 					fi
 					git checkout $1 || error 'Unable to restore files from revision.'
+					STAGING_TABLES=$(wp db tables --all-tables-with-prefix --format=csv --path=$STAGING_DIR)
+					wp db query "DROP TABLE $STAGING_TABLES;" --path=$STAGING_DIR || error 'Unable to drop staging tables.'
 					wp db import $STAGING_DIR/.export-sql --path=$STAGING_DIR || error 'Unable to import database from save point.'
 					rm $STAGING_DIR/.export-sql --force
 					if [ "0" != "$USER_ID" ]
@@ -210,7 +212,6 @@ function sso_production {
 
 function error {
 	echo \{\"status\":\"error\",\"message\":\"$1\"\}
-	wp transient delete mm_staging_lock --path=$PRODUCTION_DIR --quiet
 	exit
 }
 
