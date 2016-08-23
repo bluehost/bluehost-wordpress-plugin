@@ -3,7 +3,7 @@
 # --debug  2>&1
 
 function auth_action {
-	cd $CURRENT_DIR
+	cd $CURRENT_DIR || error 'Unable to switch directory.'
 	TOKEN=$(wp transient get staging_auth_token --path=$CURRENT_DIR)
 	if [ "$1" != "$TOKEN" ] || [ -z "$TOKEN" ]
 		then
@@ -73,7 +73,7 @@ function clone {
 }
 
 function deploy_files {
-	cd $STAGING_DIR
+	cd $STAGING_DIR || error 'Unable to move to staging directory.'
 	WP_VER=$(wp core version)
 	save_state 'Save then Deploy Files'
 	rm -r $PRODUCTION_DIR/wp-content/themes --force || error 'Unable to remove themes on production.'
@@ -113,7 +113,7 @@ function deploy_files_dbmerge {
 }
 
 function destroy {
-	cd $PRODUCTION_DIR
+	cd $PRODUCTION_DIR || error 'Unable to move to production directory.'
 	if test -d $STAGING_DIR
 		then
 		STAGING_TABLES=$(wp db tables --all-tables-with-prefix --format=csv --path=$STAGING_DIR)
@@ -157,7 +157,7 @@ function save_state {
 }
 
 function restore_state {
-	cd $STAGING_DIR
+	cd $STAGING_DIR || error 'Unable to move to staging directory.'
 	if [ -z "$1" ]
 		then
 			error 'No revision provided.'
@@ -185,7 +185,7 @@ function restore_state {
 
 function revisions {
 	clear
-	cd $STAGING_DIR
+	cd $STAGING_DIR || error 'Unable to move to staging directory.'
 	LOG=$(git log --pretty=format:'%h,%ad,%s;' -10)
 	echo $LOG
 }
