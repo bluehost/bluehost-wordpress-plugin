@@ -141,7 +141,7 @@ function move_files {
 
 function save_state {
 	cd $STAGING_DIR || error 'Unable to move to staging directory.'
-	STAGING_TABLES=`wp db tables --all-tables-with-prefix --format=csv --path=$STAGING_DIR`
+	STAGING_TABLES=$(wp db tables --all-tables-with-prefix --format=csv --path=$STAGING_DIR)
 	wp db export $STAGING_DIR/.export-sql --add-drop-table --tables=$STAGING_TABLES --path=$STAGING_DIR || error 'Unable to export database to save point.'
 	git add . || error 'Unable to add files to git.'
 	if [ -z "$1" ]
@@ -167,7 +167,7 @@ function restore_state {
 				then
 					if [ "0" != "$USER_ID" ]
 						then
-						SESSIONS=`wp user meta get $USER_ID session_tokens --format=json`
+						SESSIONS=$(wp user meta get $USER_ID session_tokens --format=json)
 					fi
 					git checkout $1 || error 'Unable to restore files from revision.'
 					wp db import $STAGING_DIR/.export-sql --path=$STAGING_DIR || error 'Unable to import database from save point.'
