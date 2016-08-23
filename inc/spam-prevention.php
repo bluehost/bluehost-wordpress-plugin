@@ -120,23 +120,29 @@ function mm_spam_add_moderation_words( $words ) {
 }
 add_filter( 'option_moderation_keys', 'mm_spam_add_moderation_words' );
 
-function mm_spam_preprocess_new_comment( $commentdata ) {
+function mm_spam_process_hidden_field( $data ) {
 	$spam_key = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] );
 	if ( ! isset( $_POST['js-spam-prevention'] ) || $_POST['js-spam-prevention'] !== $spam_key ) {
-		die( 'You Lose! Good Day Sir!' );
+		if ( current_filter() !== 'registration_errors' ) {
+			die( 'You Lose! Good Day Sir!' );
+		} else {
+			$data->add( 'bot_error', 'Suspected bot.' );
+		}
 	}
-	return $commentdata;
+	return $data;
 }
-add_action( 'preprocess_comment', 'mm_spam_preprocess_new_comment' );
+add_filter( 'preprocess_comment', 'mm_spam_process_hidden_field' );
+add_filter( 'registration_errors', 'mm_spam_process_hidden_field' );
 
-function mm_spam_comment_spam_prevention() {
+function mm_spam_add_hidden_field() {
 	$spam_key = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] );
 	?>
 	<script type="text/javascript">
 		jQuery( document ).ready( function( $ ) {
-			$( '.comment-form' ).append( '<input type="hidden" name="js-spam-prevention" value="<?php echo $spam_key; ?>"/>' );
+			$( '.comment-form, #registerform' ).append( '<input type="hidden" name="js-spam-prevention" value="<?php echo $spam_key; ?>"/>' );
 		} );
 	</script>
 	<?php
 }
-add_action( 'comment_form_after', 'mm_spam_comment_spam_prevention', 20 );
+add_action( 'comment_form_after', 'mm_spam_add_hidden_field', 20 );
+add_action( 'register_form', 'mm_spam_add_hidden_field' );
