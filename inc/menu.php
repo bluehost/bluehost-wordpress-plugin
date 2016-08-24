@@ -144,7 +144,7 @@ function mm_business_tools_page() {
 }
 
 function mm_staging_menu() {
-	add_submenu_page( 'mojo-themes', 'Staging (beta)', 'Staging (beta)', 'manage_options', 'mojo-staging', 'mm_staging_page' );
+	add_submenu_page( 'mojo-themes', 'Staging (beta)', 'Staging <small>(beta)</small>', 'manage_options', 'mojo-staging', 'mm_staging_page' );
 }
 add_action( 'admin_menu', 'mm_staging_menu' );
 
