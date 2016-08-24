@@ -103,7 +103,7 @@ function mm_cs_content() {
 <style type='text/css'>
 body{
 	background-color: #2D2A25;
-	background-image: url( https://www.mojomarketplace.com/img/mojo-landing-bg.jpg );
+	background-image: url( http://images.mojomarketplace.com/images/mojo-landing-bg.jpg );
 	background-position: top right;
 	background-repeat: no-repeat;
 	font-family: 'Montserrat', sans-serif;
