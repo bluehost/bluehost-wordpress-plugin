@@ -76,8 +76,6 @@ function deploy_files {
 	cd $STAGING_DIR || error 'Unable to move to staging directory.'
 	WP_VER=$(wp core version)
 	save_state 'Save then Deploy Files'
-	rm -r $PRODUCTION_DIR/wp-content/themes --force || error 'Unable to remove themes on production.'
-	rm -r $PRODUCTION_DIR/wp-content/plugins --force || error 'Unable to remove plugins on production.'
 	wp core download --version=$WP_VER --force --path=$PRODUCTION_DIR || error 'Unable to move WordPress files.'
 	move_files $STAGING_DIR $PRODUCTION_DIR
 	clear
@@ -131,6 +129,17 @@ function destroy {
 function move_files {
 	FROM="$1"
 	TO="$2"
+
+	AVAIL=$(df / --output=avail | sed 1d)
+	CONTENT=$(du -s -B 1 $FROM/wp-content | cut -f1)
+	if [ "$CONTENT" -gt "$AVAIL" ]
+		then
+		error 'Not enough storage to move files.'
+	fi
+
+	rm -r $TO/wp-content/themes --force || error 'Unable to remove themes directory.'
+	rm -r $TO/wp-content/plugins --force || error 'Unable to remove plugins directory.'
+
 	mkdir -p $TO/wp-content/uploads || error 'Unable to create uploads folder.'
 	mkdir -p $TO/wp-content/themes || error 'Unable to create themes folder.'
 	mkdir -p $TO/wp-content/plugins || error 'Unable to create plugins folder.'
