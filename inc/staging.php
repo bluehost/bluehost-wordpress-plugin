@@ -32,6 +32,26 @@ function mm_staging_dashboard_display() {
 }
 
 function mm_cl( $command, $args = null ) {
+	$whitelist_commands = array(
+		'create'          => false,
+		'clone'           => 'production',
+		'destroy'         => 'production',
+		'sso_staging'     => 'production',
+		'deploy_files'    => 'staging',
+		'deploy_db'       => 'staging',
+		'deploy_files_db' => 'staging',
+		'sso_production'  => 'staging',
+		'save_state'      => 'staging',
+		'restore_state'   => 'staging',
+		'revisions'       => 'staging',
+	);
+
+	if ( ! array_key_exists( $command, $whitelist_commands ) ) {
+		echo json_encode( array( 'status' => 'error', 'message' => 'Command not found in whitelist.' ) );
+	} else {
+		mm_check_env( $whitelist_commands[ $command ] );
+	}
+
 	$command = array( $command );
 	$token = wp_generate_password( 32, false );
 	set_transient( 'staging_auth_token', $token, 60 );
