@@ -49,7 +49,9 @@ function mm_cl( $command, $args = null ) {
 	if ( ! array_key_exists( $command, $whitelist_commands ) ) {
 		echo json_encode( array( 'status' => 'error', 'message' => 'Command not found in whitelist.' ) );
 	} else {
-		mm_check_env( $whitelist_commands[ $command ] );
+		if ( ! class_exists( 'WP_CLI_Command' ) ) {
+			mm_check_env( $whitelist_commands[ $command ] );
+		}
 	}
 
 	$command = array( $command );
