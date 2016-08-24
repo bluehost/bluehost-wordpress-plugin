@@ -45,7 +45,7 @@ function mm_api( $args = array(), $query = array() ) {
 function mm_api_cache( $api_url ) {
 	$key = md5( $api_url );
 	if ( false === ( $transient = get_transient( 'mm_api_calls' ) ) || ! isset( $transient[ $key ] ) ) {
-		$transient[ $key ] = wp_remote_get( $api_url );
+		$transient[ $key ] = wp_remote_get( $api_url, array( 'timeout' => 15 ) );
 		if ( ! is_wp_error( $transient[ $key ] ) ) {
 			set_transient( 'mm_api_calls', $transient, DAY_IN_SECONDS );
 		}
