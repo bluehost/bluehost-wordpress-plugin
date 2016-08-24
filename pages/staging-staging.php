@@ -5,21 +5,6 @@ if ( ! defined( 'WPINC' ) ) { die; }
 <?php
 require_once( MM_BASE_DIR . 'pages/header-small.php' );
 ?>
-<style type="text/css">
-#mm-message {
-	position: fixed;
-	bottom:0;
-	left:0;
-	right:0;
-	margin: 0 auto;
-	min-width: 320px;
-	max-width: 500px;
-	padding: 10px 30px;
-	background-color: rgba( 0, 0, 0, 0.7);
-	color: #fff;
-	text-align: center;
-}
-</style>
 	<main id="main">
 		<div class="container">
 			<div class="panel panel-default">
@@ -80,7 +65,7 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 						<div class="col-xs-12 col-sm-6 col-sm-offset-3  text-center">
 							<h2>Deploy Staging To Production</h2>
 							<br/>
-							<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/staging-to-production.png' ); ?>" />
+							<img src="<?php echo esc_url( MM_ASSETS_URL . 'img/staging-to-production.png' ); ?>" />
 							<br/>
 							<p>Ready to make your changes live? These options will push the changes you've made on staging up to your produciton site.</p>
 						</div>
@@ -89,7 +74,7 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 					<div class="row">
 						<div class="col-xs-12 col-sm-4 text-center">
 							<div style="height: 150px;">
-								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/files.png' ); ?>" />
+								<img src="<?php echo esc_url( MM_ASSETS_URL . 'img/files.png' ); ?>" />
 							</div>
 							<button class="btn btn-success btn-lg mm-modal" data-mm-modal="deploy-files">Deploy Files Only</button>
 							<br/>
@@ -97,7 +82,7 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 						</div>
 						<div class="col-xs-12 col-sm-4 text-center">
 							<div style="height: 150px;">
-								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/files-db.png' ); ?>" />
+								<img src="<?php echo esc_url( MM_ASSETS_URL . 'img/files-db.png' ); ?>" />
 							</div>
 							<button class="btn btn-success btn-lg mm-modal" data-mm-modal="deploy-files-database">Deploy Files &amp; Database</button>
 							<br/>
@@ -105,7 +90,7 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 						</div>
 						<div class="col-xs-12 col-sm-4 text-center">
 							<div style="height: 150px;">
-								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/database.png' ); ?>" />
+								<img src="<?php echo esc_url( MM_ASSETS_URL . 'img/database.png' ); ?>" />
 							</div>
 							<button class="btn btn-success btn-lg mm-modal" data-mm-modal="deploy-database">Deploy Database Only</button>
 							<br/>
@@ -143,7 +128,7 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 						<div class="col-xs-12 col-sm-12">
 							<table class="table">
 								<tr><th>Message</th><th>Date</th><th>&nbsp;</th></tr>
-								<tr id="staging-revisions-loader"><td colspan="3" class="text-center"><img src="<?php echo MM_BASE_URL . 'tmp/img/loader-balls.svg';?>"/></td></tr>
+								<tr id="staging-revisions-loader"><td colspan="3" class="text-center"><img src="<?php echo MM_ASSETS_URL . 'img/loader-balls.svg';?>"/></td></tr>
 							</table>
 						</div>
 					</div>

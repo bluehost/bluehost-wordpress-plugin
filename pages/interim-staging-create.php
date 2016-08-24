@@ -3,7 +3,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 text-center">
-					<img src="<?php echo MM_BASE_URL . 'tmp/img/loader-balls.svg';?>"/>
+					<img src="<?php echo MM_ASSETS_URL . 'img/loader-balls.svg';?>"/>
 				</div>
 			</div>
 			<div class="row">

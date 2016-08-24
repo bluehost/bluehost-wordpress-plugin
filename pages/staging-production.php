@@ -5,21 +5,6 @@ if ( ! defined( 'WPINC' ) ) { die; }
 <?php
 require_once( MM_BASE_DIR . 'pages/header-small.php' );
 ?>
-<style type="text/css">
-#mm-message {
-	position: fixed;
-	bottom:0;
-	left:0;
-	right:0;
-	margin: 0 auto;
-	min-width: 320px;
-	max-width: 500px;
-	padding: 10px 30px;
-	background-color: rgba( 0, 0, 0, 0.7);
-	color: #fff;
-	text-align: center;
-}
-</style>
 	<main id="main">
 		<div class="container">
 			<div class="panel panel-default">
@@ -180,7 +165,7 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 						<div class="col-xs-12 col-sm-6 text-center">
 							<h2>Clone Production To Staging</h2>
 							<div style="height: 150px;">
-								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/production-to-staging.png' ); ?>" />
+								<img src="<?php echo esc_url( MM_ASSETS_URL . 'img/production-to-staging.png' ); ?>" />
 							</div>
 							<p>Copy your current production site and your settings to your staging environment.</p>
 							<button class="btn btn-primary btn-lg staging-action" data-staging-action="mm_clone">Clone</button>
@@ -188,7 +173,7 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 						<div class="col-xs-12 col-sm-6 text-center">
 							<h2>Destroy Staging Environment</h2>
 							<div style="height: 150px;">
-								<img src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/destroy-staging.png' ); ?>" />
+								<img src="<?php echo esc_url( MM_ASSETS_URL . 'img/destroy-staging.png' ); ?>" />
 							</div>
 							<p>Need to start fresh? This will completely remove your current staging environment.</p>
 							<button class="btn btn-primary btn-lg staging-action" data-staging-action="mm_destroy">Destroy Staging</button>

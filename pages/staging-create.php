@@ -5,21 +5,6 @@ if ( ! defined( 'WPINC' ) ) { die; }
 <?php
 require_once( MM_BASE_DIR . 'pages/header-small.php' );
 ?>
-<style type="text/css">
-#mm-message {
-	position: fixed;
-	bottom:0;
-	left:0;
-	right:0;
-	margin: 0 auto;
-	min-width: 320px;
-	max-width: 500px;
-	padding: 10px 30px;
-	background-color: rgba( 0, 0, 0, 0.7);
-	color: #fff;
-	text-align: center;
-}
-</style>
 	<main id="main">
 		<div class="container">
 			<div class="panel panel-default">
@@ -34,7 +19,7 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 							<button class="btn btn-success btn-lg staging-action" data-staging-action="mm_create" data-interim="staging-create">Create Staging Site</button>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-sm-offset-1">
-							<img class="img-responsive" src="<?php echo esc_url( MM_BASE_URL . 'tmp/img/staging-diagram.jpg' ); ?>" />
+							<img class="img-responsive" src="<?php echo esc_url( MM_ASSETS_URL . 'img/staging-diagram.jpg' ); ?>" />
 						</div>
 					</div>
 				</div>
