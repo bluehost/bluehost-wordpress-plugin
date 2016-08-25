@@ -8,7 +8,7 @@ function mm_brand( $format = '%s' ) {
 			$brand = $brands->{$mm_brand};
 		}
 	}
-	if ( ! isset( $brand ) || empty( $brand ) ) {
+	if ( ! isset( $brand ) || empty( $brand ) || 'quickinstall' == $brand ) {
 		$brand = 'default';
 	}
 	return sprintf( $format, sanitize_title( $brand ) );
