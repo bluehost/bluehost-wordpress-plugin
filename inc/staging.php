@@ -237,29 +237,6 @@ function mm_modal() {
 		if ( file_exists( $interim ) ) {
 			?>
 			<div id="mm-modal-wrap">
-				<style type="text/css">
-					#mm-modal-wrap {
-						display: none;
-						position: fixed;
-						z-index: 1;
-						left: 0;
-						top: 0;
-						width: 100%;
-						height: 100%;
-						overflow: auto;
-						background-color: rgb( 0, 0, 0 );
-						background-color: rgba( 0, 0, 0, 0.4 );
-					}
-
-					/* Modal Content/Box */
-					#mm-modal-wrap .container {
-						background-color: #fefefe;
-						margin: 15% auto;
-						padding: 20px;
-						border: 1px solid #888;
-						width: 30%;
-					}
-				</style>
 				<?php
 				mm_require( $interim );
 				?>
