@@ -225,9 +225,7 @@ add_action( 'wp_ajax_mm_sso_staging', 'mm_sso_staging' );
 function mm_interim() {
 	if ( isset( $_POST['template'] ) ) {
 		$interim = MM_BASE_DIR . 'pages/interim-' . sanitize_file_name( $_POST['template'] ) . '.php';
-		if ( file_exists( $interim ) ) {
-			mm_require( $interim );
-		}
+		mm_require( $interim );
 	}
 	die;
 }
