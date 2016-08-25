@@ -118,7 +118,7 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-xs-12 col-sm-8">
-							<p>Save the current staging environment or restore a previously saved staging environement.</p>
+							<p>Save the current staging environment or restore a previously saved staging environment.</p>
 						</div>
 						<div class="col-xs-12 col-sm-4 text-right">
 							<button class="btn btn-primary btn-lg staging-action" data-staging-action="mm_save_state">Add Restoration Point</button>
