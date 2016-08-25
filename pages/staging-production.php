@@ -104,7 +104,7 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 								<img src="<?php echo esc_url( MM_ASSETS_URL . 'img/destroy-staging.png' ); ?>" />
 							</div>
 							<p>Need to start fresh? This will completely remove your current staging environment.</p>
-							<button class="btn btn-primary btn-lg staging-action" data-staging-action="mm_destroy">Destroy Staging</button>
+							<button class="btn btn-primary btn-lg mm-modal" data-mm-modal="destroy-confirm">Destroy Staging</button>
 						</div>
 					</div>
 				</div>
