@@ -147,7 +147,7 @@ function mm_partner_offers( $location, $echo = true ) {
 			$offer = $offers->{ $location };
 		}
 		if ( 'default' != mm_brand() && isset( $offers->{ strtolower( mm_brand() ) }->{ $location } ) ) {
-			$offer = $offers->{ mm_brand() }->{ $location };
+			$offer = $offers->{ strtolower( mm_brand() ) }->{ $location };
 		}
 	}
 
