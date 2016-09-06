@@ -37,6 +37,7 @@ function create {
 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR || error 'Unable to import global config on staging.'
 	wp option update mm_coming_soon 'true' --path=$STAGING_DIR || error 'Unable to enable the coming soon page on staging.'
 	wp rewrite flush --path=$STAGING_DIR || error 'Unable to flush rewrite rules.'
+	rewrite_htaccess $STAGING_DIR
 	#fire email here from mojo cli to site admin
 	clear
 	echo \{\"status\" :\"success\",\"message\":\"Staging website created successfully.\",\"reload\":\"true\"\}
@@ -68,6 +69,7 @@ function clone {
 	wp rewrite flush --path=$STAGING_DIR || error 'Unable to flush rewrite rules.'
 	save_state 'Clone From Production'
 	rm $STAGING_DIR/.export-sql --force
+	rewrite_htaccess $STAGING_DIR
 	clear
 	echo \{\"status\" :\"success\",\"message\":\"Website cloned successfully.\"\}
 }
@@ -94,6 +96,7 @@ function deploy_db {
 	wp option update staging_environment production --path=$PRODUCTION_DIR || error 'Unable to set environment.'
 	wp option update staging_config "$CONFIG" --format=json --path=$PRODUCTION_DIR || error 'Unable to import global config on production.'
 	wp option delete mm_coming_soon --path=$PRODUCTION_DIR || error 'Unable to disable coming soon page.'
+	rewrite_htaccess $PRODUCTION_DIR
 	clear
 	echo \{\"status\" :\"success\",\"message\":\"Database deployed successfully.\",\"callback\":\"mm_load_revisions\"\}
 }
@@ -146,6 +149,11 @@ function move_files {
 	rsync -r --exclude=.git $FROM/wp-content/uploads/* $TO/wp-content/uploads || error 'Unable to move uploads folder.'
 	rsync -r --exclude=.git $FROM/wp-content/themes/* $TO/wp-content/themes || error 'Unable to move themes folder.'
 	rsync -r --exclude=.git $FROM/wp-content/plugins/* $TO/wp-content/plugins || error 'Unable to move plugins folder.'
+}
+
+function rewrite_htaccess {
+	LOCATION="$1"
+	wp eval 'global $wp_rewrite; echo $wp_rewrite->mod_rewrite_rules();' --path=$LOCATION > $LOCATION/.htaccess || error 'Unable to create htaccess'
 }
 
 function save_state {
