@@ -121,6 +121,10 @@ function mm_spam_add_moderation_words( $words ) {
 add_filter( 'option_moderation_keys', 'mm_spam_add_moderation_words' );
 
 function mm_spam_process_hidden_field( $data ) {
+	if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'comments' ) ) {
+		return $data;
+	}
+
 	$spam_key = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] );
 	if ( ! isset( $_POST['js-spam-prevention'] ) || $_POST['js-spam-prevention'] !== $spam_key ) {
 		if ( current_filter() !== 'registration_errors' ) {
