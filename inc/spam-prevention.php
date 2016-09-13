@@ -121,6 +121,10 @@ function mm_spam_add_moderation_words( $words ) {
 add_filter( 'option_moderation_keys', 'mm_spam_add_moderation_words' );
 
 function mm_spam_process_hidden_field( $data ) {
+	if ( is_user_logged_in() ) {
+		return $data;
+	}
+
 	if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'comments' ) ) {
 		return $data;
 	}
