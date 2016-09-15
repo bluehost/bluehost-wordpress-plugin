@@ -132,7 +132,7 @@ function mm_spam_process_hidden_field( $data ) {
 	$spam_key = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] );
 	if ( ! isset( $_POST['js-spam-prevention'] ) || $_POST['js-spam-prevention'] !== $spam_key ) {
 		if ( current_filter() !== 'registration_errors' ) {
-			die( 'You Lose! Good Day Sir!' );
+			die( 'Blocked as suspected bot.' );
 		} else {
 			$data->add( 'bot_error', 'Suspected bot.' );
 		}
