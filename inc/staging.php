@@ -95,6 +95,11 @@ function mm_cl( $command, $args = null ) {
 		die;
 	}
 
+	if ( false !== strpos( $command, '|' ) ) {
+		echo json_encode( array( 'status' => 'error', 'message' => 'Invalid character in command (|).' ) );
+                die;
+	}
+
 	$response = exec( MM_BASE_DIR . 'lib/.staging ' . $command );
 
 	return $response;
