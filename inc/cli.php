@@ -178,7 +178,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 				$valid_brands = array_keys( $brands );
 				if ( in_array( $assoc_args['update'], $valid_brands ) ) {
 					if ( update_option( 'mm_brand', $assoc_args['update'] ) ) {
-						WP_CLI::success( 'Plugin branding updated succesfully.' );
+						WP_CLI::success( 'Plugin branding updated successfully.' );
 					} else {
 						WP_CLI::error( 'Unable to update plugin branding.' );
 					}
@@ -190,7 +190,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 		}
 		if ( isset( $assoc_args['remove'] ) ) {
 			if ( delete_option( 'mm_brand' ) ) {
-				WP_CLI::success( 'Plugin branding removed succesfully.' );
+				WP_CLI::success( 'Plugin branding removed successfully.' );
 			}
 		}
 	}
