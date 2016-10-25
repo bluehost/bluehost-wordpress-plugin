@@ -144,7 +144,25 @@ function mm_business_tools_page() {
 }
 
 function mm_staging_menu() {
-	add_submenu_page( 'mojo-themes', 'Staging (beta)', 'Staging <small>(beta)</small>', 'manage_options', 'mojo-staging', 'mm_staging_page' );
+	if ( 'compatible' !== get_option( 'mm_compat_check', false ) ) {
+		$json = wp_remote_get( add_query_arg( array( 'action' => 'mm_compat_check' ), admin_url( 'admin-ajax.php' ) ), array( 'timeout' => 10, 'cookies' => $_COOKIE ) );
+
+		if ( ! is_wp_error( $json ) ) {
+			$json = json_decode( $json['body'] );
+		}
+
+		if ( property_exists( $json, 'status' ) && 'success' == $json->status ) {
+			update_option( 'mm_compat_check', 'compatible' );
+			$add_staging_menu = true;
+		} else {
+			update_option( 'mm_compat_check', 'incompatible' );
+		}
+	} else {
+		$add_staging_menu = true;
+	}
+	if ( isset( $add_staging_menu ) && true == $add_staging_menu ) {
+		add_submenu_page( 'mojo-themes', 'Staging (beta)', 'Staging <small>(beta)</small>', 'manage_options', 'mojo-staging', 'mm_staging_page' );
+	}
 }
 add_action( 'admin_menu', 'mm_staging_menu' );
 

@@ -250,6 +250,11 @@ function compatibility_check {
 		then
 		error 'Git is not available'
 	fi
+	if [ "compat_check" == "$1" ]
+		then
+		echo \{\"status\":\"success\"\}
+		exit
+	fi
 }
 
 PRODUCTION_DIR=$3
@@ -270,7 +275,7 @@ if [[ $(pwd) == *"staging"* ]]
 		CURRENT_DIR=$PRODUCTION_DIR
 fi
 
-compatibility_check
+compatibility_check "$1"
 #everything must auth.
 auth_action $2
 lock_check

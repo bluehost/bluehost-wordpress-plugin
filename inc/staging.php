@@ -6,7 +6,7 @@ function mm_is_staging() {
 }
 
 function mm_staging_dashboard_widgets() {
-	if ( false == get_option( 'staging_environment' ) ) {
+	if ( 'compatible' === get_option( 'mm_compat_check', false ) && false == get_option( 'staging_environment' ) ) {
 		wp_add_dashboard_widget(
 			'mojo-staging',
 			'Staging Site Setup',
@@ -44,6 +44,7 @@ function mm_cl( $command, $args = null ) {
 		'save_state'      => 'staging',
 		'restore_state'   => 'staging',
 		'revisions'       => 'staging',
+		'compat_check'    => false,
 	);
 
 	if ( ! array_key_exists( $command, $whitelist_commands ) ) {
@@ -97,9 +98,8 @@ function mm_cl( $command, $args = null ) {
 
 	if ( false !== strpos( $command, '|' ) ) {
 		echo json_encode( array( 'status' => 'error', 'message' => 'Invalid character in command (|).' ) );
-                die;
+		die;
 	}
-
 	$response = exec( MM_BASE_DIR . 'lib/.staging ' . $command );
 
 	return $response;
@@ -129,6 +129,12 @@ function mm_check_env( $env ) {
 		die;
 	}
 }
+
+function mm_compat_check() {
+	echo mm_cl( 'compat_check' );
+	die;
+}
+add_action( 'wp_ajax_mm_compat_check', 'mm_compat_check' );
 
 function mm_create() {
 	mm_check_admin();
