@@ -266,3 +266,4 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 	}
 }
 WP_CLI::add_command( 'mojo', 'WP_MOJO_Commands' );
+WP_CLI::add_command( 'eig', 'WP_MOJO_Commands' );
