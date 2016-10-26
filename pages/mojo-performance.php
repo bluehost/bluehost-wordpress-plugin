@@ -35,7 +35,7 @@ $cache_settings = wp_parse_args( $cache_settings, $defaults );
 							Page Cache
 							<p>
 								<img style="margin: 5px;" class="pull-left" src="<?php echo MM_BASE_URL; ?>tmp/pagecache.svg" />
-								When pages are eligable for a full page cache, a copy of the page is created and stored for easy retrieval. This means it skips most of the stuff that makes a page slow.
+								When pages are eligible for a full page cache, a copy of the page is created and stored for easy retrieval. This means it skips most of the stuff that makes a page slow.
 							</p>
 							<br/>
 							<?php
