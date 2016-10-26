@@ -33,6 +33,7 @@ require_once( MM_BASE_DIR . 'inc/staging.php' );
 require_once( MM_BASE_DIR . 'inc/updates.php' );
 require_once( MM_BASE_DIR . 'inc/coming-soon.php' );
 require_once( MM_BASE_DIR . 'inc/tests.php' );
+require_once( MM_BASE_DIR . 'inc/performance.php' );
 mm_require( MM_BASE_DIR . 'inc/branding.php' );
 require_once( MM_BASE_DIR . 'inc/editor-prompt.php' );
 mm_require( MM_BASE_DIR . 'inc/sso.php' );
