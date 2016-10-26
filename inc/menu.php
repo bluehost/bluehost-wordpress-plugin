@@ -144,18 +144,18 @@ function mm_business_tools_page() {
 }
 
 function mm_staging_menu() {
-	if ( 'compatible' !== get_option( 'mm_compat_check', false ) ) {
+	if ( 'compatible' !== get_transient( 'mm_compat_check', false ) ) {
 		$json = wp_remote_get( add_query_arg( array( 'action' => 'mm_compat_check' ), admin_url( 'admin-ajax.php' ) ), array( 'timeout' => 10, 'cookies' => $_COOKIE ) );
 
 		if ( ! is_wp_error( $json ) ) {
 			$json = json_decode( $json['body'] );
 		}
 
-		if ( property_exists( $json, 'status' ) && 'success' == $json->status ) {
-			update_option( 'mm_compat_check', 'compatible' );
+		if ( is_object( $json ) && property_exists( $json, 'status' ) && 'success' == $json->status ) {
+			set_transient( 'mm_compat_check', 'compatible', DAY_IN_SECONDS * 30 );
 			$add_staging_menu = true;
 		} else {
-			update_option( 'mm_compat_check', 'incompatible' );
+			set_transient( 'mm_compat_check', 'incompatible', DAY_IN_SECONDS * 30 );
 		}
 	} else {
 		$add_staging_menu = true;

@@ -6,7 +6,7 @@ function mm_is_staging() {
 }
 
 function mm_staging_dashboard_widgets() {
-	if ( 'compatible' === get_option( 'mm_compat_check', false ) && false == get_option( 'staging_environment' ) ) {
+	if ( 'compatible' === get_transient( 'mm_compat_check', false ) && false == get_option( 'staging_environment' ) ) {
 		wp_add_dashboard_widget(
 			'mojo-staging',
 			'Staging Site Setup',
@@ -100,7 +100,10 @@ function mm_cl( $command, $args = null ) {
 		echo json_encode( array( 'status' => 'error', 'message' => 'Invalid character in command (|).' ) );
 		die;
 	}
-	$response = exec( MM_BASE_DIR . 'lib/.staging ' . $command );
+
+	$script = MM_BASE_DIR . 'lib/.staging';
+
+	$response = exec( $script . ' ' . $command );
 
 	return $response;
 }

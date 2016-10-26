@@ -243,13 +243,33 @@ function lock_check {
 function compatibility_check {
 	if [[ -z $(type wp) ]]
 		then
-		error 'WPCLI is not available'
+		error 'WPCLI is not available.'
 	fi
 
 	if [[ -z $(type git) ]]
 		then
-		error 'Git is not available'
+		error 'Git is not available.'
 	fi
+
+	WPCLI_VER=$(sed 's/[^0-9.]*\([0-9.]*\).*/\1/' <<< $(wp --version) )
+	GIT_VER=$(sed 's/[^0-9.]*\([0-9.]*\).*/\1/' <<< $(git --version) )
+	PHP_VER=$(sed 's/[^0-9.]*\([0-9.]*\).*/\1/' <<< $(php --version) )
+
+	if [ "$( printf "0.24.0\n$WPCLI_VER" | sort -V | head -n1 )" == "$WPCLI_VER" ] && [ "$WPCLI_VER" != "0.24.0" ]
+		then
+		error "Minimum version of WPCLI not met."
+	fi
+
+	if [ "$( printf "2.9.2\n$GIT_VER" | sort -V | head -n1 )" == "$GIT_VER" ] && [ "$GIT_VER" != "2.9.2" ]
+		then
+		error "Minimum version of GIT not met."
+	fi
+
+	if [ "$( printf "5.3.0\n$PHP_VER" | sort -V | head -n1 )" == "$PHP_VER" ] && [ "$PHP_VER" != "5.3.0" ]
+		then
+		error "Minimum version of PHP-CLI not met."
+	fi
+
 	if [ "compat_check" == "$1" ]
 		then
 		echo \{\"status\":\"success\"\}
