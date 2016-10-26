@@ -112,6 +112,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 					if ( ! is_wp_error( $response ) && is_array( $response ) && isset( $response['body'] ) && strlen( $response['body'] ) > 200 ) {
 						file_put_contents( WP_CONTENT_DIR . '/mu-plugins/endurance-page-cache.php', $response['body'] );
 						if ( file_exists( WP_CONTENT_DIR . '/mu-plugins/endurance-page-cache.php' ) ) {
+							save_mod_rewrite_rules();
 							WP_CLI::success( 'Page cache enabled.' );
 						}
 					} else {
@@ -128,6 +129,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 					if ( ! is_wp_error( $response ) && is_array( $response ) && isset( $response['body'] ) && strlen( $response['body'] ) > 200 ) {
 						file_put_contents( WP_CONTENT_DIR . '/mu-plugins/endurance-browser-cache.php', $response['body'] );
 						if ( file_exists( WP_CONTENT_DIR . '/mu-plugins/endurance-browser-cache.php' ) ) {
+							save_mod_rewrite_rules();
 							WP_CLI::success( 'Browser cache enabled.' );
 						}
 					} else {
@@ -144,6 +146,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 				case 'page':
 					if ( file_exists( WP_CONTENT_DIR . '/mu-plugins/endurance-page-cache.php' ) ) {
 						if ( unlink( WP_CONTENT_DIR . '/mu-plugins/endurance-page-cache.php' ) ) {
+							save_mod_rewrite_rules();
 							WP_CLI::success( 'Page caching disabled.' );
 						} else {
 							WP_CLI::error( 'Unable to remove page cache file from mu-plugins directory.' );
@@ -156,6 +159,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 				case 'browser':
 					if ( file_exists( WP_CONTENT_DIR . '/mu-plugins/endurance-browser-cache.php' ) ) {
 						if ( unlink( WP_CONTENT_DIR . '/mu-plugins/endurance-browser-cache.php' ) ) {
+							save_mod_rewrite_rules();
 							WP_CLI::success( 'Browser caching disabled.' );
 						} else {
 							WP_CLI::error( 'Unable to remove browser cache file from mu-plugins directory.' );
