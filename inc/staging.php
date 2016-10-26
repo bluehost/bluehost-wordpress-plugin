@@ -5,7 +5,7 @@ function mm_is_staging() {
 	return ( get_option( 'staging_environment' ) == 'staging' ) ? true : false;
 }
 
-function mm_staging_dashboard_widgets() {
+function mm_staging_dashboard_widget() {
 	if ( 'compatible' === get_transient( 'mm_compat_check', false ) && false == get_option( 'staging_environment' ) ) {
 		wp_add_dashboard_widget(
 			'mojo-staging',
@@ -25,7 +25,7 @@ function mm_staging_dashboard_widgets() {
 		$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 	}
 }
-add_action( 'wp_dashboard_setup', 'mm_staging_dashboard_widgets' );
+add_action( 'wp_dashboard_setup', 'mm_staging_dashboard_widget' );
 
 function mm_staging_dashboard_display() {
 	mm_require( MM_BASE_DIR . 'pages/dashboard-staging-widget.php' );
