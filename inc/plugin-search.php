@@ -10,7 +10,7 @@ add_filter( 'mm_plugin_search_patterns', 'mm_add_plugin_search_patterns' );
 
 function mm_check_plugin_search_value( $search ) {
 	$patterns = apply_filters( 'mm_plugin_search_patterns', array() );
-	if ( is_array( $patterns) ) {
+	if ( is_array( $patterns ) ) {
 		foreach ( $patterns as $pattern => $plugin ) {
 			if ( preg_match( $pattern, $search ) ) {
 				return $plugin;
@@ -40,6 +40,8 @@ function mm_plugin_search_result() {
 		$author = ( isset( $plugin['author'] ) ) ? $plugin['author'] : 'MOJO Marketplace';
 		$author_url = ( isset( $plugin['author_url'] ) ) ? $plugin['author_url'] : 'http://www.mojomarketplace.com';
 		$author_url = mm_build_link( $author_url, array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'plugin_search_author_link' ) );
+		$button_class = ( isset( $plugin['button_class'] ) ) ? $plugin['button_class'] : 'button';
+		$detail_class = ( isset( $plugin['detail_class'] ) ) ? $plugin['detail_class'] : '';
 		$plugin_html = '<div class="plugin-card">
 							<div class="plugin-card-top">
 								<a target="_blank" href="' . $link . '" class="plugin-icon" style="background-image: url(' . $image . ');background-position: center;">&nbsp;</a>
@@ -49,10 +51,10 @@ function mm_plugin_search_result() {
 										<ul class="plugin-action-buttons">';
 
 		$plugin_html .= '<li>
-			<a href="' . $buy_now . '" class="button">' . $buy_now_btn . '</a>
+			<a href="' . $buy_now . '" class="' . $button_class . '">' . $buy_now_btn . '</a>
 		</li>';
 
-		$plugin_html .= '<li><a href="' . $link . '">More Details</a></li>';
+		$plugin_html .= '<li><a href="' . $link . '" class="' . $detail_class . '">More Details</a></li>';
 
 		$plugin_html .= '</ul>
 									</div>

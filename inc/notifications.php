@@ -146,15 +146,8 @@ function mm_partner_offers( $location, $echo = true ) {
 		if ( isset( $offers->{ $location } ) ) {
 			$offer = $offers->{ $location };
 		}
-	}
-
-	if ( 'default' != mm_brand() ) {
-		$branded_offers = mm_api_cache( 'https://api.mojomarketplace.com/mojo-plugin-assets/json/mojo-partner-offers-' . mm_brand() . '.json' );
-		if ( ! is_wp_error( $branded_offers ) && null !== json_decode( $branded_offers['body'] ) ) {
-			$branded_offers = json_decode( $branded_offers['body'] );
-			if ( isset( $branded_offers->{ $location } )  && ! empty( $branded_offers->{ $location } ) ) {
-				$offer = $branded_offers->{ $location };
-			}
+		if ( 'default' != mm_brand() && isset( $offers->{ strtolower( mm_brand() ) }->{ $location } ) ) {
+			$offer = $offers->{ strtolower( mm_brand() ) }->{ $location };
 		}
 	}
 
