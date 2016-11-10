@@ -103,7 +103,7 @@ function mm_cl( $command, $args = null ) {
 
 	$script = MM_BASE_DIR . 'lib/.staging';
 
-	if ( 0655 != (int) substr( sprintf( '%o', fileperms( $script ) ), -4 ) {
+	if ( 0655 != (int) substr( sprintf( '%o', fileperms( $script ) ), -4 ) ) {
 		chmod( $script, 0655 );
 	}
 
