@@ -379,11 +379,11 @@ $mm_command_alias = array(
 	'hostgator',
 	'ipage',
 	'ipower',
-	'fatcow'
+	'fatcow',
 	'domain',
 	'site5',
 );
 
-foreach( $mm_command_alias as $brand ) {
+foreach ( $mm_command_alias as $brand ) {
 	WP_CLI::add_command( $brand, 'WP_MOJO_Commands' );
 }
