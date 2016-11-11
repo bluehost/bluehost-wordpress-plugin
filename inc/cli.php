@@ -370,5 +370,20 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 		}
 	}
 }
-WP_CLI::add_command( 'mojo', 'WP_MOJO_Commands' );
-WP_CLI::add_command( 'eig', 'WP_MOJO_Commands' );
+$mm_command_alias = array(
+	'mojo',
+	'eig',
+	'bluehost',
+	'hostmonster',
+	'justhost',
+	'hostgator',
+	'ipage',
+	'ipower',
+	'fatcow'
+	'domain',
+	'site5',
+);
+
+foreach( $mm_command_alias as $brand ) {
+	WP_CLI::add_command( $brand, 'WP_MOJO_Commands' );
+}
