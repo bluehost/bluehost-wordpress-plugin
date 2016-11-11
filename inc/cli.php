@@ -288,6 +288,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 			'clone',
 			'destroy',
 			'sso_staging',
+			'deploy',
 			'deploy_files',
 			'deploy_db',
 			'deploy_files_db',
@@ -331,6 +332,21 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 					$user = $user->ID;
 				}
 				$json_response = mm_cl( 'sso_production', array( $user ) );
+				break;
+
+			case 'deploy':
+				if ( ! isset( $args[1] ) || ! in_array( $args[1], array( 'files', 'db', 'database', 'all', 'both' ) ) ) {
+					WP_CLI::error( 'Invalid deploy type.' );
+				}
+				if ( 'files' == $args[1] ) {
+					$json_response = mm_cl( 'deploy_files' );
+				}
+				if ( 'db' == $args[1] || 'database' == $args[1] ) {
+					$json_response = mm_cl( 'deploy_db' );
+				}
+				if ( 'all' == $args[1] || 'both' == $args[1] ) {
+					$json_response = mm_cl( 'deploy_files_db' );
+				}
 				break;
 
 			case 'deploy_files':
