@@ -260,11 +260,6 @@ function compatibility_check {
 		error "Minimum version of WPCLI not met."
 	fi
 
-	if [ "$( printf "2.9.2\n$GIT_VER" | sort -V | head -n1 )" == "$GIT_VER" ] && [ "$GIT_VER" != "2.9.2" ]
-		then
-		error "Minimum version of GIT not met."
-	fi
-
 	if [ "$( printf "5.3.0\n$PHP_VER" | sort -V | head -n1 )" == "$PHP_VER" ] && [ "$PHP_VER" != "5.3.0" ]
 		then
 		error "Minimum version of PHP-CLI not met."
