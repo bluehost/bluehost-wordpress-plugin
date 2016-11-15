@@ -260,6 +260,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 		$details['COMMENTS MODERATION'] = $comments_count->moderated;
 		$details['COMMENTS SPAM'] = $comments_count->spam;
 		$details['COMMENTS TRASHED'] = $comments_count->trash;
+		$details['CRON COUNT'] = count( get_option('cron') );
 		$options = wp_load_alloptions();
 		$all_transients = 0;
 		$all_options = 0;
