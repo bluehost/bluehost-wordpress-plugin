@@ -9,6 +9,15 @@ $defaults = array(
 	'browser' => 'disabled',
 	'object'  => 'disabled',
 );
+
+if ( file_exists( WP_CONTENT_DIR . '/mu-plugins/endurance-page-cache.php' ) ) {
+	$defaults['page'] = 'enabled';
+}
+
+if ( file_exists( WP_CONTENT_DIR . '/mu-plugins/endurance-browser-cache.php' ) ) {
+	$defaults['browser'] = 'enabled';
+}
+
 $cache_settings = get_option( 'mm_cache_settings' );
 $cache_settings = wp_parse_args( $cache_settings, $defaults );
 ?>
