@@ -243,17 +243,23 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 	public function digest( $args, $assoc_args ) {
 		global $wpdb;
 		global $wp_version;
+		$siteurl = str_replace( array( 'http://', 'https://' ), '', get_option( 'siteurl' ) );
+		$home = str_replace( array( 'http://', 'https://' ), '', get_option( 'home' ) );
+		$template = get_option( 'template' );
+		$stylesheet = get_option( 'stylesheet' );
 		$details = array();
+		$details['SITE URL'] = ( $home != $siteurl ) ? $home .'"'. $siteurl: $home;
+		$details['DB NAME'] = DB_NAME;
 		$details['WP VERSION'] = $wp_version;
 		$details['PHP VERSION'] = phpversion();
 		$details['MYSQL VERSION'] = $wpdb->get_var( 'SHOW VARIABLES LIKE "version";', 1 );
-		$details['ACTIVE THEME'] = get_option( 'stylesheet' );
+		$details['ACTIVE THEME'] = ( $template != $stylesheet ) ? $template . ':' . $stylesheet : $template;
 		$details['ACTIVE PLUGINS'] = count( get_option( 'active_plugins' ) );
 		$details['TOTAL PLUGINS'] = count( get_plugins() );
 		$details['TOTAL THEMES'] = count( wp_get_themes() );
-		$details['TOTAL POSTS'] = count( get_posts( array( 'post_type' => 'post' ) ) );
-		$details['TOTAL PAGES'] = count( get_posts( array( 'post_type' => 'page' ) ) );
-		$details['TOTAL MEDIA'] = count( get_posts( array( 'post_type' => 'attachment' ) ) );
+		$details['TOTAL POSTS'] = count( get_posts( array( 'post_type' => 'post', 'numberposts' => -1 ) ) );
+		$details['TOTAL PAGES'] = count( get_posts( array( 'post_type' => 'page', 'numberposts' => -1 ) ) );
+		$details['TOTAL MEDIA'] = count( get_posts( array( 'post_type' => 'attachment', 'number_posts' => -1 ) ) );
 		$comments_count = wp_count_comments();
 		$details['TOTAL COMMENTS'] = $comments_count->total_comments;
 		$details['COMMENTS APPROVED'] = $comments_count->approved;
