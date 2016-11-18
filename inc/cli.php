@@ -248,7 +248,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 		$template = get_option( 'template' );
 		$stylesheet = get_option( 'stylesheet' );
 		$details = array();
-		$details['SITE URL'] = ( $home != $siteurl ) ? $home .'"'. $siteurl: $home;
+		$details['SITE URL'] = ( $home != $siteurl ) ? $home .':'. $siteurl: $home;
 		$details['DB NAME'] = DB_NAME;
 		$details['WP VERSION'] = $wp_version;
 		$details['PHP VERSION'] = phpversion();
