@@ -259,7 +259,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 		$details['TOTAL THEMES'] = count( wp_get_themes() );
 		$details['TOTAL POSTS'] = count( get_posts( array( 'post_type' => 'post', 'numberposts' => -1 ) ) );
 		$details['TOTAL PAGES'] = count( get_posts( array( 'post_type' => 'page', 'numberposts' => -1 ) ) );
-		$details['TOTAL MEDIA'] = count( get_posts( array( 'post_type' => 'attachment', 'number_posts' => -1 ) ) );
+		$details['TOTAL MEDIA'] = count( get_posts( array( 'post_type' => 'attachment', 'numberposts' => -1 ) ) );
 		$comments_count = wp_count_comments();
 		$details['TOTAL COMMENTS'] = $comments_count->total_comments;
 		$details['COMMENTS APPROVED'] = $comments_count->approved;
