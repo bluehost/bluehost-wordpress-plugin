@@ -143,6 +143,15 @@ function mm_business_tools_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-business-tools.php' );
 }
 
+function mm_performance_menu() {
+	add_submenu_page( 'mojo-themes', 'Performance', 'Performance', 'manage_options', 'mojo-performance', 'mm_performance_page' );
+}
+add_action( 'admin_menu', 'mm_performance_menu' );
+
+function mm_performance_page() {
+	mm_require( MM_BASE_DIR . 'pages/mojo-performance.php' );
+}
+
 function mm_staging_menu() {
 	if ( 'compatible' !== get_transient( 'mm_compat_check', false ) ) {
 		$json = wp_remote_get( add_query_arg( array( 'action' => 'mm_compat_check' ), admin_url( 'admin-ajax.php' ) ), array( 'timeout' => 10, 'cookies' => $_COOKIE ) );
