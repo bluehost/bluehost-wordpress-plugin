@@ -28,7 +28,7 @@ $cache_settings = wp_parse_args( $cache_settings, $defaults );
 					<div class="row">
 						<div class="col-xs-12 col-sm-12">
 							<ol class="breadcrumb">
-								<li>Cache Settings</li>
+								<li>Performance</li>
 							</ol>
 						</div>
 					</div>
