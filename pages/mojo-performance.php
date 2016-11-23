@@ -35,15 +35,10 @@ $cache_settings = wp_parse_args( $cache_settings, $defaults );
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-xs-12 col-sm-12">
-							<p>Caching is storing data where it is easy/quick to retrieve, making your site faster.</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12 col-sm-4">
+						<div class="col-xs-12 col-sm-6">
 							Page Cache
-							<p>
-								<img style="margin: 5px;" class="pull-left" src="<?php echo MM_BASE_URL; ?>tmp/pagecache.svg" />
+							<p style="padding-top: 15px;">
+								<img style="margin: 5px; padding-right: 10px;" class="pull-left" src="<?php echo MM_BASE_URL; ?>tmp/pagecache.svg" />
 								When pages are eligible for a full page cache, a copy of the page is created and stored for easy retrieval. This means it skips most of the stuff that makes a page slow.
 							</p>
 							<br/>
@@ -59,10 +54,10 @@ $cache_settings = wp_parse_args( $cache_settings, $defaults );
 							}
 							?>
 						</div>
-						<div class="col-xs-12 col-sm-4">
+						<div class="col-xs-12 col-sm-6">
 							Browser Cache
-							<p>
-								<img style="margin: 5px;" class="pull-left" src="<?php echo MM_BASE_URL; ?>tmp/browsercache.svg" />
+							<p style="padding-top: 15px;">
+								<img style="margin: 5px; padding-right: 10px;" class="pull-left" src="<?php echo MM_BASE_URL; ?>tmp/browsercache.svg" />
 								Browser cache tells a visitors computer to keep a copy of your page assets on their computer, so it does not have to reach back out to the server for the asset.</p>
 							<br/>
 							<?php
@@ -73,24 +68,6 @@ $cache_settings = wp_parse_args( $cache_settings, $defaults );
 							} else {
 								?>
 								<button data-type="browser" data-status="disabled" class="mojo-cache-toggle btn btn-success btn-md">Enable</button>
-								<?php
-							}
-							?>
-						</div>
-						<div class="col-xs-12 col-sm-4">
-							Object Cache
-							<p>
-								<img style="margin: 5px;" class="pull-left" src="<?php echo MM_BASE_URL; ?>tmp/objectcache.svg" />
-								Object cache is the most effective cache for sites that are highly dynamic. Storing small peices of data in memory. These pieces that live in memory are persistent across multiple pageviews.</p>
-							<br/>
-							<?php
-							if ( 'enabled' == $cache_settings['object'] ) {
-								?>
-								<button data-type="object" data-status="enabled" class="mojo-cache-toggle btn btn-primary btn-md">Disable</button>
-								<?php
-							} else {
-								?>
-								<button data-type="object" data-status="disabled" class="mojo-cache-toggle btn btn-success btn-md">Enable</button>
 								<?php
 							}
 							?>
