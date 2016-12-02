@@ -133,13 +133,6 @@ function move_files {
 	FROM="$1"
 	TO="$2"
 
-	AVAIL=$(df / --output=avail | sed 1d)
-	CONTENT=$(du -s -B 1 $FROM/wp-content | cut -f1)
-	if [ "$CONTENT" -gt "$AVAIL" ]
-		then
-		error 'Not enough storage to move files.'
-	fi
-
 	rm -r $TO/wp-content/themes --force || error 'Unable to remove themes directory.'
 	rm -r $TO/wp-content/plugins --force || error 'Unable to remove plugins directory.'
 
