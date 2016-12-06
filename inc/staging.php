@@ -107,6 +107,8 @@ function mm_cl( $command, $args = null ) {
 		chmod( $script, 0755 );
 	}
 
+	putenv( 'PATH=' . getenv( 'PATH' ) . PATH_SEPARATOR . '/usr/local/bin' );
+
 	$response = exec( $script . ' ' . $command );
 
 	return $response;
