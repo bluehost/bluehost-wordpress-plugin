@@ -153,7 +153,8 @@ function mm_performance_page() {
 }
 
 function mm_staging_menu() {
-	if ( 'compatible' !== get_transient( 'mm_compat_check', false ) ) {
+	$current_compat = get_transient( 'mm_compat_check', false );
+	if ( false === $current_compat ) {
 		$json = wp_remote_get( add_query_arg( array( 'action' => 'mm_compat_check' ), admin_url( 'admin-ajax.php' ) ), array( 'timeout' => 10, 'cookies' => $_COOKIE ) );
 
 		if ( ! is_wp_error( $json ) ) {
@@ -166,7 +167,7 @@ function mm_staging_menu() {
 		} else {
 			set_transient( 'mm_compat_check', 'incompatible', DAY_IN_SECONDS * 30 );
 		}
-	} else {
+	} else if ( 'compatible' === $current_compat ) {
 		$add_staging_menu = true;
 	}
 	if ( isset( $add_staging_menu ) && true == $add_staging_menu ) {
@@ -233,3 +234,4 @@ function mm_menu_redirects() {
 	}
 }
 add_action( 'admin_init', 'mm_menu_redirects' );
+
