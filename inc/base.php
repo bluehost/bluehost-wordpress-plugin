@@ -122,37 +122,24 @@ add_filter( 'cron_schedules', 'mm_cron_schedules' );
 
 function mm_all_api_calls() {
 	$calls = array(
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=popular&page=1',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=blog',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=business',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=church',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=woocommerce',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=fashion',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=fitness',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=health',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=landing-page',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=magazine',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=photography',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=portfolio',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=real-estate',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=restaurant',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=sports',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales&page=1&itemcategory=travel',
-
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=plugins&count=20&order=sales&page=1',
-
-		'https://api.mojomarketplace.com/api/v2/items?type=services&count=20&order=sales&page=1',
-
-		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1',
-		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=popular&page=1',
-		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1&category=logo',
-		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1&category=business-cards',
-
-		'https://api.mojomarketplace.com/api/v2/items?type=business-tools&count=20&page=1',
-
-		'https://api.mojomarketplace.com/mojo-plugin-assets/json/search-patterns.json',
+		'https://www.mojomarketplace.com/mojo-plugin-assets/json/branding.json',
 		'https://api.mojomarketplace.com/mojo-plugin-assets/json/mojo-partner-offers.json',
+		'https://api.mojomarketplace.com/mojo-plugin-assets/json/search-patterns.json',
+
+
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=popular',
+		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=plugins&count=20&order=sales&page=1',
+		'https://api.mojomarketplace.com/api/v2/items?type=services&count=20&order=sales&page=1',
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1',
+		'https://api.mojomarketplace.com/api/v2/items?type=business-tools&count=20&page=1',
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=popular&page=1',
+
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales',
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=popular',
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&category=logo',
+		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&category=business-cards',
+		'https://api.mojomarketplace.com/api/v2/items?type=business-tools&count=20',
 	);
 	foreach ( $calls as $call ) {
 		mm_api_cache( $call );
@@ -167,7 +154,7 @@ function mm_preload_api_calls() {
 	$admin_ajax = admin_url( 'admin-ajax.php' );
 	$params = array( 'action' => 'all-api-calls' );
 	$url = $admin_ajax . '?' . http_build_query( $params );
-	$res = wp_remote_get( $url, array( 'blocking' => false, 'timeout' => 0.1 ) );
+	$res = wp_remote_get( $url, array( 'blocking' => false, 'timeout' => 0.1, 'cookies' => $_COOKIE ) );
 }
 add_action( 'admin_footer-index.php', 'mm_preload_api_calls', 99 );
 
