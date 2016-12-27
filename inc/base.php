@@ -126,7 +126,6 @@ function mm_all_api_calls() {
 		'https://api.mojomarketplace.com/mojo-plugin-assets/json/mojo-partner-offers.json',
 		'https://api.mojomarketplace.com/mojo-plugin-assets/json/search-patterns.json',
 
-
 		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales',
 		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=popular',
 		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=plugins&count=20&order=sales&page=1',
