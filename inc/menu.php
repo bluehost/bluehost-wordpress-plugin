@@ -49,31 +49,10 @@ function mm_add_tool_bar_items( $admin_bar ) {
 		) );
 		$admin_bar->add_menu( array(
 			'id'     => 'mojo-themes',
-			'title'  => 'Themes',
+			'title'  => 'Marketplace',
 			'parent' => 'mojo-marketplace',
 			'href'   => admin_url( 'admin.php?page=mojo-themes' ),
 			'meta'   => array( 'title' => __( 'Themes' ) ),
-		) );
-		$admin_bar->add_menu( array(
-			'id'     => 'mojo-plugins',
-			'title'  => 'Plugins',
-			'parent' => 'mojo-marketplace',
-			'href'   => admin_url( 'admin.php?page=mojo-plugins' ),
-			'meta'   => array( 'title' => __( 'Plugins' ) ),
-		) );
-		$admin_bar->add_menu( array(
-			'id'     => 'mojo-services',
-			'title'  => 'Services',
-			'parent' => 'mojo-marketplace',
-			'href'   => admin_url( 'admin.php?page=mojo-services' ),
-			'meta'   => array( 'title' => __( 'Services' ) ),
-		) );
-		$admin_bar->add_menu( array(
-			'id'     => 'mojo-graphics',
-			'title'  => 'Graphics',
-			'parent' => 'mojo-marketplace',
-			'href'   => admin_url( 'admin.php?page=mojo-graphics' ),
-			'meta'   => array( 'title' => __( 'Graphics' ) ),
 		) );
 		$admin_bar->add_menu( array(
 			'id'     => 'mojo-business-tools',
@@ -234,4 +213,3 @@ function mm_menu_redirects() {
 	}
 }
 add_action( 'admin_init', 'mm_menu_redirects' );
-
