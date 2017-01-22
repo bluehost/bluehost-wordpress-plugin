@@ -55,6 +55,8 @@ function mm_cl( $command, $args = null ) {
 		}
 	}
 
+	do_action ( 'mm_staging_command', $command );
+
 	$command = array( $command );
 	$token = wp_generate_password( 32, false );
 	set_transient( 'staging_auth_token', $token, 60 );

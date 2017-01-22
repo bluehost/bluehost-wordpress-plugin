@@ -565,6 +565,17 @@ function mm_sso_success() {
 }
 add_action( 'mmsso_success', 'mm_sso_success' );
 
+function mm_staging_event( $command ) {
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'user_action',
+		'ea'    => 'staging',
+		'el'    => $command,
+	);
+	mm_ux_log( $event );
+}
+add_action( 'mm_staging_command', 'mm_staging_event' );
+
 function mm_sso_fail() {
 	$event = array(
 		't'     => 'event',
