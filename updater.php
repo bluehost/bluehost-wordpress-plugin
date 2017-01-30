@@ -80,7 +80,9 @@ function mm_update_muplugins() {
 	if ( is_wp_error( $muplugins_details ) || ! isset( $muplugins_details['body'] ) ) {
 		return;
 	}
+
 	$mu_plugin = json_decode( $muplugins_details['body'], true );
+
 	if ( ! is_null( $mu_plugin ) ) {
 		foreach ( $mu_plugin as $slug => $info ) {
 			if ( isset( $info['constant'] ) && defined( $info['constant'] ) ) {
@@ -93,5 +95,6 @@ function mm_update_muplugins() {
 			}
 		}
 	}
+
 }
 add_action( 'mm_check_muplugin_update', 'mm_update_muplugins' );
