@@ -74,32 +74,21 @@ function mm_prepare_request( $action, $args ) {
 }
 
 function mm_update_muplugins() {
-	$mu_plugin = array(
-		'endurance-page-cache' => array(
-			'constant'    => 'EPC_VERSION',
-			'version'     => '0.3',
-			'source'      => 'https://raw.githubusercontent.com/bluehost/endurance-page-cache/production/endurance-page-cache.php',
-			'destination' => '/mu-plugins/endurance-page-cache.php',
-		),
-		'endurance-browser-cache' => array(
-			'constant'    => 'EBC_VERSION',
-			'version'     => '0.1',
-			'source'      => 'https://raw.githubusercontent.com/bluehost/endurance-browser-cache/production/endurance-browser-cache.php',
-			'destination' => '/mu-plugins/endurance-browser-cache.php',
-		),
-		'endurance-php-edge' => array(
-			'constant'    => 'EPE_VERSION',
-			'version'     => '0.1',
-			'source'      => 'https://raw.githubusercontent.com/bluehost/endurance-php-edge/production/endurance-php-edge.php',
-			'destination' => '/mu-plugins/endurance-php-edge.php',
-		),
-	);
-	foreach ( $mu_plugin as $slug => $info ) {
-		if ( isset( $info['constant'] ) && defined( $info['constant'] ) ) {
-			if ( (float) $info['version'] > (float) constant( $info['constant'] ) ) {
-				$file = wp_remote_get( $info['source'] );
-				if ( ! is_wp_error( $file ) && isset( $file['body'] ) && strpos( $file['body'], $info['constant'] ) ) {
-					file_put_contents( WP_CONTENT_DIR . $info['destination'], $file['body'] );
+
+	$muplugins_details = wp_remote_get( 'https://api.mojomarketplace.com/mojo-plugin-assets/json/mu-plugins.json' );
+
+	if ( is_wp_error( $muplugins_details ) || ! isset( $muplugins_details['body'] ) ) {
+		return;
+	}
+	$mu_plugin = json_decode( $muplugins_details['body'], true );
+	if ( ! is_null( $mu_plugin ) ) {
+		foreach ( $mu_plugin as $slug => $info ) {
+			if ( isset( $info['constant'] ) && defined( $info['constant'] ) ) {
+				if ( (float) $info['version'] > (float) constant( $info['constant'] ) ) {
+					$file = wp_remote_get( $info['source'] );
+					if ( ! is_wp_error( $file ) && isset( $file['body'] ) && strpos( $file['body'], $info['constant'] ) ) {
+						file_put_contents( WP_CONTENT_DIR . $info['destination'], $file['body'] );
+					}
 				}
 			}
 		}
