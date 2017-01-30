@@ -4,7 +4,7 @@ define( 'MM_UPDATE_API', 'https://www.mojomarketplace.com/mojo-plugin-assets/upd
 define( 'MM_PLUGIN_SLUG', basename( dirname( __FILE__ ) ) );
 
 function mm_check_for_plugin_update( $checked_data ) {
-
+	do_action( 'mm_check_muplugin_update' );
 	if ( empty( $checked_data->checked ) ) {
 		return $checked_data;
 	}
@@ -67,8 +67,42 @@ function mm_prepare_request( $action, $args ) {
 		'body' => array(
 			'action'  => $action,
 			'request' => serialize( $args ),
-			'api-key' => md5( get_bloginfo( 'url' ) )
+			'api-key' => md5( get_bloginfo( 'url' ) ),
 		),
-		'user-agent' => 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' )
+		'user-agent' => 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' ),
 	);
 }
+
+function mm_update_muplugins() {
+	$mu_plugin = array(
+		'endurance-page-cache' => array(
+			'constant'    => 'EPC_VERSION',
+			'version'     => '0.3',
+			'source'      => 'https://raw.githubusercontent.com/bluehost/endurance-page-cache/production/endurance-page-cache.php',
+			'destination' => '/mu-plugins/endurance-page-cache.php',
+		),
+		'endurance-browser-cache' => array(
+			'constant'    => 'EBC_VERSION',
+			'version'     => '0.1',
+			'source'      => 'https://raw.githubusercontent.com/bluehost/endurance-browser-cache/production/endurance-browser-cache.php',
+			'destination' => '/mu-plugins/endurance-browser-cache.php',
+		),
+		'endurance-php-edge' => array(
+			'constant'    => 'EPE_VERSION',
+			'version'     => '0.1',
+			'source'      => 'https://raw.githubusercontent.com/bluehost/endurance-php-edge/production/endurance-php-edge.php',
+			'destination' => '/mu-plugins/endurance-php-edge.php',
+		),
+	);
+	foreach ( $mu_plugin as $slug => $info ) {
+		if ( isset( $info['constant'] ) && defined( $info['constant'] ) ) {
+			if ( (float) $info['version'] > (float) constant( $info['constant'] ) ) {
+				$file = wp_remote_get( $info['source'] );
+				if ( ! is_wp_error( $file ) && isset( $file['body'] ) && strpos( $file['body'], $info['constant'] ) ) {
+					file_put_contents( WP_CONTENT_DIR . $info['destination'], $file['body'] );
+				}
+			}
+		}
+	}
+}
+add_action( 'mm_check_muplugin_update', 'mm_update_muplugins' );
