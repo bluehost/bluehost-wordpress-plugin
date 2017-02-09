@@ -68,7 +68,7 @@ $response = wp_remote_get( $api_url, $args );
 													foreach ( $item->downloads as $download => $file ) {
 														$name = mm_slug_to_title( str_replace( array( 'file', '_' ), ' ', $download ) );
 														?>
-														<li><a href="<?php echo $file; ?>"><?php echo $name;?></a></li>
+														<li><a href="<?php echo $file; ?>"><?php echo esc_html( $name );?></a></li>
 														<?php
 													}
 													?>

@@ -68,7 +68,7 @@ if ( $query['order'] != 'random' ) {
 								<?php
 								if ( isset( $_GET['items'] ) ) {
 									?>
-									<li class="active"><?php echo mm_slug_to_title( $_GET['items'] ); ?></li>
+									<li class="active"><?php echo esc_html( mm_slug_to_title( $_GET['items'] ) ); ?></li>
 									<?php
 								}
 								?>
