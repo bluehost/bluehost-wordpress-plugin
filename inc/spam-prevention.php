@@ -10,7 +10,7 @@ function mm_spam_stop_forum_spam_api( $args = array() ) {
 		'email'			=> '',
 		'username'		=> '',
 	);
-	$url = 'http://www.stopforumspam.com/api?';
+	$url = 'https://www.stopforumspam.com/api?';
 	$args = wp_parse_args( $args, $defaults );
 	$args['f']	= 'json';
 	$args['confidence']	= true;
