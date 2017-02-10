@@ -55,7 +55,9 @@ function mm_cl( $command, $args = null ) {
 		}
 	}
 
-	do_action ( 'mm_staging_command', $command );
+	if ( 'compat_check' != $command && 'revisions' != $command ) {
+		do_action ( 'mm_staging_command', $command );
+	}
 
 	$command = array( $command );
 	$token = wp_generate_password( 32, false );
