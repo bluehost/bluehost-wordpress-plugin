@@ -8,7 +8,7 @@ function mm_ux_log( $args = array() ) {
 
 	global $title;
 
-	if ( empty( $_SERVER['REQUEST_URI'] ) ) {
+	if ( empty( $_SERVER['REQUEST_URI'] ) || strpos( $_SERVER['REQUEST_URI'], 'admin-ajax.php' ) ) {
 		return;
 	}
 
