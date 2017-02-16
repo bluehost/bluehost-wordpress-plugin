@@ -132,6 +132,10 @@ function mm_performance_page() {
 }
 
 function mm_staging_menu() {
+	if ( mm_brand() !== 'bluehost' ) {
+		return;
+	}
+
 	$current_compat = get_transient( 'mm_compat_check', false );
 	if ( false === $current_compat ) {
 		$json = wp_remote_get( add_query_arg( array( 'action' => 'mm_compat_check' ), admin_url( 'admin-ajax.php' ) ), array( 'timeout' => 10, 'cookies' => $_COOKIE ) );
