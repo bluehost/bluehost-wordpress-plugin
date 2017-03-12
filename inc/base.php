@@ -18,7 +18,7 @@ function mm_setup() {
 		update_option( 'mm_cron', $events );
 	}
 }
-add_action( 'init', 'mm_setup' );
+add_action( 'admin_init', 'mm_setup' );
 
 function mm_api( $args = array(), $query = array() ) {
 	$api_url = 'http://api.mojomarketplace.com/api/v1/';
