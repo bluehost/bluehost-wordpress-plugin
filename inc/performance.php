@@ -55,8 +55,8 @@ function mm_cache_add( $type = null ) {
 	}
 	switch ( $type ) {
 		case 'browser':
-			$cache['code'] = 'https://raw.githubusercontent.com/bluehost/endurance-browser-cache/production/endurance-browser-cache.php';
-			$cache['location'] = WP_CONTENT_DIR . '/mu-plugins/endurance-browser-cache.php';
+			$cache['code'] = 'https://raw.githubusercontent.com/bluehost/endurance-page-cache/production/endurance-page-cache.php';
+			$cache['location'] = WP_CONTENT_DIR . '/mu-plugins/endurance-page-cache.php';
 			break;
 
 		case 'page':
@@ -92,10 +92,10 @@ function mm_cache_add( $type = null ) {
 function mm_cache_remove( $type = null ) {
 	switch ( $type ) {
 		case 'browser':
-			$file = WP_CONTENT_DIR . '/mu-plugins/endurance-browser-cache.php';
+			//do not remove cache file since it powers both types and the CDN.
 			break;
 		case 'page':
-			$file = WP_CONTENT_DIR . '/mu-plugins/endurance-page-cache.php';
+			//do not remove cache file since it powers both types and the CDN.
 			break;
 		case 'object':
 			$file = WP_CONTENT_DIR . '/object-cache.php';
