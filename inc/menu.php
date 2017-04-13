@@ -70,6 +70,15 @@ function mm_add_tool_bar_items( $admin_bar ) {
 			);
 			$admin_bar->add_menu( $args );
 		}
+		if ( defined( 'DESKTOPSERVER' ) ) {
+			$args = array(
+				'id'    => 'desktop-server',
+				'title' => 'Get Online Now',
+				'href'  => 'http://mojo.live/desktopserver',
+				'title' => '<div style="background-color: #3575C0; padding: 0px 5px;color:#fff;">Get Online Now</div>',
+			);
+			$admin_bar->add_menu( $args );
+		}
 	}
 }
 add_action( 'admin_bar_menu', 'mm_add_tool_bar_items', 100 );
