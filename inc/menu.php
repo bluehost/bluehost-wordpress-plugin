@@ -41,26 +41,6 @@ add_action( 'admin_menu', 'mm_preview_menu' );
 
 function mm_add_tool_bar_items( $admin_bar ) {
 	if ( current_user_can( 'manage_options' ) ) {
-		$admin_bar->add_menu( array(
-			'id'    => 'mojo-marketplace',
-			'title' => 'Marketplace',
-			'href'  => admin_url( 'admin.php?page=mojo-marketplace' ),
-			'meta'  => array( 'title' => __( 'Marketplace' ) ),
-		) );
-		$admin_bar->add_menu( array(
-			'id'     => 'mojo-marketplace',
-			'title'  => 'Marketplace',
-			'parent' => 'mojo-marketplace',
-			'href'   => admin_url( 'admin.php?page=mojo-marketplace' ),
-			'meta'   => array( 'title' => __( 'Themes' ) ),
-		) );
-		$admin_bar->add_menu( array(
-			'id'     => 'mojo-business-tools',
-			'title'  => 'Business Tools',
-			'parent' => 'mojo-marketplace',
-			'href'   => admin_url( 'admin.php?page=mojo-business-tools' ),
-			'meta'   => array( 'title' => __( 'Business Tools' ) ),
-		) );
 		if ( mm_is_staging() ) {
 			$args = array(
 				'id'    => 'mojo-staging',
