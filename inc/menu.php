@@ -222,6 +222,8 @@ function mm_menu_redirects() {
 			$destination = admin_url( 'admin.php?page=mojo-marketplace&section=services' );
 		} elseif ( 'mojo-graphics' == $_GET['page'] ) {
 			$destination = admin_url( 'admin.php?page=mojo-marketplace&section=graphics' );
+		} elseif ( 'mojo-business-tools' == $_GET['page'] ) {
+			$destination = admin_url( 'admin.php?page=mojo-marketplace&section=business-tools' );
 		}
 		if ( isset( $destination ) ) {
 			if ( isset( $_GET['items'] ) ) {
