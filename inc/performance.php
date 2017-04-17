@@ -1,47 +1,21 @@
 <?php
 
 function mm_cache_toggle() {
-	if ( isset( $_POST['type'] ) && isset( $_POST['current_status'] ) ) {
-		$defaults = array(
-			'page'    => 'disabled',
-			'browser' => 'disabled',
-			'object'  => 'disabled',
-		);
-		$cache_settings = get_option( 'mm_cache_settings' );
-		$cache_settings = wp_parse_args( $cache_settings, $defaults );
-		$valid_cache_names = array(
-			'browser',
-			'page',
-			'object',
-		);
-		$valid_status = array(
-			'enabled',
-			'disabled',
-		);
+	if ( isset( $_POST['cache_level'] ) && is_numeric( $_POST['cache_level'] ) ) {
+		$cache_level = (int) $_POST['cache_level'];
+		$response = mm_cache_add( 'page' );
 
-		if ( in_array( $_POST['current_status'], $valid_status ) ) {
-			$new_status = ( 'disabled' == $_POST['current_status'] ) ? 'enabled': 'disabled';
-		} else {
-			$response = array( 'status' => 'error', 'message' => 'Invalid status.' );
-		}
-
-		if ( in_array( $_POST['type'], $valid_cache_names ) && ! isset( $response ) ) {
-			if ( 'enabled' == $new_status ) {
-				$response = mm_cache_add( $_POST['type'] );
+		if ( isset( $response['status'] ) && 'success' == $response['status'] ) {
+			$update = update_option( 'endurance_cache_level', $cache_level );
+			if ( true == $update ) {
+				$response = array( 'status' => 'success', 'message' => 'Cache level updated successfully.' );
 			} else {
-				$response = mm_cache_remove( $_POST['type'] );
-			}
-			if ( 'object' != $_POST['type'] && 'success' == $response['status'] ) {
-				save_mod_rewrite_rules();
+				$response = array( 'status' => 'error', 'message' => 'Unable to update cache level.' );
 			}
 		} else {
-			$response = array( 'status' => 'error', 'message' => 'Invalid cache type.' );
+			$response = array( 'status' => 'error', 'message' => 'Unable to add cache plugin.' );
 		}
 
-		if ( 'success' == $response['status'] ) {
-			$cache_settings[ $_POST['type'] ] = $new_status;
-			update_option( 'mm_cache_settings', $cache_settings );
-		}
 		echo json_encode( $response );
 	}
 	die;
@@ -54,11 +28,6 @@ function mm_cache_add( $type = null ) {
 		mkdir( WP_CONTENT_DIR . '/mu-plugins' );
 	}
 	switch ( $type ) {
-		case 'browser':
-			$cache['code'] = 'https://raw.githubusercontent.com/bluehost/endurance-page-cache/production/endurance-page-cache.php';
-			$cache['location'] = WP_CONTENT_DIR . '/mu-plugins/endurance-page-cache.php';
-			break;
-
 		case 'page':
 			$cache['code'] = 'https://raw.githubusercontent.com/bluehost/endurance-page-cache/production/endurance-page-cache.php';
 			$cache['location'] = WP_CONTENT_DIR . '/mu-plugins/endurance-page-cache.php';
