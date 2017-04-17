@@ -1,5 +1,5 @@
 <?php
-$type = str_replace( 'mojo-', '', sanitize_title_for_query( wp_unslash( $_GET['page'] ) ) );
+$type = str_replace( 'mojo-', '', sanitize_title_for_query( wp_unslash( $_GET['section'] ) ) );
 $query = array(
 	'category'  => 'wordpress',
 	'type'      => $type,
