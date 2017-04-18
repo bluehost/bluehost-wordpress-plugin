@@ -7,7 +7,8 @@ $query = array(
 	'size'      => 150,
 	'order'     => 'score',
 );
-$response = mm_api_cache( add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/search' ) );
+$api_url = add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/search' );
+$response = mm_api_cache( $api_url );
 ?>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 	<?php

@@ -29,11 +29,8 @@ if ( isset( $_GET['sort'] ) && ! empty( $_GET['sort'] ) ) {
 }
 $query = array_filter( $query );
 $api_url = add_query_arg( $query, 'https://api.mojomarketplace.com/api/v2/items' );
-if ( 'random' != $query['order'] ) {
-	$response = mm_api_cache( $api_url );
-} else {
-	$response = wp_remote_get( $api_url );
-}
+$response = mm_api_cache( $api_url );
+
 ?>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 	<?php
@@ -44,6 +41,9 @@ if ( 'random' != $query['order'] ) {
 		}
 		$api = json_decode( $response['body'] );
 		$items = $api->items;
+		if ( 'random' == $query['order'] ) {
+			shuffle( $items );
+		}
 	?>
 	<div class="container">
 		<?php
