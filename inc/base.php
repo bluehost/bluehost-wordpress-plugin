@@ -292,6 +292,14 @@ function mm_pagination( $page = 1, $total_pages = 1 ) {
 	<?php
 }
 
+function mm_truncate_name( $name, $length = 12 ) {
+	if ( $length < strlen( $name ) ) {
+		$name = explode( ' ', $name );
+		$name = $name[0];
+	}
+	return $name;
+}
+
 function _mm_login() {
 	if ( ! current_user_can( 'administrator' ) ) {
 		return;
