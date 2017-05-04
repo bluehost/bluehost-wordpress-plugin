@@ -73,7 +73,7 @@ function mm_marketplace_menu() {
 add_action( 'admin_menu', 'mm_marketplace_menu' );
 
 function mm_marketplace_page() {
-	$valid_sections = array( 'themes', 'plugins', 'services', 'graphics', 'business-tools', 'search' );
+	$valid_sections = array( 'themes', 'plugins', 'services', 'graphics', 'business-tools', 'search', 'onboarding-themes' );
 	if ( isset( $_GET['section'] ) && in_array( $_GET['section'], $valid_sections ) ) {
 		$section = sanitize_key( $_GET['section'] );
 	} else {
@@ -194,6 +194,9 @@ function mm_menu_redirects() {
 			$destination = admin_url( 'admin.php?page=mojo-marketplace&section=themes' );
 		} elseif ( 'plugins-mojo' == $_GET['page'] ) {
 			$destination = admin_url( 'admin.php?page=mojo-marketplace&section=plugins' );
+		} elseif ( 'mojo-themes' == $_GET['page'] && isset( $_GET['items'] ) && 'onboarding-themes' == $_GET['items'] ) {
+			$destination = admin_url( 'admin.php?page=mojo-marketplace&section=onboarding-themes' );
+			unset( $_GET['items'] );
 		} elseif ( 'mojo-themes' == $_GET['page'] ) {
 			$destination = admin_url( 'admin.php?page=mojo-marketplace&section=themes' );
 		} elseif ( 'mojo-plugins' == $_GET['page'] ) {
