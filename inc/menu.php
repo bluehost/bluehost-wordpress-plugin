@@ -168,6 +168,13 @@ function mm_my_purchases_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-purchases.php' );
 }
 
+function mm_hosting_menu() {
+	if ( 'bluehost' == mm_brand() ) {
+		add_submenu_page( 'mojo-marketplace', 'Back to Bluehost', 'Back to Bluehost', 'manage_options', 'mojo-hosting-panel', '__return_false' );
+	}
+}
+add_action( 'admin_menu', 'mm_hosting_menu' );
+
 function mm_item_menu() {
 	add_submenu_page( null, 'Single Item', 'Single Item', 'manage_options', 'mojo-single-item', 'mm_single_item_page' );
 }
@@ -207,6 +214,8 @@ function mm_menu_redirects() {
 			$destination = admin_url( 'admin.php?page=mojo-marketplace&section=graphics' );
 		} elseif ( 'mojo-business-tools' == $_GET['page'] ) {
 			$destination = admin_url( 'admin.php?page=mojo-marketplace&section=business-tools' );
+		} elseif ( 'mojo-hosting-panel' == $_GET['page'] ) {
+			wp_redirect( 'https://my.bluehost.com/cgi/home', 302 );
 		}
 		if ( isset( $destination ) ) {
 			if ( isset( $_GET['items'] ) ) {
