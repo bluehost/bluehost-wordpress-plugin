@@ -49,11 +49,11 @@ if ( false === $cache_level && true == $cache_file_exists ) {
 							<p style="padding-top: 15px;">
 							<?php
 								$levels = array(
-									0 => '0 (off)',
-									1 => '1 (assets)',
-									2 => '2 (normal)',
-									3 => '3 (advanced)',
-									4 => '4 (agressive)',
+									0 => 'Off',
+									1 => 'Assets Only',
+									2 => 'Normal',
+									3 => 'Advanced',
+									4 => 'Agressive',
 								);
 								foreach ( $levels as $level => $label ) {
 									echo '<label><input type="radio" name="cache_level" value="' . $level . '" ' . checked( $level, $cache_level, false ) . '/> ' . $label . '</label><br/>';
