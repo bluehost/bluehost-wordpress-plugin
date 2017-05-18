@@ -157,13 +157,6 @@ function mm_staging_page() {
 	echo "<a target='_blank' href='https://goo.gl/forms/HNmqYgRkpzu9KQfM2' style='z-index: 10;position: fixed; padding: 4px 10px; color: #fff;background-color: #000;right:0px;bottom:0px;'>Staging Feedback</a>";
 }
 
-function mm_my_purchases_menu() {
-	if ( false !== get_transient( '_mm_session_token' ) ) {
-		add_submenu_page( 'mojo-marketplace', 'My Purchases', 'My Purchases', 'manage_options', 'mojo-purchases', 'mm_my_purchases_page' );
-	}
-}
-add_action( 'admin_menu', 'mm_my_purchases_menu' );
-
 function mm_my_purchases_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-purchases.php' );
 }
