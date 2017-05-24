@@ -93,11 +93,6 @@ function mm_plugins_premium_link() {
 }
 add_action( 'admin_head-plugin-install.php', 'mm_plugins_premium_link' );
 
-function mm_business_tools_menu() {
-	add_submenu_page( 'mojo-marketplace', 'Business Tools', 'Business Tools', 'manage_options', 'mojo-business-tools', 'mm_business_tools_page' );
-}
-add_action( 'admin_menu', 'mm_business_tools_menu' );
-
 function mm_business_tools_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-business-tools.php' );
 }
