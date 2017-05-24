@@ -378,6 +378,7 @@ function mm_ux_log_plugin_search( $search ) {
 		);
 		mm_ux_log( $event );
 	}
+	return $search;
 }
 add_action( 'install_plugins_table_api_args_search', 'mm_ux_log_plugin_search' );
 
