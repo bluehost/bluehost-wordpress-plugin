@@ -4,7 +4,7 @@ if ( ! defined( 'WPINC' ) ) { die; }
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php
 require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
-require_once( MM_BASE_DIR . 'inc/style_changes.css' );
+require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 ?>
 
 	<main id="main" class="home">
