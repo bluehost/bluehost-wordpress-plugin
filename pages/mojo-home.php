@@ -10,6 +10,9 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 		margin-right: 10px;
 		font-size: 24px;
 	}
+	#main.home .panel-body p {
+		margin-left: 32px;
+	}
 	#main.home .performance-card .dashicons{
 		font-size: 64px;
 		height: 80px;
@@ -83,8 +86,6 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 								echo '<a class="btn btn-primary btn-sm" href="' . wp_nonce_url( 'plugins.php?action=activate&plugin=' . urlencode( 'woocommerce/woocommerce.php' ), 'activate-plugin_woocommerce/woocommerce.php' ) . '">Activate WooCommerce</a>';
 							} else {
 								echo '<a class="btn btn-primary btn-sm" href="' . wp_nonce_url( admin_url( 'update.php?action=install-plugin&plugin=woocommerce' ), 'install-plugin_woocommerce' ) . '">Install WooCommerce</a>';
-								//update.php?action=install-plugin&plugin=woocommerce&_wpnonce=5b6f7e1646
-								//wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $api->slug), 'install-plugin_' . $api->slug)
 							}
 							?>
 						</div>
@@ -100,7 +101,7 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Customizer</h2>
 						<p>Customize visual and navigation elements of your site, and preview your changes before going live.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-success btn-sm" href="" target="_blank">Customize</a>
+							<a class="btn btn-success btn-sm" href="<?php echo add_query_arg( array( 'return' => urlencode( '/wp-admin/admin.php?page=mojo-home' ) ), admin_url( 'customize.php' ) ); ?>">Customize</a>
 						</div>
 					</div>
 				</div>
@@ -112,11 +113,13 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Themes</h2>
 						<p>Find a theme that inspires you.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-sm" href="" target="_blank">Browse Themes</a>
+							<a class="btn btn-primary btn-sm" href="<?php echo add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'mixed-themes' ), admin_url( 'admin.php' ) ); ?>">Browse Themes</a>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<?php if ( 'compatible' === get_transient( 'mm_compat_check' ) ) { ?>
 			<div class="col-xs-12 col-sm-12">
 				<div class="panel panel-default panel-body">
 					<div>
@@ -124,12 +127,14 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Staging</h2>
 						<p>Staging allows you to create a seperate copy of your site that only you can see. You can test new ideas there before going live.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-sm" href="" target="_blank">Get Started</a>
+							<a class="btn btn-primary btn-sm" href="<?php echo add_query_arg( array( 'page' => 'mojo-staging' ), admin_url( 'admin.php' ) ); ?>">Get Started</a>
 						</div>
 					</div>
 				</div>
 			</div>
+			<?php } ?>
 
+			<?php if ( is_plugin_active( 'jetpack/jetpack.php' ) ) { ?>
 			<h2 id="traffic">Traffic &amp; Engagement</h2>
 			<div class="col-xs-12 col-sm-12">
 				<div class="panel panel-default panel-body">
@@ -138,7 +143,7 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Social</h2>
 						<p>Add social sharing buttons to your site for facebook, twitter, and others, so your visitors can share your content with their friends.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-sm" href="" target="_blank">Manage</a>
+							<a class="btn btn-primary btn-sm" href="<?php echo add_query_arg( array( 'page' => 'jetpack#/sharing' ), admin_url( 'admin.php' ) ); ?>">Manage</a>
 						</div>
 					</div>
 				</div>
@@ -150,7 +155,7 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Publicize</h2>
 						<p>Share your content with your social networks automatically when you publish content on your site.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-sm" href="" target="_blank">Configure</a>
+							<a class="btn btn-primary btn-sm" href="<?php echo add_query_arg( array( 'page' => 'jetpack#/sharing' ), admin_url( 'admin.php' ) ); ?>">Configure</a>
 						</div>
 					</div>
 				</div>
@@ -162,11 +167,12 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Stats</h2>
 						<p>Stats show you which posts are most popular. You can even stay informed of when you get surges in traffic.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-success btn-sm" href="" target="_blank">View Stats</a>
+							<a class="btn btn-success btn-sm" href="<?php echo add_query_arg( array( 'page' => 'stats' ), admin_url( 'admin.php' ) ); ?>">View Stats</a>
 						</div>
 					</div>
 				</div>
 			</div>
+			<?php } ?>
 
 			<h2 id="performance">Performance</h2>
 			<div class="col-xs-12 col-sm-4">
@@ -176,7 +182,7 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Page Cache</h2>
 						<p>Page Caching allows your server to keep a copy of a page for a short time to dramatically improve speed.</p>
 						<div class="col-xs-12 col-sm-12">
-							<a class="btn btn-primary btn-sm" href="" target="_blank">Configure</a>
+							<a class="btn btn-primary btn-sm" href="<?php echo add_query_arg( array( 'page' => 'mojo-performance' ), admin_url( 'admin.php' ) ); ?>">Configure</a>
 						</div>
 					</div>
 				</div>
@@ -188,7 +194,7 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>CDN</h2>
 						<p>A Content Delivery Network will distribute your assets to servers around the globe for faster retrieval.</p>
 						<div class="col-xs-12 col-sm-12">
-							<a class="btn btn-primary btn-sm" href="" target="_blank">Manage</a>
+							<a class="btn btn-primary btn-sm" href="https://my.bluehost.com/hosting/wordpress_tools/performance/" target="_blank">Manage</a>
 						</div>
 					</div>
 				</div>
@@ -200,7 +206,7 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Photon</h2>
 						<p>Photon is an image acceleration service that will resize your images an serve them from a CDN.</p>
 						<div class="col-xs-12 col-sm-12">
-							<a class="btn btn-primary btn-sm" href="" target="_blank">Learn More</a>
+							<a class="btn btn-primary btn-sm" href="<?php echo add_query_arg( array( 'page' => 'jetpack#/dashboard' ), admin_url( 'admin.php' ) ); ?>">Learn More</a>
 						</div>
 					</div>
 				</div>
@@ -214,7 +220,7 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Manage My Sites</h2>
 						<p>Manage your site from Bluehost's control panel. You can take backups, keep things secure, and improve performance.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-success btn-sm" href="" target="_blank">Manage</a>
+							<a class="btn btn-success btn-sm" href="https://my.bluehost.com/hosting/wordpress_tools/" target="_blank">Manage</a>
 						</div>
 					</div>
 				</div>
@@ -226,7 +232,7 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Email</h2>
 						<p>Create accounts, compose, send, and recieve all your email in your Bluehost control panel.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-sm" href="" target="_blank">Manage</a>
+							<a class="btn btn-primary btn-sm" href="https://my.bluehost.com/cgi/email_manager" target="_blank">Manage</a>
 						</div>
 					</div>
 				</div>
@@ -238,7 +244,7 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Domains</h2>
 						<p>Find a new domain and assign it to your site, or start a new site with a new domain.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-sm" href="" target="_blank">Find a Domain</a>
+							<a class="btn btn-primary btn-sm" href="https://my.bluehost.com/cgi/dm" target="_blank">Find a Domain</a>
 						</div>
 					</div>
 				</div>
@@ -248,9 +254,9 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 					<div>
 					<span class="pull-left dashicons dashicons-editor-help"></span>
 						<h2>Help</h2>
-						<p>Need help from the folks at Bluehost? We are here to help 24/7.</p>
+						<p>Need help from the folks at Bluehost? We have 24/7 US-based phone and chat support waiting to help.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-sm" href="" target="_blank">Help Me</a>
+							<a class="btn btn-primary btn-sm" href="https://helpchat.bluehost.com/" target="_blank">Help Me</a>
 						</div>
 					</div>
 				</div>
