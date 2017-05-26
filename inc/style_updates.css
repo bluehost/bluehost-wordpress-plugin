@@ -1,0 +1,34 @@
+<style type="text/css">
+#main.home .panel-body .pull-left.dashicons{
+  margin-right: 10px;
+  font-size: 24px;
+}
+#main.home .performance-card .dashicons{
+  font-size: 64px;
+  height: 80px;
+  width: 80px;
+}
+#main.home .performance-card p{
+  margin: 30px;
+}
+#main.home .container > h2{
+  margin-left: 15px;
+}
+.fixed-nav{
+  margin-top: 40px;
+  position: fixed;
+  top: -8px;
+  width: 100%;
+  z-index: 10;
+}
+
+#header .sub-navbar {
+  background-color: #fff;
+}
+#header .sub-navbar .nav li a {
+  color: #5b5b5b;
+  padding: 5px 0;
+  font-size: 14px;
+}
+
+</style>

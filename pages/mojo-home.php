@@ -4,34 +4,12 @@ if ( ! defined( 'WPINC' ) ) { die; }
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php
 require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
+require_once( MM_BASE_DIR . 'inc/style_changes.css' );
 ?>
-	<style type="text/css">
-	#main.home .panel-body .pull-left.dashicons{
-		margin-right: 10px;
-		font-size: 24px;
-	}
-	#main.home .performance-card .dashicons{
-		font-size: 64px;
-		height: 80px;
-		width: 80px;
-	}
-	#main.home .performance-card p{
-		margin: 30px;
-	}
-	#main.home .container > h2{
-		margin-left: 15px;
-	}
-	.fixed-nav{
-		margin-top: 40px;
-		position: fixed;
-		top: -8px;
-		width: 100%;
-		z-index: 10;
-	}
-	</style>
+
 	<main id="main" class="home">
 		<div class="container">
-			<h2 id="content">Content</h2>
+			<h2 id="content">Site Content</h2>
 			<div class="col-xs-12 col-sm-6">
 				<div class="panel panel-default panel-body">
 					<div>
@@ -169,7 +147,7 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 				</div>
 			</div>
 
-			<h2 id="performance">Performance</h2>
+			<h2 id="performance">Site Performance</h2>
 			<div class="col-xs-12 col-sm-4">
 				<div class="panel panel-default panel-body text-center performance-card">
 					<div>
