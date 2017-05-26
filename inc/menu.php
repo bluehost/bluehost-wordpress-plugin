@@ -18,11 +18,18 @@ function mm_main_menu() {
 		$menu_name = 'Marketplace';
 	}
 
+	$page = 'mojo-marketplace';
+
 	if ( 'BlueHost' == $menu_name ) {
 		$menu_name = 'Bluehost';
+		$page = 'mojo-home';
 	}
 
+	if ( 'mojo-home' == $page ) {
+
+	}
 	add_menu_page( $menu_name, $menu_name, 'manage_options', 'mojo-marketplace', 'mm_marketplace_page', 'data:image/svg+xml;base64, ' . $icon_hash, $menu_position );
+
 }
 add_action( 'admin_menu', 'mm_main_menu' );
 
@@ -104,6 +111,15 @@ add_action( 'admin_menu', 'mm_performance_menu' );
 
 function mm_performance_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-performance.php' );
+}
+
+function mm_home_menu() {
+	add_submenu_page( 'mojo-marketplace', 'Home', 'Home', 'manage_options', 'mojo-home', 'mm_home_page' );
+}
+add_action( 'admin_menu', 'mm_home_menu' );
+
+function mm_home_page() {
+	mm_require( MM_BASE_DIR . 'pages/mojo-home.php' );
 }
 
 function mm_staging_menu() {
