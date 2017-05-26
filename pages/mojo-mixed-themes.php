@@ -25,33 +25,33 @@ shuffle( $themes );
 
 ?>
 <style>
-.mm-onboarding-item {
+.mm-mixed-item {
 	margin: 5px 0 20px;
 	max-height: 224px;
 }
 .mm-filter-actions{
 	margin: 0 0 10px 0;
 }
-.mm-onboarding-item .mm-img-wrap{
+.mm-mixed-item .mm-img-wrap{
 	border: 1px solid #ccc;
 	border-bottom: 0px;
 	max-height: 175px;
 	overflow: hidden;
 }
-.mm-onboarding-item img{
+.mm-mixed-item img{
 	max-width: 100%;
 }
-.mm-onboarding-item h4{
+.mm-mixed-item h4{
 	display: inline;
 }
-.mm-onboarding-item .mm-action-wrap{
+.mm-mixed-item .mm-action-wrap{
 	padding: 10px 0;
 	margin-bottom: 10px;
 	border: 1px solid #ccc;
 	border-top: 0px;
 	min-height: 50px;
 }
-.mm-onboarding-item .mm-action-wrap .mm-action-btns{
+.mm-mixed-item .mm-action-wrap .mm-action-btns{
 	text-align: right;
 }
 </style>
@@ -73,10 +73,10 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 						<?php
 						foreach ( $themes as $theme ) {
 							if ( isset( $theme['images'] ) ) {
-								$demo = add_query_arg( array( 'page' => 'mojo-theme-preview', 'id' => $theme['id'], 'items' => 'onboarding-themes' ), admin_url( 'admin.php' ) );
+								$demo = add_query_arg( array( 'page' => 'mojo-theme-preview', 'id' => $theme['id'], 'items' => 'mixed-themes' ), admin_url( 'admin.php' ) );
 								echo '
-								<div class="col-xs-12 col-sm-4 mm-onboarding-premium-item">
-									<div class="mm-onboarding-item">
+								<div class="col-xs-12 col-sm-4 mm-mixed-premium-item">
+									<div class="mm-mixed-item">
 										<div class="mm-img-wrap">
 											<img src="' . $theme['images']['preview_url'] . '" />
 										</div>
@@ -86,15 +86,15 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 											</div>
 											<div class="col-xs-12 col-sm-7 mm-action-btns">
 												<a href="' . $demo . '" class="btn btn-primary btn-sm">Demo</a>
-												<a href="' . mm_build_link( add_query_arg( array( 'item_id' => $theme['id'] ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_onboarding_grid' ) ) . '" class="btn btn-success btn-sm mm_buy_now" data-id="' . $theme['id'] . '" data-price="' . number_format( $theme['prices']['single_domain_license'] ) . '" data-view="themes_onboarding">Buy Now</a>
+												<a href="' . mm_build_link( add_query_arg( array( 'item_id' => $theme['id'] ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_mixed_grid' ) ) . '" class="btn btn-success btn-sm mm_buy_now" data-id="' . $theme['id'] . '" data-price="' . number_format( $theme['prices']['single_domain_license'] ) . '" data-view="themes_mixed">Buy Now</a>
 											</div>
 										</div>
 									</div>
 								</div>';
 							} else {
 								echo '
-								<div class="col-xs-12 col-sm-4 mm-onboarding-free-item">
-									<div class="mm-onboarding-item">
+								<div class="col-xs-12 col-sm-4 mm-mixed-free-item">
+									<div class="mm-mixed-item">
 										<div class="mm-img-wrap">
 											<img src="' . $theme['screenshot_url'] . '" />
 										</div>
@@ -126,16 +126,16 @@ jQuery( document ).ready( function ( $ ) {
 		$( this ).removeClass( 'btn-primary' );
 		$( this ).addClass( 'btn-success' );
 		if ( $( this ).data( 'view' ) == 'all' ) {
-			$( '.mm-onboarding-free-item' ).show();
-			$( '.mm-onboarding-premium-item' ).show();
+			$( '.mm-mixed-free-item' ).show();
+			$( '.mm-mixed-premium-item' ).show();
 		}
 		if ( $( this ).data( 'view' ) == 'free' ) {
-			$( '.mm-onboarding-free-item' ).show();
-			$( '.mm-onboarding-premium-item' ).hide();
+			$( '.mm-mixed-free-item' ).show();
+			$( '.mm-mixed-premium-item' ).hide();
 		}
 		if ( $( this ).data( 'view' ) == 'premium' ) {
-			$( '.mm-onboarding-free-item' ).hide();
-			$( '.mm-onboarding-premium-item' ).show();
+			$( '.mm-mixed-free-item' ).hide();
+			$( '.mm-mixed-premium-item' ).show();
 		}
 	} );
 

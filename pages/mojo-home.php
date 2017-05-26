@@ -6,6 +6,9 @@ if ( ! defined( 'WPINC' ) ) { die; }
 require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 ?>
 	<style type="text/css">
+	#main.home .panel-body .dashicons{
+		color: #383838;
+	}
 	#main.home .panel-body .pull-left.dashicons{
 		margin-right: 10px;
 		font-size: 24px;
