@@ -3,7 +3,7 @@ if ( ! defined( 'WPINC' ) ) { die; }
 ?>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php
-require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
+require_once( MM_BASE_DIR . 'pages/header/header.php' );
 require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 $defaults = array(
 	'page'    => 'disabled',
