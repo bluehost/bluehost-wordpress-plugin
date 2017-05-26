@@ -14,6 +14,8 @@ if ( is_wp_error( $theme ) ) {
 } else {
 	$theme = json_decode( $theme['body'] );
 	$theme = $theme->items[0];
+
+		require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 ?>
 <div class="wrap <?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php
@@ -34,7 +36,7 @@ if ( is_wp_error( $theme ) ) {
 					<?php mm_stars( $theme->rating, $theme->sales_count ); ?>
 					<div class="theme-details text-center">
 						<div role="group" class="btn-group-horizontal">
-							<a class="btn btn-primary" href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item_id ), admin_url( 'admin.php' ) ) ); ?>">Details</a>
+							<a class="btn btn-default" href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item_id ), admin_url( 'admin.php' ) ) ); ?>">Details</a>
 							<a class="btn btn-success mm_buy_now" href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item_id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_preview' ) ); ?>">Buy Now</a>
 						</div>
 						<br/>

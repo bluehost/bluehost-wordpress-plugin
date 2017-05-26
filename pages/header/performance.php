@@ -35,20 +35,16 @@
 						<div class="nav-holder clearfix">
 							<ul class="nav sub-navbar-nav navbar-nav justified-nav">
 								<li>
-									<a class="scroll" href="#content">Site Content</a>
+									<a class="scroll" href="#content">Page Cache</a>
 								</li>
 								<li>
-									<a class="scroll" href="#design">Design &amp; Build</a>
+									<a class="scroll" href="https://my.bluehost.com/hosting/wordpress_tools/performance/">CDN</a>
 								</li>
-								<li>
-									<a class="scroll" href="#traffic">Traffic &amp; Engagement</a>
-								</li>
-								<li>
-									<a class="scroll" href="#performance">Site Performance</a>
-								</li>
-								<li>
-									<a class="scroll" href="#hosting">Hosting</a>
-								</li>
+								<?php if ( is_plugin_active( 'jetpack/jetpack.php' ) ) : ?>
+									<li>
+										<a class="scroll" href="<?php echo add_query_arg( array( 'page' => 'jetpack#/dashboard' ), admin_url( 'admin.php' ) ); ?>">Photon</a>
+									</li>
+								<?php endif; ?>
 							</ul>
 						</div>
 					</div>

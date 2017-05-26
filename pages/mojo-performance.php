@@ -57,7 +57,7 @@ if ( false === $cache_level && true == $cache_file_exists ) {
 									4 => 'Agressive',
 								);
 								foreach ( $levels as $level => $label ) {
-									echo '<label><input type="radio" name="cache_level" value="' . $level . '" ' . checked( $level, $cache_level, false ) . '/> ' . $label . '</label><br/>';
+									echo '<label class="top-4 radio-inline"><input type="radio" name="cache_level" value="' . $level . '" ' . checked( $level, $cache_level, false ) . '/> ' . $label . '</label><br/>';
 								}
 							?>
 							</p>
