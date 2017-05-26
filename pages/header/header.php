@@ -26,7 +26,12 @@
     }
 
 
-  } elseif($_GET['page'] === 'mojo-purchases') {
+  } elseif($_GET['page'] === 'mojo-single-item') {
+
+    require_once( MM_BASE_DIR . 'pages/header/marketplace/themes.php' );
+
+  }
+  elseif($_GET['page'] === 'mojo-purchases') {
 
     require_once( MM_BASE_DIR . 'pages/header/marketplace/purchases.php' );
 

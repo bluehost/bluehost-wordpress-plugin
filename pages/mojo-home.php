@@ -16,7 +16,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 						<span class="pull-left dashicons dashicons-admin-post"></span>
 						<h2>Blog Posts</h2>
 						<p>Add blog posts to your site. You can also organize them into categories.</p>
-						<div class="col-xs-12 col-sm-9 col-sm-offset-3 text-right">
+						<div class="col-xs-12 col-sm-12 text-right">
 							<a class="btn btn-link btn-sm" href="<?php echo add_query_arg( array( 'taxonomy' => 'category' ), admin_url( 'edit-tags.php' ) ); ?>"><small>Manage Categories</small></a>
 							<a class="btn btn-default btn-sm" href="<?php echo admin_url( 'post-new.php' ); ?>">Add New Post</a>
 						</div>
