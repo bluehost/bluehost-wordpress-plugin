@@ -20,12 +20,18 @@
     }
     elseif ($_GET['section'] === 'services') {
       require_once( MM_BASE_DIR . 'pages/header/marketplace/services.php' );
-    } else {
+    }
+    else {
       require_once( MM_BASE_DIR . 'pages/header/marketplace.php' );
     }
 
 
-  } elseif($_GET['page'] === 'mojo-performance') {
+  } elseif($_GET['page'] === 'mojo-purchases') {
+
+    require_once( MM_BASE_DIR . 'pages/header/marketplace/purchases.php' );
+
+  }
+  elseif($_GET['page'] === 'mojo-performance') {
 
     require_once( MM_BASE_DIR . 'pages/header/performance.php' );
 

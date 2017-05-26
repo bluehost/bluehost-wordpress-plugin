@@ -1,3 +1,7 @@
+<?php
+//var_dump(get_transient( '_mm_session_token' )); die;
+//if ( get_transient( '_mm_session_token' ) ) {return;} ?>
+
 <header id="header" class="navbar navbar-default">
 	<div class="header-block bg-cover" style="background-image: url('<?php echo mm_brand( MM_ASSETS_URL . 'img/header-bg-%s.jpg' ); ?>');">
 		<span data-srcset="<?php echo mm_brand( MM_ASSETS_URL . 'img/header-bg-%s.jpg' ); ?>, <?php echo mm_brand( MM_ASSETS_URL . 'img/header-bg-%s-2x.jpg' );?> 2x"></span>
@@ -46,6 +50,13 @@
                 <li>
 									<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'business-tools' ), admin_url( 'admin.php' ) ) ); ?>">Business Tools</a>
 								</li>
+
+								<?php if ( get_transient( '_mm_session_token' ) ) : ?>
+									<li>
+										<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-purchases' ), admin_url( 'admin.php' ) ) ); ?>">My Purchases</a>
+									</li>
+								<?php endif; ?>
+
 							</ul>
 						</div>
 					</div>

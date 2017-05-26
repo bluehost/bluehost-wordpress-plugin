@@ -46,6 +46,13 @@
                 <li>
 									<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'business-tools' ), admin_url( 'admin.php' ) ) ); ?>">Business Tools</a>
 								</li>
+
+								<?php if ( get_transient( '_mm_session_token' ) ) : ?>
+									<li>
+										<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-purchases' ), admin_url( 'admin.php' ) ) ); ?>">My Purchases</a>
+									</li>
+								<?php endif; ?>
+
 							</ul>
 						</div>
 					</div>

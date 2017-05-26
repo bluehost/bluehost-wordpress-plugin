@@ -40,7 +40,7 @@
                 <li>
 									<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'plugins' ), admin_url( 'admin.php' ) ) ); ?>">Plugins</a>
 								</li>
-                <li class="active">
+                <li>
 									<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'graphics' ), admin_url( 'admin.php' ) ) ); ?>">Graphics</a>
 								</li>
                 <li>
@@ -48,7 +48,7 @@
 								</li>
 
 								<?php if ( get_transient( '_mm_session_token' ) ) : ?>
-									<li>
+									<li class="active">
 										<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-purchases' ), admin_url( 'admin.php' ) ) ); ?>">My Purchases</a>
 									</li>
 								<?php endif; ?>
