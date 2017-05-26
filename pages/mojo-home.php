@@ -39,8 +39,8 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Blog Posts</h2>
 						<p>Add blog posts to your site. You can also organize them into categories.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-link btn-sm" href="<?php echo add_query_arg( array( 'taxonomy' => 'category' ), admin_url( 'edit-tags.php' ) ); ?>" target="_blank"><small>Manage Categories</small></a>
-							<a class="btn btn-success btn-sm" href="<?php echo admin_url( 'post-new.php' ); ?>" target="_blank">Add New Post</a>
+							<a class="btn btn-link btn-sm" href="<?php echo add_query_arg( array( 'taxonomy' => 'category' ), admin_url( 'edit-tags.php' ) ); ?>"><small>Manage Categories</small></a>
+							<a class="btn btn-success btn-sm" href="<?php echo admin_url( 'post-new.php' ); ?>">Add New Post</a>
 						</div>
 					</div>
 				</div>
@@ -52,7 +52,7 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Pages</h2>
 						<p>Add pages to your site.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-success btn-sm" href="<?php echo add_query_arg( array( 'post_type' => 'page' ), admin_url( 'post-new.php' ) ); ?>" target="_blank">Add New Page</a>
+							<a class="btn btn-success btn-sm" href="<?php echo add_query_arg( array( 'post_type' => 'page' ), admin_url( 'post-new.php' ) ); ?>">Add New Page</a>
 						</div>
 					</div>
 				</div>
@@ -64,7 +64,7 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<h2>Menus</h2>
 						<p>Help visitors navigate your site with beautiful menus.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-sm" href="<?php echo admin_url( 'nav-menus.php' ); ?>" target="_blank">Manage</a>
+							<a class="btn btn-primary btn-sm" href="<?php echo admin_url( 'nav-menus.php' ); ?>">Manage</a>
 						</div>
 					</div>
 				</div>
@@ -78,14 +78,13 @@ require_once( MM_BASE_DIR . 'pages/header-small-w-nav.php' );
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
 							<?php
 							if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-								echo '<a class="btn btn-primary btn-sm" href="' . add_query_arg( array( 'post_type' => 'product' ), admin_url( 'edit.php' ) ) . '" target="_blank">Manage Products</a>';
-								//edit.php?post_type=product
-							} elseif ( is_plugin_inactive( 'woocommerce/woocommerce.php' ) ) {
-								echo '<a class="btn btn-primary btn-sm" href="' . admin_url( 'plugins.php' ) .'" target="_blank">Activate WooCommerce</a>';
-								//plugins.php
+								echo '<a class="btn btn-primary btn-sm" href="' . add_query_arg( array( 'post_type' => 'product' ), admin_url( 'edit.php' ) ) . '">Manage Products</a>';
+							} elseif ( file_exists( WP_CONTENT_DIR . '/plugins/woocommerce/woocommerce.php' ) ) {
+								echo '<a class="btn btn-primary btn-sm" href="' . wp_nonce_url( 'plugins.php?action=activate&plugin=' . urlencode( 'woocommerce/woocommerce.php' ), 'activate-plugin_woocommerce/woocommerce.php' ) . '">Activate WooCommerce</a>';
 							} else {
-								echo '<a class="btn btn-primary btn-sm" href="" target="_blank">Install WooCommerce</a>';
-								//plugin-install.php?s=ecommerce&tab=search&type=tag
+								echo '<a class="btn btn-primary btn-sm" href="' . wp_nonce_url( admin_url( 'update.php?action=install-plugin&plugin=woocommerce' ), 'install-plugin_woocommerce' ) . '">Install WooCommerce</a>';
+								//update.php?action=install-plugin&plugin=woocommerce&_wpnonce=5b6f7e1646
+								//wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $api->slug), 'install-plugin_' . $api->slug)
 							}
 							?>
 						</div>
