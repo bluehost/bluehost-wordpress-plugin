@@ -58,7 +58,7 @@
 					</div>
 				</div>
 			</div>
-
+			<div class="bh-loader"></div>
 		</nav>
 	</div>
 </header>

@@ -205,4 +205,30 @@ input[type=radio]:before, .radio input[type=radio]:before {
   margin-bottom: 10px;
 }
 
+.bh-loader {
+  width: 100%;
+  height: 6px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background:
+    linear-gradient(
+      370deg,
+      #3575d3,
+      #3575d3 45%,
+      #35caf7 50%,
+      #35caf7 55%,
+      #3575d3 60%,
+      #3575d3
+    );
+  background-size: 300% 200%;
+  -webkit-animation: AnimationName 1.4s ease-in-out infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
 </style>

@@ -1,6 +1,7 @@
 <?php
 if ( ! defined( 'WPINC' ) ) { die; }
 ?>
+
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php
 require_once( MM_BASE_DIR . 'pages/header/header.php' );
@@ -246,30 +247,15 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 		</div>
 	</main>
 </div>
+
 <script type="text/javascript">
 	jQuery(window).scroll(function (event) {
-	    console.log(event);
-	});
-	jQuery( document ).ready( function( $ ) {
+	    console.log(window);
+});
 
-
-	// 	var hashTagActive = "";
-	//     $( '.scroll' ).on( 'click touchstart' , function ( event ) {
-	//     	$( '.nav li' ).removeClass( 'active' );
-	//     	$( this ).parent( 'li' ).addClass( 'active' );
-	//         if( hashTagActive != this.hash ) {
-	//             event.preventDefault();
-	//             var dest = 0;
-	//             if ( $( this.hash ).offset().top > $( document ).height() - $( window ).height() ) {
-	//                 dest = $( document ).height() - $( window ).height();
-	//             } else {
-	//                 dest = $( this.hash ).offset().top;
-	//             }
-	//             $( 'html,body' ).animate( {
-	//                 scrollTop: dest
-	//             }, Math.round( dest * 1.5 ), 'swing' );
-	//             hashTagActive = this.hash;
-	//         }
-	//     });
-	// } );
-</script>
+// This is to run the BH loader on pages
+// <script type="text/javascript">
+// 	jQuery(window).load(function() {
+// 		jQuery(".loader").fadeOut("slow");
+// 	})
+// </script>
