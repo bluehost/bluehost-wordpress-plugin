@@ -27,11 +27,8 @@ $response = mm_api_cache( $api_url );
 ?>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 	<?php
-
-	require_once( MM_BASE_DIR . 'inc/branding.php' );
 	require_once( MM_BASE_DIR . 'pages/header/header.php' );
 	require_once( MM_BASE_DIR . 'inc/style_updates.css' );
-
 
 	if ( ! is_wp_error( $response ) ) {
 		$api = json_decode( $response['body'] );
@@ -119,7 +116,7 @@ $response = mm_api_cache( $api_url );
 										</div>
 
 										<div class="btn-group-vertical" role="group">
-											<a href="<?php echo add_query_arg( array( 'page' => 'mojo-theme-preview', 'id' => $item->id, 'items' => $items ), admin_url( 'admin.php' ) ); ?>" class="btn btn-default btn-lg">Demo</a>
+											<a href="<?php echo add_query_arg( array( 'page' => 'mojo-theme-preview', 'id' => $item->id, 'items' => $items ), admin_url( 'admin.php' ) ); ?>" class="btn btn-primary btn-lg">Demo</a>
 											<a href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item->id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_list' ) ); ?>" class="btn btn-success btn-lg mm_buy_now" data-id="<?php echo $item->id; ?>" data-price="<?php echo number_format( $item->prices->single_domain_license ); ?>" data-view="themes_list">Buy Now</a>
 										</div>
 

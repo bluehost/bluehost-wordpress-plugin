@@ -44,7 +44,6 @@
   z-index: 10;
 }
 
-
 /*Header Styles*/
 .fixed-nav{
   margin-top: 40px;
@@ -64,7 +63,8 @@
 }
 
 /*Updated Bluerock styles*/
-.btn, button {
+#mojo-wrapper.mojo-bluehost-branding .btn,
+#mojo-wrapper.mojo-bluehost-branding button {
     padding: 4px 16px;
     transition: all .08s ease;
     font-family: Open Sans,sans-serif;
@@ -72,14 +72,12 @@
     transition-timing-function: linear;
     transition-duration: .08s;
     text-decoration: none;
-    background-color: transparent;
     border-radius: 3px;
     font-family: Open Sans,sans-serif;
 }
 
-.btn {
+#mojo-wrapper.mojo-bluehost-branding .btn {
     display: inline-block;
-    margin-bottom: 0;
     font-weight: 400;
     text-align: center;
     vertical-align: middle;
@@ -98,88 +96,93 @@
     user-select: none;
 }
 
-.btn:hover {
+#mojo-wrapper.mojo-bluehost-branding .btn:hover {
     border: 1px solid #2e66ba;
     background: #2e66ba;
     color: #fff;
     box-shadow: none;
 }
 
-.btn-md {
+#mojo-wrapper.mojo-bluehost-branding .btn-md {
     padding: 8px 24px;
 }
 
-.btn-lg {
+#mojo-wrapper.mojo-bluehost-branding .btn-lg {
     padding: 16px 24px;
 }
 
-.btn-primary.active,
-.btn-primary:active,
-.btn-primary:hover,
-.open>.btn-primary.dropdown-toggle {
+#mojo-wrapper.mojo-bluehost-branding .btn-default.active,
+#mojo-wrapper.mojo-bluehost-branding .btn-default:active,
+#mojo-wrapper.mojo-bluehost-branding .btn-default:hover,
+#mojo-wrapper.mojo-bluehost-branding .open>.btn-default.dropdown-toggle {
     color: #fff;
     background-color: #265eaf;
     border-color: #204e92;
 }
 
-.btn-primary {
+#mojo-wrapper.mojo-bluehost-branding .btn-default {
   border: 1px solid #3575d3;
   background-color: #3575d3;
   color: #fff;
 }
 
-.btn-default,
-button {
-    border: 1px solid #3575d3;
-    color: #3575d3;
+#mojo-wrapper.mojo-bluehost-branding .btn-link{
+  color: #3575d3;
 }
 
-.home-btn-group {
+#mojo-wrapper.mojo-bluehost-branding .btn-primary,
+#mojo-wrapper.mojo-bluehost-branding button {
+    border: 1px solid #3575d3;
+    color: #3575d3;
+    background-color: #fff;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .home-btn-group {
   padding: 23px 23px 0 23px;
 }
 
-.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+#mojo-wrapper.mojo-bluehost-branding .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
 }
 
-.btn-group>.btn:first-child {
+#mojo-wrapper.mojo-bluehost-branding .btn-group>.btn:first-child {
     margin-left: 0;
 }
 
-.btn-group-vertical>.btn, .btn-group>.btn {
+#mojo-wrapper.mojo-bluehost-branding .btn-group-vertical>.btn, .btn-group>.btn {
     position: relative;
     float: left;
 }
 
-.btn-group>.btn:last-child:not(:first-child),
-.btn-group>.dropdown-toggle:not(:first-child) {
+#mojo-wrapper.mojo-bluehost-branding .btn-group>.btn:last-child:not(:first-child),
+#mojo-wrapper.mojo-bluehost-branding .btn-group>.dropdown-toggle:not(:first-child) {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
 }
 
-.btn-group .btn+.btn,
-.btn-group .btn+.btn-group,
-.btn-group .btn-group+.btn,
-.btn-group .btn-group+.btn-group {
+#mojo-wrapper.mojo-bluehost-branding .btn-group .btn+.btn,
+#mojo-wrapper.mojo-bluehost-branding .btn-group .btn+.btn-group,
+#mojo-wrapper.mojo-bluehost-branding .btn-group .btn-group+.btn,
+#mojo-wrapper.mojo-bluehost-branding .btn-group .btn-group+.btn-group {
     margin-left: -1px;
 }
-.cf:after,
-.inline:after, .page-wrap:after {
+#mojo-wrapper.mojo-bluehost-branding .cf:after,
+#mojo-wrapper.mojo-bluehost-branding .inline:after, .page-wrap:after {
     clear: both;
 }
 
-input[type=checkbox]:checked,
-.checkbox input[type=checkbox]:checked,
-.radio-inline input[type=radio]:checked,
-.radio input[type=radio]:checked {
+#mojo-wrapper.mojo-bluehost-branding input[type=checkbox]:checked,
+#mojo-wrapper.mojo-bluehost-branding .checkbox input[type=checkbox]:checked,
+#mojo-wrapper.mojo-bluehost-branding .radio-inline input[type=radio]:checked,
+#mojo-wrapper.mojo-bluehost-branding .radio input[type=radio]:checked {
     background-color: #17b212;
 }
 
-input[type=checkbox],
-.checkbox input[type=checkbox],
-.radio-inline input[type=radio],
-.radio input[type=radio] {
+#mojo-wrapper.mojo-bluehost-branding input[type=checkbox],
+#mojo-wrapper.mojo-bluehost-branding .checkbox input[type=checkbox],
+#mojo-wrapper.mojo-bluehost-branding .radio-inline input[type=radio],
+#mojo-wrapper.mojo-bluehost-branding .radio input[type=radio] {
     margin: 0;
     padding: 0;
     position: relative;
@@ -194,8 +197,8 @@ input[type=checkbox],
     cursor: pointer;
 }
 
-input[type=radio]:before,
-.radio input[type=radio]:before {
+#mojo-wrapper.mojo-bluehost-branding input[type=radio]:before,
+#mojo-wrapper.mojo-bluehost-branding .radio input[type=radio]:before {
     content: "";
     width: 0;
     height: 0;
@@ -208,8 +211,8 @@ input[type=radio]:before,
     transition: all .16s ease;
 }
 
-.radio-inline input[type=radio]:checked:before,
-.radio input[type=radio]:checked:before {
+#mojo-wrapper.mojo-bluehost-branding .radio-inline input[type=radio]:checked:before,
+#mojo-wrapper.mojo-bluehost-branding .radio input[type=radio]:checked:before {
     width: 13px;
     height: 14px;
     background-color: #fff;
@@ -218,8 +221,8 @@ input[type=radio]:before,
     left: 2px;
 }
 
-.radio-inline,
-.checkbox-inline {
+#mojo-wrapper.mojo-bluehost-branding .radio-inline,
+#mojo-wrapper.mojo-bluehost-branding .checkbox-inline {
   margin-bottom: 10px;
 }
 
