@@ -1,45 +1,21 @@
-<?php
-
-  if ($_GET['page'] === 'mojo-home') {
-
-    require_once( MM_BASE_DIR . 'pages/header/home.php' );
-
-  } elseif ($_GET['page'] === 'mojo-marketplace') {
-
-    if ($_GET['section'] === 'themes') {
-      require_once( MM_BASE_DIR . 'pages/header/marketplace/themes.php' );
-    }
-    elseif ($_GET['section'] === 'plugins') {
-      require_once( MM_BASE_DIR . 'pages/header/marketplace/plugins.php' );
-    }
-    elseif ($_GET['section'] === 'graphics') {
-      require_once( MM_BASE_DIR . 'pages/header/marketplace/graphics.php' );
-    }
-    elseif ($_GET['section'] === 'business-tools') {
-      require_once( MM_BASE_DIR . 'pages/header/marketplace/business-tools.php' );
-    }
-    elseif ($_GET['section'] === 'services') {
-      require_once( MM_BASE_DIR . 'pages/header/marketplace/services.php' );
-    }
-    else {
-      require_once( MM_BASE_DIR . 'pages/header/marketplace.php' );
-    }
-
-
-  } elseif($_GET['page'] === 'mojo-single-item') {
-
-    require_once( MM_BASE_DIR . 'pages/header/marketplace/themes.php' );
-
-  }
-  elseif($_GET['page'] === 'mojo-purchases') {
-
-    require_once( MM_BASE_DIR . 'pages/header/marketplace/purchases.php' );
-
-  }
-  elseif($_GET['page'] === 'mojo-performance') {
-
-    require_once( MM_BASE_DIR . 'pages/header/performance.php' );
-
-  }
-
-?>
+<header id="header" class="navbar navbar-default">
+	<div class="header-block bg-cover" style="background-image: url('<?php echo mm_brand( MM_ASSETS_URL . 'img/header-bg-%s.jpg' ); ?>');">
+		<span data-srcset="<?php echo mm_brand( MM_ASSETS_URL . 'img/header-bg-%s.jpg' ); ?>, <?php echo mm_brand( MM_ASSETS_URL . 'img/header-bg-%s-2x.jpg' );?> 2x"></span>
+		<nav>
+			<div class="container">
+				<div class="inner-holder">
+					<a class="navbar-brand" href="#">
+						<img src="<?php echo mm_brand( MM_ASSETS_URL . 'img/logo-icon-%s.svg' ); ?>" alt="Marketplace">
+					</a>
+				</div>
+			</div>
+			<?php
+			require_once( MM_BASE_DIR . 'pages/header/nav-primary.php' );
+			require_once( MM_BASE_DIR . 'pages/header/nav-sub.php' );
+			if ( 'bluehost' == mm_brand() ) {
+				echo '<div class="bluehost-loader"></div>';
+			}
+			?>
+		</nav>
+	</div>
+</header>

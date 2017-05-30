@@ -249,13 +249,22 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 </div>
 
 <script type="text/javascript">
-	jQuery(window).scroll(function (event) {
-	    console.log(window);
-});
-
-// This is to run the BH loader on pages
-// <script type="text/javascript">
-// 	jQuery(window).load(function() {
-// 		jQuery(".loader").fadeOut("slow");
-// 	})
-// </script>
+	jQuery( document ).ready( function( $ ) {
+		var hashTagActive = "";
+	    $( '.scroll' ).on( 'click touchstart' , function ( event ) {
+	        if( hashTagActive != this.hash ) {
+	            event.preventDefault();
+	            var dest = 0;
+	            if ( $( this.hash ).offset().top > $( document ).height() - $( window ).height() ) {
+	                dest = $( document ).height() - $( window ).height();
+	            } else {
+	                dest = $( this.hash ).offset().top;
+	            }
+	            $( 'html,body' ).animate( {
+	                scrollTop: dest
+	            }, Math.round( dest * 1.5 ), 'swing' );
+	            hashTagActive = this.hash;
+	        }
+	    } );
+	} );
+</script>
