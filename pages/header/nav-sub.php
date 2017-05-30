@@ -4,12 +4,15 @@ $nav = sanitize_key( $_GET['page'] );
 switch ( $nav ) {
 	case 'mojo-home':
 		$subnav = array(
-			array( 'class' => 'scroll', 'href' => '#content', 'content' => 'Site Content' ),
-			array( 'class' => 'scroll', 'href' => '#design', 'content' => 'Design &amp; Build' ),
-			array( 'class' => 'scroll', 'href' => '#traffic', 'content' => 'Traffic &amp; Engagement' ),
-			array( 'class' => 'scroll', 'href' => '#performance', 'content' => 'Site Performance' ),
-			array( 'class' => 'scroll', 'href' => '#hosting', 'content' => 'Hosting' ),
+			0 => array( 'class' => 'scroll', 'href' => '#content', 'content' => 'Site Content' ),
+			1 => array( 'class' => 'scroll', 'href' => '#design', 'content' => 'Design &amp; Build' ),
+			3 => array( 'class' => 'scroll', 'href' => '#performance', 'content' => 'Site Performance' ),
+			4 => array( 'class' => 'scroll', 'href' => '#hosting', 'content' => 'Hosting' ),
 		);
+		if ( is_plugin_active( 'jetpack/jetpack.php' ) ) {
+			$subnav[2] = array( 'class' => 'scroll', 'href' => '#traffic', 'content' => 'Traffic &amp; Engagement' );
+		}
+		ksort( $subnav );
 		break;
 	case 'mojo-marketplace':
 		$subnav = array(
