@@ -28,8 +28,6 @@ switch ( $nav ) {
 
 		if ( isset( $_GET['section'] ) && array_key_exists( $_GET['section'], $subnav ) ) {
 			$subnav[ $_GET['section'] ]['active'] = true;
-		} else {
-			$subnav['themes']['active'] = true;
 		}
 		break;
 	case 'mojo-performance':
@@ -54,9 +52,6 @@ switch ( $nav ) {
 if ( empty( $subnav ) ) {
 	return;
 }
-/*$subnav = array(
-	array( 'class' => '', 'href' => '', 'content' => '' ),
-);*/
 ?>
 <div class="sub-navbar collapse navbar-collapse">
 	<div class="container">
