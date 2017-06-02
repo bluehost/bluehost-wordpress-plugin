@@ -173,7 +173,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 						<h2>CDN</h2>
 						<p>A Content Delivery Network will distribute your assets to servers around the globe for faster retrieval.</p>
 						<div class="col-xs-12 col-sm-12">
-							<a class="btn btn-primary btn-sm" href="https://my.bluehost.com/hosting/wordpress_tools/performance/" target="_blank">Manage</a>
+							<a class="btn btn-primary btn-sm" href="https://my.bluehost.com/hosting/wordpress_tools/performance/<?php echo mm_site_bin2hex(); ?>" target="_blank">Manage</a>
 						</div>
 					</div>
 				</div>
@@ -199,7 +199,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 						<h2>Manage My Sites</h2>
 						<p>Manage your site from Bluehost's control panel. You can take backups, keep things secure, and improve performance.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-sm" href="https://my.bluehost.com/hosting/wordpress_tools/" target="_blank">Manage</a>
+							<a class="btn btn-primary btn-sm" href="https://my.bluehost.com/hosting/wordpress_tools/<?php echo mm_site_bin2hex(); ?>" target="_blank">Manage</a>
 						</div>
 					</div>
 				</div>

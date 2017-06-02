@@ -325,6 +325,19 @@ function mm_truncate_name( $name, $length = 14 ) {
 	return $truncated_name;
 }
 
+function mm_site_bin2hex() {
+	$path = ABSPATH;
+	$path = explode( 'public_html/', $path );
+	if ( 2 === count( $path ) ) {
+		$path = '/public_html/' . $path[1];
+	} else {
+		return false;
+	}
+
+	$path_hash = bin2hex( $path );
+	return $path_hash;
+}
+
 function _mm_login() {
 	if ( ! current_user_can( 'administrator' ) ) {
 		return;
