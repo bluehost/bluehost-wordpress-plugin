@@ -37,6 +37,7 @@ shuffle( $themes );
 	border-bottom: 0px;
 	max-height: 175px;
 	overflow: hidden;
+	position: relative;
 }
 .mm-mixed-item img{
 	max-width: 100%;
@@ -54,10 +55,25 @@ shuffle( $themes );
 .mm-mixed-item .mm-action-wrap .mm-action-btns{
 	text-align: right;
 }
+.mm-mixed-item  .mm-img-wrap:hover .item-actions-hover {
+	z-index: 10;
+	background: rgba(0, 0, 0, 0) linear-gradient(90deg, rgba( 45, 110, 180, 0.7 ), rgba( 0, 150, 190, 0.7 ) ) repeat scroll 0 0;
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align:center;
+}
+.mm-mixed-item  .mm-img-wrap:hover .item-actions-hover .btn {
+	display: block;
+	margin-top: 30px;
+}
 </style>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php
-require_once( MM_BASE_DIR . 'pages/header/header-no-nav.php' );
+require_once( MM_BASE_DIR . 'pages/header/header.php' );
+require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 ?>
 
 	<main id="main">
@@ -79,13 +95,17 @@ require_once( MM_BASE_DIR . 'pages/header/header-no-nav.php' );
 									<div class="mm-mixed-item">
 										<div class="mm-img-wrap">
 											<img src="' . $theme['images']['preview_url'] . '" />
+											<div class="item-actions-hover">
+												<a href="' . $demo . '" class="btn btn-primary btn-md">Demo</a>
+												<br/>
+												<a href="' . mm_build_link( add_query_arg( array( 'item_id' => $theme['id'] ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_mixed_grid' ) ) . '" data-id="' . $theme['id'] . '" data-price="' . number_format( $theme['prices']['single_domain_license'] ) . '" class="btn btn-primary btn-md">Details</a>
+											</div>
 										</div>
 										<div class="mm-action-wrap">
 											<div class="col-xs-12 col-sm-5">
 												<h4>' . mm_truncate_name( $theme['name'] ) . '</h4>
 											</div>
 											<div class="col-xs-12 col-sm-7 mm-action-btns">
-												<a href="' . $demo . '" class="btn btn-primary btn-sm">Demo</a>
 												<a href="' . mm_build_link( add_query_arg( array( 'item_id' => $theme['id'] ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_mixed_grid' ) ) . '" class="btn btn-success btn-sm mm_buy_now" data-id="' . $theme['id'] . '" data-price="' . number_format( $theme['prices']['single_domain_license'] ) . '" data-view="themes_mixed">Buy Now</a>
 											</div>
 										</div>
@@ -97,13 +117,17 @@ require_once( MM_BASE_DIR . 'pages/header/header-no-nav.php' );
 									<div class="mm-mixed-item">
 										<div class="mm-img-wrap">
 											<img src="' . $theme['screenshot_url'] . '" />
+											<div class="item-actions-hover">
+												<a href="' . $demo . '" target="_blank" class="btn btn-primary btn-md">Demo</a>
+												<br/>
+												<a href="' . mm_build_link( add_query_arg( array( 'item_id' => $theme['id'] ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_mixed_grid' ) ) . '" data-id="' . $theme['id'] . '" data-price="' . number_format( $theme['prices']['single_domain_license'] ) . '" class="btn btn-primary btn-md">Details</a>
+											</div>
 										</div>
 										<div class="mm-action-wrap">
 											<div class="col-xs-12 col-sm-5">
 												<h4>' . mm_truncate_name( $theme['name'] ) . '</h4>
 											</div>
 											<div class="col-xs-12 col-sm-7 mm-action-btns">
-												<a href="' . $theme['preview_url'] . '" target="_blank" class="btn btn-primary btn-sm free-theme-demo">Demo</a>
 												<a href="#" class="btn btn-success btn-sm free-theme-install" data-slug="' . $theme['slug'] . '">Install</a>
 											</div>
 										</div>
