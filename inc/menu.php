@@ -76,11 +76,12 @@ function mm_marketplace_menu() {
 	add_submenu_page( null, 'Redirecting', 'Redirecting', 'manage_options', 'mojo-services', '__return_false' );
 	add_submenu_page( null, 'Redirecting', 'Redirecting', 'manage_options', 'mojo-graphics', '__return_false' );
 	add_submenu_page( null, 'Redirecting', 'Redirecting', 'manage_options', 'mojo-purchases', '__return_false' );
+	add_submenu_page( null, 'Redirecting', 'Redirecting', 'manage_options', 'mojo-single-item', '__return_false' );
 }
 add_action( 'admin_menu', 'mm_marketplace_menu' );
 
 function mm_marketplace_page() {
-	$valid_sections = array( 'themes', 'plugins', 'services', 'graphics', 'business-tools', 'search', 'mixed-themes', 'purchases' );
+	$valid_sections = array( 'themes', 'plugins', 'services', 'graphics', 'business-tools', 'search', 'mixed-themes', 'purchases', 'single-item' );
 	if ( isset( $_GET['section'] ) && in_array( $_GET['section'], $valid_sections ) ) {
 		$section = sanitize_key( $_GET['section'] );
 	} else {
@@ -181,15 +182,6 @@ function mm_hosting_menu() {
 }
 add_action( 'admin_menu', 'mm_hosting_menu' );
 
-function mm_item_menu() {
-	add_submenu_page( null, 'Single Item', 'Single Item', 'manage_options', 'mojo-single-item', 'mm_single_item_page' );
-}
-add_action( 'admin_menu', 'mm_item_menu' );
-
-function mm_single_item_page() {
-	mm_require( MM_BASE_DIR . 'pages/single-item.php' );
-}
-
 function mm_item_search_menu() {
 	add_submenu_page( null, 'Search Items', 'Search Items', 'manage_options', 'mojo-search', 'mm_item_search_page' );
 }
@@ -222,6 +214,8 @@ function mm_menu_redirects() {
 			$destination = admin_url( 'admin.php?page=mojo-marketplace&section=business-tools' );
 		} elseif ( 'mojo-purchases' == $_GET['page'] ) {
 			$destination = admin_url( 'admin.php?page=mojo-marketplace&section=purchases' );
+		} elseif ( 'mojo-single-item' == $_GET['page'] &&  isset( $_GET['item_id'] ) ) {
+			$destination = add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'single-item', 'item_id' => $_GET['item_id'] ), admin_url( 'admin.php' ) );
 		} elseif ( 'mojo-hosting-panel' == $_GET['page'] ) {
 			wp_redirect( 'https://my.bluehost.com/cgi/home', 302 );
 		}
