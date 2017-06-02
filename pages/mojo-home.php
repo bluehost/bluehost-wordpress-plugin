@@ -247,9 +247,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 
 <script type="text/javascript">
 	jQuery( document ).ready( function( $ ) {
-		var hashTagActive = "";
 	    $( '.scroll' ).on( 'click touchstart' , function ( event ) {
-	        if( hashTagActive != this.hash ) {
 	            event.preventDefault();
 	            var dest = 0;
 	            if ( $( this.hash ).offset().top > $( document ).height() - $( window ).height() ) {
@@ -260,8 +258,6 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 	            $( 'html,body' ).animate( {
 	                scrollTop: dest
 	            }, Math.round( dest * 1.2 ), 'swing' );
-	            hashTagActive = this.hash;
-	        }
 	    } );
 	} );
 </script>
