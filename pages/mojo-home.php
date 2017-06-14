@@ -210,7 +210,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 						<h2>Manage My Sites</h2>
 						<p>Manage your site from Bluehost's control panel. You can take backups, keep things secure, and improve performance.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-md" href="https://my.bluehost.com/hosting/wordpress_tools/<?php echo mm_site_bin2hex(); ?>" target="_blank">Manage</a>
+							<a class="btn btn-primary btn-md" href="<?php echo mm_build_link( 'https://my.bluehost.com/hosting/wordpress_tools/' . mm_site_bin2hex(), array( 'utm_campaign' => mm_brand( '%s_wp_plugin' ), 'utm_medium' => 'plugin_home', 'utm_content' => 'manage_sites', 'r' => '' ) ); ?>" target="_blank">Manage</a>
 						</div>
 					</div>
 				</div>
@@ -222,7 +222,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 						<h2>Email</h2>
 						<p>Create accounts, compose, send, and recieve all your email in your Bluehost control panel.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-md" href="https://my.bluehost.com/cgi/email_manager" target="_blank">Manage</a>
+							<a class="btn btn-primary btn-md" href="<?php echo mm_build_link( 'https://my.bluehost.com/cgi/email_manager', array( 'utm_campaign' => mm_brand( '%s_wp_plugin' ), 'utm_medium' => 'plugin_home', 'utm_content' => 'manage_email', 'r' => '' ) ); ?>" target="_blank">Manage</a>
 						</div>
 					</div>
 				</div>
@@ -234,7 +234,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 						<h2>Domains</h2>
 						<p>Find a new domain and assign it to your site, or start a new site with a new domain.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-md" href="https://my.bluehost.com/cgi/dm" target="_blank">Find a Domain</a>
+							<a class="btn btn-primary btn-md" href="<?php echo mm_build_link( 'https://my.bluehost.com/cgi/dm', array( 'utm_campaign' => mm_brand( '%s_wp_plugin' ), 'utm_medium' => 'plugin_home', 'utm_content' => 'find_domain', 'r' => '' ) ); ?>" target="_blank">Find a Domain</a>
 						</div>
 					</div>
 				</div>
@@ -246,7 +246,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 						<h2>Help</h2>
 						<p>Need help from the folks at Bluehost? We have 24/7 US-based phone and chat support waiting to help.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-md" href="https://helpchat.bluehost.com/" target="_blank">Help Me</a>
+							<a class="btn btn-primary btn-md" href="<?php echo mm_build_link( 'https://helpchat.bluehost.com/', array( 'utm_campaign' => mm_brand( '%s_wp_plugin' ), 'utm_medium' => 'plugin_home', 'utm_content' => 'help', 'r' => '' ) ); ?>" target="_blank">Help Me</a>
 						</div>
 					</div>
 				</div>
