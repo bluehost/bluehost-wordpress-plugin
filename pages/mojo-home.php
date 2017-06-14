@@ -10,7 +10,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 
 	<main id="main" class="home">
 		<div class="container">
-			<h2 id="content">Site Content</h2>
+			<h2 id="content">Content</h2>
 			<div class="col-xs-12 col-sm-6">
 				<div class="panel panel-default panel-body">
 					<div>
@@ -29,7 +29,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 					<div>
 					<span class="pull-left dashicons dashicons-admin-page"></span>
 						<h2>Pages</h2>
-						<p>Add pages to your site.</p>
+						<p>Add pages to your website easily by clicking add new page.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
 							<a class="btn btn-primary btn-md" href="<?php echo add_query_arg( array( 'post_type' => 'page' ), admin_url( 'post-new.php' ) ); ?>">Add New Page</a>
 						</div>
@@ -40,8 +40,8 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 				<div class="panel panel-default panel-body">
 					<div>
 					<span class="pull-left dashicons dashicons-menu"></span>
-						<h2>Menus</h2>
-						<p>Help visitors navigate your site with beautiful menus.</p>
+						<h2>Navigation Menus</h2>
+						<p>If you are looking to adjust or control your navigation of your website simply click manage below and rearrange your menus.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
 							<a class="btn btn-primary btn-md" href="<?php echo admin_url( 'nav-menus.php' ); ?>">Manage</a>
 						</div>
@@ -51,9 +51,12 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 			<div class="col-xs-12 col-sm-6">
 				<div class="panel panel-default panel-body">
 					<div>
-					<span class="pull-left dashicons dashicons-cart"></span>
-						<h2>Products</h2>
-						<p>Sell products and services from your site.</p>
+						<div class="col-xs-12 clearfix">
+							<span class="pull-left dashicons dashicons-cart"></span>
+							<h2 class="pull-left">Sell Products</h2>
+							<img class="pull-right" src="<?php echo plugins_url( '../inc/images/woocommerce.png', __FILE__ ); ?>" width="150" />
+						</div>
+						<p>Are you are looking to sell products on your WordPress website? If so, we recommend that you install and setup WooCommerce.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
 							<?php
 							if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
@@ -75,9 +78,9 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 					<div>
 					<span class="pull-left dashicons dashicons-admin-customizer"></span>
 						<h2>Customizer</h2>
-						<p>Customize visual and navigation elements of your site, and preview your changes before going live.</p>
+						<p>Customize your theme from the front end and view your changes before updating them.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-md" href="<?php echo add_query_arg( array( 'return' => urlencode( '/wp-admin/admin.php?page=mojo-home' ) ), admin_url( 'customize.php' ) ); ?>">Customize</a>
+							<a class="btn btn-primary btn-md" href="<?php echo add_query_arg( array( 'return' => urlencode( '/wp-admin/admin.php?page=mojo-home' ) ), admin_url( 'customize.php' ) ); ?>">Customize Theme</a>
 						</div>
 					</div>
 				</div>
@@ -87,11 +90,11 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 					<div class="clearfix">
 					<span class="pull-left dashicons dashicons-admin-appearance"></span>
 						<h2>WordPress Themes</h2>
-						<p>Find a design that inspires you!</p>
+						<p>Easily browse and find a theme that inspires you!</p>
 
-						<div class="btn-group home-btn-group clearfix panel-body">
-							<a href="<?php echo add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'mixed-themes' ), admin_url( 'admin.php' ) ); ?>" target="_blank" class="btn btn-primary">Free Themes</a>
-							<a href="<?php echo add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'mixed-themes' ), admin_url( 'admin.php' ) ); ?>" class="btn btn-default">Premium Themes</a>
+						<div class="btn-group home-btn-group clearfix panel-body col-sm-12">
+							<a href="<?php echo add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'mixed-themes' ), admin_url( 'admin.php' ) ); ?>" class="btn btn-default btn-md">Premium Themes</a>
+							<a href="<?php echo add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'mixed-themes' ), admin_url( 'admin.php' ) ); ?>" target="_blank" class="btn btn-link btn-md">Free Themes</a>
 						</div>
 
 					</div>
@@ -120,7 +123,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 					<div>
 					<span class="pull-left dashicons dashicons-share"></span>
 						<h2>Social</h2>
-						<p>Add social sharing buttons to your site for facebook, twitter, and others, so your visitors can share your content with their friends.</p>
+						<p>Add social sharing buttons to your site for Facebook, Twitter, and others, so your visitors can share your content with their friends.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
 							<a class="btn btn-primary btn-md" href="<?php echo add_query_arg( array( 'page' => 'jetpack#/sharing' ), admin_url( 'admin.php' ) ); ?>">Manage</a>
 						</div>
@@ -153,13 +156,13 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 			</div>
 			<?php } ?>
 
-			<h2 id="performance">Site Performance</h2>
+			<h2 id="performance">Performance</h2>
 			<div class="col-xs-12 col-sm-4">
 				<div class="panel panel-default panel-body text-center performance-card">
 					<div>
 					<span class="dashicons dashicons-performance"></span>
 						<h2>Page Cache</h2>
-						<p>Page Caching allows your server to keep a copy of a page for a short time to dramatically improve speed.</p>
+						<p>Page caching allows your server to keep a copy of a page for a short time to dramatically improve speed.</p>
 						<div class="col-xs-12 col-sm-12">
 							<a class="btn btn-primary btn-md" href="<?php echo add_query_arg( array( 'page' => 'mojo-performance' ), admin_url( 'admin.php' ) ); ?>">Configure</a>
 						</div>
@@ -171,7 +174,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 					<div>
 					<span class="dashicons dashicons-cloud"></span>
 						<h2>CDN</h2>
-						<p>A Content Delivery Network will distribute your assets to servers around the globe for faster retrieval.</p>
+						<p>A Content Delivery Network (CDN) will distribute your website around the globe for global retrieval.</p>
 						<div class="col-xs-12 col-sm-12">
 							<a class="btn btn-primary btn-md" href="https://my.bluehost.com/hosting/wordpress_tools/performance/<?php echo mm_site_bin2hex(); ?>" target="_blank">Manage</a>
 						</div>
@@ -183,9 +186,17 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 					<div>
 					<div><span class="dashicons dashicons-visibility"></span></div>
 						<h2>Photon</h2>
-						<p>Photon is an image acceleration service that will resize your images an serve them from a CDN.</p>
+						<p>Photon is an image acceleration service that will resize your images and serve them from a CDN.</p>
 						<div class="col-xs-12 col-sm-12">
-							<a class="btn btn-primary btn-md" href="<?php echo add_query_arg( array( 'page' => 'jetpack#/dashboard' ), admin_url( 'admin.php' ) ); ?>">Learn More</a>
+							<?php
+							if ( is_plugin_active( 'jetpack/jetpack.php' ) ) {
+								echo '<a class="btn btn-primary btn-md" href="' . add_query_arg( array( 'page' => 'jetpack#/dashboard' ), admin_url( 'admin.php' ) ) . '">Learn More</a>';
+							} elseif ( file_exists( WP_CONTENT_DIR . '/plugins/jetpack/jetpack.php' ) ) {
+								echo '<a class="btn btn-primary btn-md" href="' . wp_nonce_url( 'plugins.php?action=activate&plugin=' . urlencode( 'jetpack/jetpack.php' ), 'activate-plugin_jetpack/jetpack.php' ) . '">Activate Jetpack</a>';
+							} else {
+								echo '<a class="btn btn-primary btn-md" href="' . wp_nonce_url( admin_url( 'update.php?action=install-plugin&plugin=jetpack' ), 'install-plugin_jetpack' ) . '">Install Jetpack</a>';
+							}
+							?>
 						</div>
 					</div>
 				</div>

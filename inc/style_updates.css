@@ -23,7 +23,7 @@
   font-size: 24px;
 }
 #main.home .panel-body p {
-  margin-left: 32px;
+  font-size: 14px;
 }
 #main.home .performance-card .dashicons{
   font-size: 64px;
@@ -137,7 +137,7 @@
 }
 
 #mojo-wrapper.mojo-bluehost-branding .home-btn-group {
-  padding: 23px 23px 0 23px;
+  padding: 5px 0px 0 0px;
 }
 
 #mojo-wrapper.mojo-bluehost-branding .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
