@@ -29,9 +29,13 @@ function mm_auto_update_register_settings() {
 	$section_name = 'mm_auto_update_settings_section';
 	$section_hook = 'general';
 	if ( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) ) {
+		$brand = get_option( 'mm_brand', 'MOJO' );
+		if ( 'BlueHost' == $brand ) {
+			$brand = 'Bluehost';
+		}
 		add_settings_section(
 			$section_name,
-			'MOJO Auto Update Manager',
+			$brand . ' Auto Update Manager',
 			'__return_false',
 			$section_hook
 		);
