@@ -26,6 +26,10 @@ php:
     #- wget https://raw.github.com/benbalter/wordpress-plugin-tests/setup/setup.sh
     #- source setup.sh
 
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libxml2-dev
+
 script: phpunit
 
 # wordpress-plugin-tests specific config
