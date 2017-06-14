@@ -126,28 +126,7 @@ function mm_home_page() {
 }
 
 function mm_staging_menu() {
-	if ( mm_brand() !== 'bluehost' ) {
-		return;
-	}
-
-	$current_compat = get_transient( 'mm_compat_check', false );
-	if ( false === $current_compat ) {
-		$json = wp_remote_get( add_query_arg( array( 'action' => 'mm_compat_check' ), admin_url( 'admin-ajax.php' ) ), array( 'timeout' => 10, 'cookies' => $_COOKIE ) );
-
-		if ( ! is_wp_error( $json ) ) {
-			$json = json_decode( $json['body'] );
-		}
-
-		if ( is_object( $json ) && property_exists( $json, 'status' ) && 'success' == $json->status ) {
-			set_transient( 'mm_compat_check', 'compatible', DAY_IN_SECONDS * 30 );
-			$add_staging_menu = true;
-		} else {
-			set_transient( 'mm_compat_check', 'incompatible', DAY_IN_SECONDS * 30 );
-		}
-	} else if ( 'compatible' === $current_compat ) {
-		$add_staging_menu = true;
-	}
-	if ( isset( $add_staging_menu ) && true == $add_staging_menu ) {
+	if ( get_option( 'mm_brand' ) === 'BlueHost' ) {
 		add_submenu_page( 'mojo-marketplace', 'Staging (beta)', 'Staging <small>(beta)</small>', 'manage_options', 'mojo-staging', 'mm_staging_page' );
 	}
 }
