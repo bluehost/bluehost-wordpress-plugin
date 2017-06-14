@@ -67,9 +67,15 @@ function mm_cs_settings() {
 	$section_name = 'mm_cs_settings_section';
 	$section_hook = 'general';
 
+	if ( 'bluehost' == mm_brand() ) {
+		$brand = 'Bluehost';
+	} else {
+		$brand = 'Host';
+	}
+
 	add_settings_section(
 		$section_name, //Section
-		'MOJO Coming Soon', //Title
+		$brand . ' Coming Soon Page', //Title
 		'__return_false', //section description callback
 		$section_hook //Setting Hook
 	);
