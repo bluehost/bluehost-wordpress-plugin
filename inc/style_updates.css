@@ -251,4 +251,20 @@
     100%{background-position:0% 50%}
 }
 
+.bluehost_page_mojo-performance .php-settings label {
+  margin-bottom: 0px;
+  margin-top: 4px;
+}
+
+.bluehost_page_mojo-performance .php-settings .radio-inline {
+  padding-left: 13px;
+}
+
+.bluehost_page_mojo-performance .php-settings label span {
+  position: relative;
+  top: 2px;
+  font-size: 18px;
+  margin-left: 5px;
+}
+
 </style>

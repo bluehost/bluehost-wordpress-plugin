@@ -32,7 +32,7 @@ switch ( $nav ) {
 		break;
 	case 'mojo-performance':
 		$subnav = array(
-			array( 'href' => add_query_arg( array( 'page' => 'mojo-performance' ), admin_url( 'admin.php' ) ), 'content' => 'Page Cache' ),
+			array( 'href' => add_query_arg( array( 'page' => 'mojo-performance' ), admin_url( 'admin.php' ) ), 'content' => 'All' ),
 		);
 		if ( mm_brand() == 'bluehost' ) {
 			$subnav[] = array( 'href' => 'https://my.bluehost.com/hosting/wordpress_tools/performance/', 'content' => 'CDN' );

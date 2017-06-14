@@ -7,7 +7,7 @@ $nav = array(
 	),
 	'mojo-performance' => array(
 		'href' => add_query_arg( array( 'page' => 'mojo-performance' ),admin_url( 'admin.php' ) ),
-		'content' => 'Site Performance',
+		'content' => 'Performance',
 	),
 );
 

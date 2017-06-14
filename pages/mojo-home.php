@@ -54,7 +54,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 						<div class="col-xs-12 clearfix">
 							<span class="pull-left dashicons dashicons-cart"></span>
 							<h2 class="pull-left">Sell Products</h2>
-							<img class="pull-right" src="<?php echo plugins_url( '../inc/images/woocommerce.png', __FILE__ ); ?>" width="150" />
+							<img class="pull-right" src="<?php echo plugins_url( '../images/woocommerce.png', __FILE__ ); ?>" width="150" />
 						</div>
 						<p>Are you are looking to sell products on your WordPress website? If so, we recommend that you install and setup WooCommerce.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
