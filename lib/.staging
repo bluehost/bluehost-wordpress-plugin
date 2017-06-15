@@ -2,6 +2,8 @@
 
 # --debug  2>&1
 
+export PATH=/usr/local/bin:$PATH;
+
 function auth_action {
 	cd $CURRENT_DIR || error 'Unable to switch directory.'
 	TOKEN=$(wp transient get staging_auth_token --path=$CURRENT_DIR)
