@@ -98,7 +98,7 @@ $php_edge_settings = get_option( 'mm_php_edge_settings', '56' );
 							</label>
 							<p style="padding-top: 15px;">
 								<img style="margin: 5px; padding-right: 10px; height:50px;" class="pull-left" src="<?php echo MM_BASE_URL; ?>/images/php-56.svg" />
-								PHP 5.6 is the default version of PHP on many servers. This is because it has extremely high compatibility with WordPress plugins and themes.
+								PHP 5.6 is the default version of PHP on most servers. This is because it has extremely high compatibility with WordPress plugins and themes.
 							</p>
 
 						</div>

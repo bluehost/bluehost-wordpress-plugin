@@ -149,7 +149,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 						<h2>Stats</h2>
 						<p>Stats show you which posts are most popular. You can even stay informed of when you get surges in traffic.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-success btn-md" href="<?php echo add_query_arg( array( 'page' => 'stats' ), admin_url( 'admin.php' ) ); ?>">View Stats</a>
+							<a class="btn btn-default btn-md" href="<?php echo add_query_arg( array( 'page' => 'stats' ), admin_url( 'admin.php' ) ); ?>">View Stats</a>
 						</div>
 					</div>
 				</div>

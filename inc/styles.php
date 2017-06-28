@@ -7,6 +7,7 @@ function mm_admin_style() {
 		wp_enqueue_style( 'mojo-admin-main-css', MM_ASSETS_URL . 'css/main.css' );
 		wp_enqueue_script( 'mojo-admin-main-js', MM_ASSETS_URL . 'js/main.js', 'jquery' );
 		wp_enqueue_script( 'mojo-admin-bootstrap-js', MM_ASSETS_URL . 'js/bootstrap.min.js', 'jquery' );
+		add_action( 'admin_enqueue_scripts', array( 'Jetpack_Onboarding_WelcomePanel', 'add_wizard_assets' ) );
 	}
 }
 add_action( 'admin_init', 'mm_admin_style' );
@@ -15,7 +16,7 @@ function mm_admin_body_class( $classes ) {
 	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) ) {
 		$classes .= ' mojo-admin-page ';
 	}
-    return $classes;
+	return $classes;
 }
 add_filter( 'admin_body_class', 'mm_admin_body_class' );
 

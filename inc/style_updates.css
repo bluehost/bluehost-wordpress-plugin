@@ -113,7 +113,8 @@
 #mojo-wrapper.mojo-bluehost-branding .btn-default.active,
 #mojo-wrapper.mojo-bluehost-branding .btn-default:active,
 #mojo-wrapper.mojo-bluehost-branding .btn-default:hover,
-#mojo-wrapper.mojo-bluehost-branding .open>.btn-default.dropdown-toggle {
+#mojo-wrapper.mojo-bluehost-branding .open>.btn-default.dropdown-toggle,
+#mojo-wrapper.mojo-bluehost-branding .dops-button.is-primary {
     color: #fff;
     background-color: #265eaf;
     border-color: #204e92;
@@ -130,7 +131,8 @@
 }
 
 #mojo-wrapper.mojo-bluehost-branding .btn-primary,
-#mojo-wrapper.mojo-bluehost-branding button {
+#mojo-wrapper.mojo-bluehost-branding button,
+#mojo-wrapper.mojo-bluehost-branding .dops-button {
     border: 1px solid #3575d3;
     color: #3575d3;
     background-color: #fff;
