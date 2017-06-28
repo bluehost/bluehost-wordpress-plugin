@@ -94,7 +94,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 
 						<div class="btn-group home-btn-group clearfix panel-body col-sm-12">
 							<a href="<?php echo add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'mixed-themes', 'type' => 'premium' ), admin_url( 'admin.php' ) ); ?>" class="btn btn-default btn-md">Premium Themes</a>
-							<a href="<?php echo add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'mixed-themes', 'type' => 'free' ), admin_url( 'admin.php' ) ); ?>" class="btn btn-link btn-md">Free Themes</a>
+							<a href="<?php echo add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'mixed-themes', 'type' => 'free' ), admin_url( 'admin.php' ) ); ?>" class="btn btn-primary btn-md">Free Themes</a>
 						</div>
 
 					</div>
