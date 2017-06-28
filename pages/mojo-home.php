@@ -118,7 +118,8 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 
 			<?php if ( is_plugin_active( 'jetpack/jetpack.php' ) ) { ?>
 			<h2 id="traffic">Traffic &amp; Engagement</h2>
-			<div class="col-xs-12 col-sm-12">
+			<?php $te_size = ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'stats' ) ) ? 12 : 6; ?>
+			<div class="col-xs-12 col-sm-<?php echo $te_size; ?>">
 				<div class="panel panel-default panel-body">
 					<div>
 					<span class="pull-left dashicons dashicons-share"></span>
@@ -142,6 +143,9 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 					</div>
 				</div>
 			</div>
+			<?php
+			if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'stats' ) ) {
+			?>
 			<div class="col-xs-12 col-sm-6">
 				<div class="panel panel-default panel-body">
 					<div>
@@ -154,6 +158,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 					</div>
 				</div>
 			</div>
+			<?php } ?>
 			<?php } ?>
 
 			<h2 id="performance">Performance</h2>
