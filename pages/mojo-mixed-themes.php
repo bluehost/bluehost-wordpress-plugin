@@ -144,6 +144,28 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 </div>
 <script type="text/javascript">
 jQuery( document ).ready( function ( $ ) {
+
+	<?php
+	if ( isset( $_GET['type'] ) && in_array( $_GET['type'], array( 'free', 'premium' ) ) ) {
+		echo '$( \'.mm-filter-actions a\' ).addClass( \'btn-primary\' );';
+		if ( 'premium' == $_GET['type'] ) {
+			?>
+			$( '.mm-mixed-free-item' ).hide();
+			$( '.mm-mixed-premium-item' ).show();
+			$( '.mm-filter-actions a[data-view="premium"]' ).removeClass( 'btn-primary' );
+			$( '.mm-filter-actions a[data-view="premium"]' ).addClass( 'btn-success' );
+			<?php
+		} else {
+			?>
+			$( '.mm-mixed-free-item' ).show();
+			$( '.mm-mixed-premium-item' ).hide();
+			$( '.mm-filter-actions a[data-view="free"]' ).removeClass( 'btn-primary' );
+			$( '.mm-filter-actions a[data-view="free"]' ).addClass( 'btn-success' );
+			<?php
+		}
+	}
+	?>
+
 	$( '.mm-filter-actions a' ).click( function() {
 		$( '.mm-filter-actions a' ).attr( 'class', 'btn btn-sm' );
 		$( '.mm-filter-actions a' ).addClass( 'btn-primary' );
