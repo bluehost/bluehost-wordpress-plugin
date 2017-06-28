@@ -98,7 +98,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 											<div class="item-actions-hover">
 												<a href="' . $demo . '" class="btn btn-primary btn-md">Demo</a>
 												<br/>
-												<a href="' . mm_build_link( add_query_arg( array( 'item_id' => $theme['id'] ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_mixed_grid' ) ) . '" data-id="' . $theme['id'] . '" data-price="' . number_format( $theme['prices']['single_domain_license'] ) . '" class="btn btn-primary btn-md">Details</a>
+												<a href="' . add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'single-item', 'item_id' => $theme['id'] ), admin_url( 'admin.php' ) ) . '" class="btn btn-primary btn-md">Details</a>
 											</div>
 										</div>
 										<div class="mm-action-wrap">
@@ -120,7 +120,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 											<div class="item-actions-hover">
 												<a href="' . $theme['preview_url'] . '" target="_blank" class="btn btn-primary btn-md">Demo</a>
 												<br/>
-												<a href="' . mm_build_link( add_query_arg( array( 'item_id' => $theme['id'] ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_mixed_grid' ) ) . '" data-id="' . $theme['id'] . '" data-price="' . number_format( $theme['prices']['single_domain_license'] ) . '" class="btn btn-primary btn-md">Details</a>
+												<a href="' . add_query_arg( array( 'theme' => $theme['slug'] ), admin_url( 'theme-install.php' ) ) . '" class="btn btn-primary btn-md">Details</a>
 											</div>
 										</div>
 										<div class="mm-action-wrap">

@@ -48,7 +48,7 @@ $php_edge_settings = get_option( 'mm_php_edge_settings', '56' );
 						<div class="col-xs-12 col-sm-8">
 							Caching
 							<p style="padding-top: 15px;">
-								<img style="margin: 5px; padding-right: 10px;" class="pull-left" src="<?php echo MM_BASE_URL; ?>tmp/pagecache.svg" />
+								<img style="margin: 5px; padding-right: 10px;" class="pull-left" src="<?php echo MM_BASE_URL; ?>images/pagecache.svg" />
 								When a page or asset is eligible for caching, a copy of the file is stored where it can be easily and quickly retreived. This allows most of the things that cause a site to load slow to be skipped, giving your site visitors a faster and better experience while browsing your site.
 							</p>
 						</div>
@@ -73,7 +73,7 @@ $php_edge_settings = get_option( 'mm_php_edge_settings', '56' );
 			</div>
 		</div>
 
-		<?php if ( get_option('mm_brand') == 'BlueHost' ) { ?>
+		<?php if ( get_option( 'mm_brand' ) == 'BlueHost' ) { ?>
 		<div class="container">
 			<div class="panel panel-default">
 				<div class="panel-heading">
