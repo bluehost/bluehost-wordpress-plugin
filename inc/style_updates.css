@@ -269,4 +269,9 @@
   margin-left: 5px;
 }
 
+#mojo-wrapper.mojo-bluehost-branding .panel.panel-success{ border-left: 3px solid #62bc33; }
+#mojo-wrapper.mojo-bluehost-branding .panel.panel-info{ border-left: 3px solid #3575d3; }
+#mojo-wrapper.mojo-bluehost-branding .panel.panel-warning{ border-left: 3px solid #fc9f2d; } //#FFB900
+#mojo-wrapper.mojo-bluehost-branding .panel.panel-error{ border-left: 3px solid #dc3232; }
+
 </style>

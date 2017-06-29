@@ -10,6 +10,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 
 	<main id="main" class="home">
 		<div class="container">
+			<?php do_action( 'mojo_home_top' ); ?>
 			<h2 id="content">Content</h2>
 			<div class="col-xs-12 col-sm-6">
 				<div class="panel panel-default panel-body">
@@ -263,17 +264,17 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 
 <script type="text/javascript">
 	jQuery( document ).ready( function( $ ) {
-	    $( '.scroll' ).on( 'click touchstart' , function ( event ) {
-	            event.preventDefault();
-	            var dest = 0;
-	            if ( $( this.hash ).offset().top > $( document ).height() - $( window ).height() ) {
-	                dest = $( document ).height() - $( window ).height();
-	            } else {
-	                dest = $( this.hash ).offset().top;
-	            }
-	            $( 'html,body' ).animate( {
-	                scrollTop: dest
-	            }, Math.round( dest * 1.2 ), 'swing' );
-	    } );
+		$( '.scroll' ).on( 'click touchstart' , function ( event ) {
+			event.preventDefault();
+			var dest = 0;
+			if ( $( this.hash ).offset().top > $( document ).height() - $( window ).height() ) {
+				dest = $( document ).height() - $( window ).height();
+			} else {
+				dest = $( this.hash ).offset().top;
+			}
+			$( 'html,body' ).animate( {
+				scrollTop: dest
+			}, Math.round( dest * 1.2 ), 'swing' );
+		} );
 	} );
 </script>
