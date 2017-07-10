@@ -3,13 +3,6 @@
  * This file adds a coming soon page for new installs
  */
 
-function mm_cs_login_check() {
-	if ( get_option( 'mm_install_date' ) === date( 'M d, Y' )  && ! get_option( 'mm_coming_soon' ) ) {
-		update_option( 'mm_coming_soon', 'true' );
-	}
-}
-add_action( 'init', 'mm_cs_login_check', 11 );
-
 function mm_bh_cs_notice_display() {
 	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
 		?>
