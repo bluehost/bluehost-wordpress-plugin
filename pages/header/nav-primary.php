@@ -5,11 +5,17 @@ $nav = array(
 		'href' => add_query_arg( array( 'page' => 'mojo-marketplace' ),admin_url( 'admin.php' ) ),
 		'content' => 'Marketplace',
 	),
+
 	'mojo-performance' => array(
 		'href' => add_query_arg( array( 'page' => 'mojo-performance' ),admin_url( 'admin.php' ) ),
 		'content' => 'Performance',
 	),
+
 );
+
+if ( 'bluehost-india' == mm_brand() ) {
+	unset($nav['mojo-performance']);
+}
 
 if ( 'bluehost' == mm_brand() ) {
 	$home = array(

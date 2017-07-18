@@ -20,9 +20,11 @@
 								<li class="active">
 									<a class="scroll" href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'themes' ), admin_url( 'admin.php' ) ) ); ?>">Marketplace</a>
 								</li>
+								<?php if ( 'bluehost' == mm_brand() ) { ?>
 								<li>
 									<a class="scroll" href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-performance'), admin_url( 'admin.php' ) ) ); ?>">Site Performance</a>
 								</li>
+								<?php } ?>
 							</ul>
 						</div>
 					</div>
