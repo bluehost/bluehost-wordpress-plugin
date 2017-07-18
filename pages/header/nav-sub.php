@@ -6,11 +6,14 @@ switch ( $nav ) {
 		$subnav = array(
 			0 => array( 'class' => 'scroll', 'href' => '#content', 'content' => 'Site Content' ),
 			1 => array( 'class' => 'scroll', 'href' => '#design', 'content' => 'Design &amp; Build' ),
-			3 => array( 'class' => 'scroll', 'href' => '#performance', 'content' => 'Site Performance' ),
-			4 => array( 'class' => 'scroll', 'href' => '#hosting', 'content' => 'Hosting' ),
+
 		);
 		if ( is_plugin_active( 'jetpack/jetpack.php' ) ) {
 			$subnav[2] = array( 'class' => 'scroll', 'href' => '#traffic', 'content' => 'Traffic &amp; Engagement' );
+		}
+		if ( 'bluehost' == mm_brand() ) {
+			$subnav[3] = array( 'class' => 'scroll', 'href' => '#performance', 'content' => 'Site Performance' );
+			$subnav[4] = array( 'class' => 'scroll', 'href' => '#hosting', 'content' => 'Hosting' );
 		}
 		ksort( $subnav );
 		break;

@@ -161,7 +161,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 			</div>
 			<?php } ?>
 			<?php } ?>
-
+			<?php if ( 'bluehost' == mm_brand() ) { ?>
 			<h2 id="performance">Performance</h2>
 			<div class="col-xs-12 col-sm-4">
 				<div class="panel panel-default panel-body text-center performance-card">
@@ -257,7 +257,7 @@ require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 					</div>
 				</div>
 			</div>
-
+			<?php } ?>
 		</div>
 	</main>
 </div>

@@ -111,7 +111,7 @@ function mm_business_tools_page() {
 
 function mm_performance_menu() {
 	if ( 'bluehost' == mm_brand() ) {
-		add_submenu_page( 'mojo-marketplace', 'Performance', 'Performance', 'manage_options', 'mojo-performance', 'mm_performance_page' ); 
+		add_submenu_page( 'mojo-marketplace', 'Performance', 'Performance', 'manage_options', 'mojo-performance', 'mm_performance_page' );
 	}
 }
 add_action( 'admin_menu', 'mm_performance_menu' );
@@ -121,7 +121,7 @@ function mm_performance_page() {
 }
 
 function mm_home_menu() {
-	if ( mm_brand() == 'bluehost' ) {
+	if (  'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
 		add_submenu_page( 'mojo-marketplace', 'Home', 'Home', 'manage_options', 'mojo-home', 'mm_home_page' );
 	}
 }

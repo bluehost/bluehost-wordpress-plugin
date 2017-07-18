@@ -14,13 +14,13 @@ $nav = array(
 );
 
 if ( 'bluehost-india' == mm_brand() ) {
-	unset($nav['mojo-performance']);
+	unset( $nav['mojo-performance'] );
 }
 
-if ( 'bluehost' == mm_brand() ) {
+if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
 	$home = array(
 		'mojo-home' => array(
-			'href' => add_query_arg( array( 'page' => 'mojo-home' ),admin_url( 'admin.php' ) ),
+			'href' => add_query_arg( array( 'page' => 'mojo-home' ), admin_url( 'admin.php' ) ),
 			'content' => 'Home',
 		),
 	);
