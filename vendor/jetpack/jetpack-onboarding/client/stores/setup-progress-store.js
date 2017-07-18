@@ -6,6 +6,8 @@ var AppDispatcher = require('../dispatcher/app-dispatcher'),
   EventEmitter = require('events').EventEmitter,
   JPSConstants = require('../constants/jetpack-onboarding-constants');
 
+var urlTools = require( 'url' );
+
 var CHANGE_EVENT = 'change';
 
 var _steps, _started = JPS.started; 
@@ -36,6 +38,10 @@ function setSteps(steps) {
     // default value for includeInProgress
     if ( typeof( step.includeInProgress ) === 'undefined') {
       step.includeInProgress = true;
+    }
+
+    if ( typeof( step.enabled ) === 'undefined' ) {
+      step.enabled = (JPS.step_enabled[step.slug]) || false;  
     }
   }); 
   
@@ -73,6 +79,11 @@ function getStepFromSlug( stepSlug ) {
   return currentStep;
 }
 
+function getUrlWithStepHash( hash ) {
+  var url = urlTools.parse( window.location.href );
+  return url.path + '#' + hash;
+}
+
 function ensureValidStepSlug() {
   var stepSlug = currentStepSlug();
   if ( ! ( stepSlug && getStepFromSlug( stepSlug ) ) ) {
@@ -80,7 +91,7 @@ function ensureValidStepSlug() {
     var pendingStep = getNextPendingStep();
     if ( pendingStep !== null ) {
       var hash = 'welcome/steps/'+pendingStep.slug;
-      window.history.pushState(null, document.title, window.location.pathname + '#' + hash);
+      window.history.pushState(null, document.title, getUrlWithStepHash( hash ) );
     }    
   }
 }
@@ -96,13 +107,13 @@ function getNextPendingStep() {
   // if the _next_ step is neverSkip, we proceed to it
   var stepIndex = currentStepIndex();
   if ( stepIndex !== false ) {
-    if ( _steps[stepIndex+1] && _steps[stepIndex+1].neverSkip === true ) {
+    if ( _steps[stepIndex+1] && _steps[stepIndex+1].enabled && _steps[stepIndex+1].neverSkip === true ) {
       return _steps[stepIndex+1];
     }
   }
 
   // otherwise find the next uncompleted, unskipped step
-  var nextPendingStep = _.findWhere( _steps, { completed: false, skipped: false } );
+  var nextPendingStep = _.findWhere( _steps, { enabled: true, completed: false, skipped: false } );
   return nextPendingStep;
 }
 
@@ -136,7 +147,7 @@ function getStepIndex(slug) {
 
 function select(stepSlug) {
   var hash = 'welcome/steps/'+stepSlug;
-  window.history.pushState(null, document.title, window.location.pathname + '#' + hash);
+  window.history.pushState(null, document.title, getUrlWithStepHash( hash ) );
 }
 
 //reset everything back to defaults

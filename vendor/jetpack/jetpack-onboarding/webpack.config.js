@@ -1,110 +1,106 @@
-var webpack = require("webpack"),
-	fs = require('fs'),
-	path = require('path'),
-	ExtractTextPlugin = require("extract-text-webpack-plugin"),
-	WebpackNotifierPlugin = require('webpack-notifier');
+var webpack = require( 'webpack' ),
+	fs = require( 'fs' ),
+	path = require( 'path' ),
+	ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
-var IS_HOT_UPDATE = (process.env.NODE_ENV !== 'production');
-
-var styleDefaults = 'css?sourceMap!autoprefixer!sass?sourceMap!custom-colors';
-
-var cssLoader = IS_HOT_UPDATE ?
-					'style!css?sourceMap!autoprefixer!' :
-					ExtractTextPlugin.extract('css?sourceMap!autoprefixer!');
-
-var scssLoader = IS_HOT_UPDATE ?
-					'style!'+styleDefaults :
-					ExtractTextPlugin.extract(styleDefaults);
-
-var jsLoader = IS_HOT_UPDATE ?
-				[require.resolve('react-hot-loader'), require.resolve('babel-loader')+"?stage=1", require.resolve("eslint-loader")] :
-				[require.resolve('babel-loader')+"?stage=1", require.resolve("eslint-loader")];
+var NODE_ENV = process.env.NODE_ENV || 'development';
 
 // build the plugin list, optionally excluding hot update plugins if we're building for production
 var plugins = [
-		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
-		new ExtractTextPlugin("[name].css"),
-		IS_HOT_UPDATE ? new webpack.optimize.OccurenceOrderPlugin() : false,
-	    IS_HOT_UPDATE ? new webpack.HotModuleReplacementPlugin() : false,
-	    IS_HOT_UPDATE ? new webpack.NoErrorsPlugin() : false,
-	    IS_HOT_UPDATE ? new WebpackNotifierPlugin() : false,
-		new webpack.DefinePlugin({
-			"process.env": {
-				// This has effect on the react lib size
-				"NODE_ENV": JSON.stringify(process.env.NODE_ENV) // TODO switch depending on actual environment
-			}
-		})
-].filter( function(plugin) { return plugin !== false; } );
+	new webpack.optimize.CommonsChunkPlugin( { name: 'vendor', filename: 'vendor.bundle.js' } ),
+	new ExtractTextPlugin( '[name].css' ),
+	new webpack.DefinePlugin( {
+		'process.env': {
+			// This has effect on the react lib size
+			NODE_ENV: JSON.stringify( NODE_ENV )
+		}
+	} )
+];
 
 module.exports = {
-    progress: true,
+	// progress: true,
 	entry: {
-		"jetpack-onboarding": "./client/jetpack-onboarding.js",
-		"ie-shims": "./client/ie-shims.js",
-		"vendor": ["react", "react-dom"]
+		'jetpack-onboarding': './client/jetpack-onboarding.js',
+		'ie-shims': './client/ie-shims.js',
+		'vendor': [ 'react', 'react-dom' ]
 	},
 	output: {
 		publicPath: '/assets/',
-		path: path.resolve(__dirname, "dist"),
-        filename: "[name].js",
-        chunkFilename: "[id].js"
-    },
-	resolve: {
-		extensions: ["", ".js", ".jsx"],
-		alias: {
-			"stores": path.join(__dirname, "/client/stores"),
-			"actions": path.join(__dirname, "/client/actions"),
-		},
-		root: [ path.resolve( __dirname, 'client' ), fs.realpathSync( path.join(__dirname, 'node_modules/@automattic/dops-components/client') ) ]
+		path: path.resolve( __dirname, 'dist' ),
+		filename: '[name].js',
+		chunkFilename: '[id].js'
 	},
-	resolveLoader: {
-		root: path.join( __dirname, "node_modules" ),
+	resolve: {
+		extensions: [ '.js', '.jsx' ],
 		alias: {
-			'custom-colors': '@automattic/custom-colors-loader'
-		}
+			stores: path.join( __dirname, '/client/stores' ),
+			actions: path.join( __dirname, '/client/actions' ),
+		},
+		modules: [
+			path.resolve( __dirname, 'client' ),
+			fs.realpathSync( path.join( __dirname, 'node_modules/@automattic/dops-components/client' ) ),
+			"node_modules"
+		]
 	},
 	node: {
-		fs: "empty"
+		fs: 'empty'
 	},
 	stats: { colors: true, reasons: true },
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.jsx?$/,
-				loaders: jsLoader,
+				use: [
+					require.resolve( 'babel-loader' ),
+					{
+						loader: require.resolve( 'eslint-loader' ),
+						options: {
+							configFile: path.join( __dirname, '.eslintrc' ),
+							quiet: true
+						}
+					}
+				],
 
 				// include both typical npm-linked locations and default module locations to handle both cases
 				include: [
-					path.join(__dirname, 'test'),
-					path.join(__dirname, 'client'),
-					fs.realpathSync( path.join(__dirname, 'node_modules/@automattic/dops-components/client') ),
-					path.join(__dirname, 'node_modules/@automattic/dops-components/client')
+					path.join( __dirname, 'test' ),
+					path.join( __dirname, 'client' ),
+					fs.realpathSync( path.join( __dirname, 'node_modules/@automattic/dops-components/client' ) ),
+					path.join( __dirname, 'node_modules/@automattic/dops-components/client' )
 				]
 			},
 			{
 				test: /\.json$/,
-				loader: require.resolve('json-loader')
-			},
-			{
-				test: /\.css$/,
-				loader: cssLoader
-			},
-			{
-				test: /\.scss$/,
-				loader: scssLoader
+				use: require.resolve( 'json-loader' )
 			},
 			{
 				test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-				loader: require.resolve('url-loader')+"?limit=20000&mimetype=image/svg+xml"
-			}
+				use: require.resolve( 'url-loader' ) + '?limit=20000&mimetype=image/svg+xml'
+			},
+			{
+				test: /\.css$/,
+				use: ExtractTextPlugin.extract( {
+					use: ['css-loader', 'autoprefixer-loader' ]
+				} ),
+			},
+			{
+				test: /\.scss$/,
+				use: ExtractTextPlugin.extract( {
+					fallback: "style-loader",
+          			use: [
+						'css-loader', 
+						'autoprefixer-loader', 
+						'sass-loader', 
+						{ 
+							loader: '@automattic/custom-colors-loader',
+							options: {
+								file: path.join( __dirname, './css/scss/color-overrides.scss' )
+							}
+						}
+					]
+				} ),
+			},
 		]
-	},
-	customColorsLoader: {
-		'file': path.join( __dirname, './css/scss/color-overrides.scss' )
-	},
-	eslint: {
-		configFile: path.join(__dirname, '.eslintrc'),
-		quiet: true
 	},
 	plugins: plugins
 };

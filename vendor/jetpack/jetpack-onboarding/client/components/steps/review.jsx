@@ -14,6 +14,9 @@ function getSiteState() {
 		newsUrl: SiteStore.getNewsPageEditURL(),
 		isJPConnected: SiteStore.getJetpackConfigured(),
 		layout: SiteStore.getLayout(),
+		wooCommerceStatus: SiteStore.getWooCommerceStatus(),
+		wooCommerceSetupUrl: SiteStore.getWooCommerceSetupUrl(),
+		pluginsUrl: SiteStore.getPluginsUrl()
 	};
 }
 
@@ -45,6 +48,34 @@ var AdvancedSettingsStep = React.createClass({
 		SetupProgressActions.closeJPO();
 	},
 
+	renderWooCommerceStatus: function() {
+		const { is_shop, type } = JPS.bloginfo;
+		if ( type !== 'business' || ! JPS.step_enabled[Paths.WOOCOMMERCE_SLUG] ) {
+			return null;
+		}
+
+		if ( this.state.wooCommerceStatus ) {
+			return (
+				<li>
+					<Dashicon name="yes" /> WooCommerce Installed! <a href={ this.state.wooCommerceSetupUrl }>Set up shop</a>
+				</li>
+			);
+		} else if ( ! is_shop ) {
+			return (
+				<li>
+					<Dashicon name="no" /> WooCommerce not installed. <a href="#" onClick={ this.handleSkipTo.bind(this, Paths.WOOCOMMERCE_SLUG ) }>Install WooCommerce?</a>
+				</li>
+			)
+		} else {
+			return (
+				<li>
+					<Dashicon name="no" /> Error installing WooCommerce <a href={ this.state.pluginsUrl }>Try manual installation</a>
+				</li>
+			)
+		}
+		
+	},
+
 	render: function() {
 		let contactProps = {};
 		if ( this.state.contactUrl ) {
@@ -64,32 +95,59 @@ var AdvancedSettingsStep = React.createClass({
 				<div className="welcome__review-cols">
 					<div className="welcome__review-col">
 						<ul className="welcome__review-list">
-							<li><Dashicon name="yes" /> Title and description <a href="#" onClick={ this.handleSkipTo.bind(this, Paths.SITE_TITLE_STEP_SLUG ) }>(edit)</a></li>
-							<li><Dashicon name="yes" /> Homepage layout <a href="#" onClick={ this.handleSkipTo.bind(this, Paths.IS_BLOG_STEP_SLUG ) }>(edit)</a>
-							{ this.state.layout !== 'blog' ?
-								<ul>
-									<li><a href={ this.state.welcomeUrl }>Edit your Welcome page</a></li>
-								{ ( this.state.layout !== 'website' ) ?
-									<li><a href={ this.state.newsUrl }>Edit your News and Updates page</a></li> : null
-								}
-								</ul> :
+							{ JPS.step_enabled[Paths.SITE_TITLE_STEP_SLUG] &&
+								<li><Dashicon name="yes" /> Title and description <a href="#" onClick={ this.handleSkipTo.bind(this, Paths.SITE_TITLE_STEP_SLUG ) }>(edit)</a></li>
+							}
+							{ JPS.step_enabled[Paths.IS_BLOG_STEP_SLUG] &&
+								<li>
+									<Dashicon name="yes" /> Homepage layout <a href="#" onClick={ this.handleSkipTo.bind(this, Paths.IS_BLOG_STEP_SLUG ) }>(edit)</a>
+									{ ( JPS.step_enabled[Paths.IS_BLOG_STEP_SLUG] && this.state.layout !== 'blog' ) ?
+										<ul>
+											<li><a href={ this.state.welcomeUrl }>Edit your Welcome page</a></li>
+										{ ( this.state.layout !== 'website' ) ?
+											<li><a href={ this.state.newsUrl }>Edit your News and Updates page</a></li> : null
+										}
+										</ul> :
+										null
+									}
+								</li>
+							}
+							{ JPS.step_enabled[Paths.CONTACT_PAGE_STEP_SLUG] &&
+								<li>
+									<Dashicon name="yes" /> <em>Contact Us</em> page <a { ...contactProps }>(edit)</a>
+									{ ! this.state.isJPConnected ? <a href="#" onClick={ this.handleSkipTo.bind(this, Paths.JETPACK_MODULES_STEP_SLUG ) }> Requires a Jetpack Connection </a> : null }
+								</li>
+							}
+							{ JPS.step_enabled[Paths.JETPACK_MODULES_STEP_SLUG] &&
+								<li>
+									<Dashicon name="yes" />
+									{ this.state.isJPConnected ?
+										<a href={ JPS.steps.advanced_settings.jetpack_dash }>Jetpack: </a> :
+										<a href="#" onClick={ this.handleSkipTo.bind(this, Paths.JETPACK_MODULES_STEP_SLUG ) }>Connect Jetpack: </a>
+									}
+									increase visitors and improve security
+								</li>
+							}
+							{ ( JPS.step_enabled[Paths.BUSINESS_ADDRESS_SLUG] && JPS.bloginfo.type === 'business' ) ?
+								<li>
+									{ JPS.steps.business_address
+										? <Dashicon name="yes" />
+										: <Dashicon name="no" />
+									} <em>Business Address</em> page <a href="#" onClick={ this.handleSkipTo.bind(this, Paths.BUSINESS_ADDRESS_SLUG ) }>(edit)</a>
+									{ ! this.state.isJPConnected ? <a href="#" onClick={ this.handleSkipTo.bind(this, Paths.JETPACK_MODULES_STEP_SLUG ) }> Requires a Jetpack Connection </a> : null }
+ 								</li> :
 								null
 							}
-							</li>
-							<li><Dashicon name="yes" /> <em>Contact Us</em> page <a { ...contactProps }>(edit)</a></li>
-							<li><Dashicon name="yes" />
-							{ this.state.isJPConnected ?
-								<a href={ JPS.steps.advanced_settings.jetpack_dash }>Jetpack: </a> :
-								<a href="#" onClick={ this.handleSkipTo.bind(this, Paths.JETPACK_MODULES_STEP_SLUG ) }>Connect Jetpack: </a>
-							}
-							increase visitors and improve security</li>
+							{ this.renderWooCommerceStatus() }
 						</ul>
 					</div>
 
-					<div className="welcome__review-col welcome__review-themes">
-						<img src={ `${ JPS.base_url }/img/jpo-themes.png` } />
-						<p><Button href={ JPS.steps.advanced_settings.customize_url } >Customize your site</Button></p>
-					</div>
+					{ JPS.steps.advanced_settings.show_cta ?
+						<div className="welcome__review-col welcome__review-cta">
+							<img src={ JPS.steps.advanced_settings.cta_image } />
+							<p><Button href={ JPS.steps.advanced_settings.cta_button_url } >{ JPS.steps.advanced_settings.cta_button_text }</Button></p>
+						</div> : null
+					}
 				</div>
 			</WelcomeSection>
 		);

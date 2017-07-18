@@ -4,10 +4,15 @@ class Jetpack_Onboarding_EndPoints {
 	const STEP_STATUS_KEY = 'jpo_step_statuses';
 	const FIRSTRUN_KEY = 'jpo_firstrun';
 	const STARTED_KEY = 'jpo_started';
+	const SITE_TYPE = 'jpo_site_type';
 	const CONTACTPAGE_ID_KEY = 'jpo_contactpage_id';
+	const BUSINESS_ADDRESS_SAVED_KEY = 'jpo_business_address_saved';
 	const MAX_THEMES = 3;
 	const NUM_RAND_THEMES = 3;
-	const VERSION = "1.3";
+	const VERSION = "1.5";
+	const WOOCOMMERCE_ID = 'woocommerce/woocommerce.php';
+	const WOOCOMMERCE_SLUG = 'woocommerce';
+	const HIDE_FOR_ALL_USERS_OPTION = 'jpo_hide_always';
 
 	//static $default_themes = array( 'writr', 'flounder', 'sorbet', 'motif', 'hexa', 'twentyfourteen', 'twentytwelve', 'responsive', 'bushwick', 'singl', 'tonal', 'fontfolio', 'hemingway-rewritten', 'skylark' , 'twentythirteen' , 'twentyeleven' );
 	static $themes;
@@ -19,7 +24,7 @@ class Jetpack_Onboarding_EndPoints {
 	}
 
 	static function init_ajax() {
-		if ( is_admin() ) {
+		if ( is_admin() && current_user_can( 'administrator' ) ) {
 			add_action( 'wp_ajax_jpo_set_title', array( __CLASS__, 'set_title' ) );
 			add_action( 'wp_ajax_jpo_set_layout', array( __CLASS__, 'set_layout' ) );
 			add_action( 'wp_ajax_jpo_build_contact_page', array( __CLASS__, 'build_contact_page' ) );
@@ -27,6 +32,7 @@ class Jetpack_Onboarding_EndPoints {
 			add_action( 'wp_ajax_jpo_install_theme', array( __CLASS__, 'install_theme' ) );
 			add_action( 'wp_ajax_jpo_get_popular_themes', array( __CLASS__, 'get_popular_themes' ) );
 			add_action( 'wp_ajax_jpo_configure_jetpack', array( __CLASS__, 'configure_jetpack' ) );
+			add_action( 'wp_ajax_jpo_add_business_address', array( __CLASS__, 'add_business_address' ) );
 			add_action( 'wp_ajax_jpo_activate_jetpack_modules', array( __CLASS__, 'activate_jetpack_modules' ) );
 			add_action( 'wp_ajax_jpo_deactivate_jetpack_modules', array( __CLASS__, 'deactivate_jetpack_modules' ) );
 			add_action( 'wp_ajax_jpo_list_jetpack_modules', array( __CLASS__, 'list_jetpack_modules' ) );
@@ -37,13 +43,16 @@ class Jetpack_Onboarding_EndPoints {
 			add_action( 'wp_ajax_jpo_disabled', array( __CLASS__, 'disabled' ) );
 			add_action( 'wp_ajax_jpo_closed', array( __CLASS__, 'closed' ) );
 			add_action( 'wp_ajax_jpo_reset_data', array( __CLASS__, 'reset_data' ) );
+			add_action( 'wp_ajax_jpo_install_woocommerce', array( __CLASS__, 'install_woocommerce' ) );
 		}
 	}
 
 	static function js_vars() {
 		$step_statuses = get_option( self::STEP_STATUS_KEY, array() );
-		$started = get_option( self::STARTED_KEY, false);
+		$started = get_option( self::STARTED_KEY, false );
+		$site_type = get_option( self::SITE_TYPE, '' );
 		$contact_page_id = get_option( self::CONTACTPAGE_ID_KEY, false );
+		$business_address_saved = get_option( self::BUSINESS_ADDRESS_SAVED_KEY, false );
 
 		if ( $contact_page_id ) {
 			$contact_page_info = self::contact_page_to_json( $contact_page_id );
@@ -78,6 +87,30 @@ class Jetpack_Onboarding_EndPoints {
 			$step_statuses['jetpack'] = array('completed' => true);
 		}
 
+		$step_slugs = array(
+			'title',
+			'is-blog',
+			'homepage',
+			'traffic',
+			'stats-monitoring',
+			'design',
+			'advanced',
+			'review',
+			'jetpack',
+			'contact-page',
+			'business-address',
+			'woocommerce'
+		);
+
+		// create an assoc array of step_key => apply_filters( 'jpo_step_enabled_$slug', true );
+		$steps_enabled = array_combine( 
+			$step_slugs,
+			array_map( 
+				array( 'Jetpack_Onboarding_EndPoints', 'filter_wizard_step_enabled' ), 
+				$step_slugs 
+			)
+		);
+
 		return array(
 			'base_url' => JETPACK_ONBOARDING_BASE_URL,
 			'site_url' => site_url(),
@@ -85,7 +118,8 @@ class Jetpack_Onboarding_EndPoints {
 			'debug' => WP_DEBUG ? true : false,
 			'bloginfo' => array(
 				'name' => wp_kses_decode_entities(stripslashes(get_bloginfo('name'))),
-				'description' => wp_kses_decode_entities(stripslashes(get_bloginfo('description')))
+				'description' => wp_kses_decode_entities(stripslashes(get_bloginfo('description'))),
+				'type' => $site_type,
 			),
 			'site_actions' => array(
 				'set_title' => 'jpo_set_title',
@@ -94,11 +128,13 @@ class Jetpack_Onboarding_EndPoints {
 				'install_theme' => 'jpo_install_theme',
 				'get_popular_themes' => 'jpo_get_popular_themes',
 				'configure_jetpack' => 'jpo_configure_jetpack',
+				'add_business_address' => 'jpo_add_business_address',
 				'activate_jetpack_modules' => 'jpo_activate_jetpack_modules',
 				'deactivate_jetpack_modules' => 'jpo_deactivate_jetpack_modules',
 				'list_jetpack_modules' => 'jpo_list_jetpack_modules',
 				'reset_data' => 'jpo_reset_data',
-				'build_contact_page' => 'jpo_build_contact_page'
+				'build_contact_page' => 'jpo_build_contact_page',
+				'install_woocommerce' => 'jpo_install_woocommerce'
 			),
 			'step_actions' => array(
 				'start' => 'jpo_started',
@@ -109,13 +145,20 @@ class Jetpack_Onboarding_EndPoints {
 				'complete' => 'jpo_step_complete'
 			),
 			'jetpack' => $jetpack_config,
+			'woocommerce_status' => is_plugin_active( self::WOOCOMMERCE_ID ),
 			'started' => $started,
 			'step_status' => $step_statuses,
+			'step_enabled' => $steps_enabled,
 			'steps' => array(
 				'layout' => self::get_layout(),
 				'contact_page' => $contact_page_info,
+				'business_address' => ( bool ) $business_address_saved,
 				'advanced_settings' => array(
-					'jetpack_modules_url' => admin_url( 'admin.php?page=jetpack_modules' ),
+					'show_cta' => apply_filters( 'jpo_review_show_cta', true ),
+					'cta_image' => apply_filters( 'jpo_review_cta_image', JETPACK_ONBOARDING_BASE_URL . '/img/jpo-themes.png' ),
+					'cta_button_text' => apply_filters( 'jpo_review_cta_button_text', 'Customize your site' ),
+					'cta_button_url' => apply_filters( 'jpo_review_cta_button_url', wp_customize_url() ),
+					'jetpack_modules_url' => admin_url( 'admin.php?page=jetpack#/settings' ),
 					'jetpack_dash' => admin_url( 'admin.php?page=jetpack' ),
 					'widgets_url' => admin_url( 'widgets.php' ),
 					'themes_url' => admin_url( 'themes.php' ),
@@ -124,10 +167,15 @@ class Jetpack_Onboarding_EndPoints {
 					'new_blog_post_url' => admin_url( 'post-new.php' ),
 					'manage_posts_url' => admin_url( 'edit.php' ),
 					'new_page_url' => admin_url( 'post-new.php?post_type=page' ),
-					'manage_pages_url' => admin_url( 'edit.php?post_type=page' )
+					'manage_pages_url' => admin_url( 'edit.php?post_type=page' ),
+					'woocommerce_setup_url' => admin_url( 'admin.php?page=wc-setup' )
 				)
 			),
 		);
+	}
+
+	static function filter_wizard_step_enabled( $step_slug ) {
+		return apply_filters( "jpo_wizard_step_enabled_$step_slug", true );
 	}
 
 	static function get_layout() {
@@ -215,6 +263,7 @@ class Jetpack_Onboarding_EndPoints {
 
 		delete_option( self::STEP_STATUS_KEY );
 		delete_option( self::STARTED_KEY );
+		delete_option( self::CONTACTPAGE_ID_KEY );
 
 		wp_send_json_success( 'deleted' );
 	}
@@ -323,6 +372,7 @@ class Jetpack_Onboarding_EndPoints {
 		check_ajax_referer( self::AJAX_NONCE, 'nonce' );
 		update_option( self::STARTED_KEY, true );
 		do_action('jpo_started', $_REQUEST['siteType']);
+		update_option( self::SITE_TYPE, $_REQUEST['siteType'] );
 		wp_send_json_success( 'true' );
 	}
 
@@ -353,18 +403,23 @@ class Jetpack_Onboarding_EndPoints {
 			$setting[] = Jetpack_Onboarding_WelcomePanel::DASHBOARD_WIDGET_ID;
 			update_user_option( get_current_user_id(), "metaboxhidden_dashboard", $setting, true);
 		}
+
+		// hide for all users
+		update_option( self::HIDE_FOR_ALL_USERS_OPTION, 1 );
 	}
 
 	static function show_dashboard_widget() {
+		delete_option( self::HIDE_FOR_ALL_USERS_OPTION );
+		
 		$setting = get_user_option( get_current_user_id(), "metaboxhidden_dashboard" );
 
-		if ( !$setting || !is_array( $setting ) ) {
+		if ( ! $setting || ! is_array( $setting ) ) {
 			$setting = array();
 		}
 
 		if ( in_array( Jetpack_Onboarding_WelcomePanel::DASHBOARD_WIDGET_ID, $setting ) ) {
-			$setting = array_diff( $setting, array(Jetpack_Onboarding_WelcomePanel::DASHBOARD_WIDGET_ID) );
-			update_user_option( get_current_user_id(), "metaboxhidden_dashboard", $setting, true);
+			$setting = array_diff( $setting, array( Jetpack_Onboarding_WelcomePanel::DASHBOARD_WIDGET_ID ) );
+			update_user_option( get_current_user_id(), "metaboxhidden_dashboard", $setting, true );
 		}
 	}
 
@@ -411,11 +466,15 @@ class Jetpack_Onboarding_EndPoints {
 	static function set_title() {
 		check_ajax_referer( self::AJAX_NONCE, 'nonce' );
 
-		$title = wp_unslash( $_REQUEST['title'] ); // sanitization (sanitize_option) is run in update_option
-		$description = wp_unslash( $_REQUEST['description'] ); // sanitization (sanitize_option) is run in update_option
+		$title = wp_unslash( $_REQUEST['title'] );
+		$description = wp_unslash( $_REQUEST['description'] );
 
-		$updated_title = get_option( 'blogname' ) === $title || update_option( 'blogname', $title );
-		$updated_description = get_option( 'blogdescription' ) === $description || update_option( 'blogdescription', $description );
+		// User input is sanitized before comparing to ensure an accurate differential.
+		// If they are not equal, the option is updated.
+		$updated_title = get_option( 'blogname' ) === sanitize_option( 'blogname', $title )
+			|| update_option( 'blogname', $title );
+		$updated_description = get_option( 'blogdescription' ) === sanitize_option( 'blogdescription', $description )
+			|| update_option( 'blogdescription', $description );
 
 		if ( $updated_title && $updated_description ) {
 			wp_send_json_success( $title );
@@ -487,9 +546,9 @@ Warwick, RI 02889
 		$theme = wp_get_theme( $theme_id );
 
 		// try to install the theme if it doesn't exist
- 		if ( ! $theme->exists() ) {
- 			wp_send_json_error('Theme does not exist: '.$theme_id);
- 			die();
+		if ( ! $theme->exists() ) {
+			wp_send_json_error('Theme does not exist: '.$theme_id);
+			die();
 		}
 
 		if ( ! $theme->is_allowed() ) {
@@ -537,6 +596,160 @@ Warwick, RI 02889
 		wp_send_json_success( $theme_id );
 	}
 
+	static function install_plugin( $slug ) {
+		if ( is_multisite() && ! current_user_can( 'manage_network' ) ) {
+			return new WP_Error( 'not_allowed', 'You are not allowed to install plugins on this site.' );
+		}
+		include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+		include_once ABSPATH . 'wp-admin/includes/file.php';
+		$upgrader  = new Plugin_Upgrader( new Automatic_Upgrader_Skin() );
+		$zip_url = "https://downloads.wordpress.org/plugin/{$slug}.latest-stable.zip";
+		$result = $upgrader->install( $zip_url );
+		if ( is_wp_error( $result ) || ! $result ) {
+			return new WP_Error( 'install_error', 'Could not install plugin ' . $slug );
+		}
+		return true;
+	}
+
+	static function install_woocommerce() {
+		check_ajax_referer( self::AJAX_NONCE, 'nonce' );
+		$result = true;
+		if ( ! array_key_exists( self::WOOCOMMERCE_ID, get_plugins() ) ) {
+			$installed = self::install_plugin( self::WOOCOMMERCE_SLUG );
+			if ( is_wp_error( $installed ) ) {
+				$result = $installed;
+			} else {
+				$result = activate_plugin( self::WOOCOMMERCE_ID );
+			}
+		} else if ( ! is_plugin_active( self::WOOCOMMERCE_ID ) ) {
+			$result = activate_plugin( self::WOOCOMMERCE_ID );
+		}
+		if ( is_wp_error( $result ) ) {
+			wp_send_json_error( 'Could not install WooCommerce: ' . $result->get_error_message() );
+		} else {
+			wp_send_json_success();
+		}
+	}
+
+	static function have_contact_info_widget( $sidebar ) {
+		$sidebars_widgets = get_option( 'sidebars_widgets', array() );
+
+		if ( ! isset( $sidebars_widgets[ $sidebar ] ) ) {
+			return false;
+		}
+
+		foreach ( $sidebars_widgets[ $sidebar ] as $widget ) {
+			if ( strpos( $widget, 'widget_contact_info' ) !== false ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	static function insert_widget_in_sidebar( $widget_id, $widget_options, $sidebar ) {
+		// Retrieve sidebars, widgets and their instances
+		$sidebars_widgets = get_option( 'sidebars_widgets', array() );
+		$widget_instances = get_option( 'widget_' . $widget_id, array() );
+
+		// Retrieve the key of the next widget instance
+		$numeric_keys = array_filter( array_keys( $widget_instances ), 'is_int' );
+		$next_key = $numeric_keys ? max( $numeric_keys ) + 1 : 2;
+
+		// Add this widget to the sidebar
+		if ( ! isset( $sidebars_widgets[ $sidebar ] ) ) {
+			$sidebars_widgets[ $sidebar ] = array();
+		}
+		$sidebars_widgets[ $sidebar ][] = $widget_id . '-' . $next_key;
+
+		// Add the new widget instance
+		$widget_instances[ $next_key ] = $widget_options;
+
+		// Store updated sidebars, widgets and their instances
+		update_option( 'sidebars_widgets', $sidebars_widgets );
+		update_option( 'widget_' . $widget_id, $widget_instances );
+	}
+
+	static function update_widget_in_sidebar( $widget_id, $widget_options, $sidebar ) {
+		// Retrieve sidebars, widgets and their instances
+		$sidebars_widgets = get_option( 'sidebars_widgets', array() );
+		$widget_instances = get_option( 'widget_' . $widget_id, array() );
+
+		// Retrieve index of first widget instance in that sidebar
+		$widget_key = false;
+		foreach ( $sidebars_widgets[ $sidebar ] as $widget ) {
+			if ( strpos( $widget, 'widget_contact_info' ) !== false ) {
+				$widget_key = absint( str_replace( 'widget_contact_info-', '', $widget ) );
+				break;
+			}
+		}
+
+		if ( ! $widget_key ) {
+			return;
+		}
+
+		// Update the widget instance with the new data
+		$widget_instances[ $widget_key ] = array_merge( $widget_instances[ $widget_key ], $widget_options );
+
+		// Store updated widget instances
+		update_option( 'widget_' . $widget_id, $widget_instances );
+	}
+
+	static function get_first_sidebar() {
+		$active_sidebars = get_option( 'sidebars_widgets', array() );
+		$excluded_keys = array(
+			'wp_inactive_widgets',
+			'array_version',
+		);
+
+		foreach ( $excluded_keys as $key ) {
+			if ( isset( $active_sidebars[ $key ] ) ) {
+				unset( $active_sidebars[ $key ] );
+			}
+		}
+
+		if ( empty( $active_sidebars ) ) {
+			return false;
+		}
+
+		return array_shift( array_keys( $active_sidebars ) );
+	}
+
+	static function add_business_address() {
+		check_ajax_referer( self::AJAX_NONCE, 'nonce' );
+
+		$first_sidebar = self::get_first_sidebar();
+		if ( $first_sidebar ) {
+			$title = wp_unslash( $_REQUEST['business_name'] );
+			$address = wp_unslash(
+				$_REQUEST['business_address_1'] . ' ' .
+				$_REQUEST['business_address_2'] . ' ' .
+				$_REQUEST['business_city'] . ' ' .
+				$_REQUEST['business_state'] . ' ' .
+				$_REQUEST['business_zip']
+			);
+			$widget_options = array(
+				'title'   => $title,
+				'address' => $address,
+				'phone'   => '',
+				'hours'   => '',
+				'showmap' => false
+			);
+
+			if ( ! self::have_contact_info_widget( $first_sidebar ) ) {
+				self::insert_widget_in_sidebar( 'widget_contact_info', $widget_options, $first_sidebar );
+			} else {
+				self::update_widget_in_sidebar( 'widget_contact_info', $widget_options, $first_sidebar );
+			}
+
+			update_option( self::BUSINESS_ADDRESS_SAVED_KEY, 1 );
+			wp_send_json_success( array( 'updated' => true ) );
+			die();
+		}
+
+		wp_send_json_success( array( 'updated' => false ) );
+	}
+
 	// try to activate the plugin if necessary and kick off the jetpack connection flow
 	// in a single action (possibly in a dialog / iframe / something?)
 	static function configure_jetpack() {
@@ -564,8 +777,10 @@ Warwick, RI 02889
 				}
 			}
 
-			$jp_landing_page = new Jetpack_Landing_Page();
-			$jp_landing_page->add_actions();
+			if ( class_exists( 'Jetpack_Landing_Page' ) ) {
+				$jp_landing_page = new Jetpack_Landing_Page();
+				$jp_landing_page->add_actions();
+			}
 
 			// redirect to activate link
 			$connect_url = Jetpack::init()->build_connect_url( true, admin_url('index.php#welcome/steps/'.$return_to_step) );

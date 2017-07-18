@@ -20,22 +20,30 @@ var SetupProgressActions = {
 		});
 	},
 
+	completeStepNoRecord: function( slug ) {
+		// Sometimes we want to mark a step as complete without recording the completion in our tracking data.
+		var step = SetupProgressStore.getStepFromSlug(slug);
+		AppDispatcher.dispatch({
+			actionType: JPSConstants.STEP_COMPLETE,
+			slug: slug
+		});
+	},
+
 	completeStep: function(slug, meta) {
 		var step = SetupProgressStore.getStepFromSlug(slug);
-
 		AppDispatcher.dispatch({
 			actionType: JPSConstants.STEP_COMPLETE,
 			slug: slug
 		});
 
-		// NOTE: this needs to come after the dispatch, so that the completion % 
+		// NOTE: this needs to come after the dispatch, so that the completion %
 		// is already updated and can be included in the metadata
 		return this._recordStepComplete(step, meta);
 	},
 
 	completeAndNextStep: function(slug, meta) {
 		this.completeStep(slug, meta).always(function() {
-			// getCurrentStep _should_ return the correct step slug for the 'next' step here... 
+			// getCurrentStep _should_ return the correct step slug for the 'next' step here...
 			// this needs to be in the callback because otherwise there's a chance
 			// that COMPLETE could be registered in analytics after VIEWED
 			this._recordStepViewed( SetupProgressStore.getCurrentStep() );
@@ -58,7 +66,7 @@ var SetupProgressActions = {
 
 		AppDispatcher.dispatch({
 			actionType: JPSConstants.STEP_SKIP
-		});	
+		});
 	},
 
 	setCurrentStep: function( stepSlug ) {
@@ -77,6 +85,9 @@ var SetupProgressActions = {
 				FlashActions.error(msg);
 			});
 
+
+		SiteActions.setType( siteType );
+
 		AppDispatcher.dispatch({
 			actionType: JPSConstants.STEP_GET_STARTED
 		});
@@ -90,7 +101,7 @@ var SetupProgressActions = {
 				SpinnerActions.hide();
 				FlashActions.error(msg);
 			}).
-			always(function() {
+			then(function() {
 				window.location.reload();
 			});
 	},
@@ -120,6 +131,12 @@ var SetupProgressActions = {
 	submitTitleStep: function( title, description ) {
 		SiteActions.saveTitleAndDescription( title, description );
 		this.completeAndNextStep(Paths.SITE_TITLE_STEP_SLUG);
+	},
+
+	submitBusinessAddress: function( businessAddress ) {
+		SiteActions.saveBusinessAddress( businessAddress );
+		this.completeStep(Paths.BUSINESS_ADDRESS_SLUG);
+		this.setCurrentStep( Paths.WOOCOMMERCE_SLUG );
 	},
 
 	submitLayoutStep: function( layout ) {
@@ -170,10 +187,10 @@ var SetupProgressActions = {
 	_recordStepViewed: function( step ) {
 		// record analytics to say we viewed the next step
   		return WPAjax.
-  			post(JPS.step_actions.view, { 
-  				step: step.slug 
-  			}, { 
-  				quiet: true 
+  			post(JPS.step_actions.view, {
+  				step: step.slug
+  			}, {
+  				quiet: true
   			});
 	},
 
