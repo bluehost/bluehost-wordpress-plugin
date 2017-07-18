@@ -9,24 +9,27 @@ $defaults = array(
 	'browser' => 'disabled',
 	'object'  => 'disabled',
 );
-
-if ( file_exists( WP_CONTENT_DIR . '/mu-plugins/endurance-page-cache.php' ) ) {
-	$defaults['page'] = 'enabled';
-}
-
-if ( file_exists( WP_CONTENT_DIR . '/mu-plugins/endurance-browser-cache.php' ) ) {
-	$defaults['browser'] = 'enabled';
-}
-
 $cache_settings = get_option( 'mm_cache_settings' );
 $cache_settings = wp_parse_args( $cache_settings, $defaults );
+$cache_level = get_option( 'endurance_cache_level' );
+
+if ( file_exists( WP_CONTENT_DIR . '/mu-plugins/endurance-page-cache.php' ) ) {
+	$cache_file_exists = true;
+} else {
+	$cache_file_exists = false;
+	$cache_level = 0;
+}
+
+if ( false === $cache_level && true == $cache_file_exists ) {
+	$cache_level = 2;
+}
 ?>
 	<main id="main">
 		<div class="container">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="row">
-						<div class="col-xs-12 col-sm-12">
+						<div class="col-xs-12 col-sm-8">
 							<ol class="breadcrumb">
 								<li>Performance</li>
 							</ol>
@@ -35,42 +38,28 @@ $cache_settings = wp_parse_args( $cache_settings, $defaults );
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-xs-12 col-sm-6">
-							Page Cache
+						<div class="col-xs-12 col-sm-8">
+							Caching
 							<p style="padding-top: 15px;">
 								<img style="margin: 5px; padding-right: 10px;" class="pull-left" src="<?php echo MM_BASE_URL; ?>tmp/pagecache.svg" />
-								When pages are eligible for a full page cache, a copy of the page is created and stored for easy retrieval. This means it skips most of the stuff that makes a page slow.
+								When a page or asset is eligible for caching, a copy of the file is stored where it can be easily and quickly retreived. This allows most of the things that cause a site to load slow to be skipped, giving your site visitors a faster and better experience while browsing your site.
 							</p>
-							<br/>
-							<?php
-							if ( 'enabled' == $cache_settings['page'] ) {
-								?>
-								<button data-type="page" data-status="enabled" class="mojo-cache-toggle btn btn-primary btn-md">Disable</button>
-								<?php
-							} else {
-								?>
-								<button data-type="page" data-status="disabled" class="mojo-cache-toggle btn btn-success btn-md">Enable</button>
-								<?php
-							}
-							?>
 						</div>
-						<div class="col-xs-12 col-sm-6">
-							Browser Cache
+						<div class="col-xs-12 col-sm-3 col-sm-offset-1">
 							<p style="padding-top: 15px;">
-								<img style="margin: 5px; padding-right: 10px;" class="pull-left" src="<?php echo MM_BASE_URL; ?>tmp/browsercache.svg" />
-								Browser cache tells a visitors computer to keep a copy of your page assets on their computer, so it does not have to reach back out to the server for the asset.</p>
-							<br/>
 							<?php
-							if ( 'enabled' == $cache_settings['browser'] ) {
-								?>
-								<button data-type="browser" data-status="enabled" class="mojo-cache-toggle btn btn-primary btn-md">Disable</button>
-								<?php
-							} else {
-								?>
-								<button data-type="browser" data-status="disabled" class="mojo-cache-toggle btn btn-success btn-md">Enable</button>
-								<?php
-							}
+								$levels = array(
+									0 => 'Off',
+									1 => 'Assets Only',
+									2 => 'Normal',
+									3 => 'Advanced',
+									4 => 'Agressive',
+								);
+								foreach ( $levels as $level => $label ) {
+									echo '<label><input type="radio" name="cache_level" value="' . $level . '" ' . checked( $level, $cache_level, false ) . '/> ' . $label . '</label><br/>';
+								}
 							?>
+							</p>
 						</div>
 					</div>
 				</div>
@@ -80,13 +69,11 @@ $cache_settings = wp_parse_args( $cache_settings, $defaults );
 </div>
 <script type="text/javascript">
 jQuery( document ).ready( function( $ ) {
-	$( '.mojo-cache-toggle' ).click( function () {
+	$( 'input[type=radio][name=cache_level]' ).change( function() {
 		var cache_data = {
 			'action'         : 'mm_cache',
-			'type'           : $( this ).data( 'type' ) ,
-			'current_status' : $( this ).data( 'status' )
+			'cache_level'    : this.value
 		}
-		var button = $(this);
 		$.post( ajaxurl, cache_data, function( cache_response ) {
 			try {
 				response = JSON.parse( cache_response );
@@ -97,19 +84,6 @@ jQuery( document ).ready( function( $ ) {
 			if ( typeof response.message !== 'undefined' ) {
 				$( '#mojo-wrapper' ).append( '<div id="mm-message" class="mm-' + response.status + '" style="display:none;">' + response.message + '</div>' );
 				$( '#mm-message' ).fadeIn( 'slow', function() {
-					if ( response.status == 'success' ) {
-						if ( button.data( 'status' ) == 'disabled' ) {
-							button.data( 'status', 'enabled' );
-							button.removeClass( 'btn-success' );
-							button.addClass( 'btn-primary' );
-							button.html( 'Disable' );
-						} else {
-							button.data( 'status', 'disabled' );
-							button.removeClass( 'btn-primary' );
-							button.addClass( 'btn-success' );
-							button.html( 'Enable' );
-						}
-					}
 					setTimeout( function() {
 						$( '#mm-message' ).fadeOut( 'fast', function() {
 							$( '#mm-message' ).remove();

@@ -24,22 +24,22 @@ $response = mm_api_cache( 'https://api.mojomarketplace.com/api/v2/items/' . $id 
 								<li>
 									<?php
 									switch ( $item->type ) {
-										case 'Themes &amp; Templates':
+										case 'themes':
 											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-themes' ), admin_url( 'admin.php' ) ) ) . '">WordPress Themes</a>';
 											$partner_type = 'themes';
 											break;
 
-										case 'Plugins &amp; Extensions':
+										case 'plugins':
 											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-plugins' ), admin_url( 'admin.php' ) ) ) . '">WordPress Plugins</a>';
 											$partner_type = 'plugins';
 											break;
 
-										case 'Professional Services':
+										case 'services':
 											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-services' ), admin_url( 'admin.php' ) ) ) . '">Services</a>';
 											$partner_type = 'services';
 											break;
 
-										case 'Logos &amp; Graphics':
+										case 'graphics':
 											echo '<a href="' . esc_url( add_query_arg( array( 'page' => 'mojo-graphics' ), admin_url( 'admin.php' ) ) ) . '">Graphics</a>';
 											$partner_type = 'graphics';
 											break;

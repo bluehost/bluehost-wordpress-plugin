@@ -1,7 +1,7 @@
 <?php
 
 function mm_add_theme_button() {
-	if( ! isset( $_GET['page'] ) ) {
+	if ( ! isset( $_GET['page'] ) ) {
 	?>
 	<script type="text/javascript">
 	jQuery( document ).ready( function() {

@@ -89,9 +89,18 @@ add_action( 'init',  array('JetpackOnboardingTracking', 'track_jpo_usage') );
 cd /path/to/jetpack-onboarding
 npm install -g gulp # if you don't have it
 npm install         # install local dependencies
-gulp sass           # build the stylesheets
-gulp webpack:build  # build the javascript
+npm run build       # to build the css and javascript
 ```
+
+`npm run build-css` or `npm run build-react` can also be run to build just the CSS or JS, respectively. Check out `scripts` in `package.json` for a few other commands.
+
+If you get errors running `npm run build`, it could be `node-sass` issues (e.g. missing binaries like scandir). In that case, run:
+
+```bash
+npm install node-sass
+```
+
+and try again to see if that fixes your issue.
 
 Directory structure:
 
@@ -113,3 +122,95 @@ Directory structure:
 If you load the dashboard with the parameter "jpo_reset=1", then all Jetpack Onboarding *AND* Jetpack data will be reset. 
 
 If you enable WP_DEBUG in wp-config.php, then you'll see some additional buttons on the wizard UI for resetting wizard progress data (just the wizard progress in this case, not Jetpack itself) and showing and hiding the spinner overlay.
+
+## Filters
+
+There's a few ways you can customise behaviour of JPO via filters.
+
+### Skipping wizard steps
+
+You can selectively disable any step with a filter, `jpo_wizard_step_enabled_{$STEP_SLUG}`. The step slugs are listed in `jetpack-onboarding-paths.js`.
+
+e.g. to skip the title and layout (blog vs website) step:
+
+```php
+add_filter( 'jpo_wizard_step_enabled_title', '__return_false' );
+add_filter( 'jpo_wizard_step_enabled_is-blog', '__return_false' );
+```
+
+These will also remove the corresponding review items from the final "review" page.
+
+### Final step call-to-action
+
+The final step has a "call to action" on the right which by default encourages the user to enter the customizer. The following filters allow hiding or modifying this behaviour.
+
+#### Hiding the final step call to action
+
+```php
+add_filter( 'jpo_review_show_cta', '__return_false' );
+```
+
+#### Replacing the image and button text/link on final call to action
+
+```php
+add_filter( 'jpo_review_cta_image', 'my_cta_image_url' );
+add_filter( 'jpo_review_cta_button_text', 'my_cta_button_text' );
+add_filter( 'jpo_review_cta_button_url', 'my_cta_button_url' );
+
+function my_cta_image_url() {
+	return '/my-images/cta-promo.png';
+}
+
+function my_cta_button_text() {
+	return 'Install our Premium Plugin';
+}
+
+function my_cta_button_url() {
+	return 'http://example.com';
+}
+```
+
+## Inserting the JPO wizard onto other pages
+
+By default, JPO runs in the welcome panel, but you can run it by inserting a div with the id 'jpo-welcome-panel' into any other page, like this:
+
+```php
+// add assets
+add_action( 'admin_enqueue_scripts', array( 'Jetpack_Onboarding_WelcomePanel', 'add_wizard_assets' ) );
+// add wizard HTML
+add_action( 'admin_notices', 'add_jpo_wizard' );
+function add_jpo_wizard() {
+	if ( get_option( Jetpack_Onboarding_EndPoints::HIDE_FOR_ALL_USERS_OPTION ) ) {
+		return;
+	}
+	?>
+	<div id='jpo-welcome-panel'><span class='screen-reader-text'>Loading Welcome Wizard</span></div>
+	<?php
+}
+```
+
+## Styling
+
+### Move the top of the wizard down to expose top elements in dashboard
+
+Inject this CSS:
+
+```css
+#jpo-welcome-panel {
+	top: 100px !important;
+}
+```
+
+### Add a logo inside the wizard panel as a background
+
+Given a logo an image, e.g. http://example.com/wp-content/uploads/2017/MyHost_Logo.png, let's scale the logo, move it to the middle at the top, and move the content down:
+
+```css
+#jpo-welcome-panel {
+    background-image: url( http://local.wordpress.goldsounds.wpvm.io/wp-content/uploads/2017/05/MyHost_Logo.png );
+    background-repeat: no-repeat;
+    background-position: 50% 30px;
+    padding-top: 120px;
+    background-size: 400px;
+}
+```

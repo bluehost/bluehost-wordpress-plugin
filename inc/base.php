@@ -18,7 +18,7 @@ function mm_setup() {
 		update_option( 'mm_cron', $events );
 	}
 }
-add_action( 'init', 'mm_setup' );
+add_action( 'admin_init', 'mm_setup' );
 
 function mm_api( $args = array(), $query = array() ) {
 	$api_url = 'http://api.mojomarketplace.com/api/v1/';
@@ -290,6 +290,24 @@ function mm_pagination( $page = 1, $total_pages = 1 ) {
 		</nav>
 	</div>
 	<?php
+}
+
+function mm_truncate_name( $name, $length = 14 ) {
+	$name = substr( $name, 0, $length );
+	$name = ucwords( $name );
+	$name = explode( ' ', $name );
+	$truncated_name = '';
+	if ( count( $name ) !== 1 ) {
+		for ( $i = 0; $i < count( $name ) - 1; $i++ ) {
+			if ( in_array( $name[ $i ] , array( 'A', 'An' ) ) ) { continue; }
+			$truncated_name .= ' ' . $name[ $i ];
+		}
+	} else {
+		$truncated_name .= $name[0];
+	}
+	$truncated_name = trim( $truncated_name, '–' );
+	$truncated_name = trim( $truncated_name );
+	return $truncated_name;
 }
 
 function _mm_login() {

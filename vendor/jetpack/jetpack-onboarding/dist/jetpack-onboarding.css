@@ -37,6 +37,7 @@
     .dops-button[disabled]:active, .dops-button:disabled:active {
       border-width: 1px 1px 2px; }
   .dops-button:focus {
+    outline: 0;
     border-color: #0085ba;
     box-shadow: 0 0 0 2px #008ec2; }
   .dops-button.is-compact {
@@ -108,6 +109,8 @@
     color: #555; }
   .dops-button.is-borderless:focus {
     box-shadow: none; }
+  .dops-accessible-focus .dops-button.is-borderless:focus {
+    outline: thin dotted; }
   .dops-button.is-borderless .gridicon {
     width: 24px;
     height: 24px;
@@ -131,5 +134,3 @@
       width: 18px;
       height: 18px;
       top: 5px; }
-
-/*# sourceMappingURL=jetpack-onboarding.css.map*/

@@ -8,7 +8,11 @@ function mm_ux_log( $args = array() ) {
 
 	global $title;
 
-	if ( empty( $_SERVER['REQUEST_URI'] ) || strpos( $_SERVER['REQUEST_URI'], 'admin-ajax.php' ) ) {
+	if ( empty( $_SERVER['REQUEST_URI'] ) ) {
+		return;
+	}
+
+	if ( strpos( $_SERVER['REQUEST_URI'], 'admin-ajax.php' ) && ! isset( $args['t'] ) ) {
 		return;
 	}
 
@@ -127,8 +131,8 @@ function mm_ux_log_activated() {
 	);
 	mm_ux_log( $event );
 }
-register_activation_hook( MM_BASE_DIR . "mojo-marketplace.php", 'mm_ux_log_activated' );
-register_deactivation_hook( MM_BASE_DIR . "mojo-marketplace.php", 'mm_ux_log_deactivated' );
+register_activation_hook( MM_BASE_DIR . 'mojo-marketplace.php', 'mm_ux_log_activated' );
+register_deactivation_hook( MM_BASE_DIR . 'mojo-marketplace.php', 'mm_ux_log_deactivated' );
 
 function mm_ux_log_theme_preview() {
 	global $theme;
@@ -229,7 +233,7 @@ function mm_ux_log_plugin_count() {
 		'el'	=> count( $plugins ),
 	);
 	$events = get_option( 'mm_cron', array() );
-	$events['monthly'][$event['ea']] = $event;
+	$events['monthly'][ $event['ea'] ] = $event;
 	update_option( 'mm_cron', $events );
 }
 add_action( 'admin_footer-index.php', 'mm_ux_log_plugin_count' );
@@ -250,7 +254,7 @@ function mm_ux_log_theme_count() {
 		'el'	=> $count,
 	);
 	$events = get_option( 'mm_cron', array() );
-	$events['monthly'][$event['ea']] = $event;
+	$events['monthly'][ $event['ea'] ] = $event;
 	update_option( 'mm_cron', $events );
 }
 add_action( 'admin_footer-index.php', 'mm_ux_log_theme_count' );
@@ -364,18 +368,19 @@ function mm_ux_log_scheduled_events_hourly() {
 }
 add_action( 'mm_cron_hourly', 'mm_ux_log_scheduled_events_hourly' );
 
-function mm_ux_log_plugin_search() {
-	if ( isset( $_GET['tab'] ) && isset( $_GET['s'] ) ) {
+function mm_ux_log_plugin_search( $search ) {
+	if ( ! empty( $search['search'] ) ) {
 		$event = array(
 			't'		=> 'event',
 			'ec'	=> 'user_action',
 			'ea'	=> 'plugin_search',
-			'el'	=> esc_attr( $_GET['s'] ),
+			'el'	=> esc_attr( $search['search'] ),
 		);
 		mm_ux_log( $event );
 	}
+	return $search;
 }
-add_action( 'admin_footer-plugin-install.php', 'mm_ux_log_plugin_search' );
+add_action( 'install_plugins_table_api_args_search', 'mm_ux_log_plugin_search' );
 
 function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 	$status = array( 'draft', 'pending', 'publish', 'new', 'future', 'private', 'trash' );
@@ -400,7 +405,7 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 	}
 
 	//fifth post is 7 because of the example post and page.
-	if( $post->ID == 7 ) {
+	if ( $post->ID == 7 ) {
 		$event = array(
 			't'     => 'event',
 			'ec'    => 'user_action',

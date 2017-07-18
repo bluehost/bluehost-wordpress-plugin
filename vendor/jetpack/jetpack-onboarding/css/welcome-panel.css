@@ -9,16 +9,7 @@
     margin: 0;
     padding: 0;
     list-style: none; }
-  .welcome__container input[type="text"],
-  .welcome__container input[type="search"],
-  .welcome__container input[type="email"],
-  .welcome__container input[type="number"],
-  .welcome__container input[type="password"],
-  .welcome__container input[type=checkbox], .welcome__container .checkbox-tristate,
-  .welcome__container input[type=radio],
-  .welcome__container input[type="tel"],
-  .welcome__container input[type="url"],
-  .welcome__container textarea {
+  .welcome__container input[type="text"], .welcome__container input[type="search"], .welcome__container input[type="email"], .welcome__container input[type="number"], .welcome__container input[type="password"], .welcome__container input[type=checkbox], .welcome__container .checkbox-tristate, .welcome__container input[type=radio], .welcome__container input[type="tel"], .welcome__container input[type="url"], .welcome__container textarea {
     margin: 0;
     padding: 7px 14px;
     width: 100%;
@@ -29,153 +20,34 @@
     background-color: #fff;
     -webkit-transition: all .15s ease-in-out;
     transition: all .15s ease-in-out;
-    box-sizing: border-box; }
-    .welcome__container input[type="text"]::-webkit-input-placeholder,
-    .welcome__container input[type="search"]::-webkit-input-placeholder,
-    .welcome__container input[type="email"]::-webkit-input-placeholder,
-    .welcome__container input[type="number"]::-webkit-input-placeholder,
-    .welcome__container input[type="password"]::-webkit-input-placeholder,
-    .welcome__container input[type=checkbox]::-webkit-input-placeholder, .welcome__container .checkbox-tristate::-webkit-input-placeholder,
-    .welcome__container input[type=radio]::-webkit-input-placeholder,
-    .welcome__container input[type="tel"]::-webkit-input-placeholder,
-    .welcome__container input[type="url"]::-webkit-input-placeholder,
-    .welcome__container textarea::-webkit-input-placeholder {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+    .welcome__container input[type="text"]::-webkit-input-placeholder, .welcome__container input[type="search"]::-webkit-input-placeholder, .welcome__container input[type="email"]::-webkit-input-placeholder, .welcome__container input[type="number"]::-webkit-input-placeholder, .welcome__container input[type="password"]::-webkit-input-placeholder, .welcome__container input[type=checkbox]::-webkit-input-placeholder, .welcome__container .checkbox-tristate::-webkit-input-placeholder, .welcome__container input[type=radio]::-webkit-input-placeholder, .welcome__container input[type="tel"]::-webkit-input-placeholder, .welcome__container input[type="url"]::-webkit-input-placeholder, .welcome__container textarea::-webkit-input-placeholder {
       color: #999999; }
-    .welcome__container input[type="text"]::-moz-placeholder,
-    .welcome__container input[type="search"]::-moz-placeholder,
-    .welcome__container input[type="email"]::-moz-placeholder,
-    .welcome__container input[type="number"]::-moz-placeholder,
-    .welcome__container input[type="password"]::-moz-placeholder,
-    .welcome__container input[type=checkbox]::-moz-placeholder, .welcome__container .checkbox-tristate::-moz-placeholder,
-    .welcome__container input[type=radio]::-moz-placeholder,
-    .welcome__container input[type="tel"]::-moz-placeholder,
-    .welcome__container input[type="url"]::-moz-placeholder,
-    .welcome__container textarea::-moz-placeholder {
+    .welcome__container input[type="text"]:-ms-input-placeholder, .welcome__container input[type="search"]:-ms-input-placeholder, .welcome__container input[type="email"]:-ms-input-placeholder, .welcome__container input[type="number"]:-ms-input-placeholder, .welcome__container input[type="password"]:-ms-input-placeholder, .welcome__container input[type=checkbox]:-ms-input-placeholder, .welcome__container .checkbox-tristate:-ms-input-placeholder, .welcome__container input[type=radio]:-ms-input-placeholder, .welcome__container input[type="tel"]:-ms-input-placeholder, .welcome__container input[type="url"]:-ms-input-placeholder, .welcome__container textarea:-ms-input-placeholder {
       color: #999999; }
-    .welcome__container input[type="text"]:-ms-input-placeholder,
-    .welcome__container input[type="search"]:-ms-input-placeholder,
-    .welcome__container input[type="email"]:-ms-input-placeholder,
-    .welcome__container input[type="number"]:-ms-input-placeholder,
-    .welcome__container input[type="password"]:-ms-input-placeholder,
-    .welcome__container input[type=checkbox]:-ms-input-placeholder, .welcome__container .checkbox-tristate:-ms-input-placeholder,
-    .welcome__container input[type=radio]:-ms-input-placeholder,
-    .welcome__container input[type="tel"]:-ms-input-placeholder,
-    .welcome__container input[type="url"]:-ms-input-placeholder,
-    .welcome__container textarea:-ms-input-placeholder {
+    .welcome__container input[type="text"]::placeholder, .welcome__container input[type="search"]::placeholder, .welcome__container input[type="email"]::placeholder, .welcome__container input[type="number"]::placeholder, .welcome__container input[type="password"]::placeholder, .welcome__container input[type=checkbox]::placeholder, .welcome__container .checkbox-tristate::placeholder, .welcome__container input[type=radio]::placeholder, .welcome__container input[type="tel"]::placeholder, .welcome__container input[type="url"]::placeholder, .welcome__container textarea::placeholder {
       color: #999999; }
-    .welcome__container input[type="text"]::placeholder,
-    .welcome__container input[type="search"]::placeholder,
-    .welcome__container input[type="email"]::placeholder,
-    .welcome__container input[type="number"]::placeholder,
-    .welcome__container input[type="password"]::placeholder,
-    .welcome__container input[type=checkbox]::placeholder, .welcome__container .checkbox-tristate::placeholder,
-    .welcome__container input[type=radio]::placeholder,
-    .welcome__container input[type="tel"]::placeholder,
-    .welcome__container input[type="url"]::placeholder,
-    .welcome__container textarea::placeholder {
-      color: #999999; }
-    .welcome__container input[type="text"]:hover,
-    .welcome__container input[type="search"]:hover,
-    .welcome__container input[type="email"]:hover,
-    .welcome__container input[type="number"]:hover,
-    .welcome__container input[type="password"]:hover,
-    .welcome__container input[type=checkbox]:hover, .welcome__container .checkbox-tristate:hover,
-    .welcome__container input[type=radio]:hover,
-    .welcome__container input[type="tel"]:hover,
-    .welcome__container input[type="url"]:hover,
-    .welcome__container textarea:hover {
+    .welcome__container input[type="text"]:hover, .welcome__container input[type="search"]:hover, .welcome__container input[type="email"]:hover, .welcome__container input[type="number"]:hover, .welcome__container input[type="password"]:hover, .welcome__container input[type=checkbox]:hover, .welcome__container .checkbox-tristate:hover, .welcome__container input[type=radio]:hover, .welcome__container input[type="tel"]:hover, .welcome__container input[type="url"]:hover, .welcome__container textarea:hover {
       border-color: #b3b3b3; }
-    .welcome__container input[type="text"]:focus,
-    .welcome__container input[type="search"]:focus,
-    .welcome__container input[type="email"]:focus,
-    .welcome__container input[type="number"]:focus,
-    .welcome__container input[type="password"]:focus,
-    .welcome__container input[type=checkbox]:focus, .welcome__container .checkbox-tristate:focus,
-    .welcome__container input[type=radio]:focus,
-    .welcome__container input[type="tel"]:focus,
-    .welcome__container input[type="url"]:focus,
-    .welcome__container textarea:focus {
+    .welcome__container input[type="text"]:focus, .welcome__container input[type="search"]:focus, .welcome__container input[type="email"]:focus, .welcome__container input[type="number"]:focus, .welcome__container input[type="password"]:focus, .welcome__container input[type=checkbox]:focus, .welcome__container .checkbox-tristate:focus, .welcome__container input[type=radio]:focus, .welcome__container input[type="tel"]:focus, .welcome__container input[type="url"]:focus, .welcome__container textarea:focus {
       border-color: #0073AA;
       outline: none;
-      box-shadow: 0 0 0 2px #008ec2; }
-      .welcome__container input[type="text"]:focus::-ms-clear,
-      .welcome__container input[type="search"]:focus::-ms-clear,
-      .welcome__container input[type="email"]:focus::-ms-clear,
-      .welcome__container input[type="number"]:focus::-ms-clear,
-      .welcome__container input[type="password"]:focus::-ms-clear,
-      .welcome__container input[type=checkbox]:focus::-ms-clear, .welcome__container .checkbox-tristate:focus::-ms-clear,
-      .welcome__container input[type=radio]:focus::-ms-clear,
-      .welcome__container input[type="tel"]:focus::-ms-clear,
-      .welcome__container input[type="url"]:focus::-ms-clear,
-      .welcome__container textarea:focus::-ms-clear {
+      -webkit-box-shadow: 0 0 0 2px #008ec2;
+              box-shadow: 0 0 0 2px #008ec2; }
+      .welcome__container input[type="text"]:focus::-ms-clear, .welcome__container input[type="search"]:focus::-ms-clear, .welcome__container input[type="email"]:focus::-ms-clear, .welcome__container input[type="number"]:focus::-ms-clear, .welcome__container input[type="password"]:focus::-ms-clear, .welcome__container input[type=checkbox]:focus::-ms-clear, .welcome__container .checkbox-tristate:focus::-ms-clear, .welcome__container input[type=radio]:focus::-ms-clear, .welcome__container input[type="tel"]:focus::-ms-clear, .welcome__container input[type="url"]:focus::-ms-clear, .welcome__container textarea:focus::-ms-clear {
         display: none; }
-    .welcome__container input[type="text"]:disabled,
-    .welcome__container input[type="search"]:disabled,
-    .welcome__container input[type="email"]:disabled,
-    .welcome__container input[type="number"]:disabled,
-    .welcome__container input[type="password"]:disabled,
-    .welcome__container input[type=checkbox]:disabled, .welcome__container .checkbox-tristate:disabled,
-    .welcome__container input[type=radio]:disabled,
-    .welcome__container input[type="tel"]:disabled,
-    .welcome__container input[type="url"]:disabled,
-    .welcome__container textarea:disabled {
+    .welcome__container input[type="text"]:disabled, .welcome__container input[type="search"]:disabled, .welcome__container input[type="email"]:disabled, .welcome__container input[type="number"]:disabled, .welcome__container input[type="password"]:disabled, .welcome__container input[type=checkbox]:disabled, .welcome__container .checkbox-tristate:disabled, .welcome__container input[type=radio]:disabled, .welcome__container input[type="tel"]:disabled, .welcome__container input[type="url"]:disabled, .welcome__container textarea:disabled {
       background: #f7f7f7;
       border-color: #e6e6e6;
       color: #b3b3b3; }
-      .welcome__container input[type="text"]:disabled:hover,
-      .welcome__container input[type="search"]:disabled:hover,
-      .welcome__container input[type="email"]:disabled:hover,
-      .welcome__container input[type="number"]:disabled:hover,
-      .welcome__container input[type="password"]:disabled:hover,
-      .welcome__container input[type=checkbox]:disabled:hover, .welcome__container .checkbox-tristate:disabled:hover,
-      .welcome__container input[type=radio]:disabled:hover,
-      .welcome__container input[type="tel"]:disabled:hover,
-      .welcome__container input[type="url"]:disabled:hover,
-      .welcome__container textarea:disabled:hover {
+      .welcome__container input[type="text"]:disabled:hover, .welcome__container input[type="search"]:disabled:hover, .welcome__container input[type="email"]:disabled:hover, .welcome__container input[type="number"]:disabled:hover, .welcome__container input[type="password"]:disabled:hover, .welcome__container input[type=checkbox]:disabled:hover, .welcome__container .checkbox-tristate:disabled:hover, .welcome__container input[type=radio]:disabled:hover, .welcome__container input[type="tel"]:disabled:hover, .welcome__container input[type="url"]:disabled:hover, .welcome__container textarea:disabled:hover {
         cursor: default; }
-      .welcome__container input[type="text"]:disabled::-webkit-input-placeholder,
-      .welcome__container input[type="search"]:disabled::-webkit-input-placeholder,
-      .welcome__container input[type="email"]:disabled::-webkit-input-placeholder,
-      .welcome__container input[type="number"]:disabled::-webkit-input-placeholder,
-      .welcome__container input[type="password"]:disabled::-webkit-input-placeholder,
-      .welcome__container input[type=checkbox]:disabled::-webkit-input-placeholder, .welcome__container .checkbox-tristate:disabled::-webkit-input-placeholder,
-      .welcome__container input[type=radio]:disabled::-webkit-input-placeholder,
-      .welcome__container input[type="tel"]:disabled::-webkit-input-placeholder,
-      .welcome__container input[type="url"]:disabled::-webkit-input-placeholder,
-      .welcome__container textarea:disabled::-webkit-input-placeholder {
+      .welcome__container input[type="text"]:disabled::-webkit-input-placeholder, .welcome__container input[type="search"]:disabled::-webkit-input-placeholder, .welcome__container input[type="email"]:disabled::-webkit-input-placeholder, .welcome__container input[type="number"]:disabled::-webkit-input-placeholder, .welcome__container input[type="password"]:disabled::-webkit-input-placeholder, .welcome__container input[type=checkbox]:disabled::-webkit-input-placeholder, .welcome__container .checkbox-tristate:disabled::-webkit-input-placeholder, .welcome__container input[type=radio]:disabled::-webkit-input-placeholder, .welcome__container input[type="tel"]:disabled::-webkit-input-placeholder, .welcome__container input[type="url"]:disabled::-webkit-input-placeholder, .welcome__container textarea:disabled::-webkit-input-placeholder {
         color: #b3b3b3; }
-      .welcome__container input[type="text"]:disabled::-moz-placeholder,
-      .welcome__container input[type="search"]:disabled::-moz-placeholder,
-      .welcome__container input[type="email"]:disabled::-moz-placeholder,
-      .welcome__container input[type="number"]:disabled::-moz-placeholder,
-      .welcome__container input[type="password"]:disabled::-moz-placeholder,
-      .welcome__container input[type=checkbox]:disabled::-moz-placeholder, .welcome__container .checkbox-tristate:disabled::-moz-placeholder,
-      .welcome__container input[type=radio]:disabled::-moz-placeholder,
-      .welcome__container input[type="tel"]:disabled::-moz-placeholder,
-      .welcome__container input[type="url"]:disabled::-moz-placeholder,
-      .welcome__container textarea:disabled::-moz-placeholder {
+      .welcome__container input[type="text"]:disabled:-ms-input-placeholder, .welcome__container input[type="search"]:disabled:-ms-input-placeholder, .welcome__container input[type="email"]:disabled:-ms-input-placeholder, .welcome__container input[type="number"]:disabled:-ms-input-placeholder, .welcome__container input[type="password"]:disabled:-ms-input-placeholder, .welcome__container input[type=checkbox]:disabled:-ms-input-placeholder, .welcome__container .checkbox-tristate:disabled:-ms-input-placeholder, .welcome__container input[type=radio]:disabled:-ms-input-placeholder, .welcome__container input[type="tel"]:disabled:-ms-input-placeholder, .welcome__container input[type="url"]:disabled:-ms-input-placeholder, .welcome__container textarea:disabled:-ms-input-placeholder {
         color: #b3b3b3; }
-      .welcome__container input[type="text"]:disabled:-ms-input-placeholder,
-      .welcome__container input[type="search"]:disabled:-ms-input-placeholder,
-      .welcome__container input[type="email"]:disabled:-ms-input-placeholder,
-      .welcome__container input[type="number"]:disabled:-ms-input-placeholder,
-      .welcome__container input[type="password"]:disabled:-ms-input-placeholder,
-      .welcome__container input[type=checkbox]:disabled:-ms-input-placeholder, .welcome__container .checkbox-tristate:disabled:-ms-input-placeholder,
-      .welcome__container input[type=radio]:disabled:-ms-input-placeholder,
-      .welcome__container input[type="tel"]:disabled:-ms-input-placeholder,
-      .welcome__container input[type="url"]:disabled:-ms-input-placeholder,
-      .welcome__container textarea:disabled:-ms-input-placeholder {
-        color: #b3b3b3; }
-      .welcome__container input[type="text"]:disabled::placeholder,
-      .welcome__container input[type="search"]:disabled::placeholder,
-      .welcome__container input[type="email"]:disabled::placeholder,
-      .welcome__container input[type="number"]:disabled::placeholder,
-      .welcome__container input[type="password"]:disabled::placeholder,
-      .welcome__container input[type=checkbox]:disabled::placeholder, .welcome__container .checkbox-tristate:disabled::placeholder,
-      .welcome__container input[type=radio]:disabled::placeholder,
-      .welcome__container input[type="tel"]:disabled::placeholder,
-      .welcome__container input[type="url"]:disabled::placeholder,
-      .welcome__container textarea:disabled::placeholder {
+      .welcome__container input[type="text"]:disabled::placeholder, .welcome__container input[type="search"]:disabled::placeholder, .welcome__container input[type="email"]:disabled::placeholder, .welcome__container input[type="number"]:disabled::placeholder, .welcome__container input[type="password"]:disabled::placeholder, .welcome__container input[type=checkbox]:disabled::placeholder, .welcome__container .checkbox-tristate:disabled::placeholder, .welcome__container input[type=radio]:disabled::placeholder, .welcome__container input[type="tel"]:disabled::placeholder, .welcome__container input[type="url"]:disabled::placeholder, .welcome__container textarea:disabled::placeholder {
         color: #b3b3b3; }
   .welcome__container textarea {
     min-height: 92px; }
@@ -190,7 +62,8 @@
   .welcome__container textarea,
   .welcome__container select,
   .welcome__container label {
-    box-sizing: border-box; }
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
   .welcome__container input[type=checkbox], .welcome__container .checkbox-tristate,
   .welcome__container input[type=radio] {
     clear: none;
@@ -214,13 +87,13 @@
     display: block;
     margin-left: 24px; }
   .welcome__container input[type=checkbox]:checked:before, .welcome__container .checkbox-tristate:checked:before {
-    content: '\f418';
+    content: '\f147';
     margin: -4px 0 0 -5px;
     float: left;
     display: inline-block;
     vertical-align: middle;
     width: 16px;
-    font: 400 23px/1 Noticons;
+    font: 400 23px/1 Dashicons;
     speak: none;
     color: #0085ba; }
   .welcome__container input[type=checkbox]:disabled:checked:before, .welcome__container .checkbox-tristate:disabled:checked:before {
@@ -232,7 +105,7 @@
     .welcome__container input[type=radio]:checked:before {
       float: left;
       display: inline-block;
-      content: '\2022';
+      content: '\f159';
       margin: 3px;
       width: 8px;
       height: 8px;
@@ -283,9 +156,9 @@
     .welcome__container .checkbox-tristate:before {
       position: absolute;
       color: #0085ba;
-      font-family: Noticons; }
+      font-family: Dashicons; }
     .some-selected .welcome__container .checkbox-tristate:before {
-      content: '\f421';
+      content: '\f460';
       top: 7px;
       left: 0; }
     .all-selected .welcome__container .checkbox-tristate:before {
@@ -325,9 +198,11 @@
     .welcome__container .toggle + .toggle-label:hover {
       background: #cccccc; }
   .welcome__container .toggle:focus + .toggle-label {
-    box-shadow: 0 0 0 2px #0085ba; }
+    -webkit-box-shadow: 0 0 0 2px #0085ba;
+            box-shadow: 0 0 0 2px #0085ba; }
   .welcome__container .toggle:focus:checked + .toggle-label {
-    box-shadow: 0 0 0 2px #008ec2; }
+    -webkit-box-shadow: 0 0 0 2px #008ec2;
+            box-shadow: 0 0 0 2px #008ec2; }
   .welcome__container .toggle:checked + .toggle-label {
     background: #0085ba; }
     .welcome__container .toggle:checked + .toggle-label:after {
@@ -359,7 +234,8 @@
     text-decoration: none;
     vertical-align: top;
     white-space: nowrap;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     padding: 7px 32px 9px 14px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -369,7 +245,8 @@
     .welcome__container select:focus {
       background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiPiA8dGl0bGU+YXJyb3ctZG93bjwvdGl0bGU+IDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPiA8ZGVmcz48L2RlZnM+IDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHNrZXRjaDp0eXBlPSJNU1BhZ2UiPiA8ZyBpZD0iYXJyb3ctZG93biIgc2tldGNoOnR5cGU9Ik1TQXJ0Ym9hcmRHcm91cCIgZmlsbD0iIzJlNDQ1MyI+IDxwYXRoIGQ9Ik0xNS41LDYgTDE3LDcuNSBMMTAuMjUsMTQuMjUgTDMuNSw3LjUgTDUsNiBMMTAuMjUsMTEuMjUgTDE1LjUsNiBaIiBpZD0iRG93bi1BcnJvdyIgc2tldGNoOnR5cGU9Ik1TU2hhcGVHcm91cCI+PC9wYXRoPiA8L2c+IDwvZz48L3N2Zz4=);
       border-color: #0085ba;
-      box-shadow: 0 0 0 2px #008ec2;
+      -webkit-box-shadow: 0 0 0 2px #008ec2;
+              box-shadow: 0 0 0 2px #008ec2;
       outline: 0;
       -moz-outline: none;
       -moz-user-focus: ignore; }
@@ -424,7 +301,8 @@
     padding: 3px 5px; }
   .welcome__container input[type="text"] {
     width: 100%;
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
     background: #fff;
     border: 1px solid #d5d5d5;
     padding: 8px 10px; }
@@ -456,10 +334,12 @@
   z-index: 999;
   width: calc( 100% - 160px);
   overflow: auto;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-color: #f1f1f1; }
   #jpo-welcome-panel *, #jpo-welcome-panel *:before, #jpo-welcome-panel *:after {
-    box-sizing: border-box; }
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
   @media (max-width: 960px) {
     #jpo-welcome-panel {
       left: 36px;
@@ -531,7 +411,6 @@
   border-radius: 2px;
   border: 2px solid #888;
   -webkit-transform: translate(-50%, 0);
-      -ms-transform: translate(-50%, 0);
           transform: translate(-50%, 0); }
   .welcome__loading-message * {
     vertical-align: middle; }
@@ -561,9 +440,8 @@ img.welcome__get-started-image {
   bottom: 0;
   left: 50%;
   -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
           transform: translateX(-50%); }
-  @media (max-width: 550px), (max-height: 550px) {
+  @media (max-width: 550px), (max-height: 750px) {
     img.welcome__get-started-image {
       display: none; } }
 
@@ -582,33 +460,31 @@ img.welcome__get-started-image {
     width: 100%;
     margin-bottom: 16px; }
   #welcome__site-title .welcome__site-title--form button {
-    margin-top: 32px;
-    float: right; }
+    margin-top: 32px; }
+  #welcome__site-title .welcome__site-title--form .welcome__submit {
+    text-align: center; }
 
 .welcome__homepage-cols {
   max-width: 780px;
   margin: 0 auto;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-flow: row wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
   -webkit-box-align: start;
-  -webkit-align-items: flex-start;
       -ms-flex-align: start;
           align-items: flex-start; }
 
 .welcome__homepage-col {
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1; }
   @media (max-width: 700px) {
     .welcome__homepage-col {
       -webkit-box-flex: 1;
-      -webkit-flex: 1 100%;
           -ms-flex: 1 100%;
               flex: 1 100%;
       margin-bottom: 15px; } }
@@ -617,21 +493,21 @@ img.welcome__get-started-image {
     height: auto;
     vertical-align: middle; }
   .welcome__homepage-col.is-selected img {
-    box-shadow: 0 0 0 3px #bfe7f3; }
+    -webkit-box-shadow: 0 0 0 3px #bfe7f3;
+            box-shadow: 0 0 0 3px #bfe7f3; }
 
 .welcome__contact img {
   max-width: 320px; }
 
 .welcome__review-cols {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-flow: row wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
   -webkit-box-align: start;
-  -webkit-align-items: flex-start;
       -ms-flex-align: start;
           align-items: flex-start;
   margin-top: 50px; }
@@ -641,13 +517,11 @@ img.welcome__get-started-image {
 
 .welcome__review-col {
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1; }
   @media (max-width: 700px) {
     .welcome__review-col {
       -webkit-box-flex: 1;
-      -webkit-flex: 1 100%;
           -ms-flex: 1 100%;
               flex: 1 100%;
       margin-bottom: 15px; } }
@@ -668,8 +542,10 @@ img.welcome__get-started-image {
   right: 16px; }
   .welcome__dismiss * {
     vertical-align: middle; }
+  .welcome__dismiss a {
+    text-decoration: none; }
 
-.welcome__review-themes img {
+.welcome__review-cta img {
   max-width: 320px;
   border: 1px solid #ccd8e1; }
 
@@ -691,3 +567,31 @@ img.welcome__get-started-image {
     width: 100%;
     float: left;
     margin: 0 0 20px 0; }
+
+.welcome__container .welcome__business-address--form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.welcome__container input.welcome__business-address--input {
+  max-width: 312px;
+  margin-bottom: 16px; }
+
+.welcome__container input#business-address-1,
+.welcome__container input#business-address-2,
+.welcome__container input#business-name {
+  max-width: 100%; }
+
+.welcome__container .welcome__button-container {
+  width: 100%; }
+
+.welcome__container .welcome__woocommerce--install-container {
+  margin-bottom: 20px; }
+  .welcome__container .welcome__woocommerce--install-container .welcome__woocommerce--checkbox {
+    float: none;
+    margin: 1px 8px 0 0; }
