@@ -25,39 +25,55 @@ shuffle( $themes );
 
 ?>
 <style>
-.mm-onboarding-item {
+.mm-mixed-item {
 	margin: 5px 0 20px;
 	max-height: 224px;
 }
 .mm-filter-actions{
 	margin: 0 0 10px 0;
 }
-.mm-onboarding-item .mm-img-wrap{
+.mm-mixed-item .mm-img-wrap{
 	border: 1px solid #ccc;
 	border-bottom: 0px;
 	max-height: 175px;
 	overflow: hidden;
+	position: relative;
 }
-.mm-onboarding-item img{
+.mm-mixed-item img{
 	max-width: 100%;
 }
-.mm-onboarding-item h4{
+.mm-mixed-item h4{
 	display: inline;
 }
-.mm-onboarding-item .mm-action-wrap{
+.mm-mixed-item .mm-action-wrap{
 	padding: 10px 0;
 	margin-bottom: 10px;
 	border: 1px solid #ccc;
 	border-top: 0px;
 	min-height: 50px;
 }
-.mm-onboarding-item .mm-action-wrap .mm-action-btns{
+.mm-mixed-item .mm-action-wrap .mm-action-btns{
 	text-align: right;
+}
+.mm-mixed-item  .mm-img-wrap:hover .item-actions-hover {
+	z-index: 10;
+	background: rgba(0, 0, 0, 0) linear-gradient(90deg, rgba( 45, 110, 180, 0.7 ), rgba( 0, 150, 190, 0.7 ) ) repeat scroll 0 0;
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align:center;
+}
+.mm-mixed-item  .mm-img-wrap:hover .item-actions-hover .btn {
+	display: block;
+	margin-top: 30px;
 }
 </style>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php
-require_once( MM_BASE_DIR . 'pages/header-small.php' );
+require_once( MM_BASE_DIR . 'pages/header/header.php' );
+require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 ?>
 
 	<main id="main">
@@ -73,37 +89,45 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 						<?php
 						foreach ( $themes as $theme ) {
 							if ( isset( $theme['images'] ) ) {
-								$demo = add_query_arg( array( 'page' => 'mojo-theme-preview', 'id' => $theme['id'], 'items' => 'onboarding-themes' ), admin_url( 'admin.php' ) );
+								$demo = add_query_arg( array( 'page' => 'mojo-theme-preview', 'id' => $theme['id'], 'items' => 'mixed-themes' ), admin_url( 'admin.php' ) );
 								echo '
-								<div class="col-xs-12 col-sm-4 mm-onboarding-premium-item">
-									<div class="mm-onboarding-item">
+								<div class="col-xs-12 col-sm-4 mm-mixed-premium-item">
+									<div class="mm-mixed-item">
 										<div class="mm-img-wrap">
 											<img src="' . $theme['images']['preview_url'] . '" />
+											<div class="item-actions-hover">
+												<a href="' . $demo . '" class="btn btn-primary btn-md">Demo</a>
+												<br/>
+												<a href="' . add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'single-item', 'item_id' => $theme['id'] ), admin_url( 'admin.php' ) ) . '" class="btn btn-primary btn-md">Details</a>
+											</div>
 										</div>
 										<div class="mm-action-wrap">
 											<div class="col-xs-12 col-sm-5">
 												<h4>' . mm_truncate_name( $theme['name'] ) . '</h4>
 											</div>
 											<div class="col-xs-12 col-sm-7 mm-action-btns">
-												<a href="' . $demo . '" class="btn btn-primary btn-sm">Demo</a>
-												<a href="' . mm_build_link( add_query_arg( array( 'item_id' => $theme['id'] ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_onboarding_grid' ) ) . '" class="btn btn-success btn-sm mm_buy_now" data-id="' . $theme['id'] . '" data-price="' . number_format( $theme['prices']['single_domain_license'] ) . '" data-view="themes_onboarding">Buy Now</a>
+												<a href="' . mm_build_link( add_query_arg( array( 'item_id' => $theme['id'] ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_mixed_grid' ) ) . '" class="btn btn-success btn-sm mm_buy_now" data-id="' . $theme['id'] . '" data-price="' . number_format( $theme['prices']['single_domain_license'] ) . '" data-view="themes_mixed">Buy Now</a>
 											</div>
 										</div>
 									</div>
 								</div>';
 							} else {
 								echo '
-								<div class="col-xs-12 col-sm-4 mm-onboarding-free-item">
-									<div class="mm-onboarding-item">
+								<div class="col-xs-12 col-sm-4 mm-mixed-free-item">
+									<div class="mm-mixed-item">
 										<div class="mm-img-wrap">
 											<img src="' . $theme['screenshot_url'] . '" />
+											<div class="item-actions-hover">
+												<a href="' . $theme['preview_url'] . '" target="_blank" class="btn btn-primary btn-md">Demo</a>
+												<br/>
+												<a href="' . add_query_arg( array( 'theme' => $theme['slug'] ), admin_url( 'theme-install.php' ) ) . '" class="btn btn-primary btn-md">Details</a>
+											</div>
 										</div>
 										<div class="mm-action-wrap">
 											<div class="col-xs-12 col-sm-5">
 												<h4>' . mm_truncate_name( $theme['name'] ) . '</h4>
 											</div>
 											<div class="col-xs-12 col-sm-7 mm-action-btns">
-												<a href="' . $theme['preview_url'] . '" target="_blank" class="btn btn-primary btn-sm free-theme-demo">Demo</a>
 												<a href="#" class="btn btn-success btn-sm free-theme-install" data-slug="' . $theme['slug'] . '">Install</a>
 											</div>
 										</div>
@@ -120,22 +144,44 @@ require_once( MM_BASE_DIR . 'pages/header-small.php' );
 </div>
 <script type="text/javascript">
 jQuery( document ).ready( function ( $ ) {
+
+	<?php
+	if ( isset( $_GET['type'] ) && in_array( $_GET['type'], array( 'free', 'premium' ) ) ) {
+		echo '$( \'.mm-filter-actions a\' ).addClass( \'btn-primary\' );';
+		if ( 'premium' == $_GET['type'] ) {
+			?>
+			$( '.mm-mixed-free-item' ).hide();
+			$( '.mm-mixed-premium-item' ).show();
+			$( '.mm-filter-actions a[data-view="premium"]' ).removeClass( 'btn-primary' );
+			$( '.mm-filter-actions a[data-view="premium"]' ).addClass( 'btn-success' );
+			<?php
+		} else {
+			?>
+			$( '.mm-mixed-free-item' ).show();
+			$( '.mm-mixed-premium-item' ).hide();
+			$( '.mm-filter-actions a[data-view="free"]' ).removeClass( 'btn-primary' );
+			$( '.mm-filter-actions a[data-view="free"]' ).addClass( 'btn-success' );
+			<?php
+		}
+	}
+	?>
+
 	$( '.mm-filter-actions a' ).click( function() {
 		$( '.mm-filter-actions a' ).attr( 'class', 'btn btn-sm' );
 		$( '.mm-filter-actions a' ).addClass( 'btn-primary' );
 		$( this ).removeClass( 'btn-primary' );
 		$( this ).addClass( 'btn-success' );
 		if ( $( this ).data( 'view' ) == 'all' ) {
-			$( '.mm-onboarding-free-item' ).show();
-			$( '.mm-onboarding-premium-item' ).show();
+			$( '.mm-mixed-free-item' ).show();
+			$( '.mm-mixed-premium-item' ).show();
 		}
 		if ( $( this ).data( 'view' ) == 'free' ) {
-			$( '.mm-onboarding-free-item' ).show();
-			$( '.mm-onboarding-premium-item' ).hide();
+			$( '.mm-mixed-free-item' ).show();
+			$( '.mm-mixed-premium-item' ).hide();
 		}
 		if ( $( this ).data( 'view' ) == 'premium' ) {
-			$( '.mm-onboarding-free-item' ).hide();
-			$( '.mm-onboarding-premium-item' ).show();
+			$( '.mm-mixed-free-item' ).hide();
+			$( '.mm-mixed-premium-item' ).show();
 		}
 	} );
 

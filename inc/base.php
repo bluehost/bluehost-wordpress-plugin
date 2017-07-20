@@ -292,6 +292,21 @@ function mm_pagination( $page = 1, $total_pages = 1 ) {
 	<?php
 }
 
+function mm_loader() {
+	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) && mm_brand() == 'bluehost' ) {
+		?>
+		<script type="text/javascript">
+		jQuery( document ).ready( function( $ ) {
+			setTimeout( function() {
+				$( '.bluehost-loader' ).fadeOut( 'slow' );
+			}, 2000 );
+		} );
+		</script>
+		<?php
+	}
+}
+add_action( 'admin_footer', 'mm_loader' );
+
 function mm_truncate_name( $name, $length = 14 ) {
 	$name = substr( $name, 0, $length );
 	$name = ucwords( $name );
@@ -308,6 +323,19 @@ function mm_truncate_name( $name, $length = 14 ) {
 	$truncated_name = trim( $truncated_name, '–' );
 	$truncated_name = trim( $truncated_name );
 	return $truncated_name;
+}
+
+function mm_site_bin2hex() {
+	$path = ABSPATH;
+	$path = explode( 'public_html/', $path );
+	if ( 2 === count( $path ) ) {
+		$path = '/public_html/' . $path[1];
+	} else {
+		return false;
+	}
+
+	$path_hash = bin2hex( $path );
+	return $path_hash;
 }
 
 function _mm_login() {

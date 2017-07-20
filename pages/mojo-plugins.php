@@ -23,7 +23,9 @@ $response = mm_api_cache( $api_url );
 ?>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 	<?php
-	mm_require( MM_BASE_DIR . 'pages/header.php' );
+	require_once( MM_BASE_DIR . 'pages/header/header.php' );
+	require_once( MM_BASE_DIR . 'inc/style_updates.css' );
+
 	if ( ! is_wp_error( $response ) ) {
 		if ( isset( $_GET['items'] ) && 'security-1' == $_GET['items'] ) {
 			$_GET['items'] = 'security';

@@ -5,32 +5,6 @@ function mm_is_staging() {
 	return ( get_option( 'staging_environment' ) == 'staging' ) ? true : false;
 }
 
-function mm_staging_dashboard_widget() {
-	if ( 'compatible' === get_transient( 'mm_compat_check', false ) && false == get_option( 'staging_environment' ) ) {
-		wp_add_dashboard_widget(
-			'mojo-staging',
-			'Staging Site Setup',
-			'mm_staging_dashboard_display'
-		);
-		global $wp_meta_boxes;
-
-		$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
-
-		$widget_backup = array( 'mojo-staging' => $normal_dashboard['mojo-staging'] );
-
-		unset( $normal_dashboard['mojo-staging'] );
-
-		$sorted_dashboard = array_merge( $widget_backup, $normal_dashboard );
-
-		$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
-	}
-}
-add_action( 'wp_dashboard_setup', 'mm_staging_dashboard_widget' );
-
-function mm_staging_dashboard_display() {
-	mm_require( MM_BASE_DIR . 'pages/dashboard-staging-widget.php' );
-}
-
 function mm_cl( $command, $args = null ) {
 	$whitelist_commands = array(
 		'create'          => false,
@@ -56,7 +30,7 @@ function mm_cl( $command, $args = null ) {
 	}
 
 	if ( 'compat_check' != $command && 'revisions' != $command ) {
-		do_action ( 'mm_staging_command', $command );
+		do_action( 'mm_staging_command', $command );
 	}
 
 	$command = array( $command );
