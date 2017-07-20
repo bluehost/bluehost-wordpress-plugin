@@ -184,7 +184,6 @@ footer li{
 			<a href='#' id='what-is-this' onClick='what_is_this_show()'>What is this?</a>
 		</div>
 	</footer>
-	<?php echo $powered_by; ?>
 </div>
 <div id='what-is-this-content'>
 	<p>This is the default coming soon page for this site because it was installed via MOJO Marketplace.</p>

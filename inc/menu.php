@@ -36,9 +36,12 @@ function mm_main_menu_fix_subdomain_label() {
 	if ( isset( $submenu['mojo-marketplace'] ) && is_array( $submenu['mojo-marketplace'] ) ) {
 		$submenu['mojo-marketplace'][0][0] = 'Marketplace';
 	}
-	if ( 'mojo-home' == $submenu['mojo-marketplace'][2][2] ) {
-		$home_placeholder = $submenu['mojo-marketplace'][2];
-		unset( $submenu['mojo-marketplace'][2] );
+
+	$home = array_search( array( 'Home', 'manage_options', 'mojo-home', 'Home' ), $submenu['mojo-marketplace'] );
+
+	if ( ! is_null( $home ) && is_numeric( $home ) ) {
+		$home_placeholder = $submenu['mojo-marketplace'][ $home ];
+		unset( $submenu['mojo-marketplace'][ $home ] );
 		array_unshift( $submenu['mojo-marketplace'], $home_placeholder );
 	}
 }

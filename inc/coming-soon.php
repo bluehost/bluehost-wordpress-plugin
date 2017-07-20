@@ -91,7 +91,7 @@ function mm_cs_settings() {
 	$section_name = 'mm_cs_settings_section';
 	$section_hook = 'general';
 
-	if ( 'bluehost' == mm_brand() ) {
+	if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
 		$brand = 'Bluehost';
 	} else {
 		$brand = mm_brand();
@@ -118,11 +118,6 @@ function mm_cs_settings() {
 add_action( 'admin_init', 'mm_cs_settings' );
 
 function mm_cs_content() {
-	if ( stripos( @exec( 'hostname' ), 'bluehost' ) ) {
-		$powered_by = "<div class='powered-by'>Powered by <a href='http://bluehost.com'>Bluehost</a></div>";
-	} else {
-		$powered_by = '';
-	}
 	$brand = mm_brand();
 	if ( 'mojo' != $brand && file_exists( MM_BASE_DIR . 'pages/coming-soon/' . $brand . '.php' ) ) {
 		require( MM_BASE_DIR . 'pages/coming-soon/' . $brand . '.php' );
