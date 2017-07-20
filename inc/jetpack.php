@@ -7,11 +7,15 @@ function mm_customize_jetpack_default_modules( $modules ) {
 add_filter( 'jetpack_get_default_modules', 'mm_customize_jetpack_default_modules' );
 
 function mm_prep_onboarding() {
-	if ( mm_brand() == 'bluehost' ) {
-		//temp solution for window.location bug in jpo
-		if ( isset( $_SERVER['SCRIPT_FILENAME'] ) && false !== strpos( $_SERVER['SCRIPT_FILENAME'], 'admin.php' ) && ! isset( $_GET['page'] ) ) {
+	if ( mm_brand() == 'bluehost' || 'bluehost-india' == mm_brand() ) {
+		if ( false == get_option( 'jpo_started' ) && 'mojo-onboarding' !== $_GET['page'] && 1 != get_option( 'jpo_hide_always' ) ) {
+			wp_redirect( add_query_arg( array( 'page' => 'mojo-onboarding' ), admin_url( 'admin.php' ) ) );
+		}
+
+		if ( isset( $_GET['page'] ) && 'mojo-onboarding' == $_GET['page'] && 1 == get_option( 'jpo_hide_always' ) ) {
 			wp_redirect( add_query_arg( array( 'page' => 'mojo-home' ), admin_url( 'admin.php' ) ) );
 		}
+
 		add_action( 'mm_onboarding', 'mm_add_jpo_wizard' );
 		add_filter( 'jpo_review_cta_button_url', 'mm_cta_button_url' );
 		$site_tagline = get_option( 'blogdescription' );
