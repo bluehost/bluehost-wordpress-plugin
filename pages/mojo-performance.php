@@ -73,7 +73,7 @@ $php_edge_settings = get_option( 'mm_php_edge_settings', '56' );
 			</div>
 		</div>
 
-		<?php if ( get_option( 'mm_brand' ) == 'BlueHost' ) { ?>
+		<?php /* if ( get_option( 'mm_brand' ) == 'BlueHost' ) { ?>
 		<div class="container">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -128,7 +128,7 @@ $php_edge_settings = get_option( 'mm_php_edge_settings', '56' );
 				</div>
 			</div>
 		</div>
-		<?php } ?>
+		<?php }  this feature is unusable due to ea4. Leaving the code until we are able to use it. */?>
 
 	</main>
 </div>

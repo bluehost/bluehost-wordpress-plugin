@@ -7,7 +7,8 @@ function mm_customize_jetpack_default_modules( $modules ) {
 add_filter( 'jetpack_get_default_modules', 'mm_customize_jetpack_default_modules' );
 
 function mm_prep_onboarding() {
-	if ( mm_brand() == 'bluehost' || 'bluehost-india' == mm_brand() ) {
+	$brand = mm_brand();
+	if ( 'bluehost' == $brand || 'bluehost-india' == $brand ) {
 		if ( false == get_option( 'jpo_started' ) && 'mojo-onboarding' !== $_GET['page'] && 1 != get_option( 'jpo_hide_always' ) ) {
 			wp_redirect( add_query_arg( array( 'page' => 'mojo-onboarding' ), admin_url( 'admin.php' ) ) );
 		}
