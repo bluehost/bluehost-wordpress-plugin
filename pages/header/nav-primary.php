@@ -23,7 +23,7 @@ if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
 	$nav = $home + $nav;
 }
 
-if ( 'bluehost' == mm_brand() ) {
+if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
 	$nav['mojo-staging'] = array(
 		'href' => add_query_arg( array( 'page' => 'mojo-staging' ),admin_url( 'admin.php' ) ),
 		'content' => 'Staging',
