@@ -1,0 +1,331 @@
+#main.home .panel-body .pull-left.dashicons{
+  margin-right: 10px;
+  font-size: 24px;
+}
+#main.home .performance-card .dashicons{
+  font-size: 64px;
+  height: 80px;
+  width: 80px;
+}
+#main.home .performance-card p{
+  margin: 30px;
+}
+#main.home .container > h2{
+  margin-left: 15px;
+}
+
+#main.home .panel-body .dashicons{
+  color: #383838;
+}
+#main.home .panel-body .pull-left.dashicons{
+  margin-right: 10px;
+  font-size: 24px;
+}
+#main.home .panel-body p {
+  font-size: 14px;
+}
+#main.home .performance-card .dashicons{
+  font-size: 64px;
+  height: 80px;
+  width: 80px;
+}
+#main.home .performance-card p{
+  margin: 30px;
+}
+#main.home .container > h2{
+  margin-left: 15px;
+}
+.fixed-nav{
+  margin-top: 40px;
+  position: fixed;
+  top: -8px;
+  width: 100%;
+  z-index: 10;
+}
+
+/*Header Styles*/
+.fixed-nav{
+  margin-top: 40px;
+  position: fixed;
+  top: -8px;
+  width: 100%;
+  z-index: 10;
+}
+
+#header .sub-navbar {
+  background-color: #fff;
+}
+#header .sub-navbar .nav li a {
+  color: #5b5b5b;
+  padding: 5px 0;
+  font-size: 14px;
+}
+
+/*Updated Bluerock styles*/
+#mojo-wrapper.mojo-bluehost-branding .btn,
+#mojo-wrapper.mojo-bluehost-india-branding .btn,
+#mojo-wrapper.mojo-bluehost-branding button,
+#mojo-wrapper.mojo-bluehost-india-branding button {
+    transition: all .08s ease;
+    font-family: Open Sans,sans-serif;
+    transition-property: all;
+    transition-timing-function: linear;
+    transition-duration: .08s;
+    text-decoration: none;
+    border-radius: 3px;
+    font-family: Open Sans,sans-serif;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn-md,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-md {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 8px 16px;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn:hover,
+#mojo-wrapper.mojo-bluehost-india-branding .btn:hover {
+    border: 1px solid #2e66ba;
+    background: #2e66ba;
+    color: #fff;
+    box-shadow: none;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn-md,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-md {
+    padding: 8px 24px;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn-lg,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-lg {
+    padding: 16px 24px;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn-default.active,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-default:active,
+#mojo-wrapper.mojo-bluehost-branding .btn-default:hover,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-default:hover,
+#mojo-wrapper.mojo-bluehost-branding .open>.btn-default.dropdown-toggle,
+#mojo-wrapper.mojo-bluehost-india-branding .open>.btn-default.dropdown-toggle,
+#mojo-wrapper.mojo-bluehost-branding .dops-button.is-primary,
+#mojo-wrapper.mojo-bluehost-india-branding .dops-button.is-primary {
+    color: #fff;
+    background-color: #265eaf;
+    border-color: #204e92;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn-default,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-default {
+  border: 1px solid #3575d3;
+  background-color: #3575d3;
+  color: #fff;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn-link,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-link {
+  color: #3575d3;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn-primary,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-primary,
+#mojo-wrapper.mojo-bluehost-branding button,
+#mojo-wrapper.mojo-bluehost-india-branding button,
+#mojo-wrapper.mojo-bluehost-branding .dops-button,
+#mojo-wrapper.mojo-bluehost-india-branding .dops-button {
+    border: 1px solid #3575d3;
+    color: #3575d3;
+    background-color: #fff;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .home-btn-group,
+#mojo-wrapper.mojo-bluehost-india-branding .home-btn-group {
+  padding: 5px 0px 0 0px;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle),
+#mojo-wrapper.mojo-bluehost-india-branding .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn-group>.btn:first-child,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-group>.btn:first-child {
+    margin-left: 0;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn-group-vertical>.btn, .btn-group>.btn,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-group-vertical>.btn, .btn-group>.btn {
+    position: relative;
+    float: left;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn-group>.btn:last-child:not(:first-child),
+#mojo-wrapper.mojo-bluehost-india-branding .btn-group>.btn:last-child:not(:first-child),
+#mojo-wrapper.mojo-bluehost-branding .btn-group>.dropdown-toggle:not(:first-child),
+#mojo-wrapper.mojo-bluehost-india-branding .btn-group>.dropdown-toggle:not(:first-child) {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .btn-group .btn+.btn,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-group .btn+.btn,
+#mojo-wrapper.mojo-bluehost-branding .btn-group .btn+.btn-group,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-group .btn+.btn-group,
+#mojo-wrapper.mojo-bluehost-branding .btn-group .btn-group+.btn,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-group .btn-group+.btn,
+#mojo-wrapper.mojo-bluehost-branding .btn-group .btn-group+.btn-group,
+#mojo-wrapper.mojo-bluehost-india-branding .btn-group .btn-group+.btn-group {
+    margin-left: -1px;
+}
+#mojo-wrapper.mojo-bluehost-branding .cf:after,
+#mojo-wrapper.mojo-bluehost-india-branding .cf:after,
+#mojo-wrapper.mojo-bluehost-branding .inline:after, .page-wrap:after,
+#mojo-wrapper.mojo-bluehost-india-branding .inline:after, .page-wrap:after {
+    clear: both;
+}
+
+#mojo-wrapper.mojo-bluehost-branding input[type=checkbox]:checked,
+#mojo-wrapper.mojo-bluehost-india-branding input[type=checkbox]:checked,
+#mojo-wrapper.mojo-bluehost-branding .checkbox input[type=checkbox]:checked,
+#mojo-wrapper.mojo-bluehost-india-branding .checkbox input[type=checkbox]:checked,
+#mojo-wrapper.mojo-bluehost-branding .radio-inline input[type=radio]:checked,
+#mojo-wrapper.mojo-bluehost-india-branding .radio-inline input[type=radio]:checked,
+#mojo-wrapper.mojo-bluehost-branding .radio input[type=radio]:checked,
+#mojo-wrapper.mojo-bluehost-india-branding .radio input[type=radio]:checked {
+    background-color: #17b212;
+}
+
+#mojo-wrapper.mojo-bluehost-branding input[type=checkbox],
+#mojo-wrapper.mojo-bluehost-india-branding input[type=checkbox],
+#mojo-wrapper.mojo-bluehost-branding .checkbox input[type=checkbox],
+#mojo-wrapper.mojo-bluehost-india-branding .checkbox input[type=checkbox],
+#mojo-wrapper.mojo-bluehost-branding .radio-inline input[type=radio],
+#mojo-wrapper.mojo-bluehost-india-branding .radio-inline input[type=radio],
+#mojo-wrapper.mojo-bluehost-branding .radio input[type=radio],
+#mojo-wrapper.mojo-bluehost-india-branding .radio input[type=radio] {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    line-height: 24px;
+    height: 24px;
+    width: 24px;
+    border-radius: 100%;
+    background: #d7dbe0;
+    border: 0;
+    box-shadow: inset 0 2px 2px 0 hsla(0,0%,47%,.5);
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+#mojo-wrapper.mojo-bluehost-branding input[type=radio]:before,
+#mojo-wrapper.mojo-bluehost-india-branding input[type=radio]:before,
+#mojo-wrapper.mojo-bluehost-branding .radio input[type=radio]:before,
+#mojo-wrapper.mojo-bluehost-india-branding .radio input[type=radio]:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: transparent;
+    box-shadow: 0;
+    border-radius: 100%;
+    transition: all .16s ease;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .radio-inline input[type=radio]:checked:before,
+#mojo-wrapper.mojo-bluehost-india-branding .radio-inline input[type=radio]:checked:before,
+#mojo-wrapper.mojo-bluehost-branding .radio input[type=radio]:checked:before,
+#mojo-wrapper.mojo-bluehost-india-branding .radio input[type=radio]:checked:before {
+    width: 13px;
+    height: 14px;
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 hsla(0,0%,47%,.5);
+    top: 1px;
+    left: 2px;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .radio-inline,
+#mojo-wrapper.mojo-bluehost-india-branding .radio-inline,
+#mojo-wrapper.mojo-bluehost-branding .checkbox-inline,
+#mojo-wrapper.mojo-bluehost-india-branding .checkbox-inline {
+  margin-bottom: 10px;
+}
+
+.bluehost-loader {
+  width: 100%;
+  height: 6px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background:
+    linear-gradient(
+      370deg,
+      #3575d3,
+      #3575d3 45%,
+      #35caf7 50%,
+      #35caf7 55%,
+      #3575d3 60%,
+      #3575d3
+    );
+  background-size: 300% 200%;
+  -webkit-animation: Chase 1.4s ease-in-out infinite;
+}
+
+@-webkit-keyframes Chase {
+    0%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.bluehost_page_mojo-performance .php-settings label {
+  margin-bottom: 0px;
+  margin-top: 4px;
+}
+
+.bluehost_page_mojo-performance .php-settings .radio-inline {
+  padding-left: 13px;
+}
+
+.bluehost_page_mojo-performance .php-settings label span {
+  position: relative;
+  top: 2px;
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+#mojo-wrapper.mojo-bluehost-branding .panel.panel-success,
+#mojo-wrapper.mojo-bluehost-india-branding .panel.panel-success{ border-left: 3px solid #62bc33; }
+#mojo-wrapper.mojo-bluehost-branding .panel.panel-info,
+#mojo-wrapper.mojo-india-branding .panel.panel-info{ border-left: 3px solid #3575d3; }
+#mojo-wrapper.mojo-bluehost-branding .panel.panel-warning
+#mojo-wrapper.mojo-bluehost-india-branding .panel.panel-warning,{ border-left: 3px solid #fc9f2d; }
+#mojo-wrapper.mojo-bluehost-branding .panel.panel-error,
+#mojo-wrapper.mojo-bluehost-india-branding .panel.panel-error{ border-left: 3px solid #dc3232; }
+
+#mojo-wrapper.mojo-bluehost-branding .info-box .btn-success,
+#mojo-wrapper.mojo-bluehost-india-branding .info-box .btn-success,
+#mojo-wrapper.mojo-bluehost-branding .header-holder .btn-info,
+#mojo-wrapper.mojo-bluehost-india-branding .header-holder .btn-info,
+#mojo-wrapper.mojo-bluehost-branding .widget .btn-success,
+#mojo-wrapper.mojo-bluehost-india-branding .widget .btn-success,
+#mojo-wrapper.mojo-bluehost-branding .theme-details .btn-success, .mojo-bluehost-branding .btn-success,
+#mojo-wrapper.mojo-bluehost-india-branding .theme-details .btn-success, .mojo-bluehost-branding .btn-success {
+    background-color: #62bc33;
+    border-color: #62bc33;
+    color: #fff;
+}
