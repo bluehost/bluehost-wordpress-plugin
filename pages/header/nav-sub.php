@@ -22,8 +22,7 @@ switch ( $nav ) {
 			'themes' => array( 'href' => add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'themes' ), admin_url( 'admin.php' ) ), 'content' => 'Themes' ),
 			'plugins' => array( 'href' => add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'plugins' ), admin_url( 'admin.php' ) ), 'content' => 'Plugins' ),
 			'services' => array( 'href' => add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'services' ), admin_url( 'admin.php' ) ), 'content' => 'Services' ),
-			'graphics' => array( 'href' => add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'graphics' ), admin_url( 'admin.php' ) ), 'content' => 'Graphics' ),
-			'business-tools' => array( 'href' => add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'business-tools' ), admin_url( 'admin.php' ) ), 'content' => 'Business Tools' ),
+			'graphics' => array( 'href' => add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'graphics' ), admin_url( 'admin.php' ) ), 'content' => 'Graphics' )
 		);
 		if ( false !== get_transient( '_mm_session_token' ) ) {
 			$subnav['purchases'] = array( 'href' => add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'purchases' ), admin_url( 'admin.php' ) ), 'content' => 'My Purchases' );
