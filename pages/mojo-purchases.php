@@ -12,7 +12,6 @@ $response = wp_remote_get( $api_url, $args );
 	<?php
 
 	require_once( MM_BASE_DIR . 'pages/header/header.php' );
-	require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 
 	if ( ! is_wp_error( $response ) && $purchases = json_decode( $response['body'] ) ) {
 		$items = $purchases->items;

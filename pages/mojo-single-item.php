@@ -10,7 +10,6 @@ $response = mm_api_cache( 'https://api.mojomarketplace.com/api/v2/items/' . $id 
 	<?php
 
 	require_once( MM_BASE_DIR . 'pages/header/header.php' );
-	require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 
 	if ( ! is_wp_error( $response ) ) {
 		$body = json_decode( $response['body'] );

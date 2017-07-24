@@ -14,8 +14,6 @@ if ( is_wp_error( $theme ) ) {
 } else {
 	$theme = json_decode( $theme['body'] );
 	$theme = $theme->items[0];
-
-		require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 ?>
 <div class="wrap <?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php

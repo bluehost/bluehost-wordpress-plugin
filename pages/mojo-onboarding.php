@@ -31,7 +31,6 @@ img.welcome__get-started-image {
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php
 require_once( MM_BASE_DIR . 'pages/header/header-no-nav.php' );
-require_once( MM_BASE_DIR . 'inc/style_updates.css' );
 ?>
 	<main id="main">
 		<div class="container">
