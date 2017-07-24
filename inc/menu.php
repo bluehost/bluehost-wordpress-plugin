@@ -26,6 +26,8 @@ function mm_main_menu() {
 		$menu_name = 'Bluehost';
 	}
 
+	$menu_name = str_replace( '_', ' ', $menu_name );
+
 	add_menu_page( $menu_name, $menu_name, 'manage_options', 'mojo-marketplace', 'mm_marketplace_page', 'data:image/svg+xml;base64, ' . $icon_hash, $menu_position );
 
 }

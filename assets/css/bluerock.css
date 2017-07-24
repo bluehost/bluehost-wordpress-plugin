@@ -316,3 +316,16 @@
 #mojo-wrapper.mojo-bluehost-india-branding .panel.panel-warning,{ border-left: 3px solid #fc9f2d; }
 #mojo-wrapper.mojo-bluehost-branding .panel.panel-error,
 #mojo-wrapper.mojo-bluehost-india-branding .panel.panel-error{ border-left: 3px solid #dc3232; }
+
+#mojo-wrapper.mojo-bluehost-branding .info-box .btn-success,
+#mojo-wrapper.mojo-bluehost-india-branding .info-box .btn-success,
+#mojo-wrapper.mojo-bluehost-branding .header-holder .btn-info,
+#mojo-wrapper.mojo-bluehost-india-branding .header-holder .btn-info,
+#mojo-wrapper.mojo-bluehost-branding .widget .btn-success,
+#mojo-wrapper.mojo-bluehost-india-branding .widget .btn-success,
+#mojo-wrapper.mojo-bluehost-branding .theme-details .btn-success, .mojo-bluehost-branding .btn-success,
+#mojo-wrapper.mojo-bluehost-india-branding .theme-details .btn-success, .mojo-bluehost-branding .btn-success {
+    background-color: #62bc33;
+    border-color: #62bc33;
+    color: #fff;
+}
