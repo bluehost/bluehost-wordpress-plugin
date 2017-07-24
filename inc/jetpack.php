@@ -9,7 +9,8 @@ add_filter( 'jetpack_get_default_modules', 'mm_customize_jetpack_default_modules
 function mm_prep_onboarding() {
 	$brand = mm_brand();
 	if ( 'bluehost' == $brand || 'bluehost-india' == $brand ) {
-		if ( false == get_option( 'jpo_started' ) && 'mojo-onboarding' !== $_GET['page'] && 1 != get_option( 'jpo_hide_always' ) && 1 != get_option( 'mm_jpo_redirected' ) ) {
+
+		if ( false == get_option( 'jpo_started' ) && 1 != get_option( 'jpo_hide_always' ) && 1 != get_option( 'mm_jpo_redirected' ) ) {
 			update_option( 'mm_jpo_redirected', 1 );
 			wp_redirect( add_query_arg( array( 'page' => 'mojo-onboarding' ), admin_url( 'admin.php' ) ) );
 		}
@@ -38,3 +39,4 @@ function mm_cta_button_url() {
 	$home_url = add_query_arg( array( 'page' => 'mojo-home' ), admin_url( 'admin.php' ) );
 	return add_query_arg( array( 'return' => $home_url ), admin_url( 'customize.php' ) );
 }
+
