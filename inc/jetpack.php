@@ -10,8 +10,7 @@ function mm_prep_onboarding() {
 	$brand = mm_brand();
 	if ( 'bluehost' == $brand || 'bluehost-india' == $brand ) {
 
-		if ( false == get_option( 'jpo_started' ) && 1 != get_option( 'jpo_hide_always' ) && 1 != get_option( 'mm_jpo_redirected' ) ) {
-			update_option( 'mm_jpo_redirected', 1 );
+		if ( false == get_option( 'jpo_started' ) && false == get_option( 'jpo_hide_always' ) && false == get_option( 'mm_jpo_viewed' ) ) {
 			wp_redirect( add_query_arg( array( 'page' => 'mojo-onboarding' ), admin_url( 'admin.php' ) ) );
 		}
 
@@ -30,6 +29,7 @@ function mm_prep_onboarding() {
 add_action( 'admin_init', 'mm_prep_onboarding' );
 
 function mm_add_jpo_wizard() {
+	update_option( 'mm_jpo_viewed', 1 );
 	?>
 	<div id='jpo-welcome-panel'><span class='screen-reader-text'>Loading Welcome Wizard</span></div>
 	<?php
@@ -39,4 +39,3 @@ function mm_cta_button_url() {
 	$home_url = add_query_arg( array( 'page' => 'mojo-home' ), admin_url( 'admin.php' ) );
 	return add_query_arg( array( 'return' => $home_url ), admin_url( 'customize.php' ) );
 }
-
