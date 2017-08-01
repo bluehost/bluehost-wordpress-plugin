@@ -11,7 +11,11 @@ function mm_prep_onboarding() {
 	if ( 'bluehost' == $brand || 'bluehost-india' == $brand ) {
 
 		if ( false == get_option( 'jpo_started' ) && false == get_option( 'jpo_hide_always' ) && false == get_option( 'mm_jpo_viewed' ) ) {
-			wp_redirect( add_query_arg( array( 'page' => 'mojo-onboarding' ), admin_url( 'admin.php' ) ) );
+			if ( isset( $_GET['page'] ) && 'mojo-marketplace' == $_GET['page'] && isset( $_GET['section'] ) && 'mixed-themes' == $_GET['section'] ) {
+				update_option( 'jpo_hide_always', 1 );
+			} else {
+				wp_redirect( add_query_arg( array( 'page' => 'mojo-onboarding' ), admin_url( 'admin.php' ) ) );
+			}
 		}
 
 		if ( isset( $_GET['page'] ) && 'mojo-onboarding' == $_GET['page'] && 1 == get_option( 'jpo_hide_always' ) ) {
