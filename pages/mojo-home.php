@@ -80,7 +80,7 @@ require_once( MM_BASE_DIR . 'pages/header/header.php' );
 						<h2>Customizer</h2>
 						<p>Customize your theme from the front end and view your changes before updating them.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-md" href="<?php echo add_query_arg( array( 'return' => urlencode( '/wp-admin/admin.php?page=mojo-home' ) ), admin_url( 'customize.php' ) ); ?>">Customize Theme</a>
+							<a class="btn btn-primary btn-md" href="<?php echo add_query_arg( array( 'return' => add_query_arg( array( 'page' => 'mojo-home' ), admin_url( 'admin.php' ) ), admin_url( 'customize.php' ) ); ?>">Customize Theme</a>
 						</div>
 					</div>
 				</div>
