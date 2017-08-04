@@ -3,6 +3,17 @@
  * This file adds a coming soon page for new installs
  */
 
+function mm_cs_notice_display() {
+	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) && 'bluehost' != mm_brand() ) {
+		?>
+		<div class='notice notice-info'>
+			<p>Your site is currently displaying a "Coming Soon" page. Once you are ready to launch your site <a href='<?php echo esc_url( add_query_arg( array( 'mm_cs_launch' => true ) ) );?>'>click here</a>.</p>
+		</div>
+		<?php
+	}
+}
+add_action( 'admin_notices', 'mm_cs_notice_display' );
+
 function mm_bh_cs_notice_display() {
 	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
 		?>
