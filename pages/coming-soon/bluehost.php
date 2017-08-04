@@ -5,7 +5,7 @@
 <?php echo mm_cs_meta(); ?>
 <style type='text/css'>
 body{
-	background-color: #2D2A25;
+	background-color: #fff;
 	background-image: url( <?php echo MM_BASE_URL . 'images/cs-bluehost-bg.jpg'; ?> );
 	background-position: top right;
 	background-repeat: no-repeat;
