@@ -89,7 +89,7 @@ function mm_clm_log( $name, $properties = array() ) {
 
 		$refresh_token = get_option( '_mm_refresh_token' );
 
-		$package = new stdObject;
+		$package = new stdClass();
 		$package->event_name = $name;
 		$package->event_properties = (object) $properties;
 
