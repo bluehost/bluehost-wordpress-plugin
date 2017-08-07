@@ -623,10 +623,12 @@ function mm_ux_site_launched( $new_option, $old_option ) {
 			'el'    => time() - $install_time,
 		);
 		mm_ux_log( $event );
+		$post_count = wp_count_posts( 'post' );
+		$page_count = wp_count_posts( 'page' );
 		$data = array(
 			'theme'        => get_option( 'stylesheet' ),
-			'post_count'   => wp_count_posts( 'post' ),
-			'page_count'   => wp_count_posts( 'page' ),
+			'post_count'   => $post_count->publish,
+			'page_count'   => $page_count->publish,
 			'plugin_count' => count( get_option( 'active_plugins', array() ) ),
 		);
 		mm_clm_log( 'site_launched', $data );
