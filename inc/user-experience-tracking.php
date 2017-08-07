@@ -81,6 +81,31 @@ function mm_ux_log( $args = array() ) {
 add_action( 'admin_footer', 'mm_ux_log', 9 );
 add_action( 'customize_controls_print_footer_scripts', 'mm_ux_log' );
 
+function mm_clm_log( $name, $properties = array() ) {
+	$refresh_token = get_option( '_mm_refresh_token' );
+	if ( mm_brand() === 'bluehost' && false != $refresh_token ) {
+		$clm_endpoint = '';
+		$path_hash = mm_site_bin2hex();
+
+		$refresh_token = get_option( '_mm_refresh_token' );
+
+		$package = new stdObject;
+		$package->event_name = $name;
+		$package->event_properties = (object) $properties;
+
+		$headers = array(
+			'x-api-refresh-token' => $refresh_token,
+			'x-api-path' => $path_hash,
+		);
+		$args = array(
+			'timeout'     => 1,
+			'blocking'    => false,
+			'headers'     => $headers,
+		);
+		$response = wp_remote_get( $query, $args );
+	}
+}
+
 function mm_ux_log_start() {
 	$session = array(
 		'sc' => 'start',
@@ -92,6 +117,7 @@ function mm_ux_log_start() {
 		'ea' => 'login',
 	);
 	mm_ux_log( $event );
+	mm_clm_log( 'wp_login' );
 }
 add_action( 'wp_login', 'mm_ux_log_start' );
 
@@ -109,6 +135,7 @@ function mm_ux_log_end() {
 		'el' => $role[0],
 	);
 	mm_ux_log( $event );
+	mm_clm_log( 'wp_logout' );
 }
 add_action( 'wp_logout', 'mm_ux_log_end' );
 
@@ -273,6 +300,52 @@ function mm_ux_log_current_theme() {
 }
 add_action( 'admin_footer-index.php', 'mm_ux_log_current_theme' );
 
+function mm_ux_log_theme_change( $new_option, $old_option ) {
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'user_action',
+		'ea'    => 'theme_change',
+		'el'    => $new_option,
+	);
+	mm_ux_log( $event );
+	$data = array(
+		'old_theme'   => $old_option,
+		'new_theme'   => $new_option,
+	);
+	mm_clm_log( 'theme_change', $data );
+}
+add_filter( 'pre_update_option_stylesheet', 'mm_ux_site_launched', 10, 2 );
+
+function mm_ux_log_plugin_activated( $plugin, $network_wide ) {
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'user_action',
+		'ea'    => 'plugin_activated',
+		'el'    => $plugin,
+	);
+	mm_ux_log( $event );
+	$data = array(
+		'network_wide'   => $network_wide,
+	);
+	mm_clm_log( 'plugin_activated', $data );
+}
+add_action( 'activated_plugin', 'mm_ux_log_plugin_activated', 10, 2 );
+
+function mm_ux_log_plugin_deactivated( $plugin, $network_wide ) {
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'user_action',
+		'ea'    => 'plugin_activated',
+		'el'    => $plugin,
+	);
+	mm_ux_log( $event );
+	$data = array(
+		'network_wide'   => $network_wide,
+	);
+	mm_clm_log( 'plugin_deactivated', $data );
+}
+add_action( 'deactivated_plugin', 'mm_ux_log_plugin_deactivated', 10, 2 );
+
 function mm_ux_log_scheduled_events_weekly() {
 	$events = get_option( 'mm_cron', array( 'weekly' => array() ) );
 	if ( isset( $events['weekly'] ) && count( $events['weekly'] ) >= 1 ) {
@@ -392,6 +465,8 @@ function mm_ux_log_content_status( $new_status, $old_status, $post ) {
 			'el'    => $new_status,
 		);
 		mm_ux_log( $event );
+
+		mm_clm_log( 'content_' . $new_status, $post );
 	}
 	//first post is 3 because of the example post and page.
 	if ( 3 == $post->ID ) {
@@ -427,6 +502,9 @@ function mm_ux_log_comment_status( $new_status, $old_status, $comment ) {
 			'el'	=> $new_status,
 		);
 		mm_ux_log( $event );
+		if ( 'approved' == $new_status ) {
+			mm_clm_log( 'comment_' . $new_status, $comment );
+		}
 	}
 }
 add_action( 'transition_comment_status', 'mm_ux_log_comment_status', 10, 3 );
@@ -495,6 +573,7 @@ function mm_jetpack_log_module_enabled( $module ) {
 		'el'    => $module,
 	);
 	mm_ux_log( $event );
+	mm_clm_log( 'jetpack_module_enabled', array( 'module' => $module ) );
 }
 add_action( 'jetpack_pre_activate_module', 'mm_jetpack_log_module_enabled', 10, 1 );
 
@@ -506,6 +585,7 @@ function mm_jetpack_log_module_disabled( $module ) {
 		'el'    => $module,
 	);
 	mm_ux_log( $event );
+	mm_clm_log( 'jetpack_module_disabled', array( 'module' => $module ) );
 }
 add_action( 'jetpack_pre_deactivate_module', 'mm_jetpack_log_module_disabled', 10, 1 );
 
@@ -533,7 +613,7 @@ function mm_jetpack_log_connected( $entry ) {
 add_action( 'jetpack_log_entry', 'mm_jetpack_log_connected', 10, 1 );
 
 function mm_ux_site_launched( $new_option, $old_option ) {
-	if ( $old_option != $new_option && 'true' == $new_option ) {
+	if ( $old_option != $new_option && 'false' == $new_option ) {
 		$install_time = strtotime( get_option( 'mm_install_date', date( 'M d, Y' ) ) );
 		$event = array(
 			't'     => 'event',
@@ -542,6 +622,13 @@ function mm_ux_site_launched( $new_option, $old_option ) {
 			'el'    => time() - $install_time,
 		);
 		mm_ux_log( $event );
+		$data = array(
+			'theme'        => get_option( 'stylesheet' ),
+			'post_count'   => wp_count_posts( 'post' ),
+			'page_count'   => wp_count_posts( 'page' ),
+			'plugin_count' => count( get_option( 'active_plugins', array() ) ),
+		);
+		mm_clm_log( 'site_launched', $data );
 	}
 	return $new_option;
 }
@@ -570,17 +657,6 @@ function mm_sso_success() {
 }
 add_action( 'mmsso_success', 'mm_sso_success' );
 
-function mm_staging_event( $command ) {
-	$event = array(
-		't'     => 'event',
-		'ec'    => 'user_action',
-		'ea'    => 'staging',
-		'el'    => $command,
-	);
-	mm_ux_log( $event );
-}
-add_action( 'mm_staging_command', 'mm_staging_event' );
-
 function mm_sso_fail() {
 	$event = array(
 		't'     => 'event',
@@ -591,3 +667,14 @@ function mm_sso_fail() {
 	mm_ux_log( $event );
 }
 add_action( 'mmsso_fail', 'mm_sso_fail' );
+
+function mm_staging_event( $command ) {
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'user_action',
+		'ea'    => 'staging',
+		'el'    => $command,
+	);
+	mm_ux_log( $event );
+}
+add_action( 'mm_staging_command', 'mm_staging_event' );
