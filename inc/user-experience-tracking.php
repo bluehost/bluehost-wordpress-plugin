@@ -84,7 +84,7 @@ add_action( 'customize_controls_print_footer_scripts', 'mm_ux_log' );
 function mm_clm_log( $name, $properties = array() ) {
 	$refresh_token = get_option( '_mm_refresh_token' );
 	if ( mm_brand() === 'bluehost' && false != $refresh_token ) {
-		$clm_endpoint = '';
+		$clm_endpoint = 'https://my.bluehost.com/users/events';
 		$path_hash = mm_site_bin2hex();
 
 		$refresh_token = get_option( '_mm_refresh_token' );
@@ -101,8 +101,9 @@ function mm_clm_log( $name, $properties = array() ) {
 			'timeout'     => 1,
 			'blocking'    => false,
 			'headers'     => $headers,
+			'body'        => $package,
 		);
-		$response = wp_remote_get( $query, $args );
+		$response = wp_remote_post( $clm_endpoint, $args );
 	}
 }
 
