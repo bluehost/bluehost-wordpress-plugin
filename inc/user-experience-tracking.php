@@ -84,7 +84,7 @@ add_action( 'customize_controls_print_footer_scripts', 'mm_ux_log' );
 function mm_clm_log( $name, $properties = array() ) {
 	$refresh_token = get_option( '_mm_refresh_token' );
 	if ( mm_brand() === 'bluehost' && false != $refresh_token ) {
-		$clm_endpoint = 'https://my.bluehost.com/events';
+		$clm_endpoint = 'https://my.bluehost.com/users/events';
 		$path_hash = mm_site_bin2hex();
 
 		$refresh_token = get_option( '_mm_refresh_token' );
@@ -681,3 +681,39 @@ function mm_staging_event( $command ) {
 	mm_ux_log( $event );
 }
 add_action( 'mm_staging_command', 'mm_staging_event' );
+
+function mm_jpo_step_skipped( $step ) {
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'user_action',
+		'ea'    => 'jetpack_onboarding_skipped',
+		'el'    => $step,
+	);
+	mm_ux_log( $event );
+	mm_clm_log( 'jpo_step_skipped' . $step );
+}
+add_action( 'jpo_step_skipped', 'mm_jpo_step_skipped' );
+
+function mm_jpo_step_completed( $step, $data ) {
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'user_action',
+		'ea'    => 'jetpack_onboarding_completed',
+		'el'    => $step,
+	);
+	mm_ux_log( $event );
+	mm_clm_log( 'jpo_step_completed' . $step, $data );
+}
+add_action( 'jpo_step_completed', 'mm_jpo_step_completed' );
+
+function mm_jpo_started( $type ) {
+	$event = array(
+		't'     => 'event',
+		'ec'    => 'user_action',
+		'ea'    => 'jetpack_onboarding_started',
+		'el'    => $type,
+	);
+	mm_ux_log( $event );
+	mm_clm_log( 'jpo_started', array( 'site_type' => $type ) );
+}
+add_action( 'jpo_started', 'mm_jpo_started' );
