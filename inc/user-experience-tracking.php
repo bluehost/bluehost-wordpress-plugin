@@ -690,7 +690,7 @@ function mm_jpo_step_skipped( $step ) {
 		'el'    => $step,
 	);
 	mm_ux_log( $event );
-	mm_clm_log( 'jpo_step_skipped' . $step );
+	mm_clm_log( 'jpo_step_skipped_' . $step );
 }
 add_action( 'jpo_step_skipped', 'mm_jpo_step_skipped' );
 
@@ -702,7 +702,7 @@ function mm_jpo_step_completed( $step, $data ) {
 		'el'    => $step,
 	);
 	mm_ux_log( $event );
-	mm_clm_log( 'jpo_step_completed' . $step, $data );
+	mm_clm_log( 'jpo_step_completed_' . $step, $data );
 }
 add_action( 'jpo_step_completed', 'mm_jpo_step_completed' );
 
