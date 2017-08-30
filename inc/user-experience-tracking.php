@@ -326,6 +326,7 @@ function mm_ux_log_plugin_activated( $plugin, $network_wide ) {
 	);
 	mm_ux_log( $event );
 	$data = array(
+		'plugin'         => $plugin,
 		'network_wide'   => $network_wide,
 	);
 	mm_clm_log( 'plugin_activated', $data );
@@ -341,6 +342,7 @@ function mm_ux_log_plugin_deactivated( $plugin, $network_wide ) {
 	);
 	mm_ux_log( $event );
 	$data = array(
+		'plugin'         => $plugin,
 		'network_wide'   => $network_wide,
 	);
 	mm_clm_log( 'plugin_deactivated', $data );
@@ -694,7 +696,7 @@ function mm_jpo_step_skipped( $step ) {
 }
 add_action( 'jpo_step_skipped', 'mm_jpo_step_skipped' );
 
-function mm_jpo_step_completed( $step, $data ) {
+function mm_jpo_step_complete( $step, $data ) {
 	$event = array(
 		't'     => 'event',
 		'ec'    => 'user_action',
@@ -702,9 +704,9 @@ function mm_jpo_step_completed( $step, $data ) {
 		'el'    => $step,
 	);
 	mm_ux_log( $event );
-	mm_clm_log( 'jpo_step_completed_' . $step, $data );
+	mm_clm_log( 'jpo_step_complete_' . $step, $data );
 }
-add_action( 'jpo_step_completed', 'mm_jpo_step_completed' );
+add_action( 'jpo_step_complete', 'mm_jpo_step_complete' );
 
 function mm_jpo_started( $type ) {
 	$event = array(
