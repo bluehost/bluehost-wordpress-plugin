@@ -21,7 +21,7 @@ function mm_sso_check () {
 		if ( is_email( $user ) ) {
 			$user = get_user_by( 'email', $user );
 		} else {
-			$user = get_user_by( 'id', (int)$user );
+			$user = get_user_by( 'id', (int) $user );
 		}
 
 		if ( is_a( $user, 'WP_User' ) ) {
@@ -29,12 +29,12 @@ function mm_sso_check () {
 			wp_set_auth_cookie( $user->ID );
 			do_action( 'wp_login', $user->user_login, $user );
 			delete_transient( 'mm_sso' );
-			do_action( 'mmsso_success' );
-			if ( isset ( $_GET['redirect'] ) ) {
+			if ( isset( $_GET['redirect'] ) ) {
 				$page = esc_url_raw( $_GET['redirect'] );
 			} else {
 				$page = '';
 			}
+			do_action( 'mmsso_success', $user, $page );
 			wp_safe_redirect( admin_url( $page ) );
 		} else {
 			mm_sso_req_login();

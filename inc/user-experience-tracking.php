@@ -651,7 +651,7 @@ function mm_ux_auto_core_upgrade() {
 }
 add_action( 'pre_update_option_auto_updater.lock', 'mm_ux_auto_core_upgrade' );
 
-function mm_sso_success() {
+function mm_sso_success( $user = null, $page = null ) {
 	$event = array(
 		't'     => 'event',
 		'ec'    => 'user_action',
@@ -659,6 +659,12 @@ function mm_sso_success() {
 		'el'    => 'success',
 	);
 	mm_ux_log( $event );
+	$data = array(
+		'landing_page'  => $page,
+		'user_nicename' => $user->user_nicename,
+		'user_id'       => $user->ID,
+	);
+	mm_clm_log( 'wp_sso', $data );
 }
 add_action( 'mmsso_success', 'mm_sso_success' );
 
