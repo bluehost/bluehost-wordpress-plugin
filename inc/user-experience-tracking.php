@@ -315,7 +315,7 @@ function mm_ux_log_theme_change( $new_option, $old_option ) {
 	);
 	mm_clm_log( 'theme_change', $data );
 }
-add_filter( 'pre_update_option_stylesheet', 'mm_ux_site_launched', 10, 2 );
+add_filter( 'pre_update_option_stylesheet', 'mm_ux_log_theme_change', 10, 2 );
 
 function mm_ux_log_plugin_activated( $plugin, $network_wide ) {
 	$event = array(
