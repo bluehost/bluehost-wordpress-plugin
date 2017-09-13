@@ -314,6 +314,7 @@ function mm_ux_log_theme_change( $new_option, $old_option ) {
 		'new_theme'   => $new_option,
 	);
 	mm_clm_log( 'theme_change', $data );
+	return $new_option;
 }
 add_filter( 'pre_update_option_stylesheet', 'mm_ux_log_theme_change', 10, 2 );
 
@@ -639,7 +640,7 @@ function mm_ux_site_launched( $new_option, $old_option ) {
 }
 add_filter( 'pre_update_option_mm_coming_soon', 'mm_ux_site_launched', 10, 2 );
 
-function mm_ux_auto_core_upgrade() {
+function mm_ux_auto_core_upgrade( $new_option, $old_option ) {
 	global $wp_version;
 	$event = array(
 		't'     => 'event',
@@ -648,8 +649,9 @@ function mm_ux_auto_core_upgrade() {
 		'el'    => $wp_version,
 	);
 	mm_ux_log( $event );
+	return $new_option;
 }
-add_action( 'pre_update_option_auto_updater.lock', 'mm_ux_auto_core_upgrade' );
+add_action( 'pre_update_option_auto_updater.lock', 'mm_ux_auto_core_upgrade', 10, 2 );
 
 function mm_sso_success( $user = null, $page = null ) {
 	$event = array(
