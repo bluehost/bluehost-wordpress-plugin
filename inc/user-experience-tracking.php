@@ -86,15 +86,17 @@ function mm_clm_log( $name, $properties = array() ) {
 	if ( mm_brand() === 'bluehost' && false != $refresh_token ) {
 		$clm_endpoint = 'https://my.bluehost.com/api/events';
 		$path_hash = mm_site_bin2hex();
+		$domain = parse_url( get_option( 'siteurl' ), PHP_URL_HOST );
 
 		$refresh_token = get_option( '_mm_refresh_token' );
 
-		$properties['site_id'] = $path_hash;
-		$properties['domain'] = get_option( 'siteurl' );
-
 		$package = new stdClass();
+		$package->domain = $domain;
+		$package->site_id = $path_hash;
 		$package->event_name = $name;
 		$package->event_properties = (object) $properties;
+		$package->event_properties->site_id = $path_hash;
+		$package->event_properties->domain = get_option( 'siteurl' );
 
 		$headers = array(
 			'x-api-refresh-token' => $refresh_token,
@@ -108,6 +110,7 @@ function mm_clm_log( $name, $properties = array() ) {
 		);
 		$response = wp_remote_post( $clm_endpoint, $args );
 	}
+	return;
 }
 
 function mm_ux_log_start() {
