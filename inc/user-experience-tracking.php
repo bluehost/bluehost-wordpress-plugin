@@ -106,7 +106,7 @@ function mm_clm_log( $name, $properties = array() ) {
 			'timeout'     => 1,
 			'blocking'    => false,
 			'headers'     => $headers,
-			'body'        => $package,
+			'body'        => json_encode( $package ),
 		);
 		$response = wp_remote_post( $clm_endpoint, $args );
 	}
