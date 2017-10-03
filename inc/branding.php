@@ -28,6 +28,14 @@ function mm_plugin_details( $all_plugins ) {
 					'Description' => 'This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.',
 				);
 				break;
+			case 'bluehost-india':
+                                $branded_plugin_details = array(
+                                        'Name'  => 'Bluehost',
+                                        'Title' => 'Bluehost',
+                                        'Description' => 'This plugin integrate$
+                                );
+                                break;
+
 		}
 		$all_plugins[ $plugin_file ] = wp_parse_args( $branded_plugin_details, $all_plugins[ $plugin_file ] );
 	}
