@@ -29,10 +29,9 @@ function mm_plugin_details( $all_plugins ) {
 				);
 				break;
 			case 'bluehost-india':
-                                $branded_plugin_details = array(
-                                        'Name'  => 'Bluehost',
-                                        'Title' => 'Bluehost',
-                                        'Description' => 'This plugin integrate'
+				$branded_plugin_details = array(
+					'Name'  => 'Bluehost',
+					'Title' => 'Bluehost',
                                 );
                                 break;
 
