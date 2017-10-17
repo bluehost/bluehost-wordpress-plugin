@@ -4,10 +4,10 @@ function mm_add_theme_button() {
 	if ( ! isset( $_GET['page'] ) ) {
 	?>
 	<script type="text/javascript">
-	jQuery( document ).ready( function() {
-		jQuery( '.page-title-action' ).html( 'WordPress.org Themes' );
-		jQuery( '.page-title-action' ).before( '<a class="add-new-h2" href="admin.php?page=mojo-themes">Premium Themes</a>' );
-		jQuery( '.page-title-action:nth-of-type(2)' ).after( '<a class="add-new-h2" href="theme-install.php?upload">Upload</a>' );
+	jQuery( document ).ready( function( $ ) {
+		$( '.page-title-action' ).html( 'WordPress.org Themes' );
+		$( '.page-title-action' ).before( '<a class="add-new-h2" href="admin.php?page=mojo-themes">Premium Themes</a>' );
+		$( '.page-title-action:nth-of-type(2)' ).after( '<a class="add-new-h2" href="theme-install.php?upload">Upload</a>' );
 	} );
 	</script>
 	<?php
