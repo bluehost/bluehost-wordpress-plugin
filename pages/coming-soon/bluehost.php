@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width">
 <title><?php echo get_option( 'blogname' ); ?> &mdash; Coming Soon</title>
 <?php echo mm_cs_meta(); ?>
 <style type='text/css'>
