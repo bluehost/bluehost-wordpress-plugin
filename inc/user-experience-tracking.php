@@ -82,6 +82,8 @@ add_action( 'admin_footer', 'mm_ux_log', 9 );
 add_action( 'customize_controls_print_footer_scripts', 'mm_ux_log' );
 
 function mm_clm_log( $name, $properties = array() ) {
+	global $mm_clm_events;
+
 	$refresh_token = get_option( '_mm_refresh_token' );
 	if ( mm_brand() === 'bluehost' && false != $refresh_token ) {
 		$clm_endpoint = 'https://my.bluehost.com/api/events';
@@ -108,7 +110,18 @@ function mm_clm_log( $name, $properties = array() ) {
 			'headers'     => $headers,
 			'body'        => json_encode( $package ),
 		);
-		$response = wp_remote_post( $clm_endpoint, $args );
+
+		if ( ! isset( $mm_clm_events ) || is_null( $mm_clm_events ) ) {
+			$mm_clm_events = array();
+		}
+
+		$key = md5( $name . json_encode( $properties ) );
+
+		if ( ! in_array( $key, $mm_clm_events ) && false === get_transient( 'mm_' . $key, false ) ) {
+			$mm_clm_events[] = $key;
+			set_transient( 'mm_' . $key, 'true', 600 );
+			$response = wp_remote_post( $clm_endpoint, $args );
+		}
 	}
 	return;
 }
