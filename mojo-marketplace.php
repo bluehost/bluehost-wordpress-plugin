@@ -35,9 +35,12 @@ require_once( MM_BASE_DIR . 'inc/tests.php' );
 require_once( MM_BASE_DIR . 'inc/performance.php' );
 mm_require( MM_BASE_DIR . 'inc/branding.php' );
 mm_require( MM_BASE_DIR . 'inc/sso.php' );
-mm_require( MM_BASE_DIR . 'vendor/jetpack/jetpack-onboarding/jetpack-onboarding.php' );
 if ( mm_jetpack_bluehost_only() ) {
-	mm_require( MM_BASE_DIR . 'vendor/jetpack/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
+	$mm_test = get_transient( 'mm_test' );
+	if ( false !== strpos( $mm_test, 'jetpack-onboarding' ) ) {
+		mm_require( MM_BASE_DIR . 'vendor/jetpack/jetpack-onboarding/jetpack-onboarding.php' );
+		mm_require( MM_BASE_DIR . 'vendor/jetpack/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
+	}
 }
 mm_require( MM_BASE_DIR . 'updater.php' );
 mm_require( MM_BASE_DIR . 'inc/cli.php' );
