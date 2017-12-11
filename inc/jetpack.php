@@ -7,7 +7,11 @@ function mm_customize_jetpack_default_modules( $modules ) {
 add_filter( 'jetpack_get_default_modules', 'mm_customize_jetpack_default_modules' );
 
 function mm_jpo_from( $from, $version ) {
-	return sprintf( 'jpo-%s-bluehost', $version );
+	if ( mm_brand() == 'bluehost' ) {
+		return sprintf( 'jpo-%s-bluehost', $version );
+	} else {
+		return $from;
+	}
 }
 add_filter( 'jpo_tracking_from_arg', 'mm_jpo_from', 10, 2 );
 
