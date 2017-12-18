@@ -118,7 +118,7 @@ footer p a:hover{
 		</div>
 	</div>
 	<footer>
-			<p class='text-center'>a <a href='https://bluehost.com/wordpress' class='bluehost'>bluehost</a> powered website</p>
+			<p class='text-center'>a <a href='https://bluehost.com/wordpress' class='bluehost' rel='nofollow'>bluehost</a> powered website</p>
 	</footer>
 </body>
 </html>
