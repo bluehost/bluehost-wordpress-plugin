@@ -1,4 +1,3 @@
-
 <?php
 /*
 Plugin Name: MOJO Marketplace
