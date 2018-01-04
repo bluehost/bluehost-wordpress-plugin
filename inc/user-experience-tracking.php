@@ -137,7 +137,6 @@ function mm_ux_log_start() {
 		'ea' => 'login',
 	);
 	mm_ux_log( $event );
-	mm_clm_log( 'wp_login' );
 }
 add_action( 'wp_login', 'mm_ux_log_start' );
 
@@ -155,7 +154,6 @@ function mm_ux_log_end() {
 		'el' => $role[0],
 	);
 	mm_ux_log( $event );
-	mm_clm_log( 'wp_logout' );
 }
 add_action( 'wp_logout', 'mm_ux_log_end' );
 
@@ -332,7 +330,6 @@ function mm_ux_log_theme_change( $new_option, $old_option ) {
 		'old_theme'   => $old_option,
 		'new_theme'   => $new_option,
 	);
-	mm_clm_log( 'theme_change', $data );
 	return $new_option;
 }
 add_filter( 'pre_update_option_stylesheet', 'mm_ux_log_theme_change', 10, 2 );
@@ -345,11 +342,6 @@ function mm_ux_log_plugin_activated( $plugin, $network_wide ) {
 		'el'    => $plugin,
 	);
 	mm_ux_log( $event );
-	$data = array(
-		'plugin'         => $plugin,
-		'network_wide'   => $network_wide,
-	);
-	mm_clm_log( 'plugin_activated', $data );
 }
 add_action( 'activated_plugin', 'mm_ux_log_plugin_activated', 10, 2 );
 
@@ -361,11 +353,6 @@ function mm_ux_log_plugin_deactivated( $plugin, $network_wide ) {
 		'el'    => $plugin,
 	);
 	mm_ux_log( $event );
-	$data = array(
-		'plugin'         => $plugin,
-		'network_wide'   => $network_wide,
-	);
-	mm_clm_log( 'plugin_deactivated', $data );
 }
 add_action( 'deactivated_plugin', 'mm_ux_log_plugin_deactivated', 10, 2 );
 
@@ -525,9 +512,6 @@ function mm_ux_log_comment_status( $new_status, $old_status, $comment ) {
 			'el'	=> $new_status,
 		);
 		mm_ux_log( $event );
-		if ( 'approved' == $new_status ) {
-			mm_clm_log( 'comment_' . $new_status, $comment );
-		}
 	}
 }
 add_action( 'transition_comment_status', 'mm_ux_log_comment_status', 10, 3 );
@@ -596,7 +580,6 @@ function mm_jetpack_log_module_enabled( $module ) {
 		'el'    => $module,
 	);
 	mm_ux_log( $event );
-	mm_clm_log( 'jetpack_module_enabled', array( 'module' => $module ) );
 }
 add_action( 'jetpack_pre_activate_module', 'mm_jetpack_log_module_enabled', 10, 1 );
 
@@ -608,7 +591,6 @@ function mm_jetpack_log_module_disabled( $module ) {
 		'el'    => $module,
 	);
 	mm_ux_log( $event );
-	mm_clm_log( 'jetpack_module_disabled', array( 'module' => $module ) );
 }
 add_action( 'jetpack_pre_deactivate_module', 'mm_jetpack_log_module_disabled', 10, 1 );
 
@@ -719,7 +701,6 @@ function mm_jpo_step_skipped( $step ) {
 		'el'    => $step,
 	);
 	mm_ux_log( $event );
-	mm_clm_log( 'jpo_step_skipped_' . $step );
 }
 add_action( 'jpo_step_skipped', 'mm_jpo_step_skipped' );
 
@@ -731,7 +712,6 @@ function mm_jpo_step_complete( $step, $data ) {
 		'el'    => $step,
 	);
 	mm_ux_log( $event );
-	mm_clm_log( 'jpo_step_complete_' . $step, $data );
 }
 add_action( 'jpo_step_complete', 'mm_jpo_step_complete' );
 
@@ -743,6 +723,5 @@ function mm_jpo_started( $type ) {
 		'el'    => $type,
 	);
 	mm_ux_log( $event );
-	mm_clm_log( 'jpo_started', array( 'site_type' => $type ) );
 }
 add_action( 'jpo_started', 'mm_jpo_started' );
