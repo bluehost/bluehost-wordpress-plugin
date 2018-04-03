@@ -85,14 +85,14 @@ function mm_clm_log( $name, $properties = array() ) {
 	global $mm_clm_events;
 
 	$refresh_token = get_option( '_mm_refresh_token' );
+
 	if ( mm_brand() === 'bluehost' && false != $refresh_token ) {
 		$clm_endpoint = 'https://my.bluehost.com/api/events';
 		$path_hash = mm_site_bin2hex();
 		$domain = parse_url( get_option( 'siteurl' ), PHP_URL_HOST );
 
-		$refresh_token = get_option( '_mm_refresh_token' );
-
 		$package = new stdClass();
+		$package->token = $refresh_token;
 		$package->domain = $domain;
 		$package->site_id = $path_hash;
 		$package->event_name = $name;
@@ -100,14 +100,9 @@ function mm_clm_log( $name, $properties = array() ) {
 		$package->event_properties->site_id = $path_hash;
 		$package->event_properties->domain = get_option( 'siteurl' );
 
-		$headers = array(
-			'x-api-refresh-token' => $refresh_token,
-			'x-api-path' => $path_hash,
-		);
 		$args = array(
-			'timeout'     => 1,
+			'timeout'     => 10,
 			'blocking'    => false,
-			'headers'     => $headers,
 			'body'        => json_encode( $package ),
 		);
 
