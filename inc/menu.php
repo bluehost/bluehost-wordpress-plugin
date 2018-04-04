@@ -35,11 +35,11 @@ add_action( 'admin_menu', 'mm_main_menu' );
 
 function mm_main_menu_fix_subdomain_label() {
 	global $submenu;
+	$home = null;
 	if ( isset( $submenu['mojo-marketplace'] ) && is_array( $submenu['mojo-marketplace'] ) ) {
 		$submenu['mojo-marketplace'][0][0] = 'Marketplace';
+		$home = array_search( array( 'Home', 'manage_options', 'mojo-home', 'Home' ), $submenu['mojo-marketplace'] );
 	}
-
-	$home = array_search( array( 'Home', 'manage_options', 'mojo-home', 'Home' ), $submenu['mojo-marketplace'] );
 
 	if ( ! is_null( $home ) && is_numeric( $home ) ) {
 		$home_placeholder = $submenu['mojo-marketplace'][ $home ];
