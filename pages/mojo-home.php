@@ -5,6 +5,30 @@ if ( ! defined( 'WPINC' ) ) { die; }
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php
 require_once( MM_BASE_DIR . 'pages/header/header.php' );
+$is_bluerock = file_exists( '/opt/cpanel/ea-php70/root/usr/bin/php-cgi' );
+$links = array(
+	'bluerock' => array(
+		'sites'       => 'https://my.bluehost.com/cgi/app/#/sites/' . mm_site_bin2hex(),
+		'performance' => 'https://my.bluehost.com/cgi/app/#/sites/' . mm_site_bin2hex() . '/performance',
+		'email'       => 'https://my.bluehost.com/cgi/email_manager',
+		'domains'     => 'https://my.bluehost.com/cgi/dm',
+		'support'     => 'https://helpchat.bluehost.com/',
+	),
+	'legacy'   => array(
+		'sites'       => 'https://my.bluehost.com/hosting/wordpress_tools/' . mm_site_bin2hex(),
+		'performance' => 'https://my.bluehost.com/hosting/wordpress_tools/performance/' . mm_site_bin2hex(),
+		'email'       => 'https://my.bluehost.com/cgi/email_manager',
+		'domains'     => 'https://my.bluehost.com/cgi/dm',
+		'support'     => 'https://helpchat.bluehost.com/',
+	),
+);
+
+if ( $is_bluerock ) {
+	$links = $links['bluerock'];
+} else {
+	$links = $links['legacy'];
+}
+
 ?>
 
 	<main id="main" class="home">
@@ -181,7 +205,7 @@ require_once( MM_BASE_DIR . 'pages/header/header.php' );
 						<h2>CDN</h2>
 						<p>A Content Delivery Network (CDN) will distribute your website around the globe for global retrieval.</p>
 						<div class="col-xs-12 col-sm-12">
-							<a class="btn btn-primary btn-md" href="https://my.bluehost.com/hosting/wordpress_tools/performance/<?php echo mm_site_bin2hex(); ?>" target="_blank">Manage</a>
+							<a class="btn btn-primary btn-md" href="" target="_blank">Manage</a>
 						</div>
 					</div>
 				</div>
@@ -215,7 +239,7 @@ require_once( MM_BASE_DIR . 'pages/header/header.php' );
 						<h2>Manage My Sites</h2>
 						<p>Manage your site from Bluehost's control panel. You can take backups, keep things secure, and improve performance.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-md" href="<?php echo mm_build_link( 'https://my.bluehost.com/hosting/wordpress_tools/' . mm_site_bin2hex(), array( 'utm_campaign' => mm_brand( '%s_wp_plugin' ), 'utm_medium' => 'plugin_home', 'utm_content' => 'manage_sites', 'r' => '' ) ); ?>" target="_blank">Manage</a>
+							<a class="btn btn-primary btn-md" href="<?php echo mm_build_link( $links['sites'], array( 'utm_campaign' => mm_brand( '%s_wp_plugin' ), 'utm_medium' => 'plugin_home', 'utm_content' => 'manage_sites', 'r' => '' ) ); ?>" target="_blank">Manage</a>
 						</div>
 					</div>
 				</div>
@@ -227,7 +251,7 @@ require_once( MM_BASE_DIR . 'pages/header/header.php' );
 						<h2>Email</h2>
 						<p>Create accounts, compose, send, and recieve all your email in your Bluehost control panel.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-md" href="<?php echo mm_build_link( 'https://my.bluehost.com/cgi/email_manager', array( 'utm_campaign' => mm_brand( '%s_wp_plugin' ), 'utm_medium' => 'plugin_home', 'utm_content' => 'manage_email', 'r' => '' ) ); ?>" target="_blank">Manage</a>
+							<a class="btn btn-primary btn-md" href="<?php echo mm_build_link( $links['email'], array( 'utm_campaign' => mm_brand( '%s_wp_plugin' ), 'utm_medium' => 'plugin_home', 'utm_content' => 'manage_email', 'r' => '' ) ); ?>" target="_blank">Manage</a>
 						</div>
 					</div>
 				</div>
@@ -239,7 +263,7 @@ require_once( MM_BASE_DIR . 'pages/header/header.php' );
 						<h2>Domains</h2>
 						<p>Find a new domain and assign it to your site, or start a new site with a new domain.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-md" href="<?php echo mm_build_link( 'https://my.bluehost.com/cgi/dm', array( 'utm_campaign' => mm_brand( '%s_wp_plugin' ), 'utm_medium' => 'plugin_home', 'utm_content' => 'find_domain', 'r' => '' ) ); ?>" target="_blank">Find a Domain</a>
+							<a class="btn btn-primary btn-md" href="<?php echo mm_build_link( $links['domains'], array( 'utm_campaign' => mm_brand( '%s_wp_plugin' ), 'utm_medium' => 'plugin_home', 'utm_content' => 'find_domain', 'r' => '' ) ); ?>" target="_blank">Find a Domain</a>
 						</div>
 					</div>
 				</div>
@@ -251,7 +275,7 @@ require_once( MM_BASE_DIR . 'pages/header/header.php' );
 						<h2>Help</h2>
 						<p>Need help from the folks at Bluehost? We have 24/7 US-based phone and chat support waiting to help.</p>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-4 text-right">
-							<a class="btn btn-primary btn-md" href="<?php echo mm_build_link( 'https://helpchat.bluehost.com/', array( 'utm_campaign' => mm_brand( '%s_wp_plugin' ), 'utm_medium' => 'plugin_home', 'utm_content' => 'help', 'r' => '' ) ); ?>" target="_blank">Help Me</a>
+							<a class="btn btn-primary btn-md" href="<?php echo mm_build_link( $links['support'], array( 'utm_campaign' => mm_brand( '%s_wp_plugin' ), 'utm_medium' => 'plugin_home', 'utm_content' => 'help', 'r' => '' ) ); ?>" target="_blank">Help Me</a>
 						</div>
 					</div>
 				</div>
