@@ -39,7 +39,7 @@ if ( mm_jetpack_bluehost_only() ) {
 	$mm_test = get_transient( 'mm_test' );
 	if ( isset( $mm_test['name'] ) && false !== strpos( $mm_test['name'], 'jetpack-onboarding' ) ) {
 		$onboard_time = strtotime( get_option( 'mm_install_date', 0 ) ) + DAY_IN_SECONDS * 90;
-		if ( $onboard_time < time() ) {
+		if ( $onboard_time > time() ) {
 			mm_require( MM_BASE_DIR . 'vendor/jetpack/jetpack-onboarding/jetpack-onboarding.php' );
 			mm_require( MM_BASE_DIR . 'vendor/jetpack/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
 		}
