@@ -18,6 +18,7 @@ define( 'MM_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/' )
 define( 'MM_VERSION', '1.3.4' );
 
 require_once( MM_BASE_DIR . 'inc/base.php' );
+require_once( MM_BASE_DIR . 'inc/modules.php' );
 require_once( MM_BASE_DIR . 'inc/checkout.php' );
 require_once( MM_BASE_DIR . 'inc/menu.php' );
 require_once( MM_BASE_DIR . 'inc/shortcode-generator.php' );
