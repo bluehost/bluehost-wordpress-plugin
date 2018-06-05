@@ -106,7 +106,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 					$code = 'https://raw.githubusercontent.com/bluehost/endurance-page-cache/production/endurance-page-cache.php';
 					if ( ! is_dir( WP_CONTENT_DIR . '/mu-plugins' ) ) {
 						mkdir( WP_CONTENT_DIR . '/mu-plugins' );
-						WPCLI::log( 'Creating mu-plugins directory.' );
+						WP_CLI::log( 'Creating mu-plugins directory.' );
 					}
 					$response = wp_remote_get( $code );
 					if ( ! is_wp_error( $response ) && is_array( $response ) && isset( $response['body'] ) && strlen( $response['body'] ) > 200 ) {
