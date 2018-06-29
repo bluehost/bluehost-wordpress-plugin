@@ -47,4 +47,8 @@ if ( mm_jetpack_bluehost_only() ) {
 	}
 }
 mm_require( MM_BASE_DIR . 'updater.php' );
-mm_require( MM_BASE_DIR . 'inc/cli.php' );
+// Check proper PHP and bring CLI loader online
+if ( version_compare( PHP_VERSION, '5.3.29' ) >= 0 ) {
+	mm_require( MM_BASE_DIR . 'inc/cli-init.php' );
+}
+
