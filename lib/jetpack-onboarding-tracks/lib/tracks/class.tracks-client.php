@@ -38,7 +38,7 @@
 ```
  */
 
-require_once( dirname(__FILE__).'/class.tracks-client.php' );
+require_once( dirname( __FILE__ ) . '/class.tracks-client.php' );
 
 class Tracks_Client {
 	const PIXEL = 'http://pixel.wp.com/t.gif';
