@@ -10,14 +10,6 @@ use \WP_CLI\Utils;
 abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 
 	/**
-	 * @param string $message
-	 * @param array $data
-	 */
-	protected function failed_condition( $message = '', $data = array() ) {
-
-	}
-
-	/**
 	 * Helper to format data into tables.
 	 *
 	 * By default, the method creates simple $key => $value tables.
@@ -63,6 +55,8 @@ abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 	}
 
 	/**
+	 * Formatted Success message.
+	 *
 	 * @param string $message
 	 */
 	protected function success( $message, $silent = false ) {
@@ -71,6 +65,8 @@ abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 	}
 
 	/**
+	 * Formatted Info message.
+	 *
 	 * @param string $message
 	 */
 	protected function info( $message ) {
@@ -78,6 +74,8 @@ abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 	}
 
 	/**
+	 * Formatted Warning message.
+	 *
 	 * @param string $message
 	 */
 	protected function warning( $message ) {
@@ -85,6 +83,8 @@ abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 	}
 
 	/**
+	 * Formatted Error message. Halts by default.
+	 *
 	 * @param string $message
 	 * @param bool $silent
 	 * @param bool $halt
@@ -101,6 +101,8 @@ abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 	}
 
 	/**
+	 * Formatting helper for colorized messages.
+	 *
 	 * @param string $message
 	 * @param string $background
 	 * @param string $text_color
@@ -130,6 +132,8 @@ abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 	}
 
 	/**
+	 * Formatted Confirm Dialog. A 'n' response breaks the thread.
+	 *
 	 * @param string $question
 	 * @param string $type
 	 *

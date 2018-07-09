@@ -7,7 +7,7 @@
  */
 class EIG_WP_CLI_Secrets extends EIG_WP_CLI_Command {
 	/**
-	 * @var array
+	 * @var array - Keys for constants defined in wp-config.php.
 	 */
 	protected static $config_secret_slugs = array(
 		'AUTH_KEY',
@@ -21,17 +21,17 @@ class EIG_WP_CLI_Secrets extends EIG_WP_CLI_Command {
 	);
 
 	/**
-	 * @var array
+	 * @var array - Generated key => values for $this->config_secret_slugs using wp_generate_password().
 	 */
 	protected $built_secrets = array();
 
 	/**
-	 * @var string
+	 * @var string - Timestamp stored in wp_options.
 	 */
 	protected static $timestamp_db_key = 'eig_wpconfig_secrets_timestamp';
 
 	/**
-	 * @var string
+	 * @var string - User-provided subcommand.
 	 */
 	protected $subcommand = '';
 
@@ -119,7 +119,8 @@ class EIG_WP_CLI_Secrets extends EIG_WP_CLI_Command {
 	 * Check for database timestamp and message accordingly.
 	 */
 	protected function timestamp() {
-		if ( ! empty( $db_time = $this->secret_timestamp() ) && is_string( $db_time ) ) {
+		$db_time = $this->secret_timestamp();
+		if ( ! empty( $db_time ) && is_string( $db_time ) ) {
 			$human_time = human_time_diff( strtotime( $db_time ), current_time( 'timestamp' ) );
 			$this->info( 'Secrets last generated ' . $human_time . ' ago.' );
 		} else {

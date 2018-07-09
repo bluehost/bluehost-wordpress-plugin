@@ -8,27 +8,28 @@
 class EIG_WP_CLI_Branding extends EIG_WP_CLI_Command {
 
 	/**
-	 * @var string
+	 * @var string - Stores brand slug
+	 * @see EIG_WP_CLI_Loader->brand_aliases & EIG_WP_CLI_Loader->must_use_aliases
 	 */
 	protected static $option_key = 'mm_brand';
 
 	/**
-	 * @var string
+	 * @var string - Stores SVG of current brand's icon in database.
 	 */
 	protected static $icon_transient_key = 'mm_icon_hash';
 
 	/**
-	 * @var string
+	 * @var string - Remote location of branding.json config file.
 	 */
 	protected static $api_branding_file = MM_ASSETS_URL . 'json/branding.json';
 
 	/**
-	 * @var string
+	 * @var string - User-provided action.
 	 */
 	protected $action;
 
 	/**
-	 * @var string
+	 * @var string - User-provided brand.
 	 */
 	protected $brand;
 

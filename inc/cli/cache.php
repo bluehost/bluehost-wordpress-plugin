@@ -10,7 +10,7 @@ use \WP_CLI\Utils;
 class EIG_WP_CLI_Cache extends EIG_WP_CLI_Command {
 
 	/**
-	 * @var string - Organization Raw Content URL Base
+	 * @var string - Organization Raw Content URL Base.
 	 */
 	protected static $org_url = 'https://raw.githubusercontent.com/bluehost';
 
@@ -33,61 +33,61 @@ class EIG_WP_CLI_Cache extends EIG_WP_CLI_Command {
 	);
 
 	/**
-	 * @var string
+	 * @var string - GitHub Repo + Brand Slug.
 	 */
 	protected static $page_repo_branch = 'endurance-page-cache/production';
 
 	/**
-	 * @var string
+	 * @var string - Page Cache Filename.
 	 */
 	protected static $page_filename = 'endurance-page-cache.php';
 
 	/**
-	 * @var string
+	 * @var string - GitHub Repo + Brand Slug.
 	 */
 	protected static $browser_repo_branch = 'endurance-browser-cache/production';
 
 	/**
-	 * @var string
+	 * @var string - Browser Cache Filename.
 	 */
 	protected static $browser_filename = 'endurance-browser-cache.php';
 
 	/**
-	 * @var string
+	 * @var string - /wp-content/mu path on server.
 	 */
 	protected static $mu_plugin_dir = WP_CONTENT_DIR . '/mu-plugins';
 
 	/**
-	 * @var string|null
+	 * @var string|null - user-provided provided action.
 	 */
 	protected $current_action;
 
 	/**
-	 * @var string|null
+	 * @var string|null - user-provided caching type.
 	 */
 	protected $current_type;
 
 	/**
-	 * @var string|null
+	 * @var string|null - determined filename based on caching type.
 	 */
 	protected $current_filename;
 
 	/**
-	 * @var string|null
+	 * @var string|null - current path for mu plugin file.
 	 */
 	protected $current_plugin_path;
 
 	/**
-	 * @var string|null
+	 * @var string|null - current url for remote copy of plugin file.
 	 */
 	protected $current_remote;
 
 	/**
-	 * EIG_WP_CLI_Cache constructor.
+	 * Manage Full-Page Caching, Browser Caching and Object Caching.
 	 */
 	public function __invoke( $args, $assoc_args ) {
-		if ( ! is_array( $args ) || ! isset( $args[0] ) || ! isset( $args[1] ) ) {
-			$this->error( 'Arguments weren\'t an array() or didn\'t have first two params set' );
+		if ( ! isset( $args[0] ) || ! isset( $args[1] ) ) {
+			$this->error( 'Arguments didn\'t have first two params set' );
 			WP_CLI::halt( 400 );
 		}
 
@@ -101,7 +101,7 @@ class EIG_WP_CLI_Cache extends EIG_WP_CLI_Command {
 		}
 
 		if ( ! in_array( $this->current_action, static::$cache_actions ) ) {
-			$this->error( 'Cache action bad yo' );
+			$this->error( 'Cache action bad.' );
 			WP_CLI::halt( 400 );
 		}
 

@@ -17,7 +17,7 @@ class EIG_WP_CLI_Loader {
 	 *
 	 * @var array
 	 */
-	protected $cmds = array(
+	protected $commands = array(
 		array(
 			'cmd'   => 'branding',
 			'class' => 'EIG_WP_CLI_Branding',
@@ -63,6 +63,8 @@ class EIG_WP_CLI_Loader {
 	);
 
 	/**
+	 * Only one of these aliases are available, determined by current active branding.
+	 *
 	 * @var array
 	 */
 	protected $brand_aliases = array(
@@ -78,17 +80,17 @@ class EIG_WP_CLI_Loader {
 	);
 
 	/**
-	 * @var
+	 * @var string - Current alias from $this->brand_aliases.
 	 */
 	protected $current_brand_alias;
 
 	/**
-	 * @var
+	 * @var array - Current aliases including $this->current_brand_alias & $this->must_use_aliases.
 	 */
 	protected $current_aliases;
 
 	/**
-	 * @var stdClass
+	 * @var stdClass - Instance of EIG_WP_CLI_Loader.
 	 */
 	protected static $instance;
 
@@ -154,7 +156,7 @@ class EIG_WP_CLI_Loader {
 	 * @param string $alias ( from $this->current_aliases )
 	 */
 	protected function register_commands_with_single_alias( $alias ) {
-		foreach ( $this->cmds as $cmd ) {
+		foreach ( $this->commands as $cmd ) {
 			if ( ! $this->command_is_supported( $cmd, $alias )
 			     || empty( $cmd['cmd'] )
 			     || empty( $cmd['class'] )
@@ -194,5 +196,3 @@ class EIG_WP_CLI_Loader {
  * @see EIG_WP_CLI_Loader->initialize()
  */
 EIG_WP_CLI_Loader::instance();
-
-

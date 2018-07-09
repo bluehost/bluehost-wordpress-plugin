@@ -12,7 +12,7 @@ if ( ! class_exists( 'WP_CLI' ) ) {
 class EIG_WP_CLI_Staging extends EIG_WP_CLI_Command {
 
 	/**
-	 * @var array
+	 * @var array - Subcommand actions used to create/modify staging environments.
 	 */
 	protected static $valid_actions = array(
 		'create',
