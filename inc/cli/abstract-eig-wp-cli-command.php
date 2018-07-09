@@ -67,7 +67,7 @@ abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 	 */
 	protected function success( $message, $silent = false ) {
 		$pre_ = $silent ? '' : 'Success: ';
-		$this->colorize_log( $pre_ . $message, '2', 'K', '✅' );
+		$this->colorize_log( $pre_ . $message, '2', 'k', '✅' );
 	}
 
 	/**
@@ -81,7 +81,7 @@ abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 	 * @param string $message
 	 */
 	protected function warning( $message ) {
-		$this->colorize_log( $message, '3', 'K', '⚠️' );
+		$this->colorize_log( $message, '3', 'k', '⚠️' );
 	}
 
 	/**

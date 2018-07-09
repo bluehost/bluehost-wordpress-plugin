@@ -69,19 +69,24 @@ class EIG_WP_CLI_Branding extends EIG_WP_CLI_Command {
 		/**
 		 * Validate & Decide $this->action + $this->brand
 		 */
-		if ( isset( $args[0] ) ) {
-			if ( 'update' === $args[0] && ! isset( $args[1] ) ) {
-				$this->error( 'No brand provided.' );
-			}
+		if ( isset( $args[0] ) && 'update' === $args[0] ) {
 			$this->action = $args[0];
-			$this->brand  = $args[1];
-		} elseif ( isset( $assoc_args['update'] ) ) {
-			$this->action = 'update';
-			$this->brand  = $assoc_args['update'];
-		} elseif ( isset( $assoc_args['remove'] ) ) {
+			if ( ! empty( $args[1] ) ) {
+				$this->brand = $args[1];
+			} else {
+				$this->error( 'No brand identified to update.' );
+			}
+		} elseif ( isset( $args[0] ) && 'remove' === $args[0] ) {
 			$this->action = 'remove';
 		} else {
-			$this->error( 'No valid action provided.' );
+			if ( ! empty( $assoc_args['update'] ) ) {
+				$this->action = 'update';
+				$this->brand  = $assoc_args['update'];
+			} elseif ( isset( $assoc_args['remove'] ) ) {
+				$this->action = 'remove';
+			} else {
+				$this->error( 'No valid action provided.' );
+			}
 		}
 	}
 
@@ -96,7 +101,7 @@ class EIG_WP_CLI_Branding extends EIG_WP_CLI_Command {
 		$valid_brands   = $this->get_brands();
 		$existing_brand = get_option( static::$option_key, null );
 
-		if ( isset( $valid_brands[ $this->brand ] ) ) {
+		if ( in_array( $this->brand, $valid_brands ) ) {
 			/**
 			 * Check if passed brand param matches saved brand
 			 */
@@ -111,7 +116,11 @@ class EIG_WP_CLI_Branding extends EIG_WP_CLI_Command {
 				$this->error( 'Failed to update plugin branding to: ' . $this->brand );
 			}
 		} else {
-			if ( ! empty( $valid_brands = $this->get_brands() ) ) {
+			if ( ! empty( $valid_brands ) ) {
+				$lowercase = array_map( 'strtolower', $valid_brands );
+				if ( in_array( $this->brand, $lowercase ) ) {
+					$this->warning( 'WRONG CASE! Try that string again with the correct case.' );
+				}
 				$this->colorize_log( 'Valid brands: ' );
 				$this->table( $valid_brands, array( '---', 'BRAND SLUG' ) );
 			}
@@ -120,9 +129,9 @@ class EIG_WP_CLI_Branding extends EIG_WP_CLI_Command {
 	}
 
 	/**
-	 * wp {alias} branding remove {brand}
+	 * wp {alias} branding remove
 	 *       -- -- -- OR -- -- --
-	 * wp {alias} branding --remove={brand}
+	 * wp {alias} branding --remove
 	 */
 	protected function remove() {
 		if ( delete_option( static::$option_key ) ) {
