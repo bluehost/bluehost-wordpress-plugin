@@ -331,9 +331,10 @@ footer p a:hover {
 			$( '#success' ).hide();
 			$( '#error' ).hide();
 
-		    var email 		= $( '#subscribe-field-bh' ).val();
-		    var nonce 		= $( '#mm_nonce-coming-soon-subscribe' ).val();
-		    var ajaxscript 	= { ajax_url : '<?php echo admin_url(); ?>admin-ajax.php' }
+		    	var email 	= $( '#subscribe-field-bh' ).val();
+		    	var nonce 	= $( '#mm_nonce-coming-soon-subscribe' ).val();
+		    	var ajaxscript 	= { ajax_url : '<?php echo esc_url( admin_url() ); ?>admin-ajax.php' }
+			
 			$.ajax({
 				type: 'POST',
 				url: ajaxscript.ajax_url,
