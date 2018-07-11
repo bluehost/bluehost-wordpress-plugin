@@ -4,15 +4,15 @@
 <meta name="viewport" content="width=device-width">
 <title><?php echo get_option( 'blogname' ); ?> &mdash; Coming Soon</title>
 <?php echo mm_cs_meta(); ?>
-<script src="<?php echo home_url(); ?>/wp-includes/js/jquery/jquery.js"></script>
+<script src="<?php echo esc_url( includes_url( 'js/jquery/jquery.js' ) ); ?>"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-<style type='text/css'>
+<style type="text/css">
 body {
 	background-color: #fff;
-	background-image: url( <?php echo MM_BASE_URL . 'images/cs-bluehost-bg.jpg'; ?> );
+	background-image: url( "<?php echo MM_BASE_URL . 'images/cs-bluehost-bg.jpg'; ?>" );
 	background-position: top right;
 	background-repeat: no-repeat;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Open Sans", sans-serif;
 	overflow-x: hidden;
 }
 * {
@@ -21,7 +21,7 @@ body {
 	-webkit-box-sizing: border-box;
 }
 input {
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Open Sans", sans-serif;
 }
 ::-webkit-input-placeholder {
   color: #9DAFBD;
@@ -136,7 +136,7 @@ footer p a:hover {
     color: #5B5B5B;
     margin-bottom: 25px;
     display: none;
-    padding: 2px 40px;
+    padding: 8px 40px;
 }
 .bh_subscription_widget #success {
     background: #CCE9D0;
@@ -174,7 +174,7 @@ footer p a:hover {
 }
 .bh_subscription_widget form .bh-inputs.email input[type="email"] {
 	background-color: #fff;
-	background-image: url( <?php echo MM_BASE_URL . 'images/icon-email.svg'; ?> );
+	background-image: url( "<?php echo MM_BASE_URL . 'images/icon-email.svg'; ?>" );
 	background-position: 10px center;
 	background-repeat: no-repeat;
     border: 1px solid #5B5B5B;
@@ -264,21 +264,20 @@ footer p a:hover {
 </style>
 </head>
 <body>
-	<div id='wrap'>
-		<div class='content'>
+	<div id="wrap">
+		<div class="content">
 			
 			<?php if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'subscriptions' ) ) { ?>
 
 				<div class="bh_subscription_widget">
 					<h2 class="widgettitle">Coming Soon!</h2>
-						<div id="subscribe-text">
-							<p>Be the first to know when we launch, enter your email address and we will let you know when we go live and any future website updates we have.</p>
-						</div>
-						<div id="success">Thank you, please check your email to confirm your subscription.</div>
-						<div id="error">There was an error with your submission and you were not subscribed. Please try again with a different email address.</div>
+					<div id="subscribe-text">
+						<p>Be the first to know when we launch, enter your email address and we will let you know when we go live and any future website updates we have.</p>
+					</div>
+					<div id="success">Thank you, please check your email to confirm your subscription.</div>
+					<div id="error">There was an error with your submission and you were not subscribed. Please try again with a different email address.</div>
 					<form action="" method="post" accept-charset="utf-8" id="subscribe-bh">
 						<input type="hidden" name="action" value="mm_coming_soon_subscribe">
-						<?php wp_create_nonce( 'mm_nonce-coming-soon-subscribe' ); ?>
 						<?php wp_nonce_field( 'mm_coming_soon_subscribe_nonce', 'mm_nonce-coming-soon-subscribe' ); ?>
 						<span class="bh-inputs email" id="subscribe-email">
 							<label id="bh-subscribe-label" for="subscribe-field-bh">Email</label>
@@ -289,9 +288,7 @@ footer p a:hover {
 						</span>
 					</form>
 					<script>
-						/*
-						Custom functionality for safari and IE
-						 */
+						// Custom functionality for safari and IE
 						(function( d ) {
 							// In case the placeholder functionality is available we remove labels
 							if ( ( 'placeholder' in d.createElement( 'input' ) ) ) {
@@ -307,20 +304,18 @@ footer p a:hover {
 					</script>
 				</div>
 
-			<?php 
+			<?php } else { ?>
 
-			} else {
+				<h1>A New WordPress Site</h1>
+				<h2>Coming Soon!</h2>
+				<a class="btn" href="<?php echo esc_url( wp_login_url() ); ?>">Admin Login</a>
 
-				echo '<h1>A New WordPress Site</h1>';
-				echo '<h2>Coming Soon!</h2>';
-				echo '<a class="btn" href="' . site_url( 'wp-login.php' ) . '">Admin Login</a>';
-
-			} ?>
+			<?php } ?>
 
 		</div>
 	</div>
 	<footer>
-			<p class='text-center'>A <a target="_blank" href='https://bluehost.com/wordpress' class='bluehost' rel='nofollow'>Bluehost</a> powered website. Is this your website? Log in to <a href='<?php echo site_url( 'wp-login.php' ); ?>'>WordPress</a> or <a target="_blank" href='https://my.bluehost.com/' class='bluehost' rel='nofollow'>Bluehost</a></p>
+			<p class="text-center">A <a target="_blank" href="https://bluehost.com/wordpress" class="bluehost" rel="nofollow">Bluehost</a> powered website. Is this your website? Log in to <a href="<?php echo esc_url( wp_login_url() ); ?>">WordPress</a> or <a target="_blank" href="https://my.bluehost.com/" class="bluehost" rel="nofollow">Bluehost</a></p>
 	</footer>
 <script>
 	jQuery(document).ready( function($){
@@ -331,10 +326,10 @@ footer p a:hover {
 			$( '#success' ).hide();
 			$( '#error' ).hide();
 
-		    	var email 	= $( '#subscribe-field-bh' ).val();
-		    	var nonce 	= $( '#mm_nonce-coming-soon-subscribe' ).val();
-		    	var ajaxscript 	= { ajax_url : '<?php echo esc_url( admin_url() ); ?>admin-ajax.php' }
-			
+			var email 		= $( '#subscribe-field-bh' ).val();
+			var nonce 		= $( '#mm_nonce-coming-soon-subscribe' ).val();
+			var ajaxscript 	= { ajax_url : '<?php echo esc_url( admin_url() ); ?>admin-ajax.php' }
+
 			$.ajax({
 				type: 'POST',
 				url: ajaxscript.ajax_url,
@@ -345,7 +340,7 @@ footer p a:hover {
 				},
 				success: function( response ){
 					
-					console.log( response );
+					//console.log( response );
 
 					var status = response.status;
 
