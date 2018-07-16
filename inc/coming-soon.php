@@ -141,28 +141,22 @@ function mm_cs_content() {
  * When the coming soon module is enabled, add a filter to override Jetpack to prevent emails from being sent.
  */
 function mm_coming_soon_prevent_emails() {
+
 	$enabled = get_option( 'mm_coming_soon', 'false' );
-
 	if ( 'true' === $enabled ) {
-		add_filter( 'get_post_metadata', 'mm_prevent_emails_when_coming_soon_is_active', 10, 3 );
+	    add_filter(
+	        'jetpack_subscriptions_exclude_all_categories_except',
+	        'mm_return_array'
+	    );
 	}
-}
-add_action( 'init', 'mm_coming_soon_prevent_emails' );
 
-/**
- * Override the _jetpack_dont_email_post_to_subs meta key when Coming Soon is enabled to prevent emails from being
- * sent when new content is published.
- *
- * @param null|array|string $value     The value get_metadata() should return - a single metadata value,
- *                                     or an array of values.
- * @param int               $object_id Object ID.
- * @param string            $meta_key  Meta key.
- * @return null|array|string|bool false if no email should be sent, the original unchanged value otherwise.
- */
-function mm_prevent_emails_when_coming_soon_is_active( $value, $object_id, $meta_key ) {
-	if ( '_jetpack_dont_email_post_to_subs' === $meta_key ) {
-		return false;
-	} else {
-		return $value;
-	}
+}
+add_action( 'plugins_loaded', 'mm_coming_soon_prevent_emails' );
+
+function mm_return_array() {
+
+    return array(
+        'please-for-the-love-of-all-things-do-not-exist'
+    );
+
 }
