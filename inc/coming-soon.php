@@ -146,14 +146,14 @@ function mm_coming_soon_prevent_emails() {
 	if ( 'true' === $enabled ) {
 	    add_filter(
 	        'jetpack_subscriptions_exclude_all_categories_except',
-	        'mm_return_array'
+	        'mm_coming_soon_prevent_emails_return_array'
 	    );
 	}
 
 }
 add_action( 'plugins_loaded', 'mm_coming_soon_prevent_emails' );
 
-function mm_return_array() {
+function mm_coming_soon_prevent_emails_return_array() {
 
     return array(
         'please-for-the-love-of-all-things-do-not-exist'
