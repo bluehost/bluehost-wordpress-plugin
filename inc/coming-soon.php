@@ -137,6 +137,58 @@ function mm_cs_content() {
 	}
 }
 
+// Handle Ajax response
+function mm_coming_soon_subscribe() {
+	
+	$response 	= array();
+	$a_response 	= array();
+	$email 		= sanitize_email( wp_unslash( $_POST['email'] ) );
+
+	if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'mm_coming_soon_subscribe_nonce' ) ) {
+
+		$a_response['message'] 	= __( 'Gotcha!', 'mojo' );
+		$a_response['status'] 	= 'nonce_failure';
+
+	} else {
+		
+		// Initialize JetPack_Subscriptions
+		$jetpack = Jetpack_Subscriptions::init();
+
+		if ( ! is_email( $email ) ) {
+
+			$a_response['message'] 	= __( 'Please provide a valid email address', 'mojo' );
+			$a_response['status'] 	= 'invalid_email';
+
+		} else {
+
+			// Get JetPack response and subscribe email if response is true
+			$response = $jetpack->subscribe( $email, 0, false );
+
+			if( isset( $response[0]->errors ) ) {
+
+				$error_text = array_keys( $response[0]->errors );
+				$error_text = $error_text[0];
+
+				$a_response['message'] 	= __( 'There was an error with the subscription', 'mojo' );
+				$a_response['status'] 	= $error_text;
+
+		    	} else {
+
+				$a_response['message'] 	= __( 'Subscription successful', 'mojo' );
+		    		$a_response['status'] 	= 'success';
+
+			}
+
+		}
+
+  		wp_send_json( $a_response );
+
+  	}
+
+}
+add_action( 'wp_ajax_mm_coming_soon_subscribe', 'mm_coming_soon_subscribe' );
+add_action( 'wp_ajax_nopriv_mm_coming_soon_subscribe', 'mm_coming_soon_subscribe' );
+
 /**
  * When the coming soon module is enabled, add a filter to override Jetpack to prevent emails from being sent.
  */
