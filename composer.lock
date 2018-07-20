@@ -1,0 +1,139 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "08f92cb10d118d72880c51d432455af3",
+    "packages": [
+        {
+            "name": "automattic/jetpack-onboarding",
+            "version": "1.6.1",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:Automattic/jetpack-onboarding.git",
+                "reference": "1.6.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/Automattic/jetpack-onboarding/archive/1.6.1.zip",
+                "reference": "1.6.1",
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
+            "name": "bluehost/endurance-wp-module-loader",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bluehost/endurance-wp-module-loader.git",
+                "reference": "42990574d2a3c5a5bdd4d0fb063c44ef7c2cf9df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-loader/zipball/42990574d2a3c5a5bdd4d0fb063c44ef7c2cf9df",
+                "reference": "42990574d2a3c5a5bdd4d0fb063c44ef7c2cf9df",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "includes/"
+                ],
+                "files": [
+                    "module-loader.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/bluehost/endurance-wp-module-loader/tree/master",
+                "issues": "https://github.com/bluehost/endurance-wp-module-loader/issues"
+            },
+            "time": "2018-07-09T15:43:57+00:00"
+        },
+        {
+            "name": "bluehost/endurance-wp-module-spam-prevention",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bluehost/endurance-wp-module-spam-prevention.git",
+                "reference": "ed30bf2b63e0cc8071518ac3d03f025771c91a04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-spam-prevention/zipball/ed30bf2b63e0cc8071518ac3d03f025771c91a04",
+                "reference": "ed30bf2b63e0cc8071518ac3d03f025771c91a04",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/bluehost/endurance-wp-module-spam-prevention/tree/1.0",
+                "issues": "https://github.com/bluehost/endurance-wp-module-spam-prevention/issues"
+            },
+            "time": "2018-07-09T18:05:54+00:00"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "xrstf/composer-php52",
+            "version": "v1.0.20",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer-php52/composer-php52.git",
+                "reference": "bd41459d5e27df8d33057842b32377c39e97a5a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer-php52/composer-php52/zipball/bd41459d5e27df8d33057842b32377c39e97a5a8",
+                "reference": "bd41459d5e27df8d33057842b32377c39e97a5a8",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-default": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "xrstf\\Composer52": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2016-04-16T21:52:24+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
