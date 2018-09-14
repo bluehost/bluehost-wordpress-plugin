@@ -59,20 +59,35 @@ function mm_add_tool_bar_items( $admin_bar ) {
 		if ( mm_is_staging() ) {
 			$args = array(
 				'id'    => 'mojo-staging',
-				'title' => 'Staging Actions',
 				'href'  => admin_url( 'admin.php?page=mojo-staging' ),
-				'title' => '<div style="background-color: #ce0000; padding: 0px 5px;color:#fff;">Staging Environment</div>',
+				'title' => '<div style="background-color: #ce0000; padding: 0px 10px;color:#fff;">Staging Environment</div>',
+				'meta'  => array(
+					'title' => 'Staging Actions',
+				),
 			);
 			$admin_bar->add_menu( $args );
 		}
 		if ( defined( 'DESKTOPSERVER' ) ) {
 			$args = array(
 				'id'    => 'desktop-server',
-				'title' => 'Get Online Now',
 				'href'  => 'http://mojo.live/desktopserver',
-				'title' => '<div style="background-color: #3575C0; padding: 0px 5px;color:#fff;">Get Online Now</div>',
+				'title' => '<div style="background-color: #3575C0; padding: 0px 10px;color:#fff;">Get Online Now</div>',
+				'meta'  => array(
+					'title' => 'Get Online Now',
+				),
 			);
 			$admin_bar->add_menu( $args );
+		}
+		if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
+			$cs_args = array(
+				'id'    => 'mojo-home',
+				'href'  => admin_url( 'admin.php?page=mojo-home' ),
+				'title' => '<div style="background-color: #ce0000; padding: 0px 10px;color:#fff;">Coming Soon Active</div>',
+				'meta'  => array(
+					'title' => 'Launch Your Site',
+				),
+			);
+			$admin_bar->add_menu( $cs_args );
 		}
 	}
 }

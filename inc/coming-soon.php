@@ -18,13 +18,13 @@ function mm_bh_cs_notice_display() {
 	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
 		?>
 		<div class="col-xs-12 col-sm-12">
-			<div class="panel panel-default panel-body panel-info">
+			<div class="panel panel-default panel-body panel-error">
 				<div>
-					<span class="pull-left dashicons dashicons-flag"></span>
-					<h2>Launch your site</h2>
+					<span style="color: #ce0000;" class="pull-left dashicons dashicons-flag"></span>
+					<h2>Coming Soon Active</h2>
 					<p>Your site is currently displaying a "Coming Soon" page. This allows you to work on your site without the public seeing until you are ready to unveil it.</p>
 					<div class="col-xs-12 col-sm-12 text-right">
-						<a class="btn btn-default btn-md" href="<?php echo esc_url( add_query_arg( array( 'mm_cs_launch' => true ) ) );?>">Launch</a>
+						<a class="btn btn-default btn-md" href="<?php echo esc_url( add_query_arg( array( 'mm_cs_launch' => true ) ) );?>">Launch your site</a>
 					</div>
 				</div>
 			</div>
