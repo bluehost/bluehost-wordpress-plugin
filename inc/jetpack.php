@@ -38,6 +38,7 @@ function mm_prep_onboarding() {
 		if ( ! in_array( $site_tagline , array( '', 'Just another WordPress site' ) ) ) {
 			add_filter( 'jpo_wizard_step_enabled_title', '__return_false' );
 		}
+		add_filter( 'jpo_wizard_step_enabled_woocommerce', '__return_false' );
 	}
 }
 add_action( 'admin_init', 'mm_prep_onboarding' );
