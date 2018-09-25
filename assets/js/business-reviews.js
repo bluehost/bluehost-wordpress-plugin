@@ -18,7 +18,7 @@ eigbr.doReview = function() {
 			eigbr.links = data;
 			if ( eigbr.links.length === 1 ) {
 				window.location.href = this.links[0];
-			} else if ( eigbr.links.length > 1 ) {
+			} else {
 				eigbr.buildReviewList( eigbr.links );
 			}
 		}, function( jqXHR, status, error ) {
@@ -30,28 +30,34 @@ eigbr.doReview = function() {
 }
 
 eigbr.buildReviewList = function( links ) {
+
 	var reviewContent =
 		'<h2>We need your reviews!</h2>\n' +
 		'<p>Please select where you would like to review our business.</p>\n';
 
-	if ( links.length % 2 ) {
-		reviewContent += '<ul class="odd">';
-	} else {
-		reviewContent += '<ul>';
-	}
+    if ( links ) {
+        if ( links.length % 2 ) {
+            reviewContent += '<ul class="odd">';
+        } else {
+            reviewContent += '<ul>';
+        }
 
-	links.forEach( function( site ) {
-		if ( site.logo !== '' ) {
-			linkContent = '<img src="' + site.logo + '" alt="' + site.name + '" />';
-		} else {
-			linkContent = site.name;
-		}
-		reviewContent += '<li><a href="' + site.url + '">' + linkContent + '</a></li>\n';
-	} );
+        links.forEach( function( site ) {
+            if ( site.logo !== '' ) {
+                linkContent = '<img src="' + site.logo + '" alt="' + site.name + '" />';
+            } else {
+                linkContent = site.name;
+            }
+            reviewContent += '<li><a href="' + site.url + '">' + linkContent + '</a></li>\n';
+        } );
 
-	reviewContent +=
-		'</ul>\n' +
-		'<p class="eig_br_toggle_sentence">To leave feedback for the website owner directly, <a href="#" onclick="eigbr.doFeedback()">please click here</a>.</p>';
+        reviewContent += '</ul>\n';
+
+    } else {
+        reviewContent += '<p>No review sites available.</p>';
+    }
+
+	reviewContent += '<p class="eig_br_toggle_sentence">To leave feedback for the website owner directly, <a href="#" onclick="eigbr.doFeedback()">please click here</a>.</p>';
 
 	jQuery( '.eig_br_list' ).html( reviewContent ).show();
 	jQuery( '.eig_modal' ).show();
