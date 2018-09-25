@@ -139,9 +139,7 @@ class EIG_Business_Reviews {
 	/**
 	 * Hits the Business Reviews API to get list of sites user has configured
 	 *
-	 * @return array List of sites user has configured for Business Reviews
-	 *
-	 * @todo Make it actually hit the Business Reviews API and return an array of links
+	 * @return mixed Array of URLs configured for Business Reviews or empty string if none
 	 */
 	public function get_links() {
 
@@ -149,31 +147,23 @@ class EIG_Business_Reviews {
 
 		// If the current user is an editor or greater, don't use any cached value
 		if ( ! current_user_can( 'edit_posts' ) ) {
-			$review_urls = get_transient( 'eig_business_reviews' );
+			$review_sites = get_transient( 'eig_business_reviews' );
 		} else {
-			$review_urls = false;
+			$review_sites = false;
 		}
 
-		if ( false === $review_urls ) {
+		if ( false === $review_sites ) {
 			$response = wp_remote_get( $this->sites_endpoint . '/' . $this->domain . '/' . mm_site_bin2hex() . '/business-reviews' );
 			if ( $response->status && 'disabled' !== $response->status ) {
-				$review_urls = json_decode( $response )->review_sites;
+				$review_sites = json_decode( $response )->review_sites;
 				// Cache results for 1 hour
-				set_transient( 'eig_business_reviews', $review_urls, 3600 );
+				set_transient( 'eig_business_reviews', $review_sites, 3600 );
 			}
 		}
 
-		// This is just a sample array of links for demo purposes
-//		$review_urls = array(
-//			'https://www.google.com/search?source=hp&ei=0hEgW9uXH8SzzwKErb-YCw&q=luxury+bath+and+kitchen+raleigh&oq=luxury+bath+and+kitchen+raleigh&gs_l=psy-ab.3...1936.5324.0.5495.0.0.0.0.0.0.0.0..0.0....0...1.1.64.psy-ab..0.0.0....0.7ijTsE87Mr0#lrd=0x89ac5c25e8ce8849:0xc03d062abd8dda15,3,,,',
-//			'https://www.yelp.com/writeareview/biz/PaPAEakca0GByP0SI5d1gg?return_url=%2Fbiz%2FPaPAEakca0GByP0SI5d1gg&source=biz_details_war_button',
-//			'https://www.facebook.com/ajax/pages/recommendations/composer?id=423758451048224&ref=owned_page_action_bar&mechanism=review_action_link',
-//			'https://www.homeadvisor.com/write-a-review/56316722/',
-//		);
-
-		if ( $review_urls ) {
-			foreach ( $review_urls as $url ) {
-				$links[] = $this->get_site_data( $url );
+		if ( $review_sites ) {
+			foreach ( $review_sites as $site ) {
+				$links[] = $this->get_site_data( $site->url );
 			}
 		}
 
