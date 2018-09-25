@@ -180,7 +180,7 @@ class EIG_Business_Reviews {
 	 */
 	public function get_email() {
 
-		return get_option( 'admin_email' );
+		return get_option( 'business_reviews_email' );
 
 	}
 
