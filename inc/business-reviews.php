@@ -9,7 +9,7 @@ class EIG_Business_Reviews {
 
 	public $name = 'eig-business-reviews';
 
-	public $sites_endpoint = 'https://my.bluehost.com/siteapi/sites/';
+	public $sites_endpoint = 'https://my.bluehost.com/siteapi/sites';
 
 	public $domain;
 
