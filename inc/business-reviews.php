@@ -297,10 +297,10 @@ class EIG_Business_Reviews_Widget extends WP_Widget {
 }
 </style>
 <div style="width:50%;float:left;">
-	<a href="#" onclick="eigbr.doFeedback();"><?php echo file_get_contents( MM_BASE_URL . '/images/thumbs-down.svg' ); ?><br />Help us improve</a>
+	<a href="#" onclick="eigbr.doFeedback();"><?php echo file_get_contents( MM_BASE_DIR . '/images/thumbs-down.svg' ); ?><br />Help us improve</a>
 </div>
 <div style="width:50%;float:left;">
-	<a href="#" onclick="eigbr.doReview();"><?php echo file_get_contents( MM_BASE_URL . '/images/thumbs-up.svg' ); ?><br />Share a review</a>
+	<a href="#" onclick="eigbr.doReview();"><?php echo file_get_contents( MM_BASE_DIR . '/images/thumbs-up.svg' ); ?><br />Share a review</a>
 </div>
 <!--
 * Thumb icons from:
@@ -322,7 +322,7 @@ class EIG_Business_Reviews_Widget extends WP_Widget {
 		?>
 		<div class="eig_modal eig_modal_bg" onclick="eigbr.hideModal();"></div>
 		<div class="eig_modal eig_modal_content" role="dialog">
-			<div class="eig_br_close" onclick="eigbr.hideModal();"><?php echo file_get_contents( MM_BASE_URL . '/images/times.svg' ); ?></div>
+			<div class="eig_br_close" onclick="eigbr.hideModal();"><?php echo file_get_contents( MM_BASE_DIR . '/images/times.svg' ); ?></div>
 			<div class="eig_br_list" style="display:none;"></div>
 			<div class="eig_br_contact" style="display:none;">
 				<h2>Thank you for helping us improve</h2>
