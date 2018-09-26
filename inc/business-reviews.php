@@ -153,9 +153,10 @@ class EIG_Business_Reviews {
 		}
 
 		if ( false === $review_sites ) {
-			$response = wp_remote_get( $this->sites_endpoint . '/' . $this->domain . '/' . mm_site_bin2hex() . '/business-reviews' );
+			$request  = wp_remote_get( $this->sites_endpoint . '/' . $this->domain . '/' . mm_site_bin2hex() . '/business-reviews' );
+			$response = json_decode( wp_remote_retrieve_body( $request ) );
 			if ( $response->status && 'disabled' !== $response->status ) {
-				$review_sites = json_decode( $response )->review_sites;
+				$review_sites = $response->review_sites;
 				// Cache results for 1 hour
 				set_transient( 'eig_business_reviews', $review_sites, 3600 );
 			}
@@ -175,8 +176,6 @@ class EIG_Business_Reviews {
 	 * Hits the Business Reviews API to get the email address specified by the user for receiving feedback
 	 *
 	 * @return string Email address the user has specified for receiving negative feedback
-	 *
-	 * @todo Make it actually hit the Business Reviews API and return the user's email address
 	 */
 	public function get_email() {
 
