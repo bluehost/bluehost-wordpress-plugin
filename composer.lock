@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08f92cb10d118d72880c51d432455af3",
+    "content-hash": "d40a0af7b91a21cc5b1b1b237143aca1",
     "packages": [
         {
             "name": "automattic/jetpack-onboarding",
@@ -94,6 +94,42 @@
                 "issues": "https://github.com/bluehost/endurance-wp-module-spam-prevention/issues"
             },
             "time": "2018-07-09T18:05:54+00:00"
+        },
+        {
+            "name": "bluehost/endurance-wp-module-sso",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bluehost/endurance-wp-module-sso.git",
+                "reference": "16b3fcced3796d42fd57cd56250ceaf06b23b8ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-sso/zipball/16b3fcced3796d42fd57cd56250ceaf06b23b8ad",
+                "reference": "16b3fcced3796d42fd57cd56250ceaf06b23b8ad",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "Bluehost Single Sign-on Integration",
+            "support": {
+                "source": "https://github.com/bluehost/endurance-wp-module-sso/tree/1.0.1",
+                "issues": "https://github.com/bluehost/endurance-wp-module-sso/issues"
+            },
+            "time": "2018-09-26T16:38:45+00:00"
         }
     ],
     "packages-dev": [

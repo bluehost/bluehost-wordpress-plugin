@@ -18,7 +18,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 		$hash = base64_encode( hash( 'sha256', $nonce . $salt, false ) );
 		$hash = substr( $hash, 0, 64 );
 		$minutes = 3;
-		$params = array( 'action' => 'mmsso-check', 'salt' => $salt, 'nonce' => $nonce );
+		$params = array( 'action' => 'sso-check', 'salt' => $salt, 'nonce' => $nonce );
 		$link = add_query_arg( $params, admin_url( 'admin-ajax.php' ) );
 
 		if ( 0 != count( $assoc_args ) ) {
@@ -55,7 +55,7 @@ class WP_MOJO_Commands extends WP_CLI_Command {
 			}
 		}
 
-		set_transient( 'mm_sso', $hash, MINUTE_IN_SECONDS * $minutes );
+		set_transient( 'sso_token', $hash, MINUTE_IN_SECONDS * $minutes );
 
 		$link = add_query_arg( $params, admin_url( 'admin-ajax.php' ) );
 		if ( ! isset( $assoc_args['url-only'] ) ) {

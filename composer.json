@@ -20,12 +20,8 @@
   },
   "repositories": [
     {
-      "type": "vcs",
-      "url": "git@github.com:bluehost/endurance-wp-module-loader.git"
-    },
-    {
-      "type": "vcs",
-      "url": "git@github.com:bluehost/endurance-wp-module-spam-prevention.git"
+      "type": "composer",
+      "url": "https://satis.wpteamhub.com"
     },
     {
       "type": "package",
@@ -58,7 +54,8 @@
   "require": {
     "automattic/jetpack-onboarding": "1.6.1",
     "bluehost/endurance-wp-module-loader": "^1.0",
-    "bluehost/endurance-wp-module-spam-prevention": "^1.0"
+    "bluehost/endurance-wp-module-spam-prevention": "^1.0",
+    "bluehost/endurance-wp-module-sso": "^1.0"
   },
   "require-dev": {
     "xrstf/composer-php52": "^1.0"
