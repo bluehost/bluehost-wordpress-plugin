@@ -28,6 +28,9 @@ if ( version_compare( phpversion(), 5.3, '<' ) ) {
 }
 
 require_once( MM_BASE_DIR . 'inc/base.php' );
+
+$_SERVER['REMOTE_ADDR'] = mm_get_client_ip();
+
 require_once( MM_BASE_DIR . 'inc/checkout.php' );
 require_once( MM_BASE_DIR . 'inc/menu.php' );
 require_once( MM_BASE_DIR . 'inc/shortcode-generator.php' );
