@@ -67,7 +67,7 @@ class EIG_WP_CLI_Loader {
 	 *
 	 * @var array
 	 */
-	protected $brand_aliases = array(
+	protected static $brand_aliases = array(
 		'bluehost',
 		'hostmonster',
 		'justhost',
@@ -113,6 +113,7 @@ class EIG_WP_CLI_Loader {
 	 * Main initialization method -- run upon new instance or on instance access.
 	 */
 	protected function initialize() {
+		$this->establish_current_brand();
 		$this->load_files();
 		$this->register_cmds_with_wpcli();
 	}
@@ -129,6 +130,18 @@ class EIG_WP_CLI_Loader {
 				continue; // already req'd above for order of operations.
 			}
 			require_once $file;
+		}
+	}
+
+	/**
+	 * Taps mm_brand database option to initialize current brand's alias
+	 */
+	protected function establish_current_brand() {
+		$brand = get_option( 'mm_brand', '' );
+		foreach( static::$brand_aliases as $alias ) {
+			if ( false !== stristr( $brand, $alias ) ) {
+				$this->current_brand_alias = $alias;
+			}
 		}
 	}
 
