@@ -132,6 +132,21 @@ abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 	}
 
 	/**
+	 * Helper function for returning clean JSON response.
+	 *
+	 * @param array|string $data - Provide well-formed array or existing JSON string.
+	 */
+	protected function log_to_json( $data ) {
+		if ( is_array( $data ) ) {
+			\WP_CLI::log( json_encode( $data ) );
+		} elseif( is_array( json_decode( $data, true ) ) ) {
+			\WP_CLI::log( $data );
+		} else {
+			$this->error( 'Provided $data wasn\'t valid array or JSON string.' );
+		}
+	}
+
+	/**
 	 * Formatted Confirm Dialog. A 'n' response breaks the thread.
 	 *
 	 * @param string $question
