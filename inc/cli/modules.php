@@ -17,6 +17,10 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 	 */
 	protected $response_type = 'human';
 	/**
+	 * @var string - key for option persisted in DB
+	 */
+	protected static $module_option = 'eig_active_modules';
+	/**
 	 * Module command switchboard.
 	 *
 	 * @param  null $args
@@ -160,7 +164,7 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 	 */
 	protected function reset() {
 		$this->confirm( 'Are you sure you want to reset all modules to their default active state?' );
-		$deleted = delete_option( 'eig_active_modules' );
+		$deleted = delete_option( self::$module_option );
 		if ( $deleted ) {
 			$this->success( 'EIG modules reset.' );
 		} else {
