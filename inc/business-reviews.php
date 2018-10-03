@@ -97,8 +97,6 @@ class EIG_Business_Reviews {
 	 */
 	public function ajax_get_links() {
 
-		$data = array_map( 'esc_attr', $_POST );
-
 		if ( ! check_ajax_referer( "{$this->slug}_action", '_ajax_nonce', false ) ) {
 			wp_send_json_error( check_ajax_referer( "{$this->slug}_action", '_ajax_nonce', false ) );
 		};
@@ -111,8 +109,6 @@ class EIG_Business_Reviews {
 	 * Handle AJAX POST on the contact form
 	 */
 	public function ajax_send_email() {
-
-		$data = array_map( 'esc_attr', $_POST );
 
 		if ( ! check_ajax_referer( "{$this->slug}_action", '_ajax_nonce', false ) ) {
 			wp_send_json_error( check_ajax_referer( "{$this->slug}_action", '_ajax_nonce', false ) );
