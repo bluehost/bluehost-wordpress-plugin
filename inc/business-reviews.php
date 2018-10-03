@@ -54,7 +54,7 @@ class EIG_Business_Reviews {
 	 */
 	public function register_scripts() {
 
-		wp_register_script( $this->slug, MM_BASE_URL . '/assets/js/business-reviews.js', array( 'jquery' ), MM_VERSION, true );
+		wp_register_script( $this->slug, plugin_dir_url( __FILE__ ) . 'vendor/bluehost/endurance-wp-module-business-reviews/assets/js/business-reviews.js' , array( 'jquery' ), filemtime( 'assets/js/business-reviews.js' ), true );
 
 	}
 
@@ -194,15 +194,15 @@ class EIG_Business_Reviews {
 		$supported_sites = array(
 			'#https?://(www)?\.facebook\.com.*#i' => array(
 				'name' => 'Facebook',
-				'logo' => MM_BASE_URL . '/images/facebook.png',
+				'logo' => plugin_dir_url( __FILE__ ) . 'assets/images/facebook.png',
 			),
 			'#https?://(www)?\.google\.com.*#i'   => array(
 				'name' => 'Google',
-				'logo' => MM_BASE_URL . '/images/google.png',
+				'logo' => plugin_dir_url( __FILE__ ) . 'assets/images/google.png',
 			),
 			'#https?://(www)?\.yelp\.com.*#i'     => array(
 				'name' => 'Yelp',
-				'logo' => MM_BASE_URL . '/images/yelp.png',
+				'logo' => plugin_dir_url( __FILE__ ) . 'assets/images/yelp.png',
 			),
 		);
 
@@ -296,10 +296,10 @@ class EIG_Business_Reviews_Widget extends WP_Widget {
 }
 </style>
 <div style="width:50%;float:left;">
-	<a href="#" onclick="eigbr.doFeedback();"><?php echo file_get_contents( MM_BASE_DIR . '/images/thumbs-down.svg' ); ?><br />Help us improve</a>
+	<a href="#" onclick="eigbr.doFeedback();"><?php echo file_get_contents( 'assets/images/thumbs-down.svg' ); ?><br />Help us improve</a>
 </div>
 <div style="width:50%;float:left;">
-	<a href="#" onclick="eigbr.doReview();"><?php echo file_get_contents( MM_BASE_DIR . '/images/thumbs-up.svg' ); ?><br />Share a review</a>
+	<a href="#" onclick="eigbr.doReview();"><?php echo file_get_contents( 'assets/images/thumbs-up.svg' ); ?><br />Share a review</a>
 </div>
 <!--
 * Thumb icons from:
