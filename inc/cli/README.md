@@ -28,3 +28,33 @@ array(
     * Use protected functions for helpers/internal methods.
     * Avoid private functions.
 * Note it's often most efficient to establish all variables in the `__invoke()`, then route to sub-commands using a `switch()`.
+
+### Available commands
+
+wp {alias} branding update {brand}
+wp {alias} branding --update={brand}
+wp {alias} branding remove
+wp {alias} branding --remove
+
+wp {alias} cache {type} add
+wp {alias} cache {type} remove
+SOON: wp {alias} cache {type} status
+
+wp {alias} digest
+wp {alias} digest --full (includes user and role data)
+wp {alias} digest --full --noprompt (skips confirm in above)
+
+wp {alias} module activate {key} 
+wp {alias} module activate {key} --response=json
+wp {alias} module deactive {key} 
+wp {alias} module deactive {key} --response=json
+wp {alias} module status {key} 
+wp {alias} module status {key}  --response=json
+wp {alias} module list
+wp {alias} module list --response=json
+
+wp {alias} remove_orphan_post_meta
+
+wp {alias} secrets update
+wp {alias} secrets age
+wp {alias} secrets list
