@@ -82,7 +82,7 @@ function mm_add_tool_bar_items( $admin_bar ) {
 			$cs_args = array(
 				'id'    => 'mojo-home',
 				'href'  => admin_url( 'admin.php?page=mojo-home' ),
-				'title' => '<div style="background-color: #ce0000; padding: 0px 10px;color:#fff;">Coming Soon Active</div>',
+				'title' => '<div style="background-color: #F89C24; padding: 0px 10px;color:#fff;">Coming Soon Active</div>',
 				'meta'  => array(
 					'title' => 'Launch Your Site',
 				),
