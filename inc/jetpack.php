@@ -2,6 +2,7 @@
 // Add Photon to the list of default modules activated when Jetpack is linked to WP.
 function mm_customize_jetpack_default_modules( $modules ) {
 	$modules[] = 'photon';
+	$modules[] = 'sso';
 	return array_unique( $modules );
 }
 add_filter( 'jetpack_get_default_modules', 'mm_customize_jetpack_default_modules' );
@@ -37,6 +38,7 @@ function mm_prep_onboarding() {
 		if ( ! in_array( $site_tagline , array( '', 'Just another WordPress site' ) ) ) {
 			add_filter( 'jpo_wizard_step_enabled_title', '__return_false' );
 		}
+		add_filter( 'jpo_wizard_step_enabled_woocommerce', '__return_false' );
 	}
 }
 add_action( 'admin_init', 'mm_prep_onboarding' );

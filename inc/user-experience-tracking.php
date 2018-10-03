@@ -664,7 +664,7 @@ function mm_sso_success( $user = null, $page = null ) {
 	);
 	mm_clm_log( 'wp_sso', $data );
 }
-add_action( 'mmsso_success', 'mm_sso_success' );
+add_action( 'eig_sso_success', 'mm_sso_success' );
 
 function mm_sso_fail() {
 	$event = array(
@@ -675,7 +675,7 @@ function mm_sso_fail() {
 	);
 	mm_ux_log( $event );
 }
-add_action( 'mmsso_fail', 'mm_sso_fail' );
+add_action( 'eig_sso_fail', 'mm_sso_fail' );
 
 function mm_staging_event( $command ) {
 	$event = array(
