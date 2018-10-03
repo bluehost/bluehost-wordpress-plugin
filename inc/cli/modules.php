@@ -85,7 +85,7 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 	 * Run EIG module deactivation via Manager class
 	 */
 	protected function deactivate() {
-		Endurance_ModuleManager::activate( $this->module );
+		Endurance_ModuleManager::deactivate( $this->module );
 	}
 
 	/**
