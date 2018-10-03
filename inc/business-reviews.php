@@ -135,11 +135,11 @@ class EIG_Business_Reviews {
 	/**
 	 * Hits the Business Reviews API to get list of sites user has configured
 	 *
-	 * @return mixed Array of URLs configured for Business Reviews or empty string if none
+	 * @return mixed Array of URLs configured for Business Reviews
 	 */
 	public function get_links() {
 
-		$links = '';
+		$links = array();
 
 		// If the current user is an editor or greater, don't use any cached value
 		if ( ! current_user_can( 'edit_posts' ) ) {
