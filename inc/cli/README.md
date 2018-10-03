@@ -31,30 +31,30 @@ array(
 
 ### Available commands
 
-wp {alias} branding update {brand}
-wp {alias} branding --update={brand}
-wp {alias} branding remove
-wp {alias} branding --remove
+* `wp {alias} branding update {brand}`
+* `wp {alias} branding --update={brand}`
+* `wp {alias} branding remove`
+* `wp {alias} branding --remove`
 
-wp {alias} cache {type} add
-wp {alias} cache {type} remove
-SOON: wp {alias} cache {type} status
+* `wp {alias} cache {type} add`
+* `wp {alias} cache {type} remove`
+* SOON: `wp {alias} cache {type} status`
 
-wp {alias} digest
-wp {alias} digest --full (includes user and role data)
-wp {alias} digest --full --noprompt (skips confirm in above)
+* `wp {alias} digest`
+* `wp {alias} digest --full` (includes user and role data)
+* `wp {alias} digest --full` --noprompt (skips confirm in above)
 
-wp {alias} module activate {key} 
-wp {alias} module activate {key} --response=json
-wp {alias} module deactive {key} 
-wp {alias} module deactive {key} --response=json
-wp {alias} module status {key} 
-wp {alias} module status {key}  --response=json
-wp {alias} module list
-wp {alias} module list --response=json
+* `wp {alias} module activate {key}`
+* `wp {alias} module activate {key} --response=json`
+* `wp {alias} module deactive {key}`
+* `wp {alias} module deactive {key} --response=json`
+* `wp {alias} module status {key}` 
+* `wp {alias} module status {key}  --response=json`
+* `wp {alias} module list`
+* `wp {alias} module list --response=json`
 
-wp {alias} remove_orphan_post_meta
+* `wp {alias} remove_orphan_post_meta`
 
-wp {alias} secrets update
-wp {alias} secrets age
-wp {alias} secrets list
+* `wp {alias} secrets update`
+* `wp {alias} secrets age`
+* `wp {alias} secrets list`
