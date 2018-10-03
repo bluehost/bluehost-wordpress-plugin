@@ -17,6 +17,10 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 	 */
 	protected $response_type = 'human';
 	/**
+	 * @var bool - whether or not to bypass reset confirmation.
+	 */
+	protected $no_confirm = false;
+	/**
 	 * @var string - key for option persisted in DB
 	 */
 	protected static $module_option = 'eig_active_modules';
@@ -68,6 +72,9 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 		) {
 			$this->response_type = 'json';
 		}
+		if ( isset( $assoc_args['no_confirm'] ) ) {
+			$this->no_confirm = true;
+		}
 	}
 
 	/**
@@ -76,7 +83,9 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 	 * Run EIG module activation via Manager class
 	 */
 	protected function activate() {
+		$this->colorize_log( 'Activating ' . $this->module . '...');
 		Endurance_ModuleManager::activate( $this->module );
+		$this->colorize_log( 'Checking status...');
 	}
 
 	/**
@@ -85,7 +94,9 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 	 * Run EIG module deactivation via Manager class
 	 */
 	protected function deactivate() {
+		$this->colorize_log( 'Activating ' . $this->module . '...');
 		Endurance_ModuleManager::deactivate( $this->module );
+		$this->colorize_log( 'Checking status...');
 	}
 
 	/**
@@ -163,7 +174,9 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 	 * Reset all EIG modules to their default isActive state.
 	 */
 	protected function reset() {
-		$this->confirm( 'Are you sure you want to reset all modules to their default active state?' );
+		if ( ! $this->no_confirm ) {
+			$this->confirm( 'Are you sure you want to reset all modules to their default active state?' );
+		}
 		$deleted = delete_option( self::$module_option );
 		if ( $deleted ) {
 			$this->success( 'EIG modules reset.' );
