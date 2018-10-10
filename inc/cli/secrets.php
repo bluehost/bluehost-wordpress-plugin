@@ -138,15 +138,17 @@ class EIG_WP_CLI_Secrets extends EIG_WP_CLI_Command {
 	protected function secret_timestamp( $case = 'get' ) {
 		switch ( $case ) {
 			case 'delete':
-				return delete_option( static::$timestamp_db_key );
+				$success = delete_option( static::$timestamp_db_key );
 				break;
 			case 'create':
-				return add_option( static::$timestamp_db_key, current_time( 'mysql' ), '', false );
+				$success = add_option( static::$timestamp_db_key, current_time( 'mysql' ), '', false );
 				break;
 			case 'get':
 			default:
-				return get_option( static::$timestamp_db_key, null );
+				$success = get_option( static::$timestamp_db_key, null );
 				break;
 		}
+
+		return $success;
 	}
 }
