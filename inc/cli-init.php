@@ -19,36 +19,52 @@ class EIG_WP_CLI_Loader {
 	 */
 	protected $commands = array(
 		array(
-			'cmd'   => 'branding',
-			'class' => 'EIG_WP_CLI_Branding',
+			'cmd'       => 'branding',
+			'class'     => 'EIG_WP_CLI_Branding',
+			'shortdesc' => 'Control hosting branding and UX.',
+			'longdesc'  => 'Control the admin interface, default modules and UX for an Endurance hosting brand.',
 		),
 		array(
-			'cmd'   => 'cache',
-			'class' => 'EIG_WP_CLI_Cache',
+			'cmd'       => 'cache',
+			'class'     => 'EIG_WP_CLI_Cache',
+			'shortdesc' => 'Control all forms of caching',
+			'longdesc'  => 'Control how browser cache, page cache and browser caching are configured.',
 		),
 		array(
-			'cmd'   => 'digest',
-			'class' => 'EIG_WP_CLI_Digest',
+			'cmd'       => 'digest',
+			'class'     => 'EIG_WP_CLI_Digest',
+			'shortdesc' => 'Analyze WordPress for this site.',
+			'longdesc'  => 'Analyze WordPress content, configuration and server environment.',
 		),
 		array(
 			'cmd'   => 'secrets',
 			'class' => 'EIG_WP_CLI_Secrets',
+			'shortdesc' => 'Control the WordPress Salts.',
+			'longdesc' => 'Read and update WordPress salts in the wp-config.php file.',
 		),
 		array(
 			'cmd'   => 'remove_orphan_post_meta',
 			'class' => 'EIG_WP_CLI_Remove_Orphan_Post_Meta',
+			'shortdesc' => 'Legacy cmd for removing orphan meta',
+			'longdesc' => 'Legacy WP-CLI command used for checking for orphaned postmeta',
 		),
 		array(
 			'cmd'   => 'sso',
 			'class' => 'EIG_WP_CLI_SSO',
+			'shortdesc' => 'Single sign-on from hosting platform.',
+			'longdesc' => 'Handle single sign-on from Endurance hosting platforms and get magic link.',
 		),
 		array(
 			'cmd'   => 'staging',
 			'class' => 'EIG_WP_CLI_Staging',
+			'shortdesc' => 'CRUD operations for EIG staging',
+			'longdesc'  => 'Internal commands to handle staging environment',
 		),
 		array(
 			'cmd'   => 'module',
 			'class' => 'EIG_WP_CLI_Module',
+			'shortdesc' => 'Control hosting plugin modules',
+			'longdesc'  => 'Enable, disable and check status of internal modules in the hosting plugin.',
 		),
 	);
 
@@ -78,6 +94,11 @@ class EIG_WP_CLI_Loader {
 		'domain',
 		'site5',
 	);
+
+	/**
+	 * @var string - Current brand wp_options key
+	 */
+	protected static $eig_brand_option_key = 'mm_brand';
 
 	/**
 	 * @var string - Current alias from $this->brand_aliases.
@@ -134,11 +155,11 @@ class EIG_WP_CLI_Loader {
 	}
 
 	/**
-	 * Taps mm_brand database option to initialize current brand's alias
+	 * Taps database option to initialize current brand's alias
 	 */
 	protected function establish_current_brand() {
-		$brand = get_option( 'mm_brand', '' );
-		foreach( static::$brand_aliases as $alias ) {
+		$brand = get_option( self::$eig_brand_option_key, '' );
+		foreach ( static::$brand_aliases as $alias ) {
 			if ( false !== stristr( $brand, $alias ) ) {
 				$this->current_brand_alias = $alias;
 			}
@@ -169,7 +190,13 @@ class EIG_WP_CLI_Loader {
 	 * @param string $alias ( from $this->current_aliases )
 	 */
 	protected function register_commands_with_single_alias( $alias ) {
+		/**
+		 * Loop commands to register on $alias.
+		 */
 		foreach ( $this->commands as $cmd ) {
+			/**
+			 * Validate command has required attributes and is executable.
+			 */
 			if ( ! $this->command_is_supported( $cmd, $alias )
 			     || empty( $cmd['cmd'] )
 			     || empty( $cmd['class'] )
@@ -177,7 +204,28 @@ class EIG_WP_CLI_Loader {
 				continue;
 			}
 
-			\WP_CLI::add_command( $alias . ' ' . $cmd['cmd'], $cmd['class'] );
+			/**
+			 * Setup Command Arguments
+			 */
+			$args = array();
+
+			if ( ! empty( $cmd['shortdesc'] ) ) {
+				$args['shortdesc'] = $cmd['shortdesc'];
+				$args['synopsis']  = $cmd['synopsis'];
+			}
+
+			if ( ! empty( $cmd['longdesc'] ) ) {
+				$args['longdesc'] = $cmd['longdesc'];
+			}
+
+			/**
+			 * Register command with WP-CLI
+			 */
+			\WP_CLI::add_command(
+				$alias . ' ' . $cmd['cmd'],
+				$cmd['class'],
+				$args
+			);
 		}
 	}
 
