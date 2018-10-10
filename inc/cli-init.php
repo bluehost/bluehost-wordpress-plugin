@@ -27,7 +27,7 @@ class EIG_WP_CLI_Loader {
 		array(
 			'cmd'       => 'cache',
 			'class'     => 'EIG_WP_CLI_Cache',
-			'shortdesc' => 'Control all forms of caching',
+			'shortdesc' => 'Control all forms of caching.',
 			'longdesc'  => 'Control how browser cache, page cache and browser caching are configured.',
 		),
 		array(
@@ -45,8 +45,8 @@ class EIG_WP_CLI_Loader {
 		array(
 			'cmd'   => 'remove_orphan_post_meta',
 			'class' => 'EIG_WP_CLI_Remove_Orphan_Post_Meta',
-			'shortdesc' => 'Legacy cmd for removing orphan meta',
-			'longdesc' => 'Legacy WP-CLI command used for checking for orphaned postmeta',
+			'shortdesc' => 'Legacy cmd for removing orphan meta.',
+			'longdesc' => 'Legacy WP-CLI command used for checking for orphaned postmeta.',
 		),
 		array(
 			'cmd'   => 'sso',
@@ -57,13 +57,13 @@ class EIG_WP_CLI_Loader {
 		array(
 			'cmd'   => 'staging',
 			'class' => 'EIG_WP_CLI_Staging',
-			'shortdesc' => 'CRUD operations for EIG staging',
-			'longdesc'  => 'Internal commands to handle staging environment',
+			'shortdesc' => 'CRUD operations for EIG staging.',
+			'longdesc'  => 'Internal commands to handle staging environment.',
 		),
 		array(
 			'cmd'   => 'module',
 			'class' => 'EIG_WP_CLI_Module',
-			'shortdesc' => 'Control hosting plugin modules',
+			'shortdesc' => 'Control hosting plugin modules.',
 			'longdesc'  => 'Enable, disable and check status of internal modules in the hosting plugin.',
 		),
 	);
