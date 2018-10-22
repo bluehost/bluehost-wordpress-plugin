@@ -230,6 +230,12 @@ function mm_menu_redirects() {
 			$destination = add_query_arg( array( 'page' => 'mojo-marketplace', 'section' => 'single-item', 'item_id' => $_GET['item_id'] ), admin_url( 'admin.php' ) );
 		} elseif ( 'mojo-hosting-panel' == $_GET['page'] ) {
 			wp_redirect( 'https://my.bluehost.com/cgi/home', 302 );
+		} elseif ( 'mojo-jetpack-connect-bounce' == $_GET['page'] ) {
+			if ( class_exists( 'Jetpack' ) ) {
+				wp_redirect( Jetpack::build_connection_url(true), 302 );
+			} else {
+				$destination = admin_url( 'admin.php?page=mojo-home' );
+			}
 		}
 		if ( isset( $destination ) ) {
 			if ( isset( $_GET['items'] ) ) {
