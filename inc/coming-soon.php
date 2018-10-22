@@ -17,6 +17,7 @@ add_action( 'admin_notices', 'mm_cs_notice_display' );
 function mm_bh_cs_notice_display() {
 	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
 		?>
+
 		<div class="row">
 			<div class="col-xs-12 col-sm-12">
 				<div class="panel panel-default panel-body panel-warning">

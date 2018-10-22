@@ -42,6 +42,7 @@ require_once( MM_BASE_DIR . 'inc/updates.php' );
 require_once( MM_BASE_DIR . 'inc/coming-soon.php' );
 require_once( MM_BASE_DIR . 'inc/tests.php' );
 require_once( MM_BASE_DIR . 'inc/performance.php' );
+require_once( MM_BASE_DIR . 'inc/partners.php' );
 mm_require( MM_BASE_DIR . 'inc/branding.php' );
 if ( mm_jetpack_bluehost_only() ) {
 	$mm_test = get_transient( 'mm_test' );
@@ -54,5 +55,9 @@ if ( mm_jetpack_bluehost_only() ) {
 	}
 }
 mm_require( MM_BASE_DIR . 'updater.php' );
-mm_require( MM_BASE_DIR . 'inc/cli.php' );
+// Check proper PHP and bring CLI loader online
+if ( version_compare( PHP_VERSION, '5.3.29' ) >= 0 ) {
+	mm_require( MM_BASE_DIR . 'inc/cli-init.php' );
+}
+
 mm_require( MM_BASE_DIR . 'inc/admin-page-notifications-blocker.php' );

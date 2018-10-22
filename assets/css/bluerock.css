@@ -309,13 +309,21 @@
 }
 
 #mojo-wrapper.mojo-bluehost-branding .panel.panel-success,
-#mojo-wrapper.mojo-bluehost-india-branding .panel.panel-success{ border-left: 3px solid #62bc33; }
+#mojo-wrapper.mojo-bluehost-india-branding .panel.panel-success {
+  border-left: 3px solid #62bc33;
+}
 #mojo-wrapper.mojo-bluehost-branding .panel.panel-info,
-#mojo-wrapper.mojo-india-branding .panel.panel-info{ border-left: 3px solid #3575d3; }
-#mojo-wrapper.mojo-bluehost-branding .panel.panel-warning
-#mojo-wrapper.mojo-bluehost-india-branding .panel.panel-warning,{ border-left: 3px solid #fc9f2d; }
+#mojo-wrapper.mojo-india-branding .panel.panel-info {
+  border-left: 3px solid #3575d3;
+}
+#mojo-wrapper.mojo-bluehost-branding .panel.panel-warning,
+#mojo-wrapper.mojo-bluehost-india-branding .panel.panel-warning { 
+  border-left: 3px solid #F89C24;
+}
 #mojo-wrapper.mojo-bluehost-branding .panel.panel-error,
-#mojo-wrapper.mojo-bluehost-india-branding .panel.panel-error{ border-left: 3px solid #dc3232; }
+#mojo-wrapper.mojo-bluehost-india-branding .panel.panel-error {
+  border-left: 3px solid #dc3232;
+}
 
 #mojo-wrapper.mojo-bluehost-branding .info-box .btn-success,
 #mojo-wrapper.mojo-bluehost-india-branding .info-box .btn-success,
