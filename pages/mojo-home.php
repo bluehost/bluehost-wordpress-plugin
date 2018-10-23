@@ -199,7 +199,7 @@ if ( $is_bluerock ) {
 			<?php if ( 'bluehost' == mm_brand() ) { ?>
 			<div class="row">
 				<h2 id="performance">Performance</h2>
-				<div class="col-xs-12 col-sm-4">
+				<div class="col-xs-12 col-sm-6">
 					<div class="panel panel-default panel-body text-center performance-card">
 						<div>
 						<span class="dashicons dashicons-performance"></span>
@@ -211,19 +211,7 @@ if ( $is_bluerock ) {
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-12 col-sm-4">
-					<div class="panel panel-default panel-body text-center performance-card">
-						<div>
-						<span class="dashicons dashicons-cloud"></span>
-							<h2>CDN</h2>
-							<p>A Content Delivery Network (CDN) will distribute your website around the globe for global retrieval.</p>
-							<div class="col-xs-12 col-sm-12">
-								<a class="btn btn-primary btn-md" href="" target="_blank">Manage</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-4">
+				<div class="col-xs-12 col-sm-6">
 					<div class="panel panel-default panel-body text-center performance-card">
 						<div>
 						<div><span class="dashicons dashicons-visibility"></span></div>
