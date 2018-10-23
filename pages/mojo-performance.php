@@ -59,7 +59,7 @@ $php_edge_settings = get_option( 'mm_php_edge_settings', '56' );
 									1 => 'Assets Only',
 									2 => 'Normal',
 									3 => 'Advanced',
-									4 => 'Agressive',
+									4 => 'Aggressive',
 								);
 								foreach ( $levels as $level => $label ) {
 									echo '<label class="top-4 radio-inline"><input type="radio" name="cache_level" value="' . $level . '" ' . checked( $level, $cache_level, false ) . '/> ' . $label . '</label><br/>';
