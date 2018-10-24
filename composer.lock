@@ -24,16 +24,16 @@
         },
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
-            "version": "1.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:bluehost/endurance-wp-module-business-reviews.git",
-                "reference": "ea3ba71e07b76c3ccc5aa21513ac03fb1cefabda"
+                "reference": "1d102cce1faef1980130c2aefdb88b8d1acbcfda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-business-reviews/zipball/ea3ba71e07b76c3ccc5aa21513ac03fb1cefabda",
-                "reference": "ea3ba71e07b76c3ccc5aa21513ac03fb1cefabda",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-business-reviews/zipball/1d102cce1faef1980130c2aefdb88b8d1acbcfda",
+                "reference": "1d102cce1faef1980130c2aefdb88b8d1acbcfda",
                 "shasum": ""
             },
             "type": "library",
@@ -52,20 +52,20 @@
                 }
             ],
             "description": "Bluehost Business Reviews Integration",
-            "time": "2018-10-03T19:19:28+00:00"
+            "time": "2018-10-05T16:51:17+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-loader",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:bluehost/endurance-wp-module-loader.git",
-                "reference": "b91f7a6d443e9585beb35899cae0c4690cd5ba03"
+                "reference": "3c69917bf0bf735cdd9a6895b7ce12293cce662f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-loader/zipball/b91f7a6d443e9585beb35899cae0c4690cd5ba03",
-                "reference": "b91f7a6d443e9585beb35899cae0c4690cd5ba03",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-loader/zipball/3c69917bf0bf735cdd9a6895b7ce12293cce662f",
+                "reference": "3c69917bf0bf735cdd9a6895b7ce12293cce662f",
                 "shasum": ""
             },
             "type": "library",
@@ -87,7 +87,7 @@
                 }
             ],
             "description": "An Endurance module that handles registration and management of other modules.",
-            "time": "2018-10-01T21:01:52+00:00"
+            "time": "2018-10-05T16:49:02+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-spam-prevention",
