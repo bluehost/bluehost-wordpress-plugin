@@ -220,7 +220,6 @@ class EIG_WP_CLI_Loader {
 
 			if ( ! empty( $cmd['shortdesc'] ) ) {
 				$args['shortdesc'] = $cmd['shortdesc'];
-				$args['synopsis']  = $cmd['shortdesc'];
 			}
 
 			if ( ! empty( $cmd['longdesc'] ) ) {
