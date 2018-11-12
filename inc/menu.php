@@ -185,6 +185,13 @@ function mm_hosting_menu() {
 }
 add_action( 'admin_menu', 'mm_hosting_menu' );
 
+function mm_jetpack_connect_menu() {
+	if ( 'bluehost' == mm_brand() ) {
+		add_submenu_page( null, 'Connect Jetpack', 'Connect Jetpack', 'manage_options', 'mojo-jetpack-connect-bounce', '__return_false' );
+	}
+}
+add_action( 'admin_menu', 'mm_jetpack_connect_menu' );
+
 function mm_item_search_menu() {
 	add_submenu_page( null, 'Search Items', 'Search Items', 'manage_options', 'mojo-search', 'mm_item_search_page' );
 }
@@ -232,7 +239,7 @@ function mm_menu_redirects() {
 			wp_redirect( 'https://my.bluehost.com/cgi/home', 302 );
 		} elseif ( 'mojo-jetpack-connect-bounce' == $_GET['page'] ) {
 			if ( class_exists( 'Jetpack' ) ) {
-				wp_redirect( Jetpack::build_connection_url(true), 302 );
+				wp_redirect( Jetpack::init()->build_connect_url( true ), 302 );
 			} else {
 				$destination = admin_url( 'admin.php?page=mojo-home' );
 			}
