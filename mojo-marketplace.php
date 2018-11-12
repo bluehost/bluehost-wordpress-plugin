@@ -3,7 +3,7 @@
 /*
  * Plugin Name: MOJO Marketplace
  * Description: This plugin adds shortcodes, widgets, and themes to your WordPress site.
- * Version: 1.4.1
+ * Version: 1.4.2
  * Author: Mike Hansen
  * Author URI: http://mikehansen.me?utm_campaign=plugin&utm_source=mojo_wp_plugin
  * License: GPLv2 or later
@@ -15,7 +15,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'MM_VERSION', '1.4.1' );
+define( 'MM_VERSION', '1.4.2' );
 define( 'MM_BASE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
 define( 'MM_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/' );
@@ -48,13 +48,10 @@ require_once( MM_BASE_DIR . 'inc/performance.php' );
 require_once( MM_BASE_DIR . 'inc/partners.php' );
 mm_require( MM_BASE_DIR . 'inc/branding.php' );
 if ( mm_jetpack_bluehost_only() ) {
-	$mm_test = get_transient( 'mm_test' );
-	if ( isset( $mm_test['name'] ) && false !== strpos( $mm_test['name'], 'jetpack-onboarding' ) ) {
-		$onboard_time = strtotime( get_option( 'mm_install_date', 0 ) ) + DAY_IN_SECONDS * 90;
-		if ( $onboard_time > time() ) {
-			mm_require( MM_BASE_DIR . 'vendor/automattic/jetpack-onboarding/jetpack-onboarding.php' );
-			mm_require( MM_BASE_DIR . 'lib/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
-		}
+	$onboard_time = strtotime( get_option( 'mm_install_date', 0 ) ) + DAY_IN_SECONDS * 90;
+	if ( $onboard_time > time() ) {
+		mm_require( MM_BASE_DIR . 'vendor/automattic/jetpack-onboarding/jetpack-onboarding.php' );
+		mm_require( MM_BASE_DIR . 'lib/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
 	}
 }
 mm_require( MM_BASE_DIR . 'updater.php' );
