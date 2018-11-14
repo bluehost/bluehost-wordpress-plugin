@@ -388,3 +388,37 @@ function _mm_login() {
 }
 
 add_action( 'admin_init', '_mm_login', 5 );
+
+/**
+ * Get the client IP address.
+ *
+ * @return string
+ */
+function mm_get_client_ip() {
+
+	// Default to REMOTE_ADDR
+	$ip = $_SERVER['REMOTE_ADDR'];
+
+	$proxy_headers = array(
+		'HTTP_CF_CONNECTING_IP', // CloudFlare
+		'HTTP_FASTLY_CLIENT_IP', // Fastly
+		'HTTP_INCAP_CLIENT_IP', // Incapsula
+		'HTTP_TRUE_CLIENT_IP', // CloudFlare Enterprise
+		'HTTP_X_FORWARDED_FOR', // Any proxy
+		'HTTP_X_SUCURI_CLIENTIP', // Sucuri
+	);
+
+	// Check for alternate headers indicating a forwarded IP address
+	foreach ( $proxy_headers as $proxy_header ) {
+		if ( ! empty( $_SERVER[ $proxy_header ] ) ) {
+			$forwarded_ips = explode( ',', $_SERVER[ $proxy_header ] );
+			$forwarded_ip = array_shift( $forwarded_ips );
+			if ( $forwarded_ip ) {
+				$ip = $forwarded_ip;
+				break;
+			}
+		}
+	}
+
+	return $ip;
+}
