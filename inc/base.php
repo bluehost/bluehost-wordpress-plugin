@@ -397,7 +397,7 @@ add_action( 'admin_init', '_mm_login', 5 );
 function mm_get_client_ip() {
 
 	// Default to REMOTE_ADDR
-	$ip = $_SERVER['REMOTE_ADDR'];
+	$ip = ( isset( $_SERVER['REMOTE_ADDR'] ) ) ? $_SERVER['REMOTE_ADDR'] : null;
 
 	$proxy_headers = array(
 		'HTTP_CF_CONNECTING_IP', // CloudFlare
