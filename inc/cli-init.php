@@ -12,70 +12,13 @@ if ( ! class_exists( 'WP_CLI' ) ) {
  * Class EIG_WP_CLI_Loader
  */
 class EIG_WP_CLI_Loader {
+
 	/**
 	 * Main variable containing all WP-CLI commands and callbacks.
 	 *
 	 * @var array
 	 */
-	protected $commands = array(
-		array(
-			'cmd'       => 'branding',
-			'class'     => 'EIG_WP_CLI_Branding',
-			'shortdesc' => 'Control hosting branding and UX.',
-			'longdesc'  => 'Control the admin interface, default modules and UX for an Endurance hosting brand.' .
-			               PHP_EOL . 'Subcommands: update, remove',
-		),
-		array(
-			'cmd'       => 'cache',
-			'class'     => 'EIG_WP_CLI_Cache',
-			'shortdesc' => 'Control all forms of caching.',
-			'longdesc'  => 'Control how browser cache, page cache and browser caching are configured.' .
-			               PHP_EOL . 'Cache Types: browser, page, object (not functional yet)' .
-			               PHP_EOL . 'Subcommands: add, update, status',
-		),
-		array(
-			'cmd'       => 'digest',
-			'class'     => 'EIG_WP_CLI_Digest',
-			'shortdesc' => 'Analyze WordPress for this site.',
-			'longdesc'  => 'Analyze WordPress content, configuration and server environment.' .
-			               PHP_EOL . 'Associative Args: --full --noprompt',
-		),
-		array(
-			'cmd'       => 'secrets',
-			'class'     => 'EIG_WP_CLI_Secrets',
-			'shortdesc' => 'Control the WordPress Salts.',
-			'longdesc'  => 'Read and update WordPress salts in the wp-config.php file.' .
-			               PHP_EOL . 'Subcommands: update, age, list',
-		),
-		array(
-			'cmd'       => 'remove_orphan_post_meta',
-			'class'     => 'EIG_WP_CLI_Remove_Orphan_Post_Meta',
-			'shortdesc' => 'Legacy cmd for removing orphan meta.',
-			'longdesc'  => 'Legacy WP-CLI command used for checking for orphaned postmeta.',
-		),
-		array(
-			'cmd'       => 'sso',
-			'class'     => 'EIG_WP_CLI_SSO',
-			'shortdesc' => 'Single sign-on from hosting platform.',
-			'longdesc'  => 'Handle single sign-on from Endurance hosting platforms and get magic link.' .
-			               PHP_EOL . 'Associative Args: --username --role --email --id --min=MINUTES_UNTIL_EXPIRE --url-only',
-		),
-		array(
-			'cmd'       => 'staging',
-			'class'     => 'EIG_WP_CLI_Staging',
-			'shortdesc' => 'CRUD operations for EIG staging.',
-			'longdesc'  => 'Internal commands to handle staging environment.' .
-			               PHP_EOL . 'Subcommands: create, clone, destroy, sso_staging, deploy, deploy_files,' .
-			               ' deploy_db, deploy_files_db, save_state, restore_state, sso_production',
-		),
-		array(
-			'cmd'       => 'module',
-			'class'     => 'EIG_WP_CLI_Module',
-			'shortdesc' => 'Control hosting plugin modules.',
-			'longdesc'  => 'Enable, disable and check status of internal modules in the hosting plugin.' .
-			               PHP_EOL . 'Subcommands: enable, disable, status, list, reset',
-		),
-	);
+	protected $commands;
 
 	/**
 	 * These aliases are always available on every install.
@@ -143,6 +86,67 @@ class EIG_WP_CLI_Loader {
 	 * Main initialization method -- run upon new instance or on instance access.
 	 */
 	protected function initialize() {
+
+		$this->commands = array(
+			array(
+				'cmd'       => 'branding',
+				'class'     => 'EIG_WP_CLI_Branding',
+				'shortdesc' => 'Control hosting branding and UX.',
+				'longdesc'  => 'Control the admin interface, default modules and UX for an Endurance hosting brand.' .
+				               PHP_EOL . 'Subcommands: update, remove',
+			),
+			array(
+				'cmd'       => 'cache',
+				'class'     => 'EIG_WP_CLI_Cache',
+				'shortdesc' => 'Control all forms of caching.',
+				'longdesc'  => 'Control how browser cache, page cache and browser caching are configured.' .
+				               PHP_EOL . 'Cache Types: browser, page, object (not functional yet)' .
+				               PHP_EOL . 'Subcommands: add, update, status',
+			),
+			array(
+				'cmd'       => 'digest',
+				'class'     => 'EIG_WP_CLI_Digest',
+				'shortdesc' => 'Analyze WordPress for this site.',
+				'longdesc'  => 'Analyze WordPress content, configuration and server environment.' .
+				               PHP_EOL . 'Associative Args: --full --noprompt',
+			),
+			array(
+				'cmd'       => 'secrets',
+				'class'     => 'EIG_WP_CLI_Secrets',
+				'shortdesc' => 'Control the WordPress Salts.',
+				'longdesc'  => 'Read and update WordPress salts in the wp-config.php file.' .
+				               PHP_EOL . 'Subcommands: update, age, list',
+			),
+			array(
+				'cmd'       => 'remove_orphan_post_meta',
+				'class'     => 'EIG_WP_CLI_Remove_Orphan_Post_Meta',
+				'shortdesc' => 'Legacy cmd for removing orphan meta.',
+				'longdesc'  => 'Legacy WP-CLI command used for checking for orphaned postmeta.',
+			),
+			array(
+				'cmd'       => 'sso',
+				'class'     => 'EIG_WP_CLI_SSO',
+				'shortdesc' => 'Single sign-on from hosting platform.',
+				'longdesc'  => 'Handle single sign-on from Endurance hosting platforms and get magic link.' .
+				               PHP_EOL . 'Associative Args: --username --role --email --id --min=MINUTES_UNTIL_EXPIRE --url-only',
+			),
+			array(
+				'cmd'       => 'staging',
+				'class'     => 'EIG_WP_CLI_Staging',
+				'shortdesc' => 'CRUD operations for EIG staging.',
+				'longdesc'  => 'Internal commands to handle staging environment.' .
+				               PHP_EOL . 'Subcommands: create, clone, destroy, sso_staging, deploy, deploy_files,' .
+				               ' deploy_db, deploy_files_db, save_state, restore_state, sso_production',
+			),
+			array(
+				'cmd'       => 'module',
+				'class'     => 'EIG_WP_CLI_Module',
+				'shortdesc' => 'Control hosting plugin modules.',
+				'longdesc'  => 'Enable, disable and check status of internal modules in the hosting plugin.' .
+				               PHP_EOL . 'Subcommands: enable, disable, status, list, reset',
+			),
+		);
+
 		$this->establish_current_brand();
 		$this->load_files();
 		$this->register_cmds_with_wpcli();
