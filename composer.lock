@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "056625961ee6af746bbfb948513eab15",
+    "content-hash": "deb9a06e283365929805cdefe4513910",
     "packages": [
         {
             "name": "automattic/jetpack-onboarding",
@@ -24,16 +24,16 @@
         },
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
-                "url": "git@github.com:bluehost/endurance-wp-module-business-reviews.git",
-                "reference": "1d102cce1faef1980130c2aefdb88b8d1acbcfda"
+                "url": "https://github.com/bluehost/endurance-wp-module-business-reviews.git",
+                "reference": "05ecf887a98c95642ae845bafd7be5b609304763"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-business-reviews/zipball/1d102cce1faef1980130c2aefdb88b8d1acbcfda",
-                "reference": "1d102cce1faef1980130c2aefdb88b8d1acbcfda",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-business-reviews/zipball/05ecf887a98c95642ae845bafd7be5b609304763",
+                "reference": "05ecf887a98c95642ae845bafd7be5b609304763",
                 "shasum": ""
             },
             "type": "library",
@@ -52,20 +52,20 @@
                 }
             ],
             "description": "Bluehost Business Reviews Integration",
-            "time": "2018-10-05T16:51:17+00:00"
+            "time": "2019-01-08T15:58:33+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-loader",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "git@github.com:bluehost/endurance-wp-module-loader.git",
-                "reference": "3c69917bf0bf735cdd9a6895b7ce12293cce662f"
+                "reference": "a9a384596e26950466f7ffc667e0be29f96c36a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-loader/zipball/3c69917bf0bf735cdd9a6895b7ce12293cce662f",
-                "reference": "3c69917bf0bf735cdd9a6895b7ce12293cce662f",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-loader/zipball/a9a384596e26950466f7ffc667e0be29f96c36a9",
+                "reference": "a9a384596e26950466f7ffc667e0be29f96c36a9",
                 "shasum": ""
             },
             "type": "library",
@@ -87,20 +87,20 @@
                 }
             ],
             "description": "An Endurance module that handles registration and management of other modules.",
-            "time": "2018-10-05T16:49:02+00:00"
+            "time": "2019-01-08T16:32:20+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-spam-prevention",
-            "version": "1.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:bluehost/endurance-wp-module-spam-prevention.git",
-                "reference": "ed30bf2b63e0cc8071518ac3d03f025771c91a04"
+                "reference": "febcfebc931e38f8864a4ab9d36a39dbd2504e1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-spam-prevention/zipball/ed30bf2b63e0cc8071518ac3d03f025771c91a04",
-                "reference": "ed30bf2b63e0cc8071518ac3d03f025771c91a04",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-spam-prevention/zipball/febcfebc931e38f8864a4ab9d36a39dbd2504e1a",
+                "reference": "febcfebc931e38f8864a4ab9d36a39dbd2504e1a",
                 "shasum": ""
             },
             "type": "library",
@@ -118,20 +118,20 @@
                     "email": "micah@wpscholar.com"
                 }
             ],
-            "time": "2018-07-09T18:05:54+00:00"
+            "time": "2019-01-08T15:52:52+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-sso",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:bluehost/endurance-wp-module-sso.git",
-                "reference": "16b3fcced3796d42fd57cd56250ceaf06b23b8ad"
+                "reference": "71e24d9f07758e6ce93d4a11bbc66e523b643292"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-sso/zipball/16b3fcced3796d42fd57cd56250ceaf06b23b8ad",
-                "reference": "16b3fcced3796d42fd57cd56250ceaf06b23b8ad",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-sso/zipball/71e24d9f07758e6ce93d4a11bbc66e523b643292",
+                "reference": "71e24d9f07758e6ce93d4a11bbc66e523b643292",
                 "shasum": ""
             },
             "type": "library",
@@ -150,7 +150,331 @@
                 }
             ],
             "description": "Bluehost Single Sign-on Integration",
-            "time": "2018-09-26T16:38:45+00:00"
+            "time": "2019-01-08T15:53:47+00:00"
+        },
+        {
+            "name": "bluehost/wp-php-standards",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bluehost/wp-php-standards.git",
+                "reference": "253f360cb6396a99c1af895c11ea70c21a7a2b26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bluehost/wp-php-standards/zipball/253f360cb6396a99c1af895c11ea70c21a7a2b26",
+                "reference": "253f360cb6396a99c1af895c11ea70c21a7a2b26",
+                "shasum": ""
+            },
+            "require": {
+                "phpcompatibility/php-compatibility": "@stable",
+                "squizlabs/php_codesniffer": "@stable",
+                "wp-coding-standards/wpcs": "@stable",
+                "wpscholar/phpcs-standards-installer": "@stable"
+            },
+            "type": "phpcs-standards",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "PHP Code Sniffer Standards for Bluehost WordPress projects.",
+            "time": "2019-01-07T16:42:55+00:00"
+        },
+        {
+            "name": "phpcompatibility/php-compatibility",
+            "version": "9.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
+                "reference": "2b63c5d284ab8857f7b1d5c240ddb507a6b2293c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/2b63c5d284ab8857f7b1d5c240ddb507a6b2293c",
+                "reference": "2b63c5d284ab8857f7b1d5c240ddb507a6b2293c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "squizlabs/php_codesniffer": "^2.3 || ^3.0.2"
+            },
+            "conflict": {
+                "squizlabs/php_codesniffer": "2.6.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.5 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "suggest": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically.",
+                "roave/security-advisories": "dev-master || Helps prevent installing dependencies with known security issues."
+            },
+            "type": "phpcodesniffer-standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPCompatibility/PHPCompatibility/graphs/contributors"
+                },
+                {
+                    "name": "Wim Godden",
+                    "homepage": "https://github.com/wimg",
+                    "role": "lead"
+                },
+                {
+                    "name": "Juliette Reinders Folmer",
+                    "homepage": "https://github.com/jrfnl",
+                    "role": "lead"
+                }
+            ],
+            "description": "A set of sniffs for PHP_CodeSniffer that checks for PHP cross-version compatibility.",
+            "homepage": "http://techblog.wimgodden.be/tag/codesniffer/",
+            "keywords": [
+                "compatibility",
+                "phpcs",
+                "standards"
+            ],
+            "time": "2018-12-30T23:16:27+00:00"
+        },
+        {
+            "name": "pimple/pimple",
+            "version": "v3.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silexphp/Pimple.git",
+                "reference": "9e403941ef9d65d20cba7d54e29fe906db42cf32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/9e403941ef9d65d20cba7d54e29fe906db42cf32",
+                "reference": "9e403941ef9d65d20cba7d54e29fe906db42cf32",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/container": "^1.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^3.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Pimple": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Pimple, a simple Dependency Injection Container",
+            "homepage": "http://pimple.sensiolabs.org",
+            "keywords": [
+                "container",
+                "dependency injection"
+            ],
+            "time": "2018-01-21T07:42:36+00:00"
+        },
+        {
+            "name": "psr/container",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/container.git",
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common Container Interface (PHP FIG PSR-11)",
+            "homepage": "https://github.com/php-fig/container",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interface",
+                "container-interop",
+                "psr"
+            ],
+            "time": "2017-02-14T16:28:37+00:00"
+        },
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "379deb987e26c7cd103a7b387aea178baec96e48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/379deb987e26c7cd103a7b387aea178baec96e48",
+                "reference": "379deb987e26c7cd103a7b387aea178baec96e48",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "bin": [
+                "bin/phpcs",
+                "bin/phpcbf"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "http://www.squizlabs.com/php-codesniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "time": "2018-12-19T23:57:18+00:00"
+        },
+        {
+            "name": "wp-coding-standards/wpcs",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
+                "reference": "f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
+                "reference": "f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "squizlabs/php_codesniffer": "^2.9.0 || ^3.0.2"
+            },
+            "require-dev": {
+                "phpcompatibility/php-compatibility": "^9.0"
+            },
+            "suggest": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
+            },
+            "type": "phpcodesniffer-standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/graphs/contributors"
+                }
+            ],
+            "description": "PHP_CodeSniffer rules (sniffs) to enforce WordPress coding conventions",
+            "keywords": [
+                "phpcs",
+                "standards",
+                "wordpress"
+            ],
+            "time": "2018-12-18T09:43:51+00:00"
+        },
+        {
+            "name": "wpscholar/phpcs-standards-installer",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpscholar/phpcs-standards-installer.git",
+                "reference": "f6d7c0209327924f9a3c10cd0194faf6092a139a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wpscholar/phpcs-standards-installer/zipball/f6d7c0209327924f9a3c10cd0194faf6092a139a",
+                "reference": "f6d7c0209327924f9a3c10cd0194faf6092a139a",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1",
+                "pimple/pimple": "^3.2"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "wpscholar\\Composer\\PHPCodeSnifferStandardsInstallerPlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "wpscholar\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "A custom Composer installer for PHP Code Sniffer standards.",
+            "time": "2018-11-21T07:13:30+00:00"
         }
     ],
     "packages-dev": [
