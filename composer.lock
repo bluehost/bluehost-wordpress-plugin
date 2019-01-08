@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "deb9a06e283365929805cdefe4513910",
+    "content-hash": "10bbd161e3edcc1f040671257d6a9df5",
     "packages": [
         {
             "name": "automattic/jetpack-onboarding",
@@ -27,7 +27,7 @@
             "version": "1.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bluehost/endurance-wp-module-business-reviews.git",
+                "url": "git@github.com:bluehost/endurance-wp-module-business-reviews.git",
                 "reference": "05ecf887a98c95642ae845bafd7be5b609304763"
             },
             "dist": {
@@ -157,7 +157,7 @@
             "version": "1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bluehost/wp-php-standards.git",
+                "url": "git@github.com:bluehost/wp-php-standards.git",
                 "reference": "253f360cb6396a99c1af895c11ea70c21a7a2b26"
             },
             "dist": {
