@@ -43,6 +43,7 @@ require_once( MM_BASE_DIR . 'inc/coming-soon.php' );
 require_once( MM_BASE_DIR . 'inc/tests.php' );
 require_once( MM_BASE_DIR . 'inc/performance.php' );
 require_once( MM_BASE_DIR . 'inc/partners.php' );
+require_once MM_BASE_DIR . 'inc/track-last-login.php';
 mm_require( MM_BASE_DIR . 'inc/branding.php' );
 if ( mm_jetpack_bluehost_only() ) {
 	$onboard_time = strtotime( get_option( 'mm_install_date', 0 ) ) + DAY_IN_SECONDS * 90;
