@@ -67,6 +67,7 @@
   },
   "extra": {
     "phpcs-config": {
+      "colors": 1,
       "default_standard": "Bluehost",
       "testVersion": "5.2-"
     }
