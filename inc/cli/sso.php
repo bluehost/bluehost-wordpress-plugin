@@ -10,22 +10,22 @@ class EIG_WP_CLI_SSO extends EIG_WP_CLI_Command {
 	/**
 	 * @var string - Stored transient key used for SSO.
 	 */
-	private static $transient_slug = 'sso_token';
+	static $transient_slug = 'sso_token';
 
 	/**
 	 * @var string - Nonce validation key.
 	 */
-	private static $nonce_slug = 'mojo-sso';
+	static $nonce_slug = 'mojo-sso';
 
 	/**
 	 * @var string - Nonce action key.
 	 */
-	private static $nonce_action = 'sso-check';
+	static $nonce_action = 'sso-check';
 
 	/**
 	 * @var int Time for nonce token to be valid.
 	 */
-	protected $expiry_min = 3;
+	public $expiry_min = 3;
 
 	/**
 	 * @var string - Cryptographic salt.
