@@ -63,7 +63,6 @@
     "xrstf/composer-php52": "^1.0"
   },
   "require-dev": {
-    "xrstf/composer-php52": "^1.0",
     "bluehost/wp-php-standards": "^1.0"
   },
   "config": {
