@@ -62,7 +62,6 @@
     "xrstf/composer-php52": "^1.0"
   },
   "config": {
-    "optimize-autoloader": true,
-    "vendor-dir": "lib"
+    "optimize-autoloader": true
   }
 }
