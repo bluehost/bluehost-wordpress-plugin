@@ -22,9 +22,9 @@ define( 'MM_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/' )
 
 // Composer autoloader
 if ( version_compare( phpversion(), 5.3, '<' ) ) {
-	require __DIR__ . '/lib/autoload_52.php';
+	require __DIR__ . '/vendor/autoload_52.php';
 } else {
-	require __DIR__ . '/lib/autoload.php';
+	require __DIR__ . '/vendor/autoload.php';
 }
 
 require_once( MM_BASE_DIR . 'inc/base.php' );
