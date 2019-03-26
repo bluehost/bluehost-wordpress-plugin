@@ -9,24 +9,9 @@ function mm_main_menu() {
 			set_transient( 'mm_icon_hash', $icon_hash, WEEK_IN_SECONDS );
 		}
 	}
-	$brand = get_option( 'mm_brand' );
-	if ( false !== $brand ) {
-		$menu_position = -10;
-		$menu_name = $brand;
-	} else {
-		$menu_position = 59;
-		$menu_name = 'Marketplace';
-	}
 
-	if ( 'BlueHost' == $menu_name ) {
-		$menu_name = 'Bluehost';
-	}
-
-	if ( 'Bluehost_India' == $menu_name ) {
-		$menu_name = 'Bluehost';
-	}
-
-	$menu_name = str_replace( '_', ' ', $menu_name );
+	$menu_position = -10;
+	$menu_name = 'Bluehost';
 
 	add_menu_page( $menu_name, $menu_name, 'manage_options', 'mojo-marketplace', 'mm_marketplace_page', 'data:image/svg+xml;base64, ' . $icon_hash, $menu_position );
 
