@@ -47,8 +47,6 @@ if ( is_admin() ) {
 		update_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION, true );
 	}
 
-	require __DIR__ . '/upgrades/1.4.3.php';
-
 }
 
 // Require files
