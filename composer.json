@@ -65,6 +65,9 @@
   "require-dev": {
     "bluehost/wp-php-standards": "^1.0"
   },
+  "config": {
+    "optimize-autoloader": true    
+  },
   "extra": {
     "phpcs-config": {
       "colors": 1,
