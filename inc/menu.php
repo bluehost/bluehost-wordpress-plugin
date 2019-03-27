@@ -10,10 +10,7 @@ function mm_main_menu() {
 		}
 	}
 
-	$menu_position = -10;
-	$menu_name = 'Bluehost';
-
-	add_menu_page( $menu_name, $menu_name, 'manage_options', 'mojo-marketplace', 'mm_marketplace_page', 'data:image/svg+xml;base64, ' . $icon_hash, $menu_position );
+	add_menu_page( 'Bluehost', 'Bluehost', 'manage_options', 'mojo-marketplace', 'mm_marketplace_page', 'data:image/svg+xml;base64, ' . $icon_hash, -10 );
 
 }
 add_action( 'admin_menu', 'mm_main_menu' );
