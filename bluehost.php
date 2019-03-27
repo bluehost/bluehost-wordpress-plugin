@@ -1,14 +1,14 @@
 <?php
 /**
- * Plugin Name: MOJO Marketplace
- * Description: This plugin adds shortcodes, widgets, and themes to your WordPress site.
- * Version: 1.4.2
- * Author: Mike Hansen
- * Author URI: http://mikehansen.me?utm_campaign=plugin&utm_source=mojo_wp_plugin
+ * Plugin Name: Bluehost
+ * Description: This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.
+ * Version: 1.4.3
+ * Author: Bluehost
+ * Author URI: https://www.bluehost.com/
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *
- * @package Mojo Marketplace
+ * @package Bluehost
  */
 
 // Do not access file directly!
@@ -16,10 +16,13 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'MM_VERSION', '1.4.2' );
+// Define constants
+define( 'MM_VERSION', '1.4.3' );
 define( 'MM_BASE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
 define( 'MM_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/' );
+
+define( 'BLUEHOST_PLUGIN_VERSION', MM_VERSION );
 
 // Composer autoloader
 if ( version_compare( phpversion(), 5.3, '<' ) ) {
@@ -28,6 +31,25 @@ if ( version_compare( phpversion(), 5.3, '<' ) ) {
 	require dirname( __FILE__ ) . '/vendor/autoload.php';
 }
 
+// Handle any upgrade routines
+if ( is_admin() ) {
+
+	require dirname( __FILE__ ) . '/inc/upgrade-handler.php';
+
+	$upgrade_handler = new Bluehost_Upgrade_Handler(
+		dirname( __FILE__ ) . '/upgrades',
+		get_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION ),
+		BLUEHOST_PLUGIN_VERSION
+	);
+
+	$did_upgrade = $upgrade_handler->maybe_upgrade();
+	if ( $did_upgrade ) {
+		update_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION, true );
+	}
+
+}
+
+// Require files
 require_once MM_BASE_DIR . 'inc/base.php';
 require_once MM_BASE_DIR . 'inc/checkout.php';
 require_once MM_BASE_DIR . 'inc/menu.php';
