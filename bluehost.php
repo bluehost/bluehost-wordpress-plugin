@@ -49,23 +49,23 @@ if ( is_admin() ) {
 }
 
 // Require files
-require_once dirname( __FILE__ ) . '/inc/base.php';
-require_once dirname( __FILE__ ) . '/inc/checkout.php';
-require_once dirname( __FILE__ ) . '/inc/menu.php';
-require_once dirname( __FILE__ ) . '/inc/shortcode-generator.php';
-require_once dirname( __FILE__ ) . '/inc/mojo-themes.php';
-require_once dirname( __FILE__ ) . '/inc/styles.php';
-require_once dirname( __FILE__ ) . '/inc/plugin-search.php';
-require_once dirname( __FILE__ ) . '/inc/jetpack.php';
-require_once dirname( __FILE__ ) . '/inc/user-experience-tracking.php';
-require_once dirname( __FILE__ ) . '/inc/notifications.php';
-require_once dirname( __FILE__ ) . '/inc/staging.php';
-require_once dirname( __FILE__ ) . '/inc/updates.php';
-require_once dirname( __FILE__ ) . '/inc/coming-soon.php';
-require_once dirname( __FILE__ ) . '/inc/tests.php';
-require_once dirname( __FILE__ ) . '/inc/track-last-login.php';
-require_once dirname( __FILE__ ) . '/inc/performance.php';
-require_once dirname( __FILE__ ) . '/inc/partners.php';
+require dirname( __FILE__ ) . '/inc/base.php';
+require dirname( __FILE__ ) . '/inc/checkout.php';
+require dirname( __FILE__ ) . '/inc/menu.php';
+require dirname( __FILE__ ) . '/inc/shortcode-generator.php';
+require dirname( __FILE__ ) . '/inc/mojo-themes.php';
+require dirname( __FILE__ ) . '/inc/styles.php';
+require dirname( __FILE__ ) . '/inc/plugin-search.php';
+require dirname( __FILE__ ) . '/inc/jetpack.php';
+require dirname( __FILE__ ) . '/inc/user-experience-tracking.php';
+require dirname( __FILE__ ) . '/inc/notifications.php';
+require dirname( __FILE__ ) . '/inc/staging.php';
+require dirname( __FILE__ ) . '/inc/updates.php';
+require dirname( __FILE__ ) . '/inc/coming-soon.php';
+require dirname( __FILE__ ) . '/inc/tests.php';
+require dirname( __FILE__ ) . '/inc/track-last-login.php';
+require dirname( __FILE__ ) . '/inc/performance.php';
+require dirname( __FILE__ ) . '/inc/partners.php';
 
 mm_require( dirname( __FILE__ ) . '/inc/branding.php' );
 if ( mm_jetpack_bluehost_only() ) {
