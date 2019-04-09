@@ -52,39 +52,39 @@ if ( is_admin() ) {
 require dirname( __FILE__ ) . '/inc/class-access-token.php';
 require dirname( __FILE__ ) . '/inc/class-response-utilities.php';
 require dirname( __FILE__ ) . '/inc/class-site-meta.php';
-require dirname( __FILE__ ) . '/inc/base.php';
-require dirname( __FILE__ ) . '/inc/checkout.php';
-require dirname( __FILE__ ) . '/inc/menu.php';
-require dirname( __FILE__ ) . '/inc/shortcode-generator.php';
-require dirname( __FILE__ ) . '/inc/mojo-themes.php';
-require dirname( __FILE__ ) . '/inc/styles.php';
-require dirname( __FILE__ ) . '/inc/plugin-search.php';
-require dirname( __FILE__ ) . '/inc/jetpack.php';
-require dirname( __FILE__ ) . '/inc/user-experience-tracking.php';
-require dirname( __FILE__ ) . '/inc/notifications.php';
-require dirname( __FILE__ ) . '/inc/staging.php';
-require dirname( __FILE__ ) . '/inc/updates.php';
-require dirname( __FILE__ ) . '/inc/coming-soon.php';
-require dirname( __FILE__ ) . '/inc/tests.php';
-require dirname( __FILE__ ) . '/inc/track-last-login.php';
-require dirname( __FILE__ ) . '/inc/performance.php';
-require dirname( __FILE__ ) . '/inc/partners.php';
+require MM_BASE_DIR . 'inc/base.php';
+require MM_BASE_DIR . 'inc/checkout.php';
+require MM_BASE_DIR . 'inc/menu.php';
+require MM_BASE_DIR . 'inc/shortcode-generator.php';
+require MM_BASE_DIR . 'inc/mojo-themes.php';
+require MM_BASE_DIR . 'inc/styles.php';
+require MM_BASE_DIR . 'inc/plugin-search.php';
+require MM_BASE_DIR . 'inc/jetpack.php';
+require MM_BASE_DIR . 'inc/user-experience-tracking.php';
+require MM_BASE_DIR . 'inc/notifications.php';
+require MM_BASE_DIR . 'inc/staging.php';
+require MM_BASE_DIR . 'inc/updates.php';
+require MM_BASE_DIR . 'inc/coming-soon.php';
+require MM_BASE_DIR . 'inc/tests.php';
+require MM_BASE_DIR . 'inc/track-last-login.php';
+require MM_BASE_DIR . 'inc/performance.php';
+require MM_BASE_DIR . 'inc/partners.php';
 
-mm_require( dirname( __FILE__ ) . '/inc/branding.php' );
+mm_require( MM_BASE_DIR . '/inc/branding.php' );
 if ( mm_jetpack_bluehost_only() ) {
 	$onboard_time = strtotime( get_option( 'mm_install_date', 0 ) ) + DAY_IN_SECONDS * 90;
 	if ( $onboard_time > time() ) {
-		mm_require( dirname( __FILE__ ) . '/vendor/automattic/jetpack-onboarding/jetpack-onboarding.php' );
-		mm_require( dirname( __FILE__ ) . '/lib/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
+		mm_require( MM_BASE_DIR . 'vendor/automattic/jetpack-onboarding/jetpack-onboarding.php' );
+		mm_require( MM_BASE_DIR . 'lib/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
 	}
 }
-mm_require( dirname( __FILE__ ) . '/updater.php' );
+mm_require( MM_BASE_DIR . 'updater.php' );
 // Check proper PHP and bring CLI loader online
 if ( version_compare( PHP_VERSION, '5.3.29' ) >= 0 ) {
-	mm_require( dirname( __FILE__ ) . '/inc/cli-init.php' );
+	mm_require( MM_BASE_DIR . 'inc/cli-init.php' );
 }
 
-mm_require( dirname( __FILE__ ) . '/inc/admin-page-notifications-blocker.php' );
+mm_require( MM_BASE_DIR . 'inc/admin-page-notifications-blocker.php' );
 
 if ( is_admin() ) {
 	// Keep the Bluehost API access token fresh.
