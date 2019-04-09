@@ -40,10 +40,10 @@ class Bluehost_Response_Utilities {
 	 *
 	 * @param array $response WordPress request response
 	 *
-	 * @return int
+	 * @return int Returns the timestamp or 0 on error.
 	 */
 	public static function get_response_timestamp( $response ) {
-		$timestamp = time();
+		$timestamp = 0;
 		try {
 			$date      = wp_remote_retrieve_header( $response, 'date' );
 			$date_time = new DateTime( $date );
