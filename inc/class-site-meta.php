@@ -34,9 +34,13 @@ class Bluehost_Site_Meta {
 	 * @return string Site ID is the path encoded as UTF-8 and converted to hexadecimal.
 	 */
 	public static function get_id() {
-		$path = self::get_path();
+		static $id = null;
+		if ( is_null( $id ) ) {
+			$path = self::get_path();
+			$id = bin2hex( iconv( mb_detect_encoding( $path, mb_detect_order(), true ), 'UTF-8', $path ) );
+		}
 
-		return bin2hex( iconv( mb_detect_encoding( $path, mb_detect_order(), true ), 'UTF-8', $path ) );
+		return $id;
 	}
 
 }
