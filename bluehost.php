@@ -46,10 +46,12 @@ if ( is_admin() ) {
 	if ( $did_upgrade ) {
 		update_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION, true );
 	}
-
 }
 
 // Require files
+require dirname( __FILE__ ) . '/inc/class-access-token.php';
+require dirname( __FILE__ ) . '/inc/class-response-utilities.php';
+require dirname( __FILE__ ) . '/inc/class-site-meta.php';
 require_once MM_BASE_DIR . 'inc/base.php';
 require_once MM_BASE_DIR . 'inc/checkout.php';
 require_once MM_BASE_DIR . 'inc/menu.php';
@@ -83,3 +85,8 @@ if ( version_compare( PHP_VERSION, '5.3.29' ) >= 0 ) {
 }
 
 mm_require( MM_BASE_DIR . 'inc/admin-page-notifications-blocker.php' );
+
+if ( is_admin() ) {
+	// Keep the Bluehost API access token fresh.
+	add_action( 'shutdown', array( 'Bluehost_Access_Token', 'maybe_refresh_token' ) );
+}
