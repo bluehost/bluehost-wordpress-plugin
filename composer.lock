@@ -4,24 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fd771b25eb3f1017181c858ee717c6a5",
+    "content-hash": "cefded0152f14065fd59484d20da4846",
     "packages": [
-        {
-            "name": "automattic/jetpack-onboarding",
-            "version": "1.6.1",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:Automattic/jetpack-onboarding.git",
-                "reference": "1.6.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/Automattic/jetpack-onboarding/archive/1.6.1.zip",
-                "reference": "1.6.1",
-                "shasum": null
-            },
-            "type": "library"
-        },
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
             "version": "1.0.3",
