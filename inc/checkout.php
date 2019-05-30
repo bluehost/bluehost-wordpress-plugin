@@ -12,14 +12,14 @@ function mm_buy_now() {
 			'x-api'    => get_transient( '_mm_session_token' ),
 		),
 		'body'    => wp_json_encode(
-			[
-				'items'          => [
-					[
+			array(
+				'items'          => array(
+					array(
 						'id'          => $id,
 						'license'     => 'single_domain_license',
 						'amount_paid' => $price,
-					],
-				],
+					),
+				),
 				'send_receipt'   => true,
 				'affiliate_name' => get_option( 'mm_master_aff', '' ),
 				'redirect_to'    => add_query_arg(
@@ -29,7 +29,7 @@ function mm_buy_now() {
 					),
 					admin_url( 'admin.php' )
 				),
-			]
+			)
 		),
 	);
 	$response = wp_remote_post( 'https://api.mojomarketplace.com/api/v2/create_order', $args );
@@ -47,10 +47,10 @@ function mm_buy_now() {
 		echo wp_json_encode( $order );
 	} else {
 		echo wp_json_encode(
-			[
+			array(
 				'status' => 'error',
 				'error'  => 'Unable to process order.',
-			]
+			)
 		);
 	}
 	die;
