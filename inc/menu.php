@@ -183,15 +183,6 @@ function mm_item_search_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-search.php' );
 }
 
-function mm_onboarding_menu() {
-	add_submenu_page( null, 'Onboarding', 'Onboarding', 'manage_options', 'mojo-onboarding', 'mm_onboarding_page' );
-}
-add_action( 'admin_menu', 'mm_onboarding_menu' );
-
-function mm_onboarding_page() {
-	mm_require( MM_BASE_DIR . 'pages/mojo-onboarding.php' );
-}
-
 function mm_menu_redirects() {
 	if ( isset( $_GET['page'] ) ) {
 		if ( 'mojo-marketplace' == $_GET['page'] && ! isset( $_GET['section'] ) ) {

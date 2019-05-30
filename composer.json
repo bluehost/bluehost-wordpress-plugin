@@ -22,22 +22,6 @@
     {
       "type": "composer",
       "url": "https://satis.wpteamhub.com"
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "automattic/jetpack-onboarding",
-        "version": "1.6.1",
-        "dist": {
-          "url": "https://github.com/Automattic/jetpack-onboarding/archive/1.6.1.zip",
-          "type": "zip"
-        },
-        "source": {
-          "url": "git@github.com:Automattic/jetpack-onboarding.git",
-          "type": "git",
-          "reference": "1.6.1"
-        }
-      }
     }
   ],
   "scripts": {

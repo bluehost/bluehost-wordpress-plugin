@@ -8,9 +8,6 @@ function mm_admin_style() {
 		wp_enqueue_script( 'mojo-admin-main-js', MM_ASSETS_URL . 'js/main.js', 'jquery' );
 		wp_enqueue_script( 'mojo-admin-bootstrap-js', MM_ASSETS_URL . 'js/bootstrap.min.js', 'jquery' );
 		wp_enqueue_style( 'mojo-admin-bluerock-css', MM_BASE_URL . 'assets/css/bluerock.css' );
-		if ( class_exists( 'Jetpack_Onboarding_WelcomePanel' ) && ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) ) {
-			add_action( 'admin_enqueue_scripts', array( 'Jetpack_Onboarding_WelcomePanel', 'add_wizard_assets' ) );
-		}
 	}
 }
 add_action( 'admin_init', 'mm_admin_style' );
