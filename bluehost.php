@@ -71,14 +71,8 @@ require_once MM_BASE_DIR . 'inc/performance.php';
 require_once MM_BASE_DIR . 'inc/partners.php';
 
 mm_require( MM_BASE_DIR . 'inc/branding.php' );
-if ( mm_jetpack_bluehost_only() ) {
-	$onboard_time = strtotime( get_option( 'mm_install_date', 0 ) ) + DAY_IN_SECONDS * 90;
-	if ( $onboard_time > time() ) {
-		mm_require( MM_BASE_DIR . 'vendor/automattic/jetpack-onboarding/jetpack-onboarding.php' );
-		mm_require( MM_BASE_DIR . 'lib/jetpack-onboarding-tracks/jetpack-onboarding-tracks.php' );
-	}
-}
 mm_require( MM_BASE_DIR . 'updater.php' );
+
 // Check proper PHP and bring CLI loader online
 if ( version_compare( PHP_VERSION, '5.3.29' ) >= 0 ) {
 	mm_require( MM_BASE_DIR . 'inc/cli-init.php' );
