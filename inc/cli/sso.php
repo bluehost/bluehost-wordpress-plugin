@@ -72,7 +72,7 @@ class EIG_WP_CLI_SSO extends EIG_WP_CLI_Command {
 		if ( isset( $assoc_args['url-only'] ) ) {
 			\WP_CLI::log( $link );
 		} else {
-			$this->success( 'Single-use login link valid for ' . static::$expiry_min . ' minutes' );
+			$this->success( 'Single-use login link valid for ' . $this->expiry_min . ' minutes' );
 			$this->colorize_log( $link, 'underline' );
 		}
 
