@@ -40,6 +40,7 @@
   },
   "require": {
     "bluehost/endurance-wp-module-business-reviews": "^1.0",
+    "bluehost/endurance-wp-module-gutenframe": "^0.1",
     "bluehost/endurance-wp-module-loader": "^1.0",
     "bluehost/endurance-wp-module-spam-prevention": "^1.0",
     "bluehost/endurance-wp-module-sso": "^1.0",
@@ -49,7 +50,7 @@
     "bluehost/wp-php-standards": "^1.0"
   },
   "config": {
-    "optimize-autoloader": true    
+    "optimize-autoloader": true
   },
   "extra": {
     "phpcs-config": {
