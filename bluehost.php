@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Bluehost
  * Description: This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.
- * Version: 1.4.3
+ * Version: 1.5
  * Author: Bluehost
  * Author URI: https://www.bluehost.com/
  * License: GPLv2 or later
@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define constants
-define( 'MM_VERSION', '1.4.3' );
+define( 'MM_VERSION', '1.5' );
 define( 'MM_BASE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
 define( 'MM_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/' );
