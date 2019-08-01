@@ -11,7 +11,7 @@
             "version": "1.0.3",
             "source": {
                 "type": "git",
-                "url": "git@github.com:bluehost/endurance-wp-module-business-reviews.git",
+                "url": "https://github.com/bluehost/endurance-wp-module-business-reviews.git",
                 "reference": "05ecf887a98c95642ae845bafd7be5b609304763"
             },
             "dist": {
@@ -40,19 +40,19 @@
         },
         {
             "name": "bluehost/endurance-wp-module-gutenframe",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:bluehost/endurance-wp-module-gutenframe.git",
-                "reference": "da28927053c7d3ded6a55bd015abe563046a7cec"
+                "url": "https://github.com/bluehost/endurance-wp-module-gutenframe.git",
+                "reference": "3168d04d0456a28f653b70872759af6dfd0a82f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-gutenframe/zipball/da28927053c7d3ded6a55bd015abe563046a7cec",
-                "reference": "da28927053c7d3ded6a55bd015abe563046a7cec",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-gutenframe/zipball/3168d04d0456a28f653b70872759af6dfd0a82f7",
+                "reference": "3168d04d0456a28f653b70872759af6dfd0a82f7",
                 "shasum": ""
             },
-            "require": {
+            "require-dev": {
                 "bluehost/wp-php-standards": "^1.1"
             },
             "type": "library",
@@ -79,14 +79,18 @@
                 }
             ],
             "description": "A solution for forcing the Block Editor fullscreen and preparing it for <iframe>-ing.",
-            "time": "2019-07-17T21:37:00+00:00"
+            "support": {
+                "source": "https://github.com/bluehost/endurance-wp-module-gutenframe/tree/master",
+                "issues": "https://github.com/bluehost/endurance-wp-module-gutenframe/issues"
+            },
+            "time": "2019-08-01T21:07:52+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-loader",
             "version": "1.0.3",
             "source": {
                 "type": "git",
-                "url": "git@github.com:bluehost/endurance-wp-module-loader.git",
+                "url": "https://github.com/bluehost/endurance-wp-module-loader.git",
                 "reference": "a9a384596e26950466f7ffc667e0be29f96c36a9"
             },
             "dist": {
@@ -121,7 +125,7 @@
             "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:bluehost/endurance-wp-module-spam-prevention.git",
+                "url": "https://github.com/bluehost/endurance-wp-module-spam-prevention.git",
                 "reference": "febcfebc931e38f8864a4ab9d36a39dbd2504e1a"
             },
             "dist": {
@@ -152,7 +156,7 @@
             "version": "1.0.2",
             "source": {
                 "type": "git",
-                "url": "git@github.com:bluehost/endurance-wp-module-sso.git",
+                "url": "https://github.com/bluehost/endurance-wp-module-sso.git",
                 "reference": "71e24d9f07758e6ce93d4a11bbc66e523b643292"
             },
             "dist": {
@@ -179,6 +183,39 @@
             "description": "Bluehost Single Sign-on Integration",
             "time": "2019-01-08T15:53:47+00:00"
         },
+        {
+            "name": "xrstf/composer-php52",
+            "version": "v1.0.20",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer-php52/composer-php52.git",
+                "reference": "bd41459d5e27df8d33057842b32377c39e97a5a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer-php52/composer-php52/zipball/bd41459d5e27df8d33057842b32377c39e97a5a8",
+                "reference": "bd41459d5e27df8d33057842b32377c39e97a5a8",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-default": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "xrstf\\Composer52": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2016-04-16T21:52:24+00:00"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "bluehost/wp-php-standards",
             "version": "1.1",
@@ -531,40 +568,8 @@
                 "wordpress"
             ],
             "time": "2019-05-21T02:50:00+00:00"
-        },
-        {
-            "name": "xrstf/composer-php52",
-            "version": "v1.0.20",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/composer-php52/composer-php52.git",
-                "reference": "bd41459d5e27df8d33057842b32377c39e97a5a8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/composer-php52/composer-php52/zipball/bd41459d5e27df8d33057842b32377c39e97a5a8",
-                "reference": "bd41459d5e27df8d33057842b32377c39e97a5a8",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-default": "1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "xrstf\\Composer52": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "time": "2016-04-16T21:52:24+00:00"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
