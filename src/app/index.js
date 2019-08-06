@@ -64,9 +64,6 @@ class App extends Component {
 						<div tabIndex="-1" ref={ this.contentFocus }>
 							<AppMain />
 						</div>
-						<footer>
-							<AppFooter />
-						</footer>
 					</main>
 				</Router>
 			</div>
