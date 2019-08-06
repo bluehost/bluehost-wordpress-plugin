@@ -55,9 +55,9 @@ class App extends Component {
 						<a className="screen-reader-shortcut bh-spa-skip" href="#" onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
 							{ __( 'Skip to Content', bluehost_i18n ) }
 						</a>
-						<header>
+						<div>
 							<AppHeader />
-						</header>
+						</div>
 						<div id="navigation" tabIndex="-1" ref={ this.navFocus }>
 							<AppPrimaryNav />
 						</div>
