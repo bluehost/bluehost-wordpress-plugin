@@ -1,0 +1,185 @@
+/**
+ * 
+ */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.bhAppFadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+#wpbody-content {
+  background-color: #fff;
+  padding-bottom: 0; }
+
+#wpcontent {
+  padding-left: 0 !important; }
+
+#wpfooter {
+  display: none; }
+
+#app-wrap {
+  font-family: "Open Sans" !important;
+  font-weight: 300 !important; }
+
+body.toplevel_page_bluehost {
+  background-color: #f1f5f7; }
+
+.screen-reader-shortcut.bh-spa-skip:focus {
+  top: 5px;
+  left: 5px; }
+
+body:not(.bh-spa-keynav) .eig-page:focus {
+  outline: none; }
+
+#route-wrap {
+  background-color: #f1f5f7;
+  padding: 1rem; }
+  @media (min-width: 900px) {
+    #route-wrap {
+      padding: 1.66rem; } }
+  @media (min-width: 1200px) {
+    #route-wrap {
+      padding: 2rem; } }
+
+#bluehost-app {
+  display: block;
+  height: 100%;
+  min-height: 100%; }
+  #bluehost-app .pure-g [class*="pure-u"] {
+    font-family: 'Open Sans' !important;
+    font-weight: 300; }
+  #bluehost-app h1, #bluehost-app h2, #bluehost-app h3, #bluehost-app h4, #bluehost-app h5, #bluehost-app h6 {
+    font-weight: 600; }
+
+#app-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  #app-loader .spinner-wrap {
+    max-width: 50%;
+    position: fixed;
+    top: 48%; }
+    #app-loader .spinner-wrap .components-spinner {
+      background: #3575D3;
+      opacity: 1;
+      width: 36px;
+      height: 36px;
+      margin: 10px 22px 0;
+      box-shadow: 0px 0px 1.33rem 0.66rem #BEE0F6; }
+      #app-loader .spinner-wrap .components-spinner:before {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        transform-origin: 12px 12px; }
+
+#bluehost-app-wrap h3 {
+  margin-left: 1rem; }
+
+.components-button.bluehost {
+  padding: 0.5rem 1rem;
+  border: 0;
+  text-shadow: none;
+  box-shadow: none; }
+  .components-button.bluehost.is-primary {
+    border: 1px solid transparent;
+    background: #3575D3;
+    box-shadow: none;
+    text-shadow: none; }
+  .components-button.bluehost.is-default {
+    background: transparent;
+    border: 1px solid #3575D3;
+    color: #3575D3; }
+    .components-button.bluehost.is-default:hover {
+      background: #3575D3;
+      color: #fff; }
+
+#bluehost-app .eig-card {
+  background-color: #fefefe;
+  padding: 0.66rem 1rem;
+  margin: 1rem;
+  border: 1px solid #d7dbe0;
+  box-shadow: 0 1px 0 0 rgba(185, 200, 212, 0.5);
+  min-height: 175px;
+  position: relative; }
+  #bluehost-app .eig-card h3 {
+    margin-top: 0;
+    font-size: 1.33rem; }
+    #bluehost-app .eig-card h3 svg {
+      position: relative;
+      top: 1rem;
+      fill: #5A5A5A;
+      margin: 0 0.5rem 0.5rem 0; }
+  #bluehost-app .eig-card .components-button-group {
+    display: block;
+    right: 1rem;
+    position: absolute;
+    bottom: 1rem; }
+
+#bluehost-app .eig-card.is-centered {
+  padding-left: 2rem;
+  padding-right: 2rem; }
+  #bluehost-app .eig-card.is-centered svg {
+    display: block;
+    margin: 0 auto 1.5rem auto; }
+  #bluehost-app .eig-card.is-centered h3, #bluehost-app .eig-card.is-centered p {
+    text-align: center; }
+  #bluehost-app .eig-card.is-centered .components-button-group {
+    position: initial;
+    text-align: center;
+    margin-top: 0.33rem;
+    margin-bottom: 0.66rem; }
+
+#eig-header {
+  align-self: flex-start;
+  width: 100%;
+  height: 3.66rem;
+  background: #fff; }
+
+#eig-logo-wrap {
+  width: 200px;
+  margin: 1.5rem 3rem 0 2rem; }
+
+#app-page {
+  max-width: 1600px;
+  background: #fff;
+  border: 1px solid #aaa;
+  padding: 1rem; }
+
+#app-wrap .wp-filter {
+  border-top: 0;
+  border-right: 0;
+  margin-bottom: 0;
+  padding: 0 1.25rem;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1); }
+
+.filter-links li > a {
+  font-size: 1rem;
+  margin: 0;
+  padding: 1rem 1.33rem; }
+  .filter-links li > a:hover {
+    color: #3575D3; }
+  .filter-links li > a:focus {
+    box-shadow: none; }
+
+.filter-links .current {
+  border-bottom-color: #3575D3 !important;
+  color: #3575D3 !important; }
+
+
+
+/*# sourceMappingURL=admin.css.map*/

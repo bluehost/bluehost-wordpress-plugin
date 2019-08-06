@@ -1,0 +1,44 @@
+{
+  "name": "bluehost-wordpress-plugin",
+  "version": "2.0.0",
+  "description": "",
+  "private": true,
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses --production",
+    "develop": "wp-scripts start",
+    "lint:css": "wp-scripts lint-style '**/*.css'",
+    "lint:js": "wp-scripts lint-js ./src",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "start": "wp-scripts start",
+    "test:e2e": "wp-scripts test-e2e",
+    "test:unit": "wp-scripts test-unit-js"
+  },
+  "author": "David Ryan <dryanpress@chat.wordpress.org>",
+  "license": "Undetermined. Private at present.",
+  "dependencies": {
+    "@wordpress/a11y": "^2.2.0",
+    "@wordpress/components": "^7.2.0",
+    "@wordpress/dom": "^2.2.0",
+    "@wordpress/dom-ready": "^2.2.0",
+    "@wordpress/element": "^2.3.0",
+    "@wordpress/i18n": "^3.3.0",
+    "@wordpress/keycodes": "^2.2.0",
+    "lodash": "^4.17.11",
+    "react-router-dom": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@svgr/webpack": "^4.1.0",
+    "@wordpress/babel-preset-default": "^4.1.0",
+    "@wordpress/scripts": "^3.1.0",
+    "clean-webpack-plugin": "^2.0.1",
+    "css-loader": "^2.1.1",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "url-loader": "^1.1.2"
+  }
+}

@@ -1,0 +1,24 @@
+#app-wrap .wp-filter {
+  border-top: 0;
+  border-right: 0;
+  margin-bottom: 0;
+  padding: 0 1.25rem;
+  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.1);
+}
+.filter-links {
+  li>a {
+    font-size: 1rem;
+    margin: 0;
+    padding: 1rem 1.33rem;
+    &:hover {
+      color: #3575D3;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .current  {
+    border-bottom-color: #3575D3 !important;
+    color: #3575D3 !important;
+  }
+}

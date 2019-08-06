@@ -4,8 +4,34 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c99cdefaad1b11fb9fda118e9e852ef",
+    "content-hash": "512faac009ad2918a6b60c13fa72cb01",
     "packages": [
+        {
+            "name": "bluehost/endurance-wp-module-assets",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../../local-modules/endurance-wp-module-assets",
+                "reference": "b1ab1c5d1af6386080ed723cb41c1760a18874b6",
+                "shasum": null
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "David Ryan",
+                    "email": "davidb.ryan@endurance.com"
+                }
+            ],
+            "description": "Central dependency module for Endurance modules.",
+            "transport-options": {
+                "symlink": true
+            }
+        },
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
             "version": "1.0.3",
@@ -40,16 +66,16 @@
         },
         {
             "name": "bluehost/endurance-wp-module-gutenframe",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehost/endurance-wp-module-gutenframe.git",
-                "reference": "3168d04d0456a28f653b70872759af6dfd0a82f7"
+                "reference": "5affb465c83dcb8b8c77203e257c852d3d5aa8a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-gutenframe/zipball/3168d04d0456a28f653b70872759af6dfd0a82f7",
-                "reference": "3168d04d0456a28f653b70872759af6dfd0a82f7",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-gutenframe/zipball/5affb465c83dcb8b8c77203e257c852d3d5aa8a5",
+                "reference": "5affb465c83dcb8b8c77203e257c852d3d5aa8a5",
                 "shasum": ""
             },
             "require-dev": {
@@ -83,7 +109,7 @@
                 "source": "https://github.com/bluehost/endurance-wp-module-gutenframe/tree/master",
                 "issues": "https://github.com/bluehost/endurance-wp-module-gutenframe/issues"
             },
-            "time": "2019-08-01T21:07:52+00:00"
+            "time": "2019-08-06T17:50:12+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-loader",
@@ -221,7 +247,7 @@
             "version": "1.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:bluehost/wp-php-standards.git",
+                "url": "https://github.com/bluehost/wp-php-standards.git",
                 "reference": "79ec6b87d61893b89c731ced540f8d9bb48c9fa2"
             },
             "dist": {
@@ -572,7 +598,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "bluehost/endurance-wp-module-assets": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

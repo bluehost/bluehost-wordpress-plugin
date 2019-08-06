@@ -52,6 +52,7 @@ if ( is_admin() ) {
 require dirname( __FILE__ ) . '/inc/class-access-token.php';
 require dirname( __FILE__ ) . '/inc/class-response-utilities.php';
 require dirname( __FILE__ ) . '/inc/class-site-meta.php';
+require_once MM_BASE_DIR . 'inc/admin.php';
 require_once MM_BASE_DIR . 'inc/base.php';
 require_once MM_BASE_DIR . 'inc/checkout.php';
 require_once MM_BASE_DIR . 'inc/menu.php';
