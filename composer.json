@@ -22,13 +22,6 @@
     {
       "type": "composer",
       "url": "https://satis.wpteamhub.com"
-    },
-    {
-      "type": "path",
-      "url": "../../../local-modules/endurance-wp-module-assets",
-      "options": {
-        "symlink": false
-      }
     }
   ],
   "scripts": {
@@ -46,7 +39,6 @@
     ]
   },
   "require": {
-    "bluehost/endurance-wp-module-assets": "@dev",
     "bluehost/endurance-wp-module-business-reviews": "^1.0",
     "bluehost/endurance-wp-module-gutenframe": "^0.1",
     "bluehost/endurance-wp-module-loader": "^1.0",

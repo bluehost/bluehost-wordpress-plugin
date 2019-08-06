@@ -4,34 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "512faac009ad2918a6b60c13fa72cb01",
+    "content-hash": "9c99cdefaad1b11fb9fda118e9e852ef",
     "packages": [
-        {
-            "name": "bluehost/endurance-wp-module-assets",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "../../../local-modules/endurance-wp-module-assets",
-                "reference": "b1ab1c5d1af6386080ed723cb41c1760a18874b6",
-                "shasum": null
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "authors": [
-                {
-                    "name": "David Ryan",
-                    "email": "davidb.ryan@endurance.com"
-                }
-            ],
-            "description": "Central dependency module for Endurance modules.",
-            "transport-options": {
-                "symlink": true
-            }
-        },
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
             "version": "1.0.3",
@@ -62,6 +36,10 @@
                 }
             ],
             "description": "Bluehost Business Reviews Integration",
+            "support": {
+                "source": "https://github.com/bluehost/endurance-wp-module-business-reviews/tree/1.0.3",
+                "issues": "https://github.com/bluehost/endurance-wp-module-business-reviews/issues"
+            },
             "time": "2019-01-08T15:58:33+00:00"
         },
         {
@@ -144,6 +122,10 @@
                 }
             ],
             "description": "An Endurance module that handles registration and management of other modules.",
+            "support": {
+                "source": "https://github.com/bluehost/endurance-wp-module-loader/tree/1.0.3",
+                "issues": "https://github.com/bluehost/endurance-wp-module-loader/issues"
+            },
             "time": "2019-01-08T16:32:20+00:00"
         },
         {
@@ -175,6 +157,10 @@
                     "email": "micah@wpscholar.com"
                 }
             ],
+            "support": {
+                "source": "https://github.com/bluehost/endurance-wp-module-spam-prevention/tree/1.0.1",
+                "issues": "https://github.com/bluehost/endurance-wp-module-spam-prevention/issues"
+            },
             "time": "2019-01-08T15:52:52+00:00"
         },
         {
@@ -207,6 +193,10 @@
                 }
             ],
             "description": "Bluehost Single Sign-on Integration",
+            "support": {
+                "source": "https://github.com/bluehost/endurance-wp-module-sso/tree/1.0.2",
+                "issues": "https://github.com/bluehost/endurance-wp-module-sso/issues"
+            },
             "time": "2019-01-08T15:53:47+00:00"
         },
         {
@@ -273,6 +263,10 @@
                 }
             ],
             "description": "PHP Code Sniffer Standards for Bluehost WordPress projects.",
+            "support": {
+                "source": "https://github.com/bluehost/wp-php-standards/tree/1.1",
+                "issues": "https://github.com/bluehost/wp-php-standards/issues"
+            },
             "time": "2019-06-12T17:45:32+00:00"
         },
         {
@@ -315,9 +309,9 @@
             "authors": [
                 {
                     "name": "Franck Nijhof",
+                    "role": "Developer / IT Manager",
                     "email": "franck.nijhof@dealerdirect.com",
-                    "homepage": "http://www.frenck.nl",
-                    "role": "Developer / IT Manager"
+                    "homepage": "http://www.frenck.nl"
                 }
             ],
             "description": "PHP_CodeSniffer Standards Composer Installer Plugin",
@@ -381,13 +375,13 @@
                 },
                 {
                     "name": "Wim Godden",
-                    "homepage": "https://github.com/wimg",
-                    "role": "lead"
+                    "role": "lead",
+                    "homepage": "https://github.com/wimg"
                 },
                 {
                     "name": "Juliette Reinders Folmer",
-                    "homepage": "https://github.com/jrfnl",
-                    "role": "lead"
+                    "role": "lead",
+                    "homepage": "https://github.com/jrfnl"
                 }
             ],
             "description": "A set of sniffs for PHP_CodeSniffer that checks for PHP cross-version compatibility.",
@@ -598,9 +592,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "bluehost/endurance-wp-module-assets": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

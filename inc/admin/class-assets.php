@@ -31,6 +31,12 @@ class EIG_WP_Module_Admin_App_Assets {
 		'axios'
 	);
 	/**
+	 * Undocumented function
+	 *
+	 * @return void
+	 */
+	protected $url;
+	/**
 	 * @return EIG_WP_Module_Admin_App_Assets|stdClass
 	 */
 	public static function return_instance() {
@@ -49,17 +55,83 @@ class EIG_WP_Module_Admin_App_Assets {
 		// li#toplevel_page_bluehost a:after {
     	// border: 0px transparent !important;
 		// }</style>
+		$this->url = trailingslashit( MM_BASE_URL ) . 'assets/';
+		add_action( 'admin_enqueue_scripts', array( $this, 'regsiter_global_assets' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ) );
+	}
+	public function regsiter_global_assets() {
+		$min  = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+		$rand = time();
+		wp_register_style(
+			'bluehost-font',
+			'https://fonts.googleapis.com/css?family=Open+Sans:300'
+		);
+
+		wp_register_script(
+			'axios',
+			$this->url . 'axios' . $min . '.js',
+			array(),
+			empty( $min ) ? $rand : '0.18.0'
+		);
+
+		wp_register_script(
+			'react-router-dom',
+			$this->url . 'react-router-dom' . $min . '.js',
+			array( 'wp-element' ),
+			empty( $min ) ? $rand : '5.0.0'
+		);
+
+		wp_register_style(
+			'animatecss',
+			$this->url . 'animate' . $min . '.css',
+			array(),
+			empty( $min ) ? $rand : '3.7.1'
+		);
+
+		wp_register_style(
+			'bluehost-brand',
+			$this->url . 'bluehost.css',
+			array(),
+			empty( $min ) ? $rand : '0.1.0'
+		);
+
+		wp_register_style(
+			'purecss',
+			$this->url . 'pure/pure' . $min . '.css',
+			array(),
+			empty( $min ) ? $rand : '1.0'
+		);
+
+		wp_register_style(
+			'purecss-base',
+			$this->url . 'pure/base' . $min . '.css',
+			array(),
+			empty( $min ) ? $rand : '1.0'
+		);
+
+		wp_register_style(
+			'purecss-grids-base',
+			$this->url . 'pure/grids' . $min . '.css',
+			array(),
+			empty( $min ) ? $rand : '1.0'
+		);
+
+		wp_register_style(
+			'purecss-grids',
+			$this->url . 'pure/grids-responsive' . $min . '.css',
+			array( 'purecss-base','purecss-grids-base' ),
+			empty( $min ) ? $rand : '1.0'
+		);
+	
 	}
 	/**
 	 * @param $hook
 	 */
 	public function register_assets( $hook ) {
-		$url = trailingslashit( MM_BASE_URL ) . 'assets/';
 		$this->current_admin_hook = $hook;
 		if ( false !== stripos( $this->current_admin_hook, $this->page_hook ) ) {
-			$this->page_css( $url );
-			$this->page_js( $url );
+			$this->page_css( $this->url );
+			$this->page_js( $this->url );
 		}
 	}
 	/**
