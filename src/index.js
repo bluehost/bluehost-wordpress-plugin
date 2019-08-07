@@ -11,17 +11,17 @@ import App from './app';
 
 /**
  * DOM ID of root element to initialize app
- * @see ../inc/class-eig-wp-module-admin-app-page.php
+ * @see ../inc/admin/class-page.php
  */
 const WP_PAGE_ROOT_ELEMENT = 'bluehost-app';
 
-function bhHandleFirstTab( e ) {
+function bluehostHandleFirstTab( e ) {
 	if ( e.keyCode === TAB ) {
-		document.body.classList.add( 'bh-spa-keynav' );
-		window.removeEventListener( 'keydown', bhHandleFirstTab );
+		document.body.classList.add( 'bluehost-admin-keynav' );
+		window.removeEventListener( 'keydown', bluehostHandleFirstTab );
 	}
 }
-window.addEventListener( 'keydown', bhHandleFirstTab );
+window.addEventListener( 'keydown', bluehostHandleFirstTab );
 
 /**
  * When DOM is ready, load app on root element, replacing #app-loader markup.

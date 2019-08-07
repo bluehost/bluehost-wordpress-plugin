@@ -49,10 +49,10 @@ class App extends Component {
 			<div>
 				<Router>
 					<main id="bluehost-app-wrap" className="animated fadeIn fast">
-						<a className="screen-reader-shortcut bh-spa-skip" href="#" onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
+						<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
 							{ __( 'Skip to Navigation', bluehost_i18n ) }
 						</a>
-						<a className="screen-reader-shortcut bh-spa-skip" href="#" onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
+						<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
 							{ __( 'Skip to Content', bluehost_i18n ) }
 						</a>
 						<div>

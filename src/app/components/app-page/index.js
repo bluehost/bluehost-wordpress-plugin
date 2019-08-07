@@ -13,7 +13,7 @@ import { withRouter } from 'react-router-dom';
  */
 import './style.scss';
 
-class EIGPage extends Component {
+class BluehostPage extends Component {
 	componentDidMount() {
 		const { location } = this.props;
 		if ( location.state && location.state.setFocus ) {
@@ -26,11 +26,11 @@ class EIGPage extends Component {
 			<section
 				tabIndex="-1"
 				ref={ ( container ) => ( this.container = container ) }
-				className="app-page">
+				className="bluehost-page">
 				{ this.props.children }
 			</section>
 		);
 	}
 }
 
-export default withRouter( EIGPage );
+export default withRouter( BluehostPage );

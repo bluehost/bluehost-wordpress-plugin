@@ -1,19 +1,19 @@
 <?php
 /**
- * Class EIG_WP_Module_Admin_App_Page
+ * Class Bluehost_Admin_App_Page
  */
-class EIG_WP_Module_Admin_App_Page {
+class Bluehost_Admin_App_Page {
 	/**
 	 * @var stdClass
 	 */
 	protected static $instance;
 	/**
 	 *
-	 * @return EIG_WP_Module_Admin_App_Page|stdClass
+	 * @return Bluehost_Admin_App_Page|stdClass
 	 */
 	public static function return_instance() {
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof EIG_WP_Module_Admin_App_Page ) ) {
-			self::$instance = new EIG_WP_Module_Admin_App_Page();
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Bluehost_Admin_App_Page ) ) {
+			self::$instance = new Bluehost_Admin_App_Page();
 			self::$instance->primary_init();
 		}
 		return self::$instance;
@@ -41,7 +41,7 @@ class EIG_WP_Module_Admin_App_Page {
 		);
 	}
 	/**
-	 * The React-powered Single-Page Applications initializes on #eig-app, replacing all inner elements.
+	 * The React-powered Single-Page Applications initializes on #bluehost-app, replacing all inner elements.
 	 * However, until initialization begins, #app-loader is shown so user knows something is happening.
 	 *
 	 * @return void

@@ -21,7 +21,7 @@
   }
 }
 
-.bhAppFadeIn {
+.bluehostAppFadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
   -webkit-animation-duration: 1s;
@@ -47,14 +47,14 @@
 body.toplevel_page_bluehost {
   background-color: #F9F9F9;
 }
-.screen-reader-shortcut.bh-spa-skip {
+.screen-reader-shortcut.bluehost-spa-skip {
   &:focus {
     top: 5px;
     left: 5px;
   }
 }
-body:not(.bh-spa-keynav) {
-  .eig-page:focus {
+body:not(.bluehost-admin-keynav) {
+  .bluehost-page:focus {
     outline: none;
   }  
 }

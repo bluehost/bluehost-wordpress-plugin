@@ -1,8 +1,8 @@
 <?php
 /**
- * EIG_WP_Module_Admin_App_Assets class
+ * Bluehost_Admin_App_Assets class
  */
-class EIG_WP_Module_Admin_App_Assets {
+class Bluehost_Admin_App_Assets {
 	/**
 	 * @var string
 	 */
@@ -37,11 +37,11 @@ class EIG_WP_Module_Admin_App_Assets {
 	 */
 	protected $url;
 	/**
-	 * @return EIG_WP_Module_Admin_App_Assets|stdClass
+	 * @return Bluehost_Admin_App_Assets|stdClass
 	 */
 	public static function return_instance() {
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof EIG_WP_Module_Admin_App_Assets ) ) {
-			self::$instance = new EIG_WP_Module_Admin_App_Assets();
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Bluehost_Admin_App_Assets ) ) {
+			self::$instance = new Bluehost_Admin_App_Assets();
 			self::$instance->primary_init();
 		}
 		return self::$instance;

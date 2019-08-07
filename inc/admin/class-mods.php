@@ -1,5 +1,5 @@
 <?php
-class EIG_WP_Module_Admin_App_Mods {
+class Bluehost_Admin_App_Mods {
 	/**
 	 * @var string
 	 */
@@ -13,11 +13,11 @@ class EIG_WP_Module_Admin_App_Mods {
 	 */
 	protected static $instance;
 	/**
-	 * @return EIG_WP_Module_Admin_App_Mods|stdClass
+	 * @return Bluehost_Admin_App_Mods|stdClass
 	 */
 	public static function return_instance() {
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof EIG_WP_Module_Admin_App_Mods ) ) {
-			self::$instance = new EIG_WP_Module_Admin_App_Mods();
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Bluehost_Admin_App_Mods ) ) {
+			self::$instance = new Bluehost_Admin_App_Mods();
 			self::$instance->primary_init();
 		}
 		return self::$instance;

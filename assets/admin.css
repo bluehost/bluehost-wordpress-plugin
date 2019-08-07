@@ -13,7 +13,7 @@
   to {
     opacity: 1; } }
 
-.bhAppFadeIn {
+.bluehostAppFadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
   -webkit-animation-duration: 1s;
@@ -38,11 +38,11 @@
 body.toplevel_page_bluehost {
   background-color: #F9F9F9; }
 
-.screen-reader-shortcut.bh-spa-skip:focus {
+.screen-reader-shortcut.bluehost-spa-skip:focus {
   top: 5px;
   left: 5px; }
 
-body:not(.bh-spa-keynav) .eig-page:focus {
+body:not(.bluehost-admin-keynav) .bluehost-page:focus {
   outline: none; }
 
 #route-wrap {
@@ -103,53 +103,53 @@ body:not(.bh-spa-keynav) .eig-page:focus {
       background: #3575D3;
       color: #fff; }
 
-#bluehost-app .eig-card {
+#bluehost-app .bluehost-card {
   background-color: #fefefe;
   padding: 0.66rem 1rem;
   border: 1px solid #d7dbe0;
   box-shadow: 0 1px 0 0 rgba(185, 200, 212, 0.5);
   min-height: 175px;
   position: relative; }
-  #bluehost-app .eig-card h3 {
+  #bluehost-app .bluehost-card h3 {
     margin-top: 0;
     font-size: 1.33rem; }
-    #bluehost-app .eig-card h3 svg {
+    #bluehost-app .bluehost-card h3 svg {
       position: relative;
       top: 1rem;
       fill: #5A5A5A;
       margin: 0 0.5rem 0.5rem 0; }
-  #bluehost-app .eig-card .components-button-group {
+  #bluehost-app .bluehost-card .components-button-group {
     display: block;
     right: 1rem;
     position: absolute;
     bottom: 1rem; }
 
-#bluehost-app .eig-card.is-centered {
+#bluehost-app .bluehost-card.is-centered {
   padding-left: 2rem;
   padding-right: 2rem; }
-  #bluehost-app .eig-card.is-centered svg {
+  #bluehost-app .bluehost-card.is-centered svg {
     display: block;
     margin: 0 auto 1.5rem auto; }
-  #bluehost-app .eig-card.is-centered h3, #bluehost-app .eig-card.is-centered p {
+  #bluehost-app .bluehost-card.is-centered h3, #bluehost-app .bluehost-card.is-centered p {
     text-align: center; }
-  #bluehost-app .eig-card.is-centered .components-button-group {
+  #bluehost-app .bluehost-card.is-centered .components-button-group {
     position: initial;
     text-align: center;
     margin-top: 0.33rem;
     margin-bottom: 0.66rem; }
 
-#eig-header {
+#bluehost-header {
   align-self: flex-start;
   width: 100%;
   height: 80px;
   background: #fff;
   box-shadow: 0 3px 9px 0 rgba(42, 47, 69, 0.1), 0 2px 5px 0 rgba(42, 47, 69, 0.08), 0 1px 1.5px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.08); }
 
-#eig-logo-wrap {
+#bluehost-logo-wrap {
   width: 200px;
   padding: 1.5rem 3rem 0 2rem; }
 
-.app-page {
+.bluehost-page {
   padding-top: 48px;
   padding-left: 24px;
   padding-right: 24px; }

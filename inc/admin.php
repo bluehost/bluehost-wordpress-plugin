@@ -1,6 +1,6 @@
 <?php
 
-class Endurance_WP_Module_Admin_App_Init {
+class Bluehost_Admin_App_Init {
 	/**
 	 * @var stdClass Fully instantiated instance of this class.
 	 */
@@ -23,9 +23,9 @@ class Endurance_WP_Module_Admin_App_Init {
 	public static function return_instance() {
 		if (
 			! isset( self::$instance )
-			|| ! ( self::$instance instanceof Endurance_WP_Module_Admin_App_Init )
+			|| ! ( self::$instance instanceof Bluehost_Admin_App_Init )
 		) {
-			self::$instance = new Endurance_WP_Module_Admin_App_Init();
+			self::$instance = new Bluehost_Admin_App_Init();
 			self::$instance->primary_init();
 		}
 		return self::$instance;
@@ -56,13 +56,13 @@ class Endurance_WP_Module_Admin_App_Init {
 	 *
 	 */
 	protected function load_class_instances() {
-		EIG_WP_Module_Admin_App_Mods::return_instance();
-		EIG_WP_Module_Admin_App_Assets::return_instance();
-		EIG_WP_Module_Admin_App_Page::return_instance();
+		Bluehost_Admin_App_Mods::return_instance();
+		Bluehost_Admin_App_Assets::return_instance();
+		Bluehost_Admin_App_Page::return_instance();
 	}
 }
 
 /**
  * 🚀
  */
-Endurance_WP_Module_Admin_App_Init::return_instance();
+Bluehost_Admin_App_Init::return_instance();

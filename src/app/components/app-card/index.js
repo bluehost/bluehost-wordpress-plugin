@@ -8,10 +8,10 @@ import './style.scss';
 import { Component } from '@wordpress/element';
 import { Dashicon } from '@wordpress/components';
 
-export default class EIGCard extends Component {
+export default class AppCard extends Component {
 	render() {
 		const { icon, title, desc, className, children, isCentered } = this.props;
-		const cardClass = className ? 'eig-card ' + className : 'eig-card';
+		const cardClass = className ? 'bluehost-card ' + className : 'bluehost-card';
 		const centeredClass = isCentered ? ' is-centered' : '';
 		const iconSize = isCentered ? 48 : 28;
 		return (

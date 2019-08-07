@@ -11,9 +11,9 @@ import { ReactComponent as BlueHostLogo } from '@/assets/bluehost.svg';
 import './style.scss';
 
 const AppHeader = () => (
-	<header id="eig-header">
+	<header id="bluehost-header">
 		<div className="col">
-			<div id="eig-logo-wrap">
+			<div id="bluehost-logo-wrap">
 				<BlueHostLogo />
 			</div>
 		</div>

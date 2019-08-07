@@ -314,7 +314,7 @@ var AppButton = function AppButton(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return EIGCard; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AppCard; });
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
@@ -349,18 +349,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var EIGCard =
+var AppCard =
 /*#__PURE__*/
 function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(EIGCard, _Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(AppCard, _Component);
 
-  function EIGCard() {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, EIGCard);
+  function AppCard() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, AppCard);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(EIGCard).apply(this, arguments));
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(AppCard).apply(this, arguments));
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(EIGCard, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(AppCard, [{
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -370,7 +370,7 @@ function (_Component) {
           className = _this$props.className,
           children = _this$props.children,
           isCentered = _this$props.isCentered;
-      var cardClass = className ? 'eig-card ' + className : 'eig-card';
+      var cardClass = className ? 'bluehost-card ' + className : 'bluehost-card';
       var centeredClass = isCentered ? ' is-centered' : '';
       var iconSize = isCentered ? 48 : 28;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
@@ -384,7 +384,7 @@ function (_Component) {
     }
   }]);
 
-  return EIGCard;
+  return AppCard;
 }(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
 
@@ -435,11 +435,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var AppHeader = function AppHeader() {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("header", {
-    id: "eig-header"
+    id: "bluehost-header"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "col"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-    id: "eig-logo-wrap"
+    id: "bluehost-logo-wrap"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_assets_bluehost_svg__WEBPACK_IMPORTED_MODULE_3__["ReactComponent"], null))));
 };
 
@@ -540,18 +540,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var EIGPage =
+var BluehostPage =
 /*#__PURE__*/
 function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(EIGPage, _Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(BluehostPage, _Component);
 
-  function EIGPage() {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, EIGPage);
+  function BluehostPage() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, BluehostPage);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(EIGPage).apply(this, arguments));
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(BluehostPage).apply(this, arguments));
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(EIGPage, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(BluehostPage, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var location = this.props.location;
@@ -572,15 +572,15 @@ function (_Component) {
         ref: function ref(container) {
           return _this.container = container;
         },
-        className: "app-page"
+        className: "bluehost-page"
       }, this.props.children);
     }
   }]);
 
-  return EIGPage;
+  return BluehostPage;
 }(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["withRouter"])(EIGPage));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["withRouter"])(BluehostPage));
 
 /***/ }),
 
@@ -846,12 +846,12 @@ function (_Component) {
         id: "bluehost-app-wrap",
         className: "animated fadeIn fast"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("a", {
-        className: "screen-reader-shortcut bh-spa-skip",
+        className: "screen-reader-shortcut bluehost-spa-skip",
         href: "#",
         onClick: this.handleNavFocus,
         onKeyPress: this.handleNavFocus
       }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Skip to Navigation', bluehost_i18n)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("a", {
-        className: "screen-reader-shortcut bh-spa-skip",
+        className: "screen-reader-shortcut bluehost-spa-skip",
         href: "#",
         onClick: this.handleContentFocus,
         onKeyPress: this.handleContentFocus
@@ -981,19 +981,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  * DOM ID of root element to initialize app
- * @see ../inc/class-eig-wp-module-admin-app-page.php
+ * @see ../inc/admin/class-page.php
  */
 
 var WP_PAGE_ROOT_ELEMENT = 'bluehost-app';
 
-function bhHandleFirstTab(e) {
+function bluehostHandleFirstTab(e) {
   if (e.keyCode === _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_1__["TAB"]) {
-    document.body.classList.add('bh-spa-keynav');
-    window.removeEventListener('keydown', bhHandleFirstTab);
+    document.body.classList.add('bluehost-admin-keynav');
+    window.removeEventListener('keydown', bluehostHandleFirstTab);
   }
 }
 
-window.addEventListener('keydown', bhHandleFirstTab);
+window.addEventListener('keydown', bluehostHandleFirstTab);
 /**
  * When DOM is ready, load app on root element, replacing #app-loader markup.
  */
