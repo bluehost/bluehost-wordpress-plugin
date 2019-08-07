@@ -42,7 +42,7 @@ body.toplevel_page_bluehost {
   top: 5px;
   left: 5px; }
 
-body:not(.bluehost-admin-keynav) .bluehost-page:focus {
+body:not(.bluehost-admin-keynav) .app-page:focus {
   outline: none; }
 
 #route-wrap {
