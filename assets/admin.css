@@ -85,9 +85,6 @@ body:not(.bh-spa-keynav) .eig-page:focus {
         height: 8px;
         transform-origin: 12px 12px; }
 
-#bluehost-app-wrap h3 {
-  margin-left: 1rem; }
-
 .components-button.bluehost {
   padding: 0.5rem 1rem;
   border: 0;

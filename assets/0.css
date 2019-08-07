@@ -1,7 +1,9 @@
 .welcome-title {
+  font-family: 'Open Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
   font-size: 32px;
   line-height: 40px;
-  font-weight: 400; }
+  font-weight: 300;
+  margin-top: 0; }
 
 
 /*# sourceMappingURL=0.css.map*/
