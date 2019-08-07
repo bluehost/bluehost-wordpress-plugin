@@ -26,7 +26,7 @@ class EIGPage extends Component {
 			<section
 				tabIndex="-1"
 				ref={ ( container ) => ( this.container = container ) }
-				className="eig-page">
+				className="app-page">
 				{ this.props.children }
 			</section>
 		);

@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/app/pages/home/style.scss"],"names":[],"mappings":"AAAA;EACI,eAAe;EACf,iBAAiB","file":"0.css","sourcesContent":[".welcome-title {\n    font-size: 32px;\n    line-height: 40px;\n}"],"sourceRoot":""}

@@ -101,7 +101,8 @@ const appWebpackConfig = {
 	plugins: [
 		...wpScriptsConfig.plugins,
 		new MiniCssExtractPlugin( {
-			chunkFilename: 'admin.css',
+			filename: '[name].css',
+			chunkFilename: '[id].css',
 		} ),
 		new CopyWebpackPlugin(fileMatrix),
 	],

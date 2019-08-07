@@ -3,6 +3,8 @@
  */
 import AppPage from '@/components/app-page';
 
+import './style.scss';
+
 /**
  * Internal dependencies
  */
@@ -13,6 +15,7 @@ import PerformanceSection from './performance/';
 
 const HomePage = () => (
 	<AppPage>
+		<h3 class="welcome-title">Welcome to Your WordPress Site!</h3>
 		<ContentSection />
 		<DesignBuildSection />
 		<PerformanceSection />

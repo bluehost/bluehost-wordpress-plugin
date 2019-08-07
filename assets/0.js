@@ -294,15 +294,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_app_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/app-page */ "./src/app/components/app-page/index.js");
-/* harmony import */ var _content___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./content/ */ "./src/app/pages/home/content/index.js");
-/* harmony import */ var _design_build___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./design-build/ */ "./src/app/pages/home/design-build/index.js");
-/* harmony import */ var _hosting___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hosting/ */ "./src/app/pages/home/hosting/index.js");
-/* harmony import */ var _performance___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./performance/ */ "./src/app/pages/home/performance/index.js");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/app/pages/home/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _content___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./content/ */ "./src/app/pages/home/content/index.js");
+/* harmony import */ var _design_build___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./design-build/ */ "./src/app/pages/home/design-build/index.js");
+/* harmony import */ var _hosting___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hosting/ */ "./src/app/pages/home/hosting/index.js");
+/* harmony import */ var _performance___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./performance/ */ "./src/app/pages/home/performance/index.js");
 
 
 /**
  * External dependencies
  */
+
 
 /**
  * Internal dependencies
@@ -314,7 +317,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var HomePage = function HomePage() {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_app_page__WEBPACK_IMPORTED_MODULE_1__["default"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_content___WEBPACK_IMPORTED_MODULE_2__["default"], null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_design_build___WEBPACK_IMPORTED_MODULE_3__["default"], null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_performance___WEBPACK_IMPORTED_MODULE_5__["default"], null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_hosting___WEBPACK_IMPORTED_MODULE_4__["default"], null));
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_app_page__WEBPACK_IMPORTED_MODULE_1__["default"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
+    class: "welcome-title"
+  }, "Welcome to Your WordPress Site!"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_content___WEBPACK_IMPORTED_MODULE_3__["default"], null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_design_build___WEBPACK_IMPORTED_MODULE_4__["default"], null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_performance___WEBPACK_IMPORTED_MODULE_6__["default"], null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_hosting___WEBPACK_IMPORTED_MODULE_5__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (HomePage);
@@ -385,6 +390,17 @@ var PerformanceSection = function PerformanceSection(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (PerformanceSection);
+
+/***/ }),
+
+/***/ "./src/app/pages/home/style.scss":
+/*!***************************************!*\
+  !*** ./src/app/pages/home/style.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ })
 
