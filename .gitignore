@@ -7,3 +7,7 @@
 # System and IDE files
 .DS_Store
 .idea
+
+# Built-app files
+/assets/*
+!/assets/css
