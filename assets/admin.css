@@ -62,8 +62,6 @@ body:not(.bh-spa-keynav) .eig-page:focus {
   #bluehost-app .pure-g [class*="pure-u"] {
     font-family: 'Open Sans' !important;
     font-weight: 300; }
-  #bluehost-app h1, #bluehost-app h2, #bluehost-app h3, #bluehost-app h4, #bluehost-app h5, #bluehost-app h6 {
-    font-weight: 600; }
 
 #app-loader {
   display: flex;

@@ -41,7 +41,6 @@
   display: none;
 }
 #app-wrap {
-  //margin: 0 !important;
   font-family: "Open Sans" !important;
   font-weight: 300 !important;
 }
@@ -76,9 +75,6 @@ body:not(.bh-spa-keynav) {
   .pure-g [class *= "pure-u"] {
     font-family: 'Open Sans' !important;
     font-weight: 300;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
   }
 }
 #app-loader {
