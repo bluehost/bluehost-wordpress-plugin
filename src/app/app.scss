@@ -1,54 +1,53 @@
 /**
  * 
  */
+@import './config.scss';
 
 #wpbody-content {
-  background-color: #F9F9F9;
+  background-color: $color-background;
   padding-bottom: 0;
 }
+
 #wpcontent {
   padding-left: 0 !important;
 }
+
 #wpfooter {
   display: none;
 }
+
 #app-wrap {
-  font-family: "Open Sans" !important;
+  font-family: $font !important;
   font-weight: 300 !important;
 }
+
 body.toplevel_page_bluehost {
-  background-color: #F9F9F9;
+  background-color: $color-background;
 }
+
 .screen-reader-shortcut.bluehost-spa-skip {
   &:focus {
     top: 5px;
     left: 5px;
   }
 }
+
 body:not(.bluehost-admin-keynav) {
   .app-page:focus {
     outline: none;
-  }  
-}
-#route-wrap {
- background-color: #f1f5f7;
- padding: 1rem;
-  @media (min-width: 900px) {
-    padding: 1.66rem;
-  }
-  @media (min-width: 1200px) {
-    padding: 2rem;
   }
 }
+
 #bluehost-app {
-  display:block;
+  display: block;
   height: 100%;
   min-height: 100%;
   .pure-g [class *= "pure-u"] {
-    font-family: 'Open Sans' !important;
+    font-family: $font !important;
     font-weight: 300;
   }
 }
+
 #app-loader {
   display: flex;
   align-items: center;
@@ -58,12 +57,12 @@ body:not(.bluehost-admin-keynav) {
     position: fixed;
     top: 48%;
     .components-spinner {
-      background: #3575D3;
+      background: $color-primary;
       opacity: 1;
       width: 36px;
       height: 36px;
       margin: 10px 22px 0;
-      box-shadow: 0px 0px 1.33rem 0.66rem #BEE0F6;
+      box-shadow: 0 0 1.33rem 0.66rem #BEE0F6;
       &:before {
         top: 6px;
         left: 6px;

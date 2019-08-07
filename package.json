@@ -28,8 +28,9 @@
     "@wordpress/keycodes": "^2.5.0",
     "animate.css": "^3.7.2",
     "axios": "^0.19.0",
-    "purecss": "^1.0.1",
+    "classnames": "^2.2.6",
     "lodash": "^4.17.15",
+    "purecss": "^1.0.1",
     "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
