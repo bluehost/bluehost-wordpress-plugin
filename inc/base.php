@@ -126,37 +126,6 @@ function mm_cron_schedules( $schedules ) {
 
 add_filter( 'cron_schedules', 'mm_cron_schedules' );
 
-function mm_all_api_calls() {
-	$calls = array(
-		'https://www.mojomarketplace.com/mojo-plugin-assets/json/branding.json',
-		'https://api.mojomarketplace.com/mojo-plugin-assets/json/mojo-partner-offers.json',
-		'https://api.mojomarketplace.com/mojo-plugin-assets/json/search-patterns.json',
-
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=sales',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=popular',
-		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=plugins&count=20&order=sales&page=1',
-		'https://api.mojomarketplace.com/api/v2/items?type=services&count=20&order=sales&page=1',
-		'https://api.mojomarketplace.com/api/v2/items?type=business-tools&count=20&page=1',
-	);
-	foreach ( $calls as $call ) {
-		mm_api_cache( $call );
-	}
-	die;
-}
-
-add_action( 'wp_ajax_all-api-calls', 'mm_all_api_calls' );
-
-function mm_preload_api_calls() {
-	//this makes the themes/services pages load much quicker
-	//without effect on the user
-	$admin_ajax = admin_url( 'admin-ajax.php' );
-	$params = array( 'action' => 'all-api-calls' );
-	$url = $admin_ajax . '?' . http_build_query( $params );
-	$res = wp_remote_get( $url, array( 'blocking' => false, 'timeout' => 0.1, 'cookies' => $_COOKIE ) );
-}
-
-add_action( 'admin_footer-index.php', 'mm_preload_api_calls', 99 );
-
 function mm_slug_to_title( $slug ) {
 	$slug = ucwords( str_replace( '-', ' ', $slug ) );
 
