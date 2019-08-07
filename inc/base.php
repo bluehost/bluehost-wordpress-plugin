@@ -136,9 +136,7 @@ function mm_all_api_calls() {
 		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=themes&count=20&order=popular',
 		'https://api.mojomarketplace.com/api/v2/items?category=wordpress&type=plugins&count=20&order=sales&page=1',
 		'https://api.mojomarketplace.com/api/v2/items?type=services&count=20&order=sales&page=1',
-		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=sales&page=1',
 		'https://api.mojomarketplace.com/api/v2/items?type=business-tools&count=20&page=1',
-		'https://api.mojomarketplace.com/api/v2/items?type=graphics&count=20&order=popular&page=1',
 	);
 	foreach ( $calls as $call ) {
 		mm_api_cache( $call );
