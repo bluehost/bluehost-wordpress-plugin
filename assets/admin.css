@@ -149,7 +149,7 @@ body:not(.bluehost-admin-keynav) .bluehost-page:focus {
   width: 200px;
   padding: 1.5rem 3rem 0 2rem; }
 
-.bluehost-page {
+.app-page {
   padding-top: 48px;
   padding-left: 24px;
   padding-right: 24px; }

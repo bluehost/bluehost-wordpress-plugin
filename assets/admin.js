@@ -572,7 +572,7 @@ function (_Component) {
         ref: function ref(container) {
           return _this.container = container;
         },
-        className: "bluehost-page"
+        className: "app-page"
       }, this.props.children);
     }
   }]);

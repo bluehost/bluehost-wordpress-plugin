@@ -26,7 +26,7 @@ class BluehostPage extends Component {
 			<section
 				tabIndex="-1"
 				ref={ ( container ) => ( this.container = container ) }
-				className="bluehost-page">
+				className="app-page">
 				{ this.props.children }
 			</section>
 		);
