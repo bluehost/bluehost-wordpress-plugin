@@ -9,6 +9,7 @@ import { __ } from '@wordpress/i18n';
 import { AppButton as Button } from '@/components';
 import HomeSection from '../home-section';
 import HomeSectionRow from '../home-section-row';
+import { ReactComponent as JetpackLogo } from '@/assets/jetpack-icon.svg';
 
 const baseUrl = location.origin + '/wp-admin/';
 
@@ -19,33 +20,39 @@ const CacheCard = () => (
 		title={ __( 'Page Cache', 'endurance-wp-module-admin-app' ) }
 		desc={ __( 'Configure your caching to give you the best performance for your site’s needs.', 'endurance-wp-module-admin-app' ) }>
 		<Button
-			href={ baseUrl + 'admin.php?page=bluehost#/tools' }
+			href={ baseUrl + 'admin.php?page=bluehost#/settings' }
 			isDefault
 		>
-			Configure
+			Configure Caching
 		</Button>
 	</HomeSectionRow>
 );
 
-const PhotonCard = () => (
-	<HomeSectionRow
-		isCentered
-		icon="visibility"
-		title={ __( 'Photon', 'endurance-wp-module-admin-app' ) }
-		desc={ __( 'Photon is an image acceleration service that will resize your images and serve them from a CDN.', 'endurance-wp-module-admin-app' ) }>
-		<Button
-			href={ baseUrl + 'themes.php' }
-			isDefault
-		>
-			Install Jetpack
-		</Button>
-	</HomeSectionRow>
-);
+function SiteAcceleratorCard() {
+	if ( ! window.bluehost.wordpress.isJetpackActive || ! window.bluehost.wordpress.jetpackActiveModules.includes( 'photon' ) ) {
+		// return null;
+	}
+	const jetpackIcon = ( <JetpackLogo /> );
+	return (
+		<HomeSectionRow
+			isCentered
+			icon={jetpackIcon}
+			title={ __( 'Site Accelerator', 'endurance-wp-module-admin-app' ) }
+			desc={ __( 'Site acceleration service will resize your images and serve them from a CDN.', 'endurance-wp-module-admin-app' ) }>
+			<Button
+				href={ baseUrl + 'admin.php?page=jetpack#/performance' }
+				isDefault
+			>
+				Configure Site Accelerator
+			</Button>
+		</HomeSectionRow>
+	);
+}
 
 const PerformanceSection = ( props ) => (
 	<HomeSection title="Performance" className="performance">
 		<CacheCard />
-		<PhotonCard />
+		<SiteAcceleratorCard />
 	</HomeSection>
 );
 

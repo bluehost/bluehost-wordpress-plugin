@@ -6,25 +6,38 @@
   text-shadow: none;
   box-shadow: none;
   height: auto;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
   &.is-primary {
     border: 1px solid transparent;
     background: $color-primary;
     box-shadow: none;
-    text-shadow: none;
+    &:visited{
+      background: $color-primary;
+      color: #fff;
+    }
+  }
+  &.is-link {
+    font-weight: 300;
+    color: $color-primary;
+    &:hover {
+      color: $color-primary;
+      text-decoration: underline;
+    }
   }
   &.is-default {
     background: transparent;
     border: 1px solid $color-primary;
     color: $color-primary;
+    box-shadow: none;
     &:hover {
       background: $color-primary;
       color: #fff;
+        text-shadow: none;
+        box-shadow: none;
     }
     &:active {
-      background: $color-primary;
-      color: #fff;
-    }
-    &:visited{
       background: $color-primary;
       color: #fff;
     }

@@ -7,7 +7,7 @@ const AppLink = (props) => (
         to={ { pathname: props.to || '', state: { setFocus: true } } }
         exact
         className="bluehostTab"
-        activeClassName="bluehostActiveTab">
+        activeClassName={ props.activeClassName || 'bluehostActiveTab' }>
         {props.children || ''}
     </NavLink>
 );

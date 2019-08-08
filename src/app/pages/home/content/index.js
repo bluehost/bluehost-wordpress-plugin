@@ -52,19 +52,24 @@ const MenusCard = () => (
 	</HomeSectionRow>
 );
 
-const ProductsCard = () => (
-	<HomeSectionRow
-		icon="cart"
-		title={ __( 'Sell Products', 'endurance-wp-module-admin-app' ) }
-		desc={ __( 'Manage products in your online store.', i18nSpace ) }>
-		<Button
-			href={ baseUrl + 'customize.php?autofocus[panel]=nav_menus' }
-			isDefault
-		>
-			Install WooCommerce
-		</Button>
-	</HomeSectionRow>
-);
+function ProductsCard() {
+	if ( ! window.bluehost.wordpress.isWooActive ) {
+		return null;
+	}
+	return (
+		<HomeSectionRow
+			icon="cart"
+			title={ __( 'Sell Products', 'endurance-wp-module-admin-app' ) }
+			desc={ __( 'Manage products in your online store.', i18nSpace ) }>
+			<Button
+				href={ baseUrl + 'customize.php?autofocus[panel]=nav_menus' }
+				isDefault
+			>
+				Manage Products
+			</Button>
+		</HomeSectionRow>
+	);
+}
 
 const ContentSection = () => (
 	<HomeSection title="Content" className="content">

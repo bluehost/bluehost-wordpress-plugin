@@ -1,0 +1,19 @@
+.bluehost-home-section-row {
+    padding: 24px 0;
+    @media (max-width: 600px) {
+        padding: 16px 0;
+    }
+    border-bottom: 1px solid #D7DBE0;
+    h3 {
+        margin: 0 0 24px;
+        svg {
+            margin-bottom: -4px;
+        }
+    }
+    p {
+        margin: 0;
+    }
+    &:last-of-type {
+        border: none;
+    }
+}

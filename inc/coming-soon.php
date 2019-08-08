@@ -14,6 +14,14 @@ function mm_cs_notice_display() {
 }
 add_action( 'admin_notices', 'mm_cs_notice_display' );
 
+function mm_cs_bubble_count( $count ) {
+	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
+		$count++;
+	}
+	return $count;
+}
+add_filter( 'bluehost_menu_bubble_count', 'mm_cs_bubble_count' );
+
 function mm_bh_cs_notice_display() {
 	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
 		?>
