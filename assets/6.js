@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{36:function(e,n,t){"use strict";t.r(n);var a=t(0),c=t(3),i=t(10);n.default=function(){return Object(a.createElement)(i.d,null,Object(c.__)("Marketplace Page","eig-wp-admin-ui"))}}}]);
