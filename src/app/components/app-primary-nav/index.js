@@ -10,7 +10,7 @@ import './style.scss';
 
 const AppPrimaryNavigation = () => (
 	<div id="app-primary-navigation">
-		<ul class="tabs">
+		<ul className="tabs">
 			<li className="tab">
 				<NavLink to="/home">
 					{__('Home', 'bluehost-wordpress-plugin')}
