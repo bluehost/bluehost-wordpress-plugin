@@ -42,6 +42,27 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 		}
 	}
 
+	public function perform_mojo_search( $params, $request ) {
+		$api_url = 'https://api.mojomarketplace.com/api/v2/items';
+
+		$defaults = array(
+			'category' => 'wordpress',
+			'size'     => 150,
+			'order'    => 'score',
+		);
+
+		$params['search'] = sanitize_title_for_query( $request['search'] );
+		$params           = wp_parse_args( $params, $defaults );
+		$api_url          = add_query_arg( $params, $api_url );
+		$api_response     = mm_api_cache( $api_url );
+
+		if ( is_wp_error( $api_respose ) ) {
+			$this->handle_error( $api_response );
+		} else {
+			return json_decode( $api_response['body'] );
+		}
+	}
+
 	/**
 	 * Check if a given request has access to get items
 	 *
@@ -136,6 +157,11 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 					'desc',
 				),
 				'default'     => 'desc',
+			),
+			'search'       => array(
+				'description' => 'A search query.',
+				'type'        => 'string',
+				'default'     => '',
 			),
 		);
 	}

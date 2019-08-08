@@ -1,7 +1,9 @@
 <?php
 
 class Mojo_Services_Controller extends Mojo_Items_Controller {
-
+	/**
+	 * Setup the endpoint.
+	 */
 	function __construct() {
 		$this->type = 'services';
 		$this->base = 'services';
@@ -37,9 +39,12 @@ class Mojo_Services_Controller extends Mojo_Items_Controller {
 			'category' => '',
 		);
 
-		$data = $this->query_mojo_api( $params, $request );
+		if ( empty( $request['search'] ) ) {
+			$data = $this->perform_mojo_search( $params, $request );
+		} else {
+			$data = $this->query_mojo_api( $params, $request );
+		}
 
-		$data = wp_list_pluck( $data->items, 'name' );
 		return new WP_REST_Response( $data, 200 );
 
 		foreach ( $items as $item ) {

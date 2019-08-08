@@ -1,7 +1,9 @@
 <?php
-
 class Mojo_Plugins_Controller extends Mojo_Items_Controller {
 
+	/**
+	 * Setup the endpoint.
+	 */
 	function __construct() {
 		$this->type = 'plugins';
 		$this->base = 'plugins';
@@ -26,7 +28,7 @@ class Mojo_Plugins_Controller extends Mojo_Items_Controller {
 	}
 
 	/**
-	 * Get a collection of items
+	 * Get a collection of items.
 	 *
 	 * @param WP_REST_Request $request Full data about the request.
 	 * @return WP_Error|WP_REST_Response
@@ -36,7 +38,11 @@ class Mojo_Plugins_Controller extends Mojo_Items_Controller {
 			'type' => 'plugins',
 		);
 
-		$data = $this->query_mojo_api( $params, $request );
+		if ( empty( $request['search'] ) ) {
+			$data = $this->perform_mojo_search( $params, $request );
+		} else {
+			$data = $this->query_mojo_api( $params, $request );
+		}
 
 		return new WP_REST_Response( $data, 200 );
 
@@ -49,7 +55,7 @@ class Mojo_Plugins_Controller extends Mojo_Items_Controller {
 	}
 
 	/**
-	 * Prepare the item for the REST response
+	 * Prepare the item for the REST response.
 	 *
 	 * @param mixed           $item WordPress representation of the item.
 	 * @param WP_REST_Request $request Request object.
