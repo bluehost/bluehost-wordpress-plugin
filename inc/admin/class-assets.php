@@ -178,6 +178,7 @@ class Bluehost_Admin_App_Assets {
 			'app' 					=> array(
 				'activePage'	=> '',
 				'pages'			=> array_map( 'strtolower', Bluehost_Admin_App_Page::$subpages ),
+				'siteId'        => mm_site_bin2hex()
 			),
 			'settings'	=> array(
 				'comingSoon' 			=> 'true' === get_option( 'mm_coming_soon', 0 ) ? 1 : 0,
