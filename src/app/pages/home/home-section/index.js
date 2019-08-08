@@ -10,7 +10,7 @@ export default class HomeSection extends Component {
 			return null;
 		}
 		return (
-			<section className={ 'bluehost-home-section ' + className }>
+			<section className={ 'home-section ' + className }>
 				<h2>{ title }</h2>
 				<section className="bordered-box">
 					{ children }
