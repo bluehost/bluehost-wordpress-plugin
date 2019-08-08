@@ -6,4 +6,6 @@ export { default as Plugins } from './marketplace/plugins';
 export { default as Services } from './marketplace/services';
 export { default as Settings } from './settings';
 export { default as Tools } from './tools';
+export { default as Staging } from './tools/staging';
+
 

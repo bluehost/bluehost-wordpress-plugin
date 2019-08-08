@@ -166,8 +166,26 @@ class Bluehost_Admin_App_Assets {
 		);
 		wp_enqueue_script( 'eig-wp-admin-ui-app' );
 
-		$coming_soon = get_option( 'mm_coming_soon', 'false' );
-		wp_add_inline_script( 'eig-wp-admin-ui-app', 'window.bluehost={comingSoon:' . $coming_soon . '};' );
+		$data = array(
+			'app' 					=> array(
+				'activePage'	=> '',
+				'pages'			=> array_map( 'strtolower', Bluehost_Admin_App_Page::$subpages ),
+			),
+			'settings'	=> array(
+				'comingSoon' 			=> 'true' === get_option( 'mm_coming_soon', 0 ) ? 1 : 0,
+			),
+			'env' => array(
+				'isPHP7'	 			=> version_compare( phpversion(), '7.0.0' ) >= 0,
+				'phpVersion'			=> phpversion(),
+			),
+			'wordpress' => array(
+				'isJetpackActive' 		=> class_exists( 'Jetpack' ) ? 1 : 0,
+				'isWooActive'			=> class_exists( 'woocommerce' ) ? 1 : 0,
+				'jetpackActiveModules' 	=> get_option( 'jetpack_active_modules', 0 ),
+			),
+		);
+
+		wp_localize_script( 'eig-wp-admin-ui-app', 'bluehost', apply_filters( 'bluehost_admin_page_data', $data ) );
 
 		if ( defined( 'WP_LOCAL_DEV' ) && WP_LOCAL_DEV ) {
 			wp_enqueue_script(
