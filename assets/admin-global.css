@@ -1,0 +1,3 @@
+li#toplevel_page_bluehost > ul > li.wp-first-item {
+    display: none;
+}

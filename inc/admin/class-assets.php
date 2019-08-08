@@ -123,6 +123,14 @@ class Bluehost_Admin_App_Assets {
 			empty( $min ) ? $rand : '1.0'
 		);
 
+		wp_register_style(
+			'bluehost-admin-global',
+			$this->url . 'admin-global.css',
+			array(),
+			empty( $min ) ? $rand : '1.0'
+		);
+		wp_enqueue_style( 'bluehost-admin-global' );
+
 	}
 	/**
 	 * @param $hook
