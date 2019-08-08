@@ -234,7 +234,8 @@ p {
   #app-primary-navigation .tabs {
     display: block;
     border-bottom: 1px solid #ddd;
-    list-style: none; }
+    list-style: none;
+    margin: 0; }
     #app-primary-navigation .tabs li {
       margin-right: 40px;
       position: relative;
@@ -247,5 +248,3 @@ p {
         line-height: 24px; }
 
 
-
-/*# sourceMappingURL=admin.css.map*/
