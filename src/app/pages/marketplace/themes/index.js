@@ -25,13 +25,11 @@ export default function ThemesPage() {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        apiFetch({
-                path: '/mojo/v1/items',
-            }
-        )
+        const urlParams = new URLSearchParams('');
+        urlParams.append('page', currentPage);
+        apiFetch({path: '/mojo/v1/themes?' + urlParams.toString()})
             .then(
                 (response) => {
-                    console.log(response);
                     setItems(response.items);
                     setPageCount(response.pageCount);
                     setLoading(false);
@@ -67,7 +65,7 @@ export default function ThemesPage() {
             <div>
                 Ad goes here
             </div>
-            <Pagination/>
+            <Pagination callback={setCurrentPage} currentPage={currentPage} pageCount={pageCount}/>
         </AppPage>
     );
 }
