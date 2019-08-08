@@ -30,7 +30,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 
 		$params = array();
 
-		if ( ! empty( $requests['paged'] ) ) {
+		if ( ! empty( $request['paged'] ) ) {
 			$params['paged'] = $request->get_param( 'paged' );
 		}
 
