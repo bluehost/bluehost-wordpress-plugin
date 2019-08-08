@@ -11,12 +11,6 @@
 #wpfooter {
   display: none; }
 
-<<<<<<< HEAD
-#app-wrap {
-  font-family: "Open Sans" !important;
-  font-weight: 300 !important; }
-
-=======
 .bluehost-app-wrap {
   font-family: "Open Sans" !important;
   font-weight: 300 !important; }
@@ -24,7 +18,6 @@
 .bluehost-app-wrap, h1, h2, h3, h4, h5 {
   color: #5C5C5C; }
 
->>>>>>> Squashed commit of the following:
 body.toplevel_page_bluehost {
   background-color: #f9f9f9; }
 
@@ -222,13 +215,7 @@ p {
   border-bottom: 3px solid #3575d3; }
 
 .app-page {
-<<<<<<< HEAD
   padding: 48px 24px 24px; }
-=======
-  padding-top: 48px;
-  padding-left: 24px;
-  padding-right: 24px; }
->>>>>>> Squashed commit of the following:
 
 #app-primary-navigation {
   height: 33px;
