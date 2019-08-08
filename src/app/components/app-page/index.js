@@ -19,15 +19,20 @@ class BluehostPage extends Component {
 		if ( location.state && location.state.setFocus ) {
 			this.container.focus( { preventScroll: true } );
 		}
+		const locationSlug = this.trimLocationPathname( location.pathname );
 		this.maybeAssignMenuSelectors( location );
-		this.handleWordPressMenuActive( location );
+		if ( ! this.isEmpty( window.bluehost.app.pages ) && window.bluehost.app.pages.includes(locationSlug) ) {
+			this.handleWordPressMenuActive( location );
+		} else {
+			this.removeActivePageClasses();
+		}
 	}
 
-	maybeAssignMenuSelectors( location ) {
+	maybeAssignMenuSelectors( locationSlug ) {
 		if ( 'object' !== typeof window.bluehost ) {
 			window.bluehost = new Object();
 		}
-		if ( this.isEmpty( window.bluehost.activePage ) ) {
+		if ( this.isEmpty( window.bluehost.app.activePage ) ) {
 			let menuNodes = document.querySelectorAll('#toplevel_page_bluehost > ul > li');
 			let menuItems = Array.from(menuNodes);
 			menuItems.splice(0,2);
@@ -49,7 +54,7 @@ class BluehostPage extends Component {
 		if ( liToActivate ) {
 			this.removeActivePageClasses();
 			liToActivate.classList.add( 'current' );
-			window.bluehost.activePage = activePageSlug;
+			window.bluehost.app.activePage = activePageSlug;
 		}
 	}
 
@@ -63,7 +68,8 @@ class BluehostPage extends Component {
 
 	trimLocationPathname( rawPathname ) {
 		let trimMarketplace = rawPathname.replace( '/marketplace', '' );
-		let trimSlash = trimMarketplace.replace( '/', '' );
+		let trimTools = trimMarketplace.replace( '/tools', '' );
+		let trimSlash = trimTools.replace( '/', '' );
 		return trimSlash;
 	}
 

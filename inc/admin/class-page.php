@@ -12,12 +12,12 @@ class Bluehost_Admin_App_Page {
 	 *
 	 * @var array
 	 */
-	protected static $subpages = array(
+	public static $subpages = array(
 		'Home',
 		'Themes',
 		'Plugins',
 		'Services',
-		'Tools',
+		'Staging',
 		'Settings',
 	);
 	/**
@@ -93,6 +93,9 @@ class Bluehost_Admin_App_Page {
 			 */
 			if ( 'themes' === $slug || 'plugins' === $slug || 'services' === $slug ) {
 				$slug = 'marketplace/' . $slug;
+			}
+			if ( 'staging' === $slug ) {
+				$slug = 'tools/' . $slug;
 			}
 			add_submenu_page(
 				'bluehost',

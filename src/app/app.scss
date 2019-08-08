@@ -26,10 +26,6 @@ body.toplevel_page_bluehost {
   background-color: $color-background;
 }
 
-li#toplevel_page_bluehost > ul > li.wp-first-item {
-  display: none; // hide dupe Bluehost submenu item
-}
-
 .screen-reader-shortcut.bluehost-spa-skip {
   &:focus {
     top: 5px;
