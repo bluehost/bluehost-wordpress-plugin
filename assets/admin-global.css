@@ -1,13 +1,16 @@
 li#toplevel_page_bluehost > ul > li.wp-first-item {
     display: none !important;
 }
+
 a.wp-has-current-submenu.toplevel_page_bluehost {
     background: #3575D3 !important;
     color: #fff !important;
 }
+
 a.wp-has-current-submenu.toplevel_page_bluehost::after {
     border-right-color: #fff !important;
 }
+
 a.toplevel_page_bluehost > .wp-menu-image.svg {
     background-size: 16px auto !important;
 }
