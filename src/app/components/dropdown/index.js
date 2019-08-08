@@ -1,5 +1,14 @@
-export default function Dropdown() {
+export default function Dropdown({label, value, onChange, options = []}) {
     return (
-        <div>Dropdown</div>
+        <label>
+            <span>{label}</span>
+            <select value={value} onChange={onChange}>
+                {options.map(({label, value}, index) => {
+                    return (
+                        <option key={index} value={value}>{label}</option>
+                    );
+                })}
+            </select>
+        </label>
     );
 }

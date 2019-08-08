@@ -18,6 +18,25 @@ import {
     Search
 } from '@/components';
 
+const options = [
+    {
+        label: __('Popular', 'bluehost-wordpress-plugin'),
+        value: 'popular',
+    },
+    {
+        label: __('Price', 'bluehost-wordpress-plugin'),
+        value: 'price',
+    },
+    {
+        label: __('Date Added', 'bluehost-wordpress-plugin'),
+        value: 'date-added',
+    },
+    {
+        label: __('Favorite', 'bluehost-wordpress-plugin'),
+        value: 'favorite',
+    },
+];
+
 export default function ThemesPage() {
     const [isLoading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
@@ -42,7 +61,12 @@ export default function ThemesPage() {
             <h1>{__('Premium Themes', 'bluehost-wordpress-plugin')}</h1>
             <Pagination callback={setCurrentPage} currentPage={currentPage} pageCount={pageCount}/>
             <Search/>
-            <Dropdown/>
+            <Dropdown
+                label={__('Sort By', 'bluehost-wordpress-plugin')}
+                onChange={(e) => console.log(e)}
+                options={options}
+                value={'popular'}
+            />
             {
                 isLoading ? (
                     <Spinner/>

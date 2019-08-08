@@ -1,0 +1,21 @@
+.search-box {
+
+  position: relative;
+
+  &__icon {
+    cursor: default;
+    position: absolute;
+    top: 0.7rem;
+    left: 0.6rem;
+    font-size: 2rem;
+  }
+
+  &__input {
+    width: 386px;
+    height: 40px;
+    padding-left: 40px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+}

@@ -3,6 +3,17 @@
  */
 @import '@/config.scss';
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 #wpbody-content {
   background-color: $color-background;
   padding-bottom: 0;
@@ -15,13 +26,16 @@
 #wpfooter {
   display: none;
 }
+
 .bluehost-app-wrap {
   font-family: "Open Sans" !important;
   font-weight: 300 !important;
 }
+
 .bluehost-app-wrap, h1, h2, h3, h4, h5 {
   color: #5C5C5C;
 }
+
 body.toplevel_page_bluehost {
   background-color: $color-background;
 }
@@ -74,9 +88,11 @@ body:not(.bluehost-admin-keynav) {
     }
   }
 }
+
 p {
   font-size: 14px;
 }
+
 .bordered-box {
   border: 1px solid #D7DBE0;
   border-radius: 3px;
