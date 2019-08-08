@@ -1,6 +1,10 @@
 .app-page {
   padding: 48px 24px 24px;
   max-width: 1600px;
+  @media (max-width: 600px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 .page-fade-speed {

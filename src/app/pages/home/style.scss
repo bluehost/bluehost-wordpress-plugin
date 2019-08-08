@@ -21,30 +21,9 @@
     }
     .bordered-box {
         padding: 0 24px;
-    }
-}
-.bluehost-home-section-row {
-    padding: 24px 0;
-    border-bottom: 1px solid #D7DBE0;
-    h3 {
-        margin: 0 0 24px;
-        svg {
-            margin-bottom: -4px;
-        }
-    }
-    p {
-        margin: 0;
-    }
-    &:last-of-type {
-        border: none;
-    }
-    .action {
-        text-align: right;
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: flex-end;
-        .components-button.is-link {
-            line-height: 26px;
+        @media (max-width: 600px) {
+            margin-left: -24px;
+            width: 100%;
         }
     }
 }
