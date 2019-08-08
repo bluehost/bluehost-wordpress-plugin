@@ -44,9 +44,16 @@ class Bluehost_Admin_App_Page {
 	 * @return void
 	 */
 	public function add_menu_page() {
+		$bubble_count = apply_filter( 'bluehost_menu_bubble_count', 0 );
+
+		if ( $bubble_count > 0 ) {
+			$menu_label = sprintf( 'Bluehost v2 <span class="awaiting-mod">%d</span>', $bubble_count );
+		} else {
+			$menu_label = 'Bluehost v2';
+		}
 		add_menu_page(
 			'Bluehost',
-			'Bluehost v2',
+			$menu_label,
 			'manage_options',
 			'bluehost',
 			array( $this, 'menu_page_output' ),
