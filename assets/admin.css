@@ -139,7 +139,9 @@ p {
 #bluehost-logo-wrap {
   float: left;
   width: 200px;
-  padding: 1.5rem 3rem 0 2rem; }
+  padding: 1.5rem 3rem 0 0; }
+  #bluehost-logo-wrap svg {
+    max-height: 24px; }
 
 #bluehost-nav-wrap {
   float: right;
@@ -245,3 +247,5 @@ p {
         line-height: 24px; }
 
 
+
+/*# sourceMappingURL=admin.css.map*/
