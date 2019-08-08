@@ -215,7 +215,11 @@ p {
   border-bottom: 3px solid #3575d3; }
 
 .app-page {
-  padding: 48px 24px 24px; }
+  padding: 48px 24px 24px;
+  max-width: 1600px; }
+
+#navigation {
+  max-width: 1600px; }
 
 #app-primary-navigation {
   height: 33px;
@@ -238,3 +242,5 @@ p {
         line-height: 24px; }
 
 
+
+/*# sourceMappingURL=admin.css.map*/
