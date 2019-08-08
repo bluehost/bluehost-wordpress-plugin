@@ -10,33 +10,23 @@
     border: 1px solid transparent;
     background: $color-primary;
     box-shadow: none;
-    font-size: 16px;
-    font-weight: 600;
-    color: #3575D3;
-    text-decoration: none;
+    text-shadow: none;
+  }
+  &.is-default {
+    background: transparent;
+    border: 1px solid $color-primary;
+    color: $color-primary;
     &:hover {
-      color: #3575D3;
-    }
-    &.is-primary {
-      border: 1px solid transparent;
-      background: #3575D3;
-      box-shadow: none;
-      text-shadow: none;
+      background: $color-primary;
       color: #fff;
     }
-    &.is-default {
-      background: transparent;
-      border: 1px solid #3575D3;
-      &:hover {
-        background: #3575D3;
-        color: #fff;
-        box-shadow: none;
-      }
+    &:active {
+      background: $color-primary;
+      color: #fff;
     }
-    &.is-link {
-      font-weight: 300;
-      &:hover {
-        text-decoration: underline;
-      }
+    &:visited{
+      background: $color-primary;
+      color: #fff;
     }
+  }
 }
