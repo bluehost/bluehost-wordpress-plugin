@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { AppButton as Button } from '@/components';
+import { AppButton as Button, AppNavLink as NavLink } from '@/components';
 import { Dropdown } from '@wordpress/components';
 import { ReactComponent as BlueHostLogo } from '@/assets/bluehost.svg';
 import { ReactComponent as AstronautLogo } from '@/assets/user-astronaut-light.svg';
@@ -20,7 +20,7 @@ import './style.scss';
 
 const NavDropdown = () => (
 	<Dropdown
-		className="bluehost-nav-wrap-element"
+		className="bluehost-nav-wrap-element user-menu"
 		contentClassName="bluehost-nav-popup"
 		position="120px 24px"
 		renderToggle={ ( { isOpen, onToggle } ) => (
@@ -35,7 +35,6 @@ const NavDropdown = () => (
 						<li><a href="https://my.bluehost.com/hosting/account_center#products"><span className="bluehost-nav-popup-nav-icon dark-blue"><ProductsLogo /></span><span className="bluehost-nav-popup-nav-text">Products</span></a></li>
 						<li><a href="https://my.bluehost.com/hosting/account_center#security"><span className="bluehost-nav-popup-nav-icon green"><SecurityLogo /></span><span className="bluehost-nav-popup-nav-text">Security</span></a></li>
 						<li><a href="#"><span className="bluehost-nav-popup-nav-icon orange"><ValidationLogo /></span><span className="bluehost-nav-popup-nav-text">Validation Token</span></a></li>
-						<li><a href="#"><span className="bluehost-nav-popup-nav-icon red"><LogoutLogo /></span><span className="bluehost-nav-popup-nav-text">Logout</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -47,7 +46,9 @@ const AppHeader = () => (
 	<header id="bluehost-header">
 		<div className="col">
 			<div id="bluehost-logo-wrap">
-				<BlueHostLogo />
+				<NavLink to="/home" activeClassName="is-home">
+					<BlueHostLogo />
+				</NavLink>
 			</div>
 			<div id="bluehost-nav-wrap">
 				<div className="bluehost-nav-wrap-element">

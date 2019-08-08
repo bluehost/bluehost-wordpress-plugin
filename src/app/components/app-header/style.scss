@@ -23,9 +23,6 @@
   text-align: right;
 }
 
-#bluehost-nav-wrap a {
-}
-
 #bluehost-nav-wrap svg {
    fill: $color-black;
    margin-left: 24px;
@@ -33,6 +30,20 @@
 
 .bluehost-nav-wrap-element {
    display: inline-block;
+}
+
+.user-menu {
+  .components-popover {
+    margin-left: 12px !important;
+  }
+  svg {
+    &:hover {
+      cursor: pointer;
+    }
+    &[aria-expanded="true"] {
+      fill: $color-blue !important;
+    }
+  }
 }
 
 .components-popover.bluehost-nav-popup:not(.is-mobile) .components-popover__content {
