@@ -1,5 +1,5 @@
 li#toplevel_page_bluehost > ul > li.wp-first-item {
-    display: none;
+    display: none !important;
 }
 
 body.admin_page_mojo-theme-preview .wp-full-overlay-sidebar{
@@ -49,3 +49,17 @@ body.admin_page_mojo-theme-preview .wp-full-overlay-sidebar{
     .components-button.bluehost.is-default:active {
       background: #3575d3;
       color: #fff; }
+
+a.wp-has-current-submenu.toplevel_page_bluehost {
+    background: #3575D3 !important;
+    color: #fff !important;
+}
+
+a.wp-has-current-submenu.toplevel_page_bluehost::after {
+    border-right-color: #fff !important;
+}
+
+a.toplevel_page_bluehost > .wp-menu-image.svg {
+    background-size: 16px auto !important;
+}
+
