@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[3],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[6],{
 
 /***/ "./src/app/pages/settings/index.js":
 /*!*****************************************!*\
@@ -35,4 +35,4 @@ var SettingsPage = function SettingsPage() {
 /***/ })
 
 }]);
-//# sourceMappingURL=3.js.map
+//# sourceMappingURL=6.js.map

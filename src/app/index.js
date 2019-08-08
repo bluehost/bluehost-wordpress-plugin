@@ -15,8 +15,7 @@ import './app.scss';
 
 import {
 	AppHeader,
-	AppPrimaryNav,
-	AppFooter,
+	AppPrimaryNav
 } from '@/components';
 
 import AppMain from './main';

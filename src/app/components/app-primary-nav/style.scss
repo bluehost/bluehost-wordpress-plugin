@@ -1,5 +1,23 @@
-#tabs {
+#app-primary-navigation {
   height: 33px;
   padding-top: 24px;
   padding-left: 24px;
+  padding-right: 24px;
+  .tabs {
+    display: block;
+    border-bottom: 1px solid #ddd;
+    list-style: none;
+    li {
+      margin-right: 40px;
+      position: relative;
+      display: inline-block;
+      a {
+        font-family: 'Open Sans', -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+        color: #5C5C5C;
+        text-decoration: none;
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
 }

@@ -1,9 +1,9 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[4],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[5],{
 
-/***/ "./src/app/pages/help/index.js":
-/*!*************************************!*\
-  !*** ./src/app/pages/help/index.js ***!
-  \*************************************/
+/***/ "./src/app/pages/tools/index.js":
+/*!**************************************!*\
+  !*** ./src/app/pages/tools/index.js ***!
+  \**************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -26,13 +26,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var SettingsPage = function SettingsPage() {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components__WEBPACK_IMPORTED_MODULE_2__["AppPage"], null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Help Page', 'eig-wp-admin-ui'));
+var ToolsPage = function ToolsPage() {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components__WEBPACK_IMPORTED_MODULE_2__["AppPage"], null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Tools Page', 'eig-wp-admin-ui'));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (SettingsPage);
+/* harmony default export */ __webpack_exports__["default"] = (ToolsPage);
 
 /***/ })
 
 }]);
-//# sourceMappingURL=4.js.map
+//# sourceMappingURL=5.js.map
