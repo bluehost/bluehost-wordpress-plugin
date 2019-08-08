@@ -8,6 +8,19 @@ class Bluehost_Admin_App_Page {
 	 */
 	protected static $instance;
 	/**
+	 * Subpage Titles (get lowercased for slugs)
+	 *
+	 * @var array
+	 */
+	protected static $subpages = array(
+		'Home',
+		'Themes',
+		'Plugins',
+		'Services',
+		'Tools',
+		'Settings',
+	);
+	/**
 	 *
 	 * @return Bluehost_Admin_App_Page|stdClass
 	 */
@@ -23,6 +36,7 @@ class Bluehost_Admin_App_Page {
 	 */
 	protected function primary_init() {
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
+		add_action( 'admin_menu', array( $this, 'add_sub_pages' ) );
 	}
 	/**
 	 * Register WordPress Admin Page for Admin App
@@ -33,7 +47,7 @@ class Bluehost_Admin_App_Page {
 		add_menu_page(
 			'Bluehost',
 			'Bluehost v2',
-			'read',
+			'manage_options',
 			'bluehost',
 			array( $this, 'menu_page_output' ),
 			'dashicons-screenoptions',
@@ -56,5 +70,35 @@ class Bluehost_Admin_App_Page {
 			</main>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Add Submenu Pages to WordPress
+	 *
+	 * @return void
+	 */
+	public function add_sub_pages() {
+		foreach( self::$subpages as $subpage ) {
+			$slug = strtolower( $subpage );
+			$subpage_slugs = array_map( 'strtolower', self::$subpages );
+			/**
+			 * Add /marketplace prefix for Marketplace routes
+			 */
+			if ( 'themes' === $slug || 'plugins' === $slug || 'services' === $slug ) {
+				$slug = 'marketplace/' . $slug;
+			}
+			add_submenu_page(
+				'bluehost',
+				$subpage,
+				$subpage,
+				'manage_options',
+				'bluehost#/' . $slug,
+				array( $this, 'handle_subpage_redirect' )
+			);
+		}
+	}
+
+	public function handle_subpage_redirect() {
+		// TODO: Add button to go to Plugin Home
 	}
 }
