@@ -41,7 +41,6 @@ class Mojo_Services_Controller extends Mojo_Items_Controller {
 
 		$data = $this->query_mojo_api( $params, $request );
 
-		$data = wp_list_pluck( $data->items, 'name' );
 		return new WP_REST_Response( $data, 200 );
 
 		foreach ( $items as $item ) {
