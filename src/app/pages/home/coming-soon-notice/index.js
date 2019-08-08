@@ -1,8 +1,8 @@
 
 /**
- * WordPress Dependencies
+ * Internal Dependencies
  */
-import { Notice } from '@wordpress/components';
+import { AppNotice as Notice } from '@/components';
 
 function ComingSoonNotice() {
 	const comingSoon = window.bluehost.comingSoon;
