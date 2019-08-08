@@ -44,6 +44,12 @@
     font-size: 2em;
     position: relative;
     top: -5px;
+    &:hover {
+      color: $color-primary;
+    }
+    &.--is-favorite {
+      color: $color-primary;
+    }
   }
 
 }

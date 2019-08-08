@@ -36,7 +36,8 @@ export default function ProductCard(
                     'product-card__favorite': true,
                     'dashicons': true,
                     'dashicons-star-empty': !isFavorite,
-                    'dashicons-star-filled': isFavorite
+                    'dashicons-star-filled': isFavorite,
+                    '--is-favorite': isFavorite
                 })}/>
                 <div className="product-card__button-group">
                     <Button {...buttonSecondary} className="product-card__button-secondary" isDefault/>
