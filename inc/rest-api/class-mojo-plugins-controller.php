@@ -38,7 +38,11 @@ class Mojo_Plugins_Controller extends Mojo_Items_Controller {
 			'type' => 'plugins',
 		);
 
-		$data = $this->query_mojo_api( $params, $request );
+		if ( empty( $request['search'] ) ) {
+			$data = $this->perform_mojo_search( $params, $request );
+		} else {
+			$data = $this->query_mojo_api( $params, $request );
+		}
 
 		return new WP_REST_Response( $data, 200 );
 
