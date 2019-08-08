@@ -2,7 +2,10 @@
 
 class Mojo_Themes_Controller extends Mojo_Items_Controller {
 
-	function __construct() {
+	/**
+	 * Setup the endpoint.
+	 */
+	 function __construct() {
 		$this->type = 'themes';
 		$this->base = 'themes';
 	}

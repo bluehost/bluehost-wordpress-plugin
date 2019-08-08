@@ -1,7 +1,9 @@
 <?php
 
 class Mojo_Services_Controller extends Mojo_Items_Controller {
-
+	/**
+	 * Setup the endpoint.
+	 */
 	function __construct() {
 		$this->type = 'services';
 		$this->base = 'services';
