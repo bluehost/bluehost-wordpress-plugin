@@ -102,7 +102,6 @@ const appWebpackConfig = {
 		...wpScriptsConfig.plugins,
 		new MiniCssExtractPlugin( {
 			filename: '[name].css',
-			chunkFilename: '[id].css',
 		} ),
 		new CopyWebpackPlugin(fileMatrix),
 	],
