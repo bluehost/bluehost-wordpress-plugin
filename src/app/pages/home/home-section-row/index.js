@@ -4,6 +4,11 @@
 import { Component } from '@wordpress/element';
 import { Dashicon } from '@wordpress/components';
 
+/**
+ * Internal dependencies
+ */
+import './style.scss';
+
 export default class HomeSectionRow extends Component {
 	render() {
 		const { icon, iconSize, title, desc, className, children } = this.props;
