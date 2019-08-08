@@ -9,14 +9,17 @@
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
+  margin-left: 8px;
+
   &.is-primary {
     border: 1px solid transparent;
     background: $color-primary;
-    &:visited{
+    &:visited {
       background: $color-primary;
       color: #fff;
     }
   }
+
   &.is-link {
     font-weight: 300;
     color: $color-primary;
@@ -25,6 +28,7 @@
       text-decoration: underline;
     }
   }
+
   &.is-default {
     background: transparent;
     border: 1px solid $color-primary;
@@ -32,8 +36,8 @@
     &:hover {
       background: $color-primary;
       color: #fff;
-        text-shadow: none;
-        box-shadow: none;
+      text-shadow: none;
+      box-shadow: none;
     }
     &:active {
       background: $color-primary;
