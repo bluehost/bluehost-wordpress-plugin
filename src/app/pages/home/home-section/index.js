@@ -9,10 +9,12 @@ export default class HomeSection extends Component {
 		return (
 			<section className={ 'bluehost-home-section ' + className }>
 				{ children && (
-				<h2>{ title }</h2>
-				<section className="bordered-box">
-					{ children }
-				</section> )
+				<>
+					<h2>{ title }</h2>
+					<section className="bordered-box">
+						{ children }
+					</section> 
+				</>)
 				}
 			</section>
 		);
