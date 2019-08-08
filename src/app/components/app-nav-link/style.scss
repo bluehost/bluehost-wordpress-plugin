@@ -1,0 +1,10 @@
+@import '@/config.scss';
+
+.bluehostTab {
+    padding-bottom: 4px;
+}
+
+.bluehostActiveTab {
+    color: $color-blue !important;
+    border-bottom: 3px solid $color-blue;
+}

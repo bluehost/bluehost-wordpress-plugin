@@ -2,88 +2,77 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { AppButton as Button, AppCard } from '@/components';
-import { ButtonGroup } from '@wordpress/components';
+import { AppButton as Button } from '@/components';
+
+/**
+ * Internal dependencies
+ */
+import HomeSection from '../home-section';
+import HomeSectionRow from '../home-section-row';
 
 const baseUrl = location.origin + '/wp-admin/';
 
 const i18nSpace = 'endurance-wp-module-admin-app';
 
 const PostsCard = () => (
-	<AppCard
+	<HomeSectionRow
 		icon="admin-post"
 		title={ __( 'Blog Posts', i18nSpace ) }
-		desc={ __( 'Add blog posts to your site. You can also organize them into categories.', i18nSpace ) }>
-		<ButtonGroup>
-			<Button href={ baseUrl + 'edit-tags.php?taxonomy=category' } isDefault>Manage Categories</Button>
-			<Button href={ baseUrl + 'post-new.php' } isPrimary>New Post</Button>
-		</ButtonGroup>
-	</AppCard>
+		desc={ __( 'Add blog posts or organize existing pages.', i18nSpace ) }>
+		<Button href={ baseUrl + 'post-new.php' } isDefault>New Post</Button>
+		<Button href={ baseUrl + 'edit-tags.php?taxonomy=category' } isLink>Manage Categories</Button>
+	</HomeSectionRow>
 );
 
 const PagesCard = () => (
-	<AppCard
+	<HomeSectionRow
 		icon="admin-page"
 		title={ __( 'Pages', i18nSpace ) }
-		desc={ __( 'If you are looking to adjust or control your navigation of your website simply click manage below and rearrange your menus.', i18nSpace ) }>
-		<ButtonGroup>
-			<Button
-				href={ baseUrl + 'post-new.php?post_type=page' }
-				isPrimary
-			>
-                New Page
-			</Button>
-		</ButtonGroup>
-	</AppCard>
+		desc={ __( 'Add fresh pages to your website.', i18nSpace ) }>
+		<Button
+			href={ baseUrl + 'post-new.php?post_type=page' }
+			isDefault
+		>
+			New Page
+		</Button>
+	</HomeSectionRow>
 );
 
 const MenusCard = () => (
-	<AppCard
+	<HomeSectionRow
 		icon="menu"
 		title={ __( 'Navigation Menus', i18nSpace ) }
-		desc={ __( 'Add pages to your website easily by clicking add new page.', i18nSpace ) }>
-		<ButtonGroup>
-			<Button
-				href={ baseUrl + 'customize.php?autofocus[panel]=nav_menus' }
-				isDefault
-			>
-                Manage Menus
-			</Button>
-		</ButtonGroup>
-	</AppCard>
+		desc={ __( 'Adjust or edit your site\'s navigation menus.', i18nSpace ) }>
+		<Button
+			href={ baseUrl + 'customize.php?autofocus[panel]=nav_menus' }
+			isDefault
+		>
+			Manage Menus
+		</Button>
+	</HomeSectionRow>
 );
 
 const ProductsCard = () => (
-	<AppCard
+	<HomeSectionRow
 		icon="cart"
 		title={ __( 'Sell Products', 'endurance-wp-module-admin-app' ) }
-		desc={ __( 'Are you are looking to sell products on your WordPress website? If so, we recommend that you install and setup WooCommerce.', i18nSpace ) }>
-		<ButtonGroup>
-			<Button
-				href={ baseUrl + 'customize.php?autofocus[panel]=nav_menus' }
-				isDefault
-			>
-                Install WooCommerce
-			</Button>
-		</ButtonGroup>
-	</AppCard>
+		desc={ __( 'Manage products in your online store.', i18nSpace ) }>
+		<Button
+			href={ baseUrl + 'customize.php?autofocus[panel]=nav_menus' }
+			isDefault
+		>
+			Install WooCommerce
+		</Button>
+	</HomeSectionRow>
 );
 
 const ContentSection = () => (
-	<section id="content" className={ 'pure-g' }>
-		<div className={ 'pure-u-1 pure-u-sm-1-2' }>
-			<PostsCard />
-		</div>
-		<div className={ 'pure-u-1 pure-u-sm-1-2' }>
-			<PagesCard />
-		</div>
-		<div className={ 'pure-u-1 pure-u-sm-1-2' }>
-			<MenusCard />
-		</div>
-		<div className={ 'pure-u-1 pure-u-sm-1-2' }>
-			<ProductsCard />
-		</div>
-	</section>
+	<HomeSection title="Content" className="content">
+		<PostsCard />
+		<PagesCard />
+		<MenusCard />
+		<ProductsCard />
+	</HomeSection>
 );
 
 export default ContentSection;
