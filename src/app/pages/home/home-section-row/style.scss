@@ -16,20 +16,4 @@
     &:last-of-type {
         border: none;
     }
-    .action {
-        display: flex;
-        align-items: flex-end;
-        flex-direction: row-reverse;
-        @media (max-width: 600px) {
-            padding-top: 24px;
-            flex-direction: column;
-            align-items: center;
-            .components-button {
-                width: 80%;
-            }
-        }
-        .components-button.is-link {
-            line-height: 26px;
-        }
-    }
 }

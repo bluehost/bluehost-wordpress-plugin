@@ -45,7 +45,7 @@ class BluehostPage extends Component {
 
 	/**
 	 * Unset Active Class On Menu And Re-Highlight
-	 * @param object location 
+	 * @param object location
 	 */
 	handleWordPressMenuActive( location ) {
 		let pathname = location.pathname || '';
@@ -103,7 +103,7 @@ class BluehostPage extends Component {
 			<section
 				tabIndex="-1"
 				ref={ ( container ) => ( this.container = container ) }
-				className="app-page animated fadeIn page-fade-speed">
+				className={"app-page animated fadeIn page-fade-speed " + this.props.className}>
 				{ this.props.children }
 			</section>
 		);
