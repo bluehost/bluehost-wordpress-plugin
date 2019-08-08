@@ -2,7 +2,6 @@
 
 class Mojo_Themes_Controller extends Mojo_Items_Controller {
 
-
 	function __construct() {
 		$this->type = 'themes';
 		$this->base = 'themes';
@@ -39,7 +38,6 @@ class Mojo_Themes_Controller extends Mojo_Items_Controller {
 
 		$data = $this->query_mojo_api( $params, $request );
 
-		$data = wp_list_pluck( $data->items, 'name' );
 		return new WP_REST_Response( $data, 200 );
 
 		foreach ( $items as $item ) {

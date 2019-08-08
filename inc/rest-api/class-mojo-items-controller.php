@@ -101,7 +101,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 					'random',
 					'sales',
 				),
-				'default'     => 'popular',
+				'default'     => 'sales',
 			),
 			'type'         => array(
 				'description' => 'Item type.',
