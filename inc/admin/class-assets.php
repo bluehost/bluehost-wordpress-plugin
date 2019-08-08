@@ -64,7 +64,7 @@ class Bluehost_Admin_App_Assets {
 		$rand = time();
 		wp_register_style(
 			'bluehost-font',
-			'https://fonts.googleapis.com/css?family=Open+Sans:300'
+			'https://fonts.googleapis.com/css?family=Open+Sans:300,600'
 		);
 
 		wp_register_script(
@@ -122,7 +122,7 @@ class Bluehost_Admin_App_Assets {
 			array( 'purecss-base','purecss-grids-base' ),
 			empty( $min ) ? $rand : '1.0'
 		);
-	
+
 	}
 	/**
 	 * @param $hook
@@ -165,6 +165,10 @@ class Bluehost_Admin_App_Assets {
 			true
 		);
 		wp_enqueue_script( 'eig-wp-admin-ui-app' );
+
+		$coming_soon = get_option( 'mm_coming_soon', 'false' );
+		wp_add_inline_script( 'eig-wp-admin-ui-app', 'window.bluehost={comingSoon:' . $coming_soon . '};' );
+
 		if ( defined( 'WP_LOCAL_DEV' ) && WP_LOCAL_DEV ) {
 			wp_enqueue_script(
 				'livereload',

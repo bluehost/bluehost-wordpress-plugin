@@ -3,19 +3,33 @@
     border: 0;
     text-shadow: none;
     box-shadow: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #3575D3;
+    text-decoration: none;
+    &:hover {
+      color: #3575D3;
+    }
     &.is-primary {
       border: 1px solid transparent;
       background: #3575D3;
       box-shadow: none;
       text-shadow: none;
+      color: #fff;
     }
     &.is-default {
       background: transparent;
       border: 1px solid #3575D3;
-      color: #3575D3;
       &:hover {
         background: #3575D3;
         color: #fff;
+        box-shadow: none;
+      }
+    }
+    &.is-link {
+      font-weight: 300;
+      &:hover {
+        text-decoration: underline;
       }
     }
 }
