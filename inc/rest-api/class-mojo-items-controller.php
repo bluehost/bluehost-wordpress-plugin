@@ -2,66 +2,44 @@
 
 class Mojo_Items_Controller extends WP_REST_Controller {
 
-	/**
-	 * Register the routes for the objects of the controller.
-	 */
-	public function register_routes() {
-		$namespace = 'mojo/v1';
-		$base = 'items';
+	protected $namespace = 'mojo/v1';
 
-		register_rest_route( $namespace, '/' . $base, array(
+	protected $base = 'themes';
+
+	protected $type = 'themes';
+
+	public function query_mojo_api( $params, $request ) {
+		$api_url  = 'https://api.mojomarketplace.com/api/v2/items';
+		$defaults = array_merge(
 			array(
-				'methods'             => WP_REST_Server::READABLE,
-				'callback'            => array( $this, 'get_items' ),
-				// 'permission_callback' => array( $this, 'get_items_permissions_check' ),
-				'args'                => $this->get_collection_params()
+				'category'  => 'wordpress',
+				'count'     => 20,
+				'direction' => '',
 			),
-		) );
-	}
+			$request->get_default_params()
+		);
 
-	/**
-	 * Get a collection of items
-	 *
-	 * @param WP_REST_Request $request Full data about the request.
-	 * @return WP_Error|WP_REST_Response
-	 */
-	public function get_items( $request ) {
-		$api_url = 'https://api.mojomarketplace.com/api/v2/items';
-
-		$params = array();
-
-		if ( ! empty( $requests['paged'] ) ) {
-			$params['paged'] = $request->get_param( 'paged' );
+		if ( ! empty( $request['page'] ) ) {
+			$params['page'] = $request->get_param( 'page' );
 		}
 
 		if ( ! empty( $request['sort'] ) ) {
 			$params['order'] = $request->get_param( 'sort' );
 		}
 
-		if ( 'popular' != $request['items'] ) {
-			$params['itemcategory'] = $request->get_param( 'items' );
+		if ( ! empty( $request['direction'] ) ) {
+			$params['direction'] = $request->get_param( 'direction' );
 		}
 
-		$defaults = $request->get_default_params();
-		$params = wp_parse_args( $params, $defaults );
-
-		$api_url = add_query_arg( $params, $api_url );
-
-
+		$params       = wp_parse_args( $params, $defaults );
+		$api_url      = add_query_arg( $params, $api_url );
 		$api_response = mm_api_cache( $api_url );
 
-		if ( ! is_wp_error( $api_response ) ) {
-			$data = json_decode( $api_response['body'] );
+		if ( is_wp_error( $api_respose ) ) {
+			$this->handle_error( $api_response );
+		} else {
+			return json_decode( $api_response['body'] );
 		}
-
-		return new WP_REST_Response( $data, 200 );
-
-		foreach( $items as $item ) {
-			$itemdata = $this->prepare_item_for_response( $item, $request );
-			$data[] = $this->prepare_response_for_collection( $itemdata );
-		}
-
-		return new WP_REST_Response( $data, 200 );
 	}
 
 	/**
@@ -71,14 +49,17 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	 * @return WP_Error|bool
 	 */
 	public function get_items_permissions_check( $request ) {
-		//return true; <--use to make readable by all
+		return true;
+
+		// We don't want these endpoints to be publicly queryable.
+		// This would make it easy to DDoS any bluehost site.
 		return current_user_can( 'edit_post' );
 	}
 
 	/**
 	 * Prepare the item for the REST response
 	 *
-	 * @param mixed $item WordPress representation of the item.
+	 * @param mixed           $item WordPress representation of the item.
 	 * @param WP_REST_Request $request Request object.
 	 * @return mixed
 	 */
@@ -93,59 +74,69 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	 */
 	public function get_collection_params() {
 		return array(
-			'seller'     => array(
+			'seller'       => array(
 				'description'       => 'User ID or brand profile name.',
 				'type'              => 'string',
 				'sanitize_callback' => 'sanitize_text_field',
 			),
-			'category' => array(
-				'description'       => 'Category ID or slug (this is ItemTypeCategory).',
-				'type'              => 'string',
-				'sanitize_callback' => 'sanitize_text_field()',
+			'category'     => array(
+				'description' => 'Category ID or slug (this is ItemTypeCategory).',
+				'type'        => 'string',
+				'enum'        => array(
+					'wordpress',
+				),
+				'default'     => 'wordpress',
 			),
-			'itemcategory'   => array(
+			'itemcategory' => array(
 				'description'       => 'Item Category slug (this is ItemCategory).',
 				'type'              => 'string',
 				'sanitize_callback' => 'sanitize_text_field',
 			),
-			'order'   => array(
-				'description'       => 'Order to sort items by.',
-				'type'              => 'string',
-				'enum' => array(
+			'order'        => array(
+				'description' => 'Order to sort items by.',
+				'type'        => 'string',
+				'enum'        => array(
 					'popular',
 					'latest',
 					'random',
 					'sales',
 				),
-				'default' => 'sales',
+				'default'     => 'popular',
 			),
-			'type'   => array(
-				'description'       => 'Item type.',
-				'type'              => 'string',
-				'enum' => array(
+			'type'         => array(
+				'description' => 'Item type.',
+				'type'        => 'string',
+				'enum'        => array(
 					'themes',
 					'graphics',
 					'plugins',
 					'services',
 				),
-				'default' => 'themes'
+				'default'     => 'themes',
 			),
-			'services'   => array(
-				'description'       => 'Indicates that services should be returned instead of purchasable items. If you define the type as services then you can ignore this flag.',
-				'type'              => 'boolean',
-				'default' => false,
+			'services'     => array(
+				'description' => 'Indicates that services should be returned instead of purchasable items. If you define the type as services then you can ignore this flag.',
+				'type'        => 'boolean',
+				'default'     => false,
 			),
-			'count'   => array(
-				'description'       => 'Maximum number of items to return (maximum allowed is 50).',
-				'type'              => 'integer',
+			'count'        => array(
+				'description' => 'Maximum number of items to return (maximum allowed is 50).',
+				'type'        => 'integer',
+				'default'     => 20,
 			),
-			'page'   => array(
-				'description'       => 'Offset from the first several items (maximum allowed is 10).',
-				'type'              => 'integer',
+			'page'         => array(
+				'description' => 'Offset from the first several items (maximum allowed is 10).',
+				'type'        => 'integer',
 			),
-			'direction' => array(
-
-			)
+			'direction'    => array(
+				'description' => 'Sort direction.',
+				'type'        => 'string',
+				'enum'        => array(
+					'asc',
+					'desc',
+				),
+				'default'     => 'desc',
+			),
 		);
 	}
 }
