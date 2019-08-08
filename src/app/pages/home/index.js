@@ -20,7 +20,7 @@ import HostingSection from './hosting/';
 import ComingSoonNotice from './coming-soon-notice/';
 
 const HomePage = () => (
-	<AppPage>
+	<AppPage className="home">
 		<div className="pure-g">
 			<div className="pure-u-1 pure-u-sm-3-4">
 				<div className="welcome-section">
