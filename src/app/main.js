@@ -17,7 +17,7 @@ import { AppSpinner } from '@/components';
 
 const AppMain = () => (
 	<main>
-		<Suspense fallback={ <div>Loading...</div> }>
+		<Suspense fallback={ <AppSpinner /> }>
 			<Switch>
 				<Route path="/home" render={ () => ( <HomeRoute /> ) } />
 				<Route path="/marketplace" exact render={ () => ( <MktRoute /> ) } />

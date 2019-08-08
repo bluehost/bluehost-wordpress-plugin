@@ -97,7 +97,7 @@ class BluehostPage extends Component {
 			<section
 				tabIndex="-1"
 				ref={ ( container ) => ( this.container = container ) }
-				className="app-page">
+				className="app-page animated fadeIn page-fade-speed">
 				{ this.props.children }
 			</section>
 		);

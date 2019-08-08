@@ -218,6 +218,9 @@ p {
   padding: 48px 24px 24px;
   max-width: 1600px; }
 
+.page-fade-speed {
+  animation-duration: 330ms; }
+
 #navigation {
   max-width: 1600px; }
 
