@@ -9,6 +9,7 @@ import { __ } from '@wordpress/i18n';
 import { AppButton as Button } from '@/components';
 import HomeSection from '../home-section';
 import HomeSectionRow from '../home-section-row';
+import { ReactComponent as JetpackLogo } from '@/assets/jetpack-icon.svg';
 
 const baseUrl = location.origin + '/wp-admin/';
 
@@ -31,12 +32,13 @@ function SiteAcceleratorCard() {
 	if ( ! window.bluehost.wordpress.isJetpackActive || ! window.bluehost.wordpress.jetpackActiveModules.includes( 'photon' ) ) {
 		// return null;
 	}
+	const jetpackIcon = ( <JetpackLogo /> );
 	return (
 		<HomeSectionRow
 			isCentered
-			icon="visibility"
+			icon={jetpackIcon}
 			title={ __( 'Site Accelerator', 'endurance-wp-module-admin-app' ) }
-			desc={ __( 'Site Accelerator helps your pages load faster by allowing Jetpack to optimize your images and serve your images and static files from a CDN.', 'endurance-wp-module-admin-app' ) }>
+			desc={ __( 'Site acceleration service will resize your images and serve them from a CDN.', 'endurance-wp-module-admin-app' ) }>
 			<Button
 				href={ baseUrl + 'admin.php?page=jetpack#/performance' }
 				isDefault
