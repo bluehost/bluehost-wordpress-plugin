@@ -133,7 +133,7 @@ p {
   align-self: flex-start;
   width: 100%;
   height: 80px;
-  background: #fff;
+  background: #ffffff;
   box-shadow: 0 3px 9px 0 rgba(42, 47, 69, 0.1), 0 2px 5px 0 rgba(42, 47, 69, 0.08), 0 1px 1.5px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.08); }
 
 #bluehost-logo-wrap {
@@ -147,7 +147,7 @@ p {
   text-align: right; }
 
 #bluehost-nav-wrap svg {
-  fill: #5C5C5C;
+  fill: #5c5c5c;
   margin-left: 24px; }
 
 #bluehost-nav-popup-wrap {
@@ -169,7 +169,7 @@ p {
   margin: 0; }
 
 #bluehost-nav-popup-inner ul li a {
-  color: #5C5C5C;
+  color: #5c5c5c;
   display: block;
   padding: 16px 24px;
   text-decoration: none; }
@@ -187,19 +187,19 @@ p {
   fill: #999999; }
 
 #bluehost-nav-popup-inner .blue svg {
-  fill: #3575D3; }
+  fill: #3575d3; }
 
 #bluehost-nav-popup-inner .dark-blue svg {
-  fill: #16325B; }
+  fill: #16325b; }
 
 #bluehost-nav-popup-inner .green svg {
-  fill: #17B212; }
+  fill: #17b212; }
 
 #bluehost-nav-popup-inner .orange svg {
-  fill: #F89C24; }
+  fill: #f89c24; }
 
 #bluehost-nav-popup-inner .red svg {
-  fill: #D0021B; }
+  fill: #d0021b; }
 
 .bluehost-nav-popup-nav-text {
   display: inline-block;

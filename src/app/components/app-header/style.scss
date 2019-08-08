@@ -1,8 +1,10 @@
+@import '@/config.scss';
+
 #bluehost-header {
   align-self: flex-start;
   width: 100%;
   height: 80px;
-  background: #fff;
+  background: $color-white;
   box-shadow: 0 3px 9px 0 rgba(42,47,69,0.1), 0 2px 5px 0 rgba(42,47,69,0.08), 0 1px 1.5px 0 rgba(0,0,0,0.08), 0 1px 2px 0 rgba(0,0,0,0.08);
 }
 
@@ -22,7 +24,7 @@
 }
 
 #bluehost-nav-wrap svg {
-   fill: #5C5C5C;
+   fill: $color-black;
    margin-left: 24px;
 }
 
@@ -48,7 +50,7 @@
 }
 
 #bluehost-nav-popup-inner ul li a {
-    color: #5C5C5C;
+    color: $color-black;
     display: block;
     padding: 16px 24px;
     text-decoration: none;
@@ -66,27 +68,27 @@
 }
 
 #bluehost-nav-popup-inner .gray svg {
-	fill: #999999;
+	fill: $color-grey;
 }
 
 #bluehost-nav-popup-inner .blue svg {
-	fill: #3575D3;
+	fill: $color-blue;
 }
 
 #bluehost-nav-popup-inner .dark-blue svg {
-	fill: #16325B;
+	fill: $color-dark-blue;
 }
 
 #bluehost-nav-popup-inner .green svg {
-	fill: #17B212;
+	fill: $color-green;
 }
 
 #bluehost-nav-popup-inner .orange svg {
-	fill: #F89C24;
+	fill: $color-orange;
 }
 
 #bluehost-nav-popup-inner .red svg {
-	fill: #D0021B;
+	fill: $color-red;
 }
 
 .bluehost-nav-popup-nav-text {
