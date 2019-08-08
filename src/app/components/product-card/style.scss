@@ -1,0 +1,53 @@
+@import '@/config.scss';
+
+.product-card {
+
+  &__image {
+    overflow: hidden;
+    height: 0;
+    padding-top: (660px/1180px) * 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__details {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 20px 16px 24px 16px;
+  }
+
+  &__action-group {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 16px;
+  }
+
+  &__title {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &__price {
+    margin-left: 24px;
+    font-size: 28px;
+    line-height: 40px;
+    color: $color-primary;
+    &:before {
+      content: "$";
+    }
+  }
+
+  &__favorite {
+    font-size: 2em;
+    position: relative;
+    top: -5px;
+  }
+
+  &__button-primary {
+    margin-left: 8px;
+  }
+
+}
