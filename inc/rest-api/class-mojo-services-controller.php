@@ -33,7 +33,8 @@ class Mojo_Services_Controller extends Mojo_Items_Controller {
 	 */
 	public function get_items( $request ) {
 		$params = array(
-			'type' => 'services',
+			'type'     => 'services',
+			'category' => '',
 		);
 
 		$data = $this->query_mojo_api( $params, $request );
