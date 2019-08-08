@@ -11,3 +11,4 @@
 # Built-app files
 /assets/*
 !/assets/bluehost.css
+!/assets/admin-global.css

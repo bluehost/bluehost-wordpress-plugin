@@ -12,8 +12,7 @@
     }
 }
 
-.bluehost-home-section {
-    max-width: 800px;
+.home-section {
     h2 {
         font-size: 28px;
         line-height: 40px;
@@ -24,6 +23,24 @@
         @media (max-width: 600px) {
             margin-left: -24px;
             width: 100%;
+        }
+    }
+}
+.app-page.home {
+    .action {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: row-reverse;
+        @media (max-width: 600px) {
+            padding-top: 24px;
+            flex-direction: column;
+            align-items: center;
+            .components-button {
+                width: 80%;
+            }
+        }
+        .components-button.is-link {
+            line-height: 26px;
         }
     }
 }

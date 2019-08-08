@@ -32,8 +32,8 @@ const AppPrimaryNavigation = () => (
 				</NavLink>
 			</li>
 			<li className="tab">
-				<NavLink to="/tools">
-					{__('Tools', 'bluehost-wordpress-plugin')}
+				<NavLink to="/tools/staging">
+					{__('Staging', 'bluehost-wordpress-plugin')}
 				</NavLink>
 			</li>
 			<li className="tab">

@@ -1,0 +1,65 @@
+li#toplevel_page_bluehost > ul > li.wp-first-item {
+    display: none !important;
+}
+
+body.admin_page_mojo-theme-preview .wp-full-overlay-sidebar{
+	background-color:#f9f9f9;
+}
+
+.components-button.bluehost {
+  padding: 0.5rem 1rem;
+  border: 0;
+  text-shadow: none;
+  box-shadow: none;
+  height: auto;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none; }
+  .components-button.bluehost.is-primary {
+    border-color: #006a95 #00648c #00648c;
+    box-shadow: inset 0 -1px 0 #00648c;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px #005d82, 1px 0 1px #005d82, 0 1px 1px #005d82, -1px 0 1px #005d82;
+    border: 1px solid transparent;
+    background: #3575d3; }
+    .components-button.bluehost.is-primary:visited {
+      background: #3575d3;
+      color: #fff; }
+  .components-button.bluehost.is-link {
+    font-weight: 300;
+    color: #3575d3; }
+    .components-button.bluehost.is-link:hover {
+      color: #3575d3;
+      text-decoration: underline; }
+  .components-button.bluehost.is-default {
+    border-color: #ccc;
+    background: #f7f7f7;
+    box-shadow: inset 0 -1px 0 #ccc;
+    vertical-align: top;
+    background: transparent;
+    border: 1px solid #3575d3;
+    color: #3575d3;
+ }
+    .components-button.bluehost.is-default:hover {
+      background: #3575d3;
+      color: #fff;
+      text-shadow: none;
+      box-shadow: none; }
+    .components-button.bluehost.is-default:active {
+      background: #3575d3;
+      color: #fff; }
+
+a.wp-has-current-submenu.toplevel_page_bluehost {
+    background: #3575D3 !important;
+    color: #fff !important;
+}
+
+a.wp-has-current-submenu.toplevel_page_bluehost::after {
+    border-right-color: #fff !important;
+}
+
+a.toplevel_page_bluehost > .wp-menu-image.svg {
+    background-size: 16px auto !important;
+}
+
