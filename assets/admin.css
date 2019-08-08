@@ -152,8 +152,13 @@ p {
   fill: #5c5c5c;
   margin-left: 24px; }
 
+.bluehost-nav-wrap-element {
+  display: inline-block; }
+
+.components-popover.bluehost-nav-popup:not(.is-mobile) .components-popover__content {
+  min-width: 256px; }
+
 #bluehost-nav-popup-wrap {
-  position: absolute;
   width: 256px;
   right: 12px;
   top: 100px;
@@ -248,3 +253,5 @@ p {
         line-height: 24px; }
 
 
+
+/*# sourceMappingURL=admin.css.map*/
