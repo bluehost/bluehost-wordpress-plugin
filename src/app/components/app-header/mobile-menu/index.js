@@ -10,16 +10,11 @@ import { AppNavLink as NavLink } from '@/components';
 import './style.scss';
 
 class MobileMenu extends Component {
-
     render () {
         return (
-
+            <></>
         );
     }
 }
-
-const MobileMenu = () => (
-	<HamburgerLogo />
-);
 
 export default MobileMenu;

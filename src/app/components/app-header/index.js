@@ -44,7 +44,7 @@ const NavDropdown = () => (
 );
 
 const MobileIcon = () => (
-
+	<HamburgerLogo />
 );
 
 const AppHeader = () => (
