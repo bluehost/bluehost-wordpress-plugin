@@ -38,7 +38,7 @@ function SiteAcceleratorCard() {
 			isCentered
 			icon={jetpackIcon}
 			title={ __( 'Site Accelerator', 'endurance-wp-module-admin-app' ) }
-			desc={ __( 'Site Accelerator helps your pages load faster by allowing Jetpack to optimize your images and serve your images and static files from a CDN.', 'endurance-wp-module-admin-app' ) }>
+			desc={ __( 'Site acceleration service will resize your images and serve them from a CDN.', 'endurance-wp-module-admin-app' ) }>
 			<Button
 				href={ baseUrl + 'admin.php?page=jetpack#/performance' }
 				isDefault
