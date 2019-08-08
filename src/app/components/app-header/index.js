@@ -11,12 +11,13 @@ import { ReactComponent as BillingLogo } from '@/assets/credit-card-regular.svg'
 import { ReactComponent as ProductsLogo } from '@/assets/box-full-regular.svg';
 import { ReactComponent as SecurityLogo } from '@/assets/shield-check-regular.svg';
 import { ReactComponent as ValidationLogo } from '@/assets/id-card-alt-regular.svg';
-import { ReactComponent as LogoutLogo } from '@/assets/sign-out-regular.svg';
+import { ReactComponent as HamburgerLogo } from '@/assets/hamburger.svg';
 
 /**
  * Internal dependencies
  */
 import './style.scss';
+import MobileMenu from './mobile-menu'
 
 const NavDropdown = () => (
 	<Dropdown
@@ -42,6 +43,10 @@ const NavDropdown = () => (
 	/>
 );
 
+const MobileIcon = () => (
+
+);
+
 const AppHeader = () => (
 	<header id="bluehost-header">
 		<div className="col">
@@ -51,10 +56,13 @@ const AppHeader = () => (
 				</NavLink>
 			</div>
 			<div id="bluehost-nav-wrap">
-				<div className="bluehost-nav-wrap-element">
+				<div className="bluehost-nav-wrap-element help">
 					<a href="https://my.bluehost.com/hosting/help"><HelpLogo /></a>
 				</div>
 				<NavDropdown />
+				<div className="bluehost-nav-wrap-element mobile-toggle">
+					<MobileIcon />
+				</div>
 			</div>
 		</div>
 	</header>

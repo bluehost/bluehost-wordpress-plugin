@@ -50,6 +50,30 @@
     min-width: 256px;
 }
 
+@media (min-width:$menu-breakpoint) {
+  #bluehost-header {
+    .bluehost-nav-wrap-element.user-menu,
+    .bluehost-nav-wrap-element.help {
+      display: inline-block;
+    }
+    .bluehost-nav-wrap-element.mobile-toggle {
+      display: none;
+    }
+  }
+}
+
+@media (max-width:$menu-breakpoint) {
+  #bluehost-header {
+    .bluehost-nav-wrap-element.user-menu,
+    .bluehost-nav-wrap-element.help {
+      display: none;
+    }
+    .bluehost-nav-wrap-element.mobile-toggle {
+      display: inline-block;
+    }
+  }
+}
+
 #bluehost-nav-popup-wrap {
     width: 256px;
     right: 12px;

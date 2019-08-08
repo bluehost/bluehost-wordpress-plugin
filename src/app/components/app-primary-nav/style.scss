@@ -1,3 +1,5 @@
+@import '@/config.scss';
+
 #navigation {
   max-width: 1600px;
 }
@@ -23,5 +25,10 @@
         line-height: 24px;
       }
     }
+  }
+}
+@media(max-width: $menu-breakpoint) {
+  #navigation {
+    display: none;
   }
 }
