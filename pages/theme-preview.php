@@ -15,7 +15,7 @@ if ( is_wp_error( $theme ) ) {
 	$theme = json_decode( $theme['body'] );
 	$theme = $theme->items[0];
 ?>
-<div class="wrap <?php echo mm_brand( 'mojo-%s-branding' );?>">
+<div class="wrap">
 <?php
 	$theme->name = apply_filters( 'mm_item_name', $theme->name );
 	?>
@@ -34,8 +34,8 @@ if ( is_wp_error( $theme ) ) {
 					<?php mm_stars( $theme->rating, $theme->sales_count ); ?>
 					<div class="theme-details text-center">
 						<div role="group" class="btn-group-horizontal">
-							<a class="btn btn-default" href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item_id ), admin_url( 'admin.php' ) ) ); ?>">Details</a>
-							<a class="btn btn-success mm_buy_now" href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item_id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_preview' ) ); ?>">Buy Now</a>
+							<a class="button components-button bluehost is-default" href="<?php echo esc_url( add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $item_id ), admin_url( 'admin.php' ) ) ); ?>">Details</a>
+							<a class="button components-button bluehost is-primary" href="<?php echo mm_build_link( add_query_arg( array( 'item_id' => $item_id ), 'https://www.mojomarketplace.com/cart' ), array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'buy_now_preview' ) ); ?>">Buy Now</a>
 						</div>
 						<br/>
 						<div class="price">
