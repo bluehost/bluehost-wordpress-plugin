@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{35:function(e,n,t){"use strict";t.r(n);var s=t(0),u=t(3),c=t(10);n.default=function(){return Object(s.createElement)(c.d,null,Object(u.__)("Themes Page","bluehost-wordpress-plugin"))}}}]);

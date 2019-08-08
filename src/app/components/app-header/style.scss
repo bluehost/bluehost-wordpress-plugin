@@ -1,12 +1,102 @@
+@import '@/config.scss';
+
 #bluehost-header {
   align-self: flex-start;
   width: 100%;
   height: 80px;
-  background: #fff;
+  background: $color-white;
   box-shadow: 0 3px 9px 0 rgba(42,47,69,0.1), 0 2px 5px 0 rgba(42,47,69,0.08), 0 1px 1.5px 0 rgba(0,0,0,0.08), 0 1px 2px 0 rgba(0,0,0,0.08);
 }
 
 #bluehost-logo-wrap {
+  float: left;
   width: 200px;
-  padding: 1.5rem 3rem 0 2rem;
+  padding: 1.5rem 3rem 0 0;
+  svg {
+    max-height: 24px;
+  }
+}
+
+#bluehost-nav-wrap {
+  float: right;
+  padding: 28px 24px 24px 0;
+  text-align: right;
+}
+
+#bluehost-nav-wrap a {
+}
+
+#bluehost-nav-wrap svg {
+   fill: $color-black;
+   margin-left: 24px;
+}
+
+#bluehost-nav-popup-wrap {
+    position: absolute;
+    width: 256px;
+    right: 12px;
+    top: 100px;
+    text-align: left;
+    background-color: #fff;
+    box-shadow: 0 7px 14px 0 rgba(60, 66, 87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
+    z-index: 9999;
+}
+
+#bluehost-nav-popup-inner {
+    padding: 8px 0;
+}
+
+#bluehost-nav-popup-inner ul,
+#bluehost-nav-popup-inner ul li {
+    padding: 0;
+    margin: 0;
+}
+
+#bluehost-nav-popup-inner ul li a {
+    color: $color-black;
+    display: block;
+    padding: 16px 24px;
+    text-decoration: none;
+}
+
+.bluehost-nav-popup-nav-icon {
+	display: inline-block;
+	margin-bottom: -4px;
+    padding: 0 16px 0 0;
+	vertical-align: middle;
+}
+
+#bluehost-nav-popup-inner svg {
+    margin-left: 0;
+}
+
+#bluehost-nav-popup-inner .gray svg {
+	fill: $color-grey;
+}
+
+#bluehost-nav-popup-inner .blue svg {
+	fill: $color-blue;
+}
+
+#bluehost-nav-popup-inner .dark-blue svg {
+	fill: $color-dark-blue;
+}
+
+#bluehost-nav-popup-inner .green svg {
+	fill: $color-green;
+}
+
+#bluehost-nav-popup-inner .orange svg {
+	fill: $color-orange;
+}
+
+#bluehost-nav-popup-inner .red svg {
+	fill: $color-red;
+}
+
+.bluehost-nav-popup-nav-text {
+	display: inline-block;
+	font-size: 16px;
+	line-height: 24px;
+	vertical-align: middle;
 }

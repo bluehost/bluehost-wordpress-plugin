@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "lint": [
-      "vendor/bin/phpcs --ignore=*/vendor/* ."
+      "vendor/bin/phpcs --standard=vendor/bluehost/wp-php-standards/Bluehost/ruleset.xml ."
     ],
     "post-install-cmd": [
       "xrstf\\Composer52\\Generator::onPostInstallCmd"

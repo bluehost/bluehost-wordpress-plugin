@@ -15,8 +15,7 @@ import './app.scss';
 
 import {
 	AppHeader,
-	AppPrimaryNav,
-	AppFooter,
+	AppPrimaryNav
 } from '@/components';
 
 import AppMain from './main';
@@ -48,7 +47,7 @@ class App extends Component {
 		return (
 			<div>
 				<Router>
-					<main id="bluehost-app-wrap" className="animated fadeIn fast">
+					<main id="bluehost-app-wrap" className="bluehost-app-wrap animated fadeIn fast">
 						<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
 							{ __( 'Skip to Navigation', bluehost_i18n ) }
 						</a>
