@@ -1,0 +1,10 @@
+.dropdown {
+  &__label {
+    &:after {
+      content: ':';
+    }
+  }
+  &__input {
+    margin-left: 14px;
+  }
+}

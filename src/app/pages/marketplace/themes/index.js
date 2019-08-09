@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import apiFetch from '@wordpress/api-fetch';
-import {Fragment, useState, useEffect} from '@wordpress/element';
+import {useState, useEffect} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
 
 /**
@@ -42,30 +42,37 @@ export default function ThemesPage() {
     const [items, setItems] = useState([]);
     const [pageCount, setPageCount] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
+    const [sortBy, setSortBy] = useState('popular');
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
+        setLoading(true);
         const urlParams = new URLSearchParams('');
         urlParams.append('page', currentPage);
+        if (search.length) {
+            urlParams.append('search', search);
+        }
         apiFetch({path: '/mojo/v1/themes?' + urlParams.toString()})
             .then(
                 (response) => {
+                    console.log(urlParams.toString(), response);
                     setItems(response.items);
                     setPageCount(response.pageCount);
                     setLoading(false);
                 }
             );
-    }, [currentPage]);
+    }, [currentPage, search]);
 
     return (
         <AppPage>
             <h1>{__('Premium Themes', 'bluehost-wordpress-plugin')}</h1>
             <Pagination callback={setCurrentPage} currentPage={currentPage} pageCount={pageCount}/>
-            <Search/>
+            <Search value={search} onChange={setSearch}/>
             <Dropdown
                 label={__('Sort By', 'bluehost-wordpress-plugin')}
-                onChange={(e) => console.log(e)}
+                onChange={(e) => setSortBy(e.target.value)}
                 options={options}
-                value={'popular'}
+                value={sortBy}
             />
             {
                 isLoading ? (
