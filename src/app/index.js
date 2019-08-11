@@ -14,6 +14,7 @@ import { __ } from '@wordpress/i18n';
 import './app.scss';
 
 import {
+	AppError,
 	AppHeader,
 	AppPrimaryNav
 } from '@/components';
@@ -31,19 +32,30 @@ class App extends Component {
 		// make refs/this available in
 		this.handleNavFocus = this.handleNavFocus.bind( this );
 		this.handleContentFocus = this.handleContentFocus.bind( this );
+		this.state = {
+			hasError: false
+		};
 	}
 
-	handleNavFocus( event ) {
+	handleNavFocus(event) {
 		event.preventDefault(); // no anchor jumps that done bork hash-routing
 		this.navFocus.current.focus( { preventScroll: true } );
 	}
 
-	handleContentFocus( event ) {
+	handleContentFocus(event) {
 		event.preventDefault(); // no anchor jumps that done bork hash-routing
 		this.contentFocus.current.focus( { preventScroll: true } );
 	}
+	
+	componentDidCatch(error, info) {
+		this.setState({ hasError: true });
+		console.log(error);
+	}
 
 	render() {
+		if ( this.state.hasError ) {
+			return <AppError />;
+		}
 		return (
 			<div>
 				<Router>
@@ -66,7 +78,6 @@ class App extends Component {
 					</main>
 				</Router>
 			</div>
-
 		);
 	}
 }
