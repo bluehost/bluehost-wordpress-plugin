@@ -4,14 +4,16 @@
 import { __ } from '@wordpress/i18n';
 import { AppButton as Button, AppNavLink as NavLink } from '@/components';
 import { Dropdown } from '@wordpress/components';
-import { ReactComponent as BlueHostLogo } from '@/assets/bluehost.svg';
-import { ReactComponent as AstronautLogo } from '@/assets/user-astronaut-light.svg';
-import { ReactComponent as HelpLogo } from '@/assets/question-circle-regular.svg';
-import { ReactComponent as BillingLogo } from '@/assets/credit-card-regular.svg';
-import { ReactComponent as ProductsLogo } from '@/assets/box-full-regular.svg';
-import { ReactComponent as SecurityLogo } from '@/assets/shield-check-regular.svg';
-import { ReactComponent as ValidationLogo } from '@/assets/id-card-alt-regular.svg';
-import { ReactComponent as HamburgerLogo } from '@/assets/hamburger.svg';
+import { Component } from '@wordpress/element';
+import { ReactComponent as BluehostLogo } from '@/assets/bluehost.svg';
+import { ReactComponent as AstronautIcon } from '@/assets/user-astronaut-light.svg';
+import { ReactComponent as HelpIcon } from '@/assets/question-circle-regular.svg';
+import { ReactComponent as BillingIcon } from '@/assets/credit-card-regular.svg';
+import { ReactComponent as ProductsIcon } from '@/assets/box-full-regular.svg';
+import { ReactComponent as SecurityIcon } from '@/assets/shield-check-regular.svg';
+import { ReactComponent as ValidationIcon } from '@/assets/id-card-alt-regular.svg';
+import { ReactComponent as HamburgerIcon } from '@/assets/hamburger.svg';
+import { ReactComponent as CloseIcon } from '@/assets/close.svg';
 
 /**
  * Internal dependencies
@@ -25,17 +27,17 @@ const NavDropdown = () => (
 		contentClassName="bluehost-nav-popup"
 		position="120px 24px"
 		renderToggle={ ( { isOpen, onToggle } ) => (
-				<AstronautLogo onClick={ onToggle } aria-expanded={ isOpen } />
+				<AstronautIcon onClick={ onToggle } aria-expanded={ isOpen } />
 		) }
 		renderContent={ () => (
 			<div id="bluehost-nav-popup-wrap">
 				<div id="bluehost-nav-popup-inner">
 					<ul>
-						<li><a href="https://my.bluehost.com/hosting/app"><span className="bluehost-nav-popup-nav-icon gray"><AstronautLogo /></span><span className="bluehost-nav-popup-nav-text">Bluehost Account</span></a></li>
-						<li><a href="https://my.bluehost.com/hosting/account_center#billing"><span className="bluehost-nav-popup-nav-icon blue"><BillingLogo /></span><span className="bluehost-nav-popup-nav-text">Billing</span></a></li>
-						<li><a href="https://my.bluehost.com/hosting/account_center#products"><span className="bluehost-nav-popup-nav-icon dark-blue"><ProductsLogo /></span><span className="bluehost-nav-popup-nav-text">Products</span></a></li>
-						<li><a href="https://my.bluehost.com/hosting/account_center#security"><span className="bluehost-nav-popup-nav-icon green"><SecurityLogo /></span><span className="bluehost-nav-popup-nav-text">Security</span></a></li>
-						<li><a href="#"><span className="bluehost-nav-popup-nav-icon orange"><ValidationLogo /></span><span className="bluehost-nav-popup-nav-text">Validation Token</span></a></li>
+						<li><a href="https://my.bluehost.com/hosting/app"><span className="bluehost-nav-popup-nav-icon gray"><AstronautIcon /></span><span className="bluehost-nav-popup-nav-text">Bluehost Account</span></a></li>
+						<li><a href="https://my.bluehost.com/hosting/account_center#billing"><span className="bluehost-nav-popup-nav-icon blue"><BillingIcon /></span><span className="bluehost-nav-popup-nav-text">Billing</span></a></li>
+						<li><a href="https://my.bluehost.com/hosting/account_center#products"><span className="bluehost-nav-popup-nav-icon dark-blue"><ProductsIcon /></span><span className="bluehost-nav-popup-nav-text">Products</span></a></li>
+						<li><a href="https://my.bluehost.com/hosting/account_center#security"><span className="bluehost-nav-popup-nav-icon green"><SecurityIcon /></span><span className="bluehost-nav-popup-nav-text">Security</span></a></li>
+						<li><a href="#"><span className="bluehost-nav-popup-nav-icon orange"><ValidationIcon /></span><span className="bluehost-nav-popup-nav-text">Validation Token</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -43,29 +45,60 @@ const NavDropdown = () => (
 	/>
 );
 
-const MobileIcon = () => (
-	<HamburgerLogo />
-);
+class AppHeader extends Component {
+	constructor(props) {
+		super(props);
+		this.toggleMobileMenu = this.toggleMobileMenu.bind( this );
+		this.state = { mobileMenuActive: 0 };
+	}
 
-const AppHeader = () => (
-	<header id="bluehost-header">
-		<div className="col">
-			<div id="bluehost-logo-wrap">
-				<NavLink to="/home" activeClassName="is-home">
-					<BlueHostLogo />
-				</NavLink>
-			</div>
-			<div id="bluehost-nav-wrap">
-				<div className="bluehost-nav-wrap-element help">
-					<a href="https://my.bluehost.com/hosting/help"><HelpLogo /></a>
+	toggleMobileMenu() {
+		if ( this.state.mobileMenuActive ) {
+			this.setState((state) => {
+				return {mobileMenuActive: 0}
+			});
+			document.body.classList.remove('bluehost-mobile-menu')
+		} else {
+			this.setState((state) => {
+				return {mobileMenuActive: 1}
+			});
+			document.body.classList.add('bluehost-mobile-menu')
+		}
+	}
+
+	mobileIcon() {
+		if ( 1 === this.state.mobileMenuActive ) {
+			return <CloseIcon onClick={this.toggleMobileMenu} />;
+		} else {
+			return <HamburgerIcon onClick={this.toggleMobileMenu} />;
+		}
+	}
+
+	render() {
+		return (
+			<header id="bluehost-header">
+				<div className="col">
+					<div id="bluehost-logo-wrap">
+						<NavLink to="/home" activeClassName="is-home">
+							<BluehostLogo />
+						</NavLink>
+					</div>
+					<div id="bluehost-nav-wrap">
+						<div className="bluehost-nav-wrap-element help">
+							<a href="https://my.bluehost.com/hosting/help"><HelpIcon /></a>
+						</div>
+						<NavDropdown />
+						<div className="bluehost-nav-wrap-element mobile-toggle">
+							{this.mobileIcon()}
+							{1 === this.state.mobileMenuActive && (
+								<MobileMenu />
+							)}
+						</div>
+					</div>
 				</div>
-				<NavDropdown />
-				<div className="bluehost-nav-wrap-element mobile-toggle">
-					<MobileIcon />
-				</div>
-			</div>
-		</div>
-	</header>
-);
+			</header>
+		);
+	}
+}
 
 export default AppHeader;

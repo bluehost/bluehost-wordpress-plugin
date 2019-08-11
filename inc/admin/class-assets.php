@@ -64,7 +64,7 @@ class Bluehost_Admin_App_Assets {
 		$rand = time();
 		wp_register_style(
 			'bluehost-font',
-			'https://fonts.googleapis.com/css?family=Open+Sans:300,600'
+			'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600'
 		);
 
 		wp_register_script(

@@ -1,0 +1,46 @@
+@import '@/config.scss';
+
+#bluehost-mobile-menu {
+    position: absolute;
+    display: block;
+    top: 46px;
+    left: 0;
+    width: 80vw;
+    height: 100vh;
+    background: #fff;
+    box-shadow: 0 3px 9px 0 rgba(42,47,69,0.1), 0 2px 5px 0 rgba(42,47,69,0.08), 0 1px 1.5px 0 rgba(0,0,0,0.08), 0 1px 2px 0 rgba(0,0,0,0.08);
+    z-index: 99;
+    .logo-wrap {
+        margin-top: 1.5rem;
+        svg {
+            max-height: 24px;
+            max-width: 200px;
+            margin: 0;
+            float: left;
+        }
+    }
+    .mobile-nav {
+        float: left;
+        clear: both;
+        padding: 2rem 0 0 0;
+        text-align: left;
+        width: 100%;
+        li {
+            height: 56px;
+            overflow: hidden;
+            a {
+                color: $color-black;
+                font-family: $font;
+                font-size: 16px;
+                line-height: 24px;
+                margin: 16px 0 16px 24px;
+                text-decoration: none;
+            }
+        }
+    }
+}
+@media (min-width:600px) {
+    #bluehost-mobile-menu {
+        top: 0;
+    }
+}
