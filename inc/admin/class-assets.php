@@ -27,8 +27,7 @@ class Bluehost_Admin_App_Assets {
 		'wp-keycodes',
 		'wp-element',
 		'wp-components',
-		'react-router-dom',
-		'axios'
+		'react-router-dom'
 	);
 	/**
 	 * Undocumented function
@@ -65,13 +64,6 @@ class Bluehost_Admin_App_Assets {
 		wp_register_style(
 			'bluehost-font',
 			'https://fonts.googleapis.com/css?family=Open+Sans:300,600'
-		);
-
-		wp_register_script(
-			'axios',
-			$this->url . 'axios' . $min . '.js',
-			array(),
-			empty( $min ) ? $rand : '0.18.0'
 		);
 
 		wp_register_script(

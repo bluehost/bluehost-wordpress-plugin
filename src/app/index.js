@@ -7,7 +7,6 @@ import { Component, createRef } from '@wordpress/element';
  */
 import { HashRouter as Router } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
-
 /**
  * Internal dependencies
  */
@@ -46,14 +45,9 @@ class App extends Component {
 		event.preventDefault(); // no anchor jumps that done bork hash-routing
 		this.contentFocus.current.focus( { preventScroll: true } );
 	}
-	
-	componentDidCatch(error, info) {
-		this.setState({ hasError: true });
-		console.log(error);
-	}
 
 	render() {
-		if ( this.state.hasError ) {
+		if (true === this.state.hasError) {
 			return <AppError />;
 		}
 		return (

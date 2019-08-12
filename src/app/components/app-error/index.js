@@ -10,9 +10,9 @@ const AppError = () => (
             <WarningIcon className="animated heartBeat" />
         </div>
         <h3 className="animated fadeIn">{__( 'There was a problem loading the Bluehost Plugin.')}</h3>
-        <p className="cta-wrap animated fadeIn">{__( 'This usually happens when another plugin is out-of-date or incompatible.')}<br />{__('Get in touch and we\'ll figure out the problem.')}</p>
+        <p className="cta-wrap animated fadeIn">{__( 'This usually happens when another plugin is out-of-date or incompatible.')}<br />{__('Get in touch and we\'ll sort out the issue.')}</p>
         <div className="cta-wrap animated fadeIn">
-            <Button href="https://bluehost.com/support" isPrimary>Contact Support</Button>
+            <Button href="https://bluehost.com/support" isPrimary>{__('Contact Support')}</Button>
         </div>
         <div className="error-illustration-wrap animated fadeIn">
             <ErrorStateIllustration />
