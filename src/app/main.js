@@ -18,6 +18,7 @@ import { AppSpinner } from '@/components';
 
 const AppMain = () => (
 	<main>
+		{doThisThing()}
 		<Suspense fallback={ <AppSpinner /> }>
 			<Switch>
 				<Route path="/home" render={ () => ( <HomeRoute /> ) } />

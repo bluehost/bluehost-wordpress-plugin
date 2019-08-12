@@ -1,12 +1,16 @@
 /**
  * WordPress dependencies
  */
+import { Snackbar, SnackbarList } from '@wordpress/components';
 import { Component, createRef } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 /**
  * External dependencies
  */
 import { HashRouter as Router } from 'react-router-dom';
-import { __ } from '@wordpress/i18n';
+import axios from 'axios';
+import qs from 'qs';
+import browser from 'browser-detect';
 /**
  * Internal dependencies
  */
@@ -32,7 +36,8 @@ class App extends Component {
 		this.handleNavFocus = this.handleNavFocus.bind( this );
 		this.handleContentFocus = this.handleContentFocus.bind( this );
 		this.state = {
-			hasError: false
+			hasError: false,
+			errorLogged: false
 		};
 	}
 
@@ -46,9 +51,30 @@ class App extends Component {
 		this.contentFocus.current.focus( { preventScroll: true } );
 	}
 
+	componentDidCatch(error,info) {
+		this.setState({ hasError: true });
+		const browserResult = browser();
+		axios.post( 
+			'/wp-json/bluehost/v1/error/track', 
+			qs.stringify({
+				date: new Date(), 
+				message: error.message,
+				browser: browserResult
+			})
+			).then(function(response) {
+				console.log( 'it the axios response');
+				this.setState({ errorLogged: true });
+			})
+	}
+
 	render() {
 		if (true === this.state.hasError) {
-			return <AppError />;
+
+			return (
+				<div>
+					<AppError errorLogged={this.state.errorLogged} />
+				</div>
+			);
 		}
 		return (
 			<div>

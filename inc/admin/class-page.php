@@ -32,28 +32,21 @@ class Bluehost_Admin_App_Page {
 		return self::$instance;
 	}
 	/**
-	 *
+	 * Register Bluehost Page & Subpages with WordPress.
 	 */
 	protected function primary_init() {
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
 		add_action( 'admin_menu', array( $this, 'add_sub_pages' ) );
 	}
 	/**
-	 * Register WordPress Admin Page for Admin App
+	 * Register Primary WordPress Admin Page for Admin App
 	 *
 	 * @return void
 	 */
 	public function add_menu_page() {
-		$bubble_count = apply_filters( 'bluehost_menu_bubble_count', 0 );
-
-		if ( $bubble_count > 0 ) {
-			$menu_label = sprintf( 'Bluehost <span class="awaiting-mod">%d</span>', $bubble_count );
-		} else {
-			$menu_label = 'Bluehost';
-		}
 		add_menu_page(
 			'Bluehost',
-			$menu_label,
+			$this->primary_title_markup(),
 			'manage_options',
 			'bluehost',
 			array( $this, 'menu_page_output' ),
@@ -110,5 +103,17 @@ class Bluehost_Admin_App_Page {
 
 	public function handle_subpage_redirect() {
 		// TODO: Add button to go to Plugin Home
+	}
+
+	public function primary_title_markup() {
+		$bubble_count = apply_filters( 'bluehost_menu_bubble_count', 0 );
+
+		if ( $bubble_count > 0 ) {
+			$menu_label = sprintf( 'Bluehost <span class="awaiting-mod">%d</span>', $bubble_count );
+		} else {
+			$menu_label = 'Bluehost';
+		}
+
+		return $menu_label;
 	}
 }

@@ -33,6 +33,11 @@ const pureCss = [
     { from: 'node_modules/purecss/build/pure-min.css', to: 'pure/pure.min.css' },
 ];
 
+const axiosJs = [
+    { from: 'node_modules/axios/dist/axios.js', to: 'axios.js' },
+    { from: 'node_modules/axios/dist/axios.min.js', to: 'axios.min.js' },
+];
+
 const reactRouterDOM = [
     { from: 'node_modules/react-router-dom/umd/react-router-dom.js', to: 'react-router-dom.js' },
     { from: 'node_modules/react-router-dom/umd/react-router-dom.min.js', to: 'react-router-dom.min.js' },
@@ -41,6 +46,7 @@ const reactRouterDOM = [
 const vendorFileMatrix = _.union(
     animateCss,
     pureCss,
+    axiosJs,
     reactRouterDOM
 );
 
