@@ -1,14 +1,16 @@
 <?php
 
+/**
+ * Class Mojo_Themes_Controller
+ */
 class Mojo_Themes_Controller extends Mojo_Items_Controller {
 
 	/**
-	 * Setup the endpoint.
+	 * The base of this controller's route.
+	 *
+	 * @var string
 	 */
-	function __construct() {
-		$this->type = 'themes';
-		$this->base = 'themes';
-	}
+	protected $rest_base = 'themes';
 
 	/**
 	 * Register the routes for the objects of the controller.
@@ -16,15 +18,15 @@ class Mojo_Themes_Controller extends Mojo_Items_Controller {
 	public function register_routes() {
 		register_rest_route(
 			$this->namespace,
-			'/' . $this->base,
-			array(
-				array(
+			'/' . $this->rest_base,
+			[
+				[
 					'methods'             => WP_REST_Server::READABLE,
-					'callback'            => array( $this, 'get_items' ),
-					'permission_callback' => array( $this, 'get_items_permissions_check' ),
+					'callback'            => [ $this, 'get_items' ],
+					'permission_callback' => [ $this, 'get_items_permissions_check' ],
 					'args'                => $this->get_collection_params(),
-				),
-			)
+				],
+			]
 		);
 	}
 
@@ -32,33 +34,14 @@ class Mojo_Themes_Controller extends Mojo_Items_Controller {
 	 * Get a collection of items
 	 *
 	 * @param WP_REST_Request $request Full data about the request.
+	 *
 	 * @return WP_Error|WP_REST_Response
 	 */
 	public function get_items( $request ) {
-		$params = array(
-			'item_type' => 'themes',
-		);
+		$params = [ 'item_type' => 'themes' ];
+		$data   = $this->query_mojo_search( $params, $request );
 
-		$data = $this->query_mojo_api( $params, $request );
-
-		return new WP_REST_Response( $data, 200 );
-
-		foreach ( $items as $item ) {
-			$itemdata = $this->prepare_item_for_response( $item, $request );
-			$data[]   = $this->prepare_response_for_collection( $itemdata );
-		}
-
-		return new WP_REST_Response( $data, 200 );
+		return rest_ensure_response( $data );
 	}
 
-	/**
-	 * Prepare the item for the REST response
-	 *
-	 * @param mixed           $item WordPress representation of the item.
-	 * @param WP_REST_Request $request Request object.
-	 * @return mixed
-	 */
-	public function prepare_item_for_response( $item, $request ) {
-		return array();
-	}
 }

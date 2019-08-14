@@ -4,73 +4,145 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 
 	protected $namespace = 'mojo/v1';
 
-	protected $base = 'themes';
+	protected $rest_base = 'items';
 
-	protected $type = 'themes';
+	/**
+	 * Query the Mojo items endpoint.
+	 *
+	 * @param array            $params
+	 * @param \WP_REST_Request $request
+	 *
+	 * @return array|mixed|object|null
+	 */
+	public function query_mojo_items( $params, WP_REST_Request $request ) {
+		$params       = wp_parse_args( $this->get_params( $params, $request ), $request->get_default_params() );
+		$api_url      = add_query_arg( $params, 'https://api.mojomarketplace.com/api/v2/items' );
+		$api_response = mm_api_cache( $api_url );
 
-	public function query_mojo_api( $params, $request ) {
-		$api_url = 'https://api.mojomarketplace.com/api/v2/search';
-		$defaults = array_merge(
-			array(
-				'item_type' => 'themes',
-				'category'  => 'wordpress',
-				'size'      => 12,
-				'order'     => 'sales',
-				'direction' => 'desc',
-			),
-			$request->get_default_params()
-		);
+		return $this->get_response( $api_response );
+	}
 
-		if ( ! empty( $request['page'] ) ) {
-			$params['page'] = $request->get_param( 'page' );
+	/**
+	 * Query the Mojo search endpoint.
+	 *
+	 * @param array            $params
+	 * @param \WP_REST_Request $request
+	 *
+	 * @return array|mixed|object|null
+	 */
+	public function query_mojo_search( $params, WP_REST_Request $request ) {
+		$params = wp_parse_args( $this->get_params( $params, $request ), $request->get_default_params() );
+
+		// Rename 'count' to 'size' for Mojo search endpoint.
+		if ( ! empty( $params['count'] ) ) {
+			$params['size'] = $params['count'];
+			unset( $params['count'] );
 		}
 
-		if ( ! empty( $request['sort'] ) ) {
-			$params['order'] = $request->get_param( 'sort' );
+		// Rename 'count' to 'size' for Mojo search endpoint.
+		if ( ! empty( $params['type'] ) ) {
+			$params['item_type'] = $params['type'];
+			unset( $params['item_type'] );
+		}
+
+		$api_url      = add_query_arg( $params, 'https://api.mojomarketplace.com/api/v2/search' );
+		$api_response = mm_api_cache( $api_url );
+
+		return $this->get_response( $api_response );
+	}
+
+	/**
+	 * Get all applicable params.
+	 *
+	 * @param array            $params
+	 * @param \WP_REST_Request $request
+	 *
+	 * @return array
+	 */
+	public function get_params( $params, WP_REST_Request $request ) {
+
+		if ( ! empty( $request['category'] ) ) {
+			$params['category'] = $request->get_param( 'category' );
+		}
+
+		if ( ! empty( $request['count'] ) ) {
+			$params['count'] = $request->get_param( 'count' );
 		}
 
 		if ( ! empty( $request['direction'] ) ) {
 			$params['direction'] = $request->get_param( 'direction' );
 		}
 
-		if ( ! empty( $request['search'] ) ) {
-			$params['query'] = $request->get_param( 'search' );
+		if ( ! empty( $request['itemCategory'] ) ) {
+			$params['itemCategory'] = $request->get_param( 'itemCategory' );
 		}
 
-		$params = wp_parse_args( $params, $defaults );
-		$api_url = add_query_arg( $params, $api_url );
-		$api_response = mm_api_cache( $api_url );
-
-		if ( is_wp_error( $api_response ) ) {
-			$this->handle_error( $api_response );
-		} else {
-			return json_decode( $api_response['body'] );
+		if ( ! empty( $request['order'] ) ) {
+			$params['order'] = $request->get_param( 'order' );
 		}
+
+		if ( ! empty( $request['page'] ) ) {
+			$params['page'] = $request->get_param( 'page' );
+		}
+
+		if ( ! empty( $request['query'] ) ) {
+			$params['query'] = $request->get_param( 'query' );
+		}
+
+		if ( ! empty( $request['seller'] ) ) {
+			$params['seller'] = $request->get_param( 'seller' );
+		}
+
+		if ( ! empty( $request['services'] ) ) {
+			$params['services'] = $request->get_param( 'services' );
+		}
+
+		if ( ! empty( $request['type'] ) ) {
+			$params['type'] = $request->get_param( 'type' );
+		}
+
+		return $params;
 	}
 
-	public function perform_mojo_search( $params, $request ) {
-		$api_url = 'https://api.mojomarketplace.com/api/v2/search';
-		$defaults = array_merge(
-			array(
-				'item_type' => 'themes',
-				'category'  => 'wordpress',
-				'size'      => 12,
-				'order'     => 'sales',
-				'direction' => 'desc',
-			),
-			$request->get_default_params()
-		);
+	/**
+	 * Get the REST response from the Mojo API response.
+	 *
+	 * @param array|\WP_Error $api_response
+	 *
+	 * @return array
+	 */
+	public function get_response( $api_response ) {
 
-		$params['search'] = sanitize_title_for_query( $request['search'] );
-		$params = wp_parse_args( $params, $defaults );
-		$api_url = add_query_arg( $params, $api_url );
-		$api_response = mm_api_cache( $api_url );
+		$status_code = absint( wp_remote_retrieve_response_code( $api_response ) );
+
+		$response = [
+			'status'     => 'error',
+			'statusCode' => $status_code,
+			'message'    => 'An unknown error occurred.',
+		];
 
 		if ( is_wp_error( $api_response ) ) {
-			$this->handle_error( $api_response );
-		} else {
-			return json_decode( $api_response['body'] );
+			return $response;
 		}
+
+		$body = wp_remote_retrieve_body( $api_response );
+		if ( empty( $body ) ) {
+			$response['message'] = 'Unable to parse response body.';
+		}
+
+		$data = json_decode( $body, true );
+		if ( ! $data ) {
+			$response['message'] = 'Unable to parse response JSON.';
+		}
+
+		$response = array_merge( $data, [ 'statusCode' => $status_code ] );
+
+		// Ensure page property is always an integer.
+		if ( isset( $response['page'] ) && ! is_int( $response['page'] ) ) {
+			$response['page'] = absint( $response['page'] );
+		}
+
+		return rest_ensure_response( $response );
 	}
 
 	/**
@@ -91,7 +163,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Prepare the item for the REST response
 	 *
-	 * @param mixed $item WordPress representation of the item.
+	 * @param mixed           $item WordPress representation of the item.
 	 * @param WP_REST_Request $request Request object.
 	 *
 	 * @return mixed
@@ -107,11 +179,6 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	 */
 	public function get_collection_params() {
 		return array(
-			'seller'       => array(
-				'description'       => 'User ID or brand profile name.',
-				'type'              => 'string',
-				'sanitize_callback' => 'sanitize_text_field',
-			),
 			'category'     => array(
 				'description' => 'Category ID or slug (this is ItemTypeCategory).',
 				'type'        => 'string',
@@ -120,7 +187,21 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 				),
 				'default'     => 'wordpress',
 			),
-			'itemcategory' => array(
+			'count'        => array(
+				'description' => 'Maximum number of items to return (maximum allowed is 50).',
+				'type'        => 'integer',
+				'default'     => 12,
+			),
+			'direction'    => array(
+				'description' => 'Sort direction.',
+				'type'        => 'string',
+				'enum'        => array(
+					'asc',
+					'desc',
+				),
+				'default'     => 'desc',
+			),
+			'itemCategory' => array(
 				'description'       => 'Item Category slug (this is ItemCategory).',
 				'type'              => 'string',
 				'sanitize_callback' => 'sanitize_text_field',
@@ -136,6 +217,25 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 				),
 				'default'     => 'sales',
 			),
+			'page'         => array(
+				'description' => 'Offset from the first several items (maximum allowed is 10).',
+				'type'        => 'integer',
+			),
+			'query'        => array(
+				'description' => 'A search query.',
+				'type'        => 'string',
+				'default'     => '',
+			),
+			'seller'       => array(
+				'description'       => 'User ID or brand profile name.',
+				'type'              => 'string',
+				'sanitize_callback' => 'sanitize_text_field',
+			),
+			'services'     => array(
+				'description' => 'Indicates that services should be returned instead of purchasable items. If you define the type as services then you can ignore this flag.',
+				'type'        => 'boolean',
+				'default'     => false,
+			),
 			'type'         => array(
 				'description' => 'Item type.',
 				'type'        => 'string',
@@ -146,34 +246,6 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 					'services',
 				),
 				'default'     => 'themes',
-			),
-			'services'     => array(
-				'description' => 'Indicates that services should be returned instead of purchasable items. If you define the type as services then you can ignore this flag.',
-				'type'        => 'boolean',
-				'default'     => false,
-			),
-			'count'        => array(
-				'description' => 'Maximum number of items to return (maximum allowed is 50).',
-				'type'        => 'integer',
-				'default'     => 20,
-			),
-			'page'         => array(
-				'description' => 'Offset from the first several items (maximum allowed is 10).',
-				'type'        => 'integer',
-			),
-			'direction'    => array(
-				'description' => 'Sort direction.',
-				'type'        => 'string',
-				'enum'        => array(
-					'asc',
-					'desc',
-				),
-				'default'     => 'desc',
-			),
-			'search'       => array(
-				'description' => 'A search query.',
-				'type'        => 'string',
-				'default'     => '',
 			),
 		);
 	}
