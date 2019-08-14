@@ -21,7 +21,7 @@ import {
 const options = [
     {
         label: __('Popular', 'bluehost-wordpress-plugin'),
-        value: 'popular',
+        value: 'rating',
     },
     {
         label: __('Price', 'bluehost-wordpress-plugin'),
@@ -42,13 +42,24 @@ export default function ThemesPage() {
     const [items, setItems] = useState([]);
     const [pageCount, setPageCount] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
-    const [sortBy, setSortBy] = useState('popular');
+    const [sortBy, setSortBy] = useState('rating');
     const [search, setSearch] = useState('');
+
+    useEffect(() => {
+        // When the search field changes, reset current page to 1
+        setCurrentPage(1);
+    }, [search]);
+
+    useEffect(() => {
+        // When the sort field changes, reset current page to 1
+        setCurrentPage(1);
+    }, [sortBy]);
 
     useEffect(() => {
         setLoading(true);
         const urlParams = new URLSearchParams('');
         urlParams.append('page', currentPage);
+        urlParams.append('sort', sortBy);
         if (search.length) {
             urlParams.append('search', search);
         }
@@ -61,19 +72,25 @@ export default function ThemesPage() {
                     setLoading(false);
                 }
             );
-    }, [currentPage, search]);
+    }, [currentPage, search, sortBy]);
 
     return (
-        <AppPage>
-            <h1>{__('Premium Themes', 'bluehost-wordpress-plugin')}</h1>
-            <Pagination callback={setCurrentPage} currentPage={currentPage} pageCount={pageCount}/>
-            <Search value={search} onChange={setSearch}/>
-            <Dropdown
-                label={__('Sort By', 'bluehost-wordpress-plugin')}
-                onChange={(e) => setSortBy(e.target.value)}
-                options={options}
-                value={sortBy}
-            />
+        <AppPage className="bluehost-themes">
+            <header className="bluehost-themes__header">
+                <div className="bluehost-themes__header-primary">
+                    <h1>{__('Premium Themes', 'bluehost-wordpress-plugin')}</h1>
+                    <Pagination callback={setCurrentPage} currentPage={currentPage} pageCount={pageCount}/>
+                </div>
+                <div className="bluehost-themes__header-secondary">
+                    <Search value={search} onChange={setSearch}/>
+                    <Dropdown
+                        label={__('Sort By', 'bluehost-wordpress-plugin')}
+                        onChange={(e) => setSortBy(e.target.value)}
+                        options={options}
+                        value={sortBy}
+                    />
+                </div>
+            </header>
             {
                 isLoading ? (
                     <Spinner/>
@@ -82,6 +99,10 @@ export default function ThemesPage() {
                         {items.map(item => {
                             return (
                                 <ProductCard
+                                    buttonSecondary={{
+                                        children: __('View Details', 'bluehost-wordpress-plugin'),
+                                        href: item.page_url,
+                                    }}
                                     key={item.id}
                                     imageUrl={item.images.thumbnail_url}
                                     price={item.prices.single_domain_license}
@@ -93,10 +114,10 @@ export default function ThemesPage() {
                     </Grid>
                 )
             }
-            <div>
-                Ad goes here
-            </div>
-            <Pagination callback={setCurrentPage} currentPage={currentPage} pageCount={pageCount}/>
+            <footer className="bluehost-themes__footer">
+                <div className="bluehost-themes__ad">Ad goes here</div>
+                <Pagination callback={setCurrentPage} currentPage={currentPage} pageCount={pageCount}/>
+            </footer>
         </AppPage>
     );
 }

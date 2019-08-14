@@ -41,7 +41,7 @@ export default function ProductCard(
                 })}/>
                 <div className="product-card__button-group">
                     <Button {...buttonSecondary} className="product-card__button-secondary" isDefault/>
-                    <Button {...buttonPrimary} className="product-card__button-primary" isPrimary/>
+                    <Button {...buttonPrimary} className="product-card__button-primary" isPrimary />
                 </div>
             </div>
         </div>
