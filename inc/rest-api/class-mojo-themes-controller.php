@@ -36,14 +36,10 @@ class Mojo_Themes_Controller extends Mojo_Items_Controller {
 	 */
 	public function get_items( $request ) {
 		$params = array(
-			'type' => 'themes',
+			'item_type' => 'themes',
 		);
 
-		if ( empty( $request['search'] ) ) {
-			$data = $this->perform_mojo_search( $params, $request );
-		} else {
-			$data = $this->query_mojo_api( $params, $request );
-		}
+		$data = $this->query_mojo_api( $params, $request );
 
 		return new WP_REST_Response( $data, 200 );
 

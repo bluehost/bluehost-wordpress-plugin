@@ -9,12 +9,14 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	protected $type = 'themes';
 
 	public function query_mojo_api( $params, $request ) {
-		$api_url  = 'https://api.mojomarketplace.com/api/v2/items';
+		$api_url = 'https://api.mojomarketplace.com/api/v2/search';
 		$defaults = array_merge(
 			array(
+				'item_type' => 'themes',
 				'category'  => 'wordpress',
-				'count'     => 20,
-				'direction' => '',
+				'size'      => 12,
+				'order'     => 'sales',
+				'direction' => 'desc',
 			),
 			$request->get_default_params()
 		);
@@ -31,11 +33,15 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 			$params['direction'] = $request->get_param( 'direction' );
 		}
 
-		$params       = wp_parse_args( $params, $defaults );
-		$api_url      = add_query_arg( $params, $api_url );
+		if ( ! empty( $request['search'] ) ) {
+			$params['query'] = $request->get_param( 'search' );
+		}
+
+		$params = wp_parse_args( $params, $defaults );
+		$api_url = add_query_arg( $params, $api_url );
 		$api_response = mm_api_cache( $api_url );
 
-		if ( is_wp_error( $api_respose ) ) {
+		if ( is_wp_error( $api_response ) ) {
 			$this->handle_error( $api_response );
 		} else {
 			return json_decode( $api_response['body'] );
@@ -43,20 +49,24 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	}
 
 	public function perform_mojo_search( $params, $request ) {
-		$api_url = 'https://api.mojomarketplace.com/api/v2/items';
-
-		$defaults = array(
-			'category' => 'wordpress',
-			'size'     => 150,
-			'order'    => 'score',
+		$api_url = 'https://api.mojomarketplace.com/api/v2/search';
+		$defaults = array_merge(
+			array(
+				'item_type' => 'themes',
+				'category'  => 'wordpress',
+				'size'      => 12,
+				'order'     => 'sales',
+				'direction' => 'desc',
+			),
+			$request->get_default_params()
 		);
 
 		$params['search'] = sanitize_title_for_query( $request['search'] );
-		$params           = wp_parse_args( $params, $defaults );
-		$api_url          = add_query_arg( $params, $api_url );
-		$api_response     = mm_api_cache( $api_url );
+		$params = wp_parse_args( $params, $defaults );
+		$api_url = add_query_arg( $params, $api_url );
+		$api_response = mm_api_cache( $api_url );
 
-		if ( is_wp_error( $api_respose ) ) {
+		if ( is_wp_error( $api_response ) ) {
 			$this->handle_error( $api_response );
 		} else {
 			return json_decode( $api_response['body'] );
@@ -67,6 +77,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	 * Check if a given request has access to get items
 	 *
 	 * @param WP_REST_Request $request Full data about the request.
+	 *
 	 * @return WP_Error|bool
 	 */
 	public function get_items_permissions_check( $request ) {
@@ -80,8 +91,9 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Prepare the item for the REST response
 	 *
-	 * @param mixed           $item WordPress representation of the item.
+	 * @param mixed $item WordPress representation of the item.
 	 * @param WP_REST_Request $request Request object.
+	 *
 	 * @return mixed
 	 */
 	public function prepare_item_for_response( $item, $request ) {
