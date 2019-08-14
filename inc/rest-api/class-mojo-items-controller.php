@@ -15,7 +15,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	 * @return array|mixed|object|null
 	 */
 	public function query_mojo_items( $params, WP_REST_Request $request ) {
-		$params       = wp_parse_args( $this->get_params( $params, $request ), $request->get_default_params() );
+		$params       = wp_parse_args( $request->get_params(), $params );
 		$api_url      = add_query_arg( $params, 'https://api.mojomarketplace.com/api/v2/items' );
 		$api_response = mm_api_cache( $api_url );
 
@@ -31,7 +31,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	 * @return array|mixed|object|null
 	 */
 	public function query_mojo_search( $params, WP_REST_Request $request ) {
-		$params = wp_parse_args( $this->get_params( $params, $request ), $request->get_default_params() );
+		$params = wp_parse_args( $request->get_params(), $params );
 
 		// Rename 'count' to 'size' for Mojo search endpoint.
 		if ( ! empty( $params['count'] ) ) {
@@ -39,69 +39,20 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 			unset( $params['count'] );
 		}
 
-		// Rename 'count' to 'size' for Mojo search endpoint.
+		// Rename 'type' to 'item_type' for Mojo search endpoint.
+		if ( ! empty( $params['item_type'] ) ) {
+			unset( $params['type'] );
+		}
+
 		if ( ! empty( $params['type'] ) ) {
 			$params['item_type'] = $params['type'];
-			unset( $params['item_type'] );
+			unset( $params['type'] );
 		}
 
 		$api_url      = add_query_arg( $params, 'https://api.mojomarketplace.com/api/v2/search' );
 		$api_response = mm_api_cache( $api_url );
 
 		return $this->get_response( $api_response );
-	}
-
-	/**
-	 * Get all applicable params.
-	 *
-	 * @param array            $params
-	 * @param \WP_REST_Request $request
-	 *
-	 * @return array
-	 */
-	public function get_params( $params, WP_REST_Request $request ) {
-
-		if ( ! empty( $request['category'] ) ) {
-			$params['category'] = $request->get_param( 'category' );
-		}
-
-		if ( ! empty( $request['count'] ) ) {
-			$params['count'] = $request->get_param( 'count' );
-		}
-
-		if ( ! empty( $request['direction'] ) ) {
-			$params['direction'] = $request->get_param( 'direction' );
-		}
-
-		if ( ! empty( $request['itemCategory'] ) ) {
-			$params['itemCategory'] = $request->get_param( 'itemCategory' );
-		}
-
-		if ( ! empty( $request['order'] ) ) {
-			$params['order'] = $request->get_param( 'order' );
-		}
-
-		if ( ! empty( $request['page'] ) ) {
-			$params['page'] = $request->get_param( 'page' );
-		}
-
-		if ( ! empty( $request['query'] ) ) {
-			$params['query'] = $request->get_param( 'query' );
-		}
-
-		if ( ! empty( $request['seller'] ) ) {
-			$params['seller'] = $request->get_param( 'seller' );
-		}
-
-		if ( ! empty( $request['services'] ) ) {
-			$params['services'] = $request->get_param( 'services' );
-		}
-
-		if ( ! empty( $request['type'] ) ) {
-			$params['type'] = $request->get_param( 'type' );
-		}
-
-		return $params;
 	}
 
 	/**
@@ -224,7 +175,6 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 			'query'        => array(
 				'description' => 'A search query.',
 				'type'        => 'string',
-				'default'     => '',
 			),
 			'seller'       => array(
 				'description'       => 'User ID or brand profile name.',
