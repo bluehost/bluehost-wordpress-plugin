@@ -12,9 +12,9 @@ import HomeSectionRow from '../home-section-row';
 const baseUrl = location.origin + '/wp-admin/';
 
 function SocialCard() {
-	if ( ! window.bluehost.wordpress.jetpackActiveModules.includes( 'sharedaddy' ) ) {
-		return null;
-	}
+	// if ( ! window.bluehost.wordpress.jetpackActiveModules.includes( 'sharedaddy' ) ) {
+	// 	return null;
+	// }
 	return (
 		<HomeSectionRow
 			icon="share"
@@ -31,9 +31,9 @@ function SocialCard() {
 }
 
 function PublicizeCard() {
-	if ( ! window.bluehost.wordpress.jetpackActiveModules.includes( 'publicize' ) ) {
-		return null;
-	}
+	// if ( ! window.bluehost.wordpress.jetpackActiveModules.includes( 'publicize' ) ) {
+	// 	return null;
+	// }
 	return (
 		<HomeSectionRow
 			icon="megaphone"
@@ -50,9 +50,9 @@ function PublicizeCard() {
 }
 
 function StatsCard() {
-	if ( ! window.bluehost.wordpress.jetpackActiveModules.includes( 'stats' ) ) {
-		return null;
-	}
+	// if ( ! window.bluehost.wordpress.jetpackActiveModules.includes( 'stats' ) ) {
+	// 	return null;
+	// }
 	return (
 		<HomeSectionRow
 			isCentered
@@ -70,9 +70,9 @@ function StatsCard() {
 }
 
 function TrafficEngagementSection() {
-	if ( ! window.bluehost.wordpress.isJetpackActive ) {
-		return null;
-	}
+	// if ( ! window.bluehost.wordpress.isJetpackActive ) {
+	// 	return null;
+	// }
 	return (
 		<HomeSection title="Traffic & Engagement" className="traffic">
 			<SocialCard />

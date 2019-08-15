@@ -8,6 +8,20 @@ import { __ } from '@wordpress/i18n';
 import { AppNavLink as NavLink } from '@/components';
 import './style.scss';
 
+const i18n = 'bluehost-wordpress-plugin';
+
+const AppPages = function() {
+	return {
+		'/home': __('Home', i18n),
+		'/marketplace/themes': __('Themes', i18n),
+		'/marketplace/plugins': __('Plugins', i18n),
+		'/marketplace/services': __('Services', i18n),
+		'/tools/staging': __('Staging', i18n),
+		'/settings': __('Settings', i18n)
+	};
+};
+
+
 const AppPrimaryNavigation = () => (
 	<div id="app-primary-navigation">
 		<ul class="tabs">
@@ -17,7 +31,7 @@ const AppPrimaryNavigation = () => (
 				</NavLink>
 			</li>
 			<li className="tab">
-				<NavLink to="/marketplace/themes">
+				<NavLink to="/marketplace/themes" className="hvr-underline-from-center">
 					{__('Themes', 'bluehost-wordpress-plugin')}
 				</NavLink>
 			</li>

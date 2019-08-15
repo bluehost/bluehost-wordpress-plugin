@@ -10,8 +10,8 @@
 
 #bluehost-logo-wrap {
   float: left;
-  width: 200px;
-  padding: 1.5rem 3rem 0 0;
+  min-width: 148px;
+  padding: 28px 0 0 24px;
   svg {
     max-height: 24px;
   }
@@ -21,11 +21,11 @@
   float: right;
   padding: 28px 24px 24px 0;
   text-align: right;
-}
-
-#bluehost-nav-wrap svg {
-   fill: $color-black;
-   margin-left: 24px;
+  .help,
+  .user-menu {
+    fill: $color-black;
+    margin-left: 24px;
+ }
 }
 
 .bluehost-nav-wrap-element {
@@ -86,19 +86,17 @@
 
 #bluehost-nav-popup-inner {
     padding: 8px 0;
-}
-
-#bluehost-nav-popup-inner ul,
-#bluehost-nav-popup-inner ul li {
-    padding: 0;
-    margin: 0;
-}
-
-#bluehost-nav-popup-inner ul li a {
-    color: $color-black;
-    display: block;
-    padding: 16px 24px;
-    text-decoration: none;
+    ul,
+    ul li {
+        padding: 0;
+        margin: 0;
+    }
+    ul li a {
+      color: $color-black;
+      display: block;
+      padding: 16px 24px;
+      text-decoration: none;
+  }
 }
 
 .bluehost-nav-popup-nav-icon {
@@ -108,32 +106,28 @@
 	vertical-align: middle;
 }
 
-#bluehost-nav-popup-inner svg {
-    margin-left: 0;
-}
-
-#bluehost-nav-popup-inner .gray svg {
-	fill: $color-grey;
-}
-
-#bluehost-nav-popup-inner .blue svg {
-	fill: $color-blue;
-}
-
-#bluehost-nav-popup-inner .dark-blue svg {
-	fill: $color-dark-blue;
-}
-
-#bluehost-nav-popup-inner .green svg {
-	fill: $color-green;
-}
-
-#bluehost-nav-popup-inner .orange svg {
-	fill: $color-orange;
-}
-
-#bluehost-nav-popup-inner .red svg {
-	fill: $color-red;
+#bluehost-nav-popup-inner {
+  svg {
+      margin-left: 0;
+  }
+  .gray svg {
+    fill: $color-grey;
+  }
+  .blue svg {
+    fill: $color-blue;
+  }
+  .dark-blue svg {
+    fill: $color-dark-blue;
+  }
+  .green svg {
+    fill: $color-green;
+  }
+  .orange svg {
+    fill: $color-orange;
+  }
+  .red svg {
+    fill: $color-red;
+  }
 }
 
 .bluehost-nav-popup-nav-text {
@@ -141,4 +135,9 @@
 	font-size: 16px;
 	line-height: 24px;
 	vertical-align: middle;
+}
+
+.bluehost-nav-popup::before,
+.bluehost-nav-popup::after {
+  margin-left: -22px !important;
 }

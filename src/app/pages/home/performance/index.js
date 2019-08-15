@@ -29,9 +29,9 @@ const CacheCard = () => (
 );
 
 function SiteAcceleratorCard() {
-	if ( ! window.bluehost.wordpress.isJetpackActive || ! window.bluehost.wordpress.jetpackActiveModules.includes( 'photon' ) ) {
-		// return null;
-	}
+	// if ( ! window.bluehost.wordpress.isJetpackActive || ! window.bluehost.wordpress.jetpackActiveModules.includes( 'photon' ) ) {
+	// 	// return null;
+	// }
 	const jetpackIcon = ( <JetpackLogo /> );
 	return (
 		<HomeSectionRow

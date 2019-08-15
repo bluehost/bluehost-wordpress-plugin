@@ -53,9 +53,9 @@ const MenusCard = () => (
 );
 
 function ProductsCard() {
-	if ( ! window.bluehost.wordpress.isWooActive ) {
-		return null;
-	}
+	// // if ( ! window.bluehost.wordpress.isWooActive ) {
+	// 	return null;
+	// }
 	return (
 		<HomeSectionRow
 			icon="cart"

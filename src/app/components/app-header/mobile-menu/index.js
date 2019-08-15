@@ -1,17 +1,18 @@
-/**
- * WordPress dependencies
- */
 import { __ } from '@wordpress/i18n';
-import { Component } from '@wordpress/element';
-/**
- * Internal dependencies
- */
-import { AppNavLink as NavLink } from '@/components';
+import { AppButton as Button, AppNavLink as NavLink } from '@/components';
+import { Popover } from '@wordpress/components';
+import { withState } from '@wordpress/compose';
+
 import { ReactComponent as BluehostLogo } from '@/assets/bluehost.svg';
+import { ReactComponent as HamburgerIcon } from '@/assets/hamburger.svg'
+import { ReactComponent as CloseIcon } from '@/assets/close.svg'
+import { ReactComponent as HelpIcon } from '@/assets/question-circle-regular.svg';
+import { ReactComponent as AstronautIcon } from '@/assets/user-astronaut-light.svg';
+
 import './style.scss';
 
 const MainMenu = () => (
-    <ul>
+    <ul class="main">
         <li>
             <NavLink to="/home" activeClassName="is-active">
                 {__('Home', 'bluehost-wordpress-plugin')}
@@ -45,59 +46,76 @@ const MainMenu = () => (
     </ul>
 );
 
-/**
- * TODO:
- * * Close menu on item click
- * * Escape keycode to close menu
- * * Focus to menu on open
- * * Focus to page on close
- * * Dark blur background by body class
- * * Lift close icon above dark blur
- * 
- * Nice to have
- *  * Tap outside menu to close menu
- */
-class MobileMenu extends Component {
-    constructor(props) {
-        super(props);
-        this.toggleUserMenu = this.toggleUserMenu.bind( this );
-        this.state = {
-            isUserMenu: 0
-        };
-    }
-    
-    toggleUserMenu() {
-        if ( this.state.isUserMenu ) {
-            this.setState((state) => {
-                return {isUserMenu: 0}
-            })
-        } else {
-            this.setState((state) => {
-                return {isUserMenu: 1}
-            })
-        }
-    }
-
-    menuItems() {
-        if ( 1 === this.state.isUserMenu ) {
-            return <MainMenu />;
-        } else {
-            return <UserMenu />
-        }
-    }
-
-    render () {
-        return (
-            <div id="bluehost-mobile-menu">
-                <div class="logo-wrap">
-                    <BluehostLogo />
-                </div>
-                <div class="mobile-nav">
-                    
-                </div>
-            </div>
-        );
-    }
-}
+const MobileMenu = withState( {
+    isVisible: false,
+    userMenu: false,
+} )( ( { isVisible, userMenu, setState } ) => {
+    const toggleVisible = () => {
+        setState( (state) => ({ isVisible: ! state.isVisible }) );
+    };
+    const toggleUserMenu = () => {
+        setState( (state) => ({ userMenu: ! state.userMenu }) );
+    };
+    return (
+        <>
+            <Button className="mobile-toggle" onClick={ toggleVisible }>
+                {!isVisible && (
+                    <>
+                        <HamburgerIcon />
+                    </>
+                )}
+                {isVisible && (
+                    <>
+                        <CloseIcon />
+                    </>
+                ) }
+            </Button>
+            {isVisible && (
+                <Popover className="bluehost-mobile-menu" position="middle top" noArrow >
+                    <div className="slideout-inner">
+                        <div className="slideout-logo-wrap" onClick={ toggleVisible }>
+                            <BluehostLogo />
+                        </div>
+                        <div id="slideout-icons-wrap">
+                            <div className="help">
+                                <a href="https://my.bluehost.com/hosting/help"><HelpIcon /></a>
+                            </div>
+                            <div className="user-menu">
+                                <AstronautIcon onClick={ toggleUserMenu } />
+                            </div>
+                        </div>
+                        <div className="slideout-menu-wrap" onClick={ toggleVisible }>
+                            {userMenu && (
+                                <div>User Menu</div>
+                            )}
+                            {!userMenu && (
+                                <MainMenu />
+                            )}
+                            
+                        </div>
+                    </div>
+                </Popover>
+            )}
+        </>
+    );
+} );
 
 export default MobileMenu;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
