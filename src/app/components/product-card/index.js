@@ -21,7 +21,8 @@ export default function ProductCard(
         imageUrl,
         isFavorite = false,
         price,
-        title
+        title,
+        toggleFavorite
     }
 ) {
     return (
@@ -38,10 +39,10 @@ export default function ProductCard(
                     'dashicons-star-empty': !isFavorite,
                     'dashicons-star-filled': isFavorite,
                     '--is-favorite': isFavorite
-                })}/>
+                })} onClick={toggleFavorite}/>
                 <div className="product-card__button-group">
                     <Button {...buttonSecondary} className="product-card__button-secondary" isDefault/>
-                    <Button {...buttonPrimary} className="product-card__button-primary" isPrimary />
+                    <Button {...buttonPrimary} className="product-card__button-primary" isPrimary/>
                 </div>
             </div>
         </div>
