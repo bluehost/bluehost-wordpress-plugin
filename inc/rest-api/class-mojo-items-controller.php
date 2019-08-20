@@ -134,6 +134,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 				'description' => 'Category ID or slug (this is ItemTypeCategory).',
 				'type'        => 'string',
 				'enum'        => array(
+					'',
 					'wordpress',
 				),
 				'default'     => 'wordpress',
