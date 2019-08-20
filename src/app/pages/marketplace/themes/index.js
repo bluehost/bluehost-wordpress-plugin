@@ -1,4 +1,10 @@
 /**
+ * External dependencies
+ */
+import {chunk, filter, find, reverse, sortBy, without} from 'lodash';
+import Fuse from 'fuse.js';
+
+/**
  * WordPress dependencies
  */
 import apiFetch from '@wordpress/api-fetch';
@@ -6,7 +12,7 @@ import {useState, useEffect} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
 
 /**
- * External dependencies
+ * Internal dependencies
  */
 import {
     AppPage,
@@ -18,61 +24,120 @@ import {
     Search
 } from '@/components';
 
-const options = [
-    {
-        label: __('Popular', 'bluehost-wordpress-plugin'),
-        value: 'rating',
-    },
-    {
-        label: __('Price', 'bluehost-wordpress-plugin'),
-        value: 'price',
-    },
-    {
-        label: __('Date Added', 'bluehost-wordpress-plugin'),
-        value: 'date-added',
-    },
-    {
-        label: __('Favorite', 'bluehost-wordpress-plugin'),
-        value: 'favorite',
-    },
-];
+import './style.scss';
+
+function filterBySearch(items, query) {
+    if (!query) {
+        return items;
+    }
+    var options = {
+        threshold: 0.1,
+        keys: [
+            'name',
+            'short_description',
+            'features',
+            'tags',
+        ]
+    };
+    var fuse = new Fuse(items, options);
+    return fuse.search(query);
+}
+
+function filterByFavorites(items, favorites) {
+    return filter(items, (item) => favorites.includes(item.id));
+}
+
+function sortByDateAdded(items) {
+    return reverse(sortBy(items, ['created_timestamp']));
+}
+
+function sortByPriceAscending(items) {
+    return sortBy(items, (item) => parseInt(item.prices.single_domain_license, 10));
+}
+
+function sortByPriceDescending(items) {
+    return reverse(sortBy(items, (item) => parseInt(item.prices.single_domain_license, 10)));
+}
+
+function sortBySales(items) {
+    return reverse(sortBy(items, ['sales_count']));
+}
 
 export default function ThemesPage() {
+
+    const itemsPerPage = 12;
+    const [currentPage, setCurrentPage] = useState(1);
+    const [favorites, setFavorites] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
     const [pageCount, setPageCount] = useState(1);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [sortBy, setSortBy] = useState('rating');
-    const [search, setSearch] = useState('');
+    const [pages, setPages] = useState([]);
+    const [query, setQuery] = useState('');
+    const [response, setResponse] = useState({});
+    const [sort, setSort] = useState('sortBySales');
 
-    useEffect(() => {
-        // When the search field changes, reset current page to 1
-        setCurrentPage(1);
-    }, [search]);
-
-    useEffect(() => {
-        // When the sort field changes, reset current page to 1
-        setCurrentPage(1);
-    }, [sortBy]);
+    const options = [
+        {
+            label: __('Popular', 'bluehost-wordpress-plugin'),
+            value: 'sortBySales',
+            callback: sortBySales,
+        },
+        {
+            label: __('Price (High to Low)', 'bluehost-wordpress-plugin'),
+            value: 'sortByPriceDescending',
+            callback: sortByPriceDescending,
+        },
+        {
+            label: __('Price (Low to High)', 'bluehost-wordpress-plugin'),
+            value: 'sortByPriceAscending',
+            callback: sortByPriceAscending,
+        },
+        {
+            label: __('Date Added', 'bluehost-wordpress-plugin'),
+            value: 'sortByDateAdded',
+            callback: sortByDateAdded,
+        },
+        {
+            label: __('Favorite', 'bluehost-wordpress-plugin'),
+            value: 'filterByFavorites',
+            callback: (items) => filterByFavorites(items, favorites),
+        },
+    ];
 
     useEffect(() => {
         setLoading(true);
         const urlParams = new URLSearchParams('');
-        urlParams.append('page', currentPage);
-        urlParams.append('sort', sortBy);
-        if (search.length) {
-            urlParams.append('search', search);
-        }
+        urlParams.append('count', 1000);
+        // Fetch API response once on mount
         apiFetch({path: '/mojo/v1/themes?' + urlParams.toString()})
-            .then(
-                (response) => {
-                    console.log(urlParams.toString(), response);
-                    setItems(response.items);
-                    setPageCount(response.pageCount);
-                    setLoading(false);
-                }
-            );
-    }, [currentPage, search, sortBy]);
+            .then(response => {
+                setResponse(response);
+                setLoading(false);
+            });
+    }, []);
+
+    useEffect(() => {
+        // When the search field or sort changes, reset current page to 1
+        setCurrentPage(1);
+    }, [sort, query]);
+
+    useEffect(() => {
+        // Apply the correct sort/filter callbacks
+        let results = response.items;
+        results = filterBySearch(results, query);
+        results = find(options, ['value', sort]).callback.call(null, results);
+        // Split results up into pages
+        const pages = chunk(results, itemsPerPage);
+        setPages(pages);
+        setPageCount(pages.length);
+    }, [response, sort, query]);
+
+    useEffect(() => {
+        // Set the items to be displayed on the current page.
+        const items = pages[currentPage - 1];
+        setItems(items);
+        window.scrollTo(0, 0);
+    }, [pages, currentPage]);
 
     return (
         <AppPage className="bluehost-themes">
@@ -82,12 +147,12 @@ export default function ThemesPage() {
                     <Pagination callback={setCurrentPage} currentPage={currentPage} pageCount={pageCount}/>
                 </div>
                 <div className="bluehost-themes__header-secondary">
-                    <Search value={search} onChange={setSearch}/>
+                    <Search value={query} onChange={setQuery}/>
                     <Dropdown
                         label={__('Sort By', 'bluehost-wordpress-plugin')}
-                        onChange={(e) => setSortBy(e.target.value)}
+                        onChange={(e) => setSort(e.target.value)}
                         options={options}
-                        value={sortBy}
+                        value={sort}
                     />
                 </div>
             </header>
@@ -96,26 +161,34 @@ export default function ThemesPage() {
                     <Spinner/>
                 ) : (
                     <Grid>
-                        {items.map(item => {
+                        {items ? items.map(item => {
                             return (
                                 <ProductCard
+                                    key={item.id}
                                     buttonSecondary={{
                                         children: __('View Details', 'bluehost-wordpress-plugin'),
                                         href: item.page_url,
                                     }}
-                                    key={item.id}
+                                    id={item.id}
                                     imageUrl={item.images.thumbnail_url}
                                     price={item.prices.single_domain_license}
                                     title={item.name}
-                                    isFavorite={false}
+                                    isFavorite={favorites.includes(item.id)}
+                                    toggleFavorite={() => {
+                                        if (favorites.includes(item.id)) {
+                                            setFavorites(without(favorites, item.id));
+                                        } else {
+                                            setFavorites([...favorites, item.id]);
+                                        }
+                                    }}
                                 />
                             );
-                        })}
+                        }) : 'Sorry, no items matched your query.'}
                     </Grid>
                 )
             }
             <footer className="bluehost-themes__footer">
-                <div className="bluehost-themes__ad">Ad goes here</div>
+                <div className="bluehost-themes__ad"><img src="https://via.placeholder.com/468x60" alt=""/></div>
                 <Pagination callback={setCurrentPage} currentPage={currentPage} pageCount={pageCount}/>
             </footer>
         </AppPage>
