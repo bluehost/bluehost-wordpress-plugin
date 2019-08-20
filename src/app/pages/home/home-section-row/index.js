@@ -10,7 +10,6 @@ import { Dashicon } from '@wordpress/components';
 import './style.scss';
 
 export default class HomeSectionRow extends Component {
-
 	getIcon( icon, iconSize ) {
 		if ( typeof icon === 'string' ) {
 			return ( <Dashicon icon={ icon ? icon : '' } size={ iconSize } /> );
@@ -24,7 +23,7 @@ export default class HomeSectionRow extends Component {
 		return (
 			<div className={ 'bluehost-home-section-row pure-g ' + className }>
 				<div className="pure-u-1 pure-u-sm-1-2 details">
-					<h3>{rowIcon} <span className={ 'title' }>{ title }</span></h3>
+					<h3>{ rowIcon } <span className={ 'title' }>{ title }</span></h3>
 					<p>{ desc }</p>
 				</div>
 				<div className="pure-u-1 pure-u-sm-1-2 action">{ children }</div>

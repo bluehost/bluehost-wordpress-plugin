@@ -1,26 +1,28 @@
 /**
  * WordPress dependencies
  */
-import { Component, createRef } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+import { dispatch, select } from '@wordpress/data';
+import { Component, createRef, Fragment } from '@wordpress/element';
 /**
  * External dependencies
  */
 import { HashRouter as Router } from 'react-router-dom';
-import { __ } from '@wordpress/i18n';
-
 /**
- * Internal dependencies
+ * App dependencies
  */
-import './app.scss';
+import store from'@/store';
+import '@/app.scss';
+import {
+	Header,
+	Main,
+} from '@/parts';
 
 import {
-	AppHeader,
-	AppPrimaryNav
+	AppPrimaryNavigation,
 } from '@/components';
 
-import AppMain from './main';
-
-const bluehost_i18n = 'bluehost-wp-admin-app';
+const bluehost_i18n = 'bluehost-wordpress-plugin';
 
 class App extends Component {
 	constructor( props ) {
@@ -31,6 +33,7 @@ class App extends Component {
 		// make refs/this available in
 		this.handleNavFocus = this.handleNavFocus.bind( this );
 		this.handleContentFocus = this.handleContentFocus.bind( this );
+		dispatch('bluehost/plugin').fetchWindowData();
 	}
 
 	handleNavFocus( event ) {
@@ -45,7 +48,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>
+			<Fragment>
 				<Router>
 					<main id="bluehost-app-wrap" className="bluehost-app-wrap animated fadeIn fast">
 						<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
@@ -54,19 +57,18 @@ class App extends Component {
 						<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
 							{ __( 'Skip to Content', bluehost_i18n ) }
 						</a>
-						<div>
-							<AppHeader />
-						</div>
-						<div id="navigation" tabIndex="-1" ref={ this.navFocus }>
-							<AppPrimaryNav />
-						</div>
-						<div tabIndex="-1" ref={ this.contentFocus }>
-							<AppMain />
-						</div>
+						<Fragment>
+							<Header />
+						</Fragment>
+						<Fragment tabIndex="-1" ref={ this.navFocus }>
+							<AppPrimaryNavigation />
+						</Fragment>
+						<Fragment tabIndex="-1" ref={ this.contentFocus }>
+							<Main />
+						</Fragment>
 					</main>
 				</Router>
-			</div>
-
+			</Fragment>
 		);
 	}
 }

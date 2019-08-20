@@ -110,24 +110,12 @@
   svg {
       margin-left: 0;
   }
-  .gray svg {
-    fill: $color-grey;
-  }
-  .blue svg {
-    fill: $color-blue;
-  }
-  .dark-blue svg {
-    fill: $color-dark-blue;
-  }
-  .green svg {
-    fill: $color-green;
-  }
-  .orange svg {
-    fill: $color-orange;
-  }
-  .red svg {
-    fill: $color-red;
-  }
+}
+
+.menu-item-icon {
+  position: relative;
+  top: 6px;
+  left: -6px;
 }
 
 .bluehost-nav-popup-nav-text {

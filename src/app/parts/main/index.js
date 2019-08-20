@@ -1,9 +1,18 @@
 /**
+ * WordPress dependencies
+ */
+/**
  * External dependencies
  */
 import { lazy, Suspense } from 'react';
+/**
+ * External dependencies
+ */
 import { Switch, Route, Redirect } from 'react-router-dom';
-
+/**
+ * Project dependencies
+ */
+import { AppSpinner } from '@/components';
 const HomeRoute = lazy( () => import( '@/pages/home' ) );
 const MktRoute = lazy( () => import( '@/pages/marketplace' ) );
 const ThemesRoute = lazy( () => import( '@/pages/marketplace/themes' ) );
@@ -13,10 +22,10 @@ const ToolsRoute = lazy( () => import( '@/pages/tools' ) );
 const StagingRoute = lazy( () => import( '@/pages/tools/staging' ) );
 const SettingsRoute = lazy( () => import( '@/pages/settings' ) );
 const HelpRoute = lazy( () => import( '@/pages/help' ) );
-
-import { AppSpinner } from '@/components';
-
-const AppMain = () => (
+/**
+ * <Main /> Component
+ */
+const Main = () => (
 	<main>
 		<Suspense fallback={ <AppSpinner /> }>
 			<Switch>
@@ -35,4 +44,4 @@ const AppMain = () => (
 	</main>
 );
 
-export default AppMain;
+export default Main;

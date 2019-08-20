@@ -5,6 +5,9 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
+/**
+ * External dependencies
+ */
 import { AppButton as Button } from '@/components';
 import HomeSection from '../home-section';
 import HomeSectionRow from '../home-section-row';
