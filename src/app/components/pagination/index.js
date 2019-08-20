@@ -13,7 +13,7 @@ export default function Pagination({callback, currentPage = 1, pageCount, paddin
     const hasNext = next <= pageCount;
     return (
         <ul className="pagination">
-            {hasPrevious >= 1 ? (
+            {hasPrevious ? (
                 <li className="pagination__item">
                     <button
                         aria-label="First"
@@ -25,18 +25,18 @@ export default function Pagination({callback, currentPage = 1, pageCount, paddin
                     </button>
                 </li>
             ) : null}
-            {hasPrevious >= 1 ? (
+            {hasPrevious ? (
                 <li className="pagination__item">
-                    <button
-                        aria-label="Previous"
-                        className="pagination__link"
-                        onClick={() => callback(previous)}
-                        type="button"
-                    >
-                        <span>‹</span>
-                    </button>
+                <button
+                aria-label="Previous"
+                className="pagination__link"
+                onClick={() => callback(previous)}
+                type="button"
+                >
+                <span>‹</span>
+                </button>
                 </li>
-            ) : null}
+                ) : null}
             <li className="pagination__item">
                 <button
                     className={classNames({
@@ -105,7 +105,7 @@ export default function Pagination({callback, currentPage = 1, pageCount, paddin
                     <span>{pageCount}</span>
                 </button>
             </li>
-            {hasNext < pageCount ? (
+            {hasNext ? (
                 <li className="pagination__item">
                     <button
                         aria-label="Next"
@@ -117,7 +117,7 @@ export default function Pagination({callback, currentPage = 1, pageCount, paddin
                     </button>
                 </li>
             ) : null}
-            {hasNext < pageCount ? (
+            {hasNext ? (
                 <li className="pagination__item">
                     <button
                         aria-label="Last"
