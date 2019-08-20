@@ -163,6 +163,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 				'type'        => 'string',
 				'enum'        => array(
 					'popular',
+					'price',
 					'latest',
 					'random',
 					'sales',
