@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import {findIndex} from 'lodash';
 import {useState, useEffect, useRef} from '@wordpress/element';
-
 import './style.scss';
 
 export default function Dropdown({className = '', id, label, onChange, options = [], value, width = 200}) {
@@ -14,6 +13,7 @@ export default function Dropdown({className = '', id, label, onChange, options =
     let button = useRef(null);
     const component = useRef(null);
 
+    const [hasFocus, setHasFocus] = useState(false);
     const [open, setOpen] = useState(false);
     const [active, setActive] = useState(0);
     const [selected, setSelected] = useState(findIndex(options, ['value', value]));
@@ -69,12 +69,6 @@ export default function Dropdown({className = '', id, label, onChange, options =
 
     };
 
-    const handleClick = (e) => {
-        if (!component.current.contains(e.target)) {
-            setOpen(false);
-        }
-    };
-
     useEffect(() => {
         onChange(options[selected].value);
         setSelectedItemLabel(options[selected].label);
@@ -82,14 +76,16 @@ export default function Dropdown({className = '', id, label, onChange, options =
     }, [selected]);
 
     useEffect(() => {
-        document.addEventListener('mousedown', handleClick, false);
-        return () => document.removeEventListener('mousedown', handleClick, false);
-    }, []);
+        if (!hasFocus) {
+            setOpen(false);
+        }
+    }, [hasFocus]);
 
     return (
         <div className={classNames({
             'dropdown': true,
-            [className]: true,
+            '--is-open': open,
+            [className]: className.length,
         })} ref={component}>
             <div className="dropdown__label" id={`${id}-label`}>{label}</div>
             <div className="dropdown__field" style={{width}}>
@@ -99,6 +95,8 @@ export default function Dropdown({className = '', id, label, onChange, options =
                     aria-labelledby={`${id}-label ${id}-value`}
                     className="dropdown__trigger"
                     onClick={() => setOpen(!open)}
+                    onFocus={() => setHasFocus(true)}
+                    onBlur={() => setHasFocus(false)}
                     onKeyDown={handleKeyDown}
                     ref={button}
                 >
@@ -127,8 +125,9 @@ export default function Dropdown({className = '', id, label, onChange, options =
                                 data-value={itemValue}
                                 id={`${id}-${itemValue}`}
                                 key={index}
-                                onClick={() => setSelected(index)}
+                                onMouseDown={() => setSelected(index)}
                                 onMouseEnter={() => setActive(index)}
+                                onTouchStart={() => setSelected(index)}
                                 role="option"
                             >
                                 <span className="dropdown__item-label">{itemLabel}</span>
