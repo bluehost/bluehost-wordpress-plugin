@@ -27,16 +27,16 @@ export default function Pagination({callback, currentPage = 1, pageCount, paddin
             ) : null}
             {hasPrevious ? (
                 <li className="pagination__item">
-                <button
-                aria-label="Previous"
-                className="pagination__link"
-                onClick={() => callback(previous)}
-                type="button"
-                >
-                <span>‹</span>
-                </button>
+                    <button
+                        aria-label="Previous"
+                        className="pagination__link"
+                        onClick={() => callback(previous)}
+                        type="button"
+                    >
+                        <span>‹</span>
+                    </button>
                 </li>
-                ) : null}
+            ) : null}
             <li className="pagination__item">
                 <button
                     className={classNames({
@@ -52,14 +52,16 @@ export default function Pagination({callback, currentPage = 1, pageCount, paddin
             {
                 currentPage - padding > 2 ?
                     (
-                        <button
-                            aria-label="More"
-                            className="pagination__link"
-                            disabled
-                            type="button"
-                        >
-                            <span>…</span>
-                        </button>
+                        <li className="pagination__item">
+                            <button
+                                aria-label="More"
+                                className="pagination__link"
+                                disabled
+                                type="button"
+                            >
+                                <span>…</span>
+                            </button>
+                        </li>
                     )
                     : null
             }
@@ -82,14 +84,16 @@ export default function Pagination({callback, currentPage = 1, pageCount, paddin
             {
                 currentPage + padding < pageCount - 1 ?
                     (
-                        <button
-                            aria-label="More"
-                            className="pagination__link"
-                            disabled
-                            type="button"
-                        >
-                            <span>…</span>
-                        </button>
+                        <li className="pagination__item">
+                            <button
+                                aria-label="More"
+                                className="pagination__link"
+                                disabled
+                                type="button"
+                            >
+                                <span>…</span>
+                            </button>
+                        </li>
                     )
                     : null
             }
