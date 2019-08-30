@@ -7,7 +7,7 @@ function bluehost_include_rest_api() {
 	require_once MM_BASE_DIR . 'inc/rest-api/class-mojo-themes-controller.php';
 	require_once MM_BASE_DIR . 'inc/rest-api/class-mojo-plugins-controller.php';
 	require_once MM_BASE_DIR . 'inc/rest-api/class-mojo-services-controller.php';
-	require_once MM_BASE_DIR . 'inc/rest-api/class-bluehost-error-logging.php';
+	require_once MM_BASE_DIR . 'inc/rest-api/class-bluehost-admin-errors.php';
 }
 add_action( 'rest_api_init', 'bluehost_include_rest_api', 5 );
 
@@ -19,7 +19,7 @@ function bluehost_init_rest_api() {
 		'Mojo_Themes_Controller',
 		'Mojo_Plugins_Controller',
 		'Mojo_Services_Controller',
-		'Bluehost_Error_Logging',
+		'\\Bluehost\\WP\\Admin_App\\Errors',
 	);
 
 	foreach ( $controllers as $controller ) {

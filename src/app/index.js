@@ -8,9 +8,6 @@ import { __ } from '@wordpress/i18n';
  * External dependencies
  */
 import { HashRouter as Router } from 'react-router-dom';
-import axios from 'axios';
-import qs from 'qs';
-import browser from 'browser-detect';
 /**
  * Internal dependencies
  */
@@ -38,7 +35,7 @@ class App extends Component {
 		this.componentDidCatch = this.componentDidCatch.bind( this );
 		this.state = {
 			hasError: false,
-			errorLogged: false
+			appError: null
 		};
 	}
 
@@ -53,23 +50,14 @@ class App extends Component {
 	}
 
 	componentDidCatch(error,info) {
-		this.setState({ hasError: true });
-		axios.post( 
-			location.origin + '/wp-json/bluehost/v1/error/track', 
-			qs.stringify({
-				date: new Date(), 
-				message: error.message,
-				browser: browser(),
-				wpUser: window.userSettings.uid ? window.userSettings.uid : 'Unknown'
-			})
-		);
+		this.setState({ hasError: true, appError: error });
 	}
 
 	render() {
 		if (true === this.state.hasError) {
 			return (
 				<div>
-					<AppError errorLogged={this.state.errorLogged} />
+					<AppError error={this.state.appError} />
 				</div>
 			);
 		}
