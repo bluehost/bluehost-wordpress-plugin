@@ -8,10 +8,11 @@
     "build": "wp-scripts build",
     "check-engines": "wp-scripts check-engines",
     "check-licenses": "wp-scripts check-licenses --production",
-    "develop": "wp-scripts start",
+    "develop": "NODE_ENV=develop wp-scripts build",
     "lint:css": "wp-scripts lint-style '**/*.css'",
     "lint:js": "wp-scripts lint-js ./src",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "postinstall": "npm run build && npm run develop",
     "start": "wp-scripts start",
     "test:e2e": "wp-scripts test-e2e",
     "test:unit": "wp-scripts test-unit-js"

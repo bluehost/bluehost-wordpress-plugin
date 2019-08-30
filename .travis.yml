@@ -1,39 +1,33 @@
-# Main Travis CI configuration file for wordpress-plugin tests
-# https://github.com/benbalter/wordpress-plugin-tests
+dist: trusty
 
-# Tell Travis CI we're using PHP
 language: php
 
-# Versions of PHP to test against
 php:
-  - 5.6
+  - 7.1
 
-# Specify versions of WordPress to test against
-# WP_VERSION = WordPress version number (use "master" for SVN trunk)
-# WP_MULTISITE = whether to test multisite (use either "0" or "1")
-# env:
-#     - WP_VERSION=master WP_MULTISITE=0
-#     - WP_VERSION=3.4.1 WP_MULTISITE=0
-#     - WP_VERSION=3.3.2 WP_MULTISITE=0
-#     - WP_VERSION=3.2.1 WP_MULTISITE=0
-#     - WP_VERSION=master WP_MULTISITE=1
-#     - WP_VERSION=3.4.1 WP_MULTISITE=1
-#     - WP_VERSION=3.3.2 WP_MULTISITE=1
-#     - WP_VERSION=3.2.1 WP_MULTISITE=1
+script:
+  -
 
-# Grab the setup script and execute
-#before_script:
-    #- wget https://raw.github.com/benbalter/wordpress-plugin-tests/setup/setup.sh
-    #- source setup.sh
+before_deploy:
+  - npm install
+  - composer install --no-ansi --no-interaction --no-dev --optimize-autoloader --no-progress --no-scripts
+  - rm -rf node_modules
+  - rm -rf src
+  - rm -rf tests
+  - rm -rf .git
+  - rm webpack.config.js
+  - find . -name ".*" -type f -delete
+  - find . -name "*.json" -type f -delete
+  - find . -name "*.lock" -type f -delete
+  - cd ..
+  - zip -r "bluehost-wordpress-plugin.zip" "bluehost-wordpress-plugin"
 
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y libxml2-dev
-
-script: phpunit
-
-# wordpress-plugin-tests specific config
-# Tells Travis CI not to run unit tests against the setup branch
-#branches:
-#  except:
-#    - setup
+deploy:
+  provider: releases
+  api_key:
+    secure:
+  file: "bluehost-wordpress-plugin.zip"
+  skip_cleanup: true
+  on:
+    repo: wpscholar/hello-world
+    tags: true
