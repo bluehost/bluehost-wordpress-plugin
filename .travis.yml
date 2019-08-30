@@ -15,8 +15,9 @@ before_deploy:
   - rm -rf src
   - rm -rf tests
   - rm -rf .git
+  - rm .gitignore
+  - rm .travis.yml
   - rm webpack.config.js
-  - find . -name ".*" -type f -delete
   - find . -name "*.json" -type f -delete
   - find . -name "*.lock" -type f -delete
   - cd ..
