@@ -27,15 +27,6 @@
   "scripts": {
     "lint": [
       "vendor/bin/phpcs --standard=vendor/bluehost/wp-php-standards/Bluehost/ruleset.xml ."
-    ],
-    "post-install-cmd": [
-      "xrstf\\Composer52\\Generator::onPostInstallCmd"
-    ],
-    "post-update-cmd": [
-      "xrstf\\Composer52\\Generator::onPostInstallCmd"
-    ],
-    "post-autoload-dump": [
-      "xrstf\\Composer52\\Generator::onPostInstallCmd"
     ]
   },
   "require": {
@@ -43,8 +34,7 @@
     "bluehost/endurance-wp-module-gutenframe": "^0.1",
     "bluehost/endurance-wp-module-loader": "^1.0",
     "bluehost/endurance-wp-module-spam-prevention": "^1.0",
-    "bluehost/endurance-wp-module-sso": "^1.0",
-    "xrstf/composer-php52": "^1.0"
+    "bluehost/endurance-wp-module-sso": "^1.0"
   },
   "require-dev": {
     "bluehost/wp-php-standards": "^1.0"
