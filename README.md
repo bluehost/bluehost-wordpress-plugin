@@ -1,4 +1,4 @@
-mojo-marketplace-wp-plugin
+Bluehost WordPress Plugin
 ==========================
 
-WordPress plugin that has shortcodes, widgets and themes. 
+WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features. 
