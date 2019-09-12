@@ -26,6 +26,7 @@
     "@wordpress/dom": "^2.4.0",
     "@wordpress/dom-ready": "^2.5.0",
     "@wordpress/element": "^2.6.0",
+    "@wordpress/html-entities": "^2.5.0",
     "@wordpress/i18n": "^3.6.0",
     "@wordpress/keycodes": "^2.5.0",
     "animate.css": "^3.7.2",
