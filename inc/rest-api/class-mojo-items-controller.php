@@ -9,14 +9,14 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Query the Mojo items endpoint.
 	 *
-	 * @param array            $params
+	 * @param array $params
 	 * @param \WP_REST_Request $request
 	 *
 	 * @return array|mixed|object|null
 	 */
 	public function query_mojo_items( $params, WP_REST_Request $request ) {
-		$params       = wp_parse_args( $request->get_params(), $params );
-		$api_url      = add_query_arg( $params, 'https://api.mojomarketplace.com/api/v2/items' );
+		$params = wp_parse_args( $request->get_params(), $params );
+		$api_url = add_query_arg( $params, 'https://api.mojomarketplace.com/api/v2/items' );
 		$api_response = mm_api_cache( $api_url );
 
 		return $this->get_response( $api_response );
@@ -25,7 +25,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Query the Mojo search endpoint.
 	 *
-	 * @param array            $params
+	 * @param array $params
 	 * @param \WP_REST_Request $request
 	 *
 	 * @return array|mixed|object|null
@@ -49,7 +49,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 			unset( $params['type'] );
 		}
 
-		$api_url      = add_query_arg( $params, 'https://api.mojomarketplace.com/api/v2/search' );
+		$api_url = add_query_arg( $params, 'https://api.mojomarketplace.com/api/v2/search' );
 		$api_response = mm_api_cache( $api_url );
 
 		return $this->get_response( $api_response );
@@ -93,6 +93,20 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 			$response['page'] = absint( $response['page'] );
 		}
 
+		$response['items'] = array_map( function ( array $item ) {
+			if ( isset( $item['id'] ) ) {
+				$item['buy_url'] = mm_build_link(
+					add_query_arg( [ 'item_id' => $item['id'] ], 'https://www.mojomarketplace.com/cart' ),
+					[
+						'utm_medium'  => 'plugin_admin',
+						'utm_content' => 'buy_now_preview'
+					]
+				);
+			}
+
+			return $item;
+		}, $response['items'] );
+
 		return rest_ensure_response( $response );
 	}
 
@@ -114,7 +128,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Prepare the item for the REST response
 	 *
-	 * @param mixed           $item WordPress representation of the item.
+	 * @param mixed $item WordPress representation of the item.
 	 * @param WP_REST_Request $request Request object.
 	 *
 	 * @return mixed
