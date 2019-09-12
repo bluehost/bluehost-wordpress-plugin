@@ -42,8 +42,19 @@ export default function ProductCard(
                     '--is-favorite': isFavorite
                 })} onClick={toggleFavorite}/>
                 <div className="product-card__button-group">
-                    <Button {...buttonSecondary} className="product-card__button-secondary" isDefault/>
-                    <Button {...buttonPrimary} className="product-card__button-primary" isPrimary/>
+                    <Button
+                        children={__('View Details', 'bluehost-wordpress-plugin')}
+                        {...buttonSecondary}
+                        className="product-card__button-secondary"
+                        isDefault
+                    />
+                    <Button
+                        children={__('Buy Now', 'bluehost-wordpress-plugin')}
+                        target="_blank"
+                        {...buttonPrimary}
+                        className="product-card__button-primary"
+                        isPrimary
+                    />
                 </div>
             </div>
         </div>
