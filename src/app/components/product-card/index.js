@@ -1,6 +1,7 @@
 /**
  * WordPress dependencies
  */
+import {decodeEntities} from '@wordpress/html-entities';
 import {__} from '@wordpress/i18n';
 
 /**
@@ -29,7 +30,7 @@ export default function ProductCard(
         <div className="product-card">
             <div className="product-card__image" style={{backgroundImage: `url(${imageUrl})`}}/>
             <div className="product-card__details">
-                <div className="product-card__title">{title}</div>
+                <div className="product-card__title">{decodeEntities(title)}</div>
                 <div className="product-card__price">{price}</div>
             </div>
             <div className="product-card__action-group">
