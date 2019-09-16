@@ -3,6 +3,7 @@ import {useState, useEffect} from '@wordpress/element';
 
 export default function useMojoApi(initialType = 'themes', initialParams = {}) {
 
+    const [done, setDone] = useState(false);
     const [isError, setIsError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [type, setType] = useState(initialType);
@@ -11,6 +12,7 @@ export default function useMojoApi(initialType = 'themes', initialParams = {}) {
 
     useEffect(() => {
         const fetchData = async () => {
+            setDone(false);
             setIsError(false);
             setIsLoading(true);
             try {
@@ -25,9 +27,10 @@ export default function useMojoApi(initialType = 'themes', initialParams = {}) {
                 setPayload(error);
             }
             setIsLoading(false);
+            setDone(true);
         };
         fetchData();
     }, [type, params]);
 
-    return [{isError, isLoading, params, payload}, {setType, setParams}];
+    return [{done, isError, isLoading, params, payload}, {setType, setParams}];
 }

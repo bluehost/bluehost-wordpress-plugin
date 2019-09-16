@@ -2,8 +2,18 @@
 
 class Mojo_Items_Controller extends WP_REST_Controller {
 
+	/**
+	 * The controller's namespace.
+	 *
+	 * @var string
+	 */
 	protected $namespace = 'mojo/v1';
 
+	/**
+	 * The base of this controller's route.
+	 *
+	 * @var string
+	 */
 	protected $rest_base = 'items';
 
 	/**

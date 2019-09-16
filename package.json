@@ -31,6 +31,7 @@
     "@wordpress/keycodes": "^2.5.0",
     "animate.css": "^3.7.2",
     "axios": "^0.19.0",
+    "change-case": "^3.1.0",
     "classnames": "^2.2.6",
     "fuse.js": "^3.4.5",
     "lodash": "^4.17.15",

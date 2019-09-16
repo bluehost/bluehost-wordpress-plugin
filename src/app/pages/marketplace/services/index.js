@@ -14,16 +14,22 @@ import {
     Grid,
     Pagination,
     ProductCard,
-    ProductDetails,
     Search
 } from '@/components';
-import {useFavorites, useMojoApi, useMojoFilter, useMojoSearch, useMojoSort, usePaginator} from '@/hooks';
+
+import {
+    useFavorites,
+    useMojoApi,
+    useMojoFilter,
+    useMojoSearch,
+    useMojoSort,
+    usePaginator
+} from '@/hooks';
 
 import './style.scss';
 
-export default function ServicesPage() {
+export default function ServicesPage({history}) {
 
-    const [activeItem, setActiveItem] = useState({});
     const [sort, setSort] = useState('sort-sales-desc');
     const [{payload, isLoading}] = useMojoApi('services', {category: '', count: 1000});
     const [{favorites}, {hasFavorite, toggleFavorite}] = useFavorites();
@@ -31,7 +37,6 @@ export default function ServicesPage() {
     const [sortBy] = useMojoSort();
     const [filterBy] = useMojoFilter(favorites);
     const [{query}, {search, setQuery}] = useMojoSearch();
-    const [view, setView] = useState('list');
 
     useEffect(() => {
 
@@ -65,90 +70,72 @@ export default function ServicesPage() {
             <header className="bluehost-services__header">
                 <div className="bluehost-services__header-primary">
                     <h1>{__('Premium Services', 'bluehost-wordpress-plugin')}</h1>
-                    {view === 'list' && (
-                        <Pagination callback={setPageNumber} currentPage={pageNumber} pageCount={pageCount}/>
-                    )}
+                    <Pagination callback={setPageNumber} currentPage={pageNumber} pageCount={pageCount}/>
                 </div>
-                {view === 'list' && (
-                    <div className="bluehost-services__header-secondary">
-                        <Search value={query} onChange={setQuery}/>
-                        <Dropdown
-                            id="sort-filter"
-                            label={__('Sort By', 'bluehost-wordpress-plugin')}
-                            onChange={(value) => setSort(value)}
-                            options={[
-                                {
-                                    label: __('Popular', 'bluehost-wordpress-plugin'),
-                                    value: 'sort-sales-desc',
-                                },
-                                {
-                                    label: __('Price (High to Low)', 'bluehost-wordpress-plugin'),
-                                    value: 'sort-price-desc',
-                                },
-                                {
-                                    label: __('Price (Low to High)', 'bluehost-wordpress-plugin'),
-                                    value: 'sort-price-asc',
-                                },
-                                {
-                                    label: __('Date Added', 'bluehost-wordpress-plugin'),
-                                    value: 'sort-date-desc',
-                                },
-                                {
-                                    label: __('Favorite', 'bluehost-wordpress-plugin'),
-                                    value: 'filter-favorites',
-                                },
-                            ]}
-                            value={sort}
-                            width={178}
-                        />
-                    </div>
-                )}
+                <div className="bluehost-services__header-secondary">
+                    <Search value={query} onChange={setQuery}/>
+                    <Dropdown
+                        id="sort-filter"
+                        label={__('Sort By', 'bluehost-wordpress-plugin')}
+                        onChange={(value) => setSort(value)}
+                        options={[
+                            {
+                                label: __('Popular', 'bluehost-wordpress-plugin'),
+                                value: 'sort-sales-desc',
+                            },
+                            {
+                                label: __('Price (High to Low)', 'bluehost-wordpress-plugin'),
+                                value: 'sort-price-desc',
+                            },
+                            {
+                                label: __('Price (Low to High)', 'bluehost-wordpress-plugin'),
+                                value: 'sort-price-asc',
+                            },
+                            {
+                                label: __('Date Added', 'bluehost-wordpress-plugin'),
+                                value: 'sort-date-desc',
+                            },
+                            {
+                                label: __('Favorite', 'bluehost-wordpress-plugin'),
+                                value: 'filter-favorites',
+                            },
+                        ]}
+                        value={sort}
+                        width={178}
+                    />
+                </div>
             </header>
             {
                 isLoading ? (
                     <Spinner/>
                 ) : (
-                    view === 'list' ? (
-                        <Grid>
-                            {items ? items.map(item => {
-                                return (
-                                    <ProductCard
-                                        buttonPrimary={{href: item.buy_url}}
-                                        buttonSecondary={{
-                                            onClick: () => {
-                                                setView('item');
-                                                setActiveItem(item);
-                                            }
-                                        }}
-                                        id={item.id}
-                                        imageUrl={item.images.thumbnail_url}
-                                        isFavorite={hasFavorite(item.id)}
-                                        key={item.id}
-                                        price={item.prices.single_domain_license}
-                                        title={item.name}
-                                        toggleFavorite={() => toggleFavorite(item.id)}
-                                    />
-                                );
-                            }) : 'Sorry, no items matched your query.'}
-                        </Grid>
-                    ) : (
-                        <ProductDetails
-                            item={activeItem}
-                            onClose={() => {
-                                setView('list');
-                                setActiveItem({});
-                            }}
-                            rootBreadcrumbText={__('All Premium Services', 'bluehost-wordpress-plugin')}
-                        />
-                    )
+                    <Grid>
+                        {items ? items.map(item => {
+                            return (
+                                <ProductCard
+                                    buttonPrimary={{href: item.buy_url}}
+                                    buttonSecondary={{
+                                        onClick: () => {
+                                            history.push(`/marketplace/product/${item.id}`)
+                                        }
+                                    }}
+                                    id={item.id}
+                                    imageUrl={item.images.thumbnail_url}
+                                    isFavorite={hasFavorite(item.id)}
+                                    key={item.id}
+                                    price={item.prices.single_domain_license}
+                                    title={item.name}
+                                    toggleFavorite={() => toggleFavorite(item.id)}
+                                />
+                            );
+                        }) : 'Sorry, no items matched your query.'}
+                    </Grid>
                 )
             }
-            {view === 'list' && (
-                <footer className="bluehost-services__footer">
-                    <div className="bluehost-services__ad"><img src="https://via.placeholder.com/468x60" alt=""/></div>
-                    <Pagination callback={setPageNumber} currentPage={pageNumber} pageCount={pageCount}/>
-                </footer>
-            )}
+            <footer className="bluehost-services__footer">
+                <div className="bluehost-services__ad"><img src="https://via.placeholder.com/468x60" alt=""/></div>
+                <Pagination callback={setPageNumber} currentPage={pageNumber} pageCount={pageCount}/>
+            </footer>
         </AppPage>
     );
 }

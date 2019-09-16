@@ -10,6 +10,5 @@ export {default as Dropdown} from './dropdown';
 export {default as Grid} from './grid';
 export {default as Pagination} from './pagination';
 export {default as ProductCard} from './product-card';
-export {default as ProductDetails} from './product-details';
 export {default as Search} from './search';
 export {default as Tooltip} from './tooltip';
