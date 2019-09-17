@@ -11,6 +11,8 @@
  * @package Bluehost
  */
 
+use Endurance_WP_Plugin_Updater\Updater;
+
 // Do not access file directly!
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -25,14 +27,13 @@ define( 'MM_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/' )
 define( 'BLUEHOST_PLUGIN_VERSION', MM_VERSION );
 
 // Composer autoloader
-if ( version_compare( phpversion(), 5.3, '<' ) ) {
-	require dirname( __FILE__ ) . '/vendor/autoload_52.php';
-} else {
-	require dirname( __FILE__ ) . '/vendor/autoload.php';
-}
+require dirname( __FILE__ ) . '/vendor/autoload.php';
 
 // Handle any upgrade routines
 if ( is_admin() ) {
+
+	// Handle plugin updates
+	new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost.php' );
 
 	require dirname( __FILE__ ) . '/inc/upgrade-handler.php';
 

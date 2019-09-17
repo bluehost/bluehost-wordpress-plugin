@@ -1,6 +1,6 @@
 {
-  "name": "mojoness/mojo-marketplace-wp-plugin",
-  "description": "WordPress plugin that has shortcodes, widgets and themes.",
+  "name": "bluehost/bluehost-wordpress-plugin",
+  "description": "This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
   "type": "wordpress-plugin",
   "license": "GPL-2.0-or-later",
   "authors": [
@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "lint": [
-      "vendor/bin/phpcs --standard=vendor/bluehost/wp-php-standards/Bluehost/ruleset.xml ."
+      "vendor/bin/phpcs --standard=Bluehost ."
     ]
   },
   "require": {
@@ -35,19 +35,13 @@
     "bluehost/endurance-wp-module-loader": "^1.0",
     "bluehost/endurance-wp-module-spam-prevention": "^1.0",
     "bluehost/endurance-wp-module-sso": "^1.0",
-    "wpscholar/phpdotenv": "^1.0"
+    "wpscholar/phpdotenv": "^1.0",
+    "bluehost/endurance-wp-plugin-updater": "^1.0"
   },
   "require-dev": {
-    "bluehost/wp-php-standards": "^1.0"
+    "bluehost/wp-php-standards": "^1.1"
   },
   "config": {
     "optimize-autoloader": true
-  },
-  "extra": {
-    "phpcs-config": {
-      "colors": 1,
-      "default_standard": "Bluehost",
-      "testVersion": "5.2-"
-    }
   }
 }
