@@ -1,0 +1,51 @@
+@import '@/config.scss';
+
+#app-error {
+    padding: 24px 12px 12px 12px;
+    .warning-icon-wrap {
+        padding-top: 43px;
+        display: block;
+        width: 100%;
+        svg {
+            display: block;
+            margin: 0 auto;
+            fill: $color-orange;
+            height: 62.96px;	
+            width: 70.83px;
+        }
+    }
+    h3 {
+        font-family: $font;
+        font-weight: 300;
+        font-size: 32px;
+        line-height: 40px;
+        text-align: center;
+        @media (max-width: 600px) {
+            font-size: 28px;
+            line-height: 34px;
+        }
+    }
+    p {
+        font-family: $font;
+        font-size: 14px;
+        line-height: 24px;
+        max-width: 480px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .cta-wrap {
+        width: 100%;
+        margin: 32px auto 80px auto;
+        text-align: center;
+    }
+    .error-illustration-wrap {
+        width: 100%;
+        svg {
+            display: block;
+            margin: 0 auto;
+            min-width: 360px;
+            width: 40vw;
+            max-width: 920px;
+        }
+    }
+}

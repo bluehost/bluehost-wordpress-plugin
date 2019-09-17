@@ -107,6 +107,7 @@ class BluehostPage extends Component {
 				{ this.props.children }
 			</section>
 		);
+	
 	}
 }
 
