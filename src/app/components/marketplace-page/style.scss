@@ -1,6 +1,6 @@
 @import "@/config.scss";
 
-.bluehost-plugins {
+.bluehost-marketplace {
 
   &__header-primary {
     display: flex;
@@ -13,6 +13,9 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 9px;
+  }
+
+  &__content {
   }
 
   &__footer {

@@ -27,5 +27,5 @@ export default function usePaginator(initialCollection = [], initialItemsPerPage
         setItems(pages[pageNumber - 1]);
     }, [pages, pageNumber]);
 
-    return [{items, pageCount, pageNumber}, {setCollection, setItemsPerPage, setPageNumber}];
+    return [{items, itemsPerPage, pageCount, pageNumber}, {setCollection, setItemsPerPage, setPageNumber}];
 }

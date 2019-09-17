@@ -1,0 +1,76 @@
+@import '@/config.scss';
+
+$color-placeholder: $color-light-grey;
+
+%placeholder-background {
+  background-image: linear-gradient(90deg, $color-placeholder, $color-off-white, $color-placeholder);
+  background-size: 400% 400%;
+  animation: gradientBG 5s ease infinite;
+}
+
+.product-card.--placeholder {
+
+  .product-card {
+    &__image {
+      @extend %placeholder-background;
+    }
+
+    &__title {
+      @extend %placeholder-background;
+      width: 75%;
+      height: 1em;
+    }
+
+    &__favorite {
+      color: $color-placeholder;
+    }
+
+    &__price {
+      @extend %placeholder-background;
+      width: 3em;
+      height: 1em;
+
+      &::before {
+        content: none;
+      }
+    }
+
+  }
+
+  button {
+
+    pointer-events: none;
+
+    &.is-default {
+      color: $color-placeholder;
+      border-color: $color-placeholder;
+
+      &:hover {
+        @extend %placeholder-background;
+      }
+    }
+
+    &.is-primary {
+      border-color: $color-placeholder;
+      @extend %placeholder-background;
+      text-shadow: none;
+
+      &:hover {
+        @extend %placeholder-background;
+      }
+    }
+  }
+
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}

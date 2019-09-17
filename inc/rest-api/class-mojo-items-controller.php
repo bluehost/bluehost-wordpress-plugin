@@ -104,7 +104,9 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 		}
 
 		$response['items'] = array_map( function ( array $item ) {
+
 			if ( isset( $item['id'] ) ) {
+
 				$item['buy_url'] = mm_build_link(
 					add_query_arg( [ 'item_id' => $item['id'] ], 'https://www.mojomarketplace.com/cart' ),
 					[
@@ -112,6 +114,11 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 						'utm_content' => 'buy_now_preview'
 					]
 				);
+
+				if ( isset( $item['type'] ) && $item['type'] === 'themes' ) {
+					$item['preview_url'] = admin_url( 'admin.php?page=mojo-theme-preview&id=' . $item['id'] );
+				}
+
 			}
 
 			return $item;

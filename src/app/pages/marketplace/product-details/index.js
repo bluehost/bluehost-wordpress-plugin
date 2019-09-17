@@ -9,9 +9,8 @@ import {ReactComponent as ErrorStateImage} from '@/assets/error-state.svg';
 
 import './style.scss';
 
-export default function ProductDetails({id = '5377b431-d8a8-431b-a711-50c10a141528'}) {
+export default function ProductDetails({id}) {
     const [item, setItem] = useState(null);
-    const [state, setState] = useState('loading');
     const [type, setType] = useState(null);
     const [{done, isError, isLoading, payload}] = useMojoApi('items', {id});
 

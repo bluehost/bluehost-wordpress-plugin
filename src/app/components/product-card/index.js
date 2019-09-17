@@ -19,6 +19,7 @@ export default function ProductCard(
     {
         buttonPrimary = {children: __('Buy Now', 'bluehost-wordpress-plugin')},
         buttonSecondary = {children: __('View Details', 'bluehost-wordpress-plugin')},
+        className = '',
         imageUrl,
         isFavorite = false,
         price,
@@ -26,9 +27,11 @@ export default function ProductCard(
         toggleFavorite
     }
 ) {
+
+    const style = imageUrl ? {backgroundImage: `url(${imageUrl})`} : {};
     return (
-        <div className="product-card">
-            <div className="product-card__image" style={{backgroundImage: `url(${imageUrl})`}}/>
+        <div className={`product-card ${className}`}>
+            <div className="product-card__image" style={style}/>
             <div className="product-card__details">
                 <div className="product-card__title">{decodeEntities(title)}</div>
                 <div className="product-card__price">{price}</div>

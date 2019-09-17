@@ -21,6 +21,9 @@
       color: $color-grey;
       margin: 0;
       padding: 0;
+      &:hover {
+        color: $color-primary;
+      }
     }
   }
 
