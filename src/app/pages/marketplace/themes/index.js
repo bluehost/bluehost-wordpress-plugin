@@ -9,7 +9,7 @@ export default function ThemesPage() {
 
     const [{done, isError, isLoading, payload}] = useMojoApi('themes', {count: 1000});
 
-    if (!isError) {
+    if (isError) {
         throw new Error('API Error. Payload: ' + JSON.stringify(payload));
     }
 
