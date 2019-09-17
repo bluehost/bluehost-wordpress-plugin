@@ -9,7 +9,7 @@ export default function ThemesPage({history}) {
     const [{done, isError, isLoading, payload}] = useMojoApi('services', {category: '', count: 1000});
 
     if (isError) {
-        throw new Error('API Error');
+        throw new Error('API Error. Payload: ' + JSON.stringify(payload));
     }
 
     const renderCallback = ({item, hasFavorite, toggleFavorite}) => {
