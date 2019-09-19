@@ -7,7 +7,7 @@ import {Button} from '@wordpress/components';
  */
 import './style.scss';
 
-const AppButton = ({className, ...props}) => {
+const AppButton = ({className = '', ...props}) => {
     return (
         <Button {...props} className={`bluehost ${className}`}/>
     );

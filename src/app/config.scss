@@ -20,3 +20,35 @@ $color-primary: $color-blue;
 $color-default: $color-black;
 $color-disabled: $color-grey;
 $color-background: $color-off-white;
+
+// Placeholders
+%text-sm {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+%text-m {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+%text-l {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+%text-xl {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+%sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

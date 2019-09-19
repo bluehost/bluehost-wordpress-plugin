@@ -1,0 +1,108 @@
+@import '@/config.scss';
+
+.bluehost-staging {
+
+  h2 {
+    @extend %text-l;
+  }
+
+  p {
+    @extend %text-m;
+    max-width: 600px;
+  }
+
+  button.bluehost {
+    margin-left: 0;
+  }
+
+  .options-menu__list {
+    left: unset;
+    right: 0;
+  }
+
+  &__step {
+    &.--creation {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      div {
+        font-size: 20px;
+        line-height: 27px;
+        margin: 16px 0;
+      }
+
+      p {
+        @extend %text-sm;
+        margin: 0;
+        max-width: 426px;
+      }
+    }
+  }
+
+  &__modal {
+    h1.components-modal__header-heading {
+      @extend %text-l;
+    }
+
+    p {
+      @extend %text-m;
+      max-width: 600px;
+    }
+
+    .components-button.bluehost {
+      color: $color-primary;
+
+      &.is-primary {
+        color: $color-white;
+        text-shadow: none;
+
+        &:active, &:focus, &:visited {
+          background: $color-primary;
+        }
+      }
+    }
+
+    .bluehost-warning {
+      flex-grow: 1;
+    }
+
+    &-actions {
+      display: flex;
+    }
+
+    &.--delete {
+      .components-button.bluehost.is-primary {
+        background: $color-red;
+
+        &:active, &:focus, &:visited {
+          background: $color-red;
+        }
+      }
+    }
+  }
+
+  &__overlay {
+    font-family: "Open Sans" !important;
+
+    h1 {
+      color: $color-white;
+      @extend %text-xl;
+    }
+
+    p {
+      @extend %text-m;
+    }
+
+    span {
+      color: $color-orange;
+    }
+
+    svg {
+      margin: 80px 0 48px 0;
+    }
+
+  }
+
+}

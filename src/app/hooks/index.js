@@ -4,3 +4,4 @@ export {default as useMojoFilter} from './mojo-filter';
 export {default as useMojoSearch} from './mojo-search';
 export {default as useMojoSort} from './mojo-sort';
 export {default as usePaginator} from './paginator';
+export {default as useStaging} from './staging';

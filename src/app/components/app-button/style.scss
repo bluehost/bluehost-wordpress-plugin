@@ -15,7 +15,8 @@
     border: 1px solid transparent;
     background: $color-primary;
     box-shadow: none;
-    &:visited{
+
+    &:visited, &:focus {
       background: $color-primary;
       color: #fff;
     }
@@ -24,6 +25,7 @@
   &.is-link {
     font-weight: 300;
     color: $color-primary;
+
     &:hover {
       color: $color-primary;
       text-decoration: underline;
@@ -35,15 +37,22 @@
     border: 1px solid $color-primary;
     color: $color-primary;
     box-shadow: none;
+
     &:hover {
       background: $color-primary;
       color: #fff;
       text-shadow: none;
       box-shadow: none;
     }
+
     &:active {
       background: $color-primary;
       color: #fff;
+    }
+
+    &:focus {
+      background: transparent;
+      color: $color-primary;
     }
   }
 }

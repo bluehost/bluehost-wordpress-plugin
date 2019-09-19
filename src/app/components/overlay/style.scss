@@ -1,0 +1,21 @@
+@import '@/config.scss';
+
+.bluehost-overlay {
+  background: rgba(#000, 0.85);
+  color: $color-white;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  border: none;
+  width: 100vw;
+  height: 100vh;
+  cursor: not-allowed;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 99999;
+}

@@ -4,14 +4,7 @@
 @import '@/config.scss';
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+  @extend %sr-only;
 }
 
 #wpbody-content {
@@ -57,6 +50,7 @@ body:not(.bluehost-admin-keynav) {
   display: block;
   height: 100%;
   min-height: 100%;
+
   .pure-g [class *= "pure-u"] {
     font-family: $font !important;
     font-weight: 300;
@@ -67,10 +61,12 @@ body:not(.bluehost-admin-keynav) {
   display: flex;
   align-items: center;
   justify-content: center;
+
   .spinner-wrap {
     max-width: 50%;
     position: fixed;
     top: 48%;
+
     .components-spinner {
       background: $color-primary;
       opacity: 1;
@@ -78,6 +74,7 @@ body:not(.bluehost-admin-keynav) {
       height: 36px;
       margin: 10px 22px 0;
       box-shadow: 0 0 1.33rem 0.66rem #BEE0F6;
+
       &:before {
         top: 6px;
         left: 6px;
