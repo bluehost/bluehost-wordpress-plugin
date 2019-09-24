@@ -27,7 +27,7 @@ define( 'MM_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/' )
 define( 'BLUEHOST_PLUGIN_VERSION', MM_VERSION );
 
 // Composer autoloader
-require dirname( __FILE__ ) . '/vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 // Handle any upgrade routines
 if ( is_admin() ) {
@@ -35,10 +35,10 @@ if ( is_admin() ) {
 	// Handle plugin updates
 	new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost.php' );
 
-	require dirname( __FILE__ ) . '/inc/upgrade-handler.php';
+	require __DIR__ . '/inc/upgrade-handler.php';
 
 	$upgrade_handler = new Bluehost_Upgrade_Handler(
-		dirname( __FILE__ ) . '/upgrades',
+		__DIR__ . '/upgrades',
 		get_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION ),
 		BLUEHOST_PLUGIN_VERSION
 	);
@@ -50,38 +50,37 @@ if ( is_admin() ) {
 }
 
 // Require files
-require dirname( __FILE__ ) . '/inc/class-access-token.php';
-require dirname( __FILE__ ) . '/inc/class-response-utilities.php';
-require dirname( __FILE__ ) . '/inc/class-site-meta.php';
-require_once MM_BASE_DIR . 'inc/admin.php';
-require_once MM_BASE_DIR . 'inc/base.php';
-require_once MM_BASE_DIR . 'inc/checkout.php';
-require_once MM_BASE_DIR . 'inc/menu.php';
-require_once MM_BASE_DIR . 'inc/shortcode-generator.php';
-require_once MM_BASE_DIR . 'inc/mojo-themes.php';
-require_once MM_BASE_DIR . 'inc/styles.php';
-require_once MM_BASE_DIR . 'inc/plugin-search.php';
-require_once MM_BASE_DIR . 'inc/jetpack.php';
-require_once MM_BASE_DIR . 'inc/user-experience-tracking.php';
-require_once MM_BASE_DIR . 'inc/notifications.php';
-require_once MM_BASE_DIR . 'inc/staging.php';
-require_once MM_BASE_DIR . 'inc/updates.php';
-require_once MM_BASE_DIR . 'inc/coming-soon.php';
-require_once MM_BASE_DIR . 'inc/tests.php';
-require_once MM_BASE_DIR . 'inc/track-last-login.php';
-require_once MM_BASE_DIR . 'inc/performance.php';
-require_once MM_BASE_DIR . 'inc/partners.php';
-require_once MM_BASE_DIR . 'inc/rest-api/rest-api.php';
-
-mm_require( MM_BASE_DIR . 'inc/branding.php' );
-// mm_require( MM_BASE_DIR . 'updater.php' );
+require __DIR__ . '/inc/class-access-token.php';
+require __DIR__ . '/inc/class-response-utilities.php';
+require __DIR__ . '/inc/class-site-meta.php';
+require __DIR__ . '/inc/admin.php';
+require __DIR__ . '/inc/base.php';
+require __DIR__ . '/inc/checkout.php';
+require __DIR__ . '/inc/menu.php';
+require __DIR__ . '/inc/shortcode-generator.php';
+require __DIR__ . '/inc/mojo-themes.php';
+require __DIR__ . '/inc/styles.php';
+require __DIR__ . '/inc/plugin-search.php';
+require __DIR__ . '/inc/jetpack.php';
+require __DIR__ . '/inc/user-experience-tracking.php';
+require __DIR__ . '/inc/notifications.php';
+require __DIR__ . '/inc/staging.php';
+require __DIR__ . '/inc/updates.php';
+require __DIR__ . '/inc/coming-soon.php';
+require __DIR__ . '/inc/tests.php';
+require __DIR__ . '/inc/track-last-login.php';
+require __DIR__ . '/inc/performance.php';
+require __DIR__ . '/inc/partners.php';
+require __DIR__ . '/inc/rest-api/rest-api.php';
+require __DIR__ . '/inc/branding.php';
+require __DIR__ . '/updater.php';
 
 // Check proper PHP and bring CLI loader online
 if ( version_compare( PHP_VERSION, '5.3.29' ) >= 0 ) {
-	mm_require( MM_BASE_DIR . 'inc/cli-init.php' );
+	require __DIR__ . '/inc/cli-init.php';
 }
 
-mm_require( MM_BASE_DIR . 'inc/admin-page-notifications-blocker.php' );
+mm_require( __DIR__ . '/inc/admin-page-notifications-blocker.php' );
 
 if ( is_admin() ) {
 	// Keep the Bluehost API access token fresh.

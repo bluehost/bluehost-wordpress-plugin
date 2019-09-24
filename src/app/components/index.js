@@ -6,6 +6,7 @@ export {default as AppNavLink} from './app-nav-link';
 export {default as AppNotice} from './app-notice';
 export {default as AppPage} from './app-page';
 export {default as AppPrimaryNav} from './app-primary-nav';
+export {default as AppSnackbar} from './app-snackbar';
 export {default as AppSpinner} from './app-spinner';
 export {default as Dropdown} from './dropdown';
 export {default as EnvironmentCard} from './environment-card';

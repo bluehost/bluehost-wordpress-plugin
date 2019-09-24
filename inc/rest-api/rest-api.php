@@ -8,6 +8,7 @@ function bluehost_include_rest_api() {
 	require __DIR__ . '/class-mojo-themes-controller.php';
 	require __DIR__ . '/class-mojo-plugins-controller.php';
 	require __DIR__ . '/class-mojo-services-controller.php';
+	require __DIR__ . '/class-staging-controller.php';
 }
 
 add_action( 'rest_api_init', 'bluehost_include_rest_api', 5 );
@@ -17,6 +18,7 @@ add_action( 'rest_api_init', 'bluehost_include_rest_api', 5 );
  */
 function bluehost_init_rest_api() {
 	$controllers = array(
+		'Bluehost_Staging_Controller',
 		'Mojo_Item_Controller',
 		'Mojo_Themes_Controller',
 		'Mojo_Plugins_Controller',
@@ -24,6 +26,9 @@ function bluehost_init_rest_api() {
 	);
 
 	foreach ( $controllers as $controller ) {
+		/**
+		 * @var $instance WP_REST_Controller
+		 */
 		$instance = new $controller();
 		$instance->register_routes();
 	}

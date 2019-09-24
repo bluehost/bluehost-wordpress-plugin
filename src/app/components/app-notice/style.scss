@@ -1,26 +1,35 @@
+@import '@/config.scss';
+
 .components-notice {
-	padding: 16px 16px 24px;
-	border-left-width: 4px;
-	border-radius: 0 3px 3px 0;
-	margin: 0;
-	&.is-warning,
-	&.is-error,
-	&.is-default {
-		background-color: #fff;
-	}
-	&.is-warning {
-		border-left-color: #F89C24;
-	}
-	h2 {
-		margin: 0 0 9px;
-		font-size: 20px;
-		line-height: 32px;
-	}
-	p {
-		margin: 0;
-		line-height: 24px;
-	}
-}
-.components-notice__content {
-	margin: 0;
+
+  padding: 16px 16px 24px;
+  border-left-width: 4px;
+  border-radius: 0 3px 3px 0;
+  margin: 0;
+
+  &.is-warning,
+  &.is-error,
+  &.is-default {
+    background-color: #fff;
+  }
+
+  &.is-warning {
+    border-left-color: #F89C24;
+  }
+
+  h2 {
+    margin: 0 0 9px;
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  p {
+    margin: 0;
+    line-height: 24px;
+  }
+
+  &__content {
+    margin: 0;
+  }
+
 }
