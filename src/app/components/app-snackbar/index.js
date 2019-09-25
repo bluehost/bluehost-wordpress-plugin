@@ -15,7 +15,7 @@ import {__} from '@wordpress/i18n';
  */
 import {ReactComponent as CloseIcon} from '@/assets/close.svg';
 import {ReactComponent as WarningIcon} from '@/assets/warning.svg';
-import {ReactComponent as SuccessIcon} from '@/assets/shield-check-regular.svg';
+import {ReactComponent as SuccessIcon} from '@/assets/success.svg';
 import './style.scss';
 
 const AppSnackbar = ({children, className = '', isDismissible = false, onRemove, status, title = '', ...props}) => {
