@@ -4,12 +4,12 @@ export default function EnvironmentCard(
     {
         color = 'green',
         deploymentActionsComponent,
-        description = 'Updated Jun 19, 2019',
+        description,
         environmentActionsComponent,
         environmentName,
         radioButtonComponent,
-        screenshotUrl = 'https://via.placeholder.com/122x92',
-        title = window.location.hostname
+        screenshotUrl,
+        title
     }
 ) {
 

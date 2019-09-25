@@ -24,6 +24,8 @@
     width: 122px;
     height: 92px;
     margin-right: 16px;
+    background: $color-light-grey;
+    background-size: contain !important;
   }
 
   &__details {

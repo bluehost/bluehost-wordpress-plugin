@@ -17,6 +17,7 @@ import './style.scss';
 export default function OptionsMenu(
     {
         className = '',
+        disabled = false,
         label,
         options = [],
         width = 200
@@ -123,6 +124,7 @@ export default function OptionsMenu(
                 aria-haspopup="listbox"
                 aria-labelledby={labelId}
                 className="options-menu__toggle"
+                disabled={disabled}
                 onClick={() => setIsOpen(!isOpen)}
                 onFocus={() => setHasFocus(true)}
                 onBlur={() => setHasFocus(false)}

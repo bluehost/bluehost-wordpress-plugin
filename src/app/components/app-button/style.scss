@@ -11,6 +11,10 @@
   text-decoration: none;
   margin-left: 8px;
 
+  &[disabled] {
+    pointer-events: none;
+  }
+
   &.is-primary {
     border: 1px solid transparent;
     background: $color-primary;

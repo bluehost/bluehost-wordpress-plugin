@@ -15,6 +15,9 @@
 
   &__toggle {
     display: flex;
+    &[disabled] {
+      opacity: 0.3;
+    }
   }
 
   &__list {

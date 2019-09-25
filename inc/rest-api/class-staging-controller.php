@@ -37,7 +37,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 			[
 				[
 					'methods'  => WP_REST_Server::READABLE,
-					'callback' => [ $this, 'stagingExists' ],
+					'callback' => [ $this, 'getStagingDetails' ],
 				],
 				[
 					'methods'  => WP_REST_Server::CREATABLE,
@@ -86,18 +86,6 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 
 		register_rest_route(
 			$this->namespace,
-			'/staging/environment',
-			[
-				[
-					'methods'             => WP_REST_Server::READABLE,
-					'callback'            => [ $this, 'getEnvironment' ],
-					'permission_callback' => [ $this, 'checkPermission' ],
-				],
-			]
-		);
-
-		register_rest_route(
-			$this->namespace,
 			'/staging/switch-to',
 			[
 				[
@@ -134,7 +122,24 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 	 * @return WP_REST_Response
 	 */
 	public function createStaging() {
-		return rest_ensure_response( $this->staging->createStaging() );
+		$payload = $this->staging->createStaging();
+		if ( ! is_wp_error( $payload ) ) {
+			$this->staging->getConfig( false );
+			$payload = [
+				'creationDate'           => $this->staging->getCreationDate(),
+				'currentEnvironment'     => $this->staging->getEnvironment(),
+				'message'                => $payload['message'],
+				'productionDir'          => $this->staging->getProductionDir(),
+				'productionThumbnailUrl' => $this->staging->getProductionScreenshotUrl(),
+				'productionUrl'          => $this->staging->getProductionUrl(),
+				'stagingDir'             => $this->staging->getStagingDir(),
+				'stagingExists'          => $this->staging->stagingExists(),
+				'stagingThumbnailUrl'    => $this->staging->getStagingScreenshotUrl(),
+				'stagingUrl'             => $this->staging->getStagingUrl(),
+			];
+		}
+
+		return rest_ensure_response( $payload );
 	}
 
 	/**
@@ -167,26 +172,22 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 	}
 
 	/**
-	 * Get the current environment name.
+	 * Get all staging details.
 	 *
 	 * @return WP_REST_Response
 	 */
-	public function getEnvironment() {
-		$environment = 'production';
-		if ( $this->staging->isStaging() ) {
-			$environment = 'staging';
-		}
-
-		return rest_ensure_response( $environment );
-	}
-
-	/**
-	 * Check if the staging environment exists.
-	 *
-	 * @return WP_REST_Response
-	 */
-	public function stagingExists() {
-		return rest_ensure_response( $this->staging->stagingExists() );
+	public function getStagingDetails() {
+		return rest_ensure_response( [
+			'creationDate'           => $this->staging->getCreationDate(),
+			'currentEnvironment'     => $this->staging->getEnvironment(),
+			'productionDir'          => $this->staging->getProductionDir(),
+			'productionThumbnailUrl' => $this->staging->getProductionScreenshotUrl(),
+			'productionUrl'          => $this->staging->getProductionUrl(),
+			'stagingDir'             => $this->staging->getStagingDir(),
+			'stagingExists'          => $this->staging->stagingExists(),
+			'stagingThumbnailUrl'    => $this->staging->getStagingScreenshotUrl(),
+			'stagingUrl'             => $this->staging->getStagingUrl(),
+		] );
 	}
 
 	/**

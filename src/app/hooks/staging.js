@@ -10,6 +10,13 @@ import {__} from '@wordpress/i18n';
 export default function useStaging() {
 
     /**
+     * The creation date of the staging environment.
+     *
+     * @var {string}
+     */
+    const [creationDate, setCreationDate] = useState(null);
+
+    /**
      * Whether or not we are on the production environment.
      *
      * @var {Boolean}
@@ -50,6 +57,48 @@ export default function useStaging() {
      * @var {Boolean}
      */
     const [isLoading, setIsLoading] = useState(false);
+
+    /**
+     * The production environment directory.
+     *
+     * @var {string}
+     */
+    const [productionDir, setProductionDir] = useState(null);
+
+    /**
+     * The production thumbnail URL.
+     *
+     * @var {string}
+     */
+    const [productionThumbnailUrl, setProductionThumbnailUrl] = useState(null);
+
+    /**
+     * The production environment URL.
+     *
+     * @var {string}
+     */
+    const [productionUrl, setProductionUrl] = useState(null);
+
+    /**
+     * The staging environment directory.
+     *
+     * @var {string}
+     */
+    const [stagingDir, setStagingDir] = useState(null);
+
+    /**
+     * The staging thumbnail URL.
+     *
+     * @var {string}
+     */
+    const [stagingThumbnailUrl, setStagingThumbnailUrl] = useState(null);
+
+    /**
+     * The staging environment URL.
+     *
+     * @var {string}
+     */
+    const [stagingUrl, setStagingUrl] = useState(null);
 
     /**
      * Set when switching between environments.
@@ -95,20 +144,40 @@ export default function useStaging() {
         }
     };
 
-    useEffect(() => {
-        // Set isProduction
-        callApi({path: '/bluehost/v1/staging/environment'})
-            .then(response => {
-                setIsProduction(response === 'production');
-            });
+    const setup = (response) => {
+        if (response.hasOwnProperty('stagingExists')) {
+            setHasStaging(response.stagingExists);
+        }
+        if (response.hasOwnProperty('currentEnvironment')) {
+            setIsProduction(response.currentEnvironment === 'production');
+        }
+        if (response.hasOwnProperty('productionDir')) {
+            setProductionDir(response.productionDir);
+        }
+        if (response.hasOwnProperty('productionThumbnailUrl')) {
+            setProductionThumbnailUrl(response.productionThumbnailUrl);
+        }
+        if (response.hasOwnProperty('productionUrl')) {
+            setProductionUrl(response.productionUrl);
+        }
+        if (response.hasOwnProperty('stagingDir')) {
+            setStagingDir(response.stagingDir);
+        }
+        if (response.hasOwnProperty('stagingThumbnailUrl')) {
+            setStagingThumbnailUrl(response.stagingThumbnailUrl);
+        }
+        if (response.hasOwnProperty('stagingUrl')) {
+            setStagingUrl(response.stagingUrl);
+        }
+        if (response.hasOwnProperty('creationDate')) {
+            setCreationDate(response.creationDate);
+        }
+    };
 
-        // Set hasStaging
+    useEffect(() => {
+        // Set staging details.
         callApi({path: '/bluehost/v1/staging'})
-            .then(response => {
-                if (response !== null) {
-                    setHasStaging(response);
-                }
-            });
+            .then(setup);
     }, []);
 
     /**
@@ -118,7 +187,8 @@ export default function useStaging() {
         setIsCreatingStaging(true);
         const response = await callApi({path: '/bluehost/v1/staging', method: 'POST'});
         if (response) {
-            setHasStaging(true);
+            setup(response);
+            setNotice(response.message);
         }
         setIsCreatingStaging(false);
     }
@@ -148,7 +218,6 @@ export default function useStaging() {
         if (response && response.hasOwnProperty('load_page')) {
             window.location.href = response.load_page;
         }
-        setSwitchingTo('');
     }
 
     /**
@@ -175,19 +244,25 @@ export default function useStaging() {
 
     return [
         {
+            creationDate,
             hasStaging,
             isCreatingStaging,
             isError,
             isProduction,
             isLoading,
             notice,
+            productionDir,
+            productionThumbnailUrl,
+            productionUrl,
+            stagingDir,
+            stagingThumbnailUrl,
+            stagingUrl,
             switchingTo
         }, {
             cloneEnv,
             createEnv,
             deleteEnv,
             deployChanges,
-            setSwitchingTo,
             setNotice,
             switchToEnv
         }

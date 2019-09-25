@@ -1,9 +1,8 @@
 /**
  * WordPress dependencies
  */
-import {createPortal, useState} from '@wordpress/element';
+import {useState} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
-import {Modal} from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -16,14 +15,18 @@ import {
     OptionsMenu,
     Overlay,
     AppSnackbar as Snackbar,
-    Warning
 } from '@/components';
 import {useStaging} from '@/hooks';
 import {ReactComponent as LoadingEnvSvg} from '@/assets/change-env.svg';
+import CloneModal from './clone-modal';
+import DeleteModal from './delete-modal';
+import DeploymentModal from './deploy-modal';
 import './style.scss';
 
 export default function StagingPage() {
 
+    const [deployType, setDeployType] = useState('all');
+    const [showCloneModal, setShowCloneModal] = useState(false);
     const [showDeployModal, setShowDeployModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -33,15 +36,17 @@ export default function StagingPage() {
             isCreatingStaging,
             isError,
             isProduction,
-            isLoading,
             notice,
+            productionThumbnailUrl,
+            productionUrl,
+            stagingThumbnailUrl,
+            stagingUrl,
             switchingTo
         }, {
             createEnv,
             cloneEnv,
             deleteEnv,
             deployChanges,
-            setSwitchingTo,
             setNotice,
             switchToEnv
         }
@@ -60,11 +65,16 @@ export default function StagingPage() {
                     color="green"
                     deploymentActionsComponent={
                         hasStaging && (
-                            <Button isDefault onClick={() => cloneEnv()}>
+                            <Button
+                                disabled={!isProduction}
+                                isDefault
+                                onClick={() => setShowCloneModal(true)}
+                            >
                                 {__('Clone to Staging', 'bluehost-wordpress-plugin')}
                             </Button>
                         )
                     }
+                    description={"Updated Jun 19, 2019 (This is hardcoded)"}
                     environmentName={__('Live Site', 'bluehost-wordpress-plugin')}
                     radioButtonComponent={
                         hasStaging && (
@@ -72,12 +82,13 @@ export default function StagingPage() {
                                 <input
                                     type="radio"
                                     checked={isProduction}
-                                    onChange={() => setSwitchingTo('staging')}
+                                    onChange={() => switchToEnv('production')}
                                 />
                             </label>
                         )
                     }
-                    title={window.location.hostname}
+                    screenshotUrl={productionThumbnailUrl}
+                    title={productionUrl}
                 />
             </div>
 
@@ -119,6 +130,7 @@ export default function StagingPage() {
                                 deploymentActionsComponent={(
                                     <Button
                                         isDefault
+                                        disabled={isProduction}
                                         onClick={() => setShowDeployModal(true)}
                                     >
                                         {__('Deploy All Changes', 'bluehost-wordpress-plugin')}
@@ -126,6 +138,7 @@ export default function StagingPage() {
                                 )}
                                 environmentActionsComponent={(
                                     <OptionsMenu
+                                        disabled={isProduction}
                                         label={__('Staging Options', 'bluehost-wordpress-plugin')}
                                         options={[
                                             {
@@ -141,11 +154,12 @@ export default function StagingPage() {
                                         <input
                                             type="radio"
                                             checked={!isProduction}
-                                            onChange={() => switchToEnv('production')}
+                                            onChange={() => switchToEnv('staging')}
                                         />
                                     </label>
                                 )}
-                                title={`${window.location.hostname}/1234/staging`}
+                                screenshotUrl={stagingThumbnailUrl}
+                                title={stagingUrl}
                             />
                         </div>
                     );
@@ -163,61 +177,44 @@ export default function StagingPage() {
                 </Snackbar>
             )}
 
-            {showDeployModal && (
-                <Modal
-                    className="bluehost-staging__modal --deploy"
-                    isDismissable={false}
-                    title={__('Deploy Files to Production?', 'bluehost-wordpress-plugin')}
-                >
-                    <p>
-                        {__('This will override your production site. Are you sure you want to deploy all staging files to production?', 'bluehost-wordpress-plugin')}
-                    </p>
-                    <div className="bluehost-staging__modal-actions">
-                        <Warning>{__('This action cannot be undone', 'bluehost-wordpress-plugin')}</Warning>
-                        <Button onClick={() => setShowDeployModal(false)}>
-                            {__('Cancel', 'bluehost-wordpress-plugin')}
-                        </Button>
-                        <Button isPrimary onClick={() => {
-                            setShowDeployModal(false);
-                            deployChanges('all');
-                        }}>
-                            {__('Deploy', 'bluehost-wordpress-plugin')}
-                        </Button>
-                    </div>
-                </Modal>
+            {showCloneModal && (
+                <CloneModal
+                    onClick={() => {
+                        setShowCloneModal(false);
+                        cloneEnv();
+                    }}
+                    onClose={() => setShowCloneModal(false)}
+                />
             )}
 
             {showDeleteModal && (
-                <Modal
-                    className="bluehost-staging__modal --delete"
-                    isDismissable={false}
-                    title={__('Delete staging site?', 'bluehost-wordpress-plugin')}
-                >
-                    <p>
-                        {__('Are you sure you want to delete this staging site? This will permanently delete the staging instance from your site.', 'bluehost-wordpress-plugin')}
-                    </p>
-                    <div className="bluehost-staging__modal-actions">
-                        <Warning>{__('This action cannot be undone', 'bluehost-wordpress-plugin')}</Warning>
-                        <Button onClick={() => setShowDeleteModal(false)}>
-                            {__('Cancel', 'bluehost-wordpress-plugin')}
-                        </Button>
-                        <Button
-                            isPrimary
-                            onClick={() => {
-                                setShowDeleteModal(false);
-                                deleteEnv();
-                            }}
-                        >
-                            {__('Delete', 'bluehost-wordpress-plugin')}
-                        </Button>
-                    </div>
-                </Modal>
+                <DeleteModal
+                    onClick={() => {
+                        setShowDeleteModal(false);
+                        deleteEnv();
+                    }}
+                    onClose={() => setShowDeleteModal(false)}
+                />
+            )}
+
+            {showDeployModal && (
+                <DeploymentModal
+                    onClick={() => {
+                        setShowDeployModal(false);
+                        deployChanges(deployType);
+                    }}
+                    onClose={() => setShowDeployModal(false)}
+                    type={deployType}
+                />
             )}
 
             {switchingTo && (
                 <Overlay className={`bluehost-staging__overlay`}>
                     <h1>
-                        {sprintf(__('Loading %s Site', 'bluehost-wordpress-plugin'), switchingTo === 'production' ? __('Staging', 'bluehost-wordpress-plugin') : __('Production', 'bluehost-wordpress-plugin'))}
+                        {sprintf(
+                            __('Loading %s Site', 'bluehost-wordpress-plugin'),
+                            switchingTo === 'production' ? __('Production', 'bluehost-wordpress-plugin') : __('Staging', 'bluehost-wordpress-plugin')
+                        )}
                     </h1>
                     <p>{__('This should only take a minute', 'bluehost-wordpress-plugin')}</p>
                     <div style={{width: '555px'}}>

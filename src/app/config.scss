@@ -22,6 +22,9 @@ $color-default: $color-black;
 $color-disabled: $color-grey;
 $color-background: $color-off-white;
 
+// Fonts
+$body-font: 'Open Sans', arial, sans-serif;
+
 // Placeholders
 %text-sm {
   font-size: 14px;

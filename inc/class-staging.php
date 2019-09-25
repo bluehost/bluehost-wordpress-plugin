@@ -10,10 +10,10 @@ class BluehostStaging {
 	 *
 	 * @return array
 	 */
-	public function getConfig() {
+	public function getConfig( $cache = true ) {
 		static $config;
 
-		if ( ! isset( $config ) ) {
+		if ( ! isset( $config ) || $cache === false ) {
 			$config = get_option( 'staging_config', [] );
 		}
 
@@ -92,7 +92,42 @@ class BluehostStaging {
 	 * @return string|false
 	 */
 	public function getEnvironment() {
-		return get_option( 'staging_environment' );
+		return get_option( 'staging_environment', 'production' );
+	}
+
+	/**
+	 * Get production screenshot URL.
+	 *
+	 * @param int $width
+	 * @param int $height
+	 *
+	 * @return string
+	 */
+	public function getProductionScreenshotUrl( $width = 122, $height = 92 ) {
+		$url = 'https://s.wordpress.com/mshots/v1/';
+		$url .= urlencode( $this->getProductionUrl() );
+		$url .= '?' . http_build_query( [ 'width' => $width, 'height' => $height ], null, '&' );
+
+		return $url;
+	}
+
+	/**
+	 * Get staging screenshot URL.
+	 *
+	 * @param int $width
+	 * @param int $height
+	 *
+	 * @return string
+	 */
+	public function getStagingScreenshotUrl( $width = 122, $height = 92 ) {
+		$url = '';
+		if ( $this->stagingExists() ) {
+			$url = 'https://s.wordpress.com/mshots/v1/';
+			$url .= urlencode( $this->getStagingUrl() );
+			$url .= '?' . http_build_query( [ 'width' => $width, 'height' => $height ], null, '&' );
+		}
+
+		return $url;
 	}
 
 	/**
@@ -226,10 +261,10 @@ class BluehostStaging {
 		}
 
 		if ( 'staging' === $env ) {
-			return $this->runCommand( 'sso_staging' );
+			return $this->runCommand( 'sso_staging', [ get_current_user_id() ] );
 		}
 
-		return $this->runCommand( 'sso_production' );
+		return $this->runCommand( 'sso_production', [ get_current_user_id() ] );
 	}
 
 	/**
@@ -268,7 +303,7 @@ class BluehostStaging {
 		$config = $this->getConfig();
 
 		// If config is empty, then we are creating a staging environment.
-		if ( empty( $config ) ) {
+		if ( empty( $config ) || $command === 'create' ) {
 
 			$uniqueId = mt_rand( 1000, 9999 );
 
