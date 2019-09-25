@@ -1,6 +1,6 @@
 import apiFetch from '@wordpress/api-fetch';
 import {useEffect, useState} from '@wordpress/element';
-import {__, sprintf} from '@wordpress/i18n';
+import {__} from '@wordpress/i18n';
 
 /**
  * Staging functionality.
@@ -14,7 +14,7 @@ export default function useStaging() {
      *
      * @var {Boolean}
      */
-    const [isProduction, setIsProduction] = useState(true);
+    const [isProduction, setIsProduction] = useState(null);
 
     /**
      * The notice to be displayed to the user.
@@ -28,7 +28,7 @@ export default function useStaging() {
      *
      * @var {Boolean}
      */
-    const [hasStaging, setHasStaging] = useState(false);
+    const [hasStaging, setHasStaging] = useState(null);
 
     /**
      * Whether or not a staging environment is being created.
@@ -96,23 +96,27 @@ export default function useStaging() {
     };
 
     useEffect(() => {
-        // Set environment
-        if (!isProduction) {
-            callApi({path: '/bluehost/v1/ping'})
-                .then(response => {
-                    if (response !== null) {
-                        setIsProduction(!response);
-                    }
-                });
-        }
-    }, [isProduction]);
+        // Set isProduction
+        callApi({path: '/bluehost/v1/staging/environment'})
+            .then(response => {
+                setIsProduction(response === 'production');
+            });
+
+        // Set hasStaging
+        callApi({path: '/bluehost/v1/staging'})
+            .then(response => {
+                if (response !== null) {
+                    setHasStaging(response);
+                }
+            });
+    }, []);
 
     /**
      * Create staging environment.
      */
     async function createEnv() {
         setIsCreatingStaging(true);
-        const response = await callApi({path: '/bluehost/v1/staging/create'});
+        const response = await callApi({path: '/bluehost/v1/staging', method: 'POST'});
         if (response) {
             setHasStaging(true);
         }
@@ -123,7 +127,7 @@ export default function useStaging() {
      * Delete the staging environment.
      */
     async function deleteEnv() {
-        const response = await callApi({path: '/bluehost/v1/staging/destroy'});
+        const response = await callApi({path: '/bluehost/v1/staging', method: 'DELETE'});
         if (response) {
             setHasStaging(false);
             setNotice(__('Staging website destroyed.', 'bluehost-wordpress-plugin'));
@@ -140,7 +144,7 @@ export default function useStaging() {
      */
     async function switchToEnv(env) {
         setSwitchingTo(env);
-        const response = await callApi({path: `/bluehost/v1/staging/sso/${env}`});
+        const response = await callApi({path: `/bluehost/v1/staging/switch-to?env=${env}`});
         if (response && response.hasOwnProperty('load_page')) {
             window.location.href = response.load_page;
         }
@@ -151,7 +155,7 @@ export default function useStaging() {
      * Clone the production environment to staging.
      */
     async function cloneEnv() {
-        const response = await callApi({path: '/bluehost/v1/staging/clone'});
+        const response = await callApi({path: '/bluehost/v1/staging/clone', method: 'POST'});
         if (response) {
             setNotice(__('Website cloned successfully.', 'bluehost-wordpress-plugin'));
         }
@@ -162,17 +166,8 @@ export default function useStaging() {
      *
      * @param {String} type One of 'all', 'files', or 'db'
      */
-    async function deployChanges(type = '') {
-        let route = 'deploy';
-        switch (type) {
-            case 'files':
-                route += '_files';
-                break;
-            case 'db':
-                route += 'db';
-                break;
-        }
-        const response = await callApi({path: `/bluehost/v1/staging/${route}`});
+    async function deployChanges(type = 'all') {
+        const response = await callApi({path: `/bluehost/v1/staging/deploy?type=${type}`, method: 'POST'});
         if (response) {
             setNotice(__('Changes deployed successfully.', 'bluehost-wordpress-plugin'));
         }
