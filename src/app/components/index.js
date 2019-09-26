@@ -22,3 +22,4 @@ export {default as ProductCardPlaceholder} from './product-card-placeholder';
 export {default as Search} from './search';
 export {default as Tooltip} from './tooltip';
 export {default as Warning} from './warning';
+export { default as AppToggle } from './app-toggle';
