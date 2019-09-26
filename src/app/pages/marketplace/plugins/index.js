@@ -1,10 +1,12 @@
 import {lazy, Suspense} from 'react';
+import {withRouter} from 'react-router-dom';
+
 import {ProductCard} from '@/components';
 import {useMojoApi} from '@/hooks';
 
 const Page = lazy(() => import( '@/components/marketplace-page' ));
 
-export default function ThemesPage({history}) {
+function PluginsPage({history}) {
 
     const [{done, isError, isLoading, payload}] = useMojoApi('plugins', {count: 1000});
 
@@ -43,3 +45,5 @@ export default function ThemesPage({history}) {
         </Suspense>
     );
 }
+
+export default withRouter(PluginsPage);

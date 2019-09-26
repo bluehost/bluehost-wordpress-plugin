@@ -25,13 +25,13 @@ const AppMain = () => (
             <Switch>
                 <Route path="/home" render={() => <HomeRoute/>}/>
                 <Route path="/marketplace/themes" exact render={() => <ThemesRoute/>}/>
-                <Route path="/marketplace/plugins" exact render={({history}) => <PluginsRoute history={history}/>}/>
+                <Route path="/marketplace/plugins" exact render={() => <PluginsRoute/>}/>
                 <Route
                     path="/marketplace/product/:id"
                     exact
                     render={({match: {params: {id}}}) => <ProductRoute id={id}/>}
                 />
-                <Route path="/marketplace/services" exact render={({history}) => <ServicesRoute history={history}/>}/>
+                <Route path="/marketplace/services" exact render={() => <ServicesRoute/>}/>
                 <Route path="/tools" exact render={() => <ToolsRoute/>}/>
                 <Route path="/tools/staging" exact render={() => <StagingRoute/>}/>
                 <Route path="/settings" render={() => <SettingsRoute/>}/>
