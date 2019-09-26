@@ -26,6 +26,11 @@ $color-background: $color-off-white;
 $body-font: 'Open Sans', arial, sans-serif;
 
 // Placeholders
+%text-xs {
+  font-size: 10px;
+  line-height: 11px;
+}
+
 %text-sm {
   font-size: 14px;
   line-height: 24px;

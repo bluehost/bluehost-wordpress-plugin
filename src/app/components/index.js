@@ -10,6 +10,7 @@ export {default as AppPrimaryNav} from './app-primary-nav';
 export {default as AppSnackbar} from './app-snackbar';
 export {default as AppSpinner} from './app-spinner';
 export {default as Dropdown} from './dropdown';
+export {default as DropdownButton} from './dropdown-button';
 export {default as EnvironmentCard} from './environment-card';
 export {default as Grid} from './grid';
 //export {default as MarketplacePage} from './marketplace-page'; //TODO: Doing this breaks the app. Why?

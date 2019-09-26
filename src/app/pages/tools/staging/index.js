@@ -11,6 +11,7 @@ import {
     AppButton as Button,
     AppPage as Page,
     AppSpinner as Spinner,
+    DropdownButton,
     EnvironmentCard,
     OptionsMenu,
     Overlay,
@@ -132,13 +133,36 @@ export default function StagingPage() {
                             <EnvironmentCard
                                 color="red"
                                 deploymentActionsComponent={(
-                                    <Button
-                                        isDefault
+                                    <DropdownButton
                                         disabled={isProduction}
-                                        onClick={() => setShowDeployModal(true)}
-                                    >
-                                        {__('Deploy All Changes', 'bluehost-wordpress-plugin')}
-                                    </Button>
+                                        options={[
+                                            {
+                                                title: __('Deploy All Changes', 'bluehost-wordpress-plugin'),
+                                                description: __('Deploy all changes you\'ve made to the filesystem and database of your website.', 'bluehost-wordpress-plugin'),
+                                                callback: () => {
+                                                    setDeployType('all');
+                                                    setShowDeployModal(true);
+                                                }
+                                            },
+                                            {
+                                                title: __('Deploy Files Only', 'bluehost-wordpress-plugin'),
+                                                description: __('This will only upload the files you\'ve changed (i.e. html or css files).', 'bluehost-wordpress-plugin'),
+                                                callback: () => {
+                                                    setDeployType('files');
+                                                    setShowDeployModal(true);
+                                                }
+                                            },
+                                            {
+                                                title: __('Deploy Database', 'bluehost-wordpress-plugin'),
+                                                description: __('Only upload changes you\'ve made to the database on your staging server.', 'bluehost-wordpress-plugin'),
+                                                callback: () => {
+                                                    setDeployType('db');
+                                                    setShowDeployModal(true);
+                                                }
+                                            },
+                                        ]}
+                                        width={215}
+                                    />
                                 )}
                                 environmentActionsComponent={
                                     isProduction &&
