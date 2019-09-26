@@ -18,6 +18,7 @@
 .bluehost-app-wrap {
   font-family: "Open Sans" !important;
   font-weight: 300 !important;
+  font-size: 14px;
 }
 .bluehost-app-wrap, h1, h2, h3, h4, h5 {
   color: #5C5C5C;
@@ -73,6 +74,16 @@ body:not(.bluehost-admin-keynav) {
       }
     }
   }
+}
+h3 {
+  	font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
+}
+h4 {
+  	font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
 }
 p {
   font-size: 14px;

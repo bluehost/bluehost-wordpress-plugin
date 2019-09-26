@@ -6,3 +6,4 @@ export { default as AppNotice } from './app-notice';
 export { default as AppPage } from './app-page';
 export { default as AppPrimaryNav } from './app-primary-nav';
 export { default as AppSpinner } from './app-spinner';
+export { default as AppToggle } from './app-toggle';
