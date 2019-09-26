@@ -136,6 +136,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 				'stagingExists'          => $this->staging->stagingExists(),
 				'stagingThumbnailUrl'    => $this->staging->getStagingScreenshotUrl(),
 				'stagingUrl'             => $this->staging->getStagingUrl(),
+				'status'                 => $payload['status'],
 			];
 		}
 

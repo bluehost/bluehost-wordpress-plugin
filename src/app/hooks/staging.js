@@ -189,6 +189,7 @@ export default function useStaging() {
         if (response) {
             setup(response);
             setNotice(response.message);
+            setIsError(response.status === 'error');
         }
         setIsCreatingStaging(false);
     }
