@@ -19,16 +19,22 @@ import {
 import {useStaging} from '@/hooks';
 import {ReactComponent as LoadingEnvSvg} from '@/assets/change-env.svg';
 import CloneModal from './clone-modal';
+import CloneOverlay from './clone-overlay';
 import DeleteModal from './delete-modal';
+import DeletOverlay from './delete-overlay';
 import DeploymentModal from './deploy-modal';
+import DeploymentOverlay from './deploy-overlay';
 import './style.scss';
 
 export default function StagingPage() {
 
     const [deployType, setDeployType] = useState('all');
     const [showCloneModal, setShowCloneModal] = useState(false);
+    const [showCloneOverlay, setShowCloneOverlay] = useState(false);
     const [showDeployModal, setShowDeployModal] = useState(false);
+    const [showDeployOverlay, setShowDeployOverlay] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [showDeleteOverlay, setShowDeleteOverlay] = useState(false);
 
     const [
         {
@@ -118,7 +124,6 @@ export default function StagingPage() {
                         );
                     }
 
-
                     return (
                         <div className={`bluehost-staging__step --ready`}>
                             <p>
@@ -135,18 +140,20 @@ export default function StagingPage() {
                                         {__('Deploy All Changes', 'bluehost-wordpress-plugin')}
                                     </Button>
                                 )}
-                                environmentActionsComponent={(
-                                    <OptionsMenu
-                                        disabled={isProduction}
-                                        label={__('Staging Options', 'bluehost-wordpress-plugin')}
-                                        options={[
-                                            {
-                                                label: __('Delete', 'bluehost-wordpress-plugin'),
-                                                callback: () => setShowDeleteModal(true)
-                                            }
-                                        ]}
-                                    />
-                                )}
+                                environmentActionsComponent={
+                                    isProduction &&
+                                    (
+                                        <OptionsMenu
+                                            label={__('Staging Options', 'bluehost-wordpress-plugin')}
+                                            options={[
+                                                {
+                                                    label: __('Delete', 'bluehost-wordpress-plugin'),
+                                                    callback: () => setShowDeleteModal(true)
+                                                }
+                                            ]}
+                                        />
+                                    )
+                                }
                                 environmentName={__('Staging Site', 'bluehost-wordpress-plugin')}
                                 radioButtonComponent={(
                                     <label>
@@ -180,32 +187,41 @@ export default function StagingPage() {
                 <CloneModal
                     onClick={() => {
                         setShowCloneModal(false);
-                        cloneEnv();
+                        setShowCloneOverlay(true);
+                        cloneEnv().then(() => setShowCloneOverlay(false));
                     }}
                     onClose={() => setShowCloneModal(false)}
                 />
             )}
 
+            {showCloneOverlay && <CloneOverlay/>}
+
             {showDeleteModal && (
                 <DeleteModal
                     onClick={() => {
                         setShowDeleteModal(false);
-                        deleteEnv();
+                        setShowDeleteOverlay(true);
+                        deleteEnv().then(() => setShowDeleteOverlay(false));
                     }}
                     onClose={() => setShowDeleteModal(false)}
                 />
             )}
 
+            {showDeleteOverlay && <DeletOverlay/>}
+
             {showDeployModal && (
                 <DeploymentModal
                     onClick={() => {
                         setShowDeployModal(false);
-                        deployChanges(deployType);
+                        setShowDeployOverlay(true);
+                        deployChanges(deployType).then(() => setShowDeployOverlay(false));
                     }}
                     onClose={() => setShowDeployModal(false)}
                     type={deployType}
                 />
             )}
+
+            {showDeployOverlay && <DeploymentOverlay type={deployType}/>}
 
             {switchingTo && (
                 <Overlay className={`bluehost-staging__overlay`}>
