@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="328px" height="308px" viewBox="0 0 328 308" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Group 6</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="277" height="258" rx="3"></rect>
+        <filter x="-6.0%" y="-6.4%" width="111.9%" height="112.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <polygon id="path-3" points="23 14.9256471 33.5888209 6.2499765 64.995642 0 87.718345 9.06487876 101.763113 21.9068235 113.953345 43.9005128 116 65.1901176 104.955701 92 23 92"></polygon>
+        <filter x="-15.1%" y="-15.3%" width="130.1%" height="130.5%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="1" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-21.0%" y="-21.2%" width="142.0%" height="142.4%" filterUnits="objectBoundingBox" id="filter-5">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="50%" y1="-26.4049183%" x2="50%" y2="100%" id="linearGradient-6">
+            <stop stop-color="#949494" offset="0%"></stop>
+            <stop stop-color="#E2E2E2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Bluerock-plugin-(themes)-No-Favorites" transform="translate(-627.000000, -345.000000)">
+            <g id="Group-6" transform="translate(628.000000, 355.000000)">
+                <g id="Group-5" transform="translate(39.000000, 0.000000)">
+                    <g id="Group-Copy-15" transform="translate(0.000000, 1.000000)">
+                        <g id="rer">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                        <g id="star-empty" transform="translate(12.457672, 221.247863)">
+                            <rect id="Rectangle" x="0" y="0" width="20.5185185" height="20.5811966"></rect>
+                            <path d="M10.6256614,1.47008547 L7.57231041,7.5954416 L1.46560847,8.36111111 L5.66905497,13.0776353 L4.51895944,19.8461538 L10.6256614,16.7834758 L16.7323633,19.8461538 L15.5924456,13.0776353 L19.7857143,8.36111111 L13.6790123,7.5954416 L10.6256614,1.47008547 Z M10.6256614,3.75688509 L13.0072751,8.54487179 L17.7399691,9.13698955 L14.5034171,12.7713675 L15.3888889,18.0289649 L10.6256614,15.640076 L5.86243386,18.0289649 L6.74790564,12.7713675 L3.51135362,9.13698955 L8.24404762,8.54487179 L10.6256614,3.75688509 Z" id="Shape" fill="#3575D3" fill-rule="nonzero"></path>
+                        </g>
+                        <rect id="Primary-border" stroke="#D7DBE0" x="112.510929" y="217.523529" width="70.1420765" height="27.8352941" rx="3"></rect>
+                        <rect id="Primary" fill="#F2F4F7" x="187.693989" y="217.023529" width="77.1967213" height="28.8352941" rx="3"></rect>
+                        <rect id="Rectangle" fill="#F2F4F7" x="12.1092896" y="171.494118" width="181.639344" height="15.1764706"></rect>
+                        <rect id="Rectangle-Copy-17" fill="#F2F4F7" x="12.1092896" y="191.223529" width="110.497268" height="15.1764706"></rect>
+                        <rect id="Rectangle-Copy-18" fill="#F2F4F7" x="230.076503" y="173.011765" width="34.8142077" height="27.3176471"></rect>
+                    </g>
+                    <path d="M3,0 L274,0 C275.656854,-3.04359188e-16 277,1.34314575 277,3 L277,161 L277,161 L0,161 L0,3 C-2.02906125e-16,1.34314575 1.34314575,3.04359188e-16 3,0 Z" id="Rectangle" fill="#F2F4F7"></path>
+                </g>
+                <g id="Group" transform="translate(0.000000, 179.000000)">
+                    <g id="Rectangle" filter="url(#filter-4)">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-3"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    </g>
+                    <path d="M59,0 C91.5848002,0 118,26.4151998 118,59 C118,91.5848002 91.5848002,118 59,118 C26.4151998,118 0,91.5848002 0,59 C0,26.4151998 26.4151998,0 59,0 Z M59,3.52238806 C28.360561,3.52238806 3.52238806,28.360561 3.52238806,59 C3.52238806,89.639439 28.360561,114.477612 59,114.477612 C89.639439,114.477612 114.477612,89.639439 114.477612,59 C114.477612,28.360561 89.639439,3.52238806 59,3.52238806 Z" id="Combined-Shape" stroke="#C0C0C0" fill="url(#linearGradient-6)"></path>
+                    <g id="star-filled" transform="translate(52.000000, 29.000000)">
+                        <rect id="Rectangle" x="0" y="10.1372549" width="37" height="36.8627451"></rect>
+                        <polygon id="Path" fill="#FFE900" fill-rule="nonzero" points="16.5178571 2.73558953e-13 22.0238095 10.9710551 33.0357143 12.342437 25.4742063 20.7901494 27.5297619 32.9131653 16.5178571 27.4276377 5.50595238 32.9131653 7.57986111 20.7901494 -1.54543045e-12 12.342437 11.0119048 10.9710551"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

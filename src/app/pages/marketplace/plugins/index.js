@@ -34,7 +34,12 @@ export default function ThemesPage({history}) {
 
     return (
         <Suspense fallback={<div/>}>
-            <Page isLoading={!done || isLoading} payload={payload} render={renderCallback}/>
+            <Page
+                isLoading={!done || isLoading}
+                payload={payload}
+                render={renderCallback}
+                type="plugins"
+            />
         </Suspense>
     );
 }

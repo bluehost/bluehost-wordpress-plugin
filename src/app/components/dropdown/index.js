@@ -81,6 +81,10 @@ export default function Dropdown({className = '', id, label, onChange, options =
         }
     }, [hasFocus]);
 
+    useEffect(() => {
+        setSelected(findIndex(options, ['value', value]));
+    }, [value]);
+
     return (
         <div className={classNames({
             'dropdown': true,

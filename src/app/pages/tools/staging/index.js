@@ -74,7 +74,6 @@ export default function StagingPage() {
                             </Button>
                         )
                     }
-                    description={"Updated Jun 19, 2019 (This is hardcoded)"}
                     environmentName={__('Live Site', 'bluehost-wordpress-plugin')}
                     radioButtonComponent={
                         hasStaging && (

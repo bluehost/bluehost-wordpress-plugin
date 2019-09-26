@@ -146,7 +146,7 @@ export default function useStaging() {
 
     const setup = (response) => {
         if (response.hasOwnProperty('stagingExists')) {
-            setHasStaging(response.stagingExists);
+            setHasStaging(true || response.stagingExists);
         }
         if (response.hasOwnProperty('currentEnvironment')) {
             setIsProduction(response.currentEnvironment === 'production');
