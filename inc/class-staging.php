@@ -47,7 +47,7 @@ class BluehostStaging {
 	 * @return string
 	 */
 	public function getProductionDir() {
-		return $this->getConfigValue( 'production_dir' );
+		return $this->getConfigValue( 'production_dir', ABSPATH );
 	}
 
 	/**
@@ -56,7 +56,7 @@ class BluehostStaging {
 	 * @return string
 	 */
 	public function getProductionUrl() {
-		return $this->getConfigValue( 'production_url' );
+		return $this->getConfigValue( 'production_url', site_url() );
 	}
 
 	/**
