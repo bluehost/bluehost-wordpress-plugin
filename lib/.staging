@@ -124,7 +124,6 @@ function destroy {
 		wp option delete staging_environment --path=$PRODUCTION_DIR || error 'Unable to reset staging environment in production.'
 		wp option delete staging_config --path=$PRODUCTION_DIR || error 'Unable to remove global staging config.'
 		rm -r $STAGING_DIR --force || error 'Unable to remove staging files.'
-		mkdir -p $STAGING_DIR
 		echo "<script type='text/javascript'>window.location = '$PRODUCTION_URL';</script>" > $STAGING_DIR/index.php
 		clear
 		echo \{\"status\":\"success\",\"message\":\"Staging website destroyed.\",\"reload\":\"true\"\}
