@@ -1,4 +1,5 @@
 export {default as AppButton} from './app-button';
+export {default as AppToggle} from './app-toggle';
 export {default as AppCard} from './app-card';
 export {default as AppError} from './app-error';
 // export {default as AppHeader} from './app-header';
@@ -24,4 +25,3 @@ export {default as Search} from './search';
 export {default as Slider} from './slider';
 export {default as Tooltip} from './tooltip';
 export {default as Warning} from './warning';
-export { default as AppToggle } from './app-toggle';
