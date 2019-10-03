@@ -21,14 +21,12 @@ class Bluehost_Admin_App_Assets {
 	protected $app_dependencies = array(
 		'wp-a11y',
 		'wp-api-fetch',
-		'wp-data',
 		'wp-dom',
 		'wp-dom-ready',
 		'wp-keycodes',
 		'wp-element',
 		'wp-components',
-		'react-router-dom',
-		'axios'
+		'react-router-dom'
 	);
 	/**
 	 * Undocumented function
@@ -65,13 +63,6 @@ class Bluehost_Admin_App_Assets {
 		wp_register_style(
 			'bluehost-font',
 			'https://fonts.googleapis.com/css?family=Open+Sans:300,600'
-		);
-
-		wp_register_script(
-			'axios',
-			$this->url . 'axios' . $min . '.js',
-			array(),
-			empty( $min ) ? $rand : '0.18.0'
 		);
 
 		wp_register_script(
@@ -166,9 +157,16 @@ class Bluehost_Admin_App_Assets {
 			true
 		);
 		wp_register_script(
+			'eig-wp-admin-ui-vendors',
+			$dist_url . 'vendors~admin.js',
+			array( 'eig-wp-admin-ui-manifest' ),
+			time(),
+			true
+		);
+		wp_register_script(
 			'eig-wp-admin-ui-app',
 			$dist_url . 'admin.js',
-			array( 'eig-wp-admin-ui-manifest' ),
+			array( 'eig-wp-admin-ui-vendors' ),
 			time(),
 			true
 		);
@@ -180,6 +178,7 @@ class Bluehost_Admin_App_Assets {
 				'pages'         	=> array_map( 'strtolower', Bluehost_Admin_App_Page::$subpages ),
 				'siteId'        	=> mm_site_bin2hex(),
 				'mobileMenuActive' 	=> 0,
+				'nonce'				=> wp_create_nonce( mm_site_bin2hex() ),
 			),
 			'settings'	=> array(
 				'comingSoon'                  => 'true' === get_option( 'mm_coming_soon', 0 ) ? 1 : 0,

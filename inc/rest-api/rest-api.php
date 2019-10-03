@@ -3,12 +3,12 @@
  * Include REST API related files.
  */
 function bluehost_include_rest_api() {
-	require __DIR__ . '/class-mojo-items-controller.php';
 	require __DIR__ . '/class-mojo-item-controller.php';
 	require __DIR__ . '/class-mojo-themes-controller.php';
 	require __DIR__ . '/class-mojo-plugins-controller.php';
 	require __DIR__ . '/class-mojo-services-controller.php';
 	require __DIR__ . '/class-staging-controller.php';
+	require __DIR__ . '/class-bluehost-admin-errors.php';
 }
 
 add_action( 'rest_api_init', 'bluehost_include_rest_api', 5 );
@@ -23,6 +23,7 @@ function bluehost_init_rest_api() {
 		'Mojo_Themes_Controller',
 		'Mojo_Plugins_Controller',
 		'Mojo_Services_Controller',
+		'\\Bluehost\\WP\\Admin_App\\Errors',
 	);
 
 	foreach ( $controllers as $controller ) {
