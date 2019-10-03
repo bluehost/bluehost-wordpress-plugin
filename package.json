@@ -21,14 +21,14 @@
   "license": "Undetermined. Private at present.",
   "dependencies": {
     "@wordpress/a11y": "^2.5.0",
-    "@wordpress/api-fetch": "^3.4.0",
-    "@wordpress/components": "^8.1.0",
-    "@wordpress/dom": "^2.4.0",
+    "@wordpress/api-fetch": "^3.6.1",
+    "@wordpress/components": "^8.3.1",
+    "@wordpress/dom": "^2.5.1",
     "@wordpress/dom-ready": "^2.5.0",
-    "@wordpress/element": "^2.6.0",
+    "@wordpress/element": "^2.8.1",
     "@wordpress/html-entities": "^2.5.0",
-    "@wordpress/i18n": "^3.6.0",
-    "@wordpress/keycodes": "^2.5.0",
+    "@wordpress/i18n": "^3.6.1",
+    "@wordpress/keycodes": "^2.6.1",
     "animate.css": "^3.7.2",
     "axios": "^0.19.0",
     "change-case": "^3.1.0",
@@ -36,19 +36,19 @@
     "fuse.js": "^3.4.5",
     "lodash": "^4.17.15",
     "purecss": "^1.0.1",
-    "react-router-dom": "^5.0.1"
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@svgr/webpack": "^4.3.2",
-    "@wordpress/babel-preset-default": "^4.4.0",
-    "@wordpress/scripts": "^3.4.0",
+    "@svgr/webpack": "^4.3.3",
+    "@wordpress/babel-preset-default": "^4.6.1",
+    "@wordpress/scripts": "^5.0.1",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^7.3.1",
     "url-loader": "^2.1.0"
   }
 }
