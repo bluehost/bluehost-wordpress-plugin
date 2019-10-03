@@ -15,11 +15,10 @@ import './app.scss';
 
 import {
 	AppError,
-	AppHeader,
 	AppPrimaryNav
 } from '@/components';
 
-import AppMain from './main';
+import { Main, Header } from '@/parts';
 
 const bluehost_i18n = 'bluehost-wp-admin-app';
 
@@ -74,13 +73,13 @@ class App extends Component {
 								{ __( 'Skip to Content', bluehost_i18n ) }
 							</a>
 							<div>
-								<AppHeader />
+								<Header />
 							</div>
 							<div id="navigation" tabIndex="-1" ref={ this.navFocus }>
 								<AppPrimaryNav />
 							</div>
 							<div tabIndex="-1" ref={ this.contentFocus }>
-								<AppMain />
+								<Main />
 							</div>
 						</main>
 					</Router>

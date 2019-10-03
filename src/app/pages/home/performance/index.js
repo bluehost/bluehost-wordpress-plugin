@@ -6,10 +6,13 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
+/**
+ * External dependencies
+ */
 import { AppButton as Button } from '@/components';
 import HomeSection from '../home-section';
 import HomeSectionRow from '../home-section-row';
-import { ReactComponent as JetpackLogo } from '@/assets/jetpack-icon.svg';
+import { JetpackLogo } from '@/assets';
 
 const baseUrl = location.origin + '/wp-admin/';
 
@@ -29,14 +32,14 @@ const CacheCard = () => (
 );
 
 function SiteAcceleratorCard() {
-	if ( ! window.bluehost.wordpress.isJetpackActive || ! window.bluehost.wordpress.jetpackActiveModules.includes( 'photon' ) ) {
+	if ( ! window.bluehost.wordpress.isJetpackActive || ( ( 0 !== window.bluehost.wordpress.jetpackActiveModules ) && ! window.bluehost.wordpress.jetpackActiveModules.includes( 'photon' ) ) ) {
 		// return null;
 	}
 	const jetpackIcon = ( <JetpackLogo /> );
 	return (
 		<HomeSectionRow
 			isCentered
-			icon={jetpackIcon}
+			icon={ jetpackMark }
 			title={ __( 'Site Accelerator', 'endurance-wp-module-admin-app' ) }
 			desc={ __( 'Site acceleration service will resize your images and serve them from a CDN.', 'endurance-wp-module-admin-app' ) }>
 			<Button

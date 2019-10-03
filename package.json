@@ -8,7 +8,7 @@
     "build": "wp-scripts build",
     "check-engines": "wp-scripts check-engines",
     "check-licenses": "wp-scripts check-licenses --production",
-    "develop": "NODE_ENV=develop wp-scripts build",
+    "develop": "NODE_ENV=develop wp-scripts start",
     "lint:css": "wp-scripts lint-style '**/*.css'",
     "lint:js": "wp-scripts lint-js ./src",
     "lint:pkg-json": "wp-scripts lint-pkg-json",

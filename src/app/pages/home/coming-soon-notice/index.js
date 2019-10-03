@@ -2,14 +2,18 @@
 /**
  * Internal Dependencies
  */
+/**
+ * External dependencies
+ */
 import { AppButton, AppNotice as Notice } from '@/components';
+import { select } from '@wordpress/data';
 
 function ComingSoonNotice() {
-	if ( ! window.bluehost.settings.comingSoon ) {
+	if ( ! select('bluehost/plugin').isComingSoon() ) {
 		return null;
 	}
 	return (
-		<Notice status="warning" isDismissible={false}>
+		<Notice status="warning" isDismissible={ false }>
 			<div className="pure-g">
 				<div className="pure-u-1 pure-u-sm-1-2 details">
 					<h2>Your site says “Coming Soon.”</h2>
@@ -17,9 +21,9 @@ function ComingSoonNotice() {
 				</div>
 				<div className="pure-u-1 pure-u-sm-1-2 action">
 					<AppButton
-					href={ '' }
-					isPrimary
-				>
+						href={ '' }
+						isPrimary
+					>
 					Launch Your Site
 					</AppButton>
 				</div>

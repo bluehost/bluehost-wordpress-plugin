@@ -2,12 +2,14 @@
  * External dependencies
  */
 import AppPage from '@/components/app-page';
+/**
+ * Internal dependencies
+ */
 import './style.scss';
 
 /**
  * WordPress dependencies
  */
-
 
 /**
  * Internal dependencies

@@ -1,12 +1,16 @@
 /**
- * Internal dependencies
- */
-import './style.scss';
-/**
  * WordPress dependencies
  */
 import { Component } from '@wordpress/element';
 import { Dashicon } from '@wordpress/components';
+
+/**
+ * Component dependencies
+ */
+/**
+ * Internal dependencies
+ */
+import './style.scss';
 
 export default class AppCard extends Component {
 	render() {

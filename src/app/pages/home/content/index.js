@@ -2,6 +2,9 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+/**
+ * External dependencies
+ */
 import { AppButton as Button } from '@/components';
 
 /**
@@ -53,9 +56,9 @@ const MenusCard = () => (
 );
 
 function ProductsCard() {
-	if ( ! window.bluehost.wordpress.isWooActive ) {
-		return null;
-	}
+	// // if ( ! window.bluehost.wordpress.isWooActive ) {
+	// 	return null;
+	// }
 	return (
 		<HomeSectionRow
 			icon="cart"

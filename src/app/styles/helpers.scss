@@ -1,0 +1,36 @@
+/**
+ * 🎨⌨️↔️ Bluehost Style Config
+ */
+@import '@/config.scss';
+
+.is-font {
+    font-family: $font;
+}
+
+@each $name, $color in $colors {
+    .is-color-#{$name} {
+        color: $color;
+    }
+    .is-bg-#{$name} {
+        background-color: $color;
+    }
+    .is-svg-#{$name} {
+        svg {
+            fill: $color;
+        }
+    }
+}
+
+@each $name, $color in $aliases {
+    .is-color-#{$name} {
+        color: $color;
+    }
+    .is-bg-#{$name} {
+        background-color: $color;
+    }
+    .is-svg-#{$name} {
+        svg {
+            fill: $color;
+        }
+    }
+}

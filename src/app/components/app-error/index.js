@@ -14,30 +14,30 @@ const AppError = withState( {
     errorReported: false,
     appError: null
 } )( ( { errorReported, appError, setState } ) => {
-    const reportErrorToWP = () => {
-        console.log( 'do the error report' );
-        console.log( appError );
-        axios.post( 
-            location.origin + '/wp-json/bluehost/v1/errors/track', 
-            qs.stringify({
-                date: new Date(), 
-                message: appError.message,
-                browser: browser(),
-                wpUser: window.userSettings.uid ? window.userSettings.uid : 'Unknown'
-            })
-        ).then((response) => {
-            console.log( 'in then' );
-            console.dir(response);
-            setState({ errorReported: true });
-        }).catch((httpErr) => {
-            console.log( 'in catch' );
-            console.dir(httpErr);
-        }).finally(() => {
-            console.log( 'doing finally' );
-        });
-    };
+    // const reportErrorToWP = () => {
+    //     console.log( 'do the error report' );
+    //     console.log( appError );
+    //     axios.post( 
+    //         location.origin + '/wp-json/bluehost/v1/errors/track', 
+    //         qs.stringify({
+    //             date: new Date(), 
+    //             message: appError.message,
+    //             browser: browser(),
+    //             wpUser: window.userSettings.uid ? window.userSettings.uid : 'Unknown'
+    //         })
+    //     ).then((response) => {
+    //         console.log( 'in then' );
+    //         console.dir(response);
+    //         setState({ errorReported: true });
+    //     }).catch((httpErr) => {
+    //         console.log( 'in catch' );
+    //         console.dir(httpErr);
+    //     }).finally(() => {
+    //         console.log( 'doing finally' );
+    //     });
+    // };
 
-    reportErrorToWP();
+    // reportErrorToWP();
 
     return (
         <div id="app-error">

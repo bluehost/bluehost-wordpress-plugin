@@ -32,21 +32,21 @@ require __DIR__ . '/vendor/autoload.php';
 // Handle any upgrade routines
 if ( is_admin() ) {
 
-	// Handle plugin updates
-	new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost.php' );
+	// // Handle plugin updates
+	// new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost.php' );
 
-	require __DIR__ . '/inc/upgrade-handler.php';
+	// require __DIR__ . '/inc/upgrade-handler.php';
 
-	$upgrade_handler = new Bluehost_Upgrade_Handler(
-		__DIR__ . '/upgrades',
-		get_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION ),
-		BLUEHOST_PLUGIN_VERSION
-	);
+	// $upgrade_handler = new Bluehost_Upgrade_Handler(
+	// 	__DIR__ . '/upgrades',
+	// 	get_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION ),
+	// 	BLUEHOST_PLUGIN_VERSION
+	// );
 
-	$did_upgrade = $upgrade_handler->maybe_upgrade();
-	if ( $did_upgrade ) {
-		update_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION, true );
-	}
+	// $did_upgrade = $upgrade_handler->maybe_upgrade();
+	// if ( $did_upgrade ) {
+	// 	update_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION, true );
+	// }
 }
 
 // Require files
@@ -66,7 +66,7 @@ require __DIR__ . '/inc/user-experience-tracking.php';
 require __DIR__ . '/inc/notifications.php';
 require __DIR__ . '/inc/staging.php';
 require __DIR__ . '/inc/class-staging.php';
-require __DIR__ . '/inc/updates.php';
+// require __DIR__ . '/inc/updates.php';
 require __DIR__ . '/inc/coming-soon.php';
 require __DIR__ . '/inc/tests.php';
 require __DIR__ . '/inc/track-last-login.php';
@@ -74,7 +74,7 @@ require __DIR__ . '/inc/performance.php';
 require __DIR__ . '/inc/partners.php';
 require __DIR__ . '/inc/rest-api/rest-api.php';
 require __DIR__ . '/inc/branding.php';
-require __DIR__ . '/updater.php';
+// require __DIR__ . '/updater.php';
 
 // Check proper PHP and bring CLI loader online
 if ( version_compare( PHP_VERSION, '5.3.29' ) >= 0 ) {

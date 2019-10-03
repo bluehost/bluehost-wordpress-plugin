@@ -1,63 +1,53 @@
 // Typography
-$font: 'Open Sans';
+$font: 'Open Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 
 // Colors
-$color-blue: #3575d3;
-$color-dark-blue: #16325b;
-$color-green: #17b212;
-$color-orange: #f89c24;
-$color-red: #d0021b;
-$color-yellow: #f89c24;
-$color-black: #5c5c5c;
-$color-grey: #999999;
-$color-light-grey: #dddddd;
-$color-off-white: #f9f9f9;
-$color-white: #ffffff;
+$colors: (
+    blue: #3575d3,
+    dark-blue: #16325b,
+    green: #17b212,
+    orange: #f89c24,
+    red: #d0021b,
+    black: #5c5c5c,
+    grey: #999,
+    off-white: #f9f9f9,
+    white: #fff
+);
+
+@function color($key) {
+    @if map-has-key($colors, $key) {
+        @return map-get($colors, $key);
+    }
+
+    @warn "Unknown `#{$key}` in $colors.";
+    @return null;
+}
+
+$color-blue: color(blue);
+$color-dark-blue: color(dark-blue);
+$color-green: color(green);
+$color-orange: color(orange);
+$color-red: color(red);
+$color-black: color(black);
+$color-grey: color(grey);
+$color-off-white: color(off-white);
+$color-white: color(white);
 
 // Aliases
 $color-gray: $color-grey;
-$color-light-gray: $color-light-grey;
+// $color-light-gray: $color-light-grey;
 $color-primary: $color-blue;
 $color-default: $color-black;
 $color-disabled: $color-grey;
 $color-background: $color-off-white;
 
-// Fonts
-$body-font: 'Open Sans', arial, sans-serif;
+$aliases: (
+    gray: $color-gray,
+    primary: $color-primary,
+    default: $color-default,
+    disabled: $color-disabled,
+    background: $color-background,
+);
 
-// Placeholders
-%text-xs {
-  font-size: 10px;
-  line-height: 11px;
-}
-
-%text-sm {
-  font-size: 14px;
-  line-height: 24px;
-}
-
-%text-m {
-  font-size: 16px;
-  line-height: 24px;
-}
-
-%text-l {
-  font-size: 20px;
-  line-height: 32px;
-}
-
-%text-xl {
-  font-size: 32px;
-  line-height: 40px;
-}
-
-%sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
+// Menu Breakpoint
+$menu-breakpoint: 782px;

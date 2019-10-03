@@ -13,7 +13,7 @@ function mm_main_menu() {
 	add_menu_page( 'Bluehost', 'Bluehost', 'manage_options', 'mojo-marketplace', 'mm_marketplace_page', 'data:image/svg+xml;base64, ' . $icon_hash, -10 );
 
 }
-add_action( 'admin_menu', 'mm_main_menu' );
+// add_action( 'admin_menu', 'mm_main_menu' );
 
 function mm_main_menu_fix_subdomain_label() {
 	global $submenu;
@@ -84,7 +84,7 @@ function mm_marketplace_menu() {
 	add_submenu_page( null, 'Redirecting', 'Redirecting', 'manage_options', 'mojo-purchases', '__return_false' );
 	add_submenu_page( null, 'Redirecting', 'Redirecting', 'manage_options', 'mojo-single-item', '__return_false' );
 }
-add_action( 'admin_menu', 'mm_marketplace_menu' );
+// add_action( 'admin_menu', 'mm_marketplace_menu' );
 
 function mm_marketplace_page() {
 	$valid_sections = array( 'themes', 'plugins', 'services', 'graphics', 'business-tools', 'search', 'mixed-themes', 'purchases', 'single-item' );

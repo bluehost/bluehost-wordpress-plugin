@@ -20,7 +20,7 @@ function AppToggle ( {checked, onChange} ) {
 				checked={checked}
 				onChange={onChange}
 				/>
-			<label className="onoffswitch-label" for="myonoffswitch">
+			<label className="onoffswitch-label" htmlFor="myonoffswitch">
 				<span className="onoffswitch-inner"></span>
 				<span className="onoffswitch-switch"></span>
 			</label>

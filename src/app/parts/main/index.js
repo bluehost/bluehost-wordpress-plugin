@@ -1,4 +1,7 @@
 /**
+ * WordPress dependencies
+ */
+/**
  * External dependencies
  */
 import {lazy, Suspense} from 'react';

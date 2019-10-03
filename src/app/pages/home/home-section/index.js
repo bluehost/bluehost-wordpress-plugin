@@ -6,7 +6,7 @@ import { Component } from '@wordpress/element';
 export default class HomeSection extends Component {
 	render() {
 		const { title, className, children } = this.props;
-		if ( !children ) {
+		if ( ! children ) {
 			return null;
 		}
 		return (

@@ -1,0 +1,18 @@
+/**
+ * 🎨⌨️↔️ Bluehost Style Config
+ */
+ @import '@/config.scss';
+/* ------------------------- */
+
+#wpbody-content {
+    @extend .is-bg-off-white;
+    padding-bottom: 0;
+}
+
+#wpcontent {
+    padding-left: 0 !important;
+}
+
+#wpfooter {
+    display: none; /* credit relocated to /info route, link on settings page */
+}

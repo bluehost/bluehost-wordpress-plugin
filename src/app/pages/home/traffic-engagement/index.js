@@ -5,6 +5,9 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
+/**
+ * External dependencies
+ */
 import { AppButton as Button } from '@/components';
 import HomeSection from '../home-section';
 import HomeSectionRow from '../home-section-row';
@@ -12,7 +15,7 @@ import HomeSectionRow from '../home-section-row';
 const baseUrl = location.origin + '/wp-admin/';
 
 function SocialCard() {
-	if ( ! window.bluehost.wordpress.jetpackActiveModules.includes( 'sharedaddy' ) ) {
+	if ( ( 0 !== window.bluehost.wordpress.jetpackActiveModules ) && ! window.bluehost.wordpress.jetpackActiveModules.includes( 'sharedaddy' ) ) {
 		return null;
 	}
 	return (
@@ -31,7 +34,7 @@ function SocialCard() {
 }
 
 function PublicizeCard() {
-	if ( ! window.bluehost.wordpress.jetpackActiveModules.includes( 'publicize' ) ) {
+	if ( ( 0 !== window.bluehost.wordpress.jetpackActiveModules ) && ! window.bluehost.wordpress.jetpackActiveModules.includes( 'publicize' ) ) {
 		return null;
 	}
 	return (
@@ -50,7 +53,7 @@ function PublicizeCard() {
 }
 
 function StatsCard() {
-	if ( ! window.bluehost.wordpress.jetpackActiveModules.includes( 'stats' ) ) {
+	if ( ( 0 !== window.bluehost.wordpress.jetpackActiveModules ) && ! window.bluehost.wordpress.jetpackActiveModules.includes( 'stats' ) ) {
 		return null;
 	}
 	return (
@@ -70,9 +73,9 @@ function StatsCard() {
 }
 
 function TrafficEngagementSection() {
-	if ( ! window.bluehost.wordpress.isJetpackActive ) {
-		return null;
-	}
+	// if ( ! window.bluehost.wordpress.isJetpackActive ) {
+	// 	return null;
+	// }
 	return (
 		<HomeSection title="Traffic & Engagement" className="traffic">
 			<SocialCard />
