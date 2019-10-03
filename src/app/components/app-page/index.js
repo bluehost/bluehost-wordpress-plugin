@@ -15,83 +15,38 @@ import { chain, isString, replace, kebabCase, isEmpty } from 'lodash';
  */
 import './style.scss';
 
-const AppPageNew = () => {
-	const handleContainerFocus = ()  => {
-		const { location } = this.props;
-		if ( location.state && location.state.setFocus ) {
-			this.container.focus( 
-				{ 
-					preventScroll: true 
-				} 
-			);
-		}
-	};
-	const getCurrentLocation = () => {
-		const { location } = this.props;
-		return {
-			...location,
-			pathnameKebab: kebabCase(location.pathname),
-			isTopLevel: select('bluehost/plugin').getAppPages().includes(this.getSlug(location)),
-			slug: this.getSlug(location),
-			slugKebab: this.getSlug(location)
-		}
-	};
-	/**
-	* Unset Active Class On Menu And Re-Highlight
-	* @param object location
-	*/
-	const handleWordPressMenuActive = ( location ) => {
-	   const liToActivate = document.querySelector( '.bluehost-wp-menu-item.' + location.slug );
-	   const bluehostWpSubMenuNode = document.querySelector( '#toplevel_page_bluehost ul' );
-	   if ( liToActivate && bluehostWpSubMenuNode ) {
-		   dispatch('bluehost/plugin').setActivePage( location.slug, location.isTopLevel );
-		   this.removeActivePageClasses();
-		   liToActivate.classList.add( 'current' );
-		   bluehostWpSubMenuNode.style = 'display: block;';
-	   }
-   };
-   const removeActivePageClasses = ( ) => {
-	const bluehostWpMenuNodes = document.querySelectorAll( '#toplevel_page_bluehost .bluehost-wp-menu-item' );
-	const bluehostWpMenuItems = Array.from( bluehostWpMenuNodes );
-	bluehostWpMenuItems.forEach( function( li ) {
-		li.classList.remove( 'current' );
-	} );
-   };
-	const hideSubPages = () => {
-	   const bluehostWpSubMenuNode = document.querySelector( '#toplevel_page_bluehost ul' );
-	   bluehostWpSubMenuNode.style = 'display: none;';
-   };
-
-   const trimLocationPathname = ( rawPathname ) => {
-	   const trimMarketplace = rawPathname.replace( '/marketplace', '' );
-	   const trimTools = trimMarketplace.replace( '/tools', '' );
-	   const trimSlash = trimTools.replace( '/', '' );
-	   return trimSlash;
-   };
-
-   const getSlug = (location) => {
-	   let raw = isString(location) ? location : location.pathname;
-	   return replace( replace( replace(raw, '/marketplace', ''), '/tools', ''), '/', '');
-   };
-};
-
 class AppPage extends Component {
 	componentDidMount() {
 		// recieve this.props.state.setFocus
 		this.handleContainerFocus();	
 		const currentLocation = this.getCurrentLocation();
 		this.maybeAugmentWPMenu();
-		if ( ! isEmpty( select('bluehost/plugin').getAppPages() ) && currentLocation.isTopLevel ) {
+		// if ( ! isEmpty( select('bluehost/plugin').getAppPages() ) && currentLocation.isTopLevel ) {
 			this.handleWordPressMenuActive( currentLocation );
-		} else {
-			this.removeActivePageClasses();
-			this.hideSubPages();
+		// } else {
+		// 	this.removeActivePageClasses();
+		// 	this.hideSubPages();
+		// }
+	}
+
+	handleContainerFocus() {
+		const { location } = this.props;
+		if ( location.state && location.state.setFocus ) {
+			this.container.focus( { preventScroll: true } );
 		}
 	}
 
-	
-
-	
+	getCurrentLocation() {
+		const { location } = this.props;
+		return {
+			...location,
+			pathnameKebab: kebabCase(location.pathname),
+			// isTopLevel: select('bluehost/plugin').getAppPages().includes(this.getSlug(location)),
+			isTopLevel: true,
+			slug: this.getSlug(location),
+			slugKebab: this.getSlug(location)
+		}
+	}
 
 	maybeAugmentWPMenu() {		
 		const menuNodes = window.document.querySelectorAll( '#toplevel_page_bluehost > ul > li' );
@@ -102,17 +57,39 @@ class AppPage extends Component {
 			li.classList.add( 'bluehost-wp-menu-item',  className);
 		} );
 		
-		// try {
-		// 	window.document.querySelector( 'a.toplevel_page_bluehost' )
-		// 	if ( elem.href === 'admin.php?page=bluehost' ) {
-		// 		elem.href = 'admin.php?page=bluehost#/home';
-		// 	} else {
-		// 		console.log( 'the elsez' );
-		// 	}
-		// } catch ( e ) {
-		// 	console.log( 'Couldn\'t find Bluehost Menu Element to swap href' );
-		// }
+		try {
+			const elem = window.document.querySelector( 'a.toplevel_page_bluehost' );
+			if ( elem.href.includes('admin.php?page=bluehost') ) {
+				elem.href = location.origin + '/wp-admin/admin.php?page=bluehost#/home';
+			}
+		} catch ( e ) {
+			console.log( 'Couldn\'t find Bluehost Menu Element to swap href' );
+		}
 	}
+
+	handleWordPressMenuActive( location ) {
+		const liToActivate = document.querySelector( '.bluehost-wp-menu-item.' + location.slug );
+		const bluehostWpSubMenuNode = document.querySelector( '#toplevel_page_bluehost ul' );
+		if ( liToActivate && bluehostWpSubMenuNode ) {
+			// dispatch('bluehost/plugin').setActivePage( location.slug, location.isTopLevel );
+			this.removeActivePageClasses();
+			liToActivate.classList.add( 'current' );
+			bluehostWpSubMenuNode.style = 'display: block;';
+		}
+	};
+
+	removeActivePageClasses() {
+			const bluehostWpMenuNodes = document.querySelectorAll( '#toplevel_page_bluehost .bluehost-wp-menu-item' );
+			const bluehostWpMenuItems = Array.from( bluehostWpMenuNodes );
+			bluehostWpMenuItems.forEach( function( li ) {
+				li.classList.remove( 'current' );
+			} );
+	};
+
+	getSlug(location) {
+		let raw = isString(location) ? location : location.pathname;
+		return replace( replace( replace(raw, '/marketplace', ''), '/tools', ''), '/', '');
+	};
 
 
 

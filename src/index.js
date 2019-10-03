@@ -21,7 +21,7 @@ import helpers from './helpers';
  * When DOM is ready, load app on root element, replacing #app-loader markup.
  */
 domReady( () => {
-	{helpers();}
+	{ helpers(); }
 	render (
 		<App />,
 		document.getElementById( WP_PAGE_ROOT_ELEMENT )

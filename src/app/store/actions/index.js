@@ -1,12 +1,8 @@
-import { dispatch } from "@wordpress/data";
-
 export function openMobileSidebar() {
 	return {
 		type: 'MOBILE_SIDEBAR_ACTIVE',
 	};
 };
-
-dispatch('bluehost/plugin').openMobileSidebar();
 
 export function closeMobileSidebar() {
 	return {

@@ -3,6 +3,10 @@
  */
 @import '@/config.scss';
 
+.sr-only {
+    @extend %sr-only;
+}
+
 .is-font {
     font-family: $font;
 }

@@ -7,6 +7,7 @@ $colors: (
     dark-blue: #16325b,
     green: #17b212,
     orange: #f89c24,
+    yellow: #f89c24,
     red: #d0021b,
     black: #5c5c5c,
     grey: #999,
@@ -27,15 +28,17 @@ $color-blue: color(blue);
 $color-dark-blue: color(dark-blue);
 $color-green: color(green);
 $color-orange: color(orange);
+$color-yellow: color(yellow);
 $color-red: color(red);
 $color-black: color(black);
 $color-grey: color(grey);
+$color-light-grey: #ddd;
 $color-off-white: color(off-white);
 $color-white: color(white);
 
 // Aliases
 $color-gray: $color-grey;
-// $color-light-gray: $color-light-grey;
+$color-light-gray: $color-light-grey;
 $color-primary: $color-blue;
 $color-default: $color-black;
 $color-disabled: $color-grey;
@@ -48,6 +51,46 @@ $aliases: (
     disabled: $color-disabled,
     background: $color-background,
 );
+
+// Fonts
+$body-font: $font;
+
+// Placeholders
+%text-xs {
+  font-size: 10px;
+  line-height: 11px;
+}
+
+%text-sm {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+%text-m {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+%text-l {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+%text-xl {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+%sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 
 // Menu Breakpoint
 $menu-breakpoint: 782px;
