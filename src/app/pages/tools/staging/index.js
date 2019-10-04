@@ -18,7 +18,12 @@ import {
     AppSnackbar as Snackbar,
 } from '@/components';
 import {useStaging} from '@/hooks';
-import {ReactComponent as LoadingEnvSvg} from '@/assets/change-env.svg';
+import {
+    RadioButtonDisabledIcon,
+    RadioButtonSelectedIcon,
+    RadioButtonUnselectedIcon,
+    WorkingImage
+} from '@/assets';
 import CloneModal from './clone-modal';
 import CloneOverlay from './clone-overlay';
 import DeleteModal from './delete-modal';
@@ -105,9 +110,10 @@ export default function StagingPage() {
                     radioButtonComponent={
                         hasStaging && (
                             <label>
+                                {!!isProduction ? <RadioButtonSelectedIcon/> : <RadioButtonDisabledIcon/>}
                                 <input
                                     type="radio"
-                                    checked={isProduction}
+                                    checked={!!isProduction}
                                     onChange={() => switchToEnv('production')}
                                 />
                             </label>
@@ -201,6 +207,7 @@ export default function StagingPage() {
                                 environmentName={__('Staging Site', 'bluehost-wordpress-plugin')}
                                 radioButtonComponent={(
                                     <label>
+                                        {!isProduction ? <RadioButtonSelectedIcon/> : <RadioButtonDisabledIcon/>}
                                         <input
                                             type="radio"
                                             checked={!isProduction}
@@ -277,7 +284,7 @@ export default function StagingPage() {
                     </h1>
                     <p>{__('This should only take a minute', 'bluehost-wordpress-plugin')}</p>
                     <div style={{width: '555px'}}>
-                        <LoadingEnvSvg/>
+                        <WorkingImage/>
                     </div>
                     <p>
                         <span>{__('Tip: ', 'bluehost-wordpress-plugin')}</span>
