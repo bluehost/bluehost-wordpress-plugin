@@ -7,7 +7,7 @@ import { select } from "@wordpress/data";
  *
  * @return {boolean} Whether tips are globally enabled.
  */
-export function getActivePage() {
+export function getActivePage(state) {
 	return state.app.activePage;
 }
 export function getAppPages(state) {
