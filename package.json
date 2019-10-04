@@ -12,7 +12,6 @@
     "lint:css": "wp-scripts lint-style '**/*.css'",
     "lint:js": "wp-scripts lint-js ./src",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
-    "postinstall": "npm run build && npm run develop",
     "start": "wp-scripts start",
     "test:e2e": "wp-scripts test-e2e",
     "test:unit": "wp-scripts test-unit-js"
