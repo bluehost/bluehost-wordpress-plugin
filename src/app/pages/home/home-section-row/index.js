@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 /**
  * WordPress dependencies
  */
@@ -18,10 +20,14 @@ export default class HomeSectionRow extends Component {
 	}
 
 	render() {
-		const { icon, iconSize, title, desc, className, children } = this.props;
+		const { icon, iconSize, title, desc, className = '', children } = this.props;
 		const rowIcon = this.getIcon( icon, iconSize );
 		return (
-			<div className={ 'bluehost-home-section-row pure-g ' + className }>
+			<div className={classNames({
+				'bluehost-home-section-row': true,
+				'pure-g': true,
+				[className]: className.length,
+			})}>
 				<div className="pure-u-1 pure-u-sm-1-2 details">
 					<h3>{ rowIcon } <span className={ 'title' }>{ title }</span></h3>
 					<p>{ desc }</p>
