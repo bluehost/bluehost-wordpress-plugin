@@ -1,6 +1,9 @@
 @import "@/config.scss";
 
 .grid {
+
+  margin: 0 -16px;
+
   &__item {
     padding: 16px;
     height: 100%;
