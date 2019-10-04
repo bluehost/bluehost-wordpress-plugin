@@ -2,7 +2,7 @@ import { __ } from '@wordpress/i18n';
 import { withState } from '@wordpress/compose';
 import axios from 'axios';
 import qs from 'qs';
-import browser from 'browser-detect';
+//import browser from 'browser-detect';
 
 import { AppButton as Button } from '@/components';
 import { ReactComponent as WarningIcon } from '@/assets/warning.svg';
