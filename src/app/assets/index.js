@@ -4,6 +4,7 @@
 import {ReactComponent as BillingIcon} from '@/assets/svg/billing.svg';
 import {ReactComponent as BluehostLogo} from '@/assets/svg/bluehost.svg';
 import {ReactComponent as CloseIcon} from '@/assets/svg/close.svg';
+import {ReactComponent as DownIcon} from '@/assets/svg/down.svg';
 import {ReactComponent as HelpIcon} from '@/assets/svg/help.svg';
 import {ReactComponent as JetpackLogo} from '@/assets/svg/jetpack.svg';
 import {ReactComponent as MenuIcon} from '@/assets/svg/menu.svg';
@@ -20,6 +21,7 @@ export {
     BillingIcon,
     BluehostLogo,
     CloseIcon,
+    DownIcon,
     HelpIcon,
     JetpackLogo,
     MenuIcon,
