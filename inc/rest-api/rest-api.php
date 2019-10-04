@@ -3,6 +3,7 @@
  * Include REST API related files.
  */
 function bluehost_include_rest_api() {
+	require __DIR__ . '/class-mojo-items-controller.php';
 	require __DIR__ . '/class-mojo-item-controller.php';
 	require __DIR__ . '/class-mojo-themes-controller.php';
 	require __DIR__ . '/class-mojo-plugins-controller.php';
