@@ -2,7 +2,7 @@ import {__} from '@wordpress/i18n';
 
 import {Overlay} from '@/components';
 
-import {ReactComponent as OverlaySvg} from '@/assets/change-env.svg';
+import {WorkingImage} from '@/assets';
 
 export default function DeleteOverlay({}) {
     return (
@@ -14,7 +14,7 @@ export default function DeleteOverlay({}) {
                 {__('This should only take a minute', 'bluehost-wordpress-plugin')}
             </p>
             <div style={{width: '555px'}}>
-                <OverlaySvg/>
+                <WorkingImage/>
             </div>
             <p>
                 <span>{__('Tip: ', 'bluehost-wordpress-plugin')}</span>
