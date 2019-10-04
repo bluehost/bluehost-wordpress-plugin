@@ -2,8 +2,8 @@
 
 .bluehost-snackbar {
   font-family: $body-font;
-  position: absolute;
-  bottom: 100px;
+  position: fixed;
+  bottom: 50px;
   left: 100px;
   width: 470px;
   z-index: 9999;
