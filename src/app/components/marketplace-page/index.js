@@ -81,7 +81,9 @@ export default function MarketplacePage({className = 'bluehost-marketplace', isL
                             }
                         })()}
                     </h1>
-                    <Pagination callback={setPageNumber} currentPage={pageNumber} pageCount={pageCount}/>
+                    <div className={`${className}__pagination-container`}>
+                        <Pagination callback={setPageNumber} currentPage={pageNumber} pageCount={pageCount}/>
+                    </div>
                 </div>
                 <div className={`${className}__header-secondary`}>
                     <Search value={query} onChange={setQuery}/>
