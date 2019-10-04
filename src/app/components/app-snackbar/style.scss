@@ -1,7 +1,7 @@
 @import '@/config.scss';
 
 .bluehost-snackbar {
-  font-family: "Open Sans";
+  font-family: $body-font;
   position: absolute;
   bottom: 100px;
   left: 100px;
@@ -16,8 +16,10 @@
     border-left-color: $color-red;
     background-color: $color-white;
 
-    .bluehost-snackbar__icon svg {
-      fill: $color-red;
+    .bluehost-snackbar__icon{
+      svg, path {
+        fill: $color-red;
+      }
     }
   }
 
@@ -25,8 +27,10 @@
     border-left-color: $color-yellow;
     background-color: $color-white;
 
-    .bluehost-snackbar__icon svg {
-      fill: $color-yellow;
+    .bluehost-snackbar__icon{
+      svg, path {
+        fill: $color-yellow;
+      }
     }
   }
 
@@ -34,8 +38,10 @@
     border-left-color: $color-green;
     background-color: $color-white;
 
-    .bluehost-snackbar__icon svg {
-      fill: $color-green;
+    .bluehost-snackbar__icon{
+      svg, path {
+        fill: $color-green;
+      }
     }
   }
 
