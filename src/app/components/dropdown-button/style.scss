@@ -31,13 +31,13 @@
 
     &:hover {
       background: $color-primary;
-      svg {
+      svg, path {
         fill: $color-white;
       }
     }
 
-    svg {
-      min-width: 1em;
+    svg, path {
+      min-width: 24px;
       fill: $color-primary;
     }
   }
