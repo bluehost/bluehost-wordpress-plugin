@@ -3,6 +3,7 @@ import {kebabCase, uniqueId} from 'lodash';
 
 import {useEffect, useRef, useState} from '@wordpress/element';
 
+import {DownIcon} from '@/assets';
 import {AppButton as Button} from '@/components';
 import {get} from '@/functions';
 import './style.scss';
@@ -15,6 +16,7 @@ import './style.scss';
  * @param {Boolean} disabled Whether or not the button is disabled.
  * @param {String} label The label, which is hidden and only used for screen readers.
  * @param {Array} options Each option object must have a `title` and `callback` property (where `callback` is a function). A `description` property is optional.
+ * @param {Boolean} triggerOnSelect Whether or not to immediately trigger a callback after selecting an item from the dropdown. Defaults to true.
  * @param {Number} width The width of the list.
  * @returns {String}
  */
@@ -25,6 +27,7 @@ export default function DropdownButton(
         disabled = false,
         label,
         options = [],
+        triggerOnSelect = true,
         width = 200
     }
 ) {
@@ -100,6 +103,12 @@ export default function DropdownButton(
     useEffect(() => {
         setIsOpen(false);
         setActionName(get([selected, 'title'], options));
+        if (hasFocus && triggerOnSelect) {
+            const callback = get([selected, 'callback'], options);
+            if (typeof callback === 'function') {
+                callback(options[selected]);
+            }
+        }
     }, [selected]);
 
     useEffect(() => {
@@ -150,7 +159,7 @@ export default function DropdownButton(
                     onKeyDown={handleKeyDown}
                     ref={toggle}
                 >
-                    &#9662;
+                    <DownIcon/>
                 </Button>
             </div>
             <ul
@@ -165,7 +174,7 @@ export default function DropdownButton(
                 style={{width}}
                 tabIndex="-1"
             >
-                {options.map(({title: itemTitle, description: itemDescription}, index) => {
+                {options.map(({callback: itemCallback, title: itemTitle, description: itemDescription}, index) => {
                     const itemId = `${id.replace('dropdown-button-', 'dropdown-button-list-item-')}-${kebabCase(itemTitle)}`;
                     return (
                         <li

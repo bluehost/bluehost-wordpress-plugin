@@ -28,6 +28,18 @@
     &[disabled] {
       opacity: 0.3;
     }
+
+    &:hover {
+      background: $color-primary;
+      svg {
+        fill: $color-white;
+      }
+    }
+
+    svg {
+      min-width: 1em;
+      fill: $color-primary;
+    }
   }
 
   &__list {
