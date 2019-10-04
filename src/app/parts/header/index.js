@@ -19,9 +19,9 @@ import MobileSidebar from './mobile-sidebar';
 
 const HeaderLogo = () => (
 	<div id="bluehost-logo-wrap">
-		<NavLink to="/home" activeClassName="is-home">
+		<a href="https://my.bluehost.com/hosting/app" target="_blank" rel="noopener noreferrer">
 			<BluehostLogo />
-		</NavLink>
+		</a>
 	</div>
 );
 
