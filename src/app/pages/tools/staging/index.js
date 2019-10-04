@@ -79,10 +79,6 @@ export default function StagingPage() {
         };
     }, [notice]);
 
-    useEffect(() => {
-        setNotice('TESTING!');
-    }, []);
-
     return (
         <Page className="bluehost-staging">
 
