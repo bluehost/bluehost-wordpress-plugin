@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import {useState} from '@wordpress/element';
+import {useEffect, useState} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
 
 /**
@@ -58,6 +58,30 @@ export default function StagingPage() {
             switchToEnv
         }
     ] = useStaging({});
+
+    const handleClick = e => {
+        if (notice) {
+            const snackbar = document.querySelector('.bluehost-snackbar');
+            if (snackbar && !snackbar.contains(e.target)) {
+                setNotice(null);
+            }
+        }
+    };
+
+    useEffect(() => {
+        if (notice) {
+            document.addEventListener('mousedown', handleClick);
+        } else {
+            document.removeEventListener('mousedown', handleClick);
+        }
+        return () => {
+            document.removeEventListener('mousedown', handleClick);
+        };
+    }, [notice]);
+
+    useEffect(() => {
+        setNotice('TESTING!');
+    }, []);
 
     return (
         <Page className="bluehost-staging">
