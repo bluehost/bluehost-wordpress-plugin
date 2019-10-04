@@ -9,7 +9,12 @@ import { combineReducers } from '@wordpress/data';
  */
 // import DEFAULT_STATE from '@/store/defaults'
 
-const DEFAULT_STATE = {};
+const DEFAULT_STATE = {
+    app: {},
+    env: {},
+    settings: {},
+    wp: {},
+};
 
 const app = ( state = DEFAULT_STATE.app, action ) => {
 	switch( action.type ) {
