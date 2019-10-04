@@ -39,7 +39,7 @@ function SiteAcceleratorCard() {
 	return (
 		<HomeSectionRow
 			isCentered
-			icon={ jetpackMark }
+			icon={ JetpackLogo }
 			title={ __( 'Site Accelerator', 'endurance-wp-module-admin-app' ) }
 			desc={ __( 'Site acceleration service will resize your images and serve them from a CDN.', 'endurance-wp-module-admin-app' ) }>
 			<Button
