@@ -2,6 +2,14 @@
 
 .bluehost-staging {
 
+  &__overlay-image {
+    // top has 1rem margin already
+    margin: 80px 0 48px 0;
+    @media (max-width: 555px) {
+      margin: 40px 0 24px 0;
+    }
+  }
+
   .environment-card__selector {
     label {
       position: relative;
@@ -100,7 +108,7 @@
   }
 
   &__overlay {
-    font-family: "Open Sans" !important;
+    font-family: $font;
 
     h1 {
       color: $color-white;

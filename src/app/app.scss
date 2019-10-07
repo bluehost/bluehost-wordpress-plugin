@@ -1,13 +1,18 @@
 /**
  * 🎨⌨️↔️ Bluehost Style Config
  */
- @import '@/config.scss';
+@import '@/config.scss';
 /* ------------------------- */
 /**
  * WP Admin Overrides for Core Styles
  */
 @import '@/styles/wp-overrides.scss';
 @import '@/styles/helpers.scss';
+
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 .bluehost-app-wrap {
   @extend .is-font;
@@ -80,14 +85,15 @@ body:not(.bluehost-admin-keynav) {
 }
 
 h3 {
-  	font-size: 20px;
-    font-weight: 600;
-    line-height: 32px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
 }
+
 h4 {
-  	font-size: 16px;
-    font-weight: 600;
-    line-height: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
 }
 
 p {

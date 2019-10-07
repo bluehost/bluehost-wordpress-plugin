@@ -1,8 +1,8 @@
 import {__} from '@wordpress/i18n';
 
 import {Overlay} from '@/components';
-
-import {WorkingImage} from '@/assets';
+import {WorkingImageUrl} from '@/assets';
+import Tips from './tips';
 
 export default function DeleteOverlay({}) {
     return (
@@ -13,13 +13,14 @@ export default function DeleteOverlay({}) {
             <p>
                 {__('This should only take a minute', 'bluehost-wordpress-plugin')}
             </p>
-            <div style={{width: '555px'}}>
-                <WorkingImage/>
-            </div>
-            <p>
-                <span>{__('Tip: ', 'bluehost-wordpress-plugin')}</span>
-                {__('Making changes in staging doesn\'t affect your live site.', 'bluehost-wordpress-plugin')}
-            </p>
+            <img
+                className={`bluehost-staging__overlay-image`}
+                src={WorkingImageUrl}
+                width="555"
+                height="421"
+                alt=""
+            />
+            <Tips/>
         </Overlay>
     );
 }

@@ -15,7 +15,7 @@ import {ReactComponent as RadioButtonUnselectedIcon} from '@/assets/svg/radio-bu
 import {ReactComponent as SecurityIcon} from '@/assets/svg/security.svg';
 import {ReactComponent as UserIcon} from '@/assets/svg/user.svg';
 import {ReactComponent as ValidationIcon} from '@/assets/svg/validation.svg';
-import {ReactComponent as WorkingImage} from '@/assets/svg/working.svg';
+import WorkingImageUrl, {ReactComponent as WorkingImage} from '@/assets/svg/working.svg';
 
 export {
     BillingIcon,
@@ -33,4 +33,5 @@ export {
     UserIcon,
     ValidationIcon,
     WorkingImage,
+    WorkingImageUrl,
 };

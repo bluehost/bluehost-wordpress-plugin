@@ -22,7 +22,7 @@ import {
     RadioButtonDisabledIcon,
     RadioButtonSelectedIcon,
     RadioButtonUnselectedIcon,
-    WorkingImage
+    WorkingImageUrl,
 } from '@/assets';
 import CloneModal from './clone-modal';
 import CloneOverlay from './clone-overlay';
@@ -30,6 +30,7 @@ import DeleteModal from './delete-modal';
 import DeletOverlay from './delete-overlay';
 import DeploymentModal from './deploy-modal';
 import DeploymentOverlay from './deploy-overlay';
+import Tips from './tips';
 import './style.scss';
 
 export default function StagingPage() {
@@ -283,13 +284,14 @@ export default function StagingPage() {
                         )}
                     </h1>
                     <p>{__('This should only take a minute', 'bluehost-wordpress-plugin')}</p>
-                    <div style={{width: '555px'}}>
-                        <WorkingImage/>
-                    </div>
-                    <p>
-                        <span>{__('Tip: ', 'bluehost-wordpress-plugin')}</span>
-                        {__('Making changes in staging doesn\'t affect your live site.', 'bluehost-wordpress-plugin')}
-                    </p>
+                    <img
+                        className={`bluehost-staging__overlay-image`}
+                        src={WorkingImageUrl}
+                        width="555"
+                        height="421"
+                        alt=""
+                    />
+                    <Tips/>
                 </Overlay>
             )}
 
