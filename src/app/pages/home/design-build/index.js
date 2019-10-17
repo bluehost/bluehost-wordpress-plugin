@@ -3,9 +3,6 @@
  */
 import { __ } from '@wordpress/i18n';
 /**
- * Internal dependencies
- */
-/**
  * External dependencies
  */
 import { AppButton as Button } from '@/components';
@@ -28,7 +25,7 @@ const CustomizerCard = () => (
 			href={ baseUrl + 'customize.php' }
 			isDefault
 		>
-			Customize Theme
+			{ __('Customize Theme', 'endurance-wp-module-admin-app') }
 		</Button>
 	</HomeSectionRow>
 );
@@ -42,13 +39,13 @@ const ThemesCard = () => (
 			href={ baseUrl + 'themes.php' }
 			isDefault
 		>
-			Premium Themes
+			{__('Premium Themes', 'endurance-wp-module-admin-app')}
 		</Button>
 		<Button
 			href={ baseUrl + 'themes.php' }
 			isLink
 		>
-			Free Themes
+			{__('Free Themes', 'endurance-wp-module-admin-app')} 
 		</Button>
 	</HomeSectionRow>
 );

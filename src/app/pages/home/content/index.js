@@ -13,17 +13,16 @@ import { AppButton as Button } from '@/components';
 import HomeSection from '../home-section';
 import HomeSectionRow from '../home-section-row';
 
-const baseUrl = location.origin + '/wp-admin/';
-
-const i18nSpace = 'endurance-wp-module-admin-app';
+const baseUrl = location.origin + '/wp-admin/';s
+const i18nSpace = 'bluehost-wordpress-plugin';
 
 const PostsCard = () => (
 	<HomeSectionRow
 		icon="admin-post"
 		title={ __( 'Blog Posts', i18nSpace ) }
 		desc={ __( 'Add blog posts or organize existing pages.', i18nSpace ) }>
-		<Button href={ baseUrl + 'post-new.php' } isDefault>New Post</Button>
-		<Button href={ baseUrl + 'edit-tags.php?taxonomy=category' } isLink>Manage Categories</Button>
+		<Button href={ baseUrl + 'post-new.php' } isDefault>{ __('New Post', i18nSpace) }</Button>
+		<Button href={ baseUrl + 'edit-tags.php?taxonomy=category' } isLink>{ __('Manage Categories', i18nSpace) }</Button>
 	</HomeSectionRow>
 );
 
@@ -36,7 +35,7 @@ const PagesCard = () => (
 			href={ baseUrl + 'post-new.php?post_type=page' }
 			isDefault
 		>
-			New Page
+			{ __('New Page', i18nSpace)}
 		</Button>
 	</HomeSectionRow>
 );
@@ -55,7 +54,7 @@ const MenusCard = () => (
 	</HomeSectionRow>
 );
 
-function ProductsCard() {
+const ProductsCard = () => {
 	// // if ( ! window.bluehost.wordpress.isWooActive ) {
 	// 	return null;
 	// }
@@ -68,13 +67,14 @@ function ProductsCard() {
 				href={ baseUrl + 'customize.php?autofocus[panel]=nav_menus' }
 				isDefault
 			>
-				Manage Products
+				{ __('Manage Products', i18nSpace)}
 			</Button>
 		</HomeSectionRow>
 	);
 }
 
 const ContentSection = () => (
+<<<<<<< Updated upstream
 	<HomeSection title="Content" className="content">
 		<>
 			<PostsCard />
@@ -82,6 +82,13 @@ const ContentSection = () => (
 			<MenusCard />
 			<ProductsCard />
 		</>
+=======
+	<HomeSection title={__('Content', i18nSpace)} className="content">
+		<PostsCard />
+		<PagesCard />
+		<MenusCard />
+		<ProductsCard />
+>>>>>>> Stashed changes
 	</HomeSection>
 );
 

@@ -26,7 +26,7 @@ const CacheCard = () => (
 			href={ baseUrl + 'admin.php?page=bluehost#/settings' }
 			isDefault
 		>
-			Configure Caching
+			{__('Configure Caching', 'bluehost-wordpress-plugin')}
 		</Button>
 	</HomeSectionRow>
 );
@@ -45,7 +45,7 @@ const SiteAcceleratorCard = () => {
 				href={ baseUrl + 'admin.php?page=jetpack#/performance' }
 				isDefault
 			>
-				Configure Site Accelerator
+				{__('Configure Site Accelerator', 'bluehost-wordpress-plugin')}
 			</Button>
 		</HomeSectionRow>
 	);

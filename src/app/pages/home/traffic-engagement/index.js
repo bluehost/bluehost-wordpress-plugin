@@ -27,7 +27,7 @@ function SocialCard() {
 				href={ baseUrl + 'customize.php' }
 				isDefault
 			>
-				Manage Social
+				{__('Manage Social', 'bluehost-wordpress-plugin')}
 			</Button>
 		</HomeSectionRow>
 	);
@@ -46,7 +46,7 @@ function PublicizeCard() {
 				href={ baseUrl + 'themes.php' }
 				isDefault
 			>
-				Set Sharing
+				{__('Set Sharing', 'bluehost-wordpress-plugin')}
 			</Button>
 		</HomeSectionRow>
 	);
@@ -66,7 +66,7 @@ function StatsCard() {
 				href={ baseUrl + 'themes.php' }
 				isDefault
 			>
-				View Stats
+				{__('View Stats', 'bluehost-wordpress-plugin')}
 			</Button>
 		</HomeSectionRow>
 	);
@@ -77,7 +77,7 @@ const TrafficEngagementSection = () => {
 	// 	return null;
 	// }
 	return (
-		<HomeSection title="Traffic & Engagement" className="traffic">
+		<HomeSection title={__('Traffic & Engagement', 'bluehost-wordpress-plugin')} className="traffic">
 			<SocialCard />
 			<PublicizeCard />
 			<StatsCard />

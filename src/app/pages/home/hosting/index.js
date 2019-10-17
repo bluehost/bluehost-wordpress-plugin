@@ -23,7 +23,7 @@ const ManageMySitesCard = () => (
 			href={ 'https://my.bluehost.com/hosting/app?lil=1#/sites' }
 			isDefault
 		>
-			Manage
+			{__('Manage', 'bluehost-wordpress-plugin')}
 		</Button>
 	</HomeSectionRow>
 );
@@ -37,7 +37,7 @@ const EmailCard = () => (
 			href={ 'https://my.bluehost.com/hosting/app?lil=1#/email-office' }
 			isDefault
 		>
-			Manage
+			{__('Manage', 'bluehost-wordpress-plugin')}
 		</Button>
 	</HomeSectionRow>
 );
@@ -51,7 +51,7 @@ const DomainsCard = () => (
 			href={ 'https://my.bluehost.com/hosting/app?lil=1#/domains' }
 			isDefault
 		>
-			Find a Domain
+			{__('Find a Domain', 'bluehost-wordpress-plugin')}
 		</Button>
 	</HomeSectionRow>
 );
@@ -65,13 +65,13 @@ const HelpCard = () => (
 			href={ 'https://my.bluehost.com/hosting/help' }
 			isDefault
 		>
-			Help Me
+			{__('Help Me', 'bluehost-wordpress-plugin')}
 		</Button>
 	</HomeSectionRow>
 );
 
 const HostingSection = ( props ) => (
-	<HomeSection title="Hosting" className="hosting">
+	<HomeSection title={__('Hosting', 'bluehost-wordpress-plugin')} className="hosting">
 		<ManageMySitesCard />
 		<EmailCard />
 		<DomainsCard />

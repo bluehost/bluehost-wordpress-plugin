@@ -1,19 +1,11 @@
 /**
- * External dependencies
+ * Project dependencies
  */
 import AppPage from '@/components/app-page';
 /**
- * Internal dependencies
+ * Component dependencies
  */
 import './style.scss';
-
-/**
- * WordPress dependencies
- */
-
-/**
- * Internal dependencies
- */
 import ContentSection from './content/';
 import DesignBuildSection from './design-build/';
 import TrafficEngagementSection from './traffic-engagement/';
@@ -25,7 +17,11 @@ import WelcomeSection from './welcome-section';
 const HomePage = () => (
     <AppPage className="home">
         <div className="restricted-width">
+<<<<<<< Updated upstream
             <WelcomeSection/>
+=======
+            <WelcomeSection />
+>>>>>>> Stashed changes
             <ComingSoonNotice/>
             <ContentSection/>
             <DesignBuildSection/>
