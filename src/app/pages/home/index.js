@@ -20,15 +20,12 @@ import TrafficEngagementSection from './traffic-engagement/';
 import PerformanceSection from './performance/';
 import HostingSection from './hosting/';
 import ComingSoonNotice from './coming-soon-notice/';
+import WelcomeSection from './welcome-section';
 
 const HomePage = () => (
     <AppPage className="home">
         <div className="restricted-width">
-            <div className="welcome-section">
-                <h1>Welcome to your WordPress site!</h1>
-                <p>From here, you can quickly add content to your site, manage for-sale products, work on your site’s
-                    design and performance, manage hosting, and access tools to increase your traffic.</p>
-            </div>
+            <WelcomeSection />
             <ComingSoonNotice/>
             <ContentSection/>
             <DesignBuildSection/>
