@@ -24,7 +24,7 @@ function ServicesPage({history}) {
                     }
                 }}
                 id={item.id}
-                imageUrl={item.images.thumbnail_url}
+                imageUrl={item.images.preview_url}
                 isFavorite={hasFavorite(item.id)}
                 key={item.id}
                 price={item.prices.single_domain_license}
