@@ -14,6 +14,9 @@ import { AppButton, AppNotice as Notice } from '@/components';
  * 
  */
 const ComingSoonNotice = () => {
+	if ( ! select('bluehost/plugin').isComingSoon() ) {
+		return null;
+	}
 	return (
 		<Notice status="warning" isDismissible={ false }>
 			<div className="pure-g">

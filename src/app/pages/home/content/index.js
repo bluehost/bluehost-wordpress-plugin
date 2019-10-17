@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { select } from '@wordpress/data';
 /**
  * External dependencies
  */
@@ -55,9 +56,9 @@ const MenusCard = () => (
 );
 
 const ProductsCard = () => {
-	// // if ( ! window.bluehost.wordpress.isWooActive ) {
-	// 	return null;
-	// }
+	if ( ! select('bluehost/plugin').isWooActive() ) {
+		return null;
+	}
 	return (
 		<HomeSectionRow
 			icon="cart"

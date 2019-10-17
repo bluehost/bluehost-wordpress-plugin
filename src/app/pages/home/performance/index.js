@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { select } from '@wordpress/data';
 
 /**
  * Internal dependencies
@@ -32,8 +33,8 @@ const CacheCard = () => (
 );
 
 const SiteAcceleratorCard = () => {
-	if ( ! window.bluehost.wordpress.isJetpackActive || ( ( 0 !== window.bluehost.wordpress.jetpackActiveModules ) && ! window.bluehost.wordpress.jetpackActiveModules.includes( 'photon' ) ) ) {
-		// return null;
+	if ( ! select('bluehost/plugin').isJetpackActive() ) {
+		return null;
 	}
 	return (
 		<HomeSectionRow

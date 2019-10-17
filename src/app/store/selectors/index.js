@@ -25,6 +25,12 @@ export function isTopLevel( state ) {
 export function isComingSoon( state ) {
 	return state.settings.comingSoon;
 }
+export function isWooActive( state ) {
+	return state.wp.isWooActive;
+}
+export function isJetpackActive( state ) {
+	return state.wp.isJetpackActive;
+}
 export function getBluehostData( state ) {
 	return state;
 }

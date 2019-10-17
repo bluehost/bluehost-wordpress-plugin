@@ -3,6 +3,7 @@
  */
 import { Animate } from '@wordpress/components';
 import { Component, createRef } from '@wordpress/element';
+import { dispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 /**
  * External dependencies
@@ -37,6 +38,9 @@ class App extends Component {
 			hasError: false,
 			appError: null
 		};
+
+		console.log( 'running fetchWindowData' );
+		dispatch('bluehost/plugin').fetchWindowData();
 	}
 
 	handleNavFocus(event) {
