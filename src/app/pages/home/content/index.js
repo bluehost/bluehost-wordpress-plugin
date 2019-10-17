@@ -13,7 +13,7 @@ import { AppButton as Button } from '@/components';
 import HomeSection from '../home-section';
 import HomeSectionRow from '../home-section-row';
 
-const baseUrl = location.origin + '/wp-admin/';s
+const baseUrl = location.origin + '/wp-admin/';
 const i18nSpace = 'bluehost-wordpress-plugin';
 
 const PostsCard = () => (
@@ -49,7 +49,7 @@ const MenusCard = () => (
 			href={ baseUrl + 'customize.php?autofocus[panel]=nav_menus' }
 			isDefault
 		>
-			Manage Menus
+			{__('Manage Menus', i18nSpace)}
 		</Button>
 	</HomeSectionRow>
 );
@@ -74,21 +74,13 @@ const ProductsCard = () => {
 }
 
 const ContentSection = () => (
-<<<<<<< Updated upstream
-	<HomeSection title="Content" className="content">
+	<HomeSection title={__('Content', i18nSpace)} className="content">
 		<>
 			<PostsCard />
 			<PagesCard />
 			<MenusCard />
 			<ProductsCard />
 		</>
-=======
-	<HomeSection title={__('Content', i18nSpace)} className="content">
-		<PostsCard />
-		<PagesCard />
-		<MenusCard />
-		<ProductsCard />
->>>>>>> Stashed changes
 	</HomeSection>
 );
 
