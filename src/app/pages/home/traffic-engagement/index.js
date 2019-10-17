@@ -72,7 +72,7 @@ function StatsCard() {
 	);
 }
 
-function TrafficEngagementSection() {
+const TrafficEngagementSection = () => {
 	// if ( ! window.bluehost.wordpress.isJetpackActive ) {
 	// 	return null;
 	// }
