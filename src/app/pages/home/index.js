@@ -25,7 +25,7 @@ import WelcomeSection from './welcome-section';
 const HomePage = () => (
     <AppPage className="home">
         <div className="restricted-width">
-            <WelcomeSection />
+            <WelcomeSection/>
             <ComingSoonNotice/>
             <ContentSection/>
             <DesignBuildSection/>
