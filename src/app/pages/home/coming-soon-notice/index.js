@@ -3,18 +3,16 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { select } from '@wordpress/data';
+import { withSelect, withDispatch } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
 
 /**
  * Project Dependencies
  */
 import { AppButton, AppNotice as Notice } from '@/components';
 
-/**
- * 
- */
-const ComingSoonNotice = () => {
-	if ( ! select('bluehost/plugin').isComingSoon() ) {
+const ComingSoonNotice = ( { isComingSoon, disableComingSoon } ) => {
+	if ( ! isComingSoon ) {
 		return null;
 	}
 	return (
@@ -26,7 +24,7 @@ const ComingSoonNotice = () => {
 				</div>
 				<div className="pure-u-1 pure-u-sm-1-2 action">
 					<AppButton
-						href={ '' }
+						onClick={() => (disableComingSoon())}
 						isPrimary
 					>
 						{__('Launch Your Site')}
@@ -36,5 +34,11 @@ const ComingSoonNotice = () => {
 		</Notice>
 	);
 };
-
-export default ComingSoonNotice;
+export default compose(
+	withSelect( select => ({
+		isComingSoon: select('bluehost/plugin').isComingSoon()
+	})),
+	withDispatch( dispatch => ({
+		disableComingSoon: dispatch('bluehost/plugin').disableComingSoon
+	}))
+)(ComingSoonNotice);

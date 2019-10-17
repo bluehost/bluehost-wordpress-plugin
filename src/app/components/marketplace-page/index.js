@@ -172,7 +172,7 @@ export default function MarketplacePage({className = 'bluehost-marketplace', isL
             </div>
             <footer className={`${className}__footer`}>
                 <div className={`${className}__ad`}>
-                    <img src="https://via.placeholder.com/468x60" alt=""/>
+                    <img  alt=""/>
                 </div>
                 <Pagination callback={setPageNumber} currentPage={pageNumber} pageCount={pageCount}/>
             </footer>

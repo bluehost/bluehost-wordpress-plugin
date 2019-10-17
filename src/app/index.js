@@ -39,7 +39,6 @@ class App extends Component {
 			appError: null
 		};
 
-		console.log( 'running fetchWindowData' );
 		dispatch('bluehost/plugin').fetchWindowData();
 	}
 
@@ -66,34 +65,32 @@ class App extends Component {
 			);
 		}
 		return (
-			<div>
-				<Animate type="appear" options={{ origin: 'center'}}>
-					{
-						({}) => (
-							<Router>
-								{/* <main id="bluehost-app-wrap" className="bluehost-app-wrap animated fadeIn fast"> */}
-								<main id="bluehost-app-wrap" className="bluehost-app-wrap">
-									<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
-										{ __( 'Skip to Navigation', bluehost_i18n ) }
-									</a>
-									<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
-										{ __( 'Skip to Content', bluehost_i18n ) }
-									</a>
-									<div>
-										<Header />
-									</div>
-									<div id="navigation" tabIndex="-1" ref={ this.navFocus }>
-										<AppPrimaryNav />
-									</div>
-									<div tabIndex="-1" ref={ this.contentFocus }>
-										<Main />
-									</div>
-								</main>
-							</Router>
-						)
-					}
-				</Animate>
-			</div>
+			<Animate type="appear" options={{ origin: 'center'}}>
+				{
+					({}) => (
+						<Router>
+							{/* <main id="bluehost-app-wrap" className="bluehost-app-wrap animated fadeIn fast"> */}
+							<main id="bluehost-app-wrap" className="bluehost-app-wrap">
+								<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
+									{ __( 'Skip to Navigation', bluehost_i18n ) }
+								</a>
+								<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
+									{ __( 'Skip to Content', bluehost_i18n ) }
+								</a>
+								<div>
+									<Header />
+								</div>
+								<div id="navigation" tabIndex="-1" ref={ this.navFocus }>
+									<AppPrimaryNav />
+								</div>
+								<div tabIndex="-1" ref={ this.contentFocus }>
+									<Main />
+								</div>
+							</main>
+						</Router>
+					)
+				}
+			</Animate>
 		);
 	}
 }

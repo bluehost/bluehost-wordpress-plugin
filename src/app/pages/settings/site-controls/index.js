@@ -3,6 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
+import { select } from '@wordpress/data';
 
 /**
  * Internal Dependencies
@@ -14,8 +15,8 @@ export default class SiteControls extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			comingSoon: window.bluehost.settings.comingSoon,
-			};
+			comingSoon: select('bluehost/plugin').isComingSoon(),
+		};
 		this.toggleComingSoon = this.toggleComingSoon.bind( this );
 	}
 	toggleComingSoon() {
