@@ -31,15 +31,14 @@ const CacheCard = () => (
 	</HomeSectionRow>
 );
 
-function SiteAcceleratorCard() {
+const SiteAcceleratorCard = () => {
 	if ( ! window.bluehost.wordpress.isJetpackActive || ( ( 0 !== window.bluehost.wordpress.jetpackActiveModules ) && ! window.bluehost.wordpress.jetpackActiveModules.includes( 'photon' ) ) ) {
 		// return null;
 	}
-	const jetpackIcon = ( <JetpackLogo /> );
 	return (
 		<HomeSectionRow
 			isCentered
-			icon={ JetpackLogo }
+			icon={ (<JetpackLogo />) }
 			title={ __( 'Site Accelerator', 'endurance-wp-module-admin-app' ) }
 			desc={ __( 'Site acceleration service will resize your images and serve them from a CDN.', 'endurance-wp-module-admin-app' ) }>
 			<Button
@@ -52,10 +51,12 @@ function SiteAcceleratorCard() {
 	);
 }
 
-const PerformanceSection = ( props ) => (
+const PerformanceSection = () => (
 	<HomeSection title="Performance" className="performance">
-		<CacheCard />
-		<SiteAcceleratorCard />
+		<>
+			<CacheCard />
+			<SiteAcceleratorCard />
+		</>
 	</HomeSection>
 );
 
