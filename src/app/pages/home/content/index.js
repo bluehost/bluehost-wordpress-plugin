@@ -76,10 +76,12 @@ function ProductsCard() {
 
 const ContentSection = () => (
 	<HomeSection title="Content" className="content">
-		<PostsCard />
-		<PagesCard />
-		<MenusCard />
-		<ProductsCard />
+		<>
+			<PostsCard />
+			<PagesCard />
+			<MenusCard />
+			<ProductsCard />
+		</>
 	</HomeSection>
 );
 
