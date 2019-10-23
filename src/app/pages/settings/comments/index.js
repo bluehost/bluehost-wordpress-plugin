@@ -38,7 +38,7 @@ export default class Comments extends Component {
 		const commentsLabel = (<span>Close comments after <strong>{commentsCloseInterval}</strong> days</span>);
 		const commentsPageLabel = (<span>Display <strong>{commentsPerPage}</strong> comments per page</span>);
 		return (
-			<div className="settings-section site-controls pure-u-1 pure-u-lg-3-8">
+			<div className="settings-section comments pure-u-1 pure-u-lg-3-8">
 				<h2>Comments</h2>
 				<SettingsGroup>
 					<SettingsToggle label="Disable comments for old posts" checked={closeCommentsOnOldPosts} onChange={this.toggleCloseComments}/>

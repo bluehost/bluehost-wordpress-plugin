@@ -30,7 +30,7 @@ export default class Content extends Component {
 		const { revisions, trashInterval } = this.state;
 		const trashLabel = (<span>Empty my trash every <strong>{trashInterval}</strong> week(s)</span>);
 		return (
-			<div className="settings-section site-controls pure-u-1 pure-u-lg-3-8">
+			<div className="settings-section content pure-u-1 pure-u-lg-3-8">
 				<h2>Content</h2>
 				<SettingsGroup>
 					<SettingsSelect
