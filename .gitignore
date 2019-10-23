@@ -1,6 +1,9 @@
 # Composer
 /vendor
 
+# Cypress
+cypress.env.json
+
 #node_modules
 /node_modules
 
