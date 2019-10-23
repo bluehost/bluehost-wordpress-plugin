@@ -14,7 +14,16 @@ export default function useMojoSort() {
      * @returns {Array}
      */
     function sortByDateAddedAscending(items) {
-        return sort(items, ['created_timestamp']);
+        return items.sort((a, b) => {
+            if (a.created_timestamp > b.created_timestamp) {
+                return 1;
+            } else if (a.created_timestamp < b.created_timestamp) {
+                return -1;
+            } else {
+                // If equal sort by name
+                return a.name < b.name ? 1 : -1;
+            }
+        });
     }
 
     /**
@@ -54,7 +63,16 @@ export default function useMojoSort() {
      * @returns {Array}
      */
     function sortBySalesAscending(items) {
-        return sort(items, ['sales_count']);
+        return items.sort((a, b) => {
+            if (a.sales_count > b.sales_count) {
+                return 1;
+            } else if (a.sales_count < b.sales_count) {
+                return -1;
+            } else {
+                // If equal sort by name
+                return a.name < b.name ? 1 : -1;
+            }
+        });
     }
 
     /**
