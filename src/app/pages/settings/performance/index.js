@@ -17,9 +17,9 @@ import SettingsSection from '../settings-section';
 import './style.scss';
 
 const CacheLevelSelector = ( { value, cacheLevel, label, desc } ) => {
-	const id = "cache-level-" + value;
+	const id = "cache-level-" + value.toString();
 	const checked = ( value === cacheLevel );
-	const onChange = e => { dispatch('bluehost/plugin').setCacheLevel( e.target.value ) };
+	const onChange = e => { dispatch('bluehost/plugin').setCacheLevel( parseInt( e.target.value, 10 ) ) };
 	return (
 		<div className="row">
 			<input id={id} type="radio" name="cache-level" className="radio" value={value} checked={checked} onChange={onChange} />
@@ -34,10 +34,10 @@ const CacheLevelSelector = ( { value, cacheLevel, label, desc } ) => {
 const SettingsPerformance = ( { cacheLevel } ) => {
 	const toggleCache = () => {
 		// Reset it to 2 if it's anything other than 0
-		const newCacheLevel = ( cacheLevel === '0' ) ? '2' : '0';
+		const newCacheLevel = ( cacheLevel === 0 ) ? 2 : 0;
 		return dispatch('bluehost/plugin').setCacheLevel( newCacheLevel );
 	}
-	const cacheEnabled = ( cacheLevel !== "0" );
+	const cacheEnabled = ( cacheLevel !== 0 );
 	const cacheLevelClass = ( cacheEnabled ) ? '' : 'hidden';
 	return (
 		<SettingsSection name="Performance" className="pure-u-lg-19-24 performance">
@@ -48,19 +48,19 @@ const SettingsPerformance = ( { cacheLevel } ) => {
 				<div className={"cache-level " + cacheLevelClass}>
 					<h4>Caching Level</h4>
 					<CacheLevelSelector
-						value="1"
+						value={1}
 						cacheLevel={cacheLevel}
 						label="Assets Only"
 						desc="Cache static assets like images and the appearance of your site for 5 minutes. Recommended for ecommerce and sites that update frequently or display info in real-time."
 						/>
 					<CacheLevelSelector
-						value="2"
+						value={2}
 						cacheLevel={cacheLevel}
 						label="Assets & Web Pages"
 						desc="Cache static assets for 6 hours and other web pages for 5 minutes. Recommended for blogs, educational sites, and sites that update at least weekly."
 						/>
 					<CacheLevelSelector
-						value="3"
+						value={3}
 						cacheLevel={cacheLevel}
 						label="Assets & Web Pages - Extended"
 						desc="Cache static assets for 1 week and web pages for 5 minutes. Recommended for portfolios, brochure sites, and sites that update monthly or less often."
