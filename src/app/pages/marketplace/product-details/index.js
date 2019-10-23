@@ -14,8 +14,8 @@ export default function ProductDetails({id}) {
     const [type, setType] = useState(null);
     const [{done, isError, isLoading, payload}] = useMojoApi('items', {id});
 
-    const header = __(sprintf('Premium %s', type), 'bluehost-wordpress-plugin');
-    const breadcrumbText = __('Premium Services', 'bluehost-wordpress-plugin');
+    const header = sprintf(__('Premium %s', 'bluehost-wordpress-plugin'), type);
+    const breadcrumbText = header;
 
     useEffect(() => {
         setItem(get(['items', 0], payload));
@@ -59,8 +59,8 @@ export default function ProductDetails({id}) {
 
     let dateCreated = new Date(created);
     let dateUpdated = new Date(modified);
+
     let months = [
-        '',
         __('January', 'bluehost-wordpress-plugin'),
         __('February', 'bluehost-wordpress-plugin'),
         __('March', 'bluehost-wordpress-plugin'),
