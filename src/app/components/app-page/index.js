@@ -68,13 +68,17 @@ class AppPage extends Component {
 	}
 
 	handleWordPressMenuActive( location ) {
-		const liToActivate = document.querySelector( '.bluehost-wp-menu-item.' + location.slug );
-		const bluehostWpSubMenuNode = document.querySelector( '#toplevel_page_bluehost ul' );
-		if ( liToActivate && bluehostWpSubMenuNode ) {
-			// dispatch('bluehost/plugin').setActivePage( location.slug, location.isTopLevel );
-			this.removeActivePageClasses();
-			liToActivate.classList.add( 'current' );
-			bluehostWpSubMenuNode.style = 'display: block;';
+		try{
+			const liToActivate = document.querySelector( '.bluehost-wp-menu-item.' + location.slug );
+			const bluehostWpSubMenuNode = document.querySelector( '#toplevel_page_bluehost ul' );
+			if ( liToActivate && bluehostWpSubMenuNode ) {
+				// dispatch('bluehost/plugin').setActivePage( location.slug, location.isTopLevel );
+				this.removeActivePageClasses();
+				liToActivate.classList.add( 'current' );
+				bluehostWpSubMenuNode.style = 'display: block;';
+			}
+		} catch(e) {
+			console.error(e.message);
 		}
 	};
 
