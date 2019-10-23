@@ -102,7 +102,7 @@ export default function MarketplacePage({className = 'bluehost-marketplace', isL
                             },
                             {
                                 label: __('Price (Low to High)', 'bluehost-wordpress-plugin'),
-                                value: 'sort-sales-asc',
+                                value: 'sort-price-asc',
                             },
                             {
                                 label: __('Date Added', 'bluehost-wordpress-plugin'),
