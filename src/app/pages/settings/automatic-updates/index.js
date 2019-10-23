@@ -18,7 +18,7 @@ const AutomaticUpdates = ({ autoUpdates, toggleUpdates }) => {
 		<div className="settings-section automatic-updates pure-u-1 pure-u-lg-3-8">
 			<h2>{__('Automatic Updates', i18n)}</h2>
 			<SettingsGroup>
-				<SettingsToggle label={__('WordPress Core', i18n)} checked={autoUpdates.core} onChange={() => toggleUpdates( 'core' )} />
+				<SettingsToggle label={__('WordPress Core', i18n)} checked={autoUpdates.majorCore} onChange={() => toggleUpdates( 'core' )} />
 				<SettingsToggle label={__('Themes', i18n)} checked={autoUpdates.themes} onChange={() => toggleUpdates( 'themes' )} />
 				<SettingsToggle label={__('Plugins', i18n)} checked={autoUpdates.plugins} onChange={() => toggleUpdates( 'plugins' )} />
 			</SettingsGroup>

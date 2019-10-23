@@ -75,7 +75,7 @@ const settings = ( state = DEFAULT_STATE.settings, action ) => {
 				...state,
 				autoUpdates: {
 					...state.autoUpdates,
-					core: ! state.autoUpdates.core
+					majorCore: ! state.autoUpdates.majorCore
 				}
 			}
 		case 'TOGGLE_PLUGIN_UPDATES':
