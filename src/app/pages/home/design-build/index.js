@@ -36,7 +36,7 @@ const ThemesCard = () => (
 		title={ __( 'WordPress Themes', 'endurance-wp-module-admin-app' ) }
 		desc={ __( 'Browse themes to find one that inspires you!', 'endurance-wp-module-admin-app' ) }>
 		<Button
-			href={ baseUrl + 'themes.php' }
+			href={ baseUrl + '/wp-admin/admin.php?page=bluehost#/marketplace/themes' }
 			isDefault
 		>
 			{__('Premium Themes', 'endurance-wp-module-admin-app')}
