@@ -103,6 +103,7 @@ export default function Dropdown({className = '', id, label, onChange, options =
                     onBlur={() => setHasFocus(false)}
                     onKeyDown={handleKeyDown}
                     ref={button}
+                    tabIndex="0"
                 >
                     <div className="dropdown__value" id={`${id}-value`}>{selectedItemLabel}</div>
                 </button>
