@@ -10,6 +10,7 @@ function bluehost_include_rest_api() {
 	require __DIR__ . '/class-mojo-services-controller.php';
 	require __DIR__ . '/class-staging-controller.php';
 	require __DIR__ . '/class-bluehost-admin-errors.php';
+	require __DIR__ . '/class-bluehost-settings-controller.php';
 }
 
 add_action( 'rest_api_init', 'bluehost_include_rest_api', 5 );
@@ -20,6 +21,7 @@ add_action( 'rest_api_init', 'bluehost_include_rest_api', 5 );
 function bluehost_init_rest_api() {
 	$controllers = array(
 		'Bluehost_Staging_Controller',
+		'Bluehost_Settings_Controller',
 		'Mojo_Item_Controller',
 		'Mojo_Themes_Controller',
 		'Mojo_Plugins_Controller',
