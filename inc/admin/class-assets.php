@@ -181,26 +181,6 @@ class Bluehost_Admin_App_Assets {
 				'mobileMenuActive' => 0,
 				'nonce'            => wp_create_nonce( mm_site_bin2hex() ),
 			),
-			'settings'  => array(
-				'comingSoon'                => 'true' === get_option( 'mm_coming_soon', 0 ) ? 1 : 0,
-				'autoUpdates'               => array(
-					'core'    => defined( 'WP_AUTO_UPDATE_CORE' ) ? WP_AUTO_UPDATE_CORE : true,
-					'plugins' => get_option( 'auto_update_plugin', true ),
-					'themes'  => get_option( 'auto_update_theme', true ),
-				),
-				'allowMajorAutoCoreUpdates' => defined( 'WP_AUTO_UPDATE_CORE' ) ? WP_AUTO_UPDATE_CORE : true,
-				'allowMinorAutoCoreUpdates' => get_option( 'allow_minor_auto_core_updates', true ),
-				'autoUpdatePlugin'          => get_option( 'auto_update_plugin', true ),
-				'autoUpdateTheme'           => get_option( 'auto_update_theme', true ),
-				'autoUpdateTranslation'     => get_option( 'auto_update_translation', true ),
-				'disableCommentsOldPosts'   => get_option( 'close_comments_for_old_posts', false ),
-				'closeCommentsDays'         => get_option( 'close_comments_days_old', 14 ),
-				'commentsPerPage'           => get_option( 'comments_per_page', 50 ),
-				'contentRevisions'          => defined( 'WP_POST_REVISIONS' ) ? WP_POST_REVISIONS : 40,
-				'emptyTrashDays'            => defined( 'EMPTY_TRASH_DAYS' ) ? EMPTY_TRASH_DAYS : 30,
-				'cacheLevel'                => get_option( 'endurance_cache_level', "2" ),
-				'cachingEnabled'            => ( get_option( 'endurance_cache_level', 2 ) > 0 ) ? true : false,
-			),
 			'env'       => array(
 				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,
 				'phpVersion' => phpversion(),
@@ -211,6 +191,13 @@ class Bluehost_Admin_App_Assets {
 				'jetpackActiveModules' => get_option( 'jetpack_active_modules', 0 ),
 			),
 		);
+
+		// Grab the latest settings using an interal REST API request
+		$request  = new WP_REST_Request( 'GET', '/bluehost/v1/settings' );
+		$response = rest_do_request( $request );
+		$server   = rest_get_server();
+
+		$data['settings'] = $server->response_to_data( $response, false );
 
 		wp_localize_script( 'eig-wp-admin-ui-app', 'bluehost', apply_filters( 'bluehost_admin_page_data', $data ) );
 
