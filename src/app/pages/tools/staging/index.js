@@ -112,6 +112,7 @@ export default function StagingPage() {
                         hasStaging && (
                             <label>
                                 {!!isProduction ? <RadioButtonSelectedIcon/> : <RadioButtonDisabledIcon/>}
+                                <span className="sr-only">{__('Production', 'bluehost-wordpress-plugin')}</span>
                                 <input
                                     type="radio"
                                     checked={!!isProduction}
@@ -209,6 +210,7 @@ export default function StagingPage() {
                                 radioButtonComponent={(
                                     <label>
                                         {!isProduction ? <RadioButtonSelectedIcon/> : <RadioButtonDisabledIcon/>}
+                                        <span className="sr-only">{__('Staging', 'bluehost-wordpress-plugin')}</span>
                                         <input
                                             type="radio"
                                             checked={!isProduction}

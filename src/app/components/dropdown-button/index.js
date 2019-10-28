@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import {kebabCase, uniqueId} from 'lodash';
 
 import {useEffect, useRef, useState} from '@wordpress/element';
+import {__} from '@wordpress/i18n';
 
 import {DownIcon} from '@/assets';
 import {AppButton as Button} from '@/components';
@@ -160,6 +161,7 @@ export default function DropdownButton(
                     ref={toggle}
                 >
                     <DownIcon/>
+                    <span className="sr-only">{__('Select', 'bluehost-wordpress-plugin')}</span>
                 </Button>
             </div>
             <ul
