@@ -1,3 +1,15 @@
+/**
+ * WordPress Dependencies
+ */
+import { select } from '@wordpress/data';
+
+/**
+ * Internal Dependencies
+ */
+import { STORE_KEY, SETTINGS_ENDPOINT } from './constants.js';
+import { apiFetch } from './controls.js';
+
+
 export function openMobileSidebar() {
 	return {
 		type: 'MOBILE_SIDEBAR_ACTIVE',
@@ -35,9 +47,19 @@ export function fetchWindowData() {
 	return data;
 };
 
-export function fetchFromAPI( path ) {
+export function* toggleSetting( setting ) {
+	const oldValue = yield select( STORE_KEY ).getSetting( setting );
+	const newValue = ! Boolean( oldValue );
+	yield updateSetting( setting, newValue );
+}
+
+export function* updateSetting( setting, newValue ) {
+	let settings = {};
+	settings[setting] = newValue;
+	yield apiFetch( { path: SETTINGS_ENDPOINT, method: 'POST', data: settings } );
 	return {
-		type: 'FETCH_FROM_API',
-		path
+		type: 'UPDATE_SETTING',
+		setting,
+		newValue,
 	}
-};
+}

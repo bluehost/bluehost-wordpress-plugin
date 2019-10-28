@@ -173,37 +173,31 @@ class Bluehost_Admin_App_Assets {
 		wp_enqueue_script( 'eig-wp-admin-ui-app' );
 
 		$data = array(
-			'app'           => array(
-				'activePage'    	=> '',
-				'isTopLevel'		=> 0,
-				'pages'         	=> array_map( 'strtolower', Bluehost_Admin_App_Page::$subpages ),
-				'siteId'        	=> mm_site_bin2hex(),
-				'mobileMenuActive' 	=> 0,
-				'nonce'				=> wp_create_nonce( mm_site_bin2hex() ),
+			'app'       => array(
+				'activePage'       => '',
+				'isTopLevel'       => 0,
+				'pages'            => array_map( 'strtolower', Bluehost_Admin_App_Page::$subpages ),
+				'siteId'           => mm_site_bin2hex(),
+				'mobileMenuActive' => 0,
+				'nonce'            => wp_create_nonce( mm_site_bin2hex() ),
 			),
-			'settings'	=> array(
-				'comingSoon'                  => 'true' === get_option( 'mm_coming_soon', 0 ) ? 1 : 0,
-				'allowMajorAutoCoreUpdates'   => defined( 'WP_AUTO_UPDATE_CORE' ) ? WP_AUTO_UPDATE_CORE : true,
-				'allowMinorAutoCoreUpdates'   => get_option( 'allow_minor_auto_core_updates', true ),
-				'autoUpdatePlugin'            => get_option( 'auto_update_plugin', true ),
-				'autoUpdateTheme'             => get_option( 'auto_update_theme', true ),
-				'autoUpdateTranslation'       => get_option( 'auto_update_translation', true ),
-				'disableCommentsOldPosts'     => get_option( 'close_comments_for_old_posts' ),
-				'closeCommentsDays'           => get_option( 'close_comments_days_old' ),
-				'commentCount'                => get_option( 'comments_per_page' ),
-				'contentRevisions'            => defined( 'WP_POST_REVISIONS' ) ? WP_POST_REVISIONS : true,
-				'emptyTrashDays'              => defined( 'EMPTY_TRASH_DAYS' ) ? EMPTY_TRASH_DAYS : true,
-			),
-			'env' => array(
-				'isPHP7'                => version_compare( phpversion(), '7.0.0' ) >= 0,
-				'phpVersion'            => phpversion(),
+			'env'       => array(
+				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,
+				'phpVersion' => phpversion(),
 			),
 			'wordpress' => array(
-				'isJetpackActive' 		=> class_exists( 'Jetpack' ) ? 1 : 0,
-				'isWooActive'			=> class_exists( 'woocommerce' ) ? 1 : 0,
-				'jetpackActiveModules' 	=> get_option( 'jetpack_active_modules', 0 ),
+				'isJetpackActive'      => class_exists( 'Jetpack' ) ? 1 : 0,
+				'isWooActive'          => class_exists( 'woocommerce' ) ? 1 : 0,
+				'jetpackActiveModules' => get_option( 'jetpack_active_modules', 0 ),
 			),
 		);
+
+		// Grab the latest settings using an interal REST API request
+		$request  = new WP_REST_Request( 'GET', '/bluehost/v1/settings' );
+		$response = rest_do_request( $request );
+		$server   = rest_get_server();
+
+		$data['settings'] = $server->response_to_data( $response, false );
 
 		wp_localize_script( 'eig-wp-admin-ui-app', 'bluehost', apply_filters( 'bluehost_admin_page_data', $data ) );
 

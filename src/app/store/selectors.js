@@ -22,8 +22,11 @@ export function isSidebarOpen( state ) {
 export function isTopLevel( state ) {
 	return state.app.isTopLevel;
 }
-export function isComingSoon( state ) {
-	return state.settings.comingSoon;
+export function getAllSettings( state ) {
+	return state.settings;
+}
+export function getSetting( state, setting ) {
+	return state.settings[setting];
 }
 export function isWooActive( state ) {
 	return state.wp.isWooActive;

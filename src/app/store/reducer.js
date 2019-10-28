@@ -2,10 +2,11 @@
  * WordPress dependencies
  */
 import { combineReducers } from '@wordpress/data';
+import apiFetch from '@wordpress/api-fetch';
 /**
- * 
- * @param {*} state 
- * @param {*} action 
+ *
+ * @param {*} state
+ * @param {*} action
  */
 // import DEFAULT_STATE from '@/store/defaults'
 
@@ -60,6 +61,10 @@ const settings = ( state = DEFAULT_STATE.settings, action ) => {
 			return {
 				...action.bluehost.settings
 			}
+		case 'UPDATE_SETTING':
+			let newState = { ...state };
+			newState[action.setting] = action.newValue;
+			return newState;
 	}
 
 	return state;
@@ -80,7 +85,7 @@ const wp = ( state = DEFAULT_STATE.wp, action ) => {
 /**
  * Export store state.
  */
-export default combineReducers( { 
+export default combineReducers( {
 	app,
 	env,
 	settings,
