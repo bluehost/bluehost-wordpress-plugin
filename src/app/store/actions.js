@@ -48,7 +48,6 @@ export function fetchWindowData() {
 };
 
 export function* toggleSetting( setting ) {
-	console.log(setting);
 	const oldValue = yield select( STORE_KEY ).getSetting( setting );
 	const newValue = ! Boolean( oldValue );
 	yield updateSetting( setting, newValue );
