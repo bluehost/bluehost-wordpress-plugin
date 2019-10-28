@@ -33,12 +33,12 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 			'/settings',
 			[
 				[
-					'methods'             => WP_REST_SERVER::READABLE,
+					'methods'             => WP_REST_Server::READABLE,
 					'callback'            => [ $this, 'get_item' ],
 					'permission_callback' => [ $this, 'check_permission' ],
 				],
 				[
-					'methods'             => WP_REST_SERVER::EDITABLE,
+					'methods'             => WP_REST_Server::EDITABLE,
 					'callback'            => [ $this, 'update_item' ],
 					'permission_callback' => [ $this, 'check_permission' ],
 				],
