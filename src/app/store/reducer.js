@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { combineReducers } from '@wordpress/data';
+import apiFetch from '@wordpress/api-fetch';
 /**
  *
  * @param {*} state
@@ -60,70 +61,10 @@ const settings = ( state = DEFAULT_STATE.settings, action ) => {
 			return {
 				...action.bluehost.settings
 			}
-		case 'TOGGLE_COMING_SOON':
-			return {
-				...state,
-				comingSoon: ! state.comingSoon,
-			}
-		case 'TOGGLE_SSO':
-			return {
-				...state,
-				sso: ! state.sso,
-			}
-		case 'TOGGLE_CORE_UPDATES':
-			return {
-				...state,
-				autoUpdates: {
-					...state.autoUpdates,
-					majorCore: ! state.autoUpdates.majorCore
-				}
-			}
-		case 'TOGGLE_PLUGIN_UPDATES':
-			return {
-				...state,
-				autoUpdates: {
-					...state.autoUpdates,
-					plugins: ! state.autoUpdates.plugins
-				}
-			}
-		case 'TOGGLE_THEME_UPDATES':
-			return {
-				...state,
-				autoUpdates: {
-					...state.autoUpdates,
-					themes: ! state.autoUpdates.themes
-				}
-			}
-		case 'TOGGLE_OLD_POST_COMMENTS':
-			return {
-				...state,
-				disableCommentsOldPosts: ! state.disableCommentsOldPosts
-			}
-		case 'SET_COMMENT_CLOSE_INTERVAL':
-			return {
-				...state,
-				closeCommentsDays: action.days
-			}
-		case 'SET_COMMENTS_PER_PAGE':
-			return {
-				...state,
-				commentsPerPage: action.perPage
-			}
-		case 'SET_REVISION_COUNT':
-			return {
-				...state,
-				contentRevisions: action.revisions
-			}
-		case 'SET_TRASH_INTERVAL':
-			return {
-				...state,
-				emptyTrashDays: action.days
-			}
-		case 'SET_CACHE_LEVEL':
-			return {
-				...state,
-				cacheLevel: action.level
-			}
+		case 'UPDATE_SETTING':
+			let newState = { ...state };
+			newState[action.setting] = action.newValue;
+			return newState;
 	}
 
 	return state;
