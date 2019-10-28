@@ -18,14 +18,10 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 	 */
 	protected $namespace = 'bluehost/v1';
 
-	/**
-	 * Prefixes of Bluehost-related database options
-	 */
-	public $prefixes = array(
-		'bh_',
-		'mm_',
-	);
 
+	/**
+	 * Registers the settings route
+	 */
 	public function register_routes() {
 
 		register_rest_route(
