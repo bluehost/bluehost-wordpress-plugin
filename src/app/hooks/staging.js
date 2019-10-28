@@ -202,9 +202,6 @@ export default function useStaging() {
         if (response) {
             setHasStaging(false);
             setNotice(__('Staging website destroyed.', 'bluehost-wordpress-plugin'));
-            if (!isProduction) {
-                switchToEnv('production');
-            }
         }
     }
 
