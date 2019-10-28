@@ -63,24 +63,53 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 		return $this->get_item( $request );
 	}
 
+	/**
+	 * Retrieve the existing saved array of settings
+	 *
+	 * @return Array $settings List of the settings and their values
+	 */
 	public function get_current_settings() {
-		return array(
-			'comingSoon'              => 'true' === get_option( 'mm_coming_soon', 0 ) ? 1 : 0,
-			'autoUpdates'             => array(
-				'majorCore'    => defined( 'WP_AUTO_UPDATE_CORE' ) ? WP_AUTO_UPDATE_CORE : true,
-				'minorCore'    => get_option( 'allow_minor_auto_core_updates', true ),
-				'plugins'      => get_option( 'auto_update_plugin', true ),
-				'themes'       => get_option( 'auto_update_theme', true ),
-				'translations' => get_option( 'auto_update_translation', true ),
-			),
-			'disableCommentsOldPosts' => get_option( 'close_comments_for_old_posts', false ),
-			'closeCommentsDays'       => get_option( 'close_comments_days_old', 14 ),
-			'commentsPerPage'         => get_option( 'comments_per_page', 50 ),
-			'contentRevisions'        => defined( 'WP_POST_REVISIONS' ) ? WP_POST_REVISIONS : 40,
-			'emptyTrashDays'          => defined( 'EMPTY_TRASH_DAYS' ) ? EMPTY_TRASH_DAYS : 30,
-			'cacheLevel'              => get_option( 'endurance_cache_level', 2 ),
+
+		// By default, we treat all auto updates as on
+		$major        = ( 'true' === get_option( 'allow_major_auto_core_updates', 'true' ) );
+		$minor        = ( 'true' === get_option( 'allow_minor_auto_core_updates', 'true' ) );
+		$plugins      = ( 'true' === get_option( 'auto_update_plugin', 'true' ) );
+		$themes       = ( 'true' === get_option( 'auto_update_theme', 'true' ) );
+		$translations = ( 'true' === get_option( 'auto_update_translation', 'true' ) );
+
+		// If the core update constant is falsey, then override core db values to force false
+		if ( defined( 'WP_AUTO_UPDATE_CORE' ) && ! WP_AUTO_UPDATE_CORE ) {
+			$major = false;
+			$minor = false;
+		}
+
+		// If auto updates are disabled entirely, override everything to be false
+		if ( defined( 'AUTOMATIC_UPDATER_DISABLED' ) && AUTOMATIC_UPDATER_DISABLED ) {
+			$major        = false;
+			$minor        = false;
+			$plugins      = false;
+			$themes       = false;
+			$translations = false;
+		}
+
+		$settings = array(
+			'comingSoon'              => ( 'true' === get_option( 'mm_coming_soon', 'false' ) ),
+			'autoUpdatesMajorCore'    => $major,
+			'autoUpdatesMinorCore'    => $minor,
+			'autoUpdatesPlugins'      => $plugins,
+			'autoUpdatesThemes'       => $themes,
+			'autoUpdatesTranslations' => $translations,
+			'disableCommentsOldPosts' => ( 1 === get_option( 'close_comments_for_old_posts', 0 ) ),
+			'closeCommentsDays'       => intval( get_option( 'close_comments_days_old', 14 ) ),
+			'commentsPerPage'         => intval( get_option( 'comments_per_page', 50 ) ),
+			'contentRevisions'        => intval( defined( 'WP_POST_REVISIONS' ) ? WP_POST_REVISIONS : 5 ),
+			'emptyTrashDays'          => intval( defined( 'EMPTY_TRASH_DAYS' ) ? EMPTY_TRASH_DAYS : 30 ),
+			'cacheLevel'              => intval( get_option( 'endurance_cache_level', 2 ) ),
 			'cachingEnabled'          => ( get_option( 'endurance_cache_level', 2 ) > 0 ) ? true : false,
 		);
+
+		return $settings;
+
 	}
 
 	/**
