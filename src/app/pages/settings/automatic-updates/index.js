@@ -13,14 +13,14 @@ import SettingsToggle from '../settings-toggle';
 
 const i18n = 'bluehost-wordpress-plugin';
 
-const AutomaticUpdates = ({ autoUpdates, toggleUpdates }) => {
+const AutomaticUpdates = ({ core, themes, plugins, toggleSetting }) => {
 	return (
 		<div className="settings-section automatic-updates pure-u-1 pure-u-lg-3-8">
-			<h2>{__('Automatic Updates', i18n)}</h2>
+			<h2>{__( 'Automatic Updates', i18n )}</h2>
 			<SettingsGroup>
-				<SettingsToggle label={__('WordPress Core', i18n)} checked={autoUpdates.majorCore} onChange={() => toggleUpdates( 'core' )} />
-				<SettingsToggle label={__('Themes', i18n)} checked={autoUpdates.themes} onChange={() => toggleUpdates( 'themes' )} />
-				<SettingsToggle label={__('Plugins', i18n)} checked={autoUpdates.plugins} onChange={() => toggleUpdates( 'plugins' )} />
+				<SettingsToggle label={__( 'WordPress Core', i18n )} checked={core} onChange={() => toggleSetting( 'autoUpdatesMajorCore' )} />
+				<SettingsToggle label={__( 'Themes', i18n )} checked={themes} onChange={() => toggleSetting( 'autoUpdatesThemes' )} />
+				<SettingsToggle label={__( 'Plugins', i18n )} checked={plugins} onChange={() => toggleSetting( 'autoUpdatesPlugins' )} />
 			</SettingsGroup>
 		</div>
 	);
@@ -28,9 +28,11 @@ const AutomaticUpdates = ({ autoUpdates, toggleUpdates }) => {
 
 export default compose(
 	withSelect( select => ({
-		autoUpdates: select('bluehost/plugin').getAutoUpdateStatus(),
+		core: select( 'bluehost/plugin' ).getSetting( 'autoUpdatesMajorCore' ),
+		themes: select( 'bluehost/plugin' ).getSetting( 'autoUpdatesThemes' ),
+		plugins: select( 'bluehost/plugin' ).getSetting( 'autoUpdatesPlugins' ),
 	})),
 	withDispatch( dispatch => ({
-		toggleUpdates: dispatch('bluehost/plugin').toggleUpdates,
+		toggleSetting: dispatch( 'bluehost/plugin' ).toggleSetting,
 	}))
 )(AutomaticUpdates);

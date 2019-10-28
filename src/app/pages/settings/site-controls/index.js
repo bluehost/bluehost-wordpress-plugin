@@ -11,13 +11,21 @@ import { compose } from '@wordpress/compose';
 import SettingsGroup from '../settings-group';
 import SettingsToggle from '../settings-toggle';
 
-const SiteControls = ( { isComingSoon, isSSOActive, toggleComingSoon, toggleSSO } ) => {
+const SiteControls = ({ isComingSoon, isSSOActive, toggleSetting }) => {
 	return (
 		<div className="settings-section site-controls pure-u-1 pure-u-lg-3-8">
-			<h2>Site Controls</h2>
+			<h2>{__( 'Site Controls' )}</h2>
 			<SettingsGroup>
-				<SettingsToggle label="Coming soon page active" checked={isComingSoon} onChange={toggleComingSoon}/>
-				<SettingsToggle label="Single Sign-on with Bluehost" checked={isSSOActive} onChange={toggleSSO}/>
+				<SettingsToggle
+					label={__( 'Coming soon page active' )}
+					checked={isComingSoon}
+					onChange={() => toggleSetting( 'comingSoon' )}
+					/>
+				<SettingsToggle
+					label={__( 'Single Sign-on with Bluehost' )}
+					checked={isSSOActive}
+					onChange={() => toggleSetting( 'sso' )}
+					/>
 			</SettingsGroup>
 		</div>
 	);
@@ -25,11 +33,10 @@ const SiteControls = ( { isComingSoon, isSSOActive, toggleComingSoon, toggleSSO 
 
 export default compose(
 	withSelect( select => ({
-		isComingSoon: select('bluehost/plugin').isComingSoon(),
-		isSSOActive: select('bluehost/plugin').isSSOActive()
+		isSSOActive: Boolean( select( 'bluehost/plugin' ).getSetting( 'sso' ) ),
+		isComingSoon: Boolean( select( 'bluehost/plugin' ).getSetting( 'comingSoon' ) )
 	})),
 	withDispatch( dispatch => ({
-		toggleComingSoon: dispatch('bluehost/plugin').toggleComingSoon,
-		toggleSSO: dispatch('bluehost/plugin').toggleSSO,
+		toggleSetting: dispatch( 'bluehost/plugin' ).toggleSetting,
 	}))
 )(SiteControls);

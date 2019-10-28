@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
+import { sprintf, __, _n } from '@wordpress/i18n';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 
@@ -11,16 +11,17 @@ import { compose } from '@wordpress/compose';
 import SettingsGroup from '../settings-group';
 import SettingsSelect from '../settings-select';
 
-const Content = ({ revisions, trashInterval, setRevisionCount, setTrashInterval }) => {
-	const trashLabel = (<span>Empty my trash every <strong>{trashInterval}</strong> week(s)</span>);
+const Content = ({ revisions, trashInterval, updateSetting }) => {
+	const trashWeeks = Math.floor( trashInterval / 7 );
+	const trashLabel = ( <span>{sprintf( _n( 'Empty my trash every %d week', 'Empty my trash every %d weeks', trashWeeks ), trashWeeks )}</span> );
 	return (
 		<div className="settings-section site-controls pure-u-1 pure-u-lg-3-8">
 			<h2>Content</h2>
 			<SettingsGroup>
 				<SettingsSelect
-					label='Content revisions'
+					label={__( 'Content revisions' )}
 					value={revisions}
-					onChange={value => setRevisionCount(value)}
+					onChange={value => updateSetting( 'contentRevisions', value )}
 					options={ [
 						{ label: '5', value: '5' },
 						{ label: '10', value: '10' },
@@ -30,12 +31,12 @@ const Content = ({ revisions, trashInterval, setRevisionCount, setTrashInterval 
 				<SettingsSelect
 					label={trashLabel}
 					value={trashInterval}
-					onChange={value => setTrashInterval(value)}
+					onChange={value => updateSetting( 'emptyTrashDays', value )}
 					options={ [
-						{ label: '1', value: '1' },
-						{ label: '2', value: '2' },
-						{ label: '3', value: '3' },
-						{ label: '4', value: '4' },
+						{ label: '1', value: '7' },
+						{ label: '2', value: '14' },
+						{ label: '3', value: '21' },
+						{ label: '4', value: '30' },
 					] } />
 			</SettingsGroup>
 		</div>
@@ -44,11 +45,10 @@ const Content = ({ revisions, trashInterval, setRevisionCount, setTrashInterval 
 
 export default compose(
 	withSelect( select => ({
-		revisions: select('bluehost/plugin').getRevisionCount(),
-		trashInterval: select('bluehost/plugin').getTrashInterval(),
+		revisions: select( 'bluehost/plugin' ).getSetting( 'contentRevisions' ),
+		trashInterval: select( 'bluehost/plugin' ).getSetting( 'emptyTrashDays' ),
 	})),
 	withDispatch( dispatch => ({
-		setRevisionCount: dispatch('bluehost/plugin').setRevisionCount,
-		setTrashInterval: dispatch('bluehost/plugin').setTrashInterval,
+		updateSetting: dispatch( 'bluehost/plugin' ).updateSetting,
 	}))
 )(Content);

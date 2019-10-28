@@ -11,7 +11,7 @@ import { compose } from '@wordpress/compose';
  */
 import { AppButton, AppNotice as Notice } from '@/components';
 
-const ComingSoonNotice = ( { isComingSoon, toggleComingSoon } ) => {
+const ComingSoonNotice = ( { isComingSoon, toggleSetting } ) => {
 	if ( ! isComingSoon ) {
 		return null;
 	}
@@ -24,7 +24,7 @@ const ComingSoonNotice = ( { isComingSoon, toggleComingSoon } ) => {
 				</div>
 				<div className="pure-u-1 pure-u-sm-1-2 action">
 					<AppButton
-						onClick={() => (toggleComingSoon())}
+						onClick={() => (toggleSetting('comingSoon'))}
 						isPrimary
 					>
 						{__('Launch Your Site')}
@@ -36,9 +36,9 @@ const ComingSoonNotice = ( { isComingSoon, toggleComingSoon } ) => {
 };
 export default compose(
 	withSelect( select => ({
-		isComingSoon: select('bluehost/plugin').isComingSoon()
+		isComingSoon: select('bluehost/plugin').getSetting('comingSoon')
 	})),
 	withDispatch( dispatch => ({
-		toggleComingSoon: dispatch('bluehost/plugin').toggleComingSoon
+		toggleSetting: dispatch('bluehost/plugin').toggleSetting
 	}))
 )(ComingSoonNotice);
