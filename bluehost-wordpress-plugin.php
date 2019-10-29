@@ -63,7 +63,6 @@ require __DIR__ . '/inc/styles.php';
 require __DIR__ . '/inc/plugin-search.php';
 require __DIR__ . '/inc/jetpack.php';
 require __DIR__ . '/inc/user-experience-tracking.php';
-require __DIR__ . '/inc/notifications.php';
 require __DIR__ . '/inc/staging.php';
 require __DIR__ . '/inc/class-staging.php';
 require __DIR__ . '/inc/updates.php';
