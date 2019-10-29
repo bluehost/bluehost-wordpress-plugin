@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Only run on mojo pages
+ * Only run on bluehost pages
  */
 if ( ! is_admin()
-	 || ! isset( $_GET['page'] )
-	 || false === stripos( filter_input( INPUT_GET, 'page' ), 'mojo-' )
+	|| ! isset( $_GET['page'] )
+	|| false === stripos( filter_input( INPUT_GET, 'page' ), 'bluehost' )
 ) {
 	return;
 }
@@ -18,14 +18,14 @@ class EIG_Admin_Page_Notifications_Blocker {
 	 * EIG_Admin_Page_Notifications_Blocker constructor.
 	 */
 	function __construct() {
-		add_action( 'admin_print_styles', array( $this, 'remove_notifications_on_mojo_pages' ) );
+		add_action( 'admin_print_styles', array( $this, 'remove_notifications_on_bluehost_pages' ) );
 	}
 
 	/**
 	 * Target notices using highly-specific CSS selectors to avoid collisions.
 	 */
-	function remove_notifications_on_mojo_pages() {
-		if ( ! isset( $_GET['page'] ) || false === stripos( filter_input( INPUT_GET, 'page' ), 'mojo-' ) ) {
+	function remove_notifications_on_bluehost_pages() {
+		if ( ! isset( $_GET['page'] ) || false === stripos( filter_input( INPUT_GET, 'page' ), 'bluehost' ) ) {
 			return;
 		}
 		?>
