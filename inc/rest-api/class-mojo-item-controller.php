@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Mojo_Item_Controller
+ */
 class Mojo_Item_Controller extends Mojo_Items_Controller {
 
 	/**
@@ -27,7 +30,7 @@ class Mojo_Item_Controller extends Mojo_Items_Controller {
 	/**
 	 * Query the Mojo items endpoint.
 	 *
-	 * @param \WP_REST_Request $request
+	 * @param \WP_REST_Request $request Request model.
 	 *
 	 * @return array
 	 */

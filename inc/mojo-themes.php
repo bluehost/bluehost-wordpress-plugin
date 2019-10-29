@@ -1,5 +1,22 @@
 <?php
 
+/**
+ * Generate a purchase URL for a Mojo product.
+ *
+ * @param string $id
+ *
+ * @return string
+ */
+function bluehost_generate_mojo_buy_url( $id ) {
+	return mm_build_link(
+		add_query_arg( [ 'item_id' => $id ], 'https://www.mojomarketplace.com/cart' ),
+		[
+			'utm_medium'  => 'plugin_admin',
+			'utm_content' => 'buy_now_preview',
+		]
+	);
+}
+
 function bluehost_add_theme_button() {
 	if ( ! isset( $_GET['page'] ) ) {
 		?>

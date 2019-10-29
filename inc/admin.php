@@ -3,11 +3,13 @@
 namespace Bluehost\WP\Admin_App;
 
 /**
- * Undocumented class
+ * Class Init
+ *
+ * @package Bluehost\WP\Admin_App
  */
 class Init {
 	/**
-	 * @var stdClass Fully instantiated instance of this class.
+	 * @var /stdClass Fully instantiated instance of this class.
 	 */
 	protected static $instance;
 	/**
@@ -22,6 +24,7 @@ class Init {
 		'page.php',
 		'assets.php',
 	);
+
 	/**
 	 * Return Class Instance
 	 */
@@ -33,21 +36,25 @@ class Init {
 			self::$instance = new \Bluehost\WP\Admin_App\Init();
 			self::$instance->primary_init();
 		}
+
 		return self::$instance;
 	}
+
 	/**
 	 * Primary initialization method for class -- run upon new instance or instance access.
 	 */
 	protected function primary_init() {
 		\add_action( 'init', array( $this, 'wp_loaded_init' ) );
 	}
+
 	public function wp_loaded_init() {
 		if ( ! \is_user_logged_in() ) {
-			return false;
+			return;
 		}
 		$this->load_files();
 		$this->load_class_instances();
 	}
+
 	/**
 	 * Simple Module Loader
 	 */
@@ -57,6 +64,7 @@ class Init {
 			require_once $base . $page;
 		}
 	}
+
 	/**
 	 *
 	 */

@@ -19,7 +19,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Query the Mojo items endpoint.
 	 *
-	 * @param array            $params
+	 * @param array $params
 	 * @param \WP_REST_Request $request
 	 *
 	 * @return array|mixed|object|null
@@ -35,7 +35,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Query the Mojo search endpoint.
 	 *
-	 * @param array            $params
+	 * @param array $params
 	 * @param \WP_REST_Request $request
 	 *
 	 * @return array|mixed|object|null
@@ -121,7 +121,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 					}
 				}
 
-					return $item;
+				return $item;
 			},
 			$response['items']
 		);
@@ -147,7 +147,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Prepare the item for the REST response
 	 *
-	 * @param mixed           $item WordPress representation of the item.
+	 * @param mixed $item WordPress representation of the item.
 	 * @param WP_REST_Request $request Request object.
 	 *
 	 * @return mixed
