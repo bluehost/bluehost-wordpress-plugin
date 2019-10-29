@@ -141,12 +141,7 @@ function mm_cs_settings() {
 add_action( 'admin_init', 'mm_cs_settings' );
 
 function mm_cs_content() {
-	$brand = mm_brand();
-	if ( 'mojo' != $brand && file_exists( MM_BASE_DIR . 'pages/coming-soon/' . $brand . '.php' ) ) {
-		require( MM_BASE_DIR . 'pages/coming-soon/' . $brand . '.php' );
-	} else {
-		require( MM_BASE_DIR . 'pages/coming-soon/mojo.php' );
-	}
+	require( MM_BASE_DIR . 'pages/coming-soon.php' );
 }
 
 // Handle Ajax response
