@@ -32,21 +32,22 @@ require __DIR__ . '/vendor/autoload.php';
 // Handle any upgrade routines
 if ( is_admin() ) {
 
-	// // Handle plugin updates
-	// new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost.php' );
+	// Handle plugin updates
+	new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost.php' );
 
-	// require __DIR__ . '/inc/upgrade-handler.php';
+	// Handle plugin upgrades
+	require __DIR__ . '/inc/upgrade-handler.php';
 
-	// $upgrade_handler = new Bluehost_Upgrade_Handler(
-	// 	__DIR__ . '/upgrades',
-	// 	get_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION ),
-	// 	BLUEHOST_PLUGIN_VERSION
-	// );
+	$upgrade_handler = new Bluehost_Upgrade_Handler(
+		__DIR__ . '/upgrades',
+		get_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION ),
+		BLUEHOST_PLUGIN_VERSION
+	);
 
-	// $did_upgrade = $upgrade_handler->maybe_upgrade();
-	// if ( $did_upgrade ) {
-	// 	update_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION, true );
-	// }
+	$did_upgrade = $upgrade_handler->maybe_upgrade();
+	if ( $did_upgrade ) {
+		update_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION, true );
+	}
 }
 
 // Require files
