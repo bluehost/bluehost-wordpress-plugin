@@ -65,7 +65,7 @@ function bluehost_plugins_premium_link() {
 	?>
 	<script type="text/javascript">
 		jQuery(document).ready(function ($) {
-			$('.wp-filter .filter-links li:last-of-type').after('<li><a style="text-decoration: none;" onclick="location.href=\'admin.php?page=bluehost#/marketplace/themes\'">Premium</a></li>');
+			$('.wp-filter .filter-links li:last-of-type').after('<li><a style="text-decoration: none;" onclick="location.href=\'admin.php?page=bluehost#/marketplace/plugins\'">Premium</a></li>');
 		});
 	</script>
 	<?php
