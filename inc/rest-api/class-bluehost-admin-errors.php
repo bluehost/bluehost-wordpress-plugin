@@ -3,21 +3,26 @@
 namespace Bluehost\WP\Admin_App;
 
 /**
- * Undocumented class
+ * Class Errors
+ *
+ * @package Bluehost\WP\Admin_App
  */
 class Errors extends \WP_REST_Controller {
+
 	/**
 	 * Undocumented variable
 	 *
 	 * @var string
 	 */
 	protected $browser_key;
+
 	/**
 	 * Undocumented variable
 	 *
 	 * @var string
 	 */
 	protected $endpoint = '/error/track';
+
 	/**
 	 * Number of Errors stored in Database.
 	 *
@@ -87,6 +92,11 @@ class Errors extends \WP_REST_Controller {
 		);
 	}
 
+	/**
+	 * @param \WP_REST_Request $request WP request model.
+	 *
+	 * @return \WP_REST_Response
+	 */
 	public function error_logging( \WP_REST_Request $request ) {
 		$this->params = $request->get_body_params();
 		unset( $this->params['browser']['versionNumber'] );
@@ -241,7 +251,6 @@ class Errors extends \WP_REST_Controller {
 	 * @return boolean
 	 */
 	public function authorize_error_logging() {
-		return true;
-		// return (bool) current_user_can( 'manage_options' );
+		return (bool) current_user_can( 'manage_options' );
 	}
 }
