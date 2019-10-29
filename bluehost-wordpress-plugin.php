@@ -32,7 +32,7 @@ require __DIR__ . '/vendor/autoload.php';
 if ( is_admin() ) {
 
 	// Handle plugin updates
-	new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost.php' );
+	new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php' );
 
 	// Handle plugin upgrades
 	require __DIR__ . '/inc/upgrade-handler.php';
