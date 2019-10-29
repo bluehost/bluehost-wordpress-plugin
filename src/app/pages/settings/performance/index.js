@@ -72,7 +72,7 @@ const SettingsPerformance = ( { cacheEnabled, cacheLevel, toggleSetting } ) => {
 export default compose(
 	withSelect( select => ({
 		cacheLevel: select( 'bluehost/plugin' ).getSetting( 'cacheLevel' ),
-		cacheEnabled: select( 'bluehost/plugin' ).getSetting( 'cacheEnabled' ),
+		cacheEnabled: select( 'bluehost/plugin' ).getSetting( 'cachingEnabled' ),
 	})),
 	withDispatch( dispatch => ({
 		toggleSetting: dispatch( 'bluehost/plugin' ).toggleSetting,
