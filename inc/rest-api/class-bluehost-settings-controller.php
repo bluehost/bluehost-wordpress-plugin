@@ -1,13 +1,5 @@
 <?php
 /**
- * REST API: WP_Settings_Controller class
- *
- * @package    WordPress
- * @subpackage REST_API
- * @since      4.7.0
- */
-
-/**
  * Class Bluehost Settings Controller
  */
 class Bluehost_Settings_Controller extends WP_REST_Controller {
