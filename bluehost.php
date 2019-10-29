@@ -74,7 +74,6 @@ require __DIR__ . '/inc/performance.php';
 require __DIR__ . '/inc/partners.php';
 require __DIR__ . '/inc/rest-api/rest-api.php';
 require __DIR__ . '/inc/branding.php';
-require __DIR__ . '/updater.php';
 
 // Check proper PHP and bring CLI loader online
 if ( version_compare( PHP_VERSION, '5.3.29' ) >= 0 ) {
