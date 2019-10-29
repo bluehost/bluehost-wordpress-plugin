@@ -49,9 +49,9 @@ if ( is_wp_error( $theme ) ) {
 				</a>
 			</div>
 			<div class="wp-full-overlay-sidebar-content">
-				<img class="theme-preview-logo" src="<?php echo mm_brand( MM_ASSETS_URL . 'img/logo-preview-%s.svg' ); ?>" />
+				<img class="theme-preview-logo" src="<?php echo esc_url( MM_ASSETS_URL . 'img/logo-preview-bluehost.svg' ); ?>" />
 				<div class="install-theme-info">
-					<h3 class="theme-name"><?php esc_html_e( $theme->name ); ?></h3>
+					<h3 class="theme-name"><?php echo esc_html( $theme->name ); ?></h3>
 					<br/>
 					<?php mm_stars( $theme->rating, $theme->sales_count ); ?>
 					<div class="theme-details text-center">

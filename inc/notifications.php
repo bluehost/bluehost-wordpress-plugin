@@ -7,8 +7,8 @@ function mm_partner_offers( $location, $echo = true ) {
 		if ( isset( $offers->{ $location } ) ) {
 			$offer = $offers->{ $location };
 		}
-		if ( 'default' != mm_brand() && isset( $offers->{ strtolower( mm_brand() ) }->{ $location } ) ) {
-			$offer = $offers->{ strtolower( mm_brand() ) }->{ $location };
+		if ( isset( $offers->{ 'bluehost' }->{ $location } ) ) {
+			$offer = $offers->{ 'bluehost' }->{ $location };
 		}
 	}
 

@@ -4,7 +4,7 @@
  */
 
 function mm_cs_notice_display() {
-	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) && 'bluehost' != mm_brand() ) {
+	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
 		?>
 		<div class='notice notice-warning'>
 			<p>Your site is currently displaying a "Coming Soon" page. Once you are ready to launch your site <a href='<?php echo esc_url( add_query_arg( array( 'mm_cs_launch' => true ) ) ); ?>'>click here</a>.</p>
@@ -75,11 +75,7 @@ function mm_cs_notice_launch_message() {
 function mm_cs_notice_launch() {
 	if ( isset( $_GET['mm_cs_launch'] ) ) {
 		update_option( 'mm_coming_soon', 'false' );
-		if ( 'bluehost' == mm_brand() ) {
-			add_action( 'mojo_home_top', 'mm_bh_cs_notice_launch_message' );
-		} else {
-			add_action( 'admin_notices', 'mm_cs_notice_launch_message' );
-		}
+		add_action( 'mojo_home_top', 'mm_bh_cs_notice_launch_message' );
 	}
 }
 add_action( 'admin_init', 'mm_cs_notice_launch' );
@@ -114,11 +110,7 @@ function mm_cs_settings() {
 	$section_name = 'mm_cs_settings_section';
 	$section_hook = 'general';
 
-	if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
-		$brand = 'Bluehost';
-	} else {
-		$brand = mm_brand();
-	}
+	$brand = 'Bluehost';
 
 	add_settings_section(
 		$section_name, // Section

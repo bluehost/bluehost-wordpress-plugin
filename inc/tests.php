@@ -80,17 +80,5 @@ function mm_themes_categories( $accepted_categories ) {
 add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 */
 
-function mm_jetpack_bluehost_only() {
-	$host              = @exec( 'hostname' );
-	$bluehost_hostname = ( stripos( $host, 'bluehost' ) ) ? true : false;
-	$bluehost_brand    = ( false !== strpos( strtolower( mm_brand() ), 'bluehost' ) ) ? true : false;
-	if ( $bluehost_hostname || $bluehost_brand ) {
-		$is_bluehost = true;
-	} else {
-		$is_bluehost = false;
-	}
-	return $is_bluehost;
-}
-
 /* Start individual tests */
 mm_require( MM_BASE_DIR . 'tests/loader.php' );

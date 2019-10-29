@@ -71,8 +71,8 @@ function mm_build_link( $url, $args = array() ) {
 		$args['utm_medium'] = $args['utm_medium'] . '_' . $test['name'] . '_' . $test['key'];
 	}
 
-	if ( false !== strpos( $url, 'mojomarketplace.com' ) && 'default' != mm_brand() ) {
-		$args['theme'] = mm_brand();
+	if ( false !== strpos( $url, 'mojomarketplace.com' ) ) {
+		$args['theme'] = 'bluehost';
 	}
 
 	$args = wp_parse_args( array_filter( $args ), array_filter( $defaults ) );
@@ -287,7 +287,7 @@ function mm_pagination( $page = 1, $total_pages = 1 ) {
 }
 
 function mm_loader() {
-	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) && mm_brand() == 'bluehost' ) {
+	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) ) {
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function ($) {

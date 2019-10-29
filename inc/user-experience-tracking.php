@@ -14,7 +14,7 @@ function mm_clm_log( $name, $properties = array() ) {
 
 	$refresh_token = get_option( '_mm_refresh_token' );
 
-	if ( mm_brand() === 'bluehost' && false !== $refresh_token ) {
+	if ( false !== $refresh_token ) {
 		$clm_endpoint = 'https://my.bluehost.com/api/events';
 		$path_hash    = mm_site_bin2hex();
 		$domain       = wp_parse_url( get_option( 'siteurl' ), PHP_URL_HOST );
