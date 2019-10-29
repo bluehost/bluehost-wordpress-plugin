@@ -7,7 +7,15 @@ function mm_cs_notice_display() {
 	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) && current_user_can('manage_options')) {
 		?>
 		<div class='notice notice-warning'>
-			<p>Your site is currently displaying a "Coming Soon" page. Once you are ready to launch your site <a href='<?php echo esc_url( admin_url('admin.php?page=bluehost#/home') ); ?>'>click here</a>.</p>
+			<p>
+				<?php
+				printf(
+					__( 'Your site is currently displaying a "Coming Soon" page. Once you are ready, %slaunch your site%s.', 'bluehost-wordpress-plugin' ),
+					'<a href="' . esc_url( admin_url( 'admin.php?page=bluehost#/home' ) ) . '">',
+					'</a>'
+				);
+				?>
+			</p>
 		</div>
 		<?php
 	}
