@@ -34,7 +34,7 @@ function bluehost_theme_preview_page() {
  */
 function bluehost_add_tool_bar_items( WP_Admin_Bar $admin_bar ) {
 	if ( current_user_can( 'manage_options' ) ) {
-		if ( mm_is_staging() ) {
+		if ( bluehost_is_staging() ) {
 			$args = array(
 				'id'    => 'mojo-staging',
 				'href'  => admin_url( 'admin.php?page=bluehost#/tools/staging' ),

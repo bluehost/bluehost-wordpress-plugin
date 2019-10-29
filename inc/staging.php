@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'WPINC' ) ) { die; }
 
-function mm_is_staging() {
+function bluehost_is_staging() {
 	return ( get_option( 'staging_environment' ) == 'staging' ) ? true : false;
 }
 
@@ -110,17 +110,6 @@ function mm_cl( $command, $args = null ) {
 	$response = exec( $script . ' ' . $command );
 
 	return $response;
-}
-
-function mm_check_admin() {
-	if ( ! current_user_can( 'manage_options' ) ) {
-		$response = array(
-			'status'  => 'error',
-			'message' => 'Invalid user permissions.',
-		);
-		echo json_encode( $response );
-		die;
-	}
 }
 
 function mm_check_env( $env ) {
