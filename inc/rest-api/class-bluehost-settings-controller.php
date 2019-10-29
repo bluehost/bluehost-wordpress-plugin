@@ -2,10 +2,11 @@
 /**
  * REST API: WP_Settings_Controller class
  *
- * @package WordPress
+ * @package    WordPress
  * @subpackage REST_API
- * @since 4.7.0
+ * @since      4.7.0
  */
+
 /**
  * Class Bluehost Settings Controller
  */
@@ -47,6 +48,7 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 	 * Retrieves the settings handled by the plugin.
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
+	 *
 	 * @return array|WP_Error Array on success, or WP_Error object on failure.
 	 */
 	public function get_item( $request ) {
@@ -57,6 +59,7 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 	 * Updates settings for the settings object.
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
+	 *
 	 * @return array|WP_Error Array on success, or error object on failure.
 	 */
 	public function update_item( $request ) {
@@ -103,11 +106,11 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 						break;
 					case 'contentRevisions':
 						$revisions = intval( $new_value );
-						exec( "wp config set WP_POST_REVISIONS $revisions --type=constant --raw" );
+						exec( "wp config set WP_POST_REVISIONS $revisions --type=constant --raw" ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.system_calls_exec
 						break;
 					case 'emptyTrashDays':
 						$days = intval( $new_value );
-						exec( "wp config set EMPTY_TRASH_DAYS $days --type=constant --raw" );
+						exec( "wp config set EMPTY_TRASH_DAYS $days --type=constant --raw" ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.system_calls_exec
 						break;
 					case 'cacheLevel':
 						// Include misc.php because the cache level update requires save_mod_rewrite_rules()
@@ -132,6 +135,7 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 				}
 			}
 		}
+
 		return $this->get_item( $request );
 	}
 
@@ -202,6 +206,7 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 	 *
 	 * @since 4.7.0
 	 */
-	public function __construct() {}
+	public function __construct() {
+	}
 
 }
