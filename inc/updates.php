@@ -4,9 +4,15 @@
 */
 
 function mm_auto_update_make_bool( $value, $default = true ) {
-	if ( 'false' === $value ) { $value = false; }
-	if ( 'true' === $value ) { $value = true; }
-	if ( true !== $value && false !== $value ) { $value = $default; }
+	if ( 'false' === $value ) {
+		$value = false;
+	}
+	if ( 'true' === $value ) {
+		$value = true;
+	}
+	if ( true !== $value && false !== $value ) {
+		$value = $default;
+	}
 	return $value;
 }
 
