@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Mojo_Items_Controller
+ */
 class Mojo_Items_Controller extends WP_REST_Controller {
 
 	/**
@@ -19,8 +22,8 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Query the Mojo items endpoint.
 	 *
-	 * @param array $params
-	 * @param \WP_REST_Request $request
+	 * @param array            $params  Collection of request parameters.
+	 * @param \WP_REST_Request $request WP request model.
 	 *
 	 * @return array|mixed|object|null
 	 */
@@ -35,8 +38,8 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Query the Mojo search endpoint.
 	 *
-	 * @param array $params
-	 * @param \WP_REST_Request $request
+	 * @param array            $params  Collection of request parameters.
+	 * @param \WP_REST_Request $request WP request model.
 	 *
 	 * @return array|mixed|object|null
 	 */
@@ -116,7 +119,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 						]
 					);
 
-					if ( isset( $item['type'] ) && $item['type'] === 'themes' ) {
+					if ( isset( $item['type'] ) && 'themes' === $item['type'] ) {
 						$item['preview_url'] = admin_url( 'admin.php?page=mojo-theme-preview&id=' . $item['id'] );
 					}
 				}
@@ -147,7 +150,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Prepare the item for the REST response
 	 *
-	 * @param mixed $item WordPress representation of the item.
+	 * @param mixed           $item    WordPress representation of the item.
 	 * @param WP_REST_Request $request Request object.
 	 *
 	 * @return mixed
