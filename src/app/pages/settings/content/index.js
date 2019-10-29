@@ -13,13 +13,13 @@ import SettingsSelect from '../settings-select';
 
 const Content = ({ revisions, trashInterval, updateSetting }) => {
 	const trashWeeks = Math.floor( trashInterval / 7 );
-	const trashLabel = ( <span>{sprintf( _n( 'Empty my trash every %d week', 'Empty my trash every %d weeks', trashWeeks ), trashWeeks )}</span> );
+	const trashLabel = ( <span>{sprintf( _n( 'Empty my trash every %d week', 'Empty my trash every %d weeks', trashWeeks,'bluehost-wordpress-plugin' ), trashWeeks )}</span> );
 	return (
 		<div className="settings-section site-controls pure-u-1 pure-u-lg-3-8">
-			<h2>Content</h2>
+			<h2>{__('Content', 'bluehost-wordpress-plugin')}</h2>
 			<SettingsGroup>
 				<SettingsSelect
-					label={__( 'Content revisions' )}
+					label={__( 'Content revisions', 'bluehost-wordpress-plugin' )}
 					value={revisions}
 					onChange={value => updateSetting( 'contentRevisions', value )}
 					options={ [

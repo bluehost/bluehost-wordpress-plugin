@@ -19,13 +19,13 @@ class MOJO_Widget extends WP_Widget {
 		parent::__construct(
 			'mojo_widget',
 			'MOJO WordPress Themes',
-			array( 'description' => __( 'Add Themes/Plugins from MOJO.', 'mojo-widget' ) )
+			array( 'description' => __( 'Add Themes/Plugins from MOJO.', 'bluehost-wordpress-plugin' ) )
 		);
 	}
 	public function form( $instance ) {
 		$instance = wp_parse_args( $instance, $this->defaults );
 		?>
-		<label for="<?php echo $this->get_field_name( 'mojo-title' ); ?>">Title:</label>
+		<label for="<?php echo $this->get_field_name( 'mojo-title' ); ?>"><?php esc_html_e( 'Title:', 'bluehost-wordpress-plugin' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'mojo-title' ); ?>" name="<?php echo $this->get_field_name( 'mojo-title' ); ?>" type="text" value="<?php echo esc_attr( $instance['mojo-title'] ); ?>" />
 		
 		<label for="<?php echo $this->get_field_name( 'mojo-platform' ); ?>">Platform:</label> 

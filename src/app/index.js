@@ -22,8 +22,6 @@ import {
 
 import { Main, Header } from '@/parts';
 
-const bluehost_i18n = 'bluehost-wp-admin-app';
-
 class App extends Component {
 	constructor( props ) {
 		super( props );
@@ -72,10 +70,10 @@ class App extends Component {
 							{/* <main id="bluehost-app-wrap" className="bluehost-app-wrap animated fadeIn fast"> */}
 							<main id="bluehost-app-wrap" className="bluehost-app-wrap">
 								<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
-									{ __( 'Skip to Navigation', bluehost_i18n ) }
+									{ __( 'Skip to Navigation', 'bluehost-wordpress-plugin' ) }
 								</a>
 								<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
-									{ __( 'Skip to Content', bluehost_i18n ) }
+									{ __( 'Skip to Content', 'bluehost-wordpress-plugin' ) }
 								</a>
 								<div>
 									<Header />

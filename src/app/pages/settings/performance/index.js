@@ -36,34 +36,34 @@ const SettingsPerformance = ( { cacheEnabled, cacheLevel, toggleSetting } ) => {
 	return (
 		<SettingsSection name="Performance" className="pure-u-lg-19-24 performance">
 			<div className="bordered-box settings-block">
-				<h3>{__( 'Caching' )}</h3>
+				<h3>{__( 'Caching', 'bluehost-wordpress-plugin' )}</h3>
 				<AppToggle checked={cacheEnabled} onChange={() => {toggleSetting( 'cacheEnabled' )}} />
-				<p>{ __( 'Boost speed and performance by storing a copy of your website content, files, and images online so the pages of your website load faster for your visitors.' )}</p>
+				<p>{ __( 'Boost speed and performance by storing a copy of your website content, files, and images online so the pages of your website load faster for your visitors.', 'bluehost-wordpress-plugin' )}</p>
 				<div className={"cache-level " + cacheLevelClass}>
-					<h4>{__( 'Caching Level' )}</h4>
+					<h4>{__( 'Caching Level', 'bluehost-wordpress-plugin' )}</h4>
 					<CacheLevelSelector
 						value={1}
 						cacheLevel={cacheLevel}
-						label={__( 'Assets Only' )}
-						desc={__( 'Cache static assets like images and the appearance of your site for 5 minutes. Recommended for ecommerce and sites that update frequently or display info in real-time.' )}
+						label={__( 'Assets Only', 'bluehost-wordpress-plugin' )}
+						desc={__( 'Cache static assets like images and the appearance of your site for 5 minutes. Recommended for ecommerce and sites that update frequently or display info in real-time.', 'bluehost-wordpress-plugin' )}
 						/>
 					<CacheLevelSelector
 						value={2}
 						cacheLevel={cacheLevel}
-						label={__( 'Assets & Web Pages' )}
-						desc={__( 'Cache static assets for 6 hours and other web pages for 5 minutes. Recommended for blogs, educational sites, and sites that update at least weekly.' )}
+						label={__( 'Assets & Web Pages', 'bluehost-wordpress-plugin' )}
+						desc={__( 'Cache static assets for 6 hours and other web pages for 5 minutes. Recommended for blogs, educational sites, and sites that update at least weekly.', 'bluehost-wordpress-plugin' )}
 						/>
 					<CacheLevelSelector
 						value={3}
 						cacheLevel={cacheLevel}
-						label={__( 'Assets & Web Pages - Extended' )}
-						desc={__( 'Cache static assets for 1 week and web pages for 5 minutes. Recommended for portfolios, brochure sites, and sites that update monthly or less often.' )}
+						label={__( 'Assets & Web Pages - Extended', 'bluehost-wordpress-plugin' )}
+						desc={__( 'Cache static assets for 1 week and web pages for 5 minutes. Recommended for portfolios, brochure sites, and sites that update monthly or less often.', 'bluehost-wordpress-plugin' )}
 						/>
 				</div>
 
-				<h4>{__( 'Manage Cache' )}</h4>
-				<p>{__( 'If you’ve recently updated your website, we recommend clearing the site cache. We’ll fetch a fresh version of your site to cache.' )}</p>
-				<AppButton isPrimary>{__( 'Clear Everything' )}</AppButton>
+				<h4>{__( 'Manage Cache', 'bluehost-wordpress-plugin' )}</h4>
+				<p>{__( 'If you’ve recently updated your website, we recommend clearing the site cache. We’ll fetch a fresh version of your site to cache.', 'bluehost-wordpress-plugin' )}</p>
+				<AppButton isPrimary>{__( 'Clear Everything', 'bluehost-wordpress-plugin' )}</AppButton>
 			</div>
 		</SettingsSection>
 	);

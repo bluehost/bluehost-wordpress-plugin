@@ -114,11 +114,11 @@ add_action( 'admin_init', 'mm_cron' );
 function mm_cron_schedules( $schedules ) {
 	$schedules['weekly'] = array(
 		'interval' => WEEK_IN_SECONDS,
-		'display'  => __( 'Once Weekly' ),
+		'display'  => __( 'Once Weekly', 'bluehost-wordpress-plugin' ),
 	);
 	$schedules['monthly'] = array(
 		'interval' => 4 * WEEK_IN_SECONDS,
-		'display'  => __( 'Once a month' ),
+		'display'  => __( 'Once a month', 'bluehost-wordpress-plugin' ),
 	);
 
 	return $schedules;

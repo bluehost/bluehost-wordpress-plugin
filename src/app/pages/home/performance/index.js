@@ -21,8 +21,8 @@ const CacheCard = () => (
 	<HomeSectionRow
 		isCentered
 		icon="performance"
-		title={ __( 'Page Cache', 'endurance-wp-module-admin-app' ) }
-		desc={ __( 'Configure your caching to give you the best performance for your site’s needs.', 'endurance-wp-module-admin-app' ) }>
+		title={ __( 'Page Cache', 'bluehost-wordpress-plugin' ) }
+		desc={ __( 'Configure your caching to give you the best performance for your site’s needs.', 'bluehost-wordpress-plugin' ) }>
 		<Button
 			href={ baseUrl + 'admin.php?page=bluehost#/settings' }
 			isDefault
@@ -40,8 +40,8 @@ const SiteAcceleratorCard = () => {
 		<HomeSectionRow
 			isCentered
 			icon={ (<JetpackLogo />) }
-			title={ __( 'Site Accelerator', 'endurance-wp-module-admin-app' ) }
-			desc={ __( 'Site acceleration service will resize your images and serve them from a CDN.', 'endurance-wp-module-admin-app' ) }>
+			title={ __( 'Site Accelerator', 'bluehost-wordpress-plugin' ) }
+			desc={ __( 'Site acceleration service will resize your images and serve them from a CDN.', 'bluehost-wordpress-plugin' ) }>
 			<Button
 				href={ baseUrl + 'admin.php?page=jetpack#/performance' }
 				isDefault

@@ -13,14 +13,14 @@ import SettingsToggle from '../settings-toggle';
 import SettingsSelect from '../settings-select';
 
 const Comments = ({ oldPostComments, closeInterval, perPage, toggleSetting, updateSetting }) => {
-	const commentsLabel = (<span>{sprintf( _n( 'Close comments after %d day', 'Close comments after %d days', closeInterval ), closeInterval )}</span>);
-	const commentsPageLabel = ( <span>{sprintf( _n( 'Display %d comment per page', 'Display %d comments per page', perPage ), perPage )}</span> );
+	const commentsLabel = (<span>{sprintf( _n( 'Close comments after %d day', 'Close comments after %d days', closeInterval, 'bluehost-wordpress-plugin' ), closeInterval )}</span>);
+	const commentsPageLabel = ( <span>{sprintf( _n( 'Display %d comment per page', 'Display %d comments per page', perPage, 'bluehost-wordpress-plugin' ), perPage )}</span> );
 	return (
 		<div className="settings-section site-controls pure-u-1 pure-u-lg-3-8">
-			<h2>{__( 'Comments' )}</h2>
+			<h2>{__( 'Comments', 'bluehost-wordpress-plugin' )}</h2>
 			<SettingsGroup>
 				<SettingsToggle
-					label={__( 'Disable comments for old posts' )}
+					label={__( 'Disable comments for old posts', 'bluehost-wordpress-plugin' )}
 					checked={oldPostComments}
 					onChange={() => toggleSetting( 'disableCommentsOldPosts' )}
 					/>

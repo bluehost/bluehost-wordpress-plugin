@@ -15,28 +15,27 @@ import HomeSection from '../home-section';
 import HomeSectionRow from '../home-section-row';
 
 const baseUrl = location.origin + '/wp-admin/';
-const i18nSpace = 'bluehost-wordpress-plugin';
 
 const PostsCard = () => (
 	<HomeSectionRow
 		icon="admin-post"
-		title={ __( 'Blog Posts', i18nSpace ) }
-		desc={ __( 'Add blog posts or organize existing pages.', i18nSpace ) }>
-		<Button href={ baseUrl + 'post-new.php' } isDefault>{ __('New Post', i18nSpace) }</Button>
-		<Button href={ baseUrl + 'edit-tags.php?taxonomy=category' } isLink>{ __('Manage Categories', i18nSpace) }</Button>
+		title={ __( 'Blog Posts', 'bluehost-wordpress-plugin' ) }
+		desc={ __( 'Add blog posts or organize existing pages.', 'bluehost-wordpress-plugin' ) }>
+		<Button href={ baseUrl + 'post-new.php' } isDefault>{ __('New Post', 'bluehost-wordpress-plugin') }</Button>
+		<Button href={ baseUrl + 'edit-tags.php?taxonomy=category' } isLink>{ __('Manage Categories', 'bluehost-wordpress-plugin') }</Button>
 	</HomeSectionRow>
 );
 
 const PagesCard = () => (
 	<HomeSectionRow
 		icon="admin-page"
-		title={ __( 'Pages', i18nSpace ) }
-		desc={ __( 'Add fresh pages to your website.', i18nSpace ) }>
+		title={ __( 'Pages', 'bluehost-wordpress-plugin' ) }
+		desc={ __( 'Add fresh pages to your website.', 'bluehost-wordpress-plugin' ) }>
 		<Button
 			href={ baseUrl + 'post-new.php?post_type=page' }
 			isDefault
 		>
-			{ __('New Page', i18nSpace)}
+			{ __('New Page', 'bluehost-wordpress-plugin')}
 		</Button>
 	</HomeSectionRow>
 );
@@ -44,13 +43,13 @@ const PagesCard = () => (
 const MenusCard = () => (
 	<HomeSectionRow
 		icon="menu"
-		title={ __( 'Navigation Menus', i18nSpace ) }
-		desc={ __( 'Adjust or edit your site\'s navigation menus.', i18nSpace ) }>
+		title={ __( 'Navigation Menus', 'bluehost-wordpress-plugin' ) }
+		desc={ __( 'Adjust or edit your site\'s navigation menus.', 'bluehost-wordpress-plugin' ) }>
 		<Button
 			href={ baseUrl + 'customize.php?autofocus[panel]=nav_menus' }
 			isDefault
 		>
-			{__('Manage Menus', i18nSpace)}
+			{__('Manage Menus', 'bluehost-wordpress-plugin')}
 		</Button>
 	</HomeSectionRow>
 );
@@ -62,20 +61,20 @@ const ProductsCard = () => {
 	return (
 		<HomeSectionRow
 			icon="cart"
-			title={ __( 'Sell Products', 'endurance-wp-module-admin-app' ) }
-			desc={ __( 'Manage products in your online store.', i18nSpace ) }>
+			title={ __( 'Sell Products', 'bluehost-wordpress-plugin' ) }
+			desc={ __( 'Manage products in your online store.', 'bluehost-wordpress-plugin' ) }>
 			<Button
 				href={ baseUrl + 'customize.php?autofocus[panel]=nav_menus' }
 				isDefault
 			>
-				{ __('Manage Products', i18nSpace)}
+				{ __('Manage Products', 'bluehost-wordpress-plugin')}
 			</Button>
 		</HomeSectionRow>
 	);
 }
 
 const ContentSection = () => (
-	<HomeSection title={__('Content', i18nSpace)} className="content">
+	<HomeSection title={__('Content', 'bluehost-wordpress-plugin')} className="content">
 		<>
 			<PostsCard />
 			<PagesCard />

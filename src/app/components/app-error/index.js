@@ -1,19 +1,19 @@
-import { __ } from '@wordpress/i18n';
-import { withState } from '@wordpress/compose';
+import {__} from '@wordpress/i18n';
+import {withState} from '@wordpress/compose';
 import axios from 'axios';
 import qs from 'qs';
 //import browser from 'browser-detect';
 
-import { AppButton as Button } from '@/components';
-import { ReactComponent as WarningIcon } from '@/assets/warning.svg';
-import { ReactComponent as ErrorStateIllustration } from '@/assets/error-state.svg';
+import {AppButton as Button} from '@/components';
+import {ReactComponent as WarningIcon} from '@/assets/warning.svg';
+import {ReactComponent as ErrorStateIllustration} from '@/assets/error-state.svg';
 
 import './style.scss';
 
-const AppError = withState( {
+const AppError = withState({
     errorReported: false,
     appError: null
-} )( ( { errorReported, appError, setState } ) => {
+})(({errorReported, appError, setState}) => {
     // const reportErrorToWP = () => {
     //     console.log( 'do the error report' );
     //     console.log( appError );
@@ -42,16 +42,16 @@ const AppError = withState( {
     return (
         <div id="app-error">
             <div className="warning-icon-wrap">
-                <WarningIcon className="animated heartBeat" />
+                <WarningIcon className="animated heartBeat"/>
             </div>
-            <h3 className="animated fadeIn">{__( 'There was a problem loading the Bluehost Plugin.')}</h3>
-            <p className="animated fadeIn">{__('Get in touch and we\'ll sort out the issue for you.')}</p>
+            <h3 className="animated fadeIn">{__('There was a problem loading the Bluehost Plugin.', 'bluehost-wordpress-plugin')}</h3>
+            <p className="animated fadeIn">{__('Get in touch and we\'ll sort out the issue for you.', 'bluehost-wordpress-plugin')}</p>
             <div className="animated fadeIn" style={{textAlign: 'center', margin: '1rem auto 80px'}}>
-                <Button href="https://bluehost.com/support" isPrimary>{__('Contact Support')}</Button>
+                <Button href="https://bluehost.com/support" isPrimary>{__('Contact Support', 'bluehost-wordpress-plugin')}</Button>
             </div>
-            <p>{! errorReported && 'Reporting...' || 'Reported.' }</p>
+            <p>{!errorReported && __('Reporting...', 'bluehost-wordpress-plugin') || __('Reported.', 'bluehost-wordpress-plugin')}</p>
             <div className="error-illustration-wrap animated fadeIn">
-                <ErrorStateIllustration />
+                <ErrorStateIllustration/>
             </div>
         </div>
     );

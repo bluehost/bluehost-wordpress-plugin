@@ -9,7 +9,7 @@ import { AppPage } from '@/components';
 
 const ToolsPage = () => (
 	<AppPage>
-		{ __( 'Tools Page', 'eig-wp-admin-ui' ) }
+		{ __( 'Tools Page', 'bluehost-wordpress-plugin' ) }
 	</AppPage>
 );
 

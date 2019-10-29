@@ -10,7 +10,7 @@ import { AppPage } from '@/components';
 
 const SettingsPage = () => (
 	<AppPage>
-		{ __( 'Help Page', 'eig-wp-admin-ui' ) }
+		{ __( 'Help Page', 'bluehost-wordpress-plugin' ) }
 	</AppPage>
 );
 

@@ -23,8 +23,8 @@ function SocialCard() {
 	return (
 		<HomeSectionRow
 			icon="share"
-			title={ __( 'Social', 'endurance-wp-module-admin-app' ) }
-			desc={ __( 'Add social sharing buttons so site visitors can share your content and help grow your traffic.', 'endurance-wp-module-admin-app' ) }>
+			title={ __( 'Social', 'bluehost-wordpress-plugin' ) }
+			desc={ __( 'Add social sharing buttons so site visitors can share your content and help grow your traffic.', 'bluehost-wordpress-plugin' ) }>
 			<Button
 				href={ baseUrl + 'customize.php' }
 				isDefault
@@ -42,8 +42,8 @@ function PublicizeCard() {
 	return (
 		<HomeSectionRow
 			icon="megaphone"
-			title={ __( 'Publicize', 'endurance-wp-module-admin-app' ) }
-			desc={ __( 'Set your site to automatically share new content with your social networks.', 'endurance-wp-module-admin-app' ) }>
+			title={ __( 'Publicize', 'bluehost-wordpress-plugin' ) }
+			desc={ __( 'Set your site to automatically share new content with your social networks.', 'bluehost-wordpress-plugin' ) }>
 			<Button
 				href={ baseUrl + 'themes.php' }
 				isDefault
@@ -62,8 +62,8 @@ function StatsCard() {
 		<HomeSectionRow
 			isCentered
 			icon="chart-bar"
-			title={ __( 'Stats', 'endurance-wp-module-admin-app' ) }
-			desc={ __( 'Learn which posts are the most popular and stay informed when your traffic surges.', 'endurance-wp-module-admin-app' ) }>
+			title={ __( 'Stats', 'bluehost-wordpress-plugin' ) }
+			desc={ __( 'Learn which posts are the most popular and stay informed when your traffic surges.', 'bluehost-wordpress-plugin' ) }>
 			<Button
 				href={ baseUrl + 'themes.php' }
 				isDefault

@@ -14,15 +14,15 @@ import SettingsToggle from '../settings-toggle';
 const SiteControls = ({ isComingSoon, isSSOActive, toggleSetting }) => {
 	return (
 		<div className="settings-section site-controls pure-u-1 pure-u-lg-3-8">
-			<h2>{__( 'Site Controls' )}</h2>
+			<h2>{__( 'Site Controls', 'bluehost-wordpress-plugin' )}</h2>
 			<SettingsGroup>
 				<SettingsToggle
-					label={__( 'Coming soon page active' )}
+					label={__( 'Coming soon page active', 'bluehost-wordpress-plugin' )}
 					checked={isComingSoon}
 					onChange={() => toggleSetting( 'comingSoon' )}
 					/>
 				<SettingsToggle
-					label={__( 'Single Sign-on with Bluehost' )}
+					label={__( 'Single Sign-on with Bluehost', 'bluehost-wordpress-plugin' )}
 					checked={isSSOActive}
 					onChange={() => toggleSetting( 'sso' )}
 					/>

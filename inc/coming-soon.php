@@ -158,7 +158,7 @@ function mm_coming_soon_subscribe() {
 
 	if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'mm_coming_soon_subscribe_nonce' ) ) {
 
-		$a_response['message'] 	= __( 'Gotcha!', 'mojo' );
+		$a_response['message'] 	= __( 'Gotcha!', 'bluehost-wordpress-plugin' );
 		$a_response['status'] 	= 'nonce_failure';
 
 	} else {
@@ -168,7 +168,7 @@ function mm_coming_soon_subscribe() {
 
 		if ( ! is_email( $email ) ) {
 
-			$a_response['message'] 	= __( 'Please provide a valid email address', 'mojo' );
+			$a_response['message'] 	= __( 'Please provide a valid email address', 'bluehost-wordpress-plugin' );
 			$a_response['status'] 	= 'invalid_email';
 
 		} else {
@@ -181,12 +181,12 @@ function mm_coming_soon_subscribe() {
 				$error_text = array_keys( $response[0]->errors );
 				$error_text = $error_text[0];
 
-				$a_response['message'] 	= __( 'There was an error with the subscription', 'mojo' );
+				$a_response['message'] 	= __( 'There was an error with the subscription', 'bluehost-wordpress-plugin' );
 				$a_response['status'] 	= $error_text;
 
 		    	} else {
 
-				$a_response['message'] 	= __( 'Subscription successful', 'mojo' );
+				$a_response['message'] 	= __( 'Subscription successful', 'bluehost-wordpress-plugin' );
 		    		$a_response['status'] 	= 'success';
 
 			}
