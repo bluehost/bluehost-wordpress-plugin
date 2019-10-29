@@ -26,7 +26,7 @@ class Bluehost_Admin_App_Assets {
 		'wp-keycodes',
 		'wp-element',
 		'wp-components',
-		'react-router-dom'
+		'react-router-dom',
 	);
 	/**
 	 * Undocumented function
@@ -51,7 +51,7 @@ class Bluehost_Admin_App_Assets {
 		// TODO: restore admin css patch for nav
 		// <style>li#toplevel_page_bluehost a:after,
 		// li#toplevel_page_bluehost a:after {
-    	// border: 0px transparent !important;
+		// border: 0px transparent !important;
 		// }</style>
 		$this->url = trailingslashit( MM_BASE_URL ) . 'assets/';
 		add_action( 'admin_enqueue_scripts', array( $this, 'regsiter_global_assets' ) );
@@ -110,7 +110,7 @@ class Bluehost_Admin_App_Assets {
 		wp_register_style(
 			'purecss-grids',
 			$this->url . 'pure/grids-responsive' . $min . '.css',
-			array( 'purecss-base','purecss-grids-base' ),
+			array( 'purecss-base', 'purecss-grids-base' ),
 			empty( $min ) ? $rand : '1.0'
 		);
 

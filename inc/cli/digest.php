@@ -146,9 +146,24 @@ class EIG_WP_CLI_Digest extends EIG_WP_CLI_Command {
 		/**
 		 * Use \WP_Query over get_posts() or other methods because \WP_Query->found_posts object count comes direct from MySQL.
 		 */
-		$posts       = new \WP_Query( array( 'post_type' => 'post', 'numberposts' => - 1 ) );
-		$pages       = new \WP_Query( array( 'post_type' => 'page', 'numberposts' => - 1 ) );
-		$attachments = new \WP_Query( array( 'post_type' => 'attachment', 'numberposts' => - 1 ) );
+		$posts       = new \WP_Query(
+			array(
+				'post_type'   => 'post',
+				'numberposts' => - 1,
+			)
+		);
+		$pages       = new \WP_Query(
+			array(
+				'post_type'   => 'page',
+				'numberposts' => - 1,
+			)
+		);
+		$attachments = new \WP_Query(
+			array(
+				'post_type'   => 'attachment',
+				'numberposts' => - 1,
+			)
+		);
 
 		$content          = array();
 		$content['POSTS'] = $posts->found_posts;
@@ -156,7 +171,12 @@ class EIG_WP_CLI_Digest extends EIG_WP_CLI_Command {
 		$content['MEDIA'] = $attachments->found_posts;
 
 		if ( 'full' === $type ) {
-			$revisions = new \WP_Query( array( 'post_type' => 'revision', 'numberposts' => - 1 ) );
+			$revisions = new \WP_Query(
+				array(
+					'post_type'   => 'revision',
+					'numberposts' => - 1,
+				)
+			);
 			$menus     = count( wp_get_nav_menus() );
 
 			if ( ! empty( $menus ) ) {
@@ -192,11 +212,22 @@ class EIG_WP_CLI_Digest extends EIG_WP_CLI_Command {
 		}
 
 		if ( 'full' === $type ) {
-			$post_types = get_post_types( array( 'public' => true, '_builtin' => false ), 'objects' );
+			$post_types = get_post_types(
+				array(
+					'public'   => true,
+					'_builtin' => false,
+				),
+				'objects'
+			);
 
 			if ( ! empty( $post_types ) ) {
 				foreach ( $post_types as $post_type_obj ) {
-					$query = new \WP_Query( array( 'post_type' => $post_type_obj->name, 'numberposts' => - 1 ) );
+					$query = new \WP_Query(
+						array(
+							'post_type'   => $post_type_obj->name,
+							'numberposts' => - 1,
+						)
+					);
 					if ( ! empty( $query->found_posts ) ) {
 						$content[ strtoupper( $post_type_obj->label ) ] = $query->found_posts;
 					}
@@ -214,7 +245,12 @@ class EIG_WP_CLI_Digest extends EIG_WP_CLI_Command {
 	 */
 	protected function eig_digest_users() {
 		$users      = array();
-		$user_query = new \WP_User_Query( array( 'number' => - 1, 'count_total' => true ) );
+		$user_query = new \WP_User_Query(
+			array(
+				'number'      => - 1,
+				'count_total' => true,
+			)
+		);
 		$user_roles = array();
 		if ( ! empty( $user_query->get_results() ) ) {
 			// loop users to build counts

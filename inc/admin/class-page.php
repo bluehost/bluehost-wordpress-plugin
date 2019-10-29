@@ -78,8 +78,8 @@ class Bluehost_Admin_App_Page {
 	 * @return void
 	 */
 	public function add_sub_pages() {
-		foreach( self::$subpages as $subpage ) {
-			$slug = strtolower( $subpage );
+		foreach ( self::$subpages as $subpage ) {
+			$slug          = strtolower( $subpage );
 			$subpage_slugs = array_map( 'strtolower', self::$subpages );
 			/**
 			 * Add /marketplace prefix for Marketplace routes

@@ -53,7 +53,7 @@ class Init {
 	 */
 	protected function load_files() {
 		$base = \trailingslashit( dirname( __FILE__ ) ) . 'admin/' . static::$filename_root;
-		foreach( static::$page_slug_stubs as $page ) {
+		foreach ( static::$page_slug_stubs as $page ) {
 			require_once $base . $page;
 		}
 	}

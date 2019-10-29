@@ -9,12 +9,19 @@ function mm_ab_test_inclusion( $test_name, $key, $audience = 10, $duration = WEE
 		$score = mt_rand( 0, 99 );
 
 		if ( $audience > $score ) {
-			set_transient( 'mm_test', array( 'name' => $test_name, 'key' => $key ), $duration );
+			set_transient(
+				'mm_test',
+				array(
+					'name' => $test_name,
+					'key'  => $key,
+				),
+				$duration
+			);
 			$previous_tests[] = $test_name;
 			update_option( 'mm_previous_tests', $previous_tests );
 			return true;
 		}
-	} else if ( $test['key'] === $key ) {
+	} elseif ( $test['key'] === $key ) {
 		return true;
 	}
 	return false;
@@ -28,7 +35,7 @@ function mm_ab_test_inclusion_none() {
 }
 add_action( 'admin_footer', 'mm_ab_test_inclusion_none', 99 );
 
-function mm_ab_test_file( $test_name, $file, $original, $test, $audience = 10, $duration = WEEK_IN_SECONDS  ) {
+function mm_ab_test_file( $test_name, $file, $original, $test, $audience = 10, $duration = WEEK_IN_SECONDS ) {
 	if ( strpos( $file, $original ) ) {
 		$key = md5( serialize( $test ) );
 
@@ -49,7 +56,8 @@ function mm_ab_test_content( $test_name, $original, $test, $audience = 10, $dura
 	return $original;
 }
 
-/* Few example tests
+/*
+ Few example tests
 
 function mm_themes_ab( $file ) {
 	return mm_ab_test_file( 'themes_page', $file, 'pages/mojo-themes.php', 'tests/mojo-themes.php' );
@@ -73,9 +81,9 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 */
 
 function mm_jetpack_bluehost_only() {
-	$host = @exec( 'hostname' );
+	$host              = @exec( 'hostname' );
 	$bluehost_hostname = ( stripos( $host, 'bluehost' ) ) ? true : false;
-	$bluehost_brand = ( false !== strpos( strtolower( mm_brand() ), 'bluehost' ) ) ? true : false;
+	$bluehost_brand    = ( false !== strpos( strtolower( mm_brand() ), 'bluehost' ) ) ? true : false;
 	if ( $bluehost_hostname || $bluehost_brand ) {
 		$is_bluehost = true;
 	} else {

@@ -2,7 +2,7 @@
 
 function mm_add_theme_button() {
 	if ( ! isset( $_GET['page'] ) ) {
-	?>
+		?>
 	<script type="text/javascript">
 	jQuery( document ).ready( function( $ ) {
 		$( '.page-title-action' ).html( 'WordPress.org Themes' );
@@ -10,7 +10,7 @@ function mm_add_theme_button() {
 		$( '.page-title-action:nth-of-type(2)' ).after( '<a class="add-new-h2" href="theme-install.php?upload">Upload</a>' );
 	} );
 	</script>
-	<?php
+		<?php
 	}
 }
 add_action( 'admin_head-themes.php', 'mm_add_theme_button' );
@@ -53,5 +53,5 @@ function mm_theme_preview_page() {
 	mm_require( MM_BASE_DIR . '/pages/theme-preview.php' );
 }
 
-//Help the theme authors with the capital P ;)
+// Help the theme authors with the capital P ;)
 add_filter( 'mm_item_name', 'capital_P_dangit' );

@@ -130,95 +130,95 @@ footer p a:hover {
 }
 .bh_subscription_widget #success,
 .bh_subscription_widget #error {
-    border-radius: 4px;
-    font-size: 14px;
-    line-height: 24px;
-    color: #5B5B5B;
-    margin-bottom: 25px;
-    display: none;
-    padding: 8px 40px;
+	border-radius: 4px;
+	font-size: 14px;
+	line-height: 24px;
+	color: #5B5B5B;
+	margin-bottom: 25px;
+	display: none;
+	padding: 8px 40px;
 }
 .bh_subscription_widget #success {
-    background: #CCE9D0;
-    border: 1px solid #009013;
+	background: #CCE9D0;
+	border: 1px solid #009013;
 }
 .bh_subscription_widget #error {
-    background: #FFEAE9;
-    border: 1px solid #F72F26;
+	background: #FFEAE9;
+	border: 1px solid #F72F26;
 }
 .bh_subscription_widget form .bh-inputs {
 	display: inline-block;
 	position: relative;
 	vertical-align: middle;
 	-webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    -o-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
 }
 .bh_subscription_widget form .bh-inputs.active {
 	-webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    -o-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
 }
 .bh_subscription_widget form .bh-inputs.email.active #bh-subscribe-label {
 	color: #5B5B5B;
-    clip: auto !important;
-    height: auto !important;
-    position: absolute !important;
-    overflow: visible !important;
-    width: auto !important;
-    left: 16px;
-    font-size: 11px;
-    top: 2px;
+	clip: auto !important;
+	height: auto !important;
+	position: absolute !important;
+	overflow: visible !important;
+	width: auto !important;
+	left: 16px;
+	font-size: 11px;
+	top: 2px;
 }
 .bh_subscription_widget form .bh-inputs.email input[type="email"] {
 	background-color: #fff;
 	background-image: url( "<?php echo MM_BASE_URL . 'images/icon-email.svg'; ?>" );
 	background-position: 10px center;
 	background-repeat: no-repeat;
-    border: 1px solid #5B5B5B;
-    border-radius: 3px;
-    color: #5B5B5B;
-    font-size: 11px;
-    margin-right: 6px;
-    min-width: 300px;
-    padding: 14px 15px 14px 45px;
-    max-height: 45px;
-    -webkit-transition: all 0.05s ease-in-out;
-    -moz-transition: all 0.05s ease-in-out;
-    -o-transition: all 0.05s ease-in-out;
-    transition: all 0.05s ease-in-out;
+	border: 1px solid #5B5B5B;
+	border-radius: 3px;
+	color: #5B5B5B;
+	font-size: 11px;
+	margin-right: 6px;
+	min-width: 300px;
+	padding: 14px 15px 14px 45px;
+	max-height: 45px;
+	-webkit-transition: all 0.05s ease-in-out;
+	-moz-transition: all 0.05s ease-in-out;
+	-o-transition: all 0.05s ease-in-out;
+	transition: all 0.05s ease-in-out;
 }
 .bh_subscription_widget form .bh-inputs.email.active input[type="email"] {
 	background-image: none;
-    font-size: 14px;
-    padding: 16px 15px 12px 15px;
-    max-height: 45px;
+	font-size: 14px;
+	padding: 16px 15px 12px 15px;
+	max-height: 45px;
 }
 .bh_subscription_widget form .bh-inputs.submit input[type="submit"] {
-    background-color: #3575D3;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 13px;
-    margin: 0;
-    padding: 15px 30px;
-    border: 1px solid #3575D3;
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    -o-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
+	background-color: #3575D3;
+	border: none;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 13px;
+	margin: 0;
+	padding: 15px 30px;
+	border: 1px solid #3575D3;
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
 }
 .bh_subscription_widget form .bh-inputs.submit input[type="submit"]:hover {
-    background-color: #5B5B5B;
-    border-color: #5B5B5B;
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    -o-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
+	background-color: #5B5B5B;
+	border-color: #5B5B5B;
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
 }
 
 @media (max-width: 1024px) {
@@ -244,13 +244,13 @@ footer p a:hover {
 	.bh_subscription_widget form .bh-inputs,
 	.bh_subscription_widget form .bh-inputs.email input[type="email"],
 	.bh_subscription_widget form .bh-inputs.submit input[type="submit"] {
-	    width: 100%;
+		width: 100%;
 	}
 	.bh_subscription_widget form .bh-inputs.email input[type="email"] {
-	    min-width: 0;
+		min-width: 0;
 	}
 	.bh_subscription_widget form .bh-inputs {
-	    margin-bottom: 10px;
+		margin-bottom: 10px;
 	}
 }
 @media (max-width: 360px) {
@@ -366,14 +366,14 @@ footer p a:hover {
 			});
 		});
 
-	    var input = $( '#subscribe-email' );
-	    input.focusin( function() {
-	        $(this).addClass( 'active' );
-	    });
-	    input.focusout( function() {
-	        $(this).removeClass( 'active' );
-	    });
-    });
+		var input = $( '#subscribe-email' );
+		input.focusin( function() {
+			$(this).addClass( 'active' );
+		});
+		input.focusout( function() {
+			$(this).removeClass( 'active' );
+		});
+	});
 </script>
 </body>
 </html>

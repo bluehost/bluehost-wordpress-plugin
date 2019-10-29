@@ -7,7 +7,6 @@
 
 /**
  * Class Bluehost_Response_Utilities
- *
  */
 class Bluehost_Response_Utilities {
 

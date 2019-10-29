@@ -45,7 +45,7 @@ class EIG_WP_CLI_SSO extends EIG_WP_CLI_Command {
 	/**
 	 * Single Sign On via WP-CLI.
 	 *
-	 * @param  null $args Unused.
+	 * @param  null  $args Unused.
 	 * @param  array $assoc_args Additional args to define which user or role to login as.
 	 */
 	public function __invoke( $args, $assoc_args ) {
@@ -89,7 +89,12 @@ class EIG_WP_CLI_SSO extends EIG_WP_CLI_Command {
 	protected function build_request_params( $assoc_args, $params ) {
 		if ( ! empty( $assoc_args ) ) {
 			if ( isset( $assoc_args['role'] ) ) {
-				$user = get_users( array( 'role' => 'administrator', 'number' => 1 ) );
+				$user = get_users(
+					array(
+						'role'   => 'administrator',
+						'number' => 1,
+					)
+				);
 				if ( is_array( $user ) && is_a( $user[0], 'WP_User' ) ) {
 					$params['user'] = $user[0]->ID;
 				}

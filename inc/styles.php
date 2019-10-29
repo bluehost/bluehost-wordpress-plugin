@@ -21,7 +21,7 @@ function mm_admin_body_class( $classes ) {
 add_filter( 'admin_body_class', 'mm_admin_body_class' );
 
 function mm_frontend_style() {
-	//Only run this if there is a shortcode on the page.
+	// Only run this if there is a shortcode on the page.
 	global $use_mm_styles;
 	if ( $use_mm_styles ) {
 		?>

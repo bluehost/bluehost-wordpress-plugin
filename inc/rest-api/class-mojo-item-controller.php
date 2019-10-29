@@ -32,7 +32,7 @@ class Mojo_Item_Controller extends Mojo_Items_Controller {
 	 * @return array
 	 */
 	public function query_mojo_item( WP_REST_Request $request ) {
-		$api_url = 'https://api.mojomarketplace.com/api/v2/items/' . $request['id'];
+		$api_url      = 'https://api.mojomarketplace.com/api/v2/items/' . $request['id'];
 		$api_response = mm_api_cache( $api_url );
 
 		return $this->get_response( $api_response );

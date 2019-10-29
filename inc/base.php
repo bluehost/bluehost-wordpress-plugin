@@ -6,14 +6,14 @@ function mm_setup() {
 	}
 	if ( ! get_option( 'mm_install_date' ) ) {
 		update_option( 'mm_install_date', date( 'M d, Y' ) );
-		$event = array(
+		$event                            = array(
 			't'    => 'event',
 			'ec'   => 'plugin_status',
 			'ea'   => 'installed',
 			'el'   => 'Install date: ' . get_option( 'mm_install_date', date( 'M d, Y' ) ),
 			'keep' => false,
 		);
-		$events = get_option( 'mm_cron', array() );
+		$events                           = get_option( 'mm_cron', array() );
 		$events['hourly'][ $event['ea'] ] = $event;
 		update_option( 'mm_cron', $events );
 	}
@@ -22,8 +22,8 @@ function mm_setup() {
 add_action( 'admin_init', 'mm_setup' );
 
 function mm_api( $args = array(), $query = array() ) {
-	$api_url = 'http://api.mojomarketplace.com/api/v1/';
-	$default_args = array(
+	$api_url       = 'http://api.mojomarketplace.com/api/v1/';
+	$default_args  = array(
 		'mojo-platform' => 'wordpress',
 		'mojo-type'     => 'themes',
 		'mojo-items'    => 'recent',
@@ -32,10 +32,10 @@ function mm_api( $args = array(), $query = array() ) {
 		'count'  => 30,
 		'seller' => '',
 	);
-	$args = wp_parse_args( $args, $default_args );
-	$query = wp_parse_args( $query, $default_query );
-	$query = http_build_query( array_filter( $query ) );
-	$request_url = $api_url . $args['mojo-items'] . '/' . $args['mojo-platform'] . '/' . $args['mojo-type'];
+	$args          = wp_parse_args( $args, $default_args );
+	$query         = wp_parse_args( $query, $default_query );
+	$query         = http_build_query( array_filter( $query ) );
+	$request_url   = $api_url . $args['mojo-items'] . '/' . $args['mojo-platform'] . '/' . $args['mojo-type'];
 
 	$request_url = rtrim( $request_url, '/' );
 	$request_url = $request_url . '?' . $query;
@@ -57,13 +57,13 @@ function mm_api_cache( $api_url ) {
 
 function mm_build_link( $url, $args = array() ) {
 	$defaults = array(
-		'utm_source'   => 'mojo_wp_plugin', //this should always be mojo_wp_plugin
+		'utm_source'   => 'mojo_wp_plugin', // this should always be mojo_wp_plugin
 		'utm_campaign' => 'mojo_wp_plugin',
-		'utm_medium'   => 'plugin_admin', //(plugin_admin, plugin_widget, plugin_shortcode)
-		'utm_content'  => '', //specific location
+		'utm_medium'   => 'plugin_admin', // (plugin_admin, plugin_widget, plugin_shortcode)
+		'utm_content'  => '', // specific location
 		'r'            => get_option( 'mm_master_aff' ),
 	);
-	$args = wp_parse_args( array_filter( $args ), array_filter( $defaults ) );
+	$args     = wp_parse_args( array_filter( $args ), array_filter( $defaults ) );
 
 	$test = get_transient( 'mm_test', '' );
 
@@ -112,7 +112,7 @@ function mm_cron() {
 add_action( 'admin_init', 'mm_cron' );
 
 function mm_cron_schedules( $schedules ) {
-	$schedules['weekly'] = array(
+	$schedules['weekly']  = array(
 		'interval' => WEEK_IN_SECONDS,
 		'display'  => __( 'Once Weekly', 'bluehost-wordpress-plugin' ),
 	);
@@ -129,8 +129,8 @@ add_filter( 'cron_schedules', 'mm_cron_schedules' );
 function mm_slug_to_title( $slug ) {
 	$slug = ucwords( str_replace( '-', ' ', $slug ) );
 
-	//fun fact: capital_P_dangit( 'Wordpress' ) does not return 'WordPress'
-	return str_replace( 'Wordpress', 'WordPress', $slug );
+	// fun fact: capital_P_dangit( 'WordPress' ) does not return 'WordPress'
+	return str_replace( 'WordPress', 'WordPress', $slug );
 }
 
 function mm_title_to_slug( $title ) {
@@ -140,11 +140,11 @@ function mm_title_to_slug( $title ) {
 function mm_require( $original ) {
 	$file = apply_filters( 'mm_require_file', $original );
 	if ( file_exists( $file ) ) {
-		require( $file );
+		require $file;
 
 		return $file;
 	} elseif ( file_exists( $original ) ) {
-		require( $original );
+		require $original;
 
 		return $original;
 	} else {
@@ -188,43 +188,43 @@ function mm_stars( $rating = 4.5, $sales = 0 ) {
 		return;
 	}
 	?>
-    <div class="star-rating">
-        <ul class="list-unstyled list-inline">
+	<div class="star-rating">
+		<ul class="list-unstyled list-inline">
 			<?php
 			$rating_half = round( $rating * 2 ) / 2;
-			$stars = ( 0 == $rating_half ) ? 5 : 0;
+			$stars       = ( 0 == $rating_half ) ? 5 : 0;
 			for ( $i = 0; $i < floor( $rating_half ); $i ++ ) {
 				$stars ++;
 				?>
-                <li><a href="#"><span class="dashicons dashicons-star-filled"></span></a></li>
+				<li><a href="#"><span class="dashicons dashicons-star-filled"></span></a></li>
 				<?php
 			}
 			if ( false !== strpos( $rating_half, '.' ) ) {
 				$stars ++;
 				?>
-                <li><a href="#"><span class="dashicons dashicons-star-half"></span></a></li>
+				<li><a href="#"><span class="dashicons dashicons-star-half"></span></a></li>
 				<?php
 			}
 			if ( $stars < 5 ) {
 				$empty_stars = 5 - $stars;
 				for ( $i = 0; $i < $empty_stars; $i ++ ) {
 					?>
-                    <li><a href="#"><span class="dashicons dashicons-star-empty"></span></a></li>
+					<li><a href="#"><span class="dashicons dashicons-star-empty"></span></a></li>
 					<?php
 				}
 			}
 			?>
-        </ul>
-        <span class="rating-label"><span class="count"><?php echo $rating_half; ?></span> Stars
+		</ul>
+		<span class="rating-label"><span class="count"><?php echo $rating_half; ?></span> Stars
 			<?php
 			if ( 0 !== $sales ) {
 				?>
-                <span class="sales-count">(<?php echo number_format( $sales ); ?> Sales)</span>
+				<span class="sales-count">(<?php echo number_format( $sales ); ?> Sales)</span>
 				<?php
 			}
 			?>
 		</span>
-    </div>
+	</div>
 	<?php
 }
 
@@ -233,15 +233,15 @@ function mm_pagination( $page = 1, $total_pages = 1 ) {
 		return;
 	}
 	?>
-    <div class="alignright">
-        <nav class="pagination">
-            <ul class="group">
+	<div class="alignright">
+		<nav class="pagination">
+			<ul class="group">
 				<?php
 				$pagination_start = $page - 5;
-				$pagination_end = $page + 5;
+				$pagination_end   = $page + 5;
 				if ( $page < 5 ) {
 					$pagination_extra = 10 - $page;
-					$pagination_end = $page + $pagination_extra;
+					$pagination_end   = $page + $pagination_extra;
 				}
 				if ( $pagination_start < 1 ) {
 					$pagination_start = 1;
@@ -253,45 +253,49 @@ function mm_pagination( $page = 1, $total_pages = 1 ) {
 					$pagination_end = $total_pages;
 				}
 				?>
-                <li class="prev">
-                    <a href="<?php echo esc_url( add_query_arg( array( 'paged' => $page - 1 ) ) ); ?>"><span
-                                class="dashicons dashicons-arrow-left"></span></a>
-                </li>
+				<li class="prev">
+					<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $page - 1 ) ) ); ?>"><span
+								class="dashicons dashicons-arrow-left"></span></a>
+				</li>
 				<?php
 				for ( $i = $pagination_start; $i <= $pagination_end; $i ++ ) {
 					?>
-                    <li<?php if ( $i == $page ) {
+					<li
+					<?php
+					if ( $i == $page ) {
 						echo " class='active'";
-					} ?> >
-                        <a href="<?php echo esc_url( add_query_arg( array( 'paged' => $i ) ) ); ?>"><?php echo $i; ?></a>
-                    </li>
+					}
+					?>
+					 >
+						<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $i ) ) ); ?>"><?php echo $i; ?></a>
+					</li>
 					<?php
 				}
 				?>
-                <li class="next">
+				<li class="next">
 					<?php
 					$next_num = ( $page + 1 >= $total_pages ) ? $total_pages : $page + 1;
 					?>
-                    <a rel="next" href="<?php echo esc_url( add_query_arg( array( 'paged' => $next_num ) ) ); ?>">
-                        <span class="dashicons dashicons-arrow-right"></span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+					<a rel="next" href="<?php echo esc_url( add_query_arg( array( 'paged' => $next_num ) ) ); ?>">
+						<span class="dashicons dashicons-arrow-right"></span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
 	<?php
 }
 
 function mm_loader() {
 	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) && mm_brand() == 'bluehost' ) {
 		?>
-        <script type="text/javascript">
-            jQuery(document).ready(function ($) {
-                setTimeout(function () {
-                    $('.bluehost-loader').fadeOut('slow');
-                }, 2000);
-            });
-        </script>
+		<script type="text/javascript">
+			jQuery(document).ready(function ($) {
+				setTimeout(function () {
+					$('.bluehost-loader').fadeOut('slow');
+				}, 2000);
+			});
+		</script>
 		<?php
 	}
 }
@@ -299,9 +303,9 @@ function mm_loader() {
 add_action( 'admin_footer', 'mm_loader' );
 
 function mm_truncate_name( $name, $length = 14 ) {
-	$name = substr( $name, 0, $length );
-	$name = ucwords( $name );
-	$name = explode( ' ', $name );
+	$name           = substr( $name, 0, $length );
+	$name           = ucwords( $name );
+	$name           = explode( ' ', $name );
 	$truncated_name = '';
 	if ( count( $name ) !== 1 ) {
 		for ( $i = 0; $i < count( $name ) - 1; $i ++ ) {
@@ -338,7 +342,7 @@ function _mm_login() {
 		return;
 	}
 	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) && false == get_transient( '_mm_session_token' ) ) {
-		$args = array(
+		$args    = array(
 			'headers' => array(
 				'AuthType'            => 'Token',
 				'x-api-refresh-token' => get_option( '_mm_refresh_token' ),
@@ -379,7 +383,7 @@ function mm_get_client_ip() {
 	foreach ( $proxy_headers as $proxy_header ) {
 		if ( ! empty( $_SERVER[ $proxy_header ] ) ) {
 			$forwarded_ips = explode( ',', $_SERVER[ $proxy_header ] );
-			$forwarded_ip = array_shift( $forwarded_ips );
+			$forwarded_ip  = array_shift( $forwarded_ips );
 			if ( $forwarded_ip ) {
 				$ip = $forwarded_ip;
 				break;

@@ -19,8 +19,8 @@ abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 	 * 2. Provide $keys as two strings -- by default 'DETAIL' and 'VALUE' are used.
 	 * 3. Prints ASCII Table
 	 *
-	 * @param array $data
-	 * @param array $keys
+	 * @param array  $data
+	 * @param array  $keys
 	 * @param string $type
 	 */
 	protected function table( $data, $keys = array( 'DETAIL', 'VALUE' ), $type = 'simple' ) {
@@ -86,9 +86,9 @@ abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 	 * Formatted Error message. Halts by default.
 	 *
 	 * @param string $message
-	 * @param bool $silent
-	 * @param bool $halt
-	 * @param int $code
+	 * @param bool   $silent
+	 * @param bool   $halt
+	 * @param int    $code
 	 *
 	 * @throws \WP_CLI\ExitException
 	 */
@@ -139,7 +139,7 @@ abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
 	protected function log_to_json( $data ) {
 		if ( is_array( $data ) ) {
 			\WP_CLI::log( json_encode( $data ) );
-		} elseif( is_array( json_decode( $data, true ) ) ) {
+		} elseif ( is_array( json_decode( $data, true ) ) ) {
 			\WP_CLI::log( $data );
 		} else {
 			$this->error( 'Provided $data wasn\'t valid array or JSON string.' );

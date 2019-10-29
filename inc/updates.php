@@ -19,9 +19,9 @@ function mm_auto_update_callback( $args ) {
 			'auto_update_theme'             => 'true',
 			'auto_update_translation'       => 'true',
 		);
-		$value = get_option( $args['field'], $defaults[ $args['field'] ] );
-		echo "On <input type='radio' name='" . $args['field'] . "' value='true'" . checked( $value, 'true', false ) . " />";
-		echo "Off <input type='radio' name='" . $args['field'] . "' value='false'" . checked( $value, 'false', false ) . " />";
+		$value    = get_option( $args['field'], $defaults[ $args['field'] ] );
+		echo "On <input type='radio' name='" . $args['field'] . "' value='true'" . checked( $value, 'true', false ) . ' />';
+		echo "Off <input type='radio' name='" . $args['field'] . "' value='false'" . checked( $value, 'false', false ) . ' />';
 	}
 }
 
@@ -96,7 +96,7 @@ add_action( 'admin_init', 'mm_auto_update_register_settings' );
 
 function mm_auto_update_configure() {
 
-	$settings  = array(
+	$settings = array(
 		'allow_major_auto_core_updates' => get_option( 'allow_major_auto_core_updates', true ),
 		'allow_minor_auto_core_updates' => get_option( 'allow_minor_auto_core_updates', true ),
 		'auto_update_plugin'            => get_option( 'auto_update_plugin', true ),
@@ -104,7 +104,7 @@ function mm_auto_update_configure() {
 		'auto_update_translation'       => get_option( 'auto_update_translation', true ),
 	);
 
-	//only change setting if the updater is not disabled
+	// only change setting if the updater is not disabled
 	if ( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) || AUTOMATIC_UPDATER_DISABLED === false ) {
 		if ( defined( 'WP_AUTO_UPDATE_CORE' ) ) {
 			switch ( WP_AUTO_UPDATE_CORE ) {

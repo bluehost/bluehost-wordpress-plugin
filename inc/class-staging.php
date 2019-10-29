@@ -104,9 +104,16 @@ class BluehostStaging {
 	 * @return string
 	 */
 	public function getProductionScreenshotUrl( $width = 122, $height = 92 ) {
-		$url = 'https://s.wordpress.com/mshots/v1/';
+		$url  = 'https://s.wordpress.com/mshots/v1/';
 		$url .= urlencode( $this->getProductionUrl() );
-		$url .= '?' . http_build_query( [ 'width' => $width, 'height' => $height ], null, '&' );
+		$url .= '?' . http_build_query(
+			[
+				'width'  => $width,
+				'height' => $height,
+			],
+			null,
+			'&'
+		);
 
 		return $url;
 	}
@@ -122,9 +129,16 @@ class BluehostStaging {
 	public function getStagingScreenshotUrl( $width = 122, $height = 92 ) {
 		$url = '';
 		if ( $this->stagingExists() ) {
-			$url = 'https://s.wordpress.com/mshots/v1/';
+			$url  = 'https://s.wordpress.com/mshots/v1/';
 			$url .= urlencode( $this->getStagingUrl() );
-			$url .= '?' . http_build_query( [ 'width' => $width, 'height' => $height ], null, '&' );
+			$url .= '?' . http_build_query(
+				[
+					'width'  => $width,
+					'height' => $height,
+				],
+				null,
+				'&'
+			);
 		}
 
 		return $url;
@@ -270,7 +284,7 @@ class BluehostStaging {
 	/**
 	 * Execute a staging CLI command.
 	 *
-	 * @param string $command
+	 * @param string     $command
 	 * @param array|null $args
 	 *
 	 * @return array|WP_Error

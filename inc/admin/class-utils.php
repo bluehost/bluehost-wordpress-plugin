@@ -13,22 +13,22 @@ class Bluehost_Admin_App_Utils {
 		'Services',
 		'Staging',
 		'Settings',
-    );
-    
-    public static function get_app_menu() {
-        $pages = self::$subpages;
-        if ( ! self::is_php_7() ) {
-            unset( $pages['Staging'] );
-        }
+	);
 
-        return $pages;
-    }
+	public static function get_app_menu() {
+		$pages = self::$subpages;
+		if ( ! self::is_php_7() ) {
+			unset( $pages['Staging'] );
+		}
 
-    public static function is_php_7() {
-        return version_compare( phpversion(), '7.0.0' ) >= 0;
-    }
+		return $pages;
+	}
 
-    public static function get_bluehost_site_id() {
-        return Bluehost_Site_ID::get();
-    }
+	public static function is_php_7() {
+		return version_compare( phpversion(), '7.0.0' ) >= 0;
+	}
+
+	public static function get_bluehost_site_id() {
+		return Bluehost_Site_ID::get();
+	}
 }

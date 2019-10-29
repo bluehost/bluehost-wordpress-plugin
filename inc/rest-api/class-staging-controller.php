@@ -79,7 +79,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 							'enum'              => [ 'all', 'db', 'files' ],
 							'validate_callback' => function ( $value ) {
 								return in_array( $value, [ 'all', 'db', 'files' ] );
-							}
+							},
 						],
 					],
 				],
@@ -100,7 +100,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 							'enum'              => [ 'staging', 'production' ],
 							'validate_callback' => function ( $value ) {
 								return in_array( $value, [ 'staging', 'production' ] );
-							}
+							},
 						],
 					],
 				],
@@ -180,17 +180,19 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 	 * @return WP_REST_Response
 	 */
 	public function getStagingDetails() {
-		return rest_ensure_response( [
-			'creationDate'           => $this->staging->getCreationDate(),
-			'currentEnvironment'     => $this->staging->getEnvironment(),
-			'productionDir'          => $this->staging->getProductionDir(),
-			'productionThumbnailUrl' => $this->staging->getProductionScreenshotUrl(),
-			'productionUrl'          => $this->staging->getProductionUrl(),
-			'stagingDir'             => $this->staging->getStagingDir(),
-			'stagingExists'          => $this->staging->stagingExists(),
-			'stagingThumbnailUrl'    => $this->staging->getStagingScreenshotUrl(),
-			'stagingUrl'             => $this->staging->getStagingUrl(),
-		] );
+		return rest_ensure_response(
+			[
+				'creationDate'           => $this->staging->getCreationDate(),
+				'currentEnvironment'     => $this->staging->getEnvironment(),
+				'productionDir'          => $this->staging->getProductionDir(),
+				'productionThumbnailUrl' => $this->staging->getProductionScreenshotUrl(),
+				'productionUrl'          => $this->staging->getProductionUrl(),
+				'stagingDir'             => $this->staging->getStagingDir(),
+				'stagingExists'          => $this->staging->stagingExists(),
+				'stagingThumbnailUrl'    => $this->staging->getStagingScreenshotUrl(),
+				'stagingUrl'             => $this->staging->getStagingUrl(),
+			]
+		);
 	}
 
 	/**

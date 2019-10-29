@@ -46,9 +46,9 @@ add_action( 'admin_bar_menu', 'bluehost_add_tool_bar_items', 100 );
 function mm_plugins_premium_link() {
 	?>
 	<script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $('.wp-filter .filter-links li:last-of-type').after('<li><a style="text-decoration: none;" onclick="location.href=\'admin.php?page=mojo-plugins\'">Premium</a></li>');
-        });
+		jQuery(document).ready(function ($) {
+			$('.wp-filter .filter-links li:last-of-type').after('<li><a style="text-decoration: none;" onclick="location.href=\'admin.php?page=mojo-plugins\'">Premium</a></li>');
+		});
 	</script>
 	<?php
 }

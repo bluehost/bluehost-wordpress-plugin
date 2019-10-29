@@ -23,26 +23,50 @@ function mm_check_plugin_search_value( $search ) {
 function mm_plugin_search_result() {
 	if ( isset( $_GET['s'] ) && $plugin = mm_check_plugin_search_value( $_GET['s'] ) ) {
 		$plugin = array_filter( $plugin );
-		$link = $plugin['url'];
+		$link   = $plugin['url'];
 		if ( isset( $plugin['id'] ) && strlen( $plugin['id'] ) > 5 ) {
-			$link = add_query_arg( array( 'page' => 'mojo-single-item', 'item_id' => $plugin['id'] ), admin_url( 'admin.php' ) );
+			$link = add_query_arg(
+				array(
+					'page'    => 'mojo-single-item',
+					'item_id' => $plugin['id'],
+				),
+				admin_url( 'admin.php' )
+			);
 		}
-		$link = mm_build_link( $link, array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'plugin_search_more_details' ) );
-		$buy_now_btn = ( isset( $plugin['buy_now_btn'] ) ) ? $plugin['buy_now_btn']  : 'Buy Now';
-		$buy_now = ( isset( $plugin['id'] ) ) ? add_query_arg( array( 'item_id' => $plugin['id'] ), 'https://www.mojomarketplace.com/cart' ) : '';
+		$link        = mm_build_link(
+			$link,
+			array(
+				'utm_medium'  => 'plugin_admin',
+				'utm_content' => 'plugin_search_more_details',
+			)
+		);
+		$buy_now_btn = ( isset( $plugin['buy_now_btn'] ) ) ? $plugin['buy_now_btn'] : 'Buy Now';
+		$buy_now     = ( isset( $plugin['id'] ) ) ? add_query_arg( array( 'item_id' => $plugin['id'] ), 'https://www.mojomarketplace.com/cart' ) : '';
 		if ( '' === $buy_now ) {
 			$buy_now = ( isset( $plugin['buy_now_link'] ) ) ? $plugin['buy_now_link'] : '';
 		}
-		$buy_now = mm_build_link( $buy_now, array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'plugin_search_cta' ) );
-		$image = ( isset( $plugin['img'] ) ) ? $plugin['img'] : 'https://marketplace-images-production.s3-us-west-2.amazonaws.com/vault/items/thumbnail-54340948-aff4-41d1-b5d4-0cf10a141528-260x156-i5o1C.jpg';
-		$title = ( isset( $plugin['title'] ) ) ? $plugin['title'] : $plugin['name'];
-		$short_desc = ( isset( $plugin['short_desc'] ) ) ? $plugin['short_desc'] : '';
-		$author = ( isset( $plugin['author'] ) ) ? $plugin['author'] : 'MOJO Marketplace';
-		$author_url = ( isset( $plugin['author_url'] ) ) ? $plugin['author_url'] : 'http://www.mojomarketplace.com';
-		$author_url = mm_build_link( $author_url, array( 'utm_medium' => 'plugin_admin', 'utm_content' => 'plugin_search_author_link' ) );
+		$buy_now      = mm_build_link(
+			$buy_now,
+			array(
+				'utm_medium'  => 'plugin_admin',
+				'utm_content' => 'plugin_search_cta',
+			)
+		);
+		$image        = ( isset( $plugin['img'] ) ) ? $plugin['img'] : 'https://marketplace-images-production.s3-us-west-2.amazonaws.com/vault/items/thumbnail-54340948-aff4-41d1-b5d4-0cf10a141528-260x156-i5o1C.jpg';
+		$title        = ( isset( $plugin['title'] ) ) ? $plugin['title'] : $plugin['name'];
+		$short_desc   = ( isset( $plugin['short_desc'] ) ) ? $plugin['short_desc'] : '';
+		$author       = ( isset( $plugin['author'] ) ) ? $plugin['author'] : 'MOJO Marketplace';
+		$author_url   = ( isset( $plugin['author_url'] ) ) ? $plugin['author_url'] : 'http://www.mojomarketplace.com';
+		$author_url   = mm_build_link(
+			$author_url,
+			array(
+				'utm_medium'  => 'plugin_admin',
+				'utm_content' => 'plugin_search_author_link',
+			)
+		);
 		$button_class = ( isset( $plugin['button_class'] ) ) ? $plugin['button_class'] : 'button';
 		$detail_class = ( isset( $plugin['detail_class'] ) ) ? $plugin['detail_class'] : '';
-		$plugin_html = '<div class="plugin-card">
+		$plugin_html  = '<div class="plugin-card">
 							<div class="plugin-card-top">
 								<a target="_blank" href="' . $link . '" class="plugin-icon" style="background-image: url(' . $image . ');background-position: center;">&nbsp;</a>
 								<div class="name column-name">
@@ -69,7 +93,7 @@ function mm_plugin_search_result() {
 					<span class="">Professional Plugin Service</div>
 				</div>
 			</div>';
-		$plugin_html = mm_minify( $plugin_html );
+		$plugin_html  = mm_minify( $plugin_html );
 
 		echo "
 		<script type='text/javascript'>

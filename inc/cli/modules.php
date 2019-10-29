@@ -27,14 +27,14 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 	/**
 	 * Module command switchboard.
 	 *
-	 * @param  null $args
+	 * @param  null  $args
 	 * @param  array $assoc_args
 	 */
 	public function __invoke( $args, $assoc_args ) {
 		// Setup class parameters
 		$this->init_class_variables( $args, $assoc_args );
 
-		switch( $this->action ) {
+		switch ( $this->action ) {
 			case 'reset':
 				$this->reset();
 				break;
@@ -68,7 +68,7 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 		$this->action = ( ! empty( $args[0] ) && is_string( $args[0] ) ) ? $args[0] : 'list';
 		$this->module = ( ! empty( $args[1] ) && is_string( $args[1] ) ) ? $args[1] : '';
 		if ( ! empty( $assoc_args['response'] )
-		     && 'json' === strtolower( $assoc_args['response'] )
+			 && 'json' === strtolower( $assoc_args['response'] )
 		) {
 			$this->response_type = 'json';
 		}
@@ -83,9 +83,9 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 	 * Run EIG module activation via Manager class
 	 */
 	protected function activate() {
-		$this->colorize_log( 'Activating ' . $this->module . '...');
+		$this->colorize_log( 'Activating ' . $this->module . '...' );
 		Endurance_ModuleManager::activate( $this->module );
-		$this->colorize_log( 'Checking status...');
+		$this->colorize_log( 'Checking status...' );
 	}
 
 	/**
@@ -94,9 +94,9 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 	 * Run EIG module deactivation via Manager class
 	 */
 	protected function deactivate() {
-		$this->colorize_log( 'Activating ' . $this->module . '...');
+		$this->colorize_log( 'Activating ' . $this->module . '...' );
 		Endurance_ModuleManager::deactivate( $this->module );
-		$this->colorize_log( 'Checking status...');
+		$this->colorize_log( 'Checking status...' );
 	}
 
 	/**
@@ -156,7 +156,7 @@ class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
 	 */
 	protected function human_module_list() {
 		$raw = Endurance_ModuleRegistry::collection()->all();
-		foreach( $raw as $module ) {
+		foreach ( $raw as $module ) {
 			unset( $module['callback'] );
 			$this->table( array_reverse( $module ) );
 		}

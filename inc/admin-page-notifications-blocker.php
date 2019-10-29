@@ -4,8 +4,8 @@
  * Only run on mojo pages
  */
 if ( ! is_admin()
-     || ! isset( $_GET['page'] )
-     || false === stripos( filter_input( INPUT_GET, 'page' ), 'mojo-' )
+	 || ! isset( $_GET['page'] )
+	 || false === stripos( filter_input( INPUT_GET, 'page' ), 'mojo-' )
 ) {
 	return;
 }
@@ -29,13 +29,13 @@ class EIG_Admin_Page_Notifications_Blocker {
 			return;
 		}
 		?>
-        <style type="text/css" data-bluehost-hide-notifications="1">
-            #wpbody-content > div.error,
-            #wpbody-content > div.notice,
-            #wpbody-content > .update-nag {
-                display: none !important;
-            }
-        </style>
+		<style type="text/css" data-bluehost-hide-notifications="1">
+			#wpbody-content > div.error,
+			#wpbody-content > div.notice,
+			#wpbody-content > .update-nag {
+				display: none !important;
+			}
+		</style>
 		<?php
 	}
 }

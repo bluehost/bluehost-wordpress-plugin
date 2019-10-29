@@ -26,6 +26,5 @@ class Bluehost_Admin_App_Mods {
 	 *
 	 */
 	protected function primary_init() {
-		//
 	}
 }

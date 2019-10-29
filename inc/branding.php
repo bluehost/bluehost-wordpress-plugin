@@ -10,8 +10,8 @@ function mm_plugin_details( $all_plugins ) {
 		switch ( mm_brand() ) {
 			case 'bluehost':
 				$branded_plugin_details = array(
-					'Name'  => 'Bluehost',
-					'Title' => 'Bluehost',
+					'Name'        => 'Bluehost',
+					'Title'       => 'Bluehost',
 					'Description' => 'This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.',
 				);
 				break;

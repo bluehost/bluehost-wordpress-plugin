@@ -56,7 +56,12 @@ class EIG_WP_CLI_Staging extends EIG_WP_CLI_Command {
 				break;
 
 			case 'sso_staging':
-				$user = get_users( array( 'role' => 'administrator', 'number' => 1 ) );
+				$user = get_users(
+					array(
+						'role'   => 'administrator',
+						'number' => 1,
+					)
+				);
 				if ( is_array( $user ) && is_a( $user[0], 'WP_User' ) ) {
 					$user = $user[0];
 					$user = $user->ID;
@@ -65,7 +70,12 @@ class EIG_WP_CLI_Staging extends EIG_WP_CLI_Command {
 				break;
 
 			case 'sso_production':
-				$user = get_users( array( 'role' => 'administrator', 'number' => 1 ) );
+				$user = get_users(
+					array(
+						'role'   => 'administrator',
+						'number' => 1,
+					)
+				);
 				if ( is_array( $user ) && is_a( $user[0], 'WP_User' ) ) {
 					$user = $user[0];
 					$user = $user->ID;
@@ -111,7 +121,7 @@ class EIG_WP_CLI_Staging extends EIG_WP_CLI_Command {
 				$json_response = mm_cl( 'restore_state', array( esc_attr( $assoc_args['revision'] ) ) );
 				break;
 		}
-		$json_response = preg_replace( '/[^[:print:]]/', '',$json_response );
+		$json_response = preg_replace( '/[^[:print:]]/', '', $json_response );
 		$json_response = str_replace( '[H[2J', '', $json_response );
 
 		if ( $response = json_decode( $json_response ) ) {

@@ -37,7 +37,7 @@ class Bluehost_Site_Meta {
 		static $id = null;
 		if ( is_null( $id ) ) {
 			$path = self::get_path();
-			$id = bin2hex( iconv( mb_detect_encoding( $path, mb_detect_order(), true ), 'UTF-8', $path ) );
+			$id   = bin2hex( iconv( mb_detect_encoding( $path, mb_detect_order(), true ), 'UTF-8', $path ) );
 		}
 
 		return $id;

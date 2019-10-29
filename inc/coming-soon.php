@@ -7,7 +7,7 @@ function mm_cs_notice_display() {
 	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) && 'bluehost' != mm_brand() ) {
 		?>
 		<div class='notice notice-warning'>
-			<p>Your site is currently displaying a "Coming Soon" page. Once you are ready to launch your site <a href='<?php echo esc_url( add_query_arg( array( 'mm_cs_launch' => true ) ) );?>'>click here</a>.</p>
+			<p>Your site is currently displaying a "Coming Soon" page. Once you are ready to launch your site <a href='<?php echo esc_url( add_query_arg( array( 'mm_cs_launch' => true ) ) ); ?>'>click here</a>.</p>
 		</div>
 		<?php
 	}
@@ -33,7 +33,7 @@ function mm_bh_cs_notice_display() {
 						<h2>Coming Soon Active</h2>
 						<p>Your site is currently displaying a "Coming Soon" page. This allows you to work on your site without the public seeing until you are ready to unveil it.</p>
 						<div class="col-xs-12 col-sm-12 text-right">
-							<a class="btn btn-default btn-md" href="<?php echo esc_url( add_query_arg( array( 'mm_cs_launch' => true ) ) );?>">Launch your site</a>
+							<a class="btn btn-default btn-md" href="<?php echo esc_url( add_query_arg( array( 'mm_cs_launch' => true ) ) ); ?>">Launch your site</a>
 						</div>
 					</div>
 				</div>
@@ -98,7 +98,7 @@ add_action( 'template_redirect', 'mm_cs_load' );
 function mm_cs_meta() {
 	$meta = mm_api_cache( 'https://api.mojomarketplace.com/api/v1/meta/landing_page' );
 	if ( is_wp_error( $meta ) ) {return;}
-	if ( isset( $meta['body'] ) && '' != $meta['body']  ) {
+	if ( isset( $meta['body'] ) && '' != $meta['body'] ) {
 		return "<meta name='robots' content='noindex, nofollow' />";
 	}
 	return;
@@ -106,8 +106,8 @@ function mm_cs_meta() {
 
 function mm_cs_enabled_callback( $args ) {
 		$value = get_option( $args['field'], 'false' );
-		echo "On <input type='radio' name='" . esc_attr( $args['field'] ) . "' value='true'" . checked( $value, 'true', false ) . " />";
-		echo "Off <input type='radio' name='" . esc_attr( $args['field'] ) . "' value='false'" . checked( $value, 'false', false ) . " />";
+		echo "On <input type='radio' name='" . esc_attr( $args['field'] ) . "' value='true'" . checked( $value, 'true', false ) . ' />';
+		echo "Off <input type='radio' name='" . esc_attr( $args['field'] ) . "' value='false'" . checked( $value, 'false', false ) . ' />';
 }
 
 function mm_cs_settings() {
@@ -121,10 +121,10 @@ function mm_cs_settings() {
 	}
 
 	add_settings_section(
-		$section_name, //Section
-		$brand . ' Coming Soon Page', //Title
-		'__return_false', //section description callback
-		$section_hook //Setting Hook
+		$section_name, // Section
+		$brand . ' Coming Soon Page', // Title
+		'__return_false', // section description callback
+		$section_hook // Setting Hook
 	);
 
 	add_settings_field(
@@ -141,56 +141,55 @@ function mm_cs_settings() {
 add_action( 'admin_init', 'mm_cs_settings' );
 
 function mm_cs_content() {
-	require( MM_BASE_DIR . 'pages/coming-soon.php' );
+	require MM_BASE_DIR . 'pages/coming-soon.php';
 }
 
 // Handle Ajax response
 function mm_coming_soon_subscribe() {
-	
-	$response 	= array();
-	$a_response 	= array();
-	$email 		= sanitize_email( wp_unslash( $_POST['email'] ) );
+
+	$response   = array();
+	$a_response = array();
+	$email      = sanitize_email( wp_unslash( $_POST['email'] ) );
 
 	if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'mm_coming_soon_subscribe_nonce' ) ) {
 
-		$a_response['message'] 	= __( 'Gotcha!', 'bluehost-wordpress-plugin' );
-		$a_response['status'] 	= 'nonce_failure';
+		$a_response['message'] = __( 'Gotcha!', 'bluehost-wordpress-plugin' );
+		$a_response['status']  = 'nonce_failure';
 
 	} else {
-		
+
 		// Initialize JetPack_Subscriptions
 		$jetpack = Jetpack_Subscriptions::init();
 
 		if ( ! is_email( $email ) ) {
 
-			$a_response['message'] 	= __( 'Please provide a valid email address', 'bluehost-wordpress-plugin' );
-			$a_response['status'] 	= 'invalid_email';
+			$a_response['message'] = __( 'Please provide a valid email address', 'bluehost-wordpress-plugin' );
+			$a_response['status']  = 'invalid_email';
 
 		} else {
 
 			// Get JetPack response and subscribe email if response is true
 			$response = $jetpack->subscribe( $email, 0, false );
 
-			if( isset( $response[0]->errors ) ) {
+			if ( isset( $response[0]->errors ) ) {
 
 				$error_text = array_keys( $response[0]->errors );
 				$error_text = $error_text[0];
 
-				$a_response['message'] 	= __( 'There was an error with the subscription', 'bluehost-wordpress-plugin' );
-				$a_response['status'] 	= $error_text;
+				$a_response['message'] = __( 'There was an error with the subscription', 'bluehost-wordpress-plugin' );
+				$a_response['status']  = $error_text;
 
-		    	} else {
+			} else {
 
-				$a_response['message'] 	= __( 'Subscription successful', 'bluehost-wordpress-plugin' );
-		    		$a_response['status'] 	= 'success';
+				$a_response['message'] = __( 'Subscription successful', 'bluehost-wordpress-plugin' );
+				$a_response['status']  = 'success';
 
 			}
-
 		}
 
-  		wp_send_json( $a_response );
+		wp_send_json( $a_response );
 
-  	}
+	}
 
 }
 add_action( 'wp_ajax_mm_coming_soon_subscribe', 'mm_coming_soon_subscribe' );
@@ -203,10 +202,10 @@ function mm_coming_soon_prevent_emails() {
 
 	$enabled = get_option( 'mm_coming_soon', 'false' );
 	if ( 'true' === $enabled ) {
-	    add_filter(
-	        'jetpack_subscriptions_exclude_all_categories_except',
-	        'mm_coming_soon_prevent_emails_return_array'
-	    );
+		add_filter(
+			'jetpack_subscriptions_exclude_all_categories_except',
+			'mm_coming_soon_prevent_emails_return_array'
+		);
 	}
 
 }
@@ -214,8 +213,8 @@ add_action( 'plugins_loaded', 'mm_coming_soon_prevent_emails' );
 
 function mm_coming_soon_prevent_emails_return_array() {
 
-    return array(
-        'please-for-the-love-of-all-things-do-not-exist'
-    );
+	return array(
+		'please-for-the-love-of-all-things-do-not-exist',
+	);
 
 }
