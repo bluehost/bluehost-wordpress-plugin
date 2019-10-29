@@ -36,18 +36,20 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 			'/staging',
 			[
 				[
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => [ $this, 'getStagingDetails' ],
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'getStagingDetails' ],
+					'permission_callback' => [ $this, 'checkPermission' ],
 				],
 				[
-					'methods'  => WP_REST_Server::CREATABLE,
-					'callback' => [ $this, 'createStaging' ],
+					'methods'             => WP_REST_Server::CREATABLE,
+					'callback'            => [ $this, 'createStaging' ],
+					'permission_callback' => [ $this, 'checkPermission' ],
 				],
 				[
-					'methods'  => WP_REST_Server::DELETABLE,
-					'callback' => [ $this, 'destroyStaging' ],
+					'methods'             => WP_REST_Server::DELETABLE,
+					'callback'            => [ $this, 'destroyStaging' ],
+					'permission_callback' => [ $this, 'checkPermission' ],
 				],
-				'permission_callback' => [ $this, 'checkPermission' ],
 			]
 		);
 
