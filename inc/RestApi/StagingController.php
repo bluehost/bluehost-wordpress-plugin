@@ -1,11 +1,13 @@
 <?php
 
+namespace Bluehost\RestApi;
+
 use Bluehost\Staging;
 
 /**
- * Class Bluehost_Staging_Controller
+ * Class StagingController
  */
-class Bluehost_Staging_Controller extends WP_REST_Controller {
+class StagingController extends \WP_REST_Controller {
 
 	/**
 	 * The namespace of this controller's route.
@@ -38,17 +40,17 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 			'/staging',
 			[
 				[
-					'methods'             => WP_REST_Server::READABLE,
+					'methods'             => \WP_REST_Server::READABLE,
 					'callback'            => [ $this, 'getStagingDetails' ],
 					'permission_callback' => [ $this, 'checkPermission' ],
 				],
 				[
-					'methods'             => WP_REST_Server::CREATABLE,
+					'methods'             => \WP_REST_Server::CREATABLE,
 					'callback'            => [ $this, 'createStaging' ],
 					'permission_callback' => [ $this, 'checkPermission' ],
 				],
 				[
-					'methods'             => WP_REST_Server::DELETABLE,
+					'methods'             => \WP_REST_Server::DELETABLE,
 					'callback'            => [ $this, 'destroyStaging' ],
 					'permission_callback' => [ $this, 'checkPermission' ],
 				],
@@ -60,7 +62,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 			'/staging/clone',
 			[
 				[
-					'methods'             => WP_REST_Server::EDITABLE,
+					'methods'             => \WP_REST_Server::EDITABLE,
 					'callback'            => [ $this, 'cloneProductionToStaging' ],
 					'permission_callback' => [ $this, 'checkPermission' ],
 				],
@@ -72,7 +74,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 			'/staging/deploy',
 			[
 				[
-					'methods'             => WP_REST_Server::EDITABLE,
+					'methods'             => \WP_REST_Server::EDITABLE,
 					'callback'            => [ $this, 'deployToProduction' ],
 					'permission_callback' => [ $this, 'checkPermission' ],
 					'args'                => [
@@ -93,7 +95,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 			'/staging/switch-to',
 			[
 				[
-					'methods'             => WP_REST_Server::READABLE,
+					'methods'             => \WP_REST_Server::READABLE,
 					'callback'            => [ $this, 'switchTo' ],
 					'permission_callback' => [ $this, 'checkPermission' ],
 					'args'                => [
@@ -123,7 +125,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 	/**
 	 * Create a staging environment.
 	 *
-	 * @return WP_REST_Response
+	 * @return \WP_REST_Response
 	 */
 	public function createStaging() {
 		$payload = $this->staging->createStaging();
@@ -150,7 +152,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 	/**
 	 * Clone production environment to staging.
 	 *
-	 * @return WP_REST_Response
+	 * @return \WP_REST_Response
 	 */
 	public function cloneProductionToStaging() {
 		return rest_ensure_response( $this->staging->cloneProductionToStaging() );
@@ -159,18 +161,18 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 	/**
 	 * Deploy files and/or database from staging to production.
 	 *
-	 * @param WP_REST_Request $request WordPress HTTP request model.
+	 * @param \WP_REST_Request $request WordPress HTTP request model.
 	 *
-	 * @return WP_REST_Response
+	 * @return \WP_REST_Response
 	 */
-	public function deployToProduction( WP_REST_Request $request ) {
+	public function deployToProduction( \WP_REST_Request $request ) {
 		return rest_ensure_response( $this->staging->deployToProduction( $request->get_param( 'type' ) ) );
 	}
 
 	/**
 	 * Destroy the staging environment.
 	 *
-	 * @return WP_REST_Response
+	 * @return \WP_REST_Response
 	 */
 	public function destroyStaging() {
 		return rest_ensure_response( $this->staging->destroyStaging() );
@@ -179,7 +181,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 	/**
 	 * Get all staging details.
 	 *
-	 * @return WP_REST_Response
+	 * @return \WP_REST_Response
 	 */
 	public function getStagingDetails() {
 		return rest_ensure_response(
@@ -200,11 +202,11 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 	/**
 	 * Switch to the production environment.
 	 *
-	 * @param WP_REST_Request $request WordPress HTTP request model.
+	 * @param \WP_REST_Request $request WordPress HTTP request model.
 	 *
-	 * @return WP_REST_Response
+	 * @return \WP_REST_Response
 	 */
-	public function switchTo( WP_REST_Request $request ) {
+	public function switchTo( \WP_REST_Request $request ) {
 		return rest_ensure_response( $this->staging->switchTo( $request->get_param( 'env' ) ) );
 	}
 }

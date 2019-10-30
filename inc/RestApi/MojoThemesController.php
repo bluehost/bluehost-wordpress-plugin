@@ -1,9 +1,11 @@
 <?php
 
+namespace Bluehost\RestApi;
+
 /**
- * Class Mojo_Themes_Controller
+ * Class MojoThemesController
  */
-class Mojo_Themes_Controller extends Mojo_Items_Controller {
+class MojoThemesController extends MojoItemsController {
 
 	/**
 	 * The base of this controller's route.
@@ -21,7 +23,7 @@ class Mojo_Themes_Controller extends Mojo_Items_Controller {
 			'/' . $this->rest_base,
 			[
 				[
-					'methods'             => WP_REST_Server::READABLE,
+					'methods'             => \WP_REST_Server::READABLE,
 					'callback'            => [ $this, 'get_items' ],
 					'permission_callback' => [ $this, 'get_items_permissions_check' ],
 					'args'                => $this->get_collection_params(),
@@ -33,9 +35,9 @@ class Mojo_Themes_Controller extends Mojo_Items_Controller {
 	/**
 	 * Get a collection of items
 	 *
-	 * @param WP_REST_Request $request Full data about the request.
+	 * @param \WP_REST_Request $request Full data about the request.
 	 *
-	 * @return WP_Error|WP_REST_Response
+	 * @return \WP_Error|\WP_REST_Response
 	 */
 	public function get_items( $request ) {
 		$params = [ 'item_type' => 'themes' ];

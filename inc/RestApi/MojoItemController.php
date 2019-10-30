@@ -1,9 +1,11 @@
 <?php
 
+namespace Bluehost\RestApi;
+
 /**
- * Class Mojo_Item_Controller
+ * Class MojoItemController
  */
-class Mojo_Item_Controller extends Mojo_Items_Controller {
+class MojoItemController extends MojoItemsController {
 
 	/**
 	 * Register the routes for the objects of the controller.
@@ -14,7 +16,7 @@ class Mojo_Item_Controller extends Mojo_Items_Controller {
 			'/' . $this->rest_base,
 			[
 				[
-					'methods'             => WP_REST_Server::READABLE,
+					'methods'             => \WP_REST_Server::READABLE,
 					'callback'            => [ $this, 'query_mojo_item' ],
 					'permission_callback' => [ $this, 'get_items_permissions_check' ],
 					'args'                => [
@@ -34,7 +36,7 @@ class Mojo_Item_Controller extends Mojo_Items_Controller {
 	 *
 	 * @return array
 	 */
-	public function query_mojo_item( WP_REST_Request $request ) {
+	public function query_mojo_item( \WP_REST_Request $request ) {
 		$api_url      = 'https://api.mojomarketplace.com/api/v2/items/' . $request['id'];
 		$api_response = mm_api_cache( $api_url );
 

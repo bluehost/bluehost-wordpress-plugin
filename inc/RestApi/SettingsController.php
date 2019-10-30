@@ -1,8 +1,11 @@
 <?php
+
+namespace Bluehost\RestApi;
+
 /**
- * Class Bluehost Settings Controller
+ * Class SettingsController
  */
-class Bluehost_Settings_Controller extends WP_REST_Controller {
+class SettingsController extends \WP_REST_Controller {
 
 	/**
 	 * The namespace of this controller's route.
@@ -10,7 +13,6 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 	 * @var string
 	 */
 	protected $namespace = 'bluehost/v1';
-
 
 	/**
 	 * Registers the settings route
@@ -22,12 +24,12 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 			'/settings',
 			[
 				[
-					'methods'             => WP_REST_Server::READABLE,
+					'methods'             => \WP_REST_Server::READABLE,
 					'callback'            => [ $this, 'get_item' ],
 					'permission_callback' => [ $this, 'check_permission' ],
 				],
 				[
-					'methods'             => WP_REST_Server::EDITABLE,
+					'methods'             => \WP_REST_Server::EDITABLE,
 					'callback'            => [ $this, 'update_item' ],
 					'permission_callback' => [ $this, 'check_permission' ],
 				],
@@ -39,20 +41,20 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 	/**
 	 * Retrieves the settings handled by the plugin.
 	 *
-	 * @param WP_REST_Request $request Full details about the request.
+	 * @param \WP_REST_Request $request Full details about the request.
 	 *
-	 * @return array|WP_Error Array on success, or WP_Error object on failure.
+	 * @return \WP_REST_Response
 	 */
 	public function get_item( $request ) {
-		return new WP_REST_Response( $this->get_current_settings() );
+		return new \WP_REST_Response( $this->get_current_settings() );
 	}
 
 	/**
 	 * Updates settings for the settings object.
 	 *
-	 * @param WP_REST_Request $request Full details about the request.
+	 * @param \WP_REST_Request $request Full details about the request.
 	 *
-	 * @return array|WP_Error Array on success, or error object on failure.
+	 * @return \WP_REST_Response
 	 */
 	public function update_item( $request ) {
 		$settings = $this->get_current_settings();
@@ -120,7 +122,7 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 	/**
 	 * Retrieve the existing saved array of settings
 	 *
-	 * @return Array $settings List of the settings and their values
+	 * @return array $settings List of the settings and their values
 	 */
 	public function get_current_settings() {
 
@@ -168,11 +170,11 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 	/**
 	 * Check permissions for routes.
 	 *
-	 * @return bool
+	 * @return bool|\WP_Error
 	 */
 	public function check_permission() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new WP_Error( 'rest_forbidden_context', __( 'Sorry, you are not allowed to access this endpoint.', 'bluehost-wordpress-plugin' ), array( 'status' => rest_authorization_required_code() ) );
+			return new \WP_Error( 'rest_forbidden_context', __( 'Sorry, you are not allowed to access this endpoint.', 'bluehost-wordpress-plugin' ), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;

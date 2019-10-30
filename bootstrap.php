@@ -48,7 +48,7 @@ require __DIR__ . '/inc/styles.php';
 require __DIR__ . '/inc/track-last-login.php';
 require __DIR__ . '/inc/updates.php';
 require __DIR__ . '/inc/user-experience-tracking.php';
-require __DIR__ . '/inc/rest-api/rest-api.php';
+require __DIR__ . '/inc/RestApi/rest-api.php';
 
 if ( is_admin() ) {
 	// Keep the Bluehost API access token fresh.

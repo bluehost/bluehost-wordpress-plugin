@@ -1,9 +1,11 @@
 <?php
 
+namespace Bluehost\RestApi;
+
 /**
- * Class Mojo_Items_Controller
+ * Class MojoItemsController
  */
-class Mojo_Items_Controller extends WP_REST_Controller {
+class MojoItemsController extends \WP_REST_Controller {
 
 	/**
 	 * The controller's namespace.
@@ -27,7 +29,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	 *
 	 * @return array|mixed|object|null
 	 */
-	public function query_mojo_items( $params, WP_REST_Request $request ) {
+	public function query_mojo_items( $params, \WP_REST_Request $request ) {
 		$params       = wp_parse_args( $request->get_params(), $params );
 		$api_url      = add_query_arg( $params, 'https://api.mojomarketplace.com/api/v2/items' );
 		$api_response = mm_api_cache( $api_url );
@@ -43,7 +45,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	 *
 	 * @return array|mixed|object|null
 	 */
-	public function query_mojo_search( $params, WP_REST_Request $request ) {
+	public function query_mojo_search( $params, \WP_REST_Request $request ) {
 		$params = wp_parse_args( $request->get_params(), $params );
 
 		// Rename 'count' to 'size' for Mojo search endpoint.
@@ -135,9 +137,9 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Check if a given request has access to get items
 	 *
-	 * @param WP_REST_Request $request Full data about the request.
+	 * @param \WP_REST_Request $request Full data about the request.
 	 *
-	 * @return WP_Error|bool
+	 * @return \WP_Error|bool
 	 */
 	public function get_items_permissions_check( $request ) {
 		return current_user_can( 'manage_options' );
@@ -146,8 +148,8 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Prepare the item for the REST response
 	 *
-	 * @param mixed           $item    WordPress representation of the item.
-	 * @param WP_REST_Request $request Request object.
+	 * @param mixed            $item    WordPress representation of the item.
+	 * @param \WP_REST_Request $request Request object.
 	 *
 	 * @return mixed
 	 */

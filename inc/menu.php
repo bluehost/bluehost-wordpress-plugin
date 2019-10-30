@@ -11,6 +11,9 @@ function bluehost_preview_menu() {
 
 add_action( 'admin_menu', 'bluehost_preview_menu' );
 
+/**
+ * Callback for loading the theme preview page.
+ */
 function bluehost_theme_preview_page() {
 	?>
 	<style type="text/css">
@@ -34,7 +37,7 @@ function bluehost_theme_preview_page() {
 /**
  * Customize the admin bar.
  *
- * @param WP_Admin_Bar $admin_bar
+ * @param WP_Admin_Bar $admin_bar An instance of the WP_Admin_Bar class.
  */
 function bluehost_add_tool_bar_items( WP_Admin_Bar $admin_bar ) {
 	if ( current_user_can( 'manage_options' ) ) {
@@ -65,6 +68,9 @@ function bluehost_add_tool_bar_items( WP_Admin_Bar $admin_bar ) {
 
 add_action( 'admin_bar_menu', 'bluehost_add_tool_bar_items', 100 );
 
+/**
+ * Adds a 'Premium' link to the plugin installation screen.
+ */
 function bluehost_plugins_premium_link() {
 	?>
 	<script type="text/javascript">

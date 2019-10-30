@@ -1,8 +1,11 @@
 <?php
+
+namespace Bluehost\RestApi;
+
 /**
- * Class Bluehost Caching Controller
+ * Class CachingController
  */
-class Bluehost_Caching_Controller extends WP_REST_Controller {
+class CachingController extends \WP_REST_Controller {
 
 	/**
 	 * The namespace of this controller's route.
@@ -16,7 +19,8 @@ class Bluehost_Caching_Controller extends WP_REST_Controller {
 	 *
 	 * @since 4.7.0
 	 */
-	public function __construct() {}
+	public function __construct() {
+	}
 
 	/**
 	 * Registers the settings route
@@ -27,7 +31,7 @@ class Bluehost_Caching_Controller extends WP_REST_Controller {
 			$this->namespace,
 			'/caching',
 			[
-				'methods'             => WP_REST_Server::DELETABLE,
+				'methods'             => \WP_REST_Server::DELETABLE,
 				'callback'            => [ $this, 'purge_all' ],
 				'permission_callback' => [ $this, 'check_permission' ],
 			]
@@ -40,10 +44,10 @@ class Bluehost_Caching_Controller extends WP_REST_Controller {
 	 */
 	public function purge_all() {
 		if ( ! class_exists( 'Endurance_Page_Cache' ) ) {
-			return new WP_Error( 'epc_not_installed', __( 'Endurance Page Cache plugin is not installed.', 'bluehost-wordpress-plugin' ), array( 'status' => 500 ) );
+			return new \WP_Error( 'epc_not_installed', __( 'Endurance Page Cache plugin is not installed.', 'bluehost-wordpress-plugin' ), array( 'status' => 500 ) );
 		}
 
-		$epc = new Endurance_Page_Cache;
+		$epc = new \Endurance_Page_Cache();
 		$epc->purge_all();
 
 		return array(
@@ -56,11 +60,11 @@ class Bluehost_Caching_Controller extends WP_REST_Controller {
 	/**
 	 * Check permissions for route.
 	 *
-	 * @return bool
+	 * @return bool|\WP_Error
 	 */
 	public function check_permission() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new WP_Error( 'rest_forbidden_context', __( 'Sorry, you are not allowed to access this endpoint.', 'bluehost-wordpress-plugin' ), array( 'status' => rest_authorization_required_code() ) );
+			return new \WP_Error( 'rest_forbidden_context', __( 'Sorry, you are not allowed to access this endpoint.', 'bluehost-wordpress-plugin' ), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
