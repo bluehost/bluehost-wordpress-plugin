@@ -3,8 +3,12 @@
  * Plugin Name: Bluehost
  * Description: This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.
  * Version: 2.0
+ * Requires at least: 4.7
+ * Requires PHP: 5.6
  * Author: Bluehost
  * Author URI: https://www.bluehost.com/
+ * Text Domain: bluehost-wordpress-plugin
+ * Domain Path: /languages
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *
