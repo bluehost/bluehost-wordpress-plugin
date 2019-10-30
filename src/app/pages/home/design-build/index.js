@@ -36,7 +36,7 @@ const ThemesCard = () => (
 		title={ __( 'WordPress Themes', 'bluehost-wordpress-plugin' ) }
 		desc={ __( 'Browse themes to find one that inspires you!', 'bluehost-wordpress-plugin' ) }>
 		<Button
-			href={ baseUrl + '/wp-admin/admin.php?page=bluehost#/marketplace/themes' }
+			href={ baseUrl + 'admin.php?page=bluehost#/marketplace/themes' }
 			isDefault
 		>
 			{__('Premium Themes', 'bluehost-wordpress-plugin')}

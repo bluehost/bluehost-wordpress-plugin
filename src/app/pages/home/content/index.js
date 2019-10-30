@@ -64,7 +64,7 @@ const ProductsCard = () => {
 			title={ __( 'Sell Products', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Manage products in your online store.', 'bluehost-wordpress-plugin' ) }>
 			<Button
-				href={ baseUrl + 'customize.php?autofocus[panel]=nav_menus' }
+				href={ baseUrl + 'edit.php?post_type=product' }
 				isDefault
 			>
 				{ __('Manage Products', 'bluehost-wordpress-plugin')}

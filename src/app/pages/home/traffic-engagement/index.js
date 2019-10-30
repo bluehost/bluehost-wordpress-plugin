@@ -26,7 +26,7 @@ function SocialCard() {
 			title={ __( 'Social', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Add social sharing buttons so site visitors can share your content and help grow your traffic.', 'bluehost-wordpress-plugin' ) }>
 			<Button
-				href={ baseUrl + 'customize.php' }
+				href={ baseUrl + 'admin.php?page=jetpack#/sharing' }
 				isDefault
 			>
 				{__('Manage Social', 'bluehost-wordpress-plugin')}
@@ -45,7 +45,7 @@ function PublicizeCard() {
 			title={ __( 'Publicize', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Set your site to automatically share new content with your social networks.', 'bluehost-wordpress-plugin' ) }>
 			<Button
-				href={ baseUrl + 'themes.php' }
+				href={ baseUrl + 'admin.php?page=jetpack#/sharing' }
 				isDefault
 			>
 				{__('Set Sharing', 'bluehost-wordpress-plugin')}
@@ -65,7 +65,7 @@ function StatsCard() {
 			title={ __( 'Stats', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Learn which posts are the most popular and stay informed when your traffic surges.', 'bluehost-wordpress-plugin' ) }>
 			<Button
-				href={ baseUrl + 'themes.php' }
+				href={ baseUrl + 'admin.php?page=stats' }
 				isDefault
 			>
 				{__('View Stats', 'bluehost-wordpress-plugin')}
