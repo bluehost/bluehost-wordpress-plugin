@@ -1,5 +1,7 @@
 <?php
 
+use Bluehost\Staging;
+
 /**
  * Class Bluehost_Staging_Controller
  */
@@ -15,7 +17,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 	/**
 	 * An instance of the BluehostStaging class.
 	 *
-	 * @var BluehostStaging
+	 * @var Staging
 	 */
 	protected $staging;
 
@@ -23,7 +25,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 	 * Bluehost_Staging_Controller constructor.
 	 */
 	public function __construct() {
-		$this->staging = new BluehostStaging();
+		$this->staging = new Staging();
 	}
 
 	/**

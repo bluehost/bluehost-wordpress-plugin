@@ -1,5 +1,7 @@
 <?php
 
+use Bluehost\Staging;
+
 /**
  * Adds a hidden submenu page that is used for theme demos.
  */
@@ -13,12 +15,14 @@ function bluehost_theme_preview_page() {
 	?>
 	<style type="text/css">
 		.wp-full-overlay-sidebar .wp-full-overlay-header {
-			padding:15px;
+			padding: 15px;
 		}
-		.install-theme-info{
+
+		.install-theme-info {
 			display: block;
 		}
-		.wp-full-overlay-main iframe{
+
+		.wp-full-overlay-main iframe {
 			width: 100%;
 			height: 100%;
 		}
@@ -34,7 +38,7 @@ function bluehost_theme_preview_page() {
  */
 function bluehost_add_tool_bar_items( WP_Admin_Bar $admin_bar ) {
 	if ( current_user_can( 'manage_options' ) ) {
-		if ( bluehost_is_staging() ) {
+		if ( Staging::getInstance()->isStaging() ) {
 			$args = array(
 				'id'    => 'mojo-staging',
 				'href'  => admin_url( 'admin.php?page=bluehost#/tools/staging' ),

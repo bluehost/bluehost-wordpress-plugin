@@ -1,5 +1,7 @@
 <?php
 
+use  Bluehost\Staging;
+
 if ( ! class_exists( 'WP_CLI' ) ) {
 	return;
 }
@@ -12,126 +14,151 @@ if ( ! class_exists( 'WP_CLI' ) ) {
 class EIG_WP_CLI_Staging extends EIG_WP_CLI_Command {
 
 	/**
-	 * @var array - Subcommand actions used to create/modify staging environments.
-	 */
-	protected static $valid_actions = array(
-		'create',
-		'clone',
-		'destroy',
-		'sso_staging',
-		'deploy',
-		'deploy_files',
-		'deploy_db',
-		'deploy_files_db',
-		'save_state',
-		'restore_state',
-		'sso_production',
-	);
-	/**
 	 * Used internally to create staging environment.
 	 *
-	 * @param $args null
-	 * @param $assoc_args array
+	 * @param array $args       Command arguments
+	 * @param array $assoc_args Associative command arguments.
+	 *
 	 * @throws \WP_CLI\ExitException
 	 */
 	public function __invoke( $args, $assoc_args ) {
+
 		if ( ! is_array( $args ) || ! isset( $args[0] ) ) {
 			$this->error( 'No sub-command provided' );
 		}
-		if ( ! in_array( $args[0], static::$valid_actions ) ) {
-			$this->error( 'Invalid action' );
-		}
+
 		switch ( $args[0] ) {
+
 			case 'create':
-				set_transient( 'mm_fresh_staging', true, 300 );
-				$json_response = mm_cl( 'create' );
+				$this->render( Staging::getInstance()->createStaging() );
 				break;
 
 			case 'clone':
-				$json_response = mm_cl( 'clone' );
+				$this->render( Staging::getInstance()->cloneProductionToStaging() );
 				break;
 
 			case 'destroy':
-				$json_response = mm_cl( 'destroy' );
+				$this->render( Staging::getInstance()->destroyStaging() );
 				break;
 
 			case 'sso_staging':
-				$user = get_users(
-					array(
-						'role'   => 'administrator',
-						'number' => 1,
-					)
-				);
-				if ( is_array( $user ) && is_a( $user[0], 'WP_User' ) ) {
-					$user = $user[0];
-					$user = $user->ID;
+				$user_id = $this->get_admin_user_id();
+				if ( ! $user_id ) {
+					$this->error( 'Invalid user.' );
 				}
-				$json_response = mm_cl( 'sso_staging', array( $user ) );
+				$this->render( Staging::getInstance()->switchTo( 'staging', $user_id ) );
 				break;
 
 			case 'sso_production':
-				$user = get_users(
-					array(
-						'role'   => 'administrator',
-						'number' => 1,
-					)
-				);
-				if ( is_array( $user ) && is_a( $user[0], 'WP_User' ) ) {
-					$user = $user[0];
-					$user = $user->ID;
+				$user_id = $this->get_admin_user_id();
+				if ( ! $user_id ) {
+					$this->error( 'Invalid user.' );
 				}
-				$json_response = mm_cl( 'sso_production', array( $user ) );
+				$this->render( Staging::getInstance()->switchTo( 'production', $user_id ) );
 				break;
 
 			case 'deploy':
-				if ( ! isset( $args[1] ) || ! in_array( $args[1], array( 'files', 'db', 'database', 'all', 'both' ) ) ) {
-					$this->error( 'Invalid deploy type' );
-				}
-				if ( 'files' == $args[1] ) {
-					$json_response = mm_cl( 'deploy_files' );
-				}
-				if ( 'db' == $args[1] || 'database' == $args[1] ) {
-					$json_response = mm_cl( 'deploy_db' );
-				}
-				if ( 'all' == $args[1] || 'both' == $args[1] ) {
-					$json_response = mm_cl( 'deploy_files_db' );
+				$deploy_type = isset( $args[1] ) ? $args[1] : '';
+				switch ( $deploy_type ) {
+					case 'all':
+					case 'both':
+						$this->render( Staging::getInstance()->deployToProduction( 'all' ) );
+						break;
+					case 'db':
+					case 'database':
+						$this->render( Staging::getInstance()->deployToProduction( 'db' ) );
+						break;
+					case 'files':
+						$this->render( Staging::getInstance()->deployToProduction( 'files' ) );
+						break;
+					default:
+						$this->error( 'Invalid deploy type' );
 				}
 				break;
 
 			case 'deploy_files':
-				$json_response = mm_cl( 'deploy_files' );
+				$this->render( Staging::getInstance()->deployToProduction( 'files' ) );
 				break;
 
 			case 'deploy_db':
-				$json_response = mm_cl( 'deploy_db' );
+				$this->render( Staging::getInstance()->deployToProduction( 'db' ) );
 				break;
 
 			case 'deploy_files_db':
-				$json_response = mm_cl( 'deploy_files_db' );
+				$this->render( Staging::getInstance()->deployToProduction( 'all' ) );
 				break;
 
 			case 'save_state':
-				$json_response = mm_cl( 'save_state' );
+				$this->render( Staging::getInstance()->saveState() );
 				break;
 
 			case 'restore_state':
 				if ( ! isset( $assoc_args['revision'] ) ) {
 					$this->error( 'Revision not provided.' );
 				}
-				$json_response = mm_cl( 'restore_state', array( esc_attr( $assoc_args['revision'] ) ) );
+				$this->render( Staging::getInstance()->restoreState( esc_attr( $assoc_args['revision'] ) ) );
 				break;
-		}
-		$json_response = preg_replace( '/[^[:print:]]/', '', $json_response );
-		$json_response = str_replace( '[H[2J', '', $json_response );
 
-		if ( $response = json_decode( $json_response ) ) {
-			if ( 'success' == $response->status ) {
-				$this->success( $response->message );
-			} else {
-				$this->error( $response->message );
-			}
-		} else {
-			$this->error( 'Invalid JSON response' );
+			default:
+				$this->error( 'Invalid action' );
 		}
 	}
+
+	/**
+	 * Render a success or error message based on provided data.
+	 *
+	 * @param mixed $data The data from which to fetch the message.
+	 */
+	protected function render( $data ) {
+		$response = [
+			'status'  => 'error',
+			'message' => __( 'Invalid JSON response', 'bluehost-wordpress-plugin' ),
+		];
+		switch ( gettype( $data ) ) {
+			case 'string':
+				$decoded = json_decode( $data );
+				if ( $decoded && isset( $decoded['message'] ) ) {
+					$response = $decoded;
+				}
+				break;
+			case 'array':
+				$response = $data;
+				break;
+			case 'object':
+				if ( is_wp_error( $data ) ) {
+					$response['message'] = $data->message;
+				}
+				break;
+		}
+		if ( 'success' === $response['status'] ) {
+			$this->success( $response['message'] );
+		} else {
+			$this->error( $response['message'] );
+		}
+	}
+
+	/**
+	 * Get an admin user ID.
+	 *
+	 * @return int
+	 */
+	protected function get_admin_user_id() {
+
+		$user_id = 0;
+
+		$users = get_users(
+			[
+				'role'   => 'administrator',
+				'number' => 1,
+			]
+		);
+
+		if ( is_array( $users ) && is_a( $users[0], 'WP_User' ) ) {
+			$user    = $users[0];
+			$user_id = $user->ID;
+		}
+
+		return $user_id;
+	}
+
 }
