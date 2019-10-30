@@ -51,7 +51,7 @@ const ThemesCard = () => (
 );
 
 const DesignBuildSection = ( props ) => (
-	<HomeSection title="Design & Build" className="design">
+	<HomeSection title={ __('Design & Build', 'bluehost-wordpress-plugin') } className="design">
 		<CustomizerCard />
 		<ThemesCard />
 	</HomeSection>
