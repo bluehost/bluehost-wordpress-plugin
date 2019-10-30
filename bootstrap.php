@@ -49,7 +49,6 @@ require __DIR__ . '/inc/staging.php';
 require __DIR__ . '/inc/class-staging.php';
 require __DIR__ . '/inc/updates.php';
 require __DIR__ . '/inc/coming-soon.php';
-require __DIR__ . '/inc/tests.php';
 require __DIR__ . '/inc/track-last-login.php';
 require __DIR__ . '/inc/performance.php';
 require __DIR__ . '/inc/partners.php';
