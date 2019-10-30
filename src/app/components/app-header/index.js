@@ -63,7 +63,7 @@ const NavDropdown = () => (
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="https://my.bluehost.com/cgi/token">
                                 <span className="bluehost-nav-popup-nav-icon orange"><ValidationLogo/></span>
                                 <span className="bluehost-nav-popup-nav-text">
                                     {__('Validation Token', 'bluehost-wordpress-plugin')}
