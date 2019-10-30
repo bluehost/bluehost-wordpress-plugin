@@ -11,9 +11,17 @@
 #bluehost-logo-wrap {
   float: left;
   min-width: 148px;
-  padding: 28px 0 0 24px;
+  padding: 14px 0 0 12px;
   svg {
     max-height: 24px;
+  }
+  a {
+    display: block;
+    padding: 14px 12px;
+    &:focus {
+      box-shadow: none;
+      outline: 1px solid $color-black;
+    }
   }
 }
 
