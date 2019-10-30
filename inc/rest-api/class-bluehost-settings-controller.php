@@ -178,12 +178,4 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 		return true;
 	}
 
-	/**
-	 * Constructor.
-	 *
-	 * @since 4.7.0
-	 */
-	public function __construct() {
-	}
-
 }
