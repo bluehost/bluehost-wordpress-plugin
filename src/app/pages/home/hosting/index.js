@@ -12,8 +12,6 @@ import { AppButton as Button } from '@/components';
 import HomeSection from '../home-section';
 import HomeSectionRow from '../home-section-row';
 
-const baseUrl = location.origin + '/wp-admin/';
-
 const ManageMySitesCard = () => (
 	<HomeSectionRow
 		icon="desktop"
