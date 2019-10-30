@@ -37,7 +37,7 @@ export default function ProductDetails({id}) {
         return (
             <div>
                 <ErrorStateImage/>
-                <p>Oops! Something went wrong.</p>;
+                <p>{__('Oops! Something went wrong.', 'bluehost-wordpress-plugin')}</p>;
             </div>
         );
     }
