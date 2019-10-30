@@ -5,10 +5,12 @@
  * @package BluehostWordPressPlugin
  */
 
+namespace Bluehost;
+
 /**
- * Class Bluehost_Site_Meta
+ * Class SiteMeta
  */
-class Bluehost_Site_Meta {
+class SiteMeta {
 
 	/**
 	 * Get the domain for the WordPress installation.

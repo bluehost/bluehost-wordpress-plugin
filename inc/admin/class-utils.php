@@ -1,5 +1,7 @@
 <?php
 
+use Bluehost\SiteMeta;
+
 /**
  * Class Bluehost_Admin_App_Utils
  */
@@ -41,6 +43,6 @@ class Bluehost_Admin_App_Utils {
 	 * @return string
 	 */
 	public static function get_bluehost_site_id() {
-		return Bluehost_Site_Meta::get_id();
+		return SiteMeta::get_id();
 	}
 }

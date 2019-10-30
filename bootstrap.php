@@ -35,9 +35,6 @@ require __DIR__ . '/inc/admin.php';
 require __DIR__ . '/inc/admin-page-notifications-blocker.php';
 require __DIR__ . '/inc/base.php';
 require __DIR__ . '/inc/checkout.php';
-require __DIR__ . '/inc/class-access-token.php';
-require __DIR__ . '/inc/class-response-utilities.php';
-require __DIR__ . '/inc/class-site-meta.php';
 require __DIR__ . '/inc/cli-init.php';
 require __DIR__ . '/inc/coming-soon.php';
 require __DIR__ . '/inc/jetpack.php';
@@ -55,5 +52,5 @@ require __DIR__ . '/inc/rest-api/rest-api.php';
 
 if ( is_admin() ) {
 	// Keep the Bluehost API access token fresh.
-	add_action( 'shutdown', array( 'Bluehost_Access_Token', 'maybe_refresh_token' ) );
+	add_action( 'shutdown', array( 'Bluehost\\AccessToken', 'maybe_refresh_token' ) );
 }

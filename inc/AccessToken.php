@@ -8,12 +8,17 @@
 // phpcs:disable PHPCompatibility.FunctionUse.NewFunctions.random_bytesFound -- WordPress provides a fallback for this function.
 // phpcs:disable WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- We use this for security reasons.
 
+namespace Bluehost;
+
+use Bluehost\ResponseUtilities;
+use Bluehost\SiteMeta;
+
 /**
- * Class Bluehost_Access_Token
+ * Class AccessToken
  *
- * @uses Bluehost_Response_Utilities, Bluehost_Site_Meta
+ * @uses ResponseUtilities, SiteMeta
  */
-class Bluehost_Access_Token {
+class AccessToken {
 
 	/**
 	 * Check if an access token is stored.
@@ -61,8 +66,8 @@ class Bluehost_Access_Token {
 	 */
 	public static function request_token() {
 
-		$domain  = Bluehost_Site_Meta::get_domain();
-		$site_id = Bluehost_Site_Meta::get_id();
+		$domain  = SiteMeta::get_domain();
+		$site_id = SiteMeta::get_id();
 
 		$hashing_algorithm    = 'sha256';
 		$transient_name       = 'authorizations_' . base64_encode( random_bytes( 12 ) );
@@ -100,14 +105,14 @@ class Bluehost_Access_Token {
 	public static function refresh_token() {
 		try {
 			$response = self::request_token();
-			$data     = Bluehost_Response_Utilities::parse_json_response( $response );
+			$data     = ResponseUtilities::parse_json_response( $response );
 			if ( isset( $data['access_token'], $data['expires_in'] ) ) {
 				$token      = $data['access_token'];
 				$expires_in = (int) $data['expires_in'];
-				$timestamp  = Bluehost_Response_Utilities::get_response_timestamp( $response );
+				$timestamp  = ResponseUtilities::get_response_timestamp( $response );
 				self::set_token( $token, $timestamp + $expires_in );
 			}
-		} catch ( Exception $e ) {
+		} catch ( \Exception $e ) {
 			trigger_error( $e->getMessage() ); // phpcs:ignore
 		}
 	}
