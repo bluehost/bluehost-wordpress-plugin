@@ -28,7 +28,7 @@ const HeaderLogo = () => (
 const HeaderIcons = () => (
 	<div id="bluehost-nav-wrap">
 		<div className="bluehost-nav-wrap-element help">
-			<a href="https://my.bluehost.com/hosting/help"><HelpIcon /></a>
+			<a href="https://my.bluehost.com/hosting/help" target="_blank"><HelpIcon /></a>
 		</div>
 		<DesktopDropdown />
 		<MobileSidebar />
