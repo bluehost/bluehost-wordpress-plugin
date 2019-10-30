@@ -31,32 +31,27 @@ if ( is_admin() ) {
 }
 
 // Require files
+require __DIR__ . '/inc/admin.php';
+require __DIR__ . '/inc/admin-page-notifications-blocker.php';
+require __DIR__ . '/inc/base.php';
+require __DIR__ . '/inc/checkout.php';
 require __DIR__ . '/inc/class-access-token.php';
 require __DIR__ . '/inc/class-response-utilities.php';
 require __DIR__ . '/inc/class-site-meta.php';
-require __DIR__ . '/inc/admin.php';
-require __DIR__ . '/inc/base.php';
-require __DIR__ . '/inc/checkout.php';
-require __DIR__ . '/inc/menu.php';
-require __DIR__ . '/inc/shortcode-generator.php';
-require __DIR__ . '/inc/mojo-themes.php';
-require __DIR__ . '/inc/styles.php';
-require __DIR__ . '/inc/plugin-search.php';
-require __DIR__ . '/inc/jetpack.php';
-require __DIR__ . '/inc/user-experience-tracking.php';
-require __DIR__ . '/inc/updates.php';
+require __DIR__ . '/inc/cli-init.php';
 require __DIR__ . '/inc/coming-soon.php';
-require __DIR__ . '/inc/track-last-login.php';
-require __DIR__ . '/inc/performance.php';
+require __DIR__ . '/inc/jetpack.php';
+require __DIR__ . '/inc/menu.php';
+require __DIR__ . '/inc/mojo-themes.php';
 require __DIR__ . '/inc/partners.php';
+require __DIR__ . '/inc/performance.php';
+require __DIR__ . '/inc/plugin-search.php';
+require __DIR__ . '/inc/shortcode-generator.php';
+require __DIR__ . '/inc/styles.php';
+require __DIR__ . '/inc/track-last-login.php';
+require __DIR__ . '/inc/updates.php';
+require __DIR__ . '/inc/user-experience-tracking.php';
 require __DIR__ . '/inc/rest-api/rest-api.php';
-
-// Check proper PHP and bring CLI loader online
-if ( version_compare( PHP_VERSION, '5.3.29' ) >= 0 ) {
-	require __DIR__ . '/inc/cli-init.php';
-}
-
-mm_require( __DIR__ . '/inc/admin-page-notifications-blocker.php' );
 
 if ( is_admin() ) {
 	// Keep the Bluehost API access token fresh.
