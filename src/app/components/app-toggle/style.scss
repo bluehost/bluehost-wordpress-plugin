@@ -1,9 +1,10 @@
 .onoffswitch {
+    float: right;
     position: relative;
 	width: 61px;
     -webkit-user-select:none;
 	-moz-user-select:none;
-	-ms-user-select: none;
+    -ms-user-select: none;
 }
 input[type=checkbox].onoffswitch-checkbox {
 	position: absolute;
