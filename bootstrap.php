@@ -1,5 +1,6 @@
 <?php
 
+use Bluehost\UpgradeHandler;
 use Endurance_WP_Plugin_Updater\Updater;
 
 // Define constants
@@ -17,9 +18,7 @@ if ( is_admin() ) {
 	new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php' );
 
 	// Handle plugin upgrades
-	require __DIR__ . '/inc/upgrade-handler.php';
-
-	$upgrade_handler = new Bluehost_Upgrade_Handler(
+	$upgrade_handler = new UpgradeHandler(
 		__DIR__ . '/upgrades',
 		get_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION ),
 		BLUEHOST_PLUGIN_VERSION

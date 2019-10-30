@@ -1,11 +1,13 @@
 <?php
 
+namespace Bluehost;
+
 /**
- * Class Bluehost_Upgrade_Handler
+ * Class UpgradeHandler
  *
  * Responsible for managing upgrade routines.
  */
-class Bluehost_Upgrade_Handler {
+class UpgradeHandler {
 
 	/**
 	 * The previous version.
