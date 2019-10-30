@@ -1,12 +1,14 @@
 <?php
 /**
  * This file tracks basic user actions to improve the user experience.
+ *
+ * @package bluehost-wordpress-plugin
  */
 
 /**
  * Log customer lifecycle management actions.
  *
- * @param string $name Event name
+ * @param string $name       Event name
  * @param array  $properties Event properties
  */
 function mm_clm_log( $name, $properties = array() ) {
@@ -54,7 +56,7 @@ function mm_clm_log( $name, $properties = array() ) {
  *
  * @param string   $new_status New post status.
  * @param string   $old_status Old post status.
- * @param \WP_Post $post WP_Post object.
+ * @param \WP_Post $post       WP_Post object.
  */
 function mm_clm_log_content_status( $new_status, $old_status, $post ) {
 	$status = array( 'draft', 'pending', 'publish', 'new', 'future', 'private', 'trash' );

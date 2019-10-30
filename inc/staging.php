@@ -1,10 +1,26 @@
 <?php
-if ( ! defined( 'WPINC' ) ) { die; }
 
-function bluehost_is_staging() {
-	return ( get_option( 'staging_environment' ) == 'staging' ) ? true : false;
+if ( ! defined( 'WPINC' ) ) {
+	die;
 }
 
+/**
+ * Checks if current environment is staging.
+ *
+ * @return bool
+ */
+function bluehost_is_staging() {
+	return ( get_option( 'staging_environment' ) === 'staging' ) ? true : false;
+}
+
+/**
+ * Run a staging CLI command.
+ *
+ * @param string     $command Command to be run.
+ * @param array|null $args    Command arguments to be passed.
+ *
+ * @return string
+ */
 function mm_cl( $command, $args = null ) {
 	$whitelist_commands = array(
 		'create'          => false,
@@ -22,7 +38,7 @@ function mm_cl( $command, $args = null ) {
 	);
 
 	if ( ! array_key_exists( $command, $whitelist_commands ) ) {
-		echo json_encode(
+		echo wp_json_encode(
 			array(
 				'status'  => 'error',
 				'message' => 'Command not found in whitelist.',
@@ -34,7 +50,7 @@ function mm_cl( $command, $args = null ) {
 		}
 	}
 
-	if ( 'compat_check' != $command && 'revisions' != $command ) {
+	if ( 'compat_check' !== $command && 'revisions' !== $command ) {
 		do_action( 'mm_staging_command', $command );
 	}
 
@@ -43,8 +59,8 @@ function mm_cl( $command, $args = null ) {
 	set_transient( 'staging_auth_token', $token, 60 );
 	$command[] = $token;
 	$config    = get_option( 'staging_config' );
-	if ( false == $config || ! isset( $config['production_dir'] ) || ! isset( $config['staging_dir'] ) ) {
-		$staging_rel = 'staging/' . mt_rand( 1000, 9999 );
+	if ( false === $config || ! isset( $config['production_dir'] ) || ! isset( $config['staging_dir'] ) ) {
+		$staging_rel = 'staging/' . wp_rand( 1000, 9999 );
 		$config      = array(
 			'production_dir' => ABSPATH,
 			'staging_dir'    => ABSPATH . $staging_rel . '/',
@@ -70,7 +86,7 @@ function mm_cl( $command, $args = null ) {
 	$command = implode( ' ', $command );
 
 	if ( false !== strpos( $command, ';' ) ) {
-		echo json_encode(
+		echo wp_json_encode(
 			array(
 				'status'  => 'error',
 				'message' => 'Invalid character in command (;).',
@@ -80,7 +96,7 @@ function mm_cl( $command, $args = null ) {
 	}
 
 	if ( false !== strpos( $command, '&' ) ) {
-		echo json_encode(
+		echo wp_json_encode(
 			array(
 				'status'  => 'error',
 				'message' => 'Invalid character in command (&).',
@@ -90,7 +106,7 @@ function mm_cl( $command, $args = null ) {
 	}
 
 	if ( false !== strpos( $command, '|' ) ) {
-		echo json_encode(
+		echo wp_json_encode(
 			array(
 				'status'  => 'error',
 				'message' => 'Invalid character in command (|).',
@@ -101,27 +117,34 @@ function mm_cl( $command, $args = null ) {
 
 	$script = MM_BASE_DIR . 'lib/.staging';
 
-	if ( 0755 != (int) substr( sprintf( '%o', fileperms( $script ) ), -4 ) ) {
+	if ( 0755 != (int) substr( sprintf( '%o', fileperms( $script ) ), - 4 ) ) { // phpcs:ignore
 		chmod( $script, 0755 );
 	}
 
-	putenv( 'PATH=' . getenv( 'PATH' ) . PATH_SEPARATOR . '/usr/local/bin' );
+	putenv( 'PATH=' . getenv( 'PATH' ) . PATH_SEPARATOR . '/usr/local/bin' ); // phpcs:ignore
 
-	$response = exec( $script . ' ' . $command );
+	$response = exec( $script . ' ' . $command ); // phpcs:ignore
 
 	return $response;
 }
 
+/**
+ * Check if the environment context is valid.
+ *
+ * @param string $env Environment name.
+ *
+ * @return bool|string
+ */
 function mm_check_env( $env ) {
 	$current_env = get_option( 'staging_environment', false );
-	if ( $env == $current_env ) {
+	if ( $env === $current_env ) {
 		return true;
 	} else {
 		$response = array(
 			'status'  => 'error',
 			'message' => 'Invalid environment for command.',
 		);
-		echo json_encode( $response );
+		echo wp_json_encode( $response );
 		die;
 	}
 }

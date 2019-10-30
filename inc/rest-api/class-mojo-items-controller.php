@@ -71,7 +71,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	/**
 	 * Get the REST response from the Mojo API response.
 	 *
-	 * @param array|\WP_Error $api_response
+	 * @param array|\WP_Error $api_response API response from Mojo to be converted.
 	 *
 	 * @return array
 	 */
@@ -140,11 +140,7 @@ class Mojo_Items_Controller extends WP_REST_Controller {
 	 * @return WP_Error|bool
 	 */
 	public function get_items_permissions_check( $request ) {
-		return true;
-
-		// We don't want these endpoints to be publicly queryable.
-		// This would make it easy to DDoS any bluehost site.
-		return current_user_can( 'edit_post' );
+		return current_user_can( 'manage_options' );
 	}
 
 	/**

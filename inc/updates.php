@@ -1,8 +1,16 @@
 <?php
-/*
-	Auto Update Major on New Installs and default for all other with a setting section to customize.
-*/
+/**
+ * Auto Update Major on New Installs and default for all other with a setting section to customize.
+ *
+ * @package bluehost-wordpress-plugin
+ */
 
+/**
+ * @param      $value
+ * @param bool $default
+ *
+ * @return bool
+ */
 function mm_auto_update_make_bool( $value, $default = true ) {
 	if ( 'false' === $value ) {
 		$value = false;
@@ -13,6 +21,7 @@ function mm_auto_update_make_bool( $value, $default = true ) {
 	if ( true !== $value && false !== $value ) {
 		$value = $default;
 	}
+
 	return $value;
 }
 
@@ -98,6 +107,7 @@ function mm_auto_update_register_settings() {
 	);
 	register_setting( 'general', 'auto_update_translation' );
 }
+
 add_action( 'admin_init', 'mm_auto_update_register_settings' );
 
 function mm_auto_update_configure() {
@@ -140,4 +150,5 @@ function mm_auto_update_configure() {
 		}
 	}
 }
+
 add_action( 'plugins_loaded', 'mm_auto_update_configure', 5 );

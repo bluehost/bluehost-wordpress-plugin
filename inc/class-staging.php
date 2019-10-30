@@ -1,5 +1,7 @@
 <?php
 
+// phpcs:disable WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid, WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase
+
 /**
  * Class BluehostStaging
  */
@@ -8,12 +10,14 @@ class BluehostStaging {
 	/**
 	 * Get the staging configuration.
 	 *
+	 * @param bool $cache Whether or not to hit the cached config on this function call.
+	 *
 	 * @return array
 	 */
 	public function getConfig( $cache = true ) {
 		static $config;
 
-		if ( ! isset( $config ) || $cache === false ) {
+		if ( ! isset( $config ) || false === $cache ) {
 			$config = get_option( 'staging_config', [] );
 		}
 
@@ -30,7 +34,7 @@ class BluehostStaging {
 	 *  - staging_url
 	 *  - creation_date
 	 *
-	 * @param string $key
+	 * @param string $key     Configuration name.
 	 * @param string $default Return value if key doesn't exist.
 	 *
 	 * @return string
@@ -98,8 +102,8 @@ class BluehostStaging {
 	/**
 	 * Get production screenshot URL.
 	 *
-	 * @param int $width
-	 * @param int $height
+	 * @param int $width  Screenshot width.
+	 * @param int $height Screenshot height.
 	 *
 	 * @return string
 	 */
@@ -110,8 +114,8 @@ class BluehostStaging {
 	/**
 	 * Get staging screenshot URL.
 	 *
-	 * @param int $width
-	 * @param int $height
+	 * @param int $width  Screenshot width.
+	 * @param int $height Screenshot height.
 	 *
 	 * @return string
 	 */
@@ -122,7 +126,7 @@ class BluehostStaging {
 	/**
 	 * Check if the current environment matches a specific value.
 	 *
-	 * @param string $env
+	 * @param string $env Environment name (production or staging).
 	 *
 	 * @return bool
 	 */
@@ -203,7 +207,7 @@ class BluehostStaging {
 	/**
 	 * Deploy changes from staging to production.
 	 *
-	 * @param string $type
+	 * @param string $type Deployment type. One of `db`, `files`, or `all`.
 	 *
 	 * @return array|WP_Error
 	 */
@@ -237,7 +241,7 @@ class BluehostStaging {
 	/**
 	 * Switch to a different environment.
 	 *
-	 * @param string $env
+	 * @param string $env Environment name (staging or production).
 	 *
 	 * @return array|WP_Error
 	 */
@@ -259,8 +263,8 @@ class BluehostStaging {
 	/**
 	 * Execute a staging CLI command.
 	 *
-	 * @param string     $command
-	 * @param array|null $args
+	 * @param string     $command CLI command to be run.
+	 * @param array|null $args    CLI command arguments to be passed.
 	 *
 	 * @return array|WP_Error
 	 */
@@ -292,9 +296,9 @@ class BluehostStaging {
 		$config = $this->getConfig();
 
 		// If config is empty, then we are creating a staging environment.
-		if ( empty( $config ) || $command === 'create' ) {
+		if ( empty( $config ) || 'create' === $command ) {
 
-			$uniqueId = mt_rand( 1000, 9999 );
+			$uniqueId = wp_rand( 1000, 9999 );
 
 			$config = [
 				'creation_date'  => date( 'M j, Y' ),
@@ -333,6 +337,7 @@ class BluehostStaging {
 			if ( false !== strpos( $command, $char ) ) {
 				return new WP_Error(
 					'invalid_character',
+					// translators: Invalid character that was entered
 					sprintf( __( 'Invalid character (%s) in command.', 'bluehost-wordpress-plugin' ), $char )
 				);
 			}
@@ -341,13 +346,13 @@ class BluehostStaging {
 		$script = MM_BASE_DIR . 'lib/.staging';
 
 		// Verify staging script file permissions
-		if ( 0755 != (int) substr( sprintf( '%o', fileperms( $script ) ), - 4 ) ) {
+		if ( 0755 != (int) substr( sprintf( '%o', fileperms( $script ) ), - 4 ) ) { // phpcs:ignore
 			chmod( $script, 0755 );
 		}
 
-		putenv( 'PATH=' . getenv( 'PATH' ) . PATH_SEPARATOR . '/usr/local/bin' );
+		putenv( 'PATH=' . getenv( 'PATH' ) . PATH_SEPARATOR . '/usr/local/bin' ); // phpcs:ignore
 
-		$json = exec( "{$script} {$command}" );
+		$json = exec( "{$script} {$command}" ); // phpcs:ignore
 
 		// Check if we can properly decode the JSON
 		$response = json_decode( $json, true );

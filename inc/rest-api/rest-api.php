@@ -33,6 +33,8 @@ function bluehost_init_rest_api() {
 
 	foreach ( $controllers as $controller ) {
 		/**
+		 * Get an instance of the WP_REST_Controller.
+		 *
 		 * @var $instance WP_REST_Controller
 		 */
 		$instance = new $controller();

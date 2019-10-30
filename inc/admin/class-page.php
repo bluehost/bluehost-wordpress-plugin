@@ -1,12 +1,15 @@
 <?php
+
 /**
  * Class Bluehost_Admin_App_Page
  */
 class Bluehost_Admin_App_Page {
+
 	/**
 	 * @var stdClass
 	 */
 	protected static $instance;
+
 	/**
 	 * Subpage Titles (get lowercased for slugs)
 	 *
@@ -20,8 +23,8 @@ class Bluehost_Admin_App_Page {
 		'Staging',
 		'Settings',
 	);
+
 	/**
-	 *
 	 * @return Bluehost_Admin_App_Page|stdClass
 	 */
 	public static function return_instance() {
@@ -29,8 +32,10 @@ class Bluehost_Admin_App_Page {
 			self::$instance = new Bluehost_Admin_App_Page();
 			self::$instance->primary_init();
 		}
+
 		return self::$instance;
 	}
+
 	/**
 	 * Register Bluehost Page & Subpages with WordPress.
 	 */
@@ -38,6 +43,7 @@ class Bluehost_Admin_App_Page {
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
 		add_action( 'admin_menu', array( $this, 'add_sub_pages' ) );
 	}
+
 	/**
 	 * Register Primary WordPress Admin Page for Admin App
 	 *
@@ -54,6 +60,7 @@ class Bluehost_Admin_App_Page {
 			1
 		);
 	}
+
 	/**
 	 * The React-powered Single-Page Applications initializes on #bluehost-app, replacing all inner elements.
 	 * However, until initialization begins, #app-loader is shown so user knows something is happening.
@@ -105,6 +112,9 @@ class Bluehost_Admin_App_Page {
 		// TODO: Add button to go to Plugin Home
 	}
 
+	/**
+	 * @return string
+	 */
 	public function primary_title_markup() {
 		$bubble_count = apply_filters( 'bluehost_menu_bubble_count', 0 );
 

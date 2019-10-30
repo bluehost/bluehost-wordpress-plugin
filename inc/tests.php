@@ -1,10 +1,13 @@
 <?php
+
 function mm_ab_test_inclusion( $test_name, $key, $audience = 10, $duration = WEEK_IN_SECONDS ) {
 	if ( false === ( $test = get_transient( 'mm_test', false ) ) ) {
 
 		$previous_tests = get_option( 'mm_previous_tests', array() );
 
-		if ( in_array( $test_name, $previous_tests ) ) { return false; }
+		if ( in_array( $test_name, $previous_tests ) ) {
+			return false;
+		}
 
 		$score = mt_rand( 0, 99 );
 
@@ -19,11 +22,13 @@ function mm_ab_test_inclusion( $test_name, $key, $audience = 10, $duration = WEE
 			);
 			$previous_tests[] = $test_name;
 			update_option( 'mm_previous_tests', $previous_tests );
+
 			return true;
 		}
 	} elseif ( $test['key'] === $key ) {
 		return true;
 	}
+
 	return false;
 }
 
@@ -33,6 +38,7 @@ function mm_ab_test_inclusion_none() {
 		set_transient( 'mm_test', array( 'key' => 'none' ), $duration );
 	}
 }
+
 add_action( 'admin_footer', 'mm_ab_test_inclusion_none', 99 );
 
 function mm_ab_test_file( $test_name, $file, $original, $test, $audience = 10, $duration = WEEK_IN_SECONDS ) {
@@ -45,6 +51,7 @@ function mm_ab_test_file( $test_name, $file, $original, $test, $audience = 10, $
 			$file = $test_file;
 		}
 	}
+
 	return $file;
 }
 
@@ -53,6 +60,7 @@ function mm_ab_test_content( $test_name, $original, $test, $audience = 10, $dura
 	if ( mm_ab_test_inclusion( $test_name, $key, $audience, $duration ) ) {
 		return $test;
 	}
+
 	return $original;
 }
 
@@ -81,4 +89,4 @@ add_filter( 'mm_themes_accepted_categories', 'mm_themes_categories' );
 */
 
 /* Start individual tests */
-mm_require( MM_BASE_DIR . 'tests/loader.php' );
+//mm_require( MM_BASE_DIR . 'tests/loader.php' );

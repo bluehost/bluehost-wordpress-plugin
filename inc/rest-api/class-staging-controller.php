@@ -78,7 +78,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 							'default'           => 'all',
 							'enum'              => [ 'all', 'db', 'files' ],
 							'validate_callback' => function ( $value ) {
-								return in_array( $value, [ 'all', 'db', 'files' ] );
+								return in_array( $value, [ 'all', 'db', 'files' ], true );
 							},
 						],
 					],
@@ -99,7 +99,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 							'required'          => true,
 							'enum'              => [ 'staging', 'production' ],
 							'validate_callback' => function ( $value ) {
-								return in_array( $value, [ 'staging', 'production' ] );
+								return in_array( $value, [ 'staging', 'production' ], true );
 							},
 						],
 					],
@@ -157,7 +157,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 	/**
 	 * Deploy files and/or database from staging to production.
 	 *
-	 * @param WP_REST_Request $request
+	 * @param WP_REST_Request $request WordPress HTTP request model.
 	 *
 	 * @return WP_REST_Response
 	 */
@@ -198,7 +198,7 @@ class Bluehost_Staging_Controller extends WP_REST_Controller {
 	/**
 	 * Switch to the production environment.
 	 *
-	 * @param WP_REST_Request $request
+	 * @param WP_REST_Request $request WordPress HTTP request model.
 	 *
 	 * @return WP_REST_Response
 	 */

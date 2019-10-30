@@ -1,20 +1,25 @@
 <?php
+
 /**
  * Bluehost_Admin_App_Assets class
  */
 class Bluehost_Admin_App_Assets {
+
 	/**
 	 * @var string
 	 */
 	protected $page_hook = 'bluehost';
+
 	/**
 	 * @var string
 	 */
 	protected $current_admin_hook;
+
 	/**
 	 * @var stdClass
 	 */
 	protected static $instance;
+
 	/**
 	 * @var array
 	 */
@@ -28,12 +33,12 @@ class Bluehost_Admin_App_Assets {
 		'wp-components',
 		'react-router-dom',
 	);
+
 	/**
-	 * Undocumented function
-	 *
-	 * @return void
+	 * @var string $url
 	 */
 	protected $url;
+
 	/**
 	 * @return Bluehost_Admin_App_Assets|stdClass
 	 */
@@ -42,8 +47,10 @@ class Bluehost_Admin_App_Assets {
 			self::$instance = new Bluehost_Admin_App_Assets();
 			self::$instance->primary_init();
 		}
+
 		return self::$instance;
 	}
+
 	/**
 	 *
 	 */
@@ -54,10 +61,14 @@ class Bluehost_Admin_App_Assets {
 		// border: 0px transparent !important;
 		// }</style>
 		$this->url = trailingslashit( MM_BASE_URL ) . 'assets/';
-		add_action( 'admin_enqueue_scripts', array( $this, 'regsiter_global_assets' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_global_assets' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ) );
 	}
-	public function regsiter_global_assets() {
+
+	/**
+	 * Register global assets.
+	 */
+	public function register_global_assets() {
 		$min  = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 		$rand = time();
 		wp_register_style(
@@ -123,8 +134,9 @@ class Bluehost_Admin_App_Assets {
 		wp_enqueue_style( 'bluehost-admin-global' );
 
 	}
+
 	/**
-	 * @param $hook
+	 * @param string $hook Hook name.
 	 */
 	public function register_assets( $hook ) {
 		$this->current_admin_hook = $hook;
@@ -133,8 +145,11 @@ class Bluehost_Admin_App_Assets {
 			$this->page_js( $this->url );
 		}
 	}
+
 	/**
-	 * Register Page CSS Here
+	 * Register Page CSS
+	 *
+	 * @param string $assets_url Base assets URL.
 	 */
 	protected function page_css( $assets_url ) {
 		wp_register_style(
@@ -145,8 +160,11 @@ class Bluehost_Admin_App_Assets {
 		);
 		wp_enqueue_style( 'eig-wp-admin-ui-styles' );
 	}
+
 	/**
-	 * Register Page JS Here
+	 * Register Page JS
+	 *
+	 * @param string $dist_url Base distribution URL.
 	 */
 	protected function page_js( $dist_url ) {
 		wp_register_script(

@@ -7,14 +7,14 @@
  *
  * @return array
  */
-function mm_customize_jetpack_default_modules( $modules ) {
+function bluehost_customize_jetpack_default_modules( $modules ) {
 	$modules[] = 'photon';
 	$modules[] = 'sso';
 
 	return array_unique( $modules );
 }
 
-add_filter( 'jetpack_get_default_modules', 'mm_customize_jetpack_default_modules' );
+add_filter( 'jetpack_get_default_modules', 'bluehost_customize_jetpack_default_modules' );
 
 /**
  * Unregister the MailChimp block.
@@ -23,7 +23,7 @@ add_filter( 'jetpack_get_default_modules', 'mm_customize_jetpack_default_modules
  *
  * @return array
  */
-function mm_jetpack_unregister_mailchimp_block( $blocks ) {
+function bluehost_jetpack_unregister_mailchimp_block( $blocks ) {
 	$found = array_search( 'mailchimp', $blocks, true );
 	if ( false !== $found ) {
 		unset( $blocks[ $found ] );
@@ -32,4 +32,4 @@ function mm_jetpack_unregister_mailchimp_block( $blocks ) {
 	return $blocks;
 }
 
-add_filter( 'jetpack_set_available_blocks', 'mm_jetpack_unregister_mailchimp_block' );
+add_filter( 'jetpack_set_available_blocks', 'bluehost_jetpack_unregister_mailchimp_block' );

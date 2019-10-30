@@ -85,7 +85,7 @@ class Bluehost_Upgrade_Handler {
 	/**
 	 * Get a collection of the required upgrade routines.
 	 *
-	 * @param array $available_routines
+	 * @param array $available_routines A collection of available upgrade routines.
 	 *
 	 * @return array A collection of filepaths indexed by versions.
 	 */
@@ -115,7 +115,7 @@ class Bluehost_Upgrade_Handler {
 	/**
 	 * Filter to find the versions for which we need to run an upgrade routine.
 	 *
-	 * @param string $version
+	 * @param string $version The current version.
 	 *
 	 * @return bool Whether or not to keep the routine.
 	 */

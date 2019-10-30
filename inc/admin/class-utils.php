@@ -1,8 +1,11 @@
 <?php
 
+/**
+ * Class Bluehost_Admin_App_Utils
+ */
 class Bluehost_Admin_App_Utils {
 	/**
-	 * Subpage Titles (get lowercased for slugs)
+	 * Subpage Titles (get lowercase for slugs)
 	 *
 	 * @var array
 	 */
@@ -15,6 +18,9 @@ class Bluehost_Admin_App_Utils {
 		'Settings',
 	);
 
+	/**
+	 * @return array
+	 */
 	public static function get_app_menu() {
 		$pages = self::$subpages;
 		if ( ! self::is_php_7() ) {
@@ -24,11 +30,17 @@ class Bluehost_Admin_App_Utils {
 		return $pages;
 	}
 
+	/**
+	 * @return bool
+	 */
 	public static function is_php_7() {
 		return version_compare( phpversion(), '7.0.0' ) >= 0;
 	}
 
+	/**
+	 * @return string
+	 */
 	public static function get_bluehost_site_id() {
-		return Bluehost_Site_ID::get();
+		return Bluehost_Site_Meta::get_id();
 	}
 }
