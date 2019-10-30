@@ -16,7 +16,7 @@ const Comments = ({ oldPostComments, closeInterval, perPage, toggleSetting, upda
 	const commentsLabel = (<span>{sprintf( _n( 'Close comments after %d day', 'Close comments after %d days', closeInterval, 'bluehost-wordpress-plugin' ), closeInterval )}</span>);
 	const commentsPageLabel = ( <span>{sprintf( _n( 'Display %d comment per page', 'Display %d comments per page', perPage, 'bluehost-wordpress-plugin' ), perPage )}</span> );
 	return (
-		<div className="settings-section site-controls pure-u-1 pure-u-lg-3-8">
+		<div className="settings-section comments pure-u-1 pure-u-lg-3-8">
 			<h2>{__( 'Comments', 'bluehost-wordpress-plugin' )}</h2>
 			<SettingsGroup>
 				<SettingsToggle

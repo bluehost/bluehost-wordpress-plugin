@@ -15,7 +15,7 @@ const Content = ({ revisions, trashInterval, updateSetting }) => {
 	const trashWeeks = Math.floor( trashInterval / 7 );
 	const trashLabel = ( <span>{sprintf( _n( 'Empty my trash every %d week', 'Empty my trash every %d weeks', trashWeeks,'bluehost-wordpress-plugin' ), trashWeeks )}</span> );
 	return (
-		<div className="settings-section site-controls pure-u-1 pure-u-lg-3-8">
+		<div className="settings-section content pure-u-1 pure-u-lg-3-8">
 			<h2>{__('Content', 'bluehost-wordpress-plugin')}</h2>
 			<SettingsGroup>
 				<SettingsSelect
