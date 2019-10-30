@@ -31,39 +31,46 @@ const CacheLevelSelector = ( { value, cacheLevel, label, desc } ) => {
 	);
 }
 
-const SettingsPerformance = ( { cacheEnabled, cacheLevel, toggleSetting } ) => {
-	const cacheLevelClass = ( cacheEnabled ) ? '' : 'hidden';
+const SettingsPerformance = ( { cacheLevel, updateSetting } ) => {
+	const cachingEnabled = ( cacheLevel > 0 );
+	const cachingClass = ( cachingEnabled ) ? '' : 'hidden';
+	const toggleCaching = () => {
+		const newLevel = ( cachingEnabled ) ? 0 : 2;
+		updateSetting( 'cacheLevel', newLevel );
+	}
 	return (
 		<SettingsSection name="Performance" className="pure-u-lg-19-24 performance">
 			<div className="bordered-box settings-block">
 				<h3>{__( 'Caching', 'bluehost-wordpress-plugin' )}</h3>
-				<AppToggle checked={cacheEnabled} onChange={() => {toggleSetting( 'cacheEnabled' )}} />
+				<AppToggle checked={cachingEnabled} onChange={toggleCaching} />
 				<p>{ __( 'Boost speed and performance by storing a copy of your website content, files, and images online so the pages of your website load faster for your visitors.', 'bluehost-wordpress-plugin' )}</p>
-				<div className={"cache-level " + cacheLevelClass}>
-					<h4>{__( 'Caching Level', 'bluehost-wordpress-plugin' )}</h4>
-					<CacheLevelSelector
-						value={1}
-						cacheLevel={cacheLevel}
-						label={__( 'Assets Only', 'bluehost-wordpress-plugin' )}
-						desc={__( 'Cache static assets like images and the appearance of your site for 5 minutes. Recommended for ecommerce and sites that update frequently or display info in real-time.', 'bluehost-wordpress-plugin' )}
-						/>
-					<CacheLevelSelector
-						value={2}
-						cacheLevel={cacheLevel}
-						label={__( 'Assets & Web Pages', 'bluehost-wordpress-plugin' )}
-						desc={__( 'Cache static assets for 6 hours and other web pages for 5 minutes. Recommended for blogs, educational sites, and sites that update at least weekly.', 'bluehost-wordpress-plugin' )}
-						/>
-					<CacheLevelSelector
-						value={3}
-						cacheLevel={cacheLevel}
-						label={__( 'Assets & Web Pages - Extended', 'bluehost-wordpress-plugin' )}
-						desc={__( 'Cache static assets for 1 week and web pages for 5 minutes. Recommended for portfolios, brochure sites, and sites that update monthly or less often.', 'bluehost-wordpress-plugin' )}
-						/>
-				</div>
+				<div className={"cache-settings " + cachingClass}>
+					<div className={"cache-level"}>
+						<h4>{__( 'Caching Level', 'bluehost-wordpress-plugin' )}</h4>
+						<CacheLevelSelector
+							value={1}
+							cacheLevel={cacheLevel}
+							label={__( 'Assets Only', 'bluehost-wordpress-plugin' )}
+							desc={__( 'Cache static assets like images and the appearance of your site for 5 minutes. Recommended for ecommerce and sites that update frequently or display info in real-time.', 'bluehost-wordpress-plugin' )}
+							/>
+						<CacheLevelSelector
+							value={2}
+							cacheLevel={cacheLevel}
+							label={__( 'Assets & Web Pages', 'bluehost-wordpress-plugin' )}
+							desc={__( 'Cache static assets for 6 hours and other web pages for 5 minutes. Recommended for blogs, educational sites, and sites that update at least weekly.', 'bluehost-wordpress-plugin' )}
+							/>
+						<CacheLevelSelector
+							value={3}
+							cacheLevel={cacheLevel}
+							label={__( 'Assets & Web Pages - Extended', 'bluehost-wordpress-plugin' )}
+							desc={__( 'Cache static assets for 1 week and web pages for 5 minutes. Recommended for portfolios, brochure sites, and sites that update monthly or less often.', 'bluehost-wordpress-plugin' )}
+							/>
+					</div>
 
-				<h4>{__( 'Manage Cache', 'bluehost-wordpress-plugin' )}</h4>
-				<p>{__( 'If you’ve recently updated your website, we recommend clearing the site cache. We’ll fetch a fresh version of your site to cache.', 'bluehost-wordpress-plugin' )}</p>
-				<AppButton isPrimary>{__( 'Clear Everything', 'bluehost-wordpress-plugin' )}</AppButton>
+					<h4>{__( 'Manage Cache', 'bluehost-wordpress-plugin' )}</h4>
+					<p>{__( 'If you’ve recently updated your website, we recommend clearing the site cache. We’ll fetch a fresh version of your site to cache.', 'bluehost-wordpress-plugin' )}</p>
+					<AppButton isPrimary>{__( 'Clear Everything', 'bluehost-wordpress-plugin' )}</AppButton>
+				</div>
 			</div>
 		</SettingsSection>
 	);
@@ -72,9 +79,8 @@ const SettingsPerformance = ( { cacheEnabled, cacheLevel, toggleSetting } ) => {
 export default compose(
 	withSelect( select => ({
 		cacheLevel: select( 'bluehost/plugin' ).getSetting( 'cacheLevel' ),
-		cacheEnabled: select( 'bluehost/plugin' ).getSetting( 'cachingEnabled' ),
 	})),
 	withDispatch( dispatch => ({
-		toggleSetting: dispatch( 'bluehost/plugin' ).toggleSetting,
+		updateSetting: dispatch( 'bluehost/plugin' ).updateSetting,
 	}))
 )( SettingsPerformance );
