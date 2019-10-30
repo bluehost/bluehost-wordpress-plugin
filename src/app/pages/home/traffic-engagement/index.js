@@ -17,9 +17,6 @@ import HomeSectionRow from '../home-section-row';
 const baseUrl = location.origin + '/wp-admin/';
 
 function SocialCard() {
-	if ( ! select('bluehost/plugin').isJetpackActive() ) {
-		return null;
-	}
 	return (
 		<HomeSectionRow
 			icon="share"
@@ -36,9 +33,6 @@ function SocialCard() {
 }
 
 function PublicizeCard() {
-	if ( ! select('bluehost/plugin').isJetpackActive() ) {
-		return null;
-	}
 	return (
 		<HomeSectionRow
 			icon="megaphone"
@@ -55,9 +49,6 @@ function PublicizeCard() {
 }
 
 function StatsCard() {
-	if ( ! select('bluehost/plugin').isJetpackActive() ) {
-		return null;
-	}
 	return (
 		<HomeSectionRow
 			isCentered
