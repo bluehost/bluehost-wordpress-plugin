@@ -1,6 +1,24 @@
-// #loader-wrap {
-//     // max-width: 50%;
-//     //     position: fixed;
-//     //     top: 50%;
-    
-// }
+@import '@/config';
+.app-spinner__wrap {
+    svg {
+        path {
+            stroke: $color-blue;
+        }
+        &.micro {
+            width: 18px;
+            height: 18px;
+        }
+        &.small {
+            width: 48px;
+            height: 48px;
+        }
+        &.normal {
+            width: 96px;
+            height:96px;
+        }
+        &.large {
+            width: 112px;
+            height: 112px;
+        }
+    }
+}

@@ -1,27 +1,27 @@
 /**
  * WordPress dependencies
  */
-import { Spinner } from '@wordpress/components';
+import { BluerockSpinner } from '@/assets';
 /**
  * Internal dependencies
  */
 import './style.scss';
 
-const wrapperClass = '';
+let sizeClass = 'normal'
 
 const AppSpinner = ( props ) => {
-	// if (props.brand) {
-	//     wrapperClass += 'brand';
-	// }
-	// if (props.large) {
-	//     wrapperClass += ' size-large';
-	// }
-	// if('overlay' === props.position) {
-	//     wrapperClass += ' overlay'
-	// }
+	if (props.micro) {
+		sizeClass = 'micro'
+	}
+	if (props.small) {
+		sizeClass = 'small'
+	}
+	if (props.large) {
+		sizeClass = 'large'
+	}
 	return (
-		<span className="loader-wrap">
-			<Spinner />
+		<span className="app-spinner__wrap">
+			<BluerockSpinner className={sizeClass} />
 		</span>
 	);
 };

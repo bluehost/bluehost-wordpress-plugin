@@ -7,6 +7,7 @@ export {default as AppModal} from './app-modal';
 export {default as AppNavLink} from './app-nav-link';
 export {default as AppNotice} from './app-notice';
 export {default as AppPage} from './app-page';
+export {default as AppPageSpinner} from './app-page-spinner';
 export {default as AppPrimaryNav} from './app-primary-nav';
 export {default as AppSnackbar} from './app-snackbar';
 export {default as AppSpinner} from './app-spinner';

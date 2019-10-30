@@ -12,6 +12,7 @@ import {ReactComponent as ProductsIcon} from '@/assets/svg/products.svg';
 import {ReactComponent as RadioButtonDisabledIcon} from '@/assets/svg/radio-button-disabled.svg';
 import {ReactComponent as RadioButtonSelectedIcon} from '@/assets/svg/radio-button-selected.svg';
 import {ReactComponent as RadioButtonUnselectedIcon} from '@/assets/svg/radio-button-unselected.svg';
+import {ReactComponent as BluerockSpinner} from '@/assets/spinner.svg';
 import {ReactComponent as SecurityIcon} from '@/assets/svg/security.svg';
 import {ReactComponent as UserIcon} from '@/assets/svg/user.svg';
 import {ReactComponent as ValidationIcon} from '@/assets/svg/validation.svg';
@@ -20,6 +21,7 @@ import WorkingImageUrl, {ReactComponent as WorkingImage} from '@/assets/svg/work
 export {
     BillingIcon,
     BluehostLogo,
+    BluerockSpinner,
     CloseIcon,
     DownIcon,
     HelpIcon,

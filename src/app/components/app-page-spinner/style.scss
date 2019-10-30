@@ -1,0 +1,13 @@
+@import '@/config';
+
+.app-page-spinner__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    .app-spinner__wrap {
+        max-width: 50%;
+        position: fixed;
+        top: 48%;
+    }
+}

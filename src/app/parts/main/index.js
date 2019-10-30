@@ -10,7 +10,7 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 /**
  * Internal dependencies
  */
-import {AppSpinner} from '@/components';
+import {AppPageSpinner} from '@/components';
 
 const HomeRoute = lazy(() => import( '@/pages/home' ));
 const ThemesRoute = lazy(() => import( '@/pages/marketplace/themes' ));
@@ -24,7 +24,7 @@ const HelpRoute = lazy(() => import( '@/pages/help' ));
 
 const AppMain = () => (
     <main>
-        <Suspense fallback={<AppSpinner/>}>
+        <Suspense fallback={<AppPageSpinner/>}>
             <Switch>
                 <Route path="/home" render={() => <HomeRoute/>}/>
                 <Route path="/marketplace/themes" exact render={() => <ThemesRoute/>}/>

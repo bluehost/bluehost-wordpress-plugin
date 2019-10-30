@@ -1,6 +1,6 @@
 import {lazy, Suspense} from 'react';
 import {__} from '@wordpress/i18n';
-import {ProductCard} from '@/components';
+import {ProductCard,AppSpinner} from '@/components';
 import {useMojoApi} from '@/hooks';
 
 const Page = lazy(() => import( '@/components/marketplace-page' ));
@@ -34,7 +34,7 @@ export default function ThemesPage() {
     };
 
     return (
-        <Suspense fallback={<div/>}>
+        <Suspense fallback={<AppSpinner small/>}>
             <Page
                 isLoading={!done || isLoading}
                 payload={payload}
