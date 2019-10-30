@@ -41,7 +41,8 @@
     "bluehost/endurance-wp-module-spam-prevention": "^1.0",
     "bluehost/endurance-wp-module-sso": "^1.0",
     "wpscholar/phpdotenv": "^1.0",
-    "bluehost/endurance-wp-plugin-updater": "^1.0"
+    "bluehost/endurance-wp-plugin-updater": "^1.0",
+    "ext-iconv": "*"
   },
   "require-dev": {
     "bluehost/wp-php-standards": "^1.1"

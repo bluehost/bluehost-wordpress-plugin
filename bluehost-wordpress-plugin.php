@@ -30,6 +30,8 @@ global $pagenow;
 if ( 'plugins.php' === $pagenow ) {
 	require dirname( __FILE__ ) . '/inc/plugin-compatibility-check.php';
 	$plugin_check = new Bluehost_Plugin_Compatibility_Check( __FILE__ );
+	// Required PHP extensions
+	$plugin_check->req_php_extensions = array( 'iconv' );
 	$plugin_check->check_plugin_requirements();
 }
 
