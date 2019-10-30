@@ -29,6 +29,11 @@
       "vendor/bin/phpcs ."
     ]
   },
+  "autoload": {
+    "psr-4": {
+      "Bluehost\\": "inc/"
+    }
+  },
   "require": {
     "bluehost/endurance-wp-module-business-reviews": "^1.0",
     "bluehost/endurance-wp-module-gutenframe": "^0.1",
