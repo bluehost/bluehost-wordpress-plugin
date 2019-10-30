@@ -110,20 +110,6 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 						include 'wp-admin/includes/misc.php';
 						update_option( 'endurance_cache_level', $new_value );
 						break;
-					case 'cachingEnabled':
-						$cache_level = $settings['cacheLevel'];
-						// Make sure we dont reset the cache level if it's already on
-						if ( $new_value ) {
-							$cache_level = ( 0 !== $settings['cacheLevel'] ) ? $cache_level : 2;
-						} else {
-							// If turning it off, we can always set it to 0.
-							$cache_level = 0;
-						}
-						// Include misc.php because the cache level update requires save_mod_rewrite_rules()
-						// This should probably be moved to the Endurance Page Cache plugin later
-						include 'wp-admin/includes/misc.php';
-						update_option( 'endurance_cache_level', $cache_level );
-						break;
 				}
 			}
 		}
@@ -173,7 +159,6 @@ class Bluehost_Settings_Controller extends WP_REST_Controller {
 			'contentRevisions'        => intval( defined( 'WP_POST_REVISIONS' ) ? WP_POST_REVISIONS : 5 ),
 			'emptyTrashDays'          => intval( defined( 'EMPTY_TRASH_DAYS' ) ? EMPTY_TRASH_DAYS : 30 ),
 			'cacheLevel'              => intval( get_option( 'endurance_cache_level', 2 ) ),
-			'cachingEnabled'          => ( get_option( 'endurance_cache_level', 2 ) > 0 ) ? true : false,
 		);
 
 		return $settings;
