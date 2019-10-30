@@ -13,8 +13,6 @@ export default function EnvironmentCard(
     }
 ) {
 
-    const style = screenshotUrl ? {background: `url(${screenshotUrl})`} : {};
-
     return (
         <div className="environment-card">
             {radioButtonComponent && (
@@ -23,7 +21,9 @@ export default function EnvironmentCard(
                 </div>
             )}
             <div className="environment-card__container">
-                <div className="environment-card__screenshot" style={style}/>
+                {screenshotUrl && (
+                    <div className="environment-card__screenshot" style={{background: `url(${screenshotUrl})`}}/>
+                )}
                 <div className="environment-card__details">
                     <h3 className="environment-card__title">{title}</h3>
                     <div className="environment-card__description">{description}</div>

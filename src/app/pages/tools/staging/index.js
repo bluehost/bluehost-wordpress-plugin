@@ -121,7 +121,7 @@ export default function StagingPage() {
                             </label>
                         )
                     }
-                    screenshotUrl={productionThumbnailUrl}
+                    //screenshotUrl={productionThumbnailUrl}
                     title={productionUrl}
                 />
             </div>
@@ -218,7 +218,7 @@ export default function StagingPage() {
                                         />
                                     </label>
                                 )}
-                                screenshotUrl={stagingThumbnailUrl}
+                                //screenshotUrl={stagingThumbnailUrl}
                                 title={stagingUrl}
                             />
                         </div>
