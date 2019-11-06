@@ -7,14 +7,6 @@ $api_url = 'https://api.mojomarketplace.com/api/v2/items/' . $item_id;
 $items   = ( isset( $_GET['items'] ) ) ? esc_attr( $_GET['items'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
 $theme   = mm_api_cache( $api_url );
 
-$iframe_src = mm_build_link(
-	$theme->demo_url,
-	array(
-		'utm_medium'  => 'plugin_admin',
-		'utm_content' => 'preview_view_demo',
-	)
-);
-
 $other_viewed = mm_api_cache(
 	add_query_arg(
 		array(
@@ -120,6 +112,15 @@ if ( is_wp_error( $theme ) ) {
 				</div>
 			</div>
 			<div class="wp-full-overlay-main">
+				<?php
+				$iframe_src = mm_build_link(
+					$theme->demo_url,
+					array(
+						'utm_medium'  => 'plugin_admin',
+						'utm_content' => 'preview_view_demo',
+					)
+				);
+				?>
 				<iframe src="<?php echo esc_url( $iframe_src ); ?>"></iframe>
 			</div>
 		</div>
