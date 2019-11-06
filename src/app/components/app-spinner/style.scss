@@ -1,24 +1,38 @@
 @import '@/config';
+
 .app-spinner__wrap {
-    svg {
-        path {
-            stroke: $color-blue;
-        }
-        &.micro {
-            width: 18px;
-            height: 18px;
-        }
-        &.small {
-            width: 48px;
-            height: 48px;
-        }
-        &.normal {
-            width: 96px;
-            height:96px;
-        }
-        &.large {
-            width: 112px;
-            height: 112px;
-        }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    path {
+      stroke: $color-blue;
     }
+
+    &.micro {
+      width: 18px;
+      height: 18px;
+    }
+
+    &.small {
+      width: 48px;
+      height: 48px;
+    }
+
+    &.normal {
+      width: 96px;
+      height: 96px;
+    }
+
+    &.large {
+      width: 112px;
+      height: 112px;
+    }
+  }
+}
+
+main > .app-spinner__wrap {
+    margin-top: 100px;
 }
