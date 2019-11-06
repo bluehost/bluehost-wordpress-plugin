@@ -1,0 +1,89 @@
+{
+  "status": "success",
+  "items": [
+    {
+      "id": "565f5981-f638-4d4c-9ea8-1c320a141f39",
+      "name": "WooCommerce Bookings Developed by WooCommerce",
+      "slug": "woocommerce-bookings",
+      "category": "wordpress",
+      "type": "plugins",
+      "page_url": "http:\/\/api.mojomarketplace.com\/item\/woocommerce-bookings",
+      "sales_count": 105,
+      "is_service": false,
+      "rating": 0,
+      "seller_name": "WooCommerce",
+      "seller_url": "store\/woocommerce",
+      "tags": "woocommerce, advertising, plugins",
+      "images": {
+        "large_thumbnail_url": "",
+        "square_thumbnail_url": "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/square_thumbnail-565f5981-f638-4d4c-9ea8-1c320a141f39-MkFh6.jpg",
+        "thumbnail_url": "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/thumbnail-565f5981-f638-4d4c-9ea8-1c320a141f39-GW7ly.jpg",
+        "screen_shot_urls": [
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-uYNAg.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-XqEPs.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-9bpRF.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-Kl183.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-2yPhr.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-uDKAt.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-jXgWJ.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-90nha.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-kYUb0.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-EsKy2.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-mKTkI.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-J0UfF.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-vAdu3.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-qBL2s.jpg",
+          "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/screen_shots-565f5981-f638-4d4c-9ea8-1c320a141f39-JrTht.jpg"
+        ],
+        "preview_url": "https:\/\/marketplace-assets-production.s3-us-west-2.amazonaws.com\/vault\/items\/preview-565f5981-f638-4d4c-9ea8-1c320a141f39-46gew.jpg"
+      },
+      "downloads": [
+        "file_product",
+        "file_documentation",
+        "file_demo_data"
+      ],
+      "prices": {
+        "single_domain_license": "249.00",
+        "5_domain_license": "996.00",
+        "developer_license": "6225.00"
+      },
+      "features": [
+        "Intuitive Booking Management",
+        "Sell Your Time or Date Based Bookings",
+        "Custom-Tailored Booking Costs"
+      ],
+      "created": "2015-12-02 13:50:35",
+      "created_timestamp": 1449089435,
+      "demo_url": "https:\/\/woocommerce.com\/products\/woocommerce-bookings\/",
+      "short_description": "",
+      "logo_bg_color": "",
+      "change_logs": [],
+      "gravatar_hash": "20a43fe4f147fe16a8eea8291629c6a2",
+      "version": "1.12.2",
+      "modified": "2019-01-31 15:29:36",
+      "modified_timestamp": 1548973776,
+      "description": "<p><strong>Save time and effort by letting customers book at their convenience<\/strong><\/p><p>Let your customers book reservations, appointments or rentals on their own \u2013 no phone calls required. Save yourself time and fill up your calendar by letting your site do the work for you.<\/p><p><strong>Let customers book classes, schedule appointments, or reserve items<\/strong><\/p><p><img src=\"https:\/\/marketplace-images-production.s3-us-west-2.amazonaws.com\/vault\/items\/bookings-slots%402x-LMdOt.jpg%3Fw%3D620\" alt=\"bookings-slots@2x.jpg?w=620\" \/><\/p><p>Whatever options you want to offer to your customers, Bookings makes it possible:<\/p><ul><li><strong>Define set options<\/strong>, like fixed time slots for a class, appointment or guided tour<\/li><li><strong>Let customers choose the times that work best by<\/strong>\u00a0giving them the flexibility to book whatever range they need, like checking into a hotel<\/li><\/ul><p>With either option, you can also<strong>\u00a0block time off as un-bookable<\/strong>, leaving you time to take care of your other priorities and<strong>\u00a0create buffers between bookings<\/strong>, to make sure the schedule works for you.<\/p><p>Get as specific as you want with your time slots\u2014the extension allows for bookings in days, hours, even minutes.<\/p><p><strong>Book one-on-one appointments or multi-person events<\/strong><\/p><p><img src=\"https:\/\/marketplace-images-production.s3-us-west-2.amazonaws.com\/vault\/items\/bookings-multiperson%402x-ukx0k.jpg%3Fw%3D620\" alt=\"bookings-multiperson@2x.jpg?w=620\" \/><\/p><p>You can set the minimum and maximum number of participants: limit a booking to one-at-a-time for appointments or let multiple people reserve a class or tour.<\/p><p><strong>Offer special pricing for groups, days, or individuals<\/strong><\/p><p><img src=\"https:\/\/marketplace-images-production.s3-us-west-2.amazonaws.com\/vault\/items\/bookings-costs%402x-Z4ehb.jpg%3Fw%3D620\" alt=\"bookings-costs@2x.jpg?w=620\" \/><\/p><p>Offer discounts for groups or people booking multiple slots, show lower prices for early birds, higher prices on weekends, or special prices for kids. Bookings lets you customize pricing any way you want.<\/p><p><strong>Show availability in the customer\u2019s time zone<\/strong><\/p><p>If your services are online or if you\u2019re shipping something to the customer, display your availability in the customer\u2019s time zone so they book the time they really need. Whether bookings come from New York, New Mexico or New Zealand, they\u2019ll be within the hours you set, so no surprise appointments!<\/p><p>It\u2019s perfect for virtual classes, online appointments, or rentals that need to be delivered to the customer.<\/p><p><strong>Require confirmation, offer free cancellations \u2013 it\u2019s all up to you<\/strong><\/p><p><img src=\"https:\/\/marketplace-images-production.s3-us-west-2.amazonaws.com\/vault\/items\/bookings-confirmations%402x-Uk09s.jpg%3Fw%3D620\" alt=\"bookings-confirmations@2x.jpg?w=620\" \/><\/p><p>Set up confirmations, allowing you time to review before making the booking official. Automatically send out reminders leading up to a booking to reduce no-shows, and set whether bookings can be cancelled.<\/p><p><strong>Send reminders and reduce no-shows<\/strong><\/p><p><img src=\"https:\/\/marketplace-images-production.s3-us-west-2.amazonaws.com\/vault\/items\/bookings-keepintouch%402x-Pynzp.jpg%3Fw%3D620\" alt=\"bookings-keepintouch@2x.jpg?w=620\" \/><\/p><p>Remind clients about their appointments with handy notification emails when a reservation is made, confirmed, and a day before the booking date.<\/p><p>If you\u2019d like to do more, you can send a special reminder right from your site.<\/p><p><strong>Never get double-booked<\/strong><\/p><p>Avoid double bookings by assigning the needed resources to a particular booking. For example, if your 2:00 bride books a fitting and a stylist until 3:30, that stylist won\u2019t appear available for the bride scheduling a fitting at 3:00. You\u2019ll never have to worry about offering the same resource to two customers at the same time.<\/p><p><strong>Manage your calendar, your way<\/strong><\/p><p><img src=\"https:\/\/marketplace-images-production.s3-us-west-2.amazonaws.com\/vault\/items\/bookings-manage%402x1-3gSx4.jpg%3Fw%3D620\" alt=\"bookings-manage@2x1.jpg?w=620\" \/><\/p><p>Use the calendar view to see how your day, week, or month is shaping up. Update existing bookings or availability, or filter to view specific services or resources.<\/p><p>Still have customers calling in to make bookings the old-fashioned way? Add them manually from the calendar while you\u2019re on the phone.<\/p><p><strong>Give your Bookings a boost<\/strong><\/p><p>For a fully-customized experience, consider these add-ons other Woo Commerce customers use with Bookings.<\/p><ul><li>For hotels, bed-and-breakfasts and the like, try our free<a href=\"https:\/\/woocommerce.com\/products\/woocommerce-accommodation-bookings\/\"><strong>\u00a0Accommodation Bookings<\/strong><\/a>extensions, or the<a href=\"https:\/\/woocommerce.com\/products\/hotel\/\"><strong>\u00a0Hotel theme<\/strong><\/a><\/li><li>Take a deposit for a reservation with<a href=\"https:\/\/woocommerce.com\/products\/woocommerce-deposits\/\"><strong>\u00a0Deposits<\/strong><\/a><\/li><li>Power up your reminder emails with<a href=\"https:\/\/woocommerce.com\/products\/follow-up-emails\/\"><strong>\u00a0Follow-Ups<\/strong><\/a><\/li><li>To sell add-ons for your services, like an oil treatment with your massage, or a limited edition merchandise with a group booking for a baseball field \u2014<a href=\"https:\/\/docs.woocommerce.com\/document\/product-add-ons-integration\/\"><strong>\u00a0try Bookings with Product Add-Ons<\/strong><\/a>.<\/li><li>Let service providers manage their offerings themselves, including updating availability and descriptions, using<a href=\"https:\/\/woocommerce.com\/products\/product-vendors\/\"><strong>\u00a0Product Vendors<\/strong><\/a>.<\/li><\/ul>",
+      "files": [
+        "CSS",
+        "PHP"
+      ],
+      "browsers": [
+        "IE",
+        "Firefox",
+        "Chrome",
+        "Safari",
+        "Opera",
+        "iOS Safari",
+        "Opera Mini",
+        "Android Browser",
+        "Chrome for Android"
+      ],
+      "categories": [
+        "Advertising",
+        "WooCommerce"
+      ],
+      "buy_url": "https:\/\/www.mojomarketplace.com\/cart?item_id=565f5981-f638-4d4c-9ea8-1c320a141f39&#038;utm_source=mojo_wp_plugin&#038;utm_campaign=mojo_wp_plugin&#038;utm_medium=plugin_admin&#038;utm_content=buy_now_preview&#038;theme=bluehost"
+    }
+  ],
+  "statusCode": 200
+}

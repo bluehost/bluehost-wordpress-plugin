@@ -1,0 +1,51 @@
+{
+  "status": "success",
+  "items": [
+    {
+      "id": "54340b9a-8bb4-4418-bf37-618e0a140b28",
+      "name": "WordPress Pro",
+      "slug": "wordpress-pro",
+      "category": "development",
+      "type": "services",
+      "page_url": "http:\/\/api.mojomarketplace.com\/item\/wordpress-pro",
+      "sales_count": 4337,
+      "is_service": "1",
+      "rating": 0,
+      "seller_name": null,
+      "seller_url": "",
+      "tags": "WordPress, theme, setup, install, backup, service, bundle",
+      "images": {
+        "large_thumbnail_url": "https:\/\/marketplace-images-production.s3-us-west-2.amazonaws.com\/vault\/items\/large_thumbnail-54340b9a-8bb4-4418-bf37-618e0a140b28-368x296-E7VxS.jpg",
+        "square_thumbnail_url": "https:\/\/marketplace-images-production.s3-us-west-2.amazonaws.com\/vault\/items\/square_thumbnail-54340b9a-8bb4-4418-bf37-618e0a140b28-136x136-XdFg7.jpg",
+        "thumbnail_url": "https:\/\/marketplace-images-production.s3-us-west-2.amazonaws.com\/vault\/items\/thumbnail-54340b9a-8bb4-4418-bf37-618e0a140b28-260x156-1Om24.jpg",
+        "screen_shot_urls": [],
+        "preview_url": "https:\/\/marketplace-images-production.s3-us-west-2.amazonaws.com\/vault\/items\/preview-54340b9a-8bb4-4418-bf37-618e0a140b28-1180x660-a36aq.jpg"
+      },
+      "downloads": [],
+      "prices": {
+        "single_domain_license": "199.00"
+      },
+      "features": "",
+      "created": "2014-10-07 09:49:46",
+      "created_timestamp": 1412696986,
+      "demo_url": "",
+      "short_description": "<p><span style=\"font-size:100%;font-family:arial, sans, sans-serif;\">We'll help you install WP, your theme &amp; demo. Includes backup service and $59 theme credit.\u00a0<\/span><\/p>",
+      "logo_bg_color": "#2276be",
+      "change_logs": [],
+      "gravatar_hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "version": "",
+      "modified": "2017-01-06 10:50:53",
+      "modified_timestamp": 1483725053,
+      "description": "<p>You need your WordPress site up and running quickly and we can help. Between the WordPress and theme install, site demo setup, and backup, by the time we\u2019re done you\u2019ll be ready to get going on customizing your site exactly the way you want it.<\/p>\n<p><strong>Includes:<\/strong><\/p>\n<p><strong>1:<\/strong>\u00a0\u00a0\u00a0WordPress Installed to your domain\/URL<\/p>\n<p><strong>2:<\/strong>\u00a0\u00a0\u00a0Install Your WordPress Theme ($59 value)<\/p>\n<p><strong>3:<\/strong>\u00a0\u00a0\u00a0Make Your Site Look Like the Demo ($199 value)<\/p>\n<p><em>We\u2019ll setup and configure your WordPress site just like your theme's demo<\/em><\/p>\n<p><strong>4:<\/strong>\u00a0\u00a0\u00a0Backup My WordPress Site ($99 value)<\/p>\n<p><em>We\u2019ll install and set up a plugin that will make it easy for you to maintain your own incremental backups for your WordPress site<\/em><\/p>\n<p><strong>5:<\/strong>\u00a0\u00a0\u00a0$59 Theme Credit<\/p>\n<p><em>You\u2019ll get a $59 credit applied to your MOJO account for the theme of your choice. Already have a theme? Great! Now you'll have a spare in your back pocket.<\/em><\/p>\n<p>\u00a0<\/p>\n<p><strong>These 5\u00a0services are a $396 value for just $199 - a $197 discount!<\/strong>\u00a0<\/p>\n<p>\u00a0<\/p>\n<p><strong>Typical turn around time<\/strong><\/p>\n<ul><li>3 \u2013 5 business days \u00a0<\/li>\n<\/ul><p><strong>Demo set up - things to consider<\/strong><\/p>\n<ul><li>Adding demo content overrides all existing content. If you already have menus, posts, and pages built and you want to keep them, contact your host to save a backup of your content!<\/li>\n<li>Some of the images used in the demos aren't licensed for distribution. In some cases we'll use different images.<\/li>\n<\/ul><p><strong>Not included<\/strong><\/p>\n<p><em>This service provides you with a turnkey website, ready for your unique content. We do not write, develop or customize your site content. You still need to write all your own posts, pages, and build your own navigation.\u00a0<\/em><\/p>",
+      "files": [
+        ""
+      ],
+      "browsers": "",
+      "categories": [
+        "Custom Site Development"
+      ],
+      "buy_url": "https:\/\/www.mojomarketplace.com\/cart?item_id=54340b9a-8bb4-4418-bf37-618e0a140b28&#038;utm_source=mojo_wp_plugin&#038;utm_campaign=mojo_wp_plugin&#038;utm_medium=plugin_admin&#038;utm_content=buy_now_preview&#038;theme=bluehost"
+    }
+  ],
+  "statusCode": 200
+}
