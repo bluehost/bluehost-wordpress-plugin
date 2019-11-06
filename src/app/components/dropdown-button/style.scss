@@ -24,6 +24,8 @@
     border-top-left-radius: unset;
     border-bottom-left-radius: unset;
     width: 27px;
+    margin-left: 0 !important;
+    border-left: none !important;
 
     &[disabled] {
       opacity: 0.3;
@@ -31,6 +33,7 @@
 
     &:hover {
       background: $color-primary;
+
       svg, path {
         fill: $color-white;
       }
