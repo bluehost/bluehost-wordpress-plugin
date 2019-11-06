@@ -21,7 +21,6 @@ import {useStaging} from '@/hooks';
 import {
     RadioButtonDisabledIcon,
     RadioButtonSelectedIcon,
-    RadioButtonUnselectedIcon,
     WorkingImageUrl,
 } from '@/assets';
 import CloneModal from './clone-modal';
