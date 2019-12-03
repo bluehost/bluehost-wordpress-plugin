@@ -1,46 +1,45 @@
-import {lazy, Suspense} from 'react';
-import {__} from '@wordpress/i18n';
-import {ProductCard,AppSpinner} from '@/components';
-import {useMojoApi} from '@/hooks';
+import { lazy, Suspense } from 'react';
+import { __ } from '@wordpress/i18n';
+import { ProductCard, AppSpinner } from '@/components';
+import { useMojoApi } from '@/hooks';
 
-const Page = lazy(() => import( '@/components/marketplace-page' ));
+const Page = lazy( () => import( '@/components/marketplace-page' ) );
 
 export default function ThemesPage() {
+	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'themes', { count: 1000 } );
 
-    const [{done, isError, isLoading, payload}] = useMojoApi('themes', {count: 1000});
+	if ( isError ) {
+		throw new Error( 'API Error. Payload: ' + JSON.stringify( payload ) );
+	}
 
-    if (isError) {
-        throw new Error('API Error. Payload: ' + JSON.stringify(payload));
-    }
+	const renderCallback = ( { item, hasFavorite, toggleFavorite } ) => {
+		return (
+			<ProductCard
+				buttonPrimary={ { href: item.buy_url } }
+				buttonSecondary={ {
+					children: __( 'Preview', 'bluehost-wordpress-plugin' ),
+					href: item.preview_url,
+					target: '_blank',
+				} }
+				id={ item.id }
+				imageUrl={ item.images.preview_url }
+				isFavorite={ hasFavorite( item.id ) }
+				key={ item.id }
+				price={ item.prices.single_domain_license }
+				title={ item.name }
+				toggleFavorite={ () => toggleFavorite( item.id ) }
+			/>
+		);
+	};
 
-    const renderCallback = ({item, hasFavorite, toggleFavorite}) => {
-        return (
-            <ProductCard
-                buttonPrimary={{href: item.buy_url}}
-                buttonSecondary={{
-                    children: __('Preview', 'bluehost-wordpress-plugin'),
-                    href: item.preview_url,
-                    target: '_blank'
-                }}
-                id={item.id}
-                imageUrl={item.images.preview_url}
-                isFavorite={hasFavorite(item.id)}
-                key={item.id}
-                price={item.prices.single_domain_license}
-                title={item.name}
-                toggleFavorite={() => toggleFavorite(item.id)}
-            />
-        );
-    };
-
-    return (
-        <Suspense fallback={<AppSpinner small/>}>
-            <Page
-                isLoading={!done || isLoading}
-                payload={payload}
-                render={renderCallback}
-                type="themes"
-            />
-        </Suspense>
-    );
+	return (
+		<Suspense fallback={ <AppSpinner small /> }>
+			<Page
+				isLoading={ ! done || isLoading }
+				payload={ payload }
+				render={ renderCallback }
+				type="themes"
+			/>
+		</Suspense>
+	);
 }

@@ -19,7 +19,7 @@ export function apiFetch( request ) {
 const controls = {
 	API_FETCH( { request } ) {
 		return triggerApiFetch( request );
-	}
+	},
 };
 
 export default controls;

@@ -15,6 +15,7 @@ import './style.scss';
  * Internal navigation link (from React Router) that also handles focus management.
  *
  * TIP: import { AppNavLink as NavLink } from '@/components' for easier swap with NavLink in ReactRouterDOM.
+ *
  * @param {*} props
  */
 const AppNavLink = ( props ) => (

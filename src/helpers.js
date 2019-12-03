@@ -5,8 +5,10 @@ import { TAB } from '@wordpress/keycodes';
 
 export default () => {
 	/**
-     * Register Helpers
-     */
+  * Register Helpers
+  *
+  * @param e
+  */
 	function bluehostHandleFirstTab( e ) {
 		if ( e.keyCode === TAB ) {
 			document.body.classList.add( 'bluehost-admin-keynav' );

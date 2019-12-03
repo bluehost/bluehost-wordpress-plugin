@@ -11,6 +11,7 @@
     "develop": "NODE_ENV=develop wp-scripts start",
     "lint:css": "wp-scripts lint-style '**/*.css'",
     "lint:js": "wp-scripts lint-js ./src",
+    "lint:js:fix": "wp-scripts lint-js ./src --fix",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "start": "wp-scripts start",
     "test:e2e": "npx cypress open",

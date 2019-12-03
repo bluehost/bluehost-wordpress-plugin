@@ -26,7 +26,7 @@ function SocialCard() {
 				href={ baseUrl + 'admin.php?page=jetpack#/sharing' }
 				isDefault
 			>
-				{__('Manage Social', 'bluehost-wordpress-plugin')}
+				{ __( 'Manage Social', 'bluehost-wordpress-plugin' ) }
 			</Button>
 		</HomeSectionRow>
 	);
@@ -42,7 +42,7 @@ function PublicizeCard() {
 				href={ baseUrl + 'admin.php?page=jetpack#/sharing' }
 				isDefault
 			>
-				{__('Set Sharing', 'bluehost-wordpress-plugin')}
+				{ __( 'Set Sharing', 'bluehost-wordpress-plugin' ) }
 			</Button>
 		</HomeSectionRow>
 	);
@@ -59,23 +59,23 @@ function StatsCard() {
 				href={ baseUrl + 'admin.php?page=stats' }
 				isDefault
 			>
-				{__('View Stats', 'bluehost-wordpress-plugin')}
+				{ __( 'View Stats', 'bluehost-wordpress-plugin' ) }
 			</Button>
 		</HomeSectionRow>
 	);
 }
 
 const TrafficEngagementSection = () => {
-	if ( ! select('bluehost/plugin').isJetpackActive() ) {
+	if ( ! select( 'bluehost/plugin' ).isJetpackActive() ) {
 		return null;
 	}
 	return (
-		<HomeSection title={__('Traffic & Engagement', 'bluehost-wordpress-plugin')} className="traffic">
+		<HomeSection title={ __( 'Traffic & Engagement', 'bluehost-wordpress-plugin' ) } className="traffic">
 			<SocialCard />
 			<PublicizeCard />
 			<StatsCard />
 		</HomeSection>
 	);
-}
+};
 
 export default TrafficEngagementSection;

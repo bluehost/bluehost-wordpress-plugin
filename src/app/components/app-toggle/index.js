@@ -8,7 +8,7 @@ import { Component } from '@wordpress/element';
  */
 import './style.scss';
 
-function AppToggle ( {checked, onChange} ) {
+function AppToggle( { checked, onChange } ) {
 	return (
 		<div className="onoffswitch">
 			<input
@@ -17,15 +17,15 @@ function AppToggle ( {checked, onChange} ) {
 				className="onoffswitch-checkbox"
 				id="myonoffswitch"
 				value="value"
-				checked={checked}
-				onChange={onChange}
-				/>
+				checked={ checked }
+				onChange={ onChange }
+			/>
 			<label className="onoffswitch-label" htmlFor="myonoffswitch">
 				<span className="onoffswitch-inner"></span>
 				<span className="onoffswitch-switch"></span>
 			</label>
 		</div>
 	);
-};
+}
 
 export default AppToggle;

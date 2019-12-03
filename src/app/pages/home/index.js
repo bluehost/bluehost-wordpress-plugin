@@ -15,17 +15,17 @@ import ComingSoonNotice from './coming-soon-notice';
 import Welcome from './welcome';
 
 const HomePage = () => (
-    <AppPage className="home">
-        <div className="restricted-width">
-            <Welcome/>
-            <ComingSoonNotice/>
-            <ContentSection/>
-            <DesignBuildSection/>
-            <TrafficEngagementSection/>
-            <PerformanceSection/>
-            <HostingSection/>
-        </div>
-    </AppPage>
+	<AppPage className="home">
+		<div className="restricted-width">
+			<Welcome />
+			<ComingSoonNotice />
+			<ContentSection />
+			<DesignBuildSection />
+			<TrafficEngagementSection />
+			<PerformanceSection />
+			<HostingSection />
+		</div>
+	</AppPage>
 );
 
 export default HomePage;

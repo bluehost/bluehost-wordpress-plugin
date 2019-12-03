@@ -21,8 +21,8 @@ const PostsCard = () => (
 		icon="admin-post"
 		title={ __( 'Blog Posts', 'bluehost-wordpress-plugin' ) }
 		desc={ __( 'Add blog posts or organize existing pages.', 'bluehost-wordpress-plugin' ) }>
-		<Button href={ baseUrl + 'post-new.php' } isDefault>{ __('New Post', 'bluehost-wordpress-plugin') }</Button>
-		<Button href={ baseUrl + 'edit-tags.php?taxonomy=category' } isLink>{ __('Manage Categories', 'bluehost-wordpress-plugin') }</Button>
+		<Button href={ baseUrl + 'post-new.php' } isDefault>{ __( 'New Post', 'bluehost-wordpress-plugin' ) }</Button>
+		<Button href={ baseUrl + 'edit-tags.php?taxonomy=category' } isLink>{ __( 'Manage Categories', 'bluehost-wordpress-plugin' ) }</Button>
 	</HomeSectionRow>
 );
 
@@ -35,7 +35,7 @@ const PagesCard = () => (
 			href={ baseUrl + 'post-new.php?post_type=page' }
 			isDefault
 		>
-			{ __('New Page', 'bluehost-wordpress-plugin')}
+			{ __( 'New Page', 'bluehost-wordpress-plugin' ) }
 		</Button>
 	</HomeSectionRow>
 );
@@ -49,13 +49,13 @@ const MenusCard = () => (
 			href={ baseUrl + 'customize.php?autofocus[panel]=nav_menus' }
 			isDefault
 		>
-			{__('Manage Menus', 'bluehost-wordpress-plugin')}
+			{ __( 'Manage Menus', 'bluehost-wordpress-plugin' ) }
 		</Button>
 	</HomeSectionRow>
 );
 
 const ProductsCard = () => {
-	if ( ! select('bluehost/plugin').isWooActive() ) {
+	if ( ! select( 'bluehost/plugin' ).isWooActive() ) {
 		return null;
 	}
 	return (
@@ -67,14 +67,14 @@ const ProductsCard = () => {
 				href={ baseUrl + 'edit.php?post_type=product' }
 				isDefault
 			>
-				{ __('Manage Products', 'bluehost-wordpress-plugin')}
+				{ __( 'Manage Products', 'bluehost-wordpress-plugin' ) }
 			</Button>
 		</HomeSectionRow>
 	);
-}
+};
 
 const ContentSection = () => (
-	<HomeSection title={__('Content', 'bluehost-wordpress-plugin')} className="content">
+	<HomeSection title={ __( 'Content', 'bluehost-wordpress-plugin' ) } className="content">
 		<>
 			<PostsCard />
 			<PagesCard />

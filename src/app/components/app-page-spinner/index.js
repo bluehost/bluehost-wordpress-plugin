@@ -8,9 +8,9 @@ import { AppSpinner } from '@/components';
 import './style.scss';
 
 const AppPageSpinner = () => (
-    <div className="app-page-spinner__wrap">
-        <AppSpinner />
-    </div>
+	<div className="app-page-spinner__wrap">
+		<AppSpinner />
+	</div>
 );
 
 export default AppPageSpinner;

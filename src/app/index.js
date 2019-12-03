@@ -17,7 +17,7 @@ import './app.scss';
 
 import {
 	AppError,
-	AppPrimaryNav
+	AppPrimaryNav,
 } from '@/components';
 
 import { Main, Header } from '@/parts';
@@ -34,40 +34,40 @@ class App extends Component {
 		this.componentDidCatch = this.componentDidCatch.bind( this );
 		this.state = {
 			hasError: false,
-			appError: null
+			appError: null,
 		};
 
-		dispatch('bluehost/plugin').fetchWindowData();
+		dispatch( 'bluehost/plugin' ).fetchWindowData();
 	}
 
-	handleNavFocus(event) {
+	handleNavFocus( event ) {
 		event.preventDefault(); // no anchor jumps that done bork hash-routing
 		this.navFocus.current.focus( { preventScroll: true } );
 	}
 
-	handleContentFocus(event) {
+	handleContentFocus( event ) {
 		event.preventDefault(); // no anchor jumps that done bork hash-routing
 		this.contentFocus.current.focus( { preventScroll: true } );
 	}
 
-	componentDidCatch(error,info) {
-		this.setState({ hasError: true, appError: error });
+	componentDidCatch( error, info ) {
+		this.setState( { hasError: true, appError: error } );
 	}
 
 	render() {
-		if (true === this.state.hasError) {
+		if ( true === this.state.hasError ) {
 			return (
 				<div>
-					<AppError error={this.state.appError} />
+					<AppError error={ this.state.appError } />
 				</div>
 			);
 		}
 		return (
-			<Animate type="appear" options={{ origin: 'center'}}>
+			<Animate type="appear" options={ { origin: 'center' } }>
 				{
-					({}) => (
+					( {} ) => (
 						<Router>
-							{/* <main id="bluehost-app-wrap" className="bluehost-app-wrap animated fadeIn fast"> */}
+							{ /* <main id="bluehost-app-wrap" className="bluehost-app-wrap animated fadeIn fast"> */ }
 							<main id="bluehost-app-wrap" className="bluehost-app-wrap">
 								<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
 									{ __( 'Skip to Navigation', 'bluehost-wordpress-plugin' ) }

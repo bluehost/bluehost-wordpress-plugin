@@ -1,7 +1,7 @@
 import './style.scss';
 
-import {ProductCard} from '@/components';
+import { ProductCard } from '@/components';
 
 export default function ProductCardPlaceholder() {
-    return <ProductCard className="--placeholder"/>;
+	return <ProductCard className="--placeholder" />;
 }

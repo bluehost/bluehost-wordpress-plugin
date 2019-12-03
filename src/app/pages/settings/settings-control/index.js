@@ -3,9 +3,9 @@ import './style.scss';
 const SettingsControl = ( { children } ) => {
 	return (
 		<div className="settings-control pure-g">
-			{children}
+			{ children }
 		</div>
-	)
-}
+	);
+};
 
 export default SettingsControl;

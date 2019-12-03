@@ -25,7 +25,7 @@ const CustomizerCard = () => (
 			href={ baseUrl + 'customize.php' }
 			isDefault
 		>
-			{ __('Customize Theme', 'bluehost-wordpress-plugin') }
+			{ __( 'Customize Theme', 'bluehost-wordpress-plugin' ) }
 		</Button>
 	</HomeSectionRow>
 );
@@ -39,19 +39,19 @@ const ThemesCard = () => (
 			href={ baseUrl + 'admin.php?page=bluehost#/marketplace/themes' }
 			isDefault
 		>
-			{__('Premium Themes', 'bluehost-wordpress-plugin')}
+			{ __( 'Premium Themes', 'bluehost-wordpress-plugin' ) }
 		</Button>
 		<Button
 			href={ baseUrl + 'themes.php' }
 			isLink
 		>
-			{__('Free Themes', 'bluehost-wordpress-plugin')}
+			{ __( 'Free Themes', 'bluehost-wordpress-plugin' ) }
 		</Button>
 	</HomeSectionRow>
 );
 
 const DesignBuildSection = ( props ) => (
-	<HomeSection title={ __('Design & Build', 'bluehost-wordpress-plugin') } className="design">
+	<HomeSection title={ __( 'Design & Build', 'bluehost-wordpress-plugin' ) } className="design">
 		<CustomizerCard />
 		<ThemesCard />
 	</HomeSection>

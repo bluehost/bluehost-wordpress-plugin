@@ -62,8 +62,8 @@ const UserMenu = () => (
 	</ul>
 );
 
-// const { 
-// 	openMobileSidebar 
+// const {
+// 	openMobileSidebar
 // } = useDispatch('bluehost/plugin');
 
 const MobileSidebar = withState( {
@@ -71,11 +71,10 @@ const MobileSidebar = withState( {
 	userMenu: false,
 } )( ( { isVisible, userMenu, setState } ) => {
 	const toggleSidebarVisible = () => {
-		isVisible ? dispatch('bluehost/plugin').closeMobileSidebar() :dispatch('bluehost/plugin').openMobileSidebar();
-		setState( 
-			( state ) => 
-			{ 
-				return { isVisible: ! state.isVisible } 
+		isVisible ? dispatch( 'bluehost/plugin' ).closeMobileSidebar() : dispatch( 'bluehost/plugin' ).openMobileSidebar();
+		setState(
+			( state ) => {
+				return { isVisible: ! state.isVisible };
 			}
 		);
 	};

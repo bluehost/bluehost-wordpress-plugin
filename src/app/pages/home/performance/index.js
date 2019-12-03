@@ -27,30 +27,30 @@ const CacheCard = () => (
 			href={ baseUrl + 'admin.php?page=bluehost#/settings' }
 			isDefault
 		>
-			{__('Configure Caching', 'bluehost-wordpress-plugin')}
+			{ __( 'Configure Caching', 'bluehost-wordpress-plugin' ) }
 		</Button>
 	</HomeSectionRow>
 );
 
 const SiteAcceleratorCard = () => {
-	if ( ! select('bluehost/plugin').isJetpackActive() ) {
+	if ( ! select( 'bluehost/plugin' ).isJetpackActive() ) {
 		return null;
 	}
 	return (
 		<HomeSectionRow
 			isCentered
-			icon={ (<JetpackLogo />) }
+			icon={ ( <JetpackLogo /> ) }
 			title={ __( 'Site Accelerator', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Site acceleration service will resize your images and serve them from a CDN.', 'bluehost-wordpress-plugin' ) }>
 			<Button
 				href={ baseUrl + 'admin.php?page=jetpack#/performance' }
 				isDefault
 			>
-				{__('Configure Site Accelerator', 'bluehost-wordpress-plugin')}
+				{ __( 'Configure Site Accelerator', 'bluehost-wordpress-plugin' ) }
 			</Button>
 		</HomeSectionRow>
 	);
-}
+};
 
 const PerformanceSection = () => (
 	<HomeSection title="Performance" className="performance">

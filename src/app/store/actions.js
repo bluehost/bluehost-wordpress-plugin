@@ -9,43 +9,42 @@ import { select } from '@wordpress/data';
 import { STORE_KEY, SETTINGS_ENDPOINT } from './constants.js';
 import { apiFetch } from './controls.js';
 
-
 export function openMobileSidebar() {
 	return {
 		type: 'MOBILE_SIDEBAR_ACTIVE',
 	};
-};
+}
 
 export function closeMobileSidebar() {
 	return {
 		type: 'MOBILE_SIDEBAR_INACTIVE',
 	};
-};
+}
 
 export function setActivePage( activePage, isTopLevel ) {
 	return {
 		type: 'SET_ACTIVE_PAGE',
 		activePage,
-		isTopLevel
-	}
-};
+		isTopLevel,
+	};
+}
 
 export function augmentWPAdminMenu() {
 	return {
-		type: 'AUGMENT_WP_ADMIN_MENU'
-	}
-};
+		type: 'AUGMENT_WP_ADMIN_MENU',
+	};
+}
 
 export function fetchWindowData() {
-	let data = {
+	const data = {
 		type: 'FETCH_WINDOW_DATA',
 		bluehost: window.bluehost,
 		adminColors: window._wpColorScheme.icons,
-		userId: window.userSettings.uid
+		userId: window.userSettings.uid,
 	};
 	window.bluehost = { movedToStore: true };
 	return data;
-};
+}
 
 export function* toggleSetting( setting ) {
 	const oldValue = yield select( STORE_KEY ).getSetting( setting );
@@ -54,12 +53,12 @@ export function* toggleSetting( setting ) {
 }
 
 export function* updateSetting( setting, newValue ) {
-	let settings = {};
-	settings[setting] = newValue;
+	const settings = {};
+	settings[ setting ] = newValue;
 	yield apiFetch( { path: SETTINGS_ENDPOINT, method: 'POST', data: settings } );
 	return {
 		type: 'UPDATE_SETTING',
 		setting,
 		newValue,
-	}
+	};
 }

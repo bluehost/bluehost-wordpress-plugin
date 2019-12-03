@@ -11,17 +11,17 @@ import { compose } from '@wordpress/compose';
 import SettingsGroup from '../settings-group';
 import SettingsSelect from '../settings-select';
 
-const Content = ({ revisions, trashInterval, updateSetting }) => {
+const Content = ( { revisions, trashInterval, updateSetting } ) => {
 	const trashWeeks = Math.floor( trashInterval / 7 );
-	const trashLabel = ( <span>{sprintf( _n( 'Empty my trash every %d week', 'Empty my trash every %d weeks', trashWeeks,'bluehost-wordpress-plugin' ), trashWeeks )}</span> );
+	const trashLabel = ( <span>{ sprintf( _n( 'Empty my trash every %d week', 'Empty my trash every %d weeks', trashWeeks, 'bluehost-wordpress-plugin' ), trashWeeks ) }</span> );
 	return (
 		<div className="settings-section content pure-u-1 pure-u-lg-3-8">
-			<h2>{__('Content', 'bluehost-wordpress-plugin')}</h2>
+			<h2>{ __( 'Content', 'bluehost-wordpress-plugin' ) }</h2>
 			<SettingsGroup>
 				<SettingsSelect
-					label={__( 'Content revisions', 'bluehost-wordpress-plugin' )}
-					value={revisions}
-					onChange={value => updateSetting( 'contentRevisions', value )}
+					label={ __( 'Content revisions', 'bluehost-wordpress-plugin' ) }
+					value={ revisions }
+					onChange={ ( value ) => updateSetting( 'contentRevisions', value ) }
 					options={ [
 						{ label: '5', value: '5' },
 						{ label: '10', value: '10' },
@@ -29,9 +29,9 @@ const Content = ({ revisions, trashInterval, updateSetting }) => {
 						{ label: '40', value: '40' },
 					] } />
 				<SettingsSelect
-					label={trashLabel}
-					value={trashInterval}
-					onChange={value => updateSetting( 'emptyTrashDays', value )}
+					label={ trashLabel }
+					value={ trashInterval }
+					onChange={ ( value ) => updateSetting( 'emptyTrashDays', value ) }
 					options={ [
 						{ label: '1', value: '7' },
 						{ label: '2', value: '14' },
@@ -41,14 +41,14 @@ const Content = ({ revisions, trashInterval, updateSetting }) => {
 			</SettingsGroup>
 		</div>
 	);
-}
+};
 
 export default compose(
-	withSelect( select => ({
+	withSelect( ( select ) => ( {
 		revisions: select( 'bluehost/plugin' ).getSetting( 'contentRevisions' ),
 		trashInterval: select( 'bluehost/plugin' ).getSetting( 'emptyTrashDays' ),
-	})),
-	withDispatch( dispatch => ({
+	} ) ),
+	withDispatch( ( dispatch ) => ( {
 		updateSetting: dispatch( 'bluehost/plugin' ).updateSetting,
-	}))
-)(Content);
+	} ) )
+)( Content );

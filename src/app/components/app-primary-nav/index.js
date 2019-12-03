@@ -13,32 +13,32 @@ const AppPrimaryNavigation = () => (
 		<ul className="tabs">
 			<li className="tab">
 				<NavLink to="/home">
-					{__('Home', 'bluehost-wordpress-plugin')}
+					{ __( 'Home', 'bluehost-wordpress-plugin' ) }
 				</NavLink>
 			</li>
 			<li className="tab">
 				<NavLink to="/marketplace/themes">
-					{__('Themes', 'bluehost-wordpress-plugin')}
+					{ __( 'Themes', 'bluehost-wordpress-plugin' ) }
 				</NavLink>
 			</li>
 			<li className="tab">
 				<NavLink to="/marketplace/plugins">
-					{__('Plugins', 'bluehost-wordpress-plugin')}
+					{ __( 'Plugins', 'bluehost-wordpress-plugin' ) }
 				</NavLink>
 			</li>
 			<li className="tab">
 				<NavLink to="/marketplace/services">
-					{__('Services', 'bluehost-wordpress-plugin')}
+					{ __( 'Services', 'bluehost-wordpress-plugin' ) }
 				</NavLink>
 			</li>
 			<li className="tab">
 				<NavLink to="/tools/staging">
-					{__('Staging', 'bluehost-wordpress-plugin')}
+					{ __( 'Staging', 'bluehost-wordpress-plugin' ) }
 				</NavLink>
 			</li>
 			<li className="tab">
 				<NavLink to="/settings">
-					{__('Settings', 'bluehost-wordpress-plugin')}
+					{ __( 'Settings', 'bluehost-wordpress-plugin' ) }
 				</NavLink>
 			</li>
 		</ul>
