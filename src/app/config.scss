@@ -92,5 +92,11 @@ $body-font: $font;
   border: 0;
 }
 
+%border-box {
+  border: 1px solid #D7DBE0;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+}
+
 // Menu Breakpoint
 $menu-breakpoint: 782px;

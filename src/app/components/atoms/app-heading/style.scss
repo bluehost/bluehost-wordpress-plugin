@@ -1,0 +1,45 @@
+@import "@/config";
+
+.is-title-1,
+.is-title-2,
+.is-title-3,
+.is-title-4 {
+    font-weight: 600 !important;
+}
+
+.is-title-0 {
+    @extend %sr-only;
+}
+
+.is-title-1 {
+    font-size: 28px !important;
+    line-height: 40px !important;
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+}
+
+.is-title-2 {
+    font-size: 20px !important;
+    line-height: 32px !important;
+}
+
+.is-title-3 {
+    font-size: 18px !important;
+    line-height: 26px !important;
+}
+
+.is-title-4 {
+    font-size: 16px !important;
+    line-height: 24px !important;
+}
+
+.is-title-welcome {
+    font-size: 32px !important;
+    line-height: 40px !important;
+    margin-top: 0 !important;
+    font-weight: 300 !important;
+}
+
+.is-page-title {
+    margin-top: 0 !important;
+}

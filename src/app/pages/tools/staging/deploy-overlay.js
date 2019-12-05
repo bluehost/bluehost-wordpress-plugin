@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 
-import { Overlay } from '@/components';
+import { Overlay } from '@/components/molecules';
 
 import { WorkingImageUrl } from '@/assets';
 import Tips from './tips';

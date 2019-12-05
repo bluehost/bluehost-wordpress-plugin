@@ -34,7 +34,7 @@ body.toplevel_page_bluehost {
 }
 
 body:not(.bluehost-admin-keynav) {
-  .app-page:focus,
+  .base-template:focus,
   a[aria-current="page"]:focus,
   a.bluehostTab:focus,
   #bluehost-nav-popup-inner a:focus,
@@ -84,24 +84,6 @@ body:not(.bluehost-admin-keynav) {
   }
 }
 
-h3 {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 32px;
-}
-
-h4 {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
-}
-
 p {
   font-size: 14px;
-}
-
-.bordered-box {
-  border: 1px solid #D7DBE0;
-  border-radius: 3px;
-  background-color: #FFFFFF;
 }

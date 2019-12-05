@@ -6,7 +6,7 @@
 
 #wpbody-content {
     @extend .is-bg-off-white;
-    padding-bottom: 0;
+    padding-bottom: 0 !important;
 }
 
 #wpcontent {
@@ -15,4 +15,15 @@
 
 #wpfooter {
     display: none; /* credit relocated to /info route, link on settings page */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0 !important;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
 }

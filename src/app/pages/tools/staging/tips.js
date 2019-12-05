@@ -1,7 +1,7 @@
 import { Children } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { Slider } from '@/components';
+import { Slider } from '@/components/molecules';
 
 export default function Tips( { children } ) {
 	const settings = {

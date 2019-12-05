@@ -1,0 +1,39 @@
+@import '@/config.scss';
+.navtabs-desktop {
+  max-width: 1600px;
+}
+.navtabs-desktop__inner {
+  height: 33px;
+  margin: 24px 24px 0 24px;
+  .navtabs-desktop__items {
+    display: block;
+    border-bottom: 1px solid #ddd;
+    list-style: none;
+    margin: 0;
+    .navtabs-desktop__item {
+      margin-right: 40px;
+      position: relative;
+      display: inline-block;
+      a {
+          &.navtabs-desktop__link {
+            padding-bottom: 4px;
+            font-family: 'Open Sans', -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+            color: #5C5C5C;
+            text-decoration: none;
+            font-size: 16px;
+            line-height: 24px;
+            &.active {
+                color: $color-blue !important;
+                border-bottom: 3px solid $color-blue;
+            }
+          }
+      }
+    }
+  }
+}
+@media (max-width:$menu-breakpoint) {
+  .navtabs-desktop,
+  .navtabs-desktop__inner {
+    display: none;
+  }
+}

@@ -2,7 +2,7 @@
  * Internal Dependencies
  */
 import SettingsControl from '../settings-control';
-import { AppToggle } from '@/components';
+import { AppToggle } from '@/components/atoms';
 
 const SettingsToggle = ( { label, checked, onChange } ) => (
 	<SettingsControl>

@@ -8,16 +8,16 @@ import { compose } from '@wordpress/compose';
 /**
  * Internal Dependencies
  */
+import SettingsSection from '../settings-section';
 import SettingsGroup from '../settings-group';
 import SettingsToggle from '../settings-toggle';
 import SettingsSelect from '../settings-select';
 
 const Comments = ( { oldPostComments, closeInterval, perPage, toggleSetting, updateSetting } ) => {
-	const commentsLabel = ( <span>{ sprintf( _n( 'Close comments after %d day', 'Close comments after %d days', closeInterval, 'bluehost-wordpress-plugin' ), closeInterval ) }</span> );
-	const commentsPageLabel = ( <span>{ sprintf( _n( 'Display %d comment per page', 'Display %d comments per page', perPage, 'bluehost-wordpress-plugin' ), perPage ) }</span> );
+	const commentsLabel = ( <span>{ __( 'Close comments after ', 'bluehost-wordpress-plugin' ) } <strong>{ closeInterval }</strong>{ _n( ' day', ' days', closeInterval, 'bluehost-wordpress-plugin' ) }</span> );
+	const commentsPageLabel = ( <span>{ __( 'Display ', 'bluehost-wordpress-plugin' ) } <strong>{ perPage }</strong> { _n( 'comment per page', 'comments per page', perPage, 'bluehost-wordpress-plugin' ) }</span> );
 	return (
-		<div className="settings-section comments pure-u-1 pure-u-lg-3-8">
-			<h2>{ __( 'Comments', 'bluehost-wordpress-plugin' ) }</h2>
+		<SettingsSection name={ __( 'Comments', 'bluehost-wordpress-plugin' ) }>
 			<SettingsGroup>
 				<SettingsToggle
 					label={ __( 'Disable comments for old posts', 'bluehost-wordpress-plugin' ) }
@@ -55,7 +55,7 @@ const Comments = ( { oldPostComments, closeInterval, perPage, toggleSetting, upd
 					] }
 				/>
 			</SettingsGroup>
-		</div>
+		</SettingsSection>
 	);
 };
 

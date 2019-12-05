@@ -1,6 +1,13 @@
+@import '@/config';
 .performance {
-	h3, h4 {
-		margin: 0;
+	.caching {
+		position: relative;
+		padding: 24px;
+		@extend %border-box;
+		&__title,
+		&__subtitle {
+			margin: 0 !important;
+		}
 	}
 	p {
 		margin-top: 8px;

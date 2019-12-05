@@ -1,8 +1,14 @@
+/**
+ * External dependencies
+ */
 import { without } from 'lodash';
+/**
+ * WordPress dependencies
+ */
 import { useState } from '@wordpress/element';
 
 /**
- * Favorites functionality.
+ * Favorites functionality hook
  *
  * @param {Array} initialFavorites
  * @return {Array}
@@ -11,9 +17,9 @@ export default function useFavorites( initialFavorites = [] ) {
 	const [ favorites, setFavorites ] = useState( initialFavorites );
 
 	/**
-  * Add a favorite by ID.
-  *
-  * @param {string} id
+	 * Add a favorite by ID.
+	 *
+	 * @param {string} id
   */
 	function addFavorite( id ) {
 		setFavorites( [ ...favorites, id ] );

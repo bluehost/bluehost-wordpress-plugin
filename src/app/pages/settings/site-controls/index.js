@@ -8,16 +8,18 @@ import { compose } from '@wordpress/compose';
 /**
  * Internal Dependencies
  */
+import SettingsSection from '../settings-section';
 import SettingsGroup from '../settings-group';
 import SettingsToggle from '../settings-toggle';
 
 const SiteControls = ( { isComingSoon, isSSOActive, toggleSetting } ) => {
 	return (
-		<div className="settings-section site-controls pure-u-1 pure-u-lg-3-8">
-			<h2>{ __( 'Site Controls', 'bluehost-wordpress-plugin' ) }</h2>
+		<SettingsSection
+			name={ __( 'Site Controls', 'bluehost-wordpress-plugin' ) }
+		>
 			<SettingsGroup>
 				<SettingsToggle
-					label={ __( 'Coming soon page active', 'bluehost-wordpress-plugin' ) }
+					label={ __( 'Coming Soon Page', 'bluehost-wordpress-plugin' ) }
 					checked={ isComingSoon }
 					onChange={ () => toggleSetting( 'comingSoon' ) }
 				/>
@@ -27,7 +29,7 @@ const SiteControls = ( { isComingSoon, isSSOActive, toggleSetting } ) => {
 					onChange={ () => toggleSetting( 'sso' ) }
 				/>
 			</SettingsGroup>
-		</div>
+		</SettingsSection>
 	);
 };
 

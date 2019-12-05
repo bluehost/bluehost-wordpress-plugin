@@ -2,10 +2,13 @@ import { Fragment } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
-	AppButton as Button,
+	AppButton as Button
+} from '@/components/atoms';
+
+import {
 	AppModal as Modal,
 	Warning,
-} from '@/components';
+} from '@/components/molecules';
 
 export default function( { onClick, onClose } ) {
 	return (

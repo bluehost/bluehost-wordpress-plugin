@@ -1,6 +1,8 @@
+import './style.scss';
+
 const SettingsGroup = ( { children, className = '' } ) => {
 	return (
-		<div className={ 'settings-group bordered-box ' + className }>
+		<div className={ 'settings-group ' + className }>
 			{ children }
 		</div>
 	);

@@ -2,7 +2,6 @@
  * WordPress dependencies
  */
 import { combineReducers } from '@wordpress/data';
-import apiFetch from '@wordpress/api-fetch';
 /**
  *
  * @param {*} state

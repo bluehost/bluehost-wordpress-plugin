@@ -7,22 +7,30 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
+import { BaseTemplate } from '@/components/templates';
+
 import {
 	AppButton as Button,
-	AppPage as Page,
+	AppHeading,
 	AppSpinner as Spinner,
+} from '@/components/atoms';
+
+import {
 	DropdownButton,
 	EnvironmentCard,
 	OptionsMenu,
 	Overlay,
 	AppSnackbar as Snackbar,
-} from '@/components';
-import { useStaging } from '@/hooks';
+} from '@/components/molecules';
+
 import {
 	RadioButtonDisabledIcon,
 	RadioButtonSelectedIcon,
 	WorkingImageUrl,
 } from '@/assets';
+
+import { useStaging } from '@/hooks';
+
 import CloneModal from './clone-modal';
 import CloneOverlay from './clone-overlay';
 import DeleteModal from './delete-modal';
@@ -84,13 +92,12 @@ export default function StagingPage() {
 	}, [ notice ] );
 
 	return (
-		<Page className="bluehost-staging">
-
-			<h1>{ __( 'Staging', 'bluehost-wordpress-plugin' ) }</h1>
+		<BaseTemplate className="bluehost-staging">
+			<AppHeading level="h2" size={ 1 } className="is-page-title">{ __( 'Staging', 'bluehost-wordpress-plugin' ) }</AppHeading>
 			<p>{ __( 'A staging site is a copy of your site where you can safely test changes before publishing them to your production site. It gives you a way to try new things, test updates, and then deploy them when you\'re ready.', 'bluehost-wordpress-plugin' ) }</p>
 
 			<div className="bluehost-staging__production-env">
-				<h2>{ __( 'Production site', 'bluehost-wordpress-plugin' ) }</h2>
+				<AppHeading level="h3" size={2}>{ __( 'Production site', 'bluehost-wordpress-plugin' ) }</AppHeading>
 				<p>{ __( 'This is your live website.', 'bluehost-wordpress-plugin' ) }</p>
 				<EnvironmentCard
 					color="green"
@@ -125,7 +132,7 @@ export default function StagingPage() {
 			</div>
 
 			<div className="bluehost-staging__staging-env">
-				<h2>{ __( 'Staging site', 'bluehost-wordpress-plugin' ) }</h2>
+				<AppHeading level="h3" size={2}>{ __( 'Staging site', 'bluehost-wordpress-plugin' ) }</AppHeading>
 				{ ( () => {
 					if ( isCreatingStaging ) {
 						return (
@@ -193,8 +200,8 @@ export default function StagingPage() {
 									isProduction &&
                                     (
                                     	<OptionsMenu
-	label={ __( 'Staging Options', 'bluehost-wordpress-plugin' ) }
-	options={ [
+											label={ __( 'Staging Options', 'bluehost-wordpress-plugin' ) }
+											options={ [
                                     			{
                                     				label: __( 'Delete', 'bluehost-wordpress-plugin' ),
                                     				callback: () => setShowDeleteModal( true ),
@@ -293,7 +300,6 @@ export default function StagingPage() {
 					<Tips />
 				</Overlay>
 			) }
-
-		</Page>
+		</BaseTemplate>
 	);
 }

@@ -10,15 +10,17 @@ import { select } from '@wordpress/data';
 /**
  * External dependencies
  */
-import { AppButton as Button } from '@/components';
-import HomeSection from '../home-section';
-import HomeSectionRow from '../home-section-row';
+import { AppButton as Button } from '@/components/atoms';
+import {
+	ContentList,
+	ContentListRow,
+} from '@/components/molecules';
 import { JetpackLogo } from '@/assets';
 
 const baseUrl = location.origin + '/wp-admin/';
 
 const CacheCard = () => (
-	<HomeSectionRow
+	<ContentListRow
 		isCentered
 		icon="performance"
 		title={ __( 'Page Cache', 'bluehost-wordpress-plugin' ) }
@@ -29,7 +31,7 @@ const CacheCard = () => (
 		>
 			{ __( 'Configure Caching', 'bluehost-wordpress-plugin' ) }
 		</Button>
-	</HomeSectionRow>
+	</ContentListRow>
 );
 
 const SiteAcceleratorCard = () => {
@@ -37,7 +39,7 @@ const SiteAcceleratorCard = () => {
 		return null;
 	}
 	return (
-		<HomeSectionRow
+		<ContentListRow
 			isCentered
 			icon={ ( <JetpackLogo /> ) }
 			title={ __( 'Site Accelerator', 'bluehost-wordpress-plugin' ) }
@@ -48,17 +50,17 @@ const SiteAcceleratorCard = () => {
 			>
 				{ __( 'Configure Site Accelerator', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</HomeSectionRow>
+		</ContentListRow>
 	);
 };
 
 const PerformanceSection = () => (
-	<HomeSection title="Performance" className="performance">
+	<ContentList title="Performance" className="performance">
 		<>
 			<CacheCard />
 			<SiteAcceleratorCard />
 		</>
-	</HomeSection>
+	</ContentList>
 );
 
 export default PerformanceSection;

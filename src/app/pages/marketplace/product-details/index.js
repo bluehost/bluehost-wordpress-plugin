@@ -2,7 +2,12 @@ import { ucFirst } from 'change-case';
 import { __, sprintf } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
 import { decodeEntities } from '@wordpress/html-entities';
-import { AppButton as Button, AppPage, AppSpinner } from '@/components';
+
+import {
+	MarketplaceTemplate,
+} from '@/components/templates';
+
+import { AppButton as Button, AppSpinner } from '@/components/atoms';
 import { get } from '@/functions';
 import { useMojoApi } from '@/hooks';
 import { ReactComponent as ErrorStateImage } from '@/assets/error-state.svg';
@@ -78,13 +83,13 @@ export default function ProductDetails( { id } ) {
 	const sales = parseInt( sales_count, 10 ).toLocaleString( { useGrouping: true } );
 
 	return (
-		<AppPage className="product-details">
-			<header className="product-details__header">
+		<MarketplaceTemplate className="page-product">
+			<header className="page-product__header">
 				<h1>{ header }</h1>
 			</header>
-			<div className="product-details__breadcrumbs">
+			<div className="page-product__breadcrumbs">
 				<button
-					className="product-details__breadcrumbs-root"
+					className="page-product__breadcrumbs-root"
 					onClick={ () => window.history.back() }
 				>
 					{ breadcrumbText }
@@ -92,43 +97,43 @@ export default function ProductDetails( { id } ) {
 				<span> / </span>
 				<span>{ decodeEntities( name ) }</span>
 			</div>
-			<div className="product-details__main">
-				<div className="product-details__main">
-					<div className="product-details__content">
-						<h2 className="product-details__title">{ decodeEntities( name ) }</h2>
-						<div className="product-details__image">
+			<div className="page-product__main">
+				<div className="page-product__main">
+					<div className="page-product__content">
+						<h2 className="page-product__title">{ decodeEntities( name ) }</h2>
+						<div className="page-product__image">
 							<img src={ preview_url } alt={ name } />
 						</div>
-						<div className="product-details__description"
+						<div className="page-product__description"
 							dangerouslySetInnerHTML={ { __html: description } } />
 					</div>
-					<div className="product-details__sidebar">
-						<div className="product-details__pricing-panel">
-							<div className="product-details__pricing-panel-price">${ price }</div>
-							<div className="product-details__pricing-panel-currency">USD</div>
-							<Button className="product-details__pricing-panel-call-to-action"
+					<div className="page-product__sidebar">
+						<div className="page-product__pricing-panel">
+							<div className="page-product__pricing-panel-price">${ price }</div>
+							<div className="page-product__pricing-panel-currency">USD</div>
+							<Button className="page-product__pricing-panel-call-to-action"
 								href={ buyUrl }
 								target="_blank"
 								isPrimary>
 								{ __( 'Buy Now', 'bluehost-wordpress-plugin' ) }
 							</Button>
-							<div className="product-details__pricing-panel-terms">
+							<div className="page-product__pricing-panel-terms">
 								{ __( 'One Time Fee', 'bluehost-wordpress-plugin' ) }
 							</div>
 						</div>
-						<div className="product-details__info-panel">
-							<h3 className="product-details__info-panel-title">
+						<div className="page-product__info-panel">
+							<h3 className="page-product__info-panel-title">
 								{ __( 'Item Information', 'bluehost-wordpress-plugin' ) }
 							</h3>
-							<div className="product-details__info-panel-created">
+							<div className="page-product__info-panel-created">
 								<strong>{ __( 'Created: ', 'bluehost-wordpress-plugin' ) }</strong>
 								{ `${ months[ dateCreated.getMonth() ] } ${ dateCreated.getDate() }, ${ dateCreated.getFullYear() }` }
 							</div>
-							<div className="product-details__info-panel-updated">
+							<div className="page-product__info-panel-updated">
 								<strong>{ __( 'Updated: ', 'bluehost-wordpress-plugin' ) }</strong>
 								{ `${ months[ dateUpdated.getMonth() ] } ${ dateUpdated.getDate() }, ${ dateUpdated.getFullYear() }` }
 							</div>
-							<div className="product-details__info-panel-sales">
+							<div className="page-product__info-panel-sales">
 								<strong>{ __( 'Sales: ', 'bluehost-wordpress-plugin' ) }</strong>
 								{ sales }
 							</div>
@@ -136,6 +141,6 @@ export default function ProductDetails( { id } ) {
 					</div>
 				</div>
 			</div>
-		</AppPage>
+		</MarketplaceTemplate>
 	);
 }

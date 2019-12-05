@@ -1,10 +1,11 @@
-import { lazy, Suspense } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { ProductCard, AppSpinner } from '@/components';
+import { ProductCard } from '@/components/molecules';
 import { useMojoApi } from '@/hooks';
 
-const Page = lazy( () => import( '@/components/marketplace-page' ) );
+import {
+	MarketplaceTemplate,
+} from '@/components/templates';
 
 function PluginsPage( { history } ) {
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'plugins', { count: 1000 } );
@@ -34,14 +35,12 @@ function PluginsPage( { history } ) {
 	};
 
 	return (
-		<Suspense fallback={ <AppSpinner small /> }>
-			<Page
-				isLoading={ ! done || isLoading }
-				payload={ payload }
-				render={ renderCallback }
-				type="plugins"
-			/>
-		</Suspense>
+		<MarketplaceTemplate
+			isLoading={ ! done || isLoading }
+			payload={ payload }
+			render={ renderCallback }
+			type="plugins"
+		/>
 	);
 }
 

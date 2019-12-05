@@ -8,7 +8,7 @@ import { compose } from '@wordpress/compose';
 /**
  * External Dependencies
  */
-import { AppButton, AppToggle } from '@/components';
+import { AppButton, AppToggle, AppHeading } from '@/components/atoms';
 
 /**
  * Internal Dependencies
@@ -42,13 +42,13 @@ const SettingsPerformance = ( { cacheLevel, updateSetting } ) => {
 	};
 	return (
 		<SettingsSection name="Performance" className="pure-u-lg-19-24 performance">
-			<div className="bordered-box settings-block">
-				<h3>{ __( 'Caching', 'bluehost-wordpress-plugin' ) }</h3>
+			<div className="caching">
+				<AppHeading level="h4" size={2} className="caching__title">{ __( 'Caching', 'bluehost-wordpress-plugin' ) }</AppHeading>
 				<AppToggle checked={ cachingEnabled } onChange={ toggleCaching } />
 				<p>{ __( 'Boost speed and performance by storing a copy of your website content, files, and images online so the pages of your website load faster for your visitors.', 'bluehost-wordpress-plugin' ) }</p>
 				<div className={ 'cache-settings ' + cachingClass }>
 					<div className={ 'cache-level' }>
-						<h4>{ __( 'Caching Level', 'bluehost-wordpress-plugin' ) }</h4>
+						<AppHeading level="h5" size={3} className="caching__subtitle">{ __( 'Caching Level', 'bluehost-wordpress-plugin' ) }</AppHeading>
 						<CacheLevelSelector
 							value={ 1 }
 							cacheLevel={ cacheLevel }
@@ -68,8 +68,7 @@ const SettingsPerformance = ( { cacheLevel, updateSetting } ) => {
 							desc={ __( 'Cache static assets for 1 week and web pages for 5 minutes. Recommended for portfolios, brochure sites, and sites that update monthly or less often.', 'bluehost-wordpress-plugin' ) }
 						/>
 					</div>
-
-					<h4>{ __( 'Manage Cache', 'bluehost-wordpress-plugin' ) }</h4>
+					<AppHeading level="h4" size={3} className="caching__subtitle">{ __( 'Manage Cache', 'bluehost-wordpress-plugin' ) }</AppHeading>
 					<p>{ __( 'If you’ve recently updated your website, we recommend clearing the site cache. We’ll fetch a fresh version of your site to cache.', 'bluehost-wordpress-plugin' ) }</p>
 					<AppButton isPrimary>{ __( 'Clear Everything', 'bluehost-wordpress-plugin' ) }</AppButton>
 				</div>

@@ -17,12 +17,12 @@ const WP_PAGE_ROOT_ELEMENT = 'bluehost-app';
 /**
  *
  */
-import helpers from './helpers';
+import initHelpers from './init-helpers';
 /**
  * When DOM is ready, load app on root element, replacing #app-loader markup.
  */
 domReady( () => {
-	{ helpers(); }
+	{ initHelpers(); }
 	render(
 		<App />,
 		document.getElementById( WP_PAGE_ROOT_ELEMENT )

@@ -1,22 +1,10 @@
 @import '@/config';
 
 .settings-section {
-	h2 {
-		font-size: 2em;
-		margin-bottom: 24px;
-	}
 	&.pure-u-lg-3-8 {
 		margin-right: 4.3478261%;
 	}
-}
-
-@media (min-width:$menu-breakpoint) {
-	.settings-section {
-		&.automatic-updates,
-		&.site-controls {
-			h2 {
-				margin-top: 0;
-			}
-		}
+	.settings-section__title {
+		margin-top: 0 !important;
 	}
 }

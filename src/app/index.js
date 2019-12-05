@@ -12,15 +12,23 @@ import { HashRouter as Router } from 'react-router-dom';
 /**
  * Internal dependencies
  */
+import { 
+	Header,
+	Main
+} from '@/components/organisms';
+
 import './store';
 import './app.scss';
 
 import {
 	AppError,
-	AppPrimaryNav,
-} from '@/components';
+} from '@/components/molecules';
 
-import { Main, Header } from '@/parts';
+const SkipLink = ( { onClick, onKeyPress, children } ) => (
+	<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ onClick } onKeyPress={ onKeyPress }>
+		{ children }
+	</a>
+);
 
 class App extends Component {
 	constructor( props ) {
@@ -65,25 +73,17 @@ class App extends Component {
 		return (
 			<Animate type="appear" options={ { origin: 'center' } }>
 				{
-					( {} ) => (
+					( { className } ) => (
 						<Router>
-							{ /* <main id="bluehost-app-wrap" className="bluehost-app-wrap animated fadeIn fast"> */ }
-							<main id="bluehost-app-wrap" className="bluehost-app-wrap">
-								<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
+							<main id="bluehost-app-wrap" className={ 'bluehost-app-wrap ' + className }>
+								<SkipLink onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
 									{ __( 'Skip to Navigation', 'bluehost-wordpress-plugin' ) }
-								</a>
-								<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
+								</SkipLink>
+								<SkipLink onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
 									{ __( 'Skip to Content', 'bluehost-wordpress-plugin' ) }
-								</a>
-								<div>
-									<Header />
-								</div>
-								<div id="navigation" tabIndex="-1" ref={ this.navFocus }>
-									<AppPrimaryNav />
-								</div>
-								<div tabIndex="-1" ref={ this.contentFocus }>
-									<Main />
-								</div>
+								</SkipLink>
+								<Header ref={ this.navFocus } />
+								<Main ref={ this.contentFocus } />
 							</main>
 						</Router>
 					)

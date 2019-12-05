@@ -1,4 +1,18 @@
-.settings-block {
-	padding: 24px;
-	position: relative;
+.page-settings {
+	&__grid1 {
+		> * + *:not(:nth-of-type(2)) { // select all top-level items except the first two
+			margin-top: 24px;
+		}
+		@media screen and (max-width: 1024px) {
+			> *:nth-of-type(2) { // select the second item and add margin upon collapse to single column
+				margin-top: 24px;
+			}
+		}
+	}
+	&__grid2 {
+		margin-top: 24px;
+	}
+	&__block {
+		padding: 24px;
+	}
 }

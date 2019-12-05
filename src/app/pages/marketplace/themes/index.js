@@ -1,9 +1,8 @@
-import { lazy, Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
-import { ProductCard, AppSpinner } from '@/components';
+import { MarketplaceTemplate } from '@/components/templates';
+import { ProductCard } from '@/components/molecules';
 import { useMojoApi } from '@/hooks';
 
-const Page = lazy( () => import( '@/components/marketplace-page' ) );
 
 export default function ThemesPage() {
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'themes', { count: 1000 } );
@@ -33,13 +32,11 @@ export default function ThemesPage() {
 	};
 
 	return (
-		<Suspense fallback={ <AppSpinner small /> }>
-			<Page
-				isLoading={ ! done || isLoading }
-				payload={ payload }
-				render={ renderCallback }
-				type="themes"
-			/>
-		</Suspense>
+		<MarketplaceTemplate
+			isLoading={ ! done || isLoading }
+			payload={ payload }
+			render={ renderCallback }
+			type="themes"
+		/>
 	);
 }

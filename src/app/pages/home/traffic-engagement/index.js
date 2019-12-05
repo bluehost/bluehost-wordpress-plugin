@@ -10,15 +10,18 @@ import { select } from '@wordpress/data';
 /**
  * External dependencies
  */
-import { AppButton as Button } from '@/components';
-import HomeSection from '../home-section';
-import HomeSectionRow from '../home-section-row';
+import { AppButton as Button } from '@/components/atoms';
+
+import {
+	ContentList,
+	ContentListRow,
+} from '@/components/molecules';
 
 const baseUrl = location.origin + '/wp-admin/';
 
 function SocialCard() {
 	return (
-		<HomeSectionRow
+		<ContentListRow
 			icon="share"
 			title={ __( 'Social', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Add social sharing buttons so site visitors can share your content and help grow your traffic.', 'bluehost-wordpress-plugin' ) }>
@@ -28,13 +31,13 @@ function SocialCard() {
 			>
 				{ __( 'Manage Social', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</HomeSectionRow>
+		</ContentListRow>
 	);
 }
 
 function PublicizeCard() {
 	return (
-		<HomeSectionRow
+		<ContentListRow
 			icon="megaphone"
 			title={ __( 'Publicize', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Set your site to automatically share new content with your social networks.', 'bluehost-wordpress-plugin' ) }>
@@ -44,13 +47,13 @@ function PublicizeCard() {
 			>
 				{ __( 'Set Sharing', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</HomeSectionRow>
+		</ContentListRow>
 	);
 }
 
 function StatsCard() {
 	return (
-		<HomeSectionRow
+		<ContentListRow
 			isCentered
 			icon="chart-bar"
 			title={ __( 'Stats', 'bluehost-wordpress-plugin' ) }
@@ -61,7 +64,7 @@ function StatsCard() {
 			>
 				{ __( 'View Stats', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</HomeSectionRow>
+		</ContentListRow>
 	);
 }
 
@@ -70,11 +73,11 @@ const TrafficEngagementSection = () => {
 		return null;
 	}
 	return (
-		<HomeSection title={ __( 'Traffic & Engagement', 'bluehost-wordpress-plugin' ) } className="traffic">
+		<ContentList title={ __( 'Traffic & Engagement', 'bluehost-wordpress-plugin' ) } className="traffic">
 			<SocialCard />
 			<PublicizeCard />
 			<StatsCard />
-		</HomeSection>
+		</ContentList>
 	);
 };
 
