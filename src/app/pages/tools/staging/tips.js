@@ -1,7 +1,7 @@
 import { Children } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { Slider } from '@/components/molecules';
+import { BWASlider } from '@/components/molecules';
 
 export default function Tips( { children } ) {
 	const settings = {
@@ -24,7 +24,7 @@ export default function Tips( { children } ) {
 	}
 
 	return (
-		<Slider settings={ settings }>
+		<BWASlider settings={ settings }>
 			{ Children.map( children, ( item ) => {
 				return (
 					<p>
@@ -32,6 +32,6 @@ export default function Tips( { children } ) {
 					</p>
 				);
 			} ) }
-		</Slider>
+		</BWASlider>
 	);
 }

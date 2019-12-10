@@ -13,15 +13,15 @@ import { HashRouter as Router } from 'react-router-dom';
  * Internal dependencies
  */
 import { 
-	Header,
-	Main
+	BWAHeader,
+	BWAMain
 } from '@/components/organisms';
 
 import './store';
 import './app.scss';
 
 import {
-	AppError,
+	BWAError,
 } from '@/components/molecules';
 
 const SkipLink = ( { onClick, onKeyPress, children } ) => (
@@ -30,7 +30,7 @@ const SkipLink = ( { onClick, onKeyPress, children } ) => (
 	</a>
 );
 
-class App extends Component {
+class BWAApp extends Component {
 	constructor( props ) {
 		super( props );
 		// create refs for skip focus links
@@ -42,7 +42,7 @@ class App extends Component {
 		this.componentDidCatch = this.componentDidCatch.bind( this );
 		this.state = {
 			hasError: false,
-			appError: null,
+			BWAError: null,
 		};
 
 		dispatch( 'bluehost/plugin' ).fetchWindowData();
@@ -59,14 +59,14 @@ class App extends Component {
 	}
 
 	componentDidCatch( error, info ) {
-		this.setState( { hasError: true, appError: error } );
+		this.setState( { hasError: true, BWAError: error } );
 	}
 
 	render() {
 		if ( true === this.state.hasError ) {
 			return (
 				<div>
-					<AppError error={ this.state.appError } />
+					<BWAError error={ this.state.BWAError } />
 				</div>
 			);
 		}
@@ -82,8 +82,8 @@ class App extends Component {
 								<SkipLink onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
 									{ __( 'Skip to Content', 'bluehost-wordpress-plugin' ) }
 								</SkipLink>
-								<Header ref={ this.navFocus } />
-								<Main ref={ this.contentFocus } />
+								<BWAHeader ref={ this.navFocus } />
+								<BWAMain ref={ this.contentFocus } />
 							</main>
 						</Router>
 					)
@@ -93,4 +93,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default BWAApp;

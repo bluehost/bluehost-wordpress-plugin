@@ -10,18 +10,18 @@ import { select } from '@wordpress/data';
 /**
  * External dependencies
  */
-import { AppButton as Button } from '@/components/atoms';
+import { BWAButton as Button } from '@/components/atoms';
 
 import {
-	ContentList,
-	ContentListRow,
+	BWAContentList,
+	BWAContentListRow,
 } from '@/components/molecules';
 
 const baseUrl = location.origin + '/wp-admin/';
 
 function SocialCard() {
 	return (
-		<ContentListRow
+		<BWAContentListRow
 			icon="share"
 			title={ __( 'Social', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Add social sharing buttons so site visitors can share your content and help grow your traffic.', 'bluehost-wordpress-plugin' ) }>
@@ -31,13 +31,13 @@ function SocialCard() {
 			>
 				{ __( 'Manage Social', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</ContentListRow>
+		</BWAContentListRow>
 	);
 }
 
 function PublicizeCard() {
 	return (
-		<ContentListRow
+		<BWAContentListRow
 			icon="megaphone"
 			title={ __( 'Publicize', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Set your site to automatically share new content with your social networks.', 'bluehost-wordpress-plugin' ) }>
@@ -47,13 +47,13 @@ function PublicizeCard() {
 			>
 				{ __( 'Set Sharing', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</ContentListRow>
+		</BWAContentListRow>
 	);
 }
 
 function StatsCard() {
 	return (
-		<ContentListRow
+		<BWAContentListRow
 			isCentered
 			icon="chart-bar"
 			title={ __( 'Stats', 'bluehost-wordpress-plugin' ) }
@@ -64,7 +64,7 @@ function StatsCard() {
 			>
 				{ __( 'View Stats', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</ContentListRow>
+		</BWAContentListRow>
 	);
 }
 
@@ -73,11 +73,11 @@ const TrafficEngagementSection = () => {
 		return null;
 	}
 	return (
-		<ContentList title={ __( 'Traffic & Engagement', 'bluehost-wordpress-plugin' ) } className="traffic">
+		<BWAContentList title={ __( 'Traffic & Engagement', 'bluehost-wordpress-plugin' ) } className="traffic">
 			<SocialCard />
 			<PublicizeCard />
 			<StatsCard />
-		</ContentList>
+		</BWAContentList>
 	);
 };
 

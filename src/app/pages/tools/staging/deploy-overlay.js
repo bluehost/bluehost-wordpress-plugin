@@ -1,13 +1,13 @@
 import { __ } from '@wordpress/i18n';
 
-import { Overlay } from '@/components/molecules';
+import { BWAOverlay } from '@/components/molecules';
 
 import { WorkingImageUrl } from '@/assets';
 import Tips from './tips';
 
-export default function DeployOverlay( { type = 'all' } ) {
+export default function DeployBWAOverlay( { type = 'all' } ) {
 	return (
-		<Overlay className={ `bluehost-staging__overlay` }>
+		<BWAOverlay className={ `bluehost-staging__overlay` }>
 			<h1>
 				{ ( () => {
 					switch ( type ) {
@@ -31,6 +31,6 @@ export default function DeployOverlay( { type = 'all' } ) {
 				alt=""
 			/>
 			<Tips />
-		</Overlay>
+		</BWAOverlay>
 	);
 }

@@ -10,12 +10,12 @@ import { compose } from '@wordpress/compose';
  * Project Dependencies
  */
 import {
-	AppButton,
-	AppHeading
+	BWAButton,
+	BWAHeading
 } from '@/components/atoms';
 
 import {
-	AppNotice as Notice,
+	BWANotice as Notice,
 } from '@/components/molecules';
 
 import './style.scss';
@@ -51,17 +51,17 @@ const ComingSoonNotice = ( { isComingSoon, toggleSetting } ) => {
 		>
 			<div className="pure-g">
 				<div className="pure-u-1 pure-u-sm-1-2 details">
-					<AppHeading level="h2" size={ 2 }>{ noticeTitle }</AppHeading>
+					<BWAHeading level="h2" size={ 2 }>{ noticeTitle }</BWAHeading>
 					<p>{ noticeDesc }</p>
 				</div>
 				<div className="pure-u-1 pure-u-sm-1-2 action">
-					<AppButton
+					<BWAButton
 						onClick={ () => ( userLaunchedSite() ) }
 						isPrimary={ isComingSoon }
 						isSecondary={ ! isComingSoon }
 					>
 						{ buttonText }
-					</AppButton>
+					</BWAButton>
 				</div>
 			</div>
 		</Notice>

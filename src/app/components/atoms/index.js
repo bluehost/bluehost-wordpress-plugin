@@ -1,9 +1,8 @@
-export { default as AppButton } from './app-button';
-export { default as AppHeading } from './app-heading';
-export { default as AppNavLink } from './app-nav-link';
-export { default as AppPageSpinner } from './app-page-spinner';
-export { default as AppSpinner } from './app-spinner';
-export { default as AppToggle } from './app-toggle';
-export { default as Dropdown } from './dropdown';
-export { default as Pagination } from './pagination';
-export { default as Tooltip } from './tooltip';
+export { default as BWAButton } from './bwa-button';
+export { default as BWAHeading } from './bwa-heading';
+export { default as BWANavLink } from './bwa-nav-link';
+export { default as BWASpinner } from './bwa-spinner';
+export { default as BWAToggle } from './bwa-toggle';
+export { default as BWADropdown } from './bwa-dropdown';
+export { default as BWAPagination } from './bwa-pagination';
+export { default as BWATooltip } from './bwa-tooltip';

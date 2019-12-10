@@ -10,17 +10,17 @@ import { select } from '@wordpress/data';
 /**
  * External dependencies
  */
-import { AppButton as Button } from '@/components/atoms';
+import { BWAButton as Button } from '@/components/atoms';
 import {
-	ContentList,
-	ContentListRow,
+	BWAContentList,
+	BWAContentListRow,
 } from '@/components/molecules';
 import { JetpackLogo } from '@/assets';
 
 const baseUrl = location.origin + '/wp-admin/';
 
 const CacheCard = () => (
-	<ContentListRow
+	<BWAContentListRow
 		isCentered
 		icon="performance"
 		title={ __( 'Page Cache', 'bluehost-wordpress-plugin' ) }
@@ -31,7 +31,7 @@ const CacheCard = () => (
 		>
 			{ __( 'Configure Caching', 'bluehost-wordpress-plugin' ) }
 		</Button>
-	</ContentListRow>
+	</BWAContentListRow>
 );
 
 const SiteAcceleratorCard = () => {
@@ -39,7 +39,7 @@ const SiteAcceleratorCard = () => {
 		return null;
 	}
 	return (
-		<ContentListRow
+		<BWAContentListRow
 			isCentered
 			icon={ ( <JetpackLogo /> ) }
 			title={ __( 'Site Accelerator', 'bluehost-wordpress-plugin' ) }
@@ -50,17 +50,17 @@ const SiteAcceleratorCard = () => {
 			>
 				{ __( 'Configure Site Accelerator', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</ContentListRow>
+		</BWAContentListRow>
 	);
 };
 
 const PerformanceSection = () => (
-	<ContentList title="Performance" className="performance">
+	<BWAContentList title="Performance" className="performance">
 		<>
 			<CacheCard />
 			<SiteAcceleratorCard />
 		</>
-	</ContentList>
+	</BWAContentList>
 );
 
 export default PerformanceSection;

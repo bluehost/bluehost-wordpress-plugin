@@ -61,7 +61,7 @@ describe('Themes Page', function () {
         cy.checkA11y('.app-page');
     });
 
-    it('Grid has 12 items', () => {
+    it('BWAProductGrid has 12 items', () => {
         cy.get('.product-card').should('have.length', 12);
     });
 

@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
-import { MarketplaceTemplate } from '@/components/templates';
-import { ProductCard } from '@/components/molecules';
+import { BWAMarketplaceTemplate } from '@/components/templates';
+import { BWAProductCard } from '@/components/molecules';
 import { useMojoApi } from '@/hooks';
 
 
@@ -13,7 +13,7 @@ export default function ThemesPage() {
 
 	const renderCallback = ( { item, hasFavorite, toggleFavorite } ) => {
 		return (
-			<ProductCard
+			<BWAProductCard
 				buttonPrimary={ { href: item.buy_url } }
 				buttonSecondary={ {
 					children: __( 'Preview', 'bluehost-wordpress-plugin' ),
@@ -32,7 +32,7 @@ export default function ThemesPage() {
 	};
 
 	return (
-		<MarketplaceTemplate
+		<BWAMarketplaceTemplate
 			isLoading={ ! done || isLoading }
 			payload={ payload }
 			render={ renderCallback }

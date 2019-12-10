@@ -13,12 +13,12 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { ReactComponent as CloseIcon } from '@/assets/close.svg';
-import { ReactComponent as WarningIcon } from '@/assets/warning.svg';
-import { ReactComponent as SuccessIcon } from '@/assets/success.svg';
+import { ReactComponent as CloseIcon } from './node_modules/@/assets/close.svg';
+import { ReactComponent as WarningIcon } from './node_modules/@/assets/warning.svg';
+import { ReactComponent as SuccessIcon } from './node_modules/@/assets/success.svg';
 import './style.scss';
 
-const AppSnackbar = ( { children, className = '', isDismissible = false, onRemove, status, title = '', ...props } ) => {
+const BWASnackbar = ( { children, className = '', isDismissible = false, onRemove, status, title = '', ...props } ) => {
 	return createPortal(
 		(
 			<Notice
@@ -56,4 +56,4 @@ const AppSnackbar = ( { children, className = '', isDismissible = false, onRemov
 	);
 };
 
-export default AppSnackbar;
+export default BWASnackbar;

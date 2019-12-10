@@ -1,7 +1,7 @@
 import './style.scss';
 
-import { ProductCard } from '@/components/molecules';
+import { BWAProductCard } from './node_modules/@/components/molecules';
 
-export default function ProductCardPlaceholder() {
-	return <ProductCard className="--placeholder" />;
+export default function BWABWAProductCardPlaceholder() {
+	return <BWAProductCard className="--placeholder" />;
 }

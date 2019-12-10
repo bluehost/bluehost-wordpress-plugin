@@ -4,10 +4,10 @@ import { useState, useEffect } from '@wordpress/element';
 import { decodeEntities } from '@wordpress/html-entities';
 
 import {
-	MarketplaceTemplate,
+	BWAMarketplaceTemplate,
 } from '@/components/templates';
 
-import { AppButton as Button, AppSpinner } from '@/components/atoms';
+import { BWAButton as Button, BWASpinner } from '@/components/atoms';
 import { get } from '@/functions';
 import { useMojoApi } from '@/hooks';
 import { ReactComponent as ErrorStateImage } from '@/assets/error-state.svg';
@@ -34,7 +34,7 @@ export default function ProductDetails( { id } ) {
 
 	if ( ! done || isLoading ) {
 		return (
-			<AppSpinner />
+			<BWASpinner />
 		);
 	}
 
@@ -83,7 +83,7 @@ export default function ProductDetails( { id } ) {
 	const sales = parseInt( sales_count, 10 ).toLocaleString( { useGrouping: true } );
 
 	return (
-		<MarketplaceTemplate className="page-product">
+		<BWAMarketplaceTemplate className="page-product">
 			<header className="page-product__header">
 				<h1>{ header }</h1>
 			</header>
@@ -141,6 +141,6 @@ export default function ProductDetails( { id } ) {
 					</div>
 				</div>
 			</div>
-		</MarketplaceTemplate>
+		</BWAMarketplaceTemplate>
 	);
 }

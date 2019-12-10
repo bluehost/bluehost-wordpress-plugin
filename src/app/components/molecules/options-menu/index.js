@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { kebabCase, uniqueId } from 'lodash';
 import { useEffect, useRef, useState } from '@wordpress/element';
-import { get } from '@/functions';
-import { ReactComponent as Ellipsis } from '@/assets/ellipsis.svg';
+import { get } from './node_modules/@/functions';
+import { ReactComponent as Ellipsis } from './node_modules/@/assets/ellipsis.svg';
 import './style.scss';
 
 /**
@@ -14,7 +14,7 @@ import './style.scss';
  * @param {number} width The width of the list.
  * @return {string}
  */
-export default function OptionsMenu(
+export default function BWAOptionsMenu(
 	{
 		className = '',
 		disabled = false,

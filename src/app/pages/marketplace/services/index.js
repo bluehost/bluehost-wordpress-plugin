@@ -1,7 +1,7 @@
 import { withRouter } from 'react-router-dom';
 
-import { MarketplaceTemplate } from '@/components/templates';
-import { ProductCard } from '@/components/molecules';
+import { BWAMarketplaceTemplate } from '@/components/templates';
+import { BWAProductCard } from '@/components/molecules';
 import { useMojoApi } from '@/hooks';
 
 function ServicesPage( { history } ) {
@@ -13,7 +13,7 @@ function ServicesPage( { history } ) {
 
 	const renderCallback = ( { item, hasFavorite, toggleFavorite } ) => {
 		return (
-			<ProductCard
+			<BWAProductCard
 				buttonPrimary={ { href: item.buy_url } }
 				buttonSecondary={ {
 					onClick: () => {
@@ -32,7 +32,7 @@ function ServicesPage( { history } ) {
 	};
 
 	return (
-		<MarketplaceTemplate
+		<BWAMarketplaceTemplate
 			isLoading={ ! done || isLoading }
 			payload={ payload }
 			render={ renderCallback }

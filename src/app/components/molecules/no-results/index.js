@@ -1,8 +1,8 @@
 import { __ } from '@wordpress/i18n';
-import { ReactComponent as ErrorStateImage } from '@/assets/error-state.svg';
+import { ReactComponent as ErrorStateImage } from './node_modules/@/assets/error-state.svg';
 import './style.scss';
 
-export default function NoResults() {
+export default function BWANoResults() {
 	return (
 		<div className="bluehost-no-results">
 			<ErrorStateImage />

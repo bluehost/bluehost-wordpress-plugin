@@ -10,29 +10,29 @@ import { select } from '@wordpress/data';
 /**
  * Internal dependencies
  */
-import { AppButton as Button } from '@/components/atoms';
+import { BWAButton as Button } from '@/components/atoms';
 
 import {
-	ContentList,
-	ContentListRow
+	BWAContentList,
+	BWAContentListRow
 } from '@/components/molecules';
 
 
 const baseUrl = location.origin + '/wp-admin/';
 
 const PostsCard = () => (
-	<ContentListRow
+	<BWAContentListRow
 		icon="admin-post"
 		title={ __( 'Blog Posts', 'bluehost-wordpress-plugin' ) }
 		desc={ __( 'Add blog posts or organize existing pages.', 'bluehost-wordpress-plugin' ) }
 	>
 		<Button href={ baseUrl + 'post-new.php' } isDefault>{ __( 'New Post', 'bluehost-wordpress-plugin' ) }</Button>
 		<Button href={ baseUrl + 'edit-tags.php?taxonomy=category' } isLink>{ __( 'Manage Categories', 'bluehost-wordpress-plugin' ) }</Button>
-	</ContentListRow>
+	</BWAContentListRow>
 );
 
 const PagesCard = () => (
-	<ContentListRow
+	<BWAContentListRow
 		icon="admin-page"
 		title={ __( 'Pages', 'bluehost-wordpress-plugin' ) }
 		desc={ __( 'Add fresh pages to your website.', 'bluehost-wordpress-plugin' ) }
@@ -43,11 +43,11 @@ const PagesCard = () => (
 		>
 			{ __( 'New Page', 'bluehost-wordpress-plugin' ) }
 		</Button>
-	</ContentListRow>
+	</BWAContentListRow>
 );
 
 const MenusCard = () => (
-	<ContentListRow
+	<BWAContentListRow
 		icon="menu"
 		title={ __( 'Navigation Menus', 'bluehost-wordpress-plugin' ) }
 		desc={ __( 'Adjust or edit your site\'s navigation menus.', 'bluehost-wordpress-plugin' ) }
@@ -58,7 +58,7 @@ const MenusCard = () => (
 		>
 			{ __( 'Manage Menus', 'bluehost-wordpress-plugin' ) }
 		</Button>
-	</ContentListRow>
+	</BWAContentListRow>
 );
 
 const ProductsCard = () => {
@@ -66,7 +66,7 @@ const ProductsCard = () => {
 		return null;
 	}
 	return (
-		<ContentListRow
+		<BWAContentListRow
 			icon="cart"
 			title={ __( 'Sell Products', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Manage products in your online store.', 'bluehost-wordpress-plugin' ) }
@@ -77,19 +77,19 @@ const ProductsCard = () => {
 			>
 				{ __( 'Manage Products', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</ContentListRow>
+		</BWAContentListRow>
 	);
 };
 
 const ContentSection = () => (
-	<ContentList title={ __( 'Content', 'bluehost-wordpress-plugin' ) } className="content">
+	<BWAContentList title={ __( 'Content', 'bluehost-wordpress-plugin' ) } className="content">
 		<>
 			<PostsCard />
 			<PagesCard />
 			<MenusCard />
 			<ProductsCard />
 		</>
-	</ContentList>
+	</BWAContentList>
 );
 
 export default ContentSection;

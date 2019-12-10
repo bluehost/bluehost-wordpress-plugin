@@ -2,7 +2,7 @@
  * Internal Dependencies
  */
 import SettingsControl from '../settings-control';
-import { AppToggle } from '@/components/atoms';
+import { BWAToggle } from '@/components/atoms';
 
 const SettingsToggle = ( { label, checked, onChange } ) => (
 	<SettingsControl>
@@ -10,7 +10,7 @@ const SettingsToggle = ( { label, checked, onChange } ) => (
 			<label>{ label }</label>
 		</div>
 		<div className="toggle pure-u-1-4">
-			<AppToggle checked={ checked } onChange={ onChange } />
+			<BWAToggle checked={ checked } onChange={ onChange } />
 		</div>
 	</SettingsControl>
 );

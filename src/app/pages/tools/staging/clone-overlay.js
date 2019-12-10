@@ -1,13 +1,13 @@
 import { __ } from '@wordpress/i18n';
 
-import { Overlay } from '@/components/molecules';
+import { BWAOverlay } from '@/components/molecules';
 
 import { WorkingImageUrl } from '@/assets';
 import Tips from './tips';
 
-export default function CloneOverlay( {} ) {
+export default function CloneBWAOverlay( {} ) {
 	return (
-		<Overlay className={ `bluehost-staging__overlay` }>
+		<BWAOverlay className={ `bluehost-staging__overlay` }>
 			<h1>
 				{ __( 'Cloning Production Site', 'bluehost-wordpress-plugin' ) }
 			</h1>
@@ -22,6 +22,6 @@ export default function CloneOverlay( {} ) {
 				alt=""
 			/>
 			<Tips />
-		</Overlay>
+		</BWAOverlay>
 	);
 }

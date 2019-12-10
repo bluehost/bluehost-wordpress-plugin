@@ -60,7 +60,7 @@ describe('Plugins Page', function () {
         cy.checkA11y('.app-page');
     });
 
-    it('Grid has 12 items', () => {
+    it('BWAProductGrid has 12 items', () => {
         cy.get('.product-card').should('have.length', 12);
     });
 
@@ -216,7 +216,7 @@ describe('Plugins Page', function () {
 
     it('Pagination: Last button works', () => {
         cy.get('.pagination').first().find('[aria-label="Last"]').click();
-        fn.validateCards(['Responsive Gallery WordPress Grid Gallery']);
+        fn.validateCards(['Responsive Gallery WordPress BWAProductGrid Gallery']);
     });
 
 });

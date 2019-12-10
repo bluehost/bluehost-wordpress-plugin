@@ -7,20 +7,20 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { BaseTemplate } from '@/components/templates';
+import { BWABaseTemplate } from '@/components/templates';
 
 import {
-	AppButton as Button,
-	AppHeading,
-	AppSpinner as Spinner,
+	BWAButton as Button,
+	BWAHeading,
+	BWASpinner as Spinner,
 } from '@/components/atoms';
 
 import {
-	DropdownButton,
-	EnvironmentCard,
-	OptionsMenu,
-	Overlay,
-	AppSnackbar as Snackbar,
+	BWADropdownButton,
+	BWAEnvironmentCard,
+	BWAOptionsMenu,
+	BWAOverlay,
+	BWASnackbar as Snackbar,
 } from '@/components/molecules';
 
 import {
@@ -32,22 +32,22 @@ import {
 import { useStaging } from '@/hooks';
 
 import CloneModal from './clone-modal';
-import CloneOverlay from './clone-overlay';
+import CloneBWAOverlay from './clone-overlay';
 import DeleteModal from './delete-modal';
-import DeletOverlay from './delete-overlay';
+import DeletBWAOverlay from './delete-overlay';
 import DeploymentModal from './deploy-modal';
-import DeploymentOverlay from './deploy-overlay';
+import DeploymentBWAOverlay from './deploy-overlay';
 import Tips from './tips';
 import './style.scss';
 
 export default function StagingPage() {
 	const [ deployType, setDeployType ] = useState( 'all' );
 	const [ showCloneModal, setShowCloneModal ] = useState( false );
-	const [ showCloneOverlay, setShowCloneOverlay ] = useState( false );
+	const [ showCloneBWAOverlay, setShowCloneBWAOverlay ] = useState( false );
 	const [ showDeployModal, setShowDeployModal ] = useState( false );
-	const [ showDeployOverlay, setShowDeployOverlay ] = useState( false );
+	const [ showDeployBWAOverlay, setShowDeployBWAOverlay ] = useState( false );
 	const [ showDeleteModal, setShowDeleteModal ] = useState( false );
-	const [ showDeleteOverlay, setShowDeleteOverlay ] = useState( false );
+	const [ showDeleteBWAOverlay, setShowDeleteBWAOverlay ] = useState( false );
 
 	const [
 		{
@@ -92,14 +92,14 @@ export default function StagingPage() {
 	}, [ notice ] );
 
 	return (
-		<BaseTemplate className="bluehost-staging">
-			<AppHeading level="h2" size={ 1 } className="is-page-title">{ __( 'Staging', 'bluehost-wordpress-plugin' ) }</AppHeading>
+		<BWABaseTemplate className="bluehost-staging">
+			<BWAHeading level="h2" size={ 1 } className="is-page-title">{ __( 'Staging', 'bluehost-wordpress-plugin' ) }</BWAHeading>
 			<p>{ __( 'A staging site is a copy of your site where you can safely test changes before publishing them to your production site. It gives you a way to try new things, test updates, and then deploy them when you\'re ready.', 'bluehost-wordpress-plugin' ) }</p>
 
 			<div className="bluehost-staging__production-env">
-				<AppHeading level="h3" size={2}>{ __( 'Production site', 'bluehost-wordpress-plugin' ) }</AppHeading>
+				<BWAHeading level="h3" size={2}>{ __( 'Production site', 'bluehost-wordpress-plugin' ) }</BWAHeading>
 				<p>{ __( 'This is your live website.', 'bluehost-wordpress-plugin' ) }</p>
-				<EnvironmentCard
+				<BWAEnvironmentCard
 					color="green"
 					deploymentActionsComponent={
 						hasStaging && (
@@ -132,7 +132,7 @@ export default function StagingPage() {
 			</div>
 
 			<div className="bluehost-staging__staging-env">
-				<AppHeading level="h3" size={2}>{ __( 'Staging site', 'bluehost-wordpress-plugin' ) }</AppHeading>
+				<BWAHeading level="h3" size={2}>{ __( 'Staging site', 'bluehost-wordpress-plugin' ) }</BWAHeading>
 				{ ( () => {
 					if ( isCreatingStaging ) {
 						return (
@@ -162,10 +162,10 @@ export default function StagingPage() {
 							<p>
 								{ __( 'This is an unpublished copy of your website.', 'bluehost-wordpress-plugin' ) }
 							</p>
-							<EnvironmentCard
+							<BWAEnvironmentCard
 								color="red"
 								deploymentActionsComponent={ (
-									<DropdownButton
+									<BWADropdownButton
 										disabled={ isProduction }
 										options={ [
 											{
@@ -199,7 +199,7 @@ export default function StagingPage() {
 								environmentActionsComponent={
 									isProduction &&
                                     (
-                                    	<OptionsMenu
+                                    	<BWAOptionsMenu
 											label={ __( 'Staging Options', 'bluehost-wordpress-plugin' ) }
 											options={ [
                                     			{
@@ -245,44 +245,44 @@ export default function StagingPage() {
 				<CloneModal
 					onClick={ () => {
 						setShowCloneModal( false );
-						setShowCloneOverlay( true );
-						cloneEnv().then( () => setShowCloneOverlay( false ) );
+						setShowCloneBWAOverlay( true );
+						cloneEnv().then( () => setShowCloneBWAOverlay( false ) );
 					} }
 					onClose={ () => setShowCloneModal( false ) }
 				/>
 			) }
 
-			{ showCloneOverlay && <CloneOverlay /> }
+			{ showCloneBWAOverlay && <CloneBWAOverlay /> }
 
 			{ showDeleteModal && (
 				<DeleteModal
 					onClick={ () => {
 						setShowDeleteModal( false );
-						setShowDeleteOverlay( true );
-						deleteEnv().then( () => setShowDeleteOverlay( false ) );
+						setShowDeleteBWAOverlay( true );
+						deleteEnv().then( () => setShowDeleteBWAOverlay( false ) );
 					} }
 					onClose={ () => setShowDeleteModal( false ) }
 				/>
 			) }
 
-			{ showDeleteOverlay && <DeletOverlay /> }
+			{ showDeleteBWAOverlay && <DeletBWAOverlay /> }
 
 			{ showDeployModal && (
 				<DeploymentModal
 					onClick={ () => {
 						setShowDeployModal( false );
-						setShowDeployOverlay( true );
-						deployChanges( deployType ).then( () => setShowDeployOverlay( false ) );
+						setShowDeployBWAOverlay( true );
+						deployChanges( deployType ).then( () => setShowDeployBWAOverlay( false ) );
 					} }
 					onClose={ () => setShowDeployModal( false ) }
 					type={ deployType }
 				/>
 			) }
 
-			{ showDeployOverlay && <DeploymentOverlay type={ deployType } /> }
+			{ showDeployBWAOverlay && <DeploymentBWAOverlay type={ deployType } /> }
 
 			{ switchingTo && (
-				<Overlay className={ `bluehost-staging__overlay` }>
+				<BWAOverlay className={ `bluehost-staging__overlay` }>
 					<h1>
 						{ sprintf(
 							__( 'Loading %s Site', 'bluehost-wordpress-plugin' ),
@@ -298,8 +298,8 @@ export default function StagingPage() {
 						alt=""
 					/>
 					<Tips />
-				</Overlay>
+				</BWAOverlay>
 			) }
-		</BaseTemplate>
+		</BWABaseTemplate>
 	);
 }

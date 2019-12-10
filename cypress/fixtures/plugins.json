@@ -1285,7 +1285,7 @@
       "features": [
         "Gallery Thumbnail Order Custom CSS",
         "6 Light Box Styles Hover Effect 2D Transitions Effects Shadow and Glow Transitions Effects Link Gallery",
-        "Multiple Column Layout Responsive Design Masonry Gallery, Widget Gallery, Grid Gallery"
+        "Multiple Column Layout Responsive Design Masonry Gallery, Widget Gallery, BWAProductGrid Gallery"
       ],
       "created": "2017-09-15 05:12:25",
       "created_timestamp": 1505473945,
@@ -2000,7 +2000,7 @@
       },
       "features": [
         "Gallery Thumbnail Order Custom CSS",
-        "Shadow and Glow Transitions Effects Multiple Column Layout Responsive Design Gallery Grid Gallery",
+        "Shadow and Glow Transitions Effects Multiple Column Layout Responsive Design Gallery BWAProductGrid Gallery",
         "6 Light Box Styles Hover Effect Animation Effect 2D Transitions Effects"
       ],
       "created": "2017-09-16 04:05:31",
@@ -2887,7 +2887,7 @@
         "developer_license": "400.00"
       },
       "features": [
-        "Transitions Effects Transitions Effects Into Thumbnail Video Gallery Multiple Column Layout Responsive Design Masonry Gallery Grid Gallery Link Gallery",
+        "Transitions Effects Transitions Effects Into Thumbnail Video Gallery Multiple Column Layout Responsive Design Masonry Gallery BWAProductGrid Gallery Link Gallery",
         "Thumbnail Light Box Style Fixed Light Box Style Hover Effect 2D Transitions Effects Shadow and Glow Light Box Style Light Case Transition Effects",
         "Map Gallery Background Color Events Color Picker Light Case Opacity Custom CSS Premium Support"
       ],
@@ -3870,7 +3870,7 @@
     },
     {
       "id": "59afb1fa-bfb0-4cf0-bb8b-6c140a14153b",
-      "name": "Responsive Gallery WordPress Grid Gallery",
+      "name": "Responsive Gallery WordPress BWAProductGrid Gallery",
       "slug": "responsive-grid",
       "category": "WordPress",
       "type": "plugins",
@@ -3955,7 +3955,7 @@
       },
       "features": [
         "Color Picker Custom CSS Popup Button Settings Modal Heading Title Settings ",
-        " Modal Form Footer Button Settings Animation Effect Overlay Settings",
+        " Modal Form Footer Button Settings Animation Effect BWAOverlay Settings",
         "Buttons Color Button Effects Button URL Content Settings"
       ],
       "created": "2017-06-06 01:59:55",
@@ -4420,7 +4420,7 @@
       "features": [
         "Columns Settings Animation Effects Animation Speed Animation Interval Gap Between Photos LightBox Thumbnail Size Custom Css Load More Loading Icon",
         "Instagram Feed, Instagram Icon On Photos, Instagram Caption On Photos, Flickr Feed",
-        "Grid Layout, Masonry Layout, Justify Layout, Mosaic Layout"
+        "BWAProductGrid Layout, Masonry Layout, Justify Layout, Mosaic Layout"
       ],
       "created": "2019-04-19 03:30:16",
       "created_timestamp": 1555666216,

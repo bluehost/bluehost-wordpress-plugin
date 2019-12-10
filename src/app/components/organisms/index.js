@@ -1,2 +1,2 @@
-export { default as Header } from './header';
-export { default as Main } from './main';
+export { default as BWAHeader } from './bwa-header';
+export { default as BWAMain } from './bwa-main';

@@ -5,12 +5,12 @@ import { __ } from '@wordpress/i18n';
 /**
  * External dependencies
  */
-import { BaseTemplate } from '@/components/templates';
+import { BWABaseTemplate } from '@/components/templates';
 
 const ToolsPage = () => (
-	<BaseTemplate>
+	<BWABaseTemplate>
 		{ __( 'Tools Page', 'bluehost-wordpress-plugin' ) }
-	</BaseTemplate>
+	</BWABaseTemplate>
 );
 
 export default ToolsPage;

@@ -1,31 +1,31 @@
 /**
  * Project dependencies
  */
-import { BaseTemplate } from '@/components/templates';
+import { BWABaseTemplate } from '@/components/templates';
 /**
  * Component dependencies
  */
 import './style.scss';
 import Welcome from './welcome';
 import ComingSoonNotice from './coming-soon-notice';
-import ContentSection from './content';
+import BWAContentList from './content';
 import DesignBuildSection from './design-build';
 import TrafficEngagementSection from './traffic-engagement';
 import PerformanceSection from './performance';
 import HostingSection from './hosting';
 
 const Home = () => (
-	<BaseTemplate className="page-home">
+	<BWABaseTemplate className="page-home">
 		<div className="page-home__container">
 			<Welcome />
 			<ComingSoonNotice />
-			<ContentSection />
+			<BWAContentList />
 			<DesignBuildSection />
 			<TrafficEngagementSection />
 			<PerformanceSection />
 			<HostingSection />
 		</div>
-	</BaseTemplate>
+	</BWABaseTemplate>
 );
 
 export default Home;

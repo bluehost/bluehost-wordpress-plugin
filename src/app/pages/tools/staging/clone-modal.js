@@ -2,12 +2,12 @@ import { Fragment } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
-	AppButton as Button
+	BWAButton as Button
 } from '@/components/atoms';
 
 import {
-	AppModal as Modal,
-	Warning,
+	BWAModal as Modal,
+	BWAWarning,
 } from '@/components/molecules';
 
 export default function( { onClick, onClose } ) {
@@ -15,7 +15,7 @@ export default function( { onClick, onClose } ) {
 		<Modal
 			actionsComponent={ (
 				<Fragment>
-					<Warning>{ __( 'This action cannot be undone', 'bluehost-wordpress-plugin' ) }</Warning>
+					<BWAWarning>{ __( 'This action cannot be undone', 'bluehost-wordpress-plugin' ) }</BWAWarning>
 					<Button onClick={ onClose }>
 						{ __( 'Cancel', 'bluehost-wordpress-plugin' ) }
 					</Button>

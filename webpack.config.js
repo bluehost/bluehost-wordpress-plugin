@@ -58,7 +58,7 @@ const fileMatrix = _.union( vendorFileMatrix, internalAssetMatrix );
  */
 const appWebpackConfig = {
 	...wpScriptsConfig,
-	entry: { admin: './src/index.js' }, // name the main file app.js when exported
+	entry: { admin: './src/admin.js' },
 	output: {
 		path: path.resolve( __dirname, './assets' ),
 		publicPath: '../wp-content/plugins/bluehost-wordpress-plugin/assets/',

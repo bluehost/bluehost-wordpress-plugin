@@ -1,12 +1,12 @@
 import { __ } from '@wordpress/i18n';
 
-import { Overlay } from '@/components/molecules';
+import { BWAOverlay } from '@/components/molecules';
 import { WorkingImageUrl } from '@/assets';
 import Tips from './tips';
 
-export default function DeleteOverlay( {} ) {
+export default function DeleteBWAOverlay( {} ) {
 	return (
-		<Overlay className={ `bluehost-staging__overlay` }>
+		<BWAOverlay className={ `bluehost-staging__overlay` }>
 			<h1>
 				{ __( 'Deleting Staging Site', 'bluehost-wordpress-plugin' ) }
 			</h1>
@@ -21,6 +21,6 @@ export default function DeleteOverlay( {} ) {
 				alt=""
 			/>
 			<Tips />
-		</Overlay>
+		</BWAOverlay>
 	);
 }

@@ -1,2 +1,2 @@
-export { default as BaseTemplate } from './base';
-export { default as MarketplaceTemplate } from './marketplace'
+export { default as BWABaseTemplate } from './bwa-base';
+export { default as BWAMarketplaceTemplate } from './bwa-marketplace'
