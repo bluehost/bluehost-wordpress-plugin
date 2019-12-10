@@ -30,7 +30,7 @@ const SkipLink = ( { onClick, onKeyPress, children } ) => (
 	</a>
 );
 
-class BWAApp extends Component {
+class BluehostWordPressApp extends Component {
 	constructor( props ) {
 		super( props );
 		// create refs for skip focus links
@@ -93,4 +93,4 @@ class BWAApp extends Component {
 	}
 }
 
-export default BWAApp;
+export default BluehostWordPressApp;
