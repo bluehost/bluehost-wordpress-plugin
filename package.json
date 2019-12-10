@@ -14,7 +14,8 @@
     "lint:js:fix": "wp-scripts lint-js ./src --fix",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "start": "wp-scripts start",
-    "storybook": "start-storybook -c ./storybook",
+    "storybook:dev": "start-storybook -c ./storybook",
+    "storybook:build": "build-storybook -c ./storybook -o ./docs",
     "test:e2e": "npx cypress open",
     "test:unit": "wp-scripts test-unit-js"
   },
@@ -45,7 +46,7 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
     "@storybook/addon-a11y": "^5.2.8",
     "@storybook/addon-docs": "^5.2.8",
     "@storybook/addon-knobs": "^5.2.8",
@@ -55,18 +56,18 @@
     "@storybook/theming": "^5.2.8",
     "@svgr/webpack": "^4.3.3",
     "@wordpress/babel-preset-default": "^4.7.0",
-    "@wordpress/scripts": "^5.1.0",
+    "@wordpress/base-styles": "^1.0.0",
+    "@wordpress/scripts": "^6.0.0",
     "axe-core": "^3.4.0",
-    "babel-plugin-react-require": "^3.1.1",
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^5.0.4",
-    "css-loader": "^3.2.0",
+    "copy-webpack-plugin": "^5.1.0",
+    "css-loader": "^3.3.0",
     "cypress": "^3.4.1",
     "cypress-axe": "^0.5.1",
-    "file-loader": "^4.2.0",
+    "file-loader": "^5.0.2",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^7.3.1",
-    "url-loader": "^2.2.0"
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "url-loader": "^3.0.0"
   }
 }

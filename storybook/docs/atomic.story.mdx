@@ -1,0 +1,111 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs|Atomic Design" />
+
+# Atomic Design
+
+The Bluehost Plugin WordPress Admin application is organized using an Atomic Design system.
+
+Atomic design draws from chemistry concepts and vocabulary to classify components in a reusable design system.
+
+## Components Are Grouped Into...
+
+From smallest (and most reusable) to largest (and often bespoke):
+
+* Atoms (reusable)
+* Molecules (reusable)
+* Organisms (potentially reusable)
+* Templates (reusable)
+* Pages (unique)
+
+## Understanding Atoms
+
+Atoms are the smallest, reusable unit of Components in a system.
+
+#### Identifying characteristics
+* Atoms are highly-reusable throughout an interface.
+* Atoms never contain other Atoms.
+* Atoms are in their most elemental form -- they cannot be further reduced without ceasing to be functional.
+* Atoms _often_ render as a single element.
+
+Atoms can be as simple as a Heading, Paragraph or Input field.
+
+Currently, our system isn't _perfectly_ atom-ized -- we do not have Atoms for every HTML element nor do we have Atoms to handle layout positioning. In a perfectly atom-ized system, almost every Atom would lack an element hiearchy. Instead, our guiding principle is Atoms don't contain other Atoms and from a visual/UX standpoint are distilled to their elemental use. While our Toggle contains `<label>` and `<input>` elements, we don't have an `Input` Atom and the benefits of atom-izing an Input are few compared to the complexity.
+
+So, in our system, there are a few exceptions to the single-element rule.
+
+1. A few HTML elements are used, perhaps using a wrapper to provide positioning, spacing or sizing.
+2. If the design system doesn't contain Atoms for inputs/labels, a Toggle component could be considered an Atom, despite being multiple HTML elements.
+
+As a result, as we refine our system, some Atoms may evolve into Molecules.
+
+Examples:
+* Paragraph
+* Heading
+* Input field
+* Image
+* Button
+* Box
+* Column
+
+## Understanding Molecules
+
+Molecules vary widely in size and complexity and are often the most common type of Component in a system.
+
+In general, Molecules are a composition of Atoms & HTML elements.
+
+#### Identifying characteristics
+* Molecules are repeatable & composable throughout the interface across pages -- non-composable components are Organisms.
+* Molecules are composed of Atoms, HTML elements -- **not other Molecules**.
+* Molecules should aim to be agnostic of _purpose_ -- Cards over Product Cards, Section over Home Section.
+* Molecules may change drastically in visual style based on Props, but contain the same structure of Atoms & Elements.
+
+Examples:
+* Search field (with Input and Button atoms).
+* Button Group
+* Cards
+* List sections
+
+## Organisms
+
+Organisms are discrete parts of an interface that may contain smaller organisms, molecules, atoms and HTML elements.
+
+#### Identifying characteristics
+* Organisms are... 
+    * Top-level design pieces (Headers, Footers, Sidebars)
+    * Complex, repeatable and composable pieces (Call-to-action Hero containing multiple Molecules)
+    * Bespoke, repeatable but not composable pieces (Newsletter signup, Menu items, Street address & Map)
+* Organisms are composed of Atoms, HTML elements and/or Molecules.
+* Organisms often have a specific purpose.
+
+Examples:
+* Headers
+* Navigation
+* Sidebars
+* Setting Groups
+* Grids
+* Footers
+
+## Templates
+
+Templates are top-level layouts that give Pages their structure.
+
+Templates can extend other Templates. In the Bluehost Plugin WordPress Admin app, we have a Base Template, Common Template and Marketplace Template.
+
+#### Identifying characteristics
+* Templates provide the layout rhythm and style for the **entire** page -- they are the wireframe blueprint.
+* Templates should not be implemented _inside_ other Templates (those are Organisms) -- they should only extend other Templates.
+* Templates aren't partial pieces of the Page (Organisms) -- they aren't headers, footers, sidebars or blocks assembled.
+
+Examples:
+* Base
+* Common
+* Marketplace
+
+## Pages
+
+Pages implement a Template and contain unique combinations of Organisms, Molecules, Atoms and information.
+
+In our system, we have both Static Pages and Dynamic Pages. Our Static Pages have "burned-in" properties, even if the strings are translatable. Our dynamic pages rely on route params (like product ID) to render.
+
+While a Dynamic Page may implement a Template, it is a Page because it has a specified Route, despite having dynamic contents.

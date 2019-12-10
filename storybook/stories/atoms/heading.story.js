@@ -1,6 +1,6 @@
 import { text } from '@storybook/addon-knobs';
 
-import BWAHeading from '..';
+import { BWAHeading } from '@/components/atoms';
 
 export default { title: 'Atoms|Heading', component: BWAHeading };
 
