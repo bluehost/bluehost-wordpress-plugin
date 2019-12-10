@@ -15,7 +15,7 @@
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "start": "wp-scripts start",
     "storybook:dev": "start-storybook -c ./storybook",
-    "storybook:build": "build-storybook -c ./storybook -o ./docs",
+    "storybook:build": "build-storybook -c ./storybook -o ./.docs",
     "test:e2e": "npx cypress open",
     "test:unit": "wp-scripts test-unit-js"
   },
