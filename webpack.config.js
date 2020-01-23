@@ -12,7 +12,7 @@ const wpScriptsConfig = require( './node_modules/@wordpress/scripts/config/webpa
  */
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 /**
- * 
+ *
  */
 const CopyWebpackPlugin = require( 'copy-webpack-plugin');
 const _ = require( 'lodash' );
@@ -90,10 +90,8 @@ const appWebpackConfig = {
             {
                 test: /\.svg$/,
                 use: [
-                    {
-                        loader: "@svgr/webpack"
-                    }, 
-                    "url-loader"
+                    { loader: "@svgr/webpack" },
+                    { loader: "url-loader", options: { esModule: false } },
                 ]
             }
 		],
