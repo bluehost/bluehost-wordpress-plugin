@@ -6,6 +6,7 @@ php:
   - 7.1
 
 script:
+  - which phpunit
 
 before_deploy:
   - npm install
