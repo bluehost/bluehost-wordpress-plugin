@@ -6,7 +6,6 @@ php:
   - 7.1
 
 script:
-  -
 
 before_deploy:
   - npm install
