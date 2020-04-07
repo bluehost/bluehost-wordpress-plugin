@@ -1,0 +1,89 @@
+name: Package Plugin
+
+on:
+  release:
+    types:
+      - created
+      - updated
+
+jobs:
+  build:
+    name: Run
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: PHP version
+        run: php --version
+
+      - name: Set Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Node version
+        run: node --version
+
+      - name: NPM version
+        run: npm --version
+
+      - name: Get npm cache directory
+        id: npm-cache
+        run: echo "::set-output name=dir::$(npm config get cache)"
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: npm install
+        run: npm install
+
+      - name: Build JavaScript
+        run: npm run build
+
+      - name: Generate .pot file
+        run: npm run makepot
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache Composer vendor directory
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install PHP Dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest --no-dev
+
+      - name: Remove development files
+        run: .github/scripts/cleanup.sh
+
+      - name: Create Zip
+        run: zip -r bluehost-wordpress-plugin.zip .
+
+      - name: List Files
+        run: ls -lah
+
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: https://uploads.github.com/repos/${{ github.repository }}/releases/${{ github.event.release.id }}/assets{?name,label}
+          asset_path: ./bluehost-wordpress-plugin.zip
+          asset_name: bluehost-wordpress-plugin.zip
+          asset_content_type: application/zip
