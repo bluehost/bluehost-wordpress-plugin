@@ -11,7 +11,12 @@ cypress.env.json
 .DS_Store
 .idea
 
+# Cypress
+/tests/cypress/screenshots
+/tests/cypress/videos
+
 # Built-app files
 /assets/*
+/.docs/*
 !/assets/bluehost.css
 !/assets/admin-global.css

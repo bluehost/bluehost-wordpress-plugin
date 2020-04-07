@@ -5,9 +5,11 @@ import { __ } from '@wordpress/i18n';
 /**
  * External dependencies
  */
-import { AppButton as Button } from '@/components';
-import HomeSection from '../home-section';
-import HomeSectionRow from '../home-section-row';
+import { BWAButton as Button } from '@/components/atoms';
+import {
+	BWAContentList,
+	BWAContentListRow,
+} from '@/components/molecules';
 
 /**
  * External dependencies
@@ -17,7 +19,7 @@ import { ButtonGroup } from '@wordpress/components';
 const baseUrl = location.origin + '/wp-admin/';
 
 const CustomizerCard = () => (
-	<HomeSectionRow
+	<BWAContentListRow
 		icon="admin-customizer"
 		title={ __( 'Customizer', 'bluehost-wordpress-plugin' ) }
 		desc={ __( 'Make edits and see changes before you update.', 'bluehost-wordpress-plugin' ) }>
@@ -25,13 +27,13 @@ const CustomizerCard = () => (
 			href={ baseUrl + 'customize.php' }
 			isDefault
 		>
-			{ __('Customize Theme', 'bluehost-wordpress-plugin') }
+			{ __( 'Customize Theme', 'bluehost-wordpress-plugin' ) }
 		</Button>
-	</HomeSectionRow>
+	</BWAContentListRow>
 );
 
 const ThemesCard = () => (
-	<HomeSectionRow
+	<BWAContentListRow
 		icon="admin-appearance"
 		title={ __( 'WordPress Themes', 'bluehost-wordpress-plugin' ) }
 		desc={ __( 'Browse themes to find one that inspires you!', 'bluehost-wordpress-plugin' ) }>
@@ -39,22 +41,22 @@ const ThemesCard = () => (
 			href={ baseUrl + 'admin.php?page=bluehost#/marketplace/themes' }
 			isDefault
 		>
-			{__('Premium Themes', 'bluehost-wordpress-plugin')}
+			{ __( 'Premium Themes', 'bluehost-wordpress-plugin' ) }
 		</Button>
 		<Button
 			href={ baseUrl + 'themes.php' }
 			isLink
 		>
-			{__('Free Themes', 'bluehost-wordpress-plugin')}
+			{ __( 'Free Themes', 'bluehost-wordpress-plugin' ) }
 		</Button>
-	</HomeSectionRow>
+	</BWAContentListRow>
 );
 
 const DesignBuildSection = ( props ) => (
-	<HomeSection title={ __('Design & Build', 'bluehost-wordpress-plugin') } className="design">
+	<BWAContentList title={ __( 'Design & Build', 'bluehost-wordpress-plugin' ) } className="design">
 		<CustomizerCard />
 		<ThemesCard />
-	</HomeSection>
+	</BWAContentList>
 );
 
 export default DesignBuildSection;

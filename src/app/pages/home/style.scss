@@ -1,50 +1,5 @@
-.restricted-width {
-    max-width: 822px;
-}
-
-.welcome-section {
-    max-width: 600px;
-    margin-bottom: 48px;
-    h1 {
-        font-size: 32px;
-        line-height: 40px;
-        margin-top: 0;
-        font-weight: 300;
-    }
-    p {
-        font-size: 16px;
-    }
-}
-
-.home-section {
-    h2 {
-        font-size: 28px;
-        line-height: 40px;
-        font-weight: 600;
-    }
-    .bordered-box {
-        padding: 0 24px;
-        @media (max-width: 600px) {
-            margin-left: -24px;
-            width: 100%;
-        }
-    }
-}
-.app-page.home {
-    .action {
-        display: flex;
-        align-items: flex-end;
-        flex-direction: row-reverse;
-        @media (max-width: 600px) {
-            padding-top: 24px;
-            flex-direction: column;
-            align-items: center;
-            .components-button {
-                width: 80%;
-            }
-        }
-        .components-button.is-link {
-            line-height: 26px;
-        }
+.page-home {
+    &__container {
+        max-width: 822px;
     }
 }

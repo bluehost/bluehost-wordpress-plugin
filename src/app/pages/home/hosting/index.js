@@ -8,12 +8,14 @@ import { __ } from '@wordpress/i18n';
 /**
  * External dependencies
  */
-import { AppButton as Button } from '@/components';
-import HomeSection from '../home-section';
-import HomeSectionRow from '../home-section-row';
+import { BWAButton as Button } from '@/components/atoms';
+import {
+	BWAContentList,
+	BWAContentListRow,
+} from '@/components/molecules';
 
 const ManageMySitesCard = () => (
-	<HomeSectionRow
+	<BWAContentListRow
 		icon="desktop"
 		title={ __( 'Manage My Sites', 'bluehost-wordpress-plugin' ) }
 		desc={ __( 'Manage your site from Bluehost\'s control panel. You can create backups, set security, and improve performance.', 'bluehost-wordpress-plugin' ) }>
@@ -21,13 +23,13 @@ const ManageMySitesCard = () => (
 			href={ 'https://my.bluehost.com/hosting/app?lil=1#/sites' }
 			isDefault
 		>
-			{__('Manage', 'bluehost-wordpress-plugin')}
+			{ __( 'Manage', 'bluehost-wordpress-plugin' ) }
 		</Button>
-	</HomeSectionRow>
+	</BWAContentListRow>
 );
 
 const EmailCard = () => (
-	<HomeSectionRow
+	<BWAContentListRow
 		icon="email"
 		title={ __( 'Email', 'bluehost-wordpress-plugin' ) }
 		desc={ __( 'Create email accounts, compose, send, and receive your email from your Bluehost control panel.', 'bluehost-wordpress-plugin' ) }>
@@ -35,13 +37,13 @@ const EmailCard = () => (
 			href={ 'https://my.bluehost.com/hosting/app?lil=1#/email-office' }
 			isDefault
 		>
-			{__('Manage', 'bluehost-wordpress-plugin')}
+			{ __( 'Manage', 'bluehost-wordpress-plugin' ) }
 		</Button>
-	</HomeSectionRow>
+	</BWAContentListRow>
 );
 
 const DomainsCard = () => (
-	<HomeSectionRow
+	<BWAContentListRow
 		icon="admin-site"
 		title={ __( 'Domains', 'bluehost-wordpress-plugin' ) }
 		desc={ __( 'Find a new domain and assign it to your site or start a new site with a fresh domain.', 'bluehost-wordpress-plugin' ) }>
@@ -49,13 +51,13 @@ const DomainsCard = () => (
 			href={ 'https://my.bluehost.com/hosting/app?lil=1#/domains' }
 			isDefault
 		>
-			{__('Find a Domain', 'bluehost-wordpress-plugin')}
+			{ __( 'Find a Domain', 'bluehost-wordpress-plugin' ) }
 		</Button>
-	</HomeSectionRow>
+	</BWAContentListRow>
 );
 
 const HelpCard = () => (
-	<HomeSectionRow
+	<BWAContentListRow
 		icon="editor-help"
 		title={ __( 'Help', 'bluehost-wordpress-plugin' ) }
 		desc={ __( 'Get help from Bluehost’s U.S.-based award-winning support team. It’s available 24/7 through phone and chat.', 'bluehost-wordpress-plugin' ) }>
@@ -63,18 +65,18 @@ const HelpCard = () => (
 			href={ 'https://my.bluehost.com/hosting/help' }
 			isDefault
 		>
-			{__('Help Me', 'bluehost-wordpress-plugin')}
+			{ __( 'Help Me', 'bluehost-wordpress-plugin' ) }
 		</Button>
-	</HomeSectionRow>
+	</BWAContentListRow>
 );
 
 const HostingSection = ( props ) => (
-	<HomeSection title={__('Hosting', 'bluehost-wordpress-plugin')} className="hosting">
+	<BWAContentList title={ __( 'Hosting', 'bluehost-wordpress-plugin' ) } className="hosting">
 		<ManageMySitesCard />
 		<EmailCard />
 		<DomainsCard />
 		<HelpCard />
-	</HomeSection>
+	</BWAContentList>
 );
 
 export default HostingSection;

@@ -31,6 +31,7 @@ class Bluehost_Admin_App_Assets {
 		'wp-keycodes',
 		'wp-element',
 		'wp-components',
+		'wp-html-entities',
 		'react-router-dom',
 	);
 

@@ -55,6 +55,26 @@ $aliases: (
 // Fonts
 $body-font: $font;
 
+%text-1 {
+  font-size: 28px !important;
+  line-height: 40px !important;
+}
+
+%text-2 {
+  font-size: 20px !important;
+  line-height: 32px !important;
+}
+
+%text-3 {
+  font-size: 18px !important;
+  line-height: 26px !important;
+}
+
+%text-4 {
+  font-size: 16px !important;
+  line-height: 24px !important;
+}
+
 // Placeholders
 %text-xs {
   font-size: 10px;
@@ -90,6 +110,12 @@ $body-font: $font;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+%border-box {
+  border: 1px solid #D7DBE0;
+  border-radius: 3px;
+  background-color: #FFFFFF;
 }
 
 // Menu Breakpoint

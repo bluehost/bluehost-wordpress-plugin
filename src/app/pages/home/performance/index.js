@@ -10,15 +10,17 @@ import { select } from '@wordpress/data';
 /**
  * External dependencies
  */
-import { AppButton as Button } from '@/components';
-import HomeSection from '../home-section';
-import HomeSectionRow from '../home-section-row';
+import { BWAButton as Button } from '@/components/atoms';
+import {
+	BWAContentList,
+	BWAContentListRow,
+} from '@/components/molecules';
 import { JetpackLogo } from '@/assets';
 
 const baseUrl = location.origin + '/wp-admin/';
 
 const CacheCard = () => (
-	<HomeSectionRow
+	<BWAContentListRow
 		isCentered
 		icon="performance"
 		title={ __( 'Page Cache', 'bluehost-wordpress-plugin' ) }
@@ -27,38 +29,38 @@ const CacheCard = () => (
 			href={ baseUrl + 'admin.php?page=bluehost#/settings' }
 			isDefault
 		>
-			{__('Configure Caching', 'bluehost-wordpress-plugin')}
+			{ __( 'Configure Caching', 'bluehost-wordpress-plugin' ) }
 		</Button>
-	</HomeSectionRow>
+	</BWAContentListRow>
 );
 
 const SiteAcceleratorCard = () => {
-	if ( ! select('bluehost/plugin').isJetpackActive() ) {
+	if ( ! select( 'bluehost/plugin' ).isJetpackActive() ) {
 		return null;
 	}
 	return (
-		<HomeSectionRow
+		<BWAContentListRow
 			isCentered
-			icon={ (<JetpackLogo />) }
+			icon={ ( <JetpackLogo /> ) }
 			title={ __( 'Site Accelerator', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Site acceleration service will resize your images and serve them from a CDN.', 'bluehost-wordpress-plugin' ) }>
 			<Button
 				href={ baseUrl + 'admin.php?page=jetpack#/performance' }
 				isDefault
 			>
-				{__('Configure Site Accelerator', 'bluehost-wordpress-plugin')}
+				{ __( 'Configure Site Accelerator', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</HomeSectionRow>
+		</BWAContentListRow>
 	);
-}
+};
 
 const PerformanceSection = () => (
-	<HomeSection title="Performance" className="performance">
+	<BWAContentList title="Performance" className="performance">
 		<>
 			<CacheCard />
 			<SiteAcceleratorCard />
 		</>
-	</HomeSection>
+	</BWAContentList>
 );
 
 export default PerformanceSection;

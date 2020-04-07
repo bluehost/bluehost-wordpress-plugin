@@ -12,7 +12,7 @@ const wpScriptsConfig = require( './node_modules/@wordpress/scripts/config/webpa
  */
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 /**
- * 
+ *
  */
 const CopyWebpackPlugin = require( 'copy-webpack-plugin');
 const _ = require( 'lodash' );
@@ -58,7 +58,7 @@ const fileMatrix = _.union( vendorFileMatrix, internalAssetMatrix );
  */
 const appWebpackConfig = {
 	...wpScriptsConfig,
-	entry: { admin: './src/index.js' }, // name the main file app.js when exported
+	entry: { admin: './src/admin.js' },
 	output: {
 		path: path.resolve( __dirname, './assets' ),
 		publicPath: '../wp-content/plugins/bluehost-wordpress-plugin/assets/',
@@ -90,10 +90,8 @@ const appWebpackConfig = {
             {
                 test: /\.svg$/,
                 use: [
-                    {
-                        loader: "@svgr/webpack"
-                    }, 
-                    "url-loader"
+                    { loader: "@svgr/webpack" },
+                    { loader: "url-loader", options: { esModule: false } },
                 ]
             }
 		],

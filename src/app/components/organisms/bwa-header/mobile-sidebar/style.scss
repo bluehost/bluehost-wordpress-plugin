@@ -1,0 +1,38 @@
+/* BLUEHOST STYLES CONFIG */
+@import '@/config.scss';
+
+.slideout-logo-wrap {
+    svg {
+        width: 148px;
+        height: 24px;
+        float: left;
+        padding-top: 28px;
+        padding-left: 24px;
+    }
+}
+
+#slideout-icons-wrap {
+    margin-top: 24px;
+    margin-right: 24px;
+    float: right;
+    .help, 
+    .user-menu {
+        display: inline !important;
+    }
+}
+
+.slideout-menu-wrap {
+    clear: both;
+    text-align: left;
+    padding-top: 12px;
+    li {
+        a {
+            text-decoration: none;
+            display: block;
+            padding: 12px 0 12px 30px;
+            font-size: 14px;
+            font-family: $font;
+            color: $color-black;
+        }
+    }
+}

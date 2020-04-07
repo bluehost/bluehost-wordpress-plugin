@@ -1,4 +1,4 @@
-import { select } from "@wordpress/data";
+import { select } from '@wordpress/data';
 
 /**
  * Returns whether or not tips are globally enabled.
@@ -7,10 +7,10 @@ import { select } from "@wordpress/data";
  *
  * @return {boolean} Whether tips are globally enabled.
  */
-export function getActivePage(state) {
+export function getActivePage( state ) {
 	return state.app.activePage;
 }
-export function getAppPages(state) {
+export function getAppPages( state ) {
 	return state.app.pages;
 }
 export function isMenuAugmented( state ) {
@@ -26,7 +26,7 @@ export function getAllSettings( state ) {
 	return state.settings;
 }
 export function getSetting( state, setting ) {
-	return state.settings[setting];
+	return state.settings[ setting ];
 }
 export function isWooActive( state ) {
 	return state.wp.isWooActive;

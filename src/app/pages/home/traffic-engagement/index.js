@@ -10,15 +10,18 @@ import { select } from '@wordpress/data';
 /**
  * External dependencies
  */
-import { AppButton as Button } from '@/components';
-import HomeSection from '../home-section';
-import HomeSectionRow from '../home-section-row';
+import { BWAButton as Button } from '@/components/atoms';
+
+import {
+	BWAContentList,
+	BWAContentListRow,
+} from '@/components/molecules';
 
 const baseUrl = location.origin + '/wp-admin/';
 
 function SocialCard() {
 	return (
-		<HomeSectionRow
+		<BWAContentListRow
 			icon="share"
 			title={ __( 'Social', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Add social sharing buttons so site visitors can share your content and help grow your traffic.', 'bluehost-wordpress-plugin' ) }>
@@ -26,15 +29,15 @@ function SocialCard() {
 				href={ baseUrl + 'admin.php?page=jetpack#/sharing' }
 				isDefault
 			>
-				{__('Manage Social', 'bluehost-wordpress-plugin')}
+				{ __( 'Manage Social', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</HomeSectionRow>
+		</BWAContentListRow>
 	);
 }
 
 function PublicizeCard() {
 	return (
-		<HomeSectionRow
+		<BWAContentListRow
 			icon="megaphone"
 			title={ __( 'Publicize', 'bluehost-wordpress-plugin' ) }
 			desc={ __( 'Set your site to automatically share new content with your social networks.', 'bluehost-wordpress-plugin' ) }>
@@ -42,15 +45,15 @@ function PublicizeCard() {
 				href={ baseUrl + 'admin.php?page=jetpack#/sharing' }
 				isDefault
 			>
-				{__('Set Sharing', 'bluehost-wordpress-plugin')}
+				{ __( 'Set Sharing', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</HomeSectionRow>
+		</BWAContentListRow>
 	);
 }
 
 function StatsCard() {
 	return (
-		<HomeSectionRow
+		<BWAContentListRow
 			isCentered
 			icon="chart-bar"
 			title={ __( 'Stats', 'bluehost-wordpress-plugin' ) }
@@ -59,23 +62,23 @@ function StatsCard() {
 				href={ baseUrl + 'admin.php?page=stats' }
 				isDefault
 			>
-				{__('View Stats', 'bluehost-wordpress-plugin')}
+				{ __( 'View Stats', 'bluehost-wordpress-plugin' ) }
 			</Button>
-		</HomeSectionRow>
+		</BWAContentListRow>
 	);
 }
 
 const TrafficEngagementSection = () => {
-	if ( ! select('bluehost/plugin').isJetpackActive() ) {
+	if ( ! select( 'bluehost/plugin' ).isJetpackActive() ) {
 		return null;
 	}
 	return (
-		<HomeSection title={__('Traffic & Engagement', 'bluehost-wordpress-plugin')} className="traffic">
+		<BWAContentList title={ __( 'Traffic & Engagement', 'bluehost-wordpress-plugin' ) } className="traffic">
 			<SocialCard />
 			<PublicizeCard />
 			<StatsCard />
-		</HomeSection>
+		</BWAContentList>
 	);
-}
+};
 
 export default TrafficEngagementSection;

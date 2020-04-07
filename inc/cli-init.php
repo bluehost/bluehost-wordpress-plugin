@@ -21,48 +21,6 @@ class EIG_WP_CLI_Loader {
 	protected $commands;
 
 	/**
-	 * These aliases are always available on every install.
-	 *
-	 * @var array
-	 */
-	protected $must_use_aliases = array(
-		'mojo',
-		'eig',
-	);
-
-	/**
-	 * Only one of these aliases are available, determined by current active branding.
-	 *
-	 * @var array
-	 */
-	protected static $brand_aliases = array(
-		'bluehost',
-		'hostmonster',
-		'justhost',
-		'hostgator',
-		'ipage',
-		'ipower',
-		'fatcow',
-		'domain',
-		'site5',
-	);
-
-	/**
-	 * @var string - Current brand wp_options key
-	 */
-	protected static $eig_brand_option_key = 'mm_brand';
-
-	/**
-	 * @var string - Current alias from $this->brand_aliases.
-	 */
-	protected $current_brand_alias;
-
-	/**
-	 * @var array - Current aliases including $this->current_brand_alias & $this->must_use_aliases.
-	 */
-	protected $current_aliases;
-
-	/**
 	 * @var stdClass - Instance of EIG_WP_CLI_Loader.
 	 */
 	protected static $instance;
@@ -147,7 +105,6 @@ class EIG_WP_CLI_Loader {
 			),
 		);
 
-		$this->establish_current_brand();
 		$this->load_files();
 		$this->register_cmds_with_wpcli();
 	}
@@ -168,33 +125,10 @@ class EIG_WP_CLI_Loader {
 	}
 
 	/**
-	 * Taps database option to initialize current brand's alias
-	 */
-	protected function establish_current_brand() {
-		$brand = get_option( self::$eig_brand_option_key, '' );
-		foreach ( static::$brand_aliases as $alias ) {
-			if ( false !== stristr( $brand, $alias ) ) {
-				$this->current_brand_alias = $alias;
-			}
-		}
-	}
-
-	/**
-	 * Establish which aliases are supported
-	 */
-	protected function establish_aliases() {
-		$this->current_aliases = array_merge( $this->must_use_aliases, array( $this->current_brand_alias ) );
-	}
-
-	/**
 	 * Map registration function onto each alias.
 	 */
 	protected function register_cmds_with_wpcli() {
-		$this->establish_aliases();
-		array_map(
-			array( $this, 'register_commands_with_single_alias' ),
-			$this->current_aliases
-		);
+		$this->register_cmds_with_wpcli( 'bluehost' );
 	}
 
 	/**
@@ -210,8 +144,7 @@ class EIG_WP_CLI_Loader {
 			/**
 			 * Validate command has required attributes and is executable.
 			 */
-			if ( ! $this->command_is_supported( $cmd, $alias )
-				 || empty( $cmd['cmd'] )
+			if ( empty( $cmd['cmd'] )
 				 || empty( $cmd['class'] )
 			) {
 				continue;
@@ -238,27 +171,6 @@ class EIG_WP_CLI_Loader {
 				$cmd['class'],
 				$args
 			);
-		}
-	}
-
-	/**
-	 * Check if the current $alias supports the $command.
-	 *
-	 * @param array  $cmd
-	 * @param string $alias
-	 *
-	 * @return bool
-	 */
-	protected function command_is_supported( $cmd, $alias ) {
-		if ( ! empty( $cmd['supports'] ) ) {
-			$supports = is_array( $cmd['supports'] ) ? $cmd['supports'] : array( $cmd['supports'] );
-			if ( isset( $supports['all'] ) || isset( $supports[ $alias ] ) ) {
-				return true;
-			}
-
-			return false;
-		} else {
-			return true; // assume all are supported unless scoped
 		}
 	}
 }

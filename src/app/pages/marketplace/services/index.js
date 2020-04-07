@@ -1,49 +1,44 @@
-import {lazy, Suspense} from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-import {ProductCard,AppSpinner} from '@/components';
-import {useMojoApi} from '@/hooks';
+import { BWAMarketplaceTemplate } from '@/components/templates';
+import { BWAProductCard } from '@/components/molecules';
+import { useMojoApi } from '@/hooks';
 
-const Page = lazy(() => import( '@/components/marketplace-page' ));
+function ServicesPage( { history } ) {
+	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'services', { category: '', count: 1000 } );
 
-function ServicesPage({history}) {
+	if ( isError ) {
+		throw new Error( 'API Error. Payload: ' + JSON.stringify( payload ) );
+	}
 
-    const [{done, isError, isLoading, payload}] = useMojoApi('services', {category: '', count: 1000});
+	const renderCallback = ( { item, hasFavorite, toggleFavorite } ) => {
+		return (
+			<BWAProductCard
+				buttonPrimary={ { href: item.buy_url } }
+				buttonSecondary={ {
+					onClick: () => {
+						history.push( `/marketplace/product/${ item.id }` );
+					},
+				} }
+				id={ item.id }
+				imageUrl={ item.images.preview_url }
+				isFavorite={ hasFavorite( item.id ) }
+				key={ item.id }
+				price={ item.prices.single_domain_license }
+				title={ item.name }
+				toggleFavorite={ () => toggleFavorite( item.id ) }
+			/>
+		);
+	};
 
-    if (isError) {
-        throw new Error('API Error. Payload: ' + JSON.stringify(payload));
-    }
-
-    const renderCallback = ({item, hasFavorite, toggleFavorite}) => {
-        return (
-            <ProductCard
-                buttonPrimary={{href: item.buy_url}}
-                buttonSecondary={{
-                    onClick: () => {
-                        history.push(`/marketplace/product/${item.id}`);
-                    }
-                }}
-                id={item.id}
-                imageUrl={item.images.preview_url}
-                isFavorite={hasFavorite(item.id)}
-                key={item.id}
-                price={item.prices.single_domain_license}
-                title={item.name}
-                toggleFavorite={() => toggleFavorite(item.id)}
-            />
-        );
-    };
-
-    return (
-        <Suspense fallback={<AppSpinner small/>}>
-            <Page
-                isLoading={!done || isLoading}
-                payload={payload}
-                render={renderCallback}
-                type="services"
-            />
-        </Suspense>
-    );
+	return (
+		<BWAMarketplaceTemplate
+			isLoading={ ! done || isLoading }
+			payload={ payload }
+			render={ renderCallback }
+			type="services"
+		/>
+	);
 }
 
-export default withRouter(ServicesPage);
+export default withRouter( ServicesPage );

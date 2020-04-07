@@ -1,31 +1,31 @@
 /**
  * Project dependencies
  */
-import AppPage from '@/components/app-page';
+import { BWABaseTemplate } from '@/components/templates';
 /**
  * Component dependencies
  */
 import './style.scss';
-import ContentSection from './content';
+import Welcome from './welcome';
+import ComingSoonNotice from './coming-soon-notice';
+import BWAContentList from './content';
 import DesignBuildSection from './design-build';
 import TrafficEngagementSection from './traffic-engagement';
 import PerformanceSection from './performance';
 import HostingSection from './hosting';
-import ComingSoonNotice from './coming-soon-notice';
-import Welcome from './welcome';
 
-const HomePage = () => (
-    <AppPage className="home">
-        <div className="restricted-width">
-            <Welcome/>
-            <ComingSoonNotice/>
-            <ContentSection/>
-            <DesignBuildSection/>
-            <TrafficEngagementSection/>
-            <PerformanceSection/>
-            <HostingSection/>
-        </div>
-    </AppPage>
+const Home = () => (
+	<BWABaseTemplate className="page-home">
+		<div className="page-home__container">
+			<Welcome />
+			<ComingSoonNotice />
+			<BWAContentList />
+			<DesignBuildSection />
+			<TrafficEngagementSection />
+			<PerformanceSection />
+			<HostingSection />
+		</div>
+	</BWABaseTemplate>
 );
 
-export default HomePage;
+export default Home;
