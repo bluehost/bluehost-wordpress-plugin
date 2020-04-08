@@ -28,7 +28,7 @@ deploy:
   provider: releases
   api_key:
     secure: j2eWYog7rMvSybNMak0vbG+0/jMzsrZaGYJaSvm8R+77C34TfAoPFcMk9VyLtQTkTcbTbvhFXgkMJpBBbWcAp6OojkU8qIXaBmDl6a5zZdjQMsXMneOf79lcOJXrpCGP4jUu8qONrfTtL4uKtrN1D+SchmXxUMpOnE3+bqVw7qzY86+iZLPnufxPvzmpzKVLH2L7IuDaWSGVnfGKDpuphUtHQ1FJ0XCDiwWLfe0kloKLTkLsD0mBh939Pn0K+Q0BE6vb87H84x8ftxB8bikAFa8PthIHsafCSsVqjLMigmYi4WCLhCXcXtDN9mQem5WGN96ShbNerAn3pzQfsfThDV+HqfU8CfQMCeiu4z9XQpWIinqLJtOaLvvO2gxe7LVyAX9XiT4LJAz+e4prwDxLlHdP9LMRyFyMKxqucCYemFq+Ii0hxFyzQwUL4QXfpNhGkL2A0F7vJKMO2WCC4KL8dJ0k3i54vayuau8vNIYBswkVfRFeXz5PEM1/NUDnHZwv955MK2astAJ+TsK87MxqohnN84pdBCJbQ+K6w5zL279i8ePIaNImi36Ri8pRw67tmXEHOriKqo19efqEfEhI/ipZT6Xf0FuT1eTVLbJcoaQztoUH8VQ2cdPjIXpbZUlfhqb92n8bAqqLkGXzIT5/tvK2Q8HQDeWFgPjllWGmaSI=
-  file: "bluehost-wordpress-plugin.zip"
+  file: "bluehost-wordpress-plugin-travis.zip"
   skip_cleanup: true
   on:
     repo: bluehost/bluehost-wordpress-plugin
