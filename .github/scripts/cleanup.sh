@@ -4,6 +4,7 @@ rm -rf .git
 rm -rf .github
 rm -rf node_modules
 rm -rf src
+rm -rf storybook
 rm -rf tests
 find . -name '.*' -type f -maxdepth 1 -delete
 find . -name '*.md' -type f -maxdepth 1 -delete
