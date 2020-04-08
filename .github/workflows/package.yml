@@ -48,7 +48,7 @@ jobs:
         run: npm run build
 
       - name: Generate .pot file
-        run: npm run makepot
+        run: npm run translate
 
       - name: Validate composer.json and composer.lock
         run: composer validate
