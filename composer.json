@@ -1,6 +1,6 @@
 {
-  "name": "mojoness/mojo-marketplace-wp-plugin",
-  "description": "WordPress plugin that has shortcodes, widgets and themes.",
+  "name": "bluehost/bluehost-wordpress-plugin",
+  "description": "This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
   "type": "wordpress-plugin",
   "license": "GPL-2.0-or-later",
   "authors": [
@@ -26,17 +26,13 @@
   ],
   "scripts": {
     "lint": [
-      "vendor/bin/phpcs --ignore=*/vendor/* ."
-    ],
-    "post-install-cmd": [
-      "xrstf\\Composer52\\Generator::onPostInstallCmd"
-    ],
-    "post-update-cmd": [
-      "xrstf\\Composer52\\Generator::onPostInstallCmd"
-    ],
-    "post-autoload-dump": [
-      "xrstf\\Composer52\\Generator::onPostInstallCmd"
+      "vendor/bin/phpcs ."
     ]
+  },
+  "autoload": {
+    "psr-4": {
+      "Bluehost\\": "inc/"
+    }
   },
   "require": {
     "bluehost/endurance-wp-module-business-reviews": "^1.0",
@@ -44,19 +40,14 @@
     "bluehost/endurance-wp-module-loader": "^1.0",
     "bluehost/endurance-wp-module-spam-prevention": "^1.0",
     "bluehost/endurance-wp-module-sso": "^1.0",
-    "xrstf/composer-php52": "^1.0"
+    "wpscholar/phpdotenv": "^1.0",
+    "bluehost/endurance-wp-plugin-updater": "^1.0",
+    "ext-iconv": "*"
   },
   "require-dev": {
-    "bluehost/wp-php-standards": "^1.0"
+    "bluehost/wp-php-standards": "^1.1"
   },
   "config": {
     "optimize-autoloader": true
-  },
-  "extra": {
-    "phpcs-config": {
-      "colors": 1,
-      "default_standard": "Bluehost",
-      "testVersion": "5.2-"
-    }
   }
 }
