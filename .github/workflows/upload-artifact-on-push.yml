@@ -7,12 +7,18 @@ on:
 
 jobs:
   build:
-    name: Run
+    name: On Push to Master
     runs-on: ubuntu-latest
     steps:
 
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Set Package Name
+        id: package
+        env:
+          REPO: ${{ github.repository }}
+        run: echo ::set-output name=PACKAGE::${REPO##*/}
 
       - name: PHP version
         run: php --version
@@ -47,7 +53,7 @@ jobs:
         run: npm run build
 
       - name: Generate .pot file
-        run: npm run translate
+        run: npm run i18n
 
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -65,7 +71,7 @@ jobs:
             ${{ runner.os }}-composer-
 
       - name: Install PHP Dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest --no-dev
+        run: composer install --no-progress --no-dev
 
       - name: Remove development files
         run: .github/scripts/cleanup.sh
@@ -75,5 +81,5 @@ jobs:
 
       - uses: actions/upload-artifact@v1
         with:
-          name: bluehost-wordpress-plugin
+          name: ${{ steps.package.outputs.PACKAGE }}
           path: ./

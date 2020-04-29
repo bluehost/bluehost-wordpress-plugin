@@ -15,20 +15,15 @@
     }
   ],
   "support": {
-    "source": "https://github.com/mojoness/mojo-marketplace-wp-plugin",
-    "issues": "https://github.com/mojoness/mojo-marketplace-wp-plugin/issues"
+    "source": "https://github.com/bluehost/bluehost-wordpress-plugin",
+    "issues": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
   },
   "repositories": [
     {
       "type": "composer",
-      "url": "https://satis.wpteamhub.com"
+      "url": "https://bluehost.github.io/satis/"
     }
   ],
-  "scripts": {
-    "lint": [
-      "vendor/bin/phpcs ."
-    ]
-  },
   "autoload": {
     "psr-4": {
       "Bluehost\\": "inc/"
@@ -49,5 +44,17 @@
   },
   "config": {
     "optimize-autoloader": true
+  },
+  "scripts": {
+    "fix": [
+      "vendor/bin/phpcbf . --standard=Bluehost"
+    ],
+    "lint": [
+      "vendor/bin/phpcs . --standard=Bluehost -s"
+    ]
+  },
+  "scripts-descriptions": {
+    "fix": "Automatically fix coding standards issues where possible.",
+    "lint": "Check files against coding standards."
   }
 }

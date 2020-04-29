@@ -1,0 +1,40 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '**.php'
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+    paths:
+      - '**.php'
+
+jobs:
+  phpcs:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v1
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache Composer vendor directory
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Detecting PHP Code Standards Violations
+        run: composer run-script lint

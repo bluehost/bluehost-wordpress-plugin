@@ -1,27 +1,18 @@
 {
   "name": "bluehost-wordpress-plugin",
-  "version": "2.0.0",
-  "description": "",
+  "description": "A WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
   "private": true,
   "main": "webpack.config.js",
-  "scripts": {
-    "build": "wp-scripts build",
-    "check-engines": "wp-scripts check-engines",
-    "check-licenses": "wp-scripts check-licenses --production",
-    "develop": "NODE_ENV=develop wp-scripts start",
-    "lint:css": "wp-scripts lint-style '**/*.css'",
-    "lint:js": "wp-scripts lint-js ./src",
-    "lint:js:fix": "wp-scripts lint-js ./src --fix",
-    "lint:pkg-json": "wp-scripts lint-pkg-json",
-    "translate": "wpi18n addtextdomain && wpi18n makepot",
-    "start": "wp-scripts start",
-    "storybook:dev": "start-storybook -c ./storybook",
-    "storybook:build": "build-storybook -c ./storybook -o ./.docs",
-    "test:e2e": "npx cypress open",
-    "test:unit": "wp-scripts test-unit-js"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluehost/bluehost-wordpress-plugin.git"
   },
+  "bugs": {
+    "url": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
+  },
+  "homepage": "https://github.com/bluehost/bluehost-wordpress-plugin#readme",
   "author": "David Ryan <dryanpress@chat.wordpress.org>",
-  "license": "Undetermined. Private at present.",
+  "license": "GPL-2.0-or-later",
   "dependencies": {
     "@wordpress/a11y": "^2.5.1",
     "@wordpress/api-fetch": "^3.6.2",
@@ -67,9 +58,39 @@
     "cypress-axe": "^0.5.1",
     "file-loader": "^5.0.2",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.14.0",
     "node-wp-i18n": "^1.2.3",
     "sass-loader": "^8.0.0",
     "url-loader": "^3.0.0"
+  },
+  "scripts": {
+    "build": "wp-scripts build",
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses --production",
+    "develop": "NODE_ENV=develop wp-scripts start",
+    "lint:css": "wp-scripts lint-style '**/*.css'",
+    "lint:js": "wp-scripts lint-js ./src",
+    "lint:js:fix": "wp-scripts lint-js ./src --fix",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "lint:yml": "yamllint **/*.yml --ignore=node_modues/**",
+    "i18n": "wpi18n addtextdomain && wpi18n makepot",
+    "start": "wp-scripts start",
+    "storybook:dev": "start-storybook -c ./storybook",
+    "storybook:build": "build-storybook -c ./storybook -o ./.docs",
+    "test:e2e": "npx cypress run",
+    "test:unit": "wp-scripts test-unit-js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.yml": [
+      "yamllint --ignore=node_modues/**"
+    ],
+    "**/*.php": [
+      "vendor/bin/phpcs --standard=Bluehost -s"
+    ]
   }
 }

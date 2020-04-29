@@ -1,0 +1,35 @@
+name: Trigger Satis Build
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  webhook:
+    name: Send Webhook
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Set Package
+        id: package
+        env:
+          REPO: ${{ github.repository }}
+        run: echo ::set-output name=PACKAGE::${REPO##*/}
+
+      - name: Set Version
+        id: tag
+        run: echo ::set-output name=VERSION::${GITHUB_REF##*/}
+
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.WEBHOOK_TOKEN }}
+          repository: bluehost/satis
+          event-type: 'Trigger Satis Build'
+          client-payload: >-
+            {
+              "vendor": "${{ github.repository_owner }}",
+              "package": "${{ steps.package.outputs.PACKAGE }}",
+              "version": "${{ steps.tag.outputs.VERSION }}"
+            }

@@ -8,12 +8,18 @@ on:
 
 jobs:
   build:
-    name: Run
+    name: On Release
     runs-on: ubuntu-latest
     steps:
 
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Set Package Name
+        id: package
+        env:
+          REPO: ${{ github.repository }}
+        run: echo ::set-output name=PACKAGE::${REPO##*/}
 
       - name: PHP version
         run: php --version
@@ -48,7 +54,7 @@ jobs:
         run: npm run build
 
       - name: Generate .pot file
-        run: npm run translate
+        run: npm run i18n
 
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -66,13 +72,13 @@ jobs:
             ${{ runner.os }}-composer-
 
       - name: Install PHP Dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest --no-dev
+        run: composer install --no-progress --no-dev
 
       - name: Remove development files
         run: .github/scripts/cleanup.sh
 
       - name: Create Zip
-        run: zip -r bluehost-wordpress-plugin.zip .
+        run: zip -r ${{ steps.package.outputs.PACKAGE }}.zip .
 
       - name: List Files
         run: ls -lah
@@ -84,6 +90,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: https://uploads.github.com/repos/${{ github.repository }}/releases/${{ github.event.release.id }}/assets{?name,label}
-          asset_path: ./bluehost-wordpress-plugin.zip
-          asset_name: bluehost-wordpress-plugin.zip
+          asset_path: ./${{ steps.package.outputs.PACKAGE }}.zip
+          asset_name: ${{ steps.package.outputs.PACKAGE }}.zip
           asset_content_type: application/zip
