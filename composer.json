@@ -37,7 +37,8 @@
     "bluehost/endurance-wp-module-sso": "^1.0",
     "wpscholar/phpdotenv": "^1.0",
     "bluehost/endurance-wp-plugin-updater": "^1.0",
-    "ext-iconv": "*"
+    "ext-iconv": "*",
+    "wpscholar/github-archive-installer": "^1.1"
   },
   "require-dev": {
     "bluehost/wp-php-standards": "^1.1"

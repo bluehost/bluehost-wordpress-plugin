@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "561978c499306680f80581e149a7dece",
+    "content-hash": "20c24042970c7dffcb377e012c117572",
     "packages": [
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -394,6 +394,45 @@
                 "psr"
             ],
             "time": "2017-02-14T16:28:37+00:00"
+        },
+        {
+            "name": "wpscholar/github-archive-installer",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpscholar/github-archive-installer.git",
+                "reference": "c3e325f345e2ca3e3a110294e8914a747b16150d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wpscholar/github-archive-installer/zipball/c3e325f345e2ca3e3a110294e8914a747b16150d",
+                "reference": "c3e325f345e2ca3e3a110294e8914a747b16150d",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1 || ^2.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "wpscholar\\Composer\\GithubArchiveInstaller"
+            },
+            "autoload": {
+                "psr-4": {
+                    "wpscholar\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "A custom Composer installer that will install a dependency from a GitHub release archive .zip file when installing from distribution.",
+            "time": "2020-04-24T14:36:31+00:00"
         },
         {
             "name": "wpscholar/phpdotenv",
