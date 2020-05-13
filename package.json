@@ -1,96 +1,99 @@
 {
-  "name": "bluehost-wordpress-plugin",
-  "description": "A WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
-  "private": true,
-  "main": "webpack.config.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bluehost/bluehost-wordpress-plugin.git"
-  },
-  "bugs": {
-    "url": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
-  },
-  "homepage": "https://github.com/bluehost/bluehost-wordpress-plugin#readme",
-  "author": "David Ryan <dryanpress@chat.wordpress.org>",
-  "license": "GPL-2.0-or-later",
-  "dependencies": {
-    "@wordpress/a11y": "^2.5.1",
-    "@wordpress/api-fetch": "^3.6.2",
-    "@wordpress/components": "^8.3.2",
-    "@wordpress/data": "^4.9.2",
-    "@wordpress/dom": "^2.6.0",
-    "@wordpress/dom-ready": "^2.5.1",
-    "@wordpress/element": "^2.8.2",
-    "@wordpress/html-entities": "^2.5.0",
-    "@wordpress/i18n": "^3.6.1",
-    "@wordpress/keycodes": "^2.6.2",
-    "animate.css": "^3.7.2",
-    "axios": "^0.19.0",
-    "change-case": "^3.1.0",
-    "classnames": "^2.2.6",
-    "fuse.js": "^3.4.5",
-    "jquery": "^3.4.1",
-    "lodash": "^4.17.15",
-    "purecss": "^1.0.1",
-    "react": "^16.9.0",
-    "react-router-dom": "^5.1.2",
-    "react-slick": "^0.25.2",
-    "slick-carousel": "^1.8.1"
-  },
-  "devDependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
-    "@storybook/addon-a11y": "^5.2.8",
-    "@storybook/addon-docs": "^5.2.8",
-    "@storybook/addon-knobs": "^5.2.8",
-    "@storybook/addon-storysource": "^5.2.8",
-    "@storybook/addon-viewport": "^5.2.8",
-    "@storybook/react": "^5.2.8",
-    "@storybook/theming": "^5.2.8",
-    "@svgr/webpack": "^4.3.3",
-    "@wordpress/babel-preset-default": "^4.7.0",
-    "@wordpress/base-styles": "^1.0.0",
-    "@wordpress/scripts": "^6.0.0",
-    "axe-core": "^3.4.0",
-    "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^5.1.0",
-    "css-loader": "^3.3.0",
-    "cypress": "^3.4.1",
-    "cypress-axe": "^0.5.1",
-    "file-loader": "^5.0.2",
-    "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.14.0",
-    "node-wp-i18n": "^1.2.3",
-    "sass-loader": "^8.0.0",
-    "url-loader": "^3.0.0"
-  },
-  "scripts": {
-    "build": "wp-scripts build",
-    "check-engines": "wp-scripts check-engines",
-    "check-licenses": "wp-scripts check-licenses --production",
-    "develop": "NODE_ENV=develop wp-scripts start",
-    "lint:css": "wp-scripts lint-style '**/*.css'",
-    "lint:js": "wp-scripts lint-js ./src",
-    "lint:js:fix": "wp-scripts lint-js ./src --fix",
-    "lint:pkg-json": "wp-scripts lint-pkg-json",
-    "lint:yml": "yamllint **/*.yml --ignore=node_modues/**",
-    "i18n": "wpi18n addtextdomain && wpi18n makepot",
-    "start": "wp-scripts start",
-    "storybook:dev": "start-storybook -c ./storybook",
-    "storybook:build": "build-storybook -c ./storybook -o ./.docs",
-    "test:e2e": "npx cypress run",
-    "test:unit": "wp-scripts test-unit-js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "name": "bluehost-wordpress-plugin",
+    "description": "A WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
+    "private": true,
+    "main": "webpack.config.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bluehost/bluehost-wordpress-plugin.git"
+    },
+    "bugs": {
+        "url": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
+    },
+    "homepage": "https://github.com/bluehost/bluehost-wordpress-plugin#readme",
+    "author": "David Ryan <dryanpress@chat.wordpress.org>",
+    "license": "GPL-2.0-or-later",
+    "dependencies": {
+        "@wordpress/a11y": "^2.5.1",
+        "@wordpress/api-fetch": "^3.6.2",
+        "@wordpress/components": "^8.3.2",
+        "@wordpress/data": "^4.9.2",
+        "@wordpress/dom": "^2.6.0",
+        "@wordpress/dom-ready": "^2.5.1",
+        "@wordpress/element": "^2.8.2",
+        "@wordpress/html-entities": "^2.5.0",
+        "@wordpress/i18n": "^3.6.1",
+        "@wordpress/keycodes": "^2.6.2",
+        "animate.css": "^3.7.2",
+        "axios": "^0.19.0",
+        "change-case": "^3.1.0",
+        "classnames": "^2.2.6",
+        "fuse.js": "^3.4.5",
+        "jquery": "^3.4.1",
+        "lodash": "^4.17.15",
+        "purecss": "^1.0.1",
+        "react": "^16.9.0",
+        "react-router-dom": "^5.1.2",
+        "react-slick": "^0.25.2",
+        "slick-carousel": "^1.8.1"
+    },
+    "devDependencies": {
+        "@babel/plugin-syntax-dynamic-import": "^7.7.4",
+        "@storybook/addon-a11y": "^5.2.8",
+        "@storybook/addon-docs": "^5.2.8",
+        "@storybook/addon-knobs": "^5.2.8",
+        "@storybook/addon-storysource": "^5.2.8",
+        "@storybook/addon-viewport": "^5.2.8",
+        "@storybook/react": "^5.2.8",
+        "@storybook/theming": "^5.2.8",
+        "@svgr/webpack": "^4.3.3",
+        "@wordpress/babel-preset-default": "^4.7.0",
+        "@wordpress/base-styles": "^1.0.0",
+        "@wordpress/scripts": "^6.0.0",
+        "axe-core": "^3.4.0",
+        "clean-webpack-plugin": "^3.0.0",
+        "copy-webpack-plugin": "^5.1.0",
+        "css-loader": "^3.3.0",
+        "cypress": "^3.4.1",
+        "cypress-axe": "^0.5.1",
+        "file-loader": "^5.0.2",
+        "husky": "^4.2.5",
+        "lint-staged": "^10.2.2",
+        "mini-css-extract-plugin": "^0.8.0",
+        "node-sass": "^4.14.0",
+        "node-wp-i18n": "^1.2.3",
+        "sass-loader": "^8.0.0",
+        "url-loader": "^3.0.0",
+        "yaml-lint": "^1.2.4"
+    },
+    "scripts": {
+        "build": "wp-scripts build",
+        "check-engines": "wp-scripts check-engines",
+        "check-licenses": "wp-scripts check-licenses --production",
+        "develop": "NODE_ENV=develop wp-scripts start",
+        "lint:css": "wp-scripts lint-style '**/*.css'",
+        "lint:js": "wp-scripts lint-js ./src",
+        "lint:js:fix": "wp-scripts lint-js ./src --fix",
+        "lint:pkg-json": "wp-scripts lint-pkg-json",
+        "lint:yml": "yamllint --ignore=node_modules/** **/*.yml",
+        "i18n": "wpi18n addtextdomain && composer run i18n",
+        "start": "wp-scripts start",
+        "storybook:dev": "start-storybook -c ./storybook",
+        "storybook:build": "build-storybook -c ./storybook -o ./.docs",
+        "test:e2e": "npx cypress run",
+        "test:unit": "wp-scripts test-unit-js"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged && npx run i18n"
+        }
+    },
+    "lint-staged": {
+        "**/*.yml": [
+            "yamllint --ignore=node_modues/**"
+        ],
+        "**/*.php": [
+            "vendor/bin/phpcs --standard=Bluehost -s"
+        ]
     }
-  },
-  "lint-staged": {
-    "**/*.yml": [
-      "yamllint --ignore=node_modues/**"
-    ],
-    "**/*.php": [
-      "vendor/bin/phpcs --standard=Bluehost -s"
-    ]
-  }
 }
