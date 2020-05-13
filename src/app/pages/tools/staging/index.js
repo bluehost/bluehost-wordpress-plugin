@@ -285,6 +285,7 @@ export default function StagingPage() {
 				<BWAOverlay className={ `bluehost-staging__overlay` }>
 					<h1>
 						{ sprintf(
+							/* translators: %s is replaced with the environment name (i.e. Production or Staging) */
 							__( 'Loading %s Site', 'bluehost-wordpress-plugin' ),
 							switchingTo === 'production' ? __( 'Production', 'bluehost-wordpress-plugin' ) : __( 'Staging', 'bluehost-wordpress-plugin' )
 						) }

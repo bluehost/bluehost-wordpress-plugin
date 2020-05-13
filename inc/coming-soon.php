@@ -10,7 +10,8 @@ function mm_cs_notice_display() {
 			<p>
 				<?php
 				printf(
-					__( 'Your site is currently displaying a "Coming Soon" page. Once you are ready, %slaunch your site%s.', 'bluehost-wordpress-plugin' ),
+					/* translators: %1$s is replaced with the opening link tag and %2$s is replaced with the closing link tag. */
+					__( 'Your site is currently displaying a "Coming Soon" page. Once you are ready, %1$slaunch your site%2$s.', 'bluehost-wordpress-plugin' ),
 					'<a href="' . esc_url( admin_url( 'admin.php?page=bluehost#/home' ) ) . '">',
 					'</a>'
 				);
