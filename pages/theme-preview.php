@@ -24,7 +24,7 @@ if ( is_wp_error( $theme ) ) {
 	<div class="error">
 		<p>
 			<?php esc_html_e( 'Unable to load theme preview.', 'bluehost-wordpress-plugin' ); ?>
-			<a href="<?php echo esc_url( admin_url( 'admin.php?page=bluehost#/marketplace/themes' ) ); ?>"><?php esc_html_e( 'Return to themes', 'bluehost-wordpress-theme' ); ?></a>.
+			<a href="<?php echo esc_url( admin_url( 'admin.php?page=bluehost#/marketplace/themes' ) ); ?>"><?php esc_html_e( 'Return to themes', 'bluehost-wordpress-plugin' ); ?></a>.
 		</p>
 	</div>
 	<?php
