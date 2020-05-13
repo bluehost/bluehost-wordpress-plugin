@@ -15,11 +15,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set Package Name
-        id: package
+      - name: Setup Workflow Context
+        id: workflow
+        working-directory: ${{ runner.temp }}
         env:
           REPO: ${{ github.repository }}
-        run: echo ::set-output name=PACKAGE::${REPO##*/}
+        run: |
+          mkdir dist
+          echo ::set-output name=DIST::${PWD}/dist
+          echo ::set-output name=PACKAGE::${REPO##*/}
 
       - name: PHP version
         run: php --version
@@ -53,9 +57,6 @@ jobs:
       - name: Build JavaScript
         run: npm run build
 
-      - name: Generate .pot file
-        run: npm run i18n
-
       - name: Validate composer.json and composer.lock
         run: composer validate
 
@@ -72,24 +73,25 @@ jobs:
             ${{ runner.os }}-composer-
 
       - name: Install PHP Dependencies
-        run: composer install --no-progress --no-dev
+        run: composer install --no-progress --no-dev --optimize-autoloader
 
-      - name: Remove development files
-        run: .github/scripts/cleanup.sh
-
-      - name: Create Zip
-        run: zip -r ${{ steps.package.outputs.PACKAGE }}.zip .
+      - name: Prepare files
+        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
       - name: List Files
-        run: ls -lah
+        working-directory: ${{ steps.workflow.outputs.DIST }}
+        run: find .
+
+      - name: Create Zip
+        working-directory: ${{ steps.workflow.outputs.DIST }}
+        run: zip -r ${{ steps.workflow.outputs.PACKAGE }}.zip .
 
       - name: Upload Release Asset
-        id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: https://uploads.github.com/repos/${{ github.repository }}/releases/${{ github.event.release.id }}/assets{?name,label}
-          asset_path: ./${{ steps.package.outputs.PACKAGE }}.zip
-          asset_name: ${{ steps.package.outputs.PACKAGE }}.zip
+          asset_path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}.zip
+          asset_name: ${{ steps.workflow.outputs.PACKAGE }}.zip
           asset_content_type: application/zip

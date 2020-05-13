@@ -1,0 +1,25 @@
+# Directories
+.git
+.github
+node_modules
+src
+storybook
+tests
+
+# Files
+.distignore
+.gitattributes
+.gitignore
+.npmrc
+webpack.config.js
+
+# File Types
+*.json
+*.lock
+*.log
+*.md
+*.sql
+*.tar.gz
+*.xml
+*.yml
+*.zip
