@@ -7,7 +7,7 @@ import { combineReducers } from '@wordpress/data';
  * @param {*} state
  * @param {*} action
  */
-// import DEFAULT_STATE from '@/store/defaults'
+// import DEFAULT_STATE from '@app/store/defaults'
 
 const DEFAULT_STATE = {
 	app: {},

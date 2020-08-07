@@ -1,6 +1,6 @@
-@import "@/config.scss";
+@import "@app/config.scss";
 
-.components-button.bluehost {
+body .components-button.bluehost {
   padding: 0.5rem 1rem;
   border: 0;
   text-shadow: none;
@@ -20,9 +20,20 @@
     background: $color-primary;
     box-shadow: none;
     color: #fff;
-    &:visited, &:focus {
+    &:hover, &:active, &:visited, &:focus, &:not(:disabled):not([aria-disabled=true]):hover {
       background: $color-primary;
       color: #fff;
+    }
+  }
+  
+  &.is-secondary {
+    border: 1px solid $color-primary;
+    background: transparent;
+    box-shadow: none;
+    color: $color-primary;
+    &:hover, &:active, &:visited, &:focus, &:not(:disabled):not([aria-disabled=true]):hover {
+      color: $color-primary;
+      border-color: $color-primary;
     }
   }
 

@@ -59,8 +59,8 @@ class BWABaseTemplate extends Component {
 
 		try {
 			const elem = window.document.querySelector( 'a.toplevel_page_bluehost' );
-			if ( elem.href.includes( 'admin.php?page=bluehost' ) ) {
-				elem.href = location.origin + '/wp-admin/admin.php?page=bluehost#/home';
+			if ( ! elem.href.includes('#/home') ) {
+				elem.href = elem.href + '#/home';
 			}
 		} catch ( e ) {
 			console.log( 'Couldn\'t find Bluehost Menu Element to swap href' );
@@ -98,7 +98,6 @@ class BWABaseTemplate extends Component {
 	render() {
 		return (
 			<section
-				tabIndex="-1"
 				ref={ ( container ) => ( this.container = container ) }
 				className={ 'base-template animated fadeIn page-fade-speed ' + this.props.className }
             >

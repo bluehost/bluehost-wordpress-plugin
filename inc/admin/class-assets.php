@@ -175,6 +175,11 @@ class Bluehost_Admin_App_Assets {
 			time(),
 			true
 		);
+		wp_localize_script(
+			'eig-wp-admin-ui-manifest',
+			'bluehostAppPublicPath',
+			$dist_url
+		);
 		wp_register_script(
 			'eig-wp-admin-ui-vendors',
 			$dist_url . 'vendors~admin.js',
@@ -193,6 +198,7 @@ class Bluehost_Admin_App_Assets {
 
 		$data = array(
 			'app'       => array(
+				'adminUrl'		   => \admin_url(),
 				'activePage'       => '',
 				'isTopLevel'       => 0,
 				'pages'            => array_map( 'strtolower', Bluehost_Admin_App_Page::$subpages ),
@@ -205,6 +211,7 @@ class Bluehost_Admin_App_Assets {
 				'phpVersion' => phpversion(),
 			),
 			'wordpress' => array(
+				'hasReusableBlocks'    => \wp_count_posts('wp_block')->publish >= 1,
 				'isJetpackActive'      => class_exists( 'Jetpack' ) ? 1 : 0,
 				'isWooActive'          => class_exists( 'woocommerce' ) ? 1 : 0,
 				'jetpackActiveModules' => get_option( 'jetpack_active_modules', 0 ),

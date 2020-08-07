@@ -8,11 +8,11 @@ import { forwardRef } from '@wordpress/element';
  */
 import {
 	BWAHeading,
-} from '@/components/atoms';
+} from '@app/components/atoms';
 /**
  * External dependencies
  */
-import { BluehostLogo, HelpIcon } from '@/assets';
+import { BluehostLogo, HelpIcon } from '@app/assets';
 /**
  * Internal dependencies
  */

@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
-import { BWAMarketplaceTemplate } from '@/components/templates';
-import { BWAProductCard } from '@/components/molecules';
-import { useMojoApi } from '@/hooks';
+import { BWAMarketplaceTemplate } from '@app/components/templates';
+import { BWAProductCard } from '@app/components/molecules';
+import { useMojoApi } from '@app/hooks';
 
 
 export default function ThemesPage() {

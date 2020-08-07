@@ -61,7 +61,6 @@ const appWebpackConfig = {
 	entry: { admin: './src/admin.js' },
 	output: {
 		path: path.resolve( __dirname, './assets' ),
-		publicPath: '../wp-content/plugins/bluehost-wordpress-plugin/assets/',
 		filename: '[name].js',
 	},
 	externals: [
@@ -72,7 +71,7 @@ const appWebpackConfig = {
 	resolve: {
 		alias: {
 			'lodash-es': 'lodash',
-			'@': path.resolve(__dirname, 'src/app/')
+			'@app': path.resolve(__dirname, 'src/app/')
 		}
 	},
 	module: {

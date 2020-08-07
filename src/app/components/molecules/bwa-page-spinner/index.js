@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { BWASpinner } from '@/components/atoms';
+import { BWASpinner } from '@app/components/atoms';
 /**
  * Internal dependencies
  */

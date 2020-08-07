@@ -1,4 +1,4 @@
-@import '@/config';
+@import '@app/config';
 
 .app-page-spinner__wrap {
     display: flex;
@@ -8,6 +8,6 @@
     .app-spinner__wrap {
         max-width: 50%;
         position: fixed;
-        top: 48%;
+        top: 44vh;
     }
 }

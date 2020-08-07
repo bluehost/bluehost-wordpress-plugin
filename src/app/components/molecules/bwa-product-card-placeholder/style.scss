@@ -1,4 +1,4 @@
-@import '@/config.scss';
+@import '@app/config.scss';
 
 $color-placeholder: $color-light-grey;
 
@@ -40,21 +40,21 @@ $color-placeholder: $color-light-grey;
   button.components-button.bluehost {
 
     pointer-events: none;
+    text-shadow: none;
 
     &.is-default {
       color: $color-placeholder;
       border-color: $color-placeholder;
-
       &:hover {
         @extend %placeholder-background;
       }
     }
 
-    &.is-primary {
+    &.is-primary,
+    &.is-secondary {
       border-color: $color-placeholder;
+      color: $color-placeholder;
       @extend %placeholder-background;
-      text-shadow: none;
-
       &:hover {
         @extend %placeholder-background;
       }

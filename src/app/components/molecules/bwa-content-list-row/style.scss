@@ -1,4 +1,4 @@
-@import "@/config";
+@import "@app/config";
 .content-list-row {
     padding: 24px 0;
     @media (max-width: 600px) {
@@ -26,7 +26,7 @@
             flex-direction: column;
             align-items: center;
             .components-button {
-                width: 80%;
+                width: 100%;
             }
         }
         .components-button.is-link {

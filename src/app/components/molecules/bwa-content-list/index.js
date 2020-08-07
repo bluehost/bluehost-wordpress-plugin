@@ -1,7 +1,8 @@
 /**
  * WordPress dependencies
  */
-import { BWAHeading } from '@/components/atoms';
+import classnames from 'classnames';
+import { BWAHeading } from '@app/components/atoms';
 
 import './style.scss';
 
@@ -15,7 +16,7 @@ const BWAContentList = ( { title, className, children, ...props } ) => {
 			{ ...props }
 		>
 			<BWAHeading level="h2" size={ 1 }>{ title }</BWAHeading>
-			<div className="content-list__box">
+			<div className={ classnames( "content-list__box", className ) }>
 				{ children }
 			</div>
 		</section>

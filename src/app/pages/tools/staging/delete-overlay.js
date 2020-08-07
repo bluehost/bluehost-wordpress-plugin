@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 
-import { BWAOverlay } from '@/components/molecules';
-import { WorkingImageUrl } from '@/assets';
+import { BWAOverlay } from '@app/components/molecules';
+import { WorkingImageUrl } from '@app/assets';
 import Tips from './tips';
 
 export default function DeleteBWAOverlay( {} ) {

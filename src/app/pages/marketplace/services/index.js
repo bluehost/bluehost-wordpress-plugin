@@ -1,8 +1,8 @@
 import { withRouter } from 'react-router-dom';
 
-import { BWAMarketplaceTemplate } from '@/components/templates';
-import { BWAProductCard } from '@/components/molecules';
-import { useMojoApi } from '@/hooks';
+import { BWAMarketplaceTemplate } from '@app/components/templates';
+import { BWAProductCard } from '@app/components/molecules';
+import { useMojoApi } from '@app/hooks';
 
 function ServicesPage( { history } ) {
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'services', { category: '', count: 1000 } );

@@ -5,12 +5,12 @@ import { decodeEntities } from '@wordpress/html-entities';
 
 import {
 	BWAMarketplaceTemplate,
-} from '@/components/templates';
+} from '@app/components/templates';
 
-import { BWAButton as Button, BWASpinner } from '@/components/atoms';
-import { get } from '@/functions';
-import { useMojoApi } from '@/hooks';
-import { ReactComponent as ErrorStateImage } from '@/assets/error-state.svg';
+import { BWAButton as Button, BWASpinner } from '@app/components/atoms';
+import { get } from '@app/functions';
+import { useMojoApi } from '@app/hooks';
+import { ReactComponent as ErrorStateImage } from '@app/assets/error-state.svg';
 
 import './style.scss';
 

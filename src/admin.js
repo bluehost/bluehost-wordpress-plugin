@@ -1,4 +1,9 @@
 /**
+ * Set Webpack Public Path
+ */
+import './set-public-path';
+
+/**
  * WordPress dependencies
  */
 import domReady from '@wordpress/dom-ready';

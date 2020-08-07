@@ -7,20 +7,20 @@ import { __, sprintf } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { BWABaseTemplate } from '@/components/templates';
+import { BWABaseTemplate } from '@app/components/templates';
 
 import {
 	BWAProductGrid,
 	BWANoResults,
 	BWAProductCardPlaceholder,
 	BWASearch,
-} from '@/components/molecules';
+} from '@app/components/molecules';
 
 import {
 	BWAHeading,
 	BWAPagination,
 	BWADropdown,
-} from '@/components/atoms';
+} from '@app/components/atoms';
 
 import {
 	useFavorites,
@@ -28,9 +28,9 @@ import {
 	useMojoSearch,
 	useMojoSort,
 	usePaginator,
-} from '@/hooks';
+} from '@app/hooks';
 
-import { ReactComponent as NoFavorites } from '@/assets/favorite.svg';
+import { ReactComponent as NoFavorites } from '@app/assets/favorite.svg';
 
 import './style.scss';
 
@@ -104,7 +104,7 @@ const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading
 			<section className={ `${ className }__header` }>
 				<div className={ `${ className }__header-primary` }>
 					<BWAHeading level="h2" size={ 1 } className="marketplace-page-title">{ marketplacePageTitle( type ) }</BWAHeading>
-					<div className={ `${ className }__BWAPagination-container` }>
+					<div className={ `${ className }__pagination-container` }>
 						<BWAPagination callback={ setPageNumber } currentPage={ pageNumber } pageCount={ pageCount } />
 					</div>
 				</div>

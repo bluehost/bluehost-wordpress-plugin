@@ -13,9 +13,9 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { ReactComponent as CloseIcon } from '@/assets/close.svg';
-import { ReactComponent as WarningIcon } from '@/assets/warning.svg';
-import { ReactComponent as SuccessIcon } from '@/assets/success.svg';
+import { ReactComponent as CloseIcon } from '@app/assets/close.svg';
+import { ReactComponent as WarningIcon } from '@app/assets/warning.svg';
+import { ReactComponent as SuccessIcon } from '@app/assets/success.svg';
 import './style.scss';
 
 const BWASnackbar = ( { children, className = '', isDismissible = false, onRemove, status, title = '', ...props } ) => {

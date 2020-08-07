@@ -128,7 +128,7 @@ class EIG_WP_CLI_Loader {
 	 * Map registration function onto each alias.
 	 */
 	protected function register_cmds_with_wpcli() {
-		$this->register_cmds_with_wpcli( 'bluehost' );
+		$this->register_commands_with_single_alias( 'bluehost' );
 	}
 
 	/**

@@ -7,13 +7,13 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { BWABaseTemplate } from '@/components/templates';
+import { BWABaseTemplate } from '@app/components/templates';
 
 import {
 	BWAButton as Button,
 	BWAHeading,
 	BWASpinner as Spinner,
-} from '@/components/atoms';
+} from '@app/components/atoms';
 
 import {
 	BWADropdownButton,
@@ -21,15 +21,15 @@ import {
 	BWAOptionsMenu,
 	BWAOverlay,
 	BWASnackbar as Snackbar,
-} from '@/components/molecules';
+} from '@app/components/molecules';
 
 import {
 	RadioButtonDisabledIcon,
 	RadioButtonSelectedIcon,
 	WorkingImageUrl,
-} from '@/assets';
+} from '@app/assets';
 
-import { useStaging } from '@/hooks';
+import { useStaging } from '@app/hooks';
 
 import CloneModal from './clone-modal';
 import CloneBWAOverlay from './clone-overlay';
@@ -105,7 +105,7 @@ export default function StagingPage() {
 						hasStaging && (
 							<Button
 								disabled={ ! isProduction }
-								isDefault
+								isSecondary
 								onClick={ () => setShowCloneModal( true ) }
 							>
 								{ __( 'Clone to Staging', 'bluehost-wordpress-plugin' ) }

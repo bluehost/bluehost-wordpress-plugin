@@ -8,11 +8,11 @@ import { __ } from '@wordpress/i18n';
 /**
  * External dependencies
  */
-import { BWAButton as Button } from '@/components/atoms';
+import { BWAButton as Button } from '@app/components/atoms';
 import {
 	BWAContentList,
 	BWAContentListRow,
-} from '@/components/molecules';
+} from '@app/components/molecules';
 
 const ManageMySitesCard = () => (
 	<BWAContentListRow
@@ -21,7 +21,7 @@ const ManageMySitesCard = () => (
 		desc={ __( 'Manage your site from Bluehost\'s control panel. You can create backups, set security, and improve performance.', 'bluehost-wordpress-plugin' ) }>
 		<Button
 			href={ 'https://my.bluehost.com/hosting/app?lil=1#/sites' }
-			isDefault
+			isSecondary
 		>
 			{ __( 'Manage', 'bluehost-wordpress-plugin' ) }
 		</Button>
@@ -35,7 +35,7 @@ const EmailCard = () => (
 		desc={ __( 'Create email accounts, compose, send, and receive your email from your Bluehost control panel.', 'bluehost-wordpress-plugin' ) }>
 		<Button
 			href={ 'https://my.bluehost.com/hosting/app?lil=1#/email-office' }
-			isDefault
+			isSecondary
 		>
 			{ __( 'Manage', 'bluehost-wordpress-plugin' ) }
 		</Button>
@@ -49,7 +49,7 @@ const DomainsCard = () => (
 		desc={ __( 'Find a new domain and assign it to your site or start a new site with a fresh domain.', 'bluehost-wordpress-plugin' ) }>
 		<Button
 			href={ 'https://my.bluehost.com/hosting/app?lil=1#/domains' }
-			isDefault
+			isSecondary
 		>
 			{ __( 'Find a Domain', 'bluehost-wordpress-plugin' ) }
 		</Button>
@@ -63,7 +63,7 @@ const HelpCard = () => (
 		desc={ __( 'Get help from Bluehost’s U.S.-based award-winning support team. It’s available 24/7 through phone and chat.', 'bluehost-wordpress-plugin' ) }>
 		<Button
 			href={ 'https://my.bluehost.com/hosting/help' }
-			isDefault
+			isSecondary
 		>
 			{ __( 'Help Me', 'bluehost-wordpress-plugin' ) }
 		</Button>

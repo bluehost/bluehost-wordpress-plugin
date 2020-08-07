@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 
-import { BWAHeading } from '@/components/atoms';
+import { BWAHeading } from '@app/components/atoms';
 
 import './style.scss';
 

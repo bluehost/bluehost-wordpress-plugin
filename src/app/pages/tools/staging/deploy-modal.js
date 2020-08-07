@@ -3,12 +3,12 @@ import { __ } from '@wordpress/i18n';
 
 import {
 	BWAButton as Button
-} from '@/components/atoms';
+} from '@app/components/atoms';
 
 import {
 	BWAModal as Modal,
 	BWAWarning,
-} from '@/components/molecules';
+} from '@app/components/molecules';
 
 export default function( { onClick, onClose, type = 'all' } ) {
 	let title, message;

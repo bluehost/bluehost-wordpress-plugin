@@ -1,8 +1,4 @@
 /**
- * WordPress dependencies
- */
-import { BluerockSpinner } from '@/assets';
-/**
  * Internal dependencies
  */
 import './style.scss';
@@ -21,7 +17,7 @@ const BWASpinner = ( props ) => {
 	}
 	return (
 		<span className="app-spinner__wrap">
-			<BluerockSpinner className={ sizeClass } />
+			<div className={ 'bluehost-app__loader ' + sizeClass } />
 		</span>
 	);
 };

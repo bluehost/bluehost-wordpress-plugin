@@ -1,6 +1,6 @@
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { ReactComponent as SearchIcon } from '@/assets/search.svg';
+import { ReactComponent as SearchIcon } from '@app/assets/search.svg';
 import './style.scss';
 
 export default function BWASearch( { onChange, value = '' } ) {

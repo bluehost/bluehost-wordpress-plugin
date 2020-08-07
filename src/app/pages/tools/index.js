@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * External dependencies
  */
-import { BWABaseTemplate } from '@/components/templates';
+import { BWABaseTemplate } from '@app/components/templates';
 
 const ToolsPage = () => (
 	<BWABaseTemplate>

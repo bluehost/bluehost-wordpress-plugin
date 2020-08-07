@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { BWANavLink as NavLink } from '@/components/atoms';
+import { BWANavLink as NavLink } from '@app/components/atoms';
 import mainMenuItems from '../main-menu';
 import './style.scss';
 

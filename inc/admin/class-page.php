@@ -72,7 +72,7 @@ class Bluehost_Admin_App_Page {
 		<div id="bluehost-app">
 			<main id="app-loader">
 				<div class="spinner-wrap">
-					<span class="components-spinner"></span>
+					<div class="bluehost-app__loader"></div>
 				</div>
 			</main>
 		</div>

@@ -2,7 +2,7 @@ import './style.scss';
 
 import {
 	BWAHeading,
-} from '@/components/atoms';
+} from '@app/components/atoms';
 
 const SettingsSection = ( { name, children, className = '', ...props } ) => {
 	return (

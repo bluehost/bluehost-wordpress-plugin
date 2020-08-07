@@ -11,7 +11,7 @@ import { Dropdown } from '@wordpress/components';
 /**
  * External dependencies
  */
-import { UserIcon } from '@/assets';
+import { UserIcon } from '@app/assets';
 
 /**
  * `Component dependencies`

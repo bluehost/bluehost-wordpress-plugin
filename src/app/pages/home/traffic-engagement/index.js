@@ -10,14 +10,14 @@ import { select } from '@wordpress/data';
 /**
  * External dependencies
  */
-import { BWAButton as Button } from '@/components/atoms';
+import { BWAButton as Button } from '@app/components/atoms';
 
 import {
 	BWAContentList,
 	BWAContentListRow,
-} from '@/components/molecules';
+} from '@app/components/molecules';
 
-const baseUrl = location.origin + '/wp-admin/';
+const baseUrl = select('bluehost/plugin').getAdminUrl();
 
 function SocialCard() {
 	return (
@@ -27,7 +27,7 @@ function SocialCard() {
 			desc={ __( 'Add social sharing buttons so site visitors can share your content and help grow your traffic.', 'bluehost-wordpress-plugin' ) }>
 			<Button
 				href={ baseUrl + 'admin.php?page=jetpack#/sharing' }
-				isDefault
+				isSecondary
 			>
 				{ __( 'Manage Social', 'bluehost-wordpress-plugin' ) }
 			</Button>
@@ -43,7 +43,7 @@ function PublicizeCard() {
 			desc={ __( 'Set your site to automatically share new content with your social networks.', 'bluehost-wordpress-plugin' ) }>
 			<Button
 				href={ baseUrl + 'admin.php?page=jetpack#/sharing' }
-				isDefault
+				isSecondary
 			>
 				{ __( 'Set Sharing', 'bluehost-wordpress-plugin' ) }
 			</Button>
@@ -60,7 +60,7 @@ function StatsCard() {
 			desc={ __( 'Learn which posts are the most popular and stay informed when your traffic surges.', 'bluehost-wordpress-plugin' ) }>
 			<Button
 				href={ baseUrl + 'admin.php?page=stats' }
-				isDefault
+				isSecondary
 			>
 				{ __( 'View Stats', 'bluehost-wordpress-plugin' ) }
 			</Button>

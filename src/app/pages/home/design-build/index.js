@@ -2,21 +2,22 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { select } from '@wordpress/data';
 /**
  * External dependencies
  */
-import { BWAButton as Button } from '@/components/atoms';
+import { BWAButton as Button } from '@app/components/atoms';
 import {
 	BWAContentList,
 	BWAContentListRow,
-} from '@/components/molecules';
+} from '@app/components/molecules';
 
 /**
  * External dependencies
  */
 import { ButtonGroup } from '@wordpress/components';
 
-const baseUrl = location.origin + '/wp-admin/';
+const baseUrl = select('bluehost/plugin').getAdminUrl();
 
 const CustomizerCard = () => (
 	<BWAContentListRow
@@ -25,7 +26,7 @@ const CustomizerCard = () => (
 		desc={ __( 'Make edits and see changes before you update.', 'bluehost-wordpress-plugin' ) }>
 		<Button
 			href={ baseUrl + 'customize.php' }
-			isDefault
+			isSecondary
 		>
 			{ __( 'Customize Theme', 'bluehost-wordpress-plugin' ) }
 		</Button>
@@ -39,7 +40,7 @@ const ThemesCard = () => (
 		desc={ __( 'Browse themes to find one that inspires you!', 'bluehost-wordpress-plugin' ) }>
 		<Button
 			href={ baseUrl + 'admin.php?page=bluehost#/marketplace/themes' }
-			isDefault
+			isSecondary
 		>
 			{ __( 'Premium Themes', 'bluehost-wordpress-plugin' ) }
 		</Button>

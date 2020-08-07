@@ -1,4 +1,4 @@
-@import "@/config.scss";
+@import "@app/config.scss";
 
 .dropdown {
 
@@ -54,6 +54,7 @@
 
     &.--is-visible {
       visibility: visible;
+      z-index: 10;
     }
   }
 

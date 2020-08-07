@@ -1,4 +1,4 @@
-import { ReactComponent as Icon } from '@/assets/warning.svg';
+import { ReactComponent as Icon } from '@app/assets/warning.svg';
 import './style.scss';
 
 export default function BWAWarning( { children } ) {

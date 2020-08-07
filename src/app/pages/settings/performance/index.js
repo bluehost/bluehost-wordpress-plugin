@@ -8,7 +8,7 @@ import { compose } from '@wordpress/compose';
 /**
  * External Dependencies
  */
-import { BWAButton, BWAToggle, BWAHeading } from '@/components/atoms';
+import { BWAButton, BWAToggle, BWAHeading } from '@app/components/atoms';
 
 /**
  * Internal Dependencies

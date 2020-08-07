@@ -1,11 +1,11 @@
 import { withRouter } from 'react-router-dom';
 
-import { BWAProductCard } from '@/components/molecules';
-import { useMojoApi } from '@/hooks';
+import { BWAProductCard } from '@app/components/molecules';
+import { useMojoApi } from '@app/hooks';
 
 import {
 	BWAMarketplaceTemplate,
-} from '@/components/templates';
+} from '@app/components/templates';
 
 function PluginsPage( { history } ) {
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'plugins', { count: 1000 } );

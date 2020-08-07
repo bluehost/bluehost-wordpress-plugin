@@ -1,7 +1,7 @@
 /**
  * Project dependencies
  */
-import { BWABaseTemplate } from '@/components/templates';
+import { BWABaseTemplate } from '@app/components/templates';
 /**
  * Component dependencies
  */

@@ -2,7 +2,7 @@
  * Internal Dependencies
  */
 import SettingsControl from '../settings-control';
-import { BWAToggle } from '@/components/atoms';
+import { BWAToggle } from '@app/components/atoms';
 
 const SettingsToggle = ( { label, checked, onChange } ) => (
 	<SettingsControl>

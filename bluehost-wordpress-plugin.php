@@ -20,19 +20,33 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// @TODO Handle more gracefully with messaging
+// Do not allow multiple copies of the Bluehost Plugin to be active
+if ( defined( 'BLUEHOST_PLUGIN_VERSION' ) ) {
+	exit;
+}
+
 // Define constants
 define( 'BLUEHOST_PLUGIN_VERSION', '2.0' );
 define( 'BLUEHOST_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLUEHOST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
-// Plugin compatibility check
-global $pagenow;
-if ( 'plugins.php' === $pagenow ) {
-	require dirname( __FILE__ ) . '/inc/plugin-compatibility-check.php';
-	$plugin_check = new Bluehost_Plugin_Compatibility_Check( __FILE__ );
-	// Required PHP extensions
-	$plugin_check->req_php_extensions = array( 'iconv' );
-	$plugin_check->check_plugin_requirements();
+// Run Compatibility Scan
+require_once BLUEHOST_PLUGIN_DIR . '/compat/status.php';
+
+if ( 'standard' !== Bluehost_Plugin_Compatibility_Status::get() ) {
+	require_once BLUEHOST_PLUGIN_DIR . '/compat/scan.php';
+	$scan = new Bluehost_Plugin_Compatibility_Scan();
+
+	Bluehost_Plugin_Compatibility_Status::set( $scan );
+
+	// Safe Mode
+	if ( 'standard' !== $scan->result ) {
+		require_once BLUEHOST_PLUGIN_DIR . '/compat/safe-mode.php';
+		new Bluehost_Plugin_Compatibility_Safe_Mode( $scan );
+
+		return;
+	}
 }
 
 // Check PHP version before initializing to prevent errors if plugin is incompatible.

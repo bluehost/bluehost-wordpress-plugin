@@ -6,9 +6,9 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { BWABaseTemplate } from '@/components/templates';
+import { BWABaseTemplate } from '@app/components/templates';
 
-import { BWAHeading } from '@/components/atoms';
+import { BWAHeading } from '@app/components/atoms';
 import AutomaticUpdates from './automatic-updates';
 import SiteControls from './site-controls';
 import Comments from './comments';

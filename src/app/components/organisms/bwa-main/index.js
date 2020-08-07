@@ -10,19 +10,21 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 /**
  * Internal dependencies
  */
-import { BWAPageSpinner } from '@/components/molecules';
+import { BWAPageSpinner } from '@app/components/molecules';
 
-const HomeRoute = lazy( () => import( '@/pages/home' ) );
-const ThemesRoute = lazy( () => import( '@/pages/marketplace/themes' ) );
-const PluginsRoute = lazy( () => import( '@/pages/marketplace/plugins' ) );
-const ProductRoute = lazy( () => import( '@/pages/marketplace/product-details' ) );
-const ServicesRoute = lazy( () => import( '@/pages/marketplace/services' ) );
-const ToolsRoute = lazy( () => import( '@/pages/tools' ) );
-const StagingRoute = lazy( () => import( '@/pages/tools/staging' ) );
-const SettingsRoute = lazy( () => import( '@/pages/settings' ) );
+import './style.scss';
+
+const HomeRoute = lazy( () => import( '@app/pages/home' ) );
+const ThemesRoute = lazy( () => import( '@app/pages/marketplace/themes' ) );
+const PluginsRoute = lazy( () => import( '@app/pages/marketplace/plugins' ) );
+const ProductRoute = lazy( () => import( '@app/pages/marketplace/product-details' ) );
+const ServicesRoute = lazy( () => import( '@app/pages/marketplace/services' ) );
+const ToolsRoute = lazy( () => import( '@app/pages/tools' ) );
+const StagingRoute = lazy( () => import( '@app/pages/tools/staging' ) );
+const SettingsRoute = lazy( () => import( '@app/pages/settings' ) );
 
 const BWAMain = ( { props }, ref ) => (
-	<section { ...props } ref={ ref } tabIndex="-1">
+	<section { ...props } ref={ ref } tabIndex="-1" className="router-section">
 		<Suspense fallback={ <BWAPageSpinner /> }>
 			<Switch>
 				<Route path="/home" render={ () => <HomeRoute /> } />

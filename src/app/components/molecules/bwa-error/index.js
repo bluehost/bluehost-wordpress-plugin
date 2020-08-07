@@ -4,9 +4,9 @@ import axios from 'axios';
 import qs from 'qs';
 //import browser from 'browser-detect';
 
-import { BWAButton as Button } from '@/components/atoms';
-import { ReactComponent as WarningIcon } from '@/assets/warning.svg';
-import { ReactComponent as ErrorStateIllustration } from '@/assets/error-state.svg';
+import { BWAButton as Button } from '@app/components/atoms';
+import { ReactComponent as WarningIcon } from '@app/assets/warning.svg';
+import { ReactComponent as ErrorStateIllustration } from '@app/assets/error-state.svg';
 
 import './style.scss';
 

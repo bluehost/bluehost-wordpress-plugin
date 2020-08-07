@@ -1,4 +1,4 @@
-@import '@/config.scss';
+@import '@app/config.scss';
 
 .bluehost-header {
   align-self: flex-start;
@@ -56,7 +56,6 @@
 }
 
 .components-popover.bluehost-nav-popup:not(.is-mobile) {
-  top: 52px !important;
   left: calc(100% - 60px) !important;
   .components-popover__content {
       min-width: 256px;
@@ -150,7 +149,7 @@
   margin-left: -22px !important;
 }
 
-// @import '@/config.scss';
+// @import '@app/config.scss';
 
 // .bluehost-header {
 //   align-self: flex-start;

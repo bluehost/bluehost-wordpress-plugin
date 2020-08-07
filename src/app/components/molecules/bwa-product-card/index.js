@@ -12,7 +12,7 @@ import classNames from 'classnames';
 /**
  * Internal dependencies
  */
-import { BWAButton as Button, BWAHeading } from '@/components/atoms';
+import { BWAButton as Button, BWAHeading } from '@app/components/atoms';
 import './style.scss';
 
 export default function BWAProductCard(
@@ -51,7 +51,7 @@ export default function BWAProductCard(
 							children={ __( 'View Details', 'bluehost-wordpress-plugin' ) }
 							{ ...buttonSecondary }
 							className="product-card__button-secondary"
-							isDefault
+							isSecondary
 						/>
 						<Button
 							children={ __( 'Buy Now', 'bluehost-wordpress-plugin' ) }

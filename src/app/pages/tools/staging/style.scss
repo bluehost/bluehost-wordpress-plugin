@@ -1,6 +1,10 @@
-@import '@/config.scss';
+@import '@app/config.scss';
 
 .bluehost-staging {
+
+  .bluehost-staging__production-env {
+    margin-bottom: 2rem;
+  }
 
   &__overlay-image {
     // top has 1rem margin already

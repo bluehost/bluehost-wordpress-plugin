@@ -15,14 +15,14 @@ import { HashRouter as Router } from 'react-router-dom';
 import { 
 	BWAHeader,
 	BWAMain
-} from '@/components/organisms';
+} from '@app/components/organisms';
 
 import './store';
 import './app.scss';
 
 import {
 	BWAError,
-} from '@/components/molecules';
+} from '@app/components/molecules';
 
 const SkipLink = ( { onClick, onKeyPress, children } ) => (
 	<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ onClick } onKeyPress={ onKeyPress }>
@@ -71,24 +71,18 @@ class BluehostWordPressApp extends Component {
 			);
 		}
 		return (
-			<Animate type="appear" options={ { origin: 'center' } }>
-				{
-					( { className } ) => (
-						<Router>
-							<main id="bluehost-app-wrap" className={ 'bluehost-app-wrap ' + className }>
-								<SkipLink onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
-									{ __( 'Skip to Navigation', 'bluehost-wordpress-plugin' ) }
-								</SkipLink>
-								<SkipLink onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
-									{ __( 'Skip to Content', 'bluehost-wordpress-plugin' ) }
-								</SkipLink>
-								<BWAHeader ref={ this.navFocus } />
-								<BWAMain ref={ this.contentFocus } />
-							</main>
-						</Router>
-					)
-				}
-			</Animate>
+			<Router>
+				<main id="bluehost-app-wrap" className={ 'bluehost-app-wrap' }>
+					<SkipLink onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
+						{ __( 'Skip to Navigation', 'bluehost-wordpress-plugin' ) }
+					</SkipLink>
+					<SkipLink onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
+						{ __( 'Skip to Content', 'bluehost-wordpress-plugin' ) }
+					</SkipLink>
+					<BWAHeader ref={ this.navFocus } />
+					<BWAMain ref={ this.contentFocus } />
+				</main>
+			</Router>	
 		);
 	}
 }

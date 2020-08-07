@@ -18,14 +18,14 @@ import {
 	HelpIcon,
 	MenuIcon,
 	UserIcon,
-} from '@/assets';
+} from '@app/assets';
 
 
 
 import {
 	BWAButton as Button,
 	BWANavLink as NavLink,
-} from '@/components/atoms';
+} from '@app/components/atoms';
 
 /**
  * Component dependencies

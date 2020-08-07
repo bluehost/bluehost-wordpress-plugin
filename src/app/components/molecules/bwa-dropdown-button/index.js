@@ -4,9 +4,9 @@ import { kebabCase, uniqueId } from 'lodash';
 import { useEffect, useRef, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { DownIcon } from '@/assets';
-import { BWAButton as Button } from '@/components/atoms';
-import { get } from '@/functions';
+import { DownIcon } from '@app/assets';
+import { BWAButton as Button } from '@app/components/atoms';
+import { get } from '@app/functions';
 import './style.scss';
 
 /**
@@ -145,7 +145,7 @@ export default function BWADropdownButton(
 				<Button
 					className="dropdown-button__action"
 					disabled={ disabled }
-					isDefault
+					isSecondary
 					onClick={ () => {
 						const callback = get( [ selected, 'callback' ], options );
 						if ( typeof callback === 'function' ) {

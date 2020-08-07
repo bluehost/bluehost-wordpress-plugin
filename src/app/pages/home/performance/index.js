@@ -10,14 +10,14 @@ import { select } from '@wordpress/data';
 /**
  * External dependencies
  */
-import { BWAButton as Button } from '@/components/atoms';
+import { BWAButton as Button } from '@app/components/atoms';
 import {
 	BWAContentList,
 	BWAContentListRow,
-} from '@/components/molecules';
-import { JetpackLogo } from '@/assets';
+} from '@app/components/molecules';
+import { JetpackLogo } from '@app/assets';
 
-const baseUrl = location.origin + '/wp-admin/';
+const baseUrl = select('bluehost/plugin').getAdminUrl();
 
 const CacheCard = () => (
 	<BWAContentListRow
@@ -27,7 +27,7 @@ const CacheCard = () => (
 		desc={ __( 'Configure your caching to give you the best performance for your site’s needs.', 'bluehost-wordpress-plugin' ) }>
 		<Button
 			href={ baseUrl + 'admin.php?page=bluehost#/settings' }
-			isDefault
+			isSecondary
 		>
 			{ __( 'Configure Caching', 'bluehost-wordpress-plugin' ) }
 		</Button>
@@ -43,10 +43,10 @@ const SiteAcceleratorCard = () => {
 			isCentered
 			icon={ ( <JetpackLogo /> ) }
 			title={ __( 'Site Accelerator', 'bluehost-wordpress-plugin' ) }
-			desc={ __( 'Site acceleration service will resize your images and serve them from a CDN.', 'bluehost-wordpress-plugin' ) }>
+			desc={ __( 'Site acceleration service will resize your images and serve them from Jetpack\'s CDN.', 'bluehost-wordpress-plugin' ) }>
 			<Button
 				href={ baseUrl + 'admin.php?page=jetpack#/performance' }
-				isDefault
+				isSecondary
 			>
 				{ __( 'Configure Site Accelerator', 'bluehost-wordpress-plugin' ) }
 			</Button>

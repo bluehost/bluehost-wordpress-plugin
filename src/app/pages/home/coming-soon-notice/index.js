@@ -12,11 +12,11 @@ import { compose } from '@wordpress/compose';
 import {
 	BWAButton,
 	BWAHeading
-} from '@/components/atoms';
+} from '@app/components/atoms';
 
 import {
 	BWANotice as Notice,
-} from '@/components/molecules';
+} from '@app/components/molecules';
 
 import './style.scss';
 
@@ -32,12 +32,12 @@ const ComingSoonNotice = ( { isComingSoon, toggleSetting } ) => {
 	}
 	const comingSoonLabels = {
 		title: __( 'Your site says “Coming Soon.”', 'bluehost-wordpress-plugin' ),
-		desc: __( 'Right now, your site is displaying a “coming soon” message. This gives you time to work on your site before you unveil it to the public.', 'bluehost-wordpress-plugin' ),
+		desc: __( 'Right now, your site is displaying a “coming soon” message. Once you\'re ready, do your public reveal!', 'bluehost-wordpress-plugin' ),
 		button: __( 'Launch Your Site', 'bluehost-wordpress-plugin' ),
 	};
 	const publishedLabels = {
 		title: __( 'Awesome! Your site is live.', 'bluehost-wordpress-plugin' ),
-		desc: __( 'We removed the "coming soon" banner. Your website is now available for public visitors.', 'bluehost-wordpress-plugin' ),
+		desc: __( 'We removed the "coming soon" banner. Your website is now available for public visitors. This can be always be changed on the Settings tab above.', 'bluehost-wordpress-plugin' ),
 		button: __( 'Restore Coming Soon', 'bluehost-wordpress-plugin' ),
 	};
 	const noticeTitle = isComingSoon ? comingSoonLabels.title : publishedLabels.title;

@@ -11,7 +11,7 @@ import {
 	SecurityIcon,
 	UserIcon,
 	ValidationIcon,
-} from '@/assets';
+} from '@app/assets';
 /**
  * Component Defaults
  */

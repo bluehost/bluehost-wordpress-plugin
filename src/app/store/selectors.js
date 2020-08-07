@@ -34,6 +34,12 @@ export function isWooActive( state ) {
 export function isJetpackActive( state ) {
 	return state.wp.isJetpackActive;
 }
+export function getWP( state ) {
+	return state.wp;
+}
 export function getBluehostData( state ) {
 	return state;
+}
+export function getAdminUrl( state ) {
+	return state.app.adminUrl;
 }
