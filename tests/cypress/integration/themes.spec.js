@@ -54,7 +54,7 @@ describe('Themes Page', function () {
     });
 
     it('Exists', () => {
-        cy.contains('h1', 'Premium Themes');
+        cy.contains('h2', 'Premium Themes');
     });
 
     it('Is Accessible', () => {

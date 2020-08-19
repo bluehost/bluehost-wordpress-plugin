@@ -53,7 +53,7 @@ describe('Plugins Page', function () {
     });
 
     it('Exists', () => {
-        cy.contains('h1', 'Premium Plugins');
+        cy.contains('h2', 'Premium Plugins');
     });
 
     it('Is Accessible', () => {

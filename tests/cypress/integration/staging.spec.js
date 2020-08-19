@@ -42,9 +42,9 @@ describe('Staging Page', function () {
 	});
 
 	it('Exists', () => {
-		cy.contains('h1', 'Staging');
-		cy.contains('h2', 'Production site');
-		cy.contains('h2', 'Staging site');
+		cy.contains('h2', 'Staging');
+		cy.contains('h3', 'Production site');
+		cy.contains('h3', 'Staging site');
 	});
 
 	it('Only has production', () => {
@@ -91,7 +91,7 @@ describe('Staging Page', function () {
 	});
 
 	it('Can dismiss snackbar', () => {
-		cy.get('h1').click();
+		cy.get('h2').click();
 		cy.get('.bluehost-snackbar').should('not.be.visible');
 	});
 

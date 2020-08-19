@@ -53,7 +53,7 @@ describe('Services Page', function () {
     });
 
     it('Exists', () => {
-        cy.contains('h1', 'Premium Services');
+        cy.contains('h2', 'Premium Services');
     });
 
     it('Is Accessible', () => {
