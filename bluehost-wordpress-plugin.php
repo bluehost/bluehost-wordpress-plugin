@@ -32,17 +32,16 @@ define( 'BLUEHOST_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLUEHOST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 // Run Compatibility Scan
-require_once BLUEHOST_PLUGIN_DIR . '/compat/status.php';
+require BLUEHOST_PLUGIN_DIR . '/compat/status.php';
 
 if ( 'standard' !== Bluehost_Plugin_Compatibility_Status::get() ) {
-	require_once BLUEHOST_PLUGIN_DIR . '/compat/scan.php';
+	require BLUEHOST_PLUGIN_DIR . '/compat/scan.php';
 	$scan = new Bluehost_Plugin_Compatibility_Scan();
-
 	Bluehost_Plugin_Compatibility_Status::set( $scan );
 
 	// Safe Mode
 	if ( 'standard' !== $scan->result ) {
-		require_once BLUEHOST_PLUGIN_DIR . '/compat/safe-mode.php';
+		require BLUEHOST_PLUGIN_DIR . '/compat/safe-mode.php';
 		new Bluehost_Plugin_Compatibility_Safe_Mode( $scan );
 
 		return;
