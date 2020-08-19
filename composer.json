@@ -45,7 +45,7 @@
     },
     "require-dev": {
         "bluehost/wp-php-standards": "^1.1",
-        "wp-cli/wp-cli": "^2.4",
+        "wp-cli/wp-cli-bundle": "^2.4",
         "wp-cli/i18n-command": "^2.2"
     },
     "config": {
