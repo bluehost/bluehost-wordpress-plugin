@@ -17,13 +17,13 @@
 import './commands';
 
 Cypress.on('window:before:load', (win) => {
-    delete win.fetch
+	delete win.fetch
 });
 
 Cypress.Cookies.defaults({
-    whitelist: /wp|wordpress/
+	preserve: /wp|wordpress/
 });
 
 before(() => {
-    cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
+	cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
 });
