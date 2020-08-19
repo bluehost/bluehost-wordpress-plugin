@@ -3,9 +3,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
 import { decodeEntities } from '@wordpress/html-entities';
 
-import {
-	BWAMarketplaceTemplate,
-} from '@app/components/templates';
+import { BWABaseTemplate } from '@app/components/templates';
 
 import { BWAButton as Button, BWASpinner } from '@app/components/atoms';
 import { get } from '@app/functions';
@@ -83,7 +81,7 @@ export default function ProductDetails( { id } ) {
 	const sales = parseInt( sales_count, 10 ).toLocaleString( { useGrouping: true } );
 
 	return (
-		<BWAMarketplaceTemplate className="page-product">
+		<BWABaseTemplate className="page-product">
 			<header className="page-product__header">
 				<h1>{ header }</h1>
 			</header>
@@ -141,6 +139,6 @@ export default function ProductDetails( { id } ) {
 					</div>
 				</div>
 			</div>
-		</BWAMarketplaceTemplate>
+		</BWABaseTemplate>
 	);
 }
