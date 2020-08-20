@@ -81,15 +81,6 @@ describe('Settings Page', function () {
 		});
 	});
 
-	it('Site Controls: Single Sign-On', () => {
-		cy.get('.settings-section').eq(1).within(() => {
-			cy.get('.settings-control').eq(1).within(() => {
-				cy.contains('.label', 'Single Sign-on with Bluehost');
-				fn.validateCheckbox();
-			});
-		});
-	});
-
 	it('Has a "Comments" section', () => {
 		cy.get('.settings-section').eq(2).within(() => {
 			cy.contains('h3', 'Comments');
