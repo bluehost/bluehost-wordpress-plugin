@@ -1,6 +1,6 @@
 <?php
 
-function mm_setup() {
+function mojo_setup() {
 	if ( ( '' === get_option( 'mm_master_aff' ) || false === get_option( 'mm_master_aff' ) ) && defined( 'MMAFF' ) ) {
 		update_option( 'mm_master_aff', MMAFF );
 	}
@@ -19,9 +19,9 @@ function mm_setup() {
 	}
 }
 
-add_action( 'admin_init', 'mm_setup' );
+add_action( 'admin_init', 'mojo_setup' );
 
-function mm_api( $args = array(), $query = array() ) {
+function mojo_api( $args = array(), $query = array() ) {
 	$api_url       = 'http://api.mojomarketplace.com/api/v1/';
 	$default_args  = array(
 		'mojo-platform' => 'wordpress',
@@ -40,10 +40,10 @@ function mm_api( $args = array(), $query = array() ) {
 	$request_url = rtrim( $request_url, '/' );
 	$request_url = $request_url . '?' . $query;
 
-	return mm_api_cache( $request_url );
+	return mojo_api_cache( $request_url );
 }
 
-function mm_api_cache( $api_url ) {
+function mojo_api_cache( $api_url ) {
 	$key = md5( $api_url );
 	if ( false === ( $transient = get_transient( 'mm_api_calls' ) ) || ! isset( $transient[ $key ] ) ) {
 		$transient[ $key ] = wp_remote_get( $api_url, array( 'timeout' => 15 ) );
@@ -55,7 +55,7 @@ function mm_api_cache( $api_url ) {
 	return $transient[ $key ];
 }
 
-function mm_build_link( $url, $args = array() ) {
+function mojo_build_link( $url, $args = array() ) {
 	$defaults = array(
 		'utm_source'   => 'mojo_wp_plugin', // this should always be mojo_wp_plugin
 		'utm_campaign' => 'mojo_wp_plugin',
@@ -82,36 +82,36 @@ function mm_build_link( $url, $args = array() ) {
 	return esc_url( $url );
 }
 
-function mm_clear_api_calls() {
+function mojo_clear_api_calls() {
 	if ( is_admin() ) {
 		delete_transient( 'mojo_api_calls' );
 	}
 }
 
-add_action( 'wp_login', 'mm_clear_api_calls' );
-add_action( 'pre_current_active_plugins', 'mm_clear_api_calls' );
+add_action( 'wp_login', 'mojo_clear_api_calls' );
+add_action( 'pre_current_active_plugins', 'mojo_clear_api_calls' );
 
-function mm_cron() {
-	if ( ! wp_next_scheduled( 'mm_cron_monthly' ) ) {
-		wp_schedule_event( time(), 'monthly', 'mm_cron_monthly' );
+function mojo_cron() {
+	if ( ! wp_next_scheduled( 'mojo_cron_monthly' ) ) {
+		wp_schedule_event( time(), 'monthly', 'mojo_cron_monthly' );
 	}
-	if ( ! wp_next_scheduled( 'mm_cron_weekly' ) ) {
-		wp_schedule_event( time(), 'weekly', 'mm_cron_weekly' );
+	if ( ! wp_next_scheduled( 'mojo_cron_weekly' ) ) {
+		wp_schedule_event( time(), 'weekly', 'mojo_cron_weekly' );
 	}
-	if ( ! wp_next_scheduled( 'mm_cron_daily' ) ) {
-		wp_schedule_event( time(), 'daily', 'mm_cron_daily' );
+	if ( ! wp_next_scheduled( 'mojo_cron_daily' ) ) {
+		wp_schedule_event( time(), 'daily', 'mojo_cron_daily' );
 	}
-	if ( ! wp_next_scheduled( 'mm_cron_twicedaily' ) ) {
-		wp_schedule_event( time(), 'twicedaily', 'mm_cron_twicedaily' );
+	if ( ! wp_next_scheduled( 'mojo_cron_twicedaily' ) ) {
+		wp_schedule_event( time(), 'twicedaily', 'mojo_cron_twicedaily' );
 	}
-	if ( ! wp_next_scheduled( 'mm_cron_hourly' ) ) {
-		wp_schedule_event( time(), 'hourly', 'mm_cron_hourly' );
+	if ( ! wp_next_scheduled( 'mojo_cron_hourly' ) ) {
+		wp_schedule_event( time(), 'hourly', 'mojo_cron_hourly' );
 	}
 }
 
-add_action( 'admin_init', 'mm_cron' );
+add_action( 'admin_init', 'mojo_cron' );
 
-function mm_cron_schedules( $schedules ) {
+function mojo_cron_schedules( $schedules ) {
 	$schedules['weekly']  = array(
 		'interval' => WEEK_IN_SECONDS,
 		'display'  => __( 'Once Weekly', 'bluehost-wordpress-plugin' ),
@@ -124,20 +124,9 @@ function mm_cron_schedules( $schedules ) {
 	return $schedules;
 }
 
-add_filter( 'cron_schedules', 'mm_cron_schedules' );
+add_filter( 'cron_schedules', 'mojo_cron_schedules' );
 
-function mm_slug_to_title( $slug ) {
-	$slug = ucwords( str_replace( '-', ' ', $slug ) );
-
-	// fun fact: capital_P_dangit( 'WordPress' ) does not return 'WordPress'
-	return str_replace( 'WordPress', 'WordPress', $slug );
-}
-
-function mm_title_to_slug( $title ) {
-	return sanitize_title( $title );
-}
-
-function mm_require( $original ) {
+function mojo_require( $original ) {
 	$file = apply_filters( 'mm_require_file', $original );
 	if ( file_exists( $file ) ) {
 		require $file;
@@ -152,7 +141,7 @@ function mm_require( $original ) {
 	}
 }
 
-function mm_minify( $content ) {
+function mojo_minify( $content ) {
 	$content = str_replace( "\r", '', $content );
 	$content = str_replace( "\n", '', $content );
 	$content = str_replace( "\t", '', $content );
@@ -162,28 +151,28 @@ function mm_minify( $content ) {
 	return $content;
 }
 
-function mm_safe_hosts( $hosts ) {
+function mojo_safe_hosts( $hosts ) {
 	$hosts[] = 'mojomarketplace.com';
 
 	return $hosts;
 }
 
-add_filter( 'allowed_redirect_hosts', 'mm_safe_hosts' );
+add_filter( 'allowed_redirect_hosts', 'mojo_safe_hosts' );
 
-function mm_better_news_feed( $feed ) {
+function mojo_better_news_feed( $feed ) {
 	return 'http://feeds.feedburner.com/wp-pipes';
 }
 
-add_filter( 'dashboard_secondary_feed', 'mm_better_news_feed' );
-add_filter( 'dashboard_secondary_link', 'mm_better_news_feed' );
+add_filter( 'dashboard_secondary_feed', 'mojo_better_news_feed' );
+add_filter( 'dashboard_secondary_link', 'mojo_better_news_feed' );
 
-function mm_adjust_feed_transient_lifetime( $lifetime ) {
+function mojo_adjust_feed_transient_lifetime( $lifetime ) {
 	return 3 * HOUR_IN_SECONDS;
 }
 
-add_filter( 'wp_feed_cache_transient_lifetime', 'mm_adjust_feed_transient_lifetime' );
+add_filter( 'wp_feed_cache_transient_lifetime', 'mojo_adjust_feed_transient_lifetime' );
 
-function mm_stars( $rating = 4.5, $sales = 0 ) {
+function mojo_stars( $rating = 4.5, $sales = 0 ) {
 	if ( ! is_numeric( $rating ) || 0 == $rating ) {
 		return;
 	}
@@ -228,65 +217,7 @@ function mm_stars( $rating = 4.5, $sales = 0 ) {
 	<?php
 }
 
-function mm_pagination( $page = 1, $total_pages = 1 ) {
-	if ( 1 == $total_pages ) {
-		return;
-	}
-	?>
-	<div class="alignright">
-		<nav class="pagination">
-			<ul class="group">
-				<?php
-				$pagination_start = $page - 5;
-				$pagination_end   = $page + 5;
-				if ( $page < 5 ) {
-					$pagination_extra = 10 - $page;
-					$pagination_end   = $page + $pagination_extra;
-				}
-				if ( $pagination_start < 1 ) {
-					$pagination_start = 1;
-				}
-				if ( $total_pages - $pagination_start < 10 && $total_pages - 10 > 1 ) {
-					$pagination_start = $total_pages - 10;
-				}
-				if ( $pagination_end > $total_pages ) {
-					$pagination_end = $total_pages;
-				}
-				?>
-				<li class="prev">
-					<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $page - 1 ) ) ); ?>"><span
-								class="dashicons dashicons-arrow-left"></span></a>
-				</li>
-				<?php
-				for ( $i = $pagination_start; $i <= $pagination_end; $i ++ ) {
-					?>
-					<li
-					<?php
-					if ( $i == $page ) {
-						echo " class='active'";
-					}
-					?>
-					 >
-						<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $i ) ) ); ?>"><?php echo $i; ?></a>
-					</li>
-					<?php
-				}
-				?>
-				<li class="next">
-					<?php
-					$next_num = ( $page + 1 >= $total_pages ) ? $total_pages : $page + 1;
-					?>
-					<a rel="next" href="<?php echo esc_url( add_query_arg( array( 'paged' => $next_num ) ) ); ?>">
-						<span class="dashicons dashicons-arrow-right"></span>
-					</a>
-				</li>
-			</ul>
-		</nav>
-	</div>
-	<?php
-}
-
-function mm_loader() {
+function mojo_loader() {
 	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) ) {
 		?>
 		<script type="text/javascript">
@@ -300,30 +231,9 @@ function mm_loader() {
 	}
 }
 
-add_action( 'admin_footer', 'mm_loader' );
+add_action( 'admin_footer', 'mojo_loader' );
 
-function mm_truncate_name( $name, $length = 14 ) {
-	$name           = substr( $name, 0, $length );
-	$name           = ucwords( $name );
-	$name           = explode( ' ', $name );
-	$truncated_name = '';
-	if ( count( $name ) !== 1 ) {
-		for ( $i = 0; $i < count( $name ) - 1; $i ++ ) {
-			if ( in_array( $name[ $i ], array( 'A', 'An' ) ) ) {
-				continue;
-			}
-			$truncated_name .= ' ' . $name[ $i ];
-		}
-	} else {
-		$truncated_name .= $name[0];
-	}
-	$truncated_name = trim( $truncated_name, '–' );
-	$truncated_name = trim( $truncated_name );
-
-	return $truncated_name;
-}
-
-function mm_site_bin2hex() {
+function mojo_site_bin2hex() {
 	$path = ABSPATH;
 	$path = explode( 'public_html/', $path );
 	if ( 2 === count( $path ) ) {
@@ -337,7 +247,7 @@ function mm_site_bin2hex() {
 	return $path_hash;
 }
 
-function _mm_login() {
+function _mojo_login() {
 	if ( ! current_user_can( 'administrator' ) ) {
 		return;
 	}
@@ -358,14 +268,14 @@ function _mm_login() {
 	}
 }
 
-add_action( 'admin_init', '_mm_login', 5 );
+add_action( 'admin_init', '_mojo_login', 5 );
 
 /**
  * Get the client IP address.
  *
  * @return string
  */
-function mm_get_client_ip() {
+function bh_get_client_ip() {
 
 	// Default to REMOTE_ADDR
 	$ip = ( isset( $_SERVER['REMOTE_ADDR'] ) ) ? $_SERVER['REMOTE_ADDR'] : null;

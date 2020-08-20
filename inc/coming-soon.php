@@ -3,7 +3,7 @@
  * This file adds a coming soon page for new installs
  */
 
-function mm_cs_notice_display() {
+function mojo_cs_notice_display() {
 	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) && current_user_can('manage_options')) {
 		?>
 		<div class='notice notice-warning'>
@@ -21,35 +21,35 @@ function mm_cs_notice_display() {
 		<?php
 	}
 }
-add_action( 'admin_notices', 'mm_cs_notice_display' );
+add_action( 'admin_notices', 'mojo_cs_notice_display' );
 
-function mm_cs_bubble_count( $count ) {
+function mojo_cs_bubble_count( $count ) {
 	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
 		$count++;
 	}
 	return $count;
 }
-add_filter( 'bluehost_menu_bubble_count', 'mm_cs_bubble_count' );
+add_filter( 'bluehost_menu_bubble_count', 'mojo_cs_bubble_count' );
 
-function mm_cs_load() {
+function mojo_cs_load() {
 	if ( ! is_user_logged_in() ) {
 		$coming_soon = get_option( 'mm_coming_soon', 'false' );
 		if ( 'true' === $coming_soon ) {
-			mm_cs_content();
+			mojo_cs_content();
 			die();
 		}
 	}
 }
-add_action( 'template_redirect', 'mm_cs_load' );
+add_action( 'template_redirect', 'mojo_cs_load' );
 
-function mm_cs_enabled_callback( $args ) {
+function mojo_cs_enabled_callback( $args ) {
 		$value = get_option( $args['field'], 'false' );
 		echo "On <input type='radio' name='" . esc_attr( $args['field'] ) . "' value='true'" . checked( $value, 'true', false ) . ' />';
 		echo "Off <input type='radio' name='" . esc_attr( $args['field'] ) . "' value='false'" . checked( $value, 'false', false ) . ' />';
 }
 
-function mm_cs_settings() {
-	$section_name = 'mm_cs_settings_section';
+function mojo_cs_settings() {
+	$section_name = 'mojo_cs_settings_section';
 	$section_hook = 'general';
 
 	$brand = 'Bluehost';
@@ -64,7 +64,7 @@ function mm_cs_settings() {
 	add_settings_field(
 		'mm_coming_soon',
 		'Enable',
-		'mm_cs_enabled_callback',
+		'mojo_cs_enabled_callback',
 		$section_hook,
 		$section_name,
 		array( 'field' => 'mm_coming_soon' )
@@ -72,20 +72,20 @@ function mm_cs_settings() {
 	register_setting( 'general', 'mm_coming_soon' );
 
 }
-add_action( 'admin_init', 'mm_cs_settings' );
+add_action( 'admin_init', 'mojo_cs_settings' );
 
-function mm_cs_content() {
-	require MM_BASE_DIR . 'pages/coming-soon.php';
+function mojo_cs_content() {
+	require BLUEHOST_PLUGIN_DIR . 'pages/coming-soon.php';
 }
 
 // Handle Ajax response
-function mm_coming_soon_subscribe() {
+function mojo_coming_soon_subscribe() {
 
 	$response   = array();
 	$a_response = array();
 	$email      = sanitize_email( wp_unslash( $_POST['email'] ) );
 
-	if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'mm_coming_soon_subscribe_nonce' ) ) {
+	if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'mojo_coming_soon_subscribe_nonce' ) ) {
 
 		$a_response['message'] = __( 'Gotcha!', 'bluehost-wordpress-plugin' );
 		$a_response['status']  = 'nonce_failure';
@@ -126,26 +126,26 @@ function mm_coming_soon_subscribe() {
 	}
 
 }
-add_action( 'wp_ajax_mm_coming_soon_subscribe', 'mm_coming_soon_subscribe' );
-add_action( 'wp_ajax_nopriv_mm_coming_soon_subscribe', 'mm_coming_soon_subscribe' );
+add_action( 'wp_ajax_mojo_coming_soon_subscribe', 'mojo_coming_soon_subscribe' );
+add_action( 'wp_ajax_nopriv_mojo_coming_soon_subscribe', 'mojo_coming_soon_subscribe' );
 
 /**
  * When the coming soon module is enabled, add a filter to override Jetpack to prevent emails from being sent.
  */
-function mm_coming_soon_prevent_emails() {
+function mojo_coming_soon_prevent_emails() {
 
 	$enabled = get_option( 'mm_coming_soon', 'false' );
 	if ( 'true' === $enabled ) {
 		add_filter(
 			'jetpack_subscriptions_exclude_all_categories_except',
-			'mm_coming_soon_prevent_emails_return_array'
+			'mojo_coming_soon_prevent_emails_return_array'
 		);
 	}
 
 }
-add_action( 'plugins_loaded', 'mm_coming_soon_prevent_emails' );
+add_action( 'plugins_loaded', 'mojo_coming_soon_prevent_emails' );
 
-function mm_coming_soon_prevent_emails_return_array() {
+function mojo_coming_soon_prevent_emails_return_array() {
 
 	return array(
 		'please-for-the-love-of-all-things-do-not-exist',

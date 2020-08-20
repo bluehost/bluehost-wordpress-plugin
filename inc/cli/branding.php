@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Class EIG_WP_CLI_Branding
+ * Class BH_WP_CLI_Branding
  *
  * This class is instantiated in /inc/cli-init.php
  */
-class EIG_WP_CLI_Branding extends EIG_WP_CLI_Command {
+class BH_WP_CLI_Branding extends BH_WP_CLI_Command {
 
 	/**
 	 * @var string - Stores brand slug
-	 * @see EIG_WP_CLI_Loader->brand_aliases & EIG_WP_CLI_Loader->must_use_aliases
+	 * @see BH_WP_CLI_Loader->brand_aliases & BH_WP_CLI_Loader->must_use_aliases
 	 */
 	protected static $option_key = 'mm_brand';
 
@@ -21,7 +21,7 @@ class EIG_WP_CLI_Branding extends EIG_WP_CLI_Command {
 	/**
 	 * @var string - Remote location of branding.json config file.
 	 */
-	protected static $api_branding_file = MM_ASSETS_URL . 'json/branding.json';
+	protected static $api_branding_file = MOJO_ASSETS_URL . 'json/branding.json';
 
 	/**
 	 * @var string - User-provided action.
@@ -154,7 +154,7 @@ class EIG_WP_CLI_Branding extends EIG_WP_CLI_Command {
 	 */
 	protected function get_brands() {
 		$valid_brands = array();
-		$brands       = mm_api_cache( static::$api_branding_file );
+		$brands       = mojo_api_cache( static::$api_branding_file );
 		if ( ! is_wp_error( $brands ) && $brands = json_decode( $brands['body'] ) ) {
 			$brands = (array) $brands;
 			while ( false !== ( $brand = array_search( 'default', $brands ) ) ) {

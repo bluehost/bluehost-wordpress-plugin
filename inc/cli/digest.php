@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Class EIG_WP_CLI_Digest
+ * Class BH_WP_CLI_Digest
  *
  * This class is instantiated in /inc/cli-init.php
  */
-class EIG_WP_CLI_Digest extends EIG_WP_CLI_Command {
+class BH_WP_CLI_Digest extends BH_WP_CLI_Command {
 
 	/**
 	 * Diagnostic profile of a WordPress environment.

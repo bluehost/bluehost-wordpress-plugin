@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class EIG_WP_CLI_Module
+ * Class BH_WP_CLI_Module
  */
-class EIG_WP_CLI_Module extends EIG_WP_CLI_Command {
+class BH_WP_CLI_Module extends BH_WP_CLI_Command {
 	/**
 	 * @var string - action for module, default is 'list'.
 	 */

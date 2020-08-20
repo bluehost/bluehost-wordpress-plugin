@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Class EIG_WP_CLI_SSO
+ * Class BH_WP_CLI_SSO
  *
  * This class is instantiated in /inc/cli-init.php
  */
-class EIG_WP_CLI_SSO extends EIG_WP_CLI_Command {
+class BH_WP_CLI_SSO extends BH_WP_CLI_Command {
 
 	/**
 	 * @var string - Stored transient key used for SSO.

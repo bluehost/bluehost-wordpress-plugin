@@ -4,9 +4,7 @@ use Bluehost\UpgradeHandler;
 use Endurance_WP_Plugin_Updater\Updater;
 
 // Define constants
-define( 'MM_BASE_DIR', plugin_dir_path( __FILE__ ) );
-define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
-define( 'MM_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/' );
+define( 'MOJO_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/' );
 
 // Composer autoloader
 require __DIR__ . '/vendor/autoload.php';
@@ -34,7 +32,6 @@ if ( is_admin() ) {
 require __DIR__ . '/inc/admin.php';
 require __DIR__ . '/inc/admin-page-notifications-blocker.php';
 require __DIR__ . '/inc/base.php';
-require __DIR__ . '/inc/checkout.php';
 require __DIR__ . '/inc/cli-init.php';
 require __DIR__ . '/inc/coming-soon.php';
 require __DIR__ . '/inc/jetpack.php';

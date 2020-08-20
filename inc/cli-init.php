@@ -9,9 +9,9 @@ if ( ! class_exists( 'WP_CLI' ) ) {
  *
  * @see /cli/README.md for instructions on registering new commands.
  *
- * Class EIG_WP_CLI_Loader
+ * Class BH_WP_CLI_Loader
  */
-class EIG_WP_CLI_Loader {
+class BH_WP_CLI_Loader {
 
 	/**
 	 * Main variable containing all WP-CLI commands and callbacks.
@@ -21,7 +21,7 @@ class EIG_WP_CLI_Loader {
 	protected $commands;
 
 	/**
-	 * @var stdClass - Instance of EIG_WP_CLI_Loader.
+	 * @var stdClass - Instance of BH_WP_CLI_Loader.
 	 */
 	protected static $instance;
 
@@ -29,8 +29,8 @@ class EIG_WP_CLI_Loader {
 	 * Return Class instance
 	 */
 	public static function instance() {
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof EIG_WP_CLI_Loader ) ) {
-			self::$instance = new EIG_WP_CLI_Loader();
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof BH_WP_CLI_Loader ) ) {
+			self::$instance = new BH_WP_CLI_Loader();
 
 			self::$instance->initialize();
 		}
@@ -48,14 +48,14 @@ class EIG_WP_CLI_Loader {
 		$this->commands = array(
 			array(
 				'cmd'       => 'branding',
-				'class'     => 'EIG_WP_CLI_Branding',
+				'class'     => 'BH_WP_CLI_Branding',
 				'shortdesc' => 'Control hosting branding and UX.',
 				'longdesc'  => 'Control the admin interface, default modules and UX for an Endurance hosting brand.' .
 							   PHP_EOL . 'Subcommands: update, remove',
 			),
 			array(
 				'cmd'       => 'cache',
-				'class'     => 'EIG_WP_CLI_Cache',
+				'class'     => 'BH_WP_CLI_Cache',
 				'shortdesc' => 'Control all forms of caching.',
 				'longdesc'  => 'Control how browser cache, page cache and browser caching are configured.' .
 							   PHP_EOL . 'Cache Types: browser, page, object (not functional yet)' .
@@ -63,34 +63,34 @@ class EIG_WP_CLI_Loader {
 			),
 			array(
 				'cmd'       => 'digest',
-				'class'     => 'EIG_WP_CLI_Digest',
+				'class'     => 'BH_WP_CLI_Digest',
 				'shortdesc' => 'Analyze WordPress for this site.',
 				'longdesc'  => 'Analyze WordPress content, configuration and server environment.' .
 							   PHP_EOL . 'Associative Args: --full --noprompt',
 			),
 			array(
 				'cmd'       => 'secrets',
-				'class'     => 'EIG_WP_CLI_Secrets',
+				'class'     => 'BH_WP_CLI_Secrets',
 				'shortdesc' => 'Control the WordPress Salts.',
 				'longdesc'  => 'Read and update WordPress salts in the wp-config.php file.' .
 							   PHP_EOL . 'Subcommands: update, age, list',
 			),
 			array(
 				'cmd'       => 'remove_orphan_post_meta',
-				'class'     => 'EIG_WP_CLI_Remove_Orphan_Post_Meta',
+				'class'     => 'BH_WP_CLI_Remove_Orphan_Post_Meta',
 				'shortdesc' => 'Legacy cmd for removing orphan meta.',
 				'longdesc'  => 'Legacy WP-CLI command used for checking for orphaned postmeta.',
 			),
 			array(
 				'cmd'       => 'sso',
-				'class'     => 'EIG_WP_CLI_SSO',
+				'class'     => 'BH_WP_CLI_SSO',
 				'shortdesc' => 'Single sign-on from hosting platform.',
 				'longdesc'  => 'Handle single sign-on from Endurance hosting platforms and get magic link.' .
 							   PHP_EOL . 'Associative Args: --username --role --email --id --min=MINUTES_UNTIL_EXPIRE --url-only',
 			),
 			array(
 				'cmd'       => 'staging',
-				'class'     => 'EIG_WP_CLI_Staging',
+				'class'     => 'BH_WP_CLI_Staging',
 				'shortdesc' => 'CRUD operations for EIG staging.',
 				'longdesc'  => 'Internal commands to handle staging environment.' .
 							   PHP_EOL . 'Subcommands: create, clone, destroy, sso_staging, deploy, deploy_files,' .
@@ -98,7 +98,7 @@ class EIG_WP_CLI_Loader {
 			),
 			array(
 				'cmd'       => 'module',
-				'class'     => 'EIG_WP_CLI_Module',
+				'class'     => 'BH_WP_CLI_Module',
 				'shortdesc' => 'Control hosting plugin modules.',
 				'longdesc'  => 'Enable, disable and check status of internal modules in the hosting plugin.' .
 							   PHP_EOL . 'Subcommands: enable, disable, status, list, reset',
@@ -178,6 +178,6 @@ class EIG_WP_CLI_Loader {
 /**
  * load/create instance of loader class
  *
- * @see EIG_WP_CLI_Loader->initialize()
+ * @see BH_WP_CLI_Loader->initialize()
  */
-EIG_WP_CLI_Loader::instance();
+BH_WP_CLI_Loader::instance();

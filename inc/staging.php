@@ -378,7 +378,7 @@ class Staging {
 			}
 		}
 
-		$script = MM_BASE_DIR . 'lib/.staging';
+		$script = BLUEHOST_PLUGIN_DIR . 'lib/.staging';
 
 		// Verify staging script file permissions
 		if ( 0755 != (int) substr( sprintf( '%o', fileperms( $script ) ), - 4 ) ) { // phpcs:ignore

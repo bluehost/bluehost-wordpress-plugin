@@ -5,9 +5,9 @@ global $theme;
 $item_id = sanitize_title_for_query( $_GET['id'] ); // phpcs:ignore WordPress.Security.NonceVerification
 $api_url = 'https://api.mojomarketplace.com/api/v2/items/' . $item_id;
 $items   = ( isset( $_GET['items'] ) ) ? esc_attr( $_GET['items'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
-$theme   = mm_api_cache( $api_url );
+$theme   = mojo_api_cache( $api_url );
 
-$other_viewed = mm_api_cache(
+$other_viewed = mojo_api_cache(
 	add_query_arg(
 		array(
 			'category' => 'wordpress',
@@ -46,12 +46,12 @@ if ( is_wp_error( $theme ) ) {
 				<div class="wp-full-overlay-sidebar-content">
 					<img
 						class="theme-preview-logo"
-						src="<?php echo esc_url( MM_ASSETS_URL . 'img/logo-preview-bluehost.svg' ); ?>"
+						src="<?php echo esc_url( MOJO_ASSETS_URL . 'img/logo-preview-bluehost.svg' ); ?>"
 					/>
 					<div class="install-theme-info">
 						<h3 class="theme-name"><?php echo esc_html( $theme->name ); ?></h3>
 						<br/>
-						<?php mm_stars( $theme->rating, $theme->sales_count ); ?>
+						<?php mojo_stars( $theme->rating, $theme->sales_count ); ?>
 						<div class="theme-details text-center">
 							<div role="group" class="btn-group-horizontal">
 								<a class="button components-button bluehost is-default"
@@ -113,7 +113,7 @@ if ( is_wp_error( $theme ) ) {
 			</div>
 			<div class="wp-full-overlay-main">
 				<?php
-				$iframe_src = mm_build_link(
+				$iframe_src = mojo_build_link(
 					$theme->demo_url,
 					array(
 						'utm_medium'  => 'plugin_admin',

@@ -61,7 +61,7 @@ class Bluehost_Admin_App_Assets {
 		// li#toplevel_page_bluehost a:after {
 		// border: 0px transparent !important;
 		// }</style>
-		$this->url = trailingslashit( MM_BASE_URL ) . 'assets/';
+		$this->url = trailingslashit( BLUEHOST_PLUGIN_URL ) . 'assets/';
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_global_assets' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ) );
 	}
@@ -202,9 +202,9 @@ class Bluehost_Admin_App_Assets {
 				'activePage'       => '',
 				'isTopLevel'       => 0,
 				'pages'            => array_map( 'strtolower', Bluehost_Admin_App_Page::$subpages ),
-				'siteId'           => mm_site_bin2hex(),
+				'siteId'           => mojo_site_bin2hex(),
 				'mobileMenuActive' => 0,
-				'nonce'            => wp_create_nonce( mm_site_bin2hex() ),
+				'nonce'            => wp_create_nonce( mojo_site_bin2hex() ),
 			),
 			'env'       => array(
 				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,

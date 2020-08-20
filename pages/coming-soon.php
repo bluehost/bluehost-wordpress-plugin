@@ -10,7 +10,7 @@
 		<style type="text/css">
 			body {
 				background-color: #fff;
-				background-image: url("<?php echo esc_url( MM_BASE_URL . 'images/cs-bluehost-bg.jpg' ); ?>");
+				background-image: url("<?php echo esc_url( BLUEHOST_PLUGIN_URL . 'images/cs-bluehost-bg.jpg' ); ?>");
 				background-position: top right;
 				background-repeat: no-repeat;
 				font-family: "Open Sans", sans-serif;
@@ -195,7 +195,7 @@
 
 			.bh_subscription_widget form .bh-inputs.email input[type="email"] {
 				background-color: #fff;
-				background-image: url("<?php echo esc_url( MM_BASE_URL . 'images/icon-email.svg' ); ?>");
+				background-image: url("<?php echo esc_url( BLUEHOST_PLUGIN_URL . 'images/icon-email.svg' ); ?>");
 				background-position: 10px center;
 				background-repeat: no-repeat;
 				border: 1px solid #5B5B5B;
@@ -318,8 +318,8 @@
 							again with a different email address.
 						</div>
 						<form action="" method="post" accept-charset="utf-8" id="subscribe-bh">
-							<input type="hidden" name="action" value="mm_coming_soon_subscribe">
-							<?php wp_nonce_field( 'mm_coming_soon_subscribe_nonce', 'mm_nonce-coming-soon-subscribe' ); ?>
+							<input type="hidden" name="action" value="mojo_coming_soon_subscribe">
+							<?php wp_nonce_field( 'mojo_coming_soon_subscribe_nonce', 'mm_nonce-coming-soon-subscribe' ); ?>
 							<span class="bh-inputs email" id="subscribe-email">
 							<label id="bh-subscribe-label" for="subscribe-field-bh">Email</label>
 							<input type="email" name="email" required="required" value="" id="subscribe-field-bh"
@@ -381,7 +381,7 @@
 						type: 'POST',
 						url: ajaxscript.ajax_url,
 						data: {
-							'action': 'mm_coming_soon_subscribe',
+							'action': 'mojo_coming_soon_subscribe',
 							'email': email,
 							'nonce': nonce
 						},

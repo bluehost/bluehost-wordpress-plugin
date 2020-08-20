@@ -9,7 +9,7 @@
  *
  * @return string
  */
-function mm_item_shortcode( $atts ) {
+function mojo_item_shortcode( $atts ) {
 	global $use_mm_styles;
 	$use_mm_styles = true;
 	$defaults      = array(
@@ -29,7 +29,7 @@ function mm_item_shortcode( $atts ) {
 	);
 	$content = "<div class='mojo-items-wrap'>";
 
-	$response = mm_api(
+	$response = mojo_api(
 		$args,
 		array(
 			'count'  => $atts['quantity'],
@@ -44,7 +44,7 @@ function mm_item_shortcode( $atts ) {
 		<article class="item">
 			<div class="box">
 				<div class="item-photo">
-					<a target="_blank" class="screenshot" href="' . mm_build_link(
+					<a target="_blank" class="screenshot" href="' . mojo_build_link(
 					$item->page_url,
 					array(
 						'utm_medium'  => 'plugin_shortcode',
@@ -58,7 +58,7 @@ function mm_item_shortcode( $atts ) {
 
 				<div class="item-title">
 					<h3 class="title">
-						<a target="_blank" href="' . mm_build_link(
+						<a target="_blank" href="' . mojo_build_link(
 							   $item->page_url,
 							   array(
 								   'utm_medium'  => 'plugin_shortcode',
@@ -69,7 +69,7 @@ function mm_item_shortcode( $atts ) {
 					</h3>
 
 					<h5 class="author">
-						<a target="_blank" href="' . mm_build_link(
+						<a target="_blank" href="' . mojo_build_link(
 							   $item->seller_url,
 							   array(
 								   'utm_medium'  => 'plugin_shortcode',
@@ -88,7 +88,7 @@ function mm_item_shortcode( $atts ) {
 					</div>
 
 					<div class="add-to-cart">
-						<form accept-charset="utf-8" method="post" id="CartItemRouteForm" target="_blank" enctype="multipart-data" action="' . mm_build_link(
+						<form accept-charset="utf-8" method="post" id="CartItemRouteForm" target="_blank" enctype="multipart-data" action="' . mojo_build_link(
 							   'https://www.mojomarketplace.com/cart',
 							   array(
 								   'utm_medium'  => 'plugin_shortcode',
@@ -111,4 +111,4 @@ function mm_item_shortcode( $atts ) {
 	return $content;
 }
 
-add_shortcode( 'mojoitem', 'mm_item_shortcode' );
+add_shortcode( 'mojoitem', 'mojo_item_shortcode' );

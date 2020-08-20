@@ -31,7 +31,7 @@ function bluehost_theme_preview_page() {
 		}
 	</style>
 	<?php
-	mm_require( MM_BASE_DIR . '/pages/theme-preview.php' );
+	mojo_require( BLUEHOST_PLUGIN_DIR . '/pages/theme-preview.php' );
 }
 
 /**

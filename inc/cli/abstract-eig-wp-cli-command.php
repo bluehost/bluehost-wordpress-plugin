@@ -3,11 +3,11 @@
 use \WP_CLI\Utils;
 
 /**
- * Class EIG_WP_CLI_Command
+ * Class BH_WP_CLI_Command
  *
  * Extend this class for all WP-CLI Commands to inherit updates to the \WP_CLI_Command class and helper utilities.
  */
-abstract class EIG_WP_CLI_Command extends \WP_CLI_Command {
+abstract class BH_WP_CLI_Command extends \WP_CLI_Command {
 
 	/**
 	 * Helper to format data into tables.

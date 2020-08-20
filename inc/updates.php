@@ -14,7 +14,7 @@
  * @param bool   $default Default value to use if $value is neither 'true' or 'false'.
  * @return bool The conversion result.
  */
-function mm_auto_update_make_bool( $value, $default = true ) {
+function mojo_auto_update_make_bool( $value, $default = true ) {
 	if ( 'false' === $value ) {
 		$value = false;
 	}
@@ -32,7 +32,7 @@ function mm_auto_update_make_bool( $value, $default = true ) {
  *
  * @param array $args
  */
-function mm_auto_update_callback( $args ) {
+function mojo_auto_update_callback( $args ) {
 	if ( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) || AUTOMATIC_UPDATER_DISABLED === false ) {
 		$defaults = array(
 			'allow_major_auto_core_updates' => 'true',
@@ -49,7 +49,7 @@ function mm_auto_update_callback( $args ) {
 /**
  * Registers auto-update related settings for the Settings > General page.
  */
-function mm_auto_update_register_settings() {
+function mojo_auto_update_register_settings() {
 	$section_name = 'mm_auto_update_settings_section';
 	$section_hook = 'general';
 
@@ -66,7 +66,7 @@ function mm_auto_update_register_settings() {
 		add_settings_field(
 			'allow_major_auto_core_updates',
 			'Core Major',
-			'mm_auto_update_callback',
+			'mojo_auto_update_callback',
 			$section_hook,
 			$section_name,
 			array( 'field' => 'allow_major_auto_core_updates' )
@@ -78,7 +78,7 @@ function mm_auto_update_register_settings() {
 		add_settings_field(
 			'allow_minor_auto_core_updates',
 			'Core Minor',
-			'mm_auto_update_callback',
+			'mojo_auto_update_callback',
 			$section_hook,
 			$section_name,
 			array( 'field' => 'allow_minor_auto_core_updates' )
@@ -89,7 +89,7 @@ function mm_auto_update_register_settings() {
 	add_settings_field(
 		'auto_update_theme',
 		'Themes',
-		'mm_auto_update_callback',
+		'mojo_auto_update_callback',
 		$section_hook,
 		$section_name,
 		array( 'field' => 'auto_update_theme' )
@@ -99,14 +99,14 @@ function mm_auto_update_register_settings() {
 	add_settings_field(
 		'auto_update_plugin',
 		'Plugins',
-		'mm_auto_update_callback',
+		'mojo_auto_update_callback',
 		$section_hook,
 		$section_name,
 		array( 'field' => 'auto_update_plugin' )
 	);
 	register_setting( 'general', 'auto_update_plugin' );
 }
-add_action( 'admin_init', 'mm_auto_update_register_settings' );
+add_action( 'admin_init', 'mojo_auto_update_register_settings' );
 
 /**
  * Configures auto-update behaviors for a site.
@@ -117,7 +117,7 @@ add_action( 'admin_init', 'mm_auto_update_register_settings' );
  *              Core's default behavior.
  * @since 5.5.0 When plugin and theme auto-updates are set to "off", WordPress core will manage
  */
-function mm_auto_update_configure() {
+function mojo_auto_update_configure() {
 	global $wp_version;
 
 	$settings = array(
@@ -146,7 +146,7 @@ function mm_auto_update_configure() {
 			}
 		}
 
-		$settings = array_map( 'mm_auto_update_make_bool', $settings );
+		$settings = array_map( 'mojo_auto_update_make_bool', $settings );
 
 		// If plugin or theme settings are disabled, allow the site admin to manage auto-updates in WordPress.
 		if ( false === $settings['auto_update_plugin'] && version_compare( $wp_version, '5.5.0', '>=' ) ) {
@@ -166,7 +166,7 @@ function mm_auto_update_configure() {
 		}
 	}
 }
-add_action( 'plugins_loaded', 'mm_auto_update_configure', 5 );
+add_action( 'plugins_loaded', 'mojo_auto_update_configure', 5 );
 
 /**
  * Changes the text in the Automatic updates column of the plugin list table to inform the user
@@ -175,8 +175,8 @@ add_action( 'plugins_loaded', 'mm_auto_update_configure', 5 );
  * @param string $html The generated HTML for the automatic updates column.
  * @return string The adjusted HTML for the automatic updates column.
  */
-function mm_plugin_auto_update_setting_html( $html ) {
-	$bulk_auto_update_enabled = mm_auto_update_make_bool( get_option( 'auto_update_plugin', true ) );
+function mojo_plugin_auto_update_setting_html( $html ) {
+	$bulk_auto_update_enabled = mojo_auto_update_make_bool( get_option( 'auto_update_plugin', true ) );
 
 	if ( ! $bulk_auto_update_enabled ) {
 		return $html;
@@ -192,7 +192,7 @@ function mm_plugin_auto_update_setting_html( $html ) {
 		$html
 	);
 }
-add_filter( 'plugin_auto_update_setting_html', 'mm_plugin_auto_update_setting_html' );
+add_filter( 'plugin_auto_update_setting_html', 'mojo_plugin_auto_update_setting_html' );
 
 /**
  * Changes the text in the Automatic updates column of the theme list table to inform the user
@@ -203,8 +203,8 @@ add_filter( 'plugin_auto_update_setting_html', 'mm_plugin_auto_update_setting_ht
  * @param string $html The generated HTML for the automatic updates column.
  * @return string The adjusted HTML for the automatic updates column.
  */
-function mm_theme_auto_update_setting_html( $html ) {
-	$bulk_auto_update_enabled = mm_auto_update_make_bool( get_option( 'auto_update_theme', true ) );
+function mojo_theme_auto_update_setting_html( $html ) {
+	$bulk_auto_update_enabled = mojo_auto_update_make_bool( get_option( 'auto_update_theme', true ) );
 
 	if ( ! $bulk_auto_update_enabled ) {
 		return $html;
@@ -216,7 +216,7 @@ function mm_theme_auto_update_setting_html( $html ) {
 		admin_url( 'options-general.php' )
 	);
 }
-add_filter( 'theme_auto_update_setting_html', 'mm_theme_auto_update_setting_html' );
+add_filter( 'theme_auto_update_setting_html', 'mojo_theme_auto_update_setting_html' );
 
 /**
  * Changes the text in the theme details overlay to inform the user
@@ -225,8 +225,8 @@ add_filter( 'theme_auto_update_setting_html', 'mm_theme_auto_update_setting_html
  * @param string $template The JavaScript template for displaying the auto-update setting link.
  * @return string The modified JavaScript template for displaying the auto-update setting link.
  */
-function mm_theme_auto_update_setting_template( $template ) {
-	$bulk_auto_update_enabled = mm_auto_update_make_bool( get_option( 'auto_update_theme', true ) );
+function mojo_theme_auto_update_setting_template( $template ) {
+	$bulk_auto_update_enabled = mojo_auto_update_make_bool( get_option( 'auto_update_theme', true ) );
 
 	if ( ! $bulk_auto_update_enabled ) {
 		return $template;
@@ -243,4 +243,4 @@ function mm_theme_auto_update_setting_template( $template ) {
 
 	return str_replace( $template_string, $replacement, $template );
 }
-add_filter( 'theme_auto_update_setting_template', 'mm_theme_auto_update_setting_template' );
+add_filter( 'theme_auto_update_setting_template', 'mojo_theme_auto_update_setting_template' );

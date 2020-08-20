@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Class EIG_WP_CLI_Remove_Orphan_Post_Meta
+ * Class BH_WP_CLI_Remove_Orphan_Post_Meta
  *
  * This class is instantiated in /inc/cli-init.php
  */
-class EIG_WP_CLI_Remove_Orphan_Post_Meta extends EIG_WP_CLI_Command {
+class BH_WP_CLI_Remove_Orphan_Post_Meta extends BH_WP_CLI_Command {
 	/**
 	 * Remove Orphaned Postmeta.
 	 *

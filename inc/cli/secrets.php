@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Class EIG_WP_CLI_Secrets
+ * Class BH_WP_CLI_Secrets
  *
  * This class is instantiated in /inc/cli-init.php
  */
-class EIG_WP_CLI_Secrets extends EIG_WP_CLI_Command {
+class BH_WP_CLI_Secrets extends BH_WP_CLI_Command {
 	/**
 	 * @var array - Keys for constants defined in wp-config.php.
 	 */

@@ -1,9 +1,9 @@
 <?php
 
-function mm_cache_toggle() {
+function mojo_cache_toggle() {
 	if ( isset( $_POST['cache_level'] ) && is_numeric( $_POST['cache_level'] ) ) {
 		$cache_level = (int) $_POST['cache_level'];
-		$response    = mm_cache_add( 'page' );
+		$response    = mojo_cache_add( 'page' );
 
 		if ( isset( $response['status'] ) && 'success' == $response['status'] ) {
 			$update = update_option( 'endurance_cache_level', $cache_level );
@@ -29,9 +29,9 @@ function mm_cache_toggle() {
 	}
 	die;
 }
-add_action( 'wp_ajax_mm_cache', 'mm_cache_toggle' );
+add_action( 'wp_ajax_mm_cache', 'mojo_cache_toggle' );
 
-function mm_cache_add( $type = null ) {
+function mojo_cache_add( $type = null ) {
 	$cache = array();
 	if ( ! is_dir( WP_CONTENT_DIR . '/mu-plugins' ) ) {
 		mkdir( WP_CONTENT_DIR . '/mu-plugins' );
@@ -79,7 +79,7 @@ function mm_cache_add( $type = null ) {
 
 }
 
-function mm_cache_remove( $type = null ) {
+function mojo_cache_remove( $type = null ) {
 	switch ( $type ) {
 		case 'browser':
 			// do not remove cache file since it powers both types and the CDN.

@@ -7,11 +7,11 @@ if ( ! class_exists( 'WP_CLI' ) ) {
 }
 
 /**
- * Class EIG_WP_CLI_Staging
+ * Class BH_WP_CLI_Staging
  *
  * This class is instantiated in /inc/cli-init.php
  */
-class EIG_WP_CLI_Staging extends EIG_WP_CLI_Command {
+class BH_WP_CLI_Staging extends BH_WP_CLI_Command {
 
 	/**
 	 * Used internally to create staging environment.

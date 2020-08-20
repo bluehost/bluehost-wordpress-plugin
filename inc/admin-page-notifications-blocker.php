@@ -11,11 +11,11 @@ if ( ! is_admin()
 }
 
 /**
- * Class EIG_Admin_Page_Notifications_Blocker
+ * Class BH_Admin_Page_Notifications_Blocker
  */
-class EIG_Admin_Page_Notifications_Blocker {
+class BH_Admin_Page_Notifications_Blocker {
 	/**
-	 * EIG_Admin_Page_Notifications_Blocker constructor.
+	 * BH_Admin_Page_Notifications_Blocker constructor.
 	 */
 	function __construct() {
 		add_action( 'admin_print_styles', array( $this, 'remove_notifications_on_bluehost_pages' ) );
@@ -40,4 +40,4 @@ class EIG_Admin_Page_Notifications_Blocker {
 	}
 }
 
-new EIG_Admin_Page_Notifications_Blocker();
+new BH_Admin_Page_Notifications_Blocker();

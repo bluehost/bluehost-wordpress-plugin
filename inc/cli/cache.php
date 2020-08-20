@@ -3,11 +3,11 @@
 use \WP_CLI\Utils;
 
 /**
- * Class EIG_WP_CLI_Cache
+ * Class BH_WP_CLI_Cache
  *
  * This class is instantiated in /inc/cli-init.php
  */
-class EIG_WP_CLI_Cache extends EIG_WP_CLI_Command {
+class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 
 	/**
 	 * @var string - Organization Raw Content URL Base.

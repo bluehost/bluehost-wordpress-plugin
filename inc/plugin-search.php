@@ -1,14 +1,14 @@
 <?php
 
-function mm_add_plugin_search_patterns( $patterns ) {
-	$response = mm_api_cache( 'https://api.mojomarketplace.com/mojo-plugin-assets/json/search-patterns.json' );
+function mojo_add_plugin_search_patterns( $patterns ) {
+	$response = mojo_api_cache( 'https://api.mojomarketplace.com/mojo-plugin-assets/json/search-patterns.json' );
 	if ( ! is_wp_error( $response ) && $patterns = json_decode( $response['body'], 1 ) ) {
 		return $patterns;
 	}
 }
-add_filter( 'mm_plugin_search_patterns', 'mm_add_plugin_search_patterns' );
+add_filter( 'mm_plugin_search_patterns', 'mojo_add_plugin_search_patterns' );
 
-function mm_check_plugin_search_value( $search ) {
+function mojo_check_plugin_search_value( $search ) {
 	$patterns = apply_filters( 'mm_plugin_search_patterns', array() );
 	if ( is_array( $patterns ) ) {
 		foreach ( $patterns as $pattern => $plugin ) {
@@ -20,8 +20,8 @@ function mm_check_plugin_search_value( $search ) {
 	return false;
 }
 
-function mm_plugin_search_result() {
-	if ( isset( $_GET['s'] ) && $plugin = mm_check_plugin_search_value( $_GET['s'] ) ) {
+function mojo_plugin_search_result() {
+	if ( isset( $_GET['s'] ) && $plugin = mojo_check_plugin_search_value( $_GET['s'] ) ) {
 		$plugin = array_filter( $plugin );
 		$link   = $plugin['url'];
 		if ( isset( $plugin['id'] ) && strlen( $plugin['id'] ) > 5 ) {
@@ -33,7 +33,7 @@ function mm_plugin_search_result() {
 				admin_url( 'admin.php' )
 			);
 		}
-		$link        = mm_build_link(
+		$link        = mojo_build_link(
 			$link,
 			array(
 				'utm_medium'  => 'plugin_admin',
@@ -45,7 +45,7 @@ function mm_plugin_search_result() {
 		if ( '' === $buy_now ) {
 			$buy_now = ( isset( $plugin['buy_now_link'] ) ) ? $plugin['buy_now_link'] : '';
 		}
-		$buy_now      = mm_build_link(
+		$buy_now      = mojo_build_link(
 			$buy_now,
 			array(
 				'utm_medium'  => 'plugin_admin',
@@ -57,7 +57,7 @@ function mm_plugin_search_result() {
 		$short_desc   = ( isset( $plugin['short_desc'] ) ) ? $plugin['short_desc'] : '';
 		$author       = ( isset( $plugin['author'] ) ) ? $plugin['author'] : 'MOJO Marketplace';
 		$author_url   = ( isset( $plugin['author_url'] ) ) ? $plugin['author_url'] : 'http://www.mojomarketplace.com';
-		$author_url   = mm_build_link(
+		$author_url   = mojo_build_link(
 			$author_url,
 			array(
 				'utm_medium'  => 'plugin_admin',
@@ -93,7 +93,7 @@ function mm_plugin_search_result() {
 					<span class="">Professional Plugin Service</div>
 				</div>
 			</div>';
-		$plugin_html  = mm_minify( $plugin_html );
+		$plugin_html  = mojo_minify( $plugin_html );
 
 		echo "
 		<script type='text/javascript'>
@@ -105,4 +105,4 @@ function mm_plugin_search_result() {
 
 	}
 }
-add_action( 'admin_notices', 'mm_plugin_search_result' );
+add_action( 'admin_notices', 'mojo_plugin_search_result' );
