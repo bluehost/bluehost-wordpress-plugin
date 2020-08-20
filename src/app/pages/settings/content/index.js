@@ -20,6 +20,7 @@ const Content = ( { revisions, trashInterval, updateSetting } ) => {
 		<SettingsSection name={ __( 'Content', 'bluehost-wordpress-plugin' ) }>
 			<SettingsGroup>
 				<SettingsSelect
+					aria-label="Keep x latest revisions"
 					label={ revisionLabel }
 					value={ revisions }
 					onChange={ ( value ) => updateSetting( 'contentRevisions', value ) }
@@ -30,6 +31,7 @@ const Content = ( { revisions, trashInterval, updateSetting } ) => {
 						{ label: '40', value: '40' },
 					] } />
 				<SettingsSelect
+					aria-label="Empty the trash every x weeks"
 					label={ trashLabel }
 					value={ trashInterval }
 					onChange={ ( value ) => updateSetting( 'emptyTrashDays', value ) }

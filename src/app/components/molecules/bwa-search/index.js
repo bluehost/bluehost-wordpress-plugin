@@ -17,7 +17,6 @@ export default function BWASearch( { onChange, value = '' } ) {
 				<input
 					className="search-box__input"
 					type="search"
-					role="search"
 					placeholder={ __( 'Search', 'bluehost-wordpress-plugin' ) }
 					value={ query }
 					onChange={ ( e ) => setQuery( e.target.value ) }

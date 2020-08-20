@@ -10,7 +10,7 @@ const SettingsToggle = ( { label, checked, onChange } ) => (
 			<label>{ label }</label>
 		</div>
 		<div className="toggle pure-u-1-4">
-			<BWAToggle checked={ checked } onChange={ onChange } />
+			<BWAToggle checked={ checked } label={ label } onChange={ onChange } />
 		</div>
 	</SettingsControl>
 );

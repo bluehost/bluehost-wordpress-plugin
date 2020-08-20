@@ -25,6 +25,7 @@ const Comments = ( { oldPostComments, closeInterval, perPage, toggleSetting, upd
 					onChange={ () => toggleSetting( 'disableCommentsOldPosts' ) }
 				/>
 				<SettingsSelect
+					aria-label="Close comments after x days"
 					label={ commentsLabel }
 					value={ closeInterval }
 					onChange={ ( value ) => updateSetting( 'closeCommentsDays', value ) }
@@ -43,6 +44,7 @@ const Comments = ( { oldPostComments, closeInterval, perPage, toggleSetting, upd
 					] }
 				/>
 				<SettingsSelect
+					aria-label="Display x comments per page"
 					label={ commentsPageLabel }
 					value={ perPage }
 					onChange={ ( value ) => updateSetting( 'commentsPerPage', value ) }

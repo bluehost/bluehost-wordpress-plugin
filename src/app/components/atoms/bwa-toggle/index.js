@@ -1,23 +1,29 @@
+import {uniqueId} from 'lodash';
+
 /**
  * Internal dependencies
  */
 import './style.scss';
 
-function BWAToggle( { checked, onChange } ) {
+function BWAToggle({checked, label, onChange}) {
+
+	const id = uniqueId('onoffswitch');
+
 	return (
 		<div className="onoffswitch">
 			<input
-				type="checkbox"
-				name="onoffswitch"
-				className="onoffswitch__checkbox"
-				id="myonoffswitch"
-				value="value"
+				aria-label={ label }
 				checked={ checked }
+				className="onoffswitch__checkbox"
+				id={ id }
+				name="onoffswitch"
 				onChange={ onChange }
+				type="checkbox"
+				value="value"
 			/>
-			<label className="onoffswitch__label" htmlFor="myonoffswitch">
-				<span className="onoffswitch__inner"></span>
-				<span className="onoffswitch__switch"></span>
+			<label className="onoffswitch__label" htmlFor={ id }>
+				<span className="onoffswitch__inner" />
+				<span className="onoffswitch__switch" />
 			</label>
 		</div>
 	);
