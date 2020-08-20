@@ -30,7 +30,7 @@ describe('Settings Page', function () {
 	});
 
 	it('Is Accessible', () => {
-		cy.checkA11y('.app-page');
+		cy.checkA11y('.router-section');
 	});
 
 	it('Has an "Automatic Updates" section', () => {

@@ -57,7 +57,7 @@ describe('Services Page', function () {
     });
 
     it('Is Accessible', () => {
-        cy.checkA11y('.app-page');
+        cy.checkA11y('.router-section');
     });
 
     it('BWAProductGrid has 12 items', () => {

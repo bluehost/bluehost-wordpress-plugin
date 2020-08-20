@@ -110,7 +110,7 @@ describe('Staging Page', function () {
 	});
 
 	it('Is Accessible', () => {
-		cy.checkA11y('.app-page');
+		cy.checkA11y('.router-section');
 	});
 
 	it('Production site is active', () => {

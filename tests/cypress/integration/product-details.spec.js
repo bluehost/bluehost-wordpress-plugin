@@ -55,7 +55,7 @@ products.forEach(function (product) {
 		});
 
 		it('Is Accessible', () => {
-			cy.checkA11y('.app-page');
+			cy.checkA11y('.router-section');
 		});
 
 		it('Shows breadcrumbs', () => {
