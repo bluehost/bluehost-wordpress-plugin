@@ -42,38 +42,6 @@ function mojo_cs_load() {
 }
 add_action( 'template_redirect', 'mojo_cs_load' );
 
-function mojo_cs_enabled_callback( $args ) {
-		$value = get_option( $args['field'], 'false' );
-		echo "On <input type='radio' name='" . esc_attr( $args['field'] ) . "' value='true'" . checked( $value, 'true', false ) . ' />';
-		echo "Off <input type='radio' name='" . esc_attr( $args['field'] ) . "' value='false'" . checked( $value, 'false', false ) . ' />';
-}
-
-function mojo_cs_settings() {
-	$section_name = 'mojo_cs_settings_section';
-	$section_hook = 'general';
-
-	$brand = 'Bluehost';
-
-	add_settings_section(
-		$section_name, // Section
-		$brand . ' Coming Soon Page', // Title
-		'__return_false', // section description callback
-		$section_hook // Setting Hook
-	);
-
-	add_settings_field(
-		'mm_coming_soon',
-		'Enable',
-		'mojo_cs_enabled_callback',
-		$section_hook,
-		$section_name,
-		array( 'field' => 'mm_coming_soon' )
-	);
-	register_setting( 'general', 'mm_coming_soon' );
-
-}
-add_action( 'admin_init', 'mojo_cs_settings' );
-
 function mojo_cs_content() {
 	require BLUEHOST_PLUGIN_DIR . 'pages/coming-soon.php';
 }

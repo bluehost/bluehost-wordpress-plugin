@@ -12,9 +12,10 @@
  *
  * @param string $value   The value to convert.
  * @param bool   $default Default value to use if $value is neither 'true' or 'false'.
+ *
  * @return bool The conversion result.
  */
-function mojo_auto_update_make_bool( $value, $default = true ) {
+function bh_auto_update_make_bool( $value, $default = true ) {
 	if ( 'false' === $value ) {
 		$value = false;
 	}
@@ -24,89 +25,9 @@ function mojo_auto_update_make_bool( $value, $default = true ) {
 	if ( true !== $value && false !== $value ) {
 		$value = $default;
 	}
+
 	return $value;
 }
-
-/**
- * Displays on/off radio buttons for each auto-update type.
- *
- * @param array $args
- */
-function mojo_auto_update_callback( $args ) {
-	if ( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) || AUTOMATIC_UPDATER_DISABLED === false ) {
-		$defaults = array(
-			'allow_major_auto_core_updates' => 'true',
-			'allow_minor_auto_core_updates' => 'true',
-			'auto_update_plugin'            => 'true',
-			'auto_update_theme'             => 'true',
-		);
-		$value    = get_option( $args['field'], $defaults[ $args['field'] ] );
-		echo esc_html__( 'On', 'mojo-marketplace-wp-plugin' ) . " <input type='radio' name='" . esc_attr( $args['field'] ) . "' value='true'" . checked( $value, 'true', false ) . ' />';
-		echo esc_html__( 'Off', 'mojo-marketplace-wp-plugin' ) . " <input type='radio' name='" . esc_attr( $args['field'] ) . "' value='false'" . checked( $value, 'false', false ) . ' />';
-	}
-}
-
-/**
- * Registers auto-update related settings for the Settings > General page.
- */
-function mojo_auto_update_register_settings() {
-	$section_name = 'mm_auto_update_settings_section';
-	$section_hook = 'general';
-
-	if ( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) ) {
-		add_settings_section(
-			$section_name,
-			'Bluehost Auto Update Manager',
-			'__return_false',
-			$section_hook
-		);
-	}
-
-	if ( ! defined( 'WP_AUTO_UPDATE_CORE' ) ) {
-		add_settings_field(
-			'allow_major_auto_core_updates',
-			'Core Major',
-			'mojo_auto_update_callback',
-			$section_hook,
-			$section_name,
-			array( 'field' => 'allow_major_auto_core_updates' )
-		);
-		register_setting( 'general', 'allow_major_auto_core_updates' );
-	}
-
-	if ( ! defined( 'WP_AUTO_UPDATE_CORE' ) ) {
-		add_settings_field(
-			'allow_minor_auto_core_updates',
-			'Core Minor',
-			'mojo_auto_update_callback',
-			$section_hook,
-			$section_name,
-			array( 'field' => 'allow_minor_auto_core_updates' )
-		);
-		register_setting( 'general', 'allow_minor_auto_core_updates' );
-	}
-
-	add_settings_field(
-		'auto_update_theme',
-		'Themes',
-		'mojo_auto_update_callback',
-		$section_hook,
-		$section_name,
-		array( 'field' => 'auto_update_theme' )
-	);
-	register_setting( 'general', 'auto_update_theme' );
-
-	add_settings_field(
-		'auto_update_plugin',
-		'Plugins',
-		'mojo_auto_update_callback',
-		$section_hook,
-		$section_name,
-		array( 'field' => 'auto_update_plugin' )
-	);
-	register_setting( 'general', 'auto_update_plugin' );
-}
-add_action( 'admin_init', 'mojo_auto_update_register_settings' );
 
 /**
  * Configures auto-update behaviors for a site.
@@ -117,7 +38,7 @@ add_action( 'admin_init', 'mojo_auto_update_register_settings' );
  *              Core's default behavior.
  * @since 5.5.0 When plugin and theme auto-updates are set to "off", WordPress core will manage
  */
-function mojo_auto_update_configure() {
+function bh_auto_update_configure() {
 	global $wp_version;
 
 	$settings = array(
@@ -146,7 +67,7 @@ function mojo_auto_update_configure() {
 			}
 		}
 
-		$settings = array_map( 'mojo_auto_update_make_bool', $settings );
+		$settings = array_map( 'bh_auto_update_make_bool', $settings );
 
 		// If plugin or theme settings are disabled, allow the site admin to manage auto-updates in WordPress.
 		if ( false === $settings['auto_update_plugin'] && version_compare( $wp_version, '5.5.0', '>=' ) ) {
@@ -166,17 +87,19 @@ function mojo_auto_update_configure() {
 		}
 	}
 }
-add_action( 'plugins_loaded', 'mojo_auto_update_configure', 5 );
+
+add_action( 'plugins_loaded', 'bh_auto_update_configure', 5 );
 
 /**
  * Changes the text in the Automatic updates column of the plugin list table to inform the user
  * that the plugin setting is enabling auto-updates site wide.
  *
  * @param string $html The generated HTML for the automatic updates column.
+ *
  * @return string The adjusted HTML for the automatic updates column.
  */
-function mojo_plugin_auto_update_setting_html( $html ) {
-	$bulk_auto_update_enabled = mojo_auto_update_make_bool( get_option( 'auto_update_plugin', true ) );
+function bh_plugin_auto_update_setting_html( $html ) {
+	$bulk_auto_update_enabled = bh_auto_update_make_bool( get_option( 'auto_update_plugin', true ) );
 
 	if ( ! $bulk_auto_update_enabled ) {
 		return $html;
@@ -186,13 +109,14 @@ function mojo_plugin_auto_update_setting_html( $html ) {
 		'<span class="label">Auto-updates enabled</span>',
 		sprintf(
 		/* translators: %s Settings > General page URL. */
-			__( 'Auto-updates enabled on the <a href="%s">Settings > General page</a>.', 'mojo-marketplace-wp-plugin' ),
-			admin_url( 'options-general.php' )
+			__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'mojo-marketplace-wp-plugin' ),
+			admin_url( 'admin.php?page=bluehost#/settings' )
 		),
 		$html
 	);
 }
-add_filter( 'plugin_auto_update_setting_html', 'mojo_plugin_auto_update_setting_html' );
+
+add_filter( 'plugin_auto_update_setting_html', 'bh_plugin_auto_update_setting_html' );
 
 /**
  * Changes the text in the Automatic updates column of the theme list table to inform the user
@@ -201,10 +125,11 @@ add_filter( 'plugin_auto_update_setting_html', 'mojo_plugin_auto_update_setting_
  * This only adjusts the themes page in the network admin.
  *
  * @param string $html The generated HTML for the automatic updates column.
+ *
  * @return string The adjusted HTML for the automatic updates column.
  */
-function mojo_theme_auto_update_setting_html( $html ) {
-	$bulk_auto_update_enabled = mojo_auto_update_make_bool( get_option( 'auto_update_theme', true ) );
+function bh_theme_auto_update_setting_html( $html ) {
+	$bulk_auto_update_enabled = bh_auto_update_make_bool( get_option( 'auto_update_theme', true ) );
 
 	if ( ! $bulk_auto_update_enabled ) {
 		return $html;
@@ -212,21 +137,23 @@ function mojo_theme_auto_update_setting_html( $html ) {
 
 	return sprintf(
 	/* translators: %s Settings > General page URL. */
-		__( 'Auto-updates enabled on the <a href="%s">Settings > General page</a>.', 'mojo-marketplace-wp-plugin' ),
-		admin_url( 'options-general.php' )
+		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'mojo-marketplace-wp-plugin' ),
+		admin_url( 'admin.php?page=bluehost#/settings' )
 	);
 }
-add_filter( 'theme_auto_update_setting_html', 'mojo_theme_auto_update_setting_html' );
+
+add_filter( 'theme_auto_update_setting_html', 'bh_theme_auto_update_setting_html' );
 
 /**
  * Changes the text in the theme details overlay to inform the user
  * that the themes setting is enabling auto-updates site wide.
  *
  * @param string $template The JavaScript template for displaying the auto-update setting link.
+ *
  * @return string The modified JavaScript template for displaying the auto-update setting link.
  */
-function mojo_theme_auto_update_setting_template( $template ) {
-	$bulk_auto_update_enabled = mojo_auto_update_make_bool( get_option( 'auto_update_theme', true ) );
+function bh_theme_auto_update_setting_template( $template ) {
+	$bulk_auto_update_enabled = bh_auto_update_make_bool( get_option( 'auto_update_theme', true ) );
 
 	if ( ! $bulk_auto_update_enabled ) {
 		return $template;
@@ -235,12 +162,13 @@ function mojo_theme_auto_update_setting_template( $template ) {
 	$template_string = '<# } else if ( data.autoupdate.forced ) { #>
 					' . __( 'Auto-updates enabled' );
 	$replacement     = '<# } else if ( data.autoupdate.forced ) { #>';
-	$replacement    .= sprintf(
+	$replacement     .= sprintf(
 	/* translators: %s Settings > General page URL. */
-		__( 'Auto-updates enabled on the <a href="%s">Settings > General page</a>.', 'mojo-marketplace-wp-plugin' ),
-		admin_url( 'options-general.php' )
+		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'mojo-marketplace-wp-plugin' ),
+		admin_url( 'admin.php?page=bluehost#/settings' )
 	);
 
 	return str_replace( $template_string, $replacement, $template );
 }
-add_filter( 'theme_auto_update_setting_template', 'mojo_theme_auto_update_setting_template' );
+
+add_filter( 'theme_auto_update_setting_template', 'bh_theme_auto_update_setting_template' );
