@@ -211,10 +211,11 @@ class Bluehost_Admin_App_Assets {
 				'phpVersion' => phpversion(),
 			),
 			'wordpress' => array(
-				'hasReusableBlocks'    => \wp_count_posts('wp_block')->publish >= 1,
-				'isJetpackActive'      => class_exists( 'Jetpack' ) ? 1 : 0,
-				'isWooActive'          => class_exists( 'woocommerce' ) ? 1 : 0,
-				'jetpackActiveModules' => get_option( 'jetpack_active_modules', 0 ),
+				'hasReusableBlocks'              => \wp_count_posts( 'wp_block' )->publish >= 1,
+				'isJetpackActive'                => class_exists( 'Jetpack' ) ? 1 : 0,
+				'isWooActive'                    => class_exists( 'woocommerce' ) ? 1 : 0,
+				'jetpackActiveModules'           => get_option( 'jetpack_active_modules', 0 ),
+				'bluehostPluginDaysSinceInstall' => bh_get_days_since_plugin_install_date(),
 			),
 		);
 

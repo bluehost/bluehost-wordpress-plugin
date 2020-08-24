@@ -5,9 +5,9 @@ global $theme;
 $item_id = sanitize_title_for_query( $_GET['id'] ); // phpcs:ignore WordPress.Security.NonceVerification
 $api_url = 'https://api.mojomarketplace.com/api/v2/items/' . $item_id;
 $items   = ( isset( $_GET['items'] ) ) ? esc_attr( $_GET['items'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
-$theme   = mojo_api_cache( $api_url );
+$theme   = bh_api_cache( $api_url );
 
-$other_viewed = mojo_api_cache(
+$other_viewed = bh_api_cache(
 	add_query_arg(
 		array(
 			'category' => 'wordpress',
