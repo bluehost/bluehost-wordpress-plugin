@@ -2,13 +2,21 @@
 
 .bluehost-onboarding {
 
+  line-height: 24px;
+
+  a {
+    color: #2C6CC9;
+  }
+
   &-page-header {
     &__title {
-
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 40px;
     }
 
     &__description {
-
+      margin-bottom: 30px;
     }
   }
 
@@ -17,8 +25,13 @@
   }
 
   &-page-footer {
-    &__title {
 
+    padding-top: 22px;
+
+    &__title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 32px;
     }
 
     &__content {
@@ -31,7 +44,50 @@
   }
 
   &-step {
+    background-color: $color-white;
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 2px 5px 0 rgba(42, 47, 69, 0.08), 0 1px 1.5px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+    margin: 0 0 18px 55px;
+    padding: 20px 20px 20px 75px;
+    position: relative;
 
+    &__image {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      top: calc(50% - 55px);
+      left: -55px;
+    }
+
+    &__title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 32px;
+    }
+
+    &__description {
+      max-width: 500px;
+      margin: 0;
+    }
+
+    &__actions {
+      display: flex;
+      justify-content: space-between;
+
+      button:only-child {
+        margin-left: auto;
+      }
+
+      .components-button.is-link {
+        margin: 0;
+        padding-left: 0;
+        font-weight: 600;
+      }
+    }
+
+    &:last-of-type {
+      border-left: 4px solid $color-orange;
+    }
   }
 
 }
