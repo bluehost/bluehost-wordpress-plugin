@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { useSelect, useDispatch } from '@wordpress/data';
+import { useEffect } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 
 /**
@@ -24,6 +25,12 @@ export default function Onboarding() {
 	}, []);
 
 	const {toggleSetting} = useDispatch('bluehost/plugin');
+
+	useEffect(function () {
+		if (!comingSoon) {
+			document.getElementById('wp-admin-bar-mojo-home')?.remove();
+		}
+	}, [comingSoon]);
 
 	const launchHandler = () => {
 		toggleSetting('comingSoon');
