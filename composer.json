@@ -34,13 +34,13 @@
         }
     },
     "require": {
+        "ext-iconv": "*",
         "bluehost/endurance-wp-module-business-reviews": "^1.0",
-        "bluehost/endurance-wp-module-gutenframe": "^0.1",
+        "bluehost/endurance-wp-module-gutenframe": "^0.1.3",
         "bluehost/endurance-wp-module-loader": "^1.0",
         "bluehost/endurance-wp-module-spam-prevention": "^1.0",
         "bluehost/endurance-wp-module-sso": "^1.0",
         "bluehost/endurance-wp-plugin-updater": "^1.0",
-        "ext-iconv": "*",
         "wpscholar/github-archive-installer": "^1.1"
     },
     "require-dev": {

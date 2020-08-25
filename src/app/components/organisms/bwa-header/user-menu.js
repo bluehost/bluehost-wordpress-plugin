@@ -44,7 +44,7 @@ export default [
 	},
 	{
 		icon: ValidationIcon,
-		href: '#',
+		href: 'https://my.bluehost.com/cgi/token',
 		label: __( 'Validation Token', 'bluehost-wordpress-plugin' ),
 		color: 'orange',
 	},
