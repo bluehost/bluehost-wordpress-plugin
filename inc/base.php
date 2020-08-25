@@ -1,10 +1,50 @@
 <?php
 
-function mojo_setup() {
+/**
+ * Check if plugin install date exists.
+ *
+ * @return bool
+ */
+function bh_has_plugin_install_date() {
+	return ! empty( get_option( 'bh_plugin_install_date', '' ) );
+}
+
+/**
+ * Get the plugin install date.
+ *
+ * @return string
+ */
+function bh_get_plugin_install_date() {
+	return (string) get_option( 'bh_plugin_install_date', gmdate( 'U' ) );
+}
+
+/**
+ * Set the plugin install date.
+ *
+ * @param string $value Date in Unix timestamp format.
+ */
+function bh_set_plugin_install_date( $value ) {
+	update_option( 'bh_plugin_install_date', $value, true );
+}
+
+/**
+ * Get the number of days since the plugin was installed.
+ *
+ * @return int
+ */
+function bh_get_days_since_plugin_install_date() {
+	return absint( ( gmdate( 'U' ) - bh_get_plugin_install_date() ) / DAY_IN_SECONDS );
+}
+
+/**
+ * Basic setup
+ */
+function bh_setup() {
 	if ( ( '' === get_option( 'mm_master_aff' ) || false === get_option( 'mm_master_aff' ) ) && defined( 'MMAFF' ) ) {
 		update_option( 'mm_master_aff', MMAFF );
 	}
-	if ( ! get_option( 'mm_install_date' ) ) {
+	$install_date = get_option( 'mm_install_date' );
+	if ( empty( $install_date ) ) {
 		update_option( 'mm_install_date', date( 'M d, Y' ) );
 		$event                            = array(
 			't'    => 'event',
@@ -17,10 +57,30 @@ function mojo_setup() {
 		$events['hourly'][ $event['ea'] ] = $event;
 		update_option( 'mm_cron', $events );
 	}
+	if ( ! bh_has_plugin_install_date() ) {
+		if ( ! empty( $install_date ) ) {
+			try {
+				$date = DateTime::createFromFormat( 'M d, Y', $install_date );
+				bh_set_plugin_install_date( $date->format( 'U' ) );
+			} catch ( Exception $e ) {
+				bh_set_plugin_install_date( gmdate( 'U' ) );
+			}
+		} else {
+			bh_set_plugin_install_date( gmdate( 'U' ) );
+		}
+	}
 }
 
-add_action( 'admin_init', 'mojo_setup' );
+add_action( 'admin_init', 'bh_setup' );
 
+/**
+ * Makes a call to the Mojo API.
+ *
+ * @param array $args
+ * @param array $query
+ *
+ * @return array|WP_Error
+ */
 function mojo_api( $args = array(), $query = array() ) {
 	$api_url       = 'http://api.mojomarketplace.com/api/v1/';
 	$default_args  = array(
@@ -40,26 +100,42 @@ function mojo_api( $args = array(), $query = array() ) {
 	$request_url = rtrim( $request_url, '/' );
 	$request_url = $request_url . '?' . $query;
 
-	return mojo_api_cache( $request_url );
+	return bh_api_cache( $request_url );
 }
 
-function mojo_api_cache( $api_url ) {
-	$key = md5( $api_url );
-	if ( false === ( $transient = get_transient( 'mm_api_calls' ) ) || ! isset( $transient[ $key ] ) ) {
-		$transient[ $key ] = wp_remote_get( $api_url, array( 'timeout' => 15 ) );
-		if ( ! is_wp_error( $transient[ $key ] ) ) {
-			set_transient( 'mm_api_calls', $transient, DAY_IN_SECONDS );
+/**
+ * Makes a GET request to an API and caches the results.
+ *
+ * @param string $api_url
+ *
+ * @return array|WP_Error
+ */
+function bh_api_cache( $api_url ) {
+	$hash      = md5( $api_url );
+	$transient = get_transient( 'bh_api_calls' );
+	if ( false === $transient || ! isset( $transient[ $hash ] ) ) {
+		$transient[ $hash ] = wp_remote_get( $api_url, array( 'timeout' => 15 ) );
+		if ( ! is_wp_error( $transient[ $hash ] ) ) {
+			set_transient( 'bh_api_calls', $transient, DAY_IN_SECONDS );
 		}
 	}
 
-	return $transient[ $key ];
+	return $transient[ $hash ];
 }
 
+/**
+ * Build a tracked link
+ *
+ * @param string $url
+ * @param array  $args
+ *
+ * @return string
+ */
 function mojo_build_link( $url, $args = array() ) {
 	$defaults = array(
 		'utm_source'   => 'mojo_wp_plugin', // this should always be mojo_wp_plugin
 		'utm_campaign' => 'mojo_wp_plugin',
-		'utm_medium'   => 'plugin_admin', // (plugin_admin, plugin_widget, plugin_shortcode)
+		'utm_medium'   => 'plugin_admin', // plugin_admin, plugin_widget, or plugin_shortcode
 		'utm_content'  => '', // specific location
 		'r'            => get_option( 'mm_master_aff' ),
 	);
@@ -82,14 +158,17 @@ function mojo_build_link( $url, $args = array() ) {
 	return esc_url( $url );
 }
 
-function mojo_clear_api_calls() {
+/**
+ * Clear cached API responses.
+ */
+function bh_clear_api_calls() {
 	if ( is_admin() ) {
-		delete_transient( 'mojo_api_calls' );
+		delete_transient( 'bh_api_calls' );
 	}
 }
 
-add_action( 'wp_login', 'mojo_clear_api_calls' );
-add_action( 'pre_current_active_plugins', 'mojo_clear_api_calls' );
+add_action( 'wp_login', 'bh_clear_api_calls' );
+add_action( 'pre_current_active_plugins', 'bh_clear_api_calls' );
 
 function mojo_cron() {
 	if ( ! wp_next_scheduled( 'mojo_cron_monthly' ) ) {

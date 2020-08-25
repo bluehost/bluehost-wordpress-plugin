@@ -32,7 +32,7 @@ class MojoItemsController extends \WP_REST_Controller {
 	public function query_mojo_items( $params, \WP_REST_Request $request ) {
 		$params       = wp_parse_args( $request->get_params(), $params );
 		$api_url      = add_query_arg( $params, 'https://api.mojomarketplace.com/api/v2/items' );
-		$api_response = mojo_api_cache( $api_url );
+		$api_response = bh_api_cache( $api_url );
 
 		return $this->get_response( $api_response );
 	}
@@ -65,7 +65,7 @@ class MojoItemsController extends \WP_REST_Controller {
 		}
 
 		$api_url      = add_query_arg( $params, 'https://api.mojomarketplace.com/api/v2/search' );
-		$api_response = mojo_api_cache( $api_url );
+		$api_response = bh_api_cache( $api_url );
 
 		return $this->get_response( $api_response );
 	}

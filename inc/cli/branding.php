@@ -154,7 +154,7 @@ class BH_WP_CLI_Branding extends BH_WP_CLI_Command {
 	 */
 	protected function get_brands() {
 		$valid_brands = array();
-		$brands       = mojo_api_cache( static::$api_branding_file );
+		$brands       = bh_api_cache( static::$api_branding_file );
 		if ( ! is_wp_error( $brands ) && $brands = json_decode( $brands['body'] ) ) {
 			$brands = (array) $brands;
 			while ( false !== ( $brand = array_search( 'default', $brands ) ) ) {
