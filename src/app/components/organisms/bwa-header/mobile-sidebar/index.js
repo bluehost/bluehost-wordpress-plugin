@@ -53,7 +53,7 @@ const UserMenu = () => (
 	<ul className="user">
 		{ userMenuItems.map( ( item ) => (
 			<li className={ [ 'tab' ] } key={ item.href }>
-				<a href={ item.href } activeClassName="is-active">
+				<a href={ item.href } className="is-active">
 					<span className={ [ 'menu-item-icon is-svg-' + item.color ] }><item.icon /></span>
 					{ item.label }
 				</a>
