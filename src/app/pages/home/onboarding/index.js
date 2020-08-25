@@ -19,6 +19,10 @@ export default function Onboarding() {
 		return select('bluehost/plugin').getAdminUrl();
 	}, []);
 
+	const comingSoon = useSelect((select) => {
+		return select('bluehost/plugin').getSetting('comingSoon');
+	}, []);
+
 	const {toggleSetting} = useDispatch('bluehost/plugin');
 
 	const launchHandler = () => {
@@ -82,34 +86,55 @@ export default function Onboarding() {
 						</div>
 					</div>
 
-					<div className="bluehost-onboarding-step">
-						<div className="bluehost-onboarding-step__image">
-							<img src={ rocket } alt="" />
-						</div>
-						<div className="bluehost-onboarding-step__title">
-							{ __('Get ready to launch', 'bluehost-wordpress-plugin') }
-						</div>
-						<p className="bluehost-onboarding-step__description">
-							{ __('Your site has a \"coming soon\" message, which lets people know you\'re working on it. ', 'bluehost-wordpress-plugin') }
-							<span
-								dangerouslySetInnerHTML={
-									{
-										__html: sprintf(
-											__('Check out our %swebsite pre-publishing%s checklist to help get ready for launch.', 'bluehost-wordpress-plugin'),
-											'<a href="https://www.bluehost.com/help/article/website-publish-checklist">',
-											'</a>'
-										)
-									}
-								}
-							/>
+					{
+						comingSoon ? (
+							<div className="bluehost-onboarding-step --launch">
+								<div className="bluehost-onboarding-step__image">
+									<img src={ rocket } alt="" />
+								</div>
+								<div className="bluehost-onboarding-step__title">
+									{ __('Get ready to launch', 'bluehost-wordpress-plugin') }
+								</div>
+								<p className="bluehost-onboarding-step__description">
+									{ __('Your site has a \"coming soon\" message, which lets people know you\'re working on it. ', 'bluehost-wordpress-plugin') }
+									<span
+										dangerouslySetInnerHTML={
+											{
+												__html: sprintf(
+													__('Check out our %swebsite pre-publishing%s checklist to help get ready for launch.', 'bluehost-wordpress-plugin'),
+													'<a href="https://www.bluehost.com/help/article/website-publish-checklist">',
+													'</a>'
+												)
+											}
+										}
+									/>
 
-						</p>
-						<div className="bluehost-onboarding-step__actions">
-							<Button onClick={ launchHandler } isPrimary>
-								{ __('Launch your site', 'bluehost-wordpress-plugin') }
-							</Button>
-						</div>
-					</div>
+								</p>
+								<div className="bluehost-onboarding-step__actions">
+									<Button onClick={ launchHandler } isPrimary>
+										{ __('Launch your site', 'bluehost-wordpress-plugin') }
+									</Button>
+								</div>
+							</div>
+						) : (
+							<div className="bluehost-onboarding-step --launched">
+								<div className="bluehost-onboarding-step__image">
+									<img src={ rocket } alt="" />
+								</div>
+								<div className="bluehost-onboarding-step__title">
+									{ __('Awesome! Your site is live.', 'bluehost-wordpress-plugin') }
+								</div>
+								<p className="bluehost-onboarding-step__description">
+									{ __('We removed the "coming soon" banner. Your website is now available for public visitors. This can be always be changed on the Settings tab above.', 'bluehost-wordpress-plugin') }
+								</p>
+								<div className="bluehost-onboarding-step__actions">
+									<Button onClick={ launchHandler } isSecondary>
+										{ __('Restore Coming Soon', 'bluehost-wordpress-plugin') }
+									</Button>
+								</div>
+							</div>
+						)
+					}
 
 				</div>
 
