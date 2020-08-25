@@ -64,7 +64,7 @@
   &:after {
     right: -20px;
   }
-} 
+}
 
 @media (min-width:$menu-breakpoint) {
   .bluehost-header {
@@ -96,8 +96,11 @@
     top: 100px;
     text-align: left;
     background-color: #fff;
-    box-shadow: 0 7px 14px 0 rgba(60, 66, 87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
     z-index: 9999;
+}
+
+.components-popover__content {
+  box-shadow: 0 7px 14px 0 rgba(60, 66, 87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
 }
 
 #bluehost-nav-popup-inner {
