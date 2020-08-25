@@ -12,17 +12,18 @@ import { forwardRef } from '@wordpress/element';
  */
 import './style.scss';
 
-const BWAButton = forwardRef( ( { className = '', ...props }, ref = null ) => {
+const BWAButton = forwardRef((props, ref) => {
+	const {className = ''} = props;
 	return (
 		<Button
 			{ ...props }
-			className={ classNames( {
+			className={ classNames({
 				bluehost: true,
-				[ className ]: className.length,
-			} ) }
+				[className]: className.length,
+			}) }
 			ref={ ref }
 		/>
 	);
-} );
+});
 
 export default BWAButton;
