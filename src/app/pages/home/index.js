@@ -34,7 +34,7 @@ const Home = () => {
 		return ! select('bluehost/plugin').getSetting('comingSoon');
 	}, []);
 
-	const showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30; // TODO: Change conditional to && after testing
+	const showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
 
 	return (
 		<BWABaseTemplate className="page-home">

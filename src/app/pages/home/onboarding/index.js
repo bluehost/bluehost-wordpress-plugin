@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { useSelect } from '@wordpress/data';
+import { useSelect, useDispatch } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
 
 /**
@@ -19,9 +19,10 @@ export default function Onboarding() {
 		return select('bluehost/plugin').getAdminUrl();
 	}, []);
 
+	const {toggleSetting} = useDispatch('bluehost/plugin');
+
 	const launchHandler = () => {
-		console.log('launch');
-		// TODO: See src/app/pages/home/coming-soon-notice/index.js
+		toggleSetting('comingSoon');
 	}
 
 	return (
