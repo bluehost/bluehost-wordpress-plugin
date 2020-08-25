@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0edf2ce49d0917ae1c4c8f91ea1d9195",
+    "content-hash": "571c4272e7e18cd5bdd96b51618a1c03",
     "packages": [
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -44,16 +44,16 @@
         },
         {
             "name": "bluehost/endurance-wp-module-gutenframe",
-            "version": "0.1.2",
+            "version": "0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehost/endurance-wp-module-gutenframe.git",
-                "reference": "5affb465c83dcb8b8c77203e257c852d3d5aa8a5"
+                "reference": "6e3041b1abcb725de78f6cdc4c9ec6e09c9fadb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-gutenframe/zipball/5affb465c83dcb8b8c77203e257c852d3d5aa8a5",
-                "reference": "5affb465c83dcb8b8c77203e257c852d3d5aa8a5",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-gutenframe/zipball/6e3041b1abcb725de78f6cdc4c9ec6e09c9fadb9",
+                "reference": "6e3041b1abcb725de78f6cdc4c9ec6e09c9fadb9",
                 "shasum": ""
             },
             "require-dev": {
@@ -84,10 +84,10 @@
             ],
             "description": "A solution for forcing the Block Editor fullscreen and preparing it for <iframe>-ing.",
             "support": {
-                "source": "https://github.com/bluehost/endurance-wp-module-gutenframe/tree/0.1.2",
+                "source": "https://github.com/bluehost/endurance-wp-module-gutenframe/tree/0.1.3",
                 "issues": "https://github.com/bluehost/endurance-wp-module-gutenframe/issues"
             },
-            "time": "2019-08-06T17:50:12+00:00"
+            "time": "2020-08-25T18:36:43+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-loader",
@@ -429,16 +429,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.2.7",
+            "version": "1.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "95c63ab2117a72f48f5a55da9740a3273d45b7fd"
+                "reference": "8a7ecad675253e4654ea05505233285377405215"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/95c63ab2117a72f48f5a55da9740a3273d45b7fd",
-                "reference": "95c63ab2117a72f48f5a55da9740a3273d45b7fd",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/8a7ecad675253e4654ea05505233285377405215",
+                "reference": "8a7ecad675253e4654ea05505233285377405215",
                 "shasum": ""
             },
             "require": {
@@ -487,11 +487,15 @@
                     "type": "custom"
                 },
                 {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/composer/composer",
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-08T08:27:21+00:00"
+            "time": "2020-08-23T12:54:47+00:00"
         },
         {
             "name": "composer/composer",
@@ -1469,16 +1473,16 @@
         },
         {
             "name": "seld/jsonlint",
-            "version": "1.8.1",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/jsonlint.git",
-                "reference": "3d5eb71705adfa34bd34b993400622932b2f62fd"
+                "reference": "590cfec960b77fd55e39b7d9246659e95dd6d337"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/3d5eb71705adfa34bd34b993400622932b2f62fd",
-                "reference": "3d5eb71705adfa34bd34b993400622932b2f62fd",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/590cfec960b77fd55e39b7d9246659e95dd6d337",
+                "reference": "590cfec960b77fd55e39b7d9246659e95dd6d337",
                 "shasum": ""
             },
             "require": {
@@ -1524,7 +1528,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-13T09:07:59+00:00"
+            "time": "2020-08-25T06:56:57+00:00"
         },
         {
             "name": "seld/phar-utils",
