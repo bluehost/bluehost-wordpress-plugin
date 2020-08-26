@@ -58,16 +58,11 @@ function bh_setup() {
 		update_option( 'mm_cron', $events );
 	}
 	if ( ! bh_has_plugin_install_date() ) {
+		$date = false;
 		if ( ! empty( $install_date ) ) {
-			try {
-				$date = DateTime::createFromFormat( 'M d, Y', $install_date );
-				bh_set_plugin_install_date( $date->format( 'U' ) );
-			} catch ( Exception $e ) {
-				bh_set_plugin_install_date( gmdate( 'U' ) );
-			}
-		} else {
-			bh_set_plugin_install_date( gmdate( 'U' ) );
+			$date = DateTime::createFromFormat( 'M d, Y', $install_date );
 		}
+		bh_set_plugin_install_date( $date ? $date->format( 'U' ) : gmdate( 'U' ) );
 	}
 }
 
