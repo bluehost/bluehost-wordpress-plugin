@@ -22,17 +22,16 @@ function create {
 	wp db export $STAGING_DIR/.export-sql --add-drop-table --skip-themes --skip-plugins --tables=$PRODUCTION_TABLES || error 'Unable to export database.'
 	wp option update staging_environment production  || error 'Unable to set environment.'
 	cd $STAGING_DIR || error 'Unable to move to staging directory.'
-	echo 'wp-config.php' > .gitignore
-	echo '.gitignore' >> .gitignore
-	git init || error 'Unable to initialize git.'
 	move_files $PRODUCTION_DIR $STAGING_DIR
-	wp core download --version=$WP_VER --force || error 'Unable to install WordPress in staging directory.'
-	wp core config --dbname=$DB --dbuser=$DB_USER --dbpass=$DB_PASS --dbprefix=staging_$DB_PREFIX --skip-themes --skip-plugins || error 'Unable to configure WordPress.'
-	git config --global user.email "staging@domain.com"
-	git config --global user.name "Endurance Staging"
+	if [ -L $PRODUCTION_DIR/index.php ]
+		then
+			echo 'path='$STAGING_DIR > /nfssys/etc/wp_symink_watch/$(whoami).notify
+		else
+			wp core download --version=$WP_VER --force || error 'Unable to install WordPress in staging directory.'
+	fi
+	wp core config --dbhost=$DB_HOST --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASS --dbprefix=staging_$DB_PREFIX --skip-themes --skip-plugins || error 'Unable to configure WordPress.'
 	sed -i -e "s/$DB_PREFIX/staging_$DB_PREFIX/g" $STAGING_DIR/.export-sql || error 'Unable to update prefix.'
 	wp db import $STAGING_DIR/.export-sql --skip-themes --skip-plugins || error 'Unable to import database.'
-	save_state 'Create Staging Environment'
 	rm $STAGING_DIR/.export-sql --force
 	wp option update staging_environment staging || error 'Unable to set environment.'
 	wp search-replace $PRODUCTION_URL $STAGING_URL --skip-themes --skip-plugins || error 'Unable to update URL on staging.'
@@ -40,7 +39,6 @@ function create {
 	wp option update mm_coming_soon 'true' --path=$STAGING_DIR || error 'Unable to enable the coming soon page on staging.'
 	wp rewrite flush --path=$STAGING_DIR || error 'Unable to flush rewrite rules.'
 	rewrite_htaccess $STAGING_DIR
-	#fire email here from mojo cli to site admin
 	clear
 	echo \{\"status\" :\"success\",\"message\":\"Staging website created successfully.\",\"reload\":\"true\"\}
 }
@@ -48,7 +46,6 @@ function create {
 function clone {
 	cd $PRODUCTION_DIR || error 'Unable to move to production directory.'
 	STAGING_TABLES=$(wp db tables --all-tables-with-prefix --format=csv --path=$STAGING_DIR)
-	WP_VER=$(wp core version)
 	if [ "0" != "$USER_ID" ]
 		then
 		SESSIONS=$(wp user meta get $USER_ID session_tokens --format=json --path=$STAGING_DIR)
@@ -64,12 +61,17 @@ function clone {
 	fi
 	wp option update staging_environment staging || error 'Unable to set environment.'
 	move_files $PRODUCTION_DIR $STAGING_DIR
-	wp core download --version=$WP_VER --force || error 'Unable to install WordPress in staging directory.'
+	if [ -L $PRODUCTION_DIR/index.php ]
+		then
+			echo 'path='$STAGING_DIR > /nfssys/etc/wp_symink_watch/$(whoami).notify
+		else
+			WP_VER=$(wp core version)
+			wp core download --version=$WP_VER --force || error 'Unable to install WordPress in staging directory.'
+	fi
 	wp search-replace $PRODUCTION_URL $STAGING_URL --skip-themes --skip-plugins || error 'Unable to update URL on staging.'
 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR || error 'Unable to import global config on staging.'
 	wp option update mm_coming_soon 'true' --path=$STAGING_DIR || error 'Unable to enable the coming soon page on staging.'
 	wp rewrite flush --path=$STAGING_DIR || error 'Unable to flush rewrite rules.'
-	save_state 'Clone From Production'
 	rm $STAGING_DIR/.export-sql --force
 	rewrite_htaccess $STAGING_DIR
 	clear
@@ -78,17 +80,20 @@ function clone {
 
 function deploy_files {
 	cd $STAGING_DIR || error 'Unable to move to staging directory.'
-	WP_VER=$(wp core version)
-	save_state 'Save then Deploy Files'
-	wp core download --version=$WP_VER --force --path=$PRODUCTION_DIR || error 'Unable to move WordPress files.'
+	if [ -L $PRODUCTION_DIR/index.php ]
+		then
+			echo 'path='$PRODUCTION_DIR > /nfssys/etc/wp_symink_watch/$(whoami).notify
+		else
+			WP_VER=$(wp core version)
+			wp core download --version=$WP_VER --force --path=$PRODUCTION_DIR || error 'Unable to move WordPress files.'
+	fi
 	move_files $STAGING_DIR $PRODUCTION_DIR
 	clear
-	echo \{\"status\" :\"success\",\"message\":\"Files deployed successfully.\",\"callback\":\"mm_load_revisions\"\}
+	echo \{\"status\" :\"success\",\"message\":\"Files deployed successfully.\"}
 }
 
 function deploy_db {
 	cd $STAGING_DIR || error 'Unable to move staging directory.'
-	save_state 'Save then Deploy Database'
 	wp db query "DROP TABLE $PRODUCTION_TABLES;" --path=$STAGING_DIR || error 'Unable to drop staging tables.'
 	wp db export $STAGING_DIR/.export-sql --add-drop-table || error 'Unable to export database.'
 	sed -i -e "s/staging_$DB_PREFIX/$DB_PREFIX/g" $STAGING_DIR/.export-sql || error 'Unable to update prefix.'
@@ -100,14 +105,14 @@ function deploy_db {
 	wp option delete mm_coming_soon --path=$PRODUCTION_DIR || error 'Unable to disable coming soon page.'
 	rewrite_htaccess $PRODUCTION_DIR
 	clear
-	echo \{\"status\" :\"success\",\"message\":\"Database deployed successfully.\",\"callback\":\"mm_load_revisions\"\}
+	echo \{\"status\" :\"success\",\"message\":\"Database deployed successfully.\"}
 }
 
 function deploy_files_db {
 	deploy_files
 	deploy_db
 	clear
-	echo \{\"status\" :\"success\",\"message\":\"Files and Database deployed successfully.\",\"callback\":\"mm_load_revisions\"\}
+	echo \{\"status\" :\"success\",\"message\":\"Files and Database deployed successfully.\"}
 }
 
 function deploy_files_dbmerge {
@@ -124,6 +129,7 @@ function destroy {
 		wp option delete staging_environment --path=$PRODUCTION_DIR || error 'Unable to reset staging environment in production.'
 		wp option delete staging_config --path=$PRODUCTION_DIR || error 'Unable to remove global staging config.'
 		rm -r $STAGING_DIR --force || error 'Unable to remove staging files.'
+		mkdir -p $STAGING_DIR
 		echo "<script type='text/javascript'>window.location = '$PRODUCTION_URL';</script>" > $STAGING_DIR/index.php
 		clear
 		echo \{\"status\":\"success\",\"message\":\"Staging website destroyed.\",\"reload\":\"true\"\}
@@ -150,66 +156,13 @@ function rewrite_htaccess {
 	wp eval 'global $wp_rewrite; echo $wp_rewrite->mod_rewrite_rules();' --path=$LOCATION > $LOCATION/.htaccess || error 'Unable to create htaccess'
 }
 
-function save_state {
-	cd $STAGING_DIR || error 'Unable to move to staging directory.'
-	STAGING_TABLES=$(wp db tables --all-tables-with-prefix --format=csv --path=$STAGING_DIR)
-	wp db export $STAGING_DIR/.export-sql --add-drop-table --tables=$STAGING_TABLES --path=$STAGING_DIR || error 'Unable to export database to save point.'
-	git add . || error 'Unable to add files to git.'
-	if [ -z "$1" ]
-		then
-			MESSAGE='Staging Save State'
-		else
-			MESSAGE="$1"
-	fi
-	git commit -m "$MESSAGE"
-	rm $STAGING_DIR/.export-sql --force
-	clear
-	echo \{\"status\" :\"success\",\"message\":\"Restoration point added.\",\"callback\":\"mm_load_revisions\"\}
-}
-
-function restore_state {
-	cd $STAGING_DIR || error 'Unable to move to staging directory.'
-	if [ -z "$1" ]
-		then
-			error 'No revision provided.'
-		else
-			EXIST=$(git cat-file -t $1)
-			if [ "$EXIST" == "commit" ]
-				then
-					if [ "0" != "$USER_ID" ]
-						then
-						SESSIONS=$(wp user meta get $USER_ID session_tokens --format=json)
-					fi
-					git checkout "$1" --force || error 'Unable to restore files from revision.'
-					STAGING_TABLES=$(wp db tables --all-tables-with-prefix --format=csv --path=$STAGING_DIR)
-					wp db query "DROP TABLE $STAGING_TABLES;" --path=$STAGING_DIR || error 'Unable to drop staging tables.'
-					wp db import $STAGING_DIR/.export-sql --path=$STAGING_DIR || error 'Unable to import database from save point.'
-					rm $STAGING_DIR/.export-sql --force
-					if [ "0" != "$USER_ID" ]
-						then
-						wp user meta update $USER_ID session_tokens "$SESSIONS" --format=json --path=$STAGING_DIR
-					fi
-					echo \{\"status\" :\"success\",\"message\":\"State restored successfully.\",\"callback\":\"mm_load_revisions\"\}
-				else
-					error 'Unable to locate revision.'
-			fi
-	fi
-}
-
-function revisions {
-	clear
-	cd $STAGING_DIR || error 'Unable to move to staging directory.'
-	LOG=$(git log --pretty=format:'%h,%ad,%s;' -10)
-	echo $LOG
-}
-
 function sso_staging {
 	if [ -z $1 ]
 		then
 		error 'No user provided.'
 	fi
 	LINK=$(wp mojo sso --url-only --id=$1 --path=$STAGING_DIR)
-	echo \{\"status\":\"success\",\"load_page\":\"$LINK\&redirect=admin.php\?page=bluehost#/tools/staging\"\}
+	echo \{\"status\":\"success\",\"load_page\":\"$LINK\&redirect=admin.php\?page=mojo-staging\"\}
 }
 
 function sso_production {
@@ -218,7 +171,7 @@ function sso_production {
 		error 'No user provided.'
 	fi
 	LINK=$(wp mojo sso --url-only --id=$1 --path=$PRODUCTION_DIR)
-	echo \{\"status\":\"success\",\"load_page\":\"$LINK\&redirect=admin.php\?page=bluehost#/tools/staging\"\}
+	echo \{\"status\":\"success\",\"load_page\":\"$LINK\&redirect=admin.php\?page=mojo-staging\"\}
 }
 
 function error {
@@ -240,13 +193,7 @@ function compatibility_check {
 		error 'WPCLI is not available.'
 	fi
 
-	if [[ -z $(type git) ]]
-		then
-		error 'Git is not available.'
-	fi
-
 	WPCLI_VER=$(sed 's/[^0-9.]*\([0-9.]*\).*/\1/' <<< $(wp --version) )
-	GIT_VER=$(sed 's/[^0-9.]*\([0-9.]*\).*/\1/' <<< $(git --version) )
 	PHP_VER=$(sed 's/[^0-9.]*\([0-9.]*\).*/\1/' <<< $(php --version) )
 
 	if [ "$( printf "0.24.0\n$WPCLI_VER" | sort -V | head -n1 )" == "$WPCLI_VER" ] && [ "$WPCLI_VER" != "0.24.0" ]
@@ -271,7 +218,8 @@ STAGING_DIR=$4
 PRODUCTION_URL=$5
 STAGING_URL=$6
 USER_ID=$7
-DB=$(wp eval 'echo DB_NAME;' --path=$PRODUCTION_DIR)
+DB_HOST=$(wp eval 'echo DB_HOST;' --path=$PRODUCTION_DIR)
+DB_NAME=$(wp eval 'echo DB_NAME;' --path=$PRODUCTION_DIR)
 DB_USER=$(wp eval 'echo DB_USER;' --path=$PRODUCTION_DIR)
 DB_PASS=$(wp eval 'echo DB_PASSWORD;' --path=$PRODUCTION_DIR)
 DB_PREFIX=$(wp eval 'global $wpdb;echo $wpdb->prefix;' --path=$PRODUCTION_DIR)
