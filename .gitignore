@@ -1,9 +1,6 @@
 # Composer
 /vendor
 
-# Cypress
-cypress.env.json
-
 #node_modules
 /node_modules
 
@@ -12,6 +9,7 @@ cypress.env.json
 .idea
 
 # Cypress
+cypress.env.json
 /tests/cypress/screenshots
 /tests/cypress/videos
 
