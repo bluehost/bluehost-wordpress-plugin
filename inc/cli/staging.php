@@ -88,17 +88,6 @@ class BH_WP_CLI_Staging extends BH_WP_CLI_Command {
 				$this->render( Staging::getInstance()->deployToProduction( 'all' ) );
 				break;
 
-			case 'save_state':
-				$this->render( Staging::getInstance()->saveState() );
-				break;
-
-			case 'restore_state':
-				if ( ! isset( $assoc_args['revision'] ) ) {
-					$this->error( 'Revision not provided.' );
-				}
-				$this->render( Staging::getInstance()->restoreState( esc_attr( $assoc_args['revision'] ) ) );
-				break;
-
 			default:
 				$this->error( 'Invalid action' );
 		}

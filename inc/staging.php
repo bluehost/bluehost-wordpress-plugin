@@ -276,26 +276,6 @@ class Staging {
 	}
 
 	/**
-	 * Save the current state of staging.
-	 *
-	 * @return array|\WP_Error
-	 */
-	public function saveState() {
-		return $this->runCommand( 'save_state' );
-	}
-
-	/**
-	 * Restore a previous state of staging.
-	 *
-	 * @param string $revision Revision ID
-	 *
-	 * @return array|\WP_Error
-	 */
-	public function restoreState( $revision ) {
-		return $this->runCommand( 'restore_state', [ $revision ] );
-	}
-
-	/**
 	 * Execute a staging CLI command.
 	 *
 	 * @param string     $command CLI command to be run.
@@ -313,9 +293,6 @@ class Staging {
 			'deploy_files'    => true,
 			'deploy_files_db' => true,
 			'destroy'         => true,
-			'restore_state'   => true,
-			'revisions'       => true,
-			'save_state'      => true,
 			'sso_production'  => true,
 			'sso_staging'     => true,
 		];
@@ -380,9 +357,18 @@ class Staging {
 
 		$script = BLUEHOST_PLUGIN_DIR . 'lib/.staging';
 
+		$disabled_functions = explode( ',', ini_get( 'disable_functions' ) );
+		if ( is_array( $disabled_functions ) && in_array( 'exec', array_map( 'trim', $disabled_functions ) ) ) {
+			return new \WP_Error( 'error_response', __( 'Unable to execute script (disabled_function).', 'bluehost-wordpress-plugin' ) );
+		}
+
 		// Verify staging script file permissions
 		if ( 0755 != (int) substr( sprintf( '%o', fileperms( $script ) ), - 4 ) ) { // phpcs:ignore
-			chmod( $script, 0755 );
+			if ( is_writable( $script ) ) {
+				chmod( $script, 0755 );
+			} else {
+				return new \WP_Error( 'error_response', __( 'Unable to execute script (permission error).', 'bluehost-wordpress-plugin' ) );
+			}
 		}
 
 		putenv( 'PATH=' . getenv( 'PATH' ) . PATH_SEPARATOR . '/usr/local/bin' ); // phpcs:ignore
