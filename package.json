@@ -47,6 +47,7 @@
         "@storybook/react": "^5.2.8",
         "@storybook/theming": "^5.2.8",
         "@svgr/webpack": "^4.3.3",
+        "@testing-library/cypress": "^6.0.1",
         "@wordpress/babel-preset-default": "^4.17.0",
         "@wordpress/base-styles": "^1.0.0",
         "@wordpress/env": "^1.6.0",
