@@ -31,6 +31,7 @@ const HeaderLogo = () => (
 		>
 			<BWAHeading level="h1" size={ 0 }>Bluehost</BWAHeading>
 			<BluehostLogo />
+			<BWAHeading level="h1" size={ 0 }>{ __('Bluehost', 'bluehost-wordpress-plugin') }</BWAHeading>
 		</a>
 	</div>
 );
