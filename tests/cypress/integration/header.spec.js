@@ -1,7 +1,5 @@
 // <reference types="Cypress" />
 
-import 'cypress-axe';
-
 describe('App Header', function () {
 
     before(() => {
