@@ -2,18 +2,6 @@
 
 import 'cypress-axe';
 
-import {
-    header,
-    helpIcon,
-    helpLink,
-    logo,
-    logoLink,
-    nav,
-    userMenu,
-    userMenuIcon,
-    userMenuToggle
-} from '../selectors/header';
-
 describe('App Header', function () {
 
     before(() => {
