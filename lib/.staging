@@ -161,8 +161,8 @@ function sso_staging {
 		then
 		error 'No user provided.'
 	fi
-	LINK=$(wp mojo sso --url-only --id=$1 --path=$STAGING_DIR)
-	echo \{\"status\":\"success\",\"load_page\":\"$LINK\&redirect=admin.php\?page=mojo-staging\"\}
+	LINK=$(wp bluehost sso --url-only --id=$1 --path=$STAGING_DIR)
+	echo \{\"status\":\"success\",\"load_page\":\"$LINK\?redirect=admin.php\&page=bluehost#\/tools\/staging\"\}
 }
 
 function sso_production {
@@ -170,8 +170,8 @@ function sso_production {
 		then
 		error 'No user provided.'
 	fi
-	LINK=$(wp mojo sso --url-only --id=$1 --path=$PRODUCTION_DIR)
-	echo \{\"status\":\"success\",\"load_page\":\"$LINK\&redirect=admin.php\?page=mojo-staging\"\}
+	LINK=$(wp bluehost sso --url-only --id=$1 --path=$PRODUCTION_DIR)
+	echo \{\"status\":\"success\",\"load_page\":\"$LINK\?redirect=admin.php\&page=bluehost#\/tools\/staging\"\}
 }
 
 function error {
