@@ -5,18 +5,12 @@ describe('Services Page - Loading State', function () {
     beforeEach(() => {
         cy.server();
         cy.route({
-            url: '/wp-json/mojo/v1/services?category=&count=1000&_locale=user',
+            url: '**/mojo/v1/services?category=&count=1000*',
             method: 'GET',
             response: 'fx:services',
             delay: 2000,
         }).as('services');
-        cy.visit({
-            url: '/wp-admin/admin.php?page=bluehost#/marketplace/services',
-            onBeforeLoad(win) {
-                // See https://github.com/cypress-io/cypress-example-recipes/tree/master/examples/stubbing-spying__window-fetch#readme
-                delete win.fetch;
-            }
-        });
+        cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/services');
     });
 
     it('Test Loading State', () => {

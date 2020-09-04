@@ -30,6 +30,7 @@ describe('Settings Page', function () {
 	});
 
 	it('Is Accessible', () => {
+		cy.wait(1000);
 		cy.checkA11y('.router-section');
 	});
 
@@ -39,13 +40,21 @@ describe('Settings Page', function () {
 		});
 	});
 
-	it('Automatic Updates: WordPress Core', () => {
-		cy.get('.settings-section').first().within(() => {
-			cy.get('.settings-control').first().within(() => {
-				cy.contains('.label', 'WordPress Core');
-				fn.validateCheckbox();
-			});
-		});
+	it.only('Automatic Updates: WordPress Core', () => {
+		cy.server();
+		cy.route('POST', '**/bluehost/v1/settings*').as('update');
+		cy.findByLabelText('WordPress Core').as('toggle');
+		cy.get('@toggle').check();
+		cy.get('@toggle').should('have.prop', 'checked');
+		cy.get('@toggle').uncheck();
+		cy.wait('@update');
+		cy.get('@toggle').should('not.have.prop', 'checked')
+		// cy.get('.settings-section').first().within(() => {
+		// 	cy.get('.settings-control').first().within(() => {
+		// 		cy.contains('.label', 'WordPress Core');
+		// 		fn.validateCheckbox();
+		// 	});
+		// });
 	});
 
 	it('Automatic Updates: Themes', () => {

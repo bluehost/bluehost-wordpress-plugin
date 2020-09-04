@@ -5,18 +5,12 @@ describe('Themes Page - Loading State', function () {
     beforeEach(() => {
         cy.server();
         cy.route({
-            url: '/wp-json/mojo/v1/themes?count=1000&_locale=user',
+            url: '**/mojo/v1/themes?count=1000*',
             method: 'GET',
             response: 'fx:themes',
             delay: 2000,
         }).as('themes');
-        cy.visit({
-            url: '/wp-admin/admin.php?page=bluehost#/marketplace/themes',
-            onBeforeLoad(win) {
-                // See https://github.com/cypress-io/cypress-example-recipes/tree/master/examples/stubbing-spying__window-fetch#readme
-                delete win.fetch;
-            }
-        });
+        cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/themes');
     });
 
     it('Test Loading State', () => {

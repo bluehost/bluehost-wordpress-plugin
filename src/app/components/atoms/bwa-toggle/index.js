@@ -19,7 +19,7 @@ function BWAToggle({checked, label, onChange}) {
 				name="onoffswitch"
 				onChange={ onChange }
 				type="checkbox"
-				value="value"
+				value="1"
 			/>
 			<label className="onoffswitch__label" htmlFor={ id }>
 				<span className="onoffswitch__inner" />

@@ -17,6 +17,7 @@ import 'cypress-axe';
 import './commands';
 
 Cypress.on('window:before:load', (win) => {
+	// See https://github.com/cypress-io/cypress-example-recipes/tree/master/examples/stubbing-spying__window-fetch#readme
 	delete win.fetch
 });
 

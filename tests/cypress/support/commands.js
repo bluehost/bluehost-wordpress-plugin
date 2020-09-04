@@ -45,3 +45,13 @@ Cypress.Commands.add('login', (username, password) => {
 			}
 		});
 });
+
+Cypress.Commands.add('validateProductCardOrder', (title, index) => {
+	cy
+		.findByRole('heading', {name: new RegExp(title, 'i'), level: 3})
+		.closest('.product-card')
+		.invoke('index')
+		.then(i => {
+			expect(i).to.equal(index);
+		});
+});

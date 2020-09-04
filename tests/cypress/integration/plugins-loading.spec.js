@@ -5,18 +5,12 @@ describe('Plugins Page - Loading State', function () {
     beforeEach(() => {
         cy.server();
         cy.route({
-            url: '/wp-json/mojo/v1/plugins?count=1000&_locale=user',
+            url: '**/mojo/v1/plugins?count=1000*',
             method: 'GET',
             response: 'fx:plugins',
             delay: 2000,
         }).as('plugins');
-        cy.visit({
-            url: '/wp-admin/admin.php?page=bluehost#/marketplace/plugins',
-            onBeforeLoad(win) {
-                // See https://github.com/cypress-io/cypress-example-recipes/tree/master/examples/stubbing-spying__window-fetch#readme
-                delete win.fetch;
-            }
-        });
+        cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins');
     });
 
     it('Test Loading State', () => {
