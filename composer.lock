@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1edaab8f6c7866a9cb64f5ee8353771",
+    "content-hash": "571c4272e7e18cd5bdd96b51618a1c03",
     "packages": [
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -249,50 +249,6 @@
                 "issues": "https://github.com/bluehost/endurance-wp-plugin-updater/issues"
             },
             "time": "2020-08-06T18:54:13+00:00"
-        },
-        {
-            "name": "endurance/wp-module-data",
-            "version": "0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bluehost/endurance-wp-module-data.git",
-                "reference": "38e8fc3f6fb26f2940f2108be122ebc661cd38e4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-data/zipball/38e8fc3f6fb26f2940f2108be122ebc661cd38e4",
-                "reference": "38e8fc3f6fb26f2940f2108be122ebc661cd38e4",
-                "shasum": ""
-            },
-            "require-dev": {
-                "bluehost/wp-php-standards": "^1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Endurance\\WP\\Module\\Data\\": "src"
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "scripts": {
-                "fix": [
-                    "vendor/bin/phpcbf . --standard=Bluehost"
-                ],
-                "lint": [
-                    "vendor/bin/phpcs . --standard=Bluehost -s"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "description": "Endurance Data Module",
-            "support": {
-                "source": "https://github.com/bluehost/endurance-wp-module-data/tree/0.1",
-                "issues": "https://github.com/bluehost/endurance-wp-module-data/issues"
-            },
-            "time": "2020-08-31T02:51:37+00:00"
         },
         {
             "name": "pimple/pimple",

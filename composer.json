@@ -41,7 +41,6 @@
         "bluehost/endurance-wp-module-spam-prevention": "^1.0",
         "bluehost/endurance-wp-module-sso": "^1.0",
         "bluehost/endurance-wp-plugin-updater": "^1.0",
-        "endurance/wp-module-data": "0.1",
         "wpscholar/github-archive-installer": "^1.1"
     },
     "require-dev": {
