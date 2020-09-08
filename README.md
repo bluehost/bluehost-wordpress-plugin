@@ -1,3 +1,5 @@
+![Cypress Tests](https://github.com/bluehost/bluehost-wordpress-plugin/workflows/Cypress%20Tests/badge.svg)
+
 Bluehost WordPress Plugin
 ==========================
 
