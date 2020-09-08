@@ -13,7 +13,7 @@ class Bluehost_Plugin_Compatibility_Scan {
 	public $defaults = array(
 		'plugin'               => 'bluehost-wordpress-plugin',
 		'incompatible_plugins' => array(
-			'mojo-marketplace-wp-plugin',
+			'mojo-marketplace-wp-plugin/mojo-marketplace.php',
 		),
 		'min_wp'               => '5.2',
 		'min_php'              => '5.6',
@@ -142,9 +142,10 @@ class Bluehost_Plugin_Compatibility_Scan {
 				require ABSPATH . 'wp-admin/includes/plugin.php';
 			}
 
-			foreach ( $this->config['incompatible_plugins'] as $plugin_slug ) {
+			foreach ( $this->config['incompatible_plugins'] as $plugin ) {
 				// check for plugin using plugin name
-				if ( is_plugin_active( trailingslashit( $plugin_slug ) . $plugin_slug . '.php' ) ) {
+				if ( is_plugin_active( $plugin ) ) {
+					list( $plugin_slug ) = explode( '/', $plugin );
 					$this->result = 'plugin-compat-clash-' . $plugin_slug;
 				}
 			}
