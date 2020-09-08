@@ -161,7 +161,7 @@ function sso_staging {
 		then
 		error 'No user provided.'
 	fi
-	wp eval 'unlink( WPMU_PLUGIN_DIR . "/sso.php" );' --path=$STAGING_DIR
+	wp eval 'file_exists( WPMU_PLUGIN_DIR . "/sso.php" ) ? unlink( WPMU_PLUGIN_DIR . "/sso.php" ) : null;' --path=$STAGING_DIR
 	LINK=$(wp bluehost sso --url-only --id=$1 --path=$STAGING_DIR)
 	echo \{\"status\":\"success\",\"load_page\":\"$LINK\&redirect=admin.php\&page=bluehost#\/tools\/staging\"\}
 }
@@ -171,7 +171,7 @@ function sso_production {
 		then
 		error 'No user provided.'
 	fi
-	wp eval 'unlink( WPMU_PLUGIN_DIR . "/sso.php" );' --path=$PRODUCTION_DIR
+	wp eval 'file_exists( WPMU_PLUGIN_DIR . "/sso.php" ) ? unlink( WPMU_PLUGIN_DIR . "/sso.php" ) : null;' --path=$PRODUCTION_DIR
 	LINK=$(wp bluehost sso --url-only --id=$1 --path=$PRODUCTION_DIR)
 	echo \{\"status\":\"success\",\"load_page\":\"$LINK\&redirect=admin.php\&page=bluehost#\/tools\/staging\"\}
 }
