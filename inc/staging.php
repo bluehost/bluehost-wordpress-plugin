@@ -373,6 +373,8 @@ class Staging {
 
 		putenv( 'PATH=' . getenv( 'PATH' ) . PATH_SEPARATOR . '/usr/local/bin' ); // phpcs:ignore
 
+		do_action( 'bh_staging_command', $command );
+
 		$json = exec( "{$script} {$command}" ); // phpcs:ignore
 
 		// Check if we can properly decode the JSON
