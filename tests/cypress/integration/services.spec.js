@@ -3,37 +3,6 @@
 const services = require('../fixtures/services.json');
 const {_} = Cypress;
 
-const fn = {
-	decodeHtml(html) {
-		const textarea = document.createElement('textarea');
-		textarea.innerHTML = html;
-		return textarea.value;
-	},
-	getCard(index) {
-		const item = services.items[index];
-		return {
-			backgroundImageUrl: item.images.preview_url,
-			buttonText: 'View Details',
-			id: item.id,
-			linkText: 'Buy Now',
-			linkUrl: item.buy_url,
-			price: item.prices.single_domain_license,
-			title: item.name,
-		};
-	},
-	validateCard(selector, cardIndex) {
-		selector.within(() => {
-			cy.contains('.product-card__title', this.decodeHtml(this.getCard(cardIndex).title));
-		});
-	},
-	validateCards(collection = [...Array(12).keys()]) {
-		collection.forEach((item, index) => {
-			let cardIndex = typeof item === 'number' ? item : _.indexOf(services.items, _.find(services.items, {name: item}));
-			this.validateCard(cy.get('.product-card').eq(index), cardIndex);
-		})
-	}
-};
-
 describe('Services Page', function () {
 
 	before(() => {
@@ -49,26 +18,34 @@ describe('Services Page', function () {
 	});
 
 	it('Is Accessible', () => {
+		cy.wait(100);
 		cy.checkA11y('.router-section');
 	});
 
-	it('BWAProductGrid has 12 items', () => {
+	it('Product grid has 12 items', () => {
 		cy.get('.product-card').should('have.length', 12);
 	});
 
 	it('Product cards render correctly', () => {
-		cy.get('.product-card').first().should('be.visible');
-		cy.get('.product-card').first().within(() => {
-			const {backgroundImageUrl, buttonText, linkText, linkUrl, price, title} = fn.getCard(0);
+		cy.get('.product-card').as('card');
+
+		cy.get('@card')
+			.findByRole('button', {name: 'View Details'})
+			.scrollIntoView()
+			.should('be.visible');
+
+		cy.get('@card')
+			.findByRole('link', {name: 'Buy Now'})
+			.should('have.attr', 'href')
+			.and('include', 'https://www.mojomarketplace.com/cart?item_id=');
+
+		cy.get('@card').first().within(() => {
+			const {backgroundImageUrl, price, title} = getCard(0);
+			cy.root().scrollIntoView().should('be.visible');
 			cy.get('.product-card__image').should('be.visible');
 			cy.get('.product-card__image').should('have.css', 'background-image', `url("${ backgroundImageUrl }")`);
 			cy.contains('.product-card__title', title);
 			cy.contains('.product-card__price', price);
-			cy.get('.product-card__action-group').within(() => {
-				cy.contains('button', buttonText);
-				cy.contains('a', linkText);
-				cy.get('a').should('have.attr', 'href').and('include', linkUrl);
-			});
 		});
 	});
 
@@ -83,11 +60,6 @@ describe('Services Page', function () {
 	it('Search works', () => {
 		cy.get('input[type="search"]').type('WooCommerce{enter}');
 		cy.get('.product-card').should('have.length', 3);
-		fn.validateCards([
-			'WooCommerce All In One',
-			'WooCommerce Training for Beginners',
-			'Integrate WooCommerce onto WordPress Site',
-		]);
 	});
 
 	it('Search with no results works', () => {
@@ -98,7 +70,7 @@ describe('Services Page', function () {
 
 	it('Clearing search works', () => {
 		cy.get('input[type="search"]').clear().type('{enter}');
-		fn.validateCards();
+		cy.get('.product-card').should('have.length', 12);
 	});
 
 	it('Sort field exists', () => {
@@ -111,30 +83,17 @@ describe('Services Page', function () {
 
 	it('Sort by Price (High to Low)', () => {
 		cy.get('.dropdown__item').eq(1).click({force: true}); // Price (High to Low)
-		fn.validateCards([
-			'WooCommerce All In One',
-			'Blogger Starter Kit Everything You Need to Start Blogging Today',
-			'WordPress All-In-One',
-		]);
-	});
-
-	it('Sort by Price (Low to High)', () => {
-		cy.get('.dropdown__item').eq(2).click({force: true}); // Price (Low to High)
-		cy.get('.product-card__price').eq(0).should;
-		fn.validateCards([
-			'Install Your WordPress Theme',
-			'Make My WordPress Site Secure',
-			'Add Google Analytics to Your WordPress Site'
-		]);
+		cy.validateProductCardOrder('WooCommerce All In One', 0);
 	});
 
 	it('Sort by Date Added', () => {
 		cy.get('.dropdown__item').eq(3).click({force: true}); // Date Added
-		fn.validateCards([
-			'Blogger Starter Kit Everything You Need to Start Blogging Today',
-			'Install My WordPress Plugin',
-			'Integrate PayPal into my WordPress Site',
-		]);
+		cy.validateProductCardOrder('Blogger Starter Kit Everything You Need to Start Blogging Today', 0);
+	});
+
+	it('Sort by Price (Low to High)', () => {
+		cy.get('.dropdown__item').eq(2).click({force: true}); // Price (Low to High)
+		cy.validateProductCardOrder('Install Your WordPress Theme', 0);
 	});
 
 	it.skip('Filter by favorites when no favorites are set', () => {
@@ -153,16 +112,11 @@ describe('Services Page', function () {
 
 		cy.get('.dropdown__item').eq(4).click({force: true}); // Favorites
 		cy.get('.pagination').should('have.length', 0);
-		fn.validateCards([
-			'Install Your WordPress Theme',
-			'WordPress Starter',
-			'WordPress Pro',
-		]);
+		cy.validateProductCardOrder('Install Your WordPress Theme', 0);
 	});
 
-	it.skip('Sort by Popular', () => {
+	it('Sort by Popular', () => {
 		cy.get('.dropdown__item').eq(0).click({force: true}); // Popular
-		cy.wait(200);
 		cy.validateProductCardOrder('Install Your WordPress Theme', 0);
 	});
 
@@ -170,29 +124,51 @@ describe('Services Page', function () {
 		cy.get('.pagination').should('have.length', 2);
 	});
 
-	it.skip('Pagination: Numeric navigation works', () => {
-		cy.get('.pagination > .pagination__item').eq(1).find('button').click();
+	it('Pagination: Numeric navigation works', () => {
+		cy.get('.pagination').findByRole('button', {name: '2'}).click();
 		cy.validateProductCardOrder('WooCommerce All In One', 0);
 	});
 
-	it.skip('Pagination: Previous button works', () => {
-		cy.get('.pagination').first().find('[aria-label="Previous"]').click();
+	it('Pagination: Previous button works', () => {
+		cy.get('.pagination').findByLabelText('Previous').click();
 		cy.validateProductCardOrder('Install Your WordPress Theme', 0);
 	});
 
-	it.skip('Pagination: Next button works', () => {
-		cy.get('.pagination').first().find('[aria-label="Next"]').click();
+	it('Pagination: Next button works', () => {
+		cy.get('.pagination').findByLabelText('Next').click();
 		cy.validateProductCardOrder('WooCommerce All In One', 0);
 	});
 
-	it.skip('Pagination: First button works', () => {
-		cy.get('.pagination').first().find('[aria-label="First"]').click();
+	it('Pagination: First button works', () => {
+		cy.get('.pagination').findByLabelText('First').click();
 		cy.validateProductCardOrder('Install Your WordPress Theme', 0);
 	});
 
-	it.skip('Pagination: Last button works', () => {
-		cy.get('.pagination').first().find('[aria-label="Last"]').click();
+	it('Pagination: Last button works', () => {
+		cy.get('.pagination').findByLabelText('Last').click();
 		cy.validateProductCardOrder('WooCommerce All In One', 0);
 	});
 
 });
+
+//////////////////////
+// Helper Functions //
+//////////////////////
+
+/**
+ * Get a product card by index.
+ *
+ * @returns {object} The card details.
+ */
+function getCard(index) {
+	const item = services.items[index];
+	return {
+		backgroundImageUrl: item.images.preview_url,
+		buttonText: 'View Details',
+		id: item.id,
+		linkText: 'Buy Now',
+		linkUrl: item.buy_url,
+		price: item.prices.single_domain_license,
+		title: item.name,
+	};
+}
