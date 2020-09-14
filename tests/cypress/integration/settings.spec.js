@@ -5,24 +5,49 @@ import 'cypress-axe';
 describe('Settings Page', function () {
 
 	before(() => {
+
+		// Make sure caching is disabled by default
+		cy.exec('npx wp-env run cli wp option set endurance_cache_level 0');
+
 		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
 		cy.injectAxe();
 	});
 
 	const fn = {
-		validateCheckbox() {
-			cy.get('input[type="checkbox"]').as('checkbox');
-			cy.get('@checkbox').check();
-			cy.get('@checkbox').should('have.prop', 'checked');
-			cy.get('@checkbox').uncheck();
-			cy.get('@checkbox').should('not.have.prop', 'checked');
-		},
-		validateSelect(selector, values) {
-			values.forEach((value) => {
-				cy.get(selector).select(value);
-				cy.get(selector).should('have.value', value);
+		validateToggle(label, run = 0) {
+			cy.server();
+			cy.route('POST', '**/bluehost/v1/settings*').as('update');
+			cy.findByLabelText(label).as('toggle');
+			cy.get('@toggle').scrollIntoView().should('be.visible');
+			cy.get('@toggle').then(($toggle) => {
+				if ($toggle.attr('aria-checked') !== 'true') {
+					// If unchecked, check it
+					cy.get('@toggle').check();
+					cy.wait('@update');
+					cy.get('@toggle').should('have', 'aria-checked', 'true');
+				} else {
+					// If checked, uncheck it
+					cy.get('@toggle').uncheck();
+					cy.wait('@update');
+					cy.get('@toggle').should('have', 'aria-checked', 'false');
+				}
 			});
-		}
+			// Do the inverse as well
+			if (!run) {
+				this.validateToggle(label, run + 1);
+			}
+		},
+		validateSelect(label, values) {
+			cy.server();
+			cy.route('POST', '**/bluehost/v1/settings*').as('update');
+			cy.findAllByLabelText(label).as('select');
+			cy.get('@select').scrollIntoView().should('be.visible');
+			values.forEach((value) => {
+				cy.get('@select').select(String(value));
+				cy.wait('@update');
+				cy.get('@select').should('have.value', value);
+			});
+		},
 	};
 
 	it('Exists', () => {
@@ -40,39 +65,16 @@ describe('Settings Page', function () {
 		});
 	});
 
-	it.only('Automatic Updates: WordPress Core', () => {
-		cy.server();
-		cy.route('POST', '**/bluehost/v1/settings*').as('update');
-		cy.findByLabelText('WordPress Core').as('toggle');
-		cy.get('@toggle').check();
-		cy.get('@toggle').should('have.prop', 'checked');
-		cy.get('@toggle').uncheck();
-		cy.wait('@update');
-		cy.get('@toggle').should('not.have.prop', 'checked')
-		// cy.get('.settings-section').first().within(() => {
-		// 	cy.get('.settings-control').first().within(() => {
-		// 		cy.contains('.label', 'WordPress Core');
-		// 		fn.validateCheckbox();
-		// 	});
-		// });
+	it('Automatic Updates: WordPress Core', () => {
+		fn.validateToggle('WordPress Core');
 	});
 
 	it('Automatic Updates: Themes', () => {
-		cy.get('.settings-section').first().within(() => {
-			cy.get('.settings-control').eq(1).within(() => {
-				cy.contains('.label', 'Themes');
-				fn.validateCheckbox();
-			});
-		});
+		fn.validateToggle('Themes');
 	});
 
 	it('Automatic Updates: Plugins', () => {
-		cy.get('.settings-section').first().within(() => {
-			cy.get('.settings-control').eq(2).within(() => {
-				cy.contains('.label', 'Plugins');
-				fn.validateCheckbox();
-			});
-		});
+		fn.validateToggle('Plugins');
 	});
 
 	it('Has a "Site Controls" section', () => {
@@ -82,12 +84,7 @@ describe('Settings Page', function () {
 	});
 
 	it('Site Controls: Coming Soon', () => {
-		cy.get('.settings-section').eq(1).within(() => {
-			cy.get('.settings-control').first().within(() => {
-				cy.contains('.label', 'Coming Soon Page');
-				fn.validateCheckbox();
-			});
-		});
+		fn.validateToggle('Coming Soon Page');
 	});
 
 	it('Has a "Comments" section', () => {
@@ -97,30 +94,17 @@ describe('Settings Page', function () {
 	});
 
 	it('Comments: Disable for old posts', () => {
-		cy.get('.settings-section').eq(2).within(() => {
-			cy.get('.settings-control').first().within(() => {
-				cy.contains('.label', 'Disable comments for old posts');
-				fn.validateCheckbox();
-			});
-		});
+		fn.validateToggle('Disable comments for old posts');
 	});
 
 	it('Comments: Close After x Days', () => {
-		cy.get('.settings-section').eq(2).within(() => {
-			cy.get('.settings-control').eq(1).within(() => {
-				cy.contains('.label', 'Close comments after');
-				fn.validateCheckbox();
-			});
-		});
+		const values = [1, 7, 30, 14];
+		fn.validateSelect('Close comments after x days', values);
 	});
 
 	it('Comments: Show x Per Page', () => {
-		cy.get('.settings-section').eq(2).within(() => {
-			cy.get('.settings-control').eq(2).within(() => {
-				cy.contains('.label', 'comments per page');
-				fn.validateCheckbox();
-			});
-		});
+		const values = [10, 20, 30, 50];
+		fn.validateSelect('Display x comments per page', values);
 	});
 
 	it('Has a "Content" section', () => {
@@ -130,63 +114,51 @@ describe('Settings Page', function () {
 	});
 
 	it('Content: Content Revisions', () => {
-		cy.get('.settings-section').eq(3).within(() => {
-			cy.get('.settings-control').first().within(() => {
-				cy.contains('.label', 'Content revisions');
-				fn.validateSelect('select', ['10', '5']);
-			});
-		});
+		fn.validateSelect('Keep x latest revisions', [40, 5, 10]);
 	});
 
 	it('Content: Empty Trash', () => {
-		cy.get('.settings-section').eq(3).within(() => {
-			cy.get('.settings-control').eq(1).within(() => {
-				cy.contains('.label', 'Empty my trash every');
-				fn.validateSelect('select', ['2', '4']);
-			});
-		});
+		fn.validateSelect('Empty the trash every x weeks', [7, 14, 21, 30]);
 	});
 
 	it('Has a "Performance" section', () => {
 		cy.get('.settings-section').last().within(() => {
-			cy.contains('h3', 'Performance');
-			cy.contains('h4', 'Caching');
+			cy.findByRole('heading', {name: 'Performance', level: 3}).scrollIntoView().should('be.visible');
+			cy.findByRole('heading', {name: 'Caching', level: 4}).scrollIntoView().should('be.visible');
 		});
 	});
 
 	it('Performance: Caching Toggle', () => {
-		cy.get('.settings-section').last().within(() => {
-			cy.get('.onoffswitch').within(() => {
-				fn.validateCheckbox();
-			});
-		});
+		cy.server();
+		cy.route('POST', '**/bluehost/v1/settings*').as('update');
+		cy.findByLabelText('Toggle Caching').as('toggle');
+		cy.get('@toggle').check();
+		cy.wait('@update');
+		cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
 	});
 
 	it('Performance: Caching Level', () => {
-		cy.get('.settings-section').last().within(() => {
-			cy.contains('h4', 'Caching Level');
-			cy.get('.cache-level .row').eq(0).within(() => {
-				cy.contains('label', 'Assets Only');
-			});
-			cy.get('.cache-level .row').eq(1).within(() => {
-				cy.contains('label', 'Assets & Web Pages');
-			});
-			cy.get('.cache-level .row').eq(2).within(() => {
-				cy.contains('label', 'Assets & Web Pages - Extended');
-			});
-			cy.get('input[name="cache-level"]').first().check();
-			cy.get('input[name="cache-level"]').first().should('be.checked');
-			cy.get('input[name="cache-level"]').eq(1).check();
-			cy.get('input[name="cache-level"]').eq(1).should('be.checked');
-			cy.get('input[name="cache-level"]').eq(2).check();
-			cy.get('input[name="cache-level"]').eq(2).should('be.checked');
-		});
-	});
+		cy.server();
+		cy.route('POST', '**/bluehost/v1/settings*').as('update');
 
-	it('Performance: Clear Specific URLs', () => {
 		cy.get('.settings-section').last().within(() => {
-			cy.get('button').first().within(() => {
-				cy.contains('Clear Specific URLs');
+
+			cy.findByRole('heading', {name: 'Caching Level', level: 5}).scrollIntoView().should('be.visible');
+
+			cy.findByLabelText('Assets Only').as('assetsOnly');
+			cy.findByLabelText('Assets & Web Pages').as('assetsWeb');
+			cy.findByLabelText('Assets & Web Pages - Extended').as('assetsExt');
+
+			const selectors = ['@assetsOnly', '@assetsWeb', '@assetsExt'];
+			selectors.forEach((selector) => {
+				const otherSelectors = Cypress._.without(selectors, selector);
+				cy.get(selector).scrollIntoView().should('be.visible');
+				cy.get(selector).check();
+				cy.wait('@update');
+				cy.get(selector).should('be.checked');
+				otherSelectors.forEach((otherSelector) => {
+					cy.get(otherSelector).should('not.be.checked');
+				});
 			});
 		});
 	});
