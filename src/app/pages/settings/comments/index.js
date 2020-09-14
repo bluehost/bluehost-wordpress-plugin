@@ -51,8 +51,8 @@ const Comments = ( { oldPostComments, closeInterval, perPage, toggleSetting, upd
 					options={ [
 						{ label: '10', value: 10 },
 						{ label: '15', value: 15 },
-						{ label: '30', value: 30 },
 						{ label: '20', value: 20 },
+						{ label: '30', value: 30 },
 						{ label: '50', value: 50 },
 					] }
 				/>
