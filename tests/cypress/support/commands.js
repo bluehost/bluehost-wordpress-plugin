@@ -46,7 +46,7 @@ Cypress.Commands.add('login', (username, password) => {
 		});
 });
 
-Cypress.Commands.add('validateProductCardOrder', (title, index) => {
+Cypress.Commands.add('validateProductCardOrder', (title, index = 0) => {
 	cy
 		.findByRole('heading', {name: new RegExp(title, 'i'), level: 3})
 		.closest('.product-card')
