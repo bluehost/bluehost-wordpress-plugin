@@ -3,7 +3,7 @@ name: Lint
 on:
   push:
     branches:
-      - fix-linting-action
+      - master
     paths:
       - '**.php'
   pull_request:
