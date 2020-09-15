@@ -17,6 +17,7 @@ export default function ProductDetails( { id } ) {
 	const [ type, setType ] = useState( null );
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'items', { id } );
 
+	/* translators: %s is one of Themes, Plugins, or Services */
 	const header = sprintf( __( 'Premium %s', 'bluehost-wordpress-plugin' ), type );
 	const breadcrumbText = header;
 

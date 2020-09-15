@@ -85,7 +85,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged && npx run i18n"
+            "pre-commit": "lint-staged && vendor/bin/composer run i18n"
         }
     },
     "lint-staged": {
