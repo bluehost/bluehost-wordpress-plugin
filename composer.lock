@@ -252,16 +252,16 @@
         },
         {
             "name": "endurance/wp-module-data",
-            "version": "1.0.2",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehost/endurance-wp-module-data.git",
-                "reference": "7fdf0e1096a7796e0a8d7613ecb5d91760e8017d"
+                "reference": "67bfc5470b8c94dc0d05897743a847605b3fb82e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-data/zipball/7fdf0e1096a7796e0a8d7613ecb5d91760e8017d",
-                "reference": "7fdf0e1096a7796e0a8d7613ecb5d91760e8017d",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-data/zipball/67bfc5470b8c94dc0d05897743a847605b3fb82e",
+                "reference": "67bfc5470b8c94dc0d05897743a847605b3fb82e",
                 "shasum": ""
             },
             "require-dev": {
@@ -289,10 +289,10 @@
             ],
             "description": "Endurance Data Module",
             "support": {
-                "source": "https://github.com/bluehost/endurance-wp-module-data/tree/1.0.2",
+                "source": "https://github.com/bluehost/endurance-wp-module-data/tree/1.1",
                 "issues": "https://github.com/bluehost/endurance-wp-module-data/issues"
             },
-            "time": "2020-09-14T21:01:22+00:00"
+            "time": "2020-09-15T15:37:25+00:00"
         },
         {
             "name": "pimple/pimple",
