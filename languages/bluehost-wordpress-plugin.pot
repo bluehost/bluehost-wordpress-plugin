@@ -2,7 +2,7 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bluehost 2.1\n"
+"Project-Id-Version: Bluehost 2.2\n"
 "Report-Msgid-Bugs-To: https://github.com/bluehost/bluehost-wordpress-plugin/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #. Author of the plugin
+#: src/app/components/organisms/bwa-header/index.js:32
 msgid "Bluehost"
 msgstr ""
 
