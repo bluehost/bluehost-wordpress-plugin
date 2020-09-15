@@ -9,6 +9,7 @@
   "pluginsFile": "tests/cypress/plugins/index.js",
   "screenshotsFolder": "tests/cypress/screenshots",
   "supportFile": "tests/cypress/support/index.js",
+  "video": false,
   "videosFolder": "tests/cypress/videos",
   "videoUploadOnPasses": false
 }
