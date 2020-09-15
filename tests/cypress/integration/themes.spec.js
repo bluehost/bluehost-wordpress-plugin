@@ -83,16 +83,19 @@ describe('Themes Page', function () {
 
 	it('Sort by Price (High to Low)', () => {
 		cy.get('.dropdown__item').eq(1).click({force: true}); // Price (High to Low)
+		cy.wait(100);
 		cy.validateProductCardOrder('The Best Theme for LearnDash', 0);
 	});
 
 	it('Sort by Date Added', () => {
 		cy.get('.dropdown__item').eq(3).click({force: true}); // Date Added
+		cy.wait(100);
 		cy.validateProductCardOrder('Insura Business WordPress Theme', 0);
 	});
 
 	it('Sort by Price (Low to High)', () => {
 		cy.get('.dropdown__item').eq(2).click({force: true}); // Price (Low to High)
+		cy.wait(100);
 		cy.validateProductCardOrder('TickTock – Under Construction/Coming soon WordPress Theme', 0);
 	});
 
@@ -117,6 +120,7 @@ describe('Themes Page', function () {
 
 	it('Sort by Popular', () => {
 		cy.get('.dropdown__item').eq(0).click({force: true}); // Popular
+		cy.wait(100);
 		cy.validateProductCardOrder('Highend Ultimate Multi-Purpose WordPress Theme', 0);
 	});
 
