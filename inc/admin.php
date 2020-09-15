@@ -45,6 +45,7 @@ class Init {
 	 */
 	protected function primary_init() {
 		\add_action( 'init', array( $this, 'wp_loaded_init' ) );
+		\add_action( 'load-admin.php', array( $this, 'maybe_redirect_to_staging' ) );
 	}
 
 	public function wp_loaded_init() {
@@ -53,6 +54,17 @@ class Init {
 		}
 		$this->load_files();
 		$this->load_class_instances();
+	}
+
+	/**
+	 * If a user lands on the admin.php page and a page parameter isn't set, it just shows a blank page.
+	 * Most likely, the user was being redirected to staging and something went wrong. This is a quick (and hopefully
+	 * temporary) fix until the root cause of the issue is determined.
+	 */
+	public function maybe_redirect_to_staging() {
+		if ( ! isset( $_GET['page'] ) ) {
+			wp_safe_redirect( admin_url( '/admin.php?page=bluehost#/tools/staging' ) );
+		}
 	}
 
 	/**
