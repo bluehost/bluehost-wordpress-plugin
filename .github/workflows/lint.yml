@@ -7,7 +7,11 @@ on:
     paths:
       - '**.php'
   pull_request:
-    types: [opened, edited, synchronize, reopened]
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+    paths:
+      - '**.php'
+  pull_request_review:
+    types: [submitted, edited]
     paths:
       - '**.php'
 
@@ -16,14 +20,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+
+      - uses: technote-space/get-diff-action@v3
+        with:
+          SUFFIX_FILTER: .php
 
       - name: Validate composer.json and composer.lock
         run: composer validate
+        if: "!! env.GIT_DIFF"
 
       - name: Get Composer Cache Directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        if: "!! env.GIT_DIFF"
 
       - name: Cache Composer vendor directory
         uses: actions/cache@v1
@@ -32,9 +42,12 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
+        if: "!! env.GIT_DIFF"
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
+        if: "!! env.GIT_DIFF"
 
       - name: Detecting PHP Code Standards Violations
-        run: composer run-script lint
+        run: vendor/bin/phpcs --standard=Bluehost -s ${{ env.GIT_DIFF }}
+        if: "!! env.GIT_DIFF"
