@@ -108,7 +108,8 @@ export default function Onboarding() {
 										dangerouslySetInnerHTML={
 											{
 												__html: sprintf(
-													__('Check out our %swebsite pre-publishing%s checklist to help get ready for launch.', 'bluehost-wordpress-plugin'),
+													/* translators: %1$s is the opening link tag and %2$s is the closing link tag for the link to the website publish checklist. */
+													__('Check out our %1$swebsite pre-publishing%2$s checklist to help get ready for launch.', 'bluehost-wordpress-plugin'),
 													'<a href="https://www.bluehost.com/help/article/website-publish-checklist">',
 													'</a>'
 												)
