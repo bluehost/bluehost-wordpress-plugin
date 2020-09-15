@@ -1,4 +1,4 @@
-import {uniqueId} from 'lodash';
+import { uniqueId } from 'lodash';
 
 /**
  * Internal dependencies
@@ -12,6 +12,7 @@ function BWAToggle({checked, label, onChange}) {
 	return (
 		<div className="onoffswitch">
 			<input
+				aria-checked={ checked }
 				aria-label={ label }
 				checked={ checked }
 				className="onoffswitch__checkbox"
@@ -19,7 +20,7 @@ function BWAToggle({checked, label, onChange}) {
 				name="onoffswitch"
 				onChange={ onChange }
 				type="checkbox"
-				value="value"
+				value="1"
 			/>
 			<label className="onoffswitch__label" htmlFor={ id }>
 				<span className="onoffswitch__inner" />

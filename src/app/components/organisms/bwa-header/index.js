@@ -29,8 +29,8 @@ const HeaderLogo = () => (
 			rel="noopener noreferrer"
 			aria-label="Bluehost Logo linking to the Bluehost Control Panel"
 		>
-			<BWAHeading level="h1" size={ 0 }>Bluehost</BWAHeading>
-			<BluehostLogo />
+			<BWAHeading level="h1" size={ 0 }>{ __('Bluehost', 'bluehost-wordpress-plugin') }</BWAHeading>
+			<BluehostLogo title="Bluehost Logo" />
 		</a>
 	</div>
 );
@@ -47,7 +47,7 @@ const HeaderIcons = () => (
 	</div>
 );
 
-const BWAHeader = ( { ...props }, ref ) => (
+const BWAHeader = ({...props}, ref) => (
 	<header { ...props } tabIndex="-1">
 		<div className="bluehost-header">
 			<div className="col">
@@ -55,10 +55,10 @@ const BWAHeader = ( { ...props }, ref ) => (
 				<HeaderIcons />
 			</div>
 		</div>
-		<div className="navtabs-desktop" tabIndex="-1" ref={ ref }>
+		<div className="navtabs-desktop" tabIndex="-1" ref={ ref } data-testid="desktop-nav">
 			<DesktopTabs />
 		</div>
 	</header>
 );
 
-export default forwardRef( BWAHeader );
+export default forwardRef(BWAHeader);

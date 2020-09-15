@@ -30,10 +30,10 @@ const DesktopDropdown = () => (
 		contentClassName="bluehost-nav-popup"
 		position="120px 24px"
 		renderToggle={ ( { isOpen, onToggle } ) => (
-			<UserIcon onClick={ onToggle } aria-expanded={ isOpen } />
+			<UserIcon onClick={ onToggle } aria-expanded={ isOpen } data-testid="desktop-dropdown-toggle" />
 		) }
 		renderContent={ () => (
-			<div id="bluehost-nav-popup-wrap">
+			<div id="bluehost-nav-popup-wrap" data-testid="desktop-dropdown-content">
 				<div id="bluehost-nav-popup-inner">
 					<ul>
 						{ userMenuItems.map( ( item ) => (

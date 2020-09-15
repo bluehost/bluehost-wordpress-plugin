@@ -12,7 +12,7 @@ const products = [
 		dateCreated: 'December 2, 2015',
 		dateUpdated: 'January 31, 2019',
 		imageUrl: 'https://marketplace-assets-production.s3-us-west-2.amazonaws.com/vault/items/preview-565f5981-f638-4d4c-9ea8-1c320a141f39-46gew.jpg',
-        fixture: 'fx:plugin-woo-bookings',
+		fixture: 'fx:plugin-woo-bookings',
 	},
 	{
 		type: 'Services',
@@ -34,28 +34,24 @@ const products = [
 		dateCreated: 'May 17, 2014',
 		dateUpdated: 'November 5, 2019',
 		imageUrl: 'https://marketplace-assets-production.s3-us-west-2.amazonaws.com/vault/items/preview-5dc1aff5-9388-43fd-8d22-32390a14153a-jyM02.png',
-        fixture: 'fx:theme-highend',
+		fixture: 'fx:theme-highend',
 	}
 ];
 
 products.forEach(function (product) {
 
-	describe(`${product.type} Details Page`, function () {
+	describe(`${ product.type } Details Page`, function () {
 
 		it('Exists', () => {
 			cy.server();
-			cy.route('GET', `/wp-json/mojo/v1/items?id=${product.id}&_locale=user`, product.fixture).as('product');
+			cy.route('GET', `/**/mojo/v1/items?id=${ product.id }*`, product.fixture).as('product');
 			cy.visit({
-				url: `/wp-admin/admin.php?page=bluehost#/marketplace/product/${product.id}`,
+				url: `/wp-admin/admin.php?page=bluehost#/marketplace/product/${ product.id }`,
 				onBeforeLoad: win => delete win.fetch
 			});
 			cy.wait('@product');
 			cy.injectAxe();
-			cy.contains('.page-product__header h1', `Premium ${product.type}`);
-		});
-
-		it('Is Accessible', () => {
-			cy.checkA11y('.router-section');
+			cy.contains('.page-product__header h1', `Premium ${ product.type }`);
 		});
 
 		it('Shows breadcrumbs', () => {
@@ -64,7 +60,7 @@ products.forEach(function (product) {
 		});
 
 		it('Has correct root breadcrumb', () => {
-			cy.contains('.page-product__breadcrumbs-root', `Premium ${product.type}`);
+			cy.contains('.page-product__breadcrumbs-root', `Premium ${ product.type }`);
 		});
 
 		it('Shows product title', () => {
@@ -88,7 +84,7 @@ products.forEach(function (product) {
 		it('Shows "Buy Now" button', () => {
 			cy.get('.page-product__pricing-panel-call-to-action.bluehost.components-button.is-primary').as('button');
 			cy.get('@button').contains('Buy Now').should('be.visible');
-			cy.get('@button').should('have.attr', 'href').and('equal', `https:\/\/www.mojomarketplace.com\/cart?item_id=${product.id}&#038;utm_source=mojo_wp_plugin&#038;utm_campaign=mojo_wp_plugin&#038;utm_medium=plugin_admin&#038;utm_content=buy_now_preview&#038;theme=bluehost`);
+			cy.get('@button').should('have.attr', 'href').and('equal', `https:\/\/www.mojomarketplace.com\/cart?item_id=${ product.id }&#038;utm_source=mojo_wp_plugin&#038;utm_campaign=mojo_wp_plugin&#038;utm_medium=plugin_admin&#038;utm_content=buy_now_preview&#038;theme=bluehost`);
 		});
 
 		it('Shows product terms', () => {
