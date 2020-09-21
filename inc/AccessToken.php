@@ -49,7 +49,7 @@ class AccessToken {
 	/**
 	 * Save an access token.
 	 *
-	 * @param string $token Access token
+	 * @param string $token      Access token
 	 * @param int    $expiration Timestamp of expiration
 	 */
 	public static function set_token( $token, $expiration ) {
@@ -60,9 +60,9 @@ class AccessToken {
 	/**
 	 * Request an access token.
 	 *
-	 * @throws \Exception The random_bytes() function may throw an Exception in some cases.
-	 *
 	 * @return array|\WP_Error
+	 *
+	 * @throws \Exception The random_bytes() function may throw an Exception in some cases.
 	 */
 	public static function request_token() {
 
@@ -101,16 +101,21 @@ class AccessToken {
 
 	/**
 	 * Refresh the stored token.
+	 *
+	 * @throws \RuntimeException On error or unexpected payload shape.
 	 */
 	public static function refresh_token() {
 		try {
 			$response = self::request_token();
-			$data     = ResponseUtilities::parse_json_response( $response );
+			$data     = ResponseUtilities::parse_json_response( $response, true );
 			if ( isset( $data['access_token'], $data['expires_in'] ) ) {
 				$token      = $data['access_token'];
 				$expires_in = (int) $data['expires_in'];
 				$timestamp  = ResponseUtilities::get_response_timestamp( $response );
 				self::set_token( $token, $timestamp + $expires_in );
+			} else {
+				$data['_status_code'] = wp_remote_retrieve_response_code( $response );
+				throw new \RuntimeException( wp_json_encode( $data ) );
 			}
 		} catch ( \Exception $e ) {
 			trigger_error( $e->getMessage() ); // phpcs:ignore
