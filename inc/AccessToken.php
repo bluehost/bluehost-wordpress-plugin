@@ -121,6 +121,9 @@ class AccessToken {
 	 * Check for proper conditions before refreshing the token.
 	 */
 	public static function maybe_refresh_token() {
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			return;
+		}
 		if ( current_user_can( 'manage_options' ) && ! self::has_token() ) {
 			self::refresh_token();
 		}
