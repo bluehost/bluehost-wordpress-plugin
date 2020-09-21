@@ -23,13 +23,11 @@ class ResponseUtilities {
 	public static function parse_json_response( $response, $assoc_array = false ) {
 		$data = array();
 
-		if ( 200 === wp_remote_retrieve_response_code( $response ) ) {
-			$body = wp_remote_retrieve_body( $response );
-			if ( $body ) {
-				$payload = json_decode( $body, $assoc_array );
-				if ( $payload && is_array( $payload ) ) {
-					$data = (array) $payload;
-				}
+		$body = wp_remote_retrieve_body( $response );
+		if ( $body ) {
+			$payload = json_decode( $body, $assoc_array );
+			if ( $payload && is_array( $payload ) ) {
+				$data = (array) $payload;
 			}
 		}
 
