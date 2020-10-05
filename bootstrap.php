@@ -9,11 +9,11 @@ define( 'MOJO_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/'
 // Composer autoloader
 require __DIR__ . '/vendor/autoload.php';
 
+// Handle plugin updates
+new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php' );
+
 // Handle any upgrade routines
 if ( is_admin() ) {
-
-	// Handle plugin updates
-	new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php' );
 
 	// Handle plugin upgrades
 	$upgrade_handler = new UpgradeHandler(
