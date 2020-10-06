@@ -48,8 +48,3 @@ require __DIR__ . '/inc/track-last-login.php';
 require __DIR__ . '/inc/updates.php';
 require __DIR__ . '/inc/user-experience-tracking.php';
 require __DIR__ . '/inc/RestApi/rest-api.php';
-
-if ( is_admin() ) {
-	// Keep the Bluehost API access token fresh.
-	add_action( 'shutdown', array( 'Bluehost\\AccessToken', 'maybe_refresh_token' ) );
-}
