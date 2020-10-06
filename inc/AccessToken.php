@@ -115,10 +115,11 @@ class AccessToken {
 				self::set_token( $token, $timestamp + $expires_in );
 			} else {
 				$data['_status_code'] = wp_remote_retrieve_response_code( $response );
+				$data['_response']    = wp_remote_retrieve_body( $response );
 				throw new \RuntimeException( wp_json_encode( $data ) );
 			}
 		} catch ( \Exception $e ) {
-			trigger_error( $e->getMessage() ); // phpcs:ignore
+			error_log( 'Bluehost WP Plugin: Failed to fetch token: ' . $e->getMessage() );
 		}
 	}
 
