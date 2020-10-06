@@ -119,7 +119,7 @@ class AccessToken {
 				throw new \RuntimeException( wp_json_encode( $data ) );
 			}
 		} catch ( \Exception $e ) {
-			trigger_error( $e->getMessage() ); // phpcs:ignore
+			error_log( 'Bluehost WP Plugin: Failed to fetch token: ' . $e->getMessage() );
 		}
 	}
 
