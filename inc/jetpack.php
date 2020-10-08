@@ -17,23 +17,33 @@ function bluehost_customize_jetpack_default_modules( $modules ) {
 add_filter( 'jetpack_get_default_modules', 'bluehost_customize_jetpack_default_modules' );
 
 /**
- * Unregister the MailChimp block.
+ * Unregister Jetpack blocks that we do not want enabled by default.
  *
  * @param array $blocks Collection of registered blocks.
  *
  * @return array
  */
-function bluehost_jetpack_unregister_mailchimp_block( $blocks ) {
-	$found = array_search( 'mailchimp', $blocks, true );
-	if ( false !== $found ) {
-		unset( $blocks[ $found ] );
+function bluehost_jetpack_unregister_blocks( $blocks ) {
+	$blocks_to_deregister = array(
+		'mailchimp',
+		'revue',
+	);
+	foreach ( $blocks_to_deregister as $block_slug ) {
+		$found = array_search( $block_slug, $blocks, true );
+		if ( false !== $found ) {
+			unset( $blocks[ $found ] );
+		}
 	}
-
 	return $blocks;
 }
 
-add_filter( 'jetpack_set_available_blocks', 'bluehost_jetpack_unregister_mailchimp_block' );
+add_filter( 'jetpack_set_available_blocks', 'bluehost_jetpack_unregister_blocks' );
 
+/**
+ * Provides links that the SSO can utilize to redirect customers directly to the Jetpack connection.
+ *
+ * @return array
+ */
 function bluehost_jetpack_connection_redirect() {
 	if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'mojo-jetpack-connect-bounce', 'bluehost-jetpack-connect-bounce' ) ) ) {
 		if ( class_exists( 'Jetpack' ) ) {
@@ -44,4 +54,5 @@ function bluehost_jetpack_connection_redirect() {
 		}
 	}
 }
+
 add_action( 'admin_init', 'bluehost_jetpack_connection_redirect' );
