@@ -42,7 +42,7 @@ add_filter( 'jetpack_set_available_blocks', 'bluehost_jetpack_unregister_blocks'
 /**
  * Provides links that the SSO can utilize to redirect customers directly to the Jetpack connection.
  *
- * @return array
+ * @return void
  */
 function bluehost_jetpack_connection_redirect() {
 	if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'mojo-jetpack-connect-bounce', 'bluehost-jetpack-connect-bounce' ) ) ) {
