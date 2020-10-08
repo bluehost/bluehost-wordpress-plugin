@@ -6,6 +6,7 @@
  */
 
 // Deactivate the Mojo plugin since this plugin is meant to replace it
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( is_plugin_active( 'mojo-marketplace-wp-plugin/mojo-marketplace.php' ) ) {
 	deactivate_plugins( 'mojo-marketplace-wp-plugin/mojo-marketplace.php' );
 }
