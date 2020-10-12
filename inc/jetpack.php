@@ -56,3 +56,14 @@ function bluehost_jetpack_connection_redirect() {
 }
 
 add_action( 'admin_init', 'bluehost_jetpack_connection_redirect' );
+
+/**
+ * Registers non-menu pages to leverage as redirects for the Jetpack connection.
+ *
+ * @return void
+ */
+function bluehost_jetpack_connect_menu() {
+	add_submenu_page( null, __( 'Connect Jetpack', 'bluehost-wordpress-plugin' ), __( 'Connect Jetpack', 'bluehost-wordpress-plugin' ), 'manage_options', 'mojo-jetpack-connect-bounce', '__return_false' );
+	add_submenu_page( null, __( 'Connect Jetpack', 'bluehost-wordpress-plugin' ), __( 'Connect Jetpack', 'bluehost-wordpress-plugin' ), 'manage_options', 'bluehost-jetpack-connect-bounce', '__return_false' );
+}
+add_action( 'admin_menu', 'bluehost_jetpack_connect_menu' );
