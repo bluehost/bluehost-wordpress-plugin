@@ -61,6 +61,11 @@ msgstr ""
 msgid "Subscription successful"
 msgstr ""
 
+#: inc/jetpack.php:66
+#: inc/jetpack.php:67
+msgid "Connect Jetpack"
+msgstr ""
+
 #: inc/menu.php:48
 msgid "Staging Environment"
 msgstr ""
