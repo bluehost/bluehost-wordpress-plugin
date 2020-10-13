@@ -50,7 +50,7 @@ function bluehost_jetpack_connection_redirect() {
 			wp_redirect( Jetpack::init()->build_connect_url( true ), 302 );
 		} else {
 			// In the future this should be a Jetpack product page.
-			wp_safe_redirect( admin_url( 'admin.php?page=bluehost' ), 301 );
+			wp_safe_redirect( admin_url( 'admin.php?page=bluehost' ), 302 );
 		}
 	}
 }
