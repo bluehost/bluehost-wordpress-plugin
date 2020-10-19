@@ -10,7 +10,7 @@ define( 'MOJO_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/'
 require __DIR__ . '/vendor/autoload.php';
 
 // Handle plugin updates
-if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
+if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 	new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php' );
 }
 
