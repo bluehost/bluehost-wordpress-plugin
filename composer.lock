@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "349f99966bdb53cae36666060055ce6c",
+    "content-hash": "914c83f1ffc77a69821fc89a396dcea6",
     "packages": [
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -127,42 +127,6 @@
                 "issues": "https://github.com/bluehost/endurance-wp-module-loader/issues"
             },
             "time": "2019-01-08T16:32:20+00:00"
-        },
-        {
-            "name": "bluehost/endurance-wp-module-spam-prevention",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bluehost/endurance-wp-module-spam-prevention.git",
-                "reference": "a9925e475c94aaa6511c297012bdec1f37335f86"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-spam-prevention/zipball/a9925e475c94aaa6511c297012bdec1f37335f86",
-                "reference": "a9925e475c94aaa6511c297012bdec1f37335f86",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Micah Wood",
-                    "email": "micah@wpscholar.com"
-                }
-            ],
-            "description": "Bluehost Spam Prevention Module",
-            "support": {
-                "source": "https://github.com/bluehost/endurance-wp-module-spam-prevention/tree/1.0.2",
-                "issues": "https://github.com/bluehost/endurance-wp-module-spam-prevention/issues"
-            },
-            "time": "2020-04-15T20:14:34+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-sso",
