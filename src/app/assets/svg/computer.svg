@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="139px" height="139px" viewBox="0 0 139 139" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 39</title>
+    <defs>
+        <polygon id="path-1" points="0 0.000695 138.999826 0.000695 138.999826 139 0 139"></polygon>
+        <polygon id="path-3" points="0.573518462 0.574403604 112.999826 0.574403604 112.999826 104 0.573518462 104"></polygon>
+        <polygon id="path-5" points="0 139 139 139 139 0 0 0"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Help-Center" transform="translate(-478.000000, -1118.000000)">
+            <g id="Group-39" transform="translate(478.000000, 1118.000000)">
+                <g id="Group-3">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M138.999826,69.500695 C138.999826,107.883808 107.882939,139.000695 69.4998263,139.000695 C31.1167138,139.000695 -0.00017375,107.883808 -0.00017375,69.500695 C-0.00017375,31.115845 31.1167138,0.000695 69.4998263,0.000695 C107.882939,0.000695 138.999826,31.115845 138.999826,69.500695" id="Fill-1" fill="#C2EBF5" mask="url(#mask-2)"></path>
+                </g>
+                <g id="Group-6" transform="translate(26.000000, 35.000000)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="Clip-5"></g>
+                    <path d="M112.999826,34.66736 C112.999826,72.9584267 81.8657185,104.000693 43.4613646,104.000693 C42.8476877,104.000693 42.2340108,104.000693 41.1544262,103.96256 C40.7250262,103.61416 0.59438,64.1860267 0.573518462,63.8410933 C0.573518462,25.54656 46.0290723,0.574403604 84.4334262,0.574403604 C84.6298723,0.54496 112.266195,28.7618933 112.782518,29.1588267 C112.912903,30.6286933 112.999826,32.6358933 112.999826,34.66736" id="Fill-4" fill="#9EDFEF" mask="url(#mask-4)"></path>
+                </g>
+                <polygon id="Fill-7" fill="#F2F4F7" points="81 112 57 112 59.1800741 100 78.8146937 100"></polygon>
+                <polygon id="Fill-9" fill="#D7DBE0" points="81 112 78.7966589 100 59 100 74.8260731 112"></polygon>
+                <path d="M88,114 L51,114 L51,113.253646 C51,112.561714 51.5043067,112.001949 52.1259347,112 L52.1294368,112 L86.8670611,112 C87.4904401,111.998061 87.9982489,112.557827 88,113.247815 L88,113.253646 L88,114 Z" id="Fill-11" fill="#FFFFFF"></path>
+                <path d="M112,92 L112,97.8817299 C111.991321,99.0520741 111.055689,99.9982348 109.903074,100 L28.083039,100 C26.9356317,99.9894086 26.0086793,99.0467785 26,97.8817299 L26,92 L112,92 Z" id="Fill-13" fill="#FFFFFF"></path>
+                <path d="M112,92 L112,37.0949118 C111.994793,35.9389787 111.05918,35.0034713 109.903116,35 L28.0829969,35 C26.9321411,35.0104138 26.0034717,35.9441856 26,37.0949118 L26,92 L112,92 Z" id="Fill-15" fill="#16325B"></path>
+                <mask id="mask-6" fill="white">
+                    <use xlink:href="#path-5"></use>
+                </mask>
+                <g id="Clip-18"></g>
+                <polygon id="Fill-17" fill="#FFFFFF" mask="url(#mask-6)" points="44 87 107 87 107 39 44 39"></polygon>
+                <polygon id="Fill-19" fill="#4687C7" mask="url(#mask-6)" points="30 87 44 87 44 39 30 39"></polygon>
+                <polygon id="Fill-20" fill="#FFFFFF" mask="url(#mask-6)" points="33 83.433 42 83.433 42 82.567 33 82.567"></polygon>
+                <polygon id="Fill-21" fill="#FFFFFF" mask="url(#mask-6)" points="33 79.433 42 79.433 42 78.567 33 78.567"></polygon>
+                <polygon id="Fill-22" fill="#FFFFFF" mask="url(#mask-6)" points="33 76.433 42 76.433 42 75.567 33 75.567"></polygon>
+                <polygon id="Fill-23" fill="#FFFFFF" mask="url(#mask-6)" points="33 72.433 42 72.433 42 71.567 33 71.567"></polygon>
+                <polygon id="Fill-24" fill="#FFFFFF" mask="url(#mask-6)" points="33 69.433 42 69.433 42 68.567 33 68.567"></polygon>
+                <polygon id="Fill-25" fill="#FFFFFF" mask="url(#mask-6)" points="33 65.433 42 65.433 42 64.567 33 64.567"></polygon>
+                <polygon id="Fill-26" fill="#FFFFFF" mask="url(#mask-6)" points="33 62.433 42 62.433 42 61.567 33 61.567"></polygon>
+                <polygon id="Fill-27" fill="#FFFFFF" mask="url(#mask-6)" points="33 58.433 42 58.433 42 57.567 33 57.567"></polygon>
+                <polygon id="Fill-28" fill="#FFFFFF" mask="url(#mask-6)" points="33 55.433 42 55.433 42 54.567 33 54.567"></polygon>
+                <polygon id="Fill-29" fill="#FFFFFF" mask="url(#mask-6)" points="33 51.433 42 51.433 42 50.567 33 50.567"></polygon>
+                <polygon id="Fill-30" fill="#FFFFFF" mask="url(#mask-6)" points="33 48.433 42 48.433 42 47.567 33 47.567"></polygon>
+                <polygon id="Fill-31" fill="#FFFFFF" mask="url(#mask-6)" points="33 44.433 42 44.433 42 43.567 33 43.567"></polygon>
+                <polygon id="Fill-32" fill="#F35656" mask="url(#mask-6)" points="100 83 104 83 104 79 100 79"></polygon>
+                <polygon id="Fill-33" fill="#F9B11D" mask="url(#mask-6)" points="94 83 98 83 98 79 94 79"></polygon>
+                <polygon id="Fill-34" fill="#68CCE5" mask="url(#mask-6)" points="87 83 91 83 91 79 87 79"></polygon>
+                <polygon id="Fill-35" fill="#F35656" mask="url(#mask-6)" points="54 75 63.9991411 57 74 75"></polygon>
+                <path d="M94,66 C94,70.9694566 89.9712416,75 85,75 C80.0287584,75 76,70.9694566 76,66 C76,61.0305434 80.0287584,57 85,57 L85.001785,57 C89.9712416,57 94,61.0287584 94,65.998215 L94,66 Z" id="Fill-36" fill="#F9B11D" mask="url(#mask-6)"></path>
+                <polygon id="Fill-37" fill="#68CCE5" mask="url(#mask-6)" points="71 65 85 65 85 51 71 51"></polygon>
+                <path d="M85,57 C80.0287584,57 76,61.0305434 76,66 L85,66 L85,57 Z" id="Fill-38" fill="#FFFFFF" mask="url(#mask-6)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

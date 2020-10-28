@@ -22,6 +22,7 @@ class Bluehost_Admin_App_Page {
 		'Services',
 		'Staging',
 		'Settings',
+		'Help',
 	);
 
 	/**
