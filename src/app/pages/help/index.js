@@ -17,7 +17,7 @@ const Help = () => {
 					<div className="chat-button-container">
 						<Button
 							className="chat-button"
-							href="#"
+							href="https://helpchat.bluehost.com/"
 							isLink
 							isPrimary
 						>
@@ -46,7 +46,7 @@ const Help = () => {
 							</div>
 							<Button
 								className="media-block__button"
-								href="#"
+								href="#/blue-sky"
 								isLink
 								isSecondary
 							>
@@ -69,7 +69,7 @@ const Help = () => {
 								className="featured-service__description">{ __('Ongoing marketing assistance and design', 'bluehost-wordpress-plugin') }</div>
 							<Button
 								className="featured-service__button"
-								href="#"
+								href="https://www.bluehost.com/solutions/full-service#full-service"
 								isLink
 								isSecondary
 							>
@@ -86,7 +86,7 @@ const Help = () => {
 							</div>
 							<Button
 								className="featured-service__button"
-								href="#"
+								href="https://www.bluehost.com/solutions/full-service#seo-services"
 								isLink
 								isSecondary
 							>
@@ -103,7 +103,7 @@ const Help = () => {
 							</div>
 							<Button
 								className="featured-service__button"
-								href="https://www.bluehost.com/resources/"
+								href="https://www.bluehost.com/solutions/full-service#request-form"
 								isLink
 								isSecondary
 							>
@@ -130,11 +130,11 @@ const Help = () => {
 				</div>
 			</div>
 			<footer className="help-footer">
-				<a className="call-to-action" href="tel:">
+				<a className="call-to-action" href="tel:8884014678">
 					<Call className="footer-icon" />
 					<span>{ __('Call us for help', 'bluehost-wordpress-plugin') }</span>
 				</a>
-				<a className="call-to-action" href="#help">
+				<a className="call-to-action" href="https://helpchat.bluehost.com/">
 					<ChatIcon className="footer-icon" />
 					<span>{ __('Chat with us', 'bluehost-wordpress-plugin') }</span>
 				</a>
