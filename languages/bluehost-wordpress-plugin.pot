@@ -210,6 +210,7 @@ msgstr ""
 
 #: src/app/components/molecules/bwa-search/index.js:16
 #: src/app/components/molecules/bwa-search/index.js:20
+#: src/app/pages/help/search-form/index.js:29
 msgid "Search"
 msgstr ""
 
@@ -240,6 +241,11 @@ msgstr ""
 
 #: src/app/components/organisms/bwa-header/main-menu.js:12
 msgid "Settings"
+msgstr ""
+
+#: src/app/components/organisms/bwa-header/main-menu.js:13
+#: src/app/pages/home/hosting/index.js:62
+msgid "Help"
 msgstr ""
 
 #: src/app/components/organisms/bwa-header/user-menu.js:24
@@ -339,6 +345,109 @@ msgstr ""
 msgid "Skip to Content"
 msgstr ""
 
+#: src/app/pages/help/index.js:24
+#: src/app/pages/help/index.js:139
+msgid "Chat with us"
+msgstr ""
+
+#: src/app/pages/help/index.js:28
+msgid "From DIY to full-service help"
+msgstr ""
+
+#: src/app/pages/help/index.js:31
+msgid "Feeling stuck? Choose how much help you'd like, from how-to articles to your own website concierge."
+msgstr ""
+
+#: src/app/pages/help/index.js:37
+msgid "Blue Sky"
+msgstr ""
+
+#: src/app/pages/help/index.js:43
+msgid "Get your own website guide"
+msgstr ""
+
+#: src/app/pages/help/index.js:45
+msgid "Our WordPress experts can jump in wherever you need help, teaching you how to build, grow, and maintain your website."
+msgstr ""
+
+#: src/app/pages/help/index.js:53
+msgid "Get Blue Sky"
+msgstr ""
+
+#: src/app/pages/help/index.js:60
+msgid "Let us do it for you"
+msgstr ""
+
+#: src/app/pages/help/index.js:62
+msgid "What can we help you achieve today?"
+msgstr ""
+
+#: src/app/pages/help/index.js:67
+msgid "Full-Service Website"
+msgstr ""
+
+#: src/app/pages/help/index.js:69
+msgid "Ongoing marketing assistance and design"
+msgstr ""
+
+#: src/app/pages/help/index.js:76
+#: src/app/pages/help/index.js:93
+msgid "Learn more"
+msgstr ""
+
+#: src/app/pages/help/index.js:82
+msgid "SEO Services"
+msgstr ""
+
+#: src/app/pages/help/index.js:85
+msgid "Fine tune your website for better visibility"
+msgstr ""
+
+#: src/app/pages/help/index.js:99
+msgid "Our experts can help"
+msgstr ""
+
+#: src/app/pages/help/index.js:102
+msgid "Consult with an expert to figure out the best next steps."
+msgstr ""
+
+#: src/app/pages/help/index.js:110
+msgid "Request a consultation"
+msgstr ""
+
+#: src/app/pages/help/index.js:118
+msgid "DIY"
+msgstr ""
+
+#: src/app/pages/help/index.js:121
+msgid "Checkout our resource center for helpful how-to articles and guides."
+msgstr ""
+
+#: src/app/pages/help/index.js:127
+msgid "Visit resource center"
+msgstr ""
+
+#: src/app/pages/help/index.js:135
+msgid "Call us for help"
+msgstr ""
+
+#: src/app/pages/help/search-form/index.js:26
+#: src/app/pages/help/search-form/index.js:34
+msgid "Search Resources"
+msgstr ""
+
+#: src/app/pages/help/search-results/index.js:22
+msgid "More"
+msgstr ""
+
+#: src/app/pages/help/search-results/index.js:36
+msgid "There were no results for your query. Please try again."
+msgstr ""
+
+#: src/app/pages/help/search.js:53
+msgid "Filter by"
+msgstr ""
+
 #: src/app/pages/home/coming-soon-notice/index.js:34
 msgid "Your site says “Coming Soon.”"
 msgstr ""
@@ -421,10 +530,6 @@ msgstr ""
 
 #: src/app/pages/home/hosting/index.js:54
 msgid "Find a Domain"
-msgstr ""
-
-#: src/app/pages/home/hosting/index.js:62
-msgid "Help"
 msgstr ""
 
 #: src/app/pages/home/hosting/index.js:63
