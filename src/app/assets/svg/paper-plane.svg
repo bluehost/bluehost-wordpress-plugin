@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="174px" height="174px" viewBox="0 0 174 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 20</title>
+    <defs>
+        <polygon id="path-1" points="0 0 173.999347 0 173.999347 174 0 174"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Blue-Sky-Product-Page" transform="translate(-454.000000, -2127.000000)">
+            <g id="Group-20" transform="translate(454.000000, 2127.000000)">
+                <g id="Group-3">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M173.999347,87 C173.999347,135.047925 135.049448,174 86.9993475,174 C38.9492475,174 -0.0006525,135.047925 -0.0006525,87 C-0.0006525,38.9499 38.9492475,0 86.9993475,0 C135.049448,0 173.999347,38.9499 173.999347,87" id="Fill-1" fill="#C2EBF5" mask="url(#mask-2)"></path>
+                </g>
+                <path d="M169,115.888866 L86.9118847,34 L48,121.309944 L99.8158259,173 C132.047409,168.216696 158.492443,145.794822 169,115.888866" id="Fill-4" fill="#9EDFEF"></path>
+                <polygon id="Fill-6" fill="#FFFFFF" points="48 122 87 34 126 122"></polygon>
+                <polygon id="Fill-8" fill="#D7DBE0" points="79 120.829339 87 33 87 140"></polygon>
+                <polygon id="Fill-10" fill="#4687C7" points="81.5100343 93 79 120.812137 87 140 87 106.208308"></polygon>
+                <polygon id="Fill-12" fill="#C2EBF5" points="48 122 81 94 78.1962357 122"></polygon>
+                <polygon id="Fill-14" fill="#C2EBF5" points="126 122 93 94 95.7877462 122"></polygon>
+                <polygon id="Fill-16" fill="#F2F2F2" points="96 120.829339 87 33 87 140"></polygon>
+                <polygon id="Fill-18" fill="#58B4D9" points="93.1945192 93 96 120.812137 87 140 87 106.208308"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
