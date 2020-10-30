@@ -28,8 +28,6 @@ const More = ({hasMore, onClick}) => {
 const Hits = connectInfiniteHits(
 	({hasMore, hits, refineNext}) => {
 
-		console.log(hits);
-
 		if (!hits.length) {
 			return (
 				<p className="resource-search-no-results">
