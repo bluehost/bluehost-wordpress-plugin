@@ -23,6 +23,7 @@ const ToolsRoute = lazy(() => import( '@app/pages/tools' ));
 const StagingRoute = lazy(() => import( '@app/pages/tools/staging' ));
 const SettingsRoute = lazy(() => import( '@app/pages/settings' ));
 const HelpRoute = lazy(() => import( '@app/pages/help' ));
+const BlueSkyRoute = lazy(() => import('@app/pages/blue-sky'));
 
 const BWAMain = ({props}, ref) => (
 	<section { ...props } ref={ ref } tabIndex="-1" className="router-section">
@@ -41,6 +42,7 @@ const BWAMain = ({props}, ref) => (
 				<Route path="/tools/staging" exact render={ () => <StagingRoute /> } />
 				<Route path="/settings" render={ () => <SettingsRoute /> } />
 				<Route path="/help" render={ () => <HelpRoute /> } />
+				<Route path="/blue-sky" render={ () => <BlueSkyRoute /> } />
 				<Redirect to="/home" />
 			</Switch>
 		</Suspense>
