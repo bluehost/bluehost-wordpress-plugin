@@ -173,18 +173,9 @@ const BlueSky = () => {
 						<PaperPlane />
 					</div>
 					<div className="new-feature__content">
-						<div
-							className="new-feature__title"
-							dangerouslySetInnerHTML={
-								{
-									__html: sprintf(
-										__('Email that gets results with %sConstant Contact%s', 'bluehost-wordpress-plugin'),
-										'<a href="#">',
-										'</a>'
-									)
-								}
-							}
-						/>
+						<div className="new-feature__title">
+							{ __('Email that gets results with Constant Contact', 'bluehost-wordpress-plugin') }
+						</div>
 						<div className="new-feature-description">
 							<ul>
 								<li>
@@ -208,18 +199,9 @@ const BlueSky = () => {
 						<MagnifyingGlass />
 					</div>
 					<div className="new-feature__content">
-						<div
-							className="new-feature__title"
-							dangerouslySetInnerHTML={
-								{
-									__html: sprintf(
-										__('Boost your rank with %sBluehost SEO Tools%s', 'bluehost-wordpress-plugin'),
-										'<a href="#">',
-										'</a>'
-									)
-								}
-							}
-						/>
+						<div className="new-feature__title">
+							{ __('Boost your rank with Bluehost SEO Tools', 'bluehost-wordpress-plugin') }
+						</div>
 						<div className="new-feature-description">
 							<ul>
 								<li>{ __('All-in-one SEO toolkit', 'bluehost-wordpress-plugin') }</li>
@@ -236,18 +218,9 @@ const BlueSky = () => {
 						<Key />
 					</div>
 					<div className="new-feature__content">
-						<div
-							className="new-feature__title"
-							dangerouslySetInnerHTML={
-								{
-									__html: sprintf(
-										__('Strategies to drive traffic from %sOne Keyword Search%s', 'bluehost-wordpress-plugin'),
-										'<a href="#">',
-										'</a>'
-									)
-								}
-							}
-						/>
+						<div className="new-feature__title">
+							{ __('Strategies to drive traffic from One Keyword Search', 'bluehost-wordpress-plugin') }
+						</div>
 						<div className="new-feature-description">
 							<ul>
 								<li>{ __('Strategic single keyword recommendation', 'bluehost-wordpress-plugin') }</li>
