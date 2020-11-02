@@ -54,117 +54,111 @@ const BlueSky = () => {
 					{ __('Live WordPress Support from $29/month.', 'bluehost-wordpress-plugin') }
 				</div>
 				<div className="products">
-					<div className="product">
-						<div className="product-card">
-							<div className="product-card__title">
-								{ __('Blue Sky Basic', 'bluehost-wordpress-plugin') }
+					<div className="product-card">
+						<div className="product-card__title">
+							{ __('Blue Sky Basic', 'bluehost-wordpress-plugin') }
+						</div>
+						<div className="product-card__description">
+							{ __('Get unstuck with fast answers and recommendations.', 'bluehost-wordpress-plugin') }
+						</div>
+						<div className="product-card__call-to-action">
+							<Button href="tel:8442118705" isLink isPrimary>
+								{ __('Call to get started', 'bluehost-wordpress-plugin') }
+							</Button>
+						</div>
+						<div className="product-card__feature-list">
+							<div className="product-card__feature">
+								{ __('On-Demand Ticket Support', 'bluehost-wordpress-plugin') }
 							</div>
-							<div className="product-card__description">
-								{ __('Get unstuck with fast answers and recommendations.', 'bluehost-wordpress-plugin') }
+							<div className="product-card__feature">
+								{ __('Account Access Assistance', 'bluehost-wordpress-plugin') }
 							</div>
-							<div className="product-card__call-to-action">
-								<Button href="tel:8442118705" isLink isPrimary>
-									{ __('Call to get started', 'bluehost-wordpress-plugin') }
-								</Button>
+							<div className="product-card__feature">
+								{ __('Website Backup Assistance', 'bluehost-wordpress-plugin') }
 							</div>
-							<div className="product-card__feature-list">
-								<div className="product-card__feature">
-									{ __('On-Demand Ticket Support', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Account Access Assistance', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Website Backup Assistance', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Design Guidance', 'bluehost-wordpress-plugin') }
-								</div>
+							<div className="product-card__feature">
+								{ __('Design Guidance', 'bluehost-wordpress-plugin') }
 							</div>
 						</div>
 					</div>
-					<div className="product">
-						<div className="product-card">
-							<div className="product-card__title">
-								{ __('Blue Sky Plus', 'bluehost-wordpress-plugin') }
+					<div className="product-card">
+						<div className="product-card__title">
+							{ __('Blue Sky Plus', 'bluehost-wordpress-plugin') }
+						</div>
+						<div className="product-card__description">
+							{ __('Learn more WordPress skills and solve problems faster.', 'bluehost-wordpress-plugin') }
+						</div>
+						<div className="product-card__call-to-action">
+							<Button href="tel:8442118705" isLink isPrimary>
+								{ __('Call to get started', 'bluehost-wordpress-plugin') }
+							</Button>
+						</div>
+						<div className="product-card__feature-list">
+							<div className="product-card__feature">
+								{ __('On-Demand Ticket Support', 'bluehost-wordpress-plugin') }
 							</div>
-							<div className="product-card__description">
-								{ __('Learn more WordPress skills and solve problems faster.', 'bluehost-wordpress-plugin') }
+							<div className="product-card__feature">
+								{ __('Account Access Assistance', 'bluehost-wordpress-plugin') }
 							</div>
-							<div className="product-card__call-to-action">
-								<Button href="tel:8442118705" isLink isPrimary>
-									{ __('Call to get started', 'bluehost-wordpress-plugin') }
-								</Button>
+							<div className="product-card__feature">
+								{ __('Website Backup Assistance', 'bluehost-wordpress-plugin') }
 							</div>
-							<div className="product-card__feature-list">
-								<div className="product-card__feature">
-									{ __('On-Demand Ticket Support', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Account Access Assistance', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Website Backup Assistance', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Design Guidance', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('On-Demand Chat Support', 'bluehost-wordpress-plugin') }
-								</div>
+							<div className="product-card__feature">
+								{ __('Design Guidance', 'bluehost-wordpress-plugin') }
+							</div>
+							<div className="product-card__feature">
+								{ __('On-Demand Chat Support', 'bluehost-wordpress-plugin') }
 							</div>
 						</div>
 					</div>
-					<div className="product">
+					<div className="product-card">
 						<div className="product-highlight">
 							{ __('Recommended', 'bluehost-wordpress-plugin') }
 						</div>
-						<div className="product-card">
-							<div className="product-card__title">
-								{ __('Blue Sky Pro', 'bluehost-wordpress-plugin') }
+						<div className="product-card__title">
+							{ __('Blue Sky Pro', 'bluehost-wordpress-plugin') }
+						</div>
+						<div className="product-card__description">
+							{ __('Build and Maintain with advanced features and improve as you go.', 'bluehost-wordpress-plugin') }
+						</div>
+						<div className="product-card__call-to-action">
+							<Button href="tel:8442118705" isLink isPrimary>
+								{ __('Call to get started', 'bluehost-wordpress-plugin') }
+							</Button>
+						</div>
+						<div className="product-card__feature-list">
+							<div className="product-card__feature">
+								{ __('On-Demand Ticket Support', 'bluehost-wordpress-plugin') }
 							</div>
-							<div className="product-card__description">
-								{ __('Build and Maintain with advanced features and improve as you go.', 'bluehost-wordpress-plugin') }
+							<div className="product-card__feature">
+								{ __('Account Access Assistance', 'bluehost-wordpress-plugin') }
 							</div>
-							<div className="product-card__call-to-action">
-								<Button href="tel:8442118705" isLink isPrimary>
-									{ __('Call to get started', 'bluehost-wordpress-plugin') }
-								</Button>
+							<div className="product-card__feature">
+								{ __('Website Backup Assistance', 'bluehost-wordpress-plugin') }
 							</div>
-							<div className="product-card__feature-list">
-								<div className="product-card__feature">
-									{ __('On-Demand Ticket Support', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Account Access Assistance', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Website Backup Assistance', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Design Guidance', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('On-Demand Chat Support', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Bluehost SEO Tools', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Content Optimization Assistance', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Landing Page Optimization Assistance', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Mobile Optimization Assistance', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('1 Keyword Optimization', 'bluehost-wordpress-plugin') }
-								</div>
-								<div className="product-card__feature">
-									{ __('Constant Contact (500 contacts free)', 'bluehost-wordpress-plugin') }
-								</div>
+							<div className="product-card__feature">
+								{ __('Design Guidance', 'bluehost-wordpress-plugin') }
+							</div>
+							<div className="product-card__feature">
+								{ __('On-Demand Chat Support', 'bluehost-wordpress-plugin') }
+							</div>
+							<div className="product-card__feature">
+								{ __('Bluehost SEO Tools', 'bluehost-wordpress-plugin') }
+							</div>
+							<div className="product-card__feature">
+								{ __('Content Optimization Assistance', 'bluehost-wordpress-plugin') }
+							</div>
+							<div className="product-card__feature">
+								{ __('Landing Page Optimization Assistance', 'bluehost-wordpress-plugin') }
+							</div>
+							<div className="product-card__feature">
+								{ __('Mobile Optimization Assistance', 'bluehost-wordpress-plugin') }
+							</div>
+							<div className="product-card__feature">
+								{ __('1 Keyword Optimization', 'bluehost-wordpress-plugin') }
+							</div>
+							<div className="product-card__feature">
+								{ __('Constant Contact (500 contacts free)', 'bluehost-wordpress-plugin') }
 							</div>
 						</div>
 					</div>

@@ -257,6 +257,15 @@
         margin-right: 100px;
       }
     }
+
+    @media screen and (max-width: 500px) {
+      flex-wrap: wrap;
+      .call-to-action {
+        flex-basis: 100%;
+        justify-content: center;
+        margin-right: 0 !important;
+      }
+    }
   }
 
   .media-block {
@@ -270,8 +279,11 @@
         margin-left: auto;
         margin-right: auto;
       }
+    }
+    @media screen and (max-width: 400px) {
       &__media {
-        margin: 0 auto !important;
+        margin-right: 0;
+        margin-left: -30px !important;
       }
     }
 

@@ -1,10 +1,7 @@
 import { BWABaseTemplate as Page } from '@app/components/templates';
 import { BWAButton as Button } from '@app/components/atoms';
-import { BlueSkyGroup, BlueSkyLogo, Call, CallCenter, ChatIcon, Computer, SearchIcon, SEO } from '@app/assets';
+import { BlueSkyGroup, BlueSkyLogo, Call, CallCenter, ChatIcon, Computer, SEO } from '@app/assets';
 import { __ } from '@wordpress/i18n';
-import SearchFilters from './search-filters';
-import SearchForm from './search-form';
-import SearchResults from './search-results';
 import Search from './search';
 
 import './style.scss';
@@ -49,6 +46,11 @@ const Help = () => {
 								href="#/blue-sky"
 								isLink
 								isSecondary
+								onClick={
+									() => {
+										window.scrollTo(0, 0);
+									}
+								}
 							>
 								{ __('Get Blue Sky', 'bluehost-wordpress-plugin') }
 							</Button>
