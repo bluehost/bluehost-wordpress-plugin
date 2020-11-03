@@ -655,7 +655,7 @@ msgid "Give us a call at %s844-211-8705%s"
 msgstr ""
 
 #: src/app/pages/help/index.js:21
-#: src/app/pages/help/index.js:141
+#: src/app/pages/help/index.js:143
 msgid "Chat with us"
 msgstr ""
 
@@ -699,44 +699,44 @@ msgstr ""
 msgid "Ongoing marketing assistance and design"
 msgstr ""
 
-#: src/app/pages/help/index.js:78
-#: src/app/pages/help/index.js:95
+#: src/app/pages/help/index.js:79
+#: src/app/pages/help/index.js:97
 msgid "Learn more"
 msgstr ""
 
-#: src/app/pages/help/index.js:84
+#: src/app/pages/help/index.js:85
 msgid "SEO Services"
 msgstr ""
 
-#: src/app/pages/help/index.js:87
+#: src/app/pages/help/index.js:88
 msgid "Fine tune your website for better visibility"
 msgstr ""
 
-#: src/app/pages/help/index.js:101
+#: src/app/pages/help/index.js:103
 msgid "Our experts can help"
 msgstr ""
 
-#: src/app/pages/help/index.js:104
+#: src/app/pages/help/index.js:106
 msgid "Consult with an expert to figure out the best next steps."
 msgstr ""
 
-#: src/app/pages/help/index.js:112
+#: src/app/pages/help/index.js:114
 msgid "Request a consultation"
 msgstr ""
 
-#: src/app/pages/help/index.js:120
+#: src/app/pages/help/index.js:122
 msgid "DIY"
 msgstr ""
 
-#: src/app/pages/help/index.js:123
+#: src/app/pages/help/index.js:125
 msgid "Checkout our resource center for helpful how-to articles and guides."
 msgstr ""
 
-#: src/app/pages/help/index.js:129
+#: src/app/pages/help/index.js:131
 msgid "Visit resource center"
 msgstr ""
 
-#: src/app/pages/help/index.js:137
+#: src/app/pages/help/index.js:139
 msgid "Call us for help"
 msgstr ""
 
