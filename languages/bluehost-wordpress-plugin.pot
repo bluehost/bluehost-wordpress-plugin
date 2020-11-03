@@ -2,7 +2,7 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bluehost 2.3.1\n"
+"Project-Id-Version: Bluehost 2.3.2\n"
 "Report-Msgid-Bugs-To: https://github.com/bluehost/bluehost-wordpress-plugin/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,40 +111,40 @@ msgstr ""
 msgid "Sorry, you are not allowed to access this endpoint."
 msgstr ""
 
-#: inc/staging.php:186
+#: inc/Staging.php:186
 msgid "Cloning can only be done from the production environment."
 msgstr ""
 
-#: inc/staging.php:211
+#: inc/Staging.php:211
 msgid "Staging environment already exists!"
 msgstr ""
 
-#: inc/staging.php:245
+#: inc/Staging.php:245
 msgid "You must switch to the production environment before destroying staging."
 msgstr ""
 
-#: inc/staging.php:267
+#: inc/Staging.php:267
 msgid "Switch to an environment you are already in, you cannot."
 msgstr ""
 
-#: inc/staging.php:304
+#: inc/Staging.php:304
 msgid "Invalid staging CLI command."
 msgstr ""
 
 #. translators: Invalid character that was entered
-#: inc/staging.php:353
+#: inc/Staging.php:353
 msgid "Invalid character (%s) in command."
 msgstr ""
 
-#: inc/staging.php:362
+#: inc/Staging.php:362
 msgid "Unable to execute script (disabled_function)."
 msgstr ""
 
-#: inc/staging.php:370
+#: inc/Staging.php:370
 msgid "Unable to execute script (permission error)."
 msgstr ""
 
-#: inc/staging.php:383
+#: inc/Staging.php:383
 msgid "Unable to parse JSON"
 msgstr ""
 

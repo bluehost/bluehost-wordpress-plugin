@@ -29,7 +29,7 @@ class Staging {
 		static $config;
 
 		if ( ! isset( $config ) || false === $cache ) {
-			$config = get_option( 'staging_config', [] );
+			$config = get_option( 'staging_config', array() );
 		}
 
 		return $config;
@@ -269,10 +269,10 @@ class Staging {
 		}
 
 		if ( 'staging' === $env ) {
-			return $this->runCommand( 'sso_staging', [ $user_id ] );
+			return $this->runCommand( 'sso_staging', array( $user_id ) );
 		}
 
-		return $this->runCommand( 'sso_production', [ $user_id ] );
+		return $this->runCommand( 'sso_production', array( $user_id ) );
 	}
 
 	/**
@@ -285,7 +285,7 @@ class Staging {
 	 */
 	protected function runCommand( $command, $args = null ) {
 
-		$allowedCommands = [
+		$allowedCommands = array(
 			'clone'           => true,
 			'compat_check'    => true,
 			'create'          => true,
@@ -295,7 +295,7 @@ class Staging {
 			'destroy'         => true,
 			'sso_production'  => true,
 			'sso_staging'     => true,
-		];
+		);
 
 		// Check if command is allowed
 		if ( ! array_key_exists( $command, $allowedCommands ) ) {
@@ -312,13 +312,13 @@ class Staging {
 
 			$uniqueId = wp_rand( 1000, 9999 );
 
-			$config = [
-				'creation_date'  => date( 'M j, Y' ),
+			$config = array(
+				'creation_date'  => gmdate( 'M j, Y' ),
 				'production_dir' => ABSPATH,
 				'production_url' => get_option( 'siteurl' ),
 				'staging_dir'    => ABSPATH . 'staging/' . $uniqueId,
 				'staging_url'    => get_option( 'siteurl' ) . '/staging/' . $uniqueId,
-			];
+			);
 
 			update_option( 'staging_config', $config );
 
@@ -327,7 +327,7 @@ class Staging {
 		$token = wp_generate_password( 32, false );
 		set_transient( 'staging_auth_token', $token, 60 );
 
-		$command = [
+		$command = array(
 			$command,
 			$token,
 			$config['production_dir'],
@@ -335,7 +335,7 @@ class Staging {
 			$config['production_url'],
 			$config['staging_url'],
 			get_current_user_id(),
-		];
+		);
 
 		if ( $args && is_array( $args ) ) {
 			$command = array_merge( $command, array_values( $args ) );
@@ -344,7 +344,7 @@ class Staging {
 		$command = implode( ' ', array_map( 'escapeshellcmd', $command ) );
 
 		// Check for invalid characters
-		$invalidChars = [ ';', '&', '|' ];
+		$invalidChars = array( ';', '&', '|' );
 		foreach ( $invalidChars as $char ) {
 			if ( false !== strpos( $command, $char ) ) {
 				return new \WP_Error(
@@ -358,7 +358,7 @@ class Staging {
 		$script = BLUEHOST_PLUGIN_DIR . 'lib/.staging';
 
 		$disabled_functions = explode( ',', ini_get( 'disable_functions' ) );
-		if ( is_array( $disabled_functions ) && in_array( 'exec', array_map( 'trim', $disabled_functions ) ) ) {
+		if ( is_array( $disabled_functions ) && in_array( 'exec', array_map( 'trim', $disabled_functions ), true ) ) {
 			return new \WP_Error( 'error_response', __( 'Unable to execute script (disabled_function).', 'bluehost-wordpress-plugin' ) );
 		}
 
