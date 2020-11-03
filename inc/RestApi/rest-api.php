@@ -1,19 +1,11 @@
 <?php
-/**
- * Include REST API related files.
- */
-function bluehost_include_rest_api() {
-	require __DIR__ . '/class-bluehost-admin-errors.php';
-}
-
-add_action( 'rest_api_init', 'bluehost_include_rest_api', 5 );
 
 /**
  * Instantiate controllers and register routes.
  */
 function bluehost_init_rest_api() {
 
-	$controllers = [
+	$controllers = array(
 		'Bluehost\\RestApi\\StagingController',
 		'Bluehost\\RestApi\\SettingsController',
 		'Bluehost\\RestApi\\CachingController',
@@ -21,8 +13,8 @@ function bluehost_init_rest_api() {
 		'Bluehost\\RestApi\\MojoThemesController',
 		'Bluehost\\RestApi\\MojoPluginsController',
 		'Bluehost\\RestApi\\MojoServicesController',
-		'\\Bluehost\\WP\\Admin_App\\Errors',
-	];
+		'Bluehost\\RestApi\\AdminErrorController',
+	);
 
 	foreach ( $controllers as $controller ) {
 		/**

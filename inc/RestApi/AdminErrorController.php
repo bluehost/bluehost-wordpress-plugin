@@ -1,13 +1,13 @@
 <?php
 
-namespace Bluehost\WP\Admin_App;
+namespace Bluehost\RestApi;
 
 /**
  * Class Errors
  *
  * @package Bluehost\WP\Admin_App
  */
-class Errors extends \WP_REST_Controller {
+class AdminErrorController extends \WP_REST_Controller {
 
 	/**
 	 * Undocumented variable
@@ -59,6 +59,8 @@ class Errors extends \WP_REST_Controller {
 	protected $option_key = 'bluehost_plugin_admin_errors';
 
 	/**
+	 * Collection of saved errors.
+	 *
 	 * @var array
 	 */
 	protected $saved;
@@ -71,6 +73,8 @@ class Errors extends \WP_REST_Controller {
 	protected $params;
 
 	/**
+	 * Collection of updated errors.
+	 *
 	 * @var array
 	 */
 	protected $updated;
@@ -93,6 +97,8 @@ class Errors extends \WP_REST_Controller {
 	}
 
 	/**
+	 * Rest handler for error logging.
+	 *
 	 * @param \WP_REST_Request $request WP request model.
 	 *
 	 * @return \WP_REST_Response
@@ -105,10 +111,10 @@ class Errors extends \WP_REST_Controller {
 		}
 
 		return new \WP_REST_Response(
-			[
+			array(
 				'success' => 'it-the-success',
 				'code'    => $code,
-			]
+			)
 		);
 	}
 
@@ -128,7 +134,7 @@ class Errors extends \WP_REST_Controller {
 						$this->saved,
 						array(
 							'error_max' => true,
-							'date'      => new Date(),
+							'date'      => new \DateTime(),
 						)
 					)
 				);
@@ -147,8 +153,8 @@ class Errors extends \WP_REST_Controller {
 
 		if ( ! empty( $this->updated[ $this->key ] ) && ! empty( $this->updated[ $this->key ]['count'] ) ) {
 			$count = (int) $this->updated[ $this->key ]['count'];
-			if ( ! isset( $this->updated['error_max'] ) || 'true' != $this->updated['error_max'] ) {
-				if ( ! in_array( implode( ',', $this->params['browser'] ), $this->updated[ $this->key ]['browsers'] ) ) {
+			if ( ! isset( $this->updated['error_max'] ) || 'true' !== $this->updated['error_max'] ) {
+				if ( ! in_array( implode( ',', $this->params['browser'] ), $this->updated[ $this->key ]['browsers'], true ) ) {
 					$this->updated[ $this->key ]['browsers'][] = implode( ',', $this->params['browser'] );
 				}
 				$this->make_log_summary();
@@ -156,7 +162,7 @@ class Errors extends \WP_REST_Controller {
 				$this->updated[ $this->key ]['max'] = 'true';
 			} elseif ( ( (int) $this->error_count - 1 ) >= $count ) {
 				$this->updated[ $this->key ]['count'] = (int) $this->updated[ $this->key ]['count'] + 1;
-				if ( ! in_array( implode( ',', $this->params['browser'] ), $this->updated[ $this->key ]['browsers'] ) ) {
+				if ( ! in_array( implode( ',', $this->params['browser'] ), $this->updated[ $this->key ]['browsers'], true ) ) {
 					$this->updated[ $this->key ]['browsers'][] = implode( ',', $this->params['browser'] );
 				}
 				$this->make_log_summary();
@@ -202,20 +208,21 @@ class Errors extends \WP_REST_Controller {
 	/**
 	 * Evaluate data to determine if it should be logged.
 	 *
-	 * @param array $saved
+	 * @param array $saved Collection of saved errors.
 	 *
 	 * @return bool
 	 */
 	protected function should_log( $saved = array() ) {
 		$filter = apply_filters( 'bluehost_admin_error_logging_active', true );
 
-		if ( true === (
+		if (
+			true === (
 				! empty( $saved['error_max'] )
 				&& is_bool( $saved['error_max'] )
 				&& true === (bool) $saved['error_max']
-			)
-			 || count( $stored ) >= $this->error_store_count
-			 || ( true || 1 ) !== $filter
+			) ||
+			count( $stored ) >= $this->error_store_count ||
+			( true || 1 ) !== $filter
 		) {
 			return false;
 		}
@@ -226,8 +233,8 @@ class Errors extends \WP_REST_Controller {
 	/**
 	 * Database Helper
 	 *
-	 * @param string $type
-	 * @param array  $data
+	 * @param string $type Action type.
+	 * @param array  $data Data.
 	 *
 	 * @return mixed
 	 */
