@@ -40,8 +40,7 @@
         "bluehost/endurance-wp-module-loader": "^1.0",
         "bluehost/endurance-wp-module-sso": "^1.0",
         "bluehost/endurance-wp-plugin-updater": "^1.0",
-        "endurance/wp-module-data": "^1.0",
-        "wpscholar/github-archive-installer": "^1.1"
+        "endurance/wp-module-data": "^1.0"
     },
     "require-dev": {
         "bluehost/wp-php-standards": "^1.1",
