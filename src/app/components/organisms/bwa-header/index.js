@@ -38,7 +38,13 @@ const HeaderLogo = () => (
 const HeaderIcons = () => (
 	<div id="bluehost-nav-wrap">
 		<div className="bluehost-nav-wrap-element help">
-			<a aria-label="Help" href="https://my.bluehost.com/hosting/help" target="_blank" rel="noreferrer noopener">
+			<a
+				aria-label="Help"
+				data-testid="help-icon"
+				href="https://my.bluehost.com/hosting/help"
+				rel="noreferrer noopener"
+				target="_blank"
+			>
 				<HelpIcon />
 			</a>
 		</div>

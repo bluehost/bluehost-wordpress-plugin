@@ -21,9 +21,9 @@ const Help = () => {
 							{ __('Chat with us', 'bluehost-wordpress-plugin') } <ChatIcon className="chat-icon" />
 						</Button>
 					</div>
-					<div className="section-title">
+					<h2 className="section-title">
 						{ __('From DIY to full-service help', 'bluehost-wordpress-plugin') }
-					</div>
+					</h2>
 					<p className="section-description">
 						{ __('Feeling stuck? Choose how much help you\'d like, from how-to articles to your own website concierge.', 'bluehost-wordpress-plugin') }
 					</p>
@@ -71,6 +71,7 @@ const Help = () => {
 								className="featured-service__description">{ __('Ongoing marketing assistance and design', 'bluehost-wordpress-plugin') }</div>
 							<Button
 								className="featured-service__button"
+								data-testid="full-service"
 								href="https://www.bluehost.com/solutions/full-service#full-service"
 								isLink
 								isSecondary
@@ -88,6 +89,7 @@ const Help = () => {
 							</div>
 							<Button
 								className="featured-service__button"
+								data-testid="seo-services"
 								href="https://www.bluehost.com/solutions/full-service#seo-services"
 								isLink
 								isSecondary
