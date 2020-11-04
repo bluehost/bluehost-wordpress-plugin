@@ -24,8 +24,9 @@
             "url": "https://bluehost.github.io/satis/",
             "only": [
                 "bluehost/*",
-                "mojoness/*"
-            ]
+                "mojoness/*",
+                "endurance/*"
+			]
         }
     ],
     "autoload": {
@@ -49,8 +50,9 @@
     },
     "config": {
         "optimize-autoloader": true,
-        "sort-packages": true
-    },
+        "sort-packages": true,
+        "platform-check": false
+	},
     "scripts": {
         "fix": [
             "vendor/bin/phpcbf . --standard=Bluehost"
