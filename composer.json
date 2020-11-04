@@ -25,7 +25,7 @@
             "only": [
                 "bluehost/*",
                 "mojoness/*",
-				"endurance/*"
+                "endurance/*"
 			]
         }
     ],
@@ -51,7 +51,7 @@
     "config": {
         "optimize-autoloader": true,
         "sort-packages": true,
-		"platform-check": false
+        "platform-check": false
 	},
     "scripts": {
         "fix": [
