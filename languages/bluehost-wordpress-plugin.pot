@@ -175,15 +175,15 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: src/app/components/molecules/bwa-error/index.js:47
+#: src/app/components/molecules/bwa-error/index.js:44
 msgid "There was a problem loading the Bluehost Plugin."
 msgstr ""
 
-#: src/app/components/molecules/bwa-error/index.js:48
+#: src/app/components/molecules/bwa-error/index.js:46
 msgid "Get in touch and we'll sort out the issue for you."
 msgstr ""
 
-#: src/app/components/molecules/bwa-error/index.js:50
+#: src/app/components/molecules/bwa-error/index.js:49
 msgid "Contact Support"
 msgstr ""
 
