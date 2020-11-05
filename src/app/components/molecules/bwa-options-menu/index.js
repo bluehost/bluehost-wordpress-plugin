@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { kebabCase, uniqueId } from 'lodash';
 import { useEffect, useRef, useState } from '@wordpress/element';
 import { get } from '@app/functions';
-import { ReactComponent as Ellipsis } from '@app/assets/ellipsis.svg';
+import { Ellipsis } from '@app/assets';
 import './style.scss';
 
 /**

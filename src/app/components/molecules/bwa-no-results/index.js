@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { ReactComponent as ErrorStateImage } from '@app/assets/error-state.svg';
+import { ErrorStateImage } from '@app/assets';
 import './style.scss';
 
 export default function BWANoResults() {

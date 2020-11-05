@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1250px" height="341px" viewBox="0 0 1250 341" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Path 2@2x</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Bluerock-plugin-(home)-Copy-5" transform="translate(-180.000000, -110.000000)" fill="#FFFFFF">
-            <polygon id="Path-2" points="180 328.273437 808.03125 450.765625 1430.87891 327.273437 1430.87891 110 180.878906 110"></polygon>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="341"><defs/><path fill="#FFF" fill-rule="evenodd" d="M0 218.273l628.031 122.493 622.848-123.493V0H.879z"/></svg>

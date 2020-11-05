@@ -8,14 +8,11 @@ import classNames from 'classnames';
  */
 import { Notice } from '@wordpress/components';
 import { createPortal } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
  */
-import { ReactComponent as CloseIcon } from '@app/assets/close.svg';
-import { ReactComponent as WarningIcon } from '@app/assets/warning.svg';
-import { ReactComponent as SuccessIcon } from '@app/assets/success.svg';
+import { CloseIcon, SuccessIcon, WarningIcon } from '@app/assets';
 import './style.scss';
 
 const BWASnackbar = ( { children, className = '', isDismissible = false, onRemove, status, title = '', ...props } ) => {
