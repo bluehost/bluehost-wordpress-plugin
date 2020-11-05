@@ -171,7 +171,7 @@ msgstr ""
 msgid "Buy Now"
 msgstr ""
 
-#: src/app/components/molecules/bwa-dropdown-button/index.js:171
+#: src/app/components/molecules/bwa-dropdown-button/index.js:172
 msgid "Select"
 msgstr ""
 
