@@ -3,7 +3,6 @@ import { BWAButton as Button } from '@app/components/atoms';
 import {
 	Analytics,
 	Bathtub,
-	BlueSkyGroup,
 	BlueSkyLogo,
 	Headset,
 	Key,
@@ -20,6 +19,7 @@ import {
 	Tractor
 } from '@app/assets';
 import { __, sprintf } from '@wordpress/i18n';
+import blueSkyGroup from '@app/assets/blue-sky-group.png';
 
 import './style.scss';
 
@@ -32,7 +32,7 @@ const BlueSky = () => {
 			<div className="section-intro">
 				<div className="media-block">
 					<div className="media-block__media">
-						<BlueSkyGroup />
+						<img src={ blueSkyGroup } alt="" />
 					</div>
 					<div className="media-block__details">
 						<div className="media-block__title">

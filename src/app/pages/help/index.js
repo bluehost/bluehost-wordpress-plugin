@@ -1,8 +1,9 @@
 import { BWABaseTemplate as Page } from '@app/components/templates';
 import { BWAButton as Button } from '@app/components/atoms';
-import { BlueSkyGroup, BlueSkyLogo, Call, CallCenter, ChatIcon, Computer, SEO } from '@app/assets';
+import { BlueSkyLogo, Call, CallCenter, ChatIcon, Computer, SEO } from '@app/assets';
 import { __ } from '@wordpress/i18n';
 import Search from './search';
+import blueSkyGroup from '@app/assets/blue-sky-group.png';
 
 import './style.scss';
 
@@ -34,7 +35,9 @@ const Help = () => {
 						<span className="screen-reader-text">{ __('Blue Sky', 'bluehost-wordpress-plugin') }</span>
 					</div>
 					<div className="media-block">
-						<div className="media-block__media"><BlueSkyGroup /></div>
+						<div className="media-block__media">
+							<img src={ blueSkyGroup } alt="" />
+						</div>
 						<div className="media-block__details">
 							<div
 								className="media-block__title">{ __('Get your own website guide', 'bluehost-wordpress-plugin') }</div>
