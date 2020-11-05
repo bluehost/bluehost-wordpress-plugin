@@ -6,7 +6,6 @@ import { ReactComponent as Bathtub } from '@app/assets/svg/bathtub.svg';
 import { ReactComponent as BillingIcon } from '@app/assets/svg/billing.svg';
 import { ReactComponent as BluehostLogo } from '@app/assets/svg/bluehost.svg';
 import { ReactComponent as BluerockSpinner } from '@app/assets/svg/spinner.svg';
-import { ReactComponent as BlueSkyGroup } from '@app/assets/svg/blue-sky-group.svg';
 import { ReactComponent as BlueSkyLogo } from '@app/assets/svg/blue-sky-logo.svg';
 import { ReactComponent as Call } from '@app/assets/svg/call.svg';
 import { ReactComponent as CallCenter } from '@app/assets/svg/call-center.svg';
@@ -52,7 +51,6 @@ export {
 	BillingIcon,
 	BluehostLogo,
 	BluerockSpinner,
-	BlueSkyGroup,
 	BlueSkyLogo,
 	Call,
 	CallCenter,
