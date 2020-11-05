@@ -1,12 +1,15 @@
-import { max, min, range, uniq } from 'lodash';
+import max from 'lodash/max';
+import min from 'lodash/min';
+import range from 'lodash/range';
+import uniq from 'lodash/uniq';
 import classNames from 'classnames';
 import './style.scss';
 
-export default function Pagination( { callback, currentPage = 1, pageCount, padding = 2 } ) {
-	if ( pageCount <= 1 ) {
+export default function Pagination({callback, currentPage = 1, pageCount, padding = 2}) {
+	if (pageCount <= 1) {
 		return null;
 	}
-	const pages = uniq( [ ...range( max( [ currentPage - padding, 2 ] ), min( [ currentPage + padding + 1, pageCount ] ) ) ] );
+	const pages = uniq([...range(max([currentPage - padding, 2]), min([currentPage + padding + 1, pageCount]))]);
 	const previous = currentPage - 1;
 	const next = currentPage + 1;
 	const hasPrevious = previous >= 1;
@@ -18,7 +21,7 @@ export default function Pagination( { callback, currentPage = 1, pageCount, padd
 					<button
 						aria-label="First"
 						className="pagination__link"
-						onClick={ () => callback( 1 ) }
+						onClick={ () => callback(1) }
 						type="button"
 					>
 						<span>«</span>
@@ -30,7 +33,7 @@ export default function Pagination( { callback, currentPage = 1, pageCount, padd
 					<button
 						aria-label="Previous"
 						className="pagination__link"
-						onClick={ () => callback( previous ) }
+						onClick={ () => callback(previous) }
 						type="button"
 					>
 						<span>‹</span>
@@ -39,12 +42,12 @@ export default function Pagination( { callback, currentPage = 1, pageCount, padd
 			) : null }
 			<li className="pagination__item">
 				<button
-					className={ classNames( {
+					className={ classNames({
 						pagination__link: true,
 						'--is-active': currentPage === 1,
-					} ) }
+					}) }
 					type="button"
-					onClick={ () => callback( 1 ) }
+					onClick={ () => callback(1) }
 				>
 					<span>1</span>
 				</button>
@@ -65,22 +68,22 @@ export default function Pagination( { callback, currentPage = 1, pageCount, padd
 					) :
 					null
 			}
-			{ pages.map( ( page ) => {
+			{ pages.map((page) => {
 				return (
 					<li key={ page } className="pagination__item">
 						<button
-							className={ classNames( {
+							className={ classNames({
 								pagination__link: true,
 								'--is-active': currentPage === page,
-							} ) }
+							}) }
 							type="button"
-							onClick={ () => callback( page ) }
+							onClick={ () => callback(page) }
 						>
 							<span>{ page }</span>
 						</button>
 					</li>
 				);
-			} ) }
+			}) }
 			{
 				currentPage + padding < pageCount - 1 ?
 					(
@@ -99,11 +102,11 @@ export default function Pagination( { callback, currentPage = 1, pageCount, padd
 			}
 			<li className="pagination__item">
 				<button
-					className={ classNames( {
+					className={ classNames({
 						pagination__link: true,
 						'--is-active': currentPage === pageCount,
-					} ) }
-					onClick={ () => callback( pageCount ) }
+					}) }
+					onClick={ () => callback(pageCount) }
 					type="button"
 				>
 					<span>{ pageCount }</span>
@@ -114,7 +117,7 @@ export default function Pagination( { callback, currentPage = 1, pageCount, padd
 					<button
 						aria-label="Next"
 						className="pagination__link"
-						onClick={ () => callback( next ) }
+						onClick={ () => callback(next) }
 						type="button"
 					>
 						<span>›</span>
@@ -127,7 +130,7 @@ export default function Pagination( { callback, currentPage = 1, pageCount, padd
 						aria-label="Last"
 						className="pagination__link"
 						type="button"
-						onClick={ () => callback( pageCount ) }
+						onClick={ () => callback(pageCount) }
 					>
 						<span>»</span>
 					</button>

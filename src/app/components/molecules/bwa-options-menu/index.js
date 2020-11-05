@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { kebabCase, uniqueId } from 'lodash';
+import kebabCase from 'lodash/kebabCase';
+import uniqueId from 'lodash/uniqueId';
 import { useEffect, useRef, useState } from '@wordpress/element';
 import { get } from '@app/functions';
 import { Ellipsis } from '@app/assets';
