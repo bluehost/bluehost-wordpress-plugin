@@ -50,7 +50,13 @@ $mobile-padding: 30px;
     display: flex;
 
     &__media {
+      width: 359px;
       margin-right: 15px;
+      flex-shrink: 0;
+
+      img {
+        width: 400px;
+      }
     }
 
     &__title {
