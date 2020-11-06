@@ -15,6 +15,7 @@ cypress.env.json
 
 # Built-app files
 /assets/*
+!/assets/images
 /.docs/*
 !/assets/bluehost.css
 !/assets/admin-global.css

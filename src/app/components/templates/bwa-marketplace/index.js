@@ -30,7 +30,7 @@ import {
 	usePaginator,
 } from '@app/hooks';
 
-import { ReactComponent as NoFavorites } from '@app/assets/favorite.svg';
+import { NoFavorites } from '@app/assets';
 
 import './style.scss';
 

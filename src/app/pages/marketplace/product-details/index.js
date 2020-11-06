@@ -8,7 +8,7 @@ import { BWABaseTemplate } from '@app/components/templates';
 import { BWAButton as Button, BWASpinner } from '@app/components/atoms';
 import { get } from '@app/functions';
 import { useMojoApi } from '@app/hooks';
-import { ReactComponent as ErrorStateImage } from '@app/assets/error-state.svg';
+import { ErrorStateImage } from '@app/assets';
 
 import './style.scss';
 

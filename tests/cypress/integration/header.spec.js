@@ -21,19 +21,19 @@ describe('App Header', function () {
 	});
 
 	it('Bluehost logo links to home page', () => {
-		cy.findByRole('link', {name: 'Bluehost'}).as('link');
+		cy.findByRole('link', {name: "Bluehost Logo linking to the Bluehost Control Panel"}).as('link');
 		cy.get('@link').should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
-			.and('contain', '/wp-admin/admin.php?page=bluehost#/home');
+			.and('contain', 'https://my.bluehost.com/hosting/app');
 	});
 
 	it('Help icon is visible', () => {
-		cy.findByRole('link', {name: 'Help'}).should('be.visible');
+		cy.findByTestId('help-icon').should('be.visible');
 	});
 
 	it('Help icon links to help on Bluerock', () => {
 		cy
-			.findByRole('link', {name: 'Help'})
+			.findByTestId('help-icon')
 			.should('have.attr', 'href', 'https://my.bluehost.com/hosting/help');
 	});
 
@@ -105,6 +105,12 @@ describe('App Header', function () {
 		cy.findByTestId('desktop-nav').findByRole('link', {name: 'Settings'}).click();
 		cy.wait(100);
 		cy.url().should('include', '#/settings');
+	});
+
+	it('Navigate to Help', () => {
+		cy.findByTestId('desktop-nav').findByRole('link', {name: 'Help'}).click();
+		cy.wait(100);
+		cy.url().should('include', '#/help');
 	});
 
 	it('Navigate to Home', () => {

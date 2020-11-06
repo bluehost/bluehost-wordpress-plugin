@@ -8,7 +8,9 @@ import { Component } from '@wordpress/element';
  * External dependencies
  */
 import { withRouter } from 'react-router-dom';
-import { chain, isString, replace, kebabCase, isEmpty } from 'lodash';
+import isString from 'lodash/isString';
+import replace from 'lodash/replace';
+import kebabCase from 'lodash/kebabCase';
 
 /**
  * Internal dependencies

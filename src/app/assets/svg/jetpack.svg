@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 249 249" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
-    <title>Combined Shape</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M124.5,249 C55.7405486,249 0,193.259451 0,124.5 C0,55.7405486 55.7405486,0 124.5,0 C193.259451,0 249,55.7405486 249,124.5 C249,193.259451 193.259451,249 124.5,249 Z M56.5,145 L117.5,145 L117.5,27 L56.5,145 Z M192.416258,104.313651 L131.416258,104.313651 L131.416258,222.313651 L192.416258,104.313651 Z" id="Combined-Shape" fill="#545454"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 249 249"><defs/><path fill="#545454" fill-rule="evenodd" d="M124.5 249C55.74 249 0 193.26 0 124.5 0 55.74 55.74 0 124.5 0 193.26 0 249 55.74 249 124.5c0 68.76-55.74 124.5-124.5 124.5zm-68-104h61V27l-61 118zm135.916-40.686h-61v118l61-118z"/></svg>

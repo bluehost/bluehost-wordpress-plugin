@@ -10,4 +10,5 @@ export default [
 	{ slug: 'services', path: '/marketplace/services', label: __( 'Services', 'bluehost-wordpress-plugin' ) },
 	{ slug: 'staging', path: '/tools/staging', label: __( 'Staging', 'bluehost-wordpress-plugin' ) },
 	{ slug: 'settings', path: '/settings', label: __( 'Settings', 'bluehost-wordpress-plugin' ) },
+	{ slug: 'help', path: '/help', label: __( 'Help', 'bluehost-wordpress-plugin' ) },
 ];

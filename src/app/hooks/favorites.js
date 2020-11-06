@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { without } from 'lodash';
+import without from 'lodash/without';
 /**
  * WordPress dependencies
  */

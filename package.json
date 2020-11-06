@@ -24,6 +24,7 @@
         "@wordpress/html-entities": "^2.5.0",
         "@wordpress/i18n": "^3.6.1",
         "@wordpress/keycodes": "^2.6.2",
+        "algoliasearch": "^4.5.1",
         "animate.css": "^3.7.2",
         "axios": "^0.19.0",
         "change-case": "^3.1.0",
@@ -33,6 +34,7 @@
         "lodash": "^4.17.20",
         "purecss": "^1.0.1",
         "react": "^16.9.0",
+        "react-instantsearch-dom": "^6.8.2",
         "react-router-dom": "^5.1.2",
         "react-slick": "^0.25.2",
         "slick-carousel": "^1.8.1"

@@ -6,6 +6,8 @@
 class Bluehost_Admin_App_Page {
 
 	/**
+	 * Class instance
+	 *
 	 * @var stdClass
 	 */
 	protected static $instance;
@@ -22,9 +24,12 @@ class Bluehost_Admin_App_Page {
 		'Services',
 		'Staging',
 		'Settings',
+		'Help',
 	);
 
 	/**
+	 * Return instance
+	 *
 	 * @return Bluehost_Admin_App_Page|stdClass
 	 */
 	public static function return_instance() {
@@ -108,11 +113,16 @@ class Bluehost_Admin_App_Page {
 		}
 	}
 
+	/**
+	 * Handle subpage redirect
+	 */
 	public function handle_subpage_redirect() {
 		// TODO: Add button to go to Plugin Home
 	}
 
 	/**
+	 * Render title markup
+	 *
 	 * @return string
 	 */
 	public function primary_title_markup() {

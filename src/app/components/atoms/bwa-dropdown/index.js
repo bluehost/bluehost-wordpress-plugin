@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { findIndex } from 'lodash';
+import findIndex from 'lodash/findIndex';
 import { useState, useEffect, useRef } from '@wordpress/element';
 import './style.scss';
 
