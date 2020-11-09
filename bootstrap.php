@@ -1,5 +1,6 @@
 <?php
 
+use Bluehost\LoginRedirect;
 use Bluehost\UpgradeHandler;
 use Endurance_WP_Plugin_Updater\Updater;
 
@@ -29,6 +30,8 @@ if ( is_admin() ) {
 		update_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION, true );
 	}
 }
+
+LoginRedirect::init();
 
 // Require files
 require __DIR__ . '/inc/admin.php';
