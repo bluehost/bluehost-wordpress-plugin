@@ -18,6 +18,8 @@ const Help = () => {
 							href="https://helpchat.bluehost.com/"
 							isLink
 							isPrimary
+							rel="noopener noreferrer"
+							target="_blank"
 						>
 							{ __('Chat with us', 'bluehost-wordpress-plugin') } <ChatIcon className="chat-icon" />
 						</Button>
@@ -78,6 +80,8 @@ const Help = () => {
 								href="https://www.bluehost.com/solutions/full-service#full-service"
 								isLink
 								isSecondary
+								rel="noopener noreferrer"
+								target="_blank"
 							>
 								{ __('Learn more', 'bluehost-wordpress-plugin') }
 							</Button>
@@ -96,6 +100,8 @@ const Help = () => {
 								href="https://www.bluehost.com/solutions/full-service#seo-services"
 								isLink
 								isSecondary
+								rel="noopener noreferrer"
+								target="_blank"
 							>
 								{ __('Learn more', 'bluehost-wordpress-plugin') }
 							</Button>
@@ -113,6 +119,8 @@ const Help = () => {
 								href="https://www.bluehost.com/solutions/full-service#request-form"
 								isLink
 								isSecondary
+								rel="noopener noreferrer"
+								target="_blank"
 							>
 								{ __('Request a consultation', 'bluehost-wordpress-plugin') }
 							</Button>
@@ -130,7 +138,13 @@ const Help = () => {
 				<div className="resources-search">
 					<Search />
 					<div className="button-container">
-						<Button href="https://www.bluehost.com/resources/" isLink isSecondary>
+						<Button
+							href="https://www.bluehost.com/resources/"
+							isLink
+							isSecondary
+							rel="noopener noreferrer"
+							target="_blank"
+						>
 							{ __('Visit resource center', 'bluehost-wordpress-plugin') }
 						</Button>
 					</div>
@@ -139,9 +153,14 @@ const Help = () => {
 			<footer className="help-footer">
 				<a className="call-to-action" href="tel:8884014678">
 					<Call className="footer-icon" />
-					<span>{ __('Call us for help', 'bluehost-wordpress-plugin') }</span>
+					<span>{ __('888-401-4678', 'bluehost-wordpress-plugin') }</span>
 				</a>
-				<a className="call-to-action" href="https://helpchat.bluehost.com/">
+				<a
+					className="call-to-action"
+					href="https://helpchat.bluehost.com/"
+					rel="noopener noreferrer"
+					target="_blank"
+				>
 					<ChatIcon className="footer-icon" />
 					<span>{ __('Chat with us', 'bluehost-wordpress-plugin') }</span>
 				</a>

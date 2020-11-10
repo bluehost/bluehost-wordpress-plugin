@@ -34,6 +34,15 @@ $mobile-padding: 30px;
     list-style-position: inside;
   }
 
+  .call-to-get-started {
+    color: $color-blue;
+    font-size: 16px;
+    font-weight: 300;
+    a {
+      color: inherit;
+    }
+  }
+
   .section-logo {
     display: flex;
     justify-content: center;
@@ -69,10 +78,6 @@ $mobile-padding: 30px;
 
     &__description {
       margin-bottom: 1rem;
-    }
-
-    &__button {
-      margin: 0 !important;
     }
 
     @media screen and (max-width: 768px) {
@@ -340,6 +345,15 @@ $mobile-padding: 30px;
         margin-bottom: 2rem;
         font-weight: 300;
         text-align: center;
+
+        a {
+          text-decoration: none;
+          color: inherit;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
 
