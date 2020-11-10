@@ -6,6 +6,7 @@ import Search from './search';
 import blueSkyGroup from '@app/assets/blue-sky-group.png';
 
 import './style.scss';
+import ReactPlayer from "react-player";
 
 const Help = () => {
 	return (
@@ -38,7 +39,16 @@ const Help = () => {
 					</div>
 					<div className="media-block">
 						<div className="media-block__media">
-							<img src={ blueSkyGroup } alt="" />
+							<div className="react-player-container">
+								<ReactPlayer
+									className="react-player"
+									height="100%"
+									light={ blueSkyGroup }
+									playIcon={ <span /> }
+									url="https://www.youtube.com/embed/QEir4T7VweY"
+									width="100%"
+								/>
+							</div>
 						</div>
 						<div className="media-block__details">
 							<div
