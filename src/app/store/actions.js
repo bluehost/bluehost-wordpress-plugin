@@ -42,7 +42,13 @@ export function fetchWindowData() {
 		adminColors: window._wpColorScheme.icons,
 		userId: window.userSettings.uid,
 	};
-	window.bluehost = { movedToStore: true };
+	window.bluehost = { 
+		adminColors: window._wpColorScheme.icons,
+		app: { ...window.bluehost.app, nonce: false }, 
+		env: { ...window.bluehost.env },
+		userId: window.userSettings.uid,
+		movedToStore: true,
+	};
 	return data;
 }
 
