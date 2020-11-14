@@ -33,6 +33,7 @@ const BWAMain = ({props}, ref) => (
 				<Route path="/marketplace/themes" exact render={ () => <ThemesRoute /> } />
 				<Route path="/marketplace/plugins" exact render={ () => <PluginsRoute /> } />
 				<Route path="/marketplace/services" exact render={ () => <ServicesRoute /> } />
+				<Route path="/marketplace/services/blue-sky" render={ () => <BlueSkyRoute /> } />
 				<Route
 					path="/marketplace/product/:id"
 					exact
@@ -42,7 +43,8 @@ const BWAMain = ({props}, ref) => (
 				<Route path="/tools/staging" exact render={ () => <StagingRoute /> } />
 				<Route path="/settings" render={ () => <SettingsRoute /> } />
 				<Route path="/help" render={ () => <HelpRoute /> } />
-				<Route path="/blue-sky" render={ () => <BlueSkyRoute /> } />
+				<Redirect from="/staging" to="/tools/staging" />
+				<Redirect from="/blue-sky" to="/marketplace/services/blue-sky" />
 				<Redirect to="/home" />
 			</Switch>
 		</Suspense>

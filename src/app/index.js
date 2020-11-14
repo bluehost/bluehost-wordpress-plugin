@@ -1,10 +1,10 @@
 /**
  * WordPress dependencies
  */
-import { Animate } from '@wordpress/components';
 import { Component, createRef } from '@wordpress/element';
 import { dispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
 /**
  * External dependencies
  */
@@ -29,6 +29,7 @@ const SkipLink = ( { onClick, onKeyPress, children } ) => (
 		{ children }
 	</a>
 );
+
 
 class BluehostWordPressApp extends Component {
 	constructor( props ) {
@@ -72,7 +73,10 @@ class BluehostWordPressApp extends Component {
 		}
 		return (
 			<Router>
-				<main id="bluehost-app-wrap" className={ 'bluehost-app-wrap' }>
+				<main 
+					id="bluehost-app-wrap" 
+					className={ classnames( 'bluehost-app-wrap' ) }
+				>
 					<SkipLink onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
 						{ __( 'Skip to Navigation', 'bluehost-wordpress-plugin' ) }
 					</SkipLink>

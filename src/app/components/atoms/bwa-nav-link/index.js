@@ -21,7 +21,6 @@ import './style.scss';
 const BWANavLink = ( props ) => (
 	<NavLink
 		to={ { pathname: props.to || '', state: { setFocus: true } } }
-		exact
 		className={ props.className || 'bluehostTab' }
 		activeClassName={ props.activeClassName || 'bluehostActiveTab' }>
 		{ props.children || '' }
