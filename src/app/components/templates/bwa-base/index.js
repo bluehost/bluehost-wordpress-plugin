@@ -2,14 +2,11 @@
  * WordPress dependencies
  */
 import { Speak } from '@wordpress/a11y';
-import { select, dispatch } from '@wordpress/data';
-import { Component } from '@wordpress/element';
+import { Component, createRef } from '@wordpress/element';
 /**
  * External dependencies
  */
-import { withRouter } from 'react-router-dom';
-import isString from 'lodash/isString';
-import replace from 'lodash/replace';
+import { useLocation } from 'react-router-dom';
 import kebabCase from 'lodash/kebabCase';
 
 /**
@@ -17,70 +14,36 @@ import kebabCase from 'lodash/kebabCase';
  */
 import './style.scss';
 
-class BWABaseTemplate extends Component {
-	componentDidMount() {
-		// recieve this.props.state.setFocus
-		this.handleContainerFocus();
-		const augmentedLocation = this.getCurrentLocation();
-		this.maybeAugmentWPMenu();
-		this.handleWordPressMenuActive( augmentedLocation );
-	}
+const BWABaseTemplate = ({ ...props }) => {
+	const topLevelPage 	= 'toplevel_page_bluehost';
+	const menuItemClass = 'bluehost-wp-menu-item';
+	const pageContainer = document.querySelector('.router-section');
 
-	handleContainerFocus() {
-		const { location } = this.props;
+	const handleContainerFocus = () => {
+		let location = useLocation();
 		if ( location.state && location.state.setFocus ) {
-			this.container.focus( { preventScroll: true } );
+			pageContainer.focus( { preventScroll: true } );
 		}
 	}
-
-	getCurrentLocation() {
-		const { location } = this.props;
-		
-		return {
-			...location,
-			pathnameKebab: kebabCase( location.pathname ),
-			slug: this.getSlug( location ),
-			highlightSlug: this.getSlug(location),
-		};		
-	}
-
-	maybeAugmentWPMenu() {
-		const primaryNode = window.document.querySelector( '#toplevel_page_bluehost' );
-		
+	
+	const handleWPMenuAugmentation = () => {
+		const primaryNode = window.document.querySelector( '#' + topLevelPage );
+			
 		if ( 'undefined' !== typeof primaryNode.dataset && primaryNode.dataset.augmented ) {
 			return;
 		}
-
-		this.augmentWPMenu();
-
+	
+		augmentWPMenu();
+	
 		primaryNode.setAttribute( 'data-augmented', 1 );
 	}
-
-	augmentWPMenu() {
-		const menuItems = Array.from( window.document.querySelectorAll( '#toplevel_page_bluehost > ul > li' ) );
-		menuItems.splice( 0, 2 );
-		menuItems.forEach( function( li ) {
-			const className = kebabCase( li.innerText );
-			li.classList.add( 'bluehost-wp-menu-item', className );
-			li.setAttribute( 'data-bh-top-level', className );
-		} );
-
+	
+	const handleWPMenuActiveHighlight = () => {
+		removeWPMenuActiveHighlight();
 		try {
-			const elem = window.document.querySelector( 'a.toplevel_page_bluehost' );
-			if ( ! elem.href.includes('#/home') ) {
-				elem.href = elem.href + '#/home';
-			}
-		} catch ( e ) {
-			console.log( 'Couldn\'t find Bluehost Menu Element to swap href' );
-		}
-	}
-
-	handleWordPressMenuActive( augmentedLocation ) {
-		this.removeActivePageClasses();
-		try {
-			let slug = augmentedLocation.highlightSlug;
-			const liToActivate = document.querySelector( '.bluehost-wp-menu-item.' + slug );
-			const bluehostWpSubMenuNode = document.querySelector( '#toplevel_page_bluehost ul' );
+			let slug = getTopLevelActiveHighlightSlug();
+			const liToActivate = document.querySelector( '.' + menuItemClass + '.' + slug );
+			const bluehostWpSubMenuNode = document.querySelector( '#' + topLevelPage + ' ul' );
 			if ( liToActivate && bluehostWpSubMenuNode ) {
 				liToActivate.classList.add( 'current' );
 				bluehostWpSubMenuNode.style = 'display: block;';
@@ -90,38 +53,63 @@ class BWABaseTemplate extends Component {
 		}
 	}
 
-	removeActivePageClasses() {
-		const bluehostWpMenuItems = Array.from( document.querySelectorAll( '#toplevel_page_bluehost .bluehost-wp-menu-item' ) );
-		bluehostWpMenuItems.forEach( function( li ) {
-			li.classList.remove( 'current' );
+	const augmentWPMenu = () => {
+		const menuItems = Array.from( window.document.querySelectorAll( '#' + topLevelPage + ' > ul > li' ) );
+		menuItems.splice( 0, 2 );
+		menuItems.forEach( function( li ) {
+			const className = kebabCase( li.innerText );
+			li.classList.add( menuItemClass, className );
+			li.setAttribute( 'data-' + menuItemClass, className );
+		} );
+	
+		try {
+			const elem = window.document.querySelector( 'a.' + topLevelPage );
+			if ( ! elem.href.includes('#/home') ) {
+				elem.href = elem.href + '#/home';
+			}
+		} catch ( e ) {
+			console.log( 'Couldn\'t find Bluehost Menu Element to swap href' );
+		}
+	}
+	
+	const removeWPMenuActiveHighlight = () => {
+		const bluehostWpMenuItems = Array.from( document.querySelectorAll( '#' + topLevelPage + ' .' + menuItemClass ) );
+		bluehostWpMenuItems.forEach( function( menuItem ) {
+			menuItem.classList.remove( 'current' );
 		} );
 	}
 
 	/**
-	 * TODO: Augment for any top-level page highlighting.
-	 * @param {*} location 
-	 */
-	getSlug( location ) {
-		let raw = isString( location ) ? location : location.pathname;
-		let removePartials = [ '/marketplace', '/tools', '/blue-sky', '/' ];
+	*/
+	const getTopLevelActiveHighlightSlug = () => {
+		let location = useLocation();
+		let raw = location.pathname;
+		let topLevelPages = window.bluehost.app.pages;
 
-		removePartials.forEach( (partial) => {
-			raw = replace( raw, partial, '' );
+		topLevelPages.forEach( page => {
+			if ( raw.includes( '/' + page ) ) {
+				raw = page;
+			}
 		})
 
-		return raw;
-	}
+		if ( raw === location.pathname ) {
+			return false;
+		}
 
-	render() {
-		return (
-			<section
-				ref={ ( container ) => ( this.container = container ) }
-				className={ 'base-template animated fadeIn page-fade-speed ' + this.props.className }
-            >
-				{ this.props.children }
-			</section>
-		);
-	}
+		return raw;
+   }
+	// grab location from react-router-dom
+	handleContainerFocus();
+	handleWPMenuAugmentation();
+	handleWPMenuActiveHighlight();
+
+	return (
+		<section 
+			ref={ ( container ) => ( pageContainer => container ) }
+			className={ 'base-template animated fadeIn page-fade-speed ' + props.className }>
+			{props.children}
+		</section>
+	);
 }
 
-export default withRouter( BWABaseTemplate );
+export default BWABaseTemplate;

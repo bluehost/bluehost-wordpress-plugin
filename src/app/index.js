@@ -1,14 +1,16 @@
 /**
  * WordPress dependencies
  */
-import { Component, createRef } from '@wordpress/element';
+import { Component, createRef, forwardRef } from '@wordpress/element';
 import { dispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 /**
  * External dependencies
  */
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router, useLocation } from 'react-router-dom';
+import kebabCase from 'lodash/kebabCase';
+
 /**
  * Internal dependencies
  */
@@ -30,17 +32,51 @@ const SkipLink = ( { onClick, onKeyPress, children } ) => (
 	</a>
 );
 
+const BWABody = () => {
+	let location = useLocation();
+	let navRef 	= createRef();
+	let pageRef = createRef();
+	const handleNavFocus = ( event ) => {
+		event.preventDefault();
+		navRef.current.focus({ preventScroll: true });
+	}
+	const handleContentFocus = ( event ) => {
+		event.preventDefault();
+		pageRef.current.focus({ preventScroll: true });
+	}
+	return (
+		<main 
+			id="bluehost-app-wrap" 
+			className={ classnames( 'bluehost-app-wrap', 'body-' + kebabCase( location.pathname ) ) }
+		>
+			<SkipLink 
+				onClick={ handleNavFocus } 
+				onKeyPress={ handleNavFocus }
+			>
+				{ __( 'Skip to Navigation', 'bluehost-wordpress-plugin' ) }
+			</SkipLink>
+			<SkipLink 
+				onClick={ handleContentFocus } 
+				onKeyPress={ handleContentFocus }
+			>
+				{ __( 'Skip to Content', 'bluehost-wordpress-plugin' ) }
+			</SkipLink>
+			<BWAHeader ref={navRef} />
+			<BWAMain ref={pageRef} />
+		</main>
+	)
+}
 
+/**
+ * componentDidCatch is still the most consistiently reliable way to 
+ * capture errors, so the <main /> render is wrapped in a class component.
+ */
 class BluehostWordPressApp extends Component {
 	constructor( props ) {
 		super( props );
-		// create refs for skip focus links
-		this.navFocus = createRef();
-		this.contentFocus = createRef();
-		// make refs/this available in
-		this.handleNavFocus = this.handleNavFocus.bind( this );
-		this.handleContentFocus = this.handleContentFocus.bind( this );
+
 		this.componentDidCatch = this.componentDidCatch.bind( this );
+
 		this.state = {
 			hasError: false,
 			BWAError: null,
@@ -49,22 +85,12 @@ class BluehostWordPressApp extends Component {
 		dispatch( 'bluehost/plugin' ).fetchWindowData();
 	}
 
-	handleNavFocus( event ) {
-		event.preventDefault(); // no anchor jumps that done bork hash-routing
-		this.navFocus.current.focus( { preventScroll: true } );
-	}
-
-	handleContentFocus( event ) {
-		event.preventDefault(); // no anchor jumps that done bork hash-routing
-		this.contentFocus.current.focus( { preventScroll: true } );
-	}
-
 	componentDidCatch( error, info ) {
-		this.setState( { hasError: true, BWAError: error } );
+		this.setState( { hasError: true, BWAError: { error: {...error}, info:{...info} } } );
 	}
 
 	render() {
-		if ( true === this.state.hasError ) {
+		if ( this.state.hasError ) {
 			return (
 				<div>
 					<BWAError error={ this.state.BWAError } />
@@ -73,20 +99,8 @@ class BluehostWordPressApp extends Component {
 		}
 		return (
 			<Router>
-				<main 
-					id="bluehost-app-wrap" 
-					className={ classnames( 'bluehost-app-wrap' ) }
-				>
-					<SkipLink onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
-						{ __( 'Skip to Navigation', 'bluehost-wordpress-plugin' ) }
-					</SkipLink>
-					<SkipLink onClick={ this.handleContentFocus } onKeyPress={ this.handleContentFocus }>
-						{ __( 'Skip to Content', 'bluehost-wordpress-plugin' ) }
-					</SkipLink>
-					<BWAHeader ref={ this.navFocus } />
-					<BWAMain ref={ this.contentFocus } />
-				</main>
-			</Router>	
+				<BWABody />
+			</Router>
 		);
 	}
 }
