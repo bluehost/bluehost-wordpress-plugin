@@ -233,13 +233,14 @@ msgid "Services"
 msgstr ""
 
 #: src/app/components/organisms/bwa-header/main-menu.js:11
-#: src/app/pages/tools/staging/index.js:96
-#: src/app/pages/tools/staging/index.js:217
-#: src/app/pages/tools/staging/index.js:290
+#: src/app/pages/tools/staging/index.js:98
+#: src/app/pages/tools/staging/index.js:219
+#: src/app/pages/tools/staging/index.js:292
 msgid "Staging"
 msgstr ""
 
 #: src/app/components/organisms/bwa-header/main-menu.js:12
+#: src/app/pages/settings/index.js:24
 msgid "Settings"
 msgstr ""
 
@@ -268,56 +269,56 @@ msgstr ""
 msgid "Validation Token"
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:40
+#: src/app/components/templates/bwa-marketplace/index.js:41
 msgid "Premium Plugins"
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:42
+#: src/app/components/templates/bwa-marketplace/index.js:43
 msgid "Premium Services"
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:44
+#: src/app/components/templates/bwa-marketplace/index.js:45
 #: src/app/pages/home/design-build/index.js:45
 msgid "Premium Themes"
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:50
+#: src/app/components/templates/bwa-marketplace/index.js:51
 msgid "Popular"
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:54
+#: src/app/components/templates/bwa-marketplace/index.js:55
 msgid "Price (High to Low)"
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:58
+#: src/app/components/templates/bwa-marketplace/index.js:59
 msgid "Price (Low to High)"
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:62
+#: src/app/components/templates/bwa-marketplace/index.js:63
 msgid "Date Added"
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:115
+#: src/app/components/templates/bwa-marketplace/index.js:117
 msgid "Sort By"
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:139
+#: src/app/components/templates/bwa-marketplace/index.js:141
 msgid "You don't have any favorites yet."
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:140
+#: src/app/components/templates/bwa-marketplace/index.js:142
 msgid "Add favorites by starring items you like."
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:148
+#: src/app/components/templates/bwa-marketplace/index.js:150
 msgid "View Plugins"
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:150
+#: src/app/components/templates/bwa-marketplace/index.js:152
 msgid "View Services"
 msgstr ""
 
-#: src/app/components/templates/bwa-marketplace/index.js:152
+#: src/app/components/templates/bwa-marketplace/index.js:154
 msgid "View Themes"
 msgstr ""
 
@@ -766,17 +767,17 @@ msgid "Right now, your site is displaying a “coming soon” message. Once you'
 msgstr ""
 
 #: src/app/pages/home/coming-soon-notice/index.js:39
-#: src/app/pages/home/onboarding/index.js:133
+#: src/app/pages/home/onboarding/index.js:136
 msgid "Awesome! Your site is live."
 msgstr ""
 
 #: src/app/pages/home/coming-soon-notice/index.js:40
-#: src/app/pages/home/onboarding/index.js:136
+#: src/app/pages/home/onboarding/index.js:139
 msgid "We removed the \"coming soon\" banner. Your website is now available for public visitors. This can be always be changed on the Settings tab above."
 msgstr ""
 
 #: src/app/pages/home/coming-soon-notice/index.js:41
-#: src/app/pages/home/onboarding/index.js:140
+#: src/app/pages/home/onboarding/index.js:143
 msgid "Restore Coming Soon"
 msgstr ""
 
@@ -853,100 +854,100 @@ msgstr ""
 msgid "Hosting"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:44
+#: src/app/pages/home/onboarding/index.js:47
 msgid "Welcome to your WordPress site"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:47
+#: src/app/pages/home/onboarding/index.js:50
 msgid "Not sure how to get started? Here are a few options we recommend."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:60
+#: src/app/pages/home/onboarding/index.js:63
 msgid "Start with a page or post"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:63
+#: src/app/pages/home/onboarding/index.js:66
 msgid "Use a page for content that won't change too often (your homepage, portfolio), and use posts for information that's timely (blog posts, updates)."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:67
+#: src/app/pages/home/onboarding/index.js:70
 msgid "Add a blog post"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:70
+#: src/app/pages/home/onboarding/index.js:73
 msgid "Add a page"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:80
+#: src/app/pages/home/onboarding/index.js:83
 msgid "Make it look just right"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:83
+#: src/app/pages/home/onboarding/index.js:86
 msgid "Use the customizer to go simple, bold—whatever's you."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:84
+#: src/app/pages/home/onboarding/index.js:87
 msgid "Or browse themes and try 'em out."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:88
+#: src/app/pages/home/onboarding/index.js:91
 msgid "Browse themes"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:91
+#: src/app/pages/home/onboarding/index.js:94
 msgid "Customize your site"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:103
+#: src/app/pages/home/onboarding/index.js:106
 msgid "Get ready to launch"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:106
+#: src/app/pages/home/onboarding/index.js:109
 msgid "Your site has a \"coming soon\" message, which lets people know you're working on it. "
 msgstr ""
 
 #. translators: %1$s is the opening link tag and %2$s is the closing link tag for the link to the website publish checklist.
-#: src/app/pages/home/onboarding/index.js:112
+#: src/app/pages/home/onboarding/index.js:115
 msgid "Check out our %1$swebsite pre-publishing%2$s checklist to help get ready for launch."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:123
+#: src/app/pages/home/onboarding/index.js:126
 msgid "Launch your site"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:154
+#: src/app/pages/home/onboarding/index.js:157
 msgid "How-to's & next steps"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:159
+#: src/app/pages/home/onboarding/index.js:162
 msgid "Learn how to add functionality to your site with plugins:"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:162
+#: src/app/pages/home/onboarding/index.js:165
 msgid "How to use WordPress plugins"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:166
+#: src/app/pages/home/onboarding/index.js:169
 msgid "The two essential plugins you need"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:170
+#: src/app/pages/home/onboarding/index.js:173
 msgid "Check out ecommerce tips:"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:173
+#: src/app/pages/home/onboarding/index.js:176
 msgid "Steps for adding a store to your site with WooCommerce"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:177
+#: src/app/pages/home/onboarding/index.js:180
 msgid "The five best WooCommerce WordPress themes"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:181
+#: src/app/pages/home/onboarding/index.js:184
 msgid "Get help from WordPress experts:"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:184
+#: src/app/pages/home/onboarding/index.js:187
 msgid "Our BlueSky experts are here to help you every step of the way"
 msgstr ""
 
@@ -1230,12 +1231,12 @@ msgstr ""
 #: src/app/pages/tools/staging/clone-overlay.js:15
 #: src/app/pages/tools/staging/delete-overlay.js:14
 #: src/app/pages/tools/staging/deploy-overlay.js:24
-#: src/app/pages/tools/staging/index.js:293
+#: src/app/pages/tools/staging/index.js:295
 msgid "This should only take a minute"
 msgstr ""
 
 #: src/app/pages/tools/staging/delete-modal.js:23
-#: src/app/pages/tools/staging/index.js:206
+#: src/app/pages/tools/staging/index.js:208
 msgid "Delete"
 msgstr ""
 
@@ -1291,97 +1292,97 @@ msgstr ""
 msgid "Deploying to Production Site"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:97
+#: src/app/pages/tools/staging/index.js:99
 msgid "A staging site is a copy of your site where you can safely test changes before publishing them to your production site. It gives you a way to try new things, test updates, and then deploy them when you're ready."
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:100
+#: src/app/pages/tools/staging/index.js:102
 msgid "Production site"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:101
+#: src/app/pages/tools/staging/index.js:103
 msgid "This is your live website."
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:111
+#: src/app/pages/tools/staging/index.js:113
 msgid "Clone to Staging"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:115
+#: src/app/pages/tools/staging/index.js:117
 msgid "Live Site"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:120
-#: src/app/pages/tools/staging/index.js:290
+#: src/app/pages/tools/staging/index.js:122
+#: src/app/pages/tools/staging/index.js:292
 msgid "Production"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:135
+#: src/app/pages/tools/staging/index.js:137
 msgid "Staging site"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:141
+#: src/app/pages/tools/staging/index.js:143
 msgid "Creating your staging site. This usually takes a few minutes..."
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:143
+#: src/app/pages/tools/staging/index.js:145
 msgid "You can wait or close this window and access your staging site from the staging menu after setup is complete."
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:152
+#: src/app/pages/tools/staging/index.js:154
 msgid "You don't have a staging site yet."
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:154
+#: src/app/pages/tools/staging/index.js:156
 msgid "Create Staging Site"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:163
+#: src/app/pages/tools/staging/index.js:165
 msgid "This is an unpublished copy of your website."
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:172
+#: src/app/pages/tools/staging/index.js:174
 msgid "Deploy All Changes"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:173
+#: src/app/pages/tools/staging/index.js:175
 msgid "Deploy all changes you've made to the filesystem and database of your website."
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:180
+#: src/app/pages/tools/staging/index.js:182
 msgid "Deploy Files Only"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:181
+#: src/app/pages/tools/staging/index.js:183
 msgid "This will only upload the files you've changed (i.e. html or css files)."
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:188
+#: src/app/pages/tools/staging/index.js:190
 msgid "Deploy Database"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:189
+#: src/app/pages/tools/staging/index.js:191
 msgid "Only upload changes you've made to the database on your staging server."
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:203
+#: src/app/pages/tools/staging/index.js:205
 msgid "Staging Options"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:213
+#: src/app/pages/tools/staging/index.js:215
 msgid "Staging Site"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:236
+#: src/app/pages/tools/staging/index.js:238
 msgid "Error"
 msgstr ""
 
-#: src/app/pages/tools/staging/index.js:236
+#: src/app/pages/tools/staging/index.js:238
 msgid "Success"
 msgstr ""
 
 #. translators: %s is replaced with the environment name (i.e. Production or Staging)
-#: src/app/pages/tools/staging/index.js:289
+#: src/app/pages/tools/staging/index.js:291
 msgid "Loading %s Site"
 msgstr ""
 
