@@ -39,6 +39,7 @@ require __DIR__ . '/inc/coming-soon.php';
 require __DIR__ . '/inc/jetpack.php';
 require __DIR__ . '/inc/menu.php';
 require __DIR__ . '/inc/mojo-themes.php';
+require __DIR__ . '/inc/Notifications/bootstrap.php';
 require __DIR__ . '/inc/partners.php';
 require __DIR__ . '/inc/performance.php';
 require __DIR__ . '/inc/plugin-search.php';

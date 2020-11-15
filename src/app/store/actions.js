@@ -62,3 +62,11 @@ export function* updateSetting( setting, newValue ) {
 		newValue,
 	};
 }
+
+export function* dismissNotification( id ) {
+	yield apiFetch({path: `/bluehost/v1/notifications/${ id }`, method: 'DELETE'});
+	return {
+		type: 'DISMISS_NOTIFICATION',
+		id,
+	}
+}
