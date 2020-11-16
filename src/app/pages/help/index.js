@@ -17,7 +17,6 @@ const Help = () => {
 						<Button
 							className="chat-button"
 							href="https://helpchat.bluehost.com/"
-							isLink
 							isPrimary
 							rel="noopener noreferrer"
 							target="_blank"
@@ -59,7 +58,6 @@ const Help = () => {
 							<Button
 								className="media-block__button"
 								href="#/blue-sky"
-								isLink
 								isSecondary
 								onClick={
 									() => {
@@ -88,7 +86,6 @@ const Help = () => {
 								className="featured-service__button"
 								data-testid="full-service"
 								href="https://www.bluehost.com/solutions/full-service#full-service"
-								isLink
 								isSecondary
 								rel="noopener noreferrer"
 								target="_blank"
@@ -108,7 +105,6 @@ const Help = () => {
 								className="featured-service__button"
 								data-testid="seo-services"
 								href="https://www.bluehost.com/solutions/full-service#seo-services"
-								isLink
 								isSecondary
 								rel="noopener noreferrer"
 								target="_blank"
@@ -127,7 +123,6 @@ const Help = () => {
 							<Button
 								className="featured-service__button"
 								href="https://www.bluehost.com/solutions/full-service#request-form"
-								isLink
 								isSecondary
 								rel="noopener noreferrer"
 								target="_blank"
@@ -150,7 +145,6 @@ const Help = () => {
 					<div className="button-container">
 						<Button
 							href="https://www.bluehost.com/resources/"
-							isLink
 							isSecondary
 							rel="noopener noreferrer"
 							target="_blank"

@@ -28,6 +28,10 @@ msgstr ""
 msgid "https://www.bluehost.com/"
 msgstr ""
 
+#: inc/AdminBar.php:32
+msgid "Need help?"
+msgstr ""
+
 #: inc/base.php:191
 msgid "Once Weekly"
 msgstr ""
