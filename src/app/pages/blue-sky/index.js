@@ -43,7 +43,7 @@ const BlueSky = () => {
 								{ __('We understand that WordPress can be challenging, but with professional help in your pocket, you will learn how to build, grow, and maintain your new WordPress website with friendly and professional guidance every step of the way.', 'bluehost-wordpress-plugin') }
 							</p>
 						</div>
-						<Button className="media-block__button" href="tel:8442118705" isLink isPrimary>
+						<Button className="media-block__button" href="tel:8442118705" isPrimary>
 							{ __('Call to get started', 'bluehost-wordpress-plugin') }
 						</Button>
 					</div>
@@ -62,7 +62,7 @@ const BlueSky = () => {
 							{ __('Get unstuck with fast answers and recommendations.', 'bluehost-wordpress-plugin') }
 						</div>
 						<div className="product-card__call-to-action">
-							<Button href="tel:8442118705" isLink isPrimary>
+							<Button href="tel:8442118705" isPrimary>
 								{ __('Call to get started', 'bluehost-wordpress-plugin') }
 							</Button>
 						</div>
@@ -89,7 +89,7 @@ const BlueSky = () => {
 							{ __('Learn more WordPress skills and solve problems faster.', 'bluehost-wordpress-plugin') }
 						</div>
 						<div className="product-card__call-to-action">
-							<Button href="tel:8442118705" isLink isPrimary>
+							<Button href="tel:8442118705" isPrimary>
 								{ __('Call to get started', 'bluehost-wordpress-plugin') }
 							</Button>
 						</div>
@@ -122,7 +122,7 @@ const BlueSky = () => {
 							{ __('Build and Maintain with advanced features and improve as you go.', 'bluehost-wordpress-plugin') }
 						</div>
 						<div className="product-card__call-to-action">
-							<Button href="tel:8442118705" isLink isPrimary>
+							<Button href="tel:8442118705" isPrimary>
 								{ __('Call to get started', 'bluehost-wordpress-plugin') }
 							</Button>
 						</div>
@@ -396,7 +396,7 @@ const BlueSky = () => {
 							}
 						}
 					/>
-					<Button className="call-to-action__button" href="tel:8442118705" isLink isPrimary>
+					<Button className="call-to-action__button" href="tel:8442118705" isPrimary>
 						{ __('Call to get started', 'bluehost-wordpress-plugin') }
 					</Button>
 				</div>

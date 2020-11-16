@@ -16,7 +16,6 @@ const Help = () => {
 						<Button
 							className="chat-button"
 							href="https://helpchat.bluehost.com/"
-							isLink
 							isPrimary
 						>
 							{ __('Chat with us', 'bluehost-wordpress-plugin') } <ChatIcon className="chat-icon" />
@@ -47,7 +46,6 @@ const Help = () => {
 							<Button
 								className="media-block__button"
 								href="#/blue-sky"
-								isLink
 								isSecondary
 								onClick={
 									() => {
@@ -76,7 +74,6 @@ const Help = () => {
 								className="featured-service__button"
 								data-testid="full-service"
 								href="https://www.bluehost.com/solutions/full-service#full-service"
-								isLink
 								isSecondary
 							>
 								{ __('Learn more', 'bluehost-wordpress-plugin') }
@@ -94,7 +91,6 @@ const Help = () => {
 								className="featured-service__button"
 								data-testid="seo-services"
 								href="https://www.bluehost.com/solutions/full-service#seo-services"
-								isLink
 								isSecondary
 							>
 								{ __('Learn more', 'bluehost-wordpress-plugin') }
@@ -111,7 +107,6 @@ const Help = () => {
 							<Button
 								className="featured-service__button"
 								href="https://www.bluehost.com/solutions/full-service#request-form"
-								isLink
 								isSecondary
 							>
 								{ __('Request a consultation', 'bluehost-wordpress-plugin') }
@@ -130,7 +125,7 @@ const Help = () => {
 				<div className="resources-search">
 					<Search />
 					<div className="button-container">
-						<Button href="https://www.bluehost.com/resources/" isLink isSecondary>
+						<Button href="https://www.bluehost.com/resources/" isSecondary>
 							{ __('Visit resource center', 'bluehost-wordpress-plugin') }
 						</Button>
 					</div>
