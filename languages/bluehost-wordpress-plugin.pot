@@ -660,89 +660,89 @@ msgstr ""
 msgid "Give us a call at %s844-211-8705%s"
 msgstr ""
 
-#: src/app/pages/help/index.js:25
-#: src/app/pages/help/index.js:175
+#: src/app/pages/help/index.js:24
+#: src/app/pages/help/index.js:169
 msgid "Chat with us"
 msgstr ""
 
-#: src/app/pages/help/index.js:29
+#: src/app/pages/help/index.js:28
 msgid "From DIY to full-service help"
 msgstr ""
 
-#: src/app/pages/help/index.js:32
+#: src/app/pages/help/index.js:31
 msgid "Feeling stuck? Choose how much help you'd like, from how-to articles to your own website concierge."
 msgstr ""
 
-#: src/app/pages/help/index.js:38
+#: src/app/pages/help/index.js:37
 msgid "Blue Sky"
 msgstr ""
 
-#: src/app/pages/help/index.js:55
+#: src/app/pages/help/index.js:54
 msgid "Get your own website guide"
 msgstr ""
 
-#: src/app/pages/help/index.js:57
+#: src/app/pages/help/index.js:56
 msgid "Our WordPress experts can jump in wherever you need help, teaching you how to build, grow, and maintain your website."
 msgstr ""
 
-#: src/app/pages/help/index.js:70
+#: src/app/pages/help/index.js:68
 msgid "Get Blue Sky"
 msgstr ""
 
-#: src/app/pages/help/index.js:77
+#: src/app/pages/help/index.js:75
 msgid "Let us do it for you"
 msgstr ""
 
-#: src/app/pages/help/index.js:79
+#: src/app/pages/help/index.js:77
 msgid "What can we help you achieve today?"
 msgstr ""
 
-#: src/app/pages/help/index.js:84
+#: src/app/pages/help/index.js:82
 msgid "Full-Service Website"
 msgstr ""
 
-#: src/app/pages/help/index.js:86
+#: src/app/pages/help/index.js:84
 msgid "Ongoing marketing assistance and design"
 msgstr ""
 
-#: src/app/pages/help/index.js:96
-#: src/app/pages/help/index.js:116
+#: src/app/pages/help/index.js:93
+#: src/app/pages/help/index.js:112
 msgid "Learn more"
 msgstr ""
 
-#: src/app/pages/help/index.js:102
+#: src/app/pages/help/index.js:99
 msgid "SEO Services"
 msgstr ""
 
-#: src/app/pages/help/index.js:105
+#: src/app/pages/help/index.js:102
 msgid "Fine tune your website for better visibility"
 msgstr ""
 
-#: src/app/pages/help/index.js:122
+#: src/app/pages/help/index.js:118
 msgid "Our experts can help"
 msgstr ""
 
-#: src/app/pages/help/index.js:125
+#: src/app/pages/help/index.js:121
 msgid "Consult with an expert to figure out the best next steps."
 msgstr ""
 
-#: src/app/pages/help/index.js:135
+#: src/app/pages/help/index.js:130
 msgid "Request a consultation"
 msgstr ""
 
-#: src/app/pages/help/index.js:143
+#: src/app/pages/help/index.js:138
 msgid "DIY"
 msgstr ""
 
-#: src/app/pages/help/index.js:146
+#: src/app/pages/help/index.js:141
 msgid "Checkout our resource center for helpful how-to articles and guides."
 msgstr ""
 
-#: src/app/pages/help/index.js:158
+#: src/app/pages/help/index.js:152
 msgid "Visit resource center"
 msgstr ""
 
-#: src/app/pages/help/index.js:166
+#: src/app/pages/help/index.js:160
 msgid "888-401-4678"
 msgstr ""
 
