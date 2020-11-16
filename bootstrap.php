@@ -1,5 +1,6 @@
 <?php
 
+use Bluehost\AdminBar;
 use Bluehost\LoginRedirect;
 use Bluehost\UpgradeHandler;
 use Endurance_WP_Plugin_Updater\Updater;
@@ -30,6 +31,8 @@ if ( is_admin() ) {
 		update_option( 'bluehost_plugin_version', BLUEHOST_PLUGIN_VERSION, true );
 	}
 }
+
+AdminBar::init();
 
 LoginRedirect::init();
 
