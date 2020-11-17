@@ -18,7 +18,8 @@ add_action(
 			'fifth_post_published',
 		);
 		if ( in_array( $key, $events, true ) ) {
-			delete_transient( 'bluehost_notifications' );
+			$notifications = get_transient( 'bluehost_notifications' );
+			set_transient( 'bluehost_notifications', array_filter( (array) $notifications ), 5 );
 		}
 	}
 );
