@@ -16,7 +16,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #. Author of the plugin
-#: src/app/components/organisms/bwa-header/index.js:32
+#: src/app/components/organisms/bwa-header/index.js:41
 msgid "Bluehost"
 msgstr ""
 
@@ -179,23 +179,23 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: src/app/components/molecules/bwa-error/index.js:44
+#: src/app/components/molecules/bwa-error/index.js:45
 msgid "There was a problem loading the Bluehost Plugin."
 msgstr ""
 
-#: src/app/components/molecules/bwa-error/index.js:46
+#: src/app/components/molecules/bwa-error/index.js:47
 msgid "Get in touch and we'll sort out the issue for you."
 msgstr ""
 
-#: src/app/components/molecules/bwa-error/index.js:49
+#: src/app/components/molecules/bwa-error/index.js:50
 msgid "Contact Support"
 msgstr ""
 
-#: src/app/components/molecules/bwa-error/index.js:52
+#: src/app/components/molecules/bwa-error/index.js:53
 msgid "Reporting..."
 msgstr ""
 
-#: src/app/components/molecules/bwa-error/index.js:52
+#: src/app/components/molecules/bwa-error/index.js:53
 msgid "Reported."
 msgstr ""
 
@@ -248,27 +248,27 @@ msgid "Settings"
 msgstr ""
 
 #: src/app/components/organisms/bwa-header/main-menu.js:13
-#: src/app/pages/home/hosting/index.js:62
+#: src/app/pages/home/hosting/index.js:65
 msgid "Help"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/user-menu.js:24
+#: src/app/components/organisms/bwa-header/user-menu.js:32
 msgid "Bluehost Account"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/user-menu.js:30
+#: src/app/components/organisms/bwa-header/user-menu.js:44
 msgid "Billing"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/user-menu.js:36
+#: src/app/components/organisms/bwa-header/user-menu.js:56
 msgid "Products"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/user-menu.js:42
+#: src/app/components/organisms/bwa-header/user-menu.js:68
 msgid "Security"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/user-menu.js:48
+#: src/app/components/organisms/bwa-header/user-menu.js:80
 msgid "Validation Token"
 msgstr ""
 
@@ -658,89 +658,89 @@ msgstr ""
 msgid "Give us a call at %s844-211-8705%s"
 msgstr ""
 
-#: src/app/pages/help/index.js:22
-#: src/app/pages/help/index.js:146
+#: src/app/pages/help/index.js:30
+#: src/app/pages/help/index.js:168
 msgid "Chat with us"
 msgstr ""
 
-#: src/app/pages/help/index.js:26
+#: src/app/pages/help/index.js:34
 msgid "From DIY to full-service help"
 msgstr ""
 
-#: src/app/pages/help/index.js:29
+#: src/app/pages/help/index.js:37
 msgid "Feeling stuck? Choose how much help you'd like, from how-to articles to your own website concierge."
 msgstr ""
 
-#: src/app/pages/help/index.js:35
+#: src/app/pages/help/index.js:43
 msgid "Blue Sky"
 msgstr ""
 
-#: src/app/pages/help/index.js:43
+#: src/app/pages/help/index.js:51
 msgid "Get your own website guide"
 msgstr ""
 
-#: src/app/pages/help/index.js:45
+#: src/app/pages/help/index.js:53
 msgid "Our WordPress experts can jump in wherever you need help, teaching you how to build, grow, and maintain your website."
 msgstr ""
 
-#: src/app/pages/help/index.js:58
+#: src/app/pages/help/index.js:65
 msgid "Get Blue Sky"
 msgstr ""
 
-#: src/app/pages/help/index.js:65
+#: src/app/pages/help/index.js:72
 msgid "Let us do it for you"
 msgstr ""
 
-#: src/app/pages/help/index.js:67
+#: src/app/pages/help/index.js:74
 msgid "What can we help you achieve today?"
 msgstr ""
 
-#: src/app/pages/help/index.js:72
+#: src/app/pages/help/index.js:79
 msgid "Full-Service Website"
 msgstr ""
 
-#: src/app/pages/help/index.js:74
+#: src/app/pages/help/index.js:81
 msgid "Ongoing marketing assistance and design"
 msgstr ""
 
-#: src/app/pages/help/index.js:82
-#: src/app/pages/help/index.js:100
+#: src/app/pages/help/index.js:89
+#: src/app/pages/help/index.js:107
 msgid "Learn more"
 msgstr ""
 
-#: src/app/pages/help/index.js:88
+#: src/app/pages/help/index.js:95
 msgid "SEO Services"
 msgstr ""
 
-#: src/app/pages/help/index.js:91
+#: src/app/pages/help/index.js:98
 msgid "Fine tune your website for better visibility"
 msgstr ""
 
-#: src/app/pages/help/index.js:106
+#: src/app/pages/help/index.js:113
 msgid "Our experts can help"
 msgstr ""
 
-#: src/app/pages/help/index.js:109
+#: src/app/pages/help/index.js:116
 msgid "Consult with an expert to figure out the best next steps."
 msgstr ""
 
-#: src/app/pages/help/index.js:117
+#: src/app/pages/help/index.js:124
 msgid "Request a consultation"
 msgstr ""
 
-#: src/app/pages/help/index.js:125
+#: src/app/pages/help/index.js:132
 msgid "DIY"
 msgstr ""
 
-#: src/app/pages/help/index.js:128
+#: src/app/pages/help/index.js:135
 msgid "Checkout our resource center for helpful how-to articles and guides."
 msgstr ""
 
-#: src/app/pages/help/index.js:134
+#: src/app/pages/help/index.js:145
 msgid "Visit resource center"
 msgstr ""
 
-#: src/app/pages/help/index.js:142
+#: src/app/pages/help/index.js:153
 msgid "Call us for help"
 msgstr ""
 
@@ -770,17 +770,17 @@ msgid "Right now, your site is displaying a “coming soon” message. Once you'
 msgstr ""
 
 #: src/app/pages/home/coming-soon-notice/index.js:39
-#: src/app/pages/home/onboarding/index.js:133
+#: src/app/pages/home/onboarding/index.js:158
 msgid "Awesome! Your site is live."
 msgstr ""
 
 #: src/app/pages/home/coming-soon-notice/index.js:40
-#: src/app/pages/home/onboarding/index.js:136
+#: src/app/pages/home/onboarding/index.js:161
 msgid "We removed the \"coming soon\" banner. Your website is now available for public visitors. This can be always be changed on the Settings tab above."
 msgstr ""
 
 #: src/app/pages/home/coming-soon-notice/index.js:41
-#: src/app/pages/home/onboarding/index.js:140
+#: src/app/pages/home/onboarding/index.js:165
 msgid "Restore Coming Soon"
 msgstr ""
 
@@ -820,137 +820,137 @@ msgstr ""
 msgid "Manage your site from Bluehost's control panel. You can create backups, set security, and improve performance."
 msgstr ""
 
-#: src/app/pages/home/hosting/index.js:26
-#: src/app/pages/home/hosting/index.js:40
+#: src/app/pages/home/hosting/index.js:27
+#: src/app/pages/home/hosting/index.js:42
 msgid "Manage"
 msgstr ""
 
-#: src/app/pages/home/hosting/index.js:34
+#: src/app/pages/home/hosting/index.js:35
 msgid "Email"
 msgstr ""
 
-#: src/app/pages/home/hosting/index.js:35
+#: src/app/pages/home/hosting/index.js:36
 msgid "Create email accounts, compose, send, and receive your email from your Bluehost control panel."
 msgstr ""
 
-#: src/app/pages/home/hosting/index.js:48
+#: src/app/pages/home/hosting/index.js:50
 msgid "Domains"
 msgstr ""
 
-#: src/app/pages/home/hosting/index.js:49
+#: src/app/pages/home/hosting/index.js:51
 msgid "Find a new domain and assign it to your site or start a new site with a fresh domain."
 msgstr ""
 
-#: src/app/pages/home/hosting/index.js:54
+#: src/app/pages/home/hosting/index.js:57
 msgid "Find a Domain"
 msgstr ""
 
-#: src/app/pages/home/hosting/index.js:63
+#: src/app/pages/home/hosting/index.js:66
 msgid "Get help from Bluehost’s U.S.-based award-winning support team. It’s available 24/7 through phone and chat."
 msgstr ""
 
-#: src/app/pages/home/hosting/index.js:68
+#: src/app/pages/home/hosting/index.js:72
 msgid "Help Me"
 msgstr ""
 
-#: src/app/pages/home/hosting/index.js:74
+#: src/app/pages/home/hosting/index.js:78
 msgid "Hosting"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:44
+#: src/app/pages/home/onboarding/index.js:53
 msgid "Welcome to your WordPress site"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:47
+#: src/app/pages/home/onboarding/index.js:56
 msgid "Not sure how to get started? Here are a few options we recommend."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:60
+#: src/app/pages/home/onboarding/index.js:69
 msgid "Start with a page or post"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:63
+#: src/app/pages/home/onboarding/index.js:72
 msgid "Use a page for content that won't change too often (your homepage, portfolio), and use posts for information that's timely (blog posts, updates)."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:67
+#: src/app/pages/home/onboarding/index.js:80
 msgid "Add a blog post"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:70
+#: src/app/pages/home/onboarding/index.js:87
 msgid "Add a page"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:80
+#: src/app/pages/home/onboarding/index.js:97
 msgid "Make it look just right"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:83
+#: src/app/pages/home/onboarding/index.js:100
 msgid "Use the customizer to go simple, bold—whatever's you."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:84
+#: src/app/pages/home/onboarding/index.js:101
 msgid "Or browse themes and try 'em out."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:88
+#: src/app/pages/home/onboarding/index.js:109
 msgid "Browse themes"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:91
+#: src/app/pages/home/onboarding/index.js:116
 msgid "Customize your site"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:103
+#: src/app/pages/home/onboarding/index.js:128
 msgid "Get ready to launch"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:106
+#: src/app/pages/home/onboarding/index.js:131
 msgid "Your site has a \"coming soon\" message, which lets people know you're working on it. "
 msgstr ""
 
 #. translators: %1$s is the opening link tag and %2$s is the closing link tag for the link to the website publish checklist.
-#: src/app/pages/home/onboarding/index.js:112
+#: src/app/pages/home/onboarding/index.js:137
 msgid "Check out our %1$swebsite pre-publishing%2$s checklist to help get ready for launch."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:123
+#: src/app/pages/home/onboarding/index.js:148
 msgid "Launch your site"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:154
+#: src/app/pages/home/onboarding/index.js:179
 msgid "How-to's & next steps"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:159
+#: src/app/pages/home/onboarding/index.js:184
 msgid "Learn how to add functionality to your site with plugins:"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:162
+#: src/app/pages/home/onboarding/index.js:195
 msgid "How to use WordPress plugins"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:166
+#: src/app/pages/home/onboarding/index.js:207
 msgid "The two essential plugins you need"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:170
+#: src/app/pages/home/onboarding/index.js:211
 msgid "Check out ecommerce tips:"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:173
+#: src/app/pages/home/onboarding/index.js:222
 msgid "Steps for adding a store to your site with WooCommerce"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:177
+#: src/app/pages/home/onboarding/index.js:234
 msgid "The five best WooCommerce WordPress themes"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:181
+#: src/app/pages/home/onboarding/index.js:238
 msgid "Get help from WordPress experts:"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:184
+#: src/app/pages/home/onboarding/index.js:249
 msgid "Our BlueSky experts are here to help you every step of the way"
 msgstr ""
 
