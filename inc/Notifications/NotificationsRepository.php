@@ -31,7 +31,7 @@ class NotificationsRepository {
 
 		$notifications = get_transient( self::TRANSIENT );
 
-		if ( empty( $notifications ) ) {
+		if ( false === $notifications ) {
 			$response = wp_remote_get(
 				'https://hiive.cloud/api/notifications',
 				array(
