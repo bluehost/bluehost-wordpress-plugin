@@ -143,7 +143,7 @@ describe('Help Page', function () {
 
 		it('Has "Call us for help" call to action', () => {
 			cy.get('.help-footer')
-				.findByRole('link', {name: 'Call us for help'})
+				.findByRole('link', {name: '888-401-4678'})
 				.scrollIntoView()
 				.should('be.visible')
 				.should('have.attr', 'href')

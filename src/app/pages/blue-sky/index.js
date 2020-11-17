@@ -22,6 +22,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import blueSkyGroup from '@app/assets/blue-sky-group.png';
 
 import './style.scss';
+import ReactPlayer from "react-player";
 
 const BlueSky = () => {
 	return (
@@ -32,7 +33,16 @@ const BlueSky = () => {
 			<div className="section-intro">
 				<div className="media-block">
 					<div className="media-block__media">
-						<img src={ blueSkyGroup } alt="" />
+						<div className="react-player-container">
+							<ReactPlayer
+								className="react-player"
+								height="100%"
+								light={ blueSkyGroup }
+								playIcon={ <span /> }
+								url="https://www.youtube.com/embed/QEir4T7VweY"
+								width="100%"
+							/>
+						</div>
 					</div>
 					<div className="media-block__details">
 						<div className="media-block__title">
@@ -43,9 +53,10 @@ const BlueSky = () => {
 								{ __('We understand that WordPress can be challenging, but with professional help in your pocket, you will learn how to build, grow, and maintain your new WordPress website with friendly and professional guidance every step of the way.', 'bluehost-wordpress-plugin') }
 							</p>
 						</div>
-						<Button className="media-block__button" href="tel:8442118705" isLink isPrimary>
-							{ __('Call to get started', 'bluehost-wordpress-plugin') }
-						</Button>
+						<div className="call-to-get-started">
+							{ __('Call to get started: ', 'bluehost-wordpress-plugin') }
+							<a href="tel:8442118705">844-211-8705</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -62,9 +73,10 @@ const BlueSky = () => {
 							{ __('Get unstuck with fast answers and recommendations.', 'bluehost-wordpress-plugin') }
 						</div>
 						<div className="product-card__call-to-action">
-							<Button href="tel:8442118705" isLink isPrimary>
-								{ __('Call to get started', 'bluehost-wordpress-plugin') }
-							</Button>
+							<div className="call-to-get-started">
+								{ __('Call to get started', 'bluehost-wordpress-plugin') }<br />
+								<a href="tel:8442118705">844-211-8705</a>
+							</div>
 						</div>
 						<div className="product-card__feature-list">
 							<div className="product-card__feature">
@@ -89,9 +101,10 @@ const BlueSky = () => {
 							{ __('Learn more WordPress skills and solve problems faster.', 'bluehost-wordpress-plugin') }
 						</div>
 						<div className="product-card__call-to-action">
-							<Button href="tel:8442118705" isLink isPrimary>
-								{ __('Call to get started', 'bluehost-wordpress-plugin') }
-							</Button>
+							<div className="call-to-get-started">
+								{ __('Call to get started', 'bluehost-wordpress-plugin') }<br />
+								<a href="tel:8442118705">844-211-8705</a>
+							</div>
 						</div>
 						<div className="product-card__feature-list">
 							<div className="product-card__feature">
@@ -122,9 +135,10 @@ const BlueSky = () => {
 							{ __('Build and Maintain with advanced features and improve as you go.', 'bluehost-wordpress-plugin') }
 						</div>
 						<div className="product-card__call-to-action">
-							<Button href="tel:8442118705" isLink isPrimary>
-								{ __('Call to get started', 'bluehost-wordpress-plugin') }
-							</Button>
+							<div className="call-to-get-started">
+								{ __('Call to get started', 'bluehost-wordpress-plugin') }<br />
+								<a href="tel:8442118705">844-211-8705</a>
+							</div>
 						</div>
 						<div className="product-card__feature-list">
 							<div className="product-card__feature">
@@ -390,15 +404,12 @@ const BlueSky = () => {
 							{
 								__html: sprintf(
 									__('Give us a call at %s844-211-8705%s', 'bluehost-wordpress-plugin'),
-									'<strong>',
-									'</strong>'
+									'<a href="tel:8442118705"><strong>',
+									'</strong></a>'
 								)
 							}
 						}
 					/>
-					<Button className="call-to-action__button" href="tel:8442118705" isLink isPrimary>
-						{ __('Call to get started', 'bluehost-wordpress-plugin') }
-					</Button>
 				</div>
 			</div>
 		</Page>

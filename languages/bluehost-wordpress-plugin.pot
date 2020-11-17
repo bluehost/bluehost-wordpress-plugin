@@ -28,6 +28,10 @@ msgstr ""
 msgid "https://www.bluehost.com/"
 msgstr ""
 
+#: inc/AdminBar.php:32
+msgid "Need help?"
+msgstr ""
+
 #: inc/base.php:191
 msgid "Once Weekly"
 msgstr ""
@@ -346,399 +350,401 @@ msgstr ""
 msgid "Skip to Content"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:39
+#: src/app/pages/blue-sky/index.js:49
 msgid "Customized support from experts who care"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:43
+#: src/app/pages/blue-sky/index.js:53
 msgid "We understand that WordPress can be challenging, but with professional help in your pocket, you will learn how to build, grow, and maintain your new WordPress website with friendly and professional guidance every step of the way."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:47
-#: src/app/pages/blue-sky/index.js:66
-#: src/app/pages/blue-sky/index.js:93
-#: src/app/pages/blue-sky/index.js:126
-#: src/app/pages/blue-sky/index.js:400
-msgid "Call to get started"
+#: src/app/pages/blue-sky/index.js:57
+msgid "Call to get started: "
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:54
+#: src/app/pages/blue-sky/index.js:65
 msgid "Live WordPress Support from $29/month."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:59
+#: src/app/pages/blue-sky/index.js:70
 msgid "Blue Sky Basic"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:62
+#: src/app/pages/blue-sky/index.js:73
 msgid "Get unstuck with fast answers and recommendations."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:71
-#: src/app/pages/blue-sky/index.js:98
-#: src/app/pages/blue-sky/index.js:131
+#: src/app/pages/blue-sky/index.js:77
+#: src/app/pages/blue-sky/index.js:105
+#: src/app/pages/blue-sky/index.js:139
+msgid "Call to get started"
+msgstr ""
+
+#: src/app/pages/blue-sky/index.js:83
+#: src/app/pages/blue-sky/index.js:111
+#: src/app/pages/blue-sky/index.js:145
 msgid "On-Demand Ticket Support"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:74
-#: src/app/pages/blue-sky/index.js:101
-#: src/app/pages/blue-sky/index.js:134
+#: src/app/pages/blue-sky/index.js:86
+#: src/app/pages/blue-sky/index.js:114
+#: src/app/pages/blue-sky/index.js:148
 msgid "Account Access Assistance"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:77
-#: src/app/pages/blue-sky/index.js:104
-#: src/app/pages/blue-sky/index.js:137
+#: src/app/pages/blue-sky/index.js:89
+#: src/app/pages/blue-sky/index.js:117
+#: src/app/pages/blue-sky/index.js:151
 msgid "Website Backup Assistance"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:80
-#: src/app/pages/blue-sky/index.js:107
-#: src/app/pages/blue-sky/index.js:140
+#: src/app/pages/blue-sky/index.js:92
+#: src/app/pages/blue-sky/index.js:120
+#: src/app/pages/blue-sky/index.js:154
 msgid "Design Guidance"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:86
+#: src/app/pages/blue-sky/index.js:98
 msgid "Blue Sky Plus"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:89
+#: src/app/pages/blue-sky/index.js:101
 msgid "Learn more WordPress skills and solve problems faster."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:110
-#: src/app/pages/blue-sky/index.js:143
+#: src/app/pages/blue-sky/index.js:123
+#: src/app/pages/blue-sky/index.js:157
 msgid "On-Demand Chat Support"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:116
+#: src/app/pages/blue-sky/index.js:129
 msgid "Recommended"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:119
+#: src/app/pages/blue-sky/index.js:132
 msgid "Blue Sky Pro"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:122
+#: src/app/pages/blue-sky/index.js:135
 msgid "Build and Maintain with advanced features and improve as you go."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:146
+#: src/app/pages/blue-sky/index.js:160
 msgid "Bluehost SEO Tools"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:149
+#: src/app/pages/blue-sky/index.js:163
 msgid "Content Optimization Assistance"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:152
+#: src/app/pages/blue-sky/index.js:166
 msgid "Landing Page Optimization Assistance"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:155
+#: src/app/pages/blue-sky/index.js:169
 msgid "Mobile Optimization Assistance"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:158
+#: src/app/pages/blue-sky/index.js:172
 msgid "1 Keyword Optimization"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:161
+#: src/app/pages/blue-sky/index.js:175
 msgid "Constant Contact (500 contacts free)"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:169
+#: src/app/pages/blue-sky/index.js:183
 msgid "What's new in Blue Sky Pro"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:177
+#: src/app/pages/blue-sky/index.js:191
 msgid "Email that gets results with Constant Contact"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:182
+#: src/app/pages/blue-sky/index.js:196
 msgid "Free email marketing for up to 500 contacts"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:185
+#: src/app/pages/blue-sky/index.js:199
 msgid "100+ responsive email templates"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:188
+#: src/app/pages/blue-sky/index.js:202
 msgid "List-building tools and expert advice"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:192
+#: src/app/pages/blue-sky/index.js:206
 msgid "Exceeding 500 contacts will trigger a plan upgrade that allows for up to 2,500 contacts at $35/mo."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:203
+#: src/app/pages/blue-sky/index.js:217
 msgid "Boost your rank with Bluehost SEO Tools"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:207
+#: src/app/pages/blue-sky/index.js:221
 msgid "All-in-one SEO toolkit"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:208
+#: src/app/pages/blue-sky/index.js:222
 msgid "Analytic Marketing Reports to improve traffic"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:209
+#: src/app/pages/blue-sky/index.js:223
 msgid "Competitive intelligence to see how you compare"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:210
+#: src/app/pages/blue-sky/index.js:224
 msgid "Suggested keywords to boost rankings"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:211
+#: src/app/pages/blue-sky/index.js:225
 msgid "Integrated dashboard to track rankings"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:222
+#: src/app/pages/blue-sky/index.js:236
 msgid "Strategies to drive traffic from One Keyword Search"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:226
+#: src/app/pages/blue-sky/index.js:240
 msgid "Strategic single keyword recommendation"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:227
+#: src/app/pages/blue-sky/index.js:241
 msgid "Dedicated Marketing Program Manager to help you grow"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:228
+#: src/app/pages/blue-sky/index.js:242
 msgid "Unique content backlinking to boost rankings"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:229
+#: src/app/pages/blue-sky/index.js:243
 msgid "Access to weekly search engine rankings"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:230
+#: src/app/pages/blue-sky/index.js:244
 msgid "Full-visibility analytics"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:238
+#: src/app/pages/blue-sky/index.js:252
 msgid "Feature Overview"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:244
+#: src/app/pages/blue-sky/index.js:258
 msgid "Create an Online Store"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:247
+#: src/app/pages/blue-sky/index.js:261
 msgid "We'll help you set up your store from start to finish."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:253
+#: src/app/pages/blue-sky/index.js:267
 msgid "Tie in Social Media"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:256
+#: src/app/pages/blue-sky/index.js:270
 msgid "Get more traffic by integrating your social media accounts with your website."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:262
+#: src/app/pages/blue-sky/index.js:276
 msgid "Increase traffic"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:265
+#: src/app/pages/blue-sky/index.js:279
 msgid "Get expert advice on how to grow your audience."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:271
+#: src/app/pages/blue-sky/index.js:285
 msgid "Build for Any Device"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:274
+#: src/app/pages/blue-sky/index.js:288
 msgid "Build a responsive website that looks great on phones, tablets, and desktops."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:280
+#: src/app/pages/blue-sky/index.js:294
 msgid "Optimize Videos & Images"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:283
+#: src/app/pages/blue-sky/index.js:297
 msgid "Help your website load and respond fast with optimized videos and images."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:289
+#: src/app/pages/blue-sky/index.js:303
 msgid "Pre-launch Review"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:292
+#: src/app/pages/blue-sky/index.js:306
 msgid "Our experts will test and review your site to catch issues before you launch."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:298
+#: src/app/pages/blue-sky/index.js:312
 msgid "Long Term Value"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:301
+#: src/app/pages/blue-sky/index.js:315
 msgid "Use our experts as a resource to maintain and advance your site into the future."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:307
+#: src/app/pages/blue-sky/index.js:321
 msgid "Expert Advice"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:310
+#: src/app/pages/blue-sky/index.js:324
 msgid "Ask questions as they pop up, and get quick answers via live chat, email, and over the phone."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:316
+#: src/app/pages/blue-sky/index.js:330
 msgid "Screen Sharing"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:319
+#: src/app/pages/blue-sky/index.js:333
 msgid "Get step-by-step guidance on your actual site with live screen sharing."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:326
+#: src/app/pages/blue-sky/index.js:340
 msgid "What Do Our Customers Say?"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:334
+#: src/app/pages/blue-sky/index.js:348
 msgid "Friendly Tech Support"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:337
+#: src/app/pages/blue-sky/index.js:351
 msgid "I'm so glad that I found you and feel so grateful for knowing what I now know! With the help of WP Live, I was able to call anytime, with any question, which has been incredibly helpful."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:340
+#: src/app/pages/blue-sky/index.js:354
 msgid "Alana McInnis"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:343
+#: src/app/pages/blue-sky/index.js:357
 msgid "IslandBeautyHabits.com"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:351
+#: src/app/pages/blue-sky/index.js:365
 msgid "Blue Sky is for Everyone"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:354
+#: src/app/pages/blue-sky/index.js:368
 msgid "Blue Sky had a solution for every problem we ran into, every step of the way. Whether we needed to change the size of a slider or learn how to back-up our site, they had answers within minutes."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:357
+#: src/app/pages/blue-sky/index.js:371
 msgid "David Bixler"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:360
+#: src/app/pages/blue-sky/index.js:374
 msgid "DuranteRentals.com"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:368
+#: src/app/pages/blue-sky/index.js:382
 msgid "Exceeded All Expectations"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:371
+#: src/app/pages/blue-sky/index.js:385
 msgid "Blue Sky was a refreshing change from other customer tech support companies I've dealt with. They were not only incredibly knowledgeable but also sincerely committed to finding answers to all of the various issues I faced."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:374
+#: src/app/pages/blue-sky/index.js:388
 msgid "Sue Pappas"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:377
+#: src/app/pages/blue-sky/index.js:391
 msgid "OutdoorArtCanvas.com"
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:384
+#: src/app/pages/blue-sky/index.js:398
 msgid "Win with Blue Sky today."
 msgstr ""
 
-#: src/app/pages/blue-sky/index.js:392
+#: src/app/pages/blue-sky/index.js:406
 msgid "Give us a call at %s844-211-8705%s"
 msgstr ""
 
-#: src/app/pages/help/index.js:22
-#: src/app/pages/help/index.js:146
+#: src/app/pages/help/index.js:24
+#: src/app/pages/help/index.js:169
 msgid "Chat with us"
 msgstr ""
 
-#: src/app/pages/help/index.js:26
+#: src/app/pages/help/index.js:28
 msgid "From DIY to full-service help"
 msgstr ""
 
-#: src/app/pages/help/index.js:29
+#: src/app/pages/help/index.js:31
 msgid "Feeling stuck? Choose how much help you'd like, from how-to articles to your own website concierge."
 msgstr ""
 
-#: src/app/pages/help/index.js:35
+#: src/app/pages/help/index.js:37
 msgid "Blue Sky"
 msgstr ""
 
-#: src/app/pages/help/index.js:43
+#: src/app/pages/help/index.js:54
 msgid "Get your own website guide"
 msgstr ""
 
-#: src/app/pages/help/index.js:45
+#: src/app/pages/help/index.js:56
 msgid "Our WordPress experts can jump in wherever you need help, teaching you how to build, grow, and maintain your website."
 msgstr ""
 
-#: src/app/pages/help/index.js:58
+#: src/app/pages/help/index.js:68
 msgid "Get Blue Sky"
 msgstr ""
 
-#: src/app/pages/help/index.js:65
+#: src/app/pages/help/index.js:75
 msgid "Let us do it for you"
 msgstr ""
 
-#: src/app/pages/help/index.js:67
+#: src/app/pages/help/index.js:77
 msgid "What can we help you achieve today?"
 msgstr ""
 
-#: src/app/pages/help/index.js:72
+#: src/app/pages/help/index.js:82
 msgid "Full-Service Website"
 msgstr ""
 
-#: src/app/pages/help/index.js:74
+#: src/app/pages/help/index.js:84
 msgid "Ongoing marketing assistance and design"
 msgstr ""
 
-#: src/app/pages/help/index.js:82
-#: src/app/pages/help/index.js:100
+#: src/app/pages/help/index.js:93
+#: src/app/pages/help/index.js:112
 msgid "Learn more"
 msgstr ""
 
-#: src/app/pages/help/index.js:88
+#: src/app/pages/help/index.js:99
 msgid "SEO Services"
 msgstr ""
 
-#: src/app/pages/help/index.js:91
+#: src/app/pages/help/index.js:102
 msgid "Fine tune your website for better visibility"
 msgstr ""
 
-#: src/app/pages/help/index.js:106
+#: src/app/pages/help/index.js:118
 msgid "Our experts can help"
 msgstr ""
 
-#: src/app/pages/help/index.js:109
+#: src/app/pages/help/index.js:121
 msgid "Consult with an expert to figure out the best next steps."
 msgstr ""
 
-#: src/app/pages/help/index.js:117
+#: src/app/pages/help/index.js:130
 msgid "Request a consultation"
 msgstr ""
 
-#: src/app/pages/help/index.js:125
+#: src/app/pages/help/index.js:138
 msgid "DIY"
 msgstr ""
 
-#: src/app/pages/help/index.js:128
+#: src/app/pages/help/index.js:141
 msgid "Checkout our resource center for helpful how-to articles and guides."
 msgstr ""
 
-#: src/app/pages/help/index.js:134
+#: src/app/pages/help/index.js:152
 msgid "Visit resource center"
 msgstr ""
 
-#: src/app/pages/help/index.js:142
-msgid "Call us for help"
+#: src/app/pages/help/index.js:160
+msgid "888-401-4678"
 msgstr ""
 
 #: src/app/pages/help/search-form/index.js:26
