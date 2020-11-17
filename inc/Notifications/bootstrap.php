@@ -27,7 +27,7 @@ add_filter(
 	'bluehost_admin_page_data',
 	function ( $data ) {
 
-		// Grab the latest settings using an interal REST API request
+		// Grab the latest settings using an internal REST API request
 		$request = new \WP_REST_Request( 'GET', '/bluehost/v1/notifications' );
 		$request->set_query_params( array( 'context' => 'bluehost-plugin' ) );
 		$response = rest_do_request( $request );
