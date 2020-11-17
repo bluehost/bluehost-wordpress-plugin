@@ -5,6 +5,24 @@ namespace Bluehost\Notifications;
 add_action( 'admin_notices', array( AdminNotices::class, 'maybeRenderAdminNotices' ) );
 add_action( 'rest_api_init', array( NotificationsApi::class, 'registerRoutes' ) );
 
+add_action(
+	'bh_event_log',
+	function ( $key ) {
+		$events = array(
+			'login',
+			'sso',
+			'plugin_activated',
+			'site_launched',
+			'jetpack_connected',
+			'first_post_published',
+			'fifth_post_published',
+		);
+		if ( in_array( $key, $events, true ) ) {
+			delete_transient( 'bluehost_notifications' );
+		}
+	}
+);
+
 add_filter(
 	'bluehost_admin_page_data',
 	function ( $data ) {
