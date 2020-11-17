@@ -70,7 +70,7 @@ class Notification {
 		wp_remote_post(
 			'https://hiive.cloud/api/notifications',
 			array(
-				'headers' => array(
+				'headers'  => array(
 					'Content-Type'  => 'application/json',
 					'Accept'        => 'application/json',
 					'Authorization' => 'Bearer ' . HubConnection::get_auth_token(),
@@ -135,7 +135,15 @@ class Notification {
 
 					if ( is_array( $pages ) ) {
 						// If current page is not set, assume we want to show on all pages (makes REST API work properly).
-						return is_null( $current_page ) || in_array( $current_page, $pages, true );
+						if ( is_null( $current_page ) ) {
+							return true;
+						}
+
+						foreach ( $pages as $path ) {
+							if ( false !== strpos( $current_page, $path ) ) {
+								return true;
+							}
+						}
 					}
 
 					break;
