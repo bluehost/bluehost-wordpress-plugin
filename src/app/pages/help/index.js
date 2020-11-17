@@ -1,5 +1,6 @@
 import { BWABaseTemplate as Page } from '@app/components/templates';
 import { BWAButton as Button } from '@app/components/atoms';
+import { addUtmParams } from '@app/functions';
 import { BlueSkyLogo, Call, CallCenter, ChatIcon, Computer, SEO } from '@app/assets';
 import { __ } from '@wordpress/i18n';
 import Search from './search';
@@ -15,7 +16,15 @@ const Help = () => {
 					<div className="chat-button-container">
 						<Button
 							className="chat-button"
-							href="https://helpchat.bluehost.com/"
+							href={
+								addUtmParams(
+									'https://helpchat.bluehost.com/',
+									{
+										utm_content: 'help_chat_button',
+										utm_term: 'Chat with us',
+									}
+								)
+							}
 							isPrimary
 						>
 							{ __('Chat with us', 'bluehost-wordpress-plugin') } <ChatIcon className="chat-icon" />
@@ -75,6 +84,7 @@ const Help = () => {
 								data-testid="full-service"
 								href="https://www.bluehost.com/solutions/full-service#full-service"
 								isSecondary
+								utmContent="help_full_service"
 							>
 								{ __('Learn more', 'bluehost-wordpress-plugin') }
 							</Button>
@@ -92,6 +102,7 @@ const Help = () => {
 								data-testid="seo-services"
 								href="https://www.bluehost.com/solutions/full-service#seo-services"
 								isSecondary
+								utmContent="help_seo_services"
 							>
 								{ __('Learn more', 'bluehost-wordpress-plugin') }
 							</Button>
@@ -108,6 +119,7 @@ const Help = () => {
 								className="featured-service__button"
 								href="https://www.bluehost.com/solutions/full-service#request-form"
 								isSecondary
+								utmContent="help_request_consultation"
 							>
 								{ __('Request a consultation', 'bluehost-wordpress-plugin') }
 							</Button>
@@ -125,7 +137,11 @@ const Help = () => {
 				<div className="resources-search">
 					<Search />
 					<div className="button-container">
-						<Button href="https://www.bluehost.com/resources/" isSecondary>
+						<Button
+							href="https://www.bluehost.com/resources/"
+							isSecondary
+							utmContent="help_visit_resource_center"
+						>
 							{ __('Visit resource center', 'bluehost-wordpress-plugin') }
 						</Button>
 					</div>
@@ -136,7 +152,18 @@ const Help = () => {
 					<Call className="footer-icon" />
 					<span>{ __('Call us for help', 'bluehost-wordpress-plugin') }</span>
 				</a>
-				<a className="call-to-action" href="https://helpchat.bluehost.com/">
+				<a
+					className="call-to-action"
+					href={
+						addUtmParams(
+							'https://helpchat.bluehost.com/',
+							{
+								utm_content: 'help_chat_link',
+								utm_term: 'Chat with us',
+							}
+						)
+					}
+				>
 					<ChatIcon className="footer-icon" />
 					<span>{ __('Chat with us', 'bluehost-wordpress-plugin') }</span>
 				</a>
