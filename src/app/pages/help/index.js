@@ -7,6 +7,7 @@ import Search from './search';
 import blueSkyGroup from '@app/assets/blue-sky-group.png';
 
 import './style.scss';
+import ReactPlayer from "react-player";
 
 const Help = () => {
 	return (
@@ -26,6 +27,8 @@ const Help = () => {
 								)
 							}
 							isPrimary
+							rel="noopener noreferrer"
+							target="_blank"
 						>
 							{ __('Chat with us', 'bluehost-wordpress-plugin') } <ChatIcon className="chat-icon" />
 						</Button>
@@ -44,7 +47,16 @@ const Help = () => {
 					</div>
 					<div className="media-block">
 						<div className="media-block__media">
-							<img src={ blueSkyGroup } alt="" />
+							<div className="react-player-container">
+								<ReactPlayer
+									className="react-player"
+									height="100%"
+									light={ blueSkyGroup }
+									playIcon={ <span /> }
+									url="https://www.youtube.com/embed/QEir4T7VweY"
+									width="100%"
+								/>
+							</div>
 						</div>
 						<div className="media-block__details">
 							<div
@@ -150,7 +162,7 @@ const Help = () => {
 			<footer className="help-footer">
 				<a className="call-to-action" href="tel:8884014678">
 					<Call className="footer-icon" />
-					<span>{ __('Call us for help', 'bluehost-wordpress-plugin') }</span>
+					<span>{ __('888-401-4678', 'bluehost-wordpress-plugin') }</span>
 				</a>
 				<a
 					className="call-to-action"
