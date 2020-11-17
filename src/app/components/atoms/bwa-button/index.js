@@ -14,28 +14,30 @@ import { forwardRef } from '@wordpress/element';
 /**
  * Internal dependencies
  */
-import { get, addUtmParams } from "@app/functions";
+import { addUtmParams, isExternalUrl, get } from "@app/functions";
 import './style.scss';
 
 const BWAButton = forwardRef((props, ref) => {
 	let {className = '', href, rel, target} = props;
 
-	// Check if link is external
-	if (href && typeof href === 'string' && href.includes('http') && !href.includes(window.location.origin)) {
+	// If link is external...
+	if (isExternalUrl(href)) {
 
 		// Add class
 		className += ' is-external';
 
-		// Automatically add UTM params
-		const anchorText = typeof props.children === 'string' ? props.children : '';
-		href = addUtmParams(
-			href,
-			{
-				utm_term: get(['utmTerm'], props, anchorText),
-				utm_content: get(['utmContent'], props, snakeCase(anchorText)),
-				utm_campaign: get(['utmCampaign'], props),
-			}
-		);
+		// Automatically add UTM params, if the URL doesn't already contain them
+		if (!href.includes('utm_')) {
+			const anchorText = typeof props.children === 'string' ? props.children : '';
+			href = addUtmParams(
+				href,
+				{
+					utm_term: get(['utmTerm'], props, anchorText),
+					utm_content: get(['utmContent'], props, snakeCase(anchorText)),
+					utm_campaign: get(['utmCampaign'], props),
+				}
+			);
+		}
 
 		// Ensure that rel attribute is set
 		if (!rel) {
