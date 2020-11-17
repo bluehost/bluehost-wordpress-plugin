@@ -152,6 +152,17 @@ msgstr ""
 msgid "Unable to parse JSON"
 msgstr ""
 
+#. translators: %s Settings > General page URL.
+#: inc/updates.php:112
+#: inc/updates.php:140
+#: inc/updates.php:167
+msgid "Auto-updates enabled on the <a href=\"%s\">Bluehost > Settings</a> page."
+msgstr ""
+
+#: inc/updates.php:163
+msgid "Auto-updates enabled"
+msgstr ""
+
 #: pages/coming-soon.php:6
 msgid "Coming Soon"
 msgstr ""
