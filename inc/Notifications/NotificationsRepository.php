@@ -48,6 +48,7 @@ class NotificationsRepository {
 				$data = json_decode( $body, true );
 				if ( $data && is_array( $data ) ) {
 					$notifications = Arr::get( $data, 'data' );
+					set_transient( self::TRANSIENT, $notifications, 5 * MINUTE_IN_SECONDS );
 				}
 			}
 		}
@@ -109,7 +110,7 @@ class NotificationsRepository {
 	 * @param array     $notifications Array of notifications.
 	 * @param float|int $expiration    Transient expiration.
 	 */
-	public static function setTransient( array $notifications, $expiration = HOUR_IN_SECONDS ) {
+	public static function setTransient( array $notifications, $expiration = 5 * MINUTE_IN_SECONDS ) {
 		set_transient( self::TRANSIENT, array_values( $notifications ), $expiration );
 	}
 
