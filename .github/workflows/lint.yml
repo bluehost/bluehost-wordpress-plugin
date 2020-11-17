@@ -49,5 +49,5 @@ jobs:
         if: "!! env.GIT_DIFF"
 
       - name: Detecting PHP Code Standards Violations
-        run: vendor/bin/phpcs --standard=Bluehost -s ${{ env.GIT_DIFF }}
+        run: vendor/bin/phpcs --standard=phpcs.xml -s ${{ env.GIT_DIFF }}
         if: "!! env.GIT_DIFF"

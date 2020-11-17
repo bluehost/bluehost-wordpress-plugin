@@ -9,6 +9,7 @@ import { __, sprintf } from '@wordpress/i18n';
  * Internal dependencies
  */
 import { BWAButton as Button } from '@app/components/atoms';
+import { BWANotification as Notification } from '@app/components/organisms';
 import comment from '@app/assets/comment.png';
 import computer from '@app/assets/computer.png';
 import rocket from '@app/assets/rocket.png';
@@ -47,6 +48,8 @@ export default function Onboarding() {
 
 	return (
 		<div className="bluehost-onboarding">
+
+			<Notification />
 
 			<header className="bluehost-onboarding-page-header">
 				<h2 className="bluehost-onboarding-page-header__title">

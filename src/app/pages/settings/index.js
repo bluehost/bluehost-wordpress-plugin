@@ -7,6 +7,7 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import { BWABaseTemplate } from '@app/components/templates';
+import { BWANotification as Notification } from '@app/components/organisms';
 
 import { BWAHeading } from '@app/components/atoms';
 import AutomaticUpdates from './automatic-updates';
@@ -19,7 +20,8 @@ import './style.scss';
 
 const SettingsPage = () => (
 	<BWABaseTemplate className="page-settings">
-		<BWAHeading level="h2" size={ 0 }>Settings</BWAHeading>
+		<Notification />
+		<BWAHeading level="h2" size={ 0 }>{ __('Settings', 'bluehost-wordpress-plugin') }</BWAHeading>
 		<div className="pure-g">
 			<div className="pure-u-1 pure-sm-3-5 page-settings__grid1">
 				<AutomaticUpdates />

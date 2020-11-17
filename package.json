@@ -98,7 +98,7 @@
             "yamllint --ignore=node_modues/**"
         ],
         "**/*.php": [
-            "vendor/bin/phpcs --standard=Bluehost -s"
+            "vendor/bin/phpcs --standard=phpcs.xml -s"
         ]
     }
 }

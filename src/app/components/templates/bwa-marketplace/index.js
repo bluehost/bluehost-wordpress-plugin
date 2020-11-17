@@ -8,6 +8,7 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import { BWABaseTemplate } from '@app/components/templates';
+import { BWANotification as Notification } from '@app/components/organisms';
 
 import {
 	BWAProductGrid,
@@ -101,6 +102,7 @@ const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading
 
 	return (
 		<BWABaseTemplate className={ className }>
+			<Notification />
 			<section className={ `${ className }__header` }>
 				<div className={ `${ className }__header-primary` }>
 					<BWAHeading level="h2" size={ 1 } className="marketplace-page-title">{ marketplacePageTitle( type ) }</BWAHeading>
