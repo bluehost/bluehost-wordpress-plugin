@@ -175,7 +175,8 @@ describe('Home Page', function () {
 					cy.contains('a.bluehost.components-button', 'Manage');
 					cy.get('a.bluehost.components-button')
 						.should('have.attr', 'href')
-						.and('include', 'https://my.bluehost.com/hosting/app?lil=1#/sites');
+						.and('include', 'https://my.bluehost.com/hosting/app?lil=1')
+						.and('include', '#/sites');
 				});
 
 		});
@@ -194,7 +195,8 @@ describe('Home Page', function () {
 					cy.contains('a.bluehost.components-button', 'Manage');
 					cy.get('a.bluehost.components-button')
 						.should('have.attr', 'href')
-						.and('include', 'https://my.bluehost.com/hosting/app?lil=1#/email-office');
+						.and('include', 'https://my.bluehost.com/hosting/app?lil=1')
+						.and('include', '#/email-office');
 				});
 
 		});
@@ -213,7 +215,8 @@ describe('Home Page', function () {
 					cy.contains('a.bluehost.components-button', 'Find a Domain');
 					cy.get('a.bluehost.components-button')
 						.should('have.attr', 'href')
-						.and('include', 'https://my.bluehost.com/hosting/app?lil=1#/domains');
+						.and('include', 'https://my.bluehost.com/hosting/app?lil=1')
+						.and('include', '#/domains');
 				});
 
 		});
