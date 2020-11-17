@@ -6,6 +6,7 @@ import Search from './search';
 import blueSkyGroup from '@app/assets/blue-sky-group.png';
 
 import './style.scss';
+import ReactPlayer from "react-player";
 
 const Help = () => {
 	return (
@@ -17,6 +18,8 @@ const Help = () => {
 							className="chat-button"
 							href="https://helpchat.bluehost.com/"
 							isPrimary
+							rel="noopener noreferrer"
+							target="_blank"
 						>
 							{ __('Chat with us', 'bluehost-wordpress-plugin') } <ChatIcon className="chat-icon" />
 						</Button>
@@ -35,7 +38,16 @@ const Help = () => {
 					</div>
 					<div className="media-block">
 						<div className="media-block__media">
-							<img src={ blueSkyGroup } alt="" />
+							<div className="react-player-container">
+								<ReactPlayer
+									className="react-player"
+									height="100%"
+									light={ blueSkyGroup }
+									playIcon={ <span /> }
+									url="https://www.youtube.com/embed/QEir4T7VweY"
+									width="100%"
+								/>
+							</div>
 						</div>
 						<div className="media-block__details">
 							<div
@@ -75,6 +87,8 @@ const Help = () => {
 								data-testid="full-service"
 								href="https://www.bluehost.com/solutions/full-service#full-service"
 								isSecondary
+								rel="noopener noreferrer"
+								target="_blank"
 							>
 								{ __('Learn more', 'bluehost-wordpress-plugin') }
 							</Button>
@@ -92,6 +106,8 @@ const Help = () => {
 								data-testid="seo-services"
 								href="https://www.bluehost.com/solutions/full-service#seo-services"
 								isSecondary
+								rel="noopener noreferrer"
+								target="_blank"
 							>
 								{ __('Learn more', 'bluehost-wordpress-plugin') }
 							</Button>
@@ -108,6 +124,8 @@ const Help = () => {
 								className="featured-service__button"
 								href="https://www.bluehost.com/solutions/full-service#request-form"
 								isSecondary
+								rel="noopener noreferrer"
+								target="_blank"
 							>
 								{ __('Request a consultation', 'bluehost-wordpress-plugin') }
 							</Button>
@@ -125,7 +143,12 @@ const Help = () => {
 				<div className="resources-search">
 					<Search />
 					<div className="button-container">
-						<Button href="https://www.bluehost.com/resources/" isSecondary>
+						<Button
+							href="https://www.bluehost.com/resources/"
+							isSecondary
+							rel="noopener noreferrer"
+							target="_blank"
+						>
 							{ __('Visit resource center', 'bluehost-wordpress-plugin') }
 						</Button>
 					</div>
@@ -134,9 +157,14 @@ const Help = () => {
 			<footer className="help-footer">
 				<a className="call-to-action" href="tel:8884014678">
 					<Call className="footer-icon" />
-					<span>{ __('Call us for help', 'bluehost-wordpress-plugin') }</span>
+					<span>{ __('888-401-4678', 'bluehost-wordpress-plugin') }</span>
 				</a>
-				<a className="call-to-action" href="https://helpchat.bluehost.com/">
+				<a
+					className="call-to-action"
+					href="https://helpchat.bluehost.com/"
+					rel="noopener noreferrer"
+					target="_blank"
+				>
 					<ChatIcon className="footer-icon" />
 					<span>{ __('Chat with us', 'bluehost-wordpress-plugin') }</span>
 				</a>
