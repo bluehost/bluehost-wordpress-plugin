@@ -2,6 +2,7 @@
 
 namespace Bluehost\Notifications;
 
+use Endurance\WP\Module\Data\HubConnection;
 use WP_Forge\Helpers\Arr;
 use wpscholar\Url;
 
@@ -69,10 +70,12 @@ class Notification {
 		wp_remote_post(
 			'https://hiive.cloud/api/notifications',
 			array(
-				'blocking' => false,
-				'body'     => array(
-					'id' => $this->id,
+				'headers' => array(
+					'Content-Type'  => 'application/json',
+					'Accept'        => 'application/json',
+					'Authorization' => 'Bearer ' . HubConnection::get_auth_token(),
 				),
+				'blocking' => false,
 			)
 		);
 	}

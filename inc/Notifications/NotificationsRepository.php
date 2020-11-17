@@ -2,6 +2,7 @@
 
 namespace Bluehost\Notifications;
 
+use Endurance\WP\Module\Data\HubConnection;
 use WP_Forge\Helpers\Arr;
 use wpscholar\Collection;
 
@@ -36,7 +37,9 @@ class NotificationsRepository {
 				'https://hiive.cloud/api/notifications',
 				array(
 					'headers' => array(
-						'Content-Type' => 'application/json',
+						'Content-Type'  => 'application/json',
+						'Accept'        => 'application/json',
+						'Authorization' => 'Bearer ' . HubConnection::get_auth_token(),
 					),
 				)
 			);
