@@ -85,7 +85,10 @@ class NotificationsApi {
 
 					$notifications->remove( $id );
 
-					return rest_ensure_response( $deleted );
+					$response = rest_ensure_response( $deleted );
+					$response->set_status( 204 );
+
+					return $response;
 				},
 				'permission_callback' => function () {
 					return current_user_can( 'manage_options' );
