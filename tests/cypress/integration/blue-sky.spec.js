@@ -17,7 +17,7 @@ describe('Blue Sky Product Page', function () {
 	});
 
 	it('Has valid calls to action', () => {
-		cy.findAllByRole('link', {name: 'Call to get started'})
+		cy.findAllByRole('link', {name: '844-211-8705'})
 			.each(($el) => {
 				cy.wrap($el)
 					.scrollIntoView()

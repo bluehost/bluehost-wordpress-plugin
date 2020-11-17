@@ -15,33 +15,37 @@
   * CSS Equivalent of Bluehost Spinner
   */
  @import '@app/styles/bluehost-spinner.scss';
- 
+ /**
+  * CSS for responsive videos
+  */
+ @import '@app/styles/react-player.scss';
+
  img {
    max-width: 100%;
    height: auto;
  }
- 
+
  .bluehost-app-wrap {
    will-change: opacity;
    @extend .is-font;
    @extend .appFadeIn;
  }
- 
+
  .bluehost-app-wrap, h1, h2, h3, h4, h5 {
    @extend .is-color-black;
  }
- 
+
  body.toplevel_page_bluehost {
    @extend .is-bg-off-white;
  }
- 
+
  .screen-reader-shortcut.bluehost-spa-skip {
    &:focus {
      top: 5px;
      left: 5px;
    }
  }
- 
+
  body:not(.bluehost-admin-keynav) {
    .base-template:focus,
    a[aria-current="page"]:focus,
@@ -53,12 +57,12 @@
      box-shadow: none;
    }
  }
- 
+
  #bluehost-app {
    display: block;
    height: 100%;
    min-height: 100%;
- 
+
    .pure-g [class *= "pure-u"] {
      @extend .is-font;
    }
@@ -67,19 +71,19 @@
      outline: none;
    }
  }
- 
+
  #app-loader {
    display: flex;
    align-items: center;
    justify-content: center;
- 
+
    .spinner-wrap {
      max-width: 50%;
      position: fixed;
      top: 44vh;
    }
  }
- 
+
  p {
    font-size: 14px;
  }
