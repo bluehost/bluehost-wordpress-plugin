@@ -2,7 +2,7 @@
  * External dependencies
  */
 import classNames from 'classnames';
-import { snakeCase } from 'snake-case';
+import snakeCase from 'lodash/snakeCase';
 import omit from 'lodash/omit';
 
 /**
