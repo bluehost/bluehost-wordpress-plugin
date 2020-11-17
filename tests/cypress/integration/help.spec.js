@@ -15,7 +15,7 @@ describe('Help Page', function () {
 	});
 
 	it('Is Accessible', () => {
-		cy.wait(200);
+		cy.wait(500);
 		cy.checkA11y('.router-section');
 	});
 
@@ -37,21 +37,24 @@ describe('Help Page', function () {
 		cy.findByTestId('full-service').as('link');
 		cy.get('@link').scrollIntoView().should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
-			.and('contain', 'https://www.bluehost.com/solutions/full-service#full-service');
+			.and('contain', 'https://www.bluehost.com/solutions/full-service')
+			.and('contain', '#full-service');
 	});
 
 	it('Has "SEO Services" Call to Action', () => {
 		cy.findByTestId('seo-services').as('link');
 		cy.get('@link').scrollIntoView().should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
-			.and('contain', 'https://www.bluehost.com/solutions/full-service#seo-services');
+			.and('contain', 'https://www.bluehost.com/solutions/full-service')
+			.and('contain', '#seo-services');
 	});
 
 	it('Has "Request a Consulatation" Call to Action', () => {
 		cy.findByRole('link', {name: 'Request a consultation'}).as('link');
 		cy.get('@link').scrollIntoView().should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
-			.and('contain', 'https://www.bluehost.com/solutions/full-service#request-form');
+			.and('contain', 'https://www.bluehost.com/solutions/full-service')
+			.and('contain', '#request-form');
 	});
 
 	describe('Resource Search', () => {

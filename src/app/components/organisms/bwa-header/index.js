@@ -16,6 +16,7 @@ import { BluehostLogo, HelpIcon } from '@app/assets';
 /**
  * Internal dependencies
  */
+import { addUtmParams } from "@app/functions";
 import './style.scss';
 import DesktopTabs from './desktop-tabs';
 import DesktopDropdown from './desktop-dropdown';
@@ -24,7 +25,15 @@ import MobileSidebar from './mobile-sidebar';
 const HeaderLogo = () => (
 	<div id="bluehost-logo-wrap">
 		<a
-			href="https://my.bluehost.com/hosting/app"
+			href={
+				addUtmParams(
+					'https://my.bluehost.com/hosting/app',
+					{
+						utm_content: 'bluehost_header_logo',
+						utm_term: 'Bluehost Logo linking to the Bluehost Control Panel'
+					}
+				)
+			}
 			target="_blank"
 			rel="noopener noreferrer"
 			aria-label="Bluehost Logo linking to the Bluehost Control Panel"
@@ -41,7 +50,15 @@ const HeaderIcons = () => (
 			<a
 				aria-label="Help"
 				data-testid="help-icon"
-				href="https://my.bluehost.com/hosting/help"
+				href={
+					addUtmParams(
+						'https://my.bluehost.com/hosting/help',
+						{
+							utm_content: 'header_help_icon',
+							utm_term: 'Help'
+						}
+					)
+				}
 				rel="noreferrer noopener"
 				target="_blank"
 			>

@@ -57,7 +57,8 @@ describe('Onboarding', function () {
 
 		cy.findByRole('link', {name: 'website pre-publishing'}).as('link')
 		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href', 'https://www.bluehost.com/help/article/website-publish-checklist');
+		cy.get('@link').should('have.attr', 'href')
+			.and('include', 'https://www.bluehost.com/help/article/website-publish-checklist');
 
 		cy.findByRole('button', {name: 'Launch your site'}).scrollIntoView().should('be.visible');
 	});
@@ -67,23 +68,28 @@ describe('Onboarding', function () {
 
 		cy.findByRole('link', {name: 'How to use WordPress plugins'}).as('link')
 		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href', 'https://www.bluehost.com/blog/how-to-use-wordpress-plugins/');
+		cy.get('@link').should('have.attr', 'href')
+			.and('include', 'https://www.bluehost.com/blog/how-to-use-wordpress-plugins/');
 
 		cy.findByRole('link', {name: 'The two essential plugins you need'}).as('link')
 		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href', 'https://www.bluehost.com/blog/the-two-essential-plugins-you-need-for-your-wordpress-site/');
+		cy.get('@link').should('have.attr', 'href')
+			.and('include', 'https://www.bluehost.com/blog/the-two-essential-plugins-you-need-for-your-wordpress-site/');
 
 		cy.findByRole('link', {name: 'Steps for adding a store to your site with WooCommerce'}).as('link')
 		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href', 'https://www.bluehost.com/blog/how-to-use-woocommerce/');
+		cy.get('@link').should('have.attr', 'href')
+			.and('include', 'https://www.bluehost.com/blog/how-to-use-woocommerce/');
 
 		cy.findByRole('link', {name: 'The five best WooCommerce WordPress themes'}).as('link')
 		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href', 'https://www.bluehost.com/blog/the-five-best-woocommerce-wordpress-themes/');
+		cy.get('@link').should('have.attr', 'href')
+			.and('include', 'https://www.bluehost.com/blog/the-five-best-woocommerce-wordpress-themes/');
 
 		cy.findByRole('link', {name: 'Our BlueSky experts are here to help you every step of the way'}).as('link')
 		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href', 'https://www.bluehost.com/blue-sky');
+		cy.get('@link').should('have.attr', 'href')
+			.and('include', 'https://www.bluehost.com/blue-sky');
 	});
 
 	it('Site is not launched', () => {
