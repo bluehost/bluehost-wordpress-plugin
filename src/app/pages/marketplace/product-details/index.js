@@ -3,7 +3,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
 import { decodeEntities } from '@wordpress/html-entities';
 
-import { BWABaseTemplate } from '@app/components/templates';
+import { BWACommonTemplate } from '@app/components/templates';
 
 import { BWAButton as Button, BWASpinner } from '@app/components/atoms';
 import { get } from '@app/functions';
@@ -81,8 +81,12 @@ export default function ProductDetails( { id } ) {
 	const price = parseInt( single_domain_license, 10 );
 	const sales = parseInt( sales_count, 10 ).toLocaleString( { useGrouping: true } );
 
+	const setNavHighlight = () => {
+		
+	}
+
 	return (
-		<BWABaseTemplate className="page-product">
+		<BWACommonTemplate type="marketplace" className="page-product">
 			<header className="page-product__header">
 				<h1>{ header }</h1>
 			</header>
@@ -140,6 +144,6 @@ export default function ProductDetails( { id } ) {
 					</div>
 				</div>
 			</div>
-		</BWABaseTemplate>
+		</BWACommonTemplate>
 	);
 }

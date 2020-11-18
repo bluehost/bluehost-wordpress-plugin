@@ -36,7 +36,8 @@ function ServicesPage( { history } ) {
 			isLoading={ ! done || isLoading }
 			payload={ payload }
 			render={ renderCallback }
-			type="services"
+			marketplaceType="services"
+			type="marketplace"
 		/>
 	);
 }

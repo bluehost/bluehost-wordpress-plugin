@@ -53,18 +53,20 @@ const HeaderIcons = () => (
 	</div>
 );
 
-const BWAHeader = ({...props}, ref) => (
+const BWACommonHeader = ({ showMainNav = true, ...props}) => (
 	<header { ...props } tabIndex="-1">
-		<div className="bluehost-header">
+		<div className="bwa-common-header__brand">
 			<div className="col">
 				<HeaderLogo />
 				<HeaderIcons />
 			</div>
 		</div>
-		<div className="navtabs-desktop" tabIndex="-1" ref={ ref } data-testid="desktop-nav">
-			<DesktopTabs />
-		</div>
+		{ showMainNav && (
+			<div className="bwa-desktop-nav" tabIndex="-1" data-testid="desktop-nav">
+				<DesktopTabs />
+			</div>
+		)}
 	</header>
 );
 
-export default forwardRef(BWAHeader);
+export default BWACommonHeader;

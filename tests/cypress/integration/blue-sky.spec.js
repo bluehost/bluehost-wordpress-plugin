@@ -13,7 +13,7 @@ describe('Blue Sky Product Page', function () {
 
 	it('Is Accessible', () => {
 		cy.wait(200);
-		cy.checkA11y('.router-section');
+		cy.checkA11y('.bwa-page-contents');
 	});
 
 	it('Has valid calls to action', () => {

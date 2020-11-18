@@ -17,7 +17,7 @@ const BWASpinner = ( props ) => {
 	}
 	return (
 		<span className="app-spinner__wrap">
-			<div className={ 'bluehost-app__loader ' + sizeClass } />
+			<div className={ 'bwa-loader ' + sizeClass } />
 		</span>
 	);
 };

@@ -1,4 +1,4 @@
-import { BWABaseTemplate as Page } from '@app/components/templates';
+import { BWACommonTemplate as Page } from '@app/components/templates';
 import { BWAButton as Button } from '@app/components/atoms';
 import {
 	Analytics,
@@ -26,7 +26,7 @@ import ReactPlayer from "react-player";
 
 const BlueSky = () => {
 	return (
-		<Page className="page-blue-sky">
+		<Page className="page-blue-sky" showHeader={false}>
 			<div className="section-logo">
 				<BlueSkyLogo />
 			</div>
@@ -410,12 +410,6 @@ const BlueSky = () => {
 							}
 						}
 					/>
-<<<<<<< HEAD
-					<Button className="call-to-action__button" href="tel:8442118705" isPrimary>
-						{ __('Call to get started', 'bluehost-wordpress-plugin') }
-					</Button>
-=======
->>>>>>> master
 				</div>
 			</div>
 		</Page>

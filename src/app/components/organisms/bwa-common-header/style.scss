@@ -1,6 +1,6 @@
 @import '@app/config.scss';
 
-.bluehost-header {
+.bwa-common-header__brand {
   align-self: flex-start;
   width: 100%;
   height: 80px;
@@ -67,7 +67,7 @@
 }
 
 @media (min-width:$menu-breakpoint) {
-  .bluehost-header {
+  .bwa-common-header__brand {
     .bluehost-nav-wrap-element.user-menu,
     .bluehost-nav-wrap-element.help {
       display: inline-block;
@@ -79,7 +79,7 @@
 }
 
 @media (max-width:$menu-breakpoint) {
-  .bluehost-header {
+  .bwa-common-header__brand {
     .bluehost-nav-wrap-element.user-menu,
     .bluehost-nav-wrap-element.help {
       display: none;
@@ -154,7 +154,7 @@
 
 // @import '@app/config.scss';
 
-// .bluehost-header {
+// .bwa-common-header {
 //   align-self: flex-start;
 //   width: 100%;
 //   height: 80px;
@@ -241,7 +241,7 @@
 // }
 
 // @media (min-width:$menu-breakpoint) {
-//   .bluehost-header {
+//   .bwa-common-header {
 //     .bluehost-nav-wrap-element.user-menu,
 //     .bluehost-nav-wrap-element.help {
 //       display: inline-block;
@@ -253,7 +253,7 @@
 // }
 
 // @media (max-width:$menu-breakpoint) {
-//   .bluehost-header {
+//   .bwa-common-header {
 //     .bluehost-nav-wrap-element.user-menu,
 //     .bluehost-nav-wrap-element.help {
 //       display: none;

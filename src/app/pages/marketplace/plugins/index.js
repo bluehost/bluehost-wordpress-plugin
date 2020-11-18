@@ -39,7 +39,8 @@ function PluginsPage( { history } ) {
 			isLoading={ ! done || isLoading }
 			payload={ payload }
 			render={ renderCallback }
-			type="plugins"
+			marketplaceType="plugins"
+			type="marketplace"
 		/>
 	);
 }

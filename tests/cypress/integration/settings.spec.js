@@ -56,7 +56,7 @@ describe('Settings Page', function () {
 
 	it('Is Accessible', () => {
 		cy.wait(1000);
-		cy.checkA11y('.router-section');
+		cy.checkA11y('.bwa-page-contents');
 	});
 
 	it('Has an "Automatic Updates" section', () => {

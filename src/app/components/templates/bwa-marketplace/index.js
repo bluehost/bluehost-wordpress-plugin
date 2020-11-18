@@ -7,7 +7,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { BWABaseTemplate } from '@app/components/templates';
+import { BWACommonTemplate } from '@app/components/templates';
 
 import {
 	BWAProductGrid,
@@ -34,8 +34,8 @@ import { NoFavorites } from '@app/assets';
 
 import './style.scss';
 
-const marketplacePageTitle = ( type ) => {
-	switch ( type ) {
+const marketplacePageTitle = ( marketplaceType ) => {
+	switch ( marketplaceType ) {
 		case 'plugins':
 			return __( 'Premium Plugins', 'bluehost-wordpress-plugin' );
 		case 'services':
@@ -68,7 +68,7 @@ const sortByOptions = [
 	// },
 ];
 
-const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading, payload, render, type = 'themes' } ) => {
+const BWAMarketplaceTemplate = ( { type = 'marketplace', className = 'bluehost-marketplace', isLoading, payload, render, marketplaceType = 'themes', ...props } ) => {
 	const [ { favorites }, { hasFavorite, toggleFavorite } ] = useFavorites();
 	const [ filterBy ] = useMojoFilter( favorites );
 	const [ { items, itemsPerPage, pageCount, pageNumber }, { setCollection, setPageNumber } ] = usePaginator();
@@ -81,10 +81,10 @@ const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading
 		let results = payload.items || [];
 
 		// Determine sort/filter method
-		const [ type, method, order ] = sort.split( '-' );
+		const [ marketplaceType, method, order ] = sort.split( '-' );
 
 		// Sort/filter
-		results = ( 'filter' === type ) ? filterBy( sortBy( results, 'sales' ), method ) : sortBy( results, method, order );
+		results = ( 'filter' === marketplaceType ) ? filterBy( sortBy( results, 'sales' ), method ) : sortBy( results, method, order );
 
 		// Handle search
 		results = search( results, query );
@@ -100,10 +100,10 @@ const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading
 	}, [ pageNumber ] );
 
 	return (
-		<BWABaseTemplate className={ className }>
+		<BWACommonTemplate type={type} className={ className } marketplaceType={marketplaceType} {...props}>
 			<section className={ `${ className }__header` }>
 				<div className={ `${ className }__header-primary` }>
-					<BWAHeading level="h2" size={ 1 } className="marketplace-page-title">{ marketplacePageTitle( type ) }</BWAHeading>
+					<BWAHeading level="h2" size={ 1 } className="marketplace-page-title">{ marketplacePageTitle( marketplaceType ) }</BWAHeading>
 					<div className={ `${ className }__pagination-container` }>
 						<BWAPagination callback={ setPageNumber } currentPage={ pageNumber } pageCount={ pageCount } />
 					</div>
@@ -143,7 +143,7 @@ const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading
 										setSort( 'sort-sales-desc' );
 									} }>
 										{ ( () => {
-											switch ( type ) {
+											switch ( marketplaceType ) {
 												case 'plugins':
 													return __( 'View Plugins', 'bluehost-wordpress-plugin' );
 												case 'services':
@@ -175,7 +175,7 @@ const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading
 				</div>
 				<BWAPagination callback={ setPageNumber } currentPage={ pageNumber } pageCount={ pageCount } />
 			</footer>
-		</BWABaseTemplate>
+		</BWACommonTemplate>
 	);
 };
 

@@ -8,7 +8,7 @@ import { Fragment } from '@wordpress/element';
  * Project dependencies
  */
 
-import { BWABaseTemplate } from '@app/components/templates';
+import { BWACommonTemplate } from '@app/components/templates';
 
 /**
  * Component dependencies
@@ -23,9 +23,9 @@ import PerformanceSection from './performance';
 import HostingSection from './hosting';
 
 import './style.scss';
+import { update } from 'lodash';
 
 const Home = () => {
-
 	const daysSinceInstall = useSelect((select) => {
 		return select('bluehost/plugin').getBluehostPluginDaysSinceInstall();
 	}, []);
@@ -37,7 +37,7 @@ const Home = () => {
 	const showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
 
 	return (
-		<BWABaseTemplate className="page-home">
+		<BWACommonTemplate>
 			<div className="page-home__container">
 				{
 					showOnboarding ?
@@ -57,7 +57,7 @@ const Home = () => {
 						)
 				}
 			</div>
-		</BWABaseTemplate>
+		</BWACommonTemplate>
 	);
 };
 

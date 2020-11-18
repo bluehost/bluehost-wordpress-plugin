@@ -1,2 +1,3 @@
-export { default as BWAHeader } from './bwa-header';
-export { default as BWAMain } from './bwa-main';
+export { default as BWACommonHeader } from './bwa-common-header';
+export { default as BWAPageContents } from './bwa-page-contents';
+export { default as BWACommonFooter } from './bwa-common-footer';

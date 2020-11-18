@@ -25,13 +25,13 @@
    height: auto;
  }
 
- .bluehost-app-wrap {
+ .bwa-app {
    will-change: opacity;
    @extend .is-font;
    @extend .appFadeIn;
  }
 
- .bluehost-app-wrap, h1, h2, h3, h4, h5 {
+ .bwa-app, h1, h2, h3, h4, h5 {
    @extend .is-color-black;
  }
 
@@ -39,7 +39,7 @@
    @extend .is-bg-off-white;
  }
 
- .screen-reader-shortcut.bluehost-spa-skip {
+ .screen-reader-shortcut.bwa-skip-link {
    &:focus {
      top: 5px;
      left: 5px;
@@ -58,7 +58,7 @@
    }
  }
 
- #bluehost-app {
+ #bwa-root {
    display: block;
    height: 100%;
    min-height: 100%;
@@ -72,12 +72,11 @@
    }
  }
 
- #app-loader {
+ #bwa-centered-loader {
    display: flex;
    align-items: center;
    justify-content: center;
-
-   .spinner-wrap {
+   .bwa-spinner-wrap {
      max-width: 50%;
      position: fixed;
      top: 44vh;

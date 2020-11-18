@@ -8,11 +8,11 @@ describe('App Header', function () {
 	});
 
 	it('Exists', () => {
-		cy.get('.bluehost-header').should('exist');
+		cy.get('.bwa-common-header__brand').should('exist');
 	});
 
 	it('Is Accessible', () => {
-		cy.checkA11y('.bluehost-header');
+		cy.checkA11y('.bwa-common-header__brand');
 	});
 
 	it('Bluehost logo is visible', () => {

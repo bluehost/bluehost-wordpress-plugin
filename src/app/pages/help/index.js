@@ -1,4 +1,4 @@
-import { BWABaseTemplate as Page } from '@app/components/templates';
+import { BWACommonTemplate as Page } from '@app/components/templates';
 import { BWAButton as Button } from '@app/components/atoms';
 import { BlueSkyLogo, Call, CallCenter, ChatIcon, Computer, SEO } from '@app/assets';
 import { __ } from '@wordpress/i18n';

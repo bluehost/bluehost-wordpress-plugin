@@ -7,7 +7,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { BWABaseTemplate } from '@app/components/templates';
+import { BWACommonTemplate } from '@app/components/templates';
 
 import {
 	BWAButton as Button,
@@ -92,7 +92,7 @@ export default function StagingPage() {
 	}, [ notice ] );
 
 	return (
-		<BWABaseTemplate className="bluehost-staging">
+		<BWACommonTemplate className="bluehost-staging">
 			<BWAHeading level="h2" size={ 1 } className="is-page-title">{ __( 'Staging', 'bluehost-wordpress-plugin' ) }</BWAHeading>
 			<p>{ __( 'A staging site is a copy of your site where you can safely test changes before publishing them to your production site. It gives you a way to try new things, test updates, and then deploy them when you\'re ready.', 'bluehost-wordpress-plugin' ) }</p>
 
@@ -301,6 +301,6 @@ export default function StagingPage() {
 					<Tips />
 				</BWAOverlay>
 			) }
-		</BWABaseTemplate>
+		</BWACommonTemplate>
 	);
 }

@@ -33,6 +33,8 @@ class Bluehost_Admin_App_Assets {
 		'wp-components',
 		'wp-html-entities',
 		'react-router-dom',
+		'wp-url',
+		'wp-data'
 	);
 
 	/**

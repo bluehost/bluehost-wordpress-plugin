@@ -36,7 +36,8 @@ export default function ThemesPage() {
 			isLoading={ ! done || isLoading }
 			payload={ payload }
 			render={ renderCallback }
-			type="themes"
+			marketplaceType="themes"
+			type="marketplace"
 		/>
 	);
 }

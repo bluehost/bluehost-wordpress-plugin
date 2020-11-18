@@ -68,16 +68,16 @@ class Bluehost_Admin_App_Page {
 
 	/**
 	 * The React-powered Single-Page Applications initializes on #bluehost-app, replacing all inner elements.
-	 * However, until initialization begins, #app-loader is shown so user knows something is happening.
+	 * However, until initialization begins, #bwa-centered-loader is shown so user knows something is happening.
 	 *
 	 * @return void
 	 */
 	public function menu_page_output() {
 		?>
-		<div id="bluehost-app">
-			<main id="app-loader">
-				<div class="spinner-wrap">
-					<div class="bluehost-app__loader"></div>
+		<div id="bwa-root">
+			<main id="bwa-centered-loader">
+				<div class="bwa-spinner-wrap">
+					<div class="bwa-loader"></div>
 				</div>
 			</main>
 		</div>

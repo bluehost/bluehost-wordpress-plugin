@@ -18,16 +18,16 @@ import App from './app';
  *
  * @see ../inc/admin/class-page.php
  */
-const WP_PAGE_ROOT_ELEMENT = 'bluehost-app';
+const WP_PAGE_ROOT_ELEMENT = 'bwa-root';
 /**
  *
  */
-import adminInitHelpers from './admin-init-helpers';
+import appInitHelpers from './app-init-helpers';
 /**
- * When DOM is ready, load app on root element, replacing #app-loader markup.
+ * When DOM is ready, load app on root element, replacing #bwa-centered-loader markup.
  */
 domReady( () => {
-	{ adminInitHelpers(); }
+	{ appInitHelpers(); }
 	render(
 		<App />,
 		document.getElementById( WP_PAGE_ROOT_ELEMENT )

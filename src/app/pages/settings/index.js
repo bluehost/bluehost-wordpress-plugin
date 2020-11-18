@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { BWABaseTemplate } from '@app/components/templates';
+import { BWACommonTemplate } from '@app/components/templates';
 
 import { BWAHeading } from '@app/components/atoms';
 import AutomaticUpdates from './automatic-updates';
@@ -18,7 +18,7 @@ import SettingsPerformance from './performance';
 import './style.scss';
 
 const SettingsPage = () => (
-	<BWABaseTemplate className="page-settings">
+	<BWACommonTemplate className="page-settings">
 		<BWAHeading level="h2" size={ 0 }>Settings</BWAHeading>
 		<div className="pure-g">
 			<div className="pure-u-1 pure-sm-3-5 page-settings__grid1">
@@ -31,7 +31,7 @@ const SettingsPage = () => (
 				<SettingsPerformance />
 			</div>
 		</div>
-	</BWABaseTemplate>
+	</BWACommonTemplate>
 );
 
 export default SettingsPage;

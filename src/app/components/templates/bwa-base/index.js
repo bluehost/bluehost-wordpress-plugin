@@ -2,22 +2,27 @@
  * WordPress dependencies
  */
 import { Speak } from '@wordpress/a11y';
-import { Component, createRef } from '@wordpress/element';
+import { Component, createRef, useEffect } from '@wordpress/element';
 /**
  * External dependencies
  */
 import { useLocation } from 'react-router-dom';
 import kebabCase from 'lodash/kebabCase';
+import without from 'lodash/without';
+import classnames from 'classnames';
 
 /**
  * Internal dependencies
  */
 import './style.scss';
 
-const BWABaseTemplate = ({ ...props }) => {
+const BWABaseTemplate = ({
+	type = "base",
+	...props 
+}) => {
 	const topLevelPage 	= 'toplevel_page_bluehost';
 	const menuItemClass = 'bluehost-wp-menu-item';
-	const pageContainer = document.querySelector('.router-section');
+	const pageContainer = document.querySelector('.bwa-page-contents');
 
 	const handleContainerFocus = () => {
 		let location = useLocation();
@@ -97,16 +102,41 @@ const BWABaseTemplate = ({ ...props }) => {
 		}
 
 		return raw;
-   }
+	}
+	// const handleAppContainerClass = () => {
+	// 	const appContainer = document.getElementById( 'bwa-app' );
+	// 	let appContainerClasses = [...appContainer.classList];
+	// 	console.log( 'before:' );
+	// 	console.dir([...appContainer.classList]);
+	// 	appContainerClasses.forEach( ( className ) => {
+	// 		if(className.includes('route-template-')) {
+	// 			appContainer.classList.remove = className;
+	// 		}
+	// 	})
+	// 	appContainer.classList.add( 'route-template-' + type );
+	// }
 	// grab location from react-router-dom
 	handleContainerFocus();
 	handleWPMenuAugmentation();
 	handleWPMenuActiveHighlight();
 
+	// useEffect(() => {
+	// 	handleAppContainerClass();
+	// }, [type]);
+
 	return (
 		<section 
 			ref={ ( container ) => ( pageContainer => container ) }
-			className={ 'base-template animated fadeIn page-fade-speed ' + props.className }>
+			className={ 
+				classnames([
+					'component-template-' + type,
+					'base-template',
+					'animated',
+					'fadeIn',
+					'page-fade-speed',
+					props.className ? props.className : null
+				]) 
+			}>
 			{props.children}
 		</section>
 	);
