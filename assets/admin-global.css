@@ -28,9 +28,6 @@ body.admin_page_mojo-theme-preview .wp-full-overlay-sidebar{
   .components-button.bluehost.is-link {
     font-weight: 300;
     color: #3575d3; }
-    .components-button.bluehost.is-link:hover {
-      color: #3575d3;
-      text-decoration: underline; }
   .components-button.bluehost.is-default {
     border-color: #ccc;
     background: #f7f7f7;

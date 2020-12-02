@@ -7,8 +7,8 @@ import { Fragment } from '@wordpress/element';
 /**
  * Project dependencies
  */
-
 import { BWACommonTemplate } from '@app/components/templates';
+import { BWANotification as Notification } from '@app/components/organisms';
 
 /**
  * Component dependencies
@@ -31,7 +31,7 @@ const Home = () => {
 	}, []);
 
 	const hasSiteLaunched = useSelect((select) => {
-		return ! select('bluehost/plugin').getSetting('comingSoon');
+		return !select('bluehost/plugin').getSetting('comingSoon');
 	}, []);
 
 	const showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
@@ -46,6 +46,7 @@ const Home = () => {
 						) :
 						(
 							<Fragment>
+								<Notification />
 								<Welcome />
 								<ComingSoonNotice />
 								<BWAContentList />

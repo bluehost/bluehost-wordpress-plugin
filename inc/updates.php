@@ -109,7 +109,7 @@ function bh_plugin_auto_update_setting_html( $html ) {
 		'<span class="label">Auto-updates enabled</span>',
 		sprintf(
 		/* translators: %s Settings > General page URL. */
-			__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'mojo-marketplace-wp-plugin' ),
+			__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'bluehost-wordpress-plugin' ),
 			admin_url( 'admin.php?page=bluehost#/settings' )
 		),
 		$html
@@ -137,7 +137,7 @@ function bh_theme_auto_update_setting_html( $html ) {
 
 	return sprintf(
 	/* translators: %s Settings > General page URL. */
-		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'mojo-marketplace-wp-plugin' ),
+		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'bluehost-wordpress-plugin' ),
 		admin_url( 'admin.php?page=bluehost#/settings' )
 	);
 }
@@ -160,11 +160,11 @@ function bh_theme_auto_update_setting_template( $template ) {
 	}
 
 	$template_string = '<# } else if ( data.autoupdate.forced ) { #>
-					' . __( 'Auto-updates enabled' );
+					' . __( 'Auto-updates enabled', 'bluehost-wordpress-plugin' );
 	$replacement     = '<# } else if ( data.autoupdate.forced ) { #>';
 	$replacement     .= sprintf(
 	/* translators: %s Settings > General page URL. */
-		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'mojo-marketplace-wp-plugin' ),
+		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'bluehost-wordpress-plugin' ),
 		admin_url( 'admin.php?page=bluehost#/settings' )
 	);
 

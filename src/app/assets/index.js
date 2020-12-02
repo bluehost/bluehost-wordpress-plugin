@@ -4,6 +4,7 @@
 import { ReactComponent as Analytics } from '@app/assets/svg/analytics.svg';
 import { ReactComponent as Bathtub } from '@app/assets/svg/bathtub.svg';
 import { ReactComponent as BillingIcon } from '@app/assets/svg/billing.svg';
+import { ReactComponent as BlogPosts } from '@app/assets/svg/blog-posts.svg';
 import { ReactComponent as BluehostLogo } from '@app/assets/svg/bluehost.svg';
 import { ReactComponent as BluerockSpinner } from '@app/assets/svg/spinner.svg';
 import { ReactComponent as BlueSkyLogo } from '@app/assets/svg/blue-sky-logo.svg';
@@ -37,6 +38,7 @@ import { ReactComponent as SecurityIcon } from '@app/assets/svg/security.svg';
 import { ReactComponent as SEO } from '@app/assets/svg/seo.svg';
 import { ReactComponent as Shop } from '@app/assets/svg/shop.svg';
 import { ReactComponent as SocialShare } from '@app/assets/svg/social-share.svg';
+import { ReactComponent as StaticPage } from '@app/assets/svg/static-page.svg';
 import { ReactComponent as SuccessIcon } from '@app/assets/svg/success.svg';
 import { ReactComponent as Telescope } from '@app/assets/svg/telescope.svg';
 import { ReactComponent as Tractor } from '@app/assets/svg/tractor.svg';
@@ -49,6 +51,7 @@ export {
 	Analytics,
 	Bathtub,
 	BillingIcon,
+	BlogPosts,
 	BluehostLogo,
 	BluerockSpinner,
 	BlueSkyLogo,
@@ -82,6 +85,7 @@ export {
 	SEO,
 	Shop,
 	SocialShare,
+	StaticPage,
 	SuccessIcon,
 	Telescope,
 	Tractor,

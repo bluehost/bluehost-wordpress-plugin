@@ -47,12 +47,16 @@ body *.components-button.bluehost {
   }
 
   &.is-link {
-    font-weight: 300;
+    font-weight: 600;
     color: $color-primary;
 
     &:hover {
       color: $color-dark-blue !important;
       text-decoration: none !important;
+    }
+    &:focus {
+      outline: none !important;
+      box-shadow: none !important;
     }
   }
 

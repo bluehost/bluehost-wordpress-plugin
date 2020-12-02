@@ -6,6 +6,7 @@ import replace from "lodash/replace";
 
 import { BWAButton as Button, BWASpinner as Spinner } from '@app/components/atoms';
 import { ErrorStateImage, WarningIcon } from '@app/assets';
+import { addUtmParams } from '@app/functions';
 
 import './style.scss';
 
@@ -104,7 +105,7 @@ const BWAError = ({error, resetErrorBoundary}) => {
 			<p
 				className="animated fadeIn">{ __('Get in touch and we\'ll sort out the issue for you.', 'bluehost-wordpress-plugin') }</p>
 			<div className="animated fadeIn" style={ {textAlign: 'center', margin: '1rem auto 80px'} }>
-				<Button href="https://bluehost.com/support" isPrimary>
+				<Button href="https://bluehost.com/support" utmContent="button_contact_support" isPrimary>
 					{ __('Contact Support', 'bluehost-wordpress-plugin') }
 				</Button>
 				<Button href={resolvePageUrl()} isSecondary>

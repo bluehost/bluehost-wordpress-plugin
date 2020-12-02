@@ -24,6 +24,55 @@ describe('Onboarding', function () {
 		cy.checkA11y('.bwa-page-contents');
 	});
 
+	describe('Homepage', () => {
+		it('Default State', () => {
+			cy.window().its('store').invoke('dispatch', {type: 'UPDATE_SETTING', setting: 'hasSetHomepage', newValue: false});
+			cy.window().its('store').invoke('getState').its('settings.hasSetHomepage').should('be', false);
+			cy.findByText('Let\'s start with your homepage').scrollIntoView().should('be.visible');
+			cy.findByRole('button', {name: 'Get Started'}).as('button');
+			cy.get('@button').scrollIntoView().should('be.visible');
+			cy.get('@button').click();
+		});
+
+		it('Open State', () => {
+			cy.server();
+			cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
+			cy.findByText('What do you want people to see when they land on your site?').scrollIntoView().should('be.visible');
+			cy.findByRole('button', {name: 'Blog posts'}).as('blogPostsButton');
+			cy.findByRole('button', {name: 'Static page'}).as('staticPageButton');
+			cy.get('@blogPostsButton').scrollIntoView().should('be.visible');
+			cy.get('@staticPageButton').scrollIntoView().should('be.visible');
+			cy.get('@blogPostsButton').click();
+			cy.wait('@updateSettings');
+			cy.window().its('store').invoke('getState').its('settings.hasSetHomepage').should('be', true);
+			cy.window().its('store').invoke('getState').its('settings.showOnFront').should('be', 'posts');
+		});
+
+		it('Complete State', () => {
+			cy.findByText('Your homepage is all set!').scrollIntoView().should('be.visible');
+			cy.findByRole('button', {name: 'Update'}).as('button');
+			cy.get('@button').scrollIntoView().should('be.visible');
+			cy.wait(100);
+			cy.get('@button').click();
+		});
+
+		it('Modal', () => {
+			cy.server();
+			cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
+			cy.route('POST', '**/wp/v2/pages*').as('createPage');
+			cy.findByRole('button', {name: 'Static page'}).scrollIntoView().click();
+			cy.findByText('Static Homepage Settings').should('be.visible');
+			cy.findByLabelText('Which page would you like to use as your homepage?').as('select');
+			cy.get('@select').select('0');
+			cy.findByLabelText('Enter the name for your new page:').as('input');
+			cy.get('@input').should('be.visible').type('Bananas');
+			cy.findByRole('button', {name: 'Update'}).as('button');
+			cy.get('@button').should('be.visible').click();
+			cy.wait('@updateSettings');
+			cy.wait('@createPage');
+		});
+	});
+
 	it('Start with a page or post', () => {
 		cy.findByText('Start with a page or post').scrollIntoView().should('be.visible');
 
@@ -57,7 +106,8 @@ describe('Onboarding', function () {
 
 		cy.findByRole('link', {name: 'website pre-publishing'}).as('link')
 		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href', 'https://www.bluehost.com/help/article/website-publish-checklist');
+		cy.get('@link').should('have.attr', 'href')
+			.and('include', 'https://www.bluehost.com/help/article/website-publish-checklist');
 
 		cy.findByRole('button', {name: 'Launch your site'}).scrollIntoView().should('be.visible');
 	});
@@ -67,23 +117,28 @@ describe('Onboarding', function () {
 
 		cy.findByRole('link', {name: 'How to use WordPress plugins'}).as('link')
 		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href', 'https://www.bluehost.com/blog/how-to-use-wordpress-plugins/');
+		cy.get('@link').should('have.attr', 'href')
+			.and('include', 'https://www.bluehost.com/blog/how-to-use-wordpress-plugins/');
 
 		cy.findByRole('link', {name: 'The two essential plugins you need'}).as('link')
 		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href', 'https://www.bluehost.com/blog/the-two-essential-plugins-you-need-for-your-wordpress-site/');
+		cy.get('@link').should('have.attr', 'href')
+			.and('include', 'https://www.bluehost.com/blog/the-two-essential-plugins-you-need-for-your-wordpress-site/');
 
 		cy.findByRole('link', {name: 'Steps for adding a store to your site with WooCommerce'}).as('link')
 		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href', 'https://www.bluehost.com/blog/how-to-use-woocommerce/');
+		cy.get('@link').should('have.attr', 'href')
+			.and('include', 'https://www.bluehost.com/blog/how-to-use-woocommerce/');
 
 		cy.findByRole('link', {name: 'The five best WooCommerce WordPress themes'}).as('link')
 		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href', 'https://www.bluehost.com/blog/the-five-best-woocommerce-wordpress-themes/');
+		cy.get('@link').should('have.attr', 'href')
+			.and('include', 'https://www.bluehost.com/blog/the-five-best-woocommerce-wordpress-themes/');
 
 		cy.findByRole('link', {name: 'Our BlueSky experts are here to help you every step of the way'}).as('link')
 		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href', 'https://www.bluehost.com/blue-sky');
+		cy.get('@link').should('have.attr', 'href')
+			.and('include', 'https://www.bluehost.com/blue-sky');
 	});
 
 	it('Site is not launched', () => {
