@@ -16,7 +16,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #. Author of the plugin
-#: src/app/components/organisms/bwa-header/index.js:41
+#: src/app/components/organisms/bwa-common-header/index.js:41
 msgid "Bluehost"
 msgstr ""
 
@@ -176,13 +176,14 @@ msgid "Return to themes"
 msgstr ""
 
 #: pages/theme-preview.php:59
+#: src/app/components/molecules/bwa-error/index.js:116
 msgid "Details"
 msgstr ""
 
 #: pages/theme-preview.php:63
 #: src/app/components/molecules/bwa-product-card/index.js:20
 #: src/app/components/molecules/bwa-product-card/index.js:57
-#: src/app/pages/marketplace/product-details/index.js:117
+#: src/app/pages/marketplace/product-details/index.js:121
 msgid "Buy Now"
 msgstr ""
 
@@ -190,24 +191,32 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: src/app/components/molecules/bwa-error/index.js:45
+#: src/app/components/molecules/bwa-error/index.js:27
+msgid "Error report sent."
+msgstr ""
+
+#: src/app/components/molecules/bwa-error/index.js:34
+msgid "Failed to send error report."
+msgstr ""
+
+#: src/app/components/molecules/bwa-error/index.js:43
+msgid "Sending error report..."
+msgstr ""
+
+#: src/app/components/molecules/bwa-error/index.js:104
 msgid "There was a problem loading the Bluehost Plugin."
 msgstr ""
 
-#: src/app/components/molecules/bwa-error/index.js:47
+#: src/app/components/molecules/bwa-error/index.js:106
 msgid "Get in touch and we'll sort out the issue for you."
 msgstr ""
 
-#: src/app/components/molecules/bwa-error/index.js:50
+#: src/app/components/molecules/bwa-error/index.js:109
 msgid "Contact Support"
 msgstr ""
 
-#: src/app/components/molecules/bwa-error/index.js:53
-msgid "Reporting..."
-msgstr ""
-
-#: src/app/components/molecules/bwa-error/index.js:53
-msgid "Reported."
+#: src/app/components/molecules/bwa-error/index.js:112
+msgid "Try Refresh"
 msgstr ""
 
 #: src/app/components/molecules/bwa-no-results/index.js:9
@@ -229,58 +238,58 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/main-menu.js:7
+#: src/app/components/organisms/bwa-common-header/main-menu.js:7
 msgid "Home"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/main-menu.js:8
+#: src/app/components/organisms/bwa-common-header/main-menu.js:8
 #: src/app/pages/settings/automatic-updates/index.js:25
 msgid "Themes"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/main-menu.js:9
+#: src/app/components/organisms/bwa-common-header/main-menu.js:9
 #: src/app/pages/settings/automatic-updates/index.js:30
 msgid "Plugins"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/main-menu.js:10
+#: src/app/components/organisms/bwa-common-header/main-menu.js:10
 msgid "Services"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/main-menu.js:11
+#: src/app/components/organisms/bwa-common-header/main-menu.js:11
 #: src/app/pages/tools/staging/index.js:98
 #: src/app/pages/tools/staging/index.js:219
 #: src/app/pages/tools/staging/index.js:292
 msgid "Staging"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/main-menu.js:12
+#: src/app/components/organisms/bwa-common-header/main-menu.js:12
 #: src/app/pages/settings/index.js:24
 msgid "Settings"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/main-menu.js:13
+#: src/app/components/organisms/bwa-common-header/main-menu.js:13
 #: src/app/pages/home/hosting/index.js:65
 msgid "Help"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/user-menu.js:32
+#: src/app/components/organisms/bwa-common-header/user-menu.js:32
 msgid "Bluehost Account"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/user-menu.js:44
+#: src/app/components/organisms/bwa-common-header/user-menu.js:44
 msgid "Billing"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/user-menu.js:56
+#: src/app/components/organisms/bwa-common-header/user-menu.js:56
 msgid "Products"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/user-menu.js:68
+#: src/app/components/organisms/bwa-common-header/user-menu.js:68
 msgid "Security"
 msgstr ""
 
-#: src/app/components/organisms/bwa-header/user-menu.js:80
+#: src/app/components/organisms/bwa-common-header/user-menu.js:80
 msgid "Validation Token"
 msgstr ""
 
@@ -353,11 +362,11 @@ msgstr ""
 msgid "Changes deployed successfully."
 msgstr ""
 
-#: src/app/index.js:77
+#: src/app/index.js:75
 msgid "Skip to Navigation"
 msgstr ""
 
-#: src/app/index.js:80
+#: src/app/index.js:81
 msgid "Skip to Content"
 msgstr ""
 
@@ -1133,23 +1142,23 @@ msgstr ""
 msgid "December"
 msgstr ""
 
-#: src/app/pages/marketplace/product-details/index.js:120
+#: src/app/pages/marketplace/product-details/index.js:124
 msgid "One Time Fee"
 msgstr ""
 
-#: src/app/pages/marketplace/product-details/index.js:125
+#: src/app/pages/marketplace/product-details/index.js:129
 msgid "Item Information"
 msgstr ""
 
-#: src/app/pages/marketplace/product-details/index.js:128
+#: src/app/pages/marketplace/product-details/index.js:132
 msgid "Created: "
 msgstr ""
 
-#: src/app/pages/marketplace/product-details/index.js:132
+#: src/app/pages/marketplace/product-details/index.js:136
 msgid "Updated: "
 msgstr ""
 
-#: src/app/pages/marketplace/product-details/index.js:136
+#: src/app/pages/marketplace/product-details/index.js:140
 msgid "Sales: "
 msgstr ""
 
