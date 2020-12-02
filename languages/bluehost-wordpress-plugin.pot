@@ -111,7 +111,7 @@ msgid "Endurance Page Cache plugin is not installed."
 msgstr ""
 
 #: inc/RestApi/CachingController.php:67
-#: inc/RestApi/SettingsController.php:177
+#: inc/RestApi/SettingsController.php:189
 msgid "Sorry, you are not allowed to access this endpoint."
 msgstr ""
 
@@ -784,17 +784,17 @@ msgid "Right now, your site is displaying a “coming soon” message. Once you'
 msgstr ""
 
 #: src/app/pages/home/coming-soon-notice/index.js:39
-#: src/app/pages/home/onboarding/index.js:161
+#: src/app/pages/home/onboarding/index.js:172
 msgid "Awesome! Your site is live."
 msgstr ""
 
 #: src/app/pages/home/coming-soon-notice/index.js:40
-#: src/app/pages/home/onboarding/index.js:164
+#: src/app/pages/home/onboarding/index.js:175
 msgid "We removed the \"coming soon\" banner. Your website is now available for public visitors. This can be always be changed on the Settings tab above."
 msgstr ""
 
 #: src/app/pages/home/coming-soon-notice/index.js:41
-#: src/app/pages/home/onboarding/index.js:168
+#: src/app/pages/home/onboarding/index.js:179
 msgid "Restore Coming Soon"
 msgstr ""
 
@@ -871,101 +871,161 @@ msgstr ""
 msgid "Hosting"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:56
+#: src/app/pages/home/onboarding/index.js:65
 msgid "Welcome to your WordPress site"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:59
+#: src/app/pages/home/onboarding/index.js:68
 msgid "Not sure how to get started? Here are a few options we recommend."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:72
+#: src/app/pages/home/onboarding/index.js:83
 msgid "Start with a page or post"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:75
+#: src/app/pages/home/onboarding/index.js:86
 msgid "Use a page for content that won't change too often (your homepage, portfolio), and use posts for information that's timely (blog posts, updates)."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:83
+#: src/app/pages/home/onboarding/index.js:94
 msgid "Add a blog post"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:90
+#: src/app/pages/home/onboarding/index.js:101
 msgid "Add a page"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:100
+#: src/app/pages/home/onboarding/index.js:111
 msgid "Make it look just right"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:103
+#: src/app/pages/home/onboarding/index.js:114
 msgid "Use the customizer to go simple, bold—whatever's you."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:104
+#: src/app/pages/home/onboarding/index.js:115
 msgid "Or browse themes and try 'em out."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:112
+#: src/app/pages/home/onboarding/index.js:123
 msgid "Browse themes"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:119
+#: src/app/pages/home/onboarding/index.js:130
 msgid "Customize your site"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:131
+#: src/app/pages/home/onboarding/index.js:142
 msgid "Get ready to launch"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:134
+#: src/app/pages/home/onboarding/index.js:145
 msgid "Your site has a \"coming soon\" message, which lets people know you're working on it. "
 msgstr ""
 
 #. translators: %1$s is the opening link tag and %2$s is the closing link tag for the link to the website publish checklist.
-#: src/app/pages/home/onboarding/index.js:140
+#: src/app/pages/home/onboarding/index.js:151
 msgid "Check out our %1$swebsite pre-publishing%2$s checklist to help get ready for launch."
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:151
+#: src/app/pages/home/onboarding/index.js:162
 msgid "Launch your site"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:182
+#: src/app/pages/home/onboarding/index.js:193
 msgid "How-to's & next steps"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:187
+#: src/app/pages/home/onboarding/index.js:198
 msgid "Learn how to add functionality to your site with plugins:"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:198
+#: src/app/pages/home/onboarding/index.js:209
 msgid "How to use WordPress plugins"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:210
+#: src/app/pages/home/onboarding/index.js:221
 msgid "The two essential plugins you need"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:214
+#: src/app/pages/home/onboarding/index.js:225
 msgid "Check out ecommerce tips:"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:225
+#: src/app/pages/home/onboarding/index.js:236
 msgid "Steps for adding a store to your site with WooCommerce"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:237
+#: src/app/pages/home/onboarding/index.js:248
 msgid "The five best WooCommerce WordPress themes"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:241
+#: src/app/pages/home/onboarding/index.js:252
 msgid "Get help from WordPress experts:"
 msgstr ""
 
-#: src/app/pages/home/onboarding/index.js:252
+#: src/app/pages/home/onboarding/index.js:263
 msgid "Our BlueSky experts are here to help you every step of the way"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:57
+msgid "Create a new page"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:70
+msgid "Customize your homepage and welcome your visitors"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:74
+msgid "Get Started"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:83
+msgid "What do you want people to see when they land on your site?"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:98
+msgid "Blog posts"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:102
+msgid "Static page"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:113
+msgid "Your site is currently showing blog posts on the homepage."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:120
+msgid "Your site is currently showing a static page on the homepage."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:126
+#: src/app/pages/home/onboarding/steps/homepage/index.js:195
+msgid "Update"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:149
+msgid "Your homepage is all set!"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:150
+msgid "Let's start with your homepage"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:163
+#: src/app/pages/tools/staging/clone-modal.js:20
+#: src/app/pages/tools/staging/delete-modal.js:20
+#: src/app/pages/tools/staging/deploy-modal.js:38
+msgid "Cancel"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:202
+msgid "Which page would you like to use as your homepage?"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/homepage/index.js:212
+msgid "Enter the name for your new page:"
 msgstr ""
 
 #: src/app/pages/home/traffic-engagement/index.js:26
@@ -1221,12 +1281,6 @@ msgstr ""
 #: src/app/pages/tools/staging/delete-modal.js:18
 #: src/app/pages/tools/staging/deploy-modal.js:35
 msgid "This action cannot be undone"
-msgstr ""
-
-#: src/app/pages/tools/staging/clone-modal.js:20
-#: src/app/pages/tools/staging/delete-modal.js:20
-#: src/app/pages/tools/staging/deploy-modal.js:38
-msgid "Cancel"
 msgstr ""
 
 #: src/app/pages/tools/staging/clone-modal.js:23

@@ -1,89 +1,90 @@
 /**
  * 🎨⌨️↔️ Bluehost Style Config
  */
- @import '@app/config.scss';
- /* ------------------------- */
- /**
-  * WP Admin Overrides for Core Styles
-  */
- @import '@app/styles/wp-overrides.scss';
- /**
-  * Helper Classes and Utilities
-  */
- @import '@app/styles/helpers.scss';
- /**
-  * CSS Equivalent of Bluehost Spinner
-  */
- @import '@app/styles/bluehost-spinner.scss';
- /**
-  * CSS for responsive videos
-  */
- @import '@app/styles/react-player.scss';
+@import '@app/config.scss';
+/* ------------------------- */
+/**
+ * WP Admin Overrides for Core Styles
+ */
+@import '@app/styles/wp-overrides.scss';
+/**
+ * Helper Classes and Utilities
+ */
+@import '@app/styles/helpers.scss';
+/**
+ * CSS Equivalent of Bluehost Spinner
+ */
+@import '@app/styles/bluehost-spinner.scss';
+@import '@app/styles/bluehost-button-spinner.scss';
+/**
+ * CSS for responsive videos
+ */
+@import '@app/styles/react-player.scss';
 
- img {
-   max-width: 100%;
-   height: auto;
- }
+img {
+  max-width: 100%;
+  height: auto;
+}
 
- .bluehost-app-wrap {
-   will-change: opacity;
-   @extend .is-font;
-   @extend .appFadeIn;
- }
+.bluehost-app-wrap {
+  will-change: opacity;
+  @extend .is-font;
+  @extend .appFadeIn;
+}
 
- .bluehost-app-wrap, h1, h2, h3, h4, h5 {
-   @extend .is-color-black;
- }
+.bluehost-app-wrap, h1, h2, h3, h4, h5 {
+  @extend .is-color-black;
+}
 
- body.toplevel_page_bluehost {
-   @extend .is-bg-off-white;
- }
+body.toplevel_page_bluehost {
+  @extend .is-bg-off-white;
+}
 
- .screen-reader-shortcut.bluehost-spa-skip {
-   &:focus {
-     top: 5px;
-     left: 5px;
-   }
- }
+.screen-reader-shortcut.bluehost-spa-skip {
+  &:focus {
+    top: 5px;
+    left: 5px;
+  }
+}
 
- body:not(.bluehost-admin-keynav) {
-   .base-template:focus,
-   a[aria-current="page"]:focus,
-   a.bluehostTab:focus,
-   #bluehost-nav-popup-inner a:focus,
-   #slideout-icons-wrap a:focus,
-   .slideout-menu-wrap a.bluehostTab:focus {
-     outline: none;
-     box-shadow: none;
-   }
- }
+body:not(.bluehost-admin-keynav) {
+  .base-template:focus,
+  a[aria-current="page"]:focus,
+  a.bluehostTab:focus,
+  #bluehost-nav-popup-inner a:focus,
+  #slideout-icons-wrap a:focus,
+  .slideout-menu-wrap a.bluehostTab:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
 
- #bluehost-app {
-   display: block;
-   height: 100%;
-   min-height: 100%;
+#bluehost-app {
+  display: block;
+  height: 100%;
+  min-height: 100%;
 
-   .pure-g [class *= "pure-u"] {
-     @extend .is-font;
-   }
+  .pure-g [class *= "pure-u"] {
+    @extend .is-font;
+  }
 
-   header:focus {
-     outline: none;
-   }
- }
+  header:focus {
+    outline: none;
+  }
+}
 
- #app-loader {
-   display: flex;
-   align-items: center;
-   justify-content: center;
+#app-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-   .spinner-wrap {
-     max-width: 50%;
-     position: fixed;
-     top: 44vh;
-   }
- }
+  .spinner-wrap {
+    max-width: 50%;
+    position: fixed;
+    top: 44vh;
+  }
+}
 
- p {
-   font-size: 14px;
- }
+p {
+  font-size: 14px;
+}

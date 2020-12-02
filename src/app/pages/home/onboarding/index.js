@@ -10,11 +10,20 @@ import { __, sprintf } from '@wordpress/i18n';
  */
 import { BWAButton as Button } from '@app/components/atoms';
 import { BWANotification as Notification } from '@app/components/organisms';
+import { addUtmParams } from "@app/functions";
+import Home from './steps/homepage';
+
+/**
+ * Images
+ */
 import comment from '@app/assets/comment.png';
 import computer from '@app/assets/computer.png';
 import rocket from '@app/assets/rocket.png';
+
+/**
+ * Styles
+ */
 import './style.scss';
-import { addUtmParams } from "../../../functions";
 
 export default function Onboarding() {
 
@@ -63,6 +72,8 @@ export default function Onboarding() {
 			<div className="bluehost-onboarding-page-content">
 
 				<div className="bluehost-onboarding-steps">
+
+					<Home />
 
 					<div className="bluehost-onboarding-step">
 						<div className="bluehost-onboarding-step__image">

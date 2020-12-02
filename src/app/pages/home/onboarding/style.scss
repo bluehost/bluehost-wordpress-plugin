@@ -74,6 +74,7 @@
       display: flex;
       justify-content: space-between;
 
+      a:only-child,
       button:only-child {
         margin-left: auto;
       }
@@ -91,6 +92,45 @@
 
     &.--launched {
       border-left: 4px solid $color-green;
+    }
+
+    &.--homepage-complete {
+      border-left: 4px solid $color-green;
+    }
+
+    &.--homepage-open {
+      .bluehost-onboarding-step__content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin: 2rem auto 0 auto;
+        width: max-content;
+      }
+
+      .icon-collection {
+        align-self: stretch;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      }
+
+      .icon-block {
+        background: none;
+        border: none;
+        outline: none;
+
+        p {
+          color: #3575D3;
+          font-size: 16px;
+          font-weight: 600;
+          letter-spacing: 0;
+          line-height: 24px;
+          text-align: center;
+          margin: 0;
+        }
+      }
+
     }
   }
 

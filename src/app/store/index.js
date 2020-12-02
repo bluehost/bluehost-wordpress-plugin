@@ -17,15 +17,19 @@ export const storeConfig = {
 	selectors,
 	actions,
 	controls,
-	persist: [ 'preferences' ],
+	persist: ['preferences'],
 };
 
 const store = registerStore(
 	STORE_KEY,
 	{
 		...storeConfig,
-		persist: [ 'preferences' ],
+		persist: ['preferences'],
 	}
 );
+
+if (global.Cypress) {
+	global.store = store;
+}
 
 export default store;
