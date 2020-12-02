@@ -353,11 +353,11 @@ msgstr ""
 msgid "Changes deployed successfully."
 msgstr ""
 
-#: src/app/index.js:77
+#: src/app/index.js:75
 msgid "Skip to Navigation"
 msgstr ""
 
-#: src/app/index.js:80
+#: src/app/index.js:78
 msgid "Skip to Content"
 msgstr ""
 
@@ -771,7 +771,7 @@ msgstr ""
 msgid "There were no results for your query. Please try again."
 msgstr ""
 
-#: src/app/pages/help/search.js:53
+#: src/app/pages/help/search.js:64
 msgid "Filter by"
 msgstr ""
 
