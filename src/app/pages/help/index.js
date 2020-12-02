@@ -114,12 +114,7 @@ const Help = () => {
 								data-testid="seo-services"
 								href="https://www.bluehost.com/solutions/full-service#seo-services"
 								isSecondary
-<<<<<<< HEAD
-								rel="noopener noreferrer"
-								target="_blank"
-=======
 								utmContent="help_seo_services"
->>>>>>> 8e5da77ed1c625390734fb53bf67e630201170fb
 							>
 								{ __('Learn more', 'bluehost-wordpress-plugin') }
 							</Button>
@@ -136,12 +131,7 @@ const Help = () => {
 								className="featured-service__button"
 								href="https://www.bluehost.com/solutions/full-service#request-form"
 								isSecondary
-<<<<<<< HEAD
-								rel="noopener noreferrer"
-								target="_blank"
-=======
 								utmContent="help_request_consultation"
->>>>>>> 8e5da77ed1c625390734fb53bf67e630201170fb
 							>
 								{ __('Request a consultation', 'bluehost-wordpress-plugin') }
 							</Button>
@@ -162,12 +152,7 @@ const Help = () => {
 						<Button
 							href="https://www.bluehost.com/resources/"
 							isSecondary
-<<<<<<< HEAD
-							rel="noopener noreferrer"
-							target="_blank"
-=======
 							utmContent="help_visit_resource_center"
->>>>>>> 8e5da77ed1c625390734fb53bf67e630201170fb
 						>
 							{ __('Visit resource center', 'bluehost-wordpress-plugin') }
 						</Button>
@@ -181,11 +166,6 @@ const Help = () => {
 				</a>
 				<a
 					className="call-to-action"
-<<<<<<< HEAD
-					href="https://helpchat.bluehost.com/"
-					rel="noopener noreferrer"
-					target="_blank"
-=======
 					href={
 						addUtmParams(
 							'https://helpchat.bluehost.com/',
@@ -195,7 +175,6 @@ const Help = () => {
 							}
 						)
 					}
->>>>>>> 8e5da77ed1c625390734fb53bf67e630201170fb
 				>
 					<ChatIcon className="footer-icon" />
 					<span>{ __('Chat with us', 'bluehost-wordpress-plugin') }</span>
