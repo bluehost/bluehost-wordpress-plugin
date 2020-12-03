@@ -118,5 +118,14 @@ $body-font: $font;
   background-color: #FFFFFF;
 }
 
+%template-common {
+  padding: 46px 24px 24px; // 2px below menu, 48px total spacing to page contents
+  max-width: 1600px;
+  @media (max-width: 600px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 // Menu Breakpoint
 $menu-breakpoint: 782px;

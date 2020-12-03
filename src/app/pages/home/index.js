@@ -39,6 +39,7 @@ const Home = () => {
 	return (
 		<BWACommonTemplate>
 			<div className="page-home__container">
+				<Notification />
 				{
 					showOnboarding ?
 						(

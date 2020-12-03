@@ -27,6 +27,29 @@ class Bluehost_Admin_App_Page {
 		'Help',
 	);
 
+	public static $topPages = array(
+		'home' 		=> '/home',
+		'themes' 	=> '/marketplace/themes',
+		'plugins' 	=> '/marketplace/plugins',
+		'services' 	=> '/marketplace/services',
+		'staging' 	=> '/tools/staging',
+		'settings' 	=> '/settings',
+		'help' 		=> '/help',
+	);
+
+	public static function get_top_pages() {
+		$keys = array_keys( self::$topPages );
+		$cleaned = [];
+		foreach( $keys as $key ) {
+			$cleaned[] = self::to_label( $key );
+		}
+		return $cleaned;
+	}
+
+	public static function to_label( $slug ) {
+		return ucwords( str_replace( '-', ' ', $slug ) );
+	}
+
 	/**
 	 * Return instance
 	 *
@@ -90,24 +113,14 @@ class Bluehost_Admin_App_Page {
 	 * @return void
 	 */
 	public function add_sub_pages() {
-		foreach ( self::$subpages as $subpage ) {
-			$slug          = strtolower( $subpage );
-			$subpage_slugs = array_map( 'strtolower', self::$subpages );
-			/**
-			 * Add /marketplace prefix for Marketplace routes
-			 */
-			if ( 'themes' === $slug || 'plugins' === $slug || 'services' === $slug ) {
-				$slug = 'marketplace/' . $slug;
-			}
-			if ( 'staging' === $slug ) {
-				$slug = 'tools/' . $slug;
-			}
+		foreach ( self::$topPages as $slug => $path ) {
+			$label = self::to_label( $slug );
 			add_submenu_page(
 				'bluehost',
-				$subpage,
-				$subpage,
+				self::to_label( $label ),
+				$label,
 				'manage_options',
-				'bluehost#/' . $slug,
+				'bluehost#' . $path,
 				array( $this, 'handle_subpage_redirect' )
 			);
 		}

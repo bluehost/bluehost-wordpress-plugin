@@ -1,5 +1,9 @@
 @import "@app/config.scss";
 
+.component-template-marketplace {
+  @extend %template-common;
+}
+
 .bluehost-marketplace {
   &__header-primary {
     display: flex;

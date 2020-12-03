@@ -26,7 +26,7 @@ const SettingsRoute = lazy(() => import( '@app/pages/settings' ));
 const HelpRoute = lazy(() => import( '@app/pages/help' ));
 const BlueSkyRoute = lazy(() => import('@app/pages/blue-sky'));
 
-const BWAPageContents = ({ desktopNavRef, ...props}, ref) => (
+const BWARouteContents = ({ desktopNavRef, ...props}, ref) => (
 	<Fragment>
 		<section { ...props } ref={ ref } tabIndex="-1" className="bwa-page-contents">
 			<Suspense fallback={ <BWAPageSpinner /> }>
@@ -54,4 +54,4 @@ const BWAPageContents = ({ desktopNavRef, ...props}, ref) => (
 	</Fragment>
 );
 
-export default BWAPageContents;
+export default BWARouteContents;

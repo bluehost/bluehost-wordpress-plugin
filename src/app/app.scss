@@ -26,13 +26,13 @@
    height: auto;
  }
 
- .bwa-app {
+ #bwa-app {
    will-change: opacity;
    @extend .is-font;
    @extend .appFadeIn;
  }
 
- .bwa-app, h1, h2, h3, h4, h5 {
+ #bwa-app, h1, h2, h3, h4, h5 {
    @extend .is-color-black;
  }
 
@@ -47,7 +47,7 @@
    }
  }
 
- body:not(.bluehost-admin-keynav) {
+ body:not(.bwa-is-tab-navigating) {
    .base-template:focus,
    a[aria-current="page"]:focus,
    a.bluehostTab:focus,

@@ -106,7 +106,7 @@ const appWebpackConfig = {
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 		}),
-		new CopyWebpackPlugin(fileMatrix),
+		// new CopyWebpackPlugin(fileMatrix),
 	],
 	optimization: {
 		splitChunks: {

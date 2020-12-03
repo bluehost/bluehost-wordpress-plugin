@@ -14,7 +14,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import './style.scss';
+// import './style.scss';
 
 const BWABaseTemplate = ({
 	type = "base",
@@ -88,10 +88,15 @@ const BWABaseTemplate = ({
 	*/
 	const getTopLevelActiveHighlightSlug = () => {
 		let location = useLocation();
-		let raw = location.pathname;
-		let topLevelPages = window.bluehost.app.pages;
+		let currentPath = location.pathname;
+		let topLevelPages = Object.values( window.bluehost.app.pages );
 
-		topLevelPages.forEach( page => {
+		if ( topLevelPages.includes( currentPath ) ) {
+			return currentPath;
+		}
+
+
+		topLevelPages.forEach( item = ( page, data ) => {
 			if ( raw.includes( '/' + page ) ) {
 				raw = page;
 			}

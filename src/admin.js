@@ -1,5 +1,6 @@
 /**
- * Set Webpack Public Path
+ * Set Webpack Public Path var 
+ *  __webpack_public_path__
  */
 import './set-public-path';
 
@@ -8,28 +9,31 @@ import './set-public-path';
  */
 import domReady from '@wordpress/dom-ready';
 import { render } from '@wordpress/element';
+
 /**
- * Internal dependencies
+ * Import App
  */
-import App from './app';
+import App from './app/index.js';
 
 /**
  * DOM ID of root element to initialize app
  *
  * @see ../inc/admin/class-page.php
  */
-const WP_PAGE_ROOT_ELEMENT = 'bwa-root';
+const WP_ADM_PAGE_ROOT_ELEMENT = 'bwa-root';
+
 /**
  *
  */
-import appInitHelpers from './app-init-helpers';
+import domReadyInit from './app/init';
+
 /**
  * When DOM is ready, load app on root element, replacing #bwa-centered-loader markup.
  */
 domReady( () => {
-	{ appInitHelpers(); }
+	{ domReadyInit(); }
 	render(
 		<App />,
-		document.getElementById( WP_PAGE_ROOT_ELEMENT )
+		document.getElementById( WP_ADM_PAGE_ROOT_ELEMENT )
 	);
 } );

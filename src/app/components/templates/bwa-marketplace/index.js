@@ -3,6 +3,7 @@
  */
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
 
 /**
  * Internal dependencies
@@ -69,13 +70,15 @@ const sortByOptions = [
 	// },
 ];
 
-const BWAMarketplaceTemplate = ( { type = 'marketplace', className = 'bluehost-marketplace', isLoading, payload, render, marketplaceType = 'themes', ...props } ) => {
+const BWAMarketplaceTemplate = ( { type = 'marketplace', className = '', isLoading, payload, render, marketplaceType = 'themes', ...props } ) => {
 	const [ { favorites }, { hasFavorite, toggleFavorite } ] = useFavorites();
 	const [ filterBy ] = useMojoFilter( favorites );
 	const [ { items, itemsPerPage, pageCount, pageNumber }, { setCollection, setPageNumber } ] = usePaginator();
 	const [ sort, setSort ] = useState( 'sort-sales-desc' );
 	const [ sortBy ] = useMojoSort();
 	const [ { query }, { search, setQuery } ] = useMojoSearch();
+
+	className = classnames('bluehost-marketplace', className);
 
 	useEffect( () => {
 		// Fetch items

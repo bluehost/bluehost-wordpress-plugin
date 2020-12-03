@@ -4,7 +4,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useRef } from '@wordpress/element';
 import { ENTER } from '@wordpress/keycodes';
-import { dispatch, useSelect } from '@wordpress/data';
+import { dispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 /**
@@ -18,7 +18,7 @@ import kebabCase from 'lodash/kebabCase';
  */
 import { 
 	BWACommonHeader,
-	BWAPageContents,
+	BWARouteContents,
 	BWACommonFooter
 } from '@app/components/organisms';
 
@@ -30,10 +30,14 @@ import {
 } from '@app/components/molecules';
 
 const AppBody = ( props ) => {
+	// 1. Import PHP-generated data to store for SOT.
 	dispatch( 'bluehost/plugin' ).fetchWindowData();
+	// 2. Tap location object from react-router-dom.
 	let location = useLocation();
+	// 3. Create Focus Refs
 	let desktopNavRef 	= useRef(null);
 	let pageContainerRef = useRef(null);
+
 	const kebabRoute = kebabCase( location.pathname );
 	const handleNavFocus = ( event ) => {
 		event.preventDefault();
@@ -63,10 +67,10 @@ const AppBody = ( props ) => {
 		<main 
 			id="bwa-app" 
 			className={ classnames( 
-				'bwa-app', 
-				'bwa-page-' + kebabRoute
+				'bwa-page-' + kebabRoute,
+				props.className
 			) }
-			data-bwa-app-route={kebabRoute}
+			data-bwa-app-route={location.pathname}
 		>
 			<SkipLink 
 				onClick={ handleNavFocus } 
@@ -81,7 +85,7 @@ const AppBody = ( props ) => {
 				{ __( 'Skip to Content', 'bluehost-wordpress-plugin' ) }
 			</SkipLink>
 			<BWACommonHeader desktopNavRef={desktopNavRef} />
-			<BWAPageContents ref={pageContainerRef} />
+			<BWARouteContents ref={pageContainerRef} />
 			<BWACommonFooter />
 		</main>
 	)

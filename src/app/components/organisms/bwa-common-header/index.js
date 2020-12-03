@@ -70,8 +70,8 @@ const HeaderIcons = () => (
 	</div>
 );
 
-const BWACommonHeader = ({ showMainNav = true, ...props}) => (
-	<header { ...props } tabIndex="-1">
+const BWACommonHeader = ({ desktopNavRef, showMainNav = true, ...props}) => (
+	<header tabIndex="-1">
 		<div className="bwa-common-header__brand">
 			<div className="col">
 				<HeaderLogo />

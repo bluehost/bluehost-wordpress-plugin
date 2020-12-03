@@ -21,6 +21,11 @@ export default function ProductDetails( { id } ) {
 	const header = sprintf( __( 'Premium %s', 'bluehost-wordpress-plugin' ), type );
 	const breadcrumbText = header;
 
+	if ( null !== type ) {
+		console.log( 'setting...' );
+		console.log( type );
+	}
+
 	useEffect( () => {
 		setItem( get( [ 'items', 0 ], payload ) );
 	}, [ payload ] );
@@ -80,10 +85,6 @@ export default function ProductDetails( { id } ) {
 	];
 	const price = parseInt( single_domain_license, 10 );
 	const sales = parseInt( sales_count, 10 ).toLocaleString( { useGrouping: true } );
-
-	const setNavHighlight = () => {
-		
-	}
 
 	return (
 		<BWACommonTemplate type="marketplace" className="page-product">

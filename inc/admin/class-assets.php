@@ -203,14 +203,15 @@ class Bluehost_Admin_App_Assets {
 				'adminUrl'		   => \admin_url(),
 				'activePage'       => '',
 				'isTopLevel'       => 0,
-				'pages'            => array_map( 'strtolower', Bluehost_Admin_App_Page::$subpages ),
-				'siteId'           => mojo_site_bin2hex(),
+				'pages'            => Bluehost_Admin_App_Page::$topPages,
+				'accountId'        => mojo_site_bin2hex(),
 				'mobileMenuActive' => 0,
 				'nonce'            => wp_create_nonce( mojo_site_bin2hex() ),
 			),
 			'env'       => array(
 				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,
 				'phpVersion' => phpversion(),
+				'isStaging'	 => \Bluehost\Staging::getInstance()->isStaging(),
 			),
 			'wordpress' => array(
 				'hasReusableBlocks'              => \wp_count_posts( 'wp_block' )->publish >= 1,
