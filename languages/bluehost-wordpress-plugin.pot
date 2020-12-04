@@ -771,7 +771,7 @@ msgstr ""
 msgid "There were no results for your query. Please try again."
 msgstr ""
 
-#: src/app/pages/help/search.js:64
+#: src/app/pages/help/search.js:71
 msgid "Filter by"
 msgstr ""
 
