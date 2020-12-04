@@ -26,9 +26,11 @@ class Notice extends Component {
 			sendEvent(
 				{
 					action: 'bluehost-notification-click',
-					notificationId: props.id,
-					element: 'button',
-					label: e.target.innerText
+					data: {
+						element: 'button',
+						label: e.target.innerText,
+						notificationId: props.id,
+					}
 				}
 			)
 		}
@@ -38,10 +40,12 @@ class Notice extends Component {
 			sendEvent(
 				{
 					action: 'bluehost-notification-click',
-					notificationId: props.id,
-					element: 'a',
-					href: e.target.getAttribute('href'),
-					label: e.target.innerText
+					data: {
+						element: 'a',
+						href: e.target.getAttribute('href'),
+						label: e.target.innerText,
+						notificationId: props.id,
+					}
 				}
 			)
 		}

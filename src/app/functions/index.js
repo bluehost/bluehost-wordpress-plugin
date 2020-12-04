@@ -67,9 +67,11 @@ export function isExternalUrl(url) {
 /**
  * Send events to the WP REST API
  *
- * @param {Object} data The event data to be tracked.
+ * @param {Object} event The event data to be tracked.
  */
-export function sendEvent(data) {
-	data.page = window.location.href;
-	apiFetch({path: `/bluehost/v1/data/events/`, method: 'POST', data});
+export function sendEvent(event) {
+	event.data = event.data || {};
+	event.data.page = window.location.href;
+	apiFetch({path: `/bluehost/v1/data/events/`, method: 'POST', data: event});
+	console.log(event);
 }

@@ -24,11 +24,13 @@
 		const notice = e.target.closest('.bluehost-notice');
 		if (notice) {
 			const data = {
-				page: window.location.href,
 				action: 'bluehost-notification-click',
-				notificationId: notice.getAttribute('data-id'),
-				element: e.target.nodeName.toLowerCase(),
-				label: e.target.innerText
+				data: {
+					element: e.target.nodeName.toLowerCase(),
+					label: e.target.innerText,
+					notificationId: notice.getAttribute('data-id'),
+					page: window.location.href,
+				}
 			}
 			if (data.element === 'a') {
 				data.href = e.target.getAttribute('href');

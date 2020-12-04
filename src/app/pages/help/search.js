@@ -38,7 +38,14 @@ const SearchPage = () => {
 			isFirstRun.current = false;
 			return;
 		}
-		sendEvent({action: 'resource-center-search', query: {text: searchQuery, category}});
+		sendEvent(
+			{
+				action: 'resource-center-search',
+				data: {
+					query: {text: searchQuery, category}
+				}
+			}
+		);
 	}, [searchQuery, category]);
 
 	return (
@@ -65,7 +72,7 @@ const SearchPage = () => {
 					onChange={ (value) => setCategory(value) }
 					options={ ['Websites', 'Marketing', 'Business'] }
 				/>
-				<SearchResults cache={ sessionStorageCache } />
+				<SearchResults cache={ sessionStorageCache }/>
 			</InstantSearch>
 		</Fragment>
 	);
