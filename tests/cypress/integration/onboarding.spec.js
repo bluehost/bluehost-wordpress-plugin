@@ -24,6 +24,55 @@ describe('Onboarding', function () {
 		cy.checkA11y('.router-section');
 	});
 
+	describe('Homepage', () => {
+		it('Default State', () => {
+			cy.window().its('store').invoke('dispatch', {type: 'UPDATE_SETTING', setting: 'hasSetHomepage', newValue: false});
+			cy.window().its('store').invoke('getState').its('settings.hasSetHomepage').should('be', false);
+			cy.findByText('Let\'s start with your homepage').scrollIntoView().should('be.visible');
+			cy.findByRole('button', {name: 'Get Started'}).as('button');
+			cy.get('@button').scrollIntoView().should('be.visible');
+			cy.get('@button').click();
+		});
+
+		it('Open State', () => {
+			cy.server();
+			cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
+			cy.findByText('What do you want people to see when they land on your site?').scrollIntoView().should('be.visible');
+			cy.findByRole('button', {name: 'Blog posts'}).as('blogPostsButton');
+			cy.findByRole('button', {name: 'Static page'}).as('staticPageButton');
+			cy.get('@blogPostsButton').scrollIntoView().should('be.visible');
+			cy.get('@staticPageButton').scrollIntoView().should('be.visible');
+			cy.get('@blogPostsButton').click();
+			cy.wait('@updateSettings');
+			cy.window().its('store').invoke('getState').its('settings.hasSetHomepage').should('be', true);
+			cy.window().its('store').invoke('getState').its('settings.showOnFront').should('be', 'posts');
+		});
+
+		it('Complete State', () => {
+			cy.findByText('Your homepage is all set!').scrollIntoView().should('be.visible');
+			cy.findByRole('button', {name: 'Update'}).as('button');
+			cy.get('@button').scrollIntoView().should('be.visible');
+			cy.wait(100);
+			cy.get('@button').click();
+		});
+
+		it('Modal', () => {
+			cy.server();
+			cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
+			cy.route('POST', '**/wp/v2/pages*').as('createPage');
+			cy.findByRole('button', {name: 'Static page'}).scrollIntoView().click();
+			cy.findByText('Static Homepage Settings').should('be.visible');
+			cy.findByLabelText('Which page would you like to use as your homepage?').as('select');
+			cy.get('@select').select('0');
+			cy.findByLabelText('Enter the name for your new page:').as('input');
+			cy.get('@input').should('be.visible').type('Bananas');
+			cy.findByRole('button', {name: 'Update'}).as('button');
+			cy.get('@button').should('be.visible').click();
+			cy.wait('@updateSettings');
+			cy.wait('@createPage');
+		});
+	});
+
 	it('Start with a page or post', () => {
 		cy.findByText('Start with a page or post').scrollIntoView().should('be.visible');
 

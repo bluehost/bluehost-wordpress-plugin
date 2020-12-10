@@ -22,18 +22,18 @@ class SettingsController extends \WP_REST_Controller {
 		register_rest_route(
 			$this->namespace,
 			'/settings',
-			[
-				[
+			array(
+				array(
 					'methods'             => \WP_REST_Server::READABLE,
-					'callback'            => [ $this, 'get_item' ],
-					'permission_callback' => [ $this, 'check_permission' ],
-				],
-				[
+					'callback'            => array( $this, 'get_item' ),
+					'permission_callback' => array( $this, 'check_permission' ),
+				),
+				array(
 					'methods'             => \WP_REST_Server::EDITABLE,
-					'callback'            => [ $this, 'update_item' ],
-					'permission_callback' => [ $this, 'check_permission' ],
-				],
-			]
+					'callback'            => array( $this, 'update_item' ),
+					'permission_callback' => array( $this, 'check_permission' ),
+				),
+			)
 		);
 
 	}
@@ -112,6 +112,15 @@ class SettingsController extends \WP_REST_Controller {
 						include 'wp-admin/includes/misc.php';
 						update_option( 'endurance_cache_level', $new_value );
 						break;
+					case 'hasSetHomepage':
+						update_option( 'bh_has_set_homepage', (bool) $new_value );
+						break;
+					case 'showOnFront':
+						update_option( 'show_on_front', ( 'page' === $new_value ? 'page' : 'posts' ) );
+						break;
+					case 'pageOnFront':
+						update_option( 'page_on_front', intval( $new_value ) );
+						break;
 				}
 			}
 		}
@@ -161,6 +170,9 @@ class SettingsController extends \WP_REST_Controller {
 			'contentRevisions'        => intval( defined( 'WP_POST_REVISIONS' ) ? WP_POST_REVISIONS : 5 ),
 			'emptyTrashDays'          => intval( defined( 'EMPTY_TRASH_DAYS' ) ? EMPTY_TRASH_DAYS : 30 ),
 			'cacheLevel'              => intval( get_option( 'endurance_cache_level', 2 ) ),
+			'hasSetHomepage'          => (bool) get_option( 'bh_has_set_homepage', false ),
+			'showOnFront'             => (string) get_option( 'show_on_front' ),
+			'pageOnFront'             => (int) get_option( 'page_on_front' ),
 		);
 
 		return $settings;

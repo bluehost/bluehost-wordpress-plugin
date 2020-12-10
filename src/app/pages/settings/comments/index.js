@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { sprintf, __, _n } from '@wordpress/i18n';
+import { __, _n } from '@wordpress/i18n';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 
