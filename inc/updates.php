@@ -196,4 +196,4 @@ function bh_sync_plugin_major_auto_core_update_option( $old_value, $value ) {
 	}
 }
 
-add_filter( 'update_option_auto_update_core_major', 'bh_sync_plugin_major_auto_core_update_option', 10, 2 );
+add_action( 'update_option_auto_update_core_major', 'bh_sync_plugin_major_auto_core_update_option', 10, 2 );
