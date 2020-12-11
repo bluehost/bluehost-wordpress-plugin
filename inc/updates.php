@@ -204,7 +204,7 @@ add_action( 'update_option_auto_update_core_major', 'bh_sync_plugin_major_auto_c
  * @param int $wp_db_version         The new $wp_db_version.
  * @param int $wp_current_db_version The old (current) $wp_db_version.
  */
-function ( $wp_db_version, $wp_current_db_version ) {
+function bh_core_update_560( $wp_db_version, $wp_current_db_version ) {
 	if ( 49572 > $wp_current_db_version && 49572 < $wp_db_version ) {
 		$update_option = get_option( 'allow_major_auto_core_updates', 'true' );
 
@@ -216,4 +216,4 @@ function ( $wp_db_version, $wp_current_db_version ) {
 	}
 }
 
-add_action( 'wp_upgrade', '', 10, 2 );
+add_action( 'wp_upgrade', 'bh_core_update_560', 10, 2 );
