@@ -197,3 +197,23 @@ function bh_sync_plugin_major_auto_core_update_option( $old_value, $value ) {
 }
 
 add_action( 'update_option_auto_update_core_major', 'bh_sync_plugin_major_auto_core_update_option', 10, 2 );
+
+/**
+ * When upgrading from < 5.6, sync the plugin option with Core's new option.
+ *
+ * @param int $wp_db_version         The new $wp_db_version.
+ * @param int $wp_current_db_version The old (current) $wp_db_version.
+ */
+function ( $wp_db_version, $wp_current_db_version ) {
+	if ( 49572 > $wp_current_db_version && 49572 < $wp_db_version ) {
+		$update_option = get_option( 'allow_major_auto_core_updates', 'true' );
+
+		if ( 'false' === $update_option ) {
+			update_option( 'auto_update_core_major', 'disabled' );
+		} else {
+			update_option( 'auto_update_core_major', 'enabled' );
+		}
+	}
+}
+
+add_action( 'wp_upgrade', '', 10, 2 );
