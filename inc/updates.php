@@ -69,6 +69,11 @@ function bh_auto_update_configure() {
 
 		$settings = array_map( 'bh_auto_update_make_bool', $settings );
 
+		// WordPress 5.6 introduces the ability to opt-in to major updates. Let Core handle this now.
+		if ( version_compare( $wp_version, '5.6', '>=' ) ) {
+			unset( $settings['allow_major_auto_core_updates'] );
+		}
+
 		// If plugin or theme settings are disabled, allow the site admin to manage auto-updates in WordPress.
 		if ( false === $settings['auto_update_plugin'] && version_compare( $wp_version, '5.5.0', '>=' ) ) {
 			unset( $settings['auto_update_plugin'] );
@@ -172,3 +177,43 @@ function bh_theme_auto_update_setting_template( $template ) {
 }
 
 add_filter( 'theme_auto_update_setting_template', 'bh_theme_auto_update_setting_template' );
+
+/**
+ * Sync the plugin's Core major auto-update setting with core's.
+ *
+ * @param mixed  $old_value The old option value.
+ * @param mixed  $value     The new option value.
+ */
+function bh_sync_plugin_major_auto_core_update_option( $old_value, $value ) {
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		return;
+	}
+
+	if ( 'disabled' === $value ) {
+		update_option( 'allow_major_auto_core_updates', 'false' );
+	} else {
+		update_option( 'allow_major_auto_core_updates', 'true' );
+	}
+}
+
+add_action( 'update_option_auto_update_core_major', 'bh_sync_plugin_major_auto_core_update_option', 10, 2 );
+
+/**
+ * When upgrading from < 5.6, sync the plugin option with Core's new option.
+ *
+ * @param int $wp_db_version         The new $wp_db_version.
+ * @param int $wp_current_db_version The old (current) $wp_db_version.
+ */
+function bh_core_update_560( $wp_db_version, $wp_current_db_version ) {
+	if ( 49572 > $wp_current_db_version && 49572 < $wp_db_version ) {
+		$update_option = get_option( 'allow_major_auto_core_updates', 'true' );
+
+		if ( 'false' === $update_option ) {
+			update_option( 'auto_update_core_major', 'disabled' );
+		} else {
+			update_option( 'auto_update_core_major', 'enabled' );
+		}
+	}
+}
+
+add_action( 'wp_upgrade', 'bh_core_update_560', 10, 2 );
