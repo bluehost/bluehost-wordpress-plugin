@@ -1,8 +1,9 @@
-import { Fragment, useEffect, useState } from '@wordpress/element';
+import { Fragment, useEffect, useRef, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import algoliasearch from 'algoliasearch/lite';
 import { join } from 'lodash';
 import { createInfiniteHitsSessionStorageCache, Configure, InstantSearch } from 'react-instantsearch-dom';
+import { sendEvent } from '@app/functions';
 
 import SearchForm from './search-form';
 import SearchFilters from './search-filters';
@@ -17,6 +18,8 @@ const sessionStorageCache = createInfiniteHitsSessionStorageCache();
 
 const SearchPage = () => {
 
+	const isFirstRun = useRef(true);
+
 	const [searchQuery, setSearchQuery] = useState('');
 	const [searchState, setSearchState] = useState({query: searchQuery});
 	const [filters, setFilters] = useState(['post_type:post']);
@@ -29,6 +32,21 @@ const SearchPage = () => {
 			setFilters(['post_type:post']);
 		}
 	}, [category]);
+
+	useEffect(() => {
+		if (isFirstRun.current) {
+			isFirstRun.current = false;
+			return;
+		}
+		sendEvent(
+			{
+				action: 'resource-center-search',
+				data: {
+					query: {text: searchQuery, category}
+				}
+			}
+		);
+	}, [searchQuery, category]);
 
 	return (
 		<Fragment>
@@ -54,10 +72,10 @@ const SearchPage = () => {
 					onChange={ (value) => setCategory(value) }
 					options={ ['Websites', 'Marketing', 'Business'] }
 				/>
-				<SearchResults cache={ sessionStorageCache } />
+				<SearchResults cache={ sessionStorageCache }/>
 			</InstantSearch>
 		</Fragment>
 	);
 }
 
-export default SearchPage
+export default SearchPage;
