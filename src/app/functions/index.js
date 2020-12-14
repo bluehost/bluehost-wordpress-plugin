@@ -1,3 +1,5 @@
+import apiFetch from '@wordpress/api-fetch';
+
 /**
  * Add query params to a URL.
  *
@@ -60,4 +62,15 @@ export function get(props, object, fallback = null) {
  */
 export function isExternalUrl(url) {
 	return url && typeof url === 'string' && url.includes('http') && !url.includes(window.location.origin);
+}
+
+/**
+ * Send events to the WP REST API
+ *
+ * @param {Object} event The event data to be tracked.
+ */
+export function sendEvent(event) {
+	event.data = event.data || {};
+	event.data.page = window.location.href;
+	apiFetch({path: `/bluehost/v1/data/events/`, method: 'POST', data: event});
 }

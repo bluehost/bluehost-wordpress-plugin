@@ -73,6 +73,12 @@ class SettingsController extends \WP_REST_Controller {
 					case 'autoUpdatesMajorCore':
 						$new_value = ( $new_value ) ? 'true' : 'false';
 						update_option( 'allow_major_auto_core_updates', $new_value );
+
+						if ( 'true' === $new_value ) {
+							update_option( 'auto_update_core_major', 'enabled' );
+						} else {
+							update_option( 'auto_update_core_major', 'disabled' );
+						}
 						break;
 					case 'autoUpdatesMinorCore':
 						update_option( 'allow_minor_auto_core_updates', $new_value );

@@ -33,8 +33,9 @@ class NotificationsRepository {
 		$notifications = get_transient( self::TRANSIENT );
 
 		if ( false === $notifications ) {
+			$api_base = ( defined( 'BH_HUB_URL' ) ) ? BH_HUB_URL : 'https://hiive.cloud/api';
 			$response = wp_remote_get(
-				'https://hiive.cloud/api/notifications',
+				$api_base . '/notifications',
 				array(
 					'headers' => array(
 						'Content-Type'  => 'application/json',

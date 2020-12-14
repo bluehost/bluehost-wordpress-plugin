@@ -1,33 +1,32 @@
-/**
- * WordPress dependencies
- */
-import { ErrorBoundary } from 'react-error-boundary';
-import { useRef } from '@wordpress/element';
-import { ENTER } from '@wordpress/keycodes';
-import { dispatch } from '@wordpress/data';
-import { __ } from '@wordpress/i18n';
-import classnames from 'classnames';
-/**
- * External dependencies
- */
-import { HashRouter as Router, useLocation } from 'react-router-dom';
-import kebabCase from 'lodash/kebabCase';
+import './store';
+import './app.scss';
 
 /**
  * Internal dependencies
  */
-import { 
+import {
+	BWACommonFooter,
 	BWACommonHeader,
-	BWARouteContents,
-	BWACommonFooter
+	BWARouteContents
 } from '@app/components/organisms';
-
-import './store';
-import './app.scss';
+/**
+ * External dependencies
+ */
+import { HashRouter as Router, useLocation } from 'react-router-dom';
 
 import {
 	BWAError,
 } from '@app/components/molecules';
+import { ENTER } from '@wordpress/keycodes';
+/**
+ * WordPress dependencies
+ */
+import { ErrorBoundary } from 'react-error-boundary';
+import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
+import { dispatch } from '@wordpress/data';
+import kebabCase from 'lodash/kebabCase';
+import { useRef } from '@wordpress/element';
 
 const AppBody = ( props ) => {
 	// 1. Import PHP-generated data to store for SOT.
