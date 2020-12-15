@@ -1,29 +1,20 @@
+import './style.scss';
+
+import {
+	BWADropdown,
+	BWAHeading,
+	BWAPagination,
+} from '@app/components/atoms';
+import {
+	BWANoResults,
+	BWAProductCardPlaceholder,
+	BWAProductGrid,
+	BWASearch,
+} from '@app/components/molecules';
 /**
  * WordPress dependencies
  */
 import { useEffect, useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
-import classnames from 'classnames';
-
-/**
- * Internal dependencies
- */
-import { BWACommonTemplate } from '@app/components/templates';
-import { BWANotification as Notification } from '@app/components/organisms';
-
-import {
-	BWAProductGrid,
-	BWANoResults,
-	BWAProductCardPlaceholder,
-	BWASearch,
-} from '@app/components/molecules';
-
-import {
-	BWAHeading,
-	BWAPagination,
-	BWADropdown,
-} from '@app/components/atoms';
-
 import {
 	useFavorites,
 	useMojoFilter,
@@ -32,9 +23,20 @@ import {
 	usePaginator,
 } from '@app/hooks';
 
+/**
+ * Internal dependencies
+ */
+import { BWACommonTemplate } from '@app/components/templates';
 import { NoFavorites } from '@app/assets';
+import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
 
-import './style.scss';
+// import { BWANotification as Notification } from '@app/components/organisms';
+
+
+
+
+
 
 const marketplacePageTitle = ( marketplaceType ) => {
 	switch ( marketplaceType ) {
@@ -105,7 +107,7 @@ const BWAMarketplaceTemplate = ( { type = 'marketplace', className = '', isLoadi
 
 	return (
 		<BWACommonTemplate type={type} className={ className } marketplaceType={marketplaceType} {...props}>
-			<Notification />
+			{/* <Notification /> */}
 			<section className={ `${ className }__header` }>
 				<div className={ `${ className }__header-primary` }>
 					<BWAHeading level="h2" size={ 1 } className="marketplace-page-title">{ marketplacePageTitle( marketplaceType ) }</BWAHeading>

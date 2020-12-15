@@ -1,19 +1,19 @@
+import './style.scss';
+
 /**
  * WordPress dependencies
  */
 /**
  * External dependencies
  */
-import { lazy, Suspense, Fragment } from '@wordpress/element';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Fragment, Suspense, lazy } from '@wordpress/element';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 /**
  * Internal dependencies
  */
 import { BWAHeader } from '@app/components/organisms';
 import { BWAPageSpinner } from '@app/components/molecules';
-
-import './style.scss';
 
 const HomeRoute = lazy(() => import( '@app/pages/home' ));
 const ThemesRoute = lazy(() => import( '@app/pages/marketplace/themes' ));
@@ -26,9 +26,9 @@ const SettingsRoute = lazy(() => import( '@app/pages/settings' ));
 const HelpRoute = lazy(() => import( '@app/pages/help' ));
 const BlueSkyRoute = lazy(() => import('@app/pages/blue-sky'));
 
-const BWARouteContents = ({ desktopNavRef, ...props}, ref) => (
+const BWARouteContents = ({ desktopNavRef, ...props}) => (
 	<Fragment>
-		<section { ...props } ref={ ref } tabIndex="-1" className="bwa-page-contents">
+		<section { ...props } tabIndex="-1" className="bwa-page-contents">
 			<Suspense fallback={ <BWAPageSpinner /> }>
 				<Switch>
 					<Route path="/home" render={ () => <HomeRoute /> } />

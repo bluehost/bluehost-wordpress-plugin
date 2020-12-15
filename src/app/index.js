@@ -43,14 +43,14 @@ const AppBody = ( props ) => {
 		if ( event.keycode && ENTER !== event.keycode ) {
 			return;
 		}
-		desktopNavRef.current.focus({ preventScroll: true });
+		// desktopNavRef.current.focus({ preventScroll: true });
 	}
 	const handleContentFocus = ( event ) => {
 		event.preventDefault();
 		if ( event.keycode && ENTER !== event.keycode ) {
 			return;
 		}
-		pageContainerRef.current.focus({ preventScroll: true });
+		// pageContainerRef.current.focus({ preventScroll: true });
 	}
 	const SkipLink = ( { href = '#', onClick, onKeyDown, children } ) => (
 		<a 
@@ -83,8 +83,8 @@ const AppBody = ( props ) => {
 			>
 				{ __( 'Skip to Content', 'bluehost-wordpress-plugin' ) }
 			</SkipLink>
-			<BWACommonHeader desktopNavRef={desktopNavRef} />
-			<BWARouteContents ref={pageContainerRef} />
+			<BWACommonHeader />
+			<BWARouteContents />
 			<BWACommonFooter />
 		</main>
 	)

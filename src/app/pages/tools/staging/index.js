@@ -1,20 +1,4 @@
-/**
- * WordPress dependencies
- */
-import { useEffect, useState } from '@wordpress/element';
-import { __, sprintf } from '@wordpress/i18n';
-
-/**
- * Internal dependencies
- */
-import { BWACommonTemplate } from '@app/components/templates';
-import { BWANotification as Notification } from '@app/components/organisms';
-
-import {
-	BWAButton as Button,
-	BWAHeading,
-	BWASpinner as Spinner,
-} from '@app/components/atoms';
+import './style.scss';
 
 import {
 	BWADropdownButton,
@@ -23,23 +7,41 @@ import {
 	BWAOverlay,
 	BWASnackbar as Snackbar,
 } from '@app/components/molecules';
-
+import {
+	BWAHeading,
+	BWAButton as Button,
+	BWASpinner as Spinner,
+} from '@app/components/atoms';
 import {
 	RadioButtonDisabledIcon,
 	RadioButtonSelectedIcon,
 	WorkingImageUrl,
 } from '@app/assets';
+import { __, sprintf } from '@wordpress/i18n';
+/**
+ * WordPress dependencies
+ */
+import { useEffect, useState } from '@wordpress/element';
 
+/**
+ * Internal dependencies
+ */
+import { BWACommonTemplate } from '@app/components/templates';
+import CloneBWAOverlay from './clone-overlay';
+import CloneModal from './clone-modal';
+import DeletBWAOverlay from './delete-overlay';
+import DeleteModal from './delete-modal';
+import DeploymentBWAOverlay from './deploy-overlay';
+import DeploymentModal from './deploy-modal';
+import Tips from './tips';
 import { useStaging } from '@app/hooks';
 
-import CloneModal from './clone-modal';
-import CloneBWAOverlay from './clone-overlay';
-import DeleteModal from './delete-modal';
-import DeletBWAOverlay from './delete-overlay';
-import DeploymentModal from './deploy-modal';
-import DeploymentBWAOverlay from './deploy-overlay';
-import Tips from './tips';
-import './style.scss';
+// import { BWANotification as Notification } from '@app/components/organisms';
+
+
+
+
+
 
 export default function StagingPage() {
 	const [ deployType, setDeployType ] = useState( 'all' );
@@ -94,7 +96,7 @@ export default function StagingPage() {
 
 	return (
 		<BWACommonTemplate className="bluehost-staging">
-			<Notification />
+			{/* <Notification /> */}
 			<BWAHeading level="h2" size={ 1 } className="is-page-title">{ __( 'Staging', 'bluehost-wordpress-plugin' ) }</BWAHeading>
 			<p>{ __( 'A staging site is a copy of your site where you can safely test changes before publishing them to your production site. It gives you a way to try new things, test updates, and then deploy them when you\'re ready.', 'bluehost-wordpress-plugin' ) }</p>
 

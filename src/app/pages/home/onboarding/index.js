@@ -1,29 +1,28 @@
 /**
+ * Styles
+ */
+import './style.scss';
+
+import { __, sprintf } from '@wordpress/i18n';
+/**
  * WordPress dependencies
  */
-import { useSelect, useDispatch } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
-import { __, sprintf } from '@wordpress/i18n';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Internal dependencies
  */
 import { BWAButton as Button } from '@app/components/atoms';
-import { BWANotification as Notification } from '@app/components/organisms';
-import { addUtmParams } from "@app/functions";
 import Home from './steps/homepage';
-
+// import { BWANotification as Notification } from '@app/components/organisms';
+import { addUtmParams } from "@app/functions";
 /**
  * Images
  */
 import comment from '@app/assets/comment.png';
 import computer from '@app/assets/computer.png';
 import rocket from '@app/assets/rocket.png';
-
-/**
- * Styles
- */
-import './style.scss';
+import { useEffect } from '@wordpress/element';
 
 export default function Onboarding() {
 
@@ -58,7 +57,7 @@ export default function Onboarding() {
 	return (
 		<div className="bluehost-onboarding">
 
-			<Notification />
+			{/* <Notification /> */}
 
 			<header className="bluehost-onboarding-page-header">
 				<h2 className="bluehost-onboarding-page-header__title">

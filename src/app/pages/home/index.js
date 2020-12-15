@@ -1,29 +1,26 @@
-/**
- * WordPress Dependencies
- */
-import { useSelect } from '@wordpress/data';
-import { Fragment } from '@wordpress/element';
+import './style.scss';
 
 /**
  * Project dependencies
  */
 import { BWACommonTemplate } from '@app/components/templates';
-import { BWANotification as Notification } from '@app/components/organisms';
-
+import BWAContentList from './content';
+import ComingSoonNotice from './coming-soon-notice';
+import DesignBuildSection from './design-build';
+import { Fragment } from '@wordpress/element';
+import HostingSection from './hosting';
 /**
  * Component dependencies
  */
 import Onboarding from './onboarding';
-import Welcome from './welcome';
-import ComingSoonNotice from './coming-soon-notice';
-import BWAContentList from './content';
-import DesignBuildSection from './design-build';
-import TrafficEngagementSection from './traffic-engagement';
 import PerformanceSection from './performance';
-import HostingSection from './hosting';
-
-import './style.scss';
+import TrafficEngagementSection from './traffic-engagement';
+import Welcome from './welcome';
 import { update } from 'lodash';
+/**
+ * WordPress Dependencies
+ */
+import { useSelect } from '@wordpress/data';
 
 const Home = () => {
 	const daysSinceInstall = useSelect((select) => {
@@ -39,7 +36,6 @@ const Home = () => {
 	return (
 		<BWACommonTemplate>
 			<div className="page-home__container">
-				<Notification />
 				{
 					showOnboarding ?
 						(
@@ -47,7 +43,6 @@ const Home = () => {
 						) :
 						(
 							<Fragment>
-								<Notification />
 								<Welcome />
 								<ComingSoonNotice />
 								<BWAContentList />

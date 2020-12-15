@@ -1,9 +1,8 @@
-import filter from 'lodash/filter';
-
 /**
  * WordPress dependencies
  */
 import { combineReducers } from '@wordpress/data';
+import filter from 'lodash/filter';
 
 /**
  *
@@ -60,10 +59,10 @@ const env = (state = DEFAULT_STATE.env, action) => {
 
 const notifications = (state = DEFAULT_STATE.notifications, action) => {
 	switch (action.type) {
-		case 'FETCH_WINDOW_DATA':
-			return [
-				...action.bluehost.notifications,
-			];
+		// case 'FETCH_WINDOW_DATA':
+		// 	return [
+		// 		...action.bluehost.notifications,
+		// 	];
 		case 'DISMISS_NOTIFICATION':
 			return filter(state, ({id}) => id !== action.id);
 	}
