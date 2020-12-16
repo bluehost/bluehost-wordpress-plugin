@@ -6,8 +6,6 @@ import apiFetch from '@wordpress/api-fetch';
  * @param {object} location - ReactRouterDOM location object 
  */
 const sendPageview = (location) => {
-    console.log('recording pageview!');
-    console.dir(location);
     let payload = {
         category: 'Admin',
         action: 'pageview',
@@ -23,7 +21,6 @@ const sendPageview = (location) => {
         method: 'POST', 
         data: payload
     };
-    console.log( request );
     apiFetch(request);
 };
 
