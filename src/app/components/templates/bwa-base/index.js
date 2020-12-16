@@ -1,32 +1,34 @@
+import { Component, createRef, useEffect } from '@wordpress/element';
+
 /**
  * WordPress dependencies
  */
 import { Speak } from '@wordpress/a11y';
-import { Component, createRef, useEffect } from '@wordpress/element';
+import classnames from 'classnames';
+import kebabCase from 'lodash/kebabCase';
+/**
+ * Internal dependencies
+ */
+import { sendPageview } from '@app/functions';
 /**
  * External dependencies
  */
 import { useLocation } from 'react-router-dom';
-import kebabCase from 'lodash/kebabCase';
 import without from 'lodash/without';
-import classnames from 'classnames';
 
-/**
- * Internal dependencies
- */
 // import './style.scss';
 
 const BWABaseTemplate = ({
 	type = "base",
 	...props 
 }) => {
-	const topLevelPage 	= 'toplevel_page_bluehost';
-	const menuItemClass = 'bluehost-wp-menu-item';
+	const topLevelPage 	= 'toplevel_page_bluehost'; // wordpress-generated DOM ID
+	const menuItemClass = 'bluehost-wp-menu-item'; // special classname for handling highlights
 	const pageContainer = document.querySelector('.bwa-page-contents');
+	const routerLocation = useLocation();
 
 	const handleContainerFocus = () => {
-		let location = useLocation();
-		if ( location.state && location.state.setFocus ) {
+		if ( routerLocation.state && routerLocation.state.setFocus ) {
 			pageContainer.focus( { preventScroll: true } );
 		}
 	}
@@ -35,7 +37,7 @@ const BWABaseTemplate = ({
 		const primaryNode = window.document.querySelector( '#' + topLevelPage );
 			
 		if ( 'undefined' !== typeof primaryNode.dataset && primaryNode.dataset.augmented ) {
-			return;
+			return; // if data-augmented="1", don't re-augment
 		}
 	
 		augmentWPMenu();
@@ -47,6 +49,7 @@ const BWABaseTemplate = ({
 		removeWPMenuActiveHighlight();
 		try {
 			let slug = getTopLevelActiveHighlightSlug();
+			console.log( '.' + menuItemClass + '.' + slug );
 			const liToActivate = document.querySelector( '.' + menuItemClass + '.' + slug );
 			const bluehostWpSubMenuNode = document.querySelector( '#' + topLevelPage + ' ul' );
 			if ( liToActivate && bluehostWpSubMenuNode ) {
@@ -60,7 +63,7 @@ const BWABaseTemplate = ({
 
 	const augmentWPMenu = () => {
 		const menuItems = Array.from( window.document.querySelectorAll( '#' + topLevelPage + ' > ul > li' ) );
-		menuItems.splice( 0, 2 );
+		menuItems.splice( 0, 2 ); // skip first two line items to only include submenu lin items
 		menuItems.forEach( function( li ) {
 			const className = kebabCase( li.innerText );
 			li.classList.add( menuItemClass, className );
@@ -77,6 +80,9 @@ const BWABaseTemplate = ({
 		}
 	}
 	
+	/**
+	 * Loop over all .bluehost-wp-menu-item, remove .current
+	 */
 	const removeWPMenuActiveHighlight = () => {
 		const bluehostWpMenuItems = Array.from( document.querySelectorAll( '#' + topLevelPage + ' .' + menuItemClass ) );
 		bluehostWpMenuItems.forEach( function( menuItem ) {
@@ -85,53 +91,37 @@ const BWABaseTemplate = ({
 	}
 
 	/**
-	*/
+	 * Use router location to figure out top-level page to highlight, if any.
+	 */
 	const getTopLevelActiveHighlightSlug = () => {
-		let location = useLocation();
-		let currentPath = location.pathname;
-		let topLevelPages = Object.values( window.bluehost.app.pages );
+		let slug 			= false;
+		let currentPath 	= routerLocation.pathname;
+		let topLevelLabels 	= Object.keys( window.bluehost.app.pages );
 
-		if ( topLevelPages.includes( currentPath ) ) {
-			return currentPath;
+		if ( topLevelLabels.includes( currentPath.substring(1) ) ) {
+			slug = currentPath.substring(1);
 		}
 
-
-		topLevelPages.forEach( item = ( page, data ) => {
-			if ( raw.includes( '/' + page ) ) {
-				raw = page;
+		topLevelLabels.forEach( ( pageLabel ) => {
+			let classnameToTarget = kebabCase( pageLabel );
+			if ( currentPath.includes( '/' + classnameToTarget ) ) {
+				slug = classnameToTarget;
 			}
 		})
 
-		if ( raw === location.pathname ) {
-			return false;
-		}
-
-		return raw;
+		return slug;
 	}
-	// const handleAppContainerClass = () => {
-	// 	const appContainer = document.getElementById( 'bwa-app' );
-	// 	let appContainerClasses = [...appContainer.classList];
-	// 	console.log( 'before:' );
-	// 	console.dir([...appContainer.classList]);
-	// 	appContainerClasses.forEach( ( className ) => {
-	// 		if(className.includes('route-template-')) {
-	// 			appContainer.classList.remove = className;
-	// 		}
-	// 	})
-	// 	appContainer.classList.add( 'route-template-' + type );
-	// }
-	// grab location from react-router-dom
-	handleContainerFocus();
-	handleWPMenuAugmentation();
-	handleWPMenuActiveHighlight();
 
-	// useEffect(() => {
-	// 	handleAppContainerClass();
-	// }, [type]);
+	useEffect(() => {
+		handleContainerFocus();
+		handleWPMenuAugmentation();
+		handleWPMenuActiveHighlight();
+		sendPageview(routerLocation);
+	}, [routerLocation.pathname]);
 
 	return (
 		<section 
-			ref={ ( container ) => ( pageContainer => container ) }
+			// ref={ ( container ) => ( pageContainer => container ) }
 			className={ 
 				classnames([
 					'component-template-' + type,

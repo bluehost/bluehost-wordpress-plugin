@@ -1,4 +1,5 @@
 import apiFetch from '@wordpress/api-fetch';
+import sendPageview from './sendPageview';
 
 /**
  * Add query params to a URL.
@@ -74,3 +75,5 @@ export function sendEvent(event) {
 	event.data.page = window.location.href;
 	apiFetch({path: `/bluehost/v1/data/events/`, method: 'POST', data: event});
 }
+
+export { sendPageview };

@@ -33,11 +33,11 @@ const AppBody = ( props ) => {
 	dispatch( 'bluehost/plugin' ).fetchWindowData();
 	// 2. Tap location object from react-router-dom.
 	let location = useLocation();
-	// 3. Create Focus Refs
-	let desktopNavRef 	= useRef(null);
-	let pageContainerRef = useRef(null);
-
 	const kebabRoute = kebabCase( location.pathname );
+	// 3. Create Focus Refs
+	// let desktopNavRef 	= useRef(null);
+	// let pageContainerRef = useRef(null);
+	
 	const handleNavFocus = ( event ) => {
 		event.preventDefault();
 		if ( event.keycode && ENTER !== event.keycode ) {
@@ -45,6 +45,7 @@ const AppBody = ( props ) => {
 		}
 		// desktopNavRef.current.focus({ preventScroll: true });
 	}
+
 	const handleContentFocus = ( event ) => {
 		event.preventDefault();
 		if ( event.keycode && ENTER !== event.keycode ) {
@@ -52,6 +53,7 @@ const AppBody = ( props ) => {
 		}
 		// pageContainerRef.current.focus({ preventScroll: true });
 	}
+
 	const SkipLink = ( { href = '#', onClick, onKeyDown, children } ) => (
 		<a 
 			className="screen-reader-shortcut bwa-skip-link" 
@@ -62,6 +64,7 @@ const AppBody = ( props ) => {
 			{ children }
 		</a>
 	);
+	
 	return (
 		<main 
 			id="bwa-app" 

@@ -6,3 +6,4 @@ export { default as BWAToggle } from './bwa-toggle';
 export { default as BWADropdown } from './bwa-dropdown';
 export { default as BWAPagination } from './bwa-pagination';
 export { default as BWATooltip } from './bwa-tooltip';
+export { default as BWARedirect } from './bwa-redirect';

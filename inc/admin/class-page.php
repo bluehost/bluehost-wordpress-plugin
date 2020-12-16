@@ -117,20 +117,13 @@ class Bluehost_Admin_App_Page {
 			$label = self::to_label( $slug );
 			add_submenu_page(
 				'bluehost',
-				self::to_label( $label ),
+				$label,
 				$label,
 				'manage_options',
 				'bluehost#' . $path,
 				array( $this, 'handle_subpage_redirect' )
 			);
 		}
-	}
-
-	/**
-	 * Handle subpage redirect
-	 */
-	public function handle_subpage_redirect() {
-		// TODO: Add button to go to Plugin Home
 	}
 
 	/**

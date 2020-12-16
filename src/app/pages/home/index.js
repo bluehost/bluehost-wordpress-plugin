@@ -1,10 +1,13 @@
 import './style.scss';
 
+import { Redirect, useLocation } from 'react-router-dom';
+
+import { BWACommonTemplate } from '@app/components/templates';
+import BWAContentList from './content';
 /**
  * Project dependencies
  */
-import { BWACommonTemplate } from '@app/components/templates';
-import BWAContentList from './content';
+import { BWARedirect } from '@app/components/atoms';
 import ComingSoonNotice from './coming-soon-notice';
 import DesignBuildSection from './design-build';
 import { Fragment } from '@wordpress/element';
@@ -23,6 +26,7 @@ import { update } from 'lodash';
 import { useSelect } from '@wordpress/data';
 
 const Home = () => {
+	const location = useLocation();
 	const daysSinceInstall = useSelect((select) => {
 		return select('bluehost/plugin').getBluehostPluginDaysSinceInstall();
 	}, []);
@@ -32,30 +36,24 @@ const Home = () => {
 	}, []);
 
 	const showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
+	// const showOnboarding = true;
 
-	return (
-		<BWACommonTemplate>
-			<div className="page-home__container">
-				{
-					showOnboarding ?
-						(
-							<Onboarding />
-						) :
-						(
-							<Fragment>
-								<Welcome />
-								<ComingSoonNotice />
-								<BWAContentList />
-								<DesignBuildSection />
-								<TrafficEngagementSection />
-								<PerformanceSection />
-								<HostingSection />
-							</Fragment>
-						)
-				}
-			</div>
-		</BWACommonTemplate>
-	);
+	return showOnboarding 
+			? <BWARedirect to="/home/onboarding" currentLocation={location} /> 
+			: (
+				<BWACommonTemplate>
+					<div className="page-home__container">
+						<Welcome />
+						<ComingSoonNotice />
+						<BWAContentList />
+						<DesignBuildSection />
+						<TrafficEngagementSection />
+						<PerformanceSection />
+						<HostingSection />
+							
+					</div>
+				</BWACommonTemplate>
+			);
 };
 
 export default Home;
