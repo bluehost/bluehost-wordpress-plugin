@@ -16,6 +16,7 @@ add_action(
 			'jetpack_connected',
 			'first_post_published',
 			'fifth_post_published',
+			'plugin_search',
 		);
 		if ( in_array( $key, $events, true ) ) {
 			$notifications = get_transient( 'bluehost_notifications' );

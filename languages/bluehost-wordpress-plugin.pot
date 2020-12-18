@@ -2,7 +2,7 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bluehost 2.4.0\n"
+"Project-Id-Version: Bluehost 2.5.0\n"
 "Report-Msgid-Bugs-To: https://github.com/bluehost/bluehost-wordpress-plugin/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,7 +111,7 @@ msgid "Endurance Page Cache plugin is not installed."
 msgstr ""
 
 #: inc/RestApi/CachingController.php:67
-#: inc/RestApi/SettingsController.php:189
+#: inc/RestApi/SettingsController.php:195
 msgid "Sorry, you are not allowed to access this endpoint."
 msgstr ""
 
@@ -153,13 +153,13 @@ msgid "Unable to parse JSON"
 msgstr ""
 
 #. translators: %s Settings > General page URL.
-#: inc/updates.php:112
-#: inc/updates.php:140
-#: inc/updates.php:167
+#: inc/updates.php:117
+#: inc/updates.php:145
+#: inc/updates.php:172
 msgid "Auto-updates enabled on the <a href=\"%s\">Bluehost > Settings</a> page."
 msgstr ""
 
-#: inc/updates.php:163
+#: inc/updates.php:168
 msgid "Auto-updates enabled"
 msgstr ""
 
