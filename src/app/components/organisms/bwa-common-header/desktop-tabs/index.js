@@ -1,13 +1,14 @@
-/**
- * WordPress dependencies
- */
-import { __ } from '@wordpress/i18n';
+import './style.scss';
+
 /**
  * Internal dependencies
  */
 import { BWANavLink as NavLink } from '@app/components/atoms';
-import mainMenuItems from '../main-menu';
-import './style.scss';
+/**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+import { useSelect } from '@wordpress/data';
 
 const DesktopTab = ( { item, ...props } ) => (
 	<li
@@ -25,12 +26,17 @@ const DesktopTab = ( { item, ...props } ) => (
 	</li>
 );
 
-const DesktopTabs = () => (
-	<nav className="bwa-desktop-nav__inner">
-		<ul className="bwa-desktop-nav__items">
-			{ mainMenuItems.map( ( item ) => <DesktopTab item={ item } key={ item.slug } /> ) }
-		</ul>
-	</nav>
-);
+const DesktopTabs = () => {
+	const topLevelPages = useSelect((select) => {
+		return select('bluehost/plugin').getTopLevelPages();
+	}, []);
+	return (
+		<nav className="bwa-desktop-nav__inner">
+			<ul className="bwa-desktop-nav__items">
+				{ topLevelPages.map( ( item ) => <DesktopTab item={ item } key={ item.slug } /> ) }
+			</ul>
+		</nav>
+	);
+}
 
 export default DesktopTabs;

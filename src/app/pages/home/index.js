@@ -15,10 +15,10 @@ import HostingSection from './hosting';
 /**
  * Component dependencies
  */
-import Onboarding from './onboarding';
 import PerformanceSection from './performance';
 import TrafficEngagementSection from './traffic-engagement';
 import Welcome from './welcome';
+import { __ } from '@wordpress/i18n';
 import { update } from 'lodash';
 /**
  * WordPress Dependencies
@@ -36,12 +36,11 @@ const Home = () => {
 	}, []);
 
 	const showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
-	// const showOnboarding = true;
 
 	return showOnboarding 
 			? <BWARedirect to="/home/onboarding" currentLocation={location} /> 
 			: (
-				<BWACommonTemplate>
+				<BWACommonTemplate descriptivePageTitle={__('Home', 'bluehost-wordpress-plugin')}>
 					<div className="page-home__container">
 						<Welcome />
 						<ComingSoonNotice />
@@ -50,7 +49,6 @@ const Home = () => {
 						<TrafficEngagementSection />
 						<PerformanceSection />
 						<HostingSection />
-							
 					</div>
 				</BWACommonTemplate>
 			);

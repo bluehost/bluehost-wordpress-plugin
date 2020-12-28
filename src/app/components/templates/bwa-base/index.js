@@ -1,93 +1,29 @@
-import { Component, createRef, useEffect } from '@wordpress/element';
+import { handleWPMenuActiveHighlight, handleWPMenuAugmentation, sendPageviewEvent } from '@app/functions';
 
-/**
- * WordPress dependencies
- */
-import { Speak } from '@wordpress/a11y';
+import { BWAPageNotices } from '@app/components/molecules';
+import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
-import kebabCase from 'lodash/kebabCase';
-/**
- * Internal dependencies
- */
-import { sendPageview } from '@app/functions';
-/**
- * External dependencies
- */
+import keyBy from 'lodash/keyBy';
+import { speak } from '@wordpress/a11y';
+import { useEffect } from '@wordpress/element';
 import { useLocation } from 'react-router-dom';
-import without from 'lodash/without';
+import { useSelect } from '@wordpress/data';
 
 // import './style.scss';
 
 const BWABaseTemplate = ({
 	type = "base",
+	descriptivePageTitle = false,
 	...props 
 }) => {
-	const topLevelPage 	= 'toplevel_page_bluehost'; // wordpress-generated DOM ID
-	const menuItemClass = 'bluehost-wp-menu-item'; // special classname for handling highlights
-	const pageContainer = document.querySelector('.bwa-page-contents');
+	const pageContainer = document.querySelector('.bwa-route-contents');
 	const routerLocation = useLocation();
+	const topLevelPages = useSelect((select) => {
+		return select('bluehost/plugin').getTopLevelPages();
+	}, []);
 
-	const handleContainerFocus = () => {
-		if ( routerLocation.state && routerLocation.state.setFocus ) {
-			pageContainer.focus( { preventScroll: true } );
-		}
-	}
-	
-	const handleWPMenuAugmentation = () => {
-		const primaryNode = window.document.querySelector( '#' + topLevelPage );
-			
-		if ( 'undefined' !== typeof primaryNode.dataset && primaryNode.dataset.augmented ) {
-			return; // if data-augmented="1", don't re-augment
-		}
-	
-		augmentWPMenu();
-	
-		primaryNode.setAttribute( 'data-augmented', 1 );
-	}
-	
-	const handleWPMenuActiveHighlight = () => {
-		removeWPMenuActiveHighlight();
-		try {
-			let slug = getTopLevelActiveHighlightSlug();
-			console.log( '.' + menuItemClass + '.' + slug );
-			const liToActivate = document.querySelector( '.' + menuItemClass + '.' + slug );
-			const bluehostWpSubMenuNode = document.querySelector( '#' + topLevelPage + ' ul' );
-			if ( liToActivate && bluehostWpSubMenuNode ) {
-				liToActivate.classList.add( 'current' );
-				bluehostWpSubMenuNode.style = 'display: block;';
-			}
-		} catch ( e ) {
-			console.error( e.message );
-		}
-	}
-
-	const augmentWPMenu = () => {
-		const menuItems = Array.from( window.document.querySelectorAll( '#' + topLevelPage + ' > ul > li' ) );
-		menuItems.splice( 0, 2 ); // skip first two line items to only include submenu lin items
-		menuItems.forEach( function( li ) {
-			const className = kebabCase( li.innerText );
-			li.classList.add( menuItemClass, className );
-			li.setAttribute( 'data-' + menuItemClass, className );
-		} );
-	
-		try {
-			const elem = window.document.querySelector( 'a.' + topLevelPage );
-			if ( ! elem.href.includes('#/home') ) {
-				elem.href = elem.href + '#/home';
-			}
-		} catch ( e ) {
-			console.log( 'Couldn\'t find Bluehost Menu Element to swap href' );
-		}
-	}
-	
-	/**
-	 * Loop over all .bluehost-wp-menu-item, remove .current
-	 */
-	const removeWPMenuActiveHighlight = () => {
-		const bluehostWpMenuItems = Array.from( document.querySelectorAll( '#' + topLevelPage + ' .' + menuItemClass ) );
-		bluehostWpMenuItems.forEach( function( menuItem ) {
-			menuItem.classList.remove( 'current' );
-		} );
+	if ( null === topLevelPages || 'undefined' === typeof topLevelPages ) {
+		return false;
 	}
 
 	/**
@@ -96,32 +32,45 @@ const BWABaseTemplate = ({
 	const getTopLevelActiveHighlightSlug = () => {
 		let slug 			= false;
 		let currentPath 	= routerLocation.pathname;
-		let topLevelLabels 	= Object.keys( window.bluehost.app.pages );
+		let topLevelPaths 	= keyBy(topLevelPages, 'path');
 
-		if ( topLevelLabels.includes( currentPath.substring(1) ) ) {
-			slug = currentPath.substring(1);
+		if ( topLevelPaths[ currentPath ] ) {
+			slug = topLevelPaths[ currentPath ].slug;
+		} else {
+			topLevelPages.forEach( ( pageData ) => {
+				if ( currentPath.includes( pageData.path ) ) {
+					slug = pageData.slug;
+				}
+			})
 		}
-
-		topLevelLabels.forEach( ( pageLabel ) => {
-			let classnameToTarget = kebabCase( pageLabel );
-			if ( currentPath.includes( '/' + classnameToTarget ) ) {
-				slug = classnameToTarget;
-			}
-		})
 
 		return slug;
 	}
 
+	const getDescriptivePageTitle = () => {
+		const defaultTitle = __( 'Bluehost WordPress Plugin', 'bluehost-wordpress-plugin');
+		const pageTitle = document.querySelector('h2');
+		if ( false !== descriptivePageTitle ) {
+			return descriptivePageTitle
+		} else if ( null !== pageTitle ) {
+			return pageTitle.innerText;
+		} else {
+			return defaultTitle;
+		}
+	}
+
 	useEffect(() => {
-		handleContainerFocus();
-		handleWPMenuAugmentation();
-		handleWPMenuActiveHighlight();
-		sendPageview(routerLocation);
+		handleWPMenuAugmentation(topLevelPages);
+		handleWPMenuActiveHighlight( getTopLevelActiveHighlightSlug() );
+		pageContainer.focus({ preventScroll: true });
+		if ( routerLocation.state && routerLocation.state.redirect !== 'unspecified-or-root' ) {
+			speak( getDescriptivePageTitle(), 'assertive' );
+		}
+		sendPageviewEvent(routerLocation, getDescriptivePageTitle() );
 	}, [routerLocation.pathname]);
 
 	return (
 		<section 
-			// ref={ ( container ) => ( pageContainer => container ) }
 			className={ 
 				classnames([
 					'component-template-' + type,
@@ -132,6 +81,7 @@ const BWABaseTemplate = ({
 					props.className ? props.className : null
 				]) 
 			}>
+			<BWAPageNotices />
 			{props.children}
 		</section>
 	);

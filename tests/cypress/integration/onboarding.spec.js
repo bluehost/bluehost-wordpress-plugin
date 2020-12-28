@@ -21,7 +21,7 @@ describe('Onboarding', function () {
 
 	it('Is Accessible', () => {
 		cy.wait(200);
-		cy.checkA11y('.bwa-page-contents');
+		cy.checkA11y('.bwa-route-contents');
 	});
 
 	describe('Homepage', () => {

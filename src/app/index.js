@@ -26,24 +26,28 @@ import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 import { dispatch } from '@wordpress/data';
 import kebabCase from 'lodash/kebabCase';
-import { useRef } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 
 const AppBody = ( props ) => {
-	// 1. Import PHP-generated data to store for SOT.
-	dispatch( 'bluehost/plugin' ).fetchWindowData();
+	const [isAppBooted, setAppBooted] = useState(false);
+	// 1. Import PHP-generated data to store.
+	if ( ! isAppBooted ) {
+		dispatch( 'bluehost/plugin' ).fetchWindowData();
+		setAppBooted(true);
+	}
 	// 2. Tap location object from react-router-dom.
 	let location = useLocation();
-	const kebabRoute = kebabCase( location.pathname );
-	// 3. Create Focus Refs
-	// let desktopNavRef 	= useRef(null);
-	// let pageContainerRef = useRef(null);
+	let kebabRoute = kebabCase( location.pathname );
 	
 	const handleNavFocus = ( event ) => {
 		event.preventDefault();
 		if ( event.keycode && ENTER !== event.keycode ) {
 			return;
 		}
-		// desktopNavRef.current.focus({ preventScroll: true });
+		const desktopTabs = document.querySelector('.bwa-desktop-nav__items');
+		if ( desktopTabs ) {
+			desktopTabs.focus({ preventScroll: true })
+		}
 	}
 
 	const handleContentFocus = ( event ) => {
@@ -51,7 +55,10 @@ const AppBody = ( props ) => {
 		if ( event.keycode && ENTER !== event.keycode ) {
 			return;
 		}
-		// pageContainerRef.current.focus({ preventScroll: true });
+		const routeContents = document.querySelector('.bwa-route-contents');
+		if ( routeContents ) {
+			routeContents.focus({ preventScroll: true })
+		}
 	}
 
 	const SkipLink = ( { href = '#', onClick, onKeyDown, children } ) => (
@@ -94,9 +101,7 @@ const AppBody = ( props ) => {
 }
 
 export const App = () => (
-	<ErrorBoundary
-		FallbackComponent={BWAError}
-	>
+	<ErrorBoundary FallbackComponent={BWAError}>
 		<Router>
 			<AppBody />
 		</Router>

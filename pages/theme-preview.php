@@ -55,7 +55,7 @@ if ( is_wp_error( $theme ) ) {
 						<div class="theme-details text-center">
 							<div role="group" class="btn-group-horizontal">
 								<a class="button components-button bluehost is-default"
-								   href="<?php echo esc_url( admin_url( 'admin.php?page=bluehost#/marketplace/product/' . $item_id ) ); ?>">
+								   href="<?php echo esc_url( admin_url( 'admin.php?page=bluehost#/marketplace/themes/' . $item_id ) ); ?>">
 									<?php esc_html_e( 'Details', 'bluehost-wordpress-plugin' ); ?>
 								</a>
 								<a class="button components-button bluehost is-primary"

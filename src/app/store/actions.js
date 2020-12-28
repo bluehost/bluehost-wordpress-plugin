@@ -1,13 +1,13 @@
 /**
+ * Internal Dependencies
+ */
+import { SETTINGS_ENDPOINT, STORE_KEY } from './constants.js';
+
+import { apiFetch } from './controls.js';
+/**
  * WordPress Dependencies
  */
 import { select } from '@wordpress/data';
-
-/**
- * Internal Dependencies
- */
-import { STORE_KEY, SETTINGS_ENDPOINT } from './constants.js';
-import { apiFetch } from './controls.js';
 
 export function openMobileSidebar() {
 	return {
@@ -42,13 +42,7 @@ export function fetchWindowData() {
 		adminColors: window._wpColorScheme.icons,
 		userId: window.userSettings.uid,
 	};
-	window.bluehost = { 
-		adminColors: window._wpColorScheme.icons,
-		app: { ...window.bluehost.app, nonce: false }, 
-		env: { ...window.bluehost.env },
-		userId: window.userSettings.uid,
-		movedToStore: true,
-	};
+	window.bluehost = { movedToStore: true };
 	return data;
 }
 

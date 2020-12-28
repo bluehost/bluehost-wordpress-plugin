@@ -1,18 +1,18 @@
-import { __ } from '@wordpress/i18n';
-import apiFetch from '@wordpress/api-fetch';
-import { useState } from '@wordpress/element';
-import { getFragment } from '@wordpress/url';
-import replace from "lodash/replace";
+import './style.scss';
 
 import { BWAButton as Button, BWASpinner as Spinner } from '@app/components/atoms';
 import { ErrorStateImage, WarningIcon } from '@app/assets';
-import { addUtmParams } from '@app/functions';
 
-import './style.scss';
+import { __ } from '@wordpress/i18n';
+import { addUtmParams } from '@app/functions';
+import apiFetch from '@wordpress/api-fetch';
+import { getFragment } from '@wordpress/url';
+import replace from "lodash/replace";
+import { useState } from '@wordpress/element';
 
 const resolvePageUrl = () => {
-	if ( 'undefined' !== typeof window.bluehost) {
-		return window.bluehost.app.adminUrl + 'admin.php?page=bluehost';
+	if ( 'undefined' !== typeof window.bluehostWpAdminUrl) {
+		return window.bluehostWpAdminUrl + 'admin.php?page=bluehost';
 	} else {
 		let url = window.location.href;
 		return replace( url, getFragment(url), '' ); // nix fragment

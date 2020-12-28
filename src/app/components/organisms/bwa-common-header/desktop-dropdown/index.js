@@ -1,29 +1,9 @@
-/**
- * `@wordpress dependencies`
- */
-/**
- * WordPress dependencies
- */
-import { Dropdown } from '@wordpress/components';
-/**
- * `Project dependencies`
- */
-/**
- * External dependencies
- */
-import { UserIcon } from '@app/assets';
-
-/**
- * `Component dependencies`
- */
-/**
- * Internal dependencies
- */
 import './style.scss';
+
+import { Dropdown } from '@wordpress/components';
+import { UserIcon } from '@app/assets';
 import userMenuItems from '../user-menu';
-/**
- * 
- */
+
 const DesktopDropdown = () => (
 	<Dropdown
 		className="bluehost-nav-wrap-element user-menu"

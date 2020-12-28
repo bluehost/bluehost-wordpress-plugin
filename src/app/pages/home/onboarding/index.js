@@ -53,7 +53,7 @@ export default function Onboarding() {
 	);
 
 	return (
-		<BWACommonTemplate>
+		<BWACommonTemplate descriptivePageTitle={__('Onboarding', 'bluehost-wordpress-plugin')}>
 			<div className="bluehost-onboarding">
 
 				<header className="bluehost-onboarding-page-header">

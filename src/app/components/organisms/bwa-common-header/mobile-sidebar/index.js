@@ -1,9 +1,4 @@
-/**
- * WordPress dependencies
- */
-import { Popover } from '@wordpress/components';
-import { withState } from '@wordpress/compose';
-import { dispatch } from '@wordpress/data';
+import './style.scss';
 
 /**
  * Project dependencies
@@ -18,35 +13,41 @@ import {
 	MenuIcon,
 	UserIcon,
 } from '@app/assets';
-
-
 import {
 	BWAButton as Button,
 	BWANavLink as NavLink,
 } from '@app/components/atoms';
-import { addUtmParams } from '@app/functions';
+import { dispatch, useSelect } from '@wordpress/data';
 
+/**
+ * WordPress dependencies
+ */
+import { Popover } from '@wordpress/components';
+import { addUtmParams } from '@app/functions';
 /**
  * Component dependencies
  */
 /**
  * Internal dependencies
  */
-import mainMenuItems from '../main-menu';
 import userMenuItems from '../user-menu';
+import { withState } from '@wordpress/compose';
 
-import './style.scss';
-
-const PrimaryMenu = () => (
-	<ul className="main">
-		{ mainMenuItems.map((item) => (
-				<li className={ ['tab ' + item.slug] } key={ item.slug }>
-					<NavLink to={ item.path } activeClassName="is-active">{ item.label }</NavLink>
-				</li>
-			)
-		) }
-	</ul>
-);
+const PrimaryMenu = () => {
+	const topLevelPages = useSelect((select) => {
+		return select('bluehost/plugin').getTopLevelPages();
+	}, []);
+	return (
+		<ul className="main">
+			{ topLevelPages.map((item) => (
+					<li className={ ['tab ' + item.slug] } key={ item.slug }>
+						<NavLink to={ item.path } activeClassName="is-active">{ item.label }</NavLink>
+					</li>
+				)
+			) }
+		</ul>
+	);
+};
 
 const UserMenu = () => (
 	<ul className="user">

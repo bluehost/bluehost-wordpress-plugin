@@ -23,23 +23,9 @@ const app = (state = DEFAULT_STATE.app, action) => {
 	switch (action.type) {
 		case 'FETCH_WINDOW_DATA':
 			return {
+				...state.app,
 				...action.bluehost.app,
 				colors: {...action.adminColors},
-			};
-		case 'SET_ACTIVE_PAGE':
-			return {
-				...state,
-				activePage: action.activePage,
-			};
-		case 'SET_TOP_LEVEL':
-			return {
-				...state,
-				isTopLevel: action.isTopLevel,
-			};
-		case 'AUGMENT_WP_ADMIN_MENU':
-			return {
-				...state,
-				isWPMenuAugmented: true,
 			};
 	}
 
@@ -50,6 +36,7 @@ const env = (state = DEFAULT_STATE.env, action) => {
 	switch (action.type) {
 		case 'FETCH_WINDOW_DATA':
 			return {
+				...state.env,
 				...action.bluehost.env,
 			};
 	}
@@ -59,14 +46,12 @@ const env = (state = DEFAULT_STATE.env, action) => {
 
 const notifications = (state = DEFAULT_STATE.notifications, action) => {
 	switch (action.type) {
-		// case 'FETCH_WINDOW_DATA':
-		// 	return [
-		// 		...action.bluehost.notifications,
-		// 	];
+		case 'FETCH_WINDOW_DATA':
+			return action.bluehost.notifications;
 		case 'DISMISS_NOTIFICATION':
 			return filter(state, ({id}) => id !== action.id);
 	}
-	return state;
+	return state.notifications;
 };
 
 const settings = (state = DEFAULT_STATE.settings, action) => {
@@ -81,7 +66,7 @@ const settings = (state = DEFAULT_STATE.settings, action) => {
 			return newState;
 	}
 
-	return state;
+	return state.settings;
 };
 
 const wp = (state = DEFAULT_STATE.wp, action) => {
@@ -93,7 +78,7 @@ const wp = (state = DEFAULT_STATE.wp, action) => {
 			};
 	}
 
-	return state;
+	return state.wp;
 };
 
 /**

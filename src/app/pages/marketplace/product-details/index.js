@@ -1,30 +1,26 @@
-import { ucFirst } from 'change-case';
-import { __, sprintf } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
-import { decodeEntities } from '@wordpress/html-entities';
-
-import { BWACommonTemplate } from '@app/components/templates';
-
-import { BWAButton as Button, BWASpinner } from '@app/components/atoms';
-import { get } from '@app/functions';
-import { useMojoApi } from '@app/hooks';
-import { ErrorStateImage } from '@app/assets';
-
 import './style.scss';
 
-export default function ProductDetails( { id } ) {
+import { BWARedirect, BWASpinner, BWAButton as Button } from '@app/components/atoms';
+import { __, sprintf } from '@wordpress/i18n';
+import { useEffect, useState } from '@wordpress/element';
+
+import { BWACommonTemplate } from '@app/components/templates';
+import { ErrorStateImage } from '@app/assets';
+import { decodeEntities } from '@wordpress/html-entities';
+import { get } from '@app/functions';
+import { ucFirst } from 'change-case';
+import { useLocation } from 'react-router-dom';
+import { useMojoApi } from '@app/hooks';
+
+export default function ProductDetails( { id, redirect = false } ) {
 	const [ item, setItem ] = useState( null );
 	const [ type, setType ] = useState( null );
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'items', { id } );
+	const location = useLocation();
 
 	/* translators: %s is one of Themes, Plugins, or Services */
 	const header = sprintf( __( 'Premium %s', 'bluehost-wordpress-plugin' ), type );
 	const breadcrumbText = header;
-
-	if ( null !== type ) {
-		console.log( 'setting...' );
-		console.log( type );
-	}
 
 	useEffect( () => {
 		setItem( get( [ 'items', 0 ], payload ) );
@@ -86,7 +82,16 @@ export default function ProductDetails( { id } ) {
 	const price = parseInt( single_domain_license, 10 );
 	const sales = parseInt( sales_count, 10 ).toLocaleString( { useGrouping: true } );
 
-	return (
+	return redirect ? 
+		<BWARedirect 
+			to={{
+				path: '/marketplace/' + item.type + '/' + id,
+				state: {
+					redirect: 'legacy-single-product-route'
+				}
+			}}
+			currentLocation={location} 
+		/> : (
 		<BWACommonTemplate type="marketplace" className="page-product">
 			<header className="page-product__header">
 				<h1>{ header }</h1>

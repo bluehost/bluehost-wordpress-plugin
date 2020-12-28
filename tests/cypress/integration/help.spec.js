@@ -16,7 +16,7 @@ describe('Help Page', function () {
 
 	it('Is Accessible', () => {
 		cy.wait(1000);
-		cy.checkA11y('.bwa-page-contents');
+		cy.checkA11y('.bwa-route-contents');
 	});
 
 	it('Has chat button', () => {
@@ -30,7 +30,7 @@ describe('Help Page', function () {
 		cy.findByRole('link', {name: 'Get Blue Sky'}).as('link');
 		cy.get('@link').scrollIntoView().should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
-			.and('contain', '#/blue-sky');
+			.and('contain', '#/marketplace/services/blue-sky');
 	});
 
 	it('Has "Full-Service Website" Call to Action', () => {

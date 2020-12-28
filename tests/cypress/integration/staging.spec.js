@@ -107,7 +107,7 @@ describe('Staging Page', function () {
 	});
 
 	it('Is Accessible', () => {
-		cy.checkA11y('.bwa-page-contents');
+		cy.checkA11y('.bwa-route-contents');
 	});
 
 	it('Production site is active', () => {

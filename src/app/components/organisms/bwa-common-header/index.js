@@ -1,26 +1,27 @@
+import './style.scss';
+
 /**
- * WordPress dependencies
+ * External dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { forwardRef } from '@wordpress/element';
+import { BluehostLogo, HelpIcon } from '@app/assets';
+
 /**
  * Project dependencies
  */
 import {
 	BWAHeading,
 } from '@app/components/atoms';
+import DesktopDropdown from './desktop-dropdown';
+import DesktopTabs from './desktop-tabs';
+import MobileSidebar from './mobile-sidebar';
 /**
- * External dependencies
+ * WordPress dependencies
  */
-import { BluehostLogo, HelpIcon } from '@app/assets';
+import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
 import { addUtmParams } from "@app/functions";
-import './style.scss';
-import DesktopTabs from './desktop-tabs';
-import DesktopDropdown from './desktop-dropdown';
-import MobileSidebar from './mobile-sidebar';
 
 const HeaderLogo = () => (
 	<div id="bluehost-logo-wrap">
@@ -50,17 +51,8 @@ const HeaderIcons = () => (
 			<a
 				aria-label="Help"
 				data-testid="help-icon"
-				href={
-					addUtmParams(
-						'https://my.bluehost.com/hosting/help',
-						{
-							utm_content: 'header_help_icon',
-							utm_term: 'Help'
-						}
-					)
-				}
+				href="#/help"
 				rel="noreferrer noopener"
-				target="_blank"
 			>
 				<HelpIcon />
 			</a>
@@ -70,19 +62,17 @@ const HeaderIcons = () => (
 	</div>
 );
 
-const BWACommonHeader = ({ desktopNavRef, showMainNav = true, ...props}) => (
-	<header tabIndex="-1">
+const BWACommonHeader = ({ ...props}) => (
+	<header tabIndex="-1" className="bwa-common-header">
 		<div className="bwa-common-header__brand">
 			<div className="col">
 				<HeaderLogo />
 				<HeaderIcons />
 			</div>
 		</div>
-		{ showMainNav && (
-			<div className="bwa-desktop-nav" tabIndex="-1" data-testid="desktop-nav">
-				<DesktopTabs />
-			</div>
-		)}
+		<div className="bwa-desktop-nav" tabIndex="-1" data-testid="desktop-nav">
+			<DesktopTabs />
+		</div>
 	</header>
 );
 
