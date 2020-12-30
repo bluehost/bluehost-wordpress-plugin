@@ -11,9 +11,12 @@ export const removeWPMenuActiveHighlight = () => {
     } );
 }
 
+/**
+ * Based on 'slug' defined in Bluehost_Admin_App_Assets::get_top_level_pages(), highlight a top-level page.
+ * @param {string} topLevelSlug 
+ */
 export const handleWPMenuActiveHighlight = ( topLevelSlug ) => {
     removeWPMenuActiveHighlight();
-    console.log( 'handleHighlight passed slug: ' + topLevelSlug);
     try {
         const liToActivate = document.querySelector( '[data-' + menuItemClass + '="' + topLevelSlug + '"]' );
         const bluehostWpSubMenuNode = document.querySelector( '#' + topLevelPage + ' ul' );
@@ -22,7 +25,7 @@ export const handleWPMenuActiveHighlight = ( topLevelSlug ) => {
             bluehostWpSubMenuNode.style = 'display: block;';
         }
     } catch ( e ) {
-        console.error( e.message );
+        // 
     }
 }
 

@@ -166,6 +166,11 @@ class Bluehost_Admin_App_Assets {
 			'bluehostPluginPublicPath',
 			$dist_url
 		);
+		wp_localize_script(
+			'bwa-manifest',
+			'bluehostPluginVersion',
+			BLUEHOST_PLUGIN_VERSION
+		);
 		wp_register_script(
 			'bwa-vendors',
 			$dist_url . 'vendors~admin.js',

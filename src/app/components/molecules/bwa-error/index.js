@@ -4,7 +4,6 @@ import { BWAButton as Button, BWASpinner as Spinner } from '@app/components/atom
 import { ErrorStateImage, WarningIcon } from '@app/assets';
 
 import { __ } from '@wordpress/i18n';
-import { addUtmParams } from '@app/functions';
 import apiFetch from '@wordpress/api-fetch';
 import { getFragment } from '@wordpress/url';
 import replace from "lodash/replace";
@@ -71,22 +70,24 @@ const BWAError = ({error, resetErrorBoundary}) => {
 	hideWPSubmenu();
 	restoreWPMenuDefaultURI();
 
-	const errorData = {
+	const errorPayload = {
 		message: error.message,
 		stack: error.stack,
 		date: new Date(),
 		user: window.userSettings ? window.userSettings.uid : 'Unknown',
 		vendor: navigator.vendor ? navigator.vendor : 'Unknown',
 		agent: navigator.userAgent ? navigator.userAgent : 'Unknown',
-		route: replace( getFragment( window.location.href ), '#', ''),
 		url: window.location.href,
 	};
 
+	console.log( 'errorPayload' );
+	console.dir( errorPayload );
+
 	if ( null === errorLogged) {
 		apiFetch({
-			path: '/bluehost/v1/admin-errorz',
+			path: '/bluehost/v1/error/track',
 			method: 'POST',
-			data: errorData
+			data: errorPayload
 		}).then( 
 			response => errorSentSuccessfully(true) 
 		)

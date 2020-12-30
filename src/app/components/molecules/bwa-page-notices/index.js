@@ -11,20 +11,20 @@ const BWAPageNotices = () => {
 	const hashedPath 					= '#' + location.pathname;
 	const allPluginNotices 				= useSelect((select) => {
 		return select('bluehost/plugin').getNotifications();
-	}, [location]);
+	}, [hashedPath]);
 	// TODO: Implement deny-list logic
 	const allNoticeDenyPaths			= useSelect((select) => {
 		const state = select('bluehost/plugin').getBluehostData();
 		return state.app.noticesPathsDenyList;
-	}, [location]);
+	}, [hashedPath]);
 
 	useEffect(() => {
 		const noticesForLocation = filter(allPluginNotices, (notice) => {
 			let displayNotice = false;
-			// reduce notice locations to objects where 'context': 'bluehost-plugin' and step into object
+			
 			const context = filter( notice.locations, [ 'context', 'bluehost-plugin' ] )[0];
 
-			if( 'string' === typeof context.pages && 'all' === context.pages ) {
+			if ( 'string' === typeof context.pages && 'all' === context.pages ) {
 				displayNotice = true; // display on all pages
 			}
 

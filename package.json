@@ -27,6 +27,7 @@
         "algoliasearch": "^4.5.1",
         "animate.css": "^3.7.2",
         "axios": "^0.19.0",
+        "bowser": "^2.11.0",
         "change-case": "^3.1.0",
         "classnames": "^2.2.6",
         "fuse.js": "^3.4.5",

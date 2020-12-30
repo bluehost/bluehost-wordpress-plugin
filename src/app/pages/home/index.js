@@ -37,6 +37,8 @@ const Home = () => {
 
 	const showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
 
+	pewpewpew();
+
 	return showOnboarding 
 			? <BWARedirect to="/home/onboarding" currentLocation={location} /> 
 			: (
