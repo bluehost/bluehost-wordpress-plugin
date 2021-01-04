@@ -51,11 +51,31 @@ class LoginRedirect {
 	 * @return string
 	 */
 	public static function on_login_redirect( $redirect_to, $requested_redirect_to, $user ) {
-		if ( empty( $requested_redirect_to ) && self::is_administrator( $user ) ) {
-			return self::get_bluehost_dashboard_url();
+
+		if ( self::is_user( $user ) ) {
+			// If no redirect is defined and the user is an administrator, redirect to the Bluehost dashboard.
+			if ( empty( $requested_redirect_to ) && self::is_administrator( $user ) ) {
+				return self::get_bluehost_dashboard_url();
+			}
+
+			// If the user isn't an admin and the redirect is to the Bluehost dashboard, point them to the WP dashboard instead.
+			if ( ! self::is_administrator( $user ) && self::is_bluehost_redirect( $requested_redirect_to ) ) {
+				return admin_url( '/' );
+			}
 		}
 
 		return $redirect_to;
+	}
+
+	/**
+	 * Check if we have a valid user.
+	 *
+	 * @param \WP_User $user The WordPress user object.
+	 *
+	 * @return bool
+	 */
+	public static function is_user( $user ) {
+		return $user && is_object( $user ) && is_a( $user, 'WP_User' );
 	}
 
 	/**
@@ -65,8 +85,19 @@ class LoginRedirect {
 	 *
 	 * @return bool
 	 */
-	public static function is_administrator( \WP_User $user ) {
-		return $user && is_object( $user ) && is_a( $user, 'WP_User' ) && $user->has_cap( 'administrator' );
+	public static function is_administrator( $user ) {
+		return self::is_user( $user ) && $user->has_cap( 'manage_options' );
+	}
+
+	/**
+	 * Check if the current redirect is to the Bluehost plugin.
+	 *
+	 * @param string $redirect The current redirect URL.
+	 *
+	 * @return bool
+	 */
+	public static function is_bluehost_redirect( $redirect ) {
+		return false !== strpos( $redirect, admin_url( 'admin.php?page=bluehost' ) );
 	}
 
 	/**
