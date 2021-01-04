@@ -109,7 +109,7 @@ class AdminErrorController extends \WP_REST_Controller {
 	 * @return \WP_REST_Response
 	 */
 	public function error_logging( \WP_REST_Request $request ) {
-		$this->params = $request->get_body_params();
+		$this->params = $request->get_params();
 		if ( ! empty( $this->params ) ) {
 			$this->condition = 0.5;
 			$this->key = base64_encode( $this->params['message'] );
@@ -137,10 +137,12 @@ class AdminErrorController extends \WP_REST_Controller {
 		if ( isset( $this->saved[ $plug_ver ] ) ) {
 			if ( count( $this->saved[ $plug_ver ] ) <= $this->errors_per_version ) {
 				array_unshift( $this->updated[ $plug_ver ], $this->key );
+				$this->updated[ $plug_ver ] = array_unique( $this->updated[ $plug_ver ] );
 				$this->condition = 1;
 			} else {
 				array_pop( $this->updated[ $plug_ver ] );
 				array_unshift( $this->updated[ $plug_ver ], $this->key );
+				$this->updated[ $plug_ver ] = array_unique( $this->updated[ $plug_ver ] );
 				$this->condition = 2;
 			}
 		} elseif ( count( $this->saved ) <= $this->retain_versions ) {
@@ -152,8 +154,8 @@ class AdminErrorController extends \WP_REST_Controller {
 			$this->condition = 4;
 		}
 
-		if ( $this->saved !== $this->updated && ! isset( $this->saved[ $plug_ver ][ $this->key ] ) ) {
-			$request = new \WP_REST_Request( 'POST', '/bluehost/v1/data/events');
+		if ( ! isset( $this->saved[ $plug_ver ][ $this->key ] ) ) {
+			$request = new \WP_REST_Request( 'POST', '/bluehost/v1/data/events' );
 			$request->set_body_params(array(
 				'action' => 'bwa-error',
 				'category' => 'AdminError',
@@ -161,10 +163,7 @@ class AdminErrorController extends \WP_REST_Controller {
 			));
 			$response = \rest_do_request( $request );
 			if ( ! $response->is_error() ) {
-				$this->database(
-					'update',
-					$this->updated
-				);
+				$this->database( 'update', $this->updated );
 				return $response;
 			} else {
 				return false;
@@ -192,7 +191,7 @@ class AdminErrorController extends \WP_REST_Controller {
 			case 'read':
 			case 'get':
 			default:
-				return \get_option( $this->option_key );
+				return \get_option( $this->option_key, array() );
 		}
 	}
 
