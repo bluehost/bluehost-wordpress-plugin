@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Bluehost
+# Copyright (C) 2021 Bluehost
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
