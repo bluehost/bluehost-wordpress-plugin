@@ -31,13 +31,6 @@ describe('App Header', function () {
 		cy.findByTestId('help-icon').should('be.visible');
 	});
 
-	it('Help icon links to help on Bluerock', () => {
-		cy
-			.findByTestId('help-icon')
-			.should('have.attr', 'href')
-			.and('contains', 'https://my.bluehost.com/hosting/help');
-	});
-
 	it('User menu icon is visible', () => {
 		cy.findByTestId('desktop-dropdown-toggle').should('be.visible');
 	});
