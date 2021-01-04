@@ -189,7 +189,7 @@ class Bluehost_Admin_App_Assets {
 
 		$data = array(
 			'app'       => array(
-				// 'adminUrl'		   => \admin_url(),
+				'adminUrl'		   => \admin_url(),
 				'activePage'       		=> '',
 				'isTopLevel'       		=> 0,
 				'pages'            		=> Bluehost_Admin_App_Page::get_top_level_pages(),
