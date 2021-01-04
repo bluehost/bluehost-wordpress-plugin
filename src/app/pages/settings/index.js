@@ -1,23 +1,13 @@
 import './style.scss';
 
 import AutomaticUpdates from './automatic-updates';
-/**
- * Internal dependencies
- */
 import { BWACommonTemplate } from '@app/components/templates';
 import { BWAHeading } from '@app/components/atoms';
 import Comments from './comments';
 import Content from './content';
 import SettingsPerformance from './performance';
 import SiteControls from './site-controls';
-/**
- * WordPress dependencies
- */
 import { __ } from '@wordpress/i18n';
-
-// import { BWANotification as Notification } from '@app/components/organisms';
-
-
 
 const SettingsPage = () => (
 	<BWACommonTemplate className="page-settings">

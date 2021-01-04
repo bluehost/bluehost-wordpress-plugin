@@ -1,11 +1,5 @@
 import './style.scss';
 
-/**
- * Project dependencies
- */
-/**
- * External dependencies
- */
 import {
 	BluehostLogo,
 	CloseIcon,
@@ -19,17 +13,8 @@ import {
 } from '@app/components/atoms';
 import { dispatch, useSelect } from '@wordpress/data';
 
-/**
- * WordPress dependencies
- */
 import { Popover } from '@wordpress/components';
 import { addUtmParams } from '@app/functions';
-/**
- * Component dependencies
- */
-/**
- * Internal dependencies
- */
 import userMenuItems from '../user-menu';
 import { withState } from '@wordpress/compose';
 

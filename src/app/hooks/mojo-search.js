@@ -1,5 +1,5 @@
-import { useState } from '@wordpress/element';
 import Fuse from 'fuse.js';
+import { useState } from '@wordpress/element';
 
 export default function useMojoSearch( initialQuery = '' ) {
 	const [ query, setQuery ] = useState( initialQuery );

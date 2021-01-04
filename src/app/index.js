@@ -1,26 +1,17 @@
 import './store';
 import './app.scss';
 
-/**
- * Internal dependencies
- */
 import {
 	BWACommonFooter,
 	BWACommonHeader,
 	BWARouteContents
 } from '@app/components/organisms';
-/**
- * External dependencies
- */
 import { HashRouter as Router, useLocation } from 'react-router-dom';
 
 import {
 	BWAError,
 } from '@app/components/molecules';
 import { ENTER } from '@wordpress/keycodes';
-/**
- * WordPress dependencies
- */
 import { ErrorBoundary } from 'react-error-boundary';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
@@ -30,12 +21,12 @@ import { useState } from '@wordpress/element';
 
 const AppBody = ( props ) => {
 	const [isAppBooted, setAppBooted] = useState(false);
-	// 1. Import PHP-generated data to store.
+
 	if ( ! isAppBooted ) {
 		dispatch( 'bluehost/plugin' ).fetchWindowData();
 		setAppBooted(true);
 	}
-	// 2. Tap location object from react-router-dom.
+
 	let location = useLocation();
 	let kebabRoute = kebabCase( location.pathname );
 	

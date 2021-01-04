@@ -1,17 +1,11 @@
-/**
- * WordPress dependencies
- */
 import { __, _n } from '@wordpress/i18n';
-import { withSelect, withDispatch } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
+import { withDispatch, withSelect } from '@wordpress/data';
 
-/**
- * Internal Dependencies
- */
-import SettingsSection from '../settings-section';
 import SettingsGroup from '../settings-group';
-import SettingsToggle from '../settings-toggle';
+import SettingsSection from '../settings-section';
 import SettingsSelect from '../settings-select';
+import SettingsToggle from '../settings-toggle';
+import { compose } from '@wordpress/compose';
 
 const Comments = ( { oldPostComments, closeInterval, perPage, toggleSetting, updateSetting } ) => {
 	const commentsLabel = ( <span>{ __( 'Close comments after ', 'bluehost-wordpress-plugin' ) } <strong>{ closeInterval }</strong>{ _n( ' day', ' days', closeInterval, 'bluehost-wordpress-plugin' ) }</span> );

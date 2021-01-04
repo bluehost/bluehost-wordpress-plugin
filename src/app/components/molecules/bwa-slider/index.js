@@ -1,6 +1,7 @@
+import './style.scss';
+
 import { Children } from '@wordpress/element';
 import { default as SlickSlider } from 'react-slick';
-import './style.scss';
 
 export default function BWASlider( { children, settings = {} } ) {
 	return (

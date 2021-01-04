@@ -18,14 +18,8 @@ import {
 	WorkingImageUrl,
 } from '@app/assets';
 import { __, sprintf } from '@wordpress/i18n';
-/**
- * WordPress dependencies
- */
 import { useEffect, useState } from '@wordpress/element';
 
-/**
- * Internal dependencies
- */
 import { BWACommonTemplate } from '@app/components/templates';
 import CloneBWAOverlay from './clone-overlay';
 import CloneModal from './clone-modal';
@@ -35,13 +29,6 @@ import DeploymentBWAOverlay from './deploy-overlay';
 import DeploymentModal from './deploy-modal';
 import Tips from './tips';
 import { useStaging } from '@app/hooks';
-
-// import { BWANotification as Notification } from '@app/components/organisms';
-
-
-
-
-
 
 export default function StagingPage() {
 	const [ deployType, setDeployType ] = useState( 'all' );

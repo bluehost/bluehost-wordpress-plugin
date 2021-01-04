@@ -1,14 +1,13 @@
-import { Fragment } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
+import {
+	BWAWarning,
+	BWAModal as Modal,
+} from '@app/components/molecules';
 
 import {
 	BWAButton as Button
 } from '@app/components/atoms';
-
-import {
-	BWAModal as Modal,
-	BWAWarning,
-} from '@app/components/molecules';
+import { Fragment } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 export default function( { onClick, onClose, type = 'all' } ) {
 	let title, message;

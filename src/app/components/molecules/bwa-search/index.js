@@ -1,7 +1,8 @@
-import { useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
-import { SearchIcon } from '@app/assets';
 import './style.scss';
+
+import { SearchIcon } from '@app/assets';
+import { __ } from '@wordpress/i18n';
+import { useState } from '@wordpress/element';
 
 export default function BWASearch( { onChange, value = '' } ) {
 	const [ query, setQuery ] = useState( value );

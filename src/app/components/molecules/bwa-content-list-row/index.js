@@ -1,20 +1,10 @@
-/**
- * External dependencies
- */
-import classNames from 'classnames';
+import './style.scss';
 
-/**
- * WordPress dependencies
- */
-import { Dashicon } from '@wordpress/components';
-
-/**
- * Internal dependencies
- */
 import {
 	BWAHeading,
 } from '@app/components/atoms';
-import './style.scss';
+import { Dashicon } from '@wordpress/components';
+import classNames from 'classnames';
 
 const RowIcon = ( { icon, iconSize } ) => {
 	if ( 'string' === typeof icon ) {

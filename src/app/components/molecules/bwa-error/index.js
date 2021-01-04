@@ -18,7 +18,7 @@ const resolvePageUrl = () => {
 	}
 }
 
-const ReportingUI = ({ status, ...props}) => {
+const ReportingUI = ({ status }) => {
 	if (true === status) {
 		return (
 			<div style={{ color: '#17b212'}}>
@@ -79,9 +79,6 @@ const BWAError = ({error, resetErrorBoundary}) => {
 		agent: navigator.userAgent ? navigator.userAgent : 'Unknown',
 		url: window.location.href,
 	};
-
-	console.log( 'errorPayload' );
-	console.dir( errorPayload );
 
 	if ( null === errorLogged) {
 		apiFetch({

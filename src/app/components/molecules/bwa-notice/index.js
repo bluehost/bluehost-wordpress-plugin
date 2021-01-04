@@ -1,16 +1,7 @@
-/**
- * External dependencies
- */
-import classNames from 'classnames';
-
-/**
- * WordPress dependencies
- */
-import { Notice } from '@wordpress/components';
-/**
- * Internal dependencies
- */
 import './style.scss';
+
+import { Notice } from '@wordpress/components';
+import classNames from 'classnames';
 
 const BWANotice = ( { status, className = '', ...props } ) => {
 	return (

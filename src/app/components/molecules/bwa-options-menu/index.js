@@ -1,10 +1,12 @@
+import './style.scss';
+
+import { useEffect, useRef, useState } from '@wordpress/element';
+
+import { Ellipsis } from '@app/assets';
 import classNames from 'classnames';
+import { get } from '@app/functions';
 import kebabCase from 'lodash/kebabCase';
 import uniqueId from 'lodash/uniqueId';
-import { useEffect, useRef, useState } from '@wordpress/element';
-import { get } from '@app/functions';
-import { Ellipsis } from '@app/assets';
-import './style.scss';
 
 /**
  * Display an options menu.

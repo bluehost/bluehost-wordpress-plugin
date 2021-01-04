@@ -1,4 +1,5 @@
-import { useState, useEffect } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
+
 import chunk from 'lodash/chunk';
 
 /**

@@ -1,18 +1,10 @@
-/**
- * WordPress dependencies
- */
-import { __ } from '@wordpress/i18n';
-/**
- * Internal dependencies
- */
-/**
- * External dependencies
- */
-import { BWAButton as Button } from '@app/components/atoms';
 import {
 	BWAContentList,
 	BWAContentListRow,
 } from '@app/components/molecules';
+
+import { BWAButton as Button } from '@app/components/atoms';
+import { __ } from '@wordpress/i18n';
 
 const ManageMySitesCard = () => (
 	<BWAContentListRow

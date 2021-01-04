@@ -1,5 +1,6 @@
+import { useEffect, useState } from '@wordpress/element';
+
 import apiFetch from '@wordpress/api-fetch';
-import { useState, useEffect } from '@wordpress/element';
 
 export default function useMojoApi( initialType = 'themes', initialParams = {} ) {
 	const [ done, setDone ] = useState( false );

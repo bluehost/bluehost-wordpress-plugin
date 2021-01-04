@@ -1,14 +1,14 @@
-import classNames from 'classnames';
-import kebabCase from 'lodash/kebabCase';
-import uniqueId from 'lodash/uniqueId';
+import './style.scss';
 
 import { useEffect, useRef, useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 
-import { DownIcon } from '@app/assets';
 import { BWAButton as Button } from '@app/components/atoms';
+import { DownIcon } from '@app/assets';
+import { __ } from '@wordpress/i18n';
+import classNames from 'classnames';
 import { get } from '@app/functions';
-import './style.scss';
+import kebabCase from 'lodash/kebabCase';
+import uniqueId from 'lodash/uniqueId';
 
 /**
  * Display a button with a dropdown menu.

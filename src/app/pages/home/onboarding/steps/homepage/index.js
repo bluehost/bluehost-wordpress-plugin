@@ -1,14 +1,15 @@
-import apiFetch from '@wordpress/api-fetch';
+import { BlogPosts, StaticPage } from '@app/assets';
 import { Fragment, useEffect, useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 import { SelectControl, Spinner, TextControl } from '@wordpress/components';
-import { compose } from '@wordpress/compose';
-import { withSelect, withDispatch } from '@wordpress/data';
-import classNames from 'classnames';
+import { withDispatch, withSelect } from '@wordpress/data';
+
 import { BWAButton as Button } from '@app/components/atoms';
 import { BWAModal as Modal } from '@app/components/molecules';
-import { BlogPosts, StaticPage } from '@app/assets';
+import { __ } from '@wordpress/i18n';
+import apiFetch from '@wordpress/api-fetch';
 import browser from '@app/assets/browser.png';
+import classNames from 'classnames';
+import { compose } from '@wordpress/compose';
 
 function HomepageOnboardingStep({hasSetHomepage = false, pageOnFront, showOnFront, updateSetting}) {
 

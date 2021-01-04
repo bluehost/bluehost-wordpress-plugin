@@ -1,7 +1,6 @@
+import { BWASlider } from '@app/components/molecules';
 import { Children } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-
-import { BWASlider } from '@app/components/molecules';
 
 export default function Tips( { children } ) {
 	const settings = {

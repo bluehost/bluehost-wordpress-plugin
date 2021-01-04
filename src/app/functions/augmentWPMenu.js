@@ -1,5 +1,6 @@
 import { getFragment } from '@wordpress/url';
 import keyBy from 'lodash/keyBy';
+
 const menuItemClass = 'bluehost-wp-menu-item';
 const topLevelPage 	= 'toplevel_page_bluehost'; // wordpress-generated DOM ID
 
@@ -21,7 +22,7 @@ export const augmentWPMenu = ( topLevelPages ) => {
     const menuItems = Array.from( window.document.querySelectorAll( '#' + topLevelPage + ' > ul > li' ) );
     menuItems.splice( 0, 2 ); // skip first two line items to only include submenu line items
     menuItems.forEach( function( li ) {
-        const anchor = li.querySelector('a'); // get first/only anchor
+        const anchor = li.querySelector('a');
         const anchorPath = getFragment( anchor.href ).substring(1); // nix hash prefix from fragment
         const itemData = topLevelPagesByPath[ anchorPath ]; // use path to tap into page data from store
         li.classList.add( menuItemClass, itemData.slug );

@@ -1,16 +1,16 @@
-/**
- * WordPress dependencies
- */
-import { registerStore } from '@wordpress/data';
+import * as actions from './actions.js';
+import * as selectors from './selectors.js';
 
+import { STORE_KEY } from './constants.js';
+import controls from './controls.js';
 /**
  * Internal dependencies
  */
 import reducer from './reducer.js';
-import * as selectors from './selectors.js';
-import * as actions from './actions.js';
-import controls from './controls.js';
-import { STORE_KEY } from './constants.js';
+/**
+ * WordPress dependencies
+ */
+import { registerStore } from '@wordpress/data';
 
 export const storeConfig = {
 	reducer,

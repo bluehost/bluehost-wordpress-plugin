@@ -1,12 +1,6 @@
 import './style.scss';
 
-/**
- * Internal dependencies
- */
 import { BWANavLink as NavLink } from '@app/components/atoms';
-/**
- * WordPress dependencies
- */
 import { __ } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
 

@@ -6,11 +6,13 @@ import apiFetch from '@wordpress/api-fetch';
  * @param {object} location - ReactRouterDOM location object 
  */
 const sendPageviewEvent = (location, title = false) => {
+    
     let payload = {
         category: 'Admin', // to mirror Endurance\WP\Module\Data\Listeners\Admin()
         action: 'pageview',
         data: {}
     };
+
     payload.data.page           = window.bluehostWpAdminUrl + '?page=bluehost#' + location.pathname; // full url
     if ( title ) {
         payload.data['page_title']  = title;
@@ -18,14 +20,12 @@ const sendPageviewEvent = (location, title = false) => {
     if ( ('undefined' !== typeof location.state) && ('undefined' !== typeof location.state.redirect ) ) {
         payload.data.redirect = location.state.redirect;
     }
-    let request = {
+
+    apiFetch({
         path: `/bluehost/v1/data/events/`, 
         method: 'POST', 
         data: payload
-    };
-    console.log( '📈 PAGEVIEW PAYLOAD');
-    console.dir( request );
-    // apiFetch(request);
+    });
 };
 
 export default sendPageviewEvent;

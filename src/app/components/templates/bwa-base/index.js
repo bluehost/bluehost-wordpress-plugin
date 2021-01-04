@@ -9,8 +9,6 @@ import { useEffect } from '@wordpress/element';
 import { useLocation } from 'react-router-dom';
 import { useSelect } from '@wordpress/data';
 
-// import './style.scss';
-
 const BWABaseTemplate = ({
 	type = "base",
 	descriptivePageTitle = false,
@@ -47,11 +45,14 @@ const BWABaseTemplate = ({
 		return slug;
 	}
 
+	/**
+	 * Determine short, unique title used for analytics and a11y announcements.
+	 */
 	const getDescriptivePageTitle = () => {
 		const defaultTitle = __( 'Bluehost WordPress Plugin', 'bluehost-wordpress-plugin');
 		const pageTitle = document.querySelector('h2');
 		if ( false !== descriptivePageTitle ) {
-			return descriptivePageTitle
+			return descriptivePageTitle;
 		} else if ( null !== pageTitle ) {
 			return pageTitle.innerText;
 		} else {

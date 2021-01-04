@@ -1,24 +1,16 @@
+import './style.scss';
 
-/**
- * External dependencies
- */
-import { __ } from '@wordpress/i18n';
-import { withSelect, withDispatch } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
-
-/**
- * Project Dependencies
- */
 import {
 	BWAButton,
 	BWAHeading
 } from '@app/components/atoms';
+import { withDispatch, withSelect } from '@wordpress/data';
 
 import {
 	BWANotice as Notice,
 } from '@app/components/molecules';
-
-import './style.scss';
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
 
 let siteLaunchedByUser = false;
 

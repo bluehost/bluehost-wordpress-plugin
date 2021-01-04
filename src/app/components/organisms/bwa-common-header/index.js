@@ -1,26 +1,14 @@
 import './style.scss';
 
-/**
- * External dependencies
- */
 import { BluehostLogo, HelpIcon } from '@app/assets';
 
-/**
- * Project dependencies
- */
 import {
 	BWAHeading,
 } from '@app/components/atoms';
 import DesktopDropdown from './desktop-dropdown';
 import DesktopTabs from './desktop-tabs';
 import MobileSidebar from './mobile-sidebar';
-/**
- * WordPress dependencies
- */
 import { __ } from '@wordpress/i18n';
-/**
- * Internal dependencies
- */
 import { addUtmParams } from "@app/functions";
 
 const HeaderLogo = () => (

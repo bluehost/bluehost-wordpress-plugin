@@ -25,8 +25,6 @@ import { NoFavorites } from '@app/assets';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
-// import { BWANotification as Notification } from '@app/components/organisms';
-
 const marketplacePageTitle = ( marketplaceType ) => {
 	switch ( marketplaceType ) {
 		case 'plugins':

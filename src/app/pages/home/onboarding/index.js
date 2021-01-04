@@ -1,22 +1,12 @@
-/**
- * Styles
- */
 import './style.scss';
 
 import { __, sprintf } from '@wordpress/i18n';
-/**
- * WordPress dependencies
- */
 import { useDispatch, useSelect } from '@wordpress/data';
 
 import { BWACommonTemplate } from '@app/components/templates';
 import { BWAButton as Button } from '@app/components/atoms';
 import Home from './steps/homepage';
-// import { BWANotification as Notification } from '@app/components/organisms';
 import { addUtmParams } from "@app/functions";
-/**
- * Images
- */
 import comment from '@app/assets/comment.png';
 import computer from '@app/assets/computer.png';
 import rocket from '@app/assets/rocket.png';

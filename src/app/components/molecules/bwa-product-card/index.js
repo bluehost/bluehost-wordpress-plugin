@@ -1,18 +1,9 @@
 import './style.scss';
 
-/**
- * Internal dependencies
- */
 import { BWAHeading, BWAButton as Button } from '@app/components/atoms';
 
 import { __ } from '@wordpress/i18n';
-/**
- * External dependencies
- */
 import classNames from 'classnames';
-/**
- * WordPress dependencies
- */
 import { decodeEntities } from '@wordpress/html-entities';
 
 export default function BWAProductCard(

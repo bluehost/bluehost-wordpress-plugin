@@ -1,5 +1,6 @@
-import { WarningIcon } from '@app/assets';
 import './style.scss';
+
+import { WarningIcon } from '@app/assets';
 
 export default function BWAWarning( { children } ) {
 	return (

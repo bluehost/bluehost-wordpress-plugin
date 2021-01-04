@@ -1,7 +1,9 @@
+import './style.scss';
+
+import { useEffect, useRef, useState } from '@wordpress/element';
+
 import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
-import { useState, useEffect, useRef } from '@wordpress/element';
-import './style.scss';
 
 export default function Dropdown( { className = '', id, label, onChange, options = [], value, width = 200 } ) {
 	if ( ! id ) {

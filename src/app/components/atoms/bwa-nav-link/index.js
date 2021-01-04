@@ -1,15 +1,6 @@
-/**
- * External dependencies
- */
-import { NavLink } from 'react-router-dom';
-
-/**
- * Component dependencies
- */
-/**
- * Internal dependencies
- */
 import './style.scss';
+
+import { NavLink } from 'react-router-dom';
 
 /**
  * Internal navigation link (from React Router) that also handles focus management.

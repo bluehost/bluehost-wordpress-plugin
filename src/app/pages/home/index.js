@@ -4,25 +4,14 @@ import { Redirect, useLocation } from 'react-router-dom';
 
 import { BWACommonTemplate } from '@app/components/templates';
 import BWAContentList from './content';
-/**
- * Project dependencies
- */
 import { BWARedirect } from '@app/components/atoms';
 import ComingSoonNotice from './coming-soon-notice';
 import DesignBuildSection from './design-build';
-import { Fragment } from '@wordpress/element';
 import HostingSection from './hosting';
-/**
- * Component dependencies
- */
 import PerformanceSection from './performance';
 import TrafficEngagementSection from './traffic-engagement';
 import Welcome from './welcome';
 import { __ } from '@wordpress/i18n';
-import { update } from 'lodash';
-/**
- * WordPress Dependencies
- */
 import { useSelect } from '@wordpress/data';
 
 const Home = () => {
@@ -32,12 +21,10 @@ const Home = () => {
 	}, []);
 
 	const hasSiteLaunched = useSelect((select) => {
-		return !select('bluehost/plugin').getSetting('comingSoon');
+		return ! select('bluehost/plugin').getSetting('comingSoon');
 	}, []);
 
 	const showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
-
-	pewpewpew();
 
 	return showOnboarding 
 			? <BWARedirect to="/home/onboarding" currentLocation={location} /> 

@@ -4,16 +4,10 @@
  */
 import './set-public-path';
 
-/**
- * WordPress dependencies
- */
-import domReady from '@wordpress/dom-ready';
-import { render } from '@wordpress/element';
-
-/**
- * Import App
- */
 import App from './app/index.js';
+import domReady from '@wordpress/dom-ready';
+import domReadyInit from './app/init';
+import { render } from '@wordpress/element';
 
 /**
  * DOM ID of root element to initialize app
@@ -22,10 +16,6 @@ import App from './app/index.js';
  */
 const WP_ADM_PAGE_ROOT_ELEMENT = 'bwa-root';
 
-/**
- *
- */
-import domReadyInit from './app/init';
 
 /**
  * When DOM is ready, load app on root element, replacing #bwa-centered-loader markup.
