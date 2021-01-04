@@ -15,6 +15,9 @@ class AdminNotices {
 	 * Render admin notices where appropriate.
 	 */
 	public static function maybeRenderAdminNotices() {
+		if ( isset( $_GET['page'] ) && 'bluehost' === \filter_input( INPUT_GET, 'page' ) ) {
+			return;
+		}
 		$page          = str_replace( admin_url(), '', Url::getCurrentUrl() );
 		$notifications = new NotificationsRepository();
 		$collection    = $notifications->collection();

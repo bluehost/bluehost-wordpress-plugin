@@ -1,22 +1,25 @@
 import { ENTER } from '@wordpress/keycodes';
 import classnames from 'classnames';
+import { dispatch } from '@wordpress/data';
 import { sendEvent } from '@app/functions';
 import { useEffect } from '@wordpress/element';
 
 const BWANotice = ({ id, content, ...props }) => {
 
     const onClose = ( event ) => {
-        // event.preventDefault();
+        event.preventDefault();
         if ( event.keycode && ENTER !== event.keycode ) {
 			return;
 		}
-        console.log( 'closeNotice' );
-        console.dir( event );
+
+        const noticeContainer   = document.querySelector('[data-id="' + id +'"]');
+        if ( noticeContainer ) {
+            noticeContainer.remove();
+            dispatch('bluehost/plugin').dismissNotification( id );
+        }
     }
 
     const onButtonNavigate = ( event ) => {
-        console.log( 'onButtonNavigate' );
-        console.dir( event );
         if ( event.keycode && ENTER !== event.keycode ) {
 			return;
 		}
@@ -31,8 +34,6 @@ const BWANotice = ({ id, content, ...props }) => {
     }
 
     const onAnchorNavigate = ( event ) => {
-        console.log( 'onAnchorNavigate' );
-        console.dir( event );
         if ( event.keycode && ENTER !== event.keycode ) {
 			return;
 		}
@@ -52,12 +53,6 @@ const BWANotice = ({ id, content, ...props }) => {
         const noticeCloser      = noticeContainer.querySelector('[data-action="close"]');
         const noticeButtons     = Array.from(noticeContainer.querySelectorAll('button'));
         const noticeAnchors     = Array.from(noticeContainer.querySelectorAll('a'));
-        
-        if (noticeCloser) {
-            noticeCloser.addEventListener('click', onClose);
-            noticeCloser.addEventListener('onkeydown', onClose);
-
-        }
 
         if (noticeButtons.length) {
             noticeButtons.forEach(
@@ -80,12 +75,13 @@ const BWANotice = ({ id, content, ...props }) => {
                 }
             )
         }
+
+        if (noticeCloser) {
+            noticeCloser.addEventListener('click', onClose);
+            noticeCloser.addEventListener('onkeydown', onClose);
+        }
         
         return () => {
-            if (noticeCloser) {
-                noticeCloser.removeEventListener('click', onClose);
-                noticeCloser.removeEventListener('onkeydown', onClose);
-            }
             if (noticeButtons.length) {
                 noticeButtons.forEach(
 					button => {
@@ -105,7 +101,11 @@ const BWANotice = ({ id, content, ...props }) => {
 						}
 					}
 				)
-			}
+            }
+            if (noticeCloser) {
+                noticeCloser.removeEventListener('click', onClose);
+                noticeCloser.removeEventListener('onkeydown', onClose);
+            }
         }
     }, [id]);
     return (
