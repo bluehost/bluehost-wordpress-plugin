@@ -44,7 +44,6 @@ const BWARouteContents = ({ ...props}) => {
 					<Route path="/tools/staging" exact render={ () => <StagingRoute /> } />
 					<Route path="/settings" render={ () => <SettingsRoute /> } />
 					<Route path="/help" render={ () => <HelpRoute /> } />
-					<Route path="/pewpewpew" render={ () => <div>pewpewpew</div>} />
 					<Redirect 
 						from="/staging" 
 						to={{
