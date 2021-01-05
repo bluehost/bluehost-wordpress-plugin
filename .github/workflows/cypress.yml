@@ -107,12 +107,16 @@ jobs:
           name: screenshots
           path: ./tests/cypress/screenshots
 
-      - name: Copy error log
-        if: ${{ failure() }}
-        run: npx wp-env run wordpress cat /var/www/html/wp-content/debug.log > ./debug.log
+      - name: Check if a debug.log file exists
+        id: hasErrors
+        run: npx wp-env run wordpress test ! -f /var/www/html/wp-content/debug.log
 
-      - name: Store error logs
-        if: ${{ failure() }}
+      - name: Copy debug.log file
+        if: ${{ steps.hasErrors.outputs.failure }}
+        run: cat /var/www/html/wp-content/debug.log 1>./debug.log 2>/dev/null
+
+      - name: Store debug.log file
+        if: ${{ steps.hasErrors.outputs.failure }}
         uses: actions/upload-artifact@v2
         with:
           name: logs
