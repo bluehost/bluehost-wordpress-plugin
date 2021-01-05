@@ -24,7 +24,8 @@ if ( is_wp_error( $theme ) ) {
 	<div class="error">
 		<p>
 			<?php esc_html_e( 'Unable to load theme preview.', 'bluehost-wordpress-plugin' ); ?>
-			<a href="<?php echo esc_url( admin_url( 'admin.php?page=bluehost#/marketplace/themes' ) ); ?>"><?php esc_html_e( 'Return to themes', 'bluehost-wordpress-plugin' ); ?></a>.
+			<a
+				href="<?php echo esc_url( admin_url( 'admin.php?page=bluehost#/marketplace/themes' ) ); ?>"><?php esc_html_e( 'Return to themes', 'bluehost-wordpress-plugin' ); ?></a>.
 		</p>
 	</div>
 	<?php
@@ -50,24 +51,28 @@ if ( is_wp_error( $theme ) ) {
 					/>
 					<div class="install-theme-info">
 						<h3 class="theme-name"><?php echo esc_html( $theme->name ); ?></h3>
-						<br/>
+						<br />
 						<?php mojo_stars( $theme->rating, $theme->sales_count ); ?>
 						<div class="theme-details text-center">
 							<div role="group" class="btn-group-horizontal">
-								<a class="button components-button bluehost is-default"
-								   href="<?php echo esc_url( admin_url( 'admin.php?page=bluehost#/marketplace/themes/' . $item_id ) ); ?>">
+								<a
+									class="button components-button bluehost is-default"
+									href="<?php echo esc_url( admin_url( 'admin.php?page=bluehost#/marketplace/themes/' . $item_id ) ); ?>"
+								>
 									<?php esc_html_e( 'Details', 'bluehost-wordpress-plugin' ); ?>
 								</a>
-								<a class="button components-button bluehost is-primary"
-								   href="<?php echo esc_url( bluehost_generate_mojo_buy_url( $item_id ) ); ?>">
+								<a
+									class="button components-button bluehost is-primary"
+									href="<?php echo esc_url( bluehost_generate_mojo_buy_url( $item_id ) ); ?>"
+								>
 									<?php esc_html_e( 'Buy Now', 'bluehost-wordpress-plugin' ); ?>
 								</a>
 							</div>
-							<br/>
+							<br />
 							<div class="price">
 								<span
 									class="price-number">$<span><?php echo number_format( $theme->prices->single_domain_license ); ?></span></span>
-								<br/>
+								<br />
 								<span class="currency">USD</span>
 							</div>
 							<div>
@@ -91,9 +96,11 @@ if ( is_wp_error( $theme ) ) {
 									}
 									?>
 									<div class="col-md-4">
-										<a data-preview="<?php echo esc_attr( $other_items[ $i ]->images->preview_url ); ?>"
-										   class="theme-preview-other-link"
-										   href="<?php echo esc_url( add_query_arg( array( 'id' => $other_items[ $i ]->id ) ) ); ?>">
+										<a
+											data-preview="<?php echo esc_attr( $other_items[ $i ]->images->preview_url ); ?>"
+											class="theme-preview-other-link"
+											href="<?php echo esc_url( add_query_arg( array( 'id' => $other_items[ $i ]->id ) ) ); ?>"
+										>
 											<img
 												class="theme-preview-other-themes"
 												src="<?php echo esc_url( $other_items[ $i ]->images->square_thumbnail_url ); ?>"
@@ -104,7 +111,7 @@ if ( is_wp_error( $theme ) ) {
 								}
 								?>
 								<div id="preview-screenshot">
-									<img src=""/>
+									<img src="" />
 								</div>
 							</div>
 						</div>

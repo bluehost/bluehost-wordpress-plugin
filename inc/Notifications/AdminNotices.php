@@ -15,7 +15,7 @@ class AdminNotices {
 	 * Render admin notices where appropriate.
 	 */
 	public static function maybeRenderAdminNotices() {
-		if ( isset( $_GET['page'] ) && 'bluehost' === \filter_input( INPUT_GET, 'page' ) ) {
+		if ( isset( $_GET['page'] ) && 'bluehost' === \filter_input( INPUT_GET, 'page' ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return;
 		}
 		$page          = str_replace( admin_url(), '', Url::getCurrentUrl() );

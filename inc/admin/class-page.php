@@ -17,17 +17,50 @@ class Bluehost_Admin_App_Page {
 	 *
 	 * @var array
 	 */
-	public static $noticesPathsDenyList = array();
+	public static $noticesPathsDenyList = array(); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.PropertyNotSnakeCase
 
+	/**
+	 * Get top level pages.
+	 *
+	 * @return array[]
+	 */
 	public static function get_top_level_pages() {
 		return array(
-			array( 'slug' => 'home', 'path' => '/home', 'label' => __( 'Home', 'bluehost-wordpress-plugin' ) ),
-			array( 'slug' => 'themes', 'path' => '/marketplace/themes', 'label' => __( 'Themes', 'bluehost-wordpress-plugin' ) ),
-			array( 'slug' => 'plugins', 'path' => '/marketplace/plugins', 'label' => __( 'Plugins', 'bluehost-wordpress-plugin' ) ),
-			array( 'slug' => 'services', 'path' => '/marketplace/services', 'label' => __( 'Services', 'bluehost-wordpress-plugin' ) ),
-			array( 'slug' => 'staging', 'path' => '/tools/staging', 'label' => __( 'Staging', 'bluehost-wordpress-plugin' ) ),
-			array( 'slug' => 'settings', 'path' => '/settings', 'label' => __( 'Settings', 'bluehost-wordpress-plugin' ) ),
-			array( 'slug' => 'help', 'path' => '/help', 'label' => __( 'Help', 'bluehost-wordpress-plugin' ) ),
+			array(
+				'slug'  => 'home',
+				'path'  => '/home',
+				'label' => __( 'Home', 'bluehost-wordpress-plugin' ),
+			),
+			array(
+				'slug'  => 'themes',
+				'path'  => '/marketplace/themes',
+				'label' => __( 'Themes', 'bluehost-wordpress-plugin' ),
+			),
+			array(
+				'slug'  => 'plugins',
+				'path'  => '/marketplace/plugins',
+				'label' => __( 'Plugins', 'bluehost-wordpress-plugin' ),
+			),
+			array(
+				'slug'  => 'services',
+				'path'  => '/marketplace/services',
+				'label' => __( 'Services', 'bluehost-wordpress-plugin' ),
+			),
+			array(
+				'slug'  => 'staging',
+				'path'  => '/tools/staging',
+				'label' => __( 'Staging', 'bluehost-wordpress-plugin' ),
+			),
+			array(
+				'slug'  => 'settings',
+				'path'  => '/settings',
+				'label' => __( 'Settings', 'bluehost-wordpress-plugin' ),
+			),
+			array(
+				'slug'  => 'help',
+				'path'  => '/help',
+				'label' => __( 'Help', 'bluehost-wordpress-plugin' ),
+			),
 		);
 	}
 

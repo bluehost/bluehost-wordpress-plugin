@@ -8,6 +8,8 @@ use Bluehost\SiteMeta;
 class Bluehost_Admin_App_Utils {
 
 	/**
+	 * Check if PHP is version 7.
+	 *
 	 * @return bool
 	 */
 	public static function is_php_7() {
@@ -15,6 +17,8 @@ class Bluehost_Admin_App_Utils {
 	}
 
 	/**
+	 * Get the Bluehost site ID.
+	 *
 	 * @return string
 	 */
 	public static function get_bluehost_site_id() {

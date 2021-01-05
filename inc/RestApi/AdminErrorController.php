@@ -2,8 +2,6 @@
 
 namespace Bluehost\RestApi;
 
-use WP_REST_Request;
-
 /**
  * Class Errors
  *
@@ -34,13 +32,15 @@ class AdminErrorController extends \WP_REST_Controller {
 
 	/**
 	 * Errors per-version to retain
+	 *
+	 * @var integer
 	 */
 	protected $errors_per_version = 12;
 
 	/**
-	 * Undocumented variable
+	 * Unique key for error.
 	 *
-	 * @var [type]
+	 * @var string
 	 */
 	protected $key;
 
@@ -81,6 +81,8 @@ class AdminErrorController extends \WP_REST_Controller {
 
 	/**
 	 * Conditional outcome (for error-tracing this error reporting)
+	 *
+	 * @var integer
 	 */
 	protected $condition = 0;
 
@@ -112,14 +114,17 @@ class AdminErrorController extends \WP_REST_Controller {
 		$this->params = $request->get_params();
 		if ( ! empty( $this->params ) ) {
 			$this->condition = 0.5;
-			$this->key = base64_encode( $this->params['message'] );
-			$response = $this->handle_error_log();
+			$this->key       = base64_encode( $this->params['message'] ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+			$response        = $this->handle_error_log();
 		} else {
 			$this->condition = 0.25;
 		}
 
 		return new \WP_REST_Response(
-			array( 'condition'    => $this->condition, 'debug' => $request ),
+			array(
+				'condition' => $this->condition,
+				'debug'     => $request,
+			),
 			false === $response ? 500 : 200
 		);
 	}
@@ -130,40 +135,43 @@ class AdminErrorController extends \WP_REST_Controller {
 	 * @return int
 	 */
 	protected function handle_error_log() {
-		$plug_ver = BLUEHOST_PLUGIN_VERSION;
-		$this->saved = $this->database( 'get' );
+		$plug_ver      = BLUEHOST_PLUGIN_VERSION;
+		$this->saved   = $this->database( 'get' );
 		$this->updated = $this->saved;
 
 		if ( isset( $this->saved[ $plug_ver ] ) ) {
 			if ( count( $this->saved[ $plug_ver ] ) <= $this->errors_per_version ) {
 				array_unshift( $this->updated[ $plug_ver ], $this->key );
 				$this->updated[ $plug_ver ] = array_unique( $this->updated[ $plug_ver ] );
-				$this->condition = 1;
+				$this->condition            = 1;
 			} else {
 				array_pop( $this->updated[ $plug_ver ] );
 				array_unshift( $this->updated[ $plug_ver ], $this->key );
 				$this->updated[ $plug_ver ] = array_unique( $this->updated[ $plug_ver ] );
-				$this->condition = 2;
+				$this->condition            = 2;
 			}
 		} elseif ( count( $this->saved ) <= $this->retain_versions ) {
 			$this->updated[ $plug_ver ] = array( $this->key );
-			$this->condition = 3;
+			$this->condition            = 3;
 		} else {
 			array_pop( $this->updated );
 			$this->updated[ $plug_ver ] = array( $this->key );
-			$this->condition = 4;
+			$this->condition            = 4;
 		}
 
 		if ( ! isset( $this->saved[ $plug_ver ][ $this->key ] ) ) {
 			$request = new \WP_REST_Request( 'POST', '/bluehost/v1/data/events' );
-			$request->set_body_params(array(
-				'action' => 'bwa-error',
-				'category' => 'AdminError',
-				'data' => $this->params,
-			));
+			$request->set_body_params(
+				array(
+					'action'   => 'bwa-error',
+					'category' => 'AdminError',
+					'data'     => $this->params,
+				)
+			);
 			$response = \rest_do_request( $request );
 			if ( ! $response->is_error() ) {
 				$this->database( 'update', $this->updated );
+
 				return $response;
 			} else {
 				return false;
