@@ -92,7 +92,7 @@ jobs:
         run: find .
 
       - name: Configure WordPress
-        run: echo '{"config": {"WP_DEBUG_DISPLAY": false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
+        run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: Install WordPress
         run: npx wp-env start
@@ -106,3 +106,10 @@ jobs:
         with:
           name: screenshots
           path: ./tests/cypress/screenshots
+
+      - name: Store error logs
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: logs
+          path: ./wp-content/debug.log
