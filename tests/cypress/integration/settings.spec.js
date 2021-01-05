@@ -24,12 +24,12 @@ describe('Settings Page', function () {
 					// If unchecked, check it
 					cy.get('@toggle').check();
 					cy.wait('@update');
-					cy.get('@toggle').should('have', 'aria-checked', 'true');
+					cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
 				} else {
 					// If checked, uncheck it
 					cy.get('@toggle').uncheck();
 					cy.wait('@update');
-					cy.get('@toggle').should('have', 'aria-checked', 'false');
+					cy.get('@toggle').should('have.attr', 'aria-checked', 'false');
 				}
 			});
 			// Do the inverse as well

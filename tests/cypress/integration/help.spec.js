@@ -9,7 +9,7 @@ describe('Help Page', function () {
 
 	it('Exists', () => {
 		cy
-			.findByRole('heading', {name: 'From DIY to full-service help', level: 2})
+			.findByRole('heading', {name: 'From DIY to full-service help', level: 3})
 			.scrollIntoView()
 			.should('be.visible');
 	});

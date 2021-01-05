@@ -46,7 +46,7 @@ products.forEach(function (product) {
 			cy.server();
 			cy.route('GET', `/**/mojo/v1/items?id=${ product.id }*`, product.fixture).as('product');
 			cy.visit({
-				url: `/wp-admin/admin.php?page=bluehost#/marketplace/product/${ product.id }`,
+				url: `/wp-admin/admin.php?page=bluehost#/marketplace/${ product.type }/${ product.id }`,
 				onBeforeLoad: win => delete win.fetch
 			});
 			cy.wait('@product');

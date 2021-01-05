@@ -38,7 +38,7 @@ describe('App Header', function () {
 	it('Clicking user menu icon shows dropdown', () => {
 		cy.findByTestId('desktop-dropdown-content').should('not.be.visible');
 		cy.findByTestId('desktop-dropdown-toggle').click();
-		cy.findByTestId('desktop-dropdown-content').should('be.visible');
+		cy.findByTestId('desktop-dropdown-content').scrollIntoView().should('be.visible');
 	});
 
 	it('Dropdown: "Bluehost Account"', () => {
@@ -81,43 +81,43 @@ describe('App Header', function () {
 
 	it('Navigate to Themes', () => {
 		cy.findByTestId('desktop-nav').findByRole('link', {name: 'Themes'}).click();
-		cy.wait(500);
+		cy.wait(1000);
 		cy.url().should('include', '#/marketplace/themes');
 	});
 
 	it('Navigate to Plugins', () => {
 		cy.findByTestId('desktop-nav').findByRole('link', {name: 'Plugins'}).click();
-		cy.wait(500);
+		cy.wait(1000);
 		cy.url().should('include', '#/marketplace/plugins');
 	});
 
 	it('Navigate to Services', () => {
 		cy.findByTestId('desktop-nav').findByRole('link', {name: 'Services'}).click();
-		cy.wait(500);
+		cy.wait(1000);
 		cy.url().should('include', '#/marketplace/services');
 	});
 
 	it('Navigate to Staging', () => {
 		cy.findByTestId('desktop-nav').findByRole('link', {name: 'Staging'}).click();
-		cy.wait(500);
+		cy.wait(1000);
 		cy.url().should('include', '#/tools/staging');
 	});
 
 	it('Navigate to Settings', () => {
 		cy.findByTestId('desktop-nav').findByRole('link', {name: 'Settings'}).click();
-		cy.wait(500);
+		cy.wait(1000);
 		cy.url().should('include', '#/settings');
 	});
 
 	it('Navigate to Help', () => {
 		cy.findByTestId('desktop-nav').findByRole('link', {name: 'Help'}).click();
-		cy.wait(500);
+		cy.wait(1000);
 		cy.url().should('include', '#/help');
 	});
 
 	it('Navigate to Home', () => {
 		cy.findByTestId('desktop-nav').findByRole('link', {name: 'Home'}).click();
-		cy.wait(500);
+		cy.wait(1000);
 		cy.url().should('include', '#/home');
 	});
 
