@@ -81,7 +81,7 @@
         "lint:js": "wp-scripts lint-js ./src",
         "lint:js:fix": "wp-scripts lint-js ./src --fix",
         "lint:pkg-json": "wp-scripts lint-pkg-json",
-        "lint:yml": "yamllint --ignore=node_modules/** **/*.yml",
+        "lint:yml": "yamllint --ignore=node_modules/** --ignore=vendor/** **/*.yml",
         "i18n": "wpi18n addtextdomain && composer run i18n",
         "start": "wp-scripts start",
         "storybook:dev": "start-storybook -c ./storybook",
