@@ -1,6 +1,5 @@
-import { useState } from '@wordpress/element';
-
 import ExclusiveOption from './ExclusiveOption';
+import { useState } from '@wordpress/element';
 
 export default function ExclusiveGroup({className, defaultValue = '', group, onChange, options}) {
 

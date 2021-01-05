@@ -1,20 +1,11 @@
-/**
- * WordPress dependencies
- */
-import { __ } from '@wordpress/i18n';
-import { withSelect, withDispatch, dispatch } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
-
-/**
- * External Dependencies
- */
-import { BWAButton, BWAToggle, BWAHeading } from '@app/components/atoms';
-
-/**
- * Internal Dependencies
- */
-import SettingsSection from '../settings-section';
 import './style.scss';
+
+import { BWAButton, BWAHeading, BWAToggle } from '@app/components/atoms';
+import { dispatch, withDispatch, withSelect } from '@wordpress/data';
+
+import SettingsSection from '../settings-section';
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
 
 const CacheLevelSelector = ( { value, cacheLevel, label, desc } ) => {
 	const id = 'cache-level-' + value.toString();

@@ -1,22 +1,8 @@
+import { addQueryArgs } from '@wordpress/url';
 import apiFetch from '@wordpress/api-fetch';
-
-/**
- * Add query params to a URL.
- *
- * @param {string} url The original URL.
- * @param {Object} params The query params to be added.
- *
- * @return {string} The updated URL.
- */
-export function addQueryParams(url, params = {}) {
-	const Url = new URL(url);
-	for (const [name, value] of Object.entries(params)) {
-		if (value && typeof value === 'string') {
-			Url.searchParams.append(name, value);
-		}
-	}
-	return Url.href;
-}
+import handleWPMenuActiveHighlight from './highlightTopLevel';
+import handleWPMenuAugmentation from './augmentWPMenu';
+import sendPageviewEvent from './sendPageviewEvent';
 
 /**
  * Decorates an external link URL with UTM params.
@@ -33,7 +19,7 @@ export function addQueryParams(url, params = {}) {
 export function addUtmParams(url, params = {}) {
 	params.utm_source = `wp-admin/admin.php?page=bluehost${ window.location.hash }`;
 	params.utm_medium = 'bluehost_plugin';
-	return addQueryParams(url, params);
+	return addQueryArgs(url, params);
 }
 
 /**
@@ -74,3 +60,9 @@ export function sendEvent(event) {
 	event.data.page = window.location.href;
 	apiFetch({path: `/bluehost/v1/data/events/`, method: 'POST', data: event});
 }
+
+export { 
+	sendPageviewEvent,
+	handleWPMenuAugmentation,
+	handleWPMenuActiveHighlight
+};

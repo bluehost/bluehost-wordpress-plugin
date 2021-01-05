@@ -1,6 +1,6 @@
 @import "@app/config.scss";
 
-.bluehost-app__loader {
+.bwa-loader {
     margin: 50px auto;
     width: 6rem;
     height: 6rem;
@@ -19,7 +19,7 @@
     -ms-transform: translateZ(0);
     transform: translateZ(0);
   }
-  .bluehost-app__loader:before {
+  .bwa-loader:before {
     width: 50%;
     height: 50%;
     background: $color-blue;
@@ -29,7 +29,7 @@
     left: 0;
     content: '';
   }
-  .bluehost-app__loader:after {
+  .bwa-loader:after {
     background: $color-off-white;
     width: 88%;
     height: 88%;

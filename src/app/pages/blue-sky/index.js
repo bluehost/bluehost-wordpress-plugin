@@ -1,5 +1,5 @@
-import { BWABaseTemplate as Page } from '@app/components/templates';
-import { BWAButton as Button } from '@app/components/atoms';
+import './style.scss';
+
 import {
 	Analytics,
 	Bathtub,
@@ -8,25 +8,27 @@ import {
 	Key,
 	MagnifyingGlass,
 	Multimedia,
-	PaperPlane,
 	Paint,
+	PaperPlane,
 	Responsive,
 	Rocket,
 	Screenshare,
-	SocialShare,
 	Shop,
+	SocialShare,
 	Telescope,
 	Tractor
 } from '@app/assets';
+import { BWAHeading, BWAButton as Button } from '@app/components/atoms';
 import { __, sprintf } from '@wordpress/i18n';
-import blueSkyGroup from '@app/assets/blue-sky-group.png';
 
-import './style.scss';
+import { BWACommonTemplate as Page } from '@app/components/templates';
 import ReactPlayer from "react-player";
+import blueSkyGroup from '@app/assets/blue-sky-group.png';
 
 const BlueSky = () => {
 	return (
 		<Page className="page-blue-sky">
+			<BWAHeading level="h2" size={0}>{ __( 'Blue Sky', 'bluehost-wordpress-plugin' ) }</BWAHeading>
 			<div className="section-logo">
 				<BlueSkyLogo />
 			</div>

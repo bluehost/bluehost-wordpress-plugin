@@ -3,7 +3,7 @@
 describe('Blue Sky Product Page', function () {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=bluehost#/blue-sky');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/services/blue-sky');
 		cy.injectAxe();
 	});
 
@@ -13,7 +13,7 @@ describe('Blue Sky Product Page', function () {
 
 	it('Is Accessible', () => {
 		cy.wait(1000);
-		cy.checkA11y('.router-section');
+		cy.checkA11y('.bwa-route-contents');
 	});
 
 	it('Has valid calls to action', () => {

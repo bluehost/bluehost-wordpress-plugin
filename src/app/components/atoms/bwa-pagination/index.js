@@ -1,9 +1,10 @@
+import './style.scss';
+
+import classNames from 'classnames';
 import max from 'lodash/max';
 import min from 'lodash/min';
 import range from 'lodash/range';
 import uniq from 'lodash/uniq';
-import classNames from 'classnames';
-import './style.scss';
 
 export default function Pagination({callback, currentPage = 1, pageCount, padding = 2}) {
 	if (pageCount <= 1) {

@@ -24,23 +24,23 @@ class AdminErrorController extends \WP_REST_Controller {
 	protected $endpoint = '/error/track';
 
 	/**
-	 * Number of Errors stored in Database.
+	 * Number of versions to retain
 	 *
 	 * @var integer
 	 */
-	protected $error_count = 10;
+	protected $retain_versions = 5;
 
 	/**
-	 * Number of Incidents stored per-error.
+	 * Errors per-version to retain
 	 *
 	 * @var integer
 	 */
-	protected $error_incident_count = 5;
+	protected $errors_per_version = 12;
 
 	/**
-	 * Undocumented variable
+	 * Unique key for error.
 	 *
-	 * @var [type]
+	 * @var string
 	 */
 	protected $key;
 
@@ -80,6 +80,13 @@ class AdminErrorController extends \WP_REST_Controller {
 	protected $updated;
 
 	/**
+	 * Conditional outcome (for error-tracing this error reporting)
+	 *
+	 * @var integer
+	 */
+	protected $condition = 0;
+
+	/**
 	 * Register routes.
 	 */
 	public function register_routes() {
@@ -104,17 +111,21 @@ class AdminErrorController extends \WP_REST_Controller {
 	 * @return \WP_REST_Response
 	 */
 	public function error_logging( \WP_REST_Request $request ) {
-		$this->params = $request->get_body_params();
-		unset( $this->params['browser']['versionNumber'] );
+		$this->params = $request->get_params();
 		if ( ! empty( $this->params ) ) {
-			$code = $this->handle_error_log();
+			$this->condition = 0.5;
+			$this->key       = base64_encode( $this->params['message'] ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+			$response        = $this->handle_error_log();
+		} else {
+			$this->condition = 0.25;
 		}
 
 		return new \WP_REST_Response(
 			array(
-				'success' => 'it-the-success',
-				'code'    => $code,
-			)
+				'condition' => $this->condition,
+				'debug'     => $request,
+			),
+			false === $response ? 500 : 200
 		);
 	}
 
@@ -124,110 +135,50 @@ class AdminErrorController extends \WP_REST_Controller {
 	 * @return int
 	 */
 	protected function handle_error_log() {
-		$this->saved = $this->database( 'get' );
+		$plug_ver      = BLUEHOST_PLUGIN_VERSION;
+		$this->saved   = $this->database( 'get' );
+		$this->updated = $this->saved;
 
-		if ( ! $this->should_log( $this->saved ) ) {
-			if ( ! empty( $this->saved['error_max'] || ! $this->saved['error_max'] ) ) {
-				$this->database(
-					'update',
-					array_merge(
-						$this->saved,
-						array(
-							'error_max' => true,
-							'date'      => new \DateTime(),
-						)
-					)
-				);
+		if ( isset( $this->saved[ $plug_ver ] ) ) {
+			if ( count( $this->saved[ $plug_ver ] ) <= $this->errors_per_version ) {
+				array_unshift( $this->updated[ $plug_ver ], $this->key );
+				$this->updated[ $plug_ver ] = array_unique( $this->updated[ $plug_ver ] );
+				$this->condition            = 1;
+			} else {
+				array_pop( $this->updated[ $plug_ver ] );
+				array_unshift( $this->updated[ $plug_ver ], $this->key );
+				$this->updated[ $plug_ver ] = array_unique( $this->updated[ $plug_ver ] );
+				$this->condition            = 2;
 			}
-
-			return 0;
+		} elseif ( count( $this->saved ) <= $this->retain_versions ) {
+			$this->updated[ $plug_ver ] = array( $this->key );
+			$this->condition            = 3;
+		} else {
+			array_pop( $this->updated );
+			$this->updated[ $plug_ver ] = array( $this->key );
+			$this->condition            = 4;
 		}
 
-		$this->updated     = $this->saved; // make immutable
-		$this->key         = base64_encode( $this->params['message'] ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
-		$this->browser_key = base64_encode( implode( ',', $this->params['browser'] ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
-
-		if ( $this->params['browser']['mobile'] ) {
-			$this->params['browser']['mobile'] = true === $this->params['browser']['mobile'] ? 'mobile' : 'desktop';
-		}
-
-		if ( ! empty( $this->updated[ $this->key ] ) && ! empty( $this->updated[ $this->key ]['count'] ) ) {
-			$count = (int) $this->updated[ $this->key ]['count'];
-			if ( ! isset( $this->updated['error_max'] ) || 'true' !== $this->updated['error_max'] ) {
-				if ( ! in_array( implode( ',', $this->params['browser'] ), $this->updated[ $this->key ]['browsers'], true ) ) {
-					$this->updated[ $this->key ]['browsers'][] = implode( ',', $this->params['browser'] );
-				}
-				$this->make_log_summary();
-				$this->limit_log_entries();
-				$this->updated[ $this->key ]['max'] = 'true';
-			} elseif ( ( (int) $this->error_count - 1 ) >= $count ) {
-				$this->updated[ $this->key ]['count'] = (int) $this->updated[ $this->key ]['count'] + 1;
-				if ( ! in_array( implode( ',', $this->params['browser'] ), $this->updated[ $this->key ]['browsers'], true ) ) {
-					$this->updated[ $this->key ]['browsers'][] = implode( ',', $this->params['browser'] );
-				}
-				$this->make_log_summary();
-				$this->limit_log_entries();
-			}
-		} elseif ( ! isset( $this->updated[ $this->key ] ) ) {
-			$this->updated[ $this->key ] = array(
-				'count'    => 1,
-				'message'  => $this->params['message'],
-				'browsers' => array(
-					implode( ',', $this->params['browser'] ),
-				),
+		if ( ! isset( $this->saved[ $plug_ver ][ $this->key ] ) ) {
+			$request = new \WP_REST_Request( 'POST', '/bluehost/v1/data/events' );
+			$request->set_body_params(
+				array(
+					'action'   => 'bwa-error',
+					'category' => 'AdminError',
+					'data'     => $this->params,
+				)
 			);
-			$this->make_log_summary();
+			$response = \rest_do_request( $request );
+			if ( ! $response->is_error() ) {
+				$this->database( 'update', $this->updated );
+
+				return $response;
+			} else {
+				return false;
+			}
+		} else {
+			return null;
 		}
-
-		if ( $this->updated !== $this->saved ) {
-			return $this->database( 'update', $this->updated ) ? 1 : 2;
-		}
-
-		return 3;
-	}
-
-	/**
-	 * Make Incident Summary from Available Parameters.
-	 */
-	protected function make_log_summary() {
-		$this->updated[ $this->key ]['incidents'][ $this->params['date'] ] = $this->params['browser']['name'] . ' ' . $this->params['browser']['version'] . ' on ' . $this->params['browser']['os'];
-	}
-
-	/**
-	 * Limit most log entries per-error based on $this->error_incident_count
-	 *
-	 * @return void
-	 */
-	protected function limit_log_entries() {
-		$this->updated[ $this->key ]['incidents'] = array_slice(
-			$this->updated[ $this->key ]['incidents'],
-			- $this->error_incident_count
-		);
-	}
-
-	/**
-	 * Evaluate data to determine if it should be logged.
-	 *
-	 * @param array $saved Collection of saved errors.
-	 *
-	 * @return bool
-	 */
-	protected function should_log( $saved = array() ) {
-		$filter = apply_filters( 'bluehost_admin_error_logging_active', true );
-
-		if (
-			true === (
-				! empty( $saved['error_max'] )
-				&& is_bool( $saved['error_max'] )
-				&& true === (bool) $saved['error_max']
-			) ||
-			count( $stored ) >= $this->error_store_count ||
-			( true || 1 ) !== $filter
-		) {
-			return false;
-		}
-
-		return true;
 	}
 
 	/**
@@ -248,7 +199,7 @@ class AdminErrorController extends \WP_REST_Controller {
 			case 'read':
 			case 'get':
 			default:
-				return \get_option( $this->option_key );
+				return \get_option( $this->option_key, array() );
 		}
 	}
 

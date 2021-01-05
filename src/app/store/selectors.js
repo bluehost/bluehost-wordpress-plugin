@@ -9,7 +9,7 @@ export function getActivePage(state) {
 	return state.app.activePage;
 }
 
-export function getAppPages(state) {
+export function getTopLevelPages(state) {
 	return state.app.pages;
 }
 

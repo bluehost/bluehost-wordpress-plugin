@@ -1,9 +1,7 @@
-import { __ } from '@wordpress/i18n';
-
 import { BWAOverlay } from '@app/components/molecules';
-
-import { WorkingImageUrl } from '@app/assets';
 import Tips from './tips';
+import { WorkingImageUrl } from '@app/assets';
+import { __ } from '@wordpress/i18n';
 
 export default function DeployBWAOverlay( { type = 'all' } ) {
 	return (

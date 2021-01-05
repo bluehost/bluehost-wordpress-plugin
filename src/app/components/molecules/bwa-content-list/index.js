@@ -1,10 +1,7 @@
-/**
- * WordPress dependencies
- */
-import classnames from 'classnames';
-import { BWAHeading } from '@app/components/atoms';
-
 import './style.scss';
+
+import { BWAHeading } from '@app/components/atoms';
+import classnames from 'classnames';
 
 const BWAContentList = ( { title, className, children, ...props } ) => {
 	if ( ! children ) {

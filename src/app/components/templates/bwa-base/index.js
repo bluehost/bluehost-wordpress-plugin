@@ -1,112 +1,91 @@
-/**
- * WordPress dependencies
- */
-import { Speak } from '@wordpress/a11y';
-import { select, dispatch } from '@wordpress/data';
-import { Component } from '@wordpress/element';
-/**
- * External dependencies
- */
-import { withRouter } from 'react-router-dom';
-import isString from 'lodash/isString';
-import replace from 'lodash/replace';
-import kebabCase from 'lodash/kebabCase';
+import { handleWPMenuActiveHighlight, handleWPMenuAugmentation, sendPageviewEvent } from '@app/functions';
 
-/**
- * Internal dependencies
- */
-import './style.scss';
+import { BWAPageNotices } from '@app/components/molecules';
+import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
+import keyBy from 'lodash/keyBy';
+import { speak } from '@wordpress/a11y';
+import { useEffect } from '@wordpress/element';
+import { useLocation } from 'react-router-dom';
+import { useSelect } from '@wordpress/data';
 
-class BWABaseTemplate extends Component {
-	componentDidMount() {
-		// recieve this.props.state.setFocus
-		this.handleContainerFocus();
-		const currentLocation = this.getCurrentLocation();
-		this.maybeAugmentWPMenu();
-		// if ( ! isEmpty( select('bluehost/plugin').getAppPages() ) && currentLocation.isTopLevel ) {
-		this.handleWordPressMenuActive( currentLocation );
-		// } else {
-		// 	this.removeActivePageClasses();
-		// 	this.hideSubPages();
-		// }
+const BWABaseTemplate = ({
+	type = "base",
+	descriptivePageTitle = false,
+	...props 
+}) => {
+	const pageContainer = document.querySelector('.bwa-route-contents');
+	const routerLocation = useLocation();
+	const topLevelPages = useSelect((select) => {
+		return select('bluehost/plugin').getTopLevelPages();
+	}, []);
+
+	if ( null === topLevelPages || 'undefined' === typeof topLevelPages ) {
+		return false;
 	}
 
-	handleContainerFocus() {
-		const { location } = this.props;
-		if ( location.state && location.state.setFocus ) {
-			this.container.focus( { preventScroll: true } );
+	/**
+	 * Use router location to figure out top-level page to highlight, if any.
+	 */
+	const getTopLevelActiveHighlightSlug = () => {
+		let slug 			= false;
+		let currentPath 	= routerLocation.pathname;
+		let topLevelPaths 	= keyBy(topLevelPages, 'path');
+
+		if ( topLevelPaths[ currentPath ] ) {
+			slug = topLevelPaths[ currentPath ].slug;
+		} else {
+			topLevelPages.forEach( ( pageData ) => {
+				if ( currentPath.includes( pageData.path ) ) {
+					slug = pageData.slug;
+				}
+			})
+		}
+
+		return slug;
+	}
+
+	/**
+	 * Determine short, unique title used for analytics and a11y announcements.
+	 */
+	const getDescriptivePageTitle = () => {
+		const defaultTitle = __( 'Bluehost WordPress Plugin', 'bluehost-wordpress-plugin');
+		const pageTitle = document.querySelector('h2');
+		if ( false !== descriptivePageTitle ) {
+			return descriptivePageTitle;
+		} else if ( null !== pageTitle ) {
+			return pageTitle.innerText;
+		} else {
+			return defaultTitle;
 		}
 	}
 
-	getCurrentLocation() {
-		const { location } = this.props;
-		return {
-			...location,
-			pathnameKebab: kebabCase( location.pathname ),
-			// isTopLevel: select('bluehost/plugin').getAppPages().includes(this.getSlug(location)),
-			isTopLevel: true,
-			slug: this.getSlug( location ),
-			slugKebab: this.getSlug( location ),
-		};
-	}
-
-	maybeAugmentWPMenu() {
-		const menuNodes = window.document.querySelectorAll( '#toplevel_page_bluehost > ul > li' );
-		const menuItems = Array.from( menuNodes );
-		menuItems.splice( 0, 2 );
-		menuItems.forEach( function( li ) {
-			const className = kebabCase( li.innerText );
-			li.classList.add( 'bluehost-wp-menu-item', className );
-		} );
-
-		try {
-			const elem = window.document.querySelector( 'a.toplevel_page_bluehost' );
-			if ( ! elem.href.includes('#/home') ) {
-				elem.href = elem.href + '#/home';
-			}
-		} catch ( e ) {
-			console.log( 'Couldn\'t find Bluehost Menu Element to swap href' );
+	useEffect(() => {
+		handleWPMenuAugmentation(topLevelPages);
+		handleWPMenuActiveHighlight( getTopLevelActiveHighlightSlug() );
+		pageContainer.focus({ preventScroll: true });
+		if ( routerLocation.state && routerLocation.state.redirect !== 'unspecified-or-root' ) {
+			speak( getDescriptivePageTitle(), 'assertive' );
 		}
-	}
+		sendPageviewEvent(routerLocation, getDescriptivePageTitle() );
+	}, [routerLocation.pathname]);
 
-	handleWordPressMenuActive( location ) {
-		try {
-			const liToActivate = document.querySelector( '.bluehost-wp-menu-item.' + location.slug );
-			const bluehostWpSubMenuNode = document.querySelector( '#toplevel_page_bluehost ul' );
-			if ( liToActivate && bluehostWpSubMenuNode ) {
-				// dispatch('bluehost/plugin').setActivePage( location.slug, location.isTopLevel );
-				this.removeActivePageClasses();
-				liToActivate.classList.add( 'current' );
-				bluehostWpSubMenuNode.style = 'display: block;';
-			}
-		} catch ( e ) {
-			console.error( e.message );
-		}
-	}
-
-	removeActivePageClasses() {
-		const bluehostWpMenuNodes = document.querySelectorAll( '#toplevel_page_bluehost .bluehost-wp-menu-item' );
-		const bluehostWpMenuItems = Array.from( bluehostWpMenuNodes );
-		bluehostWpMenuItems.forEach( function( li ) {
-			li.classList.remove( 'current' );
-		} );
-	}
-
-	getSlug( location ) {
-		const raw = isString( location ) ? location : location.pathname;
-		return replace( replace( replace( raw, '/marketplace', '' ), '/tools', '' ), '/', '' );
-	}
-
-	render() {
-		return (
-			<section
-				ref={ ( container ) => ( this.container = container ) }
-				className={ 'base-template animated fadeIn page-fade-speed ' + this.props.className }
-            >
-				{ this.props.children }
-			</section>
-		);
-	}
+	return (
+		<section 
+			className={ 
+				classnames([
+					'component-template-' + type,
+					'base-template',
+					'animated',
+					'fadeIn',
+					'page-fade-speed',
+					props.className ? props.className : null
+				]) 
+			}>
+			<BWAPageNotices />
+			{props.children}
+		</section>
+	);
 }
 
-export default withRouter( BWABaseTemplate );
+export default BWABaseTemplate;

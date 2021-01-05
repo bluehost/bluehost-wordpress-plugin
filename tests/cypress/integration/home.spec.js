@@ -15,12 +15,15 @@ describe('Home Page', function () {
 	});
 
 	it('Exists', () => {
-		cy.contains('.welcome-section', 'Welcome to your WordPress site!');
+		cy
+			.findByRole('heading', {name: 'Welcome to your WordPress site!', level: 2})
+			.scrollIntoView()
+			.should('be.visible');
 	});
 
 	it('Is Accessible', () => {
 		cy.wait(200);
-		cy.checkA11y('.router-section');
+		cy.checkA11y('.bwa-route-contents');
 	});
 
 	it('Has section "Content"', () => {
@@ -176,7 +179,7 @@ describe('Home Page', function () {
 					cy.get('a.bluehost.components-button')
 						.should('have.attr', 'href')
 						.and('include', 'https://my.bluehost.com/hosting/app?lil=1')
-						.and('include', '#/sites');
+						.and('include', '%23%2Fsites'); // #/sites
 				});
 
 		});
@@ -196,7 +199,7 @@ describe('Home Page', function () {
 					cy.get('a.bluehost.components-button')
 						.should('have.attr', 'href')
 						.and('include', 'https://my.bluehost.com/hosting/app?lil=1')
-						.and('include', '#/email-office');
+						.and('include', '%23%2Femail-office'); // #/email-office
 				});
 
 		});
@@ -216,7 +219,7 @@ describe('Home Page', function () {
 					cy.get('a.bluehost.components-button')
 						.should('have.attr', 'href')
 						.and('include', 'https://my.bluehost.com/hosting/app?lil=1')
-						.and('include', '#/domains');
+						.and('include', '%23%2Fdomains'); // #/domains
 				});
 
 		});

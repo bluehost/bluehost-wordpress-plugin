@@ -1,11 +1,5 @@
-/**
- * External dependencies
- */
-import without from 'lodash/without';
-/**
- * WordPress dependencies
- */
 import { useState } from '@wordpress/element';
+import without from 'lodash/without';
 
 /**
  * Favorites functionality hook

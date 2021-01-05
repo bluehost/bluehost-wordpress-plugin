@@ -1,0 +1,9 @@
+@import "@app/config.scss";
+
+.component-template-common {
+  @extend %template-common;
+}
+  
+.page-fade-speed {
+    animation-duration: 315ms;
+}

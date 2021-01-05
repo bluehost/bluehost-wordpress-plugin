@@ -1,17 +1,19 @@
-import { BWABaseTemplate as Page } from '@app/components/templates';
-import { BWAButton as Button } from '@app/components/atoms';
-import { addUtmParams } from '@app/functions';
-import { BlueSkyLogo, Call, CallCenter, ChatIcon, Computer, SEO } from '@app/assets';
-import { __ } from '@wordpress/i18n';
-import Search from './search';
-import blueSkyGroup from '@app/assets/blue-sky-group.png';
-
 import './style.scss';
+
+import { BWAHeading, BWAButton as Button } from '@app/components/atoms';
+import { BlueSkyLogo, Call, CallCenter, ChatIcon, Computer, SEO } from '@app/assets';
+
+import { BWABaseTemplate as Page } from '@app/components/templates';
 import ReactPlayer from "react-player";
+import Search from './search';
+import { __ } from '@wordpress/i18n';
+import { addUtmParams } from '@app/functions';
+import blueSkyGroup from '@app/assets/blue-sky-group.png';
 
 const Help = () => {
 	return (
 		<Page className="page-help">
+			<BWAHeading level="h2" size={0}>{ __( 'Help', 'bluehost-wordpress-plugin' ) }</BWAHeading>
 			<div className="clouds">
 				<div className="section-intro">
 					<div className="chat-button-container">
@@ -33,9 +35,9 @@ const Help = () => {
 							{ __('Chat with us', 'bluehost-wordpress-plugin') } <ChatIcon className="chat-icon" />
 						</Button>
 					</div>
-					<h2 className="section-title">
+					<h3 className="section-title">
 						{ __('From DIY to full-service help', 'bluehost-wordpress-plugin') }
-					</h2>
+					</h3>
 					<p className="section-description">
 						{ __('Feeling stuck? Choose how much help you\'d like, from how-to articles to your own website concierge.', 'bluehost-wordpress-plugin') }
 					</p>
@@ -66,7 +68,7 @@ const Help = () => {
 							</div>
 							<Button
 								className="media-block__button"
-								href="#/blue-sky"
+								href="#/marketplace/services/blue-sky"
 								isSecondary
 								onClick={
 									() => {

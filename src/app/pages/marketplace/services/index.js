@@ -1,8 +1,7 @@
-import { withRouter } from 'react-router-dom';
-
 import { BWAMarketplaceTemplate } from '@app/components/templates';
 import { BWAProductCard } from '@app/components/molecules';
 import { useMojoApi } from '@app/hooks';
+import { withRouter } from 'react-router-dom';
 
 function ServicesPage( { history } ) {
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'services', { category: '', count: 1000 } );
@@ -17,7 +16,7 @@ function ServicesPage( { history } ) {
 				buttonPrimary={ { href: item.buy_url } }
 				buttonSecondary={ {
 					onClick: () => {
-						history.push( `/marketplace/product/${ item.id }` );
+						history.push( `/marketplace/services/${ item.id }` );
 					},
 				} }
 				id={ item.id }
@@ -36,7 +35,8 @@ function ServicesPage( { history } ) {
 			isLoading={ ! done || isLoading }
 			payload={ payload }
 			render={ renderCallback }
-			type="services"
+			marketplaceType="services"
+			type="marketplace"
 		/>
 	);
 }

@@ -1,16 +1,10 @@
-/**
- * WordPress dependencies
- */
-import { __ } from '@wordpress/i18n';
-import { withSelect, withDispatch } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
+import { withDispatch, withSelect } from '@wordpress/data';
 
-/**
- * Internal Dependencies
- */
-import SettingsSection from '../settings-section';
 import SettingsGroup from '../settings-group';
+import SettingsSection from '../settings-section';
 import SettingsToggle from '../settings-toggle';
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
 
 const SiteControls = ( { isComingSoon, toggleSetting } ) => {
 	return (

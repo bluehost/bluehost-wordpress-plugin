@@ -62,7 +62,7 @@ jobs:
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
       - name: Cache Composer vendor directory
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -92,7 +92,7 @@ jobs:
         run: find .
 
       - name: Configure WordPress
-        run: echo '{"port":8880,"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.json
+        run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: Install WordPress
         run: npx wp-env start
@@ -106,3 +106,18 @@ jobs:
         with:
           name: screenshots
           path: ./tests/cypress/screenshots
+
+      - name: Check if a debug.log file exists
+        id: hasErrors
+        run: npx wp-env run wordpress test ! -f /var/www/html/wp-content/debug.log
+
+      - name: Copy debug.log file
+        if: ${{ steps.hasErrors.outputs.failure }}
+        run: cat /var/www/html/wp-content/debug.log 1>./debug.log 2>/dev/null
+
+      - name: Store debug.log file
+        if: ${{ steps.hasErrors.outputs.failure }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: logs
+          path: ./debug.log

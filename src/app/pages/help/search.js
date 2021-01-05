@@ -1,13 +1,13 @@
+import { Configure, InstantSearch, createInfiniteHitsSessionStorageCache } from 'react-instantsearch-dom';
 import { Fragment, useEffect, useRef, useState } from '@wordpress/element';
+
+import SearchFilters from './search-filters';
+import SearchForm from './search-form';
+import SearchResults from './search-results';
 import { __ } from '@wordpress/i18n';
 import algoliasearch from 'algoliasearch/lite';
 import { join } from 'lodash';
-import { createInfiniteHitsSessionStorageCache, Configure, InstantSearch } from 'react-instantsearch-dom';
 import { sendEvent } from '@app/functions';
-
-import SearchForm from './search-form';
-import SearchFilters from './search-filters';
-import SearchResults from './search-results';
 
 const searchClient = algoliasearch(
 	'AVE0JWZU92', // ALGOLIA_APP_ID,
@@ -34,10 +34,10 @@ const SearchPage = () => {
 	}, [category]);
 
 	useEffect(() => {
-		if (isFirstRun.current) {
-			isFirstRun.current = false;
-			return;
-		}
+		// if (isFirstRun.current) {
+		// 	isFirstRun.current = false;
+		// 	return;
+		// }
 		sendEvent(
 			{
 				action: 'resource-center-search',

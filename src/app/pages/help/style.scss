@@ -1,19 +1,15 @@
 @import '@app/config.scss';
 
 .page-help {
-
-  &.base-template {
-    padding-top: 5px;
+  margin-top: 7px;
+  
+  &.component-template-base {
     max-width: none;
   }
 
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0;
-
   font-size: 16px;
   line-height: 24px;
-  font-family: Open Sans, Arial, sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
 
   .clouds {
     background: white url('images/clouds.svg') center bottom no-repeat;

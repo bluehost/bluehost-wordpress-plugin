@@ -2,6 +2,7 @@ export { default as BWAError } from './bwa-error';
 export { default as BWAModal } from './bwa-modal';
 export { default as BWANotice } from './bwa-notice';
 export { default as BWAPageSpinner } from './bwa-page-spinner';
+export { default as BWAPageNotices } from './bwa-page-notices';
 export { default as BWASnackbar } from './bwa-snackbar';
 export { default as BWAContentList } from './bwa-content-list';
 export { default as BWAContentListRow } from './bwa-content-list-row';

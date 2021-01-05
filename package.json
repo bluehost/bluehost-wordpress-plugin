@@ -34,6 +34,7 @@
         "lodash": "^4.17.20",
         "purecss": "^1.0.1",
         "react": "^16.9.0",
+        "react-error-boundary": "^3.1.0",
         "react-instantsearch-dom": "^6.8.2",
         "react-player": "^2.6.2",
         "react-router-dom": "^5.1.2",
@@ -59,7 +60,7 @@
         "clean-webpack-plugin": "^3.0.0",
         "copy-webpack-plugin": "^5.1.0",
         "css-loader": "^4.2.1",
-        "cypress": "^5.0.0",
+        "cypress": "^5.6.0",
         "cypress-axe": "^0.8.1",
         "file-loader": "^6.0.0",
         "husky": "^4.2.5",
@@ -80,18 +81,13 @@
         "lint:js": "wp-scripts lint-js ./src",
         "lint:js:fix": "wp-scripts lint-js ./src --fix",
         "lint:pkg-json": "wp-scripts lint-pkg-json",
-        "lint:yml": "yamllint --ignore=node_modules/** **/*.yml",
+        "lint:yml": "yamllint --ignore=node_modules/** --ignore=vendor/** **/*.yml",
         "i18n": "wpi18n addtextdomain && composer run i18n",
         "start": "wp-scripts start",
         "storybook:dev": "start-storybook -c ./storybook",
         "storybook:build": "build-storybook -c ./storybook -o ./.docs",
         "test:e2e": "npx cypress run",
         "test:unit": "wp-scripts test-unit-js"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged && vendor/bin/composer run i18n"
-        }
     },
     "lint-staged": {
         "**/*.yml": [

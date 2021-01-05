@@ -3,10 +3,6 @@
 describe('Onboarding', function () {
 
 	before(() => {
-
-		// Make sure install date is within the last 30 days
-		cy.exec(`npx wp-env run cli wp option set bh_plugin_install_date ${ Cypress.moment().format('X') }`);
-
 		// Make sure we are in coming soon mode
 		cy.exec('npx wp-env run cli wp option set mm_coming_soon true');
 
@@ -21,13 +17,13 @@ describe('Onboarding', function () {
 
 	it('Is Accessible', () => {
 		cy.wait(200);
-		cy.checkA11y('.router-section');
+		cy.checkA11y('.bwa-route-contents');
 	});
 
 	describe('Homepage', () => {
 		it('Default State', () => {
 			cy.window().its('store').invoke('dispatch', {type: 'UPDATE_SETTING', setting: 'hasSetHomepage', newValue: false});
-			cy.window().its('store').invoke('getState').its('settings.hasSetHomepage').should('be', false);
+			cy.window().its('store').invoke('getState').its('settings.hasSetHomepage').should('equal', false);
 			cy.findByText('Let\'s start with your homepage').scrollIntoView().should('be.visible');
 			cy.findByRole('button', {name: 'Get Started'}).as('button');
 			cy.get('@button').scrollIntoView().should('be.visible');
@@ -44,8 +40,9 @@ describe('Onboarding', function () {
 			cy.get('@staticPageButton').scrollIntoView().should('be.visible');
 			cy.get('@blogPostsButton').click();
 			cy.wait('@updateSettings');
-			cy.window().its('store').invoke('getState').its('settings.hasSetHomepage').should('be', true);
-			cy.window().its('store').invoke('getState').its('settings.showOnFront').should('be', 'posts');
+			cy.wait(1000);
+			cy.window().its('store').invoke('getState').its('settings.hasSetHomepage').should('equal', true);
+			cy.window().its('store').invoke('getState').its('settings.showOnFront').should('equal', 'posts');
 		});
 
 		it('Complete State', () => {

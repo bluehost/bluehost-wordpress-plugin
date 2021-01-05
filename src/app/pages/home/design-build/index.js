@@ -1,21 +1,11 @@
-/**
- * WordPress dependencies
- */
-import { __ } from '@wordpress/i18n';
-import { select } from '@wordpress/data';
-/**
- * External dependencies
- */
-import { BWAButton as Button } from '@app/components/atoms';
 import {
 	BWAContentList,
 	BWAContentListRow,
 } from '@app/components/molecules';
 
-/**
- * External dependencies
- */
-import { ButtonGroup } from '@wordpress/components';
+import { BWAButton as Button } from '@app/components/atoms';
+import { __ } from '@wordpress/i18n';
+import { select } from '@wordpress/data';
 
 const baseUrl = select('bluehost/plugin').getAdminUrl();
 

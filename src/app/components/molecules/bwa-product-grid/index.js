@@ -1,6 +1,6 @@
-import { Children } from '@wordpress/element';
-
 import './style.scss';
+
+import { Children } from '@wordpress/element';
 
 export default function BWAProductGrid( { children, className = '' } ) {
 	return (

@@ -1,7 +1,8 @@
 import React, { useState } from '@wordpress/element';
+
+import { SearchIcon } from '@app/assets';
 import { __ } from '@wordpress/i18n';
 import { connectSearchBox } from 'react-instantsearch-dom';
-import { SearchIcon } from '@app/assets';
 
 const SearchBox = ({defaultRefinement, onSubmit, refine}) => {
 

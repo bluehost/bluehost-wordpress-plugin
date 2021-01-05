@@ -1,11 +1,4 @@
-/**
- * WordPress Dependencies
- */
 import { SelectControl } from '@wordpress/components';
-
-/**
- * Internal Dependencies
- */
 import SettingsControl from '../settings-control';
 
 const SettingsSelect = ( { label, options, value, onChange, ...props }) => (

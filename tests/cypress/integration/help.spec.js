@@ -9,14 +9,14 @@ describe('Help Page', function () {
 
 	it('Exists', () => {
 		cy
-			.findByRole('heading', {name: 'From DIY to full-service help', level: 2})
+			.findByRole('heading', {name: 'From DIY to full-service help', level: 3})
 			.scrollIntoView()
 			.should('be.visible');
 	});
 
 	it('Is Accessible', () => {
 		cy.wait(1000);
-		cy.checkA11y('.router-section');
+		cy.checkA11y('.bwa-route-contents');
 	});
 
 	it('Has chat button', () => {
@@ -30,7 +30,7 @@ describe('Help Page', function () {
 		cy.findByRole('link', {name: 'Get Blue Sky'}).as('link');
 		cy.get('@link').scrollIntoView().should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
-			.and('contain', '#/blue-sky');
+			.and('contain', '#/marketplace/services/blue-sky');
 	});
 
 	it('Has "Full-Service Website" Call to Action', () => {

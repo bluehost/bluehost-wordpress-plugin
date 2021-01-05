@@ -1,6 +1,7 @@
+import { connectInfiniteHits, connectStateResults } from 'react-instantsearch-dom';
+
 import { Fragment } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { connectInfiniteHits, connectStateResults } from 'react-instantsearch-dom';
 
 function getExcerpt(content, charLength) {
 	if (content.length <= charLength) {

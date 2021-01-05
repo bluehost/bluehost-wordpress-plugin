@@ -1,9 +1,6 @@
-/**
- * External dependencies
- */
-import classnames from 'classnames';
-
 import './style.scss';
+
+import classnames from 'classnames';
 
 const validLevels = [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ];
 const validSizes = [ 0, 1, 2, 3, 4, 'welcome', 'product', 'setting', '' ];

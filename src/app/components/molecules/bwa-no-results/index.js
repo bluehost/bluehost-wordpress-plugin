@@ -1,6 +1,7 @@
-import { __ } from '@wordpress/i18n';
-import { ErrorStateImage } from '@app/assets';
 import './style.scss';
+
+import { ErrorStateImage } from '@app/assets';
+import { __ } from '@wordpress/i18n';
 
 export default function BWANoResults() {
 	return (

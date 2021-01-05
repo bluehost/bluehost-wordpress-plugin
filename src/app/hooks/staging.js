@@ -1,6 +1,7 @@
-import apiFetch from '@wordpress/api-fetch';
 import { useEffect, useState } from '@wordpress/element';
+
 import { __ } from '@wordpress/i18n';
+import apiFetch from '@wordpress/api-fetch';
 
 /**
  * Staging functionality.

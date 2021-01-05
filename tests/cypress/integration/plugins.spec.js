@@ -19,7 +19,7 @@ describe('Plugins Page', function () {
 
 	it('Is Accessible', () => {
 		cy.wait(100);
-		cy.checkA11y('.router-section');
+		cy.checkA11y('.bwa-route-contents');
 	});
 
 	it('Product grid has 12 items', () => {

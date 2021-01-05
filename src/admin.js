@@ -1,35 +1,29 @@
 /**
- * Set Webpack Public Path
+ * Set Webpack Public Path var 
+ *  __webpack_public_path__
  */
 import './set-public-path';
 
-/**
- * WordPress dependencies
- */
+import App from './app/index.js';
 import domReady from '@wordpress/dom-ready';
+import domReadyInit from './app/init';
 import { render } from '@wordpress/element';
-/**
- * Internal dependencies
- */
-import App from './app';
 
 /**
  * DOM ID of root element to initialize app
  *
  * @see ../inc/admin/class-page.php
  */
-const WP_PAGE_ROOT_ELEMENT = 'bluehost-app';
+const WP_ADM_PAGE_ROOT_ELEMENT = 'bwa-root';
+
+
 /**
- *
- */
-import adminInitHelpers from './admin-init-helpers';
-/**
- * When DOM is ready, load app on root element, replacing #app-loader markup.
+ * When DOM is ready, load app on root element, replacing #bwa-centered-loader markup.
  */
 domReady( () => {
-	{ adminInitHelpers(); }
+	{ domReadyInit(); }
 	render(
 		<App />,
-		document.getElementById( WP_PAGE_ROOT_ELEMENT )
+		document.getElementById( WP_ADM_PAGE_ROOT_ELEMENT )
 	);
 } );

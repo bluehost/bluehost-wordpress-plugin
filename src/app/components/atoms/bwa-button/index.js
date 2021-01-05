@@ -1,21 +1,12 @@
-/**
- * External dependencies
- */
-import classNames from 'classnames';
-import snakeCase from 'lodash/snakeCase';
-import omit from 'lodash/omit';
-
-/**
- * WordPress dependencies
- */
-import { Button } from '@wordpress/components';
-import { forwardRef } from '@wordpress/element';
-
-/**
- * Internal dependencies
- */
-import { addUtmParams, isExternalUrl, get } from "@app/functions";
 import './style.scss';
+
+import { addUtmParams, get, isExternalUrl } from "@app/functions";
+
+import { Button } from '@wordpress/components';
+import classNames from 'classnames';
+import { forwardRef } from '@wordpress/element';
+import omit from 'lodash/omit';
+import snakeCase from 'lodash/snakeCase';
 
 const BWAButton = forwardRef((props, ref) => {
 	let {className = '', href, rel, target} = props;

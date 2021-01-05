@@ -1,8 +1,7 @@
-import { __ } from '@wordpress/i18n';
 import { BWAMarketplaceTemplate } from '@app/components/templates';
 import { BWAProductCard } from '@app/components/molecules';
+import { __ } from '@wordpress/i18n';
 import { useMojoApi } from '@app/hooks';
-
 
 export default function ThemesPage() {
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'themes', { count: 1000 } );
@@ -36,7 +35,8 @@ export default function ThemesPage() {
 			isLoading={ ! done || isLoading }
 			payload={ payload }
 			render={ renderCallback }
-			type="themes"
+			marketplaceType="themes"
+			type="marketplace"
 		/>
 	);
 }

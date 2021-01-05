@@ -1,6 +1,6 @@
-import { createPortal } from '@wordpress/element';
-
 import './style.scss';
+
+import { createPortal } from '@wordpress/element';
 
 export default function BWAOverlay( { children, className = '' } ) {
 	return createPortal(

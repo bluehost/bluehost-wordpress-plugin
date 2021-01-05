@@ -1,8 +1,7 @@
-import { __ } from '@wordpress/i18n';
+import './style.scss';
 
 import { BWAHeading } from '@app/components/atoms';
-
-import './style.scss';
+import { __ } from '@wordpress/i18n';
 
 const Welcome = () => (
 	<div className="welcome-section">

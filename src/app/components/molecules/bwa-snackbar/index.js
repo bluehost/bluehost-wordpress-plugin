@@ -1,19 +1,10 @@
-/**
- * External dependencies
- */
-import classNames from 'classnames';
-
-/**
- * WordPress dependencies
- */
-import { Notice } from '@wordpress/components';
-import { createPortal } from '@wordpress/element';
-
-/**
- * Internal dependencies
- */
-import { CloseIcon, SuccessIcon, WarningIcon } from '@app/assets';
 import './style.scss';
+
+import { CloseIcon, SuccessIcon, WarningIcon } from '@app/assets';
+
+import { Notice } from '@wordpress/components';
+import classNames from 'classnames';
+import { createPortal } from '@wordpress/element';
 
 const BWASnackbar = ( { children, className = '', isDismissible = false, onRemove, status, title = '', ...props } ) => {
 	return createPortal(

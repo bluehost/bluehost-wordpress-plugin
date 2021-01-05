@@ -1,16 +1,10 @@
-/**
- * WordPress dependencies
- */
-import { sprintf, __, _n } from '@wordpress/i18n';
-import { withSelect, withDispatch } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
+import { __, _n, sprintf } from '@wordpress/i18n';
+import { withDispatch, withSelect } from '@wordpress/data';
 
-/**
- * Internal Dependencies
- */
-import SettingsSection from '../settings-section';
 import SettingsGroup from '../settings-group';
+import SettingsSection from '../settings-section';
 import SettingsSelect from '../settings-select';
+import { compose } from '@wordpress/compose';
 
 const Content = ( { revisions, trashInterval, updateSetting } ) => {
 	const trashWeeks = Math.floor( trashInterval / 7 );

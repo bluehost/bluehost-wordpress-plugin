@@ -1,15 +1,7 @@
-/**
- * External dependencies
- */
-import classNames from 'classnames';
-/**
- * WordPress dependencies
- */
-import { Modal } from '@wordpress/components';
-/**
- * Internal dependencies
- */
 import './style.scss';
+
+import { Modal } from '@wordpress/components';
+import classNames from 'classnames';
 
 const BWAModal = ( {
 	actionsComponent,

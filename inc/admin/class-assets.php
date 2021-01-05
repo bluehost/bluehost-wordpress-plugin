@@ -6,41 +6,36 @@
 class Bluehost_Admin_App_Assets {
 
 	/**
+	 * Page name.
+	 *
 	 * @var string
 	 */
 	protected $page_hook = 'bluehost';
 
 	/**
+	 * Current hook.
+	 *
 	 * @var string
 	 */
 	protected $current_admin_hook;
 
 	/**
+	 * Class instance.
+	 *
 	 * @var stdClass
 	 */
 	protected static $instance;
 
 	/**
-	 * @var array
-	 */
-	protected $app_dependencies = array(
-		'wp-a11y',
-		'wp-api-fetch',
-		'wp-dom',
-		'wp-dom-ready',
-		'wp-keycodes',
-		'wp-element',
-		'wp-components',
-		'wp-html-entities',
-		'react-router-dom',
-	);
-
-	/**
+	 * Assets URL.
+	 *
 	 * @var string $url
 	 */
 	protected $url;
 
 	/**
+	 * Get class instance.
+	 *
 	 * @return Bluehost_Admin_App_Assets|stdClass
 	 */
 	public static function return_instance() {
@@ -53,7 +48,7 @@ class Bluehost_Admin_App_Assets {
 	}
 
 	/**
-	 *
+	 * Initialize class.
 	 */
 	protected function primary_init() {
 		// TODO: restore admin css patch for nav
@@ -72,16 +67,20 @@ class Bluehost_Admin_App_Assets {
 	public function register_global_assets() {
 		$min  = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 		$rand = time();
+
 		wp_register_style(
 			'bluehost-font',
-			'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600'
+			'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600',
+			array(),
+			empty( $min ) ? $rand : BLUEHOST_PLUGIN_VERSION
 		);
 
 		wp_register_script(
 			'react-router-dom',
 			$this->url . 'react-router-dom' . $min . '.js',
 			array( 'wp-element' ),
-			empty( $min ) ? $rand : '5.0.0'
+			empty( $min ) ? $rand : '5.0.0',
+			true
 		);
 
 		wp_register_style(
@@ -137,6 +136,8 @@ class Bluehost_Admin_App_Assets {
 	}
 
 	/**
+	 * Register assets.
+	 *
 	 * @param string $hook Hook name.
 	 */
 	public function register_assets( $hook ) {
@@ -154,12 +155,12 @@ class Bluehost_Admin_App_Assets {
 	 */
 	protected function page_css( $assets_url ) {
 		wp_register_style(
-			'eig-wp-admin-ui-styles',
+			'bwa-styles',
 			$assets_url . 'admin.css',
 			array( 'wp-components', 'animatecss', 'bluehost-font', 'bluehost-brand', 'purecss-grids' ),
 			time()
 		);
-		wp_enqueue_style( 'eig-wp-admin-ui-styles' );
+		wp_enqueue_style( 'bwa-styles' );
 	}
 
 	/**
@@ -168,55 +169,63 @@ class Bluehost_Admin_App_Assets {
 	 * @param string $dist_url Base distribution URL.
 	 */
 	protected function page_js( $dist_url ) {
+		$js_deps = require BLUEHOST_PLUGIN_DIR . '/assets/admin-manifest.asset.php';
 		wp_register_script(
-			'eig-wp-admin-ui-manifest',
+			'bwa-manifest',
 			$dist_url . 'admin-manifest.js',
-			$this->app_dependencies,
-			time(),
+			array_merge( $js_deps['dependencies'], array( 'react-router-dom' ) ),
+			$js_deps['version'],
 			true
 		);
 		wp_localize_script(
-			'eig-wp-admin-ui-manifest',
-			'bluehostAppPublicPath',
+			'bwa-manifest',
+			'bluehostPluginPublicPath',
 			$dist_url
 		);
+		wp_localize_script(
+			'bwa-manifest',
+			'bluehostPluginVersion',
+			BLUEHOST_PLUGIN_VERSION
+		);
 		wp_register_script(
-			'eig-wp-admin-ui-vendors',
+			'bwa-vendors',
 			$dist_url . 'vendors~admin.js',
-			array( 'eig-wp-admin-ui-manifest' ),
-			time(),
+			array( 'bwa-manifest' ),
+			$js_deps['version'],
 			true
 		);
 		wp_register_script(
-			'eig-wp-admin-ui-app',
+			'bwa-app',
 			$dist_url . 'admin.js',
-			array( 'eig-wp-admin-ui-vendors' ),
-			time(),
+			array( 'bwa-vendors' ),
+			$js_deps['version'],
 			true
 		);
-		wp_enqueue_script( 'eig-wp-admin-ui-app' );
+		wp_enqueue_script( 'bwa-app' );
 
 		$data = array(
-			'app'       => array(
-				'adminUrl'		   => \admin_url(),
-				'activePage'       => '',
-				'isTopLevel'       => 0,
-				'pages'            => array_map( 'strtolower', Bluehost_Admin_App_Page::$subpages ),
-				'siteId'           => mojo_site_bin2hex(),
-				'mobileMenuActive' => 0,
-				'nonce'            => wp_create_nonce( mojo_site_bin2hex() ),
+			'app'          => array(
+				'adminUrl'             => \admin_url(),
+				'activePage'           => '',
+				'isTopLevel'           => 0,
+				'pages'                => Bluehost_Admin_App_Page::get_top_level_pages(),
+				'noticesPathsDenyList' => Bluehost_Admin_App_Page::$noticesPathsDenyList, // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+				'accountId'            => mojo_site_bin2hex(),
+				'nonce'                => wp_create_nonce( mojo_site_bin2hex() ),
 			),
-			'env'       => array(
+			'env'          => array(
 				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,
 				'phpVersion' => phpversion(),
+				'isStaging'  => \Bluehost\Staging::getInstance()->isStaging(),
 			),
-			'wordpress' => array(
+			'wordpress'    => array(
 				'hasReusableBlocks'              => \wp_count_posts( 'wp_block' )->publish >= 1,
 				'isJetpackActive'                => class_exists( 'Jetpack' ) ? 1 : 0,
 				'isWooActive'                    => class_exists( 'woocommerce' ) ? 1 : 0,
 				'jetpackActiveModules'           => get_option( 'jetpack_active_modules', 0 ),
 				'bluehostPluginDaysSinceInstall' => bh_get_days_since_plugin_install_date(),
 			),
+			'movedToStore' => false,
 		);
 
 		// Grab the latest settings using an interal REST API request
@@ -226,16 +235,8 @@ class Bluehost_Admin_App_Assets {
 
 		$data['settings'] = $server->response_to_data( $response, false );
 
-		wp_localize_script( 'eig-wp-admin-ui-app', 'bluehost', apply_filters( 'bluehost_admin_page_data', $data ) );
+		wp_localize_script( 'bwa-app', 'bluehost', apply_filters( 'bluehost_admin_page_data', $data ) );
+		wp_localize_script( 'bwa-app', 'bluehostWpAdminUrl', \admin_url() );
 
-		if ( defined( 'WP_LOCAL_DEV' ) && WP_LOCAL_DEV ) {
-			wp_enqueue_script(
-				'livereload',
-				'http://localhost:35729/livereload.js',
-				array( 'eig-wp-admin-ui-app' ),
-				time(),
-				true
-			);
-		}
 	}
 }

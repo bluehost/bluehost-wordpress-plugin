@@ -1,28 +1,17 @@
-/**
- * WordPress dependencies
- */
-import { useEffect, useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
-
-/**
- * Internal dependencies
- */
-import { BWABaseTemplate } from '@app/components/templates';
-import { BWANotification as Notification } from '@app/components/organisms';
+import './style.scss';
 
 import {
-	BWAProductGrid,
-	BWANoResults,
-	BWAProductCardPlaceholder,
-	BWASearch,
-} from '@app/components/molecules';
-
-import {
+	BWADropdown,
 	BWAHeading,
 	BWAPagination,
-	BWADropdown,
 } from '@app/components/atoms';
-
+import {
+	BWANoResults,
+	BWAProductCardPlaceholder,
+	BWAProductGrid,
+	BWASearch,
+} from '@app/components/molecules';
+import { useEffect, useState } from '@wordpress/element';
 import {
 	useFavorites,
 	useMojoFilter,
@@ -31,12 +20,13 @@ import {
 	usePaginator,
 } from '@app/hooks';
 
+import { BWACommonTemplate } from '@app/components/templates';
 import { NoFavorites } from '@app/assets';
+import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
 
-import './style.scss';
-
-const marketplacePageTitle = ( type ) => {
-	switch ( type ) {
+const marketplacePageTitle = ( marketplaceType ) => {
+	switch ( marketplaceType ) {
 		case 'plugins':
 			return __( 'Premium Plugins', 'bluehost-wordpress-plugin' );
 		case 'services':
@@ -69,7 +59,7 @@ const sortByOptions = [
 	// },
 ];
 
-const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading, payload, render, type = 'themes' } ) => {
+const BWAMarketplaceTemplate = ( { type = 'marketplace', className = '', isLoading, payload, render, marketplaceType = 'themes', ...props } ) => {
 	const [ { favorites }, { hasFavorite, toggleFavorite } ] = useFavorites();
 	const [ filterBy ] = useMojoFilter( favorites );
 	const [ { items, itemsPerPage, pageCount, pageNumber }, { setCollection, setPageNumber } ] = usePaginator();
@@ -77,15 +67,17 @@ const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading
 	const [ sortBy ] = useMojoSort();
 	const [ { query }, { search, setQuery } ] = useMojoSearch();
 
+	className = classnames('bluehost-marketplace', className);
+
 	useEffect( () => {
 		// Fetch items
 		let results = payload.items || [];
 
 		// Determine sort/filter method
-		const [ type, method, order ] = sort.split( '-' );
+		const [ marketplaceType, method, order ] = sort.split( '-' );
 
 		// Sort/filter
-		results = ( 'filter' === type ) ? filterBy( sortBy( results, 'sales' ), method ) : sortBy( results, method, order );
+		results = ( 'filter' === marketplaceType ) ? filterBy( sortBy( results, 'sales' ), method ) : sortBy( results, method, order );
 
 		// Handle search
 		results = search( results, query );
@@ -101,11 +93,10 @@ const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading
 	}, [ pageNumber ] );
 
 	return (
-		<BWABaseTemplate className={ className }>
-			<Notification />
+		<BWACommonTemplate type={type} className={ className } marketplaceType={marketplaceType} {...props}>
 			<section className={ `${ className }__header` }>
 				<div className={ `${ className }__header-primary` }>
-					<BWAHeading level="h2" size={ 1 } className="marketplace-page-title">{ marketplacePageTitle( type ) }</BWAHeading>
+					<BWAHeading level="h2" size={ 1 } className="marketplace-page-title">{ marketplacePageTitle( marketplaceType ) }</BWAHeading>
 					<div className={ `${ className }__pagination-container` }>
 						<BWAPagination callback={ setPageNumber } currentPage={ pageNumber } pageCount={ pageCount } />
 					</div>
@@ -145,7 +136,7 @@ const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading
 										setSort( 'sort-sales-desc' );
 									} }>
 										{ ( () => {
-											switch ( type ) {
+											switch ( marketplaceType ) {
 												case 'plugins':
 													return __( 'View Plugins', 'bluehost-wordpress-plugin' );
 												case 'services':
@@ -177,7 +168,7 @@ const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading
 				</div>
 				<BWAPagination callback={ setPageNumber } currentPage={ pageNumber } pageCount={ pageCount } />
 			</footer>
-		</BWABaseTemplate>
+		</BWACommonTemplate>
 	);
 };
 
