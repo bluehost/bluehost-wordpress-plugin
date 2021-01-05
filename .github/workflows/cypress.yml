@@ -107,9 +107,13 @@ jobs:
           name: screenshots
           path: ./tests/cypress/screenshots
 
+      - name: Copy error log
+        if: ${{ failure() }}
+        run: npx wp-env run wordpress cat /var/www/html/wp-content/debug.log > ./debug.log
+
       - name: Store error logs
         if: ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
           name: logs
-          path: ./wp-content/debug.log
+          path: ./debug.log

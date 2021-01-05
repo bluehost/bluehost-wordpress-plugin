@@ -19,3 +19,8 @@ cypress.env.json
 /.docs/*
 !/assets/bluehost.css
 !/assets/admin-global.css
+
+# File Types
+*.log
+*.sql
+*.zip
