@@ -84,13 +84,12 @@ export default function ProductDetails( { id, redirect = false } ) {
 
 	return redirect ? 
 		<BWARedirect 
-			to={{
-				path: '/marketplace/' + item.type + '/' + id,
+			to={'/marketplace/' + item.type + '/' + id}
+			currentLocation={{
 				state: {
 					redirect: 'legacy-single-product-route'
 				}
-			}}
-			currentLocation={location} 
+			}} 
 		/> : (
 		<BWACommonTemplate type="marketplace" className="page-product">
 			<header className="page-product__header">
