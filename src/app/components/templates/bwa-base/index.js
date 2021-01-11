@@ -64,7 +64,7 @@ const BWABaseTemplate = ({
 		if ( 
 			'undefined' !== typeof location.state
 			&& 'undefined' !== typeof location.state.redirect
-			&& 'unspecified-or-root' === typeof location.state.redirect 
+			&& 'unspecified-or-root' === location.state.redirect 
 		) {
 			return; // don't speak Home title on load (rely on browser behavior), but speak on subsequent navigation to Home
 		}
