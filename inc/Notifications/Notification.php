@@ -67,8 +67,9 @@ class Notification {
 	 * Dismiss a message.
 	 */
 	public function dismiss() {
+		$api_base = ( defined( 'BH_HUB_URL' ) ) ? BH_HUB_URL : 'https://hiive.cloud/api';
 		wp_remote_post(
-			'https://hiive.cloud/api/notifications/' . $this->id,
+			$api_base . '/notifications/' . $this->id,
 			array(
 				'headers'  => array(
 					'Content-Type'  => 'application/json',

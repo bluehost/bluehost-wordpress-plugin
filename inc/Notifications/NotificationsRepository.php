@@ -94,6 +94,17 @@ class NotificationsRepository {
 	}
 
 	/**
+	 * Check if a notification exists.
+	 *
+	 * @param string $id Notification ID.
+	 *
+	 * @return bool
+	 */
+	public function has( $id ) {
+		return isset( $this->notifications[ $id ] );
+	}
+
+	/**
 	 * Remove a notification from the collection.
 	 *
 	 * @param string $id Notification ID.
