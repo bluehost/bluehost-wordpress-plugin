@@ -2,6 +2,7 @@
 .git
 .github
 node_modules
+/bin
 /src
 storybook
 tests
@@ -11,7 +12,6 @@ tests
 .gitattributes
 .gitignore
 .npmrc
-webpack.config.js
 
 # File Types
 *.json

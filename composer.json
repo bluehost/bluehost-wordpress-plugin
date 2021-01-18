@@ -20,6 +20,13 @@
   },
   "repositories": [
     {
+      "type": "path",
+      "url": "../../libraries/endurance-wp-plugin-updater",
+      "options": {
+        "symlink": true
+      }
+    },
+    {
       "type": "composer",
       "url": "https://bluehost.github.io/satis/",
       "only": [
@@ -40,7 +47,7 @@
     "bluehost/endurance-wp-module-gutenframe": "^0.1.3",
     "bluehost/endurance-wp-module-loader": "^1.0",
     "bluehost/endurance-wp-module-sso": "^1.0",
-    "bluehost/endurance-wp-plugin-updater": "^1.0",
+    "bluehost/endurance-wp-plugin-updater": "@dev",
     "endurance/wp-module-data": "^1.0",
     "wp-forge/helpers": "^1.0",
     "wpscholar/collection": "^1.0",

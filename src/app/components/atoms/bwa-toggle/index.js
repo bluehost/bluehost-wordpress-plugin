@@ -1,6 +1,6 @@
 import './style.scss';
 
-import uniqueId from 'lodash/uniqueId';
+import {uniqueId} from 'lodash';
 
 function BWAToggle({checked, label, onChange}) {
 

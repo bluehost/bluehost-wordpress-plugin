@@ -1,5 +1,5 @@
 import './store';
-import './app.scss';
+import './app-main.scss';
 
 import {
 	BWACommonFooter,
@@ -16,7 +16,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 import { dispatch } from '@wordpress/data';
-import kebabCase from 'lodash/kebabCase';
+import {kebabCase} from 'lodash';
 import { useState } from '@wordpress/element';
 
 const AppBody = ( props ) => {

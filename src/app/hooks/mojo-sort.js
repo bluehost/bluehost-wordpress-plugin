@@ -1,6 +1,4 @@
-import reverse from 'lodash/reverse';
-import { default as sort } from 'lodash/sortBy';
-
+import {reverse, sort} from 'lodash';
 /**
  * Mojo sort functionality.
  *

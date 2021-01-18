@@ -154,13 +154,23 @@ class Bluehost_Admin_App_Assets {
 	 * @param string $assets_url Base assets URL.
 	 */
 	protected function page_css( $assets_url ) {
-		wp_register_style(
-			'bwa-styles',
-			$assets_url . 'admin.css',
+
+		wp_register_style( 
+			'bwa-shared-styles',
+			$assets_url . 'dist/app.css',
 			array( 'wp-components', 'animatecss', 'bluehost-font', 'bluehost-brand', 'purecss-grids' ),
 			time()
 		);
+
+		wp_register_style(
+			'bwa-styles',
+			$assets_url . 'dist/style-app.css',
+			array( 'bwa-shared-styles' ),
+			time()
+		);
+
 		wp_enqueue_style( 'bwa-styles' );
+		
 	}
 
 	/**
@@ -169,18 +179,18 @@ class Bluehost_Admin_App_Assets {
 	 * @param string $dist_url Base distribution URL.
 	 */
 	protected function page_js( $dist_url ) {
-		$js_deps = require BLUEHOST_PLUGIN_DIR . '/assets/admin-manifest.asset.php';
+		$js_deps = require BLUEHOST_PLUGIN_DIR . '/assets/dist/manifest~app.asset.php';
 		wp_register_script(
 			'bwa-manifest',
-			$dist_url . 'admin-manifest.js',
-			array_merge( $js_deps['dependencies'], array( 'react-router-dom' ) ),
+			$dist_url . 'dist/manifest~app.js',
+			$js_deps['dependencies'],
 			$js_deps['version'],
 			true
 		);
 		wp_localize_script(
 			'bwa-manifest',
 			'bluehostPluginPublicPath',
-			$dist_url
+			$dist_url . 'dist/'
 		);
 		wp_localize_script(
 			'bwa-manifest',
@@ -189,14 +199,14 @@ class Bluehost_Admin_App_Assets {
 		);
 		wp_register_script(
 			'bwa-vendors',
-			$dist_url . 'vendors~admin.js',
+			$dist_url . 'dist/vendors~app.js',
 			array( 'bwa-manifest' ),
 			$js_deps['version'],
 			true
 		);
 		wp_register_script(
 			'bwa-app',
-			$dist_url . 'admin.js',
+			$dist_url . 'dist/app.js',
 			array( 'bwa-vendors' ),
 			$js_deps['version'],
 			true

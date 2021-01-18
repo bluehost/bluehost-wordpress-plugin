@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { combineReducers } from '@wordpress/data';
-import filter from 'lodash/filter';
+import {filter} from 'lodash';
 
 /**
  *

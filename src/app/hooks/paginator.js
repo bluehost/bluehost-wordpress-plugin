@@ -1,6 +1,6 @@
 import { useEffect, useState } from '@wordpress/element';
 
-import chunk from 'lodash/chunk';
+import {chunk} from 'lodash';
 
 /**
  * Paginates a collection of items.
