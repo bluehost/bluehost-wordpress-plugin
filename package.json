@@ -26,10 +26,6 @@
         "@wordpress/keycodes": "^2.6.2",
         "algoliasearch": "^4.5.1",
         "animate.css": "^3.7.2",
-<<<<<<< Updated upstream
-        "axios": "^0.19.0",
-=======
->>>>>>> Stashed changes
         "change-case": "^3.1.0",
         "classnames": "^2.2.6",
         "fuse.js": "^3.4.5",
