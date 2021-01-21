@@ -177,7 +177,7 @@
 		onPluginSearch(e) {
 			const type = document.getElementById('typeselector').value;
 			const query = document.getElementById('search-plugins').value;
-			this.checkForNotices({action: 'plugin-search', data: {type, query}});
+			this.checkForNotices({action: 'plugin_search', data: {type, query}});
 		}
 
 		onReceiveNotices(notices) {
