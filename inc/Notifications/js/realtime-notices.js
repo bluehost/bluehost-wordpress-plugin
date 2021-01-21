@@ -190,7 +190,7 @@
 			event.queue = false;
 			window
 				.fetch(
-					`${ window.bluehostRealtimeNotices.restApiUrl }bluehost/v1/data/events`,
+					`${ window.bluehostRealtimeNotices.restApiUrl }bluehost/v1/notifications/events`,
 					{
 						credentials: 'same-origin',
 						method: 'POST',
