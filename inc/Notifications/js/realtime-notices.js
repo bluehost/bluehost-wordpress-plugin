@@ -24,6 +24,11 @@
 
 			let shouldShow = false;
 
+			// Don't show if it already exists
+			if (document.querySelector('div.bluehost-realtime-notice[data-id="'+this.id+'"]') !== null) {
+				return shouldShow;
+			}
+
 			// Check if notice has expired
 			if (this.expiration > Math.round(Date.now() / 1000)) {
 
