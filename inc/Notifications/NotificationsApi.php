@@ -104,7 +104,7 @@ class NotificationsApi {
 						'type'              => 'boolean',
 						'sanitize_callback' => function ( $value ) {
 							return filter_var( $value, FILTER_VALIDATE_BOOLEAN );
-						}
+						},
 					),
 				),
 				'permission_callback' => function () {
@@ -129,7 +129,7 @@ class NotificationsApi {
 					}
 
 					return new \WP_REST_Response( $data, $response->get_status() );
-				}
+				},
 			)
 		);
 
