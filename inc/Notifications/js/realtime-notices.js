@@ -39,12 +39,14 @@
 							if (Array.isArray(pages) && pages.includes('plugin-install.php')) {
 								shouldShow = true;
 							}
+							if (pages === 'all') {
+								shouldShow = true;
+							}
 						}
 					}
 				);
 
 			}
-
 			return shouldShow;
 		}
 
