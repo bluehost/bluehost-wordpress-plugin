@@ -205,6 +205,7 @@
 					if (response.status !== 201) {
 						throw new Error(response.statusText);
 					}
+					return response;
 				})
 				.then(response => response.json())
 				.then(notices => {
