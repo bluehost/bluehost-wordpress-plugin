@@ -209,8 +209,8 @@
 				})
 				.then(response => response.json())
 				.then(notices => {
-					if (Array.isArray(notices)) {
-						this.onReceiveNotices(notices);
+					if (notices.hasOwnProperty('data') && Array.isArray(notices.data)) {
+						this.onReceiveNotices(notices.data);
 					}
 				})
 				.catch(error => console.error('Network request failed:', error));
