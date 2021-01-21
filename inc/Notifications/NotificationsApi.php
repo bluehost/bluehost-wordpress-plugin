@@ -114,6 +114,7 @@ class NotificationsApi {
 
 					$request = new \WP_REST_Request( 'POST', '/bluehost/v1/data/events' );
 					$request->set_body( \WP_REST_Server::get_raw_data() );
+					$request->set_header( 'Content-Type', 'application/json' );
 					$response = rest_do_request( $request );
 					$server   = rest_get_server();
 					$data     = $server->response_to_data( $response, false );
