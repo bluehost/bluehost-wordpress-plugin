@@ -121,10 +121,10 @@ class NotificationsApi {
 					// associative arrays in a standard HTTP response. Since this proxing through an internal
 					// request, we end up with the original nested objects.
 					// The encode/decode here standardizes to all associative arrays.
-					$data = json_decode( json_encode( $response->data ), true );
+					$data = json_decode( wp_json_encode( $response->data ), true );
 
-					if ( ! $request->get_param( 'queue' ) && 201 == $response->get_status() ) {
-						$notifications = Arr::get( $data, 'data', [] );
+					if ( ! $request->get_param( 'queue' ) && 201 === intval( $response->get_status() ) ) {
+						$notifications = Arr::get( $data, 'data', array() );
 						set_transient( NotificationsRepository::TRANSIENT, $notifications, 5 * MINUTE_IN_SECONDS );
 					}
 
@@ -150,7 +150,7 @@ class NotificationsApi {
 						$notifications->remove( $id );
 					} else {
 						// Delete realtime notifications
-						$deleted      = [ 'id' => $id ];
+						$deleted      = array( 'id' => $id );
 						$notification = new Notification( $deleted );
 						$notification->dismiss();
 					}
