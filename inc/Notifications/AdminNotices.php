@@ -18,12 +18,12 @@ class AdminNotices {
 
 		$screen = get_current_screen();
 
-		if ( $screen->id === 'toplevel_page_bluehost' ) {
+		if ( 'toplevel_page_bluehost' === $screen->id ) {
 			// We already handle notifications in our React app.
 			return;
 		}
 
-		if ( $screen->id === 'plugin-install' ) {
+		if ( 'plugin-install' === $screen->id ) {
 
 			// Handle realtime notifications
 			wp_enqueue_script(
@@ -44,9 +44,9 @@ class AdminNotices {
 
 			?>
 			<style>
-          .bluehost-realtime-notice {
-              margin: 5px 0 15px 0;
-          }
+				.bluehost-realtime-notice {
+					margin: 5px 0 15px 0;
+				}
 			</style>
 			<?php
 
