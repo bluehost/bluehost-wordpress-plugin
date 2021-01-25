@@ -363,7 +363,7 @@ class Staging {
 		}
 
 		// Verify staging script file permissions
-		if ( 0755 != (int) substr( sprintf( '%o', fileperms( $script ) ), - 4 ) ) { // phpcs:ignore
+		if (!is_executable( $script )) {
 			if ( is_writable( $script ) ) {
 				chmod( $script, 0755 );
 			} else {
