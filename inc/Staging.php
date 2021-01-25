@@ -363,7 +363,7 @@ class Staging {
 		}
 
 		// Verify staging script file permissions
-		if (!is_executable( $script )) {
+		if ( ! is_executable( $script ) ) {
 			if ( is_writable( $script ) ) {
 				chmod( $script, 0755 );
 			} else {
