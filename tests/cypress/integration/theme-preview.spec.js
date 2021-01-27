@@ -8,7 +8,11 @@ describe('Theme Preview Page', function () {
 	});
 
 	it('Exists', () => {
+
+		cy.on('uncaught:exception', () => false);
+
 		cy.wait(1000);
+
 		cy.contains('.theme-name', 'Highend Ultimate Multipurpose WordPress Theme');
 		cy.get('iframe')
 			.should('have.attr', 'src')
