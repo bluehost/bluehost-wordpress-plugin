@@ -2,6 +2,7 @@ import { connectInfiniteHits, connectStateResults } from 'react-instantsearch-do
 
 import { Fragment } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { addUtmParams } from '@app/functions';
 
 function getExcerpt(content, charLength) {
 	if (content.length <= charLength) {
@@ -57,7 +58,13 @@ const Hits = connectInfiniteHits(
 								return (
 									<a
 										className="resource-card"
-										href={ url }
+										href={ addUtmParams( 
+											url, 
+											{
+												utm_content: 'help_resource_card',
+												utm_term: title,	
+											} 
+										)}
 										key={ index }
 										rel="noreferrer noopener"
 										target="_blank"
