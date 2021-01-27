@@ -3,8 +3,13 @@
 describe('Home Page', function () {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
-		// Visit the same page again, just in case we were redirected to the onboarding page
+
+		// Make sure install date is more than 30 days in the past
+		cy.exec(`npx wp-env run cli wp option set bh_plugin_install_date ${ Cypress.moment().subtract(31, 'days').format('X') }`);
+
+		// Make sure we are not in coming soon mode
+		cy.exec('npx wp-env run cli wp option set mm_coming_soon false');
+
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
 		cy.injectAxe();
 	});
