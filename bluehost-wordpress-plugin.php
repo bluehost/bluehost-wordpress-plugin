@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Bluehost
  * Description: This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.
- * Version: 2.5.3
+ * Version: 2.5.4
  * Requires at least: 4.7
  * Requires PHP: 5.6
  * Author: Bluehost
@@ -27,10 +27,13 @@ if ( defined( 'BLUEHOST_PLUGIN_VERSION' ) ) {
 }
 
 // Define constants
-define( 'BLUEHOST_PLUGIN_VERSION', '2.5.3' );
+define( 'BLUEHOST_PLUGIN_VERSION', '2.5.4' );
 define( 'BLUEHOST_PLUGIN_FILE', __FILE__ );
 define( 'BLUEHOST_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLUEHOST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+if ( ! defined( 'BH_HUB_URL' ) ) {
+	define( 'BH_HUB_URL', 'https://hiive.cloud/api' );
+}
 
 // Run Compatibility Scan
 require BLUEHOST_PLUGIN_DIR . '/compat/status.php';

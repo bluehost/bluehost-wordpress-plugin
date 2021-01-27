@@ -24,6 +24,7 @@
         "@wordpress/html-entities": "^2.5.0",
         "@wordpress/i18n": "^3.6.1",
         "@wordpress/keycodes": "^2.6.2",
+        "@wordpress/url": "^2.21.1",
         "algoliasearch": "^4.5.1",
         "animate.css": "^3.7.2",
         "axios": "^0.21.1",

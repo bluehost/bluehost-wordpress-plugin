@@ -3,6 +3,7 @@
 describe('Theme Preview Page', function () {
 
 	before(() => {
+		cy.on('uncaught:exception', () => false);
 		cy.server();
 		cy.visit('wp-admin/admin.php?page=mojo-theme-preview&id=5377b431-d8a8-431b-a711-50c10a141528');
 	});

@@ -59,7 +59,7 @@ const Hits = connectInfiniteHits(
 									<a
 										className="resource-card"
 										href={ addUtmParams( 
-											url, 
+											url.toString(),
 											{
 												utm_content: 'help_resource_card',
 												utm_term: title,	
