@@ -14,8 +14,8 @@ cypress.env.json
 /tests/cypress/videos
 
 # Built-app files
-.docs
-build
+/.docs
+/build
 
 # File Types
 *.log
