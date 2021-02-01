@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://bluehost-wordpress-plugin/style.scss"],"names":[],"mappings":"AAAA;EACE,iBAAiB;AACnB,C","file":"widget-a93a62299553d0d4e83b.css","sourcesContent":["#bluehost-widget {\n  min-height: 125px;\n}"],"sourceRoot":""}
