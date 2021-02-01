@@ -2,6 +2,10 @@
 const chalk = require('chalk');
 // Extract OSS licenses for JS pkgs (and their deps). Note: Sass imports not included!
 const { LicenseWebpackPlugin } = require('license-webpack-plugin');
+// Pipe development build errors to node-notifier
+const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
+// Nice webpack loader bar from Nuxt.js.
+const WebpackBar = require('webpackbar');
 const merge = require('lodash/merge');
 const mapValues = require('lodash/mapValues');
 const { log } = console; // this works, but nuxt/consola is a good alt
@@ -64,6 +68,17 @@ class BluehostWebpackPlugin {
       licenseTypeOverrides: this.options.licenseOverrides,
       licenseTextOverrides: this.licenseTextMapping(),
     });
+    if ( ! isProdBuild ) {
+      this.progressBar = new WebpackBar({
+        name: this.options.name.toLowerCase(),
+        color: colors.bluehost,
+      });
+      this.osNotification = new WebpackBuildNotifierPlugin({
+          title: this.options.name,
+          suppressSuccess: true,
+          sound: false,
+      });
+    }
   }
   licenseTextMapping() {
     return mapValues(this.options.licenseOverrides, (spdx) => {
@@ -72,6 +87,10 @@ class BluehostWebpackPlugin {
   }
   apply(compiler) {
     this.licensePlugin.apply(compiler);
+    if ( ! isProdBuild ) {
+      this.progressBar.apply(compiler);
+      this.osNotification.apply(compiler);
+    }
     compiler.hooks.environment.tap(pluginName, () => {
         if ( ! isProdBuild ) {
            humanBanner(this.options.name, this.options.version);
