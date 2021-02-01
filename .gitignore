@@ -15,7 +15,7 @@ cypress.env.json
 
 # Built-app files
 /.docs
-/build
+/build/*
 
 # File Types
 *.log
