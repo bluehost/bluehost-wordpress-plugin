@@ -1,0 +1,27 @@
+/**
+ * Set Webpack Public Path var 
+ *  __webpack_public_path__
+ */
+import './set-public-path';
+
+import Widget from './widget/index.js';
+import domReady from '@wordpress/dom-ready';
+import { render } from '@wordpress/element';
+
+/**
+ * DOM ID of root element to initialize app
+ *
+ * @see ../inc/admin/class-page.php
+ */
+const WIDGET_ROOT_ID = 'bluehost-widget';
+
+
+/**
+ * When DOM is ready, load app on root element, replacing #bwa-centered-loader markup.
+ */
+domReady( () => {
+	render(
+		<Widget />,
+		document.getElementById( WIDGET_ROOT_ID )
+	);
+} );

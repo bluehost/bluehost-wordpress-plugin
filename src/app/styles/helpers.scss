@@ -43,13 +43,13 @@
  }
  
  @each $name, $color in $colors {
-     .is-color-#{$name} {
+     .is-color-#{"" + $name} {
          color: $color;
      }
-     .is-bg-#{$name} {
+     .is-bg-#{"" + $name} {
          background-color: $color;
      }
-     .is-svg-#{$name} {
+     .is-svg-#{"" + $name} {
          svg {
              fill: $color;
          }
@@ -57,13 +57,13 @@
  }
  
  @each $name, $color in $aliases {
-     .is-color-#{$name} {
+     .is-color-#{"" + $name} {
          color: $color;
      }
-     .is-bg-#{$name} {
+     .is-bg-#{"" + $name} {
          background-color: $color;
      }
-     .is-svg-#{$name} {
+     .is-svg-#{"" + $name} {
          svg {
              fill: $color;
          }

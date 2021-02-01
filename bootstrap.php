@@ -1,6 +1,7 @@
 <?php
 
 use Bluehost\AdminBar;
+use Bluehost\BuildAssets;
 use Bluehost\LoginRedirect;
 use Bluehost\UpgradeHandler;
 use Endurance_WP_Plugin_Updater\Updater;
@@ -33,7 +34,7 @@ if ( is_admin() ) {
 }
 
 AdminBar::init();
-
+BuildAssets::init();
 LoginRedirect::init();
 
 // Require files

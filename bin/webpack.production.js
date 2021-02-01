@@ -1,34 +1,23 @@
-/**
- * Load NPM's path module for resolving filesystem.
- */
-const path = require('path');
-/**
- * Base common config extending @wordpress/scripts
- */
+// shared, common wp-scripts webpack config
 const common = require( './webpack.common' );
-
-/**
- * Centralized settings for webpack configs
- */
-const settings = require( './webpack.settings');
-
-/**
- * Use Webpack Merge in lieu of spread operator for cleaner extension of common config.
- */
+// merging library for blending webpack configs
 const { merge } = require( 'webpack-merge' );
-
+// Google's size plugin to monitor build file size deltas.
 const SizePlugin = require('size-plugin');
 
 /**
- * Build process executed by 'npm run start' or 'npm run develop'
+ * Contextual build process powering npm run develop|start
  */
 const bluehostPluginProductionConfig = merge( 
     common, 
     {
         mode: 'production',
         plugins: [
-            new SizePlugin({ writeFile: true })
-        ]
+            new SizePlugin({
+                filename: './bin/sizes-manifest.json'
+            }),
+        ],
+        stats: false,
     } 
 );
 

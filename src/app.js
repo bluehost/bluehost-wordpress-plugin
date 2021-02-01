@@ -2,7 +2,9 @@
  * Set Webpack Public Path var 
  *  __webpack_public_path__
  */
-import './set-public-path';
+if ( 'bluehostPluginPublicPath' in window ) {
+    __webpack_public_path__ = window.bluehostPluginPublicPath;
+}
 
 import App from './app/index.js';
 import domReady from '@wordpress/dom-ready';

@@ -1,5 +1,7 @@
 <?php
 
+use Bluehost\BuildAssets;
+
 /**
  * Bluehost_Admin_App_Assets class
  */
@@ -56,83 +58,8 @@ class Bluehost_Admin_App_Assets {
 		// li#toplevel_page_bluehost a:after {
 		// border: 0px transparent !important;
 		// }</style>
-		$this->url = trailingslashit( BLUEHOST_PLUGIN_URL ) . 'assets/';
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_global_assets' ) );
+		$this->url = trailingslashit( BLUEHOST_PLUGIN_URL );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ) );
-	}
-
-	/**
-	 * Register global assets.
-	 */
-	public function register_global_assets() {
-		$min  = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-		$rand = time();
-
-		wp_register_style(
-			'bluehost-font',
-			'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600',
-			array(),
-			empty( $min ) ? $rand : BLUEHOST_PLUGIN_VERSION
-		);
-
-		wp_register_script(
-			'react-router-dom',
-			$this->url . 'react-router-dom' . $min . '.js',
-			array( 'wp-element' ),
-			empty( $min ) ? $rand : '5.0.0',
-			true
-		);
-
-		wp_register_style(
-			'animatecss',
-			$this->url . 'animate' . $min . '.css',
-			array(),
-			empty( $min ) ? $rand : '3.7.1'
-		);
-
-		wp_register_style(
-			'bluehost-brand',
-			$this->url . 'bluehost.css',
-			array(),
-			empty( $min ) ? $rand : '0.1.0'
-		);
-
-		wp_register_style(
-			'purecss',
-			$this->url . 'pure/pure' . $min . '.css',
-			array(),
-			empty( $min ) ? $rand : '1.0'
-		);
-
-		wp_register_style(
-			'purecss-base',
-			$this->url . 'pure/base' . $min . '.css',
-			array(),
-			empty( $min ) ? $rand : '1.0'
-		);
-
-		wp_register_style(
-			'purecss-grids-base',
-			$this->url . 'pure/grids' . $min . '.css',
-			array(),
-			empty( $min ) ? $rand : '1.0'
-		);
-
-		wp_register_style(
-			'purecss-grids',
-			$this->url . 'pure/grids-responsive' . $min . '.css',
-			array( 'purecss-base', 'purecss-grids-base' ),
-			empty( $min ) ? $rand : '1.0'
-		);
-
-		wp_register_style(
-			'bluehost-admin-global',
-			$this->url . 'admin-global.css',
-			array(),
-			empty( $min ) ? $rand : '1.0'
-		);
-		wp_enqueue_style( 'bluehost-admin-global' );
-
 	}
 
 	/**
@@ -141,78 +68,59 @@ class Bluehost_Admin_App_Assets {
 	 * @param string $hook Hook name.
 	 */
 	public function register_assets( $hook ) {
-		$this->current_admin_hook = $hook;
-		if ( false !== stripos( $this->current_admin_hook, $this->page_hook ) ) {
-			$this->page_css( $this->url );
-			$this->page_js( $this->url );
-		}
-	}
-
-	/**
-	 * Register Page CSS
-	 *
-	 * @param string $assets_url Base assets URL.
-	 */
-	protected function page_css( $assets_url ) {
-
-		wp_register_style( 
-			'bwa-shared-styles',
-			$assets_url . 'dist/app.css',
-			array( 'wp-components', 'animatecss', 'bluehost-font', 'bluehost-brand', 'purecss-grids' ),
-			time()
-		);
-
-		wp_register_style(
-			'bwa-styles',
-			$assets_url . 'dist/style-app.css',
-			array( 'bwa-shared-styles' ),
-			time()
-		);
-
-		wp_enqueue_style( 'bwa-styles' );
 		
+		if ( false !== stripos( $hook, $this->page_hook ) ) {
+			$this->prepareData();
+			BuildAssets::enqueue('app');
+		}
+
+		// if ( 'index.php' === $hook ) {
+		// 	$widget_deps = require BLUEHOST_PLUGIN_DIR . 'assets/dist/manifest~widget.asset.php';
+
+		// 	wp_register_script(
+		// 		'bluehost-widget-manifest',
+		// 		$this->url . 'assets/dist/manifest~widget.js',
+		// 		$widget_deps['dependencies'], 
+		// 		$widget_deps['version'],
+		// 		true
+		// 	);
+		// 	wp_localize_script(
+		// 		'bluehost-widget-manifest',
+		// 		'bluehostPluginPublicPath',
+		// 		trailingslashit( $this->url ) . 'assets/dist/'
+		// 	);
+		// 	wp_localize_script(
+		// 		'bluehost-widget-manifest',
+		// 		'bluehostPluginVersion',
+		// 		BLUEHOST_PLUGIN_VERSION
+		// 	);
+		// 	wp_register_script( 'bluehost-widget',  $this->url . 'assets/dist/widget.js', array( 'bluehost-widget-manifest' ), time(), true );
+		// 	wp_enqueue_script( 'bluehost-widget' );
+		// 	wp_enqueue_style(
+		// 		'bluehost-widget',
+		// 		$this->url . 'assets/dist/widget.css',
+		// 		array(),
+		// 		BLUEHOST_PLUGIN_VERSION
+		// 	);
+
+		// 	wp_enqueue_style(
+		// 		'bluehost-widget-styles',
+		// 		$this->url . 'assets/dist/styles-widget.css',
+		// 		array(),
+		// 		BLUEHOST_PLUGIN_VERSION
+		// 	);
+		// }
 	}
+
+	
 
 	/**
 	 * Register Page JS
 	 *
 	 * @param string $dist_url Base distribution URL.
 	 */
-	protected function page_js( $dist_url ) {
-		$js_deps = require BLUEHOST_PLUGIN_DIR . '/assets/dist/manifest~app.asset.php';
-		wp_register_script(
-			'bwa-manifest',
-			$dist_url . 'dist/manifest~app.js',
-			$js_deps['dependencies'],
-			$js_deps['version'],
-			true
-		);
-		wp_localize_script(
-			'bwa-manifest',
-			'bluehostPluginPublicPath',
-			$dist_url . 'dist/'
-		);
-		wp_localize_script(
-			'bwa-manifest',
-			'bluehostPluginVersion',
-			BLUEHOST_PLUGIN_VERSION
-		);
-		wp_register_script(
-			'bwa-vendors',
-			$dist_url . 'dist/vendors~app.js',
-			array( 'bwa-manifest' ),
-			$js_deps['version'],
-			true
-		);
-		wp_register_script(
-			'bwa-app',
-			$dist_url . 'dist/app.js',
-			array( 'bwa-vendors' ),
-			$js_deps['version'],
-			true
-		);
-		wp_enqueue_script( 'bwa-app' );
-
+	protected function prepareData() {
+		
 		$data = array(
 			'app'          => array(
 				'adminUrl'             => \admin_url(),
@@ -245,8 +153,8 @@ class Bluehost_Admin_App_Assets {
 
 		$data['settings'] = $server->response_to_data( $response, false );
 
-		wp_localize_script( 'bwa-app', 'bluehost', apply_filters( 'bluehost_admin_page_data', $data ) );
-		wp_localize_script( 'bwa-app', 'bluehostWpAdminUrl', \admin_url() );
+		wp_localize_script( 'bluehost-plugin-app-manifest', 'bluehost', apply_filters( 'bluehost_admin_page_data', $data ) );
+		wp_localize_script( 'bluehost-plugin-app-manifest', 'bluehostWpAdminUrl', \admin_url() );
 
 	}
 }

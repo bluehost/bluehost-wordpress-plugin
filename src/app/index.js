@@ -71,6 +71,7 @@ const AppBody = ( props ) => {
 				props.className
 			) }
 			data-bwa-app-route={location.pathname}
+			data-pewpewpewz
 		>
 			<SkipLink 
 				onClick={ handleNavFocus } 

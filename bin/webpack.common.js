@@ -1,120 +1,62 @@
-/**
- * Load NPM's path module for resolving filesystem.
- */
-const path = require('path');
+// Load modified copy of @wordpress/scripts.
+// Our code belongs here. All overrides there for easier maintenance.
+const modifiedWpScripts = require('./webpack.modified-wp-scripts');
+// merging library for blending webpack configs
+const { merge } = require( 'webpack-merge' );
+// Generate WordPress-ready files for registering assets with WordPress' dependency system.
+const { WpDependencyWebpackPlugin } = require('./wp-dependency-webpack-plugin');
+// Used to separate CSS. We override wp-scripts copy to inject chunkhash in filename.
+const MiniCSSExtractPlugin = require( 'mini-css-extract-plugin' );
+// webpack plugin to copy, delete, move and read files
+const FileManagerPlugin = require('filemanager-webpack-plugin');
+// Bluehost branding in CLI and license handling.
+const { BluehostWebpackPlugin } = require('./bluehost-webpack-plugin');
+
+// This WordPress plugin's build settings
+const settings = require('./build.settings');
 
 /**
- * Import @wordpress/scripts base webpack config.
- * @see https://github.com/WordPress/gutenberg/tree/master/packages/scripts#extending-the-webpack-config
+ * Common, shared webpack configuration invoked by development & production builds.
  */
-const wpScriptsConfig = require('@wordpress/scripts/config/webpack.config');
-
-/**
- * Use Webpack Merge in lieu of spread operator for extending @wordpress/scripts for cleaner config.
- */
-const { mergeWithRules } = require( 'webpack-merge' );
-
-/**
- * Project Settings & Variables
- */
-const webpackSettings = require('./webpack.settings');
-
-/**
- * Environment variable set in package.json npm scripts (normalized by cross-env)
- */
-const isProduction = 'production' === process.env.NODE_ENV;
-
-/**
- * Handle WordPress Core dependencies and extend with additional externals.
- */
-const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
-
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
-const isModuleFromSrcDir = (subdir, module) => {
-	if (
-		'undefined' !== typeof module
-		&& module.resource
-		&& module.resource.includes('.develop/src/' + subdir + '/')
-	) {
-		return true;
-	}
-
-	return false;
-};
-
-/**
- * 🗑 Clear out default entry assets 
- */
-wpScriptsConfig.entry = {};
-wpScriptsConfig.plugins = wpScriptsConfig.plugins.filter(
-	( plugin ) => // wipeout the @wordpress/scripts usage
-		plugin.constructor.name !== 'DependencyExtractionWebpackPlugin'
-);
-
 const bluehostPluginConfig = {
-    entry: {
-        app: path.resolve(__dirname, '../src/app.js'),
-    },
+	name: settings.name,
+    entry: settings.webpack.entry,
     output: {
-		path: path.resolve(process.cwd(), 'assets', 'dist'),
-		filename: '[name].js',
-		chunkFilename: '[name].js',
+		path: settings.webpack.output.path,
+		devtoolNamespace: settings.name,
+		filename: settings.webpack.filenamePattern + '.js',
+		chunkFilename: settings.webpack.filenamePattern + '.js',
+		library: [ 'bluehostPlugin', '[name]' ],
+		libraryTarget: 'window',
 	},
     resolve: {
-		alias: {
-			'lodash-es': 'lodash',
-			'@app': path.resolve(__dirname, '../src/app/')
-		}
-    },
-    module: {
-		rules: [
-			{
-				test: /\.(png|jp(e*)g|gif)$/,
-				use: [
-					{loader: "url-loader", options: {esModule: false}},
-					{loader: "file-loader"},
-				]
-			},
-		],
+		alias: settings.webpack.aliases,
     },
     optimization: {
 		splitChunks: {
-			chunks: 'all'
+			chunks: 'all',
 		},
 		runtimeChunk: {
 			name: entrypoint => `manifest~${entrypoint.name}`
 		},
 	},
 	plugins:[
-		new CleanWebpackPlugin(),
-		new DependencyExtractionWebpackPlugin({
-			injectPolyfill: true,
-			requestToExternal( request ) {
-				switch( request ) {
-					case 'react-router-dom':
-						return 'ReactRouterDOM';
-				}
-			},
+		new BluehostWebpackPlugin({
+			name: settings.name,
+			version: settings.version,
+		}),
+		new WpDependencyWebpackPlugin({
+			handlePrefix: settings.name,
+			externals: settings.webpack.externals,
+		}),
+		new MiniCSSExtractPlugin({ // wp-scripts copy disabled in modifiedWpScripts
+			esModule: false, 
+			filename: settings.webpack.filenamePattern + '.css' 
 		}),
 	],
-	stats: webpackSettings.stats,
+	stats: settings.stats,
 };
 
-/**
- * Extend @wordpress/scripts with custom config and use 
- * special merge strategy to reconcile and blend module rules.
- */
-const bluehostPluginCommonConfig = mergeWithRules({
-    module: {
-      rules: {
-        test: "match",
-        use: {
-          loader: "match",
-          options: "replace",
-        },
-      },
-    },
-  })(wpScriptsConfig, bluehostPluginConfig);
+const bluehostPluginCommonConfig = merge(modifiedWpScripts, bluehostPluginConfig);
 
 module.exports = bluehostPluginCommonConfig;

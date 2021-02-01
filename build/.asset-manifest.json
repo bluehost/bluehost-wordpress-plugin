@@ -1,0 +1,26 @@
+{
+  "app": {
+    "assets": {
+      "js": [
+        "manifest~app-53440e2b6572773018e8.js",
+        "vendors~app-b62a36d5346e44fb11d6.js",
+        "app-21c5825f63473bbb622e.js"
+      ],
+      "css": [
+        "vendors~app-b62a36d5346e44fb11d6.css",
+        "app-21c5825f63473bbb622e.css"
+      ]
+    }
+  },
+  "widget": {
+    "assets": {
+      "js": [
+        "manifest~widget-ebaa315dc610916a6de3.js",
+        "widget-8c146154b5578121f2b7.js"
+      ],
+      "css": [
+        "widget-8c146154b5578121f2b7.css"
+      ]
+    }
+  }
+}
