@@ -48,14 +48,13 @@ class Enhanced_WP_Search_Replace {
 		$new        = ! empty( $args[2] ) ? $args[2] : null;
 
 		/**
-		 * Bail if something's gone terribly wrong, it isn't a siteurl replacement search-replace or one of the URLs isn't the siteurl.
+		 * Bail if something's gone terribly wrong or it isn't a URL replacement search-replace or one of the URLs isn't the siteurl.
 		 *
 		 * Notes:
 		 * - This purposefully doesn't validate URLs are valid. We would have to check both and then this would bail if someone fudges a search-replace creating a mess.
 		 * - Both arguments need to be checked incase of --dry-run, etc.
 		 * - WP-CLI already validates $old !== $new.
 		 */
-		$truthy = false;
 		if ( empty( $siteurl )
 			|| empty( $positional_args )
 			|| 'search-replace' !== $args[0]
