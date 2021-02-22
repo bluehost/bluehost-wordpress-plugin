@@ -4,7 +4,7 @@ namespace Bluehost\Plugin\CLI;
 use \WP_CLI;
 
 /**
- * We frequently use wp search-replace in a myriad of systems for replacing siteurl in the WordPress Options table.
+ * We frequently use wp search-replace in a myriad of systems for replacing siteurl in the WordPress database.
  *
  * Some high-adoption WordPress products store JSON in metadata tables with slashed URLs.
  *
