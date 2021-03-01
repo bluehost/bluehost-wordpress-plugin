@@ -26,6 +26,7 @@ function create {
 	if [ -L $PRODUCTION_DIR/index.php ]
 		then
 			echo 'path='$STAGING_DIR > /nfssys/etc/wp_symink_watch/$(whoami).notify
+			echo 'SetEnv WP_ABSPATH '$STAGING_DIR > .htaccess
 		else
 			wp core download --version=$WP_VER --force || error 'Unable to install WordPress in staging directory.'
 	fi
