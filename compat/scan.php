@@ -146,7 +146,7 @@ class Bluehost_Plugin_Compatibility_Scan {
 				// check for plugin using plugin name
 				if ( is_plugin_active( $plugin ) ) {
 					list( $plugin_slug ) = explode( '/', $plugin );
-					$this->result = 'plugin-compat-clash-' . $plugin_slug;
+					$this->result        = 'plugin-compat-clash-' . $plugin_slug;
 				}
 			}
 		}

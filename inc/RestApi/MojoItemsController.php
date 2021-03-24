@@ -81,11 +81,11 @@ class MojoItemsController extends \WP_REST_Controller {
 
 		$status_code = absint( wp_remote_retrieve_response_code( $api_response ) );
 
-		$response = [
+		$response = array(
 			'status'     => 'error',
 			'statusCode' => $status_code,
 			'message'    => 'An unknown error occurred.',
-		];
+		);
 
 		if ( is_wp_error( $api_response ) ) {
 			return $response;
@@ -101,7 +101,7 @@ class MojoItemsController extends \WP_REST_Controller {
 			$response['message'] = 'Unable to parse response JSON.';
 		}
 
-		$response = array_merge( $data, [ 'statusCode' => $status_code ] );
+		$response = array_merge( $data, array( 'statusCode' => $status_code ) );
 
 		// Ensure page property is always an integer.
 		if ( isset( $response['page'] ) && ! is_int( $response['page'] ) ) {
@@ -114,11 +114,11 @@ class MojoItemsController extends \WP_REST_Controller {
 				if ( isset( $item['id'] ) ) {
 
 					$item['buy_url'] = mojo_build_link(
-						add_query_arg( [ 'item_id' => $item['id'] ], 'https://www.mojomarketplace.com/cart' ),
-						[
+						add_query_arg( array( 'item_id' => $item['id'] ), 'https://www.mojomarketplace.com/cart' ),
+						array(
 							'utm_medium'  => 'plugin_admin',
 							'utm_content' => 'buy_now_preview',
-						]
+						)
 					);
 
 					if ( isset( $item['type'] ) && 'themes' === $item['type'] ) {
