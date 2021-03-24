@@ -6,8 +6,8 @@
 			<?php
 				printf(
 					/* translators: %s: Blog name */
-					__( '%s &mdash; Coming Soon', 'bluehost-wordpress-plugin' ),
-					get_option( 'blogname' )
+					__( '%s &mdash; Coming Soon', 'bluehost-wordpress-plugin' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					esc_html( get_option( 'blogname' ) )
 				);
 				?>
 		</title>
@@ -363,7 +363,7 @@
 			<p class="text-center">
 				<?php
 				$wordpress_hosting_page = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://www.bluehost.in/wordpress' : 'https://bluehost.com/wordpress';
-				$my_panel = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://my.bluehost.in/' : 'https://my.bluehost.com/';
+				$my_panel               = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://my.bluehost.in/' : 'https://my.bluehost.com/';
 				printf(
 					/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag */
 					esc_html__( 'A %1$sBluehost%2$s powered website.', 'bluehost-wordpress-plugin' ) . '&nbsp;',
