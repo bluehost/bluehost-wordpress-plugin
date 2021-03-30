@@ -14,18 +14,18 @@ class MojoItemController extends MojoItemsController {
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base,
-			[
-				[
+			array(
+				array(
 					'methods'             => \WP_REST_Server::READABLE,
-					'callback'            => [ $this, 'query_mojo_item' ],
-					'permission_callback' => [ $this, 'get_items_permissions_check' ],
-					'args'                => [
-						'id' => [
+					'callback'            => array( $this, 'query_mojo_item' ),
+					'permission_callback' => array( $this, 'get_items_permissions_check' ),
+					'args'                => array(
+						'id' => array(
 							'required' => true,
-						],
-					],
-				],
-			]
+						),
+					),
+				),
+			)
 		);
 	}
 

@@ -40,18 +40,18 @@ function mojo_item_shortcode( $atts ) {
 		$items = json_decode( $response['body'] );
 		foreach ( $items as $item ) {
 			$item->name = apply_filters( 'mm_item_name', $item->name );
-			$content    .= '
+			$content   .= '
 		<article class="item">
 			<div class="box">
 				<div class="item-photo">
 					<a target="_blank" class="screenshot" href="' . mojo_build_link(
-					$item->page_url,
-					array(
-						'utm_medium'  => 'plugin_shortcode',
-						'utm_content' => 'item_thumbnail',
-						'r'           => $atts['aff'],
-					)
-				) . '">
+				$item->page_url,
+				array(
+					'utm_medium'  => 'plugin_shortcode',
+					'utm_content' => 'item_thumbnail',
+					'r'           => $atts['aff'],
+				)
+			) . '">
 						<img width="68" height="68" alt="' . $item->name . '" src="' . $item->images->square_thumbnail_url . '">
 					</a>
 				</div>
@@ -59,24 +59,24 @@ function mojo_item_shortcode( $atts ) {
 				<div class="item-title">
 					<h3 class="title">
 						<a target="_blank" href="' . mojo_build_link(
-							   $item->page_url,
-							   array(
-								   'utm_medium'  => 'plugin_shortcode',
-								   'utm_content' => 'item_title_link',
-								   'r'           => $atts['aff'],
-							   )
-						   ) . '">' . $item->name . '</a>
+							$item->page_url,
+							array(
+								'utm_medium'  => 'plugin_shortcode',
+								'utm_content' => 'item_title_link',
+								'r'           => $atts['aff'],
+							)
+						) . '">' . $item->name . '</a>
 					</h3>
 
 					<h5 class="author">
 						<a target="_blank" href="' . mojo_build_link(
-							   $item->seller_url,
-							   array(
-								   'utm_medium'  => 'plugin_shortcode',
-								   'utm_content' => 'item_seller_link',
-								   'r'           => $atts['aff'],
-							   )
-						   ) . '">' . $item->seller_name . '</a>
+							$item->seller_url,
+							array(
+								'utm_medium'  => 'plugin_shortcode',
+								'utm_content' => 'item_seller_link',
+								'r'           => $atts['aff'],
+							)
+						) . '">' . $item->seller_name . '</a>
 					</h5>
 				</div>
 
@@ -89,12 +89,12 @@ function mojo_item_shortcode( $atts ) {
 
 					<div class="add-to-cart">
 						<form accept-charset="utf-8" method="post" id="CartItemRouteForm" target="_blank" enctype="multipart-data" action="' . mojo_build_link(
-							   'https://www.mojomarketplace.com/cart',
-							   array(
-								   'utm_medium'  => 'plugin_shortcode',
-								   'utm_content' => 'item_add_to_cart_button',
-							   )
-						   ) . '">
+							'https://www.mojomarketplace.com/cart',
+							array(
+								'utm_medium'  => 'plugin_shortcode',
+								'utm_content' => 'item_add_to_cart_button',
+							)
+						) . '">
 							<input type="hidden" id="CartItemItemId" value="' . $item->id . '" name="data[CartItem][item_id]">
 							<button class="mm-btn-primary" type="submit">Add to Cart</button>
 						</form>

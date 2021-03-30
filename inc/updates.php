@@ -167,7 +167,7 @@ function bh_theme_auto_update_setting_template( $template ) {
 	$template_string = '<# } else if ( data.autoupdate.forced ) { #>
 					' . __( 'Auto-updates enabled', 'bluehost-wordpress-plugin' );
 	$replacement     = '<# } else if ( data.autoupdate.forced ) { #>';
-	$replacement     .= sprintf(
+	$replacement    .= sprintf(
 	/* translators: %s Settings > General page URL. */
 		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'bluehost-wordpress-plugin' ),
 		admin_url( 'admin.php?page=bluehost#/settings' )
@@ -181,8 +181,8 @@ add_filter( 'theme_auto_update_setting_template', 'bh_theme_auto_update_setting_
 /**
  * Sync the plugin's Core major auto-update setting with core's.
  *
- * @param mixed  $old_value The old option value.
- * @param mixed  $value     The new option value.
+ * @param mixed $old_value The old option value.
+ * @param mixed $value     The new option value.
  */
 function bh_sync_plugin_major_auto_core_update_option( $old_value, $value ) {
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {

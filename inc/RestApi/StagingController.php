@@ -38,77 +38,77 @@ class StagingController extends \WP_REST_Controller {
 		register_rest_route(
 			$this->namespace,
 			'/staging',
-			[
-				[
+			array(
+				array(
 					'methods'             => \WP_REST_Server::READABLE,
-					'callback'            => [ $this, 'getStagingDetails' ],
-					'permission_callback' => [ $this, 'checkPermission' ],
-				],
-				[
+					'callback'            => array( $this, 'getStagingDetails' ),
+					'permission_callback' => array( $this, 'checkPermission' ),
+				),
+				array(
 					'methods'             => \WP_REST_Server::CREATABLE,
-					'callback'            => [ $this, 'createStaging' ],
-					'permission_callback' => [ $this, 'checkPermission' ],
-				],
-				[
+					'callback'            => array( $this, 'createStaging' ),
+					'permission_callback' => array( $this, 'checkPermission' ),
+				),
+				array(
 					'methods'             => \WP_REST_Server::DELETABLE,
-					'callback'            => [ $this, 'destroyStaging' ],
-					'permission_callback' => [ $this, 'checkPermission' ],
-				],
-			]
+					'callback'            => array( $this, 'destroyStaging' ),
+					'permission_callback' => array( $this, 'checkPermission' ),
+				),
+			)
 		);
 
 		register_rest_route(
 			$this->namespace,
 			'/staging/clone',
-			[
-				[
+			array(
+				array(
 					'methods'             => \WP_REST_Server::EDITABLE,
-					'callback'            => [ $this, 'cloneProductionToStaging' ],
-					'permission_callback' => [ $this, 'checkPermission' ],
-				],
-			]
+					'callback'            => array( $this, 'cloneProductionToStaging' ),
+					'permission_callback' => array( $this, 'checkPermission' ),
+				),
+			)
 		);
 
 		register_rest_route(
 			$this->namespace,
 			'/staging/deploy',
-			[
-				[
+			array(
+				array(
 					'methods'             => \WP_REST_Server::EDITABLE,
-					'callback'            => [ $this, 'deployToProduction' ],
-					'permission_callback' => [ $this, 'checkPermission' ],
-					'args'                => [
-						'type' => [
+					'callback'            => array( $this, 'deployToProduction' ),
+					'permission_callback' => array( $this, 'checkPermission' ),
+					'args'                => array(
+						'type' => array(
 							'default'           => 'all',
-							'enum'              => [ 'all', 'db', 'files' ],
+							'enum'              => array( 'all', 'db', 'files' ),
 							'validate_callback' => function ( $value ) {
-								return in_array( $value, [ 'all', 'db', 'files' ], true );
+								return in_array( $value, array( 'all', 'db', 'files' ), true );
 							},
-						],
-					],
-				],
-			]
+						),
+					),
+				),
+			)
 		);
 
 		register_rest_route(
 			$this->namespace,
 			'/staging/switch-to',
-			[
-				[
+			array(
+				array(
 					'methods'             => \WP_REST_Server::READABLE,
-					'callback'            => [ $this, 'switchTo' ],
-					'permission_callback' => [ $this, 'checkPermission' ],
-					'args'                => [
-						'env' => [
+					'callback'            => array( $this, 'switchTo' ),
+					'permission_callback' => array( $this, 'checkPermission' ),
+					'args'                => array(
+						'env' => array(
 							'required'          => true,
-							'enum'              => [ 'staging', 'production' ],
+							'enum'              => array( 'staging', 'production' ),
 							'validate_callback' => function ( $value ) {
-								return in_array( $value, [ 'staging', 'production' ], true );
+								return in_array( $value, array( 'staging', 'production' ), true );
 							},
-						],
-					],
-				],
-			]
+						),
+					),
+				),
+			)
 		);
 
 	}
@@ -131,7 +131,7 @@ class StagingController extends \WP_REST_Controller {
 		$payload = $this->staging->createStaging();
 		if ( ! is_wp_error( $payload ) ) {
 			$this->staging->getConfig( false );
-			$payload = [
+			$payload = array(
 				'creationDate'           => $this->staging->getCreationDate(),
 				'currentEnvironment'     => $this->staging->getEnvironment(),
 				'message'                => $payload['message'],
@@ -143,7 +143,7 @@ class StagingController extends \WP_REST_Controller {
 				'stagingThumbnailUrl'    => $this->staging->getStagingScreenshotUrl(),
 				'stagingUrl'             => $this->staging->getStagingUrl(),
 				'status'                 => $payload['status'],
-			];
+			);
 		}
 
 		return rest_ensure_response( $payload );
@@ -185,7 +185,7 @@ class StagingController extends \WP_REST_Controller {
 	 */
 	public function getStagingDetails() {
 		return rest_ensure_response(
-			[
+			array(
 				'creationDate'           => $this->staging->getCreationDate(),
 				'currentEnvironment'     => $this->staging->getEnvironment(),
 				'productionDir'          => $this->staging->getProductionDir(),
@@ -195,7 +195,7 @@ class StagingController extends \WP_REST_Controller {
 				'stagingExists'          => $this->staging->stagingExists(),
 				'stagingThumbnailUrl'    => $this->staging->getStagingScreenshotUrl(),
 				'stagingUrl'             => $this->staging->getStagingUrl(),
-			]
+			)
 		);
 	}
 

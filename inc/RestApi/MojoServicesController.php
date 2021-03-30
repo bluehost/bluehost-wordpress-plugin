@@ -21,14 +21,14 @@ class MojoServicesController extends MojoItemsController {
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base,
-			[
-				[
+			array(
+				array(
 					'methods'             => \WP_REST_Server::READABLE,
-					'callback'            => [ $this, 'get_items' ],
-					'permission_callback' => [ $this, 'get_items_permissions_check' ],
+					'callback'            => array( $this, 'get_items' ),
+					'permission_callback' => array( $this, 'get_items_permissions_check' ),
 					'args'                => $this->get_collection_params(),
-				],
-			]
+				),
+			)
 		);
 	}
 
@@ -40,7 +40,7 @@ class MojoServicesController extends MojoItemsController {
 	 * @return \WP_Error|\WP_REST_Response
 	 */
 	public function get_items( $request ) {
-		$params = [ 'item_type' => 'services' ];
+		$params = array( 'item_type' => 'services' );
 		$data   = $this->query_mojo_search( $params, $request );
 
 		return rest_ensure_response( $data );

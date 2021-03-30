@@ -2,8 +2,15 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width">
-		<title><?php bloginfo(); ?>
-			&mdash; <?php esc_html_e( 'Coming Soon', 'bluehost-wordpress-plugin' ); ?>></title>
+		<title>
+			<?php
+				printf(
+					/* translators: %s: Blog name */
+					__( '%s &mdash; Coming Soon', 'bluehost-wordpress-plugin' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					esc_html( get_option( 'blogname' ) )
+				);
+				?>
+		</title>
 		<meta name="robots" content="noindex, nofollow" />
 		<script src="<?php echo esc_url( includes_url( 'js/jquery/jquery.js' ) ); //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript ?>"></script>
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet"><?php //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet ?>
@@ -308,26 +315,22 @@
 				<?php if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'subscriptions' ) ) { ?>
 
 					<div class="bh_subscription_widget">
-						<h2 class="widgettitle">Coming Soon!</h2>
+					<h2 class="widgettitle"><?php esc_html_e( 'Coming Soon!', 'bluehost-wordpress-plugin' ); ?></h2>
 						<div id="subscribe-text">
-							<p>Be the first to know when we launch, enter your email address and we will let you know
-								when we go live and any future website updates we have.</p>
+							<p><?php esc_html_e( 'Be the first to know when we launch, enter your email address and we will let you know when we go live and any future website updates we have.', 'bluehost-wordpress-plugin' ); ?></p>
 						</div>
-						<div id="success">Thank you, please check your email to confirm your subscription.</div>
-						<div id="error">There was an error with your submission and you were not subscribed. Please try
-							again with a different email address.
-						</div>
+						<div id="success"><?php esc_html_e( 'Thank you, please check your email to confirm your subscription.', 'bluehost-wordpress-plugin' ); ?></div>
+						<div id="error"><?php esc_html_e( 'There was an error with your submission and you were not subscribed. Please try again with a different email address.', 'bluehost-wordpress-plugin' ); ?></div>
 						<form action="" method="post" accept-charset="utf-8" id="subscribe-bh">
 							<input type="hidden" name="action" value="mojo_coming_soon_subscribe">
 							<?php wp_nonce_field( 'mojo_coming_soon_subscribe_nonce', 'mm_nonce-coming-soon-subscribe' ); ?>
 							<span class="bh-inputs email" id="subscribe-email">
-							<label id="bh-subscribe-label" for="subscribe-field-bh">Email</label>
-							<input type="email" name="email" required="required" value="" id="subscribe-field-bh"
-								   placeholder="Enter your email address">
-						</span>
+								<label id="bh-subscribe-label" for="subscribe-field-bh"><?php esc_html_e( 'Email', 'bluehost-wordpress-plugin' ); ?></label>
+								<input type="email" name="email" required="required" value="" id="subscribe-field-bh" placeholder="Enter your email address">
+							</span>
 							<span class="bh-inputs submit" id="subscribe-submit">
-							<input class="btn" type="submit" value="Subscribe" name="bh_subscriptions_widget">
-						</span>
+								<input class="btn" type="submit" value="Subscribe" name="bh_subscriptions_widget">
+							</span>
 						</form>
 						<script>
 							// Custom functionality for safari and IE
@@ -348,20 +351,33 @@
 
 				<?php } else { ?>
 
-					<h1>A New WordPress Site</h1>
-					<h2>Coming Soon!</h2>
-					<a class="btn" href="<?php echo esc_url( wp_login_url() ); ?>">Admin Login</a>
+					<h1><?php esc_html_e( 'A New WordPress Site', 'bluehost-wordpress-plugin' ); ?></h1>
+					<h2><?php esc_html_e( 'Coming Soon!', 'bluehost-wordpress-plugin' ); ?></h2>
+					<a class="btn" href="<?php echo esc_url( wp_login_url() ); ?>"><?php esc_html_e( 'Admin Login', 'bluehost-wordpress-plugin' ); ?></a>
 
 				<?php } ?>
 
 			</div>
 		</div>
 		<footer>
-			<p class="text-center">A <a target="_blank" href="https://bluehost.com/wordpress" class="bluehost"
-										rel="nofollow">Bluehost</a> powered website. Is this your website? Log in to <a
-					href="<?php echo esc_url( wp_login_url() ); ?>">WordPress</a> or <a target="_blank"
-																						href="https://my.bluehost.com/"
-																						class="bluehost" rel="nofollow">Bluehost</a>
+			<p class="text-center">
+				<?php
+				$wordpress_hosting_page = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://www.bluehost.in/wordpress' : 'https://bluehost.com/wordpress';
+				$my_panel               = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://my.bluehost.in/' : 'https://my.bluehost.com/';
+				printf(
+					/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag */
+					esc_html__( 'A %1$sBluehost%2$s powered website.', 'bluehost-wordpress-plugin' ) . '&nbsp;',
+					'<a href="' . esc_url( $wordpress_hosting_page ) . '" class="bluehost" target="_blank" rel="noopener noreferrer nofollow">',
+					'</a>'
+				);
+				printf(
+					/* translators: %1$s is replaced with opening link tag taking you to login page, %2$s is replaced with opening link tag taking you to my.bluehost.com, %3$s is replaced with closing link tag */
+					esc_html__( 'Is this your website? Log in to %1$sWordPress%3$s or %2$sBluehost%3$s.', 'bluehost-wordpress-plugin' ),
+					'<a href="' . esc_url( wp_login_url() ) . '">',
+					'<a href="' . esc_url( $my_panel ) . '" class="bluehost" target="_blank" rel="noopener noreferrer nofollow">',
+					'</a>'
+				);
+				?>
 			</p>
 		</footer>
 		<script>
@@ -397,11 +413,11 @@
 
 							} else if (status == 'active') {
 
-								$('#error').show().text('Your email address is already subscribed to this website. Stay tuned to your inbox for our updates or try a different email address.');
+								$('#error').show().text(<?php esc_html_e( 'Your email address is already subscribed to this website. Stay tuned to your inbox for our updates or try a different email address.' ); ?>);
 
 							} else if (status == 'invalid_email') {
 
-								$('#error').show().text('There was an error with your submission and you were not subscribed. Please try again with a valid email address.');
+								$('#error').show().text(<?php esc_html_e( 'There was an error with your submission and you were not subscribed. Please try again with a valid email address.' ); ?>);
 
 							} else {
 

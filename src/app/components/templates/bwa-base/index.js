@@ -60,13 +60,23 @@ const BWABaseTemplate = ({
 		}
 	}
 
+	const speakRouteTitle = ( location, title ) => {
+		if ( 
+			'undefined' !== typeof location.state
+			&& 'undefined' !== typeof location.state.redirect
+			&& 'unspecified-or-root' === location.state.redirect 
+		) {
+			return; // don't speak Home title on load (rely on browser behavior), but speak on subsequent navigation to Home
+		}
+
+		speak( title, 'assertive' );
+	}
+
 	useEffect(() => {
 		handleWPMenuAugmentation(topLevelPages);
 		handleWPMenuActiveHighlight( getTopLevelActiveHighlightSlug() );
 		pageContainer.focus({ preventScroll: true });
-		if ( routerLocation.state && routerLocation.state.redirect !== 'unspecified-or-root' ) {
-			speak( getDescriptivePageTitle(), 'assertive' );
-		}
+		speakRouteTitle( routerLocation, getDescriptivePageTitle() );
 		sendPageviewEvent(routerLocation, getDescriptivePageTitle() );
 	}, [routerLocation.pathname]);
 

@@ -4,7 +4,7 @@
     "WP_DEBUG_LOG": true,
     "WP_DEBUG_DISPLAY": true
   },
-  "phpVersion": "5.6",
+  "phpVersion": "7.2",
   "plugins": [
     "."
   ],

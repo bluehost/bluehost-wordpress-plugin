@@ -5,8 +5,8 @@ describe('Onboarding', function () {
 	before(() => {
 		// Make sure we are in coming soon mode
 		cy.exec('npx wp-env run cli wp option set mm_coming_soon true');
-
-		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
+		cy.wait(1000);
+		cy.visit('/wp-admin/admin.php?page=bluehost#/home/onboarding');
 		cy.injectAxe();
 	});
 

@@ -22,14 +22,14 @@ const ReportingUI = ({ status }) => {
 	if (true === status) {
 		return (
 			<div style={{ color: '#17b212'}}>
-				<span class="dashicons dashicons-yes"></span>
+				<span className="dashicons dashicons-yes"></span>
 				{ __( 'Error report sent.', 'bluehost-wordpress-plugin' ) }
 			</div>
 		)
 	} else if (false === status) {
 		return (
 			<div style={{ color: '#d0021b'}}>
-				<span class="dashicons dashicons-no"></span>
+				<span className="dashicons dashicons-no"></span>
 				{ __( 'Failed to send error report.', 'bluehost-wordpress-plugin' ) }
 			</div>
 		)

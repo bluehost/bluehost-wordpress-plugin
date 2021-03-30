@@ -22,7 +22,7 @@ describe('Home Page', function () {
 	});
 
 	it('Is Accessible', () => {
-		cy.wait(200);
+		cy.wait(500);
 		cy.checkA11y('.bwa-route-contents');
 	});
 

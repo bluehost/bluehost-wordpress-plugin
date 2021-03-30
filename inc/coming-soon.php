@@ -1,17 +1,22 @@
 <?php
 /**
- * This file adds a coming soon page for new installs
+ * This file adds a coming soon page for new installs.
+ *
+ * @package Bluehost
  */
 
+/**
+ * Display coming soon notice.
+ */
 function mojo_cs_notice_display() {
-	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) && current_user_can('manage_options')) {
+	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) && current_user_can( 'manage_options' ) ) {
 		?>
 		<div class='notice notice-warning'>
 			<p>
 				<?php
 				printf(
 					/* translators: %1$s is replaced with the opening link tag and %2$s is replaced with the closing link tag. */
-					__( 'Your site is currently displaying a "Coming Soon" page. Once you are ready, %1$slaunch your site%2$s.', 'bluehost-wordpress-plugin' ),
+					__( 'Your site is currently displaying a "Coming Soon" page. Once you are ready, %1$slaunch your site%2$s.', 'bluehost-wordpress-plugin' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					'<a href="' . esc_url( admin_url( 'admin.php?page=bluehost#/home' ) ) . '">',
 					'</a>'
 				);
@@ -23,6 +28,13 @@ function mojo_cs_notice_display() {
 }
 add_action( 'admin_notices', 'mojo_cs_notice_display' );
 
+/**
+ * Get the number to show in the bubble.
+ *
+ * @param int $count The current number.
+ *
+ * @return int|mixed
+ */
 function mojo_cs_bubble_count( $count ) {
 	if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
 		$count++;
@@ -31,6 +43,9 @@ function mojo_cs_bubble_count( $count ) {
 }
 add_filter( 'bluehost_menu_bubble_count', 'mojo_cs_bubble_count' );
 
+/**
+ * Load the coming soon page, if necessary.
+ */
 function mojo_cs_load() {
 	if ( ! is_user_logged_in() ) {
 		$coming_soon = get_option( 'mm_coming_soon', 'false' );
@@ -42,11 +57,16 @@ function mojo_cs_load() {
 }
 add_action( 'template_redirect', 'mojo_cs_load' );
 
+/**
+ * Render the coming soon page.
+ */
 function mojo_cs_content() {
 	require BLUEHOST_PLUGIN_DIR . 'pages/coming-soon.php';
 }
 
-// Handle Ajax response
+/**
+ * Handle the AJAX subscribe action.
+ */
 function mojo_coming_soon_subscribe() {
 
 	$response   = array();
@@ -113,6 +133,13 @@ function mojo_coming_soon_prevent_emails() {
 }
 add_action( 'plugins_loaded', 'mojo_coming_soon_prevent_emails' );
 
+/**
+ * Prevent emails from being sent.
+ *
+ * @see mojo_coming_soon_prevent_emails
+ *
+ * @return string[]
+ */
 function mojo_coming_soon_prevent_emails_return_array() {
 
 	return array(
