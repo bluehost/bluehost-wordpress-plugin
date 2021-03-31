@@ -46,11 +46,6 @@ class Bluehost_Admin_App_Assets {
 	 * Initialize class.
 	 */
 	protected function primary_init() {
-		// TODO: restore admin css patch for nav
-		// <style>li#toplevel_page_bluehost a:after,
-		// li#toplevel_page_bluehost a:after {
-		// border: 0px transparent !important;
-		// }</style>
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ), 20 );
 	}
 
@@ -111,6 +106,6 @@ class Bluehost_Admin_App_Assets {
 		
 		BuildAssets::inlineWebpackPublicPath('bwp-manifest-app');
 		wp_localize_script( 'bwp-manifest-app', 'bluehost', apply_filters( 'bluehost_admin_page_data', $data ) );
-		wp_localize_script( 'bwp-manifest-app', 'bluehostWpAdminUrl', \admin_url() );
+		\wp_add_inline_script( 'bwp-manifest-app', 'window.bluehostWpAdminUrl="'. \admin_url() .'";', 'before');
 	}
 }
