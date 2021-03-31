@@ -13,14 +13,14 @@ class BuildAssets {
      *
      * @var string
      */
-    private static $assetHandlePrefix = 'bluehost-wordpress-plugin-';
+    private static $assetHandlePrefix = 'bwp-';
 
     /**
      * WordPress Hooks prefix
      *
      * @var string
      */
-    private static $hookPrefix = 'bluehost_plugin_';
+    private static $hookPrefix = 'bwp_';
 
     /**
      * CSS dependencies required by @app.
@@ -37,6 +37,7 @@ class BuildAssets {
     public static function init() {
         add_action( 'wp_enqueue_scripts', array( __CLASS__, 'register' ), 20 );
         add_action( 'admin_enqueue_scripts', array( __CLASS__, 'register' ), 20 );
+        add_action( 'admin_enqueue_scripts', array( __CLASS__, 'admin_global_enqueue' ), 30 );
     }
     /**
      * Registers all assets with WordPress
@@ -48,47 +49,12 @@ class BuildAssets {
         self::externals();
         // Internal hooks helper
         self::registerHooks();
-        $build_url = trailingslashit( BLUEHOST_PLUGIN_URL ) . 'build/';
-        $data  = self::getManifest();
+        // Bring webpack assets online
+        self::requireWebpackAssets();
+    }
 
-        if ( is_array( $data ) && ! empty( $data['manifest'] ) ) {
-            foreach( $data['manifest'] as $entry => $entryData ) {
-                // Build JavaScript Registration
-                array_map(
-                    function($script) use( $build_url ) {
-                        $hook = str_ireplace('-', '_', $script['handle']);
-                        \wp_register_script(
-                            $script['handle'],
-                            $build_url . $script['filename'],
-                            apply_filters( $hook . '_script_dependencies', $script['dependencies'] ),
-                            false, // chunkhash burned into filename on each build
-                            true
-                        );
-                        $assetData = apply_filters( $hook . '_data', array() );
-                        if ( ! empty( $assetData ) ) {
-                            \wp_localize_script(
-                                $script['handle'],
-                                str_replace( '-', '', lcfirst( ucwords( $script['handle'] ) ) ),
-                                $assetData
-                            );
-                        }
-                    },
-                    $entryData['assets']['js']
-                );
-                array_map(
-                    function( $style ) use( $build_url ) {
-                        $hook = str_replace('-', '_', $style['handle'] );
-                        \wp_register_style(
-                            $style['handle'],
-                            $build_url . $style['filename'],
-                            apply_filters( $hook . '_css_dependencies', $style['dependencies'] ),
-                            false
-                        );
-                    },
-                    $entryData['assets']['css']
-                );
-            }
-        }
+    public static function admin_global_enqueue( $hook ) {
+        \wp_enqueue_style( 'bluehost-admin-global' );
     }
 
     public static function externals() {
@@ -100,7 +66,7 @@ class BuildAssets {
 			'react-router-dom',
 			$url . 'static/react-router-dom' . $min . '.js',
 			array( 'wp-element' ),
-			empty( $min ) ? $rand : '5.0.0',
+			empty( $min ) ? $rand : '5.2.0',
 			true
 		);
 
@@ -109,20 +75,6 @@ class BuildAssets {
 			'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600',
 			array(),
 			empty( $min ) ? $rand : BLUEHOST_PLUGIN_VERSION
-		);
-		
-		wp_register_style(
-			'animatecss',
-			$url . 'static/animate' . $min . '.css',
-			array(),
-			empty( $min ) ? $rand : '3.7.1'
-		);
-
-		wp_register_style(
-			'bluehost-brand',
-			$url . 'static/bluehost.css',
-			array(),
-			empty( $min ) ? $rand : '0.1.0'
 		);
 
 		wp_register_style(
@@ -139,10 +91,14 @@ class BuildAssets {
      * @param string $entry
      * @return void
      */
-    public static function enqueue( $entry ) {
+    public static function enqueue( $entry, $type = 'all' ) {
         \do_action( self::$hookPrefix . $entry . '_pre_enqueue' );
-        \wp_enqueue_script( self::$assetHandlePrefix . $entry );
-        \wp_enqueue_style( self::$assetHandlePrefix . $entry );
+        if ( 'style' !== $type ) {
+            \wp_enqueue_script( self::$assetHandlePrefix . $entry );
+        }
+        if ( 'script' !== $type ) {
+            \wp_enqueue_style( self::$assetHandlePrefix . $entry );
+        }
         \do_action( self::$hookPrefix . $entry . '_post_enqueue' );
     }
 
@@ -153,35 +109,28 @@ class BuildAssets {
      */
     public static function registerHooks() {
         // @wordpress/dependency-extraction-plugin doesn't know
-        // about most of our CSS dependencies in BWA, so those
+        // about most of our CSS dependencies, so those
         // are manually managed in this file
-        add_filter( 'bluehost_wordpress_plugin_app_css_dependencies', function( $data ) {
+        \add_filter( 'bwp_app_css_deps', function( $data ) {
             return array_unique( array_merge( $data, self::$appCssDependencies ) );
         });
     }
 
     /**
-     * Get unified manifest generated by custom webpack plugin.
+     * Require the auto-generated asset registration file.
      * 
-     * Debug
-     * 1 - File not readable
-     * 2 - Contents not valid php array
+     * This method fires during *_enqueue_scripts at priority 20 -- hook prior to filter dependencies/data, hook after to enqueue.
      *
-     * @return int|array
+     * @return void
      */
-    public static function getManifest() {
-        $build_dir = trailingslashit( BLUEHOST_PLUGIN_DIR ) . 'build/';
-        $data_file = $build_dir . 'wp-dependency.php';
-        
-        if ( is_readable( $data_file ) ) {
-            $data = @file_get_contents( $data_file );
-            if ( $data && is_array( $data ) ) {
-                return $data;
-            } else {
-                return 2;
-            }
+    public static function requireWebpackAssets() {
+        $file = BLUEHOST_PLUGIN_DIR . '/build/wp-dependency-registration.php';
+        if ( is_readable( $file ) ) {
+            require_once $file;
         }
+    }
 
-        return 1;
+    public static function inlineWebpackPublicPath( $handle ) {
+        \wp_add_inline_script( $handle, 'window.bluehostPluginPublicPath="'. trailingslashit( BLUEHOST_PLUGIN_URL ) .'build/";', 'before');
     }
 }

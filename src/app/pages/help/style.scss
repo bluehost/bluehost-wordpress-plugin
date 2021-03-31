@@ -12,6 +12,7 @@
   font-family: 'Open Sans', Arial, sans-serif;
 
   .clouds {
+    background: white url('../../assets/svg/clouds.svg') center bottom no-repeat;
     background-size: cover;
   }
 
@@ -45,7 +46,7 @@
   .section-intro {
     position: relative;
     padding: 100px 30px 100px 30px;
-    background: url('../../assets/svg/white-triangle.svg') center bottom no-repeat;
+    background: url("../../assets/svg/white-triangle.svg") center bottom no-repeat;
     background-size: cover;
 
     .section-title {

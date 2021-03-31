@@ -49,10 +49,17 @@ class BluehostBlogController extends \WP_REST_Controller {
 	 * @return \WP_REST_Response
 	 */
 	public function query_posts( \WP_REST_Request $request ) {
-        $response = \wp_remote_get( 'https://www.bluehost.com/blog/page-data/index/page-data.json' );
+		$cache = \get_transient('bluehost_blog_posts');
+		if ( false !== $cache ) {
+			return new \WP_REST_Response( $cache, 200 );
+		}
+        $request = \wp_remote_get( 'https://www.bluehost.com/blog/page-data/index/page-data.json' );
+		$response = \wp_remote_retrieve_body( $request );
+
+		\set_transient( 'bluehost_blog_posts', $response, 5 * HOUR_IN_SECONDS );
 
 		return new \WP_REST_Response(
-			wp_remote_retrieve_body( $response ),
+			$response,
 			200
 		);
 	}

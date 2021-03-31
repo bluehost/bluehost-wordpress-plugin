@@ -4,7 +4,7 @@
  */
 import './set-public-path';
 
-import Widget from './widget/index.js';
+import Widget from './dashboard/index.js';
 import domReady from '@wordpress/dom-ready';
 import { render } from '@wordpress/element';
 

@@ -15,7 +15,7 @@ const Help = () => {
 		<Page className="page-help">
 			<BWAHeading level="h2" size={0}>{ __( 'Help', 'bluehost-wordpress-plugin' ) }</BWAHeading>
 			<div className="clouds">
-				<div className="section-intro" style={{ background: 'url("images/white-triangle.svg") center bottom no-repeat'}}>
+				<div className="section-intro">
 					<div className="chat-button-container">
 						<Button
 							className="chat-button"

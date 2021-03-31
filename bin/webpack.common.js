@@ -48,6 +48,8 @@ const bluehostPluginConfig = {
 		new WpDependencyWebpackPlugin({
 			handlePrefix: settings.name,
 			externals: settings.webpack.externals,
+			buildDirUrl: "trailingslashit( BLUEHOST_PLUGIN_URL ) . 'build/'",
+			acronym: settings.acronym,
 		}),
 		new MiniCSSExtractPlugin({ // wp-scripts copy disabled in modifiedWpScripts
 			esModule: false, 

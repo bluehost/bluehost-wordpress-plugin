@@ -403,8 +403,6 @@
 						},
 						success: function (response) {
 
-							//console.log( response );
-
 							var status = response.status;
 
 							if (status == 'success') {

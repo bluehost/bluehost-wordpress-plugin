@@ -9,6 +9,8 @@ const json2php = require('json2php');
 const forEach = require('lodash/forEach');
 const merge = require('lodash/merge');
 const kebabCase = require('lodash/kebabCase');
+const snakeCase = require('lodash/snakeCase');
+const camelCase = require('lodash/camelCase');
 // cli formatting
 const chalk = require('chalk');
 
@@ -17,6 +19,7 @@ const WebpackAssetsManifest = require('webpack-assets-manifest');
 // Handle WordPress Core dependencies and extend with additional externals.
 const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
 const { cleanForSlug } = require('@wordpress/url');
+const Mustache = require('mustache');
 
 // string ID for this webpack plugin
 const webpackPluginName = 'WpDependencyWebpackPlugin';
@@ -25,14 +28,12 @@ let data = {};
 const getPluginHeaderData = require( './getPluginHeaderData' );
 // helper to load externals through dependency extraction
 const customRequestToExternal = ( request ) => {
-  if ( 
-    'externals' in config 
-    && request in config.externals 
-  ) {
+  if ('externals' in config && request in config.externals) {
     return config.externals[ request ];
   }
   // purposefully do not return anything
 }
+
 /**
  * Opinionated webpack plugin for digesting built assets in WordPress.
  */
@@ -70,10 +71,12 @@ class WpDependencyWebpackPlugin {
     }
     this.defaults = { 
       php: true, 
-      json: true, 
+      json: true,
+      registration: true,
       silent: false,
       path: path.resolve(process.cwd(), 'build'),
       buildFilename: 'wp-dependency',
+      acronym: false,
     };
     config = merge(this.defaults, options);
     this.output = {};
@@ -82,9 +85,8 @@ class WpDependencyWebpackPlugin {
   buildUnifiedManifest() {
     this.output.manifest = {};
     forEach(data.assetsManifest, (entryData, entryName) => {
-      console.log(entryName);
-      console.log(entryData);
-      this.output.manifest[entryName] = { 
+      this.output.manifest[entryName] = {
+        entry: entryName, // mustache-friendly
         assets: this.processEntrypointAssets( entryName, entryData ),
       };
     });
@@ -96,17 +98,14 @@ class WpDependencyWebpackPlugin {
     if('js' in entryData.assets) {
       let previousJsHandle = false;
       forEach(entryData.assets.js, (filename) => {
-        let asset = { 
-          filename,
-          handle: this.createAssetHandle(filename, entryName),
-        };
+        let asset = this.createAssetData(filename, entryName, previousJsHandle);
         if (filename in data.wordpress) {
           asset = {...asset, ...data.wordpress[filename]};
         } else if ( previousJsHandle ) {
           asset.dependencies = [ previousJsHandle ];
         }
         js.push(asset);
-        previousJsHandle = asset.handle;
+        previousJsHandle = asset.kebab;
       })
     }
 
@@ -114,8 +113,11 @@ class WpDependencyWebpackPlugin {
       let previousCssHandle = false;
       forEach(entryData.assets.css, (filename) => {
         let asset = this.createAssetData(filename, entryName, previousCssHandle);
+        if( previousCssHandle ) {
+          asset.dependencies = [ previousCssHandle ];
+        }
         css.push(asset);
-        previousCssHandle = asset.handle;
+        previousCssHandle = asset.kebab;
       });
     }
 
@@ -123,19 +125,22 @@ class WpDependencyWebpackPlugin {
   }
 
   createAssetData(filename, entry, previous = false ) {
+    let handle = this.createAssetHandle(filename, entry);
     let asset = {
       filename,
-      handle: this.createAssetHandle(filename, entry),
+      kebab: handle,
+      snake: snakeCase( handle )
     };
-    if ( previous ) {
-      asset.dependencies = [ previous ];
+    if ( filename.includes('.js') ) {
+      asset.camel = camelCase( handle );
     }
     
     return asset;
   }
 
   createAssetHandle( filename, entryname ) {
-    return cleanForSlug( kebabCase( config.handlePrefix + '-' + filename.split(entryname)[0] + entryname ) );
+    const prefix = config.acronym ? config.acronym : config.handlePrefix;
+    return cleanForSlug( kebabCase( prefix + '-' + filename.split(entryname)[0] + entryname ) );
   }
 
   writeWpDependencyManifestToFS() {
@@ -149,6 +154,17 @@ class WpDependencyWebpackPlugin {
     if (config.json) {
       fs.writeFileSync(fileNoExt + '.json', json)
       this.success(config.buildFilename + '.json emitted');
+    }
+    if (config.registration) {
+      const template = fs.readFileSync(path.resolve(__dirname, './registration.mustache'), 'utf8');
+      const mustacheConfig = {
+        hash: this.output.buildHash,
+        manifest: Object.values(this.output.manifest),
+        config: config
+      };
+      const regFileContents = Mustache.render(template, mustacheConfig);
+      fs.writeFileSync(fileNoExt + '-registration.php', regFileContents );
+      this.success(config.buildFilename + '-registration.php emitted');
     }
   }
 
@@ -173,10 +189,6 @@ class WpDependencyWebpackPlugin {
 
   success(msg) {
     this.logger(chalk.greenBright.italic(msg));
-  }
-
-  error(msg) {
-    this.logger(chalk.redBright.italic(msg));
   }
 
   log(msg) {

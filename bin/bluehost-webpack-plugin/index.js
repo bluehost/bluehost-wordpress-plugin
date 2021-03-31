@@ -15,6 +15,7 @@ const colors = {
   bluehost: '#3575d3',
   palePurple: '#83c0fc',
   deepPlum: '#1d2a3b',
+  newfold: '#ec5328',
 }
 
 const asciiLogo = () => chalk.hex(colors.bluehost)([
@@ -22,17 +23,17 @@ const asciiLogo = () => chalk.hex(colors.bluehost)([
     "|---.|    .   .,---.|---.,---.,---.|--- ",
     "|   ||    |   ||---'|   ||   |`---.|    ",
     "`---'`---'`---'`---'`   '`---'`---'`---'",
-  ].join('\n'));
-
-const contextLine = () => chalk.bold('MODE: ' + process.env.NODE_ENV);
+].join('\n'));
 
 const productLine = (name, version) => chalk.bgHex(colors.palePurple).hex(colors.deepPlum).bold(name + ' v' + version);
-
+const contextLine = () => chalk.bold('MODE: ' + process.env.NODE_ENV);
+const corporateLine = () => chalk.hex(colors.newfold).bold('A Newfold Digital Company');
 /**
  * Lets start this shell session off on the right foot!
  */
 const humanBanner = (name, version) => {
     log('\n\n' + asciiLogo());
+    log(corporateLine());
     log(productLine(name, version) + '\n');
     log(contextLine());
 }

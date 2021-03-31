@@ -15,19 +15,17 @@ wpScriptsConfig.plugins = wpScriptsConfig.plugins.filter(
 	( plugin ) => {
         switch( plugin.constructor.name ) {
             case 'DependencyExtractionWebpackPlugin': // used this in wp-dependency-webpack-plugin
-            case 'MiniCssExtractPlugin': // we need chunkhash in filename
+            case 'MiniCssExtractPlugin': // we need chunkhash in filename in production
                 return false;
         }
     }
 );
 
 /**
- * Make modifications to the wp-scripts webpack config before
- * merging it with our own common & contextual configs.
  * 
  * ℹ️ This file should mostly be limited to direct disabling of wp-scripts' config.
  * 
- * Our customizations, if any, belong in webpack.common.js.
+ * Our customizations, if any, belong in webpack.common.js or contextual build files.
  */
 const modifiedWpScripts = merge( wpScriptsConfig, {});
 
