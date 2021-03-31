@@ -18,6 +18,7 @@ const chalk = require('chalk');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 // Handle WordPress Core dependencies and extend with additional externals.
 const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { cleanForSlug } = require('@wordpress/url');
 const Mustache = require('mustache');
 
@@ -63,6 +64,7 @@ class WpDependencyWebpackPlugin {
         return customRequestToExternal(request)
       },
 		});
+    this.cleanWebpackPlugin = new CleanWebpackPlugin();
   }
 
   setup(options) {
@@ -179,6 +181,7 @@ class WpDependencyWebpackPlugin {
     // apply plugins to webpack compiler (just like adding in a wepack config plugins array)
     this.assetsManifest.apply(compiler);
     this.dependencyExtraction.apply(compiler);
+    this.cleanWebpackPlugin.apply(compiler);
     // tap afterEmit because it's the earliest hook where data is fully available
     compiler.hooks.afterEmit.tap(webpackPluginName, compilation => this.afterEmit(compilation));
   }

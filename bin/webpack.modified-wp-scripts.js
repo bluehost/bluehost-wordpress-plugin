@@ -16,6 +16,7 @@ wpScriptsConfig.plugins = wpScriptsConfig.plugins.filter(
         switch( plugin.constructor.name ) {
             case 'DependencyExtractionWebpackPlugin': // used this in wp-dependency-webpack-plugin
             case 'MiniCssExtractPlugin': // we need chunkhash in filename in production
+            case 'CleanWebpackPlugin': // simply doesn't work with wp-dependency-webpack-plugin, relocated there
                 return false;
         }
     }
