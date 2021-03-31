@@ -1,5 +1,7 @@
 # Overview
 
+We mostly rely on @wordpress/scripts for building scripts and styles. However, there are some Block-specific configurations we override and we unfortunately need to override a handful of other webpack plugins that @wordpress/scripts doesn't allow modification of and because webpack often isn't good about multiple copies of a webpack plugin running.
+
 ## Quickstart
 
 * npm run develop | npm run develop:analyzer
@@ -31,13 +33,15 @@ This will eventually extract out of this repo.
 Prototype for reducing run time complexity by processing webpack assets more thoroughly at build time.
 This will eventually extract out of this repo.
 
-## Adding new entries
+## Adding new webpack entries
 
-1. Create src/[entry].js and src/[entry].
-2. Update const entries array in bin/build.settings.js with [entry].
-3. [entry] assets and registration will now be in /build and wp-dependency manifest.
+1. Create src/[entry].js and src/[entry] directory.
+2. Update the entries array in bin/build.settings.js with [entry].
+3. [entry] assets and registration will now be in /build, wp-dependency manifests and automatically registered with WordPress via wp-dependency-registration.php (see BuildAssets class).
 
 ## Important notes
 * Sass @imports cannot have licenses automatically extracted to licenses.txt.
-* 
+* Hashed files signify production build, unhashed files signify development build.
+* If you don't see the wp-dependency emitted in your terminal, there's likely a hidden error.
+* Note the WordPress Hook priority when filtering and enqueueing assets -- if things aren't coming online this is the most likely culprit.
 
