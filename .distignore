@@ -1,9 +1,9 @@
 # Directories
 .git
 .github
-bin
+/bin
 node_modules
-src
+/src
 tests
 
 # Files
