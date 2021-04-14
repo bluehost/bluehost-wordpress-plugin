@@ -75,11 +75,11 @@ const WidgetMain = () => {
         <div className="bluehost-widget-main">
             <h3>{__('Latest from the Bluehost Blog', 'bluehost-wordpress-plugin')}</h3>
             <BlogPosts />
-            <div style={{borderTop: '1px solid #f0f0f1', padding: '0 12px'}}>
+            <div className="footer" style={{borderTop: '1px solid #f0f0f1', padding: '0 12px'}}>
                 <ul style={{display: 'flex', justifyContent: 'space-between', marginBottom: '0' }}>
-                    <li><a href={buildUtmUrl('https://bluehost.com/resources')} target="_blank">Resource Center</a></li>
-                    <li><a href="admin.php?page=bluehost#/help">Get Help</a></li>
-                    <li><a href={buildUtmUrl(bluehostPanelUrl)} target="_blank">Manage Account</a></li>
+                    <li><a href="admin.php?page=bluehost#/help">{__('Get Help', 'bluehost-wordpress-plugin')}</a></li>
+                    <li><a href={buildUtmUrl('https://bluehost.com/resources')} target="_blank">{__('Resource Center', 'bluehost-wordpress-plugin')}</a></li>
+                    <li><a href={buildUtmUrl(bluehostPanelUrl)} target="_blank">{__('Manage Account', 'bluehost-wordpress-plugin')}</a></li>
                 </ul>
             </div>
         </div>
