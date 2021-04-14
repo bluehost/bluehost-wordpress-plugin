@@ -59,7 +59,7 @@
         "copy-webpack-plugin": "^8.1.0",
         "cross-env": "^7.0.3",
         "cypress": "^5.6.0",
-        "cypress-axe": "^0.8.1",
+        "cypress-axe": "^0.8.2",
         "file-loader": "^6.2.0",
         "filemanager-webpack-plugin": "^4.0.0",
         "husky": "^4.2.5",
@@ -94,7 +94,8 @@
         "storybook:dev": "start-storybook -c ./storybook",
         "storybook:build": "build-storybook -c ./storybook -o ./.docs",
         "test:e2e": "npx cypress run",
-        "test:unit": "wp-scripts test-unit-js"
+        "test:unit": "wp-scripts test-unit-js",
+        "create:dist": "rsync -r --exclude-from=.distignore . ./bluehost-wordpress-plugin"
     },
     "lint-staged": {
         "**/*.yml": [
