@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from '@wordpress/element';
 
 import { BWANotice } from '@app/components/atoms';
-import filter from 'lodash/filter';
+import {filter} from 'lodash';
 import { useLocation } from 'react-router-dom';
 import { useSelect } from '@wordpress/data';
 

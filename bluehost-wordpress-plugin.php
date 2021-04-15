@@ -36,16 +36,16 @@ if ( ! defined( 'BH_HUB_URL' ) ) {
 }
 
 // Run Compatibility Scan
-require BLUEHOST_PLUGIN_DIR . '/compat/status.php';
+require_once BLUEHOST_PLUGIN_DIR . '/inc/compat/status.php';
 
 if ( 'standard' !== Bluehost_Plugin_Compatibility_Status::get() ) {
-	require BLUEHOST_PLUGIN_DIR . '/compat/scan.php';
+	require BLUEHOST_PLUGIN_DIR . '/inc/compat/scan.php';
 	$scan = new Bluehost_Plugin_Compatibility_Scan();
 	Bluehost_Plugin_Compatibility_Status::set( $scan );
 
 	// Safe Mode
 	if ( 'standard' !== $scan->result ) {
-		require BLUEHOST_PLUGIN_DIR . '/compat/safe-mode.php';
+		require BLUEHOST_PLUGIN_DIR . '/inc/compat/safe-mode.php';
 		new Bluehost_Plugin_Compatibility_Safe_Mode( $scan );
 
 		return;

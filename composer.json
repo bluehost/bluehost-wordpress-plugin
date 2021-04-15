@@ -1,75 +1,75 @@
 {
-  "name": "bluehost/bluehost-wordpress-plugin",
-  "description": "This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
-  "type": "wordpress-plugin",
-  "license": "GPL-2.0-or-later",
-  "authors": [
-    {
-      "name": "Mike Hansen",
-      "homepage": "https://mikehansen.me/"
+    "name": "bluehost/bluehost-wordpress-plugin",
+    "description": "This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+      {
+        "name": "Mike Hansen",
+        "homepage": "https://mikehansen.me/"
+      },
+      {
+        "name": "Micah Wood",
+        "email": "micah@wpscholar.com",
+        "homepage": "https://wpscholar.com"
+      }
+    ],
+    "support": {
+      "source": "https://github.com/bluehost/bluehost-wordpress-plugin",
+      "issues": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
     },
-    {
-      "name": "Micah Wood",
-      "email": "micah@wpscholar.com",
-      "homepage": "https://wpscholar.com"
-    }
-  ],
-  "support": {
-    "source": "https://github.com/bluehost/bluehost-wordpress-plugin",
-    "issues": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://bluehost.github.io/satis/",
-      "only": [
-        "bluehost/*",
-        "mojoness/*",
-        "endurance/*"
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "https://bluehost.github.io/satis/",
+        "only": [
+          "bluehost/*",
+          "mojoness/*",
+          "endurance/*"
+        ]
+      }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Bluehost\\": "inc/"
+      }
+    },
+    "require": {
+      "ext-iconv": "*",
+      "bluehost/endurance-wp-module-business-reviews": "^1.0",
+      "bluehost/endurance-wp-module-gutenframe": "^0.1.3",
+      "bluehost/endurance-wp-module-loader": "^1.0",
+      "bluehost/endurance-wp-module-sso": "^1.0",
+      "bluehost/endurance-wp-plugin-updater": "^1.1.1",
+      "endurance/wp-module-data": "^1.0",
+      "wp-forge/helpers": "^1.0",
+      "wpscholar/collection": "^1.0",
+      "wpscholar/url": "^1.2"
+    },
+    "require-dev": {
+      "bluehost/wp-php-standards": "^1.1",
+      "wp-cli/wp-cli-bundle": "^2.4",
+      "wp-cli/i18n-command": "^2.2"
+    },
+    "config": {
+      "optimize-autoloader": true,
+      "sort-packages": true,
+      "platform-check": false
+    },
+    "scripts": {
+      "fix": [
+        "vendor/bin/phpcbf --standard=phpcs.xml ."
+      ],
+      "i18n": [
+        "vendor/bin/wp i18n make-pot . ./languages/bluehost-wordpress-plugin.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/bluehost/bluehost-wordpress-plugin/issues\",\"POT-Creation-Date\":null}' --exclude=assets,storybook,tests"
+      ],
+      "lint": [
+        "vendor/bin/phpcs --standard=phpcs.xml -s ."
       ]
+    },
+    "scripts-descriptions": {
+      "fix": "Automatically fix coding standards issues where possible.",
+      "i18n": "Generate a .pot file for translation.",
+      "lint": "Check files against coding standards."
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "Bluehost\\": "inc/"
-    }
-  },
-  "require": {
-    "ext-iconv": "*",
-    "bluehost/endurance-wp-module-business-reviews": "^1.0",
-    "bluehost/endurance-wp-module-gutenframe": "^0.1.3",
-    "bluehost/endurance-wp-module-loader": "^1.0",
-    "bluehost/endurance-wp-module-sso": "^1.0",
-    "bluehost/endurance-wp-plugin-updater": "^1.0",
-    "endurance/wp-module-data": "^1.0",
-    "wp-forge/helpers": "^1.0",
-    "wpscholar/collection": "^1.0",
-    "wpscholar/url": "^1.2"
-  },
-  "require-dev": {
-    "bluehost/wp-php-standards": "^1.1",
-    "wp-cli/wp-cli-bundle": "^2.4",
-    "wp-cli/i18n-command": "^2.2"
-  },
-  "config": {
-    "optimize-autoloader": true,
-    "sort-packages": true,
-    "platform-check": false
-  },
-  "scripts": {
-    "fix": [
-      "vendor/bin/phpcbf --standard=phpcs.xml ."
-    ],
-    "i18n": [
-      "vendor/bin/wp i18n make-pot . ./languages/bluehost-wordpress-plugin.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/bluehost/bluehost-wordpress-plugin/issues\",\"POT-Creation-Date\":null}' --exclude=assets,storybook,tests"
-    ],
-    "lint": [
-      "vendor/bin/phpcs --standard=phpcs.xml -s ."
-    ]
-  },
-  "scripts-descriptions": {
-    "fix": "Automatically fix coding standards issues where possible.",
-    "i18n": "Generate a .pot file for translation.",
-    "lint": "Check files against coding standards."
   }
-}

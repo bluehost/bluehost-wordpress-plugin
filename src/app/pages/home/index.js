@@ -5,7 +5,6 @@ import { Redirect, useLocation } from 'react-router-dom';
 import { BWACommonTemplate } from '@app/components/templates';
 import BWAContentList from './content';
 import { BWARedirect } from '@app/components/atoms';
-import ComingSoonNotice from './coming-soon-notice';
 import DesignBuildSection from './design-build';
 import HostingSection from './hosting';
 import PerformanceSection from './performance';
@@ -16,6 +15,7 @@ import { useSelect } from '@wordpress/data';
 
 const Home = () => {
 	const location = useLocation();
+
 	const daysSinceInstall = useSelect((select) => {
 		return select('bluehost/plugin').getBluehostPluginDaysSinceInstall();
 	}, []);
@@ -24,7 +24,11 @@ const Home = () => {
 		return ! select('bluehost/plugin').getSetting('comingSoon');
 	}, []);
 
-	const showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
+	let showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
+	
+	if(location.state && 'undefined' !== typeof location.state.redirect && 'override' === location.state.redirect ) {
+		showOnboarding = false;
+	}
 
 	return showOnboarding 
 			? <BWARedirect to="/home/onboarding" currentLocation={location} /> 
@@ -32,7 +36,6 @@ const Home = () => {
 				<BWACommonTemplate descriptivePageTitle={__('Home', 'bluehost-wordpress-plugin')}>
 					<div className="page-home__container">
 						<Welcome />
-						<ComingSoonNotice />
 						<BWAContentList />
 						<DesignBuildSection />
 						<TrafficEngagementSection />

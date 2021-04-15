@@ -1,5 +1,5 @@
 import { getFragment } from '@wordpress/url';
-import keyBy from 'lodash/keyBy';
+import {keyBy} from 'lodash';
 
 const menuItemClass = 'bluehost-wp-menu-item';
 const topLevelPage 	= 'toplevel_page_bluehost'; // wordpress-generated DOM ID

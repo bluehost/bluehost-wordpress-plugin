@@ -14,11 +14,9 @@ cypress.env.json
 /tests/cypress/videos
 
 # Built-app files
-/assets/*
-!/assets/images
-/.docs/*
-!/assets/bluehost.css
-!/assets/admin-global.css
+/.docs
+/build/*
+/bluehost-wordpress-plugin
 
 # File Types
 *.log

@@ -3,7 +3,7 @@ import './style.scss';
 import { useEffect, useRef, useState } from '@wordpress/element';
 
 import classNames from 'classnames';
-import findIndex from 'lodash/findIndex';
+import {findIndex} from 'lodash';
 
 export default function Dropdown( { className = '', id, label, onChange, options = [], value, width = 200 } ) {
 	if ( ! id ) {

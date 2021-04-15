@@ -67,6 +67,14 @@ const BWARouteContents = ({ ...props}) => {
 						}} 
 					/>
 					<Redirect
+						exact
+						from="/home/page"
+						to={{
+							pathname: "/home",
+							state: { redirect: 'override' }
+						}}
+					/>
+					<Redirect
 						to={{
 							pathname: "/home",
 							state: { redirect: 'invalid-route' }
