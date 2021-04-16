@@ -95,7 +95,10 @@
         "storybook:build": "build-storybook -c ./storybook -o ./.docs",
         "test:e2e": "npx cypress run",
         "test:unit": "wp-scripts test-unit-js",
-        "create:dist": "rsync -r --exclude-from=.distignore . ./bluehost-wordpress-plugin"
+        "create:dist": "rsync -r --exclude-from=.distignore . ./bluehost-wordpress-plugin",
+        "php-deps": "composer install --no-dev --optimize-autoloader",
+        "create:zip": "cd ./bluehost-wordpress-plugin && zip -r -9 ../bluehost-wordpress-plugin.zip . && ls -lh ../bluehost-wordpress-plugin.zip",
+        "simulate-runner-build": "rm -rf vendor && npm i && npm run build && npm run php-deps && npm run create:dist && npm run create:zip"
     },
     "lint-staged": {
         "**/*.yml": [
