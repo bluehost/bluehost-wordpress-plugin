@@ -1,17 +1,15 @@
 # Directories
 .git
 .github
+/bin
 node_modules
 /src
-storybook
 tests
 
 # Files
 .distignore
 .gitattributes
 .gitignore
-.npmrc
-webpack.config.js
 
 # File Types
 *.json

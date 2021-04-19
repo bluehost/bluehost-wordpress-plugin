@@ -19,7 +19,7 @@ class BH_WP_CLI_Staging extends BH_WP_CLI_Command {
 	 * @param array $args       Command arguments
 	 * @param array $assoc_args Associative command arguments.
 	 *
-	 * @throws \WP_CLI\ExitException
+	 * @throws \WP_CLI\ExitException On CLI failure.
 	 */
 	public function __invoke( $args, $assoc_args ) {
 
@@ -99,10 +99,10 @@ class BH_WP_CLI_Staging extends BH_WP_CLI_Command {
 	 * @param mixed $data The data from which to fetch the message.
 	 */
 	protected function render( $data ) {
-		$response = [
+		$response = array(
 			'status'  => 'error',
 			'message' => __( 'Invalid JSON response', 'bluehost-wordpress-plugin' ),
-		];
+		);
 		switch ( gettype( $data ) ) {
 			case 'string':
 				$decoded = json_decode( $data );
@@ -136,10 +136,10 @@ class BH_WP_CLI_Staging extends BH_WP_CLI_Command {
 		$user_id = 0;
 
 		$users = get_users(
-			[
+			array(
 				'role'   => 'administrator',
 				'number' => 1,
-			]
+			)
 		);
 
 		if ( is_array( $users ) && is_a( $users[0], 'WP_User' ) ) {

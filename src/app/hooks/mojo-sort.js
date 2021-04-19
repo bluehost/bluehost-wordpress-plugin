@@ -1,6 +1,4 @@
-import reverse from 'lodash/reverse';
-import { default as sort } from 'lodash/sortBy';
-
+import {reverse, sortBy as lodashSort } from 'lodash';
 /**
  * Mojo sort functionality.
  *
@@ -43,7 +41,7 @@ export default function useMojoSort() {
 	 * @return {Array}
 	 */
 	function sortByPriceAscending(items) {
-		return sort(items, (item) => parseInt(item.prices.single_domain_license, 10));
+		return lodashSort(items, (item) => parseInt(item.prices.single_domain_license, 10));
 	}
 
 	/**
@@ -93,6 +91,7 @@ export default function useMojoSort() {
 	 * @return {Array}
 	 */
 	function sortBy(items, method = 'sales', order = 'desc') {
+		items = Object.values(items);
 		switch (method) {
 			case 'date':
 				return 'desc' === order ? sortByDateAddedDescending(items) : sortByDateAddedAscending(items);

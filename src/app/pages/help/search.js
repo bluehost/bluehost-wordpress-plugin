@@ -6,7 +6,7 @@ import SearchForm from './search-form';
 import SearchResults from './search-results';
 import { __ } from '@wordpress/i18n';
 import algoliasearch from 'algoliasearch/lite';
-import { join } from 'lodash';
+import {join} from 'lodash';
 import { sendEvent } from '@app/functions';
 
 const searchClient = algoliasearch(

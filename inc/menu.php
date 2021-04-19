@@ -2,6 +2,7 @@
 
 use Bluehost\Staging;
 
+
 /**
  * Adds a hidden submenu page that is used for theme demos.
  */
@@ -31,7 +32,7 @@ function bluehost_theme_preview_page() {
 		}
 	</style>
 	<?php
-	mojo_require( BLUEHOST_PLUGIN_DIR . '/pages/theme-preview.php' );
+	require_once __DIR__ . '/pages/theme-preview.php';
 }
 
 /**

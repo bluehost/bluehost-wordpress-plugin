@@ -3,7 +3,7 @@ import { handleWPMenuActiveHighlight, handleWPMenuAugmentation, sendPageviewEven
 import { BWAPageNotices } from '@app/components/molecules';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
-import keyBy from 'lodash/keyBy';
+import {keyBy} from 'lodash';
 import { speak } from '@wordpress/a11y';
 import { useEffect } from '@wordpress/element';
 import { useLocation } from 'react-router-dom';

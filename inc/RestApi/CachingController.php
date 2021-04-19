@@ -30,11 +30,11 @@ class CachingController extends \WP_REST_Controller {
 		register_rest_route(
 			$this->namespace,
 			'/caching',
-			[
+			array(
 				'methods'             => \WP_REST_Server::DELETABLE,
-				'callback'            => [ $this, 'purge_all' ],
-				'permission_callback' => [ $this, 'check_permission' ],
-			]
+				'callback'            => array( $this, 'purge_all' ),
+				'permission_callback' => array( $this, 'check_permission' ),
+			)
 		);
 
 	}

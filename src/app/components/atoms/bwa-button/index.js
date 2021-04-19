@@ -5,8 +5,8 @@ import { addUtmParams, get, isExternalUrl } from "@app/functions";
 import { Button } from '@wordpress/components';
 import classNames from 'classnames';
 import { forwardRef } from '@wordpress/element';
-import omit from 'lodash/omit';
-import snakeCase from 'lodash/snakeCase';
+import {omit} from 'lodash';
+import {snakeCase} from 'lodash';
 
 const BWAButton = forwardRef((props, ref) => {
 	let {className = '', href, rel, target} = props;

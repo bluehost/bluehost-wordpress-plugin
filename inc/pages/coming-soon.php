@@ -6,8 +6,8 @@
 			<?php
 				printf(
 					/* translators: %s: Blog name */
-					__( '%s &mdash; Coming Soon', 'bluehost-wordpress-plugin' ),
-					get_option( 'blogname' )
+					__( '%s &mdash; Coming Soon', 'bluehost-wordpress-plugin' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					esc_html( get_option( 'blogname' ) )
 				);
 				?>
 		</title>
@@ -362,17 +362,19 @@
 		<footer>
 			<p class="text-center">
 				<?php
+				$wordpress_hosting_page = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://www.bluehost.in/wordpress' : 'https://bluehost.com/wordpress';
+				$my_panel               = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://my.bluehost.in/' : 'https://my.bluehost.com/';
 				printf(
 					/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag */
 					esc_html__( 'A %1$sBluehost%2$s powered website.', 'bluehost-wordpress-plugin' ) . '&nbsp;',
-					'<a href="https://bluehost.com/wordpress" class="bluehost" target="_blank" rel="noopener noreferrer nofollow">',
+					'<a href="' . esc_url( $wordpress_hosting_page ) . '" class="bluehost" target="_blank" rel="noopener noreferrer nofollow">',
 					'</a>'
 				);
 				printf(
 					/* translators: %1$s is replaced with opening link tag taking you to login page, %2$s is replaced with opening link tag taking you to my.bluehost.com, %3$s is replaced with closing link tag */
 					esc_html__( 'Is this your website? Log in to %1$sWordPress%3$s or %2$sBluehost%3$s.', 'bluehost-wordpress-plugin' ),
 					'<a href="' . esc_url( wp_login_url() ) . '">',
-					'<a href="https://my.bluehost.com/" class="bluehost" target="_blank" rel="noopener noreferrer nofollow">',
+					'<a href="' . esc_url( $my_panel ) . '" class="bluehost" target="_blank" rel="noopener noreferrer nofollow">',
 					'</a>'
 				);
 				?>
@@ -400,8 +402,6 @@
 							'nonce': nonce
 						},
 						success: function (response) {
-
-							//console.log( response );
 
 							var status = response.status;
 

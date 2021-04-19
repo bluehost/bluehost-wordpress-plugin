@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Bluehost
  * Description: This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.
- * Version: 2.5.4
+ * Version: 2.5.7
  * Requires at least: 4.7
  * Requires PHP: 5.6
  * Author: Bluehost
@@ -27,7 +27,7 @@ if ( defined( 'BLUEHOST_PLUGIN_VERSION' ) ) {
 }
 
 // Define constants
-define( 'BLUEHOST_PLUGIN_VERSION', '2.5.4' );
+define( 'BLUEHOST_PLUGIN_VERSION', '2.5.7' );
 define( 'BLUEHOST_PLUGIN_FILE', __FILE__ );
 define( 'BLUEHOST_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLUEHOST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -36,16 +36,16 @@ if ( ! defined( 'BH_HUB_URL' ) ) {
 }
 
 // Run Compatibility Scan
-require BLUEHOST_PLUGIN_DIR . '/compat/status.php';
+require_once BLUEHOST_PLUGIN_DIR . '/inc/compat/status.php';
 
 if ( 'standard' !== Bluehost_Plugin_Compatibility_Status::get() ) {
-	require BLUEHOST_PLUGIN_DIR . '/compat/scan.php';
+	require BLUEHOST_PLUGIN_DIR . '/inc/compat/scan.php';
 	$scan = new Bluehost_Plugin_Compatibility_Scan();
 	Bluehost_Plugin_Compatibility_Status::set( $scan );
 
 	// Safe Mode
 	if ( 'standard' !== $scan->result ) {
-		require BLUEHOST_PLUGIN_DIR . '/compat/safe-mode.php';
+		require BLUEHOST_PLUGIN_DIR . '/inc/compat/safe-mode.php';
 		new Bluehost_Plugin_Compatibility_Safe_Mode( $scan );
 
 		return;
