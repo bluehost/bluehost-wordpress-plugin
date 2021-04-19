@@ -13,14 +13,14 @@ const SettingsPage = () => (
 	<BWACommonTemplate className="page-settings">
 		{/* <Notification /> */}
 		<BWAHeading level="h2" size={ 0 }>{ __('Settings', 'bluehost-wordpress-plugin') }</BWAHeading>
-		<div className="pure-g">
-			<div className="pure-u-1 pure-sm-3-5 page-settings__grid1">
+		<div className="settings-wrap">
+			<div className="page-settings__grid1">
 				<AutomaticUpdates />
 				<SiteControls />
 				<Comments />
 				<Content />
 			</div>
-			<div className="pure-u-1 pure-sm-3-5 page-settings__grid2">
+			<div className="page-settings__grid2">
 				<SettingsPerformance />
 			</div>
 		</div>

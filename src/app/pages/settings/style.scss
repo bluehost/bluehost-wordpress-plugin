@@ -1,16 +1,14 @@
+@import '@app/config';
+
 .page-settings {
 	&__grid1 {
-		> * + *:not(:nth-of-type(2)) { // select all top-level items except the first two
-			margin-top: 24px;
+		display: grid;
+		@media(min-width: $menu-breakpoint) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
-		@media screen and (max-width: 1024px) {
-			> *:nth-of-type(2) { // select the second item and add margin upon collapse to single column
-				margin-top: 24px;
-			}
-		}
-	}
-	&__grid2 {
-		margin-top: 24px;
+		row-gap: 1.5rem;
+		column-gap: 3rem;
+		padding-bottom: 1.5rem;
 	}
 	&__block {
 		padding: 24px;

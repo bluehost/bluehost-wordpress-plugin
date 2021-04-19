@@ -1,5 +1,9 @@
 @import "@app/config";
 .content-list-row {
+    display: grid;
+    @media(min-width: $menu-breakpoint) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
     padding: 24px 0;
     @media (max-width: 600px) {
         padding: 16px 0;
