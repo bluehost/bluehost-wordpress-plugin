@@ -3,10 +3,10 @@ import SettingsControl from '../settings-control';
 
 const SettingsToggle = ( { label, checked, onChange } ) => (
 	<SettingsControl>
-		<div className="label pure-u-3-4">
+		<div className="label">
 			<label>{ label }</label>
 		</div>
-		<div className="toggle pure-u-1-4">
+		<div className="toggle">
 			<BWAToggle checked={ checked } label={ label } onChange={ onChange } />
 		</div>
 	</SettingsControl>
