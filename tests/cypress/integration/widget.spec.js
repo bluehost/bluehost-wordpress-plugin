@@ -3,10 +3,7 @@
 describe('Dashboard Widget', function () {
 
 	before(() => {
-
 		cy.visit('/wp-admin/index.php');
-		cy.viewport(1024,768);
-
 		cy.injectAxe();
 	});
 

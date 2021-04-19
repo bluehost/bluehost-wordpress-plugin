@@ -5,7 +5,7 @@ describe('Onboarding', function () {
 	before(() => {
 		// Make sure we are in coming soon mode
 		cy.exec('npx wp-env run cli wp option set mm_coming_soon true');
-		cy.wait(1000);
+		cy.wait(1500);
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home/onboarding');
 		cy.injectAxe();
 	});
@@ -24,6 +24,7 @@ describe('Onboarding', function () {
 		it('Default State', () => {
 			cy.window().its('store').invoke('dispatch', {type: 'UPDATE_SETTING', setting: 'hasSetHomepage', newValue: false});
 			cy.window().its('store').invoke('getState').its('settings.hasSetHomepage').should('equal', false);
+			
 			cy.findByText('Let\'s start with your homepage').scrollIntoView().should('be.visible');
 			cy.findByRole('button', {name: 'Get Started'}).as('button');
 			cy.get('@button').scrollIntoView().should('be.visible');
@@ -31,8 +32,7 @@ describe('Onboarding', function () {
 		});
 
 		it('Open State', () => {
-			cy.server();
-			cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
+			cy.intercept('POST', '**/bluehost/v1/settings*').as('updateSettings');
 			cy.findByText('What do you want people to see when they land on your site?').scrollIntoView().should('be.visible');
 			cy.findByRole('button', {name: 'Blog posts'}).as('blogPostsButton');
 			cy.findByRole('button', {name: 'Static page'}).as('staticPageButton');
@@ -54,9 +54,8 @@ describe('Onboarding', function () {
 		});
 
 		it('Modal', () => {
-			cy.server();
-			cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
-			cy.route('POST', '**/wp/v2/pages*').as('createPage');
+			cy.intercept('POST', '**/bluehost/v1/settings*').as('updateSettings');
+			cy.intercept('POST', '**/wp/v2/pages*').as('createPage');
 			cy.findByRole('button', {name: 'Static page'}).scrollIntoView().click();
 			cy.findByText('Static Homepage Settings').should('be.visible');
 			cy.findByLabelText('Which page would you like to use as your homepage?').as('select');
@@ -138,13 +137,8 @@ describe('Onboarding', function () {
 			.and('include', 'https://www.bluehost.com/blue-sky');
 	});
 
-	it('Site is not launched', () => {
-		cy.findByText('Coming Soon Active').should('be.visible');
-	});
-
 	it('Site can be launched', () => {
-		cy.server();
-		cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
+		cy.intercept('POST', '**/bluehost/v1/settings*').as('updateSettings');
 		cy.findByRole('button', {name: 'Launch your site'}).scrollIntoView().click();
 		cy.wait('@updateSettings');
 
@@ -152,12 +146,11 @@ describe('Onboarding', function () {
 
 		cy.findByRole('button', {name: 'Restore Coming Soon'}).scrollIntoView().should('be.visible');
 
-		cy.findByText('Coming Soon Active').should('not.be.visible');
+		cy.findByText('Coming Soon Active').should('not.exist');
 	});
 
 	it('Site can be unlaunched', () => {
-		cy.server();
-		cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
+		cy.intercept('POST', '**/bluehost/v1/settings*').as('updateSettings');
 		cy.findByRole('button', {name: 'Restore Coming Soon'}).scrollIntoView().click();
 		cy.wait('@updateSettings');
 
