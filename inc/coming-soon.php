@@ -61,7 +61,7 @@ add_action( 'template_redirect', 'mojo_cs_load' );
  * Render the coming soon page.
  */
 function mojo_cs_content() {
-	require BLUEHOST_PLUGIN_DIR . 'pages/coming-soon.php';
+	require BLUEHOST_PLUGIN_DIR . 'inc/pages/coming-soon.php';
 }
 
 /**
