@@ -14,8 +14,7 @@
 		<meta name="robots" content="noindex, nofollow" />
 		<script
 			src="<?php echo esc_url( includes_url( 'js/jquery/jquery.js' ) ); //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript ?>"></script>
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600"
-		      rel="stylesheet"><?php //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet ?>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet"><?php //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet ?>
 		<style type="text/css">
 			body {
 				background-color: #fff;
@@ -321,18 +320,27 @@
 						<div id="subscribe-text">
 							<p><?php esc_html_e( 'Be the first to know when we launch, enter your email address and we will let you know when we go live and any future website updates we have.', 'bluehost-wordpress-plugin' ); ?></p>
 						</div>
-						<div
-							id="success"><?php esc_html_e( 'Thank you, please check your email to confirm your subscription.', 'bluehost-wordpress-plugin' ); ?></div>
-						<div
-							id="error"><?php esc_html_e( 'There was an error with your submission and you were not subscribed. Please try again with a different email address.', 'bluehost-wordpress-plugin' ); ?></div>
+						<div id="success">
+							<?php esc_html_e( 'Thank you, please check your email to confirm your subscription.', 'bluehost-wordpress-plugin' ); ?>
+						</div>
+						<div id="error">
+							<?php esc_html_e( 'There was an error with your submission and you were not subscribed. Please try again with a different email address.', 'bluehost-wordpress-plugin' ); ?>
+						</div>
 						<form action="" method="post" accept-charset="utf-8" id="subscribe-bh">
 							<input type="hidden" name="action" value="mojo_coming_soon_subscribe">
 							<?php wp_nonce_field( 'mojo_coming_soon_subscribe_nonce', 'mm_nonce-coming-soon-subscribe' ); ?>
 							<span class="bh-inputs email" id="subscribe-email">
-								<label id="bh-subscribe-label"
-								       for="subscribe-field-bh"><?php esc_html_e( 'Email', 'bluehost-wordpress-plugin' ); ?></label>
-								<input type="email" name="email" required="required" value="" id="subscribe-field-bh"
-								       placeholder="Enter your email address">
+								<label id="bh-subscribe-label" for="subscribe-field-bh">
+									<?php esc_html_e( 'Email', 'bluehost-wordpress-plugin' ); ?>
+								</label>
+								<input
+									type="email"
+									name="email"
+									required="required"
+									value=""
+									id="subscribe-field-bh"
+									placeholder="Enter your email address"
+								>
 							</span>
 							<span class="bh-inputs submit" id="subscribe-submit">
 								<input class="btn" type="submit" value="Subscribe" name="bh_subscriptions_widget">
@@ -359,8 +367,9 @@
 
 					<h1><?php esc_html_e( 'A New WordPress Site', 'bluehost-wordpress-plugin' ); ?></h1>
 					<h2><?php esc_html_e( 'Coming Soon!', 'bluehost-wordpress-plugin' ); ?></h2>
-					<a class="btn"
-					   href="<?php echo esc_url( wp_login_url() ); ?>"><?php esc_html_e( 'Admin Login', 'bluehost-wordpress-plugin' ); ?></a>
+					<a class="btn" href="<?php echo esc_url( wp_login_url() ); ?>">
+						<?php esc_html_e( 'Admin Login', 'bluehost-wordpress-plugin' ); ?>
+					</a>
 
 				<?php } ?>
 
