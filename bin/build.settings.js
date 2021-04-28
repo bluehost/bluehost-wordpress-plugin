@@ -8,7 +8,7 @@ const bluehostPluginPath    = path.resolve(__dirname, '..');
 const bluehostPluginAcronym = 'bwp';
 
 // 👀 entries array below makes everything else "just work."
-const entries = [ 'app', 'dashboard' ];
+const entries = [ 'app', 'dashboard', 'editortours' ];
 const pattern = isProduction ? '[name]-[chunkhash]' : '[name]';
 
 const buildSettings = {
@@ -29,6 +29,7 @@ const buildSettings = {
       ),
       externals: {
         'react-router-dom': 'ReactRouterDOM',
+        'shepherd.js': 'Shepherd',
       },
       filenamePattern: pattern,
       performance: {

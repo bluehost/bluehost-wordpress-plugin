@@ -58,12 +58,12 @@ class Bluehost_Admin_App_Assets {
 
 		if ( false !== stripos( $hook, $this->page_hook ) ) {
 			$this->prepareData();
-			BuildAssets::enqueue('app');
+			BuildAssets::enqueue( 'app' );
 		}
 
 	}
 
-	
+
 
 	/**
 	 * Register Page JS
@@ -71,7 +71,7 @@ class Bluehost_Admin_App_Assets {
 	 * @param string $dist_url Base distribution URL.
 	 */
 	protected function prepareData() {
-		
+
 		$data = array(
 			'app'          => array(
 				'adminUrl'             => \admin_url(),
@@ -103,9 +103,9 @@ class Bluehost_Admin_App_Assets {
 		$server   = rest_get_server();
 
 		$data['settings'] = $server->response_to_data( $response, false );
-		
-		BuildAssets::inlineWebpackPublicPath('bwp-manifest-app');
+
+		BuildAssets::inlineWebpackPublicPath( 'bwp-manifest-app' );
 		\wp_localize_script( 'bwp-manifest-app', 'bluehost', apply_filters( 'bluehost_admin_page_data', $data ) );
-		\wp_add_inline_script( 'bwp-manifest-app', 'window.bluehostWpAdminUrl="'. \admin_url() .'";', 'before');
+		\wp_add_inline_script( 'bwp-manifest-app', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
 	}
 }

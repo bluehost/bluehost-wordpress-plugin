@@ -1,0 +1,180 @@
+.shepherd-element {
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 12 1px 0 0 rgb(185 200 212 / 50%);
+    border: 1px solid #d7dbe0;
+    max-width: 400px;
+    opacity: 0;
+    outline: none;
+    transition: opacity 0.3s, visibility 0.3s;
+    visibility: hidden;
+    width: 100%;
+    z-index: 9999;
+    --wp-admin-theme-color: #3575d3;
+    --wp-admin-theme-color-darker-10: #1a4784;
+    --wp-admin-theme-color-darker-20: #1d2c5c;
+}
+.shepherd-enabled.shepherd-element {
+    opacity: 1;
+    visibility: visible;
+}
+.shepherd-element[data-popper-reference-hidden]:not(.shepherd-centered) {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+.shepherd-element,
+.shepherd-element *,
+.shepherd-element :after,
+.shepherd-element :before {
+    box-sizing: border-box;
+}
+.shepherd-arrow,
+.shepherd-arrow:before {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    z-index: -1;
+}
+.shepherd-arrow:before {
+    content: "";
+    transform: rotate(45deg);
+    background: #fff;
+}
+.shepherd-element[data-popper-placement^="top"] > .shepherd-arrow {
+    bottom: -8px;
+}
+.shepherd-element[data-popper-placement^="bottom"] > .shepherd-arrow {
+    top: -8px;
+}
+.shepherd-element[data-popper-placement^="left"] > .shepherd-arrow {
+    right: -8px;
+}
+.shepherd-element[data-popper-placement^="right"] > .shepherd-arrow {
+    left: -8px;
+}
+.shepherd-element.shepherd-centered > .shepherd-arrow {
+    opacity: 0;
+}
+.shepherd-element.shepherd-has-title[data-popper-placement^="bottom"] > .shepherd-arrow:before {
+    background: #fff;
+}
+.shepherd-target-click-disabled.shepherd-enabled.shepherd-target,
+.shepherd-target-click-disabled.shepherd-enabled.shepherd-target * {
+    pointer-events: none;
+}
+.shepherd-modal-overlay-container {
+    -ms-filter: progid:dximagetransform.microsoft.gradient.alpha(Opacity=65);
+    filter: alpha(opacity=65);
+    height: 0;
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    transition: all 0.3s ease-out, height 0ms 0.3s, opacity 0.3s 0ms;
+    width: 100vw;
+    z-index: 9997;
+}
+.shepherd-modal-overlay-container.shepherd-modal-is-visible {
+    height: 100vh;
+    opacity: 0.675;
+    transition: all 0.3s ease-out, height 0s 0s, opacity 0.3s 0s;
+}
+.shepherd-modal-overlay-container.shepherd-modal-is-visible path {
+    pointer-events: all;
+}
+.shepherd-content {
+    /* border-radius: 5px; */
+    outline: none;
+    padding: 0;
+}
+.shepherd-header {
+    align-items: center;
+    /* border-top-left-radius: 5px;
+    border-top-right-radius: 5px; */
+    display: flex;
+    justify-content: flex-end;
+    line-height: 2em;
+    padding: 0.75rem 0.75rem 0;
+}
+.shepherd-has-title .shepherd-content .shepherd-header {
+    background: #fff;
+    padding: 1em;
+}
+.shepherd-text {
+    color: #576373;
+    font-size: 1.33rem;
+    line-height: 1.5em;
+    padding: 0 0.75em 0.75em 0.75em;
+}
+.shepherd-text p {
+    margin-top: 0;
+}
+.shepherd-text p:last-child {
+    margin-bottom: 0;
+}
+.shepherd-footer {
+    /* border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px; */
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 0.75rem 0.75rem;
+}
+.shepherd-footer .components-button {
+    margin-right: 0.66rem;
+}
+.shepherd-footer .components-button:last-child {
+    margin-right: 0;
+}
+.shepherd-cancel-icon {
+    background: transparent;
+    border: none;
+    color: #576373;
+    line-height: 1.42;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    transition: color 0.5s ease;
+}
+.shepherd-cancel-icon:hover {
+    color: rgba(0, 0, 0, 0.75);
+}
+.shepherd-has-title .shepherd-content .shepherd-cancel-icon {
+    color: hsla(0, 0%, 50.2%, 0.75);
+}
+.shepherd-has-title .shepherd-content .shepherd-cancel-icon:hover {
+    color: rgba(0, 0, 0, 0.75);
+}
+.shepherd-title {
+    color: var(--wp-admin-theme-color);
+    position: absolute;
+    left: 16px;
+    max-width: 90%;
+    line-height: 1.08;
+    font-size: 1.25rem;
+    margin: 0;
+    padding: 0;
+}
+.wrap-std {
+    // background: #ffb313;
+    
+}
+.bluehost-large {
+    
+    max-width: 640px;
+    
+}
+.step-bluehost-logo {
+    position:absolute;
+    width: 140px;
+    bottom: 8px;
+}
+.step-bluehost-squares {
+    position:absolute;
+    width: 36px;
+    bottom: 8px;
+}

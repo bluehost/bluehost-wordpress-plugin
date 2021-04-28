@@ -17,7 +17,7 @@ const WIDGET_ROOT_ID = 'bluehost-widget';
 
 
 /**
- * When DOM is ready, load app on root element, replacing #bwa-centered-loader markup.
+ * When DOM is ready, load widget on mount element.
  */
 domReady( () => {
 	render(
