@@ -115,6 +115,7 @@ class Init {
 		\Bluehost_Admin_App_Assets::return_instance();
 		\Bluehost_Admin_App_Page::return_instance();
 		\Bluehost\Tours\EditorTours::return_instance();
+		\Bluehost\Content\DefaultContent::return_instance();
 	}
 }
 

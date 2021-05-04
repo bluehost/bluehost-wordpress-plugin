@@ -10,7 +10,7 @@ class EditorTours {
 	 */
 	protected static $instance;
 	/**
-	 * Tour type set by &dcpage=
+	 * Tour type set by &tour=
 	 *
 	 * @return false|string
 	 */
@@ -45,7 +45,7 @@ class EditorTours {
 	}
 
 	protected function should_load_tours() {
-		$this->tour_type = isset( $_GET['dcpage'] ) ? filter_input( INPUT_GET, 'dcpage', FILTER_SANITIZE_STRING ) : false;
+		$this->tour_type = isset( $_GET['tour'] ) ? filter_input( INPUT_GET, 'tour', FILTER_SANITIZE_STRING ) : false;
 		if ( is_string( $this->tour_type ) && in_array( $this->tour_type, $this->types ) ) {
 			return true;
 		}
