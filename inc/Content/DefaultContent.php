@@ -16,6 +16,13 @@ class DefaultContent {
 	 * @var stdClass
 	 */
 	protected static $instance;
+
+	/**
+	 * Valid string values for a context
+	 *
+	 * @var array
+	 */
+	protected static $contexts = array( 'about', 'contact', 'home' );
 	
 	/**
 	 * Get class instance.
@@ -189,8 +196,17 @@ class DefaultContent {
             return;
         }
         
-        // get context for default content - which page
-        $context       = trim( $_GET['dcpage'] );
+        // get context for default content
+        $context = filter_input( INPUT_GET, 'dcpage', FILTER_SANITIZE_STRING );
+        // bail if improper context
+		if ( 
+            !is_string( $context ) || 
+            !in_array( $context, DefaultContent::$contexts )
+        ) {
+			return;
+		}
+
+        // check if existing page for this context already exists
         $bh_dc_post_id = DefaultContent::does_dcpage_exist( $context );
         
         // if no about page already exists
