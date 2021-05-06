@@ -52,10 +52,6 @@ function bh_auto_update_configure() {
 	if ( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) || AUTOMATIC_UPDATER_DISABLED === false ) {
 		if ( defined( 'WP_AUTO_UPDATE_CORE' ) ) {
 			switch ( WP_AUTO_UPDATE_CORE ) {
-				case true:
-					$settings['allow_major_auto_core_updates'] = true;
-					$settings['allow_minor_auto_core_updates'] = true;
-					break;
 				case false:
 					$settings['allow_major_auto_core_updates'] = false;
 					$settings['allow_minor_auto_core_updates'] = false;
