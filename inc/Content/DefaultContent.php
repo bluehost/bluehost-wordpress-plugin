@@ -55,7 +55,7 @@ class DefaultContent {
             '/defaultcontent', 
             array(
                 'methods' => 'GET',
-                'callback' => array( DefaultContent::class, 'bh_dc_endpoint' ),
+                'callback' => array( DefaultContent::class, 'handle_default_content_endpoint' ),
                 'permission_callback' => '__return_true',
             )
         );
@@ -66,7 +66,7 @@ class DefaultContent {
      * 
      * @param $request WP_REST_Request
      */
-    public static function bh_dc_endpoint( \WP_REST_Request $request ) {
+    public static function handle_default_content_endpoint( \WP_REST_Request $request ) {
         $page = $request['page'];
 
         $title   = null;
@@ -177,6 +177,9 @@ class DefaultContent {
                 BLOCKCONTENT;
                 break;
 
+            default:
+                $title = $page;
+                $content = 'Error: No Match Found for Specified Default Content Context';
         }
 
         return array(
@@ -270,17 +273,17 @@ class DefaultContent {
         $server   = rest_get_server();
         $data     = $server->response_to_data( $response, false );
         
-        $bh_dc_post_content = $data['content'];
-        $bh_dc_post_title   = $data['title'];
+        $dc_post_content = $data['content'];
+        $dc_post_title   = $data['title'];
         
         $new_post = array(
             'post_type'    => 'page',
-            'post_title'   => $bh_dc_post_title,
-            'post_content' => $bh_dc_post_content,
+            'post_title'   => $dc_post_title,
+            'post_content' => $dc_post_content,
             'meta_input'   => array(
-                'bh_dc_src'  => 'test',
-                'bh_dc_page' => $context,
-                'bh_dc_stat' => 'draft',
+                'nf_dc_src'  => 'test',
+                'nf_dc_page' => $context,
+                'nf_dc_stat' => 'draft',
             ),
         );
         
