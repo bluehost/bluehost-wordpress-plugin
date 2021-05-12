@@ -210,23 +210,23 @@ class DefaultContent {
 		}
 
         // check if existing page for this context already exists
-        $bh_dc_post_id = DefaultContent::does_dcpage_exist( $context );
+        $dc_post_id = DefaultContent::does_dcpage_exist( $context );
         
         // if no about page already exists
-        if ( false === $bh_dc_post_id ) {
+        if ( false === $dc_post_id ) {
             // create a new draft page and set default block content
-            $bh_dc_post_id = DefaultContent::make_dc_page( $context );
+            $dc_post_id = DefaultContent::make_dc_page( $context );
         }
         
         // redirect link to page editor for this page
-        $bh_dc_post_edit_url = get_admin_url( 
+        $dc_post_edit_url = get_admin_url( 
             null, 
-            'post.php?action=edit&post=' . $bh_dc_post_id
+            'post.php?action=edit&post=' . $dc_post_id
         );
 
-        $bh_dc_post_edit_url.= '&tour=' . $context;
+        $dc_post_edit_url.= '&tour=' . $context;
 
-        if ( wp_safe_redirect( $bh_dc_post_edit_url ) ) {
+        if ( wp_safe_redirect( $dc_post_edit_url ) ) {
             exit;
         }
     
@@ -241,16 +241,16 @@ class DefaultContent {
      */
     public static function does_dcpage_exist( $context ) {
         // check for existing page by context
-        $bh_dc_args = array(
+        $dc_args = array(
             'posts_per_page' => 1,
             'post_type'      => 'page',
-            'meta_key'       => 'bh_dc_page',
+            'meta_key'       => 'dc_page',
             'meta_value'     => $context,
             'meta_compare'   => '=',
         );
-        $bh_dc_query = new \WP_Query( $bh_dc_args );
-        while ( $bh_dc_query->have_posts() ) : 
-            $bh_dc_query->the_post();
+        $dc_query = new \WP_Query( $dc_args );
+        while ( $dc_query->have_posts() ) : 
+            $dc_query->the_post();
             // return page id
             return get_the_id();
         endwhile;
