@@ -81,55 +81,71 @@ class DefaultContent {
                 <div class="wp-block-group bh-instructions"><div class="wp-block-group__inner-container"><!-- wp:paragraph -->
                 <p>Your website’s home page is your online storefront, billboard, and welcome mat. It’s where you make your first impression, so it’s important to get it right.</p>
                 <!-- /wp:paragraph -->
-                
+
                 <!-- wp:paragraph -->
                 <p>This is the first thing you want your site visitors to see, so it should be engaging, helpful, and interesting. It could be as simple as the name of your company, or it might be tied to a promotion or sale that you’re running.</p>
                 <!-- /wp:paragraph -->
-                
+
                 <!-- wp:paragraph -->
                 <p>Use this outline to fill in the content for your homepage:</p>
                 <!-- /wp:paragraph -->
-                
+
                 <!-- wp:list -->
                 <ul><li><strong>Header</strong><ul><li><strong>Hero image</strong> (this is the first thing your site visitors will see, so make it something good.)</li><li><strong>Headline</strong> (This is the most important thing you want people to read.)</li><li><strong>Subheadline</strong> or short paragraph (this is usually one or two sentences that give the headline context — it’s optional but useful and very common).</li><li><strong>Call to action</strong> — think of this as a shortcut to move visitors directly to the next step whether that’s products, promotions, or subscriptions.</li></ul></li></ul>
                 <!-- /wp:list -->
-                
+
                 <!-- wp:paragraph -->
                 <p>What comes next will depend on the type of website you’re running.</p>
                 <!-- /wp:paragraph -->
-                
+
                 <!-- wp:paragraph -->
                 <p>If your website is focused on selling a product or service, think about including:</p>
                 <!-- /wp:paragraph -->
-                
+
                 <!-- wp:list -->
                 <ul><li>“Reasons to believe” that help potential customers understand the value of your products.</li><li>Info on sales or promotions</li><li>Product listings and images</li><li>Testimonials or customer reviews</li></ul>
                 <!-- /wp:list -->
-                
+
                 <!-- wp:paragraph -->
                 <p>If your website is focused on blogging or sharing other information, you might want to include:</p>
                 <!-- /wp:paragraph -->
-                
+
                 <!-- wp:list -->
                 <ul><li>Key information that supports your header</li><li>Most recent posts or news</li><li>Most popular blog posts</li><li>Top portfolio pieces</li></ul>
                 <!-- /wp:list -->
-                
+
                 <!-- wp:paragraph -->
                 <p>Finish with a call to action (CTA).</p>
                 <!-- /wp:paragraph -->
-                
+
                 <!-- wp:paragraph -->
                 <p>This can be a button or link that directs people to their next steps. Depending on your site, this might be anything from contacting you, to setting up an appointment, looking at products, making a purchase, or subscribing to your blog or newsletter.</p>
                 <!-- /wp:paragraph --></div></div>
                 <!-- /wp:group -->
-                
+
                 <!-- wp:image {"id":23,"sizeSlug":"large"} -->
                 <figure class="wp-block-image size-large"><img src="https://bhmultisite.com/content/uploads/sites/4/2021/04/hero-image.jpg" alt="" class="wp-image-23"/></figure>
                 <!-- /wp:image -->
-                
+
+                <!-- wp:heading {"level":1} -->
+                <h1>[Name/Company Name]</h1>
+                <!-- /wp:heading -->
+
                 <!-- wp:paragraph -->
-                <p></p>
+                <p>We’re dedicated to giving you the very best in [topic/product], [topic/product], and [topic/product]. Please reach out if you want to know more!</p>
                 <!-- /wp:paragraph -->
+
+                <!-- wp:buttons -->
+                <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-fill"} -->
+                <div class="wp-block-button is-style-fill"><a class="wp-block-button__link" rel="/default-content/?p=4">Contact Us</a></div>
+                <!-- /wp:button --></div>
+                <!-- /wp:buttons -->
+
+                <!-- wp:heading -->
+                <h2>News</h2>
+                <!-- /wp:heading -->
+
+                <!-- wp:latest-posts {"displayPostContent":true,"excerptLength":20} /-->
                 BLOCKCONTENT;
                 break;
 
@@ -141,24 +157,24 @@ class DefaultContent {
                 <div class="wp-block-group bh-instructions"><div class="wp-block-group__inner-container"><!-- wp:paragraph -->
                 <p>Your “about me” or “about us” page is where people come to get to know you. It’s a great place to share how you got started and the reasons you do what you do. Ask yourself what your audience or customers might want to learn when they open your “about me” page, and go from there.</p>
                 <!-- /wp:paragraph -->
-                
+
                 <!-- wp:paragraph -->
                 <p>In the next paragraphs, you’ll find sample, fill-in-the-blank content you can use to get a headstart writing your “about me” page. Keep in mind that original content tends to rank better in search engine results, so the more you personalize the content in your “about me” page, the better. Here are a few things to do on your “about me” page:</p>
                 <!-- /wp:paragraph -->
-                
+
                 <!-- wp:list -->
                 <ul><li>Welcome people to your page.</li><li>Tell a brief story of how you got started and why.</li><li>Let them know a bit about your brand and what makes it different.</li><li>Share photographs of yourself, your team, or your location.</li><li>Include a call to action — this could be an invitation to contact you, shop your store, or sign up for your newsletter.</li></ul>
                 <!-- /wp:list --></div></div>
                 <!-- /wp:group -->
-                
+
                 <!-- wp:paragraph -->
                 <p>Welcome to [organization name]. We're dedicated to giving you the very best in [topic/product], with a focus on [brand differentiator 1], [brand differentiator 2], and [brand differentiator 3].</p>
                 <!-- /wp:paragraph -->
-                
+
                 <!-- wp:paragraph -->
                 <p>When we started in [founding date] our passion for [product or service type] drove us to [an action: create a product, start a community, etc.] Now we serve customers all over [your target market area: this could be a city, state, or the whole world], and are thrilled to share our passion with you.</p>
                 <!-- /wp:paragraph -->
-                
+
                 <!-- wp:paragraph -->
                 <p>We hope you enjoy our [products/servcies]. If you have any questions or comments, please contact us [phone number, email, or link to contact form].</p>
                 <!-- /wp:paragraph -->
@@ -172,7 +188,7 @@ class DefaultContent {
                 <!-- wp:paragraph -->
                 <p>Please fill out the form below and we’ll be in touch.</p>
                 <!-- /wp:paragraph -->
-
+                
                 <!-- wp:wpforms/form-selector {"formId":"5"} /-->
                 BLOCKCONTENT;
                 break;
