@@ -120,12 +120,12 @@ class DefaultContent {
 
                 <!-- wp:paragraph -->
                 <p>This can be a button or link that directs people to their next steps. Depending on your site, this might be anything from contacting you, to setting up an appointment, looking at products, making a purchase, or subscribing to your blog or newsletter.</p>
-                <!-- /wp:paragraph --></div></div>
-                <!-- /wp:group -->
+                <!-- /wp:paragraph -->
 
-                <!-- wp:image {"id":23,"sizeSlug":"large"} -->
-                <figure class="wp-block-image size-large"><img src="https://bhmultisite.com/content/uploads/sites/4/2021/04/hero-image.jpg" alt="" class="wp-image-23"/></figure>
-                <!-- /wp:image -->
+                <!-- wp:image {"align":"center","width":600,"height":365,"sizeSlug":"large"} -->
+                <div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img src="data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 2520 1530'%3E%3Cdefs%3E%3ClinearGradient id='a'%3E%3Cstop offset='0' stop-color='%23333'/%3E%3Cstop offset='.1' stop-color='%23aaa'/%3E%3Cstop offset='.8' stop-color='%23aaa'/%3E%3Cstop offset='1' stop-color='%23333'/%3E%3C/linearGradient%3E%3ClinearGradient id='d' x1='693' x2='693.6' y1='823.5' y2='917.5' gradientUnits='userSpaceOnUse' xlink:href='%23a'/%3E%3ClinearGradient id='c' x1='693' x2='693.6' y1='823.5' y2='917.5' gradientUnits='userSpaceOnUse' xlink:href='%23a'/%3E%3Cfilter id='b' width='1.3' height='2.8' x='-.1' y='-.9' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='50.3'/%3E%3C/filter%3E%3Cfilter id='e' width='1.3' height='2.8' x='-.1' y='-.9' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='50.3'/%3E%3C/filter%3E%3Cfilter id='f' width='1.3' height='2.8' x='-.1' y='-.9' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='50.3'/%3E%3C/filter%3E%3C/defs%3E%3Cpath style='marker:none' fill='%231a1a1a' fill-opacity='.7' d='M1217 667c0 37-194 68-435 68-240 0-435-31-435-68s195-68 435-68c241 0 435 31 435 68z' color='%23000' enable-background='accumulate' filter='url(%23b)' overflow='visible' transform='matrix(2.02914 0 0 .71847 -50 822)'/%3E%3Cg transform='matrix(3.2252 0 0 3.2252 -554 -1612)'%3E%3Cpath style='marker:none' fill='url(%23d)' d='M641 823c-2 43-50 95-50 95h218s-49-52-50-95h-56z' color='%23000' enable-background='accumulate' overflow='visible' transform='translate(-51)'/%3E%3Crect style='marker:none' width='521.2' height='309.1' x='387.9' y='514' stroke='%23aaa' stroke-width='1.6' color='%23000' enable-background='accumulate' overflow='visible' rx='19' ry='18.3'/%3E%3Cpath style='marker:none' fill='%23fff' d='M409 534h480v270H409z' color='%23000' enable-background='accumulate' overflow='visible'/%3E%3Cpath style='marker:none' fill='%23aaa' d='M539 910h219v9H539z' color='%23000' enable-background='accumulate' overflow='visible'/%3E%3C/g%3E%3Cg color='%23000'%3E%3Cpath fill='%231a1a1a' fill-opacity='.7' d='M1217 667c0 37-194 68-435 68-240 0-435-31-435-68s195-68 435-68c241 0 435 31 435 68z' enable-background='accumulate' filter='url(%23e)' transform='matrix(.85876 0 0 .71847 92 907)' style='marker:none' overflow='visible'/%3E%3Cg transform='matrix(3.2252 0 0 3.2252 -368 -1606)'%3E%3Crect style='marker:none' width='200' height='266' x='247.1' y='671.4' stroke='%23aaa' stroke-width='.9' enable-background='accumulate' overflow='visible' rx='20' ry='20'/%3E%3Cpath style='marker:none' fill='%23fff' d='M264 687h167v222H264z' enable-background='accumulate' overflow='visible'/%3E%3C/g%3E%3C/g%3E%3Cg%3E%3Cpath fill='%231a1a1a' fill-opacity='.7' d='M1217 667c0 37-194 68-435 68-240 0-435-31-435-68s195-68 435-68c241 0 435 31 435 68z' color='%23000' enable-background='accumulate' transform='matrix(.34001 0 0 .71847 88 960)' style='marker:none' filter='url(%23f)' overflow='visible'/%3E%3Cg color='%23000' transform='translate(-768 -2231) scale(3.99062)'%3E%3Crect style='marker:none' width='70' height='130.3' x='247.1' y='797.1' stroke='%23aaa' stroke-width='.8' enable-background='accumulate' overflow='visible' rx='7' ry='9.8'/%3E%3Cpath style='marker:none' fill='%23fff' d='M252 805h60v106h-60z' enable-background='accumulate' overflow='visible'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E" alt="Placeholder image" width="600" height="365"/></figure></div>
+                <!-- /wp:image --></div></div>
+                <!-- /wp:group -->
 
                 <!-- wp:heading {"level":1} -->
                 <h1>[Name/Company Name]</h1>
@@ -146,6 +146,7 @@ class DefaultContent {
                 <!-- /wp:heading -->
 
                 <!-- wp:latest-posts {"displayPostContent":true,"excerptLength":20} /-->
+
                 BLOCKCONTENT;
                 break;
 
