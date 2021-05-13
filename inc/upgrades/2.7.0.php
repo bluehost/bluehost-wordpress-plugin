@@ -7,7 +7,7 @@
  * @package Bluehost
  */
 
-$auto_update_plugins = get_option( 'auto_update_plugins', 'true' );
+$auto_update_plugins = get_option( 'auto_update_plugin', 'true' );
 
 if ( 'true' === $auto_update_plugins ) {
 	update_site_option( 'auto_update_plugins', array_keys( get_plugins() ) );
