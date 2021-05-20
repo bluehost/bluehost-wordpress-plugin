@@ -1,23 +1,41 @@
 import './shepherd.scss';
 
-import { Suspense, lazy } from '@wordpress/element';
-
+import { lazy, Suspense, Fragment } from '@wordpress/element';
+import { getQueryArg } from '@wordpress/url';
 import { ErrorBoundary } from 'react-error-boundary';
-import Shepherd from 'shepherd.js';
+import { suppressCoreTour } from './suppress-core-tour';
 
-// import editorTourEvents from './editorTourEvents';
-
-
-const AboutTour = lazy(() => import( '@editortours/about' ));
-const ContactTour = lazy(() => import( '@editortours/contact' ));
-const GeneralTour = lazy(() => import( '@editortours/general' ));
+const AboutTour = lazy(() => import('./about'));
+const ContactTour = lazy(() => import('./contact'));
+const HomeTour = lazy(() => import('./home'));
 
 export const EditorTours = () => {
-    // editorTourEvents();
+    // suppress Core Welcome Guide when Newfold Tours are active.
+    suppressCoreTour();
+
+    const location = window.location.href;
+    const tour = getQueryArg(location, 'tour');
+    let CurrentTour = false;
+
+    switch( tour ) {
+        case 'about':
+            CurrentTour = AboutTour;
+            break;
+        case 'contact':
+            CurrentTour = ContactTour;
+            break;
+        case 'home':
+            CurrentTour = HomeTour;
+            break;
+        default:
+            CurrentTour = Fragment;
+            break;
+    }
+    
     return (
-        <ErrorBoundary FallbackComponent={<div>Error State</div>}>
-            <Suspense fallback={<div>Loading...</div>}>
-                <AboutTour />
+        <ErrorBoundary FallbackComponent={<Fragment />}>
+            <Suspense fallback={<Fragment />}>
+                <CurrentTour />
             </Suspense>
         </ErrorBoundary>
     )

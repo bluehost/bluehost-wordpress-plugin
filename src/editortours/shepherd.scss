@@ -1,7 +1,6 @@
 .shepherd-element {
     background: #fff;
     border-radius: 3px;
-    box-shadow: 12 1px 0 0 rgb(185 200 212 / 50%);
     border: 1px solid #d7dbe0;
     max-width: 400px;
     opacity: 0;
@@ -86,14 +85,11 @@
     pointer-events: all;
 }
 .shepherd-content {
-    /* border-radius: 5px; */
     outline: none;
     padding: 0;
 }
 .shepherd-header {
     align-items: center;
-    /* border-top-left-radius: 5px;
-    border-top-right-radius: 5px; */
     display: flex;
     justify-content: flex-end;
     line-height: 2em;
@@ -101,7 +97,7 @@
 }
 .shepherd-has-title .shepherd-content .shepherd-header {
     background: #fff;
-    padding: 1em;
+    padding: 1rem 0.66rem;
 }
 .shepherd-text {
     color: #576373;
@@ -133,12 +129,14 @@
     border: none;
     color: #576373;
     line-height: 1.42;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     cursor: pointer;
     font-weight: 400;
     margin: 0;
     padding: 0;
     transition: color 0.5s ease;
+    position: relative;
+    top: -12px;
 }
 .shepherd-cancel-icon:hover {
     color: rgba(0, 0, 0, 0.75);
@@ -158,6 +156,8 @@
     font-size: 1.25rem;
     margin: 0;
     padding: 0;
+    padding-right: 1rem;
+    // padding-top: 1rem;
 }
 .wrap-std {
     // background: #ffb313;
@@ -177,4 +177,12 @@
     position:absolute;
     width: 36px;
     bottom: 8px;
+}
+
+.nf-dc-ph {
+    display: inline-block;
+    background-color: #ffb313;
+    &:focus {
+        border: 3px #cd1713 solid;
+    };
 }

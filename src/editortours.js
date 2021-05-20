@@ -9,8 +9,6 @@ import EditorTours from './editortours/index.js';
 import domReady from '@wordpress/dom-ready';
 import { render } from '@wordpress/element';
 
-console.log('running');
-
 domReady(() => {
     render(
         <EditorTours />, 

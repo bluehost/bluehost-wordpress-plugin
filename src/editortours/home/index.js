@@ -3,7 +3,7 @@ import { useState } from '@wordpress/element';
 
 import { BaseTour } from '../base';
 
-export const ContactTour = () => {
+export const HomeTour = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [steps, setSteps] = useState([]);
 
@@ -18,7 +18,7 @@ export const ContactTour = () => {
         return false;
     }
 
-    return <BaseTour type="contact" steps={steps} />
+    return <BaseTour type="home" steps={steps} />
 }
 
-export default ContactTour;
+export default HomeTour;

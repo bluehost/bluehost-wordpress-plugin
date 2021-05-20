@@ -38,6 +38,10 @@ class EditorTours {
 	 * Initialize class.
 	 */
 	protected function primary_init() {
+		require_once dirname( __FILE__) . '/../RestApi/BaseDefaultContent.php';
+		$api = new EditorToursApi();
+		$api->register_routes();
+
 		if ( $this->should_load_tours() ) {
 			add_action( 'load-post-new.php', array( $this, 'conditional_load_block_editor_tour' ) );
 			add_action( 'load-post.php', array( $this, 'conditional_load_block_editor_tour' ) );
@@ -73,20 +77,8 @@ class EditorTours {
 
 	public function tour_mount_element() {
 		?>
-		<!-- <style type="text/css">
-		#bluehost-tours {
-			display:block !important;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 200px;
-			height: 200px;
-			background-color: #cd1713;
-			z-index: 99999;
-		}
-		</style> -->
 		<div id="bluehost-tours">
-			<svg class="shepherd-modal-is-visible shepherd-modal-overlay-container"><path d="M1687,948H0V0H1687V948ZM0,0a0,0,0,0,0-0,0V0a0,0,0,0,0,0,0H0a0,0,0,0,0,0-0V0a0,0,0,0,0-0-0Z"></path></svg>
+			<div style="display:block;width:100vw;height:100vh;background-color:#3575d3;z-index:999999;"></div>
 		</div>
 		<?php
 	}

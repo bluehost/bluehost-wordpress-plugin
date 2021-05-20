@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68a03f39aaa35d0f85a414aa3f8a6f0a",
+    "content-hash": "80afb1674d62e6e1a4cc917afa6a2704",
     "packages": [
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -312,17 +312,11 @@
         },
         {
             "name": "endurance/wp-module-data",
-            "version": "1.4.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bluehost/endurance-wp-module-data.git",
-                "reference": "115be3fbc61dd026b230c56756da69d281316f18"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-data/zipball/115be3fbc61dd026b230c56756da69d281316f18",
-                "reference": "115be3fbc61dd026b230c56756da69d281316f18",
-                "shasum": ""
+                "type": "path",
+                "url": "../../libraries/endurance-wp-module-data",
+                "reference": "115be3fbc61dd026b230c56756da69d281316f18"
             },
             "require-dev": {
                 "bluehost/wp-php-standards": "^1.1"
@@ -348,11 +342,9 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Endurance Data Module",
-            "support": {
-                "source": "https://github.com/bluehost/endurance-wp-module-data/tree/1.4.3",
-                "issues": "https://github.com/bluehost/endurance-wp-module-data/issues"
-            },
-            "time": "2021-01-27T16:46:33+00:00"
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "pimple/pimple",
@@ -5006,7 +4998,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "endurance/wp-module-data": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
