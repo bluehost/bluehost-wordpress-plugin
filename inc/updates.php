@@ -210,6 +210,7 @@ function bh_sync_plugin_update_settings() {
 	if ( ! function_exists( 'get_plugins' ) ) {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
+
 	return update_site_option( 'auto_update_plugins', array_keys( get_plugins() ) );
 }
 
@@ -225,6 +226,10 @@ function bh_sync_plugin_update_settings() {
  * @return bool True if the value was updated, false otherwise.
  */
 function bh_sync_theme_update_settings() {
+	if ( ! function_exists( 'wp_get_themes' ) ) { 
+		require_once ABSPATH . WPINC . '/theme.php'; 
+	} 
+	
 	return update_site_option( 'auto_update_themes', array_keys( wp_get_themes() ) );
 }
 
