@@ -22,7 +22,7 @@ if ( is_admin() ) {
 
 	// Handle plugin upgrades
 	$upgrade_handler = new UpgradeHandler(
-		__DIR__ . '/upgrades',
+		BLUEHOST_PLUGIN_DIR . '/inc/upgrades',
 		get_option( 'bluehost_plugin_version', '1.0' ),
 		BLUEHOST_PLUGIN_VERSION
 	);
