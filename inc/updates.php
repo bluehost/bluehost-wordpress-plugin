@@ -202,7 +202,7 @@ add_action( 'update_option_auto_update_core_major', 'bh_sync_plugin_major_auto_c
  * ensures that when the plugin is deactivated, WordPress will continue to auto-update plugins unless turned off.
  *
  * When the option to auto-update plugins is turned off in the plugin, auto-updates are managed through the default
- * Wordpress core UI.
+ * WordPress core UI.
  *
  * @return bool True if the value was updated, false otherwise.
  */
@@ -221,15 +221,15 @@ function bh_sync_plugin_update_settings() {
  * ensures that when the plugin is deactivated, WordPress will continue to auto-update themes unless turned off.
  *
  * When the option to auto-update themes is turned off in the plugin, auto-updates are managed through the default
- * Wordpress core UI.
+ * WordPress core UI.
  *
  * @return bool True if the value was updated, false otherwise.
  */
 function bh_sync_theme_update_settings() {
-	if ( ! function_exists( 'wp_get_themes' ) ) { 
-		require_once ABSPATH . WPINC . '/theme.php'; 
-	} 
-	
+	if ( ! function_exists( 'wp_get_themes' ) ) {
+		require_once ABSPATH . WPINC . '/theme.php';
+	}
+
 	return update_site_option( 'auto_update_themes', array_keys( wp_get_themes() ) );
 }
 
