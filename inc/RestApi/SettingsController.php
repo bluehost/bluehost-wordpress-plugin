@@ -84,10 +84,20 @@ class SettingsController extends \WP_REST_Controller {
 						update_option( 'allow_minor_auto_core_updates', $new_value );
 						break;
 					case 'autoUpdatesPlugins':
+						// Keep the WordPress Core setting in sync.
+						if ( $new_value ) {
+							bh_sync_plugin_update_settings();
+						}
+
 						$new_value = ( $new_value ) ? 'true' : 'false';
 						update_option( 'auto_update_plugin', $new_value );
 						break;
 					case 'autoUpdatesThemes':
+						// Keep the WordPress Core setting in sync.
+						if ( $new_value ) {
+							bh_sync_theme_update_settings();
+						}
+
 						$new_value = ( $new_value ) ? 'true' : 'false';
 						update_option( 'auto_update_theme', $new_value );
 						break;
