@@ -1,17 +1,47 @@
-import { dispatch } from '@wordpress/data';
-import { capitalize } from 'lodash';
+import { select, dispatch } from '@wordpress/data';
+import { capitalize, replace } from 'lodash';
 import { __ } from '@wordpress/i18n';
 
 const TOUR_NOTICE_ID = 'newfold-tour-notice';
 
 export const editorTourEvents = (tourName, tour) => {
 
-    const initiNoticeRelauncher = () => {
+    const initNoticeRelauncher = () => {
         jQuery('a.newfold-tour-relauncher').on('click', (evt) => {
             evt.preventDefault();
             tour.start();
         });
     }
+
+    const initHighlightEraser = () => {
+        let placeholders = document.querySelectorAll('.nf-placeholder');
+        const scrubber = (event) => {
+            let currentTarget = event.target;
+            currentTarget.removeAttribute('data-rich-text-format-boundary');
+            const currentBlock = select('core/block-editor').getSelectedBlock();
+            dispatch('core/block-editor').updateBlock(
+                currentBlock.clientId, 
+                { 
+                    attributes: { 
+                        content: replace(
+                            currentBlock.attributes.content, 
+                            currentTarget.outerHTML, 
+                            currentTarget.innerText
+                        ) 
+                    } 
+                } 
+            );
+        };
+        if (placeholders.length) {
+            placeholders = Array.from(placeholders);
+        }
+        if ( Array.isArray(placeholders) ) {
+            placeholders.forEach((el) => {
+                el.addEventListener('click', scrubber);
+            })
+        }
+    }
+    initHighlightEraser();
 
     const noticeConfig = {
         id: TOUR_NOTICE_ID,
@@ -26,16 +56,10 @@ export const editorTourEvents = (tourName, tour) => {
 
     tour.once('start', () => {
         console.log('on start'); 
-        // let currentStep = tour.getCurrentStep();
-        // console.log('the start step:');
-        // console.dir(currentStep);
     });
 
     tour.on('active', () => { 
         dispatch('core/notices').removeNotice(TOUR_NOTICE_ID);
-        // let currentStep = tour.getCurrentStep();
-        // console.log('the active step:');
-        // console.dir(currentStep);
     });
 
     tour.on('show', (context) => { 
@@ -49,7 +73,7 @@ export const editorTourEvents = (tourName, tour) => {
             noticeLabel + ' ' + __('Page guide closed.', 'bluehost-wordpress-plugin'), 
             noticeConfig
         ).then(() => {
-            initiNoticeRelauncher();
+            initNoticeRelauncher();
         });
     });
 
@@ -59,7 +83,7 @@ export const editorTourEvents = (tourName, tour) => {
             noticeLabel + ' ' + __('Page guide is complete!', 'bluehost-wordpress-plugin'), 
             noticeConfig
         ).then(() => {
-            initiNoticeRelauncher();
+            initNoticeRelauncher();
         });
     });
 
@@ -69,13 +93,12 @@ export const editorTourEvents = (tourName, tour) => {
             noticeLabel + ' ' + __('Page guide closed. You can restart it below.', 'bluehost-wordpress-plugin'), 
             noticeConfig
         ).then(() => {
-            initiNoticeRelauncher();
+            initNoticeRelauncher();
         });
     });
 
     tour.on('inactive', () => { 
         console.log('on inactive')
-        console.dir(tour);
     });
 
 }

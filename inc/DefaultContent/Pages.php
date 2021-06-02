@@ -1,0 +1,159 @@
+<?php
+/**
+ * Default Content type set by &dcpage=
+ * Ideal landing page is:
+ * /wp-admin/post-new.php?post_type=page&dcpage=about&page_title=About+Us
+ * /wp-admin/post-new.php?post_type=page&dcpage=home&page_title=Home
+ * /wp-admin/post-new.php?post_type=page&dcpage=contact&page_title=Contact+Us
+ */
+
+namespace Newfold\Plugin\DefaultContent;
+
+/**
+ * Undocumented class
+ */
+class Pages {
+
+	/**
+	 * Class instance.
+	 *
+	 * @var stdClass
+	 */
+	protected static $instance;
+
+	/**
+	 * Valid string values for a context
+	 *
+	 * @var array
+	 */
+	public static $contexts = array( 'about', 'contact', 'home' );
+	
+	/**
+	 * Get class instance.
+	 *
+	 * @return \Newfold\Plugin\DefaultContent\Pages|stdClass
+	 */
+	public static function return_instance() {
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof \Newfold\Plugin\DefaultContent\Pages ) ) {
+			self::$instance = new \Newfold\Plugin\DefaultContent\Pages();
+			self::$instance->primary_init();
+		}
+
+		return self::$instance;
+	}
+    
+	/**
+	 * Initialize class.
+	 */
+	protected function primary_init() {
+        add_action( 'wp_loaded', array( Pages::class, 'intercept_query_parameter' ) );
+        add_action( 'rest_api_init', array( PagesRestController::class, 'init' ) );
+	}
+
+    /**
+     * Manage dcpage param
+     * 
+	 * @return void
+     */
+	public static function intercept_query_parameter() {
+        // bail if no `dcpage` url parameter found, and not on add new page url
+        if ( ! isset( $_GET['dcpage'] ) ) {
+            return;
+        }
+        
+        // get context for default content
+        $context = filter_input( INPUT_GET, 'dcpage', FILTER_SANITIZE_STRING );
+        // bail if improper context
+		if ( 
+            ! is_string( $context ) || 
+            ! in_array( $context, self::$contexts )
+        ) {
+			return;
+		}
+
+        // check if existing page for this context already exists
+        $dc_post_id = self::does_dcpage_exist( $context );
+        
+        // if no about page already exists
+        if ( false === $dc_post_id ) {
+            // create a new draft page and set default block content
+            $dc_post_id = self::make_dc_page( $context );
+        }
+
+        
+        // redirect link to page editor for this page
+        $dc_post_edit_url = \get_admin_url( 
+            null, 
+            'post.php?action=edit&post=' . $dc_post_id
+        );
+
+        $dc_post_edit_url.= '&tour=' . $context;
+
+
+        if ( \wp_safe_redirect( $dc_post_edit_url ) ) {
+            exit;
+        }
+    
+    }
+
+    /**
+     * Determine if dcpage already exists for this context
+     * 
+     * @param context:String - context of new page
+     * 
+     * @return - page id if so or false if none found
+     */
+    public static function does_dcpage_exist( $context ) {
+        // check for existing page by context
+        $dc_args = array(
+            'posts_per_page' => 1,
+            'post_type'      => 'page',
+            'post_status'    => array( 'pending', 'draft', 'future', 'publish', 'private' ),
+            'meta_key'       => 'dc_page',
+            'meta_value'     => $context,
+            'meta_compare'   => '=',
+        );
+        $dc_query = new \WP_Query( $dc_args );
+        while ( $dc_query->have_posts() ) : 
+            $dc_query->the_post();
+            // return page id
+            return \get_the_id();
+        endwhile;
+
+        // none found, return false
+        return false;
+    }
+
+    /**
+     * Get Default Content and send to new page
+     * 
+     * @param context:String - context of new page
+     * @return - id of new post
+     */
+    public static function make_dc_page( $context ) {
+        // get default content via proxy api
+        $request  = new \WP_REST_Request( 'GET', '/newfold/v1/defaultcontent/pages' );
+        $request->set_query_params( [ 'page' => $context, 'brand' => 'bluehost', 'lang' => 'en-US' ] );
+        $response = \rest_do_request( $request );
+        $server   = \rest_get_server();
+        $data     = $server->response_to_data( $response, false );
+        
+        $dc_post_content = $data['content'];
+        $dc_post_title   = $data['title'];
+        
+        $new_post = array(
+            'post_type'    => 'page',
+            'post_title'   => $dc_post_title,
+            'post_content' => $dc_post_content,
+            'meta_input'   => array(
+                'nf_dc_src'  => 'test',
+                'nf_dc_page' => $context,
+                'nf_dc_stat' => 'draft',
+            ),
+        );
+        
+        // create new post - id is returned
+        return \wp_insert_post( $new_post );
+    }
+
+}

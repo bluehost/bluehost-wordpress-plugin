@@ -12,6 +12,6 @@ import { render } from '@wordpress/element';
 domReady(() => {
     render(
         <EditorTours />, 
-        document.getElementById('bluehost-tours')
+        document.getElementById('newfold-editortours')
     );
 });

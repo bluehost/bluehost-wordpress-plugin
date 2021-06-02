@@ -160,13 +160,10 @@
     // padding-top: 1rem;
 }
 .wrap-std {
-    // background: #ffb313;
     
 }
 .bluehost-large {
-    
     max-width: 640px;
-    
 }
 .step-bluehost-logo {
     position:absolute;
@@ -179,10 +176,14 @@
     bottom: 8px;
 }
 
-.nf-dc-ph {
-    display: inline-block;
-    background-color: #ffb313;
-    &:focus {
-        border: 3px #cd1713 solid;
-    };
+.step-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5rem;
+}
+
+.nf-placeholder {
+    &.nf-highlight {
+        background-color: #ffb313;
+    }
 }

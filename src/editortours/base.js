@@ -26,12 +26,25 @@ export const awaitElement = async selector => {
  * @returns 
  */
 export const addToStep = ( steps, id, newConfig ) => {
-    const indexOfId = findIndex( steps, { id } );
-    if ( -1 !== indexOfId ) {
+    const indexOfId = findStepIndex( steps, id );
+    if ( indexOfId ) {
         steps[indexOfId] = merge( steps[indexOfId], newConfig );
     }
 
     return steps;
+}
+
+/**
+ * Helper to find the index of a step by string ID.
+ * 
+ * @param {array} steps 
+ * @param {string} id 
+ * @returns 
+ */
+export const findStepIndex = ( steps, id ) => {
+    const index = findIndex( steps, { id } );
+
+    return -1 !== index ? index : false;
 }
 
 /**
@@ -52,10 +65,10 @@ export const BaseTour = ({ type, steps, options = {} }) => {
     }, { type, ...options });
 
     const TourContents = () => {
-        const tour = useContext(ShepherdTourContext);
-        editorTourEvents(type, tour);
+        window.nfTour = useContext(ShepherdTourContext);
+        editorTourEvents(type, window.nfTour);
 
-        return <Fragment>{tour.start()}</Fragment>
+        return <Fragment>{window.nfTour.start()}</Fragment>
     }
 
    return (
@@ -71,5 +84,6 @@ export const BaseTour = ({ type, steps, options = {} }) => {
 export default {
     BaseTour,
     addToStep,
+    findStepIndex,
     awaitElement
 }

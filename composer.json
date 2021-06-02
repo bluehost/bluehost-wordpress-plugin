@@ -35,7 +35,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Bluehost\\": "inc/"
+            "Bluehost\\": "inc/",
+            "Newfold\\Plugin\\": "inc/"
         }
     },
     "require": {
