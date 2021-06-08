@@ -19,10 +19,6 @@
         "issues": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
     },
     "repositories": {
-        "data_module": {
-            "type": "path",
-            "url": "../../libraries/endurance-wp-module-data"
-        },
         "0": {
             "type": "composer",
             "url": "https://bluehost.github.io/satis/",
@@ -46,7 +42,7 @@
         "bluehost/endurance-wp-module-loader": "^1.0",
         "bluehost/endurance-wp-module-sso": "^1.0",
         "bluehost/endurance-wp-plugin-updater": "^1.1.1",
-        "endurance/wp-module-data": "@dev",
+        "endurance/wp-module-data": "^1.4.3",
         "wp-forge/helpers": "^1.0",
         "wpscholar/collection": "^1.0",
         "wpscholar/url": "^1.2"

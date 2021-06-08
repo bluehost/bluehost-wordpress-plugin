@@ -102,9 +102,12 @@ class BlockEditor {
 	 */
 	public function tour_mount_element() {
 		?>
-		<div id="newfold-editortours">
-			<div style="display:block;width:100vw;height:100vh;background-color:#3575d3;z-index:999999;"></div>
+		<div id="newfold-editortours-loading">
+			<div class="inner">
+				<p><?php \_e('Loading Default', 'bluehost-wordpress-plugin'); ?> <?php echo ucfirst( \esc_html( $this->tour_context ) ); ?> <?php \_e('Page', 'bluehost-wordpress-plugin'); ?>...</p>
+			</div>
 		</div>
+		<div id="newfold-editortours"></div>
 		<?php
 	}
 }

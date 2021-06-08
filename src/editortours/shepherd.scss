@@ -1,3 +1,21 @@
+#newfold-editortours-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100vw;
+    height:100vh;
+    background-color:#3575d3;
+    z-index:999999;
+    position:absolute;
+    &.loaded {
+        z-index: 0;
+        display: none;
+    }
+    .inner p {
+        color: #fff;
+        font-size: 1rem;
+    }
+}
 .shepherd-element {
     background: #fff;
     border-radius: 3px;
@@ -167,12 +185,12 @@
 }
 .step-bluehost-logo {
     position:absolute;
-    width: 140px;
+    width: 138px;
     bottom: 8px;
 }
 .step-bluehost-squares {
     position:absolute;
-    width: 36px;
+    width: 28px;
     bottom: 8px;
 }
 
@@ -185,5 +203,15 @@
 .nf-placeholder {
     &.nf-highlight {
         background-color: #ffb313;
+    }
+}
+
+.newfold-default-content-validation {
+    .components-panel__arrow {
+        display: none;
+    }
+    .components-notice {
+        margin-left: 0;
+        margin-right: 0;
     }
 }

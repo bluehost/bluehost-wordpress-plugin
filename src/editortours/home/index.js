@@ -4,6 +4,7 @@ import { useState, useEffect } from '@wordpress/element';
 
 import { BaseTour, addToStep, awaitElement, findStepIndex } from '../base';
 
+
 /**
  * Merge API-driven content and config with necessary JS functions to make tour 💯 work.
  * 
@@ -20,12 +21,10 @@ const homeTourSteps = (apiResponse) => {
 
     // SETUP PROMPT BUTTONS FOR LOGIC FORK
     if ( promptIndex ) {
-        delete steps[promptIndex].buttons[0].type;
         steps[promptIndex].buttons[0].action = () => {
             window.nfTour.show('mostly-selling');
             window.nfHomeSiteType = 'mostly-selling';
         }
-        delete steps[promptIndex].buttons[1].type;
         steps[promptIndex].buttons[1].action = () => {
             window.nfTour.show('mostly-sharing');
             window.nfHomeSiteType = 'mostly-sharing';
@@ -33,7 +32,6 @@ const homeTourSteps = (apiResponse) => {
     }
     
     if ( sellingIndex ) {
-        delete steps[sellingIndex].buttons[1].type;
         steps[sellingIndex].buttons[1].action = () => {
             window.nfTour.show('finish-cta');
         }
@@ -41,14 +39,12 @@ const homeTourSteps = (apiResponse) => {
    
 
     if ( sharingIndex ) {
-        delete steps[sharingIndex].buttons[0].type;
         steps[sharingIndex].buttons[0].action = () => {
             window.nfTour.show('prompt');
         }
     }
 
     if ( finishCTAIndex ) {
-        delete steps[finishCTAIndex].buttons[0].type;
         steps[finishCTAIndex].buttons[0].action = () => {
             if ( 'undefined' !== typeof window.nfHomeSiteType ) {
                 window.nfTour.show(window.nfHomeSiteType);

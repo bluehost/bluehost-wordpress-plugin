@@ -1,7 +1,8 @@
 import { Fragment, useContext } from '@wordpress/element';
+import { PluginPrePublishPanel } from '@wordpress/edit-post';
 import { ShepherdTour, ShepherdTourContext } from 'react-shepherd';
 import { merge, findIndex } from 'lodash';
-import editorTourEvents from './editorTourEvents';
+import { initEvents } from './events';
 
 /**
  * Helper to detect element is in the DOM
@@ -66,7 +67,7 @@ export const BaseTour = ({ type, steps, options = {} }) => {
 
     const TourContents = () => {
         window.nfTour = useContext(ShepherdTourContext);
-        editorTourEvents(type, window.nfTour);
+        initEvents(type, window.nfTour);
 
         return <Fragment>{window.nfTour.start()}</Fragment>
     }

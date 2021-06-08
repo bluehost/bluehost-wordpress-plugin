@@ -10,6 +10,7 @@ import domReady from '@wordpress/dom-ready';
 import { render } from '@wordpress/element';
 
 domReady(() => {
+    console.log('it root');
     render(
         <EditorTours />, 
         document.getElementById('newfold-editortours')

@@ -276,7 +276,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::secondary_button('Mostly sharing', '')
                 ),
                 'title' => __('For this next section, help us understand your primary goal'),
-                'text' => Shared::step('Would you say your main objective is to sell a product or service? Or are primarily blogging/sharing information?')
+                'text' => Shared::step('Is your main goal to sell a product or service? Or are you primarily sharing stories or information?')
             ),
             array(
                 'id' => 'mostly-selling',
