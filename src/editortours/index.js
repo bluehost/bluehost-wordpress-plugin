@@ -1,4 +1,4 @@
-import './shepherd.scss';
+import './style.scss';
 
 import { lazy, Suspense, Fragment } from '@wordpress/element';
 import domReady from '@wordpress/dom-ready';
@@ -21,8 +21,7 @@ export const EditorTours = () => {
     // setup caretIn and caretOut custom events
     setupCaretEvents();
 
-    const location = window.location.href;
-    const tour = getQueryArg(location, 'tour');
+    const tour = getQueryArg(window.location.href, 'tour');
     let CurrentTour = <Fragment />;
 
     switch( tour ) {

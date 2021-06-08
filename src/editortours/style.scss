@@ -16,6 +16,12 @@
         font-size: 1rem;
     }
 }
+.nf-placeholder {
+    &.nf-highlight {
+        transition: background-color 250ms ease-in-out;        
+        background-color: #ffb313;
+    }
+}
 .shepherd-element {
     background: #fff;
     border-radius: 3px;
@@ -200,11 +206,7 @@
     grid-gap: 1.5rem;
 }
 
-.nf-placeholder {
-    &.nf-highlight {
-        background-color: #ffb313;
-    }
-}
+
 
 .newfold-default-content-validation {
     .components-panel__arrow {
@@ -213,5 +215,9 @@
     .components-notice {
         margin-left: 0;
         margin-right: 0;
+    }
+    #unedited {
+        list-style-type: square;
+        margin: 0.33rem 1rem;
     }
 }

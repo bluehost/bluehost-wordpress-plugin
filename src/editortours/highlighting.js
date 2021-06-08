@@ -1,8 +1,9 @@
 import { select, dispatch } from '@wordpress/data';
-import { Notice } from '@wordpress/components';
+import { Notice, Button } from '@wordpress/components';
 import { PluginPrePublishPanel } from '@wordpress/edit-post';
-import { replace } from 'lodash';
+import { replace, filter } from 'lodash';
 import { _n, __, sprintf } from '@wordpress/i18n';
+import { Fragment } from 'react';
 // Key namespace for Block Editor store
 const EDITOR_STORE = 'core/block-editor';
 
@@ -14,10 +15,10 @@ export const setupCaretEvents = () => {
     if ( isIE ) return; // IE doesnt support getSelection()
     document.addEventListener('selectionchange', evt => {
         let node = (document.getSelection().baseNode||0).parentNode;
-        let old = document.lastGrab;
+        let old = document.lastNode;
         if (node === old) return;
         if (old) old.dispatchEvent(new Event('caretOut'));
-        (document.lastGrab = node).dispatchEvent(new Event('caretIn'));
+        (document.lastNode = node).dispatchEvent(new Event('caretIn'));
     })
 }
 
@@ -25,47 +26,21 @@ export const setupCaretEvents = () => {
  * When a user clicks or keyboard-navigates into a placeholder, remove the highlight and span wrapper.
  * @param {*} evt 
  */
-const scrubSelectedPlaceholder = (evt) => {
-    evt.target.removeAttribute('data-rich-text-format-boundary');
-    const currentBlock = select(EDITOR_STORE).getSelectedBlock();
-    console.log(currentBlock.attributes)
-    switch(currentBlock.name) {
-        case 'core/heading':
-            dispatch(EDITOR_STORE).updateBlock(
-                currentBlock.clientId, 
-                { 
-                    attributes: { 
-                        className: ''
-                    } 
-                } 
-            );
-            break;
-        case 'core/paragraph':
-        default:
-            dispatch(EDITOR_STORE).updateBlock(
-                currentBlock.clientId, 
-                { 
-                    attributes: { 
-                        content: replace(
-                            currentBlock.attributes.content, 
-                            evt.target.outerHTML, 
-                            evt.target.innerText
-                        ) 
-                    } 
-                } 
-            );
-            break;
+const unhighlightSinglePlaceholder = (evt) => {
+    let styleElement = document.getElementById('newfold-placeholder-styles');
+    if ( null === styleElement ) {
+        styleElement = document.createElement('style');
+        styleElement.type = 'text/css';
+        styleElement.id = 'newfold-placeholder-styles';
+        document.getElementsByTagName('head')[0].appendChild(styleElement);
     }
+    var index = styleElement.sheet.insertRule(
+        'span#' + evt.target.id + '.nf-placeholder.nf-highlight { background-color: inherit !important; }'
+    );
+    console.log('index for ' + evt.target.id + ' is ' + index );
 };
 
-/**
- * Renders inside PrePublishValidation below.
- * 
- * Placeholder counts are extracted when this component renders inside the Slotfill.
- * 
- * @returns 
- */
-const InnerValidationPanel = () => {
+const detectPlaceholders = () => {
     let placeholdersDetected = 0;
     const blocks = select('core/block-editor').getBlocks();
     if ( blocks.length ) {
@@ -85,16 +60,119 @@ const InnerValidationPanel = () => {
             }
         })
     }
-    if ( placeholdersDetected > 0 ) {
+
+    return placeholdersDetected;
+}
+
+/**
+ * Helper to scrub placeholders from Block document.
+ * 
+ * By default, only removes changed placeholders, returning array of IDs that haven't changed since document load.
+ * 
+ * Setting all = true will scrub everything found regardless.
+ * 
+ * A return of null means the method couldn't find Blocks in the editor store.
+ * 
+ * @param {bool} all 
+ * @returns {true|array|null}
+ */
+const scrubPlaceholders = ( all = false ) => {
+    const blocks = select('core/block-editor').getBlocks();
+    let unedited = [];
+    if ( blocks.length ) {
+        const parser = new DOMParser();
+        blocks.forEach( block => {
+            switch(block.name) {
+                case 'core/paragraph':
+                    let blockDOM = parser.parseFromString(block.attributes.content, 'text/html');
+                    let blockPlaceholders = blockDOM.querySelectorAll('.nf-placeholder');
+                    if ( blockPlaceholders.length ) {
+                        Array.from(blockPlaceholders).forEach( placeholder => {
+                            if ( placeholder.innerText !== window.nfPlaceholders[placeholder.id] || all ) {
+                                dispatch('core/block-editor').updateBlock(
+                                    block.clientId,
+                                    {
+                                        attributes: {
+                                            content: replace(
+                                                block.attributes.content,
+                                                placeholder.outerHTML,
+                                                placeholder.innerHTML // must be HTML incase user has added anchors or formats
+                                            )
+                                        }
+                                    }
+                                )
+                            } else {
+                                unedited.push(placeholder.id);
+                            }
+                            
+                        })
+                    }
+                    break;
+                case 'core/heading':
+                    if ( block.attributes.className.contains('nf-placeholder') ) {
+                        if ( block.attributes.content !== window.nfPlaceholders[block.attributes.id] || all ) {
+                            dispatch('core/block-editor').updateBlock(
+                                block.clientId,
+                                {
+                                    attributes: {
+                                        id: '',
+                                        classList: replace(
+                                            block.attributes.classList,
+                                            'nf-placeholder nf-highlight',
+                                            ''
+                                        )
+                                    }
+                                }
+                            )
+                        } else {
+                            unedited.push(block.attributes.id);
+                        }
+                    }
+                    break;
+            }
+        })
+        if ( unedited.length ) {
+            return unedited;
+        }
+        
+        return true;
+    }
+
+    return null;
+}
+
+/**
+ * Renders inside PrePublishValidation below.
+ * 
+ * Placeholder counts are extracted when this component renders inside the Slotfill.
+ * 
+ * @returns 
+ */
+const InnerValidationPanel = () => {
+    // Must scrub modified placeholders first before counting what remains
+    let scrubResult = scrubPlaceholders();
+    
+    if ( scrubResult.length ) {
+        const inlineStyles = document.getElementById('newfold-placeholder-styles');
+        if ( null !== inlineStyles ) {
+            inlineStyles.innerHTML = null;
+            inlineStyles.parentNode.removeChild(inlineStyles);
+        }
         return (
-            <Notice status="warning" isDismissible={false}>
-                {sprintf( _n(
-                    'We found <strong>%s placeholder</strong> still in on this page. Look for words in [brackets] and replace with your own!',
-                    'We found <strong>%s placeholders</strong> still in on this page. Look for words in [brackets] and replace with your own!',
-                    placeholdersDetected,
-                    'bluehost-wordpress-plugin'
-                ), placeholdersDetected )}
-            </Notice>
+            <Fragment>
+                <Notice status="warning" isDismissible={false}>
+                    {sprintf( _n(
+                        'We found %s placeholder still in on this page.',
+                        'We found %s placeholders still in on this page.',
+                        scrubResult.length,
+                        'bluehost-wordpress-plugin'
+                    ), scrubResult.length )}
+                </Notice>
+                <h4>{__("These placeholders haven't been edited", 'bluehost-wordpress-plugin')}:</h4>
+                <ul id="unedited">
+                    {scrubResult.map(id => <li key={id}>{window.nfPlaceholders[id]}</li>)}
+                </ul>
+            </Fragment>
         );
     }
     return (
@@ -131,12 +209,15 @@ export const initHighlightEraser = () => {
     
     if (placeholders.length) {
         placeholders = Array.from(placeholders);
+        window.nfPlaceholders = {};
     }
 
     if (Array.isArray(placeholders)) {
         placeholders.forEach(el => {
-            el.addEventListener('click', scrubSelectedPlaceholder);
-            el.addEventListener('caretIn', scrubSelectedPlaceholder);
+            window.nfPlaceholders[el.id] = el.innerText;
+            el.addEventListener('click', unhighlightSinglePlaceholder);
+            el.addEventListener('caretIn', unhighlightSinglePlaceholder);
+            el.addEventListener('caretOut', unhighlightSinglePlaceholder);
         })
     }
 }
