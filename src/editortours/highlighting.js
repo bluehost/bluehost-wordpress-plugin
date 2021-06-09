@@ -39,6 +39,13 @@ const unhighlightSinglePlaceholder = (evt) => {
     }
 };
 
+const rehighlightSinglePlaceholder = (id) => {
+    const styleTag = document.getElementById('style-' + id);
+    if ( null !== styleTag ) {
+        styleTag.parentNode.removeChild(styleTag);
+    }
+}
+
 const detectPlaceholders = () => {
     let placeholdersDetected = 0;
     const blocks = select('core/block-editor').getBlocks();
@@ -88,10 +95,7 @@ const scrubPlaceholders = ( all = false ) => {
                     if ( blockPlaceholders.length ) {
                         Array.from(blockPlaceholders).forEach( placeholder => {
                             if ( placeholder.innerText !== window.nfPlaceholders[placeholder.id] || all ) {
-                                let styleTag = document.getElementById('style-' + placeholder.id);
-                                if ( null !== styleTag ) {
-                                    styleTag.parentNode.removeChild(styleTag);
-                                }
+                                rehighlightSinglePlaceholder(placeholder.id);
                                 dispatch('core/block-editor').updateBlock(
                                     block.clientId,
                                     {
@@ -114,10 +118,7 @@ const scrubPlaceholders = ( all = false ) => {
                 case 'core/heading':
                     if ( block.attributes.className.contains('nf-placeholder') ) {
                         if ( block.attributes.content !== window.nfPlaceholders[block.attributes.id] || all ) {
-                            let styleTag = document.getElementById('style-' + block.attributes.id);
-                            if ( null !== styleTag ) {
-                                styleTag.parentNode.removeChild(styleTag);
-                            }
+                            rehighlightSinglePlaceholder(block.attributes.id);
                             dispatch('core/block-editor').updateBlock(
                                 block.clientId,
                                 {
@@ -170,12 +171,7 @@ const InnerValidationPanel = () => {
     }
     
     if ( scrubResults.length ) {
-        scrubResults.forEach(id => {
-            let styleTag = document.getElementById('style-' + id);
-            if ( null !== styleTag ) {
-                styleTag.parentNode.removeChild(styleTag);
-            }
-        })
+        scrubResults.forEach(id => rehighlightSinglePlaceholder(id));
         return (
             <Fragment>
                 <Notice status="warning" isDismissible={false}>
@@ -231,10 +227,10 @@ export const initHighlightEraser = () => {
     }
 
     if (Array.isArray(placeholders)) {
-        placeholders.forEach(el => {
-            window.nfPlaceholders[el.id] = el.innerText;
-            el.addEventListener('click', unhighlightSinglePlaceholder);
-            el.addEventListener('caretIn', unhighlightSinglePlaceholder);
+        placeholders.forEach(node => {
+            window.nfPlaceholders[node.id] = node.innerText;
+            node.addEventListener('click', unhighlightSinglePlaceholder);
+            node.addEventListener('caretIn', unhighlightSinglePlaceholder);
         })
     }
 }

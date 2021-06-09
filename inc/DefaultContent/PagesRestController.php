@@ -57,12 +57,12 @@ class PagesRestController extends BaseHiiveController {
                 <!-- /wp:image --></div></div>
                 <!-- /wp:group -->
 
-                <!-- wp:heading {"level":1,"className":"nf-placeholder nf-highlight"} -->
-                <h1 class="nf-placeholder nf-highlight">[Name/Company Name]</h1>
+                <!-- wp:heading {"level":1,"id":"nf-1","className":"nf-placeholder nf-highlight"} -->
+                <h1 id="nf-1" class="nf-placeholder nf-highlight">[Name/Company Name]</h1>
                 <!-- /wp:heading -->
 
                 <!-- wp:paragraph -->
-                <p>We’re dedicated to giving you the very best in <span class="nf-placeholder nf-highlight">[topic/product]</span>, <span class="nf-placeholder nf-highlight">[topic/product]</span>, and <span class="nf-placeholder nf-highlight">[topic/product]</span>. Please reach out if you want to know more!</p>
+                <p>We’re dedicated to giving you the very best in <span id="nf-2" class="nf-placeholder nf-highlight">[topic/product]</span>, <span id="nf-3" class="nf-placeholder nf-highlight">[topic/product]</span>, and <span id="nf-4" class="nf-placeholder nf-highlight">[topic/product]</span>. Please reach out if you want to know more!</p>
                 <!-- /wp:paragraph -->
 
                 <!-- wp:buttons -->
@@ -81,7 +81,7 @@ class PagesRestController extends BaseHiiveController {
                 break;
 
             case 'about':
-                $title = 'About Us';
+                $title = 'About';
                 // easy results from copy all block content
                 $content = <<<BLOCKCONTENT
                 <!-- wp:paragraph -->
@@ -99,7 +99,7 @@ class PagesRestController extends BaseHiiveController {
                 break;
 
             case 'contact':
-                $title = 'Contact Us';
+                $title = 'Contact';
                 // easy results from copy all block content
                 $content = <<<BLOCKCONTENT
                 <!-- wp:paragraph -->
