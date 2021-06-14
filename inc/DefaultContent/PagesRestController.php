@@ -110,6 +110,13 @@ class PagesRestController extends BaseHiiveController {
                 BLOCKCONTENT;
                 break;
 
+            case 'wpforms':
+                $title="Contact Form";
+                $content = <<<JSON
+                {"fields":[{"id":"0","type":"name","label":"Name","format":"simple","description":"","required":"1","size":"medium","simple_placeholder":"","simple_default":"","first_placeholder":"","first_default":"","middle_placeholder":"","middle_default":"","last_placeholder":"","last_default":"","css":""},{"id":"1","type":"email","label":"Email","description":"","required":"1","size":"medium","placeholder":"","confirmation_placeholder":"","default_value":"","css":"","filter_type":"","allowlist":"","denylist":""},{"id":"2","type":"textarea","label":"Message","description":"","required":"1","size":"medium","placeholder":"","limit_count":"1","limit_mode":"characters","default_value":"","css":""}],"id":"91","field_id":3,"settings":{"form_title":"Contact","form_desc":"","form_class":"","submit_text":"Submit","submit_text_processing":"Sending...","submit_class":"","antispam":"1","ajax_submit":"1","notification_enable":"1","notifications":{"1":{"email":"{admin_email}","subject":"New Entry: {form_name}","sender_name":"{field_id=0}","sender_address":"{admin_email}","replyto":"{field_id=1}","message":"{all_fields}"}},"confirmations":{"1":{"type":"message","message":"Thanks for contacting us! We will be in touch with you shortly.","message_scroll":"1","page":"2","redirect":""}}},"meta":{"template":"contact"}}
+                JSON;
+                break;
+
             default:
                 $title = $page;
                 $content = 'Error: No Match Found for Specified Default Content Context';

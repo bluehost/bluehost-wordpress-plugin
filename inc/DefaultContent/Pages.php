@@ -48,6 +48,7 @@ class Pages {
 	protected function primary_init() {
         add_action( 'wp_loaded', array( Pages::class, 'intercept_query_parameter' ) );
         add_action( 'rest_api_init', array( PagesRestController::class, 'init' ) );
+        add_filter( 'dc_content_filter', array( Pages::class, 'dc_content_filter_callback' ), 10, 2 );
 	}
 
     /**
@@ -73,14 +74,11 @@ class Pages {
 
         // check if existing page for this context already exists
         $dc_post_id = self::does_dcpage_exist( $context );
-        
-        // if no about page already exists
         if ( false === $dc_post_id ) {
             // create a new draft page and set default block content
             $dc_post_id = self::make_dc_page( $context );
         }
 
-        
         // redirect link to page editor for this page
         $dc_post_edit_url = \get_admin_url( 
             null, 
@@ -141,6 +139,8 @@ class Pages {
         $dc_post_content = $data['content'];
         $dc_post_title   = $data['title'];
         
+        $dc_post_content = apply_filters( 'dc_content_filter', $dc_post_content, $context );
+
         $new_post = array(
             'post_type'    => 'page',
             'post_title'   => $dc_post_title,
@@ -154,6 +154,123 @@ class Pages {
         
         // create new post - id is returned
         return \wp_insert_post( $new_post );
+    }
+
+    /**
+     * Filter for default content, sets the proper contact form id
+     * 
+     */
+    public static function dc_content_filter_callback( $content, $context ) {
+        if ( 'contact' === $context ) {
+            
+            // first check if form is supported
+            $cf_contact_id = self::is_cf_ready();
+
+            // replace contact formid in content.
+            if ( $cf_contact_id ) {
+                $content = str_replace( 
+                    '<!-- wp:wpforms/form-selector {"formId":"5"} /-->',
+                    '<!-- wp:wpforms/form-selector {"formId":"' . $cf_contact_id . '"} /-->',
+                    $content 
+                );
+            } else {
+                $content = str_replace( 
+                    '<!-- wp:wpforms/form-selector {"formId":"5"} /-->',
+                    '<!-- wp:paragraph --><p>TEST ' . $cf_contact_id . '</p><!-- /wp:paragraph --><!-- wp:wpforms/form-selector {"formId":"5"} /-->',
+                    $content 
+                );
+            }
+        }
+
+        return $content;
+    }
+
+    /**
+     * Check if contact form plugin is active and form exists, if not enable and create simple contact form.
+     * 
+     * @return - formid
+     */
+    public static function is_cf_ready() {
+        $cf_post_id = false;
+        // first check if form is supported
+
+        // plugin active?
+        if ( \is_plugin_active( 'wpforms-lite/wpforms.php' ) ) {
+
+            // see if contact form post already exists, if so use it.
+            $cf_post_id = self::does_contactform_exist();
+            if ( ! $cf_post_id ) {
+
+                // create a new contact form post with default content
+                $cf_post_id = self::make_contactform();
+
+            }
+        }
+        
+        // if installed? activate.
+        // if not installed - message?
+
+        return $cf_post_id;
+    }
+
+    /**
+     * Determine if form already exists, defaulting to use wpforms post_type
+     * 
+     * @return - wpform id or false if none found
+     */
+    public static function does_contactform_exist( $context = 'wpforms' ) {
+        // check for existing post by context as post_type
+        $cf_args = array(
+            'posts_per_page' => 1,
+            'post_type'      => $context,
+            'post_status'    => array( 'pending', 'draft', 'future', 'publish', 'private' ),
+        );
+        $cf_query = new \WP_Query( $cf_args );
+        while ( $cf_query->have_posts() ) : 
+            $cf_query->the_post();
+            // return post id
+            return \get_the_id();
+        endwhile;
+
+        // none found, return false
+        return false;
+    }
+
+    /**
+     * Get Default Contact Form
+     * 
+     * @param context:String - context of new form - plugin
+     * @return - id of new form post
+     */
+    public static function make_contactform( $context = 'wpforms' ) {
+        // get default content via proxy api
+        $request  = new \WP_REST_Request( 'GET', '/newfold/v1/defaultcontent/pages' );
+        $request->set_query_params( [ 
+            'page' => $context, 
+            'brand' => 'bluehost', 
+            'lang' => 'en-US' 
+        ] );
+        $response = \rest_do_request( $request );
+        $server   = \rest_get_server();
+        $data     = $server->response_to_data( $response, false );
+        
+        $cf_post_content = $data['content'];
+        $cf_post_title   = $data['title'];
+        
+        $new_cf_post = array(
+            'post_type'    => $context,
+            'post_title'   => $cf_post_title,
+            'post_content' => $cf_post_content,
+            'post_status'  => 'publish',
+            'meta_input'   => array(
+                'nf_dc_src'  => 'test',
+                'nf_dc_page' => $context,
+                'nf_dc_stat' => 'draft',
+            ),
+        );
+        
+        // create new post - id is returned
+        return \wp_insert_post( $new_cf_post );
     }
 
 }
