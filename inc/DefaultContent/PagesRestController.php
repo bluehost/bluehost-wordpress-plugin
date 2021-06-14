@@ -58,11 +58,11 @@ class PagesRestController extends BaseHiiveController {
                 <!-- /wp:group -->
 
                 <!-- wp:heading {"level":1,"id":"nf-1","className":"nf-placeholder nf-highlight"} -->
-                <h1 id="nf-1" class="nf-placeholder nf-highlight">[Name/Company Name]</h1>
+                <h1 id="nf-1" class="nf-placeholder nf-highlight">Name/Company Name</h1>
                 <!-- /wp:heading -->
 
                 <!-- wp:paragraph -->
-                <p>We’re dedicated to giving you the very best in <span id="nf-2" class="nf-placeholder nf-highlight">[topic/product]</span>, <span id="nf-3" class="nf-placeholder nf-highlight">[topic/product]</span>, and <span id="nf-4" class="nf-placeholder nf-highlight">[topic/product]</span>. Please reach out if you want to know more!</p>
+                <p>We’re dedicated to giving you the very best in <span id="nf-2" class="nf-placeholder nf-highlight">topic/product</span>, <span id="nf-3" class="nf-placeholder nf-highlight">topic/product</span>, and <span id="nf-4" class="nf-placeholder nf-highlight">topic/product</span>. Please reach out if you want to know more!</p>
                 <!-- /wp:paragraph -->
 
                 <!-- wp:buttons -->
@@ -85,15 +85,15 @@ class PagesRestController extends BaseHiiveController {
                 // easy results from copy all block content
                 $content = <<<BLOCKCONTENT
                 <!-- wp:paragraph -->
-                <p>Welcome to <span id="nf-1" class="nf-placeholder nf-highlight">[organization name]</span>. We're dedicated to giving you the very best in <span id="nf-2" class="nf-placeholder nf-highlight">[topic/product]</span>, with a focus on <span id="nf-3" class="nf-placeholder nf-highlight">[brand differentiator 1]</span>, <span id="nf-4" class="nf-placeholder nf-highlight">[brand differentiator 2]</span>, and <span id="nf-5" class="nf-placeholder nf-highlight">[brand differentiator 3]</span>.</p>
+                <p>Welcome to <span id="nf-1" class="nf-placeholder nf-highlight">organization name</span>. We're dedicated to giving you the very best in <span id="nf-2" class="nf-placeholder nf-highlight">topic/product</span>, with a focus on <span id="nf-3" class="nf-placeholder nf-highlight">brand differentiator 1</span>, <span id="nf-4" class="nf-placeholder nf-highlight">brand differentiator 2</span>, and <span id="nf-5" class="nf-placeholder nf-highlight">brand differentiator 3</span>.</p>
                 <!-- /wp:paragraph -->
 
                 <!-- wp:paragraph -->
-                <p>When we started in <span id="nf-6" class="nf-placeholder nf-highlight">[founding date]</span> our passion for <span id="nf-7" class="nf-placeholder nf-highlight">[product or service type]</span> drove us to <span id="nf-8" class="nf-placeholder nf-highlight">[an action: create a product, start a community, etc.].</span> Now we serve customers all over <span id="nf-9" class="nf-placeholder nf-highlight">[your target market area: this could be a city, state, or the whole world]</span>, and are thrilled to share our passion with you.</p>
+                <p>When we started in <span id="nf-6" class="nf-placeholder nf-highlight">founding date</span> our passion for <span id="nf-7" class="nf-placeholder nf-highlight">product or service type</span> drove us to <span id="nf-8" class="nf-placeholder nf-highlight">an action: create a product, start a community, etc.].</span> Now we serve customers all over <span id="nf-9" class="nf-placeholder nf-highlight">your target market area: this could be a city, state, or the whole world</span>, and are thrilled to share our passion with you.</p>
                 <!-- /wp:paragraph -->
 
                 <!-- wp:paragraph -->
-                <p>We hope you enjoy our <span id="nf-10" class="nf-placeholder nf-highlight">[products/servcies]</span>. If you have any questions or comments, please contact us <span id="nf-11" class="nf-placeholder nf-highlight">[phone number, email, or link to contact form]</span>.</p>
+                <p>We hope you enjoy our <span id="nf-10" class="nf-placeholder nf-highlight">products/servcies</span>. If you have any questions or comments, please contact us <span id="nf-11" class="nf-placeholder nf-highlight">phone number, email, or link to contact form</span>.</p>
                 <!-- /wp:paragraph -->
                 BLOCKCONTENT;
                 break;
