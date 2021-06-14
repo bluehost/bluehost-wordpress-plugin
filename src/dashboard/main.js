@@ -15,7 +15,7 @@ const buildUtmUrl = ( url ) => {
     });
 }
 
-const BlogPosts = () => {
+export const BlogPosts = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [blogPosts, setBlogPosts] = useState(null);
     

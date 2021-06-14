@@ -15,6 +15,7 @@ function bluehost_init_rest_api() {
 		'Bluehost\\RestApi\\MojoServicesController',
 		'Bluehost\\RestApi\\AdminErrorController',
 		'Bluehost\\RestApi\\BluehostBlogController',
+		'Bluehost\\RestApi\\BluehostResourcesController',
 	);
 
 	foreach ( $controllers as $controller ) {

@@ -66,7 +66,8 @@ const AppBody = ( props ) => {
 	return (
 		<main 
 			id="bwa-app" 
-			className={ classnames( 
+			className={ classnames(
+				'wpadmin-brand-bluehost',
 				'bwa-page-' + kebabRoute,
 				props.className
 			) }

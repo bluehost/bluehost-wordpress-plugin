@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import { ReactComponent as About } from '@app/assets/illustrations/about.svg';
 import { ReactComponent as Analytics } from '@app/assets/svg/analytics.svg';
 import { ReactComponent as Bathtub } from '@app/assets/svg/bathtub.svg';
 import { ReactComponent as BillingIcon } from '@app/assets/svg/billing.svg';
@@ -13,13 +14,19 @@ import { ReactComponent as CallCenter } from '@app/assets/svg/call-center.svg';
 import { ReactComponent as ChatIcon } from '@app/assets/svg/chat.svg';
 import { ReactComponent as CloseIcon } from '@app/assets/svg/close.svg';
 import { ReactComponent as Computer } from '@app/assets/svg/computer.svg';
+import { ReactComponent as Contact } from '@app/assets/illustrations/contact.svg';
+import { ReactComponent as Content } from '@app/assets/illustrations/content.svg';
+import { ReactComponent as Design } from '@app/assets/illustrations/design.svg';
 import { ReactComponent as DownIcon } from '@app/assets/svg/down.svg';
 import { ReactComponent as Ellipsis } from '@app/assets/svg/ellipsis.svg';
 import { ReactComponent as ErrorStateImage } from '@app/assets/svg/error-state.svg';
 import { ReactComponent as Headset } from '@app/assets/svg/headset.svg';
 import { ReactComponent as HelpIcon } from '@app/assets/svg/help.svg';
+import { ReactComponent as Homepage } from '@app/assets/illustrations/homepage.svg';
 import { ReactComponent as JetpackLogo } from '@app/assets/svg/jetpack.svg';
 import { ReactComponent as Key } from '@app/assets/svg/key.svg';
+import { ReactComponent as Launch } from '@app/assets/illustrations/launch.svg';
+import { ReactComponent as LoadingLogo } from '@app/assets/illustrations/loading-logo.svg';
 import { ReactComponent as MagnifyingGlass } from '@app/assets/svg/magnifying-glass.svg';
 import { ReactComponent as MenuIcon } from '@app/assets/svg/menu.svg';
 import { ReactComponent as Multimedia } from '@app/assets/svg/multimedia.svg';
@@ -48,6 +55,7 @@ import { ReactComponent as WarningIcon } from '@app/assets/svg/warning.svg';
 import WorkingImageUrl, { ReactComponent as WorkingImage } from '@app/assets/svg/working.svg';
 
 export {
+	About,
 	Analytics,
 	Bathtub,
 	BillingIcon,
@@ -60,13 +68,19 @@ export {
 	ChatIcon,
 	CloseIcon,
 	Computer,
+	Contact,
+	Content,
+	Design,
 	DownIcon,
 	Ellipsis,
 	ErrorStateImage,
 	Headset,
 	HelpIcon,
+	Homepage,
 	JetpackLogo,
 	Key,
+	Launch,
+	LoadingLogo,
 	MagnifyingGlass,
 	MenuIcon,
 	Multimedia,

@@ -5,11 +5,13 @@ import { Redirect, useLocation } from 'react-router-dom';
 import { BWACommonTemplate } from '@app/components/templates';
 import BWAContentList from './content';
 import { BWARedirect } from '@app/components/atoms';
-import DesignBuildSection from './design-build';
-import HostingSection from './hosting';
-import PerformanceSection from './performance';
-import TrafficEngagementSection from './traffic-engagement';
-import Welcome from './welcome';
+import {
+	DesignBuildSection,
+	HostingSection,
+	PerformanceSection,
+	TrafficEngagementSection,
+	WelcomeSection
+} from './sections'
 import { __ } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
 
@@ -35,7 +37,7 @@ const Home = () => {
 			: (
 				<BWACommonTemplate descriptivePageTitle={__('Home', 'bluehost-wordpress-plugin')}>
 					<div className="page-home__container">
-						<Welcome />
+						<WelcomeSection />
 						<BWAContentList />
 						<DesignBuildSection />
 						<TrafficEngagementSection />
