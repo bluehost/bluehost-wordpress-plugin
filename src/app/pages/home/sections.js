@@ -2,6 +2,7 @@ import { select } from '@wordpress/data';
 import { BWAHeading, BWAButton } from '@app/components/atoms';
 import { BWAContentList, BWAContentListRow } from '@app/components/molecules';
 import { __ } from '@wordpress/i18n';
+import { JetpackLogo } from '@app/assets';
 
 const baseUrl = select('bluehost/plugin').getAdminUrl();
 

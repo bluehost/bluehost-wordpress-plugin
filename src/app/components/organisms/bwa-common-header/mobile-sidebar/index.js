@@ -15,7 +15,7 @@ import { dispatch, useSelect } from '@wordpress/data';
 
 import { Popover } from '@wordpress/components';
 import { addUtmParams } from '@app/functions';
-import userMenuItems from '../user-menu';
+import userMenuItems from '@app/menus/user';
 import { withState } from '@wordpress/compose';
 
 const PrimaryMenu = () => {

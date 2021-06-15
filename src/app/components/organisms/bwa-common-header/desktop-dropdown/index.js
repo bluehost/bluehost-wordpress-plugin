@@ -2,7 +2,7 @@ import './style.scss';
 
 import { Dropdown } from '@wordpress/components';
 import { UserIcon } from '@app/assets';
-import userMenuItems from '../user-menu';
+import userMenuItems from '@app/menus/user';
 
 const DesktopDropdown = () => (
 	<Dropdown

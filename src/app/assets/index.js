@@ -47,6 +47,7 @@ import { ReactComponent as Shop } from '@app/assets/svg/shop.svg';
 import { ReactComponent as SocialShare } from '@app/assets/svg/social-share.svg';
 import { ReactComponent as StaticPage } from '@app/assets/svg/static-page.svg';
 import { ReactComponent as SuccessIcon } from '@app/assets/svg/success.svg';
+import { ReactComponent as Support } from '@app/assets/illustrations/support.svg';
 import { ReactComponent as Telescope } from '@app/assets/svg/telescope.svg';
 import { ReactComponent as Tractor } from '@app/assets/svg/tractor.svg';
 import { ReactComponent as UserIcon } from '@app/assets/svg/user.svg';
@@ -101,6 +102,7 @@ export {
 	SocialShare,
 	StaticPage,
 	SuccessIcon,
+	Support,
 	Telescope,
 	Tractor,
 	UserIcon,

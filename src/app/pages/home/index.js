@@ -3,13 +3,14 @@ import './style.scss';
 import { Redirect, useLocation } from 'react-router-dom';
 
 import { BWACommonTemplate } from '@app/components/templates';
-import BWAContentList from './content';
+// import BWAContentList from './content';
 import { BWARedirect } from '@app/components/atoms';
 import {
 	DesignBuildSection,
 	HostingSection,
 	PerformanceSection,
 	TrafficEngagementSection,
+	ContentSection,
 	WelcomeSection
 } from './sections'
 import { __ } from '@wordpress/i18n';
@@ -38,7 +39,7 @@ const Home = () => {
 				<BWACommonTemplate descriptivePageTitle={__('Home', 'bluehost-wordpress-plugin')}>
 					<div className="page-home__container">
 						<WelcomeSection />
-						<BWAContentList />
+						<ContentSection />
 						<DesignBuildSection />
 						<TrafficEngagementSection />
 						<PerformanceSection />

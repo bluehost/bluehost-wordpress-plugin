@@ -3,13 +3,17 @@ import './style.scss';
 import { __, sprintf } from '@wordpress/i18n';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { TabPanel } from '@wordpress/components';
-import { LoadingLogo } from '@app/assets';
+import { LoadingLogo, Support } from '@app/assets';
 import closeUrl from '@app/assets/svg/close.svg';
 import { BWACommonTemplate } from '@app/components/templates';
-import { BWABox, BWAHeading } from '@app/components/atoms';
+import { BWABox, BWAHeading, BWAButton } from '@app/components/atoms';
 import { BlogPosts } from '@dashboard/main';
 
-import { useEffect, Fragment, Suspense, lazy } from '@wordpress/element';
+import { userTrigger } from '@app/functions';
+import { useState, useEffect, Fragment, Suspense, lazy } from '@wordpress/element';
+import { delay, replace } from 'lodash';
+
+import AccountCard from '../account';
 
 import StartDefaultStep from './steps/start-homepage';
 import AddContactStep from './steps/add-contact';
@@ -19,12 +23,23 @@ import LookRightStep from './steps/look-right';
 import LaunchStep from './steps/launch';
 
 export const Onboarding = () => {
-	const showFirstWelcome = true;
-	if ( true === showFirstWelcome ) {
+	const [onboardingState, setOnboardingState] = useState('first');
+	const dismissOnboarding = event => {
+		userTrigger(event, () => {
+			window.location.href = window.bluehostWpAdminUrl + 'admin.php?page=bluehost#/home';
+		})
+	}
+
+	if ( 'first' === onboardingState ) {
+		delay(() => {
+			setOnboardingState('loaded');
+		}, 300 );
 		return (
 			<BWACommonTemplate descriptivePageTitle={__('First Welcome', 'bluehost-wordpress-plugin')}>
-				<div style={{ margin: '10vw auto', maxWidth: '25vw'}}>
+				<div style={{ margin: '5vw auto', maxWidth: '20vw', textAlign: 'center'}}>
 					<LoadingLogo />
+					<BWAHeading size={2}>Getting Setup</BWAHeading>
+					<p>Time to put your WordPress to work for you...</p>
 				</div>
 			</BWACommonTemplate>
 		)
@@ -35,12 +50,13 @@ export const Onboarding = () => {
 					<BWAHeading level="h2" size="welcome">
 						{ __( 'Welcome to your WordPress site!', 'bluehost-wordpress-plugin' ) }
 					</BWAHeading>
-					<button className='onboarding-close' onClick={() => console.log('clicked!')}>
-						<img src={closeUrl}/>
-					</button>
+					
 			</header>
 			<br />
 			<BWABox>
+				<button className='onboarding-close' onClick={dismissOnboarding} onKeyDown={dismissOnboarding}>
+					<img src={closeUrl}/>
+				</button>
 				<BWAHeading level="h3" size="product">{__("Let's setup your site", 'bluehost-wordpress-plugin')}</BWAHeading>
 				<p style={{ fontSize: '16px' }}>
  						{ __("Not sure how to get started? Here's what we recommend.", 'bluehost-wordpress-plugin') }
@@ -94,19 +110,39 @@ export const Onboarding = () => {
 				<br />
 			</BWABox>
 			<div className="grid-col-2">
-					<BWABox>
-						<BWAHeading level="h3" size="product">{__("We're here to help", 'bluehost-wordpress-plugin')}</BWAHeading>
-					</BWABox>
-					<div>
-						<BWABox>
-							<BWAHeading level="h3" size="product">{__("Your Account", 'bluehost-wordpress-plugin')}</BWAHeading>
-						</BWABox>
-						<br />
-						<BWABox>
-							<BWAHeading level="h3" size="product">{__("Latest from Bluehost", 'bluehost-wordpress-plugin')}</BWAHeading>
-							<BlogPosts />
-						</BWABox>
+				<AccountCard />
+				<BWABox>
+					<BWAHeading level="h3" size="product">{__("We're here to help", 'bluehost-wordpress-plugin')}</BWAHeading>
+					<div style={{ maxWidth: '300px', margin: '0 auto'}}>
+						<Support />
 					</div>
+					<BWAHeading level="h4" size={4}>From DIY to full-service help</BWAHeading>
+					<p>Feeling stuck? Call or chat 24/7, skill up with help articles or hire our experts to teach you or implement it for you.</p>
+					<BWAButton isSecondary href="#/help">Help Me</BWAButton>
+				</BWABox>
+			</div>
+			<div className="grid-col-2">
+				<BWABox>
+					<BWAHeading level="h3" size="product">{__("Latest from Bluehost", 'bluehost-wordpress-plugin')}</BWAHeading>
+					<BlogPosts />
+				</BWABox>
+				<BWABox>
+					<BWAHeading level="h3" size="product">{__("Follow Bluehost for news and tips", 'bluehost-wordpress-plugin')}</BWAHeading>
+					<div className="brand-email-subscribe">
+						<input id="newsletter" type="email" />
+						<button type="submit">Subscribe</button>
+					</div>
+					<div className="brand-social-accounts">
+						<ul>
+							<li><span className="dashicons dashicons-facebook" /> <span className="screen-reader-text">Facebook</span></li>
+							<li><span className="dashicons dashicons-twitter" /> <span className="screen-reader-text">Twitter</span></li>
+							<li><span className="dashicons dashicons-youtube" /> <span className="screen-reader-text">YouTube</span></li>
+							<li><span className="dashicons dashicons-linkedin" /> <span className="screen-reader-text">LinkedIn</span></li>
+							<li><span className="dashicons dashicons-pinterest" /> <span className="screen-reader-text">Pinterest</span></li>
+							<li><span className="dashicons dashicons-instagram" /> <span className="screen-reader-text">Instagram</span></li>
+						</ul>
+					</div>
+				</BWABox>
 			</div>
 		</BWACommonTemplate>
 	)

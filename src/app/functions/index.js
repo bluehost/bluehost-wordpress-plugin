@@ -3,6 +3,7 @@ import apiFetch from '@wordpress/api-fetch';
 import handleWPMenuActiveHighlight from './highlightTopLevel';
 import handleWPMenuAugmentation from './augmentWPMenu';
 import sendPageviewEvent from './sendPageviewEvent';
+import userTrigger from './userTrigger';
 
 /**
  * Decorates an external link URL with UTM params.
@@ -64,5 +65,6 @@ export function sendEvent(event) {
 export { 
 	sendPageviewEvent,
 	handleWPMenuAugmentation,
-	handleWPMenuActiveHighlight
+	handleWPMenuActiveHighlight,
+	userTrigger
 };

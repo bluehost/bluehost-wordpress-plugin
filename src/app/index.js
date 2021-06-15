@@ -11,6 +11,7 @@ import { HashRouter as Router, useLocation } from 'react-router-dom';
 import {
 	BWAError,
 } from '@app/components/molecules';
+import { userTrigger } from '@app/functions';
 import { ENTER } from '@wordpress/keycodes';
 import { ErrorBoundary } from 'react-error-boundary';
 import { __ } from '@wordpress/i18n';
@@ -31,25 +32,21 @@ const AppBody = ( props ) => {
 	let kebabRoute = kebabCase( location.pathname );
 	
 	const handleNavFocus = ( event ) => {
-		event.preventDefault();
-		if ( event.keycode && ENTER !== event.keycode ) {
-			return;
-		}
-		const desktopTabs = document.querySelector('.bwa-desktop-nav__items');
-		if ( desktopTabs ) {
-			desktopTabs.focus({ preventScroll: true })
-		}
+		userTrigger(event, () => { 
+			const desktopTabs = document.querySelector('.bwa-desktop-nav__items');
+			if ( desktopTabs ) {
+				desktopTabs.focus({ preventScroll: true })
+			}
+		})
 	}
 
 	const handleContentFocus = ( event ) => {
-		event.preventDefault();
-		if ( event.keycode && ENTER !== event.keycode ) {
-			return;
-		}
-		const routeContents = document.querySelector('.bwa-route-contents');
-		if ( routeContents ) {
-			routeContents.focus({ preventScroll: true })
-		}
+		userTrigger(event, () => { 
+			const routeContents = document.querySelector('.bwa-route-contents');
+			if ( routeContents ) {
+				routeContents.focus({ preventScroll: true })
+			}
+		})
 	}
 
 	const SkipLink = ( { href = '#', onClick, onKeyDown, children } ) => (

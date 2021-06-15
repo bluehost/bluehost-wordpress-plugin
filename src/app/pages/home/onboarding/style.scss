@@ -1,21 +1,63 @@
 @import '@app/config.scss';
 
+ul#nf-account {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+    @media screen and (min-width: 968px) {
+      grid-template-columns: repeat(3,minmax(0,1fr));
+    }
+  flex-direction: row;
+  li {
+    text-align: center;
+    svg {
+      margin: 0 auto;
+      width: 64px !important;
+      height: 64px !important;
+    }
+  }
+}
+.brand-social-accounts {
+  ul {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(3,minmax(0,1fr));
+    }
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: repeat(6,minmax(0,1fr));
+    }
+    justify-items: center;
+    .dashicons {
+      font-size: 32px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
 .grid-col-2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0,1fr);
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
   margin-top: 2rem;
   grid-column-gap: 2rem;
 }
 
 .bluehost-onboarding-page-header {
-  .onboarding-close {
-    float: right;
-    position: relative;
-    top: 2rem;
-    right: 1rem;
-    border: 0;
-    background: transparent;
-  }
+  
+}
+
+.onboarding-close {
+  float: right;
+  position: relative;
+  top: 0;
+  right: 1rem;
+  border: 0;
+  background: transparent;
 }
 
 .nf-onboarding-tabs {
