@@ -62,9 +62,9 @@
   }
 
   .chat-button-container {
-    position: absolute;
-    top: 25px;
-    right: 30px;
+    text-align: right;
+    position: relative;
+    top: -4rem;
 
     @media screen and (max-width: 768px) {
       justify-content: center;

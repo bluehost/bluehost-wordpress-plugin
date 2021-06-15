@@ -11,7 +11,9 @@ $mobile-padding: 30px;
   background-size: contain;
 
   &.base-template {
-    padding-top: 5px;
+    @media screen and (min-width:767px) {
+      margin-top: -57px;
+    }
     max-width: none;
   }
 

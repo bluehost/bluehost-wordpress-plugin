@@ -16,24 +16,26 @@ const Help = () => {
 			<BWAHeading level="h2" size={0}>{ __( 'Help', 'bluehost-wordpress-plugin' ) }</BWAHeading>
 			<div className="clouds">
 				<div className="section-intro">
-					<div className="chat-button-container">
-						<Button
-							className="chat-button"
-							href={
-								addUtmParams(
-									'https://helpchat.bluehost.com/',
-									{
-										utm_content: 'help_chat_button',
-										utm_term: 'Chat with us',
-									}
-								)
-							}
-							isPrimary
-							rel="noopener noreferrer"
-							target="_blank"
-						>
-							{ __('Chat with us', 'bluehost-wordpress-plugin') } <ChatIcon className="chat-icon" />
-						</Button>
+					<div style={{ maxWidth: '1600px', margin: '0 auto' }}>
+						<div className="chat-button-container">
+							<Button
+								className="chat-button"
+								href={
+									addUtmParams(
+										'https://helpchat.bluehost.com/',
+										{
+											utm_content: 'help_chat_button',
+											utm_term: 'Chat with us',
+										}
+									)
+								}
+								isPrimary
+								rel="noopener noreferrer"
+								target="_blank"
+							>
+								{ __('Chat with us', 'bluehost-wordpress-plugin') } <ChatIcon className="chat-icon" />
+							</Button>
+						</div>
 					</div>
 					<h3 className="section-title">
 						{ __('From DIY to full-service help', 'bluehost-wordpress-plugin') }

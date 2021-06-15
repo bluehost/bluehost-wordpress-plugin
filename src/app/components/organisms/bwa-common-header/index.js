@@ -53,7 +53,7 @@ const HeaderIcons = () => (
 const BWACommonHeader = ({ ...props}) => (
 	<header tabIndex="-1" className="bwa-common-header">
 		<div className="bwa-common-header__brand">
-			<div className="col">
+			<div className="col" style={{ maxWidth: '1600px', margin: '0 auto' }}>
 				<HeaderLogo />
 				<HeaderIcons />
 			</div>
