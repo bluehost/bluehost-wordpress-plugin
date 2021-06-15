@@ -107,7 +107,7 @@ class Pages {
             'posts_per_page' => 1,
             'post_type'      => 'page',
             'post_status'    => array( 'pending', 'draft', 'future', 'publish', 'private' ),
-            'meta_key'       => 'dc_page',
+            'meta_key'       => 'nf_dc_page',
             'meta_value'     => $context,
             'meta_compare'   => '=',
         );
@@ -157,8 +157,10 @@ class Pages {
     }
 
     /**
-     * Filter for default content, sets the proper contact form id
+     * Filter for default content, sets the proper contact form id.
      * 
+     * @param content - content from post
+     * @param context - context for creating default content.
      */
     public static function dc_content_filter_callback( $content, $context ) {
         if ( 'contact' === $context ) {
@@ -169,14 +171,8 @@ class Pages {
             // replace contact formid in content.
             if ( $cf_contact_id ) {
                 $content = str_replace( 
-                    '<!-- wp:wpforms/form-selector {"formId":"5"} /-->',
+                    '<!-- wp:wpforms/form-selector {"formId":"0"} /-->',
                     '<!-- wp:wpforms/form-selector {"formId":"' . $cf_contact_id . '"} /-->',
-                    $content 
-                );
-            } else {
-                $content = str_replace( 
-                    '<!-- wp:wpforms/form-selector {"formId":"5"} /-->',
-                    '<!-- wp:paragraph --><p>TEST ' . $cf_contact_id . '</p><!-- /wp:paragraph --><!-- wp:wpforms/form-selector {"formId":"5"} /-->',
                     $content 
                 );
             }
@@ -191,39 +187,94 @@ class Pages {
      * @return - formid
      */
     public static function is_cf_ready() {
+        $wpforms_path = 'wpforms-lite/wpforms.php';
+        $wpforms_latest_zip = 'https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip';
         $cf_post_id = false;
-        // first check if form is supported
 
-        // plugin active?
-        if ( \is_plugin_active( 'wpforms-lite/wpforms.php' ) ) {
+        // is it installed?
+        if ( ! self::is_plugin_installed( $wpforms_path ) ) {
+            // install plugin if missing
+            self::install_plugin( $wpforms_latest_zip );
+        }
 
-            // see if contact form post already exists, if so use it.
-            $cf_post_id = self::does_contactform_exist();
-            if ( ! $cf_post_id ) {
+        // is it active?
+        if ( ! function_exists( 'is_plugin_active' ) ) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+        if ( ! \is_plugin_active( $wpforms_path ) ) {
+            // activate plugin if not active
+            \activate_plugin( $wpforms_path );
+            // delete activation_redirect transient to avoid redirect hijack from plugin
+            \delete_transient( 'wpforms_activation_redirect' );
+            // continue 
+        }
 
-                // create a new contact form post with default content
-                $cf_post_id = self::make_contactform();
+        // check if existing page for this context already exists
+        // $cf_post_id = self::does_dc_form_exist();
+        // ^ opting to always add new form, so no check is needed for now.
 
-            }
+        if ( false === $cf_post_id ) {
+            // create a new contact form post with default content
+            $cf_post_id = self::make_dc_form();
         }
         
-        // if installed? activate.
-        // if not installed - message?
-
         return $cf_post_id;
+    }
+
+    /**
+     * Determine if plugin is installed
+     * 
+     * @param slug:String - slug/path for the plugin to check
+     * @return - boolean for if plugin is installed
+     */
+    public static function is_plugin_installed( $slug ) {
+        if ( ! function_exists( 'get_plugins' ) ) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+        $all_plugins = \get_plugins();
+        if ( !empty( $all_plugins[$slug] ) ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Install plugin with provided zip
+     * 
+     * @param plugin_zip:String - url to zip file to install
+     * @return - boolean if install is successful
+     */
+    public static function install_plugin( $plugin_zip ) {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        require_once ABSPATH . 'wp-admin/includes/misc.php';
+        require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+        // New Skin that doesn't give feedback and redirects on completion
+        require_once 'class-plugin-quiet-upgrader-skin.php';
+        
+        \wp_cache_flush();
+        $quiet_skin = new \Plugin_Quiet_Upgrader_Skin(); 
+        $upgrader = new \Plugin_Upgrader( $quiet_skin );
+        $installed = $upgrader->install( $plugin_zip );
+       
+        return $installed;
     }
 
     /**
      * Determine if form already exists, defaulting to use wpforms post_type
      * 
+     * @param context:String - what kind of forms are we looking for? defaults to `wpforms`
      * @return - wpform id or false if none found
      */
-    public static function does_contactform_exist( $context = 'wpforms' ) {
+    public static function does_dc_form_exist( $context = 'wpforms' ) {
         // check for existing post by context as post_type
         $cf_args = array(
             'posts_per_page' => 1,
             'post_type'      => $context,
             'post_status'    => array( 'pending', 'draft', 'future', 'publish', 'private' ),
+            'meta_key'       => 'nf_dc_page',
+            'meta_value'     => $context,
+            'meta_compare'   => '=',
         );
         $cf_query = new \WP_Query( $cf_args );
         while ( $cf_query->have_posts() ) : 
@@ -237,12 +288,12 @@ class Pages {
     }
 
     /**
-     * Get Default Contact Form
+     * Make Default Contact Form
      * 
-     * @param context:String - context of new form - plugin
+     * @param context:String - context of new form - plugin, defaults to `wpforms`
      * @return - id of new form post
      */
-    public static function make_contactform( $context = 'wpforms' ) {
+    public static function make_dc_form( $context = 'wpforms' ) {
         // get default content via proxy api
         $request  = new \WP_REST_Request( 'GET', '/newfold/v1/defaultcontent/pages' );
         $request->set_query_params( [ 
@@ -265,7 +316,7 @@ class Pages {
             'meta_input'   => array(
                 'nf_dc_src'  => 'test',
                 'nf_dc_page' => $context,
-                'nf_dc_stat' => 'draft',
+                'nf_dc_stat' => 'wpforms',
             ),
         );
         
