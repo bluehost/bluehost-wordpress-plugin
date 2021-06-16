@@ -33,9 +33,12 @@ const DesktopDropdown = () => {
 				// console.log('renderToggle isOpen: ' + isOpen);
 				return (
 					<Tooltip text={__('Hosting Account Menu', 'bluehost-wordpress-plugin')}>
-						<Button onClick={ ! isOpen ? onToggle : onClose } 
+						<Button 
+							onClick={ ! isOpen ? onToggle : onClose } 
 							aria-expanded={ isOpen } 
-							data-testid="desktop-dropdown-toggle">
+							aria-label={__('Hosting Account Menu', 'bluehost-wordpress-plugin')}
+							data-testid="desktop-dropdown-toggle"
+						>
 								<UserIcon />
 						</Button>
 					</Tooltip>
