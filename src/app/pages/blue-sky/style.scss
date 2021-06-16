@@ -16,7 +16,7 @@ $mobile-padding: 30px;
       width: calc(100% + 48px);
       opacity: 1;
     }
-    @media screen and (min-width: 1814px) {
+    @media screen and (min-width: $hd-breakpoint) {
       margin-left: 0;
       width: 100%;
       opacity: 1;

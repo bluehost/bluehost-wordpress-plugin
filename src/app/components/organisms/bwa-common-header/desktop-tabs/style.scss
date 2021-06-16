@@ -7,7 +7,7 @@
 .bwa-desktop-nav__inner {
   height: 33px;
   margin: 24px 24px 0 24px;
-  @media screen and (min-width: 1814px) {
+  @media screen and (min-width: $hd-breakpoint) {
     margin: 24px 0 0 0;
   }
   .bwa-desktop-nav__items {

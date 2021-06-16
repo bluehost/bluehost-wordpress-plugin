@@ -16,7 +16,7 @@
 
 
 #wpfooter {
-    @media screen and (min-width:1814px) {
+    @media screen and (min-width:$hd-breakpoint) {
         max-width: 1600px;
         margin: 0 auto;
         left: 160px;
@@ -24,7 +24,7 @@
 }
 
 body.folded #wpfooter {
-    @media screen and (min-width:1814px) {
+    @media screen and (min-width:$hd-breakpoint) {
         left: 32px;
         margin: 0 auto;
     }
