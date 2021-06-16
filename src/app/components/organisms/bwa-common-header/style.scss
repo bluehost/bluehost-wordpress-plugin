@@ -34,15 +34,15 @@
 
 #bluehost-nav-wrap {
   float: right;
-  padding: 28px 24px 24px 0;
+  padding: 20px 24px 20px 0;
   @media screen and (min-width: 1814px) {
-    padding: 28px 0;
+    padding: 20px 0;
   }
   text-align: right;
   .help,
   .user-menu {
     fill: $color-black;
-    margin-left: 24px;
+    margin-left: 5px;
  }
 }
 
@@ -64,16 +64,16 @@
   }
 }
 
-.components-popover.bluehost-nav-popup:not(.is-mobile) {
-  left: calc(100% - 60px) !important;
-  .components-popover__content {
-      min-width: 256px;
-  }
-  &:before,
-  &:after {
-    right: -20px;
-  }
-}
+// .components-popover.bluehost-nav-popup:not(.is-mobile) {
+//   left: calc(100% - 60px) !important;
+//   .components-popover__content {
+//       min-width: 256px;
+//   }
+//   &:before,
+//   &:after {
+//     right: -20px;
+//   }
+// }
 
 @media (min-width:$menu-breakpoint) {
   .bwa-common-header__brand {
