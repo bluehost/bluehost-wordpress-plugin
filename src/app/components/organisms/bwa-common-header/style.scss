@@ -64,17 +64,6 @@
   }
 }
 
-// .components-popover.bluehost-nav-popup:not(.is-mobile) {
-//   left: calc(100% - 60px) !important;
-//   .components-popover__content {
-//       min-width: 256px;
-//   }
-//   &:before,
-//   &:after {
-//     right: -20px;
-//   }
-// }
-
 @media (min-width:$menu-breakpoint) {
   .bwa-common-header__brand {
     .bluehost-nav-wrap-element.user-menu,
