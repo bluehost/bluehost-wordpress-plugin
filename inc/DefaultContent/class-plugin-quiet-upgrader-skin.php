@@ -3,55 +3,39 @@
  * Upgrader API: Plugin_Quiet_Upgrader_Skin class
  */
 
+
+/**
+ * Quiet Skin for the WordPress Upgrader classes. 
+ * This skin is designed to be used when installing a required plugin in the background.
+ */
 class Plugin_Quiet_Upgrader_Skin extends WP_Upgrader_Skin {
 
 	/**
-	 * Holds the plugin slug in the Plugin Directory.
-	 *
-	 * @since 2.8.0
-	 *
-	 * @var string
-	 */
-	public $plugin = '';
-
-	/**
-	 * Whether the plugin is active.
-	 *
-	 * @since 2.8.0
-	 *
-	 * @var bool
-	 */
-	public $plugin_active = false;
-
-	/**
-	 * Whether the plugin is active for the entire network.
-	 *
-	 * @since 2.8.0
-	 *
-	 * @var bool
-	 */
-	public $plugin_network_active = false;
-
-
-	/**
 	 * Action to perform following a single plugin update.
-	 *
-	 * @since 2.8.0
 	 */
 	public function after() {
-		// redirect to dcpage=contact page - admin_url()/?dcpage=contact
-		\wp_safe_redirect(
-			\get_admin_url(
-				null,
-				'post-new.php?dcpage=contact&post_type=page'
-			)
-		);
+		// redirect to admin_url()/?dcpage=contact to restart with plugin installed
+		\wp_safe_redirect( \get_admin_url( null, 'post-new.php?dcpage=contact&post_type=page' ) );
 	}
 
 	/**
-	 * Feedback - keep it quiet.
+	 * Header - keep it quiet.
+	 */
+	public function header() {
+		// nothing here. =)
+	}
+
+	/**
+	 * Footer - keep it quiet too.
+	 */
+	public function footer() {
+		// nothing there. =)
+	}
+	
+	/**
+	 * Feedback - keep it all quiet.
 	 */
 	public function feedback() {
-		// nothing here =)
+		// nothing here either. =)
 	}
 }

@@ -191,32 +191,21 @@ class Pages {
         $wpforms_latest_zip = 'https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip';
         $cf_post_id = false;
 
-        // is it installed?
+        // install plugin if missing
         if ( ! self::is_plugin_installed( $wpforms_path ) ) {
-            // install plugin if missing
             self::install_plugin( $wpforms_latest_zip );
         }
-
-        // is it active?
-        if ( ! function_exists( 'is_plugin_active' ) ) {
-            require_once ABSPATH . 'wp-admin/includes/plugin.php';
-        }
+        
+        // activate plugin if not active
         if ( ! \is_plugin_active( $wpforms_path ) ) {
-            // activate plugin if not active
             \activate_plugin( $wpforms_path );
             // delete activation_redirect transient to avoid redirect hijack from plugin
             \delete_transient( 'wpforms_activation_redirect' );
             // continue 
         }
 
-        // check if existing page for this context already exists
-        // $cf_post_id = self::does_dc_form_exist();
-        // ^ opting to always add new form, so no check is needed for now.
-
-        if ( false === $cf_post_id ) {
-            // create a new contact form post with default content
-            $cf_post_id = self::make_dc_form();
-        }
+        // create a new contact form post with default content
+        $cf_post_id = self::make_dc_form();
         
         return $cf_post_id;
     }
