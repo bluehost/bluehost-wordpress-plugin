@@ -32,7 +32,7 @@ const BlueSky = () => {
 			<div className="bluesky-menu-backdrop" />
 			<BWAHeading level="h2" size={ 0 }>{ __('Blue Sky', 'bluehost-wordpress-plugin') }</BWAHeading>
 			<div className="section-logo">
-				<a href={addUtmParams('https://bluehost.com/blue-sky')} aria-label={__('Blue Sky service logo', 'bluehost-wordpress-plugin')}>
+				<a href={addUtmParams('https://my.bluehost.com/cgi/app/#/marketplace/product/i/bluesky')} aria-label={__('Blue Sky service logo', 'bluehost-wordpress-plugin')}>
 					<BlueSkyLogo />
 				</a>
 			</div>
