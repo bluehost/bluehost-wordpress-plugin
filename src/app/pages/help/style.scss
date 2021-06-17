@@ -9,7 +9,6 @@
 
   font-size: 16px;
   line-height: 24px;
-  font-family: 'Open Sans', Arial, sans-serif;
 
   .clouds {
     background: white url('../../assets/svg/clouds.svg') center bottom no-repeat;
@@ -62,9 +61,9 @@
   }
 
   .chat-button-container {
-    position: absolute;
-    top: 25px;
-    right: 30px;
+    text-align: right;
+    position: relative;
+    top: -4rem;
 
     @media screen and (max-width: 768px) {
       justify-content: center;
