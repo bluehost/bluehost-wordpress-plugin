@@ -11,7 +11,7 @@ import {
 	BWAButton as Button,
 	BWANavLink as NavLink,
 } from '@app/components/atoms';
-import { dispatch, useSelect } from '@wordpress/data';
+import { dispatch, select } from '@wordpress/data';
 
 import { Popover } from '@wordpress/components';
 import { addUtmParams } from '@app/functions';
@@ -19,9 +19,7 @@ import userMenuItems from '@app/menus/user';
 import { withState } from '@wordpress/compose';
 
 const PrimaryMenu = () => {
-	const topLevelPages = useSelect((select) => {
-		return select('bluehost/plugin').getTopLevelPages();
-	}, []);
+	const topLevelPages = select('bluehost/plugin').getTopLevelPages();
 	return (
 		<ul className="main">
 			{ topLevelPages.map((item) => (
@@ -46,10 +44,6 @@ const UserMenu = () => (
 		)) }
 	</ul>
 );
-
-// const {
-// 	openMobileSidebar
-// } = useDispatch('bluehost/plugin');
 
 const MobileSidebar = withState({
 	isVisible: false,

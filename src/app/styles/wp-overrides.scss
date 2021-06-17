@@ -4,17 +4,30 @@
  @import '@app/config.scss';
 /* ------------------------- */
 
+#wpwrap,
 #wpbody-content {
-    @extend .is-bg-off-white;
-    padding-bottom: 0 !important;
+    background-color: #f1f5f7;
 }
 
 #wpcontent {
     padding-left: 0 !important;
 }
 
+
+
 #wpfooter {
-    display: none; /* credit relocated to /info route, link on settings page */
+    @media screen and (min-width:$hd-breakpoint) {
+        max-width: 1600px;
+        margin: 0 auto;
+        left: 160px;
+    }
+}
+
+body.folded #wpfooter {
+    @media screen and (min-width:$hd-breakpoint) {
+        left: 32px;
+        margin: 0 auto;
+    }
 }
 
 h1,
