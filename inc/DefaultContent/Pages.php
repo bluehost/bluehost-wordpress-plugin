@@ -71,12 +71,20 @@ class Pages {
         ) {
 			return;
 		}
+        
+        // get src param
+        if ( isset( $_GET['dcsrc'] ) ) {
+            $src = filter_input( INPUT_GET, 'dcsrc', FILTER_SANITIZE_STRING );
+        } else {
+            // default to bluerock - links from bluerock do not have the dcsrc param
+            $src = 'bluerock';
+        }
 
         // check if existing page for this context already exists
         $dc_post_id = self::does_dcpage_exist( $context );
         if ( false === $dc_post_id ) {
             // create a new draft page and set default block content
-            $dc_post_id = self::make_dc_page( $context );
+            $dc_post_id = self::make_dc_page( $context, $src );
         }
 
         // redirect link to page editor for this page
@@ -128,7 +136,7 @@ class Pages {
      * @param context:String - context of new page
      * @return - id of new post
      */
-    public static function make_dc_page( $context ) {
+    public static function make_dc_page( $context, $src ) {
         // get default content via proxy api
         $request  = new \WP_REST_Request( 'GET', '/newfold/v1/defaultcontent/pages' );
         $request->set_query_params( [ 'page' => $context, 'brand' => 'bluehost', 'lang' => 'en-US' ] );
@@ -146,9 +154,8 @@ class Pages {
             'post_title'   => $dc_post_title,
             'post_content' => $dc_post_content,
             'meta_input'   => array(
-                'nf_dc_src'  => 'test',
+                'nf_dc_src'  => $src,
                 'nf_dc_page' => $context,
-                'nf_dc_stat' => 'draft',
             ),
         );
         
@@ -303,9 +310,7 @@ class Pages {
             'post_content' => $cf_post_content,
             'post_status'  => 'publish',
             'meta_input'   => array(
-                'nf_dc_src'  => 'test',
                 'nf_dc_page' => $context,
-                'nf_dc_stat' => 'wpforms',
             ),
         );
         
