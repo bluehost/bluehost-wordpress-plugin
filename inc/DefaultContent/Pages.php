@@ -49,6 +49,7 @@ class Pages {
         add_action( 'wp_loaded', array( Pages::class, 'intercept_query_parameter' ) );
         add_action( 'rest_api_init', array( PagesRestController::class, 'init' ) );
         add_filter( 'dc_content_filter', array( Pages::class, 'dc_content_filter_callback' ), 10, 2 );
+        add_action( 'transition_post_status', array( Pages::class, 'dc_page_publish_callback' ), 10, 3 );
 	}
 
     /**
@@ -186,6 +187,26 @@ class Pages {
         }
 
         return $content;
+    }
+
+    /**
+     * Action hook for when pages are published
+     * 
+     * @param string  $new_status New post status.
+     * @param string  $old_status Old post status.
+     * @param WP_Post $post       Post object.
+     */
+    public static function dc_page_publish_callback( $new_status, $old_status, $post ) {
+        if ( 
+            ( 'publish' === $new_status && 'publish' !== $old_status ) // first published
+            && 'page' === $post->post_type // page post type
+            && 'home' === get_post_meta( $post->ID, 'nf_dc_page', true ) // home meta present
+        ) {
+            // update options to make front a static page
+            update_option( 'show_on_front', 'page' );
+            // set this as the front page by id
+            update_option( 'page_on_front', $post->ID );
+        }
     }
 
     /**
