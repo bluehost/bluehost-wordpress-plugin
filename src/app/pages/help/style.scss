@@ -1,7 +1,9 @@
 @import '@app/config.scss';
 
 body.bwa-help {
-  @extend %brand-color-footer;
+  #wpfooter {
+    display: none;
+  }
 }
 
 .page-help {
