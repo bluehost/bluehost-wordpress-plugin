@@ -16,7 +16,7 @@ export const StartHomepageStep = () => {
 	}
     return(
         <BaseStep>
-            <img src={homepageUrl} />
+            <img className="illustration" src={homepageUrl} alt={__("Person on lounge chair working on laptop.", 'bluehost-wordpress-plugin')}/>
             <p>{__('The homepage is what visitors will see when they visit', 'bluehost-wordpress-plugin')} <strong>{sprintf('%s', siteUrl)}</strong> {__('and is often the first contact your visitors have with your site.', 'bluehost-wordpress-plugin')}</p>
             <p>{__('By default this page shows the most recent posts you have made, and you can customize it to offer a better first experience for your visitors!', 'bluehost-wordpress-plugin')}</p>
             <BWAButton isPrimary href="post-new.php?dcpage=home&dcsrc=plugin">{__('Customize your homepage', 'bluehost-wordpress-plugin')}</BWAButton>

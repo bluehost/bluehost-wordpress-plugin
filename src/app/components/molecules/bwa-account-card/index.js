@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import userMenu from '@app/menus/user';
 import { BWABox, BWAHeading } from '@app/components/atoms';
+import classnames from 'classnames';
 
 import './style.scss';
 
@@ -15,7 +16,7 @@ const BWAAccountCard = ({ headingSize = 4 }) => {
             <div className="services-grid">
                 <ul className="services-list">
                     { userMenuItems.map((item) => (
-                        <li className={ ['tab'] } key={ item.href }>
+                        <li className={ classnames('tab', item.id)} key={ item.href }>
                             <a href={ item.href }>
                                 <span className={ ['account-icon is-svg-' + item.color] }><item.icon /></span>
                                 <p>{ item.label }</p>

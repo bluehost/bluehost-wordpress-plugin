@@ -19,7 +19,9 @@
 }
 
 .nf-onboarding__header {
-  
+  &-desc {
+    font-size: 16px;
+  }
 }
 
 .nf-onboarding__desktop {
@@ -29,6 +31,7 @@
     &__tabs {
       width: 240px;
       min-width: 240px;
+      flex-direction: column; // because Cypress being Cypress
     }
     &__tabs-item {
       text-align: left;

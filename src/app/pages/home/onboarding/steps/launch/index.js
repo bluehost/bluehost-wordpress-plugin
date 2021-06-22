@@ -44,7 +44,7 @@ export const LaunchStep = () => {
     const ComingSoon = () => {
         return (
             <Fragment>
-                <img src={launchUrl} alt="Man on spaceship with laptop" />
+                <img className="illustration" src={launchUrl} alt={__("Person on spaceship with laptop.", 'bluehost-wordpress-plugin')} />
                 <p>{__("Your site has a \"coming soon\" message, which lets people know you're working on it. Wondering if you’re ready to launch? Check out", 'bluehost-wordpress-plugin')} <a href='https://www.bluehost.com/help/article/website-publish-checklist?utm_content=onboarding_site_publish_checklist&utm_term=website%20pre-publishing&utm_source=wp-admin%2Fadmin.php%3Fpage%3Dbluehost%23%2Fhome%2Fonboarding&utm_medium=bluehost_plugin' target="_blank">{__('our website pre-publishing checklist', 'bluehost-wordpress-plugin')}</a> {__("and then launch with confidence!", 'bluehost-wordpress-plugin')}</p>
             </Fragment>
         )
@@ -53,7 +53,7 @@ export const LaunchStep = () => {
     const LiveSite = () => {
         return (
             <Fragment>
-                <img src={welcomeUrl} alt="Man on spaceship with laptop" />
+                <img className="illustration" src={welcomeUrl} alt={__("People jumping and celebrating.", 'bluehost-wordpress-plugin')} />
                 <p>{__("Nice going! Your website is now live to the internet for everyone to visit. Reach out anytime you need help or have questions about next steps!", 'bluehost-wordpress-plugin')}</p>
             </Fragment>
         )
@@ -78,9 +78,7 @@ export const LaunchStep = () => {
                 disabled={isLaunching}
             >
                 {sprintf('%s', buttonText)}
-            </BWAButton>
-            {/* {isLaunching && <BWASpinner micro />} */}
-            
+            </BWAButton>            
         </BaseStep>
     );
 }

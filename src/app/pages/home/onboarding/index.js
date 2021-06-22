@@ -127,7 +127,7 @@ export const Onboarding = () => {
 				<BWAHeading level="h2" size="welcome">
 					{ __( 'Welcome to your WordPress site!', 'bluehost-wordpress-plugin' ) }
 				</BWAHeading>
-				<p style={{ fontSize: '16px' }}>
+				<p className="nf-onboarding__header-desc">
 					{__("WordPress is the", 'bluehost-wordpress-plugin')} <a href="https://wordpress.org/about/features/" target="_blank">{__('most popular platform', 'bluehost-wordpress-plugin')}</a> {__('for building amazing websites.', 'bluehost-wordpress-plugin')}
 				</p>
 			</header>
@@ -144,12 +144,6 @@ export const Onboarding = () => {
 				<BWAAccountCard />
 				<BWAHelpCard />
 			</div>
-			{/* <div className="grid-col-2">
-				<BWABox>
-					<BWAHeading level="h3" size="product">{__("Latest from Bluehost", 'bluehost-wordpress-plugin')}</BWAHeading>
-					<BWABlogPosts location="plugin_home" />
-				</BWABox>
-			</div> */}
 		</BWACommonTemplate>
 	)
 }
