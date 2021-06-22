@@ -34,6 +34,7 @@
       flex-direction: column; // because Cypress being Cypress
     }
     &__tabs-item {
+      color: var(--bh-gray);
       text-align: left;
       border-left: 4px solid transparent;
       font-size: 1rem;
