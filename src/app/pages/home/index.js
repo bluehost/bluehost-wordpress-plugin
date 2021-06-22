@@ -3,7 +3,6 @@ import './style.scss';
 import { Redirect, useLocation } from 'react-router-dom';
 
 import { BWACommonTemplate } from '@app/components/templates';
-// import BWAContentList from './content';
 import { BWARedirect } from '@app/components/atoms';
 import {
 	DesignBuildSection,

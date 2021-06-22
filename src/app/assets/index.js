@@ -28,6 +28,7 @@ import { ReactComponent as Key } from '@app/assets/svg/key.svg';
 import { ReactComponent as Launch } from '@app/assets/illustrations/launch.svg';
 import { ReactComponent as LoadingLogo } from '@app/assets/illustrations/loading-logo.svg';
 import { ReactComponent as MagnifyingGlass } from '@app/assets/svg/magnifying-glass.svg';
+import { ReactComponent as MailIcon } from '@app/assets/svg/mail.svg';
 import { ReactComponent as MenuIcon } from '@app/assets/svg/menu.svg';
 import { ReactComponent as Multimedia } from '@app/assets/svg/multimedia.svg';
 import { ReactComponent as NoFavorites } from '@app/assets/svg/favorite.svg';
@@ -54,6 +55,7 @@ import { ReactComponent as UserIcon } from '@app/assets/svg/user.svg';
 import { ReactComponent as ValidationIcon } from '@app/assets/svg/validation.svg';
 import { ReactComponent as WarningIcon } from '@app/assets/svg/warning.svg';
 import WorkingImageUrl, { ReactComponent as WorkingImage } from '@app/assets/svg/working.svg';
+export { default as WelcomeIllustrationUrl } from '@app/assets/illustrations/welcome.svg';
 
 export {
 	About,
@@ -82,6 +84,7 @@ export {
 	Key,
 	Launch,
 	LoadingLogo,
+	MailIcon,
 	MagnifyingGlass,
 	MenuIcon,
 	Multimedia,

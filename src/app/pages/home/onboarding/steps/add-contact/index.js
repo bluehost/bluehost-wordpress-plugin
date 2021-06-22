@@ -8,7 +8,7 @@ export const AddContactStep = () => {
         <BaseStep>
             <img src={contactUrl} />
             <p>{__('It can be important for visitors to be able to get in touch with you. Adding a contact page to your site is easy and fast, and can both reduce visitor frustration as well as build confidence!', 'bluehost-wordpress-plugin')}</p>
-            <BWAButton isPrimary>{__('Add contact page', 'bluehost-wordpress-plugin')}</BWAButton>
+            <BWAButton isPrimary href="post-new.php?dcpage=contact&dcsrc=plugin">{__('Add contact page', 'bluehost-wordpress-plugin')}</BWAButton>
         </BaseStep>
     );
 }

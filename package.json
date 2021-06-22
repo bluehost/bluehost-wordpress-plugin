@@ -99,11 +99,6 @@
         "create:zip": "cd ./bluehost-wordpress-plugin && zip -r -9 ../bluehost-wordpress-plugin.zip . && ls -lh ../bluehost-wordpress-plugin.zip",
         "simulate-runner-build": "rm -rf ./bluehost-wordpress-plugin ./bluehost-wordpress-plugin.zip ./vendor && npm i && npm run build && npm run php-deps && npm run create:dist && npm run create:zip"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
     "lint-staged": {
         "**/*.yml": [
             "yamllint --ignore=node_modues/**"

@@ -1,149 +1,155 @@
 import './style.scss';
 
 import { __, sprintf } from '@wordpress/i18n';
-import { useDispatch, useSelect } from '@wordpress/data';
-import { TabPanel } from '@wordpress/components';
-import { LoadingLogo, Support } from '@app/assets';
-import closeUrl from '@app/assets/svg/close.svg';
+import { useViewportMatch } from '@wordpress/compose';
+import { dispatch, select } from '@wordpress/data';
+import { 
+	__experimentalNavigation as Navigation,
+	__experimentalNavigationMenu as NavigationMenu,
+	__experimentalNavigationItem as NavigationItem,
+	TabPanel 
+} from '@wordpress/components';
+import { LoadingLogo, Support, WelcomeIllustrationUrl } from '@app/assets';
 import { BWACommonTemplate } from '@app/components/templates';
 import { BWABox, BWAHeading, BWAButton } from '@app/components/atoms';
-import { BlogPosts } from '@dashboard/main';
+import { BWAAccountCard, BWAHelpCard, BWABlogPosts } from '@app/components/molecules';
 
-import { userTrigger } from '@app/functions';
-import { useState, useEffect, Fragment, Suspense, lazy } from '@wordpress/element';
+import { useState, useMemo, useCallback, Fragment, Suspense, lazy } from '@wordpress/element';
 import { delay, replace } from 'lodash';
 
-import AccountCard from '../account';
-
-import StartDefaultStep from './steps/start-homepage';
+import StartDefaultStep from './steps/add-homepage';
 import AddContactStep from './steps/add-contact';
 import AddAboutStep from './steps/add-about';
 import AddMoreContentStep from './steps/add-more-content';
 import LookRightStep from './steps/look-right';
 import LaunchStep from './steps/launch';
 
+const ONBOARDING_TABS = 'onboarding-tabs';
+
 export const Onboarding = () => {
-	const [onboardingState, setOnboardingState] = useState('first');
-	const dismissOnboarding = event => {
-		userTrigger(event, () => {
-			window.location.href = window.bluehostWpAdminUrl + 'admin.php?page=bluehost#/home';
-		})
+	const isLargeViewport = useViewportMatch('medium');
+	const [activeTab, setActiveTab] = useState(ONBOARDING_TABS);
+
+	const tabs = useMemo( 
+		() => [
+			{
+				name: 'start-homepage',
+				title: __('Start with your homepage', 'bluehost-wordpress-plugin'),
+				Content: StartDefaultStep,
+			},
+			{
+				name: 'add-contact',
+				title: __('Add contact page', 'bluehost-wordpress-plugin'),
+				Content: AddContactStep,
+			},
+			{
+				name: 'add-about',
+				title: __('Add about page', 'bluehost-wordpress-plugin'),
+				Content: AddAboutStep,
+			},
+			{
+				name: 'add-more-content',
+				title: __('Add more content', 'bluehost-wordpress-plugin'),
+				Content: AddMoreContentStep,
+			},
+			{
+				name: 'look-right',
+				title: __('Make it look just right', 'bluehost-wordpress-plugin'),
+				Content: LookRightStep,
+			},
+			{
+				name: 'launch',
+				title: __('Launch with confidence', 'bluehost-wordpress-plugin'),
+				Content: LaunchStep,
+			}
+		],
+		[ isLargeViewport ]
+	);
+
+	let onboardingContent;
+
+	if ( isLargeViewport ) {
+		onboardingContent = (
+			<TabPanel
+				className="nf-onboarding__desktop"
+				activeClass="is-active"
+				orientation="vertical"
+				initialTabName={
+					activeTab !== ONBOARDING_TABS ? activeTab : undefined
+				}
+				onSelect={ setActiveTab }
+				tabs={tabs}
+			>
+				{(tab) => {
+					return(
+						<Fragment>
+							<tab.Content />
+						</Fragment>	
+					)
+				}}	
+			</TabPanel>
+		);
+	} else {
+		onboardingContent = (
+			<Navigation
+				activeMenu={activeTab}
+				onActivateMenu={setActiveTab}
+				className="nf-onboarding__mobile"
+			>
+				<NavigationMenu menu={ONBOARDING_TABS}>
+					{tabs.map( (tab) => (
+						<NavigationItem 
+							key={tab.name}
+							title={tab.title}
+							navigateToMenu={tab.name}
+						/>
+					))}
+				</NavigationMenu>
+				{tabs.map( (tab) => {
+					return(
+						<NavigationMenu
+							key={`${tab.name}-menu`}
+							menu={tab.name}
+							title={tab.title}
+							parentMenu={ONBOARDING_TABS}
+						>
+							<NavigationItem><tab.Content /></NavigationItem>
+						</NavigationMenu>
+					)
+				})}
+			</Navigation>
+		);
 	}
 
-	if ( 'first' === onboardingState ) {
-		delay(() => {
-			setOnboardingState('loaded');
-		}, 300 );
-		return (
-			<BWACommonTemplate descriptivePageTitle={__('First Welcome', 'bluehost-wordpress-plugin')}>
-				<div style={{ margin: '5vw auto', maxWidth: '20vw', textAlign: 'center'}}>
-					<LoadingLogo />
-					<BWAHeading size={2}>Getting Setup</BWAHeading>
-					<p>Time to put your WordPress to work for you...</p>
-				</div>
-			</BWACommonTemplate>
-		)
-	}
 	return (
 		<BWACommonTemplate descriptivePageTitle={__('Onboarding', 'bluehost-wordpress-plugin')}>
-			<header className="bluehost-onboarding-page-header">
-					<BWAHeading level="h2" size="welcome">
-						{ __( 'Welcome to your WordPress site!', 'bluehost-wordpress-plugin' ) }
-					</BWAHeading>
-					
+			<header className="nf-onboarding__header">
+				<BWAHeading level="h2" size="welcome">
+					{ __( 'Welcome to your WordPress site!', 'bluehost-wordpress-plugin' ) }
+				</BWAHeading>
+				<p style={{ fontSize: '16px' }}>
+					{__("WordPress is the", 'bluehost-wordpress-plugin')} <a href="https://wordpress.org/about/features/" target="_blank">{__('most popular platform', 'bluehost-wordpress-plugin')}</a> {__('for building amazing websites.', 'bluehost-wordpress-plugin')}
+				</p>
 			</header>
 			<br />
-			<BWABox>
-				<button className='onboarding-close' onClick={dismissOnboarding} onKeyDown={dismissOnboarding}>
-					<img src={closeUrl}/>
-				</button>
+			<BWABox className="nf-onboarding__steps">
 				<BWAHeading level="h3" size="product">{__("Let's setup your site", 'bluehost-wordpress-plugin')}</BWAHeading>
 				<p style={{ fontSize: '16px' }}>
- 						{ __("Not sure how to get started? Here's what we recommend.", 'bluehost-wordpress-plugin') }
- 					</p>
-				{/* <br /> */}
-				<TabPanel
-					className="nf-onboarding-tabs"
-					activeClass="is-active"
-					orientation="vertical"
-					tabs={ [
-						{
-							name: 'start-homepage',
-							title: 'Start with your homepage',
-							Content: StartDefaultStep,
-						},
-						{
-							name: 'add-contact',
-							title: 'Add contact page',
-							Content: AddContactStep,
-						},
-						{
-							name: 'add-about',
-							title: 'Add about page',
-							Content: AddAboutStep,
-						},
-						{
-							name: 'add-more-content',
-							title: 'Add more content',
-							Content: AddMoreContentStep,
-						},
-						{
-							name: 'look-right',
-							title: 'Make it look just right',
-							Content: LookRightStep,
-						},
-						{
-							name: 'launch',
-							title: 'Launch with confidence',
-							Content: LaunchStep,
-						}
-					] }
-				>
-					{(tab) => {
-						return(
-							<Fragment>
-								<tab.Content />
-							</Fragment>	
-						)
-					}}	
-				</TabPanel>
+					{ __("Here's what we recommend before launching your site.", 'bluehost-wordpress-plugin') }
+				</p>
+				{onboardingContent}
 				<br />
 			</BWABox>
 			<div className="grid-col-2">
-				<AccountCard />
-				<BWABox>
-					<BWAHeading level="h3" size="product">{__("We're here to help", 'bluehost-wordpress-plugin')}</BWAHeading>
-					<div style={{ maxWidth: '300px', margin: '0 auto'}}>
-						<Support />
-					</div>
-					<BWAHeading level="h4" size={4}>From DIY to full-service help</BWAHeading>
-					<p>Feeling stuck? Call or chat 24/7, skill up with help articles or hire our experts to teach you or implement it for you.</p>
-					<BWAButton isSecondary href="#/help">Help Me</BWAButton>
-				</BWABox>
+				<BWAAccountCard />
+				<BWAHelpCard />
 			</div>
-			<div className="grid-col-2">
+			{/* <div className="grid-col-2">
 				<BWABox>
 					<BWAHeading level="h3" size="product">{__("Latest from Bluehost", 'bluehost-wordpress-plugin')}</BWAHeading>
-					<BlogPosts />
+					<BWABlogPosts location="plugin_home" />
 				</BWABox>
-				<BWABox>
-					<BWAHeading level="h3" size="product">{__("Follow Bluehost for news and tips", 'bluehost-wordpress-plugin')}</BWAHeading>
-					<div className="brand-email-subscribe">
-						<input id="newsletter" type="email" />
-						<button type="submit">Subscribe</button>
-					</div>
-					<div className="brand-social-accounts">
-						<ul>
-							<li><span className="dashicons dashicons-facebook" /> <span className="screen-reader-text">Facebook</span></li>
-							<li><span className="dashicons dashicons-twitter" /> <span className="screen-reader-text">Twitter</span></li>
-							<li><span className="dashicons dashicons-youtube" /> <span className="screen-reader-text">YouTube</span></li>
-							<li><span className="dashicons dashicons-linkedin" /> <span className="screen-reader-text">LinkedIn</span></li>
-							<li><span className="dashicons dashicons-pinterest" /> <span className="screen-reader-text">Pinterest</span></li>
-							<li><span className="dashicons dashicons-instagram" /> <span className="screen-reader-text">Instagram</span></li>
-						</ul>
-					</div>
-				</BWABox>
-			</div>
+			</div> */}
 		</BWACommonTemplate>
 	)
 }
@@ -184,11 +190,11 @@ export default Onboarding;
 // 		<BWACommonTemplate descriptivePageTitle={__('Onboarding', 'bluehost-wordpress-plugin')}>
 // 			<div className="bluehost-onboarding">
 
-// 				<header className="bluehost-onboarding-page-header">
-// 					<h2 className="bluehost-onboarding-page-header__title">
+// 				<header className="nf-onboarding__header">
+// 					<h2 className="nf-onboarding__header__title">
 // 						{ __('Welcome to your WordPress site', 'bluehost-wordpress-plugin') }
 // 					</h2>
-// 					<p className="bluehost-onboarding-page-header__description">
+// 					<p className="nf-onboarding__header__description">
 // 						{ __('Not sure how to get started? Here are a few options we recommend.', 'bluehost-wordpress-plugin') }
 // 					</p>
 // 				</header>

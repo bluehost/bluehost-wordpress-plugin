@@ -12,7 +12,6 @@ import {
 	BWAError,
 } from '@app/components/molecules';
 import { userTrigger } from '@app/functions';
-import { ENTER } from '@wordpress/keycodes';
 import { ErrorBoundary } from 'react-error-boundary';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
@@ -25,6 +24,7 @@ const AppBody = ( props ) => {
 
 	if ( ! isAppBooted ) {
 		dispatch( 'bluehost/plugin' ).fetchWindowData();
+		document.body.classList.add( 'is-booted' );
 		setAppBooted(true);
 	}
 

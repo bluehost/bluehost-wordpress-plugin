@@ -1,4 +1,5 @@
-import { select } from '@wordpress/data';
+import { select, useSelect } from '@wordpress/data';
+import { Fragment } from '@wordpress/element'
 import { BWAHeading, BWAButton } from '@app/components/atoms';
 import { BWAContentList, BWAContentListRow } from '@app/components/molecules';
 import { __ } from '@wordpress/i18n';
@@ -12,13 +13,17 @@ export const WelcomeSection = () => (
 			{ __( 'Welcome to your WordPress site!', 'bluehost-wordpress-plugin' ) }
 		</BWAHeading>
 		<p>{ __( 'From here, you can quickly add content to your site, manage for-sale products, work on your site\’s design and performance, manage hosting, and access tools to increase your traffic.', 'bluehost-wordpress-plugin' ) }</p>
+		<p>{ __( 'With WordPress powered by Bluehost, you get the freedom of WordPress with the support and expertise of our team.', 'bluehost-wordpress-plugin' ) }</p>
 	</div>
 );
 
 export const TrafficEngagementSection = () => {
-	if ( ! select( 'bluehost/plugin' ).isJetpackActive() ) {
-		return null;
-	}
+    const isJetpackActive = useSelect( select => {
+        return select('bluehost/plugin').isJetpackActive();
+    }, []);
+    if ( ! isJetpackActive ) {
+        return false;
+    }
     const SocialCard = () => {
         return (
             <BWAContentListRow
@@ -93,8 +98,11 @@ export const PerformanceSection = () => {
     );
     
     const SiteAcceleratorCard = () => {
-        if ( ! select( 'bluehost/plugin' ).isJetpackActive() ) {
-            return null;
+        const isJetpackActive = useSelect( select => {
+            return select('bluehost/plugin').isJetpackActive();
+        }, []);
+        if ( ! isJetpackActive ) {
+            return false;
         }
         return (
             <BWAContentListRow
@@ -277,7 +285,10 @@ export const ContentSection = () => {
     );
     
     const ProductsCard = () => {
-        if ( ! select( 'bluehost/plugin' ).isWooActive() ) {
+        const isWooActive = useSelect( select => {
+            return select('bluehost/plugin').isWooActive();
+        }, []);
+        if ( ! isWooActive ) {
             return null;
         }
         return (
@@ -297,7 +308,11 @@ export const ContentSection = () => {
     };
     
     const ReusableBlockCard = () => {
-        const wp = select( 'bluehost/plugin' ).getWP();
+
+        const wp = useSelect( select => {
+            return select('bluehost/plugin').getWP();
+        }, []);
+
         if ( wp.hasReusableBlocks ) {
             return (
                 <BWAContentListRow
@@ -319,13 +334,13 @@ export const ContentSection = () => {
     };
     return(
         <BWAContentList title={ __( 'Content', 'bluehost-wordpress-plugin' ) } className="content">
-            <>
+            <Fragment>
                 <PostsCard />
                 <PagesCard />
                 <ProductsCard />
                 <ReusableBlockCard />
                 <MenusCard />
-            </>
+            </Fragment>
         </BWAContentList>
     )
 };

@@ -1,6 +1,27 @@
 /* BLUEHOST STYLES CONFIG */
 @import '@app/config.scss';
 
+.nf-mobile-menu {
+  margin-top: 45px;
+  width: 100vw;
+  height: 100vh;
+  .components-modal__header {
+      height: 80px;
+      .components-button {
+          left: -8px;
+      }
+      .components-modal__header-heading-container {
+          background-image: url('../../../../assets/svg/bluehost.svg');
+          background-repeat: no-repeat;
+          height: 22.47px;
+          margin-left: -1px;
+          h1 {
+              font-size: 0;
+          }
+      }
+  }
+}
+
 .slideout-logo-wrap {
     svg {
         width: 148px;

@@ -11,13 +11,15 @@ export const StartHomepageStep = () => {
 		if ( adminUrl ) {
 			return filterURLForDisplay( replace( adminUrl, '/wp-admin', '') );
 		}
+
+        return false;
 	}
     return(
         <BaseStep>
             <img src={homepageUrl} />
-            <p>{sprintf(__('The homepage is what visitors will see when they visit %s and is often the first contact your visitors have with your site.', 'bluehost-wordpress-plugin'), siteUrl)}</p>
+            <p>{__('The homepage is what visitors will see when they visit', 'bluehost-wordpress-plugin')} <strong>{sprintf('%s', siteUrl)}</strong> {__('and is often the first contact your visitors have with your site.', 'bluehost-wordpress-plugin')}</p>
             <p>{__('By default this page shows the most recent posts you have made, and you can customize it to offer a better first experience for your visitors!', 'bluehost-wordpress-plugin')}</p>
-            <BWAButton isPrimary>{__('Customize your homepage', 'bluehost-wordpress-plugin')}</BWAButton>
+            <BWAButton isPrimary href="post-new.php?dcpage=home&dcsrc=plugin">{__('Customize your homepage', 'bluehost-wordpress-plugin')}</BWAButton>
         </BaseStep>
     );
 }

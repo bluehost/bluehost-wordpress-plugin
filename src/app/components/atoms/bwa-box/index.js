@@ -1,8 +1,9 @@
 import './style.scss'
+import classnames from 'classnames';
 
-export const BWABox = ({children}) => {
+export const BWABox = ({ className, children}) => {
     return (
-        <div className="bwa-box">
+        <div className={classnames('components-box', className)}>
             {children}
         </div>
     )

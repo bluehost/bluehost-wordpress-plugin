@@ -135,4 +135,14 @@ $body-font: $font;
   }
 }
 
+%brand-color-footer {
+  #wpfooter {
+    background-color: var(--nf-primary);
+    color: #fff;
+    a {
+      color: #fff;
+    }
+  }
+}
+
 

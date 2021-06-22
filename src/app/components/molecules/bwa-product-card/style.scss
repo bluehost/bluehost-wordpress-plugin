@@ -17,6 +17,9 @@
     flex-grow: 1;
     justify-content: space-between;
     padding: 16px;
+    a {
+      text-decoration: none;
+    }
   }
 
   &__image {

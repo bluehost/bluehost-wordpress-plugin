@@ -29,6 +29,7 @@
  #bwa-app {
    background-color: #f1f5f7;
    will-change: opacity;
+   min-height: calc(100vh + 100px);
    @extend .is-font;
    @extend .appFadeIn;
  }
@@ -48,7 +49,7 @@
    }
  }
 
- body:not(.bwa-is-tab-navigating) {
+ body:not(.is-tabbing) {
    .base-template:focus,
    a[aria-current="page"]:focus,
    a.bluehostTab:focus,

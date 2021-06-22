@@ -11,15 +11,18 @@ import {
 	BWAButton as Button,
 	BWANavLink as NavLink,
 } from '@app/components/atoms';
-import { dispatch, select } from '@wordpress/data';
+import { dispatch, useSelect } from '@wordpress/data';
 
-import { Popover } from '@wordpress/components';
-import { addUtmParams } from '@app/functions';
-import userMenuItems from '@app/menus/user';
-import { withState } from '@wordpress/compose';
+import { Modal } from '@wordpress/components';
+import { addUtmParams, userTrigger } from '@app/functions';
+import userMenu from '@app/menus/user';
+import { useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 const PrimaryMenu = () => {
-	const topLevelPages = select('bluehost/plugin').getTopLevelPages();
+	const topLevelPages = useSelect( select => {
+		return select('bluehost/plugin').getTopLevelPages();
+	});
 	return (
 		<ul className="main">
 			{ topLevelPages.map((item) => (
@@ -32,37 +35,53 @@ const PrimaryMenu = () => {
 	);
 };
 
-const UserMenu = () => (
-	<ul className="user">
-		{ userMenuItems.map((item) => (
-			<li className={ ['tab'] } key={ item.href }>
-				<a href={ item.href } className="is-active">
-					<span className={ ['menu-item-icon is-svg-' + item.color] }><item.icon /></span>
-					{ item.label }
-				</a>
-			</li>
-		)) }
-	</ul>
-);
-
-const MobileSidebar = withState({
-	isVisible: false,
-	userMenu: false,
-})(({isVisible, userMenu, setState}) => {
-	const toggleSidebarVisible = () => {
-		isVisible ? dispatch('bluehost/plugin').closeMobileSidebar() : dispatch('bluehost/plugin').openMobileSidebar();
-		setState(
-			(state) => {
-				return {isVisible: !state.isVisible};
-			}
-		);
-	};
-	const toggleMenuShown = () => {
-		setState((state) => ({userMenu: !state.userMenu}));
-	};
+const UserMenu = () => {
+	const userMenuItems = userMenu('mobile-menu');
 	return (
+		<ul className="user">
+			{ userMenuItems.map((item) => (
+				<li className={ ['tab'] } key={ item.href }>
+					<a href={ item.href } className="is-active">
+						<span className={ ['menu-item-icon is-svg-' + item.color] }><item.icon /></span>
+						{ item.label }
+					</a>
+				</li>
+			)) }
+		</ul>
+	);
+}
+
+const MobileSidebar = () => {
+	const [isVisible, setIsVisible] = useState(false);
+	const [isUserMenu, setIsUserMenu] = useState(false);
+
+	const toggleSidebar = event => {
+		userTrigger( event, () => {
+			setIsVisible(!isVisible);
+		})
+	}
+
+	const toggleMenuShown = event => {
+		userTrigger( event, () => {
+			setIsUserMenu(!isUserMenu);
+		})
+	}
+
+	if( isVisible ) {
+		return (
+			<Modal title={__('Bluehost', 'bluehost-wordpress-plugin')} onRequestClose={() => setIsVisible(false)} className="nf-mobile-menu">
+				{ isUserMenu && (
+				<UserMenu />
+			) || (
+				<PrimaryMenu />
+			) }
+			</Modal>
+		)
+	}
+
+	return(
 		<div className="bluehost-nav-wrap-element mobile-toggle">
-			<Button className="mobile-toggle" onClick={ toggleSidebarVisible }>
+			<Button className="mobile-toggle" onClick={ toggleSidebar } onKeyDown={toggleSidebar}>
 				{ !isVisible && (
 					<MenuIcon />
 				) || (
@@ -72,7 +91,7 @@ const MobileSidebar = withState({
 			{ isVisible && (
 				<Popover className="bluehost-mobile-menu" position="middle top" noArrow>
 					<div className="slideout-inner">
-						<div className="slideout-logo-wrap" onClick={ toggleSidebarVisible }>
+						<div className="slideout-logo-wrap" onClick={ toggleSidebar } onKeyDown={toggleSidebar}>
 							<BluehostLogo />
 						</div>
 						<div id="slideout-icons-wrap">
@@ -95,8 +114,8 @@ const MobileSidebar = withState({
 								<UserIcon onClick={ toggleMenuShown } />
 							</div>
 						</div>
-						<div className="slideout-menu-wrap" onClick={ toggleSidebarVisible }>
-							{ userMenu && (
+						<div className="slideout-menu-wrap" onClick={ toggleSidebar }>
+							{ isUserMenu && (
 								<UserMenu />
 							) || (
 								<PrimaryMenu />
@@ -107,7 +126,7 @@ const MobileSidebar = withState({
 			) }
 		</div>
 	);
-});
+}
 
 export default MobileSidebar;
 

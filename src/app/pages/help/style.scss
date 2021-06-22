@@ -1,5 +1,9 @@
 @import '@app/config.scss';
 
+body.bwa-help {
+  @extend %brand-color-footer;
+}
+
 .page-help {
   margin-top: 7px;
   
@@ -236,6 +240,8 @@
     align-items: center;
     justify-content: center;
     height: 124px;
+    padding-bottom: 50px;
+    margin-bottom: -100px;
 
     .call-to-action {
       display: flex;

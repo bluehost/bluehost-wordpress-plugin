@@ -1,5 +1,4 @@
-
-.wpadmin-brand-bluehost {
+:root {
     --bh-blue: #3575d3;
     --bh-pale-blue: #83c8fc;
     --bh-light-blue: #bee0f6;
@@ -22,7 +21,8 @@
 
     --nf-primary-font: var(--bh-font);
     --nf-heading-font: var(--bh-font);
-
+}
+.wpadmin-brand-bluehost {
     /* WORDPRESS CORE/COMPONENTS BRANDING */
     --wp-admin-theme-color: var(--nf-primary);
     --wp-admin-theme-color-darker-10: var(--nf-primary-darker-10);

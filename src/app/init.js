@@ -9,7 +9,7 @@ import { TAB } from '@wordpress/keycodes';
 const bwaDetectTabNavigating = () => {
 	const bwaHandleFirstTab = ( event ) => {
 		if ( event.keyCode === TAB ) {
-			document.body.classList.add( 'bwa-is-tab-navigating' );
+			document.body.classList.add( 'is-tabbing' );
 			window.removeEventListener( 'keydown', bwaHandleFirstTab );
 		}
 	}
