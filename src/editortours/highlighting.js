@@ -34,7 +34,7 @@ const unhighlightSinglePlaceholder = (evt) => {
         styleElement = document.createElement('style');
         styleElement.type = 'text/css';
         styleElement.id = 'style-' + id;
-        styleElement.innerText = 'span#' + id + '.nf-placeholder.nf-highlight { background-color: inherit; }';
+        styleElement.innerText = 'span#' + id + '.nf-placeholder.nf-highlight { background-color: inherit; color: inherit; }';
         document.getElementsByTagName('head')[0].appendChild(styleElement);
     }
 };
