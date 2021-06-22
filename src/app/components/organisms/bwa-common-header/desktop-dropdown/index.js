@@ -13,9 +13,9 @@ const Contents = () => {
 				<ul>
 					{ userMenuItems.map( ( item ) => (
 						<li key={ item.id }>
-							<a href={ item.href }>
+							<a href={ item.href } data-testid={'dropdown-' + item.id}>
 								<span className={ [ 'bluehost-nav-popup-nav-icon' ] }>
-									<span className={ [ 'menu-item-icon is-svg-' + item.color ] }><item.icon /></span> { item.label }
+									<span className={ [ 'menu-item-icon is-svg-' + item.color ] }><item.icon /></span> <span class="label">{ item.label }</span>
 								</span>
 							</a>
 						</li>

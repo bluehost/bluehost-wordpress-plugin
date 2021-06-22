@@ -23,7 +23,7 @@ export default function BWAProductCard(
 	const detailsUrl = '#/marketplace/' + props.type + '/' + props.id;
 	return (
 		<div className={ `product-card ${ className }` }>
-			<a href={detailsUrl}><div className="product-card__image" style={ style } /></a>
+			<a href={detailsUrl} aria-label={title}><div className="product-card__image" style={ style } /></a>
 			<div className="product-card__content">
 				<div className="product-card__details">
 					<a href={detailsUrl}>

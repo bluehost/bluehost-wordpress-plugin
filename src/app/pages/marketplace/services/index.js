@@ -29,6 +29,7 @@ function ServicesPage( { history } ) {
 	const renderCallback = ( { item, hasFavorite, toggleFavorite } ) => {
 		return (
 			<BWAProductCard
+				className={ item.id }
 				buttonPrimary={ { href: item.buy_url } }
 				buttonSecondary={ {
 					onClick: () => {

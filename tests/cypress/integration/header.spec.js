@@ -42,14 +42,14 @@ describe('App Header', function () {
 	});
 
 	it('Dropdown: "Bluehost Account"', () => {
-		cy.findByRole('link', {name: 'Bluehost Account'}).as('link');
+		cy.findByTestId('dropdown-account_link').as('link');
 		cy.get('@link').should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
 			.and('contains', 'https://my.bluehost.com/hosting/app');
 	});
 
 	it('Dropdown: "Billing"', () => {
-		cy.findByRole('link', {name: 'Billing'}).as('link');
+		cy.findByTestId('dropdown-billing_link').as('link');
 		cy.get('@link').should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
 			.and('contains', 'https://my.bluehost.com/hosting/account_center')
@@ -57,15 +57,23 @@ describe('App Header', function () {
 	});
 
 	it('Dropdown: "Products"', () => {
-		cy.findByRole('link', {name: 'Products'}).as('link');
+		cy.findByTestId('dropdown-products_link').as('link');
 		cy.get('@link').should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
 			.and('contains', 'https://my.bluehost.com/hosting/account_center')
 			.and('contains', '#products');
 	});
 
+	it('Dropdown: "Mail & Office"', () => {
+		cy.findByTestId('dropdown-mail_link').as('link');
+		cy.get('@link').should('be.visible');
+		cy.get('@link').should('have.attr', 'href')
+			.and('contains', 'https://my.bluehost.com/hosting/app')
+			.and('contains', 'email-office');
+	});
+
 	it('Dropdown: "Security"', () => {
-		cy.findByRole('link', {name: 'Security'}).as('link');
+		cy.findByTestId('dropdown-security_link').as('link');
 		cy.get('@link').should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
 			.and('contains', 'https://my.bluehost.com/hosting/account_center')
@@ -73,7 +81,7 @@ describe('App Header', function () {
 	});
 
 	it('Dropdown: "Validation Token"', () => {
-		cy.findByRole('link', {name: 'Validation Token'}).as('link');
+		cy.findByTestId('dropdown-validation_token_link').as('link');
 		cy.get('@link').should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
 			.and('contains', 'https://my.bluehost.com/cgi/token');
