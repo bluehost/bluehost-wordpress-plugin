@@ -67,18 +67,6 @@ const MobileSidebar = () => {
 		})
 	}
 
-	if( isVisible ) {
-		return (
-			<Modal title={__('Bluehost', 'bluehost-wordpress-plugin')} onRequestClose={() => setIsVisible(false)} className="nf-mobile-menu">
-				{ isUserMenu && (
-				<UserMenu />
-			) || (
-				<PrimaryMenu />
-			) }
-			</Modal>
-		)
-	}
-
 	return(
 		<div className="bluehost-nav-wrap-element mobile-toggle">
 			<Button className="mobile-toggle" onClick={ toggleSidebar } onKeyDown={toggleSidebar}>
@@ -89,40 +77,14 @@ const MobileSidebar = () => {
 				) }
 			</Button>
 			{ isVisible && (
-				<Popover className="bluehost-mobile-menu" position="middle top" noArrow>
-					<div className="slideout-inner">
-						<div className="slideout-logo-wrap" onClick={ toggleSidebar } onKeyDown={toggleSidebar}>
-							<BluehostLogo />
-						</div>
-						<div id="slideout-icons-wrap">
-							<div className="help">
-								<a
-									href={
-										addUtmParams(
-											'https://my.bluehost.com/hosting/help',
-											{
-												utm_content: 'mobile_help_link',
-												utm_term: 'Help',
-											}
-										)
-									}
-								>
-									<HelpIcon />
-								</a>
-							</div>
-							<div className="user-menu">
-								<UserIcon onClick={ toggleMenuShown } />
-							</div>
-						</div>
-						<div className="slideout-menu-wrap" onClick={ toggleSidebar }>
-							{ isUserMenu && (
-								<UserMenu />
-							) || (
-								<PrimaryMenu />
-							) }
-						</div>
-					</div>
-				</Popover>
+				<Modal title={__('Bluehost', 'bluehost-wordpress-plugin')} onRequestClose={() => setIsVisible(false)} className="nf-mobile-menu">
+					<Button className="user-toggle" onClick={toggleMenuShown} onKeyDown={toggleMenuShown}><UserIcon /></Button>
+					{ isUserMenu && (
+					<UserMenu />
+				) || (
+					<PrimaryMenu />
+				) }
+				</Modal>
 			) }
 		</div>
 	);

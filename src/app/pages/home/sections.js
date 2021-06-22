@@ -13,7 +13,6 @@ export const WelcomeSection = () => (
 			{ __( 'Welcome to your WordPress site!', 'bluehost-wordpress-plugin' ) }
 		</BWAHeading>
 		<p>{ __( 'From here, you can quickly add content to your site, manage for-sale products, work on your site\’s design and performance, manage hosting, and access tools to increase your traffic.', 'bluehost-wordpress-plugin' ) }</p>
-		<p>{ __( 'With WordPress powered by Bluehost, you get the freedom of WordPress with the support and expertise of our team.', 'bluehost-wordpress-plugin' ) }</p>
 	</div>
 );
 
@@ -313,7 +312,7 @@ export const ContentSection = () => {
             return select('bluehost/plugin').getWP();
         }, []);
 
-        if ( wp.hasReusableBlocks ) {
+        if ( 'undefined' !== typeof wp && wp.hasReusableBlocks ) {
             return (
                 <BWAContentListRow
                     icon="schedule"

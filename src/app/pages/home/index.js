@@ -19,11 +19,11 @@ const Home = () => {
 	const location = useLocation();
 
 	const daysSinceInstall = useSelect((select) => {
-		return select('bluehost/plugin').getBluehostPluginDaysSinceInstall();
+		return 'undefined' !== typeof select('bluehost/plugin') ? select('bluehost/plugin').getBluehostPluginDaysSinceInstall() : 31;
 	}, []);
 
 	const hasSiteLaunched = useSelect((select) => {
-		return ! select('bluehost/plugin').getSetting('comingSoon');
+		return 'undefined' !== typeof select('bluehost/plugin') ? ! select('bluehost/plugin').getSetting('comingSoon') : true;
 	}, []);
 
 	let showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
