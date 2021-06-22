@@ -22,7 +22,6 @@ class BuildAssets {
 	 */
 	private static $hookPrefix = 'bwp_';
 
-
 	/**
 	 * CSS dependencies required by @app.
 	 *

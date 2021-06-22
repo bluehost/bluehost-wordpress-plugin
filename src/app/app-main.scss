@@ -27,10 +27,9 @@
  }
 
  #bwa-app {
-   background-color: #f1f5f7;
+   background-color: var(--bh-bg-blue);
    will-change: opacity;
    min-height: calc(100vh + 100px);
-   @extend .is-font;
    @extend .appFadeIn;
  }
 
