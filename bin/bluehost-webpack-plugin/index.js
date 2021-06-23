@@ -52,6 +52,7 @@ const presetLicenseMaps = {
   'algoliasearch': 'MIT',
   'react-instantsearch-core': 'MIT',
   'react-instantsearch-dom': 'MIT',
+  'react-shepherd': 'MIT',
 };
 
 class BluehostWebpackPlugin {
