@@ -216,7 +216,7 @@ export const initHighlightEraser = () => {
         })
         if ( ! dbPlaceholders ) {
             const currentMeta = wp.data.select('core/editor').getEditedPostAttribute('meta');
-            wp.data.dispatch('core/editor').editPost({ meta: { ...currentMeta, 'nf_dc_placeholders': window.nfPlaceholders } });
+            wp.data.dispatch('core/editor').editPost({ meta: { ...currentMeta, 'nf_dc_placeholders': JSON.stringify(window.nfPlaceholders) } });
         }
     }
 }

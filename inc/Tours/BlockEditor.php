@@ -50,14 +50,16 @@ class BlockEditor {
 		if ( $this->trigger_context = $this->should_load_tours() ) {
 			add_action( 'load-post.php', array( $this, 'conditional_load_block_editor_tour' ) );
 		}
+
 		// register nf_dc_placeholders meta to expose it to rest api
 		register_meta( 
 			'post', 
 			'nf_dc_placeholders', 
 			array(
-				'type'         => 'array',
+				'type'         => 'string',
 				'description'  => 'Save initial placeholder id and text values for default content.',
 				'show_in_rest' => true,
+				'single'       => true,
 			)
 		);
 	}
