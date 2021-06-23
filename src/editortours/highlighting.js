@@ -34,7 +34,7 @@ const unhighlightSinglePlaceholder = (evt) => {
         styleElement = document.createElement('style');
         styleElement.type = 'text/css';
         styleElement.id = 'style-' + id;
-        styleElement.innerText = 'span#' + id + '.nf-placeholder.nf-highlight { background-color: inherit; color: inherit; }';
+        styleElement.innerText = 'span#' + id + '.nf-placeholder.nf-highlight, span#' + id + '.nf-placeholder.nf-highlight[data-rich-text-format-boundary] { background-color: inherit !important; color: inherit !important; }';
         document.getElementsByTagName('head')[0].appendChild(styleElement);
     }
 };
@@ -60,20 +60,23 @@ const rehighlightSinglePlaceholder = (id) => {
  */
 const scrubPlaceholders = ( all = false ) => {
     const blocks = select('core/block-editor').getBlocks();
+    const { nfPlaceholders } = window;
+
     let unedited = [];
     if ( blocks.length ) {
         const parser = new DOMParser();
-        blocks.forEach( async block => {
+        blocks.forEach( block => {
             switch(block.name) {
+                case 'core/heading':
                 case 'core/paragraph':
                     let blockDOM = parser.parseFromString(block.attributes.content, 'text/html');
                     let blockPlaceholders = blockDOM.querySelectorAll('.nf-placeholder');
                     if ( blockPlaceholders.length ) {
                         blockPlaceholders = Array.from(blockPlaceholders);
                         for (const placeholder of blockPlaceholders) {
-                            if ( placeholder.innerText !== window.nfPlaceholders[placeholder.id] || all ) {
+                            if ( ( 'object' === typeof nfPlaceholders && nfPlaceholders.hasOwnProperty(placeholder.id) && placeholder.innerText !== nfPlaceholders[placeholder.id] ) || all ) {
                                 rehighlightSinglePlaceholder(placeholder.id);
-                                await dispatch('core/block-editor').updateBlock(
+                                dispatch('core/block-editor').updateBlock(
                                     block.clientId,
                                     {
                                         attributes: {
@@ -88,28 +91,6 @@ const scrubPlaceholders = ( all = false ) => {
                             } else {
                                 unedited.push(placeholder.id);
                             }
-                        }
-                    }
-                    break;
-                case 'core/heading':
-                    if ( block.attributes.className.contains('nf-placeholder') ) {
-                        if ( block.attributes.content !== window.nfPlaceholders[block.attributes.id] || all ) {
-                            rehighlightSinglePlaceholder(block.attributes.id);
-                            await dispatch('core/block-editor').updateBlock(
-                                block.clientId,
-                                {
-                                    attributes: {
-                                        id: '',
-                                        classList: replace(
-                                            block.attributes.classList,
-                                            'nf-placeholder nf-highlight',
-                                            ''
-                                        )
-                                    }
-                                }
-                            )
-                        } else {
-                            unedited.push(block.attributes.id);
                         }
                     }
                     break;
@@ -148,6 +129,7 @@ const InnerValidationPanel = () => {
     // Must scrub modified placeholders first before counting what remains
     const [scrubResults, setScrubResults] = useState([]);
     const [isProcessing, setProcessing] = useState(true);
+    const { nfPlaceholders } = window;
     
     useEffect(() => {
         setScrubResults(scrubPlaceholders());
@@ -172,7 +154,7 @@ const InnerValidationPanel = () => {
                 </Notice>
                 <h4>{__("These placeholders haven't been edited", 'bluehost-wordpress-plugin')}:</h4>
                 <ul id="unedited">
-                    {scrubResults.map(id => <li key={id}>{window.nfPlaceholders[id]}</li>)}
+                    {scrubResults.map(id => <li key={id}>{nfPlaceholders[id]}</li>)}
                 </ul>
                 <ReinitializeTour />
             </Fragment>
@@ -212,18 +194,30 @@ export const PrePublishValidation = () => {
  */
 export const initHighlightEraser = () => {
     let placeholders = document.querySelectorAll('.nf-placeholder');
+    let dbPlaceholders = false;
+
+    if ( 'undefined' !== typeof window.nfPlaceholders ) {
+        dbPlaceholders = true;
+    } else {
+        window.nfPlaceholders = {};
+    }
     
     if (placeholders.length) {
         placeholders = Array.from(placeholders);
-        window.nfPlaceholders = {};
     }
 
     if (Array.isArray(placeholders)) {
         placeholders.forEach(node => {
-            window.nfPlaceholders[node.id] = node.innerText;
+            if ( ! dbPlaceholders ) {
+                window.nfPlaceholders[node.id] = node.innerText;
+            }
             node.addEventListener('click', unhighlightSinglePlaceholder);
             node.addEventListener('caretIn', unhighlightSinglePlaceholder);
         })
+        if ( ! dbPlaceholders ) {
+            const currentMeta = wp.data.select('core/editor').getEditedPostAttribute('meta');
+            wp.data.dispatch('core/editor').editPost({ meta: { ...currentMeta, 'nf_dc_placeholders': window.nfPlaceholders } });
+        }
     }
 }
 

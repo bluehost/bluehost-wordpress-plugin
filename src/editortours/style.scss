@@ -35,6 +35,9 @@ body.is-fullscreen-mode {
         transition: background-color 250ms ease-in-out;        
         background-color: #3575D3;
         color: #ffffff;
+        &[data-rich-text-format-boundary] {
+            background-color: #3575D3 !important;
+        }
     }
 }
 .shepherd-element {
