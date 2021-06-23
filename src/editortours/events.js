@@ -28,13 +28,14 @@ export const initEvents = (tourName, tour) => {
     disableLoader();
 
     const eventTracking = (context, category)  => {
-        let event = {
+        let data = {
             action: 'tour-' + context.tour.options.type,
             category: category,
             data: {
                 step: context.id
             }
         };
+        apiFetch({ path: '/bluehost/v1/notifications/events', method: 'POST', data });
     }
 
     const noticeConfig = {
