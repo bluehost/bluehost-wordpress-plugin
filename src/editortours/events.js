@@ -1,7 +1,7 @@
 import { select, dispatch } from '@wordpress/data';
 import { capitalize } from 'lodash';
 import { __ } from '@wordpress/i18n';
-import { apiFetch } from '@wordpress/api-fetch';
+import apiFetch from '@wordpress/api-fetch';
 import { initHighlightEraser } from './highlighting'
 
 const NOTICES_STORE = 'core/notices';
