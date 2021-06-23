@@ -3,7 +3,7 @@
 namespace Newfold\Plugin\Tours;
 
 use \__;
-use \Newfold\Plugin\DefaultContent\Pages;
+use \Bluehost\DefaultContent\Pages;
 
 /**
  * REST API Endpoint
@@ -13,7 +13,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
     /**
      * Register Editor Tours REST API Routes
      */
-    public function register_routes(, 'bluehost-wordpress-plugin') {
+    public function register_routes() {
         \register_rest_route(
             $this->namespace,
             '/' . $this->rest_base . '/tours/blockeditor',
