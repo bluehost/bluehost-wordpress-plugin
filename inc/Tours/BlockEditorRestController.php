@@ -308,7 +308,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
             ),
             array(
                 'id' => 'finish-cta',
-                'attachTo' => array( 'element' => '.wp-block.wp-block-buttons .wp-block-button', 'on' => 'auto' ),
+                'attachTo' => array( 'element' => '.wp-block.wp-block-buttons .wp-block-button', 'on' => 'right' ),
                 'scrollTo' => true,
                 'buttons' => array(
                     Shared::secondary_button('Back', ''),

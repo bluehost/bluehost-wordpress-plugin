@@ -137,6 +137,9 @@ body.is-fullscreen-mode { // gutenberg fullscreen class
     &[data-shepherd-step-id="inserter-opened"] {
         left: 20px !important;
     }
+    &[data-shepherd-step-id="finish-cta"] {
+        left: 20px !important;
+    }
 }
 .shepherd-enabled.shepherd-element {
     opacity: 1;
