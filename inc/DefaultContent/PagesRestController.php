@@ -58,7 +58,7 @@ class PagesRestController extends BaseHiiveController {
                 <!-- /wp:group -->
 
                 <!-- wp:heading {"level":1,"id":"nf-1","className":"nf-placeholder nf-highlight"} -->
-                <h1 id="nf-1" class="nf-placeholder nf-highlight">Name/Company Name</h1>
+                <h1><span id="nf-1" class="nf-placeholder nf-highlight">Name/Company Name</span></h1>
                 <!-- /wp:heading -->
 
                 <!-- wp:paragraph -->
