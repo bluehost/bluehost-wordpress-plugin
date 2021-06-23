@@ -75,7 +75,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
      * @return array
      */
     private function steps_about_page() {
-        $about_image = '<img src="https://cdn.hiive.space/bluehost/about-page.svg" alt="' . \_e('People around monitor working and pointing.', 'bluehost-wordpress-plugin') . '" height="340" width="auto" style="display:block;margin:0 auto;" />';
+        $about_image = '<img src="https://cdn.hiive.space/bluehost/about-page.svg" alt="' . \__('People around monitor working and pointing.', 'bluehost-wordpress-plugin') . '" height="340" width="auto" style="display:block;margin:0 auto;" />';
 
         return array(
             array(
@@ -148,7 +148,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
      * @return array
      */
     private function steps_contact_page() {
-        $contact_image = '<img src="https://cdn.hiive.space/bluehost/contact-page.svg" alt="' . \_e('Person throwing paper airplanes.', 'bluehost-wordpress-plugin') . '" height="340" width="auto" style="display:block;margin:0.5rem auto;" />';
+        $contact_image = '<img src="https://cdn.hiive.space/bluehost/contact-page.svg" alt="' . \__('Person throwing paper airplanes.', 'bluehost-wordpress-plugin') . '" height="340" width="auto" style="display:block;margin:0.5rem auto;" />';
         return array(
             array(
                 'id' => 'intro',
@@ -250,7 +250,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
         <?php
         $mostly_sharing = ob_get_clean();
 
-        $home_image = '<img src="https://cdn.hiive.space/bluehost/home-page.svg" alt="' . \_e('Person on lounge chair working on laptop.', 'bluehost-wordpress-plugin') . '" height="340" width="auto" />';
+        $home_image = '<img src="https://cdn.hiive.space/bluehost/home-page.svg" alt="' . \__('Person on lounge chair working on laptop.', 'bluehost-wordpress-plugin') . '" height="340" width="auto" />';
 
         return array(
             array(
@@ -308,7 +308,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
             ),
             array(
                 'id' => 'finish-cta',
-                'attachTo' => array( 'element' => '.wp-block.wp-block-buttons', 'on' => 'auto' ),
+                'attachTo' => array( 'element' => '.wp-block.wp-block-buttons .wp-block-button', 'on' => 'auto' ),
                 'scrollTo' => true,
                 'buttons' => array(
                     Shared::secondary_button('Back', ''),
