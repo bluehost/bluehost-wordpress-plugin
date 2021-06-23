@@ -58,7 +58,7 @@ const rehighlightSinglePlaceholder = (id) => {
  * @param {bool} all 
  * @returns {true|array|null}
  */
-const scrubPlaceholders = ( all = false ) => {
+export const scrubPlaceholders = ( all = false ) => {
     const blocks = select('core/block-editor').getBlocks();
     const { nfPlaceholders } = window;
 
@@ -230,5 +230,6 @@ export const initHighlightEraser = () => {
 export default {
     setupCaretEvents,
     initHighlightEraser,
-    PrePublishValidation
+    PrePublishValidation,
+    scrubPlaceholders
 }

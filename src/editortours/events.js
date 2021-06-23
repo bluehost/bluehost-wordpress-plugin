@@ -2,7 +2,7 @@ import { select, dispatch } from '@wordpress/data';
 import { capitalize } from 'lodash';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
-import { initHighlightEraser } from './highlighting'
+import { initHighlightEraser, scrubPlaceholders } from './highlighting'
 
 const NOTICES_STORE = 'core/notices';
 const TOUR_NOTICE_ID = 'newfold-tour-notice';
@@ -22,6 +22,7 @@ export const initEvents = (tourName, tour) => {
     const disableLoader = () => {
         const loader = document.getElementById('newfold-editortours-loading');
         if ( loader ) {
+            scrubPlaceholders();
             loader.classList.add('loaded');
         }
     }

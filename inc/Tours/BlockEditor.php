@@ -144,20 +144,14 @@ class BlockEditor {
 		if ( false === $this->trigger_context ) {
 			return;
 		}
-		if ( 1 === $this->trigger_context ) {
 		?>
 			<div id="newfold-editortours-loading">
 				<div class="inner">
 					<div class="bwa-loader"></div>
-					<p><?php \_e('Loading Default', 'bluehost-wordpress-plugin'); ?> <?php echo ucfirst( \esc_html( $this->tour_context ) ); ?> <?php \_e('Page', 'bluehost-wordpress-plugin'); ?>...</p>
+					<p><?php \_e('Loading ', 'bluehost-wordpress-plugin'); ?> <?php echo ucfirst( \esc_html( $this->tour_context ) ); ?> <?php \_e('Page', 'bluehost-wordpress-plugin'); ?>...</p>
 				</div>
 			</div>
-		<?php 
-		}
-		if ( is_int( $this->trigger_context ) ) {
-		?>
 			<div id="newfold-editortours"></div>
 		<?php
-		}
 	}
 }
