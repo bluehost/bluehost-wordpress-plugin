@@ -13,7 +13,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
     /**
      * Register Editor Tours REST API Routes
      */
-    public function register_routes() {
+    public function register_routes(, 'bluehost-wordpress-plugin') {
         \register_rest_route(
             $this->namespace,
             '/' . $this->rest_base . '/tours/blockeditor',
@@ -108,7 +108,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::secondary_button()
                 ),
                 'title' => __( 'Find the building blocks you\'ll need', 'bluehost-wordpress-plugin' ),
-                'text' => Shared::step( __('The Block Inserter contains your toolkit with text & media blocks, plus common layouts called Block Patterns: <strong>Click the button now to open the Block Inserter</strong>.') ),
+                'text' => Shared::step( __('The Block Inserter contains your toolkit with text & media blocks, plus common layouts called Block Patterns: <strong>Click the button now to open the Block Inserter</strong>.', 'bluehost-wordpress-plugin') ),
             ),
             array(
                 'id' => 'inserter-opened',
@@ -285,7 +285,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::secondary_button('Mostly selling', ''),
                     Shared::secondary_button('Mostly sharing', '')
                 ),
-                'title' => __('For this next section, help us understand your primary goal'),
+                'title' => __('For this next section, help us understand your primary goal', 'bluehost-wordpress-plugin'),
                 'text' => Shared::step('Is your main goal to sell a product or service? Or are you primarily sharing stories or information?')
             ),
             array(
@@ -294,7 +294,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::secondary_button(),
                     Shared::primary_button('Next', '')
                 ),
-                'title' => __("Great, let's put your website to work for you"),
+                'title' => __("Great, let's put your website to work for you", 'bluehost-wordpress-plugin'),
                 'text' => Shared::step( $mostly_selling )
             ),
             array(
@@ -303,7 +303,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::secondary_button('Back', ''),
                     Shared::primary_button()
                 ),
-                'title' => __("Great, let's tell your story"),
+                'title' => __("Great, let's tell your story", 'bluehost-wordpress-plugin'),
                 'text' => Shared::step( $mostly_sharing )
             ),
             array(
@@ -314,7 +314,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::secondary_button('Back', ''),
                     Shared::primary_button('Get Started', 'complete')
                 ),
-                'title' => __("Guide users to your primary goal with a 'Call-to-Action' button"),
+                'title' => __("Guide users to your primary goal with a 'Call-to-Action' button", 'bluehost-wordpress-plugin'),
                 'text' => Shared::step( __('This can be a button or link that directs people to their next steps. Depending on your site, this might be anything from contacting you, to setting up an appointment, looking at products, making a purchase, or subscribing to your blog or newsletter.', 'bluehost-wordpress-plugin' ) )
             )
         );
