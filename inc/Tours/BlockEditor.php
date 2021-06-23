@@ -80,10 +80,6 @@ class BlockEditor {
 		// so this mostly just initializes stylesheet, validation and scrubbing logic
 		if ( $post_id && ! empty( $this->tour_context = \get_post_meta( $post_id, 'nf_dc_page', true ) ) ) {
 			if ( $status = \get_post_status( $post_id ) ) {
-				if ( 'publish' === $status ) {
-					return false;
-				}
-				
 				return 2;
 			}
 		}
