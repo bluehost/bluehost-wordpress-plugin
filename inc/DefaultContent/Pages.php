@@ -47,10 +47,15 @@ class Pages {
 	 */
 	protected function primary_init() {
         add_action( 'wp_loaded', array( Pages::class, 'intercept_query_parameter' ) );
-        add_action( 'rest_api_init', array( PagesRestController::class, 'init' ) );
+        add_action( 'rest_api_init', array( Pages::class, 'rest_api_init' ) );
         add_filter( 'dc_content_filter', array( Pages::class, 'dc_content_filter_callback' ), 10, 2 );
         add_action( 'transition_post_status', array( Pages::class, 'dc_page_publish_callback' ), 10, 3 );
 	}
+
+    public static function rest_api_init() {
+        $api = new PagesRestController();
+        $api->register_routes();
+    }
 
     /**
      * Manage dcpage param

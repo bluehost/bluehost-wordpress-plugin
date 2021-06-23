@@ -14,14 +14,14 @@ class PagesRestController extends BaseHiiveController {
      *
      * @return void
      */
-    public static function init() {
+    public function register_routes() {
         \register_rest_route( 
             'newfold/v1', 
             '/defaultcontent/pages', 
             array(
                 'methods' => \WP_REST_Server::READABLE,
-                'callback' => array( PagesRestController::class, 'callback' ),
-                'permission_callback' => '__return_true',
+                'callback' => array( $this, 'callback' ),
+                'permission_callback' => array( $this, 'has_permission' ),
                 'args' => array(
                     'page' => array(
                         'type'              => 'string',
@@ -36,11 +36,20 @@ class PagesRestController extends BaseHiiveController {
     }
 
     /**
+     * Undocumented function
+     *
+     * @return boolean
+     */
+    public function has_permission() {
+        return \current_user_can('edit_posts');
+    }
+
+    /**
      * Endpoint callback
      * 
      * @param $request WP_REST_Request
      */
-    public static function callback( \WP_REST_Request $request ) {
+    public function callback( \WP_REST_Request $request ) {
         $page = $request['page'];
 
         $title   = null;
