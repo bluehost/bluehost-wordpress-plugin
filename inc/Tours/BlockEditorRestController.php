@@ -3,7 +3,7 @@
 namespace Newfold\Plugin\Tours;
 
 use \__;
-use \Bluehost\DefaultContent\Pages;
+use \Newfold\Plugin\DefaultContent\Pages;
 
 /**
  * REST API Endpoint
