@@ -22,6 +22,7 @@ export default function ThemesPage() {
 				id={ item.id }
 				imageUrl={ item.images.preview_url }
 				isFavorite={ hasFavorite( item.id ) }
+				type={ item.marketplaceType }
 				key={ item.id }
 				price={ item.prices.single_domain_license }
 				title={ item.name }

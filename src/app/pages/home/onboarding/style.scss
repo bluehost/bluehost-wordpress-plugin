@@ -1,137 +1,94 @@
 @import '@app/config.scss';
 
-.bluehost-onboarding {
-
-  line-height: 24px;
-
-  a {
-    color: #2C6CC9;
+.grid-col-2 {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2,minmax(0,1fr));
   }
+  margin-top: 2rem;
+  grid-gap: 2rem;
+}
 
-  &-page-header {
-    &__title {
-      font-size: 32px;
-      font-weight: 300;
-      line-height: 40px;
-    }
-
-    &__description {
-      margin-bottom: 30px;
-    }
+.nf-onboarding__loading {
+  text-align: center;
+  margin: 5vw auto;
+  @media screen and (min-width: $menu-breakpoint) {
+    max-width: 25vw;
   }
+}
 
-  &-page-content {
-
+.nf-onboarding__header {
+  &-desc {
+    font-size: 16px;
   }
+}
 
-  &-page-footer {
-
-    padding-top: 22px;
-
-    &__title {
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 32px;
+.nf-onboarding__desktop {
+  display: flex;
+  flex-direction: row;
+  .components-tab-panel {// const { TabPanel } = require('@wordpress/components')
+    &__tabs {
+      width: 240px;
+      min-width: 240px;
+      flex-direction: column; // because Cypress being Cypress
     }
-
-    &__content {
-
-    }
-  }
-
-  &-steps {
-
-  }
-
-  &-step {
-    background-color: $color-white;
-    border-radius: 0 3px 3px 0;
-    box-shadow: 0 2px 5px 0 rgba(42, 47, 69, 0.08), 0 1px 1.5px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
-    margin: 0 0 18px 55px;
-    padding: 20px 20px 20px 75px;
-    position: relative;
-
-    &__image {
-      position: absolute;
-      width: 110px;
-      height: 110px;
-      top: calc(50% - 55px);
-      left: -55px;
-    }
-
-    &__title {
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 32px;
-    }
-
-    &__description {
-      max-width: 500px;
-      margin: 0 0 1rem 0;
-    }
-
-    &__actions {
-      display: flex;
-      justify-content: space-between;
-
-      a:only-child,
-      button:only-child {
-        margin-left: auto;
+    &__tabs-item {
+      color: var(--bh-gray);
+      text-align: left;
+      border-left: 4px solid transparent;
+      font-size: 1rem;
+      &.is-active {
+        border-left-color: var(--nf-primary);
+        color: var(--nf-primary);
+        box-shadow: none;
+        font-weight: 500;
       }
-
-      .components-button.is-link {
-        margin: 0;
-        padding-left: 0 !important;
-        font-weight: 600;
+      &:focus:not(:disabled),
+      &:hover:not(:disabled) {
+        // box-shadow: inset 0 0 0 var(--wp-admin-border-width-focus) var(--wp-admin-theme-color);
+        box-shadow: none;
+        color: var(--nf-primary);
       }
     }
-
-    &.--launch {
-      border-left: 4px solid $color-orange;
-    }
-
-    &.--launched {
-      border-left: 4px solid $color-green;
-    }
-
-    &.--homepage-complete {
-      border-left: 4px solid $color-green;
-    }
-
-    &.--homepage-open {
-      .bluehost-onboarding-step__content {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        margin: 2rem auto 0 auto;
-        width: max-content;
-      }
-
-      .icon-collection {
-        align-self: stretch;
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 30px;
-      }
-
-      .icon-block {
-        background: none;
-        border: none;
-        outline: none;
-
-        p {
-          color: #3575D3;
-          font-size: 16px;
-          font-weight: 600;
-          letter-spacing: 0;
-          line-height: 24px;
-          text-align: center;
-          margin: 0;
-        }
-      }
-
+    &__tab-content {
+      padding-left: 1rem;
+      margin: 0 auto;
     }
   }
+}
 
+.nf-onboarding-base-step {
+  max-width: 735px;
+  img {
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    max-width: 425px;
+    max-height: 320px;
+  }
+  p {
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+}
+
+div.nf-onboarding__mobile {
+  background-color: transparent;
+  padding: 0;
+  // const { Navigation } = require('@wordpress/components')
+  .components-navigation__item-title,
+  .components-navigation__menu-title-heading,
+  .components-navigation__back-button,
+  .nf-onboarding-base-step p {
+    color: #545454;
+  }
+  .components-navigation__item-title,
+  .components-navigation__back-button {
+    &:active:not(:disabled),
+    &:focus:not(:disabled),
+    &:hover:not(:disabled) {
+      color: var(--nf-primary);
+    }
+  }
 }

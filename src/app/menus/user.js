@@ -7,6 +7,7 @@ import { __ } from '@wordpress/i18n';
  */
 import {
 	BillingIcon,
+	MailIcon,
 	ProductsIcon,
 	SecurityIcon,
 	UserIcon,
@@ -19,65 +20,64 @@ import { addUtmParams } from '@app/functions';
  */
 const url = 'https://my.bluehost.com/hosting/';
 
-export default [
+let base = [
 	{
 		icon: UserIcon,
-		href: addUtmParams(
-			url + 'app',
-			{
-				utm_content: 'header_account_link',
-				utm_term: 'Bluehost Account',
-			}
-		),
+		id: 'account_link',
+		href: url + 'app',
 		label: __('Bluehost Account', 'bluehost-wordpress-plugin'),
 		color: 'gray',
 	},
 	{
 		icon: BillingIcon,
-		href: addUtmParams(
-			url + 'account_center#billing',
-			{
-				utm_content: 'header_billing_link',
-				utm_term: 'Billing',
-			}
-		),
+		id: 'billing_link',
+		href: url + 'account_center#billing',
 		label: __('Billing', 'bluehost-wordpress-plugin'),
 		color: 'blue',
 	},
 	{
 		icon: ProductsIcon,
-		href: addUtmParams(
-			url + 'account_center#products',
-			{
-				utm_content: 'header_products_link',
-				utm_term: 'Products',
-			}
-		),
+		id: 'products_link',
+		href: url + 'account_center#products',
 		label: __('Products', 'bluehost-wordpress-plugin'),
 		color: 'dark-blue',
 	},
 	{
+		icon: MailIcon,
+		id: 'mail_link',
+		href: url + 'app#/email-office',
+		label: __('Mail & Office', 'bluehost-wordpress-plugin'),
+		color: 'black',
+	},
+	{
 		icon: SecurityIcon,
-		href: addUtmParams(
-			url + 'account_center#security',
-			{
-				utm_content: 'header_security_link',
-				utm_term: 'Security',
-			}
-		),
+		id: 'security_link',
+		href: url + 'account_center#security',
 		label: __('Security', 'bluehost-wordpress-plugin'),
 		color: 'green',
 	},
 	{
 		icon: ValidationIcon,
-		href: addUtmParams(
-			'https://my.bluehost.com/cgi/token',
-			{
-				utm_content: 'header_validation_token_link',
-				utm_term: 'Validation Token',
-			}
-		),
+		id: 'validation_token_link',
+		href: 'https://my.bluehost.com/cgi/token',
 		label: __('Validation Token', 'bluehost-wordpress-plugin'),
 		color: 'orange',
 	},
 ];
+
+const userMenu = ( location ) => {
+	return base.map( item => {
+		return {
+			...item, 
+			href: addUtmParams(
+				item.href, 
+				{
+					utm_content: location + '_' + item.id,
+					utm_term: item.label
+				}
+			)
+		}
+	})
+}
+
+export default userMenu;

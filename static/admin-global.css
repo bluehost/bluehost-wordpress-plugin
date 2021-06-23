@@ -1,3 +1,7 @@
+#newfold-brand-version {
+  float: right;
+}
+
 li#toplevel_page_bluehost > ul > li.wp-first-item {
     display: none !important;
 }

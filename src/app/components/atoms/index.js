@@ -1,3 +1,4 @@
+export { default as BWABox } from './bwa-box'
 export { default as BWAButton } from './bwa-button';
 export { default as BWAHeading } from './bwa-heading';
 export { default as BWANavLink } from './bwa-nav-link';

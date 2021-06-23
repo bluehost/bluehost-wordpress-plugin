@@ -3,13 +3,15 @@ import './style.scss';
 import { Redirect, useLocation } from 'react-router-dom';
 
 import { BWACommonTemplate } from '@app/components/templates';
-import BWAContentList from './content';
 import { BWARedirect } from '@app/components/atoms';
-import DesignBuildSection from './design-build';
-import HostingSection from './hosting';
-import PerformanceSection from './performance';
-import TrafficEngagementSection from './traffic-engagement';
-import Welcome from './welcome';
+import {
+	DesignBuildSection,
+	HostingSection,
+	PerformanceSection,
+	TrafficEngagementSection,
+	ContentSection,
+	WelcomeSection
+} from './sections'
 import { __ } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
 
@@ -17,11 +19,13 @@ const Home = () => {
 	const location = useLocation();
 
 	const daysSinceInstall = useSelect((select) => {
-		return select('bluehost/plugin').getBluehostPluginDaysSinceInstall();
+		const plugin = select('bluehost/plugin');
+		return 'undefined' !== typeof plugin && plugin.hasOwnProperty('getBluehostPluginDaysSinceInstall') ? select('bluehost/plugin').getBluehostPluginDaysSinceInstall() : 31;
 	}, []);
 
 	const hasSiteLaunched = useSelect((select) => {
-		return ! select('bluehost/plugin').getSetting('comingSoon');
+		const plugin = select('bluehost/plugin');
+		return 'undefined' !== typeof plugin && plugin.hasOwnProperty('getSetting') ? ! select('bluehost/plugin').getSetting('comingSoon') : true;
 	}, []);
 
 	let showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
@@ -35,8 +39,8 @@ const Home = () => {
 			: (
 				<BWACommonTemplate descriptivePageTitle={__('Home', 'bluehost-wordpress-plugin')}>
 					<div className="page-home__container">
-						<Welcome />
-						<BWAContentList />
+						<WelcomeSection />
+						<ContentSection />
 						<DesignBuildSection />
 						<TrafficEngagementSection />
 						<PerformanceSection />

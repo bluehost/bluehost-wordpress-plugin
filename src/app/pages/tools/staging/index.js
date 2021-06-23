@@ -83,7 +83,6 @@ export default function StagingPage() {
 
 	return (
 		<BWACommonTemplate className="bluehost-staging">
-			{/* <Notification /> */}
 			<BWAHeading level="h2" size={ 1 } className="is-page-title">{ __( 'Staging', 'bluehost-wordpress-plugin' ) }</BWAHeading>
 			<p>{ __( 'A staging site is a copy of your site where you can safely test changes before publishing them to your production site. It gives you a way to try new things, test updates, and then deploy them when you\'re ready.', 'bluehost-wordpress-plugin' ) }</p>
 
@@ -154,7 +153,7 @@ export default function StagingPage() {
 								{ __( 'This is an unpublished copy of your website.', 'bluehost-wordpress-plugin' ) }
 							</p>
 							<BWAEnvironmentCard
-								color="red"
+								color="black"
 								deploymentActionsComponent={ (
 									<BWADropdownButton
 										disabled={ isProduction }

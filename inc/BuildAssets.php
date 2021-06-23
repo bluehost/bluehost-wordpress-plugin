@@ -27,7 +27,8 @@ class BuildAssets {
 	 *
 	 * @var array
 	 */
-	private static $appCssDependencies = array( 'wp-components', 'bluehost-font' );
+
+	private static $appCssDependencies = array( 'wp-components', 'wpadmin-brand-bluehost' );
 
 	/**
 	 * Run asset registration globally. Use self::enqueue() in scoped contexts.
@@ -58,7 +59,9 @@ class BuildAssets {
 
 	public static function admin_global_enqueue( $hook ) {
 		\wp_enqueue_style( 'bluehost-admin-global' );
-		\wp_dequeue_style( 'jquery-migrate' );
+		if ( 'local' === wp_get_environment_type() ) {
+			\wp_dequeue_style( 'jquery-migrate' );
+		}
 	}
 
 	public static function externals() {
@@ -83,8 +86,8 @@ class BuildAssets {
 		);
 
 		wp_register_style(
-			'bluehost-font',
-			'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600',
+			'wpadmin-brand-bluehost',
+			$url . 'static/wpadmin-brand-bluehost.css',
 			array(),
 			empty( $min ) ? $rand : BLUEHOST_PLUGIN_VERSION
 		);

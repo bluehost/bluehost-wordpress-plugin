@@ -1,5 +1,5 @@
 const BWACommonFooter = ({ ...props}) => (
-	<footer tabIndex="-1" style={{ position: 'absolute', bottom: '5px', marginTop: '4rem', width: '100%'}}>
+	<footer tabIndex="-1" style={{ textAlign: 'center' }}>
 	</footer>
 );
 

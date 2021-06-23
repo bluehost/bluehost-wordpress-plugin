@@ -24,13 +24,17 @@ import { __, sprintf } from '@wordpress/i18n';
 import { BWACommonTemplate as Page } from '@app/components/templates';
 import ReactPlayer from "react-player";
 import blueSkyGroup from '@app/assets/blue-sky-group.png';
+import { addUtmParams } from '@app/functions';
 
 const BlueSky = () => {
 	return (
 		<Page className="page-blue-sky">
+			<div className="bluesky-menu-backdrop" />
 			<BWAHeading level="h2" size={ 0 }>{ __('Blue Sky', 'bluehost-wordpress-plugin') }</BWAHeading>
 			<div className="section-logo">
-				<BlueSkyLogo />
+				<a href={addUtmParams('https://my.bluehost.com/cgi/app/#/marketplace/product/i/bluesky')} aria-label={__('Blue Sky service logo', 'bluehost-wordpress-plugin')}>
+					<BlueSkyLogo />
+				</a>
 			</div>
 			<div className="section-intro">
 				<div className="media-block">

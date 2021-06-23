@@ -1,38 +1,51 @@
 /* BLUEHOST STYLES CONFIG */
 @import '@app/config.scss';
 
-.slideout-logo-wrap {
-    svg {
-        width: 148px;
-        height: 24px;
-        float: left;
-        padding-top: 28px;
-        padding-left: 24px;
-    }
-}
-
-#slideout-icons-wrap {
-    margin-top: 24px;
-    margin-right: 24px;
+.nf-mobile-menu {
+  margin-top: 45px;
+  width: 100vw;
+  height: 100vh;
+  .user-toggle {
+    text-align: right;
     float: right;
-    .help, 
-    .user-menu {
-        display: inline !important;
+    position: relative;
+    top: -85px;
+    z-index: 999;
+    right: 3rem;
+    svg {
+        width: 24px;
+        height: 24px;
     }
-}
-
-.slideout-menu-wrap {
-    clear: both;
-    text-align: left;
-    padding-top: 12px;
-    li {
-        a {
-            text-decoration: none;
-            display: block;
-            padding: 12px 0 12px 30px;
-            font-size: 14px;
-            font-family: $font;
-            color: $color-black;
+  }
+  .components-modal__header {
+      height: 80px;
+      border-bottom-color: transparent;
+      .components-button {
+          left: -8px;
+      }
+      .components-modal__header-heading-container {
+          background-image: url('../../../../assets/svg/bluehost.svg');
+          background-repeat: no-repeat;
+          height: 22.47px;
+          margin-left: -1px;
+          h1 {
+              font-size: 0;
+          }
+      }
+  }
+  ul {
+        li {
+            margin: 2rem 0;
+            a {
+                color: var(--bh-gray);
+                font-size: 1.1rem;
+                text-decoration: none;
+            }   
         }
     }
+  .menu-item-icon svg {
+    width: 28px;
+    height: 28px;
+    margin-right: 1rem;
+  }
 }
