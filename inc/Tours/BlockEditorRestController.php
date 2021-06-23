@@ -80,7 +80,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
         return array(
             array(
                 'id' => 'intro',
-                'classes' => 'bluehost-large',
+                'classes' => 'wrap-large',
                 'buttons' => array(
                     Shared::secondary_button( 'Exit', 'cancel' ),
                     Shared::primary_button( 'Get Started' ),
@@ -152,7 +152,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
         return array(
             array(
                 'id' => 'intro',
-                'classes' => 'bluehost-large',
+                'classes' => 'wrap-large',
                 'buttons' => array(
                     Shared::secondary_button( 'Exit', 'cancel' ),
                     Shared::primary_button( 'Get Started' ),
@@ -255,7 +255,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
         return array(
             array(
                 'id' => 'intro',
-                'classes' => 'bluehost-large',
+                'classes' => 'wrap-large',
                 'buttons' => array(
                     Shared::secondary_button( 'Exit', 'cancel' ),
                     Shared::primary_button( 'Get Started' ),
@@ -271,7 +271,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
             ),
             array(
                 'id' => 'header',
-                // 'classes' => 'bluehost-large',
+                // 'classes' => 'wrap-large',
                 'buttons' => array(
                     Shared::secondary_button(),
                     Shared::primary_button(),

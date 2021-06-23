@@ -217,8 +217,13 @@ body.is-fullscreen-mode { // gutenberg fullscreen class
         padding-left: 1.5rem;
     }
 }
-.bluehost-large {
+.wrap-large {
     max-width: 640px;
+    @media screen and (max-height:700px) {
+        img {
+            display: none;
+        }
+    }
 }
 .step-bluehost-logo {
     position:absolute;
