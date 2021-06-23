@@ -75,7 +75,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
      * @return array
      */
     private function steps_about_page() {
-        $about_image = '<img src="https://cdn.hiive.space/bluehost/about-page.svg" alt="People around monitor working and pointing." height="340" width="auto" style="display:block;margin:0 auto;" />';
+        $about_image = '<img src="https://cdn.hiive.space/bluehost/about-page.svg" alt="' . \_e('People around monitor working and pointing.', 'bluehost-wordpress-plugin') . '" height="340" width="auto" style="display:block;margin:0 auto;" />';
 
         return array(
             array(
@@ -148,7 +148,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
      * @return array
      */
     private function steps_contact_page() {
-        $contact_image = '<img src="https://cdn.hiive.space/bluehost/contact-page.svg" alt="Person throwing paper airplanes." height="340" width="auto" style="display:block;margin:0.5rem auto;" />';
+        $contact_image = '<img src="https://cdn.hiive.space/bluehost/contact-page.svg" alt="' . \_e('Person throwing paper airplanes.', 'bluehost-wordpress-plugin') . '" height="340" width="auto" style="display:block;margin:0.5rem auto;" />';
         return array(
             array(
                 'id' => 'intro',
@@ -218,42 +218,39 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
      */
     private function steps_home_page() {
         ob_start(); ?>
-        <br />
-        Use this outline to fill in the content for your homepage:
+        <?php \_e('Use this outline to fill in the content for your homepage', 'bluehost-wordpress-plugin'); ?>:
         <ul>
-            <li><strong>Hero image</strong> (the first thing your site visitors will see, so make it good.)</li>
-            <li><strong>Headline</strong> (the most important thing you want visitors to know.)</li>
-            <li><strong>Subheadline</strong> (consider adding one or two sentences to give your headline more context.)</li>
-            <li><strong>Call to action button</strong> (encourage your visitors to buy something, subscribe to something or learn more.)</li>
+            <li><strong><?php \_e('Hero image', 'bluehost-wordpress-plugin'); ?></strong> <?php \_e('(the first thing your site visitors will see, so make it good.)', 'bluehost-wordpress-plugin'); ?></li>
+            <li><strong><?php \_e('Headline', 'bluehost-wordpress-plugin'); ?></strong> <?php \_e('(the most important thing you want visitors to know.)', 'bluehost-wordpress-plugin'); ?></li>
+            <li><strong><?php \_e('Subheadline', 'bluehost-wordpress-plugin'); ?></strong> <?php \_e('(consider adding one or two sentences to give your headline more context.)', 'bluehost-wordpress-plugin'); ?></li>
+            <li><strong><?php \_e('Call to action button', 'bluehost-wordpress-plugin'); ?></strong> <?php \_e('(encourage your visitors to buy something, subscribe to something or learn more.)', 'bluehost-wordpress-plugin'); ?></li>
         </ul>
         <?php
         $header_contents = ob_get_clean();
 
         ob_start() ?>
-        <br />
-        Since you're more focused on selling to visitors, think about including:
+        <?php \_e('Since you\'re more focused on selling to visitors, think about including', 'bluehost-wordpress-plugin'); ?>:
         <ul>
-            <li>“Reasons to believe” that help potential customers understand the value of your products.</li>
-	        <li>Info on sales, promotions, and incentives</li>
-            <li>Product listings and images</li>
-	        <li>Testimonials or customer reviews</li>
+            <li><?php \_e('“Reasons to believe” that help potential customers understand the value of your products.', 'bluehost-wordpress-plugin'); ?></li>
+	        <li><?php \_e('Info on sales, promotions, and incentives', 'bluehost-wordpress-plugin'); ?></li>
+            <li><?php \_e('Product listings and images', 'bluehost-wordpress-plugin'); ?></li>
+	        <li><?php \_e('Testimonials or customer reviews', 'bluehost-wordpress-plugin'); ?></li>
         </ul>
         <?php
         $mostly_selling = ob_get_clean();
 
         ob_start() ?>
-        <br />
-        Since you're more focused on sharing information with visitors, think about including:
+        <?php \_e('Since you\'re more focused on sharing information with visitors, think about including', 'bluehost-wordpress-plugin'); ?>:
         <ul>
-            <li>Key information that supports your header</li>
-	        <li>Most recent posts or news</li>
-            <li>Most popular or select, curated blog posts</li>
-	        <li>Top portfolio pieces, awards, certifications or other supporting materials</li>
+            <li><?php \_e('Key information that supports your header', 'bluehost-wordpress-plugin'); ?></li>
+	        <li><?php \_e('Most recent posts or news', 'bluehost-wordpress-plugin'); ?></li>
+            <li><?php \_e('Most popular or select, curated blog posts', 'bluehost-wordpress-plugin'); ?></li>
+	        <li><?php \_e('Top portfolio pieces, awards, certifications or other supporting materials', 'bluehost-wordpress-plugin'); ?></li>
         </ul>
         <?php
         $mostly_sharing = ob_get_clean();
 
-        $home_image = '<img src="https://cdn.hiive.space/bluehost/home-page.svg" alt="Person on lounge chair working on laptop." height="340" width="auto" />';
+        $home_image = '<img src="https://cdn.hiive.space/bluehost/home-page.svg" alt="' . \_e('Person on lounge chair working on laptop.', 'bluehost-wordpress-plugin') . '" height="340" width="auto" />';
 
         return array(
             array(
