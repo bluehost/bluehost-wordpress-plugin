@@ -128,7 +128,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                 ),
                 'canClickTarget' => false,
                 'title' => __('Tell with words, show with media', 'bluehost-wordpress-plugin'),
-                'text' => Shared::step( __('Weave photos, YouTube embeds, logos and social icons in with Paragraphs and Headings for a compelling story.', 'bluehost-wordpress-plugin')),
+                'text' => Shared::step( __('Weave photos, YouTube embeds, logos, and social icons in with Paragraphs and Headings for a compelling story.', 'bluehost-wordpress-plugin')),
             ),
             array(
                 'id' => 'fork',
@@ -234,7 +234,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
         Great, you're more focused on selling to visitors. Think about including:
         <ul>
             <li>“Reasons to believe” that help potential customers understand the value of your products.</li>
-	        <li>Info on sales, promotions and incentives</li>
+	        <li>Info on sales, promotions, and incentives</li>
             <li>Product listings and images</li>
 	        <li>Testimonials or customer reviews</li>
         </ul>
