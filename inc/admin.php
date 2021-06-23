@@ -114,6 +114,8 @@ class Init {
 		\Bluehost_Admin_App_Mods::return_instance();
 		\Bluehost_Admin_App_Assets::return_instance();
 		\Bluehost_Admin_App_Page::return_instance();
+		\Newfold\Plugin\DefaultContent\Pages::return_instance();
+		\Newfold\Plugin\Tours\BlockEditor::return_instance();
 	}
 }
 

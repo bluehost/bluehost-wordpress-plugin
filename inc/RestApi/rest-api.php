@@ -6,15 +6,15 @@
 function bluehost_init_rest_api() {
 
 	$controllers = array(
-		'Bluehost\\RestApi\\StagingController',
-		'Bluehost\\RestApi\\SettingsController',
+		'Bluehost\\RestApi\\AdminErrorController',
+		'Bluehost\\RestApi\\BluehostBlogController',
 		'Bluehost\\RestApi\\CachingController',
 		'Bluehost\\RestApi\\MojoItemController',
 		'Bluehost\\RestApi\\MojoThemesController',
 		'Bluehost\\RestApi\\MojoPluginsController',
 		'Bluehost\\RestApi\\MojoServicesController',
-		'Bluehost\\RestApi\\AdminErrorController',
-		'Bluehost\\RestApi\\BluehostBlogController',
+		'Bluehost\\RestApi\\SettingsController',
+		'Bluehost\\RestApi\\StagingController',
 	);
 
 	foreach ( $controllers as $controller ) {

@@ -56,7 +56,7 @@ class Bluehost_Admin_App_Mods {
 	public function add_plugin_version_to_update_footer( $version_text ) {
 
 		$newfold_text = '<div id="newfold-unified-versions"><span id="newfold-brand-version"><span class="newfold-brand-logo" style="position: relative; top: 2.5px;"><img src="https://cdn.hiive.space/bluehost/mark.svg" width="14" height="14" /></span> '
-		. \__( 'Bluehost' )
+		. \__( 'Bluehost', 'bluehost-wordpress-plugin' )
 		. ' ' . BLUEHOST_PLUGIN_VERSION
 		. '</span>'
 		. '<span id="wordpress-version"><span class="dashicons dashicons-wordpress" style="font-size:14px;width:14px;height:14px;position: relative; top: 2.5px;"></span> ' . str_replace( \__( 'Version', 'bluehost-wordpress-plugin' ), \__( 'WordPress', 'bluehost-wordpress-plugin' ), $version_text ) . '</span></div>';

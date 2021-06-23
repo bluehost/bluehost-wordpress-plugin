@@ -13,7 +13,7 @@ class BuildAssets {
 	 *
 	 * @var string
 	 */
-	private static $assetHandlePrefix = 'bwp-';
+	public static $assetHandlePrefix = 'bwp-';
 
 	/**
 	 * WordPress Hooks prefix
@@ -27,6 +27,7 @@ class BuildAssets {
 	 *
 	 * @var array
 	 */
+
 	private static $appCssDependencies = array( 'wp-components', 'wpadmin-brand-bluehost' );
 
 	/**
@@ -38,6 +39,9 @@ class BuildAssets {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'register' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'register' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'admin_global_enqueue' ), 30 );
+		if ( 'local' === wp_get_environment_type() ) {
+			add_action( 'wp_default_scripts', array( __CLASS__, 'remove_jquery_migrate' ) );
+		}
 	}
 	/**
 	 * Registers all assets with WordPress
@@ -55,6 +59,9 @@ class BuildAssets {
 
 	public static function admin_global_enqueue( $hook ) {
 		\wp_enqueue_style( 'bluehost-admin-global' );
+		if ( 'local' === wp_get_environment_type() ) {
+			\wp_dequeue_style( 'jquery-migrate' );
+		}
 	}
 
 	public static function externals() {
@@ -65,6 +72,14 @@ class BuildAssets {
 		wp_register_script(
 			'react-router-dom',
 			$url . 'static/react-router-dom' . $min . '.js',
+			array( 'wp-element' ),
+			empty( $min ) ? $rand : '5.2.0',
+			true
+		);
+
+		wp_register_script(
+			'shepherd.js',
+			$url . 'static/shepherd' . $min . '.js',
 			array( 'wp-element' ),
 			empty( $min ) ? $rand : '5.2.0',
 			true
@@ -135,5 +150,17 @@ class BuildAssets {
 
 	public static function inlineWebpackPublicPath( $handle ) {
 		\wp_add_inline_script( $handle, 'window.bluehostPluginPublicPath="' . trailingslashit( BLUEHOST_PLUGIN_URL ) . 'build/";', 'before' );
+	}
+
+	public function remove_jquery_migrate( $scripts ) {
+
+		if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {
+
+			$script = $scripts->registered['jquery'];
+
+			if ( $script->deps ) {
+				$script->deps = array_diff( $script->deps, array( 'jquery-migrate' ) );
+			}
+		}
 	}
 }
