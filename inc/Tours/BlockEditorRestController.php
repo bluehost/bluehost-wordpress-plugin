@@ -96,7 +96,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::primary_button(),
                 ),
                 'title' => __('What should visitors know?', 'bluehost-wordpress-plugin'),
-                'text' => Shared::step( 'We have some fill-in-the-blanks here to get you started. Original stories will often rank better with search engines.' ),
+                'text' => Shared::step( 'We have some fill-in-the-blanks here to get you started. Original stories will often rank better with search engines, so change as much as you want!' ),
                 'scrollTo' => true,
                 'canClickTarget' => false,
             ),
@@ -132,11 +132,12 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
             ),
             array(
                 'id' => 'fork',
+                'attachTo' => array( 'element' => '.editor-post-publish-button__button', 'on' => 'auto' ),
                 'buttons' => array(
                     Shared::primary_button('Get Started', 'complete'),
                 ),
-                'title' => __('Lets go!', 'bluehost-wordpress-plugin'),
-                'text' => Shared::step( 'Time to tackle those placeholders and tell the web who you are!' ),
+                'title' => __('Let\'s go!', 'bluehost-wordpress-plugin'),
+                'text' => Shared::step( __('It\'s time to tackle those placeholders and tell the web who you are! When you\'re ready, you can click here to publish your page.', 'bluehost-wordpress-plugin')),
             ),
         );
     }
