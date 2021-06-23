@@ -44,7 +44,7 @@ class Shared {
      * @return void
      */
     public static function step( $contents ) {
-        $squares = '<div class="step-bluehost-squares"><img src="https://cdn.hiive.space/bluehost/mark.svg" /></div>';
+        $squares = '<div class="step-bluehost-squares"><img src="https://cdn.hiive.space/bluehost/mark.svg" alt="Bluehost Logo Mark" /></div>';
         return '<div class="wrap-std">' . $contents . $squares . '</div>';
     }
 
@@ -55,7 +55,7 @@ class Shared {
      * @return void
      */
     public static function large_step( $contents ) {
-        $logo = '<div class="step-bluehost-logo"><img src="https://cdn.hiive.space/bluehost/logo.svg" /></div>';
+        $logo = '<div class="step-bluehost-logo"><img src="https://cdn.hiive.space/bluehost/logo.svg" alt="Bluehost Logo" /></div>';
         return '<div class="wrap-large">'. $contents . $logo . '</div>';
     }
 
