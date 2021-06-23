@@ -25,7 +25,7 @@
   &__image {
     overflow: hidden;
     height: 0;
-    padding-top: math.div(660px, 1180px) * 100%;
+    padding-top: (660px/1180px) * 100%;
     background-color: $color-off-white;
     background-repeat: no-repeat;
     background-size: cover;
