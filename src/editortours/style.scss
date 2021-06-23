@@ -50,7 +50,7 @@ body.is-fullscreen-mode { // gutenberg fullscreen class
     transition: opacity 0.3s, visibility 0.3s;
     visibility: hidden;
     width: 100%;
-    z-index: 9999;
+    z-index: 999999999;
     --wp-admin-theme-color: #3575d3;
     --wp-admin-theme-color-darker-10: #1a4784;
     --wp-admin-theme-color-darker-20: #1d2c5c;
