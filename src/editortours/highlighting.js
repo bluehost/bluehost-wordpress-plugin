@@ -129,7 +129,6 @@ const InnerValidationPanel = () => {
     // Must scrub modified placeholders first before counting what remains
     const [scrubResults, setScrubResults] = useState([]);
     const [isProcessing, setProcessing] = useState(true);
-    const { nfPlaceholders } = window;
     
     useEffect(() => {
         setScrubResults(scrubPlaceholders());
@@ -154,7 +153,14 @@ const InnerValidationPanel = () => {
                 </Notice>
                 <h4>{__("These placeholders haven't been edited", 'bluehost-wordpress-plugin')}:</h4>
                 <ul id="unedited">
-                    {scrubResults.map(id => <li key={id}>{nfPlaceholders[id]}</li>)}
+                    {scrubResults.map(id => {
+                        if ('undefined' === typeof window.nfPlaceholders || 'undefined' === typeof window.nfPlaceholders[id]) {
+                            return <li>{__('Oops, we couldn\'t find this placeholder, please double check the content', 'bluehost-wordpress-plugin')}</li>
+                        }
+                        return (
+                            <li key={id}>{window.nfPlaceholders[id]}</li>
+                        )
+                    })}
                 </ul>
                 <ReinitializeTour />
             </Fragment>
