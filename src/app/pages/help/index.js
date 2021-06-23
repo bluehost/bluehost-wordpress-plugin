@@ -1,6 +1,6 @@
 import './style.scss';
 
-import { BWAHeading, BWAButton as Button } from '@app/components/atoms';
+import { BWABox, BWAHeading, BWAButton as Button } from '@app/components/atoms';
 import { BlueSkyLogo, Call, CallCenter, ChatIcon, Computer, SEO } from '@app/assets';
 
 import { BWABaseTemplate as Page } from '@app/components/templates';
@@ -152,7 +152,7 @@ const Help = () => {
 				</p>
 				<div className="resources-search">
 					<Search />
-					<div className="button-container">
+					<BWABox className="button-container">
 						<Button
 							href="https://www.bluehost.com/resources/"
 							isSecondary
@@ -160,7 +160,7 @@ const Help = () => {
 						>
 							{ __('Visit resource center', 'bluehost-wordpress-plugin') }
 						</Button>
-					</div>
+					</BWABox>
 				</div>
 			</div>
 			<footer className="help-footer">

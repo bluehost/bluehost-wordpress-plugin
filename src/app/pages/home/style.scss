@@ -1,3 +1,10 @@
 .page-home__container {
   max-width: 822px;
+  .welcome-section {
+    max-width: 600px;
+    margin-bottom: 48px;
+    p {
+        font-size: 16px;
+    }
+  } 
 }

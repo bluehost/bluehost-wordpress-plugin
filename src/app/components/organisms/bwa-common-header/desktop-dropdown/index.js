@@ -3,25 +3,28 @@ import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { Dropdown, Button, Tooltip } from '@wordpress/components';
 import { UserIcon } from '@app/assets';
-import userMenuItems from '../user-menu';
+import userMenu from '@app/menus/user';
 
-const Contents = () => (
-	<div id="bluehost-nav-popup-wrap" data-testid="desktop-dropdown-content">
-		<div id="bluehost-nav-popup-inner">
-			<ul>
-				{ userMenuItems.map( ( item ) => (
-					<li key={ item.href }>
-						<a href={ item.href }>
-							<span className={ [ 'bluehost-nav-popup-nav-icon' ] }>
-								<span className={ [ 'menu-item-icon is-svg-' + item.color ] }><item.icon /></span> { item.label }
-							</span>
-						</a>
-					</li>
-				) ) }
-			</ul>
+const Contents = () => {
+	const userMenuItems = userMenu('header');
+	return (
+		<div id="bluehost-nav-popup-wrap" data-testid="desktop-dropdown-content">
+			<div id="bluehost-nav-popup-inner">
+				<ul>
+					{ userMenuItems.map( ( item ) => (
+						<li key={ item.id }>
+							<a href={ item.href } data-testid={'dropdown-' + item.id}>
+								<span className={ [ 'bluehost-nav-popup-nav-icon' ] }>
+									<span className={ [ 'menu-item-icon is-svg-' + item.color ] }><item.icon /></span> <span class="label">{ item.label }</span>
+								</span>
+							</a>
+						</li>
+					) ) }
+				</ul>
+			</div>
 		</div>
-	</div>
-)
+	)
+}
 
 const DesktopDropdown = () => {
 	return (

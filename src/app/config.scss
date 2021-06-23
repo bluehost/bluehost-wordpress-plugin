@@ -7,14 +7,14 @@ $hd-breakpoint: 1814px;
 
 // Colors
 $colors: (
-  blue: #2C6CC9,
-  dark-blue: #2A5DA8,
+  blue: #3575d3,
+  dark-blue: #1a4784,
   green: #17b212,
   orange: #f89c24,
   yellow: #f89c24,
-  red: #d0021b,
-  black: #545454,
-  grey: #999,
+  red: #f72f26,
+  black: #5b5b5b,
+  grey: #9a9a9a,
   off-white: #f1f5f7,
   white: #fff
 );
@@ -132,6 +132,16 @@ $body-font: $font;
   @media (max-width: 600px) {
     padding-left: 16px;
     padding-right: 16px;
+  }
+}
+
+%brand-color-footer {
+  #wpfooter {
+    background-color: var(--nf-primary);
+    color: #fff;
+    a {
+      color: #fff;
+    }
   }
 }
 

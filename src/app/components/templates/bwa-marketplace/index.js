@@ -157,7 +157,7 @@ const BWAMarketplaceTemplate = ( { type = 'marketplace', className = '', isLoadi
 
 					return (
 						<BWAProductGrid>
-							{ items.map( ( item ) => render( { item, hasFavorite, toggleFavorite } ) ) }
+							{ items.map( ( item ) => render( { item: { ...item, marketplaceType}, hasFavorite, toggleFavorite } ) ) }
 						</BWAProductGrid>
 					);
 				} )() }

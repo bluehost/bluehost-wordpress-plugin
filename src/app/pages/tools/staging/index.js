@@ -153,7 +153,7 @@ export default function StagingPage() {
 								{ __( 'This is an unpublished copy of your website.', 'bluehost-wordpress-plugin' ) }
 							</p>
 							<BWAEnvironmentCard
-								color="red"
+								color="black"
 								deploymentActionsComponent={ (
 									<BWADropdownButton
 										disabled={ isProduction }
