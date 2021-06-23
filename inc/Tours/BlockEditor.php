@@ -148,7 +148,7 @@ class BlockEditor {
 			<div id="newfold-editortours-loading">
 				<div class="inner">
 					<div class="bwa-loader"></div>
-					<p><?php \_e('Loading ', 'bluehost-wordpress-plugin'); ?> <?php echo ucfirst( \esc_html( $this->tour_context ) ); ?> <?php \_e('Page', 'bluehost-wordpress-plugin'); ?>...</p>
+					<p><?php \_e('Loading', 'bluehost-wordpress-plugin'); ?> <?php echo ucfirst( \esc_html( $this->tour_context ) ); ?> <?php \_e('Page', 'bluehost-wordpress-plugin'); ?>...</p>
 				</div>
 			</div>
 			<div id="newfold-editortours"></div>
