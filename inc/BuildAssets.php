@@ -13,7 +13,7 @@ class BuildAssets {
 	 *
 	 * @var string
 	 */
-	private static $assetHandlePrefix = 'bwp-';
+	public static $assetHandlePrefix = 'bwp-';
 
 	/**
 	 * WordPress Hooks prefix

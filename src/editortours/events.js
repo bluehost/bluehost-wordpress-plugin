@@ -1,6 +1,7 @@
 import { select, dispatch } from '@wordpress/data';
-import { capitalize, replace } from 'lodash';
+import { capitalize } from 'lodash';
 import { __ } from '@wordpress/i18n';
+import { apiFetch } from '@wordpress/api-fetch';
 import { initHighlightEraser } from './highlighting'
 
 const NOTICES_STORE = 'core/notices';
@@ -26,6 +27,16 @@ export const initEvents = (tourName, tour) => {
     }
     disableLoader();
 
+    const eventTracking = (context, category)  => {
+        let event = {
+            action: 'tour-' + context.tour.options.type,
+            category: category,
+            data: {
+                step: context.id
+            }
+        };
+    }
+
     const noticeConfig = {
         id: TOUR_NOTICE_ID,
         actions: [{
@@ -37,16 +48,15 @@ export const initEvents = (tourName, tour) => {
 
     const noticeLabel = capitalize(tour.options.type);
 
-    tour.once('start', () => {
-        console.log('on start');
-    });
+    // tour.once('start', () => {
+    // });
 
     tour.on('active', () => { 
         dispatch(NOTICES_STORE).removeNotice(TOUR_NOTICE_ID);
     });
 
-    tour.on('show', (context) => { 
-        console.dir(context.step);
+    tour.on('show', context => {
+        eventTracking(context, 'show');
     });
 
     tour.on('hide', () => { 
@@ -58,7 +68,8 @@ export const initEvents = (tourName, tour) => {
         });
     });
 
-    tour.on('complete', () => { 
+    tour.on('complete', context => {
+        eventTracking(context, 'complete'); 
         dispatch(NOTICES_STORE).createSuccessNotice(
             noticeLabel + ' ' + __('Page tour is complete!', 'bluehost-wordpress-plugin'), 
             noticeConfig
@@ -67,7 +78,8 @@ export const initEvents = (tourName, tour) => {
         });
     });
 
-    tour.on('cancel', () => { 
+    tour.on('cancel', context => {
+        eventTracking(context, 'cancel'); 
         dispatch(NOTICES_STORE).createInfoNotice(
             noticeLabel + ' ' + __('Page tour closed. You can restart it below.', 'bluehost-wordpress-plugin'), 
             noticeConfig
@@ -76,9 +88,8 @@ export const initEvents = (tourName, tour) => {
         });
     });
 
-    tour.on('inactive', () => { 
-
-    });
+    // tour.on('inactive', () => { 
+    // });
 
 }
 

@@ -24,6 +24,11 @@ class BlockEditor {
 	protected $tour_context = false;
 
 	/**
+	 * Trigger context is query parameter [ (int) 1 ] or post meta [ (int) 2 ]
+	 */
+	protected $trigger_context = false;
+
+	/**
 	 * Get class instance.
 	 *
 	 * @return \Newfold\Plugin\Tours\BlockEditor|stdClass
@@ -42,8 +47,7 @@ class BlockEditor {
 	 */
 	protected function primary_init() {
 		add_action( 'rest_api_init', array( $this, 'initialize_endpoint' ) );
-		if ( $this->should_load_tours() ) {
-			add_action( 'load-post-new.php', array( $this, 'conditional_load_block_editor_tour' ) );
+		if ( $this->trigger_context = $this->should_load_tours() ) {
 			add_action( 'load-post.php', array( $this, 'conditional_load_block_editor_tour' ) );
 		}
 	}
@@ -61,12 +65,27 @@ class BlockEditor {
 	/**
 	 * Undocumented function
 	 *
-	 * @return boolean
+	 * @return false|int
 	 */
 	protected function should_load_tours() {
 		$this->tour_context = isset( $_GET['tour'] ) ? filter_input( INPUT_GET, 'tour', FILTER_SANITIZE_STRING ) : false;
+		// With tour parameter, always load
 		if ( is_string( $this->tour_context ) && in_array( $this->tour_context, Pages::$contexts ) ) {
-			return true;
+			return 1;
+		}
+
+		$post_id = isset( $_GET['post'] ) ? filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT ) : false;
+
+		// With post meta always load assets but script will look for tour parameter to auto-start
+		// so this mostly just initializes stylesheet, validation and scrubbing logic
+		if ( $post_id && ! empty( $this->tour_context = \get_post_meta( $post_id, 'nf_dc_page', true ) ) ) {
+			if ( $status = \get_post_status( $post_id ) ) {
+				if ( 'publish' === $status ) {
+					return false;
+				}
+				
+				return 2;
+			}
 		}
 
 		return false;
@@ -92,6 +111,11 @@ class BlockEditor {
 	 */
 	public function load_runtime_assets() {
 		\Bluehost\BuildAssets::inlineWebpackPublicPath( 'wp-element' );
+		\wp_add_inline_script( 
+			\Bluehost\BuildAssets::$assetHandlePrefix . 'editortours', 
+			'window.nfTourContext="' . $this->tour_context . '";', 
+			'before' 
+		);
 		\Bluehost\BuildAssets::enqueue( 'editortours' );
 	}
 
@@ -101,13 +125,23 @@ class BlockEditor {
 	 * @return void
 	 */
 	public function tour_mount_element() {
+		if ( false === $this->trigger_context ) {
+			return;
+		}
+		if ( 1 === $this->trigger_context ) {
 		?>
-		<div id="newfold-editortours-loading">
-			<div class="inner">
-				<p><?php \_e('Loading Default', 'bluehost-wordpress-plugin'); ?> <?php echo ucfirst( \esc_html( $this->tour_context ) ); ?> <?php \_e('Page', 'bluehost-wordpress-plugin'); ?>...</p>
+			<div id="newfold-editortours-loading">
+				<div class="inner">
+					<div class="bwa-loader"></div>
+					<p><?php \_e('Loading Default', 'bluehost-wordpress-plugin'); ?> <?php echo ucfirst( \esc_html( $this->tour_context ) ); ?> <?php \_e('Page', 'bluehost-wordpress-plugin'); ?>...</p>
+				</div>
 			</div>
-		</div>
-		<div id="newfold-editortours"></div>
+		<?php 
+		}
+		if ( is_int( $this->trigger_context ) ) {
+		?>
+			<div id="newfold-editortours"></div>
 		<?php
+		}
 	}
 }

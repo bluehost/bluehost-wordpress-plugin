@@ -89,7 +89,7 @@ class PagesRestController extends BaseHiiveController {
                 <!-- /wp:paragraph -->
 
                 <!-- wp:paragraph -->
-                <p>When we started in <span id="nf-6" class="nf-placeholder nf-highlight">founding date</span> our passion for <span id="nf-7" class="nf-placeholder nf-highlight">product or service type</span> drove us to <span id="nf-8" class="nf-placeholder nf-highlight">an action: create a product, start a community, etc.].</span> Now we serve customers all over <span id="nf-9" class="nf-placeholder nf-highlight">your target market area: this could be a city, state, or the whole world</span>, and are thrilled to share our passion with you.</p>
+                <p>When we started in <span id="nf-6" class="nf-placeholder nf-highlight">founding date</span> our passion for <span id="nf-7" class="nf-placeholder nf-highlight">product or service type</span> drove us to <span id="nf-8" class="nf-placeholder nf-highlight">an action: create a product, start a community, etc</span>. Now we serve customers all over <span id="nf-9" class="nf-placeholder nf-highlight">your target market area: this could be a city, state, or the whole world</span>, and are thrilled to share our passion with you.</p>
                 <!-- /wp:paragraph -->
 
                 <!-- wp:paragraph -->

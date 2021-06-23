@@ -46,30 +46,6 @@ const rehighlightSinglePlaceholder = (id) => {
     }
 }
 
-const detectPlaceholders = () => {
-    let placeholdersDetected = 0;
-    const blocks = select('core/block-editor').getBlocks();
-    if ( blocks.length ) {
-        blocks.forEach( block => {
-            switch(block.name) {
-                case 'core/paragraph':
-                    if ( block.attributes.content.includes('nf-placeholder nf-highlight') ) {
-                        let blockPlaceholders = block.attributes.content.split('nf-placeholder').length - 1;
-                        placeholdersDetected = placeholdersDetected + blockPlaceholders;
-                    }
-                    break;
-                case 'core/heading':
-                    if ('undefined' !== typeof block.attributes.className && block.attributes.className.includes('nf-placeholder nf-highlight') ) {
-                        placeholdersDetected = placeholdersDetected + 1;
-                    }
-                    break;
-            }
-        })
-    }
-
-    return placeholdersDetected;
-}
-
 /**
  * Helper to scrub placeholders from Block document.
  * 
@@ -87,16 +63,17 @@ const scrubPlaceholders = ( all = false ) => {
     let unedited = [];
     if ( blocks.length ) {
         const parser = new DOMParser();
-        blocks.forEach( block => {
+        blocks.forEach( async block => {
             switch(block.name) {
                 case 'core/paragraph':
                     let blockDOM = parser.parseFromString(block.attributes.content, 'text/html');
                     let blockPlaceholders = blockDOM.querySelectorAll('.nf-placeholder');
                     if ( blockPlaceholders.length ) {
-                        Array.from(blockPlaceholders).forEach( placeholder => {
+                        blockPlaceholders = Array.from(blockPlaceholders);
+                        for (const placeholder of blockPlaceholders) {
                             if ( placeholder.innerText !== window.nfPlaceholders[placeholder.id] || all ) {
                                 rehighlightSinglePlaceholder(placeholder.id);
-                                dispatch('core/block-editor').updateBlock(
+                                await dispatch('core/block-editor').updateBlock(
                                     block.clientId,
                                     {
                                         attributes: {
@@ -111,15 +88,14 @@ const scrubPlaceholders = ( all = false ) => {
                             } else {
                                 unedited.push(placeholder.id);
                             }
-                            
-                        })
+                        }
                     }
                     break;
                 case 'core/heading':
                     if ( block.attributes.className.contains('nf-placeholder') ) {
                         if ( block.attributes.content !== window.nfPlaceholders[block.attributes.id] || all ) {
                             rehighlightSinglePlaceholder(block.attributes.id);
-                            dispatch('core/block-editor').updateBlock(
+                            await dispatch('core/block-editor').updateBlock(
                                 block.clientId,
                                 {
                                     attributes: {
@@ -147,6 +123,18 @@ const scrubPlaceholders = ( all = false ) => {
     }
 
     return null;
+}
+
+const ReinitializeTour = () => {
+    const locateAndLaunchTour = () => {
+        if ( 'undefined' !== typeof window.nfTour ) {
+            window.nfTour.start();
+        }
+    }
+
+    return(
+        <Button isSecondary onClick={locateAndLaunchTour} className="relaunch-tour">{__('Relaunch Tour', 'bluehost-wordpress-plugin')}</Button>
+    )
 }
 
 /**
@@ -186,13 +174,17 @@ const InnerValidationPanel = () => {
                 <ul id="unedited">
                     {scrubResults.map(id => <li key={id}>{window.nfPlaceholders[id]}</li>)}
                 </ul>
+                <ReinitializeTour />
             </Fragment>
         );
     }
     return (
-        <Notice status="success" isDismissible={false}>
-            {__('This page looks great! Time to share it with your visitors.', 'bluehost-wordpress-plugin')}
-        </Notice>
+        <Fragment>
+            <Notice status="success" isDismissible={false}>
+                {__('This page looks great! Time to share it with your visitors.', 'bluehost-wordpress-plugin')}
+            </Notice>
+            <ReinitializeTour />
+        </Fragment>
     )
 }
 

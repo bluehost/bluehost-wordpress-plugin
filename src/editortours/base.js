@@ -1,5 +1,6 @@
 import { Fragment, useContext } from '@wordpress/element';
 import { PluginPrePublishPanel } from '@wordpress/edit-post';
+import { getQueryArg } from '@wordpress/url';
 import { ShepherdTour, ShepherdTourContext } from 'react-shepherd';
 import { merge, findIndex } from 'lodash';
 import { initEvents } from './events';
@@ -66,19 +67,25 @@ export const BaseTour = ({ type, steps, options = {} }) => {
     }, { type, ...options });
 
     const TourContents = () => {
+
         window.nfTour = useContext(ShepherdTourContext);
+        
         initEvents(type, window.nfTour);
 
-        return <Fragment>{window.nfTour.start()}</Fragment>
+        if ( window.nfTourContext === getQueryArg(window.location.href, 'tour') ) {
+            return <Fragment>{window.nfTour.start()}</Fragment>
+        }
+
+        return <Fragment />
     }
 
    return (
-    <ShepherdTour 
-        steps={steps} 
-        tourOptions={shepherdOptions}
-    >
-        <TourContents />
-    </ShepherdTour>
+        <ShepherdTour 
+            steps={steps} 
+            tourOptions={shepherdOptions}
+        >
+            <TourContents />
+        </ShepherdTour>
    );
 }
 

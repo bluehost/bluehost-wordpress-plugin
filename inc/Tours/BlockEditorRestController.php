@@ -66,7 +66,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
      * @return boolean
      */
     public function has_permission() {
-        return true;
+        return \current_user_can('edit_posts');
     }
 
     /**
@@ -75,6 +75,8 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
      * @return array
      */
     private function steps_about_page() {
+        $about_image = '<img src="https://cdn.hiive.space/bluehost/about-page.svg" alt="People around monitor working and pointing." height="340" width="auto" style="display:block;margin:0 auto;" />';
+
         return array(
             array(
                 'id' => 'intro',
@@ -84,7 +86,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::primary_button( 'Get Started' ),
                 ),
                 'title' => __('Create an About Page with Bluehost', 'bluehost-wordpress-plugin'),
-                'text'  => Shared::large_step( __('Your about page is where people get to know you.<br /><br />It\'s a great place to share how you got started and reasons you do what you do.', 'bluehost-wordpress-plugin') ),
+                'text'  => Shared::large_step( $about_image . __('Your about page is where people get to know you.<br /><br />It\'s a great place to share how you got started and reasons you do what you do.', 'bluehost-wordpress-plugin') ),
             ),
             array(
                 'id' => 'audience',
@@ -93,20 +95,20 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::secondary_button(),
                     Shared::primary_button(),
                 ),
-                'title' => __('Ask yourself what visitors should know', 'bluehost-wordpress-plugin'),
-                'text' => Shared::step( 'We have some fill-in-the-blanks here to get you started. Keep in mind original stories often rank better with search engines.' ),
+                'title' => __('What should visitors know?', 'bluehost-wordpress-plugin'),
+                'text' => Shared::step( 'We have some fill-in-the-blanks here to get you started. Original stories will often rank better with search engines.' ),
                 'scrollTo' => true,
                 'canClickTarget' => false,
             ),
             array(
                 'id' => 'inserter',
-                'attachTo' => array( 'element' => '.edit-post-header-toolbar__inserter-toggle', 'on' => 'auto' ),
+                'attachTo' => array( 'element' => '.edit-post-header-toolbar__inserter-toggle', 'on' => 'bottom' ),
                 'advanceOn' => array( 'selector' => '.edit-post-header-toolbar__inserter-toggle', 'event' => 'click' ),
                 'buttons' => array(
                     Shared::secondary_button()
                 ),
                 'title' => __( 'Find the building blocks you\'ll need', 'bluehost-wordpress-plugin' ),
-                'text' => Shared::step( __('<strong>Click the plus button right now</strong> to open the Block Inserter, your toolkit with building blocks and common layouts called Block Patterns.') ),
+                'text' => Shared::step( __('The Block Inserter contains your toolkit with text & media blocks, plus common layouts called Block Patterns: <strong>Click the button now to open the Block Inserter</strong>.') ),
             ),
             array(
                 'id' => 'inserter-opened',
@@ -125,8 +127,8 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     )
                 ),
                 'canClickTarget' => false,
-                'title' => __('Show visitors who you are with media and embeds', 'bluehost-wordpress-plugin'),
-                'text' => Shared::step( __('Use photos, YouTube embeds, logos and social icons to weave a compelling story.', 'bluehost-wordpress-plugin')),
+                'title' => __('Tell with words, show with media', 'bluehost-wordpress-plugin'),
+                'text' => Shared::step( __('Weave photos, YouTube embeds, logos and social icons in with Paragraphs and Headings for a compelling story.', 'bluehost-wordpress-plugin')),
             ),
             array(
                 'id' => 'fork',
@@ -145,6 +147,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
      * @return array
      */
     private function steps_contact_page() {
+        $contact_image = '<img src="https://cdn.hiive.space/bluehost/contact-page.svg" alt="Person throwing paper airplanes." height="340" width="auto" style="display:block;margin:0.5rem auto;" />';
         return array(
             array(
                 'id' => 'intro',
@@ -154,7 +157,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::primary_button( 'Get Started' ),
                 ),
                 'title' => __('Create a Contact Page with Bluehost', 'bluehost-wordpress-plugin'),
-                'text'  => Shared::large_step( __('Forms power conversations and commerce across the web -- put yours to work for you today!', 'bluehost-wordpress-plugin') ),
+                'text'  => Shared::large_step( $contact_image . __('Forms power conversations and commerce across the web -- put yours to work for you today!', 'bluehost-wordpress-plugin') ),
             ),
             array(
                 'id' => 'starter',
@@ -175,7 +178,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::secondary_button(),
                     Shared::primary_button(),
                 ),
-                'title' => __('Change fields and read submissions', 'bluehost-wordpress-plugin'),
+                'title' => __('Read responses, change form fields', 'bluehost-wordpress-plugin'),
                 'text' => Shared::step( 'Find your forms in your WordPress Admin. You can also change the email where your site will send submissions.' ),
                 'scrollTo' => true,
                 'canClickTarget' => false,
@@ -214,6 +217,8 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
      */
     private function steps_home_page() {
         ob_start(); ?>
+        <br />
+        Use this outline to fill in the content for your homepage:
         <ul>
             <li><strong>Hero image</strong> (the first thing your site visitors will see, so make it good.)</li>
             <li><strong>Headline</strong> (the most important thing you want visitors to know.)</li>
@@ -224,6 +229,8 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
         $header_contents = ob_get_clean();
 
         ob_start() ?>
+        <br />
+        Great, you're more focused on selling to visitors. Think about including:
         <ul>
             <li>“Reasons to believe” that help potential customers understand the value of your products.</li>
 	        <li>Info on sales, promotions and incentives</li>
@@ -234,6 +241,8 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
         $mostly_selling = ob_get_clean();
 
         ob_start() ?>
+        <br />
+        Great, you're more focused on sharing information with visitors. Think about including:
         <ul>
             <li>Key information that supports your header</li>
 	        <li>Most recent posts or news</li>
@@ -242,6 +251,8 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
         </ul>
         <?php
         $mostly_sharing = ob_get_clean();
+
+        $home_image = '<img src="https://cdn.hiive.space/bluehost/home-page.svg" alt="Person on lounge chair working on laptop." height="340" width="auto" />';
 
         return array(
             array(
@@ -252,7 +263,8 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::primary_button( 'Get Started' ),
                 ),
                 'title' => __('Create a Home Page with Bluehost', 'bluehost-wordpress-plugin'),
-                'text'  => Shared::large_step( 
+                'text'  => Shared::large_step(
+                    $home_image .
                     Shared::two_col(
                         __('Your website’s home page is your online storefront, billboard, and welcome mat. It’s where you make many first impressions, so it’s important to get it right.', 'bluehost-wordpress-plugin'),
                         __('It should be engaging, helpful, and interesting. It could be as simple as the name of your company, or it might be tied to a promotion or sale that you’re running.', 'bluehost-wordpress-plugin')

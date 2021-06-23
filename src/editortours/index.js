@@ -3,7 +3,6 @@ import './style.scss';
 import { lazy, Suspense, Fragment } from '@wordpress/element';
 import domReady from '@wordpress/dom-ready';
 import { registerPlugin } from '@wordpress/plugins';
-import { getQueryArg } from '@wordpress/url';
 import { ErrorBoundary } from 'react-error-boundary';
 import { suppressCoreTour } from './suppress-core-tour';
 import { setupCaretEvents, PrePublishValidation } from './highlighting';
@@ -21,7 +20,7 @@ export const EditorTours = () => {
     // setup caretIn and caretOut custom events
     setupCaretEvents();
 
-    const tour = getQueryArg(window.location.href, 'tour');
+    const tour = 'undefined' !== typeof window.nfTourContext ? window.nfTourContext : false;
     let CurrentTour = <Fragment />;
 
     switch( tour ) {
