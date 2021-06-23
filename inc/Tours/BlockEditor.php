@@ -50,6 +50,16 @@ class BlockEditor {
 		if ( $this->trigger_context = $this->should_load_tours() ) {
 			add_action( 'load-post.php', array( $this, 'conditional_load_block_editor_tour' ) );
 		}
+		// register nf_dc_placeholders meta to expose it to rest api
+		register_meta( 
+			'post', 
+			'nf_dc_placeholders', 
+			array(
+				'type'         => 'array',
+				'description'  => 'Save initial placeholder id and text values for default content.',
+				'show_in_rest' => true,
+			)
+		);
 	}
 
 	/**
@@ -106,10 +116,18 @@ class BlockEditor {
 	 * @return void
 	 */
 	public function load_runtime_assets() {
+		
+		$windowprops = 'window.nfTourContext="' . $this->tour_context . '";';
+		// save initial placeholder text for all future comparisons
+		$post_id = isset( $_GET['post'] ) ? filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT ) : false;
+		if ( $post_id && ! empty( $nf_dc_placeholders = \get_post_meta( $post_id, 'nf_dc_placeholders', true ) ) ) {
+				$windowprops .= 'window.nfPlaceholders=' . $nf_dc_placeholders . ';';
+		}
+		
 		\Bluehost\BuildAssets::inlineWebpackPublicPath( 'wp-element' );
 		\wp_add_inline_script( 
 			\Bluehost\BuildAssets::$assetHandlePrefix . 'editortours', 
-			'window.nfTourContext="' . $this->tour_context . '";', 
+			$windowprops, 
 			'before' 
 		);
 		\Bluehost\BuildAssets::enqueue( 'editortours' );
