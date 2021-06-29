@@ -128,7 +128,7 @@ class BlockEditor {
 		
 		\Bluehost\BuildAssets::inlineWebpackPublicPath( 'wp-element' );
 		\wp_add_inline_script( 
-			\Bluehost\BuildAssets::$assetHandlePrefix . 'editortours', 
+			\Bluehost\BuildAssets::$asset_handle_prefix . 'editortours', 
 			$windowprops, 
 			'before' 
 		);
