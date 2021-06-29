@@ -59,8 +59,8 @@ class BuildAssets {
 
 	/**
 	 * Admin global enqueue
-	 * 
-	 * @param $hook - param
+	 *
+	 * @param string $hook - the hook
 	 * @return void
 	 */
 	public static function admin_global_enqueue( $hook ) {
@@ -72,7 +72,7 @@ class BuildAssets {
 
 	/**
 	 * Load externals
-	 * 
+	 *
 	 * @return void
 	 */
 	public static function externals() {
@@ -162,7 +162,7 @@ class BuildAssets {
 
 	/**
 	 * Build Inline script for webpack
-	 * 
+	 *
 	 * @param string $handle - script handle
 	 * @return void
 	 */
@@ -172,7 +172,7 @@ class BuildAssets {
 
 	/**
 	 * Remove JQuery Migrate script
-	 * 
+	 *
 	 * @param Array $scripts - array of scripts
 	 * @return void
 	 */
