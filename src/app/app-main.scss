@@ -12,10 +12,6 @@
   */
  @import '@app/styles/helpers.scss';
  /**
-  * PureCSS responsive grid with 5ths, 12ths and 24ths
-  */
-  @import '@app/styles/pure-grid.scss';
- /**
   * CSS Equivalent of Bluehost Spinner
   */
  @import '@app/styles/bluehost-spinner.scss';
@@ -31,8 +27,9 @@
  }
 
  #bwa-app {
+   background-color: var(--bh-bg-blue);
    will-change: opacity;
-   @extend .is-font;
+   min-height: calc(100vh + 100px);
    @extend .appFadeIn;
  }
 
@@ -51,7 +48,7 @@
    }
  }
 
- body:not(.bwa-is-tab-navigating) {
+ body:not(.is-tabbing) {
    .base-template:focus,
    a[aria-current="page"]:focus,
    a.bluehostTab:focus,
@@ -67,11 +64,7 @@
    display: block;
    height: 100%;
    min-height: 100%;
-
-   .pure-g [class *= "pure-u"] {
-     @extend .is-font;
-   }
-
+   @extend .is-font;
    header:focus {
      outline: none;
    }

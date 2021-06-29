@@ -32,7 +32,7 @@ const SettingsPerformance = ( { cacheLevel, updateSetting } ) => {
 		updateSetting( 'cacheLevel', newLevel );
 	};
 	return (
-		<SettingsSection name="Performance" className="pure-u-lg-19-24 performance">
+		<SettingsSection name="Performance" className="performance">
 			<div className="caching">
 				<BWAHeading level="h4" size={ 2 } className="caching__title">{ __( 'Caching', 'bluehost-wordpress-plugin' ) }</BWAHeading>
 				<BWAToggle

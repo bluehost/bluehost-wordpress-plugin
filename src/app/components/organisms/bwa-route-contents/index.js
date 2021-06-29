@@ -1,7 +1,8 @@
 import './style.scss';
+import pageToBodyAttribute from './pageToBodyAttribute';
 
-import { Redirect, Route, Switch } from 'react-router-dom';
-import { Suspense, lazy } from '@wordpress/element';
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
+import { Suspense, lazy, useEffect } from '@wordpress/element';
 
 import { BWAPageSpinner } from '@app/components/molecules';
 
@@ -22,6 +23,13 @@ const BlueSkyRoute 		= lazy(() => import( '@app/pages/blue-sky' ));
  * Implement sendPageviewEvent in @app/functions if you're getting fancy!
  */
 const BWARouteContents = ({ ...props}) => {
+	let location = useLocation();
+	// append route class to body for document-wide CSS selector
+	useEffect(() => {
+		if ( 'object' === typeof location && 'undefined' !== typeof location.pathname ) {
+			pageToBodyAttribute(location.pathname);
+		}
+	}, [location]);
 	return (
 		<section tabIndex="-1" className="bwa-route-contents">
 			<Suspense fallback={ <BWAPageSpinner /> }>
@@ -44,6 +52,20 @@ const BWARouteContents = ({ ...props}) => {
 					<Route path="/tools/staging" exact render={ () => <StagingRoute /> } />
 					<Route path="/settings" render={ () => <SettingsRoute /> } />
 					<Route path="/help" render={ () => <HelpRoute /> } />
+					<Redirect 
+						from="/card/help"
+						to={{
+							pathname: "/help",
+							state: { redirect: 'card-help' }
+						}}
+					/>
+					<Redirect 
+						from="/home/onboarding/premium-themes"
+						to={{
+							pathname: "/marketplace/themes",
+							state: { redirect: 'onboarding-theme-step' }
+						}}
+					/>
 					<Redirect 
 						from="/staging" 
 						to={{

@@ -4,9 +4,9 @@
  @import '@app/config.scss';
 /* ------------------------- */
 
+#wpwrap,
 #wpbody-content {
-    @extend .is-bg-off-white;
-    padding-bottom: 0 !important;
+    background-color: #f1f5f7;
 }
 
 #wpcontent {
@@ -14,7 +14,25 @@
 }
 
 #wpfooter {
-    display: none; /* credit relocated to /info route, link on settings page */
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+    @media screen and (min-width:$hd-breakpoint) {
+        max-width: 1600px;
+        margin: 0 auto;
+        left: 160px;
+    }
+}
+body.is-booted {
+    #wpfooter {
+        opacity: 100;
+    }
+}
+
+body.folded #wpfooter {
+    @media screen and (min-width:$hd-breakpoint) {
+        left: 32px;
+        margin: 0 auto;
+    }
 }
 
 h1,

@@ -1,0 +1,1953 @@
+# Copyright (C) 2021 Bluehost
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Bluehost 2.7.1\n"
+"Report-Msgid-Bugs-To: https://github.com/bluehost/bluehost-wordpress-plugin/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: bluehost-wordpress-plugin\n"
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+#: inc/admin/class-mods.php:59
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: build/editortours-dcbd0e586f4c209cf4ec.js:1
+#: src/app/components/organisms/bwa-common-header/index.js:32
+#: src/app/components/organisms/bwa-common-header/mobile-sidebar/index.js:80
+#: src/editortours/highlighting.js:188
+msgid "Bluehost"
+msgstr ""
+
+#. Description of the plugin
+msgid "This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features."
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.bluehost.com/"
+msgstr ""
+
+#: inc/admin/class-mods.php:52
+msgid "Thank you for creating with <a href=\"https://wordpress.org/\">WordPress</a> and <a href=\"https://bluehost.com/\">Bluehost</a>."
+msgstr ""
+
+#: inc/admin/class-mods.php:62
+msgid "Version"
+msgstr ""
+
+#: inc/admin/class-mods.php:62
+msgid "WordPress"
+msgstr ""
+
+#: inc/admin/class-page.php:32
+#: src/app/pages/home/index.js:40
+msgid "Home"
+msgstr ""
+
+#: inc/admin/class-page.php:37
+#: src/app/pages/settings/automatic-updates/index.js:19
+msgid "Themes"
+msgstr ""
+
+#: inc/admin/class-page.php:42
+#: src/app/pages/settings/automatic-updates/index.js:24
+msgid "Plugins"
+msgstr ""
+
+#: inc/admin/class-page.php:47
+msgid "Services"
+msgstr ""
+
+#: inc/admin/class-page.php:52
+#: src/app/pages/tools/staging/index.js:86
+#: src/app/pages/tools/staging/index.js:207
+#: src/app/pages/tools/staging/index.js:280
+msgid "Staging"
+msgstr ""
+
+#: inc/admin/class-page.php:57
+#: src/app/pages/settings/index.js:15
+msgid "Settings"
+msgstr ""
+
+#: inc/admin/class-page.php:62
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:16
+msgid "Help"
+msgstr ""
+
+#: inc/AdminBar.php:32
+msgid "Need help?"
+msgstr ""
+
+#: inc/base.php:191
+msgid "Once Weekly"
+msgstr ""
+
+#: inc/base.php:195
+msgid "Once a month"
+msgstr ""
+
+#: inc/cli/staging.php:104
+msgid "Invalid JSON response"
+msgstr ""
+
+#. translators: %1$s is replaced with the opening link tag and %2$s is replaced with the closing link tag.
+#: inc/coming-soon.php:19
+msgid "Your site is currently displaying a \"Coming Soon\" page. Once you are ready, %1$slaunch your site%2$s."
+msgstr ""
+
+#: inc/coming-soon.php:78
+msgid "Gotcha!"
+msgstr ""
+
+#: inc/coming-soon.php:88
+msgid "Please provide a valid email address"
+msgstr ""
+
+#: inc/coming-soon.php:101
+msgid "There was an error with the subscription"
+msgstr ""
+
+#: inc/coming-soon.php:106
+msgid "Subscription successful"
+msgstr ""
+
+#: inc/jetpack.php:66
+#: inc/jetpack.php:67
+msgid "Connect Jetpack"
+msgstr ""
+
+#: inc/menu.php:49
+msgid "Staging Environment"
+msgstr ""
+
+#: inc/menu.php:51
+msgid "Staging Actions"
+msgstr ""
+
+#: inc/menu.php:60
+msgid "Coming Soon Active"
+msgstr ""
+
+#: inc/menu.php:62
+msgid "Launch Your Site"
+msgstr ""
+
+#: inc/Notifications/NotificationsApi.php:83
+msgid "Event action"
+msgstr ""
+
+#: inc/Notifications/NotificationsApi.php:91
+msgid "Event category"
+msgstr ""
+
+#: inc/Notifications/NotificationsApi.php:98
+msgid "Event data"
+msgstr ""
+
+#: inc/Notifications/NotificationsApi.php:103
+msgid "Whether or not to queue the event"
+msgstr ""
+
+#. translators: %s: Blog name
+#: inc/pages/coming-soon.php:9
+msgid "%s &mdash; Coming Soon"
+msgstr ""
+
+#: inc/pages/coming-soon.php:319
+#: inc/pages/coming-soon.php:369
+msgid "Coming Soon!"
+msgstr ""
+
+#: inc/pages/coming-soon.php:321
+msgid "Be the first to know when we launch, enter your email address and we will let you know when we go live and any future website updates we have."
+msgstr ""
+
+#: inc/pages/coming-soon.php:324
+msgid "Thank you, please check your email to confirm your subscription."
+msgstr ""
+
+#: inc/pages/coming-soon.php:327
+msgid "There was an error with your submission and you were not subscribed. Please try again with a different email address."
+msgstr ""
+
+#: inc/pages/coming-soon.php:334
+msgid "Email"
+msgstr ""
+
+#: inc/pages/coming-soon.php:368
+msgid "A New WordPress Site"
+msgstr ""
+
+#: inc/pages/coming-soon.php:371
+msgid "Admin Login"
+msgstr ""
+
+#. translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag
+#: inc/pages/coming-soon.php:385
+msgid "A %1$sBluehost%2$s powered website."
+msgstr ""
+
+#. translators: %1$s is replaced with opening link tag taking you to login page, %2$s is replaced with opening link tag taking you to my.bluehost.com, %3$s is replaced with closing link tag
+#: inc/pages/coming-soon.php:391
+msgid "Is this your website? Log in to %1$sWordPress%3$s or %2$sBluehost%3$s."
+msgstr ""
+
+#: inc/pages/coming-soon.php:430
+msgid "Your email address is already subscribed to this website. Stay tuned to your inbox for our updates or try a different email address."
+msgstr ""
+
+#: inc/pages/coming-soon.php:434
+msgid "There was an error with your submission and you were not subscribed. Please try again with a valid email address."
+msgstr ""
+
+#: inc/pages/theme-preview.php:26
+msgid "Unable to load theme preview."
+msgstr ""
+
+#: inc/pages/theme-preview.php:28
+msgid "Return to themes"
+msgstr ""
+
+#: inc/pages/theme-preview.php:62
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-error/index.js:114
+msgid "Details"
+msgstr ""
+
+#: inc/pages/theme-preview.php:68
+#: build/22-6b6fa4611dbb19658808.js:1
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-product-card/index.js:11
+#: src/app/components/molecules/bwa-product-card/index.js:52
+#: src/app/pages/marketplace/product-details/index.js:126
+msgid "Buy Now"
+msgstr ""
+
+#. Translators: 1 Plugin name, 2: Required PHP version number, 3: Current PHP version number
+#: inc/plugin-compatibility-check.php:162
+msgid "%1$s requires PHP version %2$s or later. You are currently running version %3$s."
+msgstr ""
+
+#. Translators: 1 Plugin name, 2: PHP extension name
+#: inc/plugin-compatibility-check.php:182
+msgid "%1$s requires the %2$s PHP extension."
+msgstr ""
+
+#. Translators: 1 Plugin name, 2: Required WP version number, 3: Current WP version number
+#: inc/plugin-compatibility-check.php:201
+msgid "%1$s requires WordPress version %2$s or later. You are currently running version %3$s."
+msgstr ""
+
+#: inc/plugin-compatibility-check.php:238
+msgid "This plugin has been deactivated."
+msgstr ""
+
+#: inc/RestApi/CachingController.php:47
+msgid "Endurance Page Cache plugin is not installed."
+msgstr ""
+
+#: inc/RestApi/CachingController.php:67
+#: inc/RestApi/SettingsController.php:205
+msgid "Sorry, you are not allowed to access this endpoint."
+msgstr ""
+
+#: inc/Staging.php:186
+msgid "Cloning can only be done from the production environment."
+msgstr ""
+
+#: inc/Staging.php:211
+msgid "Staging environment already exists!"
+msgstr ""
+
+#: inc/Staging.php:245
+msgid "You must switch to the production environment before destroying staging."
+msgstr ""
+
+#: inc/Staging.php:267
+msgid "Switch to an environment you are already in, you cannot."
+msgstr ""
+
+#: inc/Staging.php:304
+msgid "Invalid staging CLI command."
+msgstr ""
+
+#. translators: Invalid character that was entered
+#: inc/Staging.php:353
+msgid "Invalid character (%s) in command."
+msgstr ""
+
+#: inc/Staging.php:362
+msgid "Unable to execute script (disabled_function)."
+msgstr ""
+
+#: inc/Staging.php:370
+msgid "Unable to execute script (permission error)."
+msgstr ""
+
+#: inc/Staging.php:383
+msgid "Unable to parse JSON"
+msgstr ""
+
+#: inc/Tours/BlockEditor.php:151
+msgid "Loading"
+msgstr ""
+
+#: inc/Tours/BlockEditor.php:151
+msgid "Page"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:78
+#: src/app/pages/home/onboarding/steps/add-about/index.js:9
+msgid "People around monitor working and pointing."
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:88
+msgid "Create an About Page with Bluehost"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:89
+msgid "Your about page is where people get to know you.<br /><br />It's a great place to share how you got started and reasons you do what you do."
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:98
+msgid "What should visitors know?"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:110
+msgid "Find the building blocks you'll need"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:111
+msgid "The Block Inserter contains your toolkit with text & media blocks, plus common layouts called Block Patterns: <strong>Click the button now to open the Block Inserter</strong>."
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:130
+msgid "Tell with words, show with media"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:131
+msgid "Weave photos, YouTube embeds, logos, and social icons in with Paragraphs and Headings for a compelling story."
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:139
+msgid "Let's go!"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:140
+msgid "It's time to tackle those placeholders and tell the web who you are! When you're ready, you can click here to publish your page."
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:151
+#: src/app/pages/home/onboarding/steps/add-contact/index.js:9
+msgid "Person throwing paper airplanes."
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:160
+msgid "Create a Contact Page with Bluehost"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:161
+msgid "Forms power conversations and commerce across the web -- put yours to work for you today!"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:170
+msgid "We've got the basics covered"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:182
+msgid "Read responses, change form fields"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:194
+msgid "All the form tools you need"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:206
+msgid "Don't forget to test"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:221
+msgid "Use this outline to fill in the content for your homepage"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:223
+msgid "Hero image"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:223
+msgid "(the first thing your site visitors will see, so make it good.)"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:224
+msgid "Headline"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:224
+msgid "(the most important thing you want visitors to know.)"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:225
+msgid "Subheadline"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:225
+msgid "(consider adding one or two sentences to give your headline more context.)"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:226
+msgid "Call to action button"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:226
+msgid "(encourage your visitors to buy something, subscribe to something or learn more.)"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:232
+msgid "Since you're more focused on selling to visitors, think about including"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:234
+msgid "“Reasons to believe” that help potential customers understand the value of your products."
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:235
+msgid "Info on sales, promotions, and incentives"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:236
+msgid "Product listings and images"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:237
+msgid "Testimonials or customer reviews"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:243
+msgid "Since you're more focused on sharing information with visitors, think about including"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:245
+msgid "Key information that supports your header"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:246
+msgid "Most recent posts or news"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:247
+msgid "Most popular or select, curated blog posts"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:248
+msgid "Top portfolio pieces, awards, certifications or other supporting materials"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:253
+#: src/app/pages/home/onboarding/steps/add-homepage/index.js:19
+msgid "Person on lounge chair working on laptop."
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:263
+msgid "Create a Home Page with Bluehost"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:267
+msgid "Your website’s home page is your online storefront, billboard, and welcome mat. It’s where you make many first impressions, so it’s important to get it right."
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:268
+msgid "It should be engaging, helpful, and interesting. It could be as simple as the name of your company, or it might be tied to a promotion or sale that you’re running."
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:279
+msgid "Our formula for successful Home Page headers"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:288
+msgid "For this next section, help us understand your primary goal"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:297
+msgid "Great, let's put your website to work for you"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:306
+msgid "Great, let's tell your story"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:317
+msgid "Guide users to your primary goal with a 'Call-to-Action' button"
+msgstr ""
+
+#: inc/Tours/BlockEditorRestController.php:318
+msgid "This can be a button or link that directs people to their next steps. Depending on your site, this might be anything from contacting you, to setting up an appointment, looking at products, making a purchase, or subscribing to your blog or newsletter."
+msgstr ""
+
+#. translators: %s Settings > General page URL.
+#: inc/updates.php:113
+#: inc/updates.php:141
+#: inc/updates.php:168
+msgid "Auto-updates enabled on the <a href=\"%s\">Bluehost > Settings</a> page."
+msgstr ""
+
+#: inc/updates.php:164
+msgid "Auto-updates enabled"
+msgstr ""
+
+#: build/15-08581228e3619fca9f26.js:1
+#: src/app/components/molecules/bwa-blog-posts/index.js:70
+#: src/dashboard/main.js:66
+msgid "See More"
+msgstr ""
+
+#: build/15-08581228e3619fca9f26.js:1
+#: src/dashboard/main.js:76
+msgid "Latest from the Bluehost Blog"
+msgstr ""
+
+#: build/15-08581228e3619fca9f26.js:1
+#: src/dashboard/main.js:80
+msgid "Get Help"
+msgstr ""
+
+#: build/15-08581228e3619fca9f26.js:1
+#: src/dashboard/main.js:81
+msgid "Resource Center"
+msgstr ""
+
+#: build/15-08581228e3619fca9f26.js:1
+#: src/dashboard/main.js:82
+msgid "Manage Account"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/hooks/staging.js:115
+msgid "An unknown error has occurred."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/hooks/staging.js:202
+msgid "Staging website destroyed."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/hooks/staging.js:225
+msgid "Website cloned successfully."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/hooks/staging.js:237
+msgid "Changes deployed successfully."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-base/index.js:52
+msgid "Bluehost WordPress Plugin"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:41
+msgid "Popular"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:45
+msgid "Price (High to Low)"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:49
+msgid "Price (Low to High)"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:53
+msgid "Date Added"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:31
+msgid "Premium Plugins"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:33
+msgid "Premium Services"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:35
+msgid "Premium Themes"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:108
+msgid "Sort By"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:132
+msgid "You don't have any favorites yet."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:133
+msgid "Add favorites by starring items you like."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:141
+msgid "View Plugins"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:143
+msgid "View Services"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/components/templates/bwa-marketplace/index.js:145
+msgid "View Themes"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/blue-sky/index.js:33
+#: src/app/pages/help/index.js:50
+msgid "Blue Sky"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:35
+msgid "Blue Sky service logo"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:55
+msgid "Customized support from experts who care"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:59
+msgid "We understand that WordPress can be challenging, but with professional help in your pocket, you will learn how to build, grow, and maintain your new WordPress website with friendly and professional guidance every step of the way."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:69
+#: src/app/pages/blue-sky/index.js:94
+#: src/app/pages/blue-sky/index.js:127
+#: src/app/pages/blue-sky/index.js:166
+msgid "Get Started"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:76
+msgid "Live WordPress Support from $29/month."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:81
+msgid "Blue Sky Basic"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:84
+msgid "Get unstuck with fast answers and recommendations."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:99
+#: src/app/pages/blue-sky/index.js:132
+#: src/app/pages/blue-sky/index.js:171
+msgid "On-Demand Ticket Support"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:102
+#: src/app/pages/blue-sky/index.js:135
+#: src/app/pages/blue-sky/index.js:174
+msgid "Account Access Assistance"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:105
+#: src/app/pages/blue-sky/index.js:138
+#: src/app/pages/blue-sky/index.js:177
+msgid "Website Backup Assistance"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:108
+#: src/app/pages/blue-sky/index.js:141
+#: src/app/pages/blue-sky/index.js:180
+msgid "Design Guidance"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:114
+msgid "Blue Sky Plus"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:117
+msgid "Learn more WordPress skills and solve problems faster."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:144
+#: src/app/pages/blue-sky/index.js:183
+msgid "On-Demand Chat Support"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:150
+msgid "Recommended"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:153
+msgid "Blue Sky Pro"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:156
+msgid "Build and Maintain with advanced features and improve as you go."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:186
+msgid "Bluehost SEO Tools"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:189
+msgid "Content Optimization Assistance"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:192
+msgid "Landing Page Optimization Assistance"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:195
+msgid "Mobile Optimization Assistance"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:198
+msgid "1 Keyword Optimization"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:201
+msgid "Constant Contact (500 contacts free)"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:209
+msgid "What's new in Blue Sky Pro"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:217
+msgid "Email that gets results with Constant Contact"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:222
+msgid "Free email marketing for up to 500 contacts"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:225
+msgid "100+ responsive email templates"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:228
+msgid "List-building tools and expert advice"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:232
+msgid "Exceeding 500 contacts will trigger a plan upgrade that allows for up to 2,500 contacts at $35/mo."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:243
+msgid "Boost your rank with Bluehost SEO Tools"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:247
+msgid "All-in-one SEO toolkit"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:248
+msgid "Analytic Marketing Reports to improve traffic"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:249
+msgid "Competitive intelligence to see how you compare"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:250
+msgid "Suggested keywords to boost rankings"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:251
+msgid "Integrated dashboard to track rankings"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:262
+msgid "Strategies to drive traffic from One Keyword Search"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:266
+msgid "Strategic single keyword recommendation"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:267
+msgid "Dedicated Marketing Program Manager to help you grow"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:268
+msgid "Unique content backlinking to boost rankings"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:269
+msgid "Access to weekly search engine rankings"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:270
+msgid "Full-visibility analytics"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:278
+msgid "Feature Overview"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:284
+msgid "Create an Online Store"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:287
+msgid "We'll help you set up your store from start to finish."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:293
+msgid "Tie in Social Media"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:296
+msgid "Get more traffic by integrating your social media accounts with your website."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:302
+msgid "Increase traffic"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:305
+msgid "Get expert advice on how to grow your audience."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:311
+msgid "Build for Any Device"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:314
+msgid "Build a responsive website that looks great on phones, tablets, and desktops."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:320
+msgid "Optimize Videos & Images"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:323
+msgid "Help your website load and respond fast with optimized videos and images."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:329
+msgid "Pre-launch Review"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:332
+msgid "Our experts will test and review your site to catch issues before you launch."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:338
+msgid "Long Term Value"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:341
+msgid "Use our experts as a resource to maintain and advance your site into the future."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:347
+msgid "Expert Advice"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:350
+msgid "Ask questions as they pop up, and get quick answers via live chat, email, and over the phone."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:356
+msgid "Screen Sharing"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:359
+msgid "Get step-by-step guidance on your actual site with live screen sharing."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:366
+msgid "What Do Our Customers Say?"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:374
+msgid "Friendly Tech Support"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:377
+msgid "I'm so glad that I found you and feel so grateful for knowing what I now know! With the help of WP Live, I was able to call anytime, with any question, which has been incredibly helpful."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:380
+msgid "Alana McInnis"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:383
+msgid "IslandBeautyHabits.com"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:391
+msgid "Blue Sky is for Everyone"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:394
+msgid "Blue Sky had a solution for every problem we ran into, every step of the way. Whether we needed to change the size of a slider or learn how to back-up our site, they had answers within minutes."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:397
+msgid "David Bixler"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:400
+msgid "DuranteRentals.com"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:408
+msgid "Exceeded All Expectations"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:411
+msgid "Blue Sky was a refreshing change from other customer tech support companies I've dealt with. They were not only incredibly knowledgeable but also sincerely committed to finding answers to all of the various issues I faced."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:414
+msgid "Sue Pappas"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:417
+msgid "OutdoorArtCanvas.com"
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:424
+msgid "Win with Blue Sky today."
+msgstr ""
+
+#: build/16-fab54ef4f2d8de7e6a78.js:1
+#: src/app/pages/blue-sky/index.js:432
+msgid "Give us a call at %s844-211-8705%s"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/search-form/index.js:27
+#: src/app/pages/help/search-form/index.js:35
+msgid "Search Resources"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-search/index.js:17
+#: src/app/components/molecules/bwa-search/index.js:21
+#: src/app/pages/help/search-form/index.js:30
+msgid "Search"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/search-results/index.js:24
+msgid "More"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/search-results/index.js:36
+msgid "There were no results for your query. Please try again."
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/search.js:71
+msgid "Filter by"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:36
+#: src/app/pages/help/index.js:184
+msgid "Chat with us"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-help-card/index.js:11
+#: src/app/pages/help/index.js:41
+msgid "From DIY to full-service help"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:44
+msgid "Feeling stuck? Choose how much help you'd like, from how-to articles to your own website concierge."
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:67
+msgid "Get your own website guide"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:69
+msgid "Our WordPress experts can jump in wherever you need help, teaching you how to build, grow, and maintain your website."
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:81
+msgid "Get Blue Sky"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:88
+msgid "Let us do it for you"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:90
+msgid "What can we help you achieve today?"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:95
+msgid "Full-Service Website"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:97
+msgid "Ongoing marketing assistance and design"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:105
+#: src/app/pages/help/index.js:123
+msgid "Learn more"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:111
+msgid "SEO Services"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:114
+msgid "Fine tune your website for better visibility"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:129
+msgid "Our experts can help"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:132
+msgid "Consult with an expert to figure out the best next steps."
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:140
+msgid "Request a consultation"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:148
+msgid "DIY"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:151
+msgid "Checkout our resource center for helpful how-to articles and guides."
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:161
+msgid "Visit resource center"
+msgstr ""
+
+#: build/17-9b9420a25dc61e73edc8.js:1
+#: src/app/pages/help/index.js:169
+msgid "888-401-4678"
+msgstr ""
+
+#. translators: %s is one of Themes, Plugins, or Services
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:22
+msgid "Premium %s"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:45
+msgid "Oops! Something went wrong."
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:69
+msgid "January"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:70
+msgid "February"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:71
+msgid "March"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:72
+msgid "April"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:73
+msgid "May"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:74
+msgid "June"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:75
+msgid "July"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:76
+msgid "August"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:77
+msgid "September"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:78
+msgid "October"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:79
+msgid "November"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:80
+msgid "December"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:129
+msgid "One Time Fee"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:134
+msgid "Item Information"
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:137
+msgid "Created: "
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:141
+msgid "Updated: "
+msgstr ""
+
+#: build/22-6b6fa4611dbb19658808.js:1
+#: src/app/pages/marketplace/product-details/index.js:145
+msgid "Sales: "
+msgstr ""
+
+#: build/23-a09454b377c94829ff33.js:1
+#: build/24-1203d841b98add659f99.js:1
+#: build/25-1e77bffd8125f968aabd.js:1
+#: src/editortours/events.js:46
+msgid "Reopen Tour"
+msgstr ""
+
+#: build/23-a09454b377c94829ff33.js:1
+#: build/24-1203d841b98add659f99.js:1
+#: build/25-1e77bffd8125f968aabd.js:1
+#: src/editortours/events.js:66
+msgid "Page tour closed."
+msgstr ""
+
+#: build/23-a09454b377c94829ff33.js:1
+#: build/24-1203d841b98add659f99.js:1
+#: build/25-1e77bffd8125f968aabd.js:1
+#: src/editortours/events.js:76
+msgid "Page tour is complete!"
+msgstr ""
+
+#: build/23-a09454b377c94829ff33.js:1
+#: build/24-1203d841b98add659f99.js:1
+#: build/25-1e77bffd8125f968aabd.js:1
+#: src/editortours/events.js:86
+msgid "Page tour closed. You can restart it below."
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-account-card/index.js:10
+#: src/app/components/molecules/bwa-account-card/index.js:15
+#: src/app/menus/user.js:28
+msgid "Bluehost Account"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/menus/user.js:35
+msgid "Billing"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/menus/user.js:42
+msgid "Products"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/menus/user.js:49
+msgid "Mail & Office"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/menus/user.js:56
+msgid "Security"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/menus/user.js:63
+msgid "Validation Token"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-error/index.js:26
+msgid "Error report sent."
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-error/index.js:33
+msgid "Failed to send error report."
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-error/index.js:42
+msgid "Sending error report..."
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-error/index.js:102
+msgid "There was a problem loading the Bluehost Plugin."
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-error/index.js:104
+msgid "Get in touch and we'll sort out the issue for you."
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-error/index.js:107
+msgid "Contact Support"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-error/index.js:110
+msgid "Try Refresh"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-account-card/index.js:11
+msgid "Control Panel"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-help-card/index.js:9
+msgid "Need some help?"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-help-card/index.js:10
+msgid "Support agent on headset and chat"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-help-card/index.js:12
+msgid "Call or chat 24/7 for support or let our experts to make your site."
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-dropdown-button/index.js:171
+msgid "Select"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-no-results/index.js:10
+msgid "No results found"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-no-results/index.js:11
+msgid "It seems we can't find any results based on your search. Try again."
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/molecules/bwa-product-card/index.js:12
+#: src/app/components/molecules/bwa-product-card/index.js:46
+msgid "View Details"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/organisms/bwa-common-header/desktop-dropdown/index.js:38
+#: src/app/components/organisms/bwa-common-header/desktop-dropdown/index.js:42
+msgid "Hosting Account Menu"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/organisms/bwa-common-header/index.js:17
+msgid "Go to your Bluehost Control Panel"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/components/organisms/bwa-common-header/index.js:42
+msgid "Help, support & learning resources"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/index.js:77
+msgid "Skip to Navigation"
+msgstr ""
+
+#: build/app-1628455c4848e7f2d3e2.js:1
+#: src/app/index.js:83
+msgid "Skip to Content"
+msgstr ""
+
+#: build/dashboard-4cdf14d5f19a26156080.js:1
+#: src/dashboard/error.js:5
+msgid "Oops, something wen't wrong"
+msgstr ""
+
+#: build/editortours-dcbd0e586f4c209cf4ec.js:1
+#: src/editortours/highlighting.js:117
+msgid "Relaunch Tour"
+msgstr ""
+
+#: build/editortours-dcbd0e586f4c209cf4ec.js:1
+#: src/editortours/highlighting.js:154
+msgid "These placeholders haven't been edited"
+msgstr ""
+
+#: build/editortours-dcbd0e586f4c209cf4ec.js:1
+#: src/editortours/highlighting.js:158
+msgid "Oops, we couldn't find this placeholder, please double check the content"
+msgstr ""
+
+#: build/editortours-dcbd0e586f4c209cf4ec.js:1
+#: src/editortours/highlighting.js:172
+msgid "This page looks great! Time to share it with your visitors."
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:37
+msgid "Start with your homepage"
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:42
+#: src/app/pages/home/onboarding/steps/add-contact/index.js:11
+msgid "Add contact page"
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:47
+#: src/app/pages/home/onboarding/steps/add-about/index.js:12
+msgid "Add about page"
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:52
+msgid "Add more content"
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:57
+msgid "Make it look just right"
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:62
+msgid "Launch with confidence"
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:125
+msgid "Onboarding"
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:128
+msgid "Welcome to your WordPress site!"
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:131
+msgid "WordPress is the"
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:131
+msgid "most popular platform"
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:131
+msgid "for building amazing websites."
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:136
+msgid "Let's setup your site"
+msgstr ""
+
+#: src/app/pages/home/onboarding/index.js:138
+msgid "Here's what we recommend before launching your site."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/add-about/index.js:10
+msgid "An about page lets you tell your visitors about you, your team, or your company - everything from what you do to what sets you apart."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/add-about/index.js:11
+msgid "Not sure where to start? We give you some content to get you going and help walk you through customizing it!"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/add-contact/index.js:10
+msgid "It can be important for visitors to be able to get in touch with you. Adding a contact page to your site is easy and fast, and can both reduce visitor frustration as well as build confidence!"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/add-homepage/index.js:20
+msgid "The homepage is what visitors will see when they visit"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/add-homepage/index.js:20
+msgid "and is often the first contact your visitors have with your site."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/add-homepage/index.js:21
+msgid "By default this page shows the most recent posts you have made, and you can customize it to offer a better first experience for your visitors!"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/add-homepage/index.js:22
+msgid "Customize your homepage"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/add-more-content/index.js:9
+msgid "Person on laptop surrounded by gears and leaves with growing ideas."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/add-more-content/index.js:10
+msgid "Content is important - it’s how you communicate with your visitors and it’s also what search engines use to help people find your site."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/add-more-content/index.js:11
+msgid "There are two main types of content - pages and posts. Use a page for content that won't change too often (about page, contact page, portfolio, restaurant menu, etc) and use posts for information that's timely (blog posts, updates)."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/add-more-content/index.js:12
+msgid "Add page"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/add-more-content/index.js:13
+msgid "Add post"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/launch/index.js:31
+msgid "Launching..."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/launch/index.js:31
+msgid "Reverting..."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/launch/index.js:34
+msgid "Launch your site"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/launch/index.js:34
+msgid "Restore Coming Soon"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/launch/index.js:47
+msgid "Person on spaceship with laptop."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/launch/index.js:48
+msgid "Your site has a \"coming soon\" message, which lets people know you're working on it. Wondering if you’re ready to launch? Check out"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/launch/index.js:48
+msgid "our website pre-publishing checklist"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/launch/index.js:48
+msgid "and then launch with confidence!"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/launch/index.js:56
+msgid "People jumping and celebrating."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/launch/index.js:57
+msgid "Nice going! Your website is now live to the internet for everyone to visit. Reach out anytime you need help or have questions about next steps!"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/look-right/index.js:9
+msgid "Designer working on a website"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/look-right/index.js:10
+msgid "You want your site to look just right - maybe you want it to match your company colors, to be serious or fun, simple or bold—whatever's you. Customize the look of your site, or"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/look-right/index.js:10
+msgid "browse our premium themes"
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/look-right/index.js:10
+msgid " to find something that fits you just right."
+msgstr ""
+
+#: src/app/pages/home/onboarding/steps/look-right/index.js:11
+msgid "Customize your site"
+msgstr ""
+
+#: src/app/pages/marketplace/themes/index.js:18
+msgid "Preview"
+msgstr ""
+
+#: src/app/pages/settings/automatic-updates/index.js:11
+msgid "Automatic Updates"
+msgstr ""
+
+#: src/app/pages/settings/automatic-updates/index.js:14
+msgid "WordPress Core"
+msgstr ""
+
+#: src/app/pages/settings/comments/index.js:11
+msgid "Close comments after "
+msgstr ""
+
+#: src/app/pages/settings/comments/index.js:11
+msgid " day"
+msgid_plural " days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/app/pages/settings/comments/index.js:12
+msgid "Display "
+msgstr ""
+
+#: src/app/pages/settings/comments/index.js:12
+msgid "comment per page"
+msgid_plural "comments per page"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/app/pages/settings/comments/index.js:14
+msgid "Comments"
+msgstr ""
+
+#: src/app/pages/settings/comments/index.js:17
+msgid "Disable comments for old posts"
+msgstr ""
+
+#: src/app/pages/settings/content/index.js:11
+msgid "Empty the trash every "
+msgstr ""
+
+#: src/app/pages/settings/content/index.js:11
+msgid "week"
+msgid_plural "weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/app/pages/settings/content/index.js:12
+msgid "Keep "
+msgstr ""
+
+#: src/app/pages/settings/content/index.js:12
+msgid " latest revision"
+msgid_plural "latest revisions"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/app/pages/settings/content/index.js:14
+msgid "Content"
+msgstr ""
+
+#: src/app/pages/settings/performance/index.js:37
+msgid "Caching"
+msgstr ""
+
+#: src/app/pages/settings/performance/index.js:43
+msgid "Boost speed and performance by storing a copy of your website content, files, and images online so the pages of your website load faster for your visitors."
+msgstr ""
+
+#: src/app/pages/settings/performance/index.js:46
+msgid "Caching Level"
+msgstr ""
+
+#: src/app/pages/settings/performance/index.js:50
+msgid "Assets Only"
+msgstr ""
+
+#: src/app/pages/settings/performance/index.js:51
+msgid "Cache static assets like images and the appearance of your site for 5 minutes. Recommended for ecommerce and sites that update frequently or display info in real-time."
+msgstr ""
+
+#: src/app/pages/settings/performance/index.js:56
+msgid "Assets & Web Pages"
+msgstr ""
+
+#: src/app/pages/settings/performance/index.js:57
+msgid "Cache static assets for 6 hours and other web pages for 5 minutes. Recommended for blogs, educational sites, and sites that update at least weekly."
+msgstr ""
+
+#: src/app/pages/settings/performance/index.js:62
+msgid "Assets & Web Pages - Extended"
+msgstr ""
+
+#: src/app/pages/settings/performance/index.js:63
+msgid "Cache static assets for 1 week and web pages for 5 minutes. Recommended for portfolios, brochure sites, and sites that update monthly or less often."
+msgstr ""
+
+#: src/app/pages/settings/performance/index.js:66
+msgid "Manage Cache"
+msgstr ""
+
+#: src/app/pages/settings/performance/index.js:67
+msgid "If you’ve recently updated your website, we recommend clearing the site cache. We’ll fetch a fresh version of your site to cache."
+msgstr ""
+
+#: src/app/pages/settings/performance/index.js:68
+msgid "Clear Everything"
+msgstr ""
+
+#: src/app/pages/settings/site-controls/index.js:12
+msgid "Site Controls"
+msgstr ""
+
+#: src/app/pages/settings/site-controls/index.js:16
+msgid "Coming Soon Page"
+msgstr ""
+
+#: src/app/pages/tools/index.js:6
+msgid "Tools Page"
+msgstr ""
+
+#: src/app/pages/tools/staging/clone-modal.js:17
+#: src/app/pages/tools/staging/delete-modal.js:17
+#: src/app/pages/tools/staging/deploy-modal.js:34
+msgid "This action cannot be undone"
+msgstr ""
+
+#: src/app/pages/tools/staging/clone-modal.js:19
+#: src/app/pages/tools/staging/delete-modal.js:19
+#: src/app/pages/tools/staging/deploy-modal.js:37
+msgid "Cancel"
+msgstr ""
+
+#: src/app/pages/tools/staging/clone-modal.js:22
+msgid "Clone"
+msgstr ""
+
+#: src/app/pages/tools/staging/clone-modal.js:27
+msgid "Clone production to staging?"
+msgstr ""
+
+#: src/app/pages/tools/staging/clone-modal.js:30
+msgid "Are you sure you want to clone production to staging? This will permanently overwrite your staging site."
+msgstr ""
+
+#: src/app/pages/tools/staging/clone-overlay.js:10
+msgid "Cloning Production Site"
+msgstr ""
+
+#: src/app/pages/tools/staging/clone-overlay.js:13
+#: src/app/pages/tools/staging/delete-overlay.js:13
+#: src/app/pages/tools/staging/deploy-overlay.js:22
+#: src/app/pages/tools/staging/index.js:283
+msgid "This should only take a minute"
+msgstr ""
+
+#: src/app/pages/tools/staging/delete-modal.js:22
+#: src/app/pages/tools/staging/index.js:196
+msgid "Delete"
+msgstr ""
+
+#: src/app/pages/tools/staging/delete-modal.js:27
+msgid "Delete staging site?"
+msgstr ""
+
+#: src/app/pages/tools/staging/delete-modal.js:30
+msgid "Are you sure you want to delete this staging site? This will permanently delete the staging instance from your site."
+msgstr ""
+
+#: src/app/pages/tools/staging/delete-overlay.js:10
+msgid "Deleting Staging Site"
+msgstr ""
+
+#: src/app/pages/tools/staging/deploy-modal.js:17
+msgid "Deploy Database to Production?"
+msgstr ""
+
+#: src/app/pages/tools/staging/deploy-modal.js:18
+msgid "This will override your production site. Are you sure you want to deploy the database from staging to production?"
+msgstr ""
+
+#: src/app/pages/tools/staging/deploy-modal.js:21
+msgid "Deploy Files to Production?"
+msgstr ""
+
+#: src/app/pages/tools/staging/deploy-modal.js:22
+msgid "This will override your production site. Are you sure you want to deploy all staging files to production?"
+msgstr ""
+
+#: src/app/pages/tools/staging/deploy-modal.js:25
+msgid "Deploy to Production?"
+msgstr ""
+
+#: src/app/pages/tools/staging/deploy-modal.js:26
+msgid "This will override your production site. Are you sure you want to deploy everything from staging to production?"
+msgstr ""
+
+#: src/app/pages/tools/staging/deploy-modal.js:40
+msgid "Deploy"
+msgstr ""
+
+#: src/app/pages/tools/staging/deploy-overlay.js:13
+msgid "Deploying Database to Production Site"
+msgstr ""
+
+#: src/app/pages/tools/staging/deploy-overlay.js:15
+msgid "Deploying Files to Production Site"
+msgstr ""
+
+#: src/app/pages/tools/staging/deploy-overlay.js:17
+msgid "Deploying to Production Site"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:87
+msgid "A staging site is a copy of your site where you can safely test changes before publishing them to your production site. It gives you a way to try new things, test updates, and then deploy them when you're ready."
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:90
+msgid "Production site"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:91
+msgid "This is your live website."
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:101
+msgid "Clone to Staging"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:105
+msgid "Live Site"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:110
+#: src/app/pages/tools/staging/index.js:280
+msgid "Production"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:125
+msgid "Staging site"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:131
+msgid "Creating your staging site. This usually takes a few minutes..."
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:133
+msgid "You can wait or close this window and access your staging site from the staging menu after setup is complete."
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:142
+msgid "You don't have a staging site yet."
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:144
+msgid "Create Staging Site"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:153
+msgid "This is an unpublished copy of your website."
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:162
+msgid "Deploy All Changes"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:163
+msgid "Deploy all changes you've made to the filesystem and database of your website."
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:170
+msgid "Deploy Files Only"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:171
+msgid "This will only upload the files you've changed (i.e. html or css files)."
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:178
+msgid "Deploy Database"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:179
+msgid "Only upload changes you've made to the database on your staging server."
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:193
+msgid "Staging Options"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:203
+msgid "Staging Site"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:226
+msgid "Error"
+msgstr ""
+
+#: src/app/pages/tools/staging/index.js:226
+msgid "Success"
+msgstr ""
+
+#. translators: %s is replaced with the environment name (i.e. Production or Staging)
+#: src/app/pages/tools/staging/index.js:279
+msgid "Loading %s Site"
+msgstr ""
+
+#: src/app/pages/tools/staging/tips.js:19
+msgid "You can clone your production site to update your staging site with new content."
+msgstr ""
+
+#: src/app/pages/tools/staging/tips.js:20
+msgid "Making changes in a staging site doesn’t effect your live site."
+msgstr ""
+
+#: src/app/pages/tools/staging/tips.js:21
+msgid "If you want changes in a staging site to take effect on your live site, deploy them."
+msgstr ""
+
+#: src/app/pages/tools/staging/tips.js:30
+msgid "Tip:"
+msgstr ""

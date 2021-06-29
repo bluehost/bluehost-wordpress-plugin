@@ -1,6 +1,9 @@
 export { default as BWAError } from './bwa-error';
 export { default as BWAModal } from './bwa-modal';
 export { default as BWANotice } from './bwa-notice';
+export { default as BWAAccountCard } from './bwa-account-card';
+export { default as BWABlogPosts } from './bwa-blog-posts';
+export { default as BWAHelpCard } from './bwa-help-card';
 export { default as BWAPageSpinner } from './bwa-page-spinner';
 export { default as BWAPageNotices } from './bwa-page-notices';
 export { default as BWASnackbar } from './bwa-snackbar';

@@ -1,0 +1,30 @@
+:root {
+    --bh-blue: #3575d3;
+    --bh-pale-blue: #83c8fc;
+    --bh-light-blue: #bee0f6;
+    --bh-bg-blue: #f1f5f7;
+    --bh-dark-blue: #1a4784;
+    --bh-navy: #1d2c5c;
+    --bh-slate: #3d4e5e;
+    --bh-light: #f0faff;
+    --bh-pale: #edf4f9;
+    --bh-success: #17b212;
+    --bh-warning: #f89c24;
+    --bh-error: #f72f26;
+    --bh-gray: #5b5b5b;
+    --bh-light-gray: #9a9a9a;
+    --bh-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+    --nf-primary: var(--bh-blue);
+    --nf-primary-darker-10: var(--bh-dark-blue);
+    --nf-primary-darker-20: var(--bh-navy);
+
+    --nf-primary-font: var(--bh-font);
+    --nf-heading-font: var(--bh-font);
+}
+.wpadmin-brand-bluehost {
+    /* WORDPRESS CORE/COMPONENTS BRANDING */
+    --wp-admin-theme-color: var(--nf-primary);
+    --wp-admin-theme-color-darker-10: var(--nf-primary-darker-10);
+    --wp-admin-theme-color-darker-20: var(--nf-primary-darker-20);
+}

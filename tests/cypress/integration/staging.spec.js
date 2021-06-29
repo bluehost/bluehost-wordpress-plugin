@@ -162,7 +162,7 @@ describe('Staging Page', function () {
 
 			cy.contains('.environment-card__title', fn.getStagingInfo().stagingUrl).should('be.visible');
 
-			cy.contains('.environment-card__badge.--red', 'Staging Site');
+			cy.contains('.environment-card__badge.--black', 'Staging Site');
 
 			cy.get('.dropdown-button').scrollIntoView().within((el) => {
 				cy.get(el).should('be.visible');

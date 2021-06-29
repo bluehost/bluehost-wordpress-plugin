@@ -5,10 +5,10 @@ import { Children } from '@wordpress/element';
 export default function BWAProductGrid( { children, className = '' } ) {
 	return (
 		<div className={ `grid ${ className }` }>
-			<div className="pure-g">
+			<div className="grid__wrap">
 				{ Children.map( children, ( item ) => {
 					return (
-						<div className="pure-u-1 pure-u-md-1-2 pure-u-xl-1-3">
+						<div className="grid__column">
 							<div className="grid__item">{ item }</div>
 						</div>
 					);

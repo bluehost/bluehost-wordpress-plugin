@@ -2,6 +2,33 @@
 
 $mobile-padding: 30px;
 
+.bwa-page-marketplace-services-blue-sky {
+  .bwa-desktop-nav {
+    z-index: 100;
+  }
+  .bwa-desktop-nav__items {
+    border-bottom-color: transparent;
+  }
+  .bluesky-menu-backdrop {
+    opacity: 0;
+    @media screen and (min-width: $menu-breakpoint) {
+      margin-left: -24px;
+      width: calc(100% + 48px);
+      opacity: 1;
+    }
+    @media screen and (min-width: $hd-breakpoint) {
+      margin-left: 0;
+      width: 100%;
+      opacity: 1;
+    }
+    height: 75px;
+    background-color: rgba(255, 255, 255, 0.45);
+    position: relative;
+    top: -59px;
+    z-index: 10;
+  }
+}
+
 .page-blue-sky {
   margin-top: 20px;
   padding: 0;
@@ -11,7 +38,9 @@ $mobile-padding: 30px;
   background-size: contain;
 
   &.base-template {
-    padding-top: 5px;
+    @media screen and (min-width:767px) {
+      margin-top: -57px;
+    }
     max-width: none;
   }
 

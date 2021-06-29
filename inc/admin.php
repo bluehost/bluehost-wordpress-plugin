@@ -100,10 +100,10 @@ class Init {
 
 	public function enqueue_dashboard_assets( $hook ) {
 		if ( 'index.php' === $hook ) {
-			\Bluehost\BuildAssets::inlineWebpackPublicPath('bwp-manifest-dashboard');
-			\Bluehost\BuildAssets::enqueue('dashboard');
-			$cp_url = 'Bluehost_India' === get_option('mm_brand') ? 'https://my.bluehost.in' : 'https://my.bluehost.com';
-			\wp_add_inline_script('bwp-manifest-dashboard', 'const bluehostPanelUrl="' . $cp_url . '"', 'before' );
+			\Bluehost\BuildAssets::inlineWebpackPublicPath( 'bwp-manifest-dashboard' );
+			\Bluehost\BuildAssets::enqueue( 'dashboard' );
+			$cp_url = 'Bluehost_India' === get_option( 'mm_brand' ) ? 'https://my.bluehost.in' : 'https://my.bluehost.com';
+			\wp_add_inline_script( 'bwp-manifest-dashboard', 'const bluehostPanelUrl="' . $cp_url . '"', 'before' );
 		}
 	}
 
@@ -114,6 +114,8 @@ class Init {
 		\Bluehost_Admin_App_Mods::return_instance();
 		\Bluehost_Admin_App_Assets::return_instance();
 		\Bluehost_Admin_App_Page::return_instance();
+		\Newfold\Plugin\DefaultContent\Pages::return_instance();
+		\Newfold\Plugin\Tours\BlockEditor::return_instance();
 	}
 }
 

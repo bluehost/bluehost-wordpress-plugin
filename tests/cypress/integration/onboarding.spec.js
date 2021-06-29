@@ -11,151 +11,149 @@ describe('Onboarding', function () {
 	});
 
 	it('Exists', () => {
-		cy.findByRole('heading', {name: 'Welcome to your WordPress site', level: 2}).scrollIntoView().should('be.visible');
-		cy.findByText('Not sure how to get started? Here are a few options we recommend.').scrollIntoView().should('be.visible');
+		cy.findByRole('heading', {name: 'Welcome to your WordPress site!', level: 2}).scrollIntoView().should('be.visible');
+		cy.get('.nf-onboarding__header-desc').scrollIntoView().should('be.visible');
 	});
 
 	it('Is Accessible', () => {
-		cy.wait(200);
+		cy.wait(500);
 		cy.checkA11y('.bwa-route-contents');
 	});
 
-	describe('Homepage', () => {
-		it('Default State', () => {
-			cy.window().its('store').invoke('dispatch', {type: 'UPDATE_SETTING', setting: 'hasSetHomepage', newValue: false});
-			cy.window().its('store').invoke('getState').its('settings.hasSetHomepage').should('equal', false);
-			
-			cy.findByText('Let\'s start with your homepage').scrollIntoView().should('be.visible');
-			cy.findByRole('button', {name: 'Get Started'}).as('button');
-			cy.get('@button').scrollIntoView().should('be.visible');
-			cy.get('@button').click();
-		});
+	it('Has vertical tabs', () => {
+		cy.get('#tab-panel-0-start-homepage').should('be.visible').and('have.text', 'Start with your homepage');
+		cy.get('#tab-panel-0-add-contact').should('be.visible').and('have.text', 'Add contact page');
+		cy.get('#tab-panel-0-add-about').should('be.visible').and('have.text', 'Add about page');
+		cy.get('#tab-panel-0-add-more-content').should('be.visible').and('have.text', 'Add more content');
+		cy.get('#tab-panel-0-look-right').should('be.visible').and('have.text', 'Make it look just right');
+		cy.get('#tab-panel-0-launch').should('be.visible').and('have.text', 'Launch with confidence');
+	})
 
-		it('Open State', () => {
-			cy.intercept('POST', '**/bluehost/v1/settings*').as('updateSettings');
-			cy.findByText('What do you want people to see when they land on your site?').scrollIntoView().should('be.visible');
-			cy.findByRole('button', {name: 'Blog posts'}).as('blogPostsButton');
-			cy.findByRole('button', {name: 'Static page'}).as('staticPageButton');
-			cy.get('@blogPostsButton').scrollIntoView().should('be.visible');
-			cy.get('@staticPageButton').scrollIntoView().should('be.visible');
-			cy.get('@blogPostsButton').click();
-			cy.wait('@updateSettings');
-			cy.wait(1000);
-			cy.window().its('store').invoke('getState').its('settings.hasSetHomepage').should('equal', true);
-			cy.window().its('store').invoke('getState').its('settings.showOnFront').should('equal', 'posts');
-		});
+	it('Homepage Tab', () => {
+		cy.get('#tab-panel-0-start-homepage').click();
 
-		it('Complete State', () => {
-			cy.findByText('Your homepage is all set!').scrollIntoView().should('be.visible');
-			cy.findByRole('button', {name: 'Update'}).as('button');
-			cy.get('@button').scrollIntoView().should('be.visible');
-			cy.wait(100);
-			cy.get('@button').click();
-		});
+		cy.get('.nf-onboarding-base-step .illustration')
+			.should('be.visible')
+			.and('have.attr', 'alt', 'Person on lounge chair working on laptop.');
 
-		it('Modal', () => {
-			cy.intercept('POST', '**/bluehost/v1/settings*').as('updateSettings');
-			cy.intercept('POST', '**/wp/v2/pages*').as('createPage');
-			cy.findByRole('button', {name: 'Static page'}).scrollIntoView().click();
-			cy.findByText('Static Homepage Settings').should('be.visible');
-			cy.findByLabelText('Which page would you like to use as your homepage?').as('select');
-			cy.get('@select').select('0');
-			cy.findByLabelText('Enter the name for your new page:').as('input');
-			cy.get('@input').should('be.visible').type('Bananas');
-			cy.findByRole('button', {name: 'Update'}).as('button');
-			cy.get('@button').should('be.visible').click();
-			cy.wait('@updateSettings');
-			cy.wait('@createPage');
-		});
-	});
+		cy.get('.nf-onboarding-base-step .components-button')
+			.should('be.visible')
+			.and('have.attr', 'href', 'post-new.php?dcpage=home&dcsrc=plugin')
+			.and('have.text', 'Customize your homepage');
+	})
 
-	it('Start with a page or post', () => {
-		cy.findByText('Start with a page or post').scrollIntoView().should('be.visible');
+	it('Contact Tab', () => {
+		cy.get('#tab-panel-0-add-contact').click();
 
-		cy.findByRole('link', {name: 'Add a blog post'}).as('link')
-		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href')
-			.and('contain', '/wp-admin/post-new.php');
+		cy.get('.nf-onboarding-base-step .illustration')
+			.should('be.visible')
+			.and('have.attr', 'alt', 'Person throwing paper airplanes.');
 
-		cy.findByRole('link', {name: 'Add a page'}).as('link')
-		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href')
-			.and('contain', '/wp-admin/post-new.php?post_type=page');
-	});
+		cy.get('.nf-onboarding-base-step .components-button')
+			.should('be.visible')
+			.and('have.attr', 'href', 'post-new.php?dcpage=contact&dcsrc=plugin')
+			.and('have.text', 'Add contact page');
+	})
 
-	it('Make it look just right', () => {
-		cy.findByText('Make it look just right').scrollIntoView().should('be.visible');
+	it('About Tab', () => {
+		cy.get('#tab-panel-0-add-about').click();
 
-		cy.findByRole('link', {name: 'Browse themes'}).as('link')
-		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href')
-			.and('contain', '/wp-admin/admin.php?page=bluehost#/marketplace/themes');
+		cy.get('.nf-onboarding-base-step .illustration')
+			.should('be.visible')
+			.and('have.attr', 'alt', "People around monitor working and pointing.");
 
-		cy.findByRole('link', {name: 'Customize your site'}).as('link')
-		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href')
-			.and('contain', '/wp-admin/customize.php');
-	});
+		cy.get('.nf-onboarding-base-step .components-button')
+			.should('be.visible')
+			.and('have.attr', 'href', 'post-new.php?dcpage=about&dcsrc=plugin')
+			.and('have.text', 'Add about page');
+	})
 
-	it('Get ready to launch', () => {
-		cy.findByText('Get ready to launch').scrollIntoView().should('be.visible');
+	it('More Content Tab', () => {
+		cy.get('#tab-panel-0-add-more-content').click();
 
-		cy.findByRole('link', {name: 'website pre-publishing'}).as('link')
-		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href')
-			.and('include', 'https://www.bluehost.com/help/article/website-publish-checklist');
+		cy.get('.nf-onboarding-base-step .illustration')
+			.should('be.visible')
+			.and('have.attr', 'alt', "Person on laptop surrounded by gears and leaves with growing ideas.");
 
-		cy.findByRole('button', {name: 'Launch your site'}).scrollIntoView().should('be.visible');
-	});
+		cy.get('.nf-onboarding-base-step .components-button.is-primary')
+			.should('be.visible')
+			.and('have.attr', 'href', 'post-new.php?post_type=page')
+			.and('have.text', 'Add page');
 
-	it('How-to\'s & next steps', () => {
-		cy.findByRole('heading', {name: 'How-to\'s & next steps', level: 3}).scrollIntoView().should('be.visible');
+		cy.get('.nf-onboarding-base-step .components-button.is-secondary')
+			.should('be.visible')
+			.and('have.attr', 'href', 'post-new.php')
+			.and('have.text', 'Add post');
+	})
 
-		cy.findByRole('link', {name: 'How to use WordPress plugins'}).as('link')
-		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href')
-			.and('include', 'https://www.bluehost.com/blog/how-to-use-wordpress-plugins/');
+	it('Look Right Tab', () => {
+		cy.get('#tab-panel-0-look-right').click();
 
-		cy.findByRole('link', {name: 'The two essential plugins you need'}).as('link')
-		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href')
-			.and('include', 'https://www.bluehost.com/blog/the-two-essential-plugins-you-need-for-your-wordpress-site/');
+		cy.get('.nf-onboarding-base-step .illustration')
+			.should('be.visible').and('have.attr', 'alt', "Designer working on a website");
 
-		cy.findByRole('link', {name: 'Steps for adding a store to your site with WooCommerce'}).as('link')
-		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href')
-			.and('include', 'https://www.bluehost.com/blog/how-to-use-woocommerce/');
+		cy.get('.nf-onboarding-base-step .components-button')
+			.should('be.visible')
+			.and('have.attr', 'href', 'customize.php')
+			.and('have.text', 'Customize your site');
+	})
 
-		cy.findByRole('link', {name: 'The five best WooCommerce WordPress themes'}).as('link')
-		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href')
-			.and('include', 'https://www.bluehost.com/blog/the-five-best-woocommerce-wordpress-themes/');
+	it('Launch Tab', () => {
+		cy.get('#tab-panel-0-launch').click();
+		cy.get('.nf-onboarding-base-step .illustration').should('be.visible').and('have.attr', 'alt', "Person on spaceship with laptop.");
+	})
 
-		cy.findByRole('link', {name: 'Our BlueSky experts are here to help you every step of the way'}).as('link')
-		cy.get('@link').scrollIntoView().should('be.visible');
-		cy.get('@link').should('have.attr', 'href')
-			.and('include', 'https://www.bluehost.com/blue-sky');
-	});
-
-	it('Site can be launched', () => {
-		cy.intercept('POST', '**/bluehost/v1/settings*').as('updateSettings');
+	it('Site launched', () => {
+		cy.server();
+		cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
 		cy.findByRole('button', {name: 'Launch your site'}).scrollIntoView().click();
 		cy.wait('@updateSettings');
-
-		cy.findByText('Awesome! Your site is live.').scrollIntoView().should('be.visible');
-
-		cy.findByRole('button', {name: 'Restore Coming Soon'}).scrollIntoView().should('be.visible');
-
-		cy.findByText('Coming Soon Active').should('not.exist');
-	});
+		cy.get('.nf-onboarding-base-step .illustration').should('be.visible').and('have.attr', 'alt', "People jumping and celebrating.");
+	})
 
 	it('Site can be unlaunched', () => {
-		cy.intercept('POST', '**/bluehost/v1/settings*').as('updateSettings');
+		cy.server();
+		cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
 		cy.findByRole('button', {name: 'Restore Coming Soon'}).scrollIntoView().click();
 		cy.wait('@updateSettings');
+		cy.get('.nf-onboarding-base-step .illustration').should('be.visible').and('have.attr', 'alt', "Person on spaceship with laptop.");
+	})
 
-		cy.findByText('Get ready to launch').scrollIntoView().should('be.visible');
-		cy.findByRole('button', {name: 'Launch your site'}).scrollIntoView().should('be.visible');
-	});
+	it('Account Card', () => {
+		cy.get('.component-account-card h3.app-heading').should('be.visible').and('have.text', 'Bluehost Account');
+
+		cy.get('.tab.account_link').should('be.visible');
+		cy.get('.tab.account_link svg').should('be.visible');
+		cy.get('.tab.account_link a p').should('have.text', 'Control Panel');
+
+		cy.get('.tab.billing_link').should('be.visible');
+		cy.get('.tab.billing_link svg').should('be.visible');
+		cy.get('.tab.billing_link a p').should('have.text', 'Billing');
+
+		cy.get('.tab.products_link').should('be.visible');
+		cy.get('.tab.products_link svg').should('be.visible');
+		cy.get('.tab.products_link a p').should('have.text', 'Products');
+
+		cy.get('.tab.mail_link').should('be.visible');
+		cy.get('.tab.mail_link svg').should('be.visible');
+		cy.get('.tab.mail_link a p').should('have.text', 'Mail & Office');
+
+		cy.get('.tab.security_link').should('be.visible');
+		cy.get('.tab.security_link svg').should('be.visible');
+		cy.get('.tab.security_link a p').should('have.text', 'Security');
+
+		cy.get('.tab.validation_token_link').should('be.visible');
+		cy.get('.tab.validation_token_link svg').should('be.visible');
+		cy.get('.tab.validation_token_link a p').should('have.text', 'Validation Token');
+
+	})
+
+	it('Help Card', () => {
+		cy.get('.component-help-card').scrollIntoView().should('be.visible');
+		cy.get('.component-help-card h3.app-heading').should('be.visible').and('have.text', 'Need some help?');
+		cy.get('.component-help-card .illustration').should('be.visible').and('have.attr', 'alt', 'Support agent on headset and chat');
+		cy.get('.component-help-card h4.app-heading').should('be.visible').and('have.text', 'From DIY to full-service help');
+		cy.get('.component-help-card .cta .components-button').should('be.visible').and('have.text', 'Help Me').and('have.attr', 'href', '#/card/help');
+	})
 
 });

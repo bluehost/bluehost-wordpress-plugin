@@ -22,6 +22,7 @@ function PluginsPage( { history } ) {
 					},
 				} }
 				id={ item.id }
+				type={ item.marketplaceType }
 				imageUrl={ item.images.preview_url }
 				isFavorite={ hasFavorite( item.id ) }
 				key={ item.id }
