@@ -47,7 +47,7 @@ describe('Tour: Contact Page Content', function () {
             .contains('Back');
 	});
 
-    it('Tour Step: Next', () => {
+    it('Tour Step: Starter', () => {
         cy.get('[data-shepherd-step-id="starter"] .components-button.is-primary.shepherd-button').click();
         cy.wait(1000);
         cy.get('[data-shepherd-step-id="show-wpforms-link"]').should('be.visible');
@@ -60,7 +60,7 @@ describe('Tour: Contact Page Content', function () {
             .contains('Back');
     });
 
-    it('Tour Step: Next', () => {
+    it('Tour Step: Link', () => {
         cy.get('[data-shepherd-step-id="show-wpforms-link"] .components-button.is-primary.shepherd-button').click();
         cy.wait(1000);
         cy.get('[data-shepherd-step-id="show-wpforms-menu"]').should('be.visible');
@@ -73,7 +73,7 @@ describe('Tour: Contact Page Content', function () {
             .contains('Back');
     });
 
-    it('Tour Step: Next', () => {
+    it('Tour Step: Menu', () => {
         cy.get('[data-shepherd-step-id="show-wpforms-menu"] .components-button.is-primary.shepherd-button').click();
         cy.wait(1000);
         cy.get('[data-shepherd-step-id="final-polish"]').should('be.visible');
@@ -112,17 +112,17 @@ describe('Tour: Contact Page Content', function () {
 
     });
 
-    it('Tour Escape works', () =>{
+    it('Tour Escapes', () =>{
         cy.get('body').type('{esc}');
         cy.wait(1000);
         cy.get('.shepherd-modal-is-visible').should('not.exist');
     });
 
-    it('Default Content in place', () => {
-        cy.get('[data-type="core/paragraph"]')
+    it('Has Default Content', () => {
+        cy.get('[data-type="core/paragraph"]').scrollIntoView()
             .should('be.visible')
             .contains('Please fill out the form below and we\'ll be in touch.');
-        cy.get('[data-type="wpforms/form-selector"]').should('be.visible');
+        cy.get('[data-type="wpforms/form-selector"]').scrollIntoView().should('be.visible');
     });
 
 });
