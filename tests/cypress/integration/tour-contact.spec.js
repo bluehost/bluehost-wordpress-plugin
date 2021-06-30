@@ -120,9 +120,11 @@ describe('Tour: Contact Page Content', function () {
 
     it('Has Default Content', () => {
         cy.get('[data-type="core/paragraph"]').scrollIntoView()
-            .should('be.visible')
+            .should('exist')
             .contains('Please fill out the form below and we\'ll be in touch.');
-        cy.get('[data-type="wpforms/form-selector"]').scrollIntoView().should('be.visible');
+        cy.get('[data-type="wpforms/form-selector"]').scrollIntoView()
+            .should('exist')
+            .contains('Name');
     });
 
 });
