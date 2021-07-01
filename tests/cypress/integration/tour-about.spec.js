@@ -94,7 +94,7 @@ describe('Tour: About Page', function () {
 
         cy.get('.newfold-default-content-validation .components-notice.is-warning')
             .should('be.visible')
-            .contains('We found 10 placeholders still in on this page.');
+            .contains('We found 10 placeholders still on this page.');
     });
 
     it('Updated placeholder span is removed', () => {
