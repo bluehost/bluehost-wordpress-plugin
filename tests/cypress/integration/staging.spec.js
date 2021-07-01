@@ -23,7 +23,7 @@ const fn = {
 		cy.server();
 		cy.route({
 			method: 'GET',
-			url: '**/bluehost/v1/staging*',
+			url: '**?**/bluehost/v1/staging*',
 			response: this.getStagingInfo(responseOverrides),
 		}).as('stagingInfo');
 		cy.visit('/wp-admin/admin.php?page=bluehost#/tools/staging');
@@ -69,7 +69,7 @@ describe('Staging Page', function () {
 		cy.server();
 		cy.route({
 			method: 'POST',
-			url: '*/bluehost/v1/staging*',
+			url: '**?**/bluehost/v1/staging*',
 			response: fn.getStagingInfo({
 				stagingExists: false,
 				status: 'error',
@@ -96,7 +96,7 @@ describe('Staging Page', function () {
 		cy.server();
 		cy.route({
 			method: 'POST',
-			url: '**/bluehost/v1/staging*',
+			url: '**?**/bluehost/v1/staging*',
 			response: fn.getStagingInfo(),
 		}).as('stagingCreation');
 		cy.contains('button', 'Create Staging Site').click();
@@ -123,7 +123,7 @@ describe('Staging Page', function () {
 		cy.server();
 		cy.route({
 			method: 'POST',
-			url: '**/bluehost/v1/staging/clone*',
+			url: '**?**/bluehost/v1/staging/clone*',
 			response: fn.getStagingInfo(),
 			delay: 1000,
 		}).as('cloneStaging');
@@ -221,7 +221,7 @@ describe('Staging Page', function () {
 		cy.server();
 		cy.route({
 			method: 'POST',
-			url: '**/bluehost/v1/staging/deploy?type=all*',
+			url: '**?**/bluehost/v1/staging/deploy?type=all*',
 			response: fn.getStagingInfo(),
 			delay: 1000,
 		}).as('deploy');
@@ -258,7 +258,7 @@ describe('Staging Page', function () {
 		cy.server();
 		cy.route({
 			method: 'POST',
-			url: '**/bluehost/v1/staging/deploy?type=files*',
+			url: '**?**/bluehost/v1/staging/deploy?type=files*',
 			response: fn.getStagingInfo(),
 			delay: 1000,
 		}).as('deploy');
@@ -301,7 +301,7 @@ describe('Staging Page', function () {
 		cy.server();
 		cy.route({
 			method: 'POST',
-			url: '**/bluehost/v1/staging/deploy?type=db*',
+			url: '**?**/bluehost/v1/staging/deploy?type=db*',
 			response: fn.getStagingInfo(),
 			delay: 1000,
 		}).as('deploy');
@@ -373,7 +373,7 @@ describe('Staging Page', function () {
 		cy.server();
 		cy.route({
 			method: 'POST',
-			url: '*/bluehost/v1/staging*',
+			url: '**?**/bluehost/v1/staging*',
 			headers: {
 				'x-http-method-override': 'DELETE',
 			},
@@ -418,7 +418,7 @@ describe('Staging Page', function () {
 		cy.server();
 		cy.route({
 			method: 'POST',
-			url: '**/bluehost/v1/staging*',
+			url: '**?**/bluehost/v1/staging*',
 			headers: {
 				'x-http-method-override': 'DELETE',
 			},
