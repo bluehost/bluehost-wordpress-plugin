@@ -68,15 +68,16 @@ describe('Tour: About Page', function () {
     });
 
     it('Removes highlight on caret enter', () => {
-        cy.get('#nf-5')
+        cy.get('#nf-2')
             .should('exist')
-            .contains('brand differentiator 3')
+            .contains('topic/product')
             .should('have.css', 'background-color', 'rgb(53, 117, 211)')
             .should('have.css', 'color', 'rgb(255, 255, 255)');
         
-        cy.get('#nf-1').type('{downArrow}{downArrow}');
-        cy.wait(100);
-        cy.get('#nf-5')
+        cy.get('#nf-1')
+            .type('{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}');
+        cy.wait(500);
+        cy.get('#nf-2')
             .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
             .should('have.css', 'color', 'rgb(40, 48, 61)');
     });
