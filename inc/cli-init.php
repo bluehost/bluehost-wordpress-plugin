@@ -21,12 +21,14 @@ class BH_WP_CLI_Loader {
 	protected $commands;
 
 	/**
+	 * Class instance.
+	 *
 	 * @var stdClass - Instance of BH_WP_CLI_Loader.
 	 */
 	protected static $instance;
 
 	/**
-	 * Return Class instance
+	 * Return Class instance.
 	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof BH_WP_CLI_Loader ) ) {
@@ -50,30 +52,25 @@ class BH_WP_CLI_Loader {
 				'cmd'       => 'branding',
 				'class'     => 'BH_WP_CLI_Branding',
 				'shortdesc' => 'Control hosting branding and UX.',
-				'longdesc'  => 'Control the admin interface, default modules and UX for an Endurance hosting brand.' .
-							   PHP_EOL . 'Subcommands: update, remove',
+				'longdesc'  => 'Control the admin interface, default modules and UX for an Endurance hosting brand.' . PHP_EOL . 'Subcommands: update, remove',
 			),
 			array(
 				'cmd'       => 'cache',
 				'class'     => 'BH_WP_CLI_Cache',
 				'shortdesc' => 'Control all forms of caching.',
-				'longdesc'  => 'Control how browser cache, page cache and browser caching are configured.' .
-							   PHP_EOL . 'Cache Types: browser, page, object (not functional yet)' .
-							   PHP_EOL . 'Subcommands: add, update, status',
+				'longdesc'  => 'Control how browser cache, page cache and browser caching are configured.' . PHP_EOL . 'Cache Types: browser, page, object (not functional yet)' . PHP_EOL . 'Subcommands: add, update, status',
 			),
 			array(
 				'cmd'       => 'digest',
 				'class'     => 'BH_WP_CLI_Digest',
 				'shortdesc' => 'Analyze WordPress for this site.',
-				'longdesc'  => 'Analyze WordPress content, configuration and server environment.' .
-							   PHP_EOL . 'Associative Args: --full --noprompt',
+				'longdesc'  => 'Analyze WordPress content, configuration and server environment.' . PHP_EOL . 'Associative Args: --full --noprompt',
 			),
 			array(
 				'cmd'       => 'secrets',
 				'class'     => 'BH_WP_CLI_Secrets',
 				'shortdesc' => 'Control the WordPress Salts.',
-				'longdesc'  => 'Read and update WordPress salts in the wp-config.php file.' .
-							   PHP_EOL . 'Subcommands: update, age, list',
+				'longdesc'  => 'Read and update WordPress salts in the wp-config.php file.' . PHP_EOL . 'Subcommands: update, age, list',
 			),
 			array(
 				'cmd'       => 'remove_orphan_post_meta',
@@ -85,23 +82,19 @@ class BH_WP_CLI_Loader {
 				'cmd'       => 'sso',
 				'class'     => 'BH_WP_CLI_SSO',
 				'shortdesc' => 'Single sign-on from hosting platform.',
-				'longdesc'  => 'Handle single sign-on from Endurance hosting platforms and get magic link.' .
-							   PHP_EOL . 'Associative Args: --username --role --email --id --min=MINUTES_UNTIL_EXPIRE --url-only',
+				'longdesc'  => 'Handle single sign-on from Endurance hosting platforms and get magic link.' . PHP_EOL . 'Associative Args: --username --role --email --id --min=MINUTES_UNTIL_EXPIRE --url-only',
 			),
 			array(
 				'cmd'       => 'staging',
 				'class'     => 'BH_WP_CLI_Staging',
 				'shortdesc' => 'CRUD operations for EIG staging.',
-				'longdesc'  => 'Internal commands to handle staging environment.' .
-							   PHP_EOL . 'Subcommands: create, clone, destroy, sso_staging, deploy, deploy_files,' .
-							   ' deploy_db, deploy_files_db, save_state, restore_state, sso_production',
+				'longdesc'  => 'Internal commands to handle staging environment.' . PHP_EOL . 'Subcommands: create, clone, destroy, sso_staging, deploy, deploy_files, deploy_db, deploy_files_db, save_state, restore_state, sso_production',
 			),
 			array(
 				'cmd'       => 'module',
 				'class'     => 'BH_WP_CLI_Module',
 				'shortdesc' => 'Control hosting plugin modules.',
-				'longdesc'  => 'Enable, disable and check status of internal modules in the hosting plugin.' .
-							   PHP_EOL . 'Subcommands: enable, disable, status, list, reset',
+				'longdesc'  => 'Enable, disable and check status of internal modules in the hosting plugin.' . PHP_EOL . 'Subcommands: enable, disable, status, list, reset',
 			),
 		);
 
@@ -115,9 +108,10 @@ class BH_WP_CLI_Loader {
 	protected function load_files() {
 
 		require_once 'cli/abstract-eig-wp-cli-command.php';
+		require_once 'cli/enhance-wp-search-replace.php';
 
 		foreach ( glob( dirname( __FILE__ ) . '/cli/*.php' ) as $file ) {
-			if ( false !== stripos( $file, 'abstract-eig-wp-cli-command' ) ) {
+			if ( false !== stripos( $file, 'abstract-eig-wp-cli-command' ) || false !== stripos( $file, 'enhance-wp-search-replace' ) ) {
 				continue; // already req'd above for order of operations.
 			}
 			require_once $file;
@@ -145,7 +139,7 @@ class BH_WP_CLI_Loader {
 			 * Validate command has required attributes and is executable.
 			 */
 			if ( empty( $cmd['cmd'] )
-				 || empty( $cmd['class'] )
+				|| empty( $cmd['class'] )
 			) {
 				continue;
 			}
@@ -176,7 +170,7 @@ class BH_WP_CLI_Loader {
 }
 
 /**
- * load/create instance of loader class
+ * Load/create instance of loader class
  *
  * @see BH_WP_CLI_Loader->initialize()
  */
