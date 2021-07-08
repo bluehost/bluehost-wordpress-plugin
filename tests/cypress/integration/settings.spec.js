@@ -16,9 +16,10 @@ describe('Settings Page', function () {
 	const fn = {
 		validateToggle(label, run = 0) {
 			cy.server();
-			cy.route('POST', '**/bluehost/v1/settings*').as('update');
+			cy.route('POST', '**?**/bluehost/v1/settings*').as('update');
 			cy.findByLabelText(label).as('toggle');
-			cy.get('@toggle').scrollIntoView().should('be.visible');
+			cy.get('@toggle').scrollIntoView().should('exist');
+			cy.get('@toggle').next().scrollIntoView().should('be.visible');
 			cy.get('@toggle').then(($toggle) => {
 				if ($toggle.attr('aria-checked') !== 'true') {
 					// If unchecked, check it
@@ -39,7 +40,7 @@ describe('Settings Page', function () {
 		},
 		validateSelect(label, values) {
 			cy.server();
-			cy.route('POST', '**/bluehost/v1/settings*').as('update');
+			cy.route('POST', '/index.php?rest_route=/bluehost/v1/settings*').as('update');
 			cy.findAllByLabelText(label).as('select');
 			cy.get('@select').scrollIntoView().should('be.visible');
 			values.forEach((value) => {
@@ -130,7 +131,7 @@ describe('Settings Page', function () {
 
 	it('Performance: Caching Toggle', () => {
 		cy.server();
-		cy.route('POST', '**/bluehost/v1/settings*').as('update');
+		cy.route('POST', '**?**/bluehost/v1/settings*').as('update');
 		cy.findByLabelText('Toggle Caching').as('toggle');
 		cy.get('@toggle').check();
 		cy.wait('@update');
@@ -139,7 +140,7 @@ describe('Settings Page', function () {
 
 	it('Performance: Caching Level', () => {
 		cy.server();
-		cy.route('POST', '**/bluehost/v1/settings*').as('update');
+		cy.route('POST', '**?**/bluehost/v1/settings*').as('update');
 
 		cy.get('.settings-section').last().within(() => {
 

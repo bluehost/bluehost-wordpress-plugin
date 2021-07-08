@@ -145,8 +145,8 @@ const InnerValidationPanel = () => {
             <Fragment>
                 <Notice status="warning" isDismissible={false}>
                     {sprintf( _n(
-                        'We found %s placeholder still in on this page.',
-                        'We found %s placeholders still in on this page.',
+                        'We found %s placeholder still on this page.',
+                        'We found %s placeholders still on this page.',
                         scrubResults.length,
                         'bluehost-wordpress-plugin'
                     ), scrubResults.length )}

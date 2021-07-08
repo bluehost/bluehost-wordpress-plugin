@@ -11,6 +11,7 @@ describe('Services Page - Loading State', function () {
             delay: 2000,
         }).as('services');
         cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/services');
+        cy.viewport(1024,768);
     });
 
     it('Test Loading State', () => {

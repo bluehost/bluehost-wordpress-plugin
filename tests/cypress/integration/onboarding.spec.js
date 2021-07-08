@@ -5,7 +5,7 @@ describe('Onboarding', function () {
 	before(() => {
 		// Make sure we are in coming soon mode
 		cy.exec('npx wp-env run cli wp option set mm_coming_soon true');
-		cy.wait(1000);
+		cy.wait(1500);
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home/onboarding');
 		cy.injectAxe();
 	});
@@ -111,7 +111,7 @@ describe('Onboarding', function () {
 		cy.get('.nf-onboarding-base-step .illustration').should('be.visible').and('have.attr', 'alt', "People jumping and celebrating.");
 	})
 
-	it('Site launch reverted successfully', () => {
+	it('Site can be unlaunched', () => {
 		cy.server();
 		cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
 		cy.findByRole('button', {name: 'Restore Coming Soon'}).scrollIntoView().click();

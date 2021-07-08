@@ -13,14 +13,14 @@ class BuildAssets {
 	 *
 	 * @var string
 	 */
-	public static $assetHandlePrefix = 'bwp-';
+	public static $asset_handle_prefix = 'bwp-';
 
 	/**
 	 * WordPress Hooks prefix
 	 *
 	 * @var string
 	 */
-	private static $hookPrefix = 'bwp_';
+	private static $hook_prefix = 'bwp_';
 
 	/**
 	 * CSS dependencies required by @app.
@@ -28,7 +28,7 @@ class BuildAssets {
 	 * @var array
 	 */
 
-	private static $appCssDependencies = array( 'wp-components', 'wpadmin-brand-bluehost' );
+	private static $app_csc_dependencies = array( 'wp-components', 'wpadmin-brand-bluehost' );
 
 	/**
 	 * Run asset registration globally. Use self::enqueue() in scoped contexts.
@@ -39,9 +39,9 @@ class BuildAssets {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'register' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'register' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'admin_global_enqueue' ), 30 );
-		if ( 'local' === wp_get_environment_type() ) {
-			add_action( 'wp_default_scripts', array( __CLASS__, 'remove_jquery_migrate' ) );
-		}
+		// if ( 'local' === wp_get_environment_type() ) {
+			// add_action( 'wp_default_scripts', array( __CLASS__, 'remove_jquery_migrate' ) );
+		// }
 	}
 	/**
 	 * Registers all assets with WordPress
@@ -57,6 +57,12 @@ class BuildAssets {
 		self::requireWebpackAssets();
 	}
 
+	/**
+	 * Admin global enqueue
+	 *
+	 * @param string $hook - the hook
+	 * @return void
+	 */
 	public static function admin_global_enqueue( $hook ) {
 		\wp_enqueue_style( 'bluehost-admin-global' );
 		if ( 'local' === wp_get_environment_type() ) {
@@ -64,6 +70,11 @@ class BuildAssets {
 		}
 	}
 
+	/**
+	 * Load externals
+	 *
+	 * @return void
+	 */
 	public static function externals() {
 		$url  = trailingslashit( BLUEHOST_PLUGIN_URL );
 		$min  = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) || 'local' === \wp_get_environment_type() ? '' : '.min';
@@ -103,18 +114,19 @@ class BuildAssets {
 	/**
 	 * Enqueues all assets for a webpack build entry.
 	 *
-	 * @param string $entry
+	 * @param string $entry - asset
+	 * @param string $type - defaults to all
 	 * @return void
 	 */
 	public static function enqueue( $entry, $type = 'all' ) {
-		\do_action( self::$hookPrefix . $entry . '_pre_enqueue' );
+		\do_action( self::$hook_prefix . $entry . '_pre_enqueue' );
 		if ( 'style' !== $type ) {
-			\wp_enqueue_script( self::$assetHandlePrefix . $entry );
+			\wp_enqueue_script( self::$asset_handle_prefix . $entry );
 		}
 		if ( 'script' !== $type ) {
-			\wp_enqueue_style( self::$assetHandlePrefix . $entry );
+			\wp_enqueue_style( self::$asset_handle_prefix . $entry );
 		}
-		\do_action( self::$hookPrefix . $entry . '_post_enqueue' );
+		\do_action( self::$hook_prefix . $entry . '_post_enqueue' );
 	}
 
 	/**
@@ -129,7 +141,7 @@ class BuildAssets {
 		\add_filter(
 			'bwp_app_css_deps',
 			function( $data ) {
-				return array_unique( array_merge( $data, self::$appCssDependencies ) );
+				return array_unique( array_merge( $data, self::$app_csc_dependencies ) );
 			}
 		);
 	}
@@ -148,10 +160,22 @@ class BuildAssets {
 		}
 	}
 
+	/**
+	 * Build Inline script for webpack
+	 *
+	 * @param string $handle - script handle
+	 * @return void
+	 */
 	public static function inlineWebpackPublicPath( $handle ) {
 		\wp_add_inline_script( $handle, 'window.bluehostPluginPublicPath="' . trailingslashit( BLUEHOST_PLUGIN_URL ) . 'build/";', 'before' );
 	}
 
+	/**
+	 * Remove JQuery Migrate script
+	 *
+	 * @param Array $scripts - array of scripts
+	 * @return void
+	 */
 	public function remove_jquery_migrate( $scripts ) {
 
 		if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {

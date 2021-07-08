@@ -35,7 +35,7 @@ class Plugin_Quiet_Upgrader_Skin extends WP_Upgrader_Skin {
 	/**
 	 * Feedback - keep it all quiet.
 	 */
-	public function feedback() {
+	public function feedback($string, ...$args) {
 		// nothing here either. =)
 	}
 }

@@ -18,7 +18,7 @@ describe('Services Page', function () {
 	});
 
 	it('Is Accessible', () => {
-		cy.wait(100);
+		cy.wait(500);
 		cy.checkA11y('.bwa-route-contents');
 	});
 
