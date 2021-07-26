@@ -13,12 +13,12 @@ import {
 	UserIcon,
 	ValidationIcon,
 } from '@app/assets';
-import { addUtmParams } from '@app/functions';
+import { addUtmParams, getPlatformBaseUrl } from '@app/functions';
 
 /**
  * Component Defaults
  */
-const url = 'https://my.bluehost.com/hosting/';
+const url = getPlatformBaseUrl('/hosting/');
 
 let base = [
 	{
@@ -59,7 +59,7 @@ let base = [
 	{
 		icon: ValidationIcon,
 		id: 'validation_token_link',
-		href: 'https://my.bluehost.com/cgi/token',
+		href: getPlatformBaseUrl('/cgi/token'),
 		label: __('Validation Token', 'bluehost-wordpress-plugin'),
 		color: 'orange',
 	},

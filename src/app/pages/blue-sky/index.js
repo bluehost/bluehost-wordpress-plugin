@@ -24,7 +24,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import { BWACommonTemplate as Page } from '@app/components/templates';
 import ReactPlayer from "react-player";
 import blueSkyGroup from '@app/assets/blue-sky-group.png';
-import { addUtmParams } from '@app/functions';
+import { addUtmParams, getPlatformBaseUrl } from '@app/functions';
 
 const BlueSky = () => {
 	return (
@@ -32,7 +32,7 @@ const BlueSky = () => {
 			<div className="bluesky-menu-backdrop" />
 			<BWAHeading level="h2" size={ 0 }>{ __('Blue Sky', 'bluehost-wordpress-plugin') }</BWAHeading>
 			<div className="section-logo">
-				<a href={addUtmParams('https://my.bluehost.com/cgi/app/#/marketplace/product/i/bluesky')} aria-label={__('Blue Sky service logo', 'bluehost-wordpress-plugin')}>
+				<a href={addUtmParams(getPlatformBaseUrl('/cgi/app/#/marketplace/product/i/bluesky'))} aria-label={__('Blue Sky service logo', 'bluehost-wordpress-plugin')}>
 					<BlueSkyLogo />
 				</a>
 			</div>
@@ -61,7 +61,7 @@ const BlueSky = () => {
 						</div>
 						<Button
 							className="media-block__button"
-							href="https://my.bluehost.com/cgi/app/#/marketplace/product/i/bluesky"
+							href={getPlatformBaseUrl('/cgi/app/#/marketplace/product/i/bluesky')}
 							utmContent="bluesky_link"
 							isLink
 							isPrimary
@@ -86,7 +86,7 @@ const BlueSky = () => {
 						<div className="product-card__call-to-action">
 							<Button
 								className="media-block__button"
-								href="https://my.bluehost.com/cgi/app/#/marketplace/product/i/bluesky"
+								href={getPlatformBaseUrl('/cgi/app/#/marketplace/product/i/bluesky')}
 								utmContent="bluesky_link"
 								isLink
 								isPrimary
@@ -119,7 +119,7 @@ const BlueSky = () => {
 						<div className="product-card__call-to-action">
 							<Button
 								className="media-block__button"
-								href="https://my.bluehost.com/cgi/app/#/marketplace/product/i/bluesky"
+								href={getPlatformBaseUrl('/cgi/app/#/marketplace/product/i/bluesky')}
 								utmContent="bluesky_link"
 								isLink
 								isPrimary
@@ -158,7 +158,7 @@ const BlueSky = () => {
 						<div className="product-card__call-to-action">
 							<Button
 								className="media-block__button"
-								href="https://my.bluehost.com/cgi/app/#/marketplace/product/i/bluesky"
+								href={getPlatformBaseUrl('/cgi/app/#/marketplace/product/i/bluesky')}
 								utmContent="bluesky_link"
 								isLink
 								isPrimary

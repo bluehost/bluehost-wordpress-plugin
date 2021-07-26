@@ -62,6 +62,26 @@ export function sendEvent(event) {
 	apiFetch({path: `/bluehost/v1/data/events/`, method: 'POST', data: event});
 }
 
+/**
+ * Get's Base Platform URL
+ * @param {string} path The path to a resource within the platform, leave blank for root.
+ * 
+ * @return {string}
+ */
+export function getPlatformBaseUrl( path = '' ) {
+	const brand = 'undefined' !== typeof window.nfBrandPlatform ? window.nfBrandPlatform : null;
+	const baseUrl = () => {
+		switch(brand) {
+			case 'Bluehost_India':
+				return 'https://my.bluehost.in';
+			default:
+				return 'https://my.bluehost.com';
+		}
+	}
+
+	return baseUrl() + path;
+}
+
 export { 
 	sendPageviewEvent,
 	handleWPMenuAugmentation,

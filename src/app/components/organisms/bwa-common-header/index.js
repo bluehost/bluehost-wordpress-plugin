@@ -10,7 +10,7 @@ import DesktopTabs from './desktop-tabs';
 import MobileSidebar from './mobile-sidebar';
 import { __ } from '@wordpress/i18n';
 import { Tooltip } from '@wordpress/components';
-import { addUtmParams } from "@app/functions";
+import { addUtmParams, getPlatformBaseUrl } from "@app/functions";
 
 const HeaderLogo = () => (
 	<div id="bluehost-logo-wrap">
@@ -18,7 +18,7 @@ const HeaderLogo = () => (
 			<a
 				href={
 					addUtmParams(
-						'https://my.bluehost.com/hosting/app',
+						getPlatformBaseUrl('/hosting/app'),
 						{
 							utm_content: 'bluehost_header_logo',
 							utm_term: 'Bluehost Logo linking to the Bluehost Control Panel'
