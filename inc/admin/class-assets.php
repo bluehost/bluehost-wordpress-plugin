@@ -68,7 +68,6 @@ class Bluehost_Admin_App_Assets {
 	/**
 	 * Register Page JS
 	 *
-	 * @param string $dist_url Base distribution URL.
 	 */
 	protected function prepareData() {
 
