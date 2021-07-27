@@ -67,7 +67,6 @@ class Bluehost_Admin_App_Assets {
 
 	/**
 	 * Register Page JS
-	 *
 	 */
 	protected function prepareData() {
 
