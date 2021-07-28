@@ -3,6 +3,7 @@ import { BWAProductCard } from '@app/components/molecules';
 import { useMojoApi } from '@app/hooks';
 import { withRouter } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
+import { getPlatformBaseUrl } from '@app/functions';
 
 function ServicesPage( { history } ) {
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'services', { category: '', count: 1000 } );
@@ -14,7 +15,7 @@ function ServicesPage( { history } ) {
 	if ( payload.hasOwnProperty('items') ) {
 		payload.items.unshift({
 			id: 'blue-sky',
-			'buy_url': 'https://my.bluehost.com/cgi/app/#/marketplace/product/i/bluesky?utm_term=Get%20Started&utm_content=bluesky_link&utm_campaign=&utm_source=wp-admin%2Fadmin.php%3Fpage%3Dbluehost%23%2Fmarketplace%2Fservices&utm_medium=bluehost_plugin',
+			'buy_url': getPlatformBaseUrl('/cgi/app/#/marketplace/product/i/bluesky?utm_term=Get%20Started&utm_content=bluesky_link&utm_campaign=&utm_source=wp-admin%2Fadmin.php%3Fpage%3Dbluehost%23%2Fmarketplace%2Fservices&utm_medium=bluehost_plugin'),
 			images: {
 				'preview_url': 'https://cdn.hiive.space/bluehost/blue-sky-product-banner.png'
 			},
