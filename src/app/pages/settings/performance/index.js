@@ -48,19 +48,19 @@ const SettingsPerformance = ( { cacheLevel, updateSetting } ) => {
 							value={ 1 }
 							cacheLevel={ cacheLevel }
 							label={ __( 'Assets Only', 'bluehost-wordpress-plugin' ) }
-							desc={ __( 'Cache static assets like images and the appearance of your site for 5 minutes. Recommended for ecommerce and sites that update frequently or display info in real-time.', 'bluehost-wordpress-plugin' ) }
+							desc={ __( 'Cache static assets like images and the appearance of your site for 1 hour. Recommended for ecommerce and sites that update frequently or display info in real-time.', 'bluehost-wordpress-plugin' ) }
 						/>
 						<CacheLevelSelector
 							value={ 2 }
 							cacheLevel={ cacheLevel }
 							label={ __( 'Assets & Web Pages', 'bluehost-wordpress-plugin' ) }
-							desc={ __( 'Cache static assets for 6 hours and other web pages for 5 minutes. Recommended for blogs, educational sites, and sites that update at least weekly.', 'bluehost-wordpress-plugin' ) }
+							desc={ __( 'Cache static assets for 24 hours and web pages for 2 hours. Recommended for blogs, educational sites, and sites that update at least weekly.', 'bluehost-wordpress-plugin' ) }
 						/>
 						<CacheLevelSelector
 							value={ 3 }
 							cacheLevel={ cacheLevel }
 							label={ __( 'Assets & Web Pages - Extended', 'bluehost-wordpress-plugin' ) }
-							desc={ __( 'Cache static assets for 1 week and web pages for 5 minutes. Recommended for portfolios, brochure sites, and sites that update monthly or less often.', 'bluehost-wordpress-plugin' ) }
+							desc={ __( 'Cache static assets for 1 week and web pages for 8 hours. Recommended for portfolios, brochure sites, and sites that update monthly or less often.', 'bluehost-wordpress-plugin' ) }
 						/>
 					</div>
 					<BWAHeading level="h4" size={ 3 } className="caching__subtitle">{ __( 'Manage Cache', 'bluehost-wordpress-plugin' ) }</BWAHeading>
