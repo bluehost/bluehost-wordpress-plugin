@@ -200,8 +200,9 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 			file_put_contents( $dir . $filename, $file_contents );
 			if ( file_exists( $dir . $filename ) ) {
 				if ( ! function_exists( 'save_mod_rewrite_rules' ) ) {
-					save_mod_rewrite_rules();
+					include ABSPATH . 'wp-admin/includes/misc.php';
 				}
+				save_mod_rewrite_rules();
 				$this->success( ucfirst( $this->current_type ) . ' Cache placed in /mu-plugins/' . $filename . '. It\'s active!' );
 			} else {
 				$this->error( 'Couldn\'t write ' . $this->current_type . ' cache file to ' . $dir );
@@ -242,8 +243,9 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 		if ( file_exists( $this->current_plugin_path ) ) {
 			if ( unlink( $this->current_plugin_path ) ) {
 				if ( ! function_exists( 'save_mod_rewrite_rules' ) ) {
-					save_mod_rewrite_rules();
+					include ABSPATH . 'wp-admin/includes/misc.php';
 				}
+				save_mod_rewrite_rules();
 				$this->success( ucfirst( $this->current_type ) . ' caching disabled.' );
 			} else {
 				$this->error( 'Failed to remove ' . ucfirst( $this->current_type ) . ' cache file from ' . static::$mu_plugin_dir );
