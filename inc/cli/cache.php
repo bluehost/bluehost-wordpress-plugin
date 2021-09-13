@@ -179,9 +179,9 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 	/**
 	 * Use WordPress HTTP Library to Retrieve Single-File Drop-In Plugin from GitHub Repository
 	 *
-	 * @param $url
-	 * @param $filename
-	 * @param string   $dir
+	 * @param        $url
+	 * @param        $filename
+	 * @param string $dir
 	 *
 	 * @throws \WP_CLI\ExitException
 	 */
@@ -199,7 +199,9 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 			$file_contents = $response->body . '/**' . PHP_EOL . '* FILE CREATED VIA WP-CLI' . PHP_EOL . '* ' . current_time( 'mysql' ) . PHP_EOL . '*/' . PHP_EOL;
 			file_put_contents( $dir . $filename, $file_contents );
 			if ( file_exists( $dir . $filename ) ) {
-				save_mod_rewrite_rules();
+				if ( ! function_exists( 'save_mod_rewrite_rules' ) ) {
+					save_mod_rewrite_rules();
+				}
 				$this->success( ucfirst( $this->current_type ) . ' Cache placed in /mu-plugins/' . $filename . '. It\'s active!' );
 			} else {
 				$this->error( 'Couldn\'t write ' . $this->current_type . ' cache file to ' . $dir );
@@ -239,7 +241,9 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 	private function remove_mu_plugin() {
 		if ( file_exists( $this->current_plugin_path ) ) {
 			if ( unlink( $this->current_plugin_path ) ) {
-				save_mod_rewrite_rules();
+				if ( ! function_exists( 'save_mod_rewrite_rules' ) ) {
+					save_mod_rewrite_rules();
+				}
 				$this->success( ucfirst( $this->current_type ) . ' caching disabled.' );
 			} else {
 				$this->error( 'Failed to remove ' . ucfirst( $this->current_type ) . ' cache file from ' . static::$mu_plugin_dir );

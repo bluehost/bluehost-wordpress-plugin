@@ -123,9 +123,6 @@ class SettingsController extends \WP_REST_Controller {
 						exec( "wp config set EMPTY_TRASH_DAYS $days --type=constant --raw" ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.system_calls_exec
 						break;
 					case 'cacheLevel':
-						// Include misc.php because the cache level update requires save_mod_rewrite_rules()
-						// This should probably be moved to the Endurance Page Cache plugin later
-						include 'wp-admin/includes/misc.php';
 						update_option( 'endurance_cache_level', $new_value );
 						break;
 					case 'hasSetHomepage':
