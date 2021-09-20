@@ -47,14 +47,30 @@ class AccessToken {
 	}
 
 	/**
+	 * Get the stored user_id, if available.
+	 *
+	 * @return string User_id or an empty string if not available.
+	 */
+	public static function get_user() {
+		$user       = '';
+		$expiration = get_option( 'bluehost_access_token_expiration', 0 );
+		if ( $expiration > time() ) {
+			$user = get_option( 'bluehost_access_user', '' );
+		}
+
+		return (string) $user;
+	}
+
+	/**
 	 * Save an access token.
 	 *
 	 * @param string $token      Access token
 	 * @param int    $expiration Timestamp of expiration
 	 */
-	public static function set_token( $token, $expiration ) {
+	public static function set_token( $token, $expiration, $user_id ) {
 		update_option( 'bluehost_access_token', $token, true );
 		update_option( 'bluehost_access_token_expiration', $expiration, true );
+		update_option( 'bluehost_access_user', $user_id, true );
 	}
 
 	/**
@@ -108,11 +124,12 @@ class AccessToken {
 		try {
 			$response = self::request_token();
 			$data     = ResponseUtilities::parse_json_response( $response, true );
-			if ( isset( $data['access_token'], $data['expires_in'] ) ) {
+			if ( isset( $data['access_token'], $data['expires_in'], $data['user_id'] ) ) {
 				$token      = $data['access_token'];
 				$expires_in = (int) $data['expires_in'];
 				$timestamp  = ResponseUtilities::get_response_timestamp( $response );
-				self::set_token( $token, $timestamp + $expires_in );
+				$user_id    = $data['user_id'];
+				self::set_token( $token, $timestamp + $expires_in, $user_id );
 			} else {
 				$data['_status_code'] = wp_remote_retrieve_response_code( $response );
 				$data['_response']    = wp_remote_retrieve_body( $response );
