@@ -66,6 +66,7 @@ class AccessToken {
 	 *
 	 * @param string $token      Access token
 	 * @param int    $expiration Timestamp of expiration
+	 * @param int    $user_id WordPress user id
 	 */
 	public static function set_token( $token, $expiration, $user_id ) {
 		update_option( 'bluehost_access_token', $token, true );
