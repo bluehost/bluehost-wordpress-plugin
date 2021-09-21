@@ -17,6 +17,8 @@ const StagingRoute 		= lazy(() => import( '@app/pages/tools/staging' ));
 const SettingsRoute 	= lazy(() => import( '@app/pages/settings' ));
 const HelpRoute 		= lazy(() => import( '@app/pages/help' ));
 const BlueSkyRoute 		= lazy(() => import( '@app/pages/blue-sky' ));
+const YoastSEORoute		= lazy(() => import( '@app/pages/yoast-seo-premium' ));
+const YoastWooSEORoute  = lazy(() => import( '@app/pages/yoast-woocommerce-seo' ));
 
 /**
  * !!! Analytics only happen automatically when @app/templates/base-template is used !!!
@@ -39,6 +41,8 @@ const BWARouteContents = ({ ...props}) => {
 					<Route path="/marketplace/themes" exact render={ () => <ThemesRoute /> } />
 					<Route path="/marketplace/themes/:id" exact render={({match:{params:{id}}}) => <ProductRoute id={id} />} />
 					<Route path="/marketplace/plugins" exact render={ () => <PluginsRoute /> } />
+					<Route path="/marketplace/plugins/yoast-seo-premium" exact render={ () => <YoastSEORoute />} />
+					<Route path="/marketplace/plugins/yoast-woocommerce-seo" exact render={ () => <YoastWooSEORoute />} />
 					<Route path="/marketplace/plugins/:id" exact render={({match:{params:{id}}}) => <ProductRoute id={id} />} />
 					<Route path="/marketplace/services" exact render={ () => <ServicesRoute /> } />
 					<Route path="/marketplace/services/blue-sky" render={ () => <BlueSkyRoute /> } />
@@ -78,6 +82,20 @@ const BWARouteContents = ({ ...props}) => {
 						to={{
 							pathname: "/marketplace/services/blue-sky",
 							state: { redirect: 'shortlink-blue-sky' }
+						}}
+					/>
+					<Redirect
+						from="/yoast"
+						to={{
+							pathname: "/marketplace/plugins/yoast-seo-premium",
+							state: { redirect: 'shortlink-yoast-seo-premium' }
+						}}
+					/>
+					<Redirect
+						from="/yoast-woo"
+						to={{
+							pathname: "/marketplace/plugins/yoast-woocommerce-seo",
+							state: { redirect: 'shortlink-yoast-woocommerce-seo' }
 						}}
 					/>
 					<Redirect

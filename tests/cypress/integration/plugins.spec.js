@@ -27,7 +27,7 @@ describe('Plugins Page', function () {
 	});
 
 	it('Product cards render correctly', () => {
-		cy.get('.product-card').as('card');
+		cy.get('.product-card').not('.yoast-seo-premium').not('.yoast-woocommerce-seo').as('card');
 
 		cy.get('@card')
 			.findByRole('button', {name: 'View Details'})

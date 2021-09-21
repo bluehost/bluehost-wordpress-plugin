@@ -3,16 +3,18 @@ import { BWAProductCard } from '@app/components/molecules';
 import { useMojoApi } from '@app/hooks';
 import { withRouter } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
-import { getPlatformBaseUrl } from '@app/functions';
+import { useState } from '@wordpress/element';
+import { addUtmParams, getPlatformBaseUrl } from '@app/functions';
 
 function ServicesPage( { history } ) {
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'services', { category: '', count: 1000 } );
+	const [ shimsInserted, setShimsInserted ] = useState(false);
 
 	if ( isError ) {
 		throw new Error( 'API Error. Payload: ' + JSON.stringify( payload ) );
 	}
 
-	if ( payload.hasOwnProperty('items') ) {
+	if ( ! shimsInserted && payload.hasOwnProperty('items') ) {
 		payload.items.unshift({
 			id: 'blue-sky',
 			'buy_url': getPlatformBaseUrl('/cgi/app/#/marketplace/product/i/bluesky?utm_term=Get%20Started&utm_content=bluesky_link&utm_campaign=&utm_source=wp-admin%2Fadmin.php%3Fpage%3Dbluehost%23%2Fmarketplace%2Fservices&utm_medium=bluehost_plugin'),
@@ -24,7 +26,10 @@ function ServicesPage( { history } ) {
 				'single_domain_license': '29.00'
 			},
 			name: 'Blue Sky Premium Support',
+			created_timestamp: 1631853346,
+			sales_count: 9999999999,
 		})
+		setShimsInserted(true);
 	}
 
 	const renderCallback = ( { item, hasFavorite, toggleFavorite } ) => {
