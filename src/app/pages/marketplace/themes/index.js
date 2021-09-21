@@ -13,6 +13,7 @@ export default function ThemesPage() {
 	const renderCallback = ( { item, hasFavorite, toggleFavorite } ) => {
 		return (
 			<BWAProductCard
+				className={item.id}
 				buttonPrimary={ { href: item.buy_url } }
 				buttonSecondary={ {
 					children: __( 'Preview', 'bluehost-wordpress-plugin' ),
