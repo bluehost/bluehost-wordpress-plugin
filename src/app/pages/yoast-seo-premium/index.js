@@ -51,9 +51,13 @@ const YoastSEOPremium = () => {
 								url="https://www.youtube.com/watch?v=fqQFstQSv4M"
 								width="100%"
 								config={{
+									title:"yoast-seo",
 									youtube: {
-										color: 'white',
-										modestbranding: '1',
+										embedVars: {
+											title:"yoast-seo",
+											color: 'white',
+											modestbranding: '1',
+										}
 									}
 								}}
 							/>
@@ -109,7 +113,9 @@ const YoastSEOPremium = () => {
 							url="https://youtu.be/DA19_EcEkbw"
 							width="100%"
 							config={{
+								title:"yoast-academy",
 								youtube: {
+									title:"yoast-academy",
 									color: 'white',
 									modestbranding: '1',
 								}

@@ -48,6 +48,13 @@ const YoastWooCommerceSEO = () => {
 								playIcon={ <span /> }
 								url="https://www.youtube.com/watch?v=Jl9S1CB4XHM"
 								width="100%"
+								config={{
+									title:"yoast-academy",
+									youtube: {
+										color: 'white',
+										modestbranding: '1',
+									}
+								}}
 							/>
 						</div>
 					</div>
@@ -98,6 +105,13 @@ const YoastWooCommerceSEO = () => {
 							playIcon={ <span /> }
 							url="https://youtu.be/DA19_EcEkbw"
 							width="100%"
+							config={{
+								title:"yoast-academy",
+								youtube: {
+									color: 'white',
+									modestbranding: '1',
+								}
+							}}
 						/>
 					</div>
 						<Button

@@ -218,11 +218,20 @@ $mobile-padding: 30px;
       .components-button.bluehost.is-primary {
         background-color: #a4286a !important;
         color: #fff !important;
+        border: 0 !important;
         &:active,
         &:focus,
         &:hover {
           background: #7b1e50 !important;
           box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), inset 0 -4px 0 rgb(0 0 0 / 20%) !important;
+        }
+      }
+      .components-button.is-link:not(.is-primary) {
+        color: #a4286a !important;
+        &:active,
+        &:focus,
+        &:hover {
+          color: #7b1e50 !important;
         }
       }
 

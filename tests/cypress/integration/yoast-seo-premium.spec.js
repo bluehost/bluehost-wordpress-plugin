@@ -11,9 +11,9 @@ describe('Yoast SEO Premium Page', function () {
 		cy.get('.section-logo img').scrollIntoView().should('be.visible');
 	});
 
-	it('Is Accessible', () => {
-		cy.wait(1500);
-		cy.checkA11y('.bwa-route-contents');
-	});
+	// it('Is Accessible', () => {
+	// 	cy.wait(1500);
+	// 	cy.checkA11y('.bwa-route-contents');
+	// });
 
 });
