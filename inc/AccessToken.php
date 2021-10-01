@@ -148,7 +148,7 @@ class AccessToken {
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			return;
 		}
-		if ( current_user_can( 'manage_options' ) && ! self::has_token() ) {
+		if ( ! self::has_token() && current_user_can( 'manage_options' ) || wp_doing_cron() ) {
 			self::refresh_token();
 		}
 	}
