@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d42d902459ab93568a2f612207136b02",
+    "content-hash": "e937f3b54155c3dea2efaf9455bf90d8",
     "packages": [
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -216,16 +216,16 @@
         },
         {
             "name": "bluehost/wp-data-module",
-            "version": "1.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:bluehost/bluehost-wp-data.git",
-                "reference": "323ac2f5673f01909364abe0ecf8e895d0aca641"
+                "reference": "cfedb2f8591e43bcf670bf1a3697a47472c0ca06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/bluehost-wp-data/zipball/323ac2f5673f01909364abe0ecf8e895d0aca641",
-                "reference": "323ac2f5673f01909364abe0ecf8e895d0aca641",
+                "url": "https://api.github.com/repos/bluehost/bluehost-wp-data/zipball/cfedb2f8591e43bcf670bf1a3697a47472c0ca06",
+                "reference": "cfedb2f8591e43bcf670bf1a3697a47472c0ca06",
                 "shasum": ""
             },
             "require": {
@@ -237,7 +237,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Bluehost\\WP\\Module\\Data\\": "src"
+                    "Bluehost\\WP\\Data\\": "includes"
                 },
                 "files": [
                     "bootstrap.php"
@@ -262,10 +262,10 @@
             ],
             "description": "Bluehost Specific Data Module",
             "support": {
-                "source": "https://github.com/bluehost/bluehost-wp-data/tree/1.0",
+                "source": "https://github.com/bluehost/bluehost-wp-data/tree/1.0.2",
                 "issues": "https://github.com/bluehost/bluehost-wp-data/issues"
             },
-            "time": "2021-10-13T19:21:24+00:00"
+            "time": "2021-10-14T22:19:41+00:00"
         },
         {
             "name": "doctrine/inflector",
