@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e937f3b54155c3dea2efaf9455bf90d8",
+    "content-hash": "9cf4793053d072761615096177467758",
     "packages": [
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -216,16 +216,16 @@
         },
         {
             "name": "bluehost/wp-data-module",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "git@github.com:bluehost/bluehost-wp-data.git",
-                "reference": "cfedb2f8591e43bcf670bf1a3697a47472c0ca06"
+                "reference": "abdb0e98bee8fe1257898ad4a15481ef7e9cb3de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/bluehost-wp-data/zipball/cfedb2f8591e43bcf670bf1a3697a47472c0ca06",
-                "reference": "cfedb2f8591e43bcf670bf1a3697a47472c0ca06",
+                "url": "https://api.github.com/repos/bluehost/bluehost-wp-data/zipball/abdb0e98bee8fe1257898ad4a15481ef7e9cb3de",
+                "reference": "abdb0e98bee8fe1257898ad4a15481ef7e9cb3de",
                 "shasum": ""
             },
             "require": {
@@ -262,10 +262,10 @@
             ],
             "description": "Bluehost Specific Data Module",
             "support": {
-                "source": "https://github.com/bluehost/bluehost-wp-data/tree/1.0.2",
+                "source": "https://github.com/bluehost/bluehost-wp-data/tree/1.0.3",
                 "issues": "https://github.com/bluehost/bluehost-wp-data/issues"
             },
-            "time": "2021-10-14T22:19:41+00:00"
+            "time": "2021-10-15T18:15:07+00:00"
         },
         {
             "name": "doctrine/inflector",
