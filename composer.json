@@ -43,7 +43,7 @@
         "bluehost/endurance-wp-module-sso": "^1.0",
         "bluehost/endurance-wp-plugin-updater": "^1.1.1",
         "bluehost/wp-data-module": "^1.0.3",
-        "endurance/wp-module-data": "^1.6",
+        "endurance/wp-module-data": "^1.6.1",
         "wp-forge/helpers": "^1.0",
         "wpscholar/collection": "^1.0",
         "wpscholar/url": "^1.2"
