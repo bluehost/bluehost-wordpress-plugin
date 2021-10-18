@@ -15,6 +15,7 @@ cypress.env.json
 
 # Built-app files
 /.docs
+/assets/*
 /build/*
 /bluehost-wordpress-plugin
 
