@@ -55,7 +55,13 @@
     "config": {
         "optimize-autoloader": true,
         "sort-packages": true,
-        "platform-check": false
+        "platform-check": false,
+        "preferred-install": {
+            "bluehost/*": "source",
+            "endurance/*": "source",
+            "newfold/*": "source",
+            "*": "dist"
+        }
     },
     "scripts": {
         "fix": [
