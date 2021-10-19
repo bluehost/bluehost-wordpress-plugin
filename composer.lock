@@ -4,8 +4,61 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7acfeeecc1b63d0298b8ae0b37c63c11",
+    "content-hash": "0570649b284afce1ea2254c6489be669",
     "packages": [
+        {
+            "name": "bluehost/bluehost-wp-customer-data",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bluehost/bluehost-wp-customer-data.git",
+                "reference": "cf246a99cfd2789cf2b2612500a6a071ee4beeb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/cf246a99cfd2789cf2b2612500a6a071ee4beeb9",
+                "reference": "cf246a99cfd2789cf2b2612500a6a071ee4beeb9",
+                "shasum": ""
+            },
+            "require": {
+                "endurance/wp-module-data": "^1.6"
+            },
+            "require-dev": {
+                "bluehost/wp-php-standards": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bluehost\\WP\\Data\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "scripts": {
+                "fix": [
+                    "vendor/bin/phpcbf . --standard=Bluehost"
+                ],
+                "lint": [
+                    "vendor/bin/phpcs . --standard=Bluehost -s"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Mullins",
+                    "email": "evan@bluehost.com"
+                }
+            ],
+            "description": "Bluehost Specific Customer Data Module Integrations",
+            "support": {
+                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.0.4",
+                "issues": "https://github.com/bluehost/bluehost-wp-customer-data/issues"
+            },
+            "time": "2021-10-19T19:47:55+00:00"
+        },
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
             "version": "1.0.3",
@@ -213,59 +266,6 @@
                 "issues": "https://github.com/bluehost/endurance-wp-plugin-updater/issues"
             },
             "time": "2021-04-29T21:17:42+00:00"
-        },
-        {
-            "name": "bluehost/wp-data-module",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bluehost/bluehost-wp-data.git",
-                "reference": "abdb0e98bee8fe1257898ad4a15481ef7e9cb3de"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/bluehost-wp-data/zipball/abdb0e98bee8fe1257898ad4a15481ef7e9cb3de",
-                "reference": "abdb0e98bee8fe1257898ad4a15481ef7e9cb3de",
-                "shasum": ""
-            },
-            "require": {
-                "endurance/wp-module-data": "^1.6"
-            },
-            "require-dev": {
-                "bluehost/wp-php-standards": "^1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Bluehost\\WP\\Data\\": "includes"
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "scripts": {
-                "fix": [
-                    "vendor/bin/phpcbf . --standard=Bluehost"
-                ],
-                "lint": [
-                    "vendor/bin/phpcs . --standard=Bluehost -s"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Evan Mullins",
-                    "email": "evan@bluehost.com"
-                }
-            ],
-            "description": "Bluehost Specific Data Module",
-            "support": {
-                "source": "https://github.com/bluehost/bluehost-wp-data/tree/1.0.3",
-                "issues": "https://github.com/bluehost/bluehost-wp-data/issues"
-            },
-            "time": "2021-10-15T18:15:07+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1205,16 +1205,16 @@
         },
         {
             "name": "gettext/gettext",
-            "version": "v4.8.5",
+            "version": "v4.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-gettext/Gettext.git",
-                "reference": "ef2e312dff383fc0e4cd62dd39042e1157f137d4"
+                "reference": "bbeb8f4d3077663739aecb4551b22e720c0e9efe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-gettext/Gettext/zipball/ef2e312dff383fc0e4cd62dd39042e1157f137d4",
-                "reference": "ef2e312dff383fc0e4cd62dd39042e1157f137d4",
+                "url": "https://api.github.com/repos/php-gettext/Gettext/zipball/bbeb8f4d3077663739aecb4551b22e720c0e9efe",
+                "reference": "bbeb8f4d3077663739aecb4551b22e720c0e9efe",
                 "shasum": ""
             },
             "require": {
@@ -1266,7 +1266,7 @@
             "support": {
                 "email": "oom@oscarotero.com",
                 "issues": "https://github.com/oscarotero/Gettext/issues",
-                "source": "https://github.com/php-gettext/Gettext/tree/v4.8.5"
+                "source": "https://github.com/php-gettext/Gettext/tree/v4.8.6"
             },
             "funding": [
                 {
@@ -1282,7 +1282,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-07-13T16:45:53+00:00"
+            "time": "2021-10-19T10:44:53+00:00"
         },
         {
             "name": "gettext/languages",
