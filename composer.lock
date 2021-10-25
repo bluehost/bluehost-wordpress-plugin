@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0570649b284afce1ea2254c6489be669",
+    "content-hash": "c7d315247085c2fa8b8a02559cc371b3",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehost/bluehost-wp-customer-data.git",
-                "reference": "cf246a99cfd2789cf2b2612500a6a071ee4beeb9"
+                "reference": "61db1570c906291dff55ef7005403f67b9385b38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/cf246a99cfd2789cf2b2612500a6a071ee4beeb9",
-                "reference": "cf246a99cfd2789cf2b2612500a6a071ee4beeb9",
+                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/61db1570c906291dff55ef7005403f67b9385b38",
+                "reference": "61db1570c906291dff55ef7005403f67b9385b38",
                 "shasum": ""
             },
             "require": {
-                "endurance/wp-module-data": "^1.6"
+                "endurance/wp-module-data": ">=1.6.1"
             },
             "require-dev": {
                 "bluehost/wp-php-standards": "^1.1"
@@ -54,10 +54,10 @@
             ],
             "description": "Bluehost Specific Customer Data Module Integrations",
             "support": {
-                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.0.4",
+                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.0.5",
                 "issues": "https://github.com/bluehost/bluehost-wp-customer-data/issues"
             },
-            "time": "2021-10-19T19:47:55+00:00"
+            "time": "2021-10-25T16:47:51+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -365,16 +365,16 @@
         },
         {
             "name": "endurance/wp-module-data",
-            "version": "1.6.1",
+            "version": "1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehost/endurance-wp-module-data.git",
-                "reference": "f4200d9a18f7547534f97d2c4a1e515e72062725"
+                "reference": "43daab37a3adb9cbb76bbe8c397e6ad9d8b6594b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-data/zipball/f4200d9a18f7547534f97d2c4a1e515e72062725",
-                "reference": "f4200d9a18f7547534f97d2c4a1e515e72062725",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-data/zipball/43daab37a3adb9cbb76bbe8c397e6ad9d8b6594b",
+                "reference": "43daab37a3adb9cbb76bbe8c397e6ad9d8b6594b",
                 "shasum": ""
             },
             "require-dev": {
@@ -402,10 +402,10 @@
             ],
             "description": "Endurance Data Module",
             "support": {
-                "source": "https://github.com/bluehost/endurance-wp-module-data/tree/1.6.1",
+                "source": "https://github.com/bluehost/endurance-wp-module-data/tree/1.7",
                 "issues": "https://github.com/bluehost/endurance-wp-module-data/issues"
             },
-            "time": "2021-10-15T20:12:10+00:00"
+            "time": "2021-10-25T13:51:00+00:00"
         },
         {
             "name": "pimple/pimple",
