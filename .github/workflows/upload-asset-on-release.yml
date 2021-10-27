@@ -80,7 +80,7 @@ jobs:
             ${{ runner.os }}-composer-
 
       - name: Install PHP Dependencies
-        run: composer install --no-progress --no-dev --optimize-autoloader
+        run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
       - name: Prepare files
         run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}

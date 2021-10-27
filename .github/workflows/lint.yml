@@ -52,7 +52,7 @@ jobs:
         if: "!! env.GIT_DIFF"
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install --prefer-dist --no-progress --no-suggest --prefer-dist
         if: "!! env.GIT_DIFF"
 
       - name: Detecting PHP Code Standards Violations
