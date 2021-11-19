@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c7d315247085c2fa8b8a02559cc371b3",
+    "content-hash": "6265a284452588a466a7d178be1dc55b",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
@@ -365,16 +365,16 @@
         },
         {
             "name": "endurance/wp-module-data",
-            "version": "1.7",
+            "version": "1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehost/endurance-wp-module-data.git",
-                "reference": "43daab37a3adb9cbb76bbe8c397e6ad9d8b6594b"
+                "reference": "f7e4ec73b8d01b700cd1add9f6172023182597b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-data/zipball/43daab37a3adb9cbb76bbe8c397e6ad9d8b6594b",
-                "reference": "43daab37a3adb9cbb76bbe8c397e6ad9d8b6594b",
+                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-data/zipball/f7e4ec73b8d01b700cd1add9f6172023182597b7",
+                "reference": "f7e4ec73b8d01b700cd1add9f6172023182597b7",
                 "shasum": ""
             },
             "require-dev": {
@@ -402,10 +402,10 @@
             ],
             "description": "Endurance Data Module",
             "support": {
-                "source": "https://github.com/bluehost/endurance-wp-module-data/tree/1.7",
+                "source": "https://github.com/bluehost/endurance-wp-module-data/tree/1.8",
                 "issues": "https://github.com/bluehost/endurance-wp-module-data/issues"
             },
-            "time": "2021-10-25T13:51:00+00:00"
+            "time": "2021-11-18T20:29:11+00:00"
         },
         {
             "name": "pimple/pimple",
