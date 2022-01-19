@@ -57,7 +57,7 @@ class NotificationsRepository {
 			wp_enqueue_script(
 				'newfold-notices-primer',
 				plugins_url( 'inc/Notifications/js/prime-notices.js', BLUEHOST_PLUGIN_FILE ),
-				array('wp-dom-ready', 'wp-api-fetch'),
+				array( 'wp-dom-ready', 'wp-api-fetch' ),
 				BLUEHOST_PLUGIN_VERSION,
 				true
 			);
