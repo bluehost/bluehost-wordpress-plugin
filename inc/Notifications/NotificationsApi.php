@@ -50,7 +50,7 @@ class NotificationsApi {
 					'context' => array(
 						'required'          => true,
 						'validate_callback' => function ( $value ) {
-							return is_string( $value ) && in_array( $value, array( 'bluehost-plugin', 'wp-admin-notice' ), true );
+							return is_string( $value ) && in_array( $value, array( 'bluehost-plugin', 'wp-admin-notice', 'wp-admin-prime' ), true );
 						},
 					),
 					'page'    => array(

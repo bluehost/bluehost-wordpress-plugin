@@ -27,12 +27,14 @@ class NotificationsRepository {
 
 	/**
 	 * NotificationsRepository constructor.
+	 *
+	 * @param boolean $fetch_notices When true (default), requests notices immediately. When false, loads script to prime transient client-side.
 	 */
-	public function __construct() {
+	public function __construct( $fetch_notices = true ) {
 
 		$notifications = get_transient( self::TRANSIENT );
 
-		if ( false === $notifications ) {
+		if ( false === $notifications && true === $fetch_notices ) {
 			$response = wp_remote_get(
 				BH_HUB_URL . '/notifications',
 				array(
@@ -51,6 +53,14 @@ class NotificationsRepository {
 					set_transient( self::TRANSIENT, $notifications, 5 * MINUTE_IN_SECONDS );
 				}
 			}
+		} elseif ( false === $notifications && false === $fetch_notices ) {
+			wp_enqueue_script(
+				'newfold-notices-primer',
+				plugins_url( 'inc/Notifications/js/prime-notices.js', BLUEHOST_PLUGIN_FILE ),
+				array('wp-dom-ready', 'wp-api-fetch'),
+				BLUEHOST_PLUGIN_VERSION,
+				true
+			);
 		}
 
 		$notifications = is_array( $notifications ) ? $notifications : array();
