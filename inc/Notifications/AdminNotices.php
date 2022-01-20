@@ -53,7 +53,7 @@ class AdminNotices {
 		}
 
 		$page          = str_replace( admin_url(), '', Url::getCurrentUrl() );
-		$notifications = new NotificationsRepository();
+		$notifications = new NotificationsRepository( false );
 		$collection    = $notifications->collection();
 		if ( $collection->count() ) {
 			$collection->each(
