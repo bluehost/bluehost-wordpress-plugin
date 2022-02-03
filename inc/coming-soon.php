@@ -90,7 +90,7 @@ function mojo_coming_soon_subscribe() {
 			// Initialize JetPack_Subscriptions
 			$jetpack = Jetpack_Subscriptions::init();
 			// Get JetPack response and subscribe email if response is true
-			$response = $jetpack->subscribe( 
+			$response = $jetpack->subscribe(
 				$email,
 				0,
 				false,
