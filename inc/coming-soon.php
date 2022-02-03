@@ -80,9 +80,6 @@ function mojo_coming_soon_subscribe() {
 
 	} else {
 
-		// Initialize JetPack_Subscriptions
-		$jetpack = Jetpack_Subscriptions::init();
-
 		if ( ! is_email( $email ) ) {
 
 			$a_response['message'] = __( 'Please provide a valid email address', 'bluehost-wordpress-plugin' );
@@ -90,8 +87,15 @@ function mojo_coming_soon_subscribe() {
 
 		} else {
 
+			// Initialize JetPack_Subscriptions
+			$jetpack = Jetpack_Subscriptions::init();
 			// Get JetPack response and subscribe email if response is true
-			$response = $jetpack->subscribe( $email, 0, false );
+			$response = $jetpack->subscribe( $email, 0, false,
+				// See Jetpack subscribe `extra_data` attribute
+				array(
+					'server_data'    => jetpack_subscriptions_cherry_pick_server_data(),
+				)
+			);
 
 			if ( isset( $response[0]->errors ) ) {
 
