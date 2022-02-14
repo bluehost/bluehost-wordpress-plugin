@@ -24,7 +24,7 @@ function PluginsPage( { history } ) {
 			},
 			marketplaceType: 'plugins',
 			prices: {
-				'single_domain_license': '89.00'
+				'single_domain_license': '99.00'
 			},
 			name: 'Yoast SEO Premium',
 			sales_count: 9999999999,
@@ -38,7 +38,7 @@ function PluginsPage( { history } ) {
 			},
 			marketplaceType: 'plugins',
 			prices: {
-				'single_domain_license': '69.00'
+				'single_domain_license': '79.00'
 			},
 			name: 'Yoast WooCommerce SEO',
 			sales_count: 999999999,
