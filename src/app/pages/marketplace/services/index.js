@@ -16,10 +16,27 @@ function ServicesPage( { history } ) {
 
 	if ( ! shimsInserted && payload.hasOwnProperty('items') ) {
 		payload.items.unshift({
+			id: 'lendio',
+			'buy_url': 'https://lp.lendio.com/partners-lf?source=BlueHost&affiliate=3125925044&campaign=wp&term=BLMS',
+			overrideUrl: 'https://lp.lendio.com/partners-lf?source=BlueHost&affiliate=3125925044&campaign=wp&term=BLMS',
+			images: {
+				'preview_url': 'https://cdn.hiive.space/bluehost/plugin/services-lendio.png',
+			},
+			marketplaceType: 'services',
+			prices: {
+				'single_domain_license': '', // removes price from card
+			},
+			name: 'Apply for a Business Loan – fast',
+			buttonPrimary: { children: __( 'Apply Now', 'bluehost-wordpress-plugin' ) },
+			buttonSecondary: { children: null },
+			created_timestamp: 1631853345,
+			sales_count: 9999999998,
+		});
+		payload.items.unshift({
 			id: 'blue-sky',
 			'buy_url': getPlatformBaseUrl('/cgi/app/#/marketplace/product/i/bluesky?utm_term=Get%20Started&utm_content=bluesky_link&utm_campaign=&utm_source=wp-admin%2Fadmin.php%3Fpage%3Dbluehost%23%2Fmarketplace%2Fservices&utm_medium=bluehost_plugin'),
 			images: {
-				'preview_url': 'https://cdn.hiive.space/bluehost/blue-sky-product-banner.png'
+				'preview_url': 'https://cdn.hiive.space/bluehost/blue-sky-product-banner.png',
 			},
 			marketplaceType: 'services',
 			prices: {
@@ -36,11 +53,12 @@ function ServicesPage( { history } ) {
 		return (
 			<BWAProductCard
 				className={ item.id }
-				buttonPrimary={ { href: item.buy_url } }
+				buttonPrimary={ { href: item.buy_url, ...item?.buttonPrimary } }
 				buttonSecondary={ {
 					onClick: () => {
 						history.push( `/marketplace/services/${ item.id }` );
 					},
+					...item?.buttonSecondary
 				} }
 				id={ item.id }
 				imageUrl={ item.images.preview_url }
@@ -49,6 +67,7 @@ function ServicesPage( { history } ) {
 				key={ item.id }
 				price={ item.prices.single_domain_license }
 				title={ item.name }
+				overrideUrl={ 'undefined' !== typeof item.overrideUrl ? item.overrideUrl : ''}
 				toggleFavorite={ () => toggleFavorite( item.id ) }
 			/>
 		);
