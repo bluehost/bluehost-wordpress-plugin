@@ -16,11 +16,12 @@ export default function BWAProductCard(
 		price,
 		title,
 		toggleFavorite,
+		overrideUrl = '',
 		...props
 	}
 ) {
 	const style = imageUrl ? { backgroundImage: `url(${ imageUrl })` } : {};
-	const detailsUrl = '#/marketplace/' + props.type + '/' + props.id;
+	const detailsUrl = '' !== overrideUrl ? overrideUrl : '#/marketplace/' + props.type + '/' + props.id;
 	return (
 		<div className={ `product-card ${ className }` }>
 			<a href={detailsUrl} aria-label={title}><div className="product-card__image" style={ style } /></a>
@@ -31,7 +32,7 @@ export default function BWAProductCard(
 							{ decodeEntities( title ) }
 						</BWAHeading>
 					</a>
-					<div className="product-card__price">{ price }</div>
+					{'' !== price && (<div className="product-card__price">{ price }</div>)}
 				</div>
 				<div className="product-card__action-group">
 					<div className={ classNames( {
@@ -42,19 +43,19 @@ export default function BWAProductCard(
 						'--is-favorite': isFavorite,
 					} ) } onClick={ toggleFavorite } />
 					<div className="product-card__button-group">
-						<Button
+						{buttonSecondary?.children !== null && (<Button
 							children={ __( 'View Details', 'bluehost-wordpress-plugin' ) }
 							{ ...buttonSecondary }
 							className="product-card__button-secondary"
 							isSecondary
-						/>
-						<Button
+						/>)}
+						{buttonPrimary?.children !== null && (<Button
 							children={ __( 'Buy Now', 'bluehost-wordpress-plugin' ) }
 							target="_blank"
 							{ ...buttonPrimary }
 							className="product-card__button-primary"
 							isPrimary
-						/>
+						/>)}
 					</div>
 				</div>
 			</div>
