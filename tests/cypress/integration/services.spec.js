@@ -27,7 +27,7 @@ describe('Services Page', function () {
 	});
 
 	it('Product cards render correctly', () => {
-		cy.get('.product-card').not('.blue-sky').as('card');
+		cy.get('.product-card').not('.blue-sky').not('.lendio').as('card');
 
 		cy.get('@card')
 			.findByRole('button', {name: 'View Details'})
