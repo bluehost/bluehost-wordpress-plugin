@@ -124,7 +124,7 @@ class Bluehost_Plugin_Compatibility_Scan {
 			$this->result = 'unsupported-php';
 		}
 
-		if ( \is_multisite() ) {
+		if ( \is_multisite() && 'local' !== \wp_get_environment_type() ) {
 			$this->result = 'unsupported-multisite';
 		}
 
