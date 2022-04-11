@@ -7,13 +7,13 @@
 			const id = notice.getAttribute('data-id');
 			notice.parentNode.removeChild(notice);
 			window.fetch(
-				`${ window.bluehostNotices.restApiUrl }bluehost/v1/notifications/${ id }`,
+				`${ window.nfdNotifications.restApiUrl }bluehost/v1/notifications/${ id }`,
 				{
 					credentials: 'same-origin',
 					method: 'DELETE',
 					headers: {
 						'Content-Type': 'application/json',
-						'X-WP-Nonce': window.bluehostNotices.restApiNonce,
+						'X-WP-Nonce': window.nfdNotifications.restApiNonce,
 					},
 				}
 			);
@@ -36,13 +36,13 @@
 				data.href = e.target.getAttribute('href');
 			}
 			window.fetch(
-				`${ window.bluehostNotices.restApiUrl }bluehost/v1/data/events/`,
+				`${ window.nfdNotifications.restApiUrl }bluehost/v1/data/events/`,
 				{
 					credentials: 'same-origin',
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
-						'X-WP-Nonce': window.bluehostNotices.restApiNonce,
+						'X-WP-Nonce': window.nfdNotifications.restApiNonce,
 					},
 					body: JSON.stringify(data),
 				}

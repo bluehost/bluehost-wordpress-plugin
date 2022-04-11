@@ -33,14 +33,6 @@ class AdminNotices {
 				BLUEHOST_PLUGIN_VERSION,
 				true
 			);
-			wp_localize_script(
-				'bh-plugin-realtime-notices',
-				'bluehostRealtimeNotices',
-				array(
-					'restApiUrl'   => esc_url_raw( rest_url() ),
-					'restApiNonce' => wp_create_nonce( 'wp_rest' ),
-				)
-			);
 
 			?>
 			<style>
@@ -73,14 +65,6 @@ class AdminNotices {
 				array(),
 				BLUEHOST_PLUGIN_VERSION,
 				true
-			);
-			wp_localize_script(
-				'bh-dismiss-notices',
-				'bluehostNotices',
-				array(
-					'restApiUrl'   => esc_url_raw( rest_url() ),
-					'restApiNonce' => wp_create_nonce( 'wp_rest' ),
-				)
 			);
 		}
 	}

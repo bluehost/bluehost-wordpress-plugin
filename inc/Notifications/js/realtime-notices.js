@@ -106,13 +106,13 @@
 			e.preventDefault();
 			this.removeElement();
 			window.fetch(
-				`${ window.bluehostRealtimeNotices.restApiUrl }bluehost/v1/notifications/${ this.id }`,
+				`${ window.nfdNotifications.restApiUrl }bluehost/v1/notifications/${ this.id }`,
 				{
 					credentials: 'same-origin',
 					method: 'DELETE',
 					headers: {
 						'Content-Type': 'application/json',
-						'X-WP-Nonce': window.bluehostRealtimeNotices.restApiNonce,
+						'X-WP-Nonce': window.nfdNotifications.restApiNonce,
 					},
 				}
 			);
@@ -132,13 +132,13 @@
 				data.href = e.target.getAttribute('href');
 			}
 			window.fetch(
-				`${ window.bluehostRealtimeNotices.restApiUrl }bluehost/v1/data/events/`,
+				`${ window.nfdNotifications.restApiUrl }bluehost/v1/data/events/`,
 				{
 					credentials: 'same-origin',
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
-						'X-WP-Nonce': window.bluehostRealtimeNotices.restApiNonce,
+						'X-WP-Nonce': window.nfdNotifications.restApiNonce,
 					},
 					body: JSON.stringify(data),
 				}
@@ -190,13 +190,13 @@
 			event.queue = false;
 			window
 				.fetch(
-					`${ window.bluehostRealtimeNotices.restApiUrl }bluehost/v1/notifications/events`,
+					`${ window.nfdNotifications.restApiUrl }bluehost/v1/notifications/events`,
 					{
 						credentials: 'same-origin',
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
-							'X-WP-Nonce': window.bluehostRealtimeNotices.restApiNonce,
+							'X-WP-Nonce': window.nfdNotifications.restApiNonce,
 						},
 						body: JSON.stringify(event),
 					}
