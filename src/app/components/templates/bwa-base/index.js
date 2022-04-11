@@ -61,10 +61,10 @@ const BWABaseTemplate = ({
 	}
 
 	const speakRouteTitle = ( location, title ) => {
-		if ( 
-			'undefined' !== typeof location.state
-			&& 'undefined' !== typeof location.state.redirect
-			&& 'unspecified-or-root' === location.state.redirect 
+		if (
+			'object' === typeof location
+			&& location.hasOwnProperty('state')
+			&& 'unspecified-or-root' === location?.state?.redirect 
 		) {
 			return; // don't speak Home title on load (rely on browser behavior), but speak on subsequent navigation to Home
 		}

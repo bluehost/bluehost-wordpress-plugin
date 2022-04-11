@@ -15,7 +15,7 @@ import {
 import { __ } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
 
-const Home = () => {
+const Home = ({ noRedirect = false }) => {
 	const location = useLocation();
 
 	const daysSinceInstall = useSelect((select) => {
@@ -30,7 +30,7 @@ const Home = () => {
 
 	let showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
 	
-	if(location.state && 'undefined' !== typeof location.state.redirect && 'override' === location.state.redirect ) {
+	if(noRedirect) {
 		showOnboarding = false;
 	}
 

@@ -1,14 +1,15 @@
 import { BWAMarketplaceTemplate } from '@app/components/templates';
 import { BWAProductCard } from '@app/components/molecules';
 import { useMojoApi } from '@app/hooks';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 import { addUtmParams, getPlatformBaseUrl } from '@app/functions';
 
-function ServicesPage( { history } ) {
+function ServicesPage() {
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'services', { category: '', count: 1000 } );
 	const [ shimsInserted, setShimsInserted ] = useState(false);
+	const navigate = useNavigate();
 
 	if ( isError ) {
 		throw new Error( 'API Error. Payload: ' + JSON.stringify( payload ) );
@@ -56,7 +57,7 @@ function ServicesPage( { history } ) {
 				buttonPrimary={ { href: item.buy_url, ...item?.buttonPrimary } }
 				buttonSecondary={ {
 					onClick: () => {
-						history.push( `/marketplace/services/${ item.id }` );
+						navigate( `/marketplace/services/${ item.id }`, { redirect: 'referer-services-page' } );
 					},
 					...item?.buttonSecondary
 				} }
@@ -84,4 +85,4 @@ function ServicesPage( { history } ) {
 	);
 }
 
-export default withRouter( ServicesPage );
+export default ServicesPage;

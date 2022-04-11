@@ -4,12 +4,13 @@ import {
 import { BWAProductCard } from '@app/components/molecules';
 import { useMojoApi } from '@app/hooks';
 import { useState } from '@wordpress/element';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { addUtmParams } from '@app/functions';
 
-function PluginsPage( { history } ) {
+function PluginsPage() {
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'plugins', { count: 1000 } );
 	const [ shimsInserted, setShimsInserted ] = useState(false);
+	const navigate = useNavigate();
 
 	if ( isError ) {
 		throw new Error( 'API Error. Payload: ' + JSON.stringify( payload ) );
@@ -54,7 +55,7 @@ function PluginsPage( { history } ) {
 				buttonPrimary={ { href: item.buy_url } }
 				buttonSecondary={ {
 					onClick: () => {
-						history.push( `/marketplace/plugins/${ item.id }` );
+						navigate( `/marketplace/plugins/${ item.id }` );
 					},
 				} }
 				id={ item.id }
@@ -80,4 +81,4 @@ function PluginsPage( { history } ) {
 	);
 }
 
-export default withRouter( PluginsPage );
+export default PluginsPage;
