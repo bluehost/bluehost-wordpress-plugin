@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "38d12394874762e987d7a98b6fa930af",
+    "content-hash": "ae3665c3990257f1275734a56a920378",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
@@ -266,6 +266,55 @@
                 "issues": "https://github.com/bluehost/endurance-wp-plugin-updater/issues"
             },
             "time": "2021-04-29T21:17:42+00:00"
+        },
+        {
+            "name": "bluehost/wp-module-secure-passwords",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:bluehost/wp-module-secure-passwords.git",
+                "reference": "0232b66caa2cfd1b28cceb6c64f7e1cf9fea9706"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bluehost/wp-module-secure-passwords/zipball/0232b66caa2cfd1b28cceb6c64f7e1cf9fea9706",
+                "reference": "0232b66caa2cfd1b28cceb6c64f7e1cf9fea9706",
+                "shasum": ""
+            },
+            "require-dev": {
+                "bluehost/wp-php-standards": "^1.1",
+                "wp-phpunit/wp-phpunit": "^5.9",
+                "yoast/phpunit-polyfills": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "scripts": {
+                "fix": [
+                    "vendor/bin/phpcbf . --standard=Bluehost"
+                ],
+                "lint": [
+                    "vendor/bin/phpcs . --standard=Bluehost -s"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Desrosiers",
+                    "email": "jonathan.desrosiers@newfold.com"
+                }
+            ],
+            "description": "Prevents passwords exposed in data breaches from being used and encourages better password hygiene.",
+            "support": {
+                "source": "https://github.com/bluehost/wp-module-secure-passwords/tree/1.0.1",
+                "issues": "https://github.com/bluehost/wp-module-secure-passwords/issues"
+            },
+            "time": "2022-04-11T19:20:30+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -5350,5 +5399,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.0.0"
 }
