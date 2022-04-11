@@ -1,0 +1,18 @@
+diff --git a/src/app/app-main.scss b/src/app/app-main.scss
+index 242d041..00daa1e 100644
+--- a/src/app/app-main.scss
++++ b/src/app/app-main.scss
+@@ -26,6 +26,13 @@
+    height: auto;
+  }
+ 
++ #bwa-app p,
++ #wpfooter {
++  a {
++    color: var(--bh-blue);
++  }
++ }
++
+  #bwa-app {
+    background-color: var(--bh-bg-blue);
+    will-change: opacity;
