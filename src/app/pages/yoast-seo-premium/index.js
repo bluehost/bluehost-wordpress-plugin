@@ -23,7 +23,7 @@ const YoastSEOPremium = () => {
 							{ __('Yoast SEO: the #1 WordPress SEO plugin', 'bluehost-wordpress-plugin') }
 						</div>
 						<div className="media-block__description">
-							<ul class="yoast-list">
+							<ul className="yoast-list">
 									<li>{__('SEO made easy!', 'bluehost-wordpress-plugin')}</li>
 									<li>{__('Get more visitors from Google, Bing and social media', 'bluehost-wordpress-plugin')}</li>
 									<li>{__('Increase your readers\' engagement', 'bluehost-wordpress-plugin')}</li>
@@ -70,7 +70,7 @@ const YoastSEOPremium = () => {
 			<div className="section-features">
 				<div className="feature-list">
 					<div className="feature-card">
-						<div className="feature-card__image"><span class="dashicons dashicons-media-document"></span></div>
+						<div className="feature-card__image"><span className="dashicons dashicons-media-document"></span></div>
 						<div className="feature-card__title">
 							{ __('Create SEO-friendly content', 'bluehost-wordpress-plugin') }
 						</div>
@@ -79,7 +79,7 @@ const YoastSEOPremium = () => {
 						</div>
 					</div>
 					<div className="feature-card">
-						<div className="feature-card__image"><span class="dashicons dashicons-google"></span></div>
+						<div className="feature-card__image"><span className="dashicons dashicons-google"></span></div>
 						<div className="feature-card__title">
 							{ __('Help Google understand your site', 'bluehost-wordpress-plugin') }
 						</div>
@@ -88,7 +88,7 @@ const YoastSEOPremium = () => {
 						</div>
 					</div>
 					<div className="feature-card">
-						<div className="feature-card__image"><span class="dashicons dashicons-welcome-view-site"></span></div>
+						<div className="feature-card__image"><span className="dashicons dashicons-welcome-view-site"></span></div>
 						<div className="feature-card__title">
 							{ __('Preview your content for search results and social media', 'bluehost-wordpress-plugin') }
 						</div>
