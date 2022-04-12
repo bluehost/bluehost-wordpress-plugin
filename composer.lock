@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae3665c3990257f1275734a56a920378",
+    "content-hash": "64b3858ff1ea81408957a35645b20382",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
@@ -269,16 +269,16 @@
         },
         {
             "name": "bluehost/wp-module-secure-passwords",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:bluehost/wp-module-secure-passwords.git",
-                "reference": "0232b66caa2cfd1b28cceb6c64f7e1cf9fea9706"
+                "reference": "aa824a8e94919b504ce1c5bc737f32b13fbf89c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/wp-module-secure-passwords/zipball/0232b66caa2cfd1b28cceb6c64f7e1cf9fea9706",
-                "reference": "0232b66caa2cfd1b28cceb6c64f7e1cf9fea9706",
+                "url": "https://api.github.com/repos/bluehost/wp-module-secure-passwords/zipball/aa824a8e94919b504ce1c5bc737f32b13fbf89c1",
+                "reference": "aa824a8e94919b504ce1c5bc737f32b13fbf89c1",
                 "shasum": ""
             },
             "require-dev": {
@@ -311,10 +311,10 @@
             ],
             "description": "Prevents passwords exposed in data breaches from being used and encourages better password hygiene.",
             "support": {
-                "source": "https://github.com/bluehost/wp-module-secure-passwords/tree/1.0.1",
+                "source": "https://github.com/bluehost/wp-module-secure-passwords/tree/1.0.2",
                 "issues": "https://github.com/bluehost/wp-module-secure-passwords/issues"
             },
-            "time": "2022-04-11T19:20:30+00:00"
+            "time": "2022-04-12T18:42:31+00:00"
         },
         {
             "name": "doctrine/inflector",
