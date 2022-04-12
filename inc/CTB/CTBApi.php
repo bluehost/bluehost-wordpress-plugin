@@ -63,7 +63,7 @@ class CTBApi {
 
 					$ctb_id = $request->get_param( 'id' );
 					$payload = array(
-						'ctb_id' => $ctb_id,
+						'ctb_id'  => $ctb_id,
 						'site_id' => SiteMeta::get_id(),
 					);
 

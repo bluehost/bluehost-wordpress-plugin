@@ -44,7 +44,7 @@ add_filter(
 add_action(
 	'admin_enqueue_scripts',
 	function ( $data ) {
-		wp_register_script( 'nfdNotifications', '' );
+		wp_register_script( 'nfdNotifications', '', false, BLUEHOST_PLUGIN_VERSION );
 		wp_enqueue_script( 'nfdNotifications' );
 		wp_localize_script(
 			'nfdNotifications',
@@ -52,7 +52,7 @@ add_action(
 			array(
 				'restApiUrl'   => esc_url_raw( rest_url() ),
 				'restApiNonce' => wp_create_nonce( 'wp_rest' ),
-			),
+			)
 		);
 	}
 );
