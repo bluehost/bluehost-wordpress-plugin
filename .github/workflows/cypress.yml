@@ -15,7 +15,7 @@ on:
     types: [submitted, edited]
 
 env:
-  COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
+  COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.TOKEN }}"}}'
 
 jobs:
   test:
