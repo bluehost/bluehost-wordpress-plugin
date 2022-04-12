@@ -16,6 +16,12 @@ class AdminNotices {
 	 */
 	public static function maybeRenderAdminNotices() {
 
+		// The notifications container is used apply event listeners to so new notifcations can be inserted
+		// dynamically, but still respond to the required events.
+		?>
+		<div id='nfd-notifications'>
+		<?php
+
 		$screen = get_current_screen();
 
 		if ( 'toplevel_page_bluehost' === $screen->id ) {
@@ -67,6 +73,11 @@ class AdminNotices {
 				true
 			);
 		}
+
+		// Closing tag for #nfd-notifications
+		?>
+		</div>
+		<?php
 	}
 
 }

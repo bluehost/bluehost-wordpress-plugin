@@ -23,9 +23,10 @@
 		shouldShow() {
 
 			let shouldShow = false;
+			const container = document.getElementById('nfd-notifications');
 
 			// Don't show if it already exists
-			if (document.querySelector('div.bluehost-realtime-notice[data-id="'+this.id+'"]') !== null) {
+			if (container.querySelector('div.bluehost-notice[data-id="'+this.id+'"]') !== null) {
 				return shouldShow;
 			}
 
@@ -52,7 +53,7 @@
 
 		createElement() {
 			const el = document.createElement('div');
-			el.setAttribute('class', 'bluehost-realtime-notice');
+			el.setAttribute('class', 'bluehost-notice');
 			el.setAttribute('data-id', this.id);
 			el.innerHTML = this.content;
 			this.el = el;
@@ -60,7 +61,7 @@
 		}
 
 		insertElement(el) {
-			document.querySelector('.wp-header-end').after(el);
+			document.getElementById('nfd-notifications').lastChild.after(el);
 			this.addEventListeners(el);
 		}
 
