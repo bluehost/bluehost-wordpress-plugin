@@ -269,16 +269,16 @@
         },
         {
             "name": "bluehost/wp-module-secure-passwords",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "git@github.com:bluehost/wp-module-secure-passwords.git",
-                "reference": "aa824a8e94919b504ce1c5bc737f32b13fbf89c1"
+                "reference": "9b16736255c20970b13ee266677edf9f3bc22e34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/wp-module-secure-passwords/zipball/aa824a8e94919b504ce1c5bc737f32b13fbf89c1",
-                "reference": "aa824a8e94919b504ce1c5bc737f32b13fbf89c1",
+                "url": "https://api.github.com/repos/bluehost/wp-module-secure-passwords/zipball/9b16736255c20970b13ee266677edf9f3bc22e34",
+                "reference": "9b16736255c20970b13ee266677edf9f3bc22e34",
                 "shasum": ""
             },
             "require-dev": {
@@ -311,10 +311,10 @@
             ],
             "description": "Prevents passwords exposed in data breaches from being used and encourages better password hygiene.",
             "support": {
-                "source": "https://github.com/bluehost/wp-module-secure-passwords/tree/1.0.2",
+                "source": "https://github.com/bluehost/wp-module-secure-passwords/tree/1.0.3",
                 "issues": "https://github.com/bluehost/wp-module-secure-passwords/issues"
             },
-            "time": "2022-04-12T18:42:31+00:00"
+            "time": "2022-04-12T23:20:57+00:00"
         },
         {
             "name": "doctrine/inflector",
