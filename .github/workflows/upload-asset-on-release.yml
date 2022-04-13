@@ -6,6 +6,9 @@ on:
       - created
       - updated
 
+env:
+  COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.TOKEN }}"}}'
+
 jobs:
   build:
     name: On Release
