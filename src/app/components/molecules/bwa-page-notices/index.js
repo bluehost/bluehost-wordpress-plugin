@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 
 import { BWANotice } from '@app/components/atoms';
 import {filter} from 'lodash';
@@ -21,7 +21,7 @@ const BWAPageNotices = () => {
 	useEffect(() => {
 		const noticesForLocation = filter(allPluginNotices, (notice) => {
 			let displayNotice = false;
-			
+
 			const context = filter( notice.locations, [ 'context', 'bluehost-plugin' ] )[0];
 
 			if ( 'string' === typeof context.pages && 'all' === context.pages ) {
@@ -38,7 +38,7 @@ const BWAPageNotices = () => {
 					}
 				});
 			}
-	
+
 			return displayNotice;
 		});
 		if ( noticesForLocation.length > 0 ) {
@@ -49,11 +49,11 @@ const BWAPageNotices = () => {
 	if (null === pageNotices) {
 		return false;
 	}
-	
+
 	return (
-		<Fragment>
+		<div id='nfd-notifications'>
 			{pageNotices.map(notice => (<BWANotice {...notice} key={notice.id} />))}
-		</Fragment>
+		</div>
 	)
 };
 

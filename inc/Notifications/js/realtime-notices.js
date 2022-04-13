@@ -23,9 +23,10 @@
 		shouldShow() {
 
 			let shouldShow = false;
+			const container = document.getElementById('nfd-notifications');
 
 			// Don't show if it already exists
-			if (document.querySelector('div.bluehost-realtime-notice[data-id="'+this.id+'"]') !== null) {
+			if (container.querySelector('div.bluehost-notice[data-id="'+this.id+'"]') !== null) {
 				return shouldShow;
 			}
 
@@ -52,7 +53,7 @@
 
 		createElement() {
 			const el = document.createElement('div');
-			el.setAttribute('class', 'bluehost-realtime-notice');
+			el.setAttribute('class', 'bluehost-notice');
 			el.setAttribute('data-id', this.id);
 			el.innerHTML = this.content;
 			this.el = el;
@@ -60,7 +61,7 @@
 		}
 
 		insertElement(el) {
-			document.querySelector('.wp-header-end').after(el);
+			document.getElementById('nfd-notifications').lastChild.after(el);
 			this.addEventListeners(el);
 		}
 
@@ -106,13 +107,13 @@
 			e.preventDefault();
 			this.removeElement();
 			window.fetch(
-				`${ window.bluehostRealtimeNotices.restApiUrl }bluehost/v1/notifications/${ this.id }`,
+				`${ window.nfdNotifications.restApiUrl }bluehost/v1/notifications/${ this.id }`,
 				{
 					credentials: 'same-origin',
 					method: 'DELETE',
 					headers: {
 						'Content-Type': 'application/json',
-						'X-WP-Nonce': window.bluehostRealtimeNotices.restApiNonce,
+						'X-WP-Nonce': window.nfdNotifications.restApiNonce,
 					},
 				}
 			);
@@ -132,13 +133,13 @@
 				data.href = e.target.getAttribute('href');
 			}
 			window.fetch(
-				`${ window.bluehostRealtimeNotices.restApiUrl }bluehost/v1/data/events/`,
+				`${ window.nfdNotifications.restApiUrl }bluehost/v1/data/events/`,
 				{
 					credentials: 'same-origin',
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
-						'X-WP-Nonce': window.bluehostRealtimeNotices.restApiNonce,
+						'X-WP-Nonce': window.nfdNotifications.restApiNonce,
 					},
 					body: JSON.stringify(data),
 				}
@@ -190,13 +191,13 @@
 			event.queue = false;
 			window
 				.fetch(
-					`${ window.bluehostRealtimeNotices.restApiUrl }bluehost/v1/notifications/events`,
+					`${ window.nfdNotifications.restApiUrl }bluehost/v1/notifications/events`,
 					{
 						credentials: 'same-origin',
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
-							'X-WP-Nonce': window.bluehostRealtimeNotices.restApiNonce,
+							'X-WP-Nonce': window.nfdNotifications.restApiNonce,
 						},
 						body: JSON.stringify(event),
 					}
