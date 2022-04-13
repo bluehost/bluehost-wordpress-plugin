@@ -23,7 +23,7 @@ const YoastWooCommerceSEO = () => {
 							{ __('Yoast WooCommerce SEO plugin', 'bluehost-wordpress-plugin') }
 						</div>
 						<div className="media-block__description">
-							<ul class="yoast-list">
+							<ul className="yoast-list">
 									<li>{ __('Make your products stand out in the search results', 'bluehost-wordpress-plugin')}</li>
 									<li>{ __('Add extra SEO features to your WooCommerce store', 'bluehost-wordpress-plugin')}</li>
 									<li>{ __('Get best practice technical SEO for ecommerce, automatically', 'bluehost-wordpress-plugin')}</li>
@@ -65,7 +65,7 @@ const YoastWooCommerceSEO = () => {
 			<div className="section-features">
 				<div className="feature-list">
 					<div className="feature-card">
-						<div className="feature-card__image"><span class="dashicons dashicons-search"></span></div>
+						<div className="feature-card__image"><span className="dashicons dashicons-search"></span></div>
 						<div className="feature-card__title">
 							{ __('Show off your products in the search results', 'bluehost-wordpress-plugin') }
 						</div>
@@ -74,7 +74,7 @@ const YoastWooCommerceSEO = () => {
 						</div>
 					</div>
 					<div className="feature-card">
-						<div className="feature-card__image"><span class="dashicons dashicons-welcome-widgets-menus"></span></div>
+						<div className="feature-card__image"><span className="dashicons dashicons-welcome-widgets-menus"></span></div>
 						<div className="feature-card__title">
 							{ __('Upgrade your social media cards', 'bluehost-wordpress-plugin') }
 						</div>
@@ -83,7 +83,7 @@ const YoastWooCommerceSEO = () => {
 						</div>
 					</div>
 					<div className="feature-card">
-						<div className="feature-card__image"><span class="dashicons dashicons-welcome-learn-more"></span></div>
+						<div className="feature-card__image"><span className="dashicons dashicons-welcome-learn-more"></span></div>
 						<div className="feature-card__title">
 							{ __('NEW: Includes access to Ecommerce SEO training', 'bluehost-wordpress-plugin') }
 						</div>
