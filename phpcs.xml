@@ -3,7 +3,7 @@
     <rule ref="Bluehost"/>
     <config name="testVersion" value="5.6-"/>
     <config name="minimum_supported_wp_version" value="4.7"/>
-    <exclude-pattern>/assets</exclude-pattern>
+    <exclude-pattern>/build</exclude-pattern>
     <rule ref="WordPress-Core">
         <exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid"/>
         <exclude name="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase"/>
