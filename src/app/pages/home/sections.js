@@ -221,14 +221,8 @@ export const DesignBuildSection = ( props ) => {
             title={ __( 'WordPress Themes', 'bluehost-wordpress-plugin' ) }
             desc={ __( 'Browse themes to find one that inspires you!', 'bluehost-wordpress-plugin' ) }>
             <BWAButton
-                href={ baseUrl + 'admin.php?page=bluehost#/marketplace/themes' }
-                isSecondary
-            >
-                { __( 'Premium Themes', 'bluehost-wordpress-plugin' ) }
-            </BWAButton>
-            <BWAButton
                 href={ baseUrl + 'themes.php' }
-                isLink
+                isSecondary
             >
                 { __( 'Free Themes', 'bluehost-wordpress-plugin' ) }
             </BWAButton>

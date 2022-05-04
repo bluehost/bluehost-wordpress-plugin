@@ -47,13 +47,6 @@ class BH_WP_CLI_Loader {
 
 		$this->commands = array(
 			array(
-				'cmd'       => 'branding',
-				'class'     => 'BH_WP_CLI_Branding',
-				'shortdesc' => 'Control hosting branding and UX.',
-				'longdesc'  => 'Control the admin interface, default modules and UX for an Endurance hosting brand.' .
-							   PHP_EOL . 'Subcommands: update, remove',
-			),
-			array(
 				'cmd'       => 'cache',
 				'class'     => 'BH_WP_CLI_Cache',
 				'shortdesc' => 'Control all forms of caching.',

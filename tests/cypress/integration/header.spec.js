@@ -90,24 +90,6 @@ describe('App Header', function () {
 	})
 
 	describe('Navigate to Top-Level Pages', () => {
-		it('Navigate to Themes', () => {
-			cy.findByTestId('desktop-nav').findByRole('link', {name: 'Themes'}).click();
-			cy.wait(1100);
-			cy.url().should('include', '#/marketplace/themes');
-		});
-	
-		it('Navigate to Plugins', () => {
-			cy.findByTestId('desktop-nav').findByRole('link', {name: 'Plugins'}).click();
-			cy.wait(1100);
-			cy.url().should('include', '#/marketplace/plugins');
-		});
-	
-		it('Navigate to Services', () => {
-			cy.findByTestId('desktop-nav').findByRole('link', {name: 'Services'}).click();
-			cy.wait(1100);
-			cy.url().should('include', '#/marketplace/services');
-		});
-	
 		it('Navigate to Staging', () => {
 			cy.findByTestId('desktop-nav').findByRole('link', {name: 'Staging'}).click();
 			cy.wait(1100);

@@ -32,21 +32,6 @@ class Bluehost_Admin_App_Page {
 				'label' => __( 'Home', 'bluehost-wordpress-plugin' ),
 			),
 			array(
-				'slug'  => 'themes',
-				'path'  => '/marketplace/themes',
-				'label' => __( 'Themes', 'bluehost-wordpress-plugin' ),
-			),
-			array(
-				'slug'  => 'plugins',
-				'path'  => '/marketplace/plugins',
-				'label' => __( 'Plugins', 'bluehost-wordpress-plugin' ),
-			),
-			array(
-				'slug'  => 'services',
-				'path'  => '/marketplace/services',
-				'label' => __( 'Services', 'bluehost-wordpress-plugin' ),
-			),
-			array(
 				'slug'  => 'staging',
 				'path'  => '/tools/staging',
 				'label' => __( 'Staging', 'bluehost-wordpress-plugin' ),
