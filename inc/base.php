@@ -69,7 +69,7 @@ function bh_setup() {
 add_action( 'admin_init', 'bh_setup' );
 
 function bh_install_date_filter( $install_date ) {
-    return bh_get_plugin_install_date();
+	return bh_get_plugin_install_date();
 }
 
 add_filter( 'nfd_install_date_filter', 'bh_install_date_filter' );

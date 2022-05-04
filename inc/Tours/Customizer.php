@@ -3,5 +3,5 @@
 namespace Newfold\Plugin\Tours;
 
 class Customizer {
-    // customizer tour stub
+	// customizer tour stub
 }

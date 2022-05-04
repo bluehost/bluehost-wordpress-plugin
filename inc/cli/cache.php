@@ -181,7 +181,7 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 	 *
 	 * @param        $url
 	 * @param        $filename
-	 * @param string $dir
+	 * @param string   $dir
 	 *
 	 * @throws \WP_CLI\ExitException
 	 */
