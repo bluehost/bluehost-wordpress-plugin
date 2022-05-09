@@ -106,5 +106,6 @@ class Bluehost_Admin_App_Assets {
 		\wp_localize_script( 'bwp-manifest-app', 'bluehost', apply_filters( 'bluehost_admin_page_data', $data ) );
 		\wp_add_inline_script( 'bwp-manifest-app', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
 		\wp_add_inline_script( 'bwp-manifest-app', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
+		\wp_add_inline_script( 'bwp-manifest-app', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
 	}
 }
