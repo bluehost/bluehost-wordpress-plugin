@@ -19,7 +19,21 @@
         "issues": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
     },
     "repositories": {
-        "0": {
+        "local": {
+            "type": "path",
+            "url": "../../../../../../modules/wp-module-marketplace",
+            "options": {
+                "symlink": true
+            }
+        },
+        "newfold": {
+            "type": "composer",
+            "url": "https://newfold-labs.github.io/satis/",
+            "only": [
+                "newfold-labs/*"
+            ]
+        },
+        "bluehost": {
             "type": "composer",
             "url": "https://bluehost.github.io/satis/",
             "only": [
@@ -45,6 +59,8 @@
         "bluehost/endurance-wp-plugin-updater": "^1.1.1",
         "bluehost/wp-module-secure-passwords": "^1.0.2",
         "endurance/wp-module-data": "^1.8.2",
+        "newfold-labs/wp-module-loader": "^1.0",
+        "newfold-labs/wp-module-marketplace": "@dev",
         "wp-forge/helpers": "^1.0",
         "wpscholar/collection": "^1.0",
         "wpscholar/url": "^1.2"
