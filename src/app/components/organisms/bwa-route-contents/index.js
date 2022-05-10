@@ -9,10 +9,6 @@ import { BWAPageSpinner } from '@app/components/molecules';
 const HomeRoute 		= lazy(() => import( '@app/pages/home' ));
 const OnboardingRoute 	= lazy(() => import( '@app/pages/home/onboarding' ));
 const MarketplaceRoute 	= lazy(() => import( '@app/pages/marketplace' ));
-const ThemesRoute 		= lazy(() => import( '@app/pages/marketplace/themes' ));
-const PluginsRoute 		= lazy(() => import( '@app/pages/marketplace/plugins' ));
-const ProductRoute 		= lazy(() => import( '@app/pages/marketplace/product-details' ));
-const ServicesRoute 	= lazy(() => import( '@app/pages/marketplace/services' ));
 const ToolsRoute 		= lazy(() => import( '@app/pages/tools' ));
 const StagingRoute 		= lazy(() => import( '@app/pages/tools/staging' ));
 const SettingsRoute 	= lazy(() => import( '@app/pages/settings' ));
@@ -40,20 +36,9 @@ const BWARouteContents = ({ ...props}) => {
 					<Route path="/home" exact render={ () => <HomeRoute /> } />
 					<Route path="/home/onboarding" exact render={ () => <OnboardingRoute /> } />
 					<Route path="/marketplace" exact render={ () => <MarketplaceRoute /> } />
-					<Route path="/marketplace/themes" exact render={ () => <ThemesRoute /> } />
-					<Route path="/marketplace/themes/:id" exact render={({match:{params:{id}}}) => <ProductRoute id={id} />} />
-					<Route path="/marketplace/plugins" exact render={ () => <PluginsRoute /> } />
 					<Route path="/marketplace/plugins/yoast-seo-premium" exact render={ () => <YoastSEORoute />} />
 					<Route path="/marketplace/plugins/yoast-woocommerce-seo" exact render={ () => <YoastWooSEORoute />} />
-					<Route path="/marketplace/plugins/:id" exact render={({match:{params:{id}}}) => <ProductRoute id={id} />} />
-					<Route path="/marketplace/services" exact render={ () => <ServicesRoute /> } />
 					<Route path="/marketplace/services/blue-sky" render={ () => <BlueSkyRoute /> } />
-					<Route path="/marketplace/services/:id" exact render={({match:{params:{id}}}) => <ProductRoute id={id} />} />
-					<Route
-						path="/marketplace/product/:id"
-						exact
-						render={ ({match: {params: {id}}}) => <ProductRoute id={ id } redirect={true} /> }
-					/>
 					<Route path="/tools" exact render={ () => <ToolsRoute /> } />
 					<Route path="/tools/staging" exact render={ () => <StagingRoute /> } />
 					<Route path="/settings" render={ () => <SettingsRoute /> } />
@@ -63,13 +48,6 @@ const BWARouteContents = ({ ...props}) => {
 						to={{
 							pathname: "/help",
 							state: { redirect: 'card-help' }
-						}}
-					/>
-					<Redirect 
-						from="/home/onboarding/premium-themes"
-						to={{
-							pathname: "/marketplace/themes",
-							state: { redirect: 'onboarding-theme-step' }
 						}}
 					/>
 					<Redirect 

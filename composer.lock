@@ -508,7 +508,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../../../../../modules/wp-module-marketplace",
-                "reference": "f36cb3eabb438af79a29a414a1e5bd4dffb7cca1"
+                "reference": "57754e1fe944376de8894d8d390eacc96e02d433"
             },
             "type": "library",
             "autoload": {

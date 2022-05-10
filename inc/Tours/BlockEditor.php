@@ -52,9 +52,9 @@ class BlockEditor {
 		}
 
 		// register nf_dc_placeholders meta to expose it to rest api
-		register_meta( 
-			'post', 
-			'nf_dc_placeholders', 
+		register_meta(
+			'post',
+			'nf_dc_placeholders',
 			array(
 				'type'         => 'string',
 				'description'  => 'Save initial placeholder id and text values for default content.',
@@ -118,19 +118,19 @@ class BlockEditor {
 	 * @return void
 	 */
 	public function load_runtime_assets() {
-		
+
 		$windowprops = 'window.nfTourContext="' . $this->tour_context . '";';
 		// save initial placeholder text for all future comparisons
 		$post_id = isset( $_GET['post'] ) ? filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT ) : false;
 		if ( $post_id && ! empty( $nf_dc_placeholders = \get_post_meta( $post_id, 'nf_dc_placeholders', true ) ) ) {
 				$windowprops .= 'window.nfPlaceholders=' . $nf_dc_placeholders . ';';
 		}
-		
+
 		\Bluehost\BuildAssets::inlineWebpackPublicPath( 'wp-element' );
-		\wp_add_inline_script( 
-			\Bluehost\BuildAssets::$asset_handle_prefix . 'editortours', 
-			$windowprops, 
-			'before' 
+		\wp_add_inline_script(
+			\Bluehost\BuildAssets::$asset_handle_prefix . 'editortours',
+			$windowprops,
+			'before'
 		);
 		\Bluehost\BuildAssets::enqueue( 'editortours' );
 	}
@@ -148,7 +148,7 @@ class BlockEditor {
 			<div id="newfold-editortours-loading">
 				<div class="inner">
 					<div class="bwa-loader"></div>
-					<p><?php \_e('Loading', 'bluehost-wordpress-plugin'); ?> <?php echo ucfirst( \esc_html( $this->tour_context ) ); ?> <?php \_e('Page', 'bluehost-wordpress-plugin'); ?>...</p>
+					<p><?php \_e( 'Loading', 'bluehost-wordpress-plugin' ); ?> <?php echo ucfirst( \esc_html( $this->tour_context ) ); ?> <?php \_e( 'Page', 'bluehost-wordpress-plugin' ); ?>...</p>
 				</div>
 			</div>
 			<div id="newfold-editortours"></div>

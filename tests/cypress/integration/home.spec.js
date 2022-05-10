@@ -121,11 +121,6 @@ describe('Home Page', function () {
 					cy.get('a.is-link')
 						.should('have.attr', 'href')
 						.and('include', '/wp-admin/themes.php');
-
-					cy.contains('a.bluehost.components-button', 'Premium Themes');
-					cy.get('a.bluehost.components-button')
-						.should('have.attr', 'href')
-						.and('include', '/wp-admin/admin.php?page=bluehost#/marketplace/themes');
 				});
 
 		});
