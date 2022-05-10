@@ -8,6 +8,7 @@ import { BWAPageSpinner } from '@app/components/molecules';
 
 const HomeRoute 		= lazy(() => import( '@app/pages/home' ));
 const OnboardingRoute 	= lazy(() => import( '@app/pages/home/onboarding' ));
+const MarketplaceRoute 	= lazy(() => import( '@app/pages/marketplace' ));
 const ThemesRoute 		= lazy(() => import( '@app/pages/marketplace/themes' ));
 const PluginsRoute 		= lazy(() => import( '@app/pages/marketplace/plugins' ));
 const ProductRoute 		= lazy(() => import( '@app/pages/marketplace/product-details' ));
@@ -38,6 +39,7 @@ const BWARouteContents = ({ ...props}) => {
 				<Switch>
 					<Route path="/home" exact render={ () => <HomeRoute /> } />
 					<Route path="/home/onboarding" exact render={ () => <OnboardingRoute /> } />
+					<Route path="/marketplace" exact render={ () => <MarketplaceRoute /> } />
 					<Route path="/marketplace/themes" exact render={ () => <ThemesRoute /> } />
 					<Route path="/marketplace/themes/:id" exact render={({match:{params:{id}}}) => <ProductRoute id={id} />} />
 					<Route path="/marketplace/plugins" exact render={ () => <PluginsRoute /> } />

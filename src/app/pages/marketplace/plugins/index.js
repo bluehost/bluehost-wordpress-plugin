@@ -7,21 +7,6 @@ import { useState } from '@wordpress/element';
 import { withRouter } from 'react-router-dom';
 import { addUtmParams } from '@app/functions';
 
-// component sourced from module
-import { default as NewfoldMarketplace } from '../../../../../vendor/newfold-labs/wp-module-marketplace/components/marketplace/'; 
-// to pass to notifications module
-import apiFetch from '@wordpress/api-fetch'; 
-import classnames from 'classnames';
-import { useEffect } from 'react';
-import {
-	Button,
-	Card,
-	CardBody,
-	CardHeader,
-	CardFooter,
-	CardMedia,
-} from '@wordpress/components';
-
 function PluginsPage( { history } ) {
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'plugins', { count: 1000 } );
 	const [ shimsInserted, setShimsInserted ] = useState(false);
@@ -85,28 +70,13 @@ function PluginsPage( { history } ) {
 	};
 
 	return (
-		<>
-			<NewfoldMarketplace 
-				apiFetch={apiFetch}
-				classnames={classnames} 
-				resturl={window.nfdRestRoot}
-				useState={useState}
-				useEffect={useEffect}
-				Button={Button}
-				Card={Card}
-				CardBody={CardBody}
-				CardFooter={CardFooter}
-				CardHeader={CardHeader}
-				CardMedia={CardMedia}
-			/>
-			<BWAMarketplaceTemplate
-				isLoading={ ! done || isLoading }
-				payload={ payload }
-				render={ renderCallback }
-				marketplaceType="plugins"
-				type="marketplace"
-			/>
-		</>
+		<BWAMarketplaceTemplate
+			isLoading={ ! done || isLoading }
+			payload={ payload }
+			render={ renderCallback }
+			marketplaceType="plugins"
+			type="marketplace"
+		/>
 	);
 }
 
