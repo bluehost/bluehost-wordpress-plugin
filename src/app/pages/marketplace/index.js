@@ -49,7 +49,8 @@ function MarketplacePage( { history } ) {
     // constants to pass to module
     const moduleConstants = {
         'resturl': window.nfdRestRoot,
-        'eventendpoint': '/bluehost/v1/data/events/'
+        'eventendpoint': '/bluehost/v1/data/events/',
+        'perPage': 6
     }
 
 	return (
