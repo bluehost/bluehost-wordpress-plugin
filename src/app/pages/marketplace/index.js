@@ -5,7 +5,8 @@ import { withRouter } from 'react-router-dom';
 // import { addUtmParams } from '@app/functions';
 
 // component sourced from marketplace module
-import { default as NewfoldMarketplace } from '../../../../vendor/newfold-labs/wp-module-marketplace/components/marketplace/'; 
+import { default as NewfoldMarketplace } from '../../../../vendor/newfold-labs/wp-module-marketplace/components/marketplace/';
+
 // to pass to marketplace module
 import apiFetch from '@wordpress/api-fetch'; 
 import classnames from 'classnames';
@@ -23,13 +24,7 @@ import {
 } from '@wordpress/components';
 
 function MarketplacePage( { history } ) {
-	// const [ { done, isError, isLoading, payload } ] = useMojoApi( 'plugins', { count: 1000 } );
-	// const [ isLoading, setIsLoading ] = useState(true);
-
-	// if ( isError ) {
-	// 	throw new Error( 'API Error. Payload: ' + JSON.stringify( payload ) );
-	// }
-
+	
     // Components to pass to module
     const moduleComponents = {
         Button,
@@ -47,19 +42,21 @@ function MarketplacePage( { history } ) {
         classnames,
         useState,
         useEffect,
+        // these need react-router-dom v6 first
         // useNavigate,
         // useLocation
     };
     // constants to pass to module
-    const moduleConsts = {
-        'resturl': window.nfdRestRoot
+    const moduleConstants = {
+        'resturl': window.nfdRestRoot,
+        'eventendpoint': '/bluehost/v1/data/events/'
     }
 
 	return (
         <NewfoldMarketplace 
             Components={moduleComponents}
             methods={moduleMethods}
-            constants={moduleConsts}
+            constants={moduleConstants}
         />
 	);
 }
