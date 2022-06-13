@@ -63,6 +63,9 @@
             "endurance/*": "source",
             "newfold/*": "source",
             "*": "dist"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "scripts": {
