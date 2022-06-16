@@ -112,7 +112,7 @@ class NotificationsApi {
 				},
 				'callback'            => function ( \WP_REST_Request $request ) {
 
-					$request = new \WP_REST_Request( 'POST', '/bluehost/v1/data/events' );
+					$request = new \WP_REST_Request( 'POST', '/newfold-data/v1/events' );
 					$request->set_body( \WP_REST_Server::get_raw_data() );
 					$request->set_header( 'Content-Type', 'application/json' );
 					$response = rest_do_request( $request );

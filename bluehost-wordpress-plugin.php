@@ -64,11 +64,11 @@ if ( version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 /*
  * Initialize data module via container
  */
-$nfd_module_container = new Container();
+$bh_module_container = new Container();
 // Set plugin to container
-$nfd_module_container->set(
+$bh_module_container->set(
 	'plugin',
-	$nfd_module_container->service(
+	$bh_module_container->service(
 		function() {
 			return new Plugin(
 				array(
@@ -81,4 +81,4 @@ $nfd_module_container->set(
 );
 
 // Complete the module loader setup by assigning the container
-setContainer( $nfd_module_container );
+setContainer( $bh_module_container );
