@@ -99,7 +99,9 @@
         "create:dist": "rsync -r --exclude-from=.distignore . ./bluehost-wordpress-plugin",
         "php-deps": "composer install --no-dev --optimize-autoloader",
         "create:zip": "cd ./bluehost-wordpress-plugin && zip -r -9 ../bluehost-wordpress-plugin.zip . && ls -lh ../bluehost-wordpress-plugin.zip",
-        "simulate-runner-build": "rm -rf ./bluehost-wordpress-plugin ./bluehost-wordpress-plugin.zip ./vendor && npm i && npm run build && npm run php-deps && npm run create:dist && npm run create:zip"
+        "prebuild:cleanup": "rm -rf ./bluehost-wordpress-plugin ./bluehost-wordpress-plugin.zip ./vendor",
+        "simulate-runner-build": "npm run prebuild:cleanup && npm i && npm run php-deps && npm run build && npm run create:dist && npm run create:zip",
+        "srb": "npm run simulate-runner-build"
     },
     "lint-staged": {
         "**/*.yml": [

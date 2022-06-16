@@ -2,7 +2,7 @@
 
 namespace Bluehost\Notifications;
 
-use Endurance\WP\Module\Data\HubConnection;
+use NewfoldLabs\WP\Module\Data\HiiveConnection;
 use WP_Forge\Helpers\Arr;
 use wpscholar\Collection;
 
@@ -36,12 +36,12 @@ class NotificationsRepository {
 
 		if ( false === $notifications && true === $fetch_notices ) {
 			$response = wp_remote_get(
-				BH_HUB_URL . '/notifications',
+				NFD_HIIVE_URL . '/notifications',
 				array(
 					'headers' => array(
 						'Content-Type'  => 'application/json',
 						'Accept'        => 'application/json',
-						'Authorization' => 'Bearer ' . HubConnection::get_auth_token(),
+						'Authorization' => 'Bearer ' . HiiveConnection::get_auth_token(),
 					),
 				)
 			);

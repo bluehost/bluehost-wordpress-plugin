@@ -3,7 +3,7 @@
 namespace Bluehost\CTB;
 
 use Bluehost\SiteMeta;
-use Endurance\WP\Module\Data\HubConnection;
+use NewfoldLabs\WP\Module\Data\HiiveConnection;
 use WP_Error;
 
 /**
@@ -30,12 +30,12 @@ class CTBApi {
 				'callback'            => function ( \WP_REST_Request $request ) {
 
 					$response = wp_remote_get(
-						BH_HUB_URL . '/sites/v1/ctb/' . $request->get_param( 'id' ) . '',
+						NFD_HIIVE_URL . '/sites/v1/ctb/' . $request->get_param( 'id' ) . '',
 						array(
 							'headers' => array(
 								'Content-Type'  => 'application/json',
 								'Accept'        => 'application/json',
-								'Authorization' => 'Bearer ' . HubConnection::get_auth_token(),
+								'Authorization' => 'Bearer ' . HiiveConnection::get_auth_token(),
 							),
 							'timeout' => 20,
 						)
@@ -68,12 +68,12 @@ class CTBApi {
 					);
 
 					$response = wp_remote_post(
-						BH_HUB_URL . '/sites/v1/ctb/' . $ctb_id . '/purchase',
+						NFD_HIIVE_URL . '/sites/v1/ctb/' . $ctb_id . '/purchase',
 						array(
 							'headers' => array(
 								'Content-Type'  => 'application/json',
 								'Accept'        => 'application/json',
-								'Authorization' => 'Bearer ' . HubConnection::get_auth_token(),
+								'Authorization' => 'Bearer ' . HiiveConnection::get_auth_token(),
 							),
 							'body'    => wp_json_encode( $payload ),
 							'timeout' => 20,
