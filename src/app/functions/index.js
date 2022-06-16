@@ -59,7 +59,7 @@ export function isExternalUrl(url) {
 export function sendEvent(event) {
 	event.data = event.data || {};
 	event.data.page = window.location.href;
-	apiFetch({path: `/bluehost/v1/data/events/`, method: 'POST', data: event});
+	apiFetch({path: `/newfold-data/v1/events/`, method: 'POST', data: event});
 }
 
 /**

@@ -36,7 +36,7 @@
 				data.href = e.target.getAttribute('href');
 			}
 			window.fetch(
-				`${ window.nfdNotifications.restApiUrl }bluehost/v1/data/events/`,
+				`${ window.nfdNotifications.restApiUrl }newfold-data/v1/events/`,
 				{
 					credentials: 'same-origin',
 					method: 'POST',
