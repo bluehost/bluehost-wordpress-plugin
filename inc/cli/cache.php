@@ -138,14 +138,14 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 			case 'add':
 				$this->add();
 				break;
-			case 'remove';
+			case 'remove':
 				$this->remove();
 				break;
 		}
 	}
 
 	/**
-	 * wp {alias} cache {$this->current_type} add
+	 * WP {alias} cache {$this->current_type} add
 	 */
 	private function add() {
 		switch ( $this->current_type ) {
@@ -176,7 +176,7 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 	}
 
 	/**
-	 * wp {alias} cache {$this->current_type} remove
+	 * WP {alias} cache {$this->current_type} remove
 	 */
 	private function remove() {
 		switch ( $this->current_type ) {
@@ -215,7 +215,7 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 	 * @param string $filename - file
 	 * @param string $dir - directory
 	 *
-	 * @throws \WP_CLI\ExitException
+	 * @throws \WP_CLI\ExitException - throws it
 	 */
 	private function get_plugin_from_githubraw( $url, $filename, $dir = '' ) {
 		$this->colorize_log( 'Downloading ' . ucfirst( $this->current_type ) . ' Cache from GitHub...' );

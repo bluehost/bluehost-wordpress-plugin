@@ -114,7 +114,7 @@ add_action( 'pre_current_active_plugins', 'bh_clear_api_calls' );
 
 /**
  * Use mojo news feed
- * 
+ *
  * @param string $feed - incoming feed url
  */
 function mojo_better_news_feed( $feed ) {
