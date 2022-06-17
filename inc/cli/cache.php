@@ -215,7 +215,7 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 	 * @param string $filename - file
 	 * @param string $dir - directory
 	 *
-	 * @throws \WP_CLI\ExitException - throws it
+	 * @throws \WP_CLI\ExitException - throws it.
 	 */
 	private function get_plugin_from_githubraw( $url, $filename, $dir = '' ) {
 		$this->colorize_log( 'Downloading ' . ucfirst( $this->current_type ) . ' Cache from GitHub...' );
