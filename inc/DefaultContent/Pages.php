@@ -5,7 +5,7 @@
  * /wp-admin/post-new.php?post_type=page&dcpage=about&page_title=About+Us
  * /wp-admin/post-new.php?post_type=page&dcpage=home&page_title=Home
  * /wp-admin/post-new.php?post_type=page&dcpage=contact&page_title=Contact+Us
- * 
+ *
  * @package Bluehost/DefaultContent
  */
 

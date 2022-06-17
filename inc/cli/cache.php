@@ -11,14 +11,14 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 
 	/**
 	 * Organization Raw Content URL Base.
-	 * 
+	 *
 	 * @var string - orl URL
 	 */
 	protected static $org_url = 'https://raw.githubusercontent.com/bluehost';
 
 	/**
 	 * Types of caching available.
-	 * 
+	 *
 	 * @var array - types of caching
 	 */
 	protected static $cache_types = array(
@@ -29,7 +29,7 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 
 	/**
 	 * Actions taken with all caching types.
-	 * 
+	 *
 	 * @var array - cache actions
 	 */
 	protected static $cache_actions = array(
@@ -40,73 +40,77 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 
 	/**
 	 * GitHub Repo + Branch Slug.
-	 * 
+	 *
 	 * @var string - repo/branch
 	 */
 	protected static $page_repo_branch = 'endurance-page-cache/production';
 
 	/**
 	 * Page Cache Filename.
-	 * 
+	 *
 	 * @var string - page filename
 	 */
 	protected static $page_filename = 'endurance-page-cache.php';
 
 	/**
 	 * GitHub Repo + Brand Slug.
-	 * 
+	 *
 	 * @var string - repo/branch
 	 */
 	protected static $browser_repo_branch = 'endurance-browser-cache/production';
 
 	/**
 	 * Browser Cache Filename.
-	 * 
+	 *
 	 * @var string - browser filename
 	 */
 	protected static $browser_filename = 'endurance-browser-cache.php';
 
 	/**
 	 * MU (/wp-content/mu) path on server.
-	 * 
+	 *
 	 * @var string - mu path
 	 */
 	protected static $mu_plugin_dir = WP_CONTENT_DIR . '/mu-plugins';
 
 	/**
 	 * User-provided provided action.
+	 *
 	 * @var string|null - current action
 	 */
 	protected $current_action;
 
 	/**
 	 * User-provided caching type.
+	 *
 	 * @var string|null - current cache type
 	 */
 	protected $current_type;
 
 	/**
 	 * Determined filename based on caching type.
-	 * 
+	 *
 	 * @var string|null - current filename
 	 */
 	protected $current_filename;
 
 	/**
 	 * Current path for mu plugin file.
+	 *
 	 * @var string|null - current plugin path
 	 */
 	protected $current_plugin_path;
 
 	/**
 	 * Current url for remote copy of plugin file.
+	 *
 	 * @var string|null - current remote url
 	 */
 	protected $current_remote;
 
 	/**
 	 * Manage Full-Page Caching, Browser Caching and Object Caching.
-	 * 
+	 *
 	 * @param Array $args - args
 	 * @param Array $assoc_args - more args
 	 */

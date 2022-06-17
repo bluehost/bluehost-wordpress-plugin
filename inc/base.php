@@ -70,7 +70,7 @@ add_action( 'admin_init', 'bh_setup' );
 
 /**
  * Install date filter
- * 
+ *
  * @param string $install_date - incoming install date
  * @return string filtered install date
  */
@@ -114,6 +114,8 @@ add_action( 'pre_current_active_plugins', 'bh_clear_api_calls' );
 
 /**
  * Use mojo news feed
+ * 
+ * @param string $feed - incoming feed url
  */
 function mojo_better_news_feed( $feed ) {
 	return 'http://feeds.feedburner.com/wp-pipes';
@@ -132,7 +134,7 @@ function mojo_adjust_feed_transient_lifetime() {
 add_filter( 'wp_feed_cache_transient_lifetime', 'mojo_adjust_feed_transient_lifetime' );
 
 /**
- * Undocumented 
+ * Undocumented
  */
 function mojo_site_bin2hex() {
 	$path = ABSPATH;

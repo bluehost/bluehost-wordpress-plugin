@@ -25,7 +25,7 @@ class BlockEditor {
 
 	/**
 	 * Trigger context is query parameter [ (int) 1 ] or post meta [ (int) 2 ]
-	 * 
+	 *
 	 * @var boolean|int
 	 */
 	protected $trigger_context = false;
@@ -126,8 +126,9 @@ class BlockEditor {
 
 		$windowprops = 'window.nfTourContext="' . $this->tour_context . '";';
 		// save initial placeholder text for all future comparisons
-		$post_id = isset( $_GET['post'] ) ? filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT ) : false;
-		if ( $post_id && ! empty( $nf_dc_placeholders = \get_post_meta( $post_id, 'nf_dc_placeholders', true ) ) ) {
+		$post_id            = isset( $_GET['post'] ) ? filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT ) : false;
+		$nf_dc_placeholders = \get_post_meta( $post_id, 'nf_dc_placeholders', true );
+		if ( $post_id && ! empty( $nf_dc_placeholders ) ) {
 				$windowprops .= 'window.nfPlaceholders=' . $nf_dc_placeholders . ';';
 		}
 
@@ -155,7 +156,7 @@ class BlockEditor {
 					<div class="bwa-loader"></div>
 					<p>
 						<?php \esc_html_e( 'Loading', 'bluehost-wordpress-plugin' ); ?>
-						<?php \esc_html_e( ucfirst( $this->tour_context ) ); ?>
+						<span style="text-transform: capitalize;"><?php echo \esc_html( $this->tour_context ); ?></span>
 						<?php \esc_html_e( 'Page', 'bluehost-wordpress-plugin' ); ?>...
 					</p>
 				</div>

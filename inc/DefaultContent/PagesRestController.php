@@ -47,7 +47,7 @@ class PagesRestController extends BaseHiiveController {
 	/**
 	 * Endpoint callback
 	 *
-	 * @param WP_REST_Request $request - WP_REST_Request
+	 * @param \WP_REST_Request $request - WP_REST_Request
 	 * @return Array - of title and content
 	 */
 	public function callback( \WP_REST_Request $request ) {

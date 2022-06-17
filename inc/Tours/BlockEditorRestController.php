@@ -39,8 +39,8 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
 	/**
 	 * Undocumented function
 	 *
-	 * @param $request - the request
-	 * @return response
+	 * @param [type] $request - the request
+	 * @return [type] response
 	 */
 	public function get_steps( $request ) {
 		$steps = array();
