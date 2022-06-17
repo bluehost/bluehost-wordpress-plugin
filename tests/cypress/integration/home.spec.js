@@ -117,8 +117,8 @@ describe('Home Page', function () {
 				.within(() => {
 					cy.contains('p', 'Browse themes to find one that inspires you!');
 
-					cy.contains('a.is-link', 'Free Themes');
-					cy.get('a.is-link')
+					cy.contains('a.bluehost.components-button', 'Free Themes');
+					cy.get('a.bluehost.components-button')
 						.should('have.attr', 'href')
 						.and('include', '/wp-admin/themes.php');
 				});
