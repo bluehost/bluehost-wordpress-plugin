@@ -15,10 +15,10 @@ abstract class BaseHiiveController extends \WP_REST_Controller {
 	/**
 	 * STUB: Query Hiive for API-driven functionality.
 	 *
-	 * @param string $url
-	 * @param array  $args
-	 * @param int    $cache
-	 * @return void
+	 * @param string $url - url
+	 * @param array  $args - args
+	 * @param int    $cache - cache
+	 * @return - payload from transient or request or error
 	 */
 	protected function get( $url, $args = array(), $cache = 0 ) {
 		$request = $url . '?' . http_build_query( $args );
@@ -45,7 +45,7 @@ abstract class BaseHiiveController extends \WP_REST_Controller {
 	/**
 	 * Limit all requests to logged-in, subscriber users.
 	 *
-	 * @param string $permission
+	 * @param string $permission - permission needed
 	 * @return boolean
 	 */
 	public function is_authorized_request( $permission = 'read' ) {

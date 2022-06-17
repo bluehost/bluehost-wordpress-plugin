@@ -8,11 +8,11 @@ namespace Newfold\Plugin\Tours;
 class Shared {
 
 	/**
-	 * Undocumented function
+	 * Secondary Button property helper
 	 *
-	 * @param string $text
-	 * @param string $type
-	 * @return void
+	 * @param string $text - button text
+	 * @param string $type - button type
+	 * @return Array - button props
 	 */
 	public static function secondary_button( $text = 'Back', $type = 'back' ) {
 		return array(
@@ -23,11 +23,11 @@ class Shared {
 	}
 
 	/**
-	 * Undocumented function
+	 * Primary button property helper
 	 *
-	 * @param string $text
-	 * @param string $type
-	 * @return void
+	 * @param string $text - button text
+	 * @param string $type - button type
+	 * @return Array - button props
 	 */
 	public static function primary_button( $text = 'Next', $type = 'next' ) {
 		return array(
@@ -38,10 +38,10 @@ class Shared {
 	}
 
 	/**
-	 * Undocumented function
+	 * Step helper
 	 *
-	 * @param [type] $contents
-	 * @return void
+	 * @param string $contents - text for the step
+	 * @return string - html for the step
 	 */
 	public static function step( $contents ) {
 		$squares = '<div class="step-bluehost-squares"><img src="https://cdn.hiive.space/bluehost/mark.svg" alt="Bluehost Logo Mark" /></div>';
@@ -49,10 +49,10 @@ class Shared {
 	}
 
 	/**
-	 * Undocumented function
+	 * Large step helper
 	 *
-	 * @param [type] $contents
-	 * @return void
+	 * @param string $contents - text for the large step
+	 * @return string - html for the step
 	 */
 	public static function large_step( $contents ) {
 		$logo = '<div class="step-bluehost-logo"><img src="https://cdn.hiive.space/bluehost/logo.svg" alt="Bluehost Logo" /></div>';
@@ -60,11 +60,11 @@ class Shared {
 	}
 
 	/**
-	 * Undocumented function
+	 * Two column helper
 	 *
-	 * @param [type] $col1
-	 * @param [type] $col2
-	 * @return void
+	 * @param string $col1 - content for column one
+	 * @param string $col2 - content for column two
+	 * @return string - html for the columns
 	 */
 	public static function two_col( $col1, $col2 ) {
 		return '<div class="step-2col"><div>' . $col1 . '</div><div>' . $col2 . '</div></div>';

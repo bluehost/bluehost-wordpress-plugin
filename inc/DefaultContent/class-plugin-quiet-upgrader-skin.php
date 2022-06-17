@@ -1,8 +1,9 @@
 <?php
 /**
  * Upgrader API: Plugin_Quiet_Upgrader_Skin class
+ * 
+ * @package Bluehost/DefaultContent
  */
-
 
 /**
  * Quiet Skin for the WordPress Upgrader classes.
@@ -34,6 +35,9 @@ class Plugin_Quiet_Upgrader_Skin extends WP_Upgrader_Skin {
 
 	/**
 	 * Feedback - keep it all quiet.
+	 * 
+	 * @param string $string - string
+	 * @param Array $args - arrg
 	 */
 	public function feedback( $string, ...$args ) {
 		// nothing here either. =)

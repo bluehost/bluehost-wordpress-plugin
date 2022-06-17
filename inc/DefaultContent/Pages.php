@@ -5,6 +5,8 @@
  * /wp-admin/post-new.php?post_type=page&dcpage=about&page_title=About+Us
  * /wp-admin/post-new.php?post_type=page&dcpage=home&page_title=Home
  * /wp-admin/post-new.php?post_type=page&dcpage=contact&page_title=Contact+Us
+ * 
+ * @package Bluehost/DefaultContent
  */
 
 namespace Newfold\Plugin\DefaultContent;
@@ -52,6 +54,9 @@ class Pages {
 		add_action( 'transition_post_status', array( Pages::class, 'dc_page_publish_callback' ), 10, 3 );
 	}
 
+	/**
+	 * Rest API init
+	 */
 	public static function rest_api_init() {
 		$api = new PagesRestController();
 		$api->register_routes();
@@ -109,7 +114,7 @@ class Pages {
 	/**
 	 * Determine if dcpage already exists for this context
 	 *
-	 * @param context:String - context of new page
+	 * @param string $context - context of new page
 	 *
 	 * @return - page id if so or false if none found
 	 */
@@ -137,7 +142,8 @@ class Pages {
 	/**
 	 * Get Default Content and send to new page
 	 *
-	 * @param context:String - context of new page
+	 * @param string $context - context of new page
+	 * @param string $src - source
 	 * @return - id of new post
 	 */
 	public static function make_dc_page( $context, $src ) {
@@ -176,8 +182,9 @@ class Pages {
 	/**
 	 * Filter for default content, sets the proper contact form id.
 	 *
-	 * @param content - content from post
-	 * @param context - context for creating default content.
+	 * @param string $content - content from post
+	 * @param string $context - context for creating default content.
+	 * @return - filtered content
 	 */
 	public static function dc_content_filter_callback( $content, $context ) {
 		if ( 'contact' === $context ) {
@@ -249,8 +256,8 @@ class Pages {
 	/**
 	 * Determine if plugin is installed
 	 *
-	 * @param slug:String - slug/path for the plugin to check
-	 * @return - boolean for if plugin is installed
+	 * @param string $slug - slug/path for the plugin to check
+	 * @return boolean - for if plugin is installed
 	 */
 	public static function is_plugin_installed( $slug ) {
 		if ( ! function_exists( 'get_plugins' ) ) {
@@ -267,8 +274,8 @@ class Pages {
 	/**
 	 * Install plugin with provided zip
 	 *
-	 * @param plugin_zip:String - url to zip file to install
-	 * @return - boolean if install is successful
+	 * @param string $plugin_zip - url to zip file to install
+	 * @return boolean - if install is successful
 	 */
 	public static function install_plugin( $plugin_zip ) {
 		require_once ABSPATH . 'wp-admin/includes/file.php';
@@ -288,7 +295,7 @@ class Pages {
 	/**
 	 * Determine if form already exists, defaulting to use wpforms post_type
 	 *
-	 * @param context:String - what kind of forms are we looking for? defaults to `wpforms`
+	 * @param string $context - what kind of forms are we looking for? defaults to `wpforms`
 	 * @return - wpform id or false if none found
 	 */
 	public static function does_dc_form_exist( $context = 'wpforms' ) {
@@ -315,7 +322,7 @@ class Pages {
 	/**
 	 * Make Default Contact Form
 	 *
-	 * @param context:String - context of new form - plugin, defaults to `wpforms`
+	 * @param string $context - context of new form - plugin, defaults to `wpforms`
 	 * @return - id of new form post
 	 */
 	public static function make_dc_form( $context = 'wpforms' ) {

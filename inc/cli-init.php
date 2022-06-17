@@ -21,6 +21,8 @@ class BH_WP_CLI_Loader {
 	protected $commands;
 
 	/**
+	 * Instance
+	 * 
 	 * @var stdClass - Instance of BH_WP_CLI_Loader.
 	 */
 	protected static $instance;
@@ -51,7 +53,7 @@ class BH_WP_CLI_Loader {
 				'class'     => 'BH_WP_CLI_Cache',
 				'shortdesc' => 'Control all forms of caching.',
 				'longdesc'  => 'Control how browser cache, page cache and browser caching are configured.' .
-							   PHP_EOL . 'Cache Types: browser, page, object (not functional yet)' .
+				               PHP_EOL . 'Cache Types: browser, page, object (not functional yet)' .
 							   PHP_EOL . 'Subcommands: add, update, status',
 			),
 			array(
@@ -169,7 +171,7 @@ class BH_WP_CLI_Loader {
 }
 
 /**
- * load/create instance of loader class
+ * Load/create instance of loader class
  *
  * @see BH_WP_CLI_Loader->initialize()
  */

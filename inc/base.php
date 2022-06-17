@@ -45,12 +45,12 @@ function bh_setup() {
 	}
 	$install_date = get_option( 'mm_install_date' );
 	if ( empty( $install_date ) ) {
-		update_option( 'mm_install_date', date( 'M d, Y' ) );
+		update_option( 'mm_install_date', gmdate( 'M d, Y' ) );
 		$event                            = array(
 			't'    => 'event',
 			'ec'   => 'plugin_status',
 			'ea'   => 'installed',
-			'el'   => 'Install date: ' . get_option( 'mm_install_date', date( 'M d, Y' ) ),
+			'el'   => 'Install date: ' . get_option( 'mm_install_date', gmdate( 'M d, Y' ) ),
 			'keep' => false,
 		);
 		$events                           = get_option( 'mm_cron', array() );
@@ -68,6 +68,12 @@ function bh_setup() {
 
 add_action( 'admin_init', 'bh_setup' );
 
+/**
+ * Install date filter
+ * 
+ * @param string $install_date - incoming install date
+ * @return string filtered install date
+ */
 function bh_install_date_filter( $install_date ) {
 	return bh_get_plugin_install_date();
 }
@@ -77,7 +83,7 @@ add_filter( 'nfd_install_date_filter', 'bh_install_date_filter' );
 /**
  * Makes a GET request to an API and caches the results.
  *
- * @param string $api_url
+ * @param string $api_url - the api url
  *
  * @return array|WP_Error
  */
@@ -106,6 +112,9 @@ function bh_clear_api_calls() {
 add_action( 'wp_login', 'bh_clear_api_calls' );
 add_action( 'pre_current_active_plugins', 'bh_clear_api_calls' );
 
+/**
+ * Use mojo news feed
+ */
 function mojo_better_news_feed( $feed ) {
 	return 'http://feeds.feedburner.com/wp-pipes';
 }
@@ -113,12 +122,18 @@ function mojo_better_news_feed( $feed ) {
 add_filter( 'dashboard_secondary_feed', 'mojo_better_news_feed' );
 add_filter( 'dashboard_secondary_link', 'mojo_better_news_feed' );
 
+/**
+ * Set mojo news transient expiry
+ */
 function mojo_adjust_feed_transient_lifetime() {
 	return 3 * HOUR_IN_SECONDS;
 }
 
 add_filter( 'wp_feed_cache_transient_lifetime', 'mojo_adjust_feed_transient_lifetime' );
 
+/**
+ * Undocumented 
+ */
 function mojo_site_bin2hex() {
 	$path = ABSPATH;
 	$path = explode( 'public_html/', $path );

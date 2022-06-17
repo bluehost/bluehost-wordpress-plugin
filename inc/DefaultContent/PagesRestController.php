@@ -47,7 +47,8 @@ class PagesRestController extends BaseHiiveController {
 	/**
 	 * Endpoint callback
 	 *
-	 * @param $request WP_REST_Request
+	 * @param WP_REST_Request $request - WP_REST_Request
+	 * @return Array - of title and content
 	 */
 	public function callback( \WP_REST_Request $request ) {
 		$page = $request['page'];
@@ -118,7 +119,7 @@ class PagesRestController extends BaseHiiveController {
 				<!-- wp:paragraph -->
 				<p>Please fill out the form below and we'll be in touch.</p>
 				<!-- /wp:paragraph -->
-				
+
 				<!-- wp:wpforms/form-selector {"formId":"0"} /-->
 				<?php
 				$content = ob_get_clean();

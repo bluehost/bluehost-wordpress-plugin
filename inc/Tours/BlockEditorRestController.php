@@ -39,7 +39,8 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
 	/**
 	 * Undocumented function
 	 *
-	 * @return void
+	 * @param $request - the request
+	 * @return response
 	 */
 	public function get_steps( $request ) {
 		$steps = array();
@@ -245,36 +246,36 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
 	 */
 	private function steps_home_page() {
 		ob_start(); ?>
-		<?php \_e( 'Use this outline to fill in the content for your homepage', 'bluehost-wordpress-plugin' ); ?>:
+		<?php \esc_html_e( 'Use this outline to fill in the content for your homepage', 'bluehost-wordpress-plugin' ); ?>:
 		<ul>
-			<li><strong><?php \_e( 'Hero image', 'bluehost-wordpress-plugin' ); ?></strong> <?php \_e( '(the first thing your site visitors will see, so make it good.)', 'bluehost-wordpress-plugin' ); ?></li>
-			<li><strong><?php \_e( 'Headline', 'bluehost-wordpress-plugin' ); ?></strong> <?php \_e( '(the most important thing you want visitors to know.)', 'bluehost-wordpress-plugin' ); ?></li>
-			<li><strong><?php \_e( 'Subheadline', 'bluehost-wordpress-plugin' ); ?></strong> <?php \_e( '(consider adding one or two sentences to give your headline more context.)', 'bluehost-wordpress-plugin' ); ?></li>
-			<li><strong><?php \_e( 'Call to action button', 'bluehost-wordpress-plugin' ); ?></strong> <?php \_e( '(encourage your visitors to buy something, subscribe to something or learn more.)', 'bluehost-wordpress-plugin' ); ?></li>
+			<li><strong><?php \esc_html_e( 'Hero image', 'bluehost-wordpress-plugin' ); ?></strong> <?php \esc_html_e( '(the first thing your site visitors will see, so make it good.)', 'bluehost-wordpress-plugin' ); ?></li>
+			<li><strong><?php \esc_html_e( 'Headline', 'bluehost-wordpress-plugin' ); ?></strong> <?php \esc_html_e( '(the most important thing you want visitors to know.)', 'bluehost-wordpress-plugin' ); ?></li>
+			<li><strong><?php \esc_html_e( 'Subheadline', 'bluehost-wordpress-plugin' ); ?></strong> <?php \esc_html_e( '(consider adding one or two sentences to give your headline more context.)', 'bluehost-wordpress-plugin' ); ?></li>
+			<li><strong><?php \esc_html_e( 'Call to action button', 'bluehost-wordpress-plugin' ); ?></strong> <?php \esc_html_e( '(encourage your visitors to buy something, subscribe to something or learn more.)', 'bluehost-wordpress-plugin' ); ?></li>
 		</ul>
 		<?php
 		$header_contents = ob_get_clean();
 
 		ob_start()
 		?>
-		<?php \_e( 'Since you\'re more focused on selling to visitors, think about including', 'bluehost-wordpress-plugin' ); ?>:
+		<?php \esc_html_e( 'Since you\'re more focused on selling to visitors, think about including', 'bluehost-wordpress-plugin' ); ?>:
 		<ul>
-			<li><?php \_e( '“Reasons to believe” that help potential customers understand the value of your products.', 'bluehost-wordpress-plugin' ); ?></li>
-			<li><?php \_e( 'Info on sales, promotions, and incentives', 'bluehost-wordpress-plugin' ); ?></li>
-			<li><?php \_e( 'Product listings and images', 'bluehost-wordpress-plugin' ); ?></li>
-			<li><?php \_e( 'Testimonials or customer reviews', 'bluehost-wordpress-plugin' ); ?></li>
+			<li><?php \esc_html_e( '“Reasons to believe” that help potential customers understand the value of your products.', 'bluehost-wordpress-plugin' ); ?></li>
+			<li><?php \esc_html_e( 'Info on sales, promotions, and incentives', 'bluehost-wordpress-plugin' ); ?></li>
+			<li><?php \esc_html_e( 'Product listings and images', 'bluehost-wordpress-plugin' ); ?></li>
+			<li><?php \esc_html_e( 'Testimonials or customer reviews', 'bluehost-wordpress-plugin' ); ?></li>
 		</ul>
 		<?php
 		$mostly_selling = ob_get_clean();
 
 		ob_start()
 		?>
-		<?php \_e( 'Since you\'re more focused on sharing information with visitors, think about including', 'bluehost-wordpress-plugin' ); ?>:
+		<?php \esc_html_e( 'Since you\'re more focused on sharing information with visitors, think about including', 'bluehost-wordpress-plugin' ); ?>:
 		<ul>
-			<li><?php \_e( 'Key information that supports your header', 'bluehost-wordpress-plugin' ); ?></li>
-			<li><?php \_e( 'Most recent posts or news', 'bluehost-wordpress-plugin' ); ?></li>
-			<li><?php \_e( 'Most popular or select, curated blog posts', 'bluehost-wordpress-plugin' ); ?></li>
-			<li><?php \_e( 'Top portfolio pieces, awards, certifications or other supporting materials', 'bluehost-wordpress-plugin' ); ?></li>
+			<li><?php \esc_html_e( 'Key information that supports your header', 'bluehost-wordpress-plugin' ); ?></li>
+			<li><?php \esc_html_e( 'Most recent posts or news', 'bluehost-wordpress-plugin' ); ?></li>
+			<li><?php \esc_html_e( 'Most popular or select, curated blog posts', 'bluehost-wordpress-plugin' ); ?></li>
+			<li><?php \esc_html_e( 'Top portfolio pieces, awards, certifications or other supporting materials', 'bluehost-wordpress-plugin' ); ?></li>
 		</ul>
 		<?php
 		$mostly_sharing = ob_get_clean();
