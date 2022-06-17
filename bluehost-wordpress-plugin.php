@@ -62,7 +62,7 @@ if ( version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 }
 
 /*
- * Initialize data module via container
+ * Initialize container values for data module
  */
 $bh_module_container = new Container();
 // Set plugin to container
