@@ -50,7 +50,7 @@ function MarketplacePage( { history } ) {
     const moduleConstants = {
         'resturl': window.nfdRestRoot,
         'eventendpoint': '/newfold-data/v1/events/',
-        'perPage': 6
+        'perPage': 12
     }
 
 	return (

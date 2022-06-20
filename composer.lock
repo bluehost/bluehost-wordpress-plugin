@@ -457,16 +457,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "b08916cf38a6e00516d15478b3983ced6bf04068"
+                "reference": "75c165e8e5990dfa1f8db50125241ac6b3ea93f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/b08916cf38a6e00516d15478b3983ced6bf04068",
-                "reference": "b08916cf38a6e00516d15478b3983ced6bf04068",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/75c165e8e5990dfa1f8db50125241ac6b3ea93f8",
+                "reference": "75c165e8e5990dfa1f8db50125241ac6b3ea93f8",
                 "shasum": ""
             },
             "require": {
@@ -496,10 +496,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.0.1",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.0.2",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2022-06-17T19:33:28+00:00"
+            "time": "2022-06-20T22:16:48+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -2402,16 +2402,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.7.0",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "a2cd51b45bcaef9c1f2a4bda48f2dd2fa2b95563"
+                "reference": "1359e176e9307e906dc3d890bcc9603ff6d90619"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/a2cd51b45bcaef9c1f2a4bda48f2dd2fa2b95563",
-                "reference": "a2cd51b45bcaef9c1f2a4bda48f2dd2fa2b95563",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/1359e176e9307e906dc3d890bcc9603ff6d90619",
+                "reference": "1359e176e9307e906dc3d890bcc9603ff6d90619",
                 "shasum": ""
             },
             "require": {
@@ -2454,7 +2454,7 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "time": "2022-06-13T06:31:38+00:00"
+            "time": "2022-06-18T07:21:10+00:00"
         },
         {
             "name": "symfony/console",
