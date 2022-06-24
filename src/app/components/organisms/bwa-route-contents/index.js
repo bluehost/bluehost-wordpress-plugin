@@ -7,6 +7,7 @@ import { Suspense, lazy, useEffect } from '@wordpress/element';
 import { BWAPageSpinner } from '@app/components/molecules';
 
 const HomeRoute 		= lazy(() => import( '@app/pages/home' ));
+const EcommerceRoute 		= lazy(() => import( '@app/pages/ecommerce' ));
 const OnboardingRoute 	= lazy(() => import( '@app/pages/home/onboarding' ));
 const ThemesRoute 		= lazy(() => import( '@app/pages/marketplace/themes' ));
 const PluginsRoute 		= lazy(() => import( '@app/pages/marketplace/plugins' ));
@@ -37,6 +38,7 @@ const BWARouteContents = ({ ...props}) => {
 			<Suspense fallback={ <BWAPageSpinner /> }>
 				<Switch>
 					<Route path="/home" exact render={ () => <HomeRoute /> } />
+					<Route path="/home/store" exact render={ () => <EcommerceRoute /> } />
 					<Route path="/home/onboarding" exact render={ () => <OnboardingRoute /> } />
 					<Route path="/marketplace/themes" exact render={ () => <ThemesRoute /> } />
 					<Route path="/marketplace/themes/:id" exact render={({match:{params:{id}}}) => <ProductRoute id={id} />} />
