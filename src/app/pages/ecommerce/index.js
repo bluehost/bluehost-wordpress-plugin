@@ -1,5 +1,6 @@
 import { BWAAccountCard, BWAHelpCard } from "@app/components/molecules";
 import { useDispatch, useSelect } from "@wordpress/data";
+import { useState } from "@wordpress/element";
 import { withRouter } from "react-router-dom";
 import NewfoldECommerce from "../../../../vendor/newfold-labs/wp-module-ecommerce";
 
@@ -19,9 +20,16 @@ function EcommercePage() {
   const eCommerceActions = {
     toggleComingSoon: async () => toggleSetting("comingSoon"),
   };
+  const wpModules = {
+    useState,
+  };
   return (
     <div style={{ margin: "27px 42px 0 24px" }}>
-      <NewfoldECommerce state={eCommerceState} actions={eCommerceActions} />
+      <NewfoldECommerce
+        state={eCommerceState}
+        actions={eCommerceActions}
+        wpModules={wpModules}
+      />
       <div className="grid-col-2">
         <BWAAccountCard />
         <BWAHelpCard />
