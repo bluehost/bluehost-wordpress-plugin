@@ -1,4 +1,5 @@
 import { BWAAccountCard, BWAHelpCard } from "@app/components/molecules";
+import apiFetch from "@wordpress/api-fetch";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { useState } from "@wordpress/element";
 import { withRouter } from "react-router-dom";
@@ -9,10 +10,10 @@ import "./styles.scss";
 
 function EcommercePage() {
   let brandPluginState = useSelect((select) => {
-    let wp = select("bluehost/plugin");
+    let store = select("bluehost/plugin");
     return {
-      comingSoon: wp.getSetting("comingSoon"),
-      isWooActive: wp.getSetting("isWooActive"),
+      comingSoon: store.getSetting("comingSoon"),
+      isWooActive: store.getSetting("isWooActive"),
     };
   });
   const eCommerceState = { wp: brandPluginState };
@@ -22,6 +23,7 @@ function EcommercePage() {
   };
   const wpModules = {
     useState,
+    apiFetch,
   };
   return (
     <div style={{ margin: "27px 42px 0 24px" }}>
