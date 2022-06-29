@@ -31,24 +31,27 @@ describe('Marketplace Page', function () {
 	it('First product card renders correctly', () => {
 		cy.get('#marketplace-item-0fd107dc-cfcc-4380-86ef-89a9ce01e443').as('card');
 
+		cy.get('@card')
+			.findByRole('link', {name: 'Learn More'})
+			.scrollIntoView()
+			.should('be.visible')
+			.should('have.attr', 'href')
+			.and('include', 'bluehost.com/solutions/full-service');
+
+
+		cy.get('@card')
+			.findByRole('link', {name: 'Buy Now'})
+			.scrollIntoView()
+			.should('be.visible')
+			.should('have.attr', 'href')
+			.and('include', 'bluehost.tfaforms.net');
+
 		cy.get('@card').first().within(() => {
 			cy.get('.components-card__header')
 				.contains('Full Service')
 				.should('be.visible');
 			cy.get('.components-card__media').should('be.visible');
 			cy.get('.components-card__header em.price').should('not.exist');
-			cy.get('.components-button.is-primary')
-				.contains('Buy Now')
-				.scrollIntoView()
-				.should('be.visible')
-				.should('have.attr', 'href')
-				.and('include', 'bluehost.tfaforms.net');
-			cy.get('.components-button.is-secondary')
-				.contains('Learn More')
-				.scrollIntoView()
-				.should('be.visible')
-				.should('have.attr', 'href')
-				.and('include', 'bluehost.com/solutions/full-service');
 		});
 	});
 
@@ -97,28 +100,28 @@ describe('Marketplace Page', function () {
 		cy.get('.marketplace-item').should('have.length', 18);
 	});
 
-	it('Category Tab Filters properly', () => {
-		cy.contains('button', 'Services');
-		cy.contains('button', 'SEO');
+	// it('Category Tab Filters properly', () => {
+	// 	cy.contains('button', 'Services');
+	// 	cy.contains('button', 'SEO');
 
-		cy.get('#tab-panel-0-Services').click();
-		cy.wait(300);
-		cy.get('.marketplace-item').should('have.length', 6);
+	// 	cy.get('#tab-panel-0-Services').click();
+	// 	cy.wait(300);
+	// 	cy.get('.marketplace-item').should('have.length', 6);
 
-		cy.get('#marketplace-item-0fd107dc-cfcc-4380-86ef-89a9ce01e443 h3')
-			.scrollIntoView()
-			.should('be.visible')
-			.should('have.text', 'Full Service');
+	// 	cy.get('#marketplace-item-0fd107dc-cfcc-4380-86ef-89a9ce01e443 h3')
+	// 		.scrollIntoView()
+	// 		.should('be.visible')
+	// 		.should('have.text', 'Full Service');
 		
-		cy.get('#tab-panel-0-SEO').click();
-		cy.wait(300);
-		cy.get('.marketplace-item').should('have.length', 1);
+	// 	cy.get('#tab-panel-0-SEO').click();
+	// 	cy.wait(300);
+	// 	cy.get('.marketplace-item').should('have.length', 1);
 	
-		cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738 h3')
-			.scrollIntoView()
-			.should('be.visible')
-			.should('have.text', 'Yoast Premium');
-	});
+	// 	cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738 h3')
+	// 		.scrollIntoView()
+	// 		.should('be.visible')
+	// 		.should('have.text', 'Yoast Premium');
+	// });
 
 	// CTB Not included yet
 	// it('Product CTB cards render correctly', () => {
