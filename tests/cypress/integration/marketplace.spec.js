@@ -5,7 +5,12 @@ describe('Marketplace Page', function () {
 
 	before(() => {
 		cy.server();
-		cy.route('GET', '**/newfold-marketplace/v1/marketplace**', 'fx:marketplace').as('marketplace');
+		cy.intercept({
+			method: 'GET',
+			url: '**/newfold-marketplace/v1/marketplace'
+		}, {
+			fixture: 'products.json'
+		}).as('marketplace');
 		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace');
 		cy.injectAxe();
 	});
@@ -26,19 +31,24 @@ describe('Marketplace Page', function () {
 	it('First product card renders correctly', () => {
 		cy.get('#marketplace-item-0fd107dc-cfcc-4380-86ef-89a9ce01e443').as('card');
 
-		cy.get('@card')
-			.findByRole('link', {name: 'Learn More'})
-			.scrollIntoView()
-			.should('be.visible')
-			.should('have.attr', 'href')
-			.and('include', 'https://www.bluehost.com/solutions/full-service');
-
 		cy.get('@card').first().within(() => {
 			cy.get('.components-card__header')
-				.contains('Web Design Services')
+				.contains('Full Service')
 				.should('be.visible');
 			cy.get('.components-card__media').should('be.visible');
 			cy.get('.components-card__header em.price').should('not.exist');
+			cy.get('.components-button.is-primary')
+				.contains('Buy Now')
+				.scrollIntoView()
+				.should('be.visible')
+				.should('have.attr', 'href')
+				.and('include', 'bluehost.tfaforms.net');
+			cy.get('.components-button.is-secondary')
+				.contains('Learn More')
+				.scrollIntoView()
+				.should('be.visible')
+				.should('have.attr', 'href')
+				.and('include', 'bluehost.com/solutions/full-service');
 		});
 	});
 
@@ -46,11 +56,11 @@ describe('Marketplace Page', function () {
 		cy.get('#marketplace-item-2a2e9bd4-3738-4f78-bed0-b67d2fc039f6').as('card');
 
 		cy.get('@card')
-			.findByRole('link', {name: 'Buy Now'})
+			.findByRole('link', {name: 'Learn More'})
 			.scrollIntoView()
 			.should('be.visible')
 			.should('have.attr', 'href')
-			.and('include', 'https://www.wpforms.com/');
+			.and('include', 'https://wpforms.com/');
 
 		cy.get('@card').first().within(() => {
 			cy.get('.components-card__header')
