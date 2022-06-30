@@ -2,7 +2,7 @@
 
 namespace Bluehost\Notifications;
 
-use Endurance\WP\Module\Data\HubConnection;
+use NewfoldLabs\WP\Module\Data\HiiveConnection;
 use WP_Forge\Helpers\Arr;
 use wpscholar\Url;
 
@@ -68,12 +68,12 @@ class Notification {
 	 */
 	public function dismiss() {
 		wp_remote_post(
-			BH_HUB_URL . '/notifications/' . $this->id,
+			NFD_HIIVE_URL . '/notifications/' . $this->id,
 			array(
 				'headers'  => array(
 					'Content-Type'  => 'application/json',
 					'Accept'        => 'application/json',
-					'Authorization' => 'Bearer ' . HubConnection::get_auth_token(),
+					'Authorization' => 'Bearer ' . HiiveConnection::get_auth_token(),
 				),
 				'blocking' => false,
 			)

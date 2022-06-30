@@ -31,11 +31,6 @@ array(
 
 ### Available commands
 
-* `wp {alias} branding update {brand}`
-* `wp {alias} branding --update={brand}`
-* `wp {alias} branding remove`
-* `wp {alias} branding --remove`
-
 * `wp {alias} cache {type} add`
 * `wp {alias} cache {type} remove`
 * SOON: `wp {alias} cache {type} status`

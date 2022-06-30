@@ -10,12 +10,16 @@ use \WP_CLI\Utils;
 class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 
 	/**
-	 * @var string - Organization Raw Content URL Base.
+	 * Organization Raw Content URL Base.
+	 *
+	 * @var string - orl URL
 	 */
 	protected static $org_url = 'https://raw.githubusercontent.com/bluehost';
 
 	/**
-	 * @var array - Types of caching available.
+	 * Types of caching available.
+	 *
+	 * @var array - types of caching
 	 */
 	protected static $cache_types = array(
 		'page',
@@ -24,7 +28,9 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 	);
 
 	/**
-	 * @var array - Actions taken with all caching types.
+	 * Actions taken with all caching types.
+	 *
+	 * @var array - cache actions
 	 */
 	protected static $cache_actions = array(
 		'add',
@@ -33,57 +39,80 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 	);
 
 	/**
-	 * @var string - GitHub Repo + Brand Slug.
+	 * GitHub Repo + Branch Slug.
+	 *
+	 * @var string - repo/branch
 	 */
 	protected static $page_repo_branch = 'endurance-page-cache/production';
 
 	/**
-	 * @var string - Page Cache Filename.
+	 * Page Cache Filename.
+	 *
+	 * @var string - page filename
 	 */
 	protected static $page_filename = 'endurance-page-cache.php';
 
 	/**
-	 * @var string - GitHub Repo + Brand Slug.
+	 * GitHub Repo + Brand Slug.
+	 *
+	 * @var string - repo/branch
 	 */
 	protected static $browser_repo_branch = 'endurance-browser-cache/production';
 
 	/**
-	 * @var string - Browser Cache Filename.
+	 * Browser Cache Filename.
+	 *
+	 * @var string - browser filename
 	 */
 	protected static $browser_filename = 'endurance-browser-cache.php';
 
 	/**
-	 * @var string - /wp-content/mu path on server.
+	 * MU (/wp-content/mu) path on server.
+	 *
+	 * @var string - mu path
 	 */
 	protected static $mu_plugin_dir = WP_CONTENT_DIR . '/mu-plugins';
 
 	/**
-	 * @var string|null - user-provided provided action.
+	 * User-provided provided action.
+	 *
+	 * @var string|null - current action
 	 */
 	protected $current_action;
 
 	/**
-	 * @var string|null - user-provided caching type.
+	 * User-provided caching type.
+	 *
+	 * @var string|null - current cache type
 	 */
 	protected $current_type;
 
 	/**
-	 * @var string|null - determined filename based on caching type.
+	 * Determined filename based on caching type.
+	 *
+	 * @var string|null - current filename
 	 */
 	protected $current_filename;
 
 	/**
-	 * @var string|null - current path for mu plugin file.
+	 * Current path for mu plugin file.
+	 *
+	 * @var string|null - current plugin path
 	 */
 	protected $current_plugin_path;
 
 	/**
-	 * @var string|null - current url for remote copy of plugin file.
+	 * Current url for remote copy of plugin file.
+	 *
+	 * @var string|null - current remote url
 	 */
 	protected $current_remote;
 
 	/**
 	 * Manage Full-Page Caching, Browser Caching and Object Caching.
+	 *
+	 * @param Array $args - args
+	 * @param Array $assoc_args - more args
 	 */
 	public function __invoke( $args, $assoc_args ) {
 		if ( ! isset( $args[0] ) || ! isset( $args[1] ) ) {
@@ -109,14 +138,14 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 			case 'add':
 				$this->add();
 				break;
-			case 'remove';
+			case 'remove':
 				$this->remove();
 				break;
 		}
 	}
 
 	/**
-	 * wp {alias} cache {$this->current_type} add
+	 * WP {alias} cache {$this->current_type} add
 	 */
 	private function add() {
 		switch ( $this->current_type ) {
@@ -147,7 +176,7 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 	}
 
 	/**
-	 * wp {alias} cache {$this->current_type} remove
+	 * WP {alias} cache {$this->current_type} remove
 	 */
 	private function remove() {
 		switch ( $this->current_type ) {
@@ -165,6 +194,9 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 		}
 	}
 
+	/**
+	 * Handle remote mu plugin load
+	 */
 	private function handle_remote_mu_plugin_load() {
 		$this->assure_mu_plugin_dir();
 		if ( file_exists( $this->current_plugin_path ) ) {
@@ -179,11 +211,11 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 	/**
 	 * Use WordPress HTTP Library to Retrieve Single-File Drop-In Plugin from GitHub Repository
 	 *
-	 * @param        $url
-	 * @param        $filename
-	 * @param string $dir
+	 * @param string $url - url
+	 * @param string $filename - file
+	 * @param string $dir - directory
 	 *
-	 * @throws \WP_CLI\ExitException
+	 * @throws \WP_CLI\ExitException - throws it.
 	 */
 	private function get_plugin_from_githubraw( $url, $filename, $dir = '' ) {
 		$this->colorize_log( 'Downloading ' . ucfirst( $this->current_type ) . ' Cache from GitHub...' );
@@ -258,9 +290,9 @@ class BH_WP_CLI_Cache extends BH_WP_CLI_Command {
 	/**
 	 * Simple URL construction method from class constants
 	 *
-	 * @param string $root
-	 * @param string $repo_branch
-	 * @param string $filename
+	 * @param string $root - url root
+	 * @param string $repo_branch - repo branch
+	 * @param string $filename - filename
 	 *
 	 * @return string
 	 */

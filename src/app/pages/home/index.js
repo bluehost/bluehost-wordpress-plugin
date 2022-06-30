@@ -29,13 +29,13 @@ const Home = () => {
 	}, []);
 
 	let showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
-	
+
 	if(location.state && 'undefined' !== typeof location.state.redirect && 'override' === location.state.redirect ) {
 		showOnboarding = false;
 	}
 
 	return showOnboarding 
-			? <BWARedirect to="/home/onboarding" currentLocation={location} /> 
+			? <BWARedirect to="/home/onboarding" currentLocation={location} />
 			: (
 				<BWACommonTemplate descriptivePageTitle={__('Home', 'bluehost-wordpress-plugin')}>
 					<div className="page-home__container">

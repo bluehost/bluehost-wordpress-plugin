@@ -12,6 +12,7 @@
   "video": false,
   "videosFolder": "tests/cypress/videos",
   "videoUploadOnPasses": false,
+  "experimentalFetchPolyfill": true,
   "chromeWebSecurity": false,
   "viewportWidth": 1024,
   "viewportHeight": 768

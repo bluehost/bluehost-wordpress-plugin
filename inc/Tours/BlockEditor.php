@@ -19,12 +19,14 @@ class BlockEditor {
 	/**
 	 * Tour context type set by &tour= query parameter.
 	 *
-	 * @return false|string
+	 * @var false|string
 	 */
 	protected $tour_context = false;
 
 	/**
 	 * Trigger context is query parameter [ (int) 1 ] or post meta [ (int) 2 ]
+	 *
+	 * @var boolean|int
 	 */
 	protected $trigger_context = false;
 
@@ -47,14 +49,15 @@ class BlockEditor {
 	 */
 	protected function primary_init() {
 		add_action( 'rest_api_init', array( $this, 'initialize_endpoint' ) );
-		if ( $this->trigger_context = $this->should_load_tours() ) {
+		$this->trigger_context = $this->should_load_tours();
+		if ( $this->trigger_context ) {
 			add_action( 'load-post.php', array( $this, 'conditional_load_block_editor_tour' ) );
 		}
 
 		// register nf_dc_placeholders meta to expose it to rest api
-		register_meta( 
-			'post', 
-			'nf_dc_placeholders', 
+		register_meta(
+			'post',
+			'nf_dc_placeholders',
 			array(
 				'type'         => 'string',
 				'description'  => 'Save initial placeholder id and text values for default content.',
@@ -90,8 +93,10 @@ class BlockEditor {
 
 		// With post meta always load assets but script will look for tour parameter to auto-start
 		// so this mostly just initializes stylesheet, validation and scrubbing logic
-		if ( $post_id && ! empty( $this->tour_context = \get_post_meta( $post_id, 'nf_dc_page', true ) ) ) {
-			if ( $status = \get_post_status( $post_id ) ) {
+		$this->tour_context = \get_post_meta( $post_id, 'nf_dc_page', true );
+		if ( $post_id && ! empty( $this->tour_context ) ) {
+			$status = \get_post_status( $post_id );
+			if ( $status ) {
 				return 2;
 			}
 		}
@@ -118,19 +123,20 @@ class BlockEditor {
 	 * @return void
 	 */
 	public function load_runtime_assets() {
-		
+
 		$windowprops = 'window.nfTourContext="' . $this->tour_context . '";';
 		// save initial placeholder text for all future comparisons
-		$post_id = isset( $_GET['post'] ) ? filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT ) : false;
-		if ( $post_id && ! empty( $nf_dc_placeholders = \get_post_meta( $post_id, 'nf_dc_placeholders', true ) ) ) {
+		$post_id            = isset( $_GET['post'] ) ? filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT ) : false;
+		$nf_dc_placeholders = \get_post_meta( $post_id, 'nf_dc_placeholders', true );
+		if ( $post_id && ! empty( $nf_dc_placeholders ) ) {
 				$windowprops .= 'window.nfPlaceholders=' . $nf_dc_placeholders . ';';
 		}
-		
+
 		\Bluehost\BuildAssets::inlineWebpackPublicPath( 'wp-element' );
-		\wp_add_inline_script( 
-			\Bluehost\BuildAssets::$asset_handle_prefix . 'editortours', 
-			$windowprops, 
-			'before' 
+		\wp_add_inline_script(
+			\Bluehost\BuildAssets::$asset_handle_prefix . 'editortours',
+			$windowprops,
+			'before'
 		);
 		\Bluehost\BuildAssets::enqueue( 'editortours' );
 	}
@@ -148,7 +154,11 @@ class BlockEditor {
 			<div id="newfold-editortours-loading">
 				<div class="inner">
 					<div class="bwa-loader"></div>
-					<p><?php \_e('Loading', 'bluehost-wordpress-plugin'); ?> <?php echo ucfirst( \esc_html( $this->tour_context ) ); ?> <?php \_e('Page', 'bluehost-wordpress-plugin'); ?>...</p>
+					<p>
+						<?php \esc_html_e( 'Loading', 'bluehost-wordpress-plugin' ); ?>
+						<span style="text-transform: capitalize;"><?php echo \esc_html( $this->tour_context ); ?></span>
+						<?php \esc_html_e( 'Page', 'bluehost-wordpress-plugin' ); ?>...
+					</p>
 				</div>
 			</div>
 			<div id="newfold-editortours"></div>
