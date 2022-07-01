@@ -13,6 +13,7 @@ jobs:
   build:
     name: On Release
     runs-on: ubuntu-latest
+    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
     steps:
 
       - name: Checkout
