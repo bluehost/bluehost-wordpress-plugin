@@ -21,6 +21,7 @@ jobs:
   test:
     name: Run Cypress Tests
     runs-on: ubuntu-latest
+    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
     steps:
 
       - name: Checkout
