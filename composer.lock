@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06773b9e82b7de0f72d2d98a785133b6",
+    "content-hash": "151e15d1d793d1f2bb87519935cd4830",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
@@ -460,16 +460,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "1.1.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "4d2360a26db4ffeb8e0d1434571dc7a8178b22bc"
+                "reference": "874347ae163d1c9a52cdc9d83c01fe8cddc8a036"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/4d2360a26db4ffeb8e0d1434571dc7a8178b22bc",
-                "reference": "4d2360a26db4ffeb8e0d1434571dc7a8178b22bc",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/874347ae163d1c9a52cdc9d83c01fe8cddc8a036",
+                "reference": "874347ae163d1c9a52cdc9d83c01fe8cddc8a036",
                 "shasum": ""
             },
             "require": {
@@ -499,10 +499,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.1.0",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.2.1",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2022-06-29T14:24:15+00:00"
+            "time": "2022-07-05T19:34:02+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -955,16 +955,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "2.3.7",
+            "version": "2.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "10cd375cf85dede2ff417ceab517ef9a0dc55407"
+                "reference": "015f524c9969255a29cdea8890cbd4fec240ee47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/10cd375cf85dede2ff417ceab517ef9a0dc55407",
-                "reference": "10cd375cf85dede2ff417ceab517ef9a0dc55407",
+                "url": "https://api.github.com/repos/composer/composer/zipball/015f524c9969255a29cdea8890cbd4fec240ee47",
+                "reference": "015f524c9969255a29cdea8890cbd4fec240ee47",
                 "shasum": ""
             },
             "require": {
@@ -1045,7 +1045,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/composer/issues",
-                "source": "https://github.com/composer/composer/tree/2.3.7"
+                "source": "https://github.com/composer/composer/tree/2.3.9"
             },
             "funding": [
                 {
@@ -1061,7 +1061,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-06T14:43:28+00:00"
+            "time": "2022-07-05T14:52:11+00:00"
         },
         {
             "name": "composer/metadata-minifier",
