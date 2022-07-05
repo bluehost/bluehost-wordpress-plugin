@@ -21,6 +21,7 @@ env:
 jobs:
   phpcs:
     runs-on: ubuntu-latest
+    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
     steps:
 
       - uses: actions/checkout@v2

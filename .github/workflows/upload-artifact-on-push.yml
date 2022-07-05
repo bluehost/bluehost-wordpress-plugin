@@ -12,6 +12,7 @@ jobs:
   build:
     name: On Push to Master
     runs-on: ubuntu-latest
+    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
     steps:
 
       - name: Checkout
@@ -63,9 +64,6 @@ jobs:
       - name: npm install
         run: npm install
 
-      - name: Build JavaScript
-        run: npm run build
-
       - name: Validate composer.json and composer.lock
         run: composer validate
 
@@ -83,6 +81,9 @@ jobs:
 
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
+
+      - name: Build JavaScript
+        run: npm run build
 
       - name: Prepare files
         run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}

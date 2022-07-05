@@ -1,7 +1,7 @@
 <?php
 
 use Bluehost\BuildAssets;
-
+use Bluehost\WP\Data\Customer;
 /**
  * Bluehost_Admin_App_Assets class
  */
@@ -79,6 +79,7 @@ class Bluehost_Admin_App_Assets {
 				'noticesPathsDenyList' => Bluehost_Admin_App_Page::$noticesPathsDenyList, // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				'accountId'            => mojo_site_bin2hex(),
 				'nonce'                => wp_create_nonce( mojo_site_bin2hex() ),
+				'customer'             => Customer::collect(),
 			),
 			'env'          => array(
 				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,
