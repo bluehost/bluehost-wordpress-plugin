@@ -47,12 +47,12 @@
         "bluehost/bluehost-wp-customer-data": "^1.0",
         "bluehost/endurance-wp-module-business-reviews": "^1.0",
         "bluehost/endurance-wp-module-loader": "^1.1",
-        "bluehost/endurance-wp-module-sso": "^1.0",
         "bluehost/endurance-wp-plugin-updater": "^1.1.1",
         "bluehost/wp-module-secure-passwords": "^1.0.2",
         "newfold-labs/wp-module-data": "^2.0",
         "newfold-labs/wp-module-loader": "^1.0",
         "newfold-labs/wp-module-marketplace": "^1.2",
+        "newfold-labs/wp-module-sso": "^1.0",
         "wp-forge/helpers": "^1.0",
         "wpscholar/collection": "^1.0",
         "wpscholar/url": "^1.2"
