@@ -28,6 +28,19 @@ const Home = () => {
 		return 'undefined' !== typeof plugin && plugin.hasOwnProperty('getSetting') ? ! select('bluehost/plugin').getSetting('comingSoon') : true;
 	}, []);
 
+	const isOnECommercePlan = useSelect((select) => {
+		const plugin = select("bluehost/plugin");
+		return (
+			"undefined" !== typeof plugin &&
+			plugin.hasOwnProperty("isOnECommercePlan") &&
+			plugin.isOnECommercePlan()
+		);
+	}, []);
+
+	if (isOnECommercePlan) {
+		return <BWARedirect to="/home/store" currentLocation={location} />;
+	}
+
 	let showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
 
 	if(location.state && 'undefined' !== typeof location.state.redirect && 'override' === location.state.redirect ) {

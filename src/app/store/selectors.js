@@ -25,6 +25,12 @@ export function isTopLevel(state) {
 	return state.app.isTopLevel;
 }
 
+export function isOnECommercePlan(state) {
+  return ["wc_standard", "wc_premium"].includes(
+    state.app.customer.plan_subtype
+  );
+}
+
 export function getAllSettings(state) {
 	return state.settings;
 }
