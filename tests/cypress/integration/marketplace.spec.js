@@ -95,20 +95,21 @@ describe('Marketplace Page', function () {
 	// 	cy.get('.marketplace-item').should('have.length', 18);
 	// });
 
+	// Test passes locally but fails in github action
 	it('Category Tab Filters properly', () => {
 		cy.contains('button', 'Services');
-		cy.contains('button', 'SEO');
-
-		cy.get('#tab-panel-0-Services').click();
+		
+		cy.get('#tab-panel-0-Services').trigger("click");
 		cy.wait(300);
 		cy.get('.marketplace-item').should('have.length', 6);
-
+		
 		cy.get('#marketplace-item-0fd107dc-cfcc-4380-86ef-89a9ce01e443 h3')
 			.scrollIntoView()
 			.should('be.visible')
 			.should('have.text', 'Full Service');
 		
-		cy.get('#tab-panel-0-SEO').click();
+		cy.contains('button', 'SEO');
+		cy.get('#tab-panel-0-SEO').trigger("click");
 		cy.wait(300);
 		cy.get('.marketplace-item').should('have.length', 1);
 	
