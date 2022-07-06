@@ -98,7 +98,7 @@ describe('Marketplace Page', function () {
 	// Test passes locally but fails in github action
 	it('Category Tab Filters properly', () => {
 		cy.contains('button', 'Services');
-		cy.findByRole('tab', { name: /Services/i } ).click();
+		cy.findByRole('tab', { name: /Services/i } ).click({ force: true });
 		cy.wait(300);
 		cy.get('.marketplace-item').should('have.length', 6);
 		
@@ -108,7 +108,7 @@ describe('Marketplace Page', function () {
 			.should('have.text', 'Full Service');
 		
 		cy.contains('button', 'SEO');
-		cy.findByRole('tab', { name: /SEO/i } ).click();
+		cy.findByRole('tab', { name: /SEO/i } ).click({ force: true });
 		cy.wait(300);
 		cy.get('.marketplace-item').should('have.length', 1);
 	
