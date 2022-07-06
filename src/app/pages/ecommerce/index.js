@@ -1,5 +1,6 @@
-import { BWAAccountCard, BWAHelpCard, BWAModal as Modal } from "@app/components/molecules";
+import { BWAAccountCard, BWAHelpCard } from "@app/components/molecules";
 import apiFetch from "@wordpress/api-fetch";
+import { Modal } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { useState } from "@wordpress/element";
 import { withRouter } from "react-router-dom";
