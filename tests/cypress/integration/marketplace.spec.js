@@ -96,28 +96,27 @@ describe('Marketplace Page', function () {
 	// });
 
 	// Test passes locally but fails in github action
-	// it('Category Tab Filters properly', () => {
-	// 	cy.contains('button', 'Services');
+	it('Category Tab Filters properly', () => {
+		cy.contains('button', 'Services');
+		cy.findByRole('tab', { name: /Services/i } ).click();
+		cy.wait(300);
+		cy.get('.marketplace-item').should('have.length', 6);
 		
-	// 	cy.get('#tab-panel-0-Services').trigger("click");
-	// 	cy.wait(300);
-	// 	cy.get('.marketplace-item').should('have.length', 6);
+		cy.get('#marketplace-item-0fd107dc-cfcc-4380-86ef-89a9ce01e443 h3')
+			.scrollIntoView()
+			.should('be.visible')
+			.should('have.text', 'Full Service');
 		
-	// 	cy.get('#marketplace-item-0fd107dc-cfcc-4380-86ef-89a9ce01e443 h3')
-	// 		.scrollIntoView()
-	// 		.should('be.visible')
-	// 		.should('have.text', 'Full Service');
-		
-	// 	cy.contains('button', 'SEO');
-	// 	cy.get('#tab-panel-0-SEO').trigger("click");
-	// 	cy.wait(300);
-	// 	cy.get('.marketplace-item').should('have.length', 1);
+		cy.contains('button', 'SEO');
+		cy.findByRole('tab', { name: /SEO/i } ).click();
+		cy.wait(300);
+		cy.get('.marketplace-item').should('have.length', 1);
 	
-	// 	cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738 h3')
-	// 		.scrollIntoView()
-	// 		.should('be.visible')
-	// 		.should('have.text', 'Yoast Premium');
-	// });
+		cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738 h3')
+			.scrollIntoView()
+			.should('be.visible')
+			.should('have.text', 'Yoast Premium');
+	});
 
 	// CTB Not included yet.
 	// it('Product CTB cards render correctly', () => {
