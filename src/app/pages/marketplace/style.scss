@@ -46,6 +46,10 @@
     min-width: 10rem;
     margin-right: 2rem;
     margin-top: -1px;
+
+    @media screen and (max-width: 600px) {
+      min-width: initial;
+    }
   }
 
   .components-tab-panel__tabs-item {
