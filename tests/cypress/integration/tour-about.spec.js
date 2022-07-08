@@ -80,7 +80,7 @@ describe('Tour: About Page', function () {
         cy.wait(500);
         cy.get('#nf-2')
             .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-            .should('have.css', 'color', 'rgb(40, 48, 61)');
+            .should('have.css', 'color', 'rgb(0, 0, 0)');
     });
 
     it('Finds unedited placeholder text on pre-publish', () => {
