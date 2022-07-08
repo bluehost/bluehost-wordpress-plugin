@@ -6,12 +6,11 @@ describe('Tour: Contact Page Content', function () {
 		cy.deletePages();
 		cy.wait(500);
 		cy.visit('/wp-admin/post-new.php?dcpage=contact&dcsrc=plugin');
-		cy.wait(3500);
 		cy.injectAxe();
 	});
 
 	it('Exists', () => {
-		cy.get('.shepherd-content').contains('h3', 'Create a Contact Page with Bluehost');
+		cy.get('.shepherd-content', {timeout: 10000}).contains('h3', 'Create a Contact Page with Bluehost');
 		cy.get('.step-bluehost-logo img').scrollIntoView().should('be.visible');
 		cy.get('.shepherd-header .shepherd-cancel-icon').scrollIntoView()
 			.should('be.visible')
