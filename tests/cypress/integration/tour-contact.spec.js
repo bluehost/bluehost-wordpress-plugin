@@ -6,10 +6,9 @@ describe('Tour: Contact Page Content', function () {
 		cy.deletePages();
 		cy.wait(500);
 		cy.visit('/wp-admin/post-new.php?dcpage=contact&dcsrc=plugin');
-		cy.wait(2000);
+		cy.wait(3500);
 		cy.injectAxe();
 	});
-
 
 	it('Exists', () => {
 		cy.get('.shepherd-content').contains('h3', 'Create a Contact Page with Bluehost');
