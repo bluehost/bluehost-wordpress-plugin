@@ -3,9 +3,10 @@
 describe('Tour: About Page', function () {
 
 	before(() => {
-    	cy.wait(100);
+        cy.deletePages();
+    	cy.wait(500);
 		cy.visit('/wp-admin/post-new.php?dcpage=about&dcsrc=plugin');
-        cy.wait(5000);
+        cy.wait(2000);
 		cy.injectAxe();
 	});
 
@@ -19,7 +20,7 @@ describe('Tour: About Page', function () {
 	});
 
 	it('Is Accessible', () => {
-		cy.wait(1500);
+		cy.wait(500);
 		cy.checkA11y('.shepherd-content');
 	});
 
@@ -49,7 +50,7 @@ describe('Tour: About Page', function () {
     it('Has About Default Content', () => {
         cy.get('[data-type="core/paragraph"]').first().scrollIntoView()
             .should('exist')
-            .contains('Welcome to organization name.');
+            .contains('Welcome');
     });
 
     it('Has highlighted placeholder text', () => {

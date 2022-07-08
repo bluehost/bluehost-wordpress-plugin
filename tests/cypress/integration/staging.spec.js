@@ -311,7 +311,7 @@ describe('Staging Page', function () {
 		cy.get('.dropdown-button__list').should('not.be.visible');
 		cy.get('.dropdown-button__toggle').click();
 		cy.get('.dropdown-button__list').scrollIntoView().should('be.visible');
-		cy.contains('.dropdown-button__list-item', 'Deploy Database').click();
+		cy.contains('.dropdown-button__list-item', 'Deploy Database').click({force:true});
 		cy.get('.dropdown-button__list').should('not.be.visible');
 
 		cy.get('.bluehost-modal').should('be.visible');
