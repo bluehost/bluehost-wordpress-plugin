@@ -91,6 +91,7 @@ describe('Tour: Home Page', function () {
         cy.wait(1000);
         cy.get('.shepherd-modal-is-visible').should('not.exist');
         cy.get('.newfold-tour-relauncher')
+            .scrollIntoView()
             .should('be.visible')
             .contains('Reopen Tour');
     });
