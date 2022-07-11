@@ -37,29 +37,8 @@ const HeaderLogo = () => (
 	</div>
 );
 
-const SiteStatus = () => {
-	let [comingSoon, isOnECommercePlan] = useSelect((select) => [
-		select("bluehost/plugin").getSetting("comingSoon"),
-		select("bluehost/plugin").isOnECommercePlan(),
-	]);
-	if (!isOnECommercePlan) {
-		return null;
-	}
-	return (
-		<span className="bluehost-nav-site-status">
-			{__("Site status", "bluehost-wordpress-plugin")}:{" "}
-			<span style={{ color: comingSoon ? "#F31E1E" : "#048C00" }}>
-				{comingSoon
-					? __("Coming Soon", "bluehost-wordpress-plugin")
-					: __("Live", "bluehost-wordpress-plugin")}
-			</span>
-		</span>
-	);
-};
-
 const HeaderIcons = () => (
 	<div id="bluehost-nav-wrap">
-		<SiteStatus />
 		<div className="bluehost-nav-wrap-element help">
 			<Tooltip text={__('Help, support & learning resources', 'bluehost-wordpress-plugin')}>
 				<a
