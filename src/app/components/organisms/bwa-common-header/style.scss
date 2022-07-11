@@ -35,6 +35,8 @@
 #bluehost-nav-wrap {
   float: right;
   padding: 20px 24px 20px 0;
+  display: inline-flex;
+  align-items: center;
   @media screen and (min-width: $hd-breakpoint) {
     padding: 20px 0;
   }
@@ -44,6 +46,11 @@
     fill: $color-black;
     margin-left: 5px;
  }
+}
+
+.bluehost-nav-site-status {
+  font: 400 18px/1.2 var(--bh-font);
+  color: #333333;
 }
 
 .bluehost-nav-wrap-element {
