@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "151e15d1d793d1f2bb87519935cd4830",
+    "content-hash": "68f551d6213077997e0aaf8a52487a83",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
@@ -133,42 +133,6 @@
                 "issues": "https://github.com/bluehost/endurance-wp-module-loader/issues"
             },
             "time": "2021-10-13T16:42:45+00:00"
-        },
-        {
-            "name": "bluehost/endurance-wp-module-sso",
-            "version": "1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bluehost/endurance-wp-module-sso.git",
-                "reference": "a166e6c65319e450cf5914ee943f549a420b3dd4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-sso/zipball/a166e6c65319e450cf5914ee943f549a420b3dd4",
-                "reference": "a166e6c65319e450cf5914ee943f549a420b3dd4",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Micah Wood",
-                    "email": "micah@wpscholar.com"
-                }
-            ],
-            "description": "Bluehost Single Sign-on Integration",
-            "support": {
-                "source": "https://github.com/bluehost/endurance-wp-module-sso/tree/1.0.4",
-                "issues": "https://github.com/bluehost/endurance-wp-module-sso/issues"
-            },
-            "time": "2022-06-13T21:07:33+00:00"
         },
         {
             "name": "bluehost/endurance-wp-plugin-updater",
@@ -503,6 +467,48 @@
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
             "time": "2022-07-05T19:34:02+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-sso",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-sso.git",
+                "reference": "a67c88ff8dc1d2b03422dba1102a6aea94a4a8f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-sso/zipball/a67c88ff8dc1d2b03422dba1102a6aea94a4a8f3",
+                "reference": "a67c88ff8dc1d2b03422dba1102a6aea94a4a8f3",
+                "shasum": ""
+            },
+            "require": {
+                "newfold-labs/wp-module-data": ">=2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewFoldLabs\\WP\\Module\\SSO\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@bluehost.com"
+                }
+            ],
+            "description": "Single sign-on functionality for Newfold WordPress sites.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-sso/tree/1.0.2",
+                "issues": "https://github.com/newfold-labs/wp-module-sso/issues"
+            },
+            "time": "2022-07-05T20:09:37+00:00"
         },
         {
             "name": "pimple/pimple",

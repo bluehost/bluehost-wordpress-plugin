@@ -24,8 +24,8 @@ describe('Marketplace Page', function () {
 		cy.checkA11y('.bwa-route-contents');
 	});
 
-	it('Product grid has 1 items', () => {
-		cy.get('.marketplace-item').should('have.length', 1);
+	it('Product grid has 2 items', () => {
+		cy.get('.marketplace-item').should('have.length', 2);
 	});
 
 	it('First product card renders correctly', () => {
