@@ -38,7 +38,7 @@ const Home = () => {
 	}, []);
 
 	if (isOnECommercePlan) {
-		return <BWARedirect to="/home/store" currentLocation={location} />;
+		return <BWARedirect to="/home/store/general" currentLocation={location} />;
 	}
 
 	let showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;

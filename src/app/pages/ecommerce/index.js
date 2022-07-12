@@ -10,7 +10,7 @@ import "../../../../vendor/newfold-labs/wp-module-ecommerce/bluehost.scss";
 import "../../../../vendor/newfold-labs/wp-module-ecommerce/styles.scss";
 import "./styles.scss";
 
-function EcommercePage() {
+function EcommercePage({ match }) {
   let brandPluginState = useSelect((select) => {
     let store = select("bluehost/plugin");
     return {
@@ -34,6 +34,7 @@ function EcommercePage() {
         state={eCommerceState}
         actions={eCommerceActions}
         wpModules={wpModules}
+        section={match.params?.section ?? "general"}
       />
       <div className="grid-col-2">
         <BWAAccountCard />

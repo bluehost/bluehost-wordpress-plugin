@@ -35,7 +35,7 @@ const BWARouteContents = ({ ...props}) => {
 			<Suspense fallback={ <BWAPageSpinner /> }>
 				<Switch>
 					<Route path="/home" exact render={ () => <HomeRoute /> } />
-					<Route path="/home/store" exact render={ () => <EcommerceRoute /> } />
+					<Route path="/home/store/:section" exact render={ () => <EcommerceRoute /> } />
 					<Route path="/home/onboarding" exact render={ () => <OnboardingRoute /> } />
 					<Route path="/marketplace" exact render={ () => <MarketplaceRoute /> } />
 					<Route path="/marketplace/plugins/yoast-seo-premium" exact render={ () => <YoastSEORoute />} />
