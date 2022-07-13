@@ -3,7 +3,20 @@
 .component-template-common {
   @extend %template-common;
 }
-  
+
+.component-template-common,
+.component-template-base {
+  &.page-help {
+    #nfd-notifications {
+      display: none;
+    }
+  }
+
+  #nfd-notifications {
+    margin: -20px 0 20px 0;
+  }
+}
+
 .page-fade-speed {
-    animation-duration: 315ms;
+  animation-duration: 315ms;
 }
