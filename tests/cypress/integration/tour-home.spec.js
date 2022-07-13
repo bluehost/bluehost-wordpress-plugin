@@ -11,7 +11,7 @@ describe('Tour: Home Page', function () {
 
 
 	it('Exists', () => {
-		cy.get('.shepherd-content', {timeout: 15000}).contains('h3', 'Create a Home Page with Bluehost');
+		cy.get('.shepherd-content', {timeout: 10000}).contains('h3', 'Create a Home Page with Bluehost');
 		cy.get('.step-bluehost-logo img').scrollIntoView().should('be.visible');
 		cy.get('.shepherd-header .shepherd-cancel-icon').scrollIntoView()
 			.should('be.visible')
