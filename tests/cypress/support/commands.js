@@ -60,12 +60,24 @@ Cypress.Commands.add('logout', () => {
 		);
 });
 
-Cypress.Commands.add('validateProductCardOrder', (title, index = 0) => {
-	cy
-		.findByRole('heading', {name: new RegExp(title, 'i'), level: 3})
-		.closest('.product-card')
-		.invoke('index')
-		.then(i => {
-			expect(i).to.equal(index);
-		});
+Cypress.Commands.add('deletePages', () => {
+	cy.visit('/wp-admin/edit.php?post_type=page').wait(1000);
+	cy.get('body').then(($body) => {
+		// synchronously ask for the body's text
+		// and do something based on whether it includes
+		// another string
+		if ($body.text().includes('No pages found.')) {
+			// nothing needed
+		} else {
+			cy.get('#cb-select-all-1').check();
+			cy.get('#bulk-action-selector-top').select('trash');
+			cy.get('#doaction').click();
+			cy.wait(2000);
+			cy.get('.subsubsub .trash').click();
+			cy.wait(2000);
+			cy.get('#delete_all').click();
+
+		}
+	});
+
 });

@@ -3,6 +3,7 @@
  * Plugin Name: Bluehost
  * Description: This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.
  * Version: 2.11.0
+ * Tested up to: 6.0.1
  * Requires at least: 4.7
  * Requires PHP: 5.6
  * Author: Bluehost

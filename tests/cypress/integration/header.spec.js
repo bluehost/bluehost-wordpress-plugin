@@ -3,6 +3,7 @@
 describe('App Header', function () {
 
 	before(() => {
+		cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
 		cy.injectAxe();
 	});

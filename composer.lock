@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68f551d6213077997e0aaf8a52487a83",
+    "content-hash": "05d9cfd1e75d3ac3c0bbcbd2c4a61b7a",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
-            "version": "1.1.1",
+            "version": "1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehost/bluehost-wp-customer-data.git",
-                "reference": "68a24bd608f707748aa274b5066d61916c34fd00"
+                "reference": "8d2f695f98c28357762d992ab01411a7341b9ab1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/68a24bd608f707748aa274b5066d61916c34fd00",
-                "reference": "68a24bd608f707748aa274b5066d61916c34fd00",
+                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/8d2f695f98c28357762d992ab01411a7341b9ab1",
+                "reference": "8d2f695f98c28357762d992ab01411a7341b9ab1",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-data": "^2.0"
+                "newfold-labs/wp-module-data": "^2.2"
             },
             "require-dev": {
                 "bluehost/wp-php-standards": "^1.1"
@@ -54,10 +54,10 @@
             ],
             "description": "Bluehost Specific Customer Data Module Integrations",
             "support": {
-                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.1.1",
+                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.2",
                 "issues": "https://github.com/bluehost/bluehost-wp-customer-data/issues"
             },
-            "time": "2022-07-05T13:53:53+00:00"
+            "time": "2022-07-12T14:05:03+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -331,16 +331,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.1",
+            "version": "2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "953117ede1f742b2e89c779566cee5afff6e13f0"
+                "reference": "ef844459d14fd25d7eaa4525ee213e28a79a5db1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/953117ede1f742b2e89c779566cee5afff6e13f0",
-                "reference": "953117ede1f742b2e89c779566cee5afff6e13f0",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/ef844459d14fd25d7eaa4525ee213e28a79a5db1",
+                "reference": "ef844459d14fd25d7eaa4525ee213e28a79a5db1",
                 "shasum": ""
             },
             "require": {
@@ -371,10 +371,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.1",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.2",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2022-06-21T17:38:17+00:00"
+            "time": "2022-07-12T13:15:55+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -424,16 +424,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "874347ae163d1c9a52cdc9d83c01fe8cddc8a036"
+                "reference": "bdce7d832753549281f1af87b421691d06cbeb5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/874347ae163d1c9a52cdc9d83c01fe8cddc8a036",
-                "reference": "874347ae163d1c9a52cdc9d83c01fe8cddc8a036",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/bdce7d832753549281f1af87b421691d06cbeb5f",
+                "reference": "bdce7d832753549281f1af87b421691d06cbeb5f",
                 "shasum": ""
             },
             "require": {
@@ -463,10 +463,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.2.1",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.2.2",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2022-07-05T19:34:02+00:00"
+            "time": "2022-07-06T19:12:36+00:00"
         },
         {
             "name": "newfold-labs/wp-module-sso",
@@ -961,16 +961,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "2.3.9",
+            "version": "2.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "015f524c9969255a29cdea8890cbd4fec240ee47"
+                "reference": "ebac357c0a41359f3981098729042ed6dedc97ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/015f524c9969255a29cdea8890cbd4fec240ee47",
-                "reference": "015f524c9969255a29cdea8890cbd4fec240ee47",
+                "url": "https://api.github.com/repos/composer/composer/zipball/ebac357c0a41359f3981098729042ed6dedc97ba",
+                "reference": "ebac357c0a41359f3981098729042ed6dedc97ba",
                 "shasum": ""
             },
             "require": {
@@ -1051,7 +1051,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/composer/issues",
-                "source": "https://github.com/composer/composer/tree/2.3.9"
+                "source": "https://github.com/composer/composer/tree/2.3.10"
             },
             "funding": [
                 {
@@ -1067,7 +1067,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-05T14:52:11+00:00"
+            "time": "2022-07-13T13:48:23+00:00"
         },
         {
             "name": "composer/metadata-minifier",
