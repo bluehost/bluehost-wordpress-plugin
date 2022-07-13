@@ -8,20 +8,20 @@
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
-            "version": "1.1.1",
+            "version": "1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehost/bluehost-wp-customer-data.git",
-                "reference": "68a24bd608f707748aa274b5066d61916c34fd00"
+                "reference": "8d2f695f98c28357762d992ab01411a7341b9ab1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/68a24bd608f707748aa274b5066d61916c34fd00",
-                "reference": "68a24bd608f707748aa274b5066d61916c34fd00",
+                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/8d2f695f98c28357762d992ab01411a7341b9ab1",
+                "reference": "8d2f695f98c28357762d992ab01411a7341b9ab1",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-data": "^2.0"
+                "newfold-labs/wp-module-data": "^2.2"
             },
             "require-dev": {
                 "bluehost/wp-php-standards": "^1.1"
@@ -54,10 +54,10 @@
             ],
             "description": "Bluehost Specific Customer Data Module Integrations",
             "support": {
-                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.1.1",
+                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.2",
                 "issues": "https://github.com/bluehost/bluehost-wp-customer-data/issues"
             },
-            "time": "2022-07-05T13:53:53+00:00"
+            "time": "2022-07-12T14:05:03+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -331,16 +331,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.1",
+            "version": "2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "953117ede1f742b2e89c779566cee5afff6e13f0"
+                "reference": "ef844459d14fd25d7eaa4525ee213e28a79a5db1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/953117ede1f742b2e89c779566cee5afff6e13f0",
-                "reference": "953117ede1f742b2e89c779566cee5afff6e13f0",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/ef844459d14fd25d7eaa4525ee213e28a79a5db1",
+                "reference": "ef844459d14fd25d7eaa4525ee213e28a79a5db1",
                 "shasum": ""
             },
             "require": {
@@ -371,10 +371,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.1",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.2",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2022-06-21T17:38:17+00:00"
+            "time": "2022-07-12T13:15:55+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
