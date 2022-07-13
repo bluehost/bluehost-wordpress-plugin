@@ -1,11 +1,5 @@
 @import '@app/config.scss';
 
-.newfold-marketplace-wrapper {
-  padding: 46px 24px 24px;
-  margin: 0 auto;
-  max-width: 1600px;
-}
-
 .grid {
   display: grid;
   gap: clamp(0.5rem, calc(1rem + 1vw), 2rem);
