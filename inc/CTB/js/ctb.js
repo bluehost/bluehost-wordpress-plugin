@@ -19,7 +19,7 @@
 		}).then( data => {
 			if (data.content) {
 				if (purchaseStatus) {
-					dismissNotice(e);
+					dismissNotice(modalWindow);
 				}
 				modalWindow.innerHTML = data.content;
 			} else {
