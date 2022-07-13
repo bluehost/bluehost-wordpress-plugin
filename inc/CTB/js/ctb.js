@@ -18,6 +18,9 @@
 			return response.json();
 		}).then( data => {
 			if (data.content) {
+				if (purchaseStatus) {
+					dismissNotice(e);
+				}
 				modalWindow.innerHTML = data.content;
 			} else {
 				displayError(modalWindow, "purchase");
@@ -84,9 +87,6 @@
 
 	const closeModal = (e) => {
 		ctbmodal.destroy();
-		if (purchaseStatus){
-			dismissNotice(e);
-		}
 	}
 
 	const displayError = (modalWindow, error) => {
