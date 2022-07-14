@@ -613,19 +613,20 @@
         },
         {
             "name": "wp-forge/container",
-            "version": "1.0",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-forge/container.git",
-                "reference": "e76a208d048b163dcb23068b149e16bdcfabc901"
+                "reference": "1c48853f79b6319e4e7f14b9f3e28c2142ec89b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-forge/container/zipball/e76a208d048b163dcb23068b149e16bdcfabc901",
-                "reference": "e76a208d048b163dcb23068b149e16bdcfabc901",
+                "url": "https://api.github.com/repos/wp-forge/container/zipball/1c48853f79b6319e4e7f14b9f3e28c2142ec89b5",
+                "reference": "1c48853f79b6319e4e7f14b9f3e28c2142ec89b5",
                 "shasum": ""
             },
             "require": {
+                "php": ">=7.0",
                 "psr/container": "^1.0"
             },
             "type": "library",
@@ -647,9 +648,9 @@
             "description": "A lightweight, PHP 5.4+ compatible, PSR-11 dependency injection container.",
             "support": {
                 "issues": "https://github.com/wp-forge/container/issues",
-                "source": "https://github.com/wp-forge/container/tree/1.0"
+                "source": "https://github.com/wp-forge/container/tree/1.1"
             },
-            "time": "2020-03-22T22:42:37+00:00"
+            "time": "2022-07-14T11:26:51+00:00"
         },
         {
             "name": "wp-forge/fluent",
