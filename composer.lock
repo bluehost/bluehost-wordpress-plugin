@@ -508,16 +508,16 @@
         },
         {
             "name": "newfold-labs/wp-module-sso",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-sso.git",
-                "reference": "a67c88ff8dc1d2b03422dba1102a6aea94a4a8f3"
+                "reference": "ce753f809939971b1d3437c6545309680a59327f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-sso/zipball/a67c88ff8dc1d2b03422dba1102a6aea94a4a8f3",
-                "reference": "a67c88ff8dc1d2b03422dba1102a6aea94a4a8f3",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-sso/zipball/ce753f809939971b1d3437c6545309680a59327f",
+                "reference": "ce753f809939971b1d3437c6545309680a59327f",
                 "shasum": ""
             },
             "require": {
@@ -543,10 +543,10 @@
             ],
             "description": "Single sign-on functionality for Newfold WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-sso/tree/1.0.2",
+                "source": "https://github.com/newfold-labs/wp-module-sso/tree/1.0.3",
                 "issues": "https://github.com/newfold-labs/wp-module-sso/issues"
             },
-            "time": "2022-07-05T20:09:37+00:00"
+            "time": "2022-07-15T18:33:14+00:00"
         },
         {
             "name": "wp-forge/fluent",
