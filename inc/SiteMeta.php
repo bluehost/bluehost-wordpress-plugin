@@ -39,7 +39,11 @@ class SiteMeta {
 		static $id = null;
 		if ( is_null( $id ) ) {
 			$path = self::get_path();
-			$id   = bin2hex( iconv( mb_detect_encoding( $path, mb_detect_order(), true ), 'UTF-8', $path ) );
+			if ( function_exists( 'iconv' ) ) {
+				$id = bin2hex( iconv( mb_detect_encoding( $path, mb_detect_order(), true ), 'UTF-8', $path ) );
+			} else {
+				$id = bin2hex( $path );
+			}
 		}
 
 		return $id;
