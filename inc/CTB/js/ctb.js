@@ -111,7 +111,7 @@
 		if (notice) {
 			notice.parentNode.removeChild(notice);
 			window.fetch(
-				`${ window.nfdNotifications.restApiUrl }bluehost/v1/notifications/${ ctbId }`,
+				`${ window.nfdNotifications.restApiUrl }bluehost/v1/notifications/${ notice.dataset.id }`,
 				{
 					credentials: 'same-origin',
 					method: 'DELETE',
