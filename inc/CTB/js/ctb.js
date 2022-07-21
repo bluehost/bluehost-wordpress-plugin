@@ -105,8 +105,7 @@
 	}
 
 	const dismissNotice = (ctbId) => {
-		const selector = '[data-ctb-id="' + ctbId + '"]';
-		const ctbTrigger = document.querySelector(selector)
+		const ctbTrigger = document.querySelector('[data-ctb-id="' + ctbId + '"]')
 		const notice = ctbTrigger.closest('.bluehost-notice');
 		if (notice) {
 			notice.parentNode.removeChild(notice);
