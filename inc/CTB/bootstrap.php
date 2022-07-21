@@ -28,3 +28,10 @@ add_action(
 		);
 	}
 );
+
+add_action(
+	'admin_notices',
+	function () {
+		echo "<div id='nfd-ctb-container' aria-hidden='true'></div>";
+	}
+);

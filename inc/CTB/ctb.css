@@ -2,11 +2,11 @@ body.noscroll {
 	overflow-y: hidden;
 }
 
-#ctb-modal-container {
+#nfd-ctb-container {
 	position: absolute;
 }
 
-#ctb-modal-container,
+#nfd-ctb-container,
 .ctb-modal-overlay {
 	position: fixed;
 	top: 0;
@@ -15,14 +15,14 @@ body.noscroll {
 	left: 0;
 }
 
-#ctb-modal-container {
+#nfd-ctb-container {
    z-index: 100000;
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-#ctb-modal-container[aria-hidden='true'] {
+#nfd-ctb-container[aria-hidden='true'] {
 	display: none;
 }
 
