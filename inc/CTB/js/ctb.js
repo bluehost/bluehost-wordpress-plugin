@@ -1,9 +1,10 @@
 {
 	const purchase = (e) => {
 		let modalWindow = e.target.closest('.ctb-modal-content');
+		let ctbId = e.target.getAttribute('data-ctb-id');
 		e.target.closest('.ctb-actions').innerHTML = '<div class="ctb-loader"></div>';
 		window.fetch(
-			`${ window.nfdNotifications.restApiUrl }bluehost/v1/ctb/${ e.target.getAttribute('data-ctb-id') }`,
+			`${ window.nfdNotifications.restApiUrl }bluehost/v1/ctb/${ ctbId }`,
 			{
 				credentials: 'same-origin',
 				method: 'POST',
@@ -18,10 +19,10 @@
 			return response.json();
 		}).then( data => {
 			if (data.content) {
-				if (purchaseStatus) {
-					dismissNotice(e);
-				}
 				modalWindow.innerHTML = data.content;
+				if (purchaseStatus){
+					dismissNotice(ctbId);
+				}
 			} else {
 				displayError(modalWindow, "purchase");
 			}
@@ -53,9 +54,7 @@
 	}
 
 	const openModal = (e) => {
-		let el = document.createElement('div');
-		el.setAttribute('id', 'ctb-modal-container');
-		el.innerHTML = `
+		let modalContent = `
 		<div class="ctb-modal">
 			<div class="ctb-modal-overlay" data-a11y-dialog-destroy></div>
 			<div role="document" class="ctb-modal-content">
@@ -63,16 +62,24 @@
 			</div>
 		</div>
 		`;
-		e.target.insertAdjacentElement('afterend', el);
+		let ctbContainer = document.getElementById('nfd-ctb-container');
+		if (ctbContainer) {
+			ctbContainer.innerHTML = modalContent
+		} else {
+			ctbContainer = document.createElement('div');
+			ctbContainer.setAttribute('id', 'nfd-ctb-container');
+			ctbContainer.innerHTML = modalContent;
+			ctbContainer.target.insertAdjacentElement('afterend', nfd-ctb-container);
+		}
 
-		ctbmodal = new A11yDialog(el);
+		ctbmodal = new A11yDialog(ctbContainer);
 		ctbmodal.show();
 
 		purchaseStatus = false;
 
 		document.querySelector('body').classList.toggle('noscroll');
 
-		el.addEventListener('click', function(event) {
+		ctbContainer.addEventListener('click', function(event) {
 			if (event.target.dataset.action === 'purchase-ctb') {
 				purchase(event);
 			}
@@ -82,7 +89,7 @@
 			}
 		});
 
-		return el;
+		return ctbContainer;
 	}
 
 	const closeModal = (e) => {
@@ -97,13 +104,13 @@
 		</div>`;
 	}
 
-	const dismissNotice = (e) => {
-		const notice = e.closest('.bluehost-notice');
+	const dismissNotice = (ctbId) => {
+		const ctbTrigger = document.querySelector('[data-ctb-id="' + ctbId + '"]')
+		const notice = ctbTrigger.closest('.bluehost-notice');
 		if (notice) {
-			const id = notice.getAttribute('data-id');
 			notice.parentNode.removeChild(notice);
 			window.fetch(
-				`${ window.nfdNotifications.restApiUrl }bluehost/v1/notifications/${ id }`,
+				`${ window.nfdNotifications.restApiUrl }bluehost/v1/notifications/${ notice.dataset.id }`,
 				{
 					credentials: 'same-origin',
 					method: 'DELETE',
