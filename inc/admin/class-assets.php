@@ -78,7 +78,9 @@ class Bluehost_Admin_App_Assets {
 		$hasToken = ! empty( $token );
 		$hasCustomerId = ! empty( $customerData ) && ! empty( $customerData['customer_id'] );
 		$showCTBs = $hasToken && $hasCustomerId;
-
+		$signup_date = $customerData['signup_date'];  //strtotime("16 Jun 2022");
+        $ecommerce_launch_date = strtotime("15 Jun 2022");
+        $newEcommerceUser = $signup_date >= $ecommerce_launch_date ? true : false;
 		$data = array(
 			'app'          => array(
 				'adminUrl'             => \admin_url(),
@@ -89,6 +91,7 @@ class Bluehost_Admin_App_Assets {
 				'accountId'            => mojo_site_bin2hex(),
 				'nonce'                => wp_create_nonce( mojo_site_bin2hex() ),
 				'customer'             => $customerData,
+                'newEcommerceUser'     => $newEcommerceUser,
 			),
 			'env'          => array(
 				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,

@@ -31,6 +31,10 @@ export function isOnECommercePlan(state) {
   );
 }
 
+export function isNewEcommerceUser(state) {
+	return state.app.newEcommerceUser;
+}
+
 export function getAllSettings(state) {
 	return state.settings;
 }
