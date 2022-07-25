@@ -93,7 +93,6 @@
     background-color: #DDDBDD;
 
     img {
-      min-height: 219.43px;
       aspect-ratio: 16 / 9;
 
       &::after {
@@ -118,18 +117,18 @@
         }
       }
 
-      @media screen and (max-width: 600px) {
-        min-height: 180px;
-      }
     }
   }
 
   .marketplace-item .components-card__header {
     position: relative;
     border-bottom: none;
+    flex-wrap: wrap;
+    gap: .7rem;
 
     h3 {
       font-size: .95rem;
+      min-width: fit-content;
     }
 
     .price {
@@ -137,8 +136,9 @@
       border-radius: 1rem;
       color: var(--bh-dark-blue);
       font-size: 1rem;
+      margin-left: 0;
       padding: 0.25rem 0.75rem;
-      min-width: min-content;
+      min-width: fit-content;
     }
   }
 
