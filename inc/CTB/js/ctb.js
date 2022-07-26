@@ -74,26 +74,25 @@
 
 		ctbmodal = new A11yDialog(ctbContainer);
 		ctbmodal.show();
+		document.querySelector('body').classList.add('noscroll');
 
 		purchaseStatus = false;
-
-		document.querySelector('body').classList.add('noscroll');
 
 		ctbContainer.addEventListener('click', function(event) {
 			if (event.target.dataset.action === 'purchase-ctb') {
 				purchase(event);
 			}
 			if (event.target.hasAttribute('data-a11y-dialog-destroy')) {
-				document.querySelector('body').classList.remove('noscroll');
 				closeModal(event.target);
 			}
 		});
-
+		
 		return ctbContainer;
 	}
-
+	
 	const closeModal = (e) => {
 		ctbmodal.destroy();
+		document.querySelector('body').classList.remove('noscroll');
 	}
 
 	const displayError = (modalWindow, error) => {
