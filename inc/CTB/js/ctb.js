@@ -77,14 +77,14 @@
 
 		purchaseStatus = false;
 
-		document.querySelector('body').classList.toggle('noscroll');
+		document.querySelector('body').classList.add('noscroll');
 
 		ctbContainer.addEventListener('click', function(event) {
 			if (event.target.dataset.action === 'purchase-ctb') {
 				purchase(event);
 			}
 			if (event.target.hasAttribute('data-a11y-dialog-destroy')) {
-				document.querySelector('body').classList.toggle('noscroll');
+				document.querySelector('body').classList.remove('noscroll');
 				closeModal(event.target);
 			}
 		});
