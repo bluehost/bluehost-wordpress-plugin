@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05d9cfd1e75d3ac3c0bbcbd2c4a61b7a",
+    "content-hash": "370905c7685ba47c0aecc91e3b62c2fb",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
-            "version": "1.2",
+            "version": "1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehost/bluehost-wp-customer-data.git",
-                "reference": "8d2f695f98c28357762d992ab01411a7341b9ab1"
+                "reference": "ebe80e1f125ee1cd51b6fa14d9d9f9bb76d43006"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/8d2f695f98c28357762d992ab01411a7341b9ab1",
-                "reference": "8d2f695f98c28357762d992ab01411a7341b9ab1",
+                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/ebe80e1f125ee1cd51b6fa14d9d9f9bb76d43006",
+                "reference": "ebe80e1f125ee1cd51b6fa14d9d9f9bb76d43006",
                 "shasum": ""
             },
             "require": {
@@ -54,10 +54,10 @@
             ],
             "description": "Bluehost Specific Customer Data Module Integrations",
             "support": {
-                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.2",
+                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.3",
                 "issues": "https://github.com/bluehost/bluehost-wp-customer-data/issues"
             },
-            "time": "2022-07-12T14:05:03+00:00"
+            "time": "2022-07-27T16:23:51+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -5586,5 +5586,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.1.0"
 }
