@@ -77,15 +77,6 @@
 		document.querySelector('body').classList.add('noscroll');
 
 		purchaseStatus = false;
-
-		ctbContainer.addEventListener('click', function(event) {
-			if (event.target.dataset.action === 'purchase-ctb') {
-				purchase(event);
-			}
-			if (event.target.hasAttribute('data-a11y-dialog-destroy')) {
-				closeModal(event.target);
-			}
-		});
 		
 		return ctbContainer;
 	}
@@ -127,7 +118,14 @@
 		() => {
 			document.getElementById('wpbody').addEventListener('click', function(event) {
 				if (event.target.dataset.action === 'load-nfd-ctb') {
+					event.preventDefault();
 					loadCtb(event);
+				}
+				if (event.target.dataset.action === 'purchase-ctb') {
+					purchase(event);
+				}
+				if (event.target.hasAttribute('data-a11y-dialog-destroy')) {
+					closeModal(event.target);
 				}
 			});
 		}
