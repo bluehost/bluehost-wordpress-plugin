@@ -51,7 +51,7 @@
     },
     "require": {
         "ext-iconv": "*",
-        "bluehost/bluehost-wp-customer-data": "^1.0",
+        "bluehost/bluehost-wp-customer-data": "^1.3.1",
         "bluehost/endurance-wp-module-business-reviews": "^1.0",
         "bluehost/endurance-wp-module-loader": "^1.1",
         "bluehost/endurance-wp-plugin-updater": "^1.1.1",
