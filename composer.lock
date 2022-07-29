@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2aea2e2233a54cc4c91829db0200bf9c",
+    "content-hash": "1d589d51f77635bc50430135d100c3c6",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
@@ -133,56 +133,6 @@
                 "issues": "https://github.com/bluehost/endurance-wp-module-loader/issues"
             },
             "time": "2021-10-13T16:42:45+00:00"
-        },
-        {
-            "name": "bluehost/endurance-wp-plugin-updater",
-            "version": "1.1.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bluehost/endurance-wp-plugin-updater.git",
-                "reference": "d4537b7f4e0fa4987f8e93e72eac1ec9ebe7fcc8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-plugin-updater/zipball/d4537b7f4e0fa4987f8e93e72eac1ec9ebe7fcc8",
-                "reference": "d4537b7f4e0fa4987f8e93e72eac1ec9ebe7fcc8",
-                "shasum": ""
-            },
-            "require": {
-                "newfold-labs/container": "^1.2"
-            },
-            "require-dev": {
-                "bluehost/wp-php-standards": "^1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Endurance_WP_Plugin_Updater\\": ""
-                }
-            },
-            "scripts": {
-                "lint": [
-                    "vendor/bin/phpcs . --standard=Bluehost"
-                ],
-                "clean": [
-                    "vendor/bin/phpcbf . --standard=Bluehost"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Micah Wood",
-                    "email": "micah@wpscholar.com"
-                }
-            ],
-            "description": "A Composer package handling updates for WordPress plugins managed by Endurance.",
-            "support": {
-                "source": "https://github.com/bluehost/endurance-wp-plugin-updater/tree/1.1.5",
-                "issues": "https://github.com/bluehost/endurance-wp-plugin-updater/issues"
-            },
-            "time": "2022-07-15T13:47:31+00:00"
         },
         {
             "name": "bluehost/wp-module-secure-passwords",
@@ -665,6 +615,49 @@
                 "source": "https://github.com/wp-forge/wp-options/tree/1.1"
             },
             "time": "2022-03-04T16:23:42+00:00"
+        },
+        {
+            "name": "wp-forge/wp-update-handler",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wp-forge/wp-update-handler.git",
+                "reference": "6564ffdf31bc805d24671a11c05b1bc13a23af36"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wp-forge/wp-update-handler/zipball/6564ffdf31bc805d24671a11c05b1bc13a23af36",
+                "reference": "6564ffdf31bc805d24671a11c05b1bc13a23af36",
+                "shasum": ""
+            },
+            "require": {
+                "wp-forge/helpers": "^1.1"
+            },
+            "require-dev": {
+                "wpscholar/phpcs-standards-wpscholar": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WP_Forge\\WPUpdateHandler\\": "includes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "A WordPress package for updating custom plugins and themes based on an API response from a custom update server.",
+            "support": {
+                "issues": "https://github.com/wp-forge/wp-update-handler/issues",
+                "source": "https://github.com/wp-forge/wp-update-handler/tree/1.0"
+            },
+            "time": "2021-09-29T19:29:40+00:00"
         },
         {
             "name": "wpscholar/collection",
@@ -5586,5 +5579,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
