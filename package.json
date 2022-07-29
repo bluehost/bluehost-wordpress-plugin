@@ -13,6 +13,7 @@
     "author": "David Ryan <dryanpress@chat.wordpress.org>",
     "license": "GPL-2.0-or-later",
     "dependencies": {
+        "@newfold-labs/wp-module-ecommerce": "newfold-labs/wp-module-ecommerce#v0.2.0",
         "@wordpress/a11y": "^2.5.1",
         "@wordpress/api-fetch": "^3.6.2",
         "@wordpress/components": "^8.3.2",

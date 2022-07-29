@@ -4,10 +4,10 @@ import { Modal } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { useEffect, useState } from "@wordpress/element";
 import { withRouter } from "react-router-dom";
-import NewfoldECommerce from "../../../../vendor/newfold-labs/wp-module-ecommerce";
+import NewfoldECommerce from "@newfold-labs/wp-module-ecommerce";
 
-import "../../../../vendor/newfold-labs/wp-module-ecommerce/bluehost.css";
-import "../../../../vendor/newfold-labs/wp-module-ecommerce/styles.scss";
+import "@newfold-labs/wp-module-ecommerce/bluehost.css";
+import "@newfold-labs/wp-module-ecommerce/styles.scss";
 import "./styles.scss";
 
 function EcommercePage({ match }) {
@@ -27,7 +27,7 @@ function EcommercePage({ match }) {
     useEffect,
     useState,
     apiFetch,
-    Modal
+    Modal,
   };
   return (
     <div style={{ margin: "27px 42px 0 24px" }}>
