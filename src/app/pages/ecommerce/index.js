@@ -6,7 +6,7 @@ import { useEffect, useState } from "@wordpress/element";
 import { withRouter } from "react-router-dom";
 import NewfoldECommerce from "../../../../vendor/newfold-labs/wp-module-ecommerce";
 
-import "../../../../vendor/newfold-labs/wp-module-ecommerce/bluehost.scss";
+import "../../../../vendor/newfold-labs/wp-module-ecommerce/bluehost.css";
 import "../../../../vendor/newfold-labs/wp-module-ecommerce/styles.scss";
 import "./styles.scss";
 
