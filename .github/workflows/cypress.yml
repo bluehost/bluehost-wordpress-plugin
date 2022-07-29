@@ -110,6 +110,10 @@ jobs:
           command: npm run test:e2e --
           upload-all: true
 
+      - run: npx @replayio/replay ls --json
+        shell: bash
+        name: List Replays
+
       - name: Store screenshots of test failures
         if: ${{ failure() }}
         uses: actions/upload-artifact@v2
