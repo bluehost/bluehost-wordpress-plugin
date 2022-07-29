@@ -1,0 +1,20 @@
+name: Delete Release
+
+on:
+  release:
+    types:
+      - deleted
+
+jobs:
+  delete:
+    name: On Delete Release
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
+    steps:
+
+      - name: Clear cache for release API
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+               -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+               -H "Content-Type: application/json" \
+               --data '{"files":["https://hiive.cloud/workers/release-api/plugins/bluehost/bluehost-wordpress-plugin"]}'
