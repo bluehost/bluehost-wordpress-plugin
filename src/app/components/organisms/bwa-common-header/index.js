@@ -10,7 +10,6 @@ import DesktopTabs from './desktop-tabs';
 import MobileSidebar from './mobile-sidebar';
 import { __ } from '@wordpress/i18n';
 import { Tooltip } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
 import { addUtmParams, getPlatformBaseUrl } from "@app/functions";
 
 const HeaderLogo = () => (
