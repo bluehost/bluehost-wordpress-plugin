@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2aea2e2233a54cc4c91829db0200bf9c",
+    "content-hash": "709a384f4050e79ea6d78966dd5d563a",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
@@ -416,11 +416,17 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "dev-trunk",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
+                "reference": "96fcaea0e3e810ac9564f675c4473ac5b961be56"
+            },
             "dist": {
-                "type": "path",
-                "url": "/Users/faizaan.m/Developer/newfold-labs/wp-module-ecommerce",
-                "reference": "932101f157161173dee6b0b506835509f2a226e6"
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/96fcaea0e3e810ac9564f675c4473ac5b961be56",
+                "reference": "96fcaea0e3e810ac9564f675c4473ac5b961be56",
+                "shasum": ""
             },
             "require-dev": {
                 "wp-cli/i18n-command": "^2.2",
@@ -450,10 +456,11 @@
                 }
             ],
             "description": "Brand Agnostic eCommerce Experience",
-            "transport-options": {
-                "symlink": true,
-                "relative": false
-            }
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/0.1.0",
+                "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
+            },
+            "time": "2022-07-27T15:15:14+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -5620,14 +5627,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "newfold-labs/wp-module-ecommerce": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
