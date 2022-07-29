@@ -104,6 +104,13 @@ jobs:
       - name: Run Cypress Tests
         run: npm run test:e2e
 
+      - uses: replayio/action-cypress@0.2.2
+        with:
+          api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
+          issue-number: ${{ github.event.pull_request.number }}
+          browser: 'Replay Chromium'
+          command: npm run test:e2e --
+
       - name: Store screenshots of test failures
         if: ${{ failure() }}
         uses: actions/upload-artifact@v2
