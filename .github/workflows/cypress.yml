@@ -107,7 +107,7 @@ jobs:
           api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
           issue-number: ${{ github.event.pull_request.number }}
           browser: 'Replay Chromium'
-          command: npm run test:e2e -- --spec tests/cypress/integration/marketplace.spec.js
+          command: npm run test:e2e --
           upload-all: true
 
       - name: Store screenshots of test failures
