@@ -29,6 +29,6 @@ Steps to release a new version of the plugin:
 - [ ] Confirm no issues are found in testing.
 - [ ] Create a [new release](https://github.com/bluehost/bluehost-wordpress-plugin/releases/new) tagged and named for the version.
 - [ ] Ensure the satis [build](https://bluehost.github.io/satis/#bluehost/bluehost-wordpress-plugin) is [triggered](https://github.com/bluehost/bluehost-wordpress-plugin/actions/workflows/satis-webhook.yml) and [completes](https://github.com/bluehost/satis/actions).
-- [ ] Ensure [cloudflare worker](https://wp-github-release-api.bluehost.workers.dev/plugins/bluehost/bluehost-wordpress-plugin) displays the release as latest/current version.
+- [ ] Ensure [cloudflare worker](https://hiive.cloud/workers/release-api/plugins/bluehost/bluehost-wordpress-plugin/) displays the release as latest/current version.
 - [ ] Ping team via chat to announce end of release process.
-- [ ] Watch for plugin release rollout in hiive.
+- [ ] Watch for plugin release rollout in Hiive.
