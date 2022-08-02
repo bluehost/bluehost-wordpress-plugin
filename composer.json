@@ -58,9 +58,9 @@
         "wpscholar/url": "^1.2"
     },
     "require-dev": {
-        "bluehost/wp-php-standards": "^1.1",
-        "wp-cli/wp-cli-bundle": "^2.4",
-        "wp-cli/i18n-command": "^2.2"
+        "bluehost/wp-php-standards": "@stable",
+        "wp-cli/wp-cli-bundle": "@stable",
+        "wp-cli/i18n-command": "@stable"
     },
     "config": {
         "optimize-autoloader": true,
