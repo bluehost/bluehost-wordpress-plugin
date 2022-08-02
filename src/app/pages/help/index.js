@@ -57,7 +57,7 @@ const Help = () => {
 									height="100%"
 									light={ blueSkyGroup }
 									playIcon={ <span /> }
-									url="https://www.youtube.com/embed/QEir4T7VweY"
+									url="https://www.youtube.com/embed/LSjFdLec7mM"
 									width="100%"
 								/>
 							</div>
