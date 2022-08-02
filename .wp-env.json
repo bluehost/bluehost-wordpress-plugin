@@ -11,6 +11,6 @@
     ".",
     "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"
   ],
-  "port": 8880,
-  "testsPort": 8881
+  "port": 8882,
+  "testsPort": 8883
 }

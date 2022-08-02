@@ -97,7 +97,7 @@ describe('Marketplace Page', function () {
 		cy.findByRole('tab', {name: 'Services'}).click();
 		cy.get('.marketplace-item').should('have.length', 6);
 
-		cy.get('#marketplace-item-0fd107dc-cfcc-4380-86ef-89a9ce01e443 h3')
+		cy.get('#marketplace-item-0fd107dc-cfcc-4380-86ef-89a9ce01e443 h2')
 			.scrollIntoView()
 			.should('be.visible')
 			.should('have.text', 'Full Service');
@@ -105,7 +105,7 @@ describe('Marketplace Page', function () {
 		cy.findByRole('tab', {name: 'SEO'}).click();
 		cy.get('.marketplace-item').should('have.length', 1);
 
-		cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738 h3')
+		cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738 h2')
 			.scrollIntoView()
 			.should('be.visible')
 			.should('have.text', 'Yoast Premium');
