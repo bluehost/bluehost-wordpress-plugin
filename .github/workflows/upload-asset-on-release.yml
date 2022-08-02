@@ -8,6 +8,7 @@ on:
 
 env:
   COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.TOKEN }}"}}'
+  VERSION: ${GITHUB_REF#refs/tags/*}
 
 jobs:
   build:
@@ -18,6 +19,17 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Validate version number
+        run: |
+          taggedVersion=${{ env.VERSION }}
+          pluginHeaderVersion=`grep "Version:" bluehost-wordpress-plugin.php | grep -Eo "[0-9\.]*"`
+          pluginConstantVersion=`grep "_PLUGIN_VERSION" bluehost-wordpress-plugin.php | grep -Eo "[0-9\.]*"`
+          echo "Tagged version: $taggedVersion"
+          echo "Plugin header version: $pluginHeaderVersion"
+          echo "Plugin constant version: $pluginConstantVersion"
+          [[ "$taggedVersion" == "$pluginHeaderVersion" ]] || exit 1
+          [[ "$taggedVersion" == "$pluginConstantVersion" ]] || exit 1
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -106,3 +118,11 @@ jobs:
           asset_path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}.zip
           asset_name: ${{ steps.workflow.outputs.PACKAGE }}.zip
           asset_content_type: application/zip
+
+      - name: Clear cache for release API
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+               -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+               -H "Content-Type: application/json" \
+               --data '{"files":["https://hiive.cloud/workers/release-api/plugins/bluehost/bluehost-wordpress-plugin"]}'
+
