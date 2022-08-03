@@ -126,8 +126,12 @@
 		() => {
 			document.getElementById('wpbody').addEventListener('click', function(event) {
 				if (event.target.dataset.action === 'load-nfd-ctb') {
-					event.preventDefault();
-					loadCtb(event);
+					if ( window.nfdConnected ) { // has token and customer id
+						event.preventDefault();
+						loadCtb(event);
+					} else {
+						// do nothing, fallback to href
+					}
 				}
 				if (event.target.dataset.action === 'purchase-ctb') {
 					purchase(event);
