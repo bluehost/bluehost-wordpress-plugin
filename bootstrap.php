@@ -4,7 +4,7 @@ use Bluehost\AdminBar;
 use Bluehost\BuildAssets;
 use Bluehost\LoginRedirect;
 use Bluehost\UpgradeHandler;
-use Endurance_WP_Plugin_Updater\Updater;
+use WP_Forge\WPUpdateHandler\PluginUpdater;
 
 // Composer autoloader
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -18,9 +18,20 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 }
 
 // Handle plugin updates
-if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
-	new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php' );
-}
+$pluginUpdater = new PluginUpdater(
+	BLUEHOST_PLUGIN_FILE,
+	'https://hiive.cloud/workers/release-api/plugins/bluehost/bluehost-wordpress-plugin'
+);
+$pluginUpdater->setDataMap(
+	array(
+		'version'       => 'version.latest',
+		'download_link' => 'download',
+		'last_updated'  => 'updated',
+		'requires'      => 'requires.wp',
+		'requires_php'  => 'requires.php',
+		'tested'        => 'tested.wp',
+	)
+);
 
 // Handle any upgrade routines
 if ( is_admin() ) {

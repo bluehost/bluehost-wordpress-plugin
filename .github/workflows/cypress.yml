@@ -73,8 +73,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
 
-      - name: PHP version
-        run: php --version
+      - name: Show versions
+        run: |
+          php --version
+          composer --version
+          node --version
+          npm --version
 
       - name: Validate composer.json and composer.lock
         run: composer validate
