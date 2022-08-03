@@ -72,7 +72,7 @@ const Help = () => {
 								className="media-block__button"
 								data-action="load-nfd-ctb"
 								data-ctb-id="7ddf596a-4388-43bd-94b5-095ad6da3418"
-								href="https://my.bluehost.com/hosting/app/#/marketplace/product/i/bluesky?utm_source=wp-marketplace&utm_medium=brand-plugin"
+								href="#/marketplace/services/blue-sky"
 								isSecondary
 								onClick={
 									() => {
