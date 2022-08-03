@@ -1,10 +1,11 @@
 import { BWAAccountCard, BWAHelpCard } from "@app/components/molecules";
+import { BWACommonTemplate } from "@app/components/templates";
+import NewfoldECommerce from "@newfold-labs/wp-module-ecommerce";
 import apiFetch from "@wordpress/api-fetch";
 import { Modal } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { useEffect, useState } from "@wordpress/element";
 import { withRouter } from "react-router-dom";
-import NewfoldECommerce from "@newfold-labs/wp-module-ecommerce";
 
 import "@newfold-labs/wp-module-ecommerce/bluehost.css";
 import "@newfold-labs/wp-module-ecommerce/styles.scss";
@@ -30,7 +31,7 @@ function EcommercePage({ match }) {
     Modal,
   };
   return (
-    <div style={{ margin: "27px 42px 0 24px" }}>
+    <BWACommonTemplate>
       <NewfoldECommerce
         state={eCommerceState}
         actions={eCommerceActions}
@@ -41,7 +42,7 @@ function EcommercePage({ match }) {
         <BWAAccountCard />
         <BWAHelpCard />
       </div>
-    </div>
+    </BWACommonTemplate>
   );
 }
 
