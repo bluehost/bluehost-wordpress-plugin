@@ -69,21 +69,21 @@ class Bluehost_Admin_App_Assets {
 
 	/**
 	 * Register wp-admin inline scripts
-	 * for ctb script which loads on all admin 
+	 * for ctb script which loads on all admin
 	 */
 	protected function prepareAdminData() {
-		$token = get_option( 'nfd_data_token' );
-		$customerData = Customer::collect();
-		$hasToken = ! empty( $token );
+		$token         = get_option( 'nfd_data_token' );
+		$customerData  = Customer::collect();
+		$hasToken      = ! empty( $token );
 		$hasCustomerId = ! empty( $customerData ) && ! empty( $customerData['customer_id'] );
-		$showCTBs = $hasToken && $hasCustomerId;
+		$showCTBs      = $hasToken && $hasCustomerId;
 
 		\wp_add_inline_script( 'bh-ctb', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
 		\wp_add_inline_script( 'bh-ctb', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
 		\wp_add_inline_script( 'bh-ctb', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
 		\wp_add_inline_script( 'bh-ctb', $showCTBs ? 'window.nfdConnected=true;' : 'window.nfdConnected=false;', 'before' );
 	}
-	
+
 	/**
 	 * Register Page JS - only applies to bluehost pages
 	 */
