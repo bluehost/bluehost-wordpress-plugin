@@ -49,8 +49,16 @@
 				modalWindow.innerHTML = data.content;
 			} else {
 				displayError(modalWindow, 'load');
+				//remove ctb attributes from button so the user can click the link
+				removeCtbAttrs(e);
 			}
 		});
+	}
+
+	const removeCtbAttrs = (e) => {
+		let ctbButton = e.target;
+		ctbButton.removeAttribute('data-action');
+		ctbButton.removeAttribute('data-ctb-id');
 	}
 
 	const openModal = (e) => {
