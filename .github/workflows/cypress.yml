@@ -103,7 +103,7 @@ jobs:
         run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: Install WordPress
-        run: npx @wordpress/env@latest start
+        run: npx wp-env start --debug
 
       - name: Run Cypress Tests
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
