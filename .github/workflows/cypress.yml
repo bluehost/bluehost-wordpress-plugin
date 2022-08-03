@@ -106,7 +106,7 @@ jobs:
         run: npx @wordpress/env@latest start
 
       - name: Run Cypress Tests
-        run: npm run test:e2e
+        run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Store screenshots of test failures
         if: ${{ failure() }}
