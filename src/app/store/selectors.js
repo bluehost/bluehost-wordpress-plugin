@@ -32,7 +32,7 @@ export function isOnECommercePlan(state) {
 }
 
 export function isNewEcommerceUser(state) {
-	return new Date(state.app.customer.signup_date) >= new Date('04 Aug 2022 00:00:00');
+	return new Date(state.app.customer.signup_date) >= new Date('2022-08-18T17:00:00.000Z');
 }
 
 export function getAllSettings(state) {
