@@ -109,8 +109,7 @@ jobs:
         uses: replayio/action-cypress@v0.2.2
         with:
           api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
-          issue-number: ${{ github.event.pull_request.number }}
-          browser: 'Replay Chromium'
+          browser: 'Replay Firefox'
           command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
           upload-all: true
 
