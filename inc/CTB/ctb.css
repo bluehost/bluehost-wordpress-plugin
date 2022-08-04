@@ -1,61 +1,59 @@
 body.noscroll {
-	overflow-y: hidden;
+    overflow-y: hidden;
 }
 
 #nfd-ctb-container {
-	position: absolute;
+    position: absolute;
 }
 
 #nfd-ctb-container,
 .ctb-modal-overlay {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 #nfd-ctb-container {
-   z-index: 100000;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #nfd-ctb-container[aria-hidden='true'] {
-	display: none;
+    display: none;
 }
 
 .ctb-modal-overlay {
-	background-color: rgba(43, 46, 56, 0.9);
+    background-color: rgba(43, 46, 56, 0.9);
 }
 
 .ctb-modal-content {
-	margin: auto;
-	z-index: 2;
-	position: relative;
-	background-color: white;
+    margin: auto;
+    padding: 1.25rem;
+    z-index: 2;
+    position: relative;
+    background-color: white;
+    /* z-index: 20001; */
+    min-width: 500px;
+    max-width: 75%;
+    min-height: 250px;
+    background: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ctb-modal img {
-	max-width:100%;
+    max-width: 100%;
 }
 
 
 .ctb-modal button {
-	cursor:pointer;
-}
-
-.ctb-modal-content {
-	/* z-index: 20001; */
-	min-width: 500px;
-	max-width: 75%;
-	min-height: 250px;
-	background: white;
-	color: black;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    cursor: pointer;
 }
 
 .ctb-loader {
@@ -97,6 +95,19 @@ body.noscroll {
 }
 
 @keyframes ctbloader {
-	0% {transform: rotate(0deg);}
-	100% {transform: rotate(360deg);}
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ctb-modal-content {
+        padding: 1.1rem;
+        min-width: 80vw;
+        max-width: 80vw;
+    }
 }

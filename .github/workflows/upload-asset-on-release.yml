@@ -51,10 +51,10 @@ jobs:
       - name: PHP version
         run: php --version
 
-      - name: Set Node.js 14.x
+      - name: Set Node.js 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 16.x
 
       - name: Node version
         run: node --version
@@ -75,7 +75,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: npm install
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Validate composer.json and composer.lock
         run: composer validate

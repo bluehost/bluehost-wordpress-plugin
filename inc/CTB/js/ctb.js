@@ -49,8 +49,16 @@
 				modalWindow.innerHTML = data.content;
 			} else {
 				displayError(modalWindow, 'load');
+				//remove ctb attributes from button so the user can click the link
+				removeCtbAttrs(e);
 			}
 		});
+	}
+
+	const removeCtbAttrs = (e) => {
+		let ctbButton = e.target;
+		ctbButton.removeAttribute('data-action');
+		ctbButton.removeAttribute('data-ctb-id');
 	}
 
 	const openModal = (e) => {
@@ -118,8 +126,12 @@
 		() => {
 			document.getElementById('wpbody').addEventListener('click', function(event) {
 				if (event.target.dataset.action === 'load-nfd-ctb') {
-					event.preventDefault();
-					loadCtb(event);
+					if ( window.nfdConnected ) { // has token and customer id
+						event.preventDefault();
+						loadCtb(event);
+					} else {
+						// do nothing, fallback to href
+					}
 				}
 				if (event.target.dataset.action === 'purchase-ctb') {
 					purchase(event);
