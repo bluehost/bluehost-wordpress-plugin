@@ -115,6 +115,7 @@ jobs:
           upload-all: true
 
       - run: npx @replayio/replay ls --json
+        if: always()
         shell: bash
         name: List Replays
 
