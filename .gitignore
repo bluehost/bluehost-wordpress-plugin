@@ -10,6 +10,7 @@
 
 # Cypress
 cypress.env.json
+/tests/cypress/downloads
 /tests/cypress/screenshots
 /tests/cypress/videos
 

@@ -44,10 +44,10 @@ jobs:
           echo ::set-output name=DIST::${PWD}/dist
           echo ::set-output name=PACKAGE::${REPO##*/}
 
-      - name: Use Node.js 14.x
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 16.x
 
       - name: Cache node modules
         uses: actions/cache@v2
@@ -73,8 +73,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
 
-      - name: PHP version
-        run: php --version
+      - name: Show versions
+        run: |
+          php --version
+          composer --version
+          node --version
+          npm --version
 
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -83,7 +87,7 @@ jobs:
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
       - name: NPM Install
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build JavaScript
         run: npm run build
@@ -99,7 +103,7 @@ jobs:
         run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: Install WordPress
-        run: npx @wordpress/env@latest start
+        run: npx wp-env start --debug
 
       - name: Run Cypress Tests
         uses: replayio/action-cypress@v0.2.2
