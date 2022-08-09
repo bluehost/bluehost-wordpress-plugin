@@ -1,7 +1,6 @@
 import './style.scss';
 
 import { useState } from '@wordpress/element';
-// import { withRouter } from 'react-router-dom';
 // import { addUtmParams } from '@app/functions';
 
 // component sourced from marketplace module
@@ -10,7 +9,7 @@ import { default as NewfoldMarketplace } from '../../../../vendor/newfold-labs/w
 // to pass to marketplace module
 import apiFetch from '@wordpress/api-fetch';
 import classnames from 'classnames';
-// import { useLocation, useNavigate } from 'react-router-dom' v6 needed here
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import {
 	Button,
@@ -44,9 +43,8 @@ function MarketplacePage() {
 		classnames,
 		useState,
 		useEffect,
-		// these need react-router-dom v6 first
-		// useNavigate,
-		// useLocation
+		useNavigate,
+		useLocation
 	};
 	// constants to pass to module
 	const moduleConstants = {
