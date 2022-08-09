@@ -5,10 +5,14 @@ on:
     branches:
       - master
 
+env:
+  COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.TOKEN }}"}}'
+
 jobs:
   build:
     name: On Push to Master
     runs-on: ubuntu-latest
+    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
     steps:
 
       - name: Checkout
@@ -34,10 +38,10 @@ jobs:
       - name: PHP version
         run: php --version
 
-      - name: Set Node.js 14.x
+      - name: Set Node.js 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 16.x
 
       - name: Node version
         run: node --version
@@ -58,10 +62,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: npm install
-        run: npm install
-
-      - name: Build JavaScript
-        run: npm run build
+        run: npm install --legacy-peer-deps
 
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -80,6 +81,9 @@ jobs:
 
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
+
+      - name: Build JavaScript
+        run: npm run build
 
       - name: Prepare files
         run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}

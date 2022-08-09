@@ -57,7 +57,7 @@ const Help = () => {
 									height="100%"
 									light={ blueSkyGroup }
 									playIcon={ <span /> }
-									url="https://www.youtube.com/embed/QEir4T7VweY"
+									url="https://www.youtube.com/embed/LSjFdLec7mM"
 									width="100%"
 								/>
 							</div>
@@ -70,6 +70,8 @@ const Help = () => {
 							</div>
 							<Button
 								className="media-block__button"
+								data-action="load-nfd-ctb"
+								data-ctb-id="7ddf596a-4388-43bd-94b5-095ad6da3418"
 								href="#/marketplace/services/blue-sky"
 								isSecondary
 								onClick={

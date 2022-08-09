@@ -4,18 +4,34 @@ use Bluehost\AdminBar;
 use Bluehost\BuildAssets;
 use Bluehost\LoginRedirect;
 use Bluehost\UpgradeHandler;
-use Endurance_WP_Plugin_Updater\Updater;
-
-// Define constants
-define( 'MOJO_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/' );
+use WP_Forge\WPUpdateHandler\PluginUpdater;
 
 // Composer autoloader
-require __DIR__ . '/vendor/autoload.php';
+if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
+	require __DIR__ . '/vendor/autoload.php';
+} else {
+	if ( 'local' === wp_get_environment_type() ) {
+		wp_die( esc_html( __( 'Please install the Bluehost.com plugin dependencies.', 'bluehost-wordpress-plugin' ) ) );
+	}
+
+	return;
+}
 
 // Handle plugin updates
-if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
-	new Updater( 'bluehost', 'bluehost-wordpress-plugin', 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php' );
-}
+$pluginUpdater = new PluginUpdater(
+	BLUEHOST_PLUGIN_FILE,
+	'https://hiive.cloud/workers/release-api/plugins/bluehost/bluehost-wordpress-plugin'
+);
+$pluginUpdater->setDataMap(
+	array(
+		'version'       => 'version.latest',
+		'download_link' => 'download',
+		'last_updated'  => 'updated',
+		'requires'      => 'requires.wp',
+		'requires_php'  => 'requires.php',
+		'tested'        => 'tested.wp',
+	)
+);
 
 // Handle any upgrade routines
 if ( is_admin() ) {
@@ -45,13 +61,10 @@ require __DIR__ . '/inc/cli-init.php';
 require __DIR__ . '/inc/coming-soon.php';
 require __DIR__ . '/inc/jetpack.php';
 require __DIR__ . '/inc/menu.php';
-require __DIR__ . '/inc/mojo-themes.php';
 require __DIR__ . '/inc/Notifications/bootstrap.php';
+require __DIR__ . '/inc/CTB/bootstrap.php';
 require __DIR__ . '/inc/partners.php';
 require __DIR__ . '/inc/performance.php';
-require __DIR__ . '/inc/plugin-search.php';
-require __DIR__ . '/inc/shortcode-generator.php';
-require __DIR__ . '/inc/styles.php';
 require __DIR__ . '/inc/track-last-login.php';
 require __DIR__ . '/inc/updates.php';
 require __DIR__ . '/inc/user-experience-tracking.php';

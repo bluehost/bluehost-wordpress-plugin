@@ -15,7 +15,7 @@ const Contents = () => {
 						<li key={ item.id }>
 							<a href={ item.href } data-testid={'dropdown-' + item.id}>
 								<span className={ [ 'bluehost-nav-popup-nav-icon' ] }>
-									<span className={ [ 'menu-item-icon is-svg-' + item.color ] }><item.icon /></span> <span class="label">{ item.label }</span>
+									<span className={ [ 'menu-item-icon is-svg-' + item.color ] }><item.icon /></span> <span className="label">{ item.label }</span>
 								</span>
 							</a>
 						</li>

@@ -6,14 +6,30 @@ on:
       - created
       - updated
 
+env:
+  COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.TOKEN }}"}}'
+  VERSION: ${GITHUB_REF#refs/tags/*}
+
 jobs:
   build:
     name: On Release
     runs-on: ubuntu-latest
+    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
     steps:
 
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Validate version number
+        run: |
+          taggedVersion=${{ env.VERSION }}
+          pluginHeaderVersion=`grep "Version:" bluehost-wordpress-plugin.php | grep -Eo "[0-9\.]*"`
+          pluginConstantVersion=`grep "_PLUGIN_VERSION" bluehost-wordpress-plugin.php | grep -Eo "[0-9\.]*"`
+          echo "Tagged version: $taggedVersion"
+          echo "Plugin header version: $pluginHeaderVersion"
+          echo "Plugin constant version: $pluginConstantVersion"
+          [[ "$taggedVersion" == "$pluginHeaderVersion" ]] || exit 1
+          [[ "$taggedVersion" == "$pluginConstantVersion" ]] || exit 1
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -35,10 +51,10 @@ jobs:
       - name: PHP version
         run: php --version
 
-      - name: Set Node.js 14.x
+      - name: Set Node.js 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 16.x
 
       - name: Node version
         run: node --version
@@ -59,10 +75,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: npm install
-        run: npm install
-
-      - name: Build JavaScript
-        run: npm run build
+        run: npm install --legacy-peer-deps
 
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -81,6 +94,9 @@ jobs:
 
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
+
+      - name: Build JavaScript
+        run: npm run build
 
       - name: Prepare files
         run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
@@ -102,3 +118,11 @@ jobs:
           asset_path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}.zip
           asset_name: ${{ steps.workflow.outputs.PACKAGE }}.zip
           asset_content_type: application/zip
+
+      - name: Clear cache for release API
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+               -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+               -H "Content-Type: application/json" \
+               --data '{"files":["https://hiive.cloud/workers/release-api/plugins/bluehost/bluehost-wordpress-plugin"]}'
+

@@ -160,7 +160,7 @@ class AdminErrorController extends \WP_REST_Controller {
 		}
 
 		if ( ! isset( $this->saved[ $plug_ver ][ $this->key ] ) ) {
-			$request = new \WP_REST_Request( 'POST', '/bluehost/v1/data/events' );
+			$request = new \WP_REST_Request( 'POST', '/newfold-data/v1/events' );
 			$request->set_body_params(
 				array(
 					'action'   => 'bwa-error',

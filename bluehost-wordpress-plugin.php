@@ -2,9 +2,10 @@
 /**
  * Plugin Name: Bluehost
  * Description: This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.
- * Version: 2.9.0
+ * Version: 2.11.8
+ * Tested up to: 6.0.1
  * Requires at least: 4.7
- * Requires PHP: 5.6
+ * Requires PHP: 7.0
  * Author: Bluehost
  * Author URI: https://www.bluehost.com/
  * Text Domain: bluehost-wordpress-plugin
@@ -14,6 +15,10 @@
  *
  * @package Bluehost
  */
+
+use NewfoldLabs\WP\ModuleLoader\Container;
+use NewfoldLabs\WP\ModuleLoader\Plugin;
+use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 
 // Do not access file directly!
 if ( ! defined( 'WPINC' ) ) {
@@ -27,12 +32,12 @@ if ( defined( 'BLUEHOST_PLUGIN_VERSION' ) ) {
 }
 
 // Define constants
-define( 'BLUEHOST_PLUGIN_VERSION', '2.9.0' );
+define( 'BLUEHOST_PLUGIN_VERSION', '2.11.8' );
 define( 'BLUEHOST_PLUGIN_FILE', __FILE__ );
 define( 'BLUEHOST_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLUEHOST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-if ( ! defined( 'BH_HUB_URL' ) ) {
-	define( 'BH_HUB_URL', 'https://hiive.cloud/api' );
+if ( ! defined( 'NFD_HIIVE_URL' ) ) {
+	define( 'NFD_HIIVE_URL', 'https://hiive.cloud/api' );
 }
 
 // Run Compatibility Scan
@@ -56,3 +61,25 @@ if ( 'standard' !== Bluehost_Plugin_Compatibility_Status::get() ) {
 if ( version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 	require dirname( __FILE__ ) . '/bootstrap.php';
 }
+
+/*
+ * Initialize container values for data module
+ */
+$bh_module_container = new Container();
+// Set plugin to container
+$bh_module_container->set(
+	'plugin',
+	$bh_module_container->service(
+		function() {
+			return new Plugin(
+				array(
+					'id'   => 'bluehost',
+					'file' => BLUEHOST_PLUGIN_FILE,
+				)
+			);
+		}
+	)
+);
+
+// Complete the module loader setup by assigning the container
+setContainer( $bh_module_container );

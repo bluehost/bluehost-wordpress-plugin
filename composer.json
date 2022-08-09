@@ -19,7 +19,14 @@
         "issues": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
     },
     "repositories": {
-        "0": {
+        "newfold": {
+            "type": "composer",
+            "url": "https://newfold-labs.github.io/satis/",
+            "only": [
+                "newfold-labs/*"
+            ]
+        },
+        "bluehost": {
             "type": "composer",
             "url": "https://bluehost.github.io/satis/",
             "only": [
@@ -37,21 +44,23 @@
     },
     "require": {
         "ext-iconv": "*",
-        "bluehost/bluehost-wp-customer-data": "^1.0",
+        "bluehost/bluehost-wp-customer-data": "^1.4",
         "bluehost/endurance-wp-module-business-reviews": "^1.0",
-        "bluehost/endurance-wp-module-gutenframe": "^0.1.3",
         "bluehost/endurance-wp-module-loader": "^1.1",
-        "bluehost/endurance-wp-module-sso": "^1.0",
-        "bluehost/endurance-wp-plugin-updater": "^1.1.1",
-        "endurance/wp-module-data": "^1.8.2",
+        "bluehost/wp-module-secure-passwords": "^1.0.2",
+        "newfold-labs/wp-module-data": "^2.0",
+        "newfold-labs/wp-module-loader": "^1.0",
+        "newfold-labs/wp-module-marketplace": "^1.2.2",
+        "newfold-labs/wp-module-sso": "^1.0",
         "wp-forge/helpers": "^1.0",
+        "wp-forge/wp-update-handler": "^1.0",
         "wpscholar/collection": "^1.0",
         "wpscholar/url": "^1.2"
     },
     "require-dev": {
-        "bluehost/wp-php-standards": "^1.1",
-        "wp-cli/wp-cli-bundle": "^2.4",
-        "wp-cli/i18n-command": "^2.2"
+        "bluehost/wp-php-standards": "@stable",
+        "wp-cli/wp-cli-bundle": "@stable",
+        "wp-cli/i18n-command": "@stable"
     },
     "config": {
         "optimize-autoloader": true,
@@ -60,8 +69,11 @@
         "preferred-install": {
             "bluehost/*": "source",
             "endurance/*": "source",
-            "newfold/*": "source",
+            "newfold-labs/*": "source",
             "*": "dist"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "scripts": {

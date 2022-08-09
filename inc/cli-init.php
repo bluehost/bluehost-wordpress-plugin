@@ -21,6 +21,8 @@ class BH_WP_CLI_Loader {
 	protected $commands;
 
 	/**
+	 * Instance
+	 *
 	 * @var stdClass - Instance of BH_WP_CLI_Loader.
 	 */
 	protected static $instance;
@@ -46,13 +48,6 @@ class BH_WP_CLI_Loader {
 	protected function initialize() {
 
 		$this->commands = array(
-			array(
-				'cmd'       => 'branding',
-				'class'     => 'BH_WP_CLI_Branding',
-				'shortdesc' => 'Control hosting branding and UX.',
-				'longdesc'  => 'Control the admin interface, default modules and UX for an Endurance hosting brand.' .
-							   PHP_EOL . 'Subcommands: update, remove',
-			),
 			array(
 				'cmd'       => 'cache',
 				'class'     => 'BH_WP_CLI_Cache',
@@ -176,7 +171,7 @@ class BH_WP_CLI_Loader {
 }
 
 /**
- * load/create instance of loader class
+ * Load/create instance of loader class
  *
  * @see BH_WP_CLI_Loader->initialize()
  */

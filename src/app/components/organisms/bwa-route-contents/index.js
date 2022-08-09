@@ -6,12 +6,11 @@ import { Suspense, lazy, useEffect } from '@wordpress/element';
 
 import { BWAPageSpinner } from '@app/components/molecules';
 
+import MarketplacePage from '../../../pages/marketplace';
+
 const HomeRoute 		= lazy(() => import( '@app/pages/home' ));
 const OnboardingRoute 	= lazy(() => import( '@app/pages/home/onboarding' ));
-const ThemesRoute 		= lazy(() => import( '@app/pages/marketplace/themes' ));
-const PluginsRoute 		= lazy(() => import( '@app/pages/marketplace/plugins' ));
-const ProductRoute 		= lazy(() => import( '@app/pages/marketplace/product-details' ));
-const ServicesRoute 	= lazy(() => import( '@app/pages/marketplace/services' ));
+const MarketplaceRoute 	= lazy(() => import( '@app/pages/marketplace' ));
 const ToolsRoute 		= lazy(() => import( '@app/pages/tools' ));
 const StagingRoute 		= lazy(() => import( '@app/pages/tools/staging' ));
 const SettingsRoute 	= lazy(() => import( '@app/pages/settings' ));
@@ -56,19 +55,14 @@ const BWARouteContents = ({ ...props}) => {
 					<Route path="/home" end element={ <HomeRoute /> } />
 					<Route path="/home/page" end element={ <HomeRoute noRedirect={true} /> } />
 					<Route path="/home/onboarding" end element={ <OnboardingRoute /> } />
-					<Route path="/marketplace/themes" end element={ <ThemesRoute /> } />
-					<Route path="/marketplace/themes/:id" end element={({match:{params:{id}}}) => <ProductRoute id={id} />} />
-					<Route path="/marketplace/plugins" end element={ <PluginsRoute /> } />
+					<Route path="/marketplace" element={ <MarketplaceRoute /> } />
 					<Route path="/marketplace/plugins/yoast-seo-premium" end element={ <YoastSEORoute />} />
 					<Route path="/marketplace/plugins/yoast-woocommerce-seo" end element={ <YoastWooSEORoute />} />
-					<Route path="/marketplace/plugins/:id" end element={({match:{params:{id}}}) => <ProductRoute id={id} />} />
-					<Route path="/marketplace/services" end element={ <ServicesRoute /> } />
-					<Route path="/marketplace/services/blue-sky" element={ <BlueSkyRoute /> } />
-					<Route path="/marketplace/services/:id" end element={({match:{params:{id}}}) => <ProductRoute id={id} />} />
+					<Route path="/marketplace/services/blue-sky" end element={ <BlueSkyRoute /> } />
 					<Route
-						path="/marketplace/product/:id"
+						path="/marketplace/:id"
 						end
-						element={ ({match: {params: {id}}}) => <ProductRoute id={ id } redirect={true} /> }
+						element={ <MarketplaceRoute /> }
 					/>
 					<Route path="/tools" end element={ <ToolsRoute /> } />
 					<Route path="/tools/staging" end element={ <StagingRoute /> } />

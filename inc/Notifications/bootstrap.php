@@ -40,3 +40,19 @@ add_filter(
 		return $data;
 	}
 );
+
+add_action(
+	'admin_enqueue_scripts',
+	function ( $data ) {
+		wp_register_script( 'nfdNotifications', '', false, BLUEHOST_PLUGIN_VERSION );
+		wp_enqueue_script( 'nfdNotifications' );
+		wp_localize_script(
+			'nfdNotifications',
+			'nfdNotifications',
+			array(
+				'restApiUrl'   => esc_url_raw( rest_url() ),
+				'restApiNonce' => wp_create_nonce( 'wp_rest' ),
+			)
+		);
+	}
+);

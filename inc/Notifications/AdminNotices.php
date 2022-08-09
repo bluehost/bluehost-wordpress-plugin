@@ -16,6 +16,12 @@ class AdminNotices {
 	 */
 	public static function maybeRenderAdminNotices() {
 
+		// The notifications container is used apply event listeners to so new notifcations can be inserted
+		// dynamically, but still respond to the required events.
+		?>
+		<div id='nfd-notifications'>
+		<?php
+
 		$screen = get_current_screen();
 
 		if ( 'toplevel_page_bluehost' === $screen->id ) {
@@ -32,14 +38,6 @@ class AdminNotices {
 				array( 'lodash' ),
 				BLUEHOST_PLUGIN_VERSION,
 				true
-			);
-			wp_localize_script(
-				'bh-plugin-realtime-notices',
-				'bluehostRealtimeNotices',
-				array(
-					'restApiUrl'   => esc_url_raw( rest_url() ),
-					'restApiNonce' => wp_create_nonce( 'wp_rest' ),
-				)
 			);
 
 			?>
@@ -74,15 +72,12 @@ class AdminNotices {
 				BLUEHOST_PLUGIN_VERSION,
 				true
 			);
-			wp_localize_script(
-				'bh-dismiss-notices',
-				'bluehostNotices',
-				array(
-					'restApiUrl'   => esc_url_raw( rest_url() ),
-					'restApiNonce' => wp_create_nonce( 'wp_rest' ),
-				)
-			);
 		}
+
+		// Closing tag for #nfd-notifications
+		?>
+		</div>
+		<?php
 	}
 
 }

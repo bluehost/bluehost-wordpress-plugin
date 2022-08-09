@@ -1,6 +1,8 @@
 <?php
 
 use Bluehost\BuildAssets;
+use Bluehost\Staging;
+use Bluehost\WP\Data\Customer;
 
 /**
  * Bluehost_Admin_App_Assets class
@@ -61,14 +63,32 @@ class Bluehost_Admin_App_Assets {
 			BuildAssets::enqueue( 'app' );
 		}
 
+		$this->prepareAdminData();
+
 	}
 
+	/**
+	 * Register wp-admin inline scripts
+	 * for ctb script which loads on all admin
+	 */
+	protected function prepareAdminData() {
+		$token         = get_option( 'nfd_data_token' );
+		$customerData  = Customer::collect();
+		$hasToken      = ! empty( $token );
+		$hasCustomerId = ! empty( $customerData ) && ! empty( $customerData['customer_id'] );
+		$showCTBs      = $hasToken && $hasCustomerId;
 
+		\wp_add_inline_script( 'bh-ctb', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
+		\wp_add_inline_script( 'bh-ctb', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
+		\wp_add_inline_script( 'bh-ctb', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
+		\wp_add_inline_script( 'bh-ctb', $showCTBs ? 'window.nfdConnected=true;' : 'window.nfdConnected=false;', 'before' );
+	}
 
 	/**
-	 * Register Page JS
+	 * Register Page JS - only applies to bluehost pages
 	 */
 	protected function prepareData() {
+		$customerData = Customer::collect();
 
 		$data = array(
 			'app'          => array(
@@ -79,11 +99,12 @@ class Bluehost_Admin_App_Assets {
 				'noticesPathsDenyList' => Bluehost_Admin_App_Page::$noticesPathsDenyList, // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				'accountId'            => mojo_site_bin2hex(),
 				'nonce'                => wp_create_nonce( mojo_site_bin2hex() ),
+				'customer'             => $customerData,
 			),
 			'env'          => array(
 				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,
 				'phpVersion' => phpversion(),
-				'isStaging'  => \Bluehost\Staging::getInstance()->isStaging(),
+				'isStaging'  => Staging::getInstance()->isStaging(),
 			),
 			'wordpress'    => array(
 				'hasReusableBlocks'              => \wp_count_posts( 'wp_block' )->publish >= 1,
@@ -104,7 +125,5 @@ class Bluehost_Admin_App_Assets {
 
 		BuildAssets::inlineWebpackPublicPath( 'bwp-manifest-app' );
 		\wp_localize_script( 'bwp-manifest-app', 'bluehost', apply_filters( 'bluehost_admin_page_data', $data ) );
-		\wp_add_inline_script( 'bwp-manifest-app', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
-		\wp_add_inline_script( 'bwp-manifest-app', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
 	}
 }

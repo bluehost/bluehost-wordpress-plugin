@@ -22,7 +22,7 @@ const sendPageviewEvent = (location, title = false) => {
     }
 
     apiFetch({
-        path: `/bluehost/v1/data/events/`, 
+        path: `/newfold-data/v1/events/`, 
         method: 'POST', 
         data: payload
     });
