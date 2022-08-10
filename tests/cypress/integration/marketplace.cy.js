@@ -43,7 +43,7 @@ describe('Marketplace Page', function () {
 				.contains('Blue')
 				.should('be.visible');
 			cy.get('.components-card__media').should('be.visible');
-			cy.get('.components-card__header em.price')
+			cy.get('.components-card__header .price')
 				.contains('$')
 				.should('exist');
 		});
@@ -64,7 +64,7 @@ describe('Marketplace Page', function () {
 				.contains('Yoast')
 				.should('be.visible');
 			cy.get('.components-card__media').should('be.visible');
-			cy.get('.components-card__header em.price')
+			cy.get('.components-card__header .price')
 				.contains('$99.00')
 				.should('be.visible');
 		});

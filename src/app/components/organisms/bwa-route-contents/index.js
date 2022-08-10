@@ -53,7 +53,7 @@ const BWARouteContents = ({ ...props}) => {
 			<Suspense fallback={ <BWAPageSpinner /> }>
 				<Routes>
 					<Route path="/home" end element={ <HomeRoute /> } />
-					<Route path="/home/page" end element={ <HomeRoute noRedirect={true} /> } />
+					<Route path="/home/page" end element={ <HomeRoute /> } />
 					<Route path="/home/onboarding" end element={ <OnboardingRoute /> } />
 					<Route path="/marketplace" element={ <MarketplaceRoute /> } />
 					<Route path="/marketplace/plugins/yoast-seo-premium" end element={ <YoastSEORoute />} />
