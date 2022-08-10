@@ -111,6 +111,13 @@ describe('Marketplace Page', function () {
 			.should('have.text', 'Yoast Premium');
 	});
 
+	it('Category tabs update path', () => {
+		cy.findByRole('tab', {name: 'Services'}).click();
+		cy.location().should((loc) => {
+			expect(loc.hash).to.eq('#/marketplace/services')
+		});
+	});
+
 	// CTB Not included yet.
 	it.skip('Product CTB cards render correctly', () => {
 		cy.get('.marketplace-item-ec14a614-8672-4094-8310-cb0b1eb0f176').as('card');
