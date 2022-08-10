@@ -8,8 +8,12 @@
   &.col2,
   &.col3,
   &.col4 {
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 600px) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media screen and (min-width: 1100px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
@@ -29,7 +33,7 @@
 
 .newfold-marketplace-tabs {
   display: flex;
-  max-width: 1024px;
+  flex-direction: column;
 
   @media screen and (max-width: 600px) {
     flex-direction: column;
@@ -38,15 +42,14 @@
   .components-tab-panel__tabs {
     display: flex;
     /* <= WP 5.4 */
-    flex-direction: column;
+    flex-direction: row;
     /* <= WP 5.6 */
-    gap: 1rem;
+    gap: 1.5rem;
     min-width: 10rem;
     max-width: max-content;
     height: fit-content;
-    margin-top: .5rem;
-    margin-right: 2rem;
-    padding: .8rem .8rem .8rem 0;
+    margin: 0 .5rem 1rem .5rem;
+    padding: .8rem .8rem 0 .8rem;
     background-color: $color-white;
     border-radius: 1px;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .1);
@@ -54,10 +57,7 @@
     @media screen and (max-width: 600px) {
       min-width: initial;
       flex-direction: row;
-      gap: 1.5rem;
       overflow-y: scroll;
-      margin-top: 0;
-      margin: 0 .5rem 1rem .5rem;
       padding: .8rem .8rem 0 .8rem;
     }
   }
@@ -66,7 +66,7 @@
     background-color: $color-white;
     font-size: 15px;
     height: auto;
-    padding: 7px 0px 7px 20px;
+    padding: 7px 3px 16px 3px;
     transition: none;
 
     &:focus:not(:disabled) {
@@ -80,19 +80,14 @@
     &.current-tab {
       background-color: transparent;
       color: $color-blue;
-      border-left: 2.5px solid;
+      border-bottom: 2.5px solid;
       border-color: $color-blue;
       cursor: default;
     }
 
     @media screen and (max-width: 600px) {
       padding: 7px 3px 19px 3px;
-
-      &.current-tab {
-        border-left: none;
-        border-bottom: 2.5px solid;
-      }
-
+      font-size: 14px;
     }
   }
 
@@ -105,32 +100,33 @@
     position: relative;
     background-color: #DDDBDD;
 
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-100%);
+      background-image: linear-gradient(90deg,
+          rgba(#fff, 0) 0,
+          rgba(#fff, 0.2) 20%,
+          rgba(#fff, 0.5) 60%,
+          rgba(#fff, 0));
+      animation: marketplace-skeleton 2s infinite;
+      content: '';
+    }
+
+    @keyframes marketplace-skeleton {
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
     img {
       aspect-ratio: 16 / 9;
-
-      &::after {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        transform: translateX(-100%);
-        background-image: linear-gradient(90deg,
-            rgba(#fff, 0) 0,
-            rgba(#fff, 0.2) 20%,
-            rgba(#fff, 0.5) 60%,
-            rgba(#fff, 0));
-        animation: marketplace-skeleton 2s infinite;
-        content: '';
-      }
-
-      @keyframes marketplace-skeleton {
-        100% {
-          transform: translateX(100%);
-        }
-      }
-
+      z-index: 2;
     }
+
   }
 
   .marketplace-item .components-card__header {
@@ -139,6 +135,7 @@
     flex-wrap: wrap;
     gap: .7rem;
 
+    h2,
     h3 {
       font-size: .95rem;
       min-width: min-content;
