@@ -1,10 +1,8 @@
 import { BWAAccountCard, BWAHelpCard } from "@app/components/molecules";
 import { BWACommonTemplate } from "@app/components/templates";
 import NewfoldECommerce from "@newfold-labs/wp-module-ecommerce";
-import apiFetch from "@wordpress/api-fetch";
 import { Modal } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
-import { useEffect, useState } from "@wordpress/element";
 import { withRouter } from "react-router-dom";
 
 import "@newfold-labs/wp-module-ecommerce/bluehost.css";
@@ -25,9 +23,6 @@ function EcommercePage({ match }) {
     toggleComingSoon: async () => toggleSetting("comingSoon"),
   };
   const wpModules = {
-    useEffect,
-    useState,
-    apiFetch,
     Modal,
   };
   return (
