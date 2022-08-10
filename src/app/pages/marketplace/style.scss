@@ -3,7 +3,6 @@
 .grid {
   display: grid;
   gap: clamp(0.5rem, calc(1rem + 1vw), 2rem);
-  padding: 0.5rem;
 
   &.col2,
   &.col3,
@@ -48,7 +47,7 @@
     min-width: 10rem;
     max-width: max-content;
     height: fit-content;
-    margin: 0 .5rem 1rem .5rem;
+    margin-bottom: 1.5rem;
     padding: .8rem .8rem 0 .8rem;
     background-color: $color-white;
     border-radius: 1px;
