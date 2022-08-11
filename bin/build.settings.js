@@ -28,7 +28,6 @@ const buildSettings = {
         {}
       ),
       externals: {
-        'react-router-dom': 'ReactRouterDOM',
         'shepherd.js': 'Shepherd',
       },
       filenamePattern: pattern,

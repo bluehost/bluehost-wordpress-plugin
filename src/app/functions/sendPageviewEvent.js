@@ -17,7 +17,7 @@ const sendPageviewEvent = (location, title = false) => {
     if ( title ) {
         payload.data['page_title']  = title;
     }
-    if ( ('undefined' !== typeof location.state) && ('undefined' !== typeof location.state.redirect ) ) {
+    if ( 'object' === typeof location && location?.state?.redirect ) {
         payload.data.redirect = location.state.redirect;
     }
 

@@ -43,7 +43,7 @@ describe('Marketplace Page', function () {
 				.contains('Blue')
 				.should('be.visible');
 			cy.get('.components-card__media').should('be.visible');
-			cy.get('.components-card__header em.price')
+			cy.get('.components-card__header .price')
 				.contains('$')
 				.should('exist');
 		});
@@ -64,7 +64,7 @@ describe('Marketplace Page', function () {
 				.contains('Yoast')
 				.should('be.visible');
 			cy.get('.components-card__media').should('be.visible');
-			cy.get('.components-card__header em.price')
+			cy.get('.components-card__header .price')
 				.contains('$99.00')
 				.should('be.visible');
 		});
@@ -109,6 +109,13 @@ describe('Marketplace Page', function () {
 			.scrollIntoView()
 			.should('be.visible')
 			.should('have.text', 'Yoast Premium');
+	});
+
+	it('Category tabs update path', () => {
+		cy.findByRole('tab', {name: 'Services'}).click();
+		cy.location().should((loc) => {
+			expect(loc.hash).to.eq('#/marketplace/services')
+		});
 	});
 
 	// CTB Not included yet.
