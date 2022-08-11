@@ -2,7 +2,7 @@ const fs = require('fs')
 const fetch = require('node-fetch')
 const wpEnv = require('./.wp-env.json')
 
-fetch('http://api.wordpress.org/core/stable-check/1.0/')
+fetch('https://api.wordpress.org/core/stable-check/1.0/')
 	.then(res => res.json())
 	.then(
 		json => {
