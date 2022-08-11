@@ -6,7 +6,7 @@
     "WP_DEBUG_DISPLAY": true,
     "FS_METHOD": "direct"
   },
-  "phpVersion": "7.2",
+  "phpVersion": "7.4",
   "plugins": [
     ".",
     "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"
