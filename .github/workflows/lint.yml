@@ -15,9 +15,6 @@ on:
     paths:
       - '**.php'
 
-env:
-  COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.TOKEN }}"}}'
-
 jobs:
   phpcs:
     runs-on: ubuntu-latest

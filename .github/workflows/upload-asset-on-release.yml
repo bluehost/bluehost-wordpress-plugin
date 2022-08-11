@@ -7,7 +7,6 @@ on:
       - updated
 
 env:
-  COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.TOKEN }}"}}'
   VERSION: ${GITHUB_REF#refs/tags/*}
 
 jobs:

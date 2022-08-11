@@ -14,9 +14,6 @@ on:
   pull_request_review:
     types: [submitted, edited]
 
-env:
-  COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.TOKEN }}"}}'
-
 jobs:
   test:
     name: Run Cypress Tests
