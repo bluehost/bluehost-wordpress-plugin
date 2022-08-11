@@ -81,14 +81,6 @@ class BuildAssets {
 		$rand = time();
 
 		wp_register_script(
-			'react-router-dom',
-			$url . 'static/react-router-dom' . $min . '.js',
-			array( 'wp-element' ),
-			empty( $min ) ? $rand : '5.2.0',
-			true
-		);
-
-		wp_register_script(
 			'shepherd.js',
 			$url . 'static/shepherd' . $min . '.js',
 			array( 'wp-element' ),
