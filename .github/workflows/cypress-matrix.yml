@@ -120,7 +120,6 @@ jobs:
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
         run: |
-          npm install
           npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Show link to Cypress Dashboard
