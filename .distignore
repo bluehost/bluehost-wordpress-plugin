@@ -10,6 +10,7 @@ tests
 .distignore
 .gitattributes
 .gitignore
+set-latest-wp-version.js
 
 # File Types
 *.json
