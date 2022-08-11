@@ -13,7 +13,7 @@ jobs:
     if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
 
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         phpVersion:
           - '7.0'
