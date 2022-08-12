@@ -51,8 +51,13 @@ const Home = () => {
 	}
 
 	let showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
-
-	if(location.state && 'undefined' !== typeof location.state.redirect && 'override' === location.state.redirect ) {
+	
+	if(
+		location.pathname === '/home/page' ||
+		location.state && 
+		'undefined' !== typeof location.state.redirect && 
+		'override' === location.state.redirect
+	) {
 		showOnboarding = false;
 	}
 

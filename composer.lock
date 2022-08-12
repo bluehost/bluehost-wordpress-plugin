@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b9fb7d55812c05d66de14656c09d18b",
+    "content-hash": "191a84ae9913d532b88b8f8455733d39",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
