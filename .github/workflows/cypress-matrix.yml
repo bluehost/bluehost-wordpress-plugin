@@ -6,6 +6,10 @@ on:
       - master
       - release-*
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
+
 jobs:
   test:
     name: Run Cypress Test Matrix
@@ -120,7 +124,7 @@ jobs:
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
         run: |
-          npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+          npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag php-${{ matrix.phpVersion }},wp-${{ matrix.wpVersion }}
 
       - name: Show link to Cypress Dashboard
         if: always()
