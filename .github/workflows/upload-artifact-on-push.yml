@@ -3,10 +3,15 @@ name: Build Plugin
 on:
   push:
     branches:
+      - main
       - master
-
-env:
-  COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.TOKEN }}"}}'
+      - develop
+      - release/*
+      - feature/*
+      - add/*
+      - update/*
+      - fix/*
+      - try/*
 
 jobs:
   build:
