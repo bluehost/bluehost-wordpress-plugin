@@ -1,20 +1,21 @@
 import { BWAAccountCard, BWAHelpCard } from "@app/components/molecules";
 import { BWACommonTemplate } from "@app/components/templates";
-import NewfoldECommerce from "@newfold-labs/wp-module-ecommerce";
 import { Modal } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { useParams } from "react-router-dom";
 
 import "@newfold-labs/wp-module-ecommerce/bluehost.css";
 import "@newfold-labs/wp-module-ecommerce/styles.scss";
+import "@newfold-labs/wp-module-ecommerce";
 import "./styles.scss";
+
+const NewfoldECommerce = window.NewfoldECommerce;
 
 function EcommercePage() {
   let brandPluginState = useSelect((select) => {
     let store = select("bluehost/plugin");
     return {
-      comingSoon: store.getSetting("comingSoon"),
-      isWooActive: store.isWooActive()
+      comingSoon: store.getSetting("comingSoon")
     };
   });
   let { section } = useParams();

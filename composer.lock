@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "191a84ae9913d532b88b8f8455733d39",
+    "content-hash": "49cbadea3128066ba45f3a03f15d985d",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
@@ -366,16 +366,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v0.3.0",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "8cf77fe7da62bed62cb7a2ec21fdf848793fcad8"
+                "reference": "f6e558fb50fb806f579bf395e67ff82f8ff1caa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/8cf77fe7da62bed62cb7a2ec21fdf848793fcad8",
-                "reference": "8cf77fe7da62bed62cb7a2ec21fdf848793fcad8",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/f6e558fb50fb806f579bf395e67ff82f8ff1caa6",
+                "reference": "f6e558fb50fb806f579bf395e67ff82f8ff1caa6",
                 "shasum": ""
             },
             "require-dev": {
@@ -414,10 +414,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.3.0",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.4.0",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2022-08-11T11:51:37+00:00"
+            "time": "2022-08-12T16:05:36+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -5017,16 +5017,16 @@
         },
         {
             "name": "wp-cli/scaffold-command",
-            "version": "v2.0.16",
+            "version": "v2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/scaffold-command.git",
-                "reference": "6d92fb363b8ed7473af7f12cf342aaf9d2c96e81"
+                "reference": "3213d37b0bc4edc9be06839cefe1a20d8f52bb5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/scaffold-command/zipball/6d92fb363b8ed7473af7f12cf342aaf9d2c96e81",
-                "reference": "6d92fb363b8ed7473af7f12cf342aaf9d2c96e81",
+                "url": "https://api.github.com/repos/wp-cli/scaffold-command/zipball/3213d37b0bc4edc9be06839cefe1a20d8f52bb5d",
+                "reference": "3213d37b0bc4edc9be06839cefe1a20d8f52bb5d",
                 "shasum": ""
             },
             "require": {
@@ -5077,22 +5077,22 @@
             "homepage": "https://github.com/wp-cli/scaffold-command",
             "support": {
                 "issues": "https://github.com/wp-cli/scaffold-command/issues",
-                "source": "https://github.com/wp-cli/scaffold-command/tree/v2.0.16"
+                "source": "https://github.com/wp-cli/scaffold-command/tree/v2.0.17"
             },
-            "time": "2022-01-25T06:32:00+00:00"
+            "time": "2022-08-11T17:19:03+00:00"
         },
         {
             "name": "wp-cli/search-replace-command",
-            "version": "v2.0.16",
+            "version": "v2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/search-replace-command.git",
-                "reference": "dbf21560fd91710b2900f5631448657d28f2b380"
+                "reference": "413184ab8ffe20d5eddfc8922d93998f303961de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/search-replace-command/zipball/dbf21560fd91710b2900f5631448657d28f2b380",
-                "reference": "dbf21560fd91710b2900f5631448657d28f2b380",
+                "url": "https://api.github.com/repos/wp-cli/search-replace-command/zipball/413184ab8ffe20d5eddfc8922d93998f303961de",
+                "reference": "413184ab8ffe20d5eddfc8922d93998f303961de",
                 "shasum": ""
             },
             "require": {
@@ -5137,9 +5137,9 @@
             "homepage": "https://github.com/wp-cli/search-replace-command",
             "support": {
                 "issues": "https://github.com/wp-cli/search-replace-command/issues",
-                "source": "https://github.com/wp-cli/search-replace-command/tree/v2.0.16"
+                "source": "https://github.com/wp-cli/search-replace-command/tree/v2.0.17"
             },
-            "time": "2021-12-13T22:48:28+00:00"
+            "time": "2022-08-12T15:05:44+00:00"
         },
         {
             "name": "wp-cli/server-command",
