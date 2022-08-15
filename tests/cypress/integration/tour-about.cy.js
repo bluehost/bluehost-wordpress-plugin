@@ -81,7 +81,7 @@ describe('Tour: About Page', function () {
 			.type('{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}');
 		cy.wait(500);
 
-		if (semver.satisfies(Cypress.env('wpVersion'), '>5.8')) {
+		if (semver.satisfies(Cypress.env('wpSemverVersion'), '>5.8.x')) {
 			cy.get('#nf-2')
 				.should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
 				.should('have.css', 'color', 'rgb(0, 0, 0)')
