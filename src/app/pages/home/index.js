@@ -28,6 +28,28 @@ const Home = () => {
 		return 'undefined' !== typeof plugin && plugin.hasOwnProperty('getSetting') ? ! select('bluehost/plugin').getSetting('comingSoon') : true;
 	}, []);
 
+	const isOnECommercePlan = useSelect((select) => {
+		const plugin = select("bluehost/plugin");
+		return (
+			"undefined" !== typeof plugin &&
+			plugin.hasOwnProperty("isOnECommercePlan") &&
+			plugin.isOnECommercePlan()
+		);
+	}, []);
+
+	const isNewEcommerceUser = useSelect((select) => {
+		const plugin = select("bluehost/plugin");
+		return (
+			"undefined" !== typeof plugin &&
+			plugin.hasOwnProperty("isNewEcommerceUser") &&
+			plugin.isNewEcommerceUser()
+		);
+	}, []);
+
+	if (isNewEcommerceUser && isOnECommercePlan) {
+		return <BWARedirect to="/home/store/general" currentLocation={location} />;
+	}
+
 	let showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
 	
 	if(
