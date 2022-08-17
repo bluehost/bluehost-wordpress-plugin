@@ -23,7 +23,8 @@ tests
 *.zip
 
 # BEGIN NEWFOLD LABS RULES
-vendor/newfold-labs/*/src
+vendor/newfold-labs/wp-module-onboarding/src
+vendor/newfold-labs/wp-module-ecommerce/src
 vendor/newfold-labs/*/tests
 vendor/newfold-labs/*/.github
 vendor/newfold-labs/*/.*
