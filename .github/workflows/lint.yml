@@ -2,12 +2,10 @@ name: Lint
 
 on:
   push:
-    branches:
-      - master
     paths:
       - '**.php'
   pull_request:
-    types: [opened, edited, synchronize, reopened, ready_for_review]
+    types: [opened, edited, reopened, ready_for_review]
     paths:
       - '**.php'
   pull_request_review:
@@ -15,13 +13,9 @@ on:
     paths:
       - '**.php'
 
-env:
-  COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.TOKEN }}"}}'
-
 jobs:
   phpcs:
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
     steps:
 
       - uses: actions/checkout@v2
