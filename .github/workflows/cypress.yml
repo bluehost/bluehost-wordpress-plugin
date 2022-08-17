@@ -1,5 +1,4 @@
 name: Cypress Tests
-
 on:
   push:
     branches:
@@ -21,7 +20,9 @@ on:
     types: [opened, edited, synchronize, reopened, ready_for_review]
   pull_request_review:
     types: [submitted, edited]
-
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
 jobs:
   test:
     name: Run Cypress Tests
