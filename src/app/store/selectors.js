@@ -25,6 +25,16 @@ export function isTopLevel(state) {
 	return state.app.isTopLevel;
 }
 
+export function isOnECommercePlan(state) {
+  return ["wc_standard", "wc_premium"].includes(
+    state.app.customer.plan_subtype
+  );
+}
+
+export function isNewEcommerceUser(state) {
+	return new Date(state.app.customer.signup_date) >= new Date('2022-08-18T15:30:00.000Z');
+}
+
 export function getAllSettings(state) {
 	return state.settings;
 }
