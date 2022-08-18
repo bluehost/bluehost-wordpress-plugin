@@ -53,6 +53,17 @@ AdminBar::init();
 BuildAssets::init();
 LoginRedirect::init();
 
+// Disable Yoast SEO onboarding redirect
+add_action(
+	'admin_init',
+	function () {
+		if ( class_exists( 'WPSEO_Options' ) ) {
+			WPSEO_Options::set( 'should_redirect_after_install_free', false );
+		}
+	},
+	2
+);
+
 // Require files
 require __DIR__ . '/inc/admin.php';
 require __DIR__ . '/inc/admin-page-notifications-blocker.php';

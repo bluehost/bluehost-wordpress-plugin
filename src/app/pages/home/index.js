@@ -28,9 +28,36 @@ const Home = () => {
 		return 'undefined' !== typeof plugin && plugin.hasOwnProperty('getSetting') ? ! select('bluehost/plugin').getSetting('comingSoon') : true;
 	}, []);
 
-	let showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
+	const isOnECommercePlan = useSelect((select) => {
+		const plugin = select("bluehost/plugin");
+		return (
+			"undefined" !== typeof plugin &&
+			plugin.hasOwnProperty("isOnECommercePlan") &&
+			plugin.isOnECommercePlan()
+		);
+	}, []);
 
-	if(location.state && 'undefined' !== typeof location.state.redirect && 'override' === location.state.redirect ) {
+	const isNewEcommerceUser = useSelect((select) => {
+		const plugin = select("bluehost/plugin");
+		return (
+			"undefined" !== typeof plugin &&
+			plugin.hasOwnProperty("isNewEcommerceUser") &&
+			plugin.isNewEcommerceUser()
+		);
+	}, []);
+
+	if (isNewEcommerceUser && isOnECommercePlan) {
+		return <BWARedirect to="/home/store/general" currentLocation={location} />;
+	}
+
+	let showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
+	
+	if(
+		location.pathname === '/home/page' ||
+		location.state && 
+		'undefined' !== typeof location.state.redirect && 
+		'override' === location.state.redirect
+	) {
 		showOnboarding = false;
 	}
 
