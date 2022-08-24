@@ -17,17 +17,73 @@ describe('Basic Info Page', function () {
         cy.get('.nfd-onboarding-drawer__panel-site-title-container').scrollIntoView().should('not.be.visible');
     });
 
-    it('Check if Header and Subheader loads up', () => {
-        cy.get('.nfd-main-heading__title').should('exist');
-        cy.get('.nfd-main-heading__subtitle').should('exist');
+    it('Check if Header and Subheader shows up', () => {
+        cy.get('.nfd-main-heading__title').should('be.visible');
+        cy.get('.nfd-main-heading__subtitle').should('be.visible');
     });
 
-    it('Check if a Title Field Exists', () => {
-        var inputBox = cy.get(':nth-child(1) > label > .nfd-input__field');
-        if(inputBox.should('exist')){
-            inputBox.type('Hello Allen');
+    it('Enter a Title and then Check if it reflects elsewhere', () => {
+        const title = 'Hello Allen';
+        var titleBox = cy.get(':nth-child(1) > label > .nfd-input__field');
+        if(titleBox.should('exist')){
+            titleBox.clear();
+            titleBox.type(title);
 
-            cy.get('.browser-content_top-row-name').contains('Hello Allen')
+            // Check if Mini Preview Tab has the Title
+            cy.get('.browser-row-title_bar_main-text').contains(title);
+            // Check if Mini Preview Webpage Search result has the Title
+            cy.get('.browser-content_top-row-name').contains(title);
         }
     });
+
+    it('Enter a Desc and then Check if it reflects elsewhere', () => {
+        const desc = 'Hey this is the desc';
+        var descBox = cy.get(':nth-child(2) > label > .nfd-input__field');
+        if ( descBox.should('exist') ) {
+            descBox.clear();
+            descBox.type(desc);
+
+            // Check if Mini Preview Webpage Search result has the Desc
+            cy.get('.browser-content_desc').contains(desc);
+        }
+    });
+
+    it('Check if Social Media Accordion Toggles', () => {
+
+        cy.get(':nth-child(7) > .social-form__label > .social-form__label_name').should('exist').should('not.be.visible');
+           
+        // Open Social Media Accordion
+        cy.get('.social-form__top-row_icon').click();
+        cy.get(':nth-child(7) > .social-form__label > .social-form__label_name').should('exist').scrollIntoView().should('be.visible');
+
+    });
+
+    it('Check if Social Media URL checks are done', () => {
+
+        const invalidURL = 'htt';
+        const validURL = 'https://www.facebook.com';
+        
+        // Facebook Social Media Component
+        var socialTest = cy.get('#facebook');
+        
+        if (socialTest.should('exist') ) {
+            socialTest.clear();
+
+            socialTest.type(invalidURL);
+            // The URL Checker runs on a debounce
+            cy.wait(1500);
+            // Shows the message to the User in case of Invalid URL
+            cy.get('.Tooltip-Wrapper').should('exist');
+
+            socialTest.clear();
+            socialTest.type(validURL);
+            cy.wait(1500);
+            cy.get('.Tooltip-Wrapper').should('not.exist');
+
+            // Close Social Media Accordion
+            cy.get('.social-form__top-row_icon').click();
+
+        }
+    });
+
 });
