@@ -68,6 +68,7 @@ describe('Basic Info Page', function () {
         
         if (socialTest.should('exist') ) {
             socialTest.clear();
+            cy.get('[style="background-image: var(--facebook-colored-icon);"]').should('not.exist');
 
             socialTest.type(invalidURL);
             // The URL Checker runs on a debounce
@@ -79,6 +80,7 @@ describe('Basic Info Page', function () {
             socialTest.type(validURL);
             cy.wait(1500);
             cy.get('.Tooltip-Wrapper').should('not.exist');
+            cy.get('[style="background-image: var(--facebook-colored-icon);"]').should('exist');
 
             // Close Social Media Accordion
             cy.get('.social-form__top-row_icon').click();
