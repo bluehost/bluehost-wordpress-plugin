@@ -28,6 +28,8 @@
 
 import '@testing-library/cypress/add-commands';
 
+const customerData = require('../fixtures/customerData.json');
+
 Cypress.Commands.add('login', (username, password) => {
 	cy
 		.getCookies()
@@ -80,4 +82,8 @@ Cypress.Commands.add('deletePages', () => {
 		}
 	});
 
+});
+
+Cypress.Commands.add('updateCustomerData', () => {
+     cy.exec(`wp option update bh_cdata_guapi '${JSON.stringify(customerData)}'`);
 });

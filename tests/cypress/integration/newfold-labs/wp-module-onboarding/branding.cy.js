@@ -3,6 +3,7 @@
 describe('Branding', function() {
 
      before(() => {
+          cy.updateCustomerData();
           cy.visit('wp-admin/index.php?page=nfd-onboarding&flow=ecommerce');
 	});
 
