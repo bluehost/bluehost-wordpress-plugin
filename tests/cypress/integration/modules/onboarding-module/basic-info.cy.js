@@ -54,7 +54,8 @@ describe('Basic Info Page', function () {
            
         // Open Social Media Accordion
         cy.get('.social-form__top-row_icon').click();
-        cy.get(':nth-child(7) > .social-form__label > .social-form__label_name').should('exist').scrollIntoView().should('be.visible');
+        cy.get(':nth-child(7) > .social-form__label > .social-form__label_name').should('exist')
+            .scrollIntoView().should('be.visible');
 
     });
 
@@ -91,14 +92,16 @@ describe('Basic Info Page', function () {
     it('Check if Image gets Uploaded', () => {
 
         var sampleLogo = 'tests/cypress/fixtures/bluehost-logo.png';
-
+        
         if (cy.get('.image-uploader_window-reset-btn').should('exist').contains('UPLOAD')) {
 
             cy.get('.image-uploader_window-logo-icon-selected').should('not.exist');
 
             // Upload the Image into the Upload Section
-            cy.get('.image-uploader_window-select-btn').scrollIntoView().should('exist').selectFile(sampleLogo, { force: true });
-            cy.wait(4000);
+            cy.get('.image-uploader_window-select-btn').scrollIntoView().should('exist')
+                .selectFile(sampleLogo, { force: true });
+                
+            cy.wait(5000);
 
             // Check if the image got uploaded
             cy.get('.image-uploader_window-logo-icon-selected').should('exist');
@@ -120,6 +123,17 @@ describe('Basic Info Page', function () {
         cy.get(':nth-child(2) > label > .nfd-input__field').should('exist').contains('Hey this is the desc');
         cy.get('.image-uploader_window-reset-btn').should('exist').scrollIntoView().contains('RESET');
         cy.get('[style="background-image: var(--facebook-colored-icon);"]').should('exist');
+    });
+
+    it('Check if Final Redirect works', () => {
+
+        if (cy.get('.navigation-buttons_finish').should('exist')) {
+            cy.get('.navigation-buttons_finish').click();
+            
+            cy.wait(2000);
+            var correctURL = Cypress.config().baseUrl + '/wp-admin/index.php?page=bluehost#/home/onboarding';
+            cy.url().should('eq', correctURL);
+        }
     });
 
 });
