@@ -85,5 +85,10 @@ Cypress.Commands.add('deletePages', () => {
 });
 
 Cypress.Commands.add('updateCustomerData', () => {
-     cy.exec(`npx wp-env run cli wp option update bh_cdata_guapi '${JSON.stringify(customerData)}'`);
+     cy.exec(`wp option update bh_cdata_guapi '${JSON.stringify(customerData)}'`);
+});
+
+Cypress.Commands.add('deleteCustomerData', () => {
+     cy.exec(`wp option delete bh_cdata_guapi`);
+     cy.exec(`wp transient delete bh_cdata`);
 });
