@@ -5,7 +5,7 @@ describe('Basic Info Page', function () {
     before(() => {
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info');
         cy.injectAxe(); 
-        cy.wait(3000);
+        cy.wait(5000);
     });
 
     it('Check if Drawer opened', () => {
@@ -86,6 +86,40 @@ describe('Basic Info Page', function () {
             cy.get('.social-form__top-row_icon').click();
 
         }
+    });
+
+    it('Check if Image gets Uploaded', () => {
+
+        var sampleLogo = 'tests/cypress/fixtures/bluehost-logo.png';
+
+        if (cy.get('.image-uploader_window-reset-btn').should('exist').contains('UPLOAD')) {
+
+            cy.get('.image-uploader_window-logo-icon-selected').should('not.exist');
+
+            // Upload the Image into the Upload Section
+            cy.get('.image-uploader_window-select-btn').scrollIntoView().should('exist').selectFile(sampleLogo, { force: true });
+            cy.wait(4000);
+
+            // Check if the image got uploaded
+            cy.get('.image-uploader_window-logo-icon-selected').should('exist');
+            cy.get('.image-uploader_window-reset-btn').should('exist').scrollIntoView().contains('RESET');
+
+        }
+
+    });
+
+    it('Check if Data gets Saved', () => {
+        // Adding Wait so as to let the API Requests complete
+        cy.get('.navigation-buttons_back').should('exist').scrollIntoView().click();
+        cy.wait(4000);
+        cy.get('.navigation-buttons_next').should('exist').scrollIntoView().click();
+        cy.wait(4000);
+
+        cy.get('.nfd-onboarding-drawer__toggle > .components-button').click();
+        cy.get(':nth-child(1) > label > .nfd-input__field').should('exist').contains('Hello Allen');
+        cy.get(':nth-child(2) > label > .nfd-input__field').should('exist').contains('Hey this is the desc');
+        cy.get('.image-uploader_window-reset-btn').should('exist').scrollIntoView().contains('RESET');
+        cy.get('[style="background-image: var(--facebook-colored-icon);"]').should('exist');
     });
 
 });
