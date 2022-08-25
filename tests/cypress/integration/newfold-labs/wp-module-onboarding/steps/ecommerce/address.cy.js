@@ -17,8 +17,9 @@ describe('Step Ecommerce Address/Store Details', function () {
 
     it('Checks Active Link is Store Details', () => {
         cy.get(':nth-child(1) > .nfd-onboarding-drawer__panel-menu-link')
-            .should('have.attr', 'href')
-            .and('include', '#/ecommerce/step/address');
+        .should('have.class', 'active')
+        .and('have.attr', 'href')
+        .and('include', '#/ecommerce/step/address')
     });
 
     it('Closes the Drawer and checks if closed', () => {
