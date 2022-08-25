@@ -6,7 +6,6 @@ describe('Basic Info Page', function () {
         cy.setCustomerData();
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info');
         cy.injectAxe(); 
-        cy.wait(5000);
     });
 
     it('Check if Drawer opened', () => {
@@ -73,15 +72,14 @@ describe('Basic Info Page', function () {
             cy.get('[style="background-image: var(--facebook-colored-icon);"]').should('not.exist');
 
             socialTest.type(invalidURL);
+
             // The URL Checker runs on a debounce
-            cy.wait(1500);
             // Shows the message to the User in case of Invalid URL
-            cy.get('.Tooltip-Wrapper').should('exist');
+            cy.get('.Tooltip-Wrapper', { timeout: 3000 }).should('exist');
 
             socialTest.clear();
             socialTest.type(validURL);
-            cy.wait(1500);
-            cy.get('.Tooltip-Wrapper').should('not.exist');
+            cy.get('.Tooltip-Wrapper', { timeout: 3000 }).should('not.exist');
             cy.get('[style="background-image: var(--facebook-colored-icon);"]').should('exist');
 
             // Close Social Media Accordion
@@ -99,31 +97,15 @@ describe('Basic Info Page', function () {
             cy.get('.image-uploader_window-logo-icon-selected').should('not.exist');
 
             // Upload the Image into the Upload Section
-            cy.get('.image-uploader_window-select-btn').scrollIntoView().should('exist')
-                .selectFile(sampleLogo, { force: true });
-                
-            cy.wait(5000);
-
-            // Check if the image got uploaded
-            cy.get('.image-uploader_window-logo-icon-selected').should('exist');
-            cy.get('.image-uploader_window-reset-btn').should('exist').scrollIntoView().contains('RESET');
-
+            cy.get('.image-uploader_window-select-btn', { timeout: 10000 } ).scrollIntoView().should('exist')
+                .selectFile(sampleLogo, { force: true }).then(() => {
+                    cy.wait(1000);
+                    // Check if the image got uploaded
+                    cy.get('.image-uploader_window-logo-icon-selected').should('exist');
+                    cy.get('.image-uploader_window-reset-btn').should('exist').scrollIntoView().contains('RESET');
+                });
         }
 
-    });
-
-    it('Check if Data gets Saved', () => {
-        // Adding Wait so as to let the API Requests complete
-        cy.get('.navigation-buttons_back').should('exist').scrollIntoView().click();
-        cy.wait(4000);
-        cy.get('.navigation-buttons_next').should('exist').scrollIntoView().click();
-        cy.wait(4000);
-
-        cy.get('.nfd-onboarding-drawer__toggle > .components-button').click();
-        cy.get(':nth-child(1) > label > .nfd-input__field').should('exist').contains('Hello Allen');
-        cy.get(':nth-child(2) > label > .nfd-input__field').should('exist').contains('Hey this is the desc');
-        cy.get('.image-uploader_window-reset-btn').should('exist').scrollIntoView().contains('RESET');
-        cy.get('[style="background-image: var(--facebook-colored-icon);"]').should('exist');
     });
 
     it('Check if Final Redirect works', () => {
@@ -131,9 +113,8 @@ describe('Basic Info Page', function () {
         if (cy.get('.navigation-buttons_finish').should('exist')) {
             cy.get('.navigation-buttons_finish').click();
             
-            cy.wait(2000);
             var correctURL = Cypress.config().baseUrl + '/wp-admin/index.php?page=bluehost#/home/onboarding';
-            cy.url().should('eq', correctURL);
+            cy.url({ timeout: 8000 }).should('eq', correctURL);
         }
     });
 
