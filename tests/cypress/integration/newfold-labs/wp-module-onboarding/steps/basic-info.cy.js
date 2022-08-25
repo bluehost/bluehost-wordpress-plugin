@@ -22,7 +22,7 @@ describe('Basic Info Page', function () {
     });
 
     it('Enter a Title and then Check if it reflects elsewhere', () => {
-        const title = 'Hello Allen';
+        const title = 'Hello WordPress';
         var titleBox = cy.get(':nth-child(1) > label > .nfd-input__field');
         if(titleBox.should('exist')){
             titleBox.scrollIntoView();
@@ -38,7 +38,7 @@ describe('Basic Info Page', function () {
     });
 
     it('Enter a Desc and then Check if it reflects elsewhere', () => {
-        const desc = 'Hey this is the desc';
+        const desc = 'Welcome to WordPress';
         var descBox = cy.get(':nth-child(2) > label > .nfd-input__field');
         if ( descBox.should('exist') ) {
             descBox.scrollIntoView();
