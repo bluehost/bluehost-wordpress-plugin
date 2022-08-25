@@ -1,24 +1,22 @@
 name: Lint
-
 on:
   push:
-    branches:
-      - master
     paths:
       - '**.php'
   pull_request:
-    types: [opened, edited, synchronize, reopened, ready_for_review]
+    types: [opened, edited, reopened, ready_for_review]
     paths:
       - '**.php'
   pull_request_review:
     types: [submitted, edited]
     paths:
       - '**.php'
-
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
 jobs:
   phpcs:
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
     steps:
 
       - uses: actions/checkout@v2

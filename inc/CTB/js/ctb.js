@@ -124,7 +124,7 @@
 	window.addEventListener(
 		'load',
 		() => {
-			document.getElementById('wpbody').addEventListener('click', function(event) {
+			document.getElementById('wpwrap').addEventListener('click', function(event) {
 				if (event.target.dataset.action === 'load-nfd-ctb') {
 					if ( window.nfdConnected ) { // has token and customer id
 						event.preventDefault();
