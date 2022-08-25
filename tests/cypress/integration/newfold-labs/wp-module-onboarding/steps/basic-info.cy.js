@@ -3,7 +3,7 @@
 describe('Basic Info Page', function () {
 
     before(() => {
-        cy.updateCustomerData();
+        cy.setCustomerData();
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info');
         cy.injectAxe(); 
         cy.wait(5000);
@@ -138,7 +138,7 @@ describe('Basic Info Page', function () {
     });
 
     after(() => {
-     cy.deleteCustomerData();
+     cy.clearCustomerData();
     });
 
 });
