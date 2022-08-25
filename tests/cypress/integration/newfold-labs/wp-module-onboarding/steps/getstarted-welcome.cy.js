@@ -25,4 +25,12 @@ describe('Get Started Welcome Page', function () {
         cy.get('#tab-panel-0-tab2').click().should('be.visible');
         cy.get('#tab-panel-0-tab2-view').should('be.visible').and('contain', 'POWERFUL FEATURES');
     });
+
+    it('Check if next step is loading', () => {
+        cy.url().then(url => {
+            cy.get('.nfd-card-button').click();
+            cy.url().should('not.contain', '/wp-setup/step/get-started/welcome');
+        });
+
+    });
 });
