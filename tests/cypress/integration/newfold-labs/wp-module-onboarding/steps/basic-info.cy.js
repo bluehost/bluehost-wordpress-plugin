@@ -25,7 +25,9 @@ describe('Basic Info Page', function () {
         const title = 'Hello Allen';
         var titleBox = cy.get(':nth-child(1) > label > .nfd-input__field');
         if(titleBox.should('exist')){
+            titleBox.scrollIntoView();
             titleBox.clear();
+            cy.wait(1000);
             titleBox.type(title);
 
             // Check if Mini Preview Tab has the Title
@@ -39,7 +41,9 @@ describe('Basic Info Page', function () {
         const desc = 'Hey this is the desc';
         var descBox = cy.get(':nth-child(2) > label > .nfd-input__field');
         if ( descBox.should('exist') ) {
+            descBox.scrollIntoView();
             descBox.clear();
+            cy.wait(1000);
             descBox.type(desc);
 
             // Check if Mini Preview Webpage Search result has the Desc
