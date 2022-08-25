@@ -47,7 +47,7 @@ describe('Step Ecommerce Tax Information', function () {
     it('Checks if all the radio control buttons are enabled', () => {
         cy.get('.components-radio-control__option')
         .each(($radioControl) => {
-            expect($radioControl).not.be.disabled
+            cy.wrap($radioControl).find('input').should('not.be.disabled');
         });
     });
 
