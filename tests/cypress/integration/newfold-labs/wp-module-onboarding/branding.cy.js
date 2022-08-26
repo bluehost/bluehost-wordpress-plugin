@@ -5,7 +5,13 @@ describe('Branding', function () {
     before(() => {
         cy.setCustomerData();
         cy.visit('wp-admin/index.php?page=nfd-onboarding&flow=ecommerce');
+        // cy.injectAxe();
     });
+
+    // it('Is Accessible', () => {
+	// 	cy.wait(500);
+	// 	cy.checkA11y();
+	// });
 
     it('Has brand specific CSS.', () => {
         cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
