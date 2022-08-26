@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - master
+      - trunk
       - develop
       - release/*
       - feature/*
@@ -11,15 +12,8 @@ on:
       - update/*
       - fix/*
       - try/*
-    paths-ignore:
-      - '.github/**'
-      - '!.github/workflows/cypress.yml'
-      - '.gitignore'
-      - '**.md'
   pull_request:
-    types: [opened, edited, synchronize, reopened, ready_for_review]
-  pull_request_review:
-    types: [submitted, edited]
+    types: [opened, edited, reopened, ready_for_review]
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
@@ -27,7 +21,6 @@ jobs:
   test:
     name: Run Cypress Tests
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
     steps:
 
       - name: Checkout
@@ -36,7 +29,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.1'
           coverage: none
           tools: composer, cs2pr
 
@@ -112,6 +105,11 @@ jobs:
         run: npx wp-env start --debug
 
       - name: Run Cypress Tests
+        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' }}
+        run: npx cypress run
+
+      - name: Run Cypress Tests
+        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Store screenshots of test failures
@@ -121,17 +119,5 @@ jobs:
           name: screenshots
           path: ./tests/cypress/screenshots
 
-      - name: Check if a debug.log file exists
-        id: hasErrors
-        run: npx wp-env run wordpress test ! -f /var/www/html/wp-content/debug.log
-
-      - name: Copy debug.log file
-        if: ${{ steps.hasErrors.outputs.failure }}
-        run: cat /var/www/html/wp-content/debug.log 1>./debug.log 2>/dev/null
-
-      - name: Store debug.log file
-        if: ${{ steps.hasErrors.outputs.failure }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: logs
-          path: ./debug.log
+      - name: Output debug.log file contents
+        run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
