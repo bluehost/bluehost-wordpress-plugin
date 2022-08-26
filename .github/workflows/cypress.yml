@@ -125,4 +125,5 @@ jobs:
           path: ./tests/cypress/screenshots
 
       - name: Output debug.log file contents
+        continue-on-error: true
         run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
