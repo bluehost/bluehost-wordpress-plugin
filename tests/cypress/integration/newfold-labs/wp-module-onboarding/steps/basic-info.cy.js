@@ -4,7 +4,6 @@ describe('Basic Info Page', function () {
 
     before(() => {
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info');
-        cy.injectAxe(); 
     });
 
     it('Check if Drawer opened', () => {
@@ -22,7 +21,7 @@ describe('Basic Info Page', function () {
     });
 
     it('Enter a Title and then Check if it reflects elsewhere', () => {
-        const title = 'Hello Allen';
+        const title = 'Heya BlueHost';
         var titleBox = cy.get(':nth-child(1) > label > .nfd-input__field');
         if(titleBox.should('exist')){
             titleBox.scrollIntoView();
@@ -38,7 +37,7 @@ describe('Basic Info Page', function () {
     });
 
     it('Enter a Desc and then Check if it reflects elsewhere', () => {
-        const desc = 'Hey this is the desc';
+        const desc = 'Hey there I am BlueHost';
         var descBox = cy.get(':nth-child(2) > label > .nfd-input__field');
         if ( descBox.should('exist') ) {
             descBox.scrollIntoView();
@@ -116,7 +115,7 @@ describe('Basic Info Page', function () {
         if (cy.get('.navigation-buttons_finish').should('exist')) {
             cy.get('.navigation-buttons_finish').click();
             
-            var correctURL = Cypress.config().baseUrl + '/wp-admin/index.php?page=bluehost#/home/onboarding';
+            var correctURL = Cypress.config().baseUrl + '/wp-admin/index.php?page=bluehost#/store/general';
             cy.url({ timeout: 8000 }).should('eq', correctURL);
         }
     });
