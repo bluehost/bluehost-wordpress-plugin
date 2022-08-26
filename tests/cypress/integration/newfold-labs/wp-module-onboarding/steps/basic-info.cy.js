@@ -3,9 +3,15 @@
 describe('Basic Info Page', function () {
 
     before(() => {
+        cy.setCustomerData();
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info');
-        cy.injectAxe(); 
+        // cy.injectAxe();
     });
+
+    // it('Is Accessible', () => {
+	// 	cy.wait(500);
+	// 	cy.checkA11y();
+	// });
 
     it('Check if Drawer opened', () => {
         cy.get('.nfd-onboarding-drawer__panel-site-title-container').scrollIntoView().should('be.visible');
@@ -116,9 +122,13 @@ describe('Basic Info Page', function () {
         if (cy.get('.navigation-buttons_finish').should('exist')) {
             cy.get('.navigation-buttons_finish').click();
             
-            var correctURL = Cypress.config().baseUrl + '/wp-admin/index.php?page=bluehost#/home/onboarding';
+            var correctURL = Cypress.config().baseUrl + '/wp-admin/index.php?page=bluehost#/store/general';
             cy.url({ timeout: 8000 }).should('eq', correctURL);
         }
+    });
+
+    after(() => {
+     cy.clearCustomerData();
     });
 
 });
