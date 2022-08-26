@@ -6,8 +6,14 @@ describe('Step Ecommerce Products Info', function () {
         cy.visit(
             'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/products'
         );
+        cy.injectAxe();
         cy.wait(2000);
     });
+
+    // it('Is Accessible', () => {
+	// 	cy.wait(500);
+	// 	cy.checkA11y();
+	// });
 
     it('Checks if Drawer opened', () => {
         cy.get('.nfd-onboarding-drawer__panel-inner')
@@ -76,6 +82,14 @@ describe('Step Ecommerce Products Info', function () {
             cy.wrap($radioControl).find('label').click();
             cy.wrap($radioControl).find('input').should('be.checked');
         });
+    });
+
+    it('Checks existence of Need Help Tag', () => {
+        cy.get('.nfd-card-need-help-tag').scrollIntoView().should('be.visible');
+    });
+
+    it("Checks existence of Need Help URL", () => {
+        cy.get('.nfd-card-need-help-tag > a').should('have.attr', 'href');
     });
 
     it('Goes to the next step on clicking navigation Next', () => {
