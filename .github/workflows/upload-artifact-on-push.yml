@@ -14,6 +14,7 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
+
 jobs:
   build:
     name: On Push to Master
@@ -27,11 +28,11 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.1'
           coverage: none
           tools: composer, cs2pr
 
-      - name: Setup Workflow Context
+      - name: Setup workflow context
         id: workflow
         working-directory: ${{ runner.temp }}
         env:
@@ -41,19 +42,10 @@ jobs:
           echo ::set-output name=DIST::${PWD}/dist
           echo ::set-output name=PACKAGE::${REPO##*/}
 
-      - name: PHP version
-        run: php --version
-
-      - name: Set Node.js 16.x
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
-
-      - name: Node version
-        run: node --version
-
-      - name: NPM version
-        run: npm --version
 
       - name: Get npm cache directory
         id: npm-cache
@@ -67,13 +59,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: npm install
-        run: npm install --legacy-peer-deps
-
-      - name: Validate composer.json and composer.lock
-        run: composer validate
-
-      - name: Get Composer Cache Directory
+      - name: Get Composer cache directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
@@ -85,8 +71,21 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
 
+      - name: Show versions
+        run: |
+          php --version
+          composer --version
+          node --version
+          npm --version
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
+
+      - name: NPM Install
+        run: npm install --legacy-peer-deps
 
       - name: Build JavaScript
         run: npm run build

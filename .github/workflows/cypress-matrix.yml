@@ -59,17 +59,17 @@ jobs:
         with:
           node-version: 16.x
 
+      - name: Get npm cache directory
+        id: npm-cache
+        run: echo "::set-output name=dir::$(npm config get cache)"
+
       - name: Cache node modules
         uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            ${{ runner.os }}-node-
 
       - name: Get Composer cache directory
         id: composer-cache
@@ -81,7 +81,7 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+            ${{ runner.os }}-composer-
 
       - name: Show versions
         run: |
@@ -128,8 +128,7 @@ jobs:
         if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-        run: |
-          npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag php-${{ matrix.phpVersion }},wp-${{ matrix.wpVersion }}
+        run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag php-${{ matrix.phpVersion }},wp-${{ matrix.wpVersion }}
 
       - name: Store screenshots of test failures
         if: ${{ failure() }} && ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' }}

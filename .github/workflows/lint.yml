@@ -7,20 +7,21 @@ on:
     types: [opened, edited, reopened, ready_for_review]
     paths:
       - '**.php'
-  pull_request_review:
-    types: [submitted, edited]
-    paths:
-      - '**.php'
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
+
 jobs:
   phpcs:
+    name: Run PHP Code Sniffer
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
+      # User PHP 7.4 here for compatibility with the WordPress codesniffer rules.
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -32,11 +33,7 @@ jobs:
         with:
           SUFFIX_FILTER: .php
 
-      - name: Validate composer.json and composer.lock
-        run: composer validate
-        if: "!! env.GIT_DIFF"
-
-      - name: Get Composer Cache Directory
+      - name: Get Composer cache directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
         if: "!! env.GIT_DIFF"
@@ -50,8 +47,12 @@ jobs:
             ${{ runner.os }}-composer-
         if: "!! env.GIT_DIFF"
 
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+        if: "!! env.GIT_DIFF"
+
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest --prefer-dist
+        run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
         if: "!! env.GIT_DIFF"
 
       - name: Detecting PHP Code Standards Violations
