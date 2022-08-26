@@ -6,8 +6,14 @@ describe('Step Ecommerce Address/Store Details', function () {
         cy.visit(
             'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
         );
+        // cy.injectAxe();
         cy.wait(2000);
     });
+
+    // it('Is Accessible', () => {
+	// 	cy.wait(500);
+	// 	cy.checkA11y();
+	// });
 
     it('Checks if Drawer opened', () => {
         cy.get('.nfd-onboarding-drawer__panel-inner')
