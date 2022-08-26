@@ -3,10 +3,10 @@
   "config": {
     "WP_DEBUG": true,
     "WP_DEBUG_LOG": true,
-    "WP_DEBUG_DISPLAY": true,
+    "WP_DEBUG_DISPLAY": false,
     "FS_METHOD": "direct"
   },
-  "phpVersion": "7.4",
+  "phpVersion": "8.1",
   "plugins": [
     ".",
     "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"
