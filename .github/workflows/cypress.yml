@@ -1,4 +1,5 @@
 name: Cypress Tests
+
 on:
   push:
     branches:
@@ -14,9 +15,11 @@ on:
       - try/*
   pull_request:
     types: [opened, edited, reopened, ready_for_review]
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
+
 jobs:
   test:
     name: Run Cypress Tests
@@ -99,7 +102,7 @@ jobs:
         run: find .
 
       - name: Configure WordPress
-        run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
+        run: echo '{"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: Install WordPress
         run: npx wp-env start --debug
@@ -113,7 +116,7 @@ jobs:
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Store screenshots of test failures
-        if: ${{ failure() }}
+        if: ${{ failure() }} && ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' }}
         uses: actions/upload-artifact@v2
         with:
           name: screenshots
