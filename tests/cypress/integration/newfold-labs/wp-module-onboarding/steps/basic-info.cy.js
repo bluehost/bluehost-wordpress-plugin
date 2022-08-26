@@ -3,6 +3,7 @@
 describe('Basic Info Page', function () {
 
     before(() => {
+        cy.setCustomerData();
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info');
     });
 
@@ -118,6 +119,10 @@ describe('Basic Info Page', function () {
             var correctURL = Cypress.config().baseUrl + '/wp-admin/index.php?page=bluehost#/store/general';
             cy.url({ timeout: 8000 }).should('eq', correctURL);
         }
+    });
+
+    after(() => {
+     cy.clearCustomerData();
     });
 
 });
