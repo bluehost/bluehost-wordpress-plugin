@@ -3,7 +3,7 @@ const {phpVersion, core} = require('./.wp-env.json')
 const wpVersion = /[^/]*$/.exec(core)[0]
 
 module.exports = defineConfig({
-	projectId: "gpdgcu",
+	projectId: "h78f39",
 	env: {
 		wpUsername: 'admin',
 		wpPassword: 'password',
