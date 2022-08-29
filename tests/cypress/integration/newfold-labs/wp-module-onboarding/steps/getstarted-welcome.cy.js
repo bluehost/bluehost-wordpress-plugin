@@ -3,7 +3,7 @@
 describe('Get Started Welcome Page', function () {
 
     before(() => {
-        // cy.setCustomerData();
+        cy.setCustomerData();
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/welcome');
         // cy.injectAxe();
         cy.wait(5000);
@@ -64,17 +64,11 @@ describe('Get Started Welcome Page', function () {
         cy.get('#tab-panel-0-tab2-view').should('be.visible');
     });
 
-    it('Go to the next step on clicking navigation Next', () => {
-        cy.get('.navigation-buttons_next').click();
-        cy.url().should('not.include', '#/wp-setup/step/get-started/site-secondary');
-        cy.go('back');
-    });
-
-    it('Check nagivation back is not visible', () => {
+    it('Check navigation back is not visible', () => {
         cy.get('.navigation-buttons_back').should('not.exist');
     });
 
-    it('Check if next step is loading', () => {
+    it('Check if next step loads on clicking navigation next', () => {
         cy.get('.navigation-buttons_next').click();
         cy.url().should('not.include', '#/wp-setup/step/get-started/welcome');
         cy.go('back');
