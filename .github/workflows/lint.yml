@@ -1,6 +1,8 @@
 name: Lint
 on:
   push:
+    branches:
+      - '**'
     paths:
       - '**.php'
   pull_request:
