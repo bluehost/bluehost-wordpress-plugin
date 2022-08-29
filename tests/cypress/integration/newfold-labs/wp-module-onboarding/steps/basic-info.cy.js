@@ -16,6 +16,13 @@ describe('Basic Info Page', function () {
     it('Check if Drawer opened', () => {
         cy.get('.nfd-onboarding-drawer__panel-site-title-container').scrollIntoView().should('be.visible');
     });
+	
+    it('Checks Active Link is Basic Info', () => {
+        cy.get(':nth-child(3) > .nfd-onboarding-drawer__panel-menu-link')
+            .should('have.class', 'active')
+            .and('have.attr', 'href')
+            .and('include', '#/wp-setup/step/basic-info')
+    });
 
     it('Close the Drawer and check if closed', () => {
         cy.get('.nfd-onboarding-drawer__toggle > .components-button').click();
