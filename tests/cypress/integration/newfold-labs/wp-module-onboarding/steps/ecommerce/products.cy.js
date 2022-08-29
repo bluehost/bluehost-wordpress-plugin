@@ -15,20 +15,20 @@ describe('Step Ecommerce Products Info', function () {
 	// 	cy.checkA11y();
 	// });
 
-    it('Checks if Drawer opened', () => {
+    it('Checks if Drawer opened.', () => {
         cy.get('.nfd-onboarding-drawer__panel-inner')
             .scrollIntoView()
             .should('be.visible');
     });
 
-    it('Checks Active Link in the drawer is Product Info', () => {
+    it('Checks Active Link in the drawer is Product Info.', () => {
         cy.get(':nth-child(3) > .nfd-onboarding-drawer__panel-menu-link')
             .should('have.class', 'active')
             .and('have.attr', 'href')
             .and('include', '#/ecommerce/step/products')
     });
 
-    it('Closes the Drawer and checks if closed', () => {
+    it('Closes the Drawer and checks if closed.', () => {
         cy.get('.nfd-onboarding-drawer__toggle > .components-button').click();
         cy.get('.nfd-onboarding-drawer__panel-inner')
             .scrollIntoView()
@@ -76,7 +76,7 @@ describe('Step Ecommerce Products Info', function () {
         });
     });
 
-    it('Checks if the clicked radio control button is selected', () => {
+    it('Checks if the clicked radio control button is selected.', () => {
         cy.get('.components-radio-control__option')
         .each(($radioControl) => {
             cy.wrap($radioControl).find('label').click();
@@ -84,27 +84,27 @@ describe('Step Ecommerce Products Info', function () {
         });
     });
 
-    it('Checks existence of Need Help Tag', () => {
+    it('Checks existence of Need Help Tag.', () => {
         cy.get('.nfd-card-need-help-tag').scrollIntoView().should('be.visible');
     });
 
-    it("Checks existence of Need Help URL", () => {
+    it("Checks existence of Need Help URL.", () => {
         cy.get('.nfd-card-need-help-tag > a').should('have.attr', 'href');
     });
 
-    it('Goes to the next step on clicking navigation Next', () => {
+    it('Goes to the next step on clicking navigation Next.', () => {
         cy.get('.navigation-buttons_next').click();
         cy.url().should('not.include', '#/ecommerce/step/products');
         cy.go('back');
     });
 
-    it('Goes to the previous step on clicking navigation Back', () => {
+    it('Goes to the previous step on clicking navigation Back.', () => {
         cy.get('.navigation-buttons_back').click();
         cy.url().should('not.include', '#/ecommerce/step/products');
         cy.go('back');
     });
 
-    it('Goes to next step on Continue Setup', () => {
+    it('Goes to next step on Continue Setup.', () => {
         cy.get('.nfd-nav-card-button').click();
         cy.url().should('not.include', '#/ecommerce/step/products');
         cy.go('back');
