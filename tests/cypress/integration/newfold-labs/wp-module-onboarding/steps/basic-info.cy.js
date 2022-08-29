@@ -17,7 +17,7 @@ describe('Basic Info Page', function () {
         cy.get('.nfd-onboarding-drawer__panel-site-title-container').scrollIntoView().should('be.visible');
     });
 	
-    it('Checks Active Link is Basic Info', () => {
+    it('Checks if Basic Info is the current Active Selection in the Drawer', () => {
         cy.get(':nth-child(3) > .nfd-onboarding-drawer__panel-menu-link')
             .should('have.class', 'active')
             .and('have.attr', 'href')
