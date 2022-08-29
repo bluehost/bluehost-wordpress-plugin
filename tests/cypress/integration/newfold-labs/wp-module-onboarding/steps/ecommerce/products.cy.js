@@ -21,7 +21,7 @@ describe('Step Ecommerce Products Info', function () {
             .should('be.visible');
     });
 
-    it('Checks Active Link is Product Info', () => {
+    it('Checks Active Link in the drawer is Product Info', () => {
         cy.get(':nth-child(3) > .nfd-onboarding-drawer__panel-menu-link')
             .should('have.class', 'active')
             .and('have.attr', 'href')
