@@ -21,7 +21,7 @@ describe('Step Ecommerce Tax Information', function () {
             .should('be.visible');
     });
 
-    it('Checks Active Link is Tax Info', () => {
+    it('Checks Active Link in the drawer is Tax Info', () => {
         cy.get(':nth-child(2) > .nfd-onboarding-drawer__panel-menu-link')
             .should('have.class', 'active')
             .and('have.attr', 'href')
