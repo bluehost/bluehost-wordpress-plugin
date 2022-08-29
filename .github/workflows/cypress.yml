@@ -118,7 +118,7 @@ jobs:
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Store screenshots of test failures
-        if: ${{ failure() }} && ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' }}
+        if: ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
           name: screenshots
