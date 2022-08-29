@@ -29,5 +29,8 @@ module.exports = defineConfig({
 		baseUrl: 'http://localhost:8882',
 		specPattern: 'tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
 		supportFile: 'tests/cypress/support/index.js',
+		excludeSpecPattern: [
+			'**/wp-module-onboarding/**',
+		],
 	},
 })
