@@ -17,7 +17,6 @@ jobs:
   build:
     name: On Release
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
     steps:
 
       - name: Checkout
@@ -122,6 +121,7 @@ jobs:
           asset_content_type: application/zip
 
       - name: Clear cache for release API
+        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
         run: |
           curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
                -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
