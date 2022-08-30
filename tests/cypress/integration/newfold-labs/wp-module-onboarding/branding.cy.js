@@ -13,10 +13,6 @@ describe('Branding', function () {
 		cy.injectAxe()
 	})
 
-	it('Is Accessible', () => {
-		cy.checkA11y('#nfd-onboarding')
-	})
-
 	it('Starts at the welcome screen', () => {
 		cy.url({timeout: 20000}).should('include', '#/wp-setup/step/get-started/welcome')
 	})
@@ -59,6 +55,10 @@ describe('Branding', function () {
 		cy.findByRole('button', {name: 'Start Setup'})
 			.should('be.visible')
 			.should('have.css', 'background-color', 'rgb(28, 92, 186)')
+	})
+
+	it('Is Accessible', () => {
+		cy.checkA11y('#nfd-onboarding')
 	})
 
 	after(() => {
