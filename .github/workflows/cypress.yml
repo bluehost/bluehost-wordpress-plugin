@@ -110,7 +110,9 @@ jobs:
 
       - name: Run Cypress Tests
         if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' }}
-        run: npx cypress run
+        run: |
+          npm run db:import
+          npx cypress run
 
       - name: Run Cypress Tests
         if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
