@@ -18,7 +18,7 @@ cypress.env.json
 /tests/cypress/downloads
 /tests/cypress/screenshots
 /tests/cypress/videos
-!/tests/cypress/fixures/db.sql
+!/tests/cypress/fixures/*.sql
 
 # Built-app files
 /.docs
