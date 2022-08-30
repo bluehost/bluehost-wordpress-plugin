@@ -4,9 +4,10 @@ describe('Get Started Welcome Page', function () {
 
     before(() => {
         cy.setCustomerData();
-        cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/welcome');
+        cy.visit(
+            'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/welcome'
+        ).wait(2000);
         // cy.injectAxe();
-        cy.wait(5000);
     });
 
     // it('Is Accessible', () => {
@@ -55,7 +56,7 @@ describe('Get Started Welcome Page', function () {
 
     it('Check for brandname in sub heading', () => {
         cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
-        cy.reload();
+        cy.reload().wait(2000);
         cy.get('.nfd-step-card-subheading').should('contain', 'Bluehost');
     });
 
@@ -71,7 +72,7 @@ describe('Get Started Welcome Page', function () {
     it('Check if next step loads on clicking navigation next', () => {
         cy.get('.navigation-buttons_next').click();
         cy.url().should('not.include', '#/wp-setup/step/get-started/welcome');
-        cy.go('back');
+        cy.go('back').wait(2000);
     });
 
     it('Check Exit to Wordpress button is visible and clickable and exit flow', () => {

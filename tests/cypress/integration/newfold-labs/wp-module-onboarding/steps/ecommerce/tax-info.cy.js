@@ -2,12 +2,13 @@
 
 describe('Step Ecommerce Tax Information', function () {
     before(() => {
+        cy.intercept('GET', '**/wp-json/wp/v2/settings*').as('getSettings');
         cy.setCustomerData();
         cy.visit(
             'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/tax'
-        );
+        ).wait(2500);
+        cy.wait('@getSettings');
         // cy.injectAxe();
-        cy.wait(2000);
     });
 
     // it('Is Accessible', () => {
@@ -76,13 +77,15 @@ describe('Step Ecommerce Tax Information', function () {
     it('Goes to the next step on clicking navigation Next.', () => {
         cy.get('.navigation-buttons_next').click();
         cy.url().should('not.include', '#/ecommerce/step/tax');
-        cy.go('back');
+        cy.go('back').wait(2000);
     });
 
     it('Goes to the previous step on clicking navigation Back', () => {
+        cy.intercept('get', '**/wp-json/wp/v2/settings*').as('getSettings');
         cy.get('.navigation-buttons_back').click();
         cy.url().should('not.include', '#/ecommerce/step/tax');
-        cy.go('back');
+        cy.go('back').wait(2500);
+        cy.wait('@getSettings');
     });
 
     it('Goes to next step on Continue Setup', () => {
