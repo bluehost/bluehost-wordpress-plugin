@@ -54,7 +54,7 @@ describe('Get Started Welcome Page', function () {
     });
 
     it('Check for brandname in sub heading', () => {
-        cy.exec('wp option set mm_brand BlueHost');
+        cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
         cy.reload();
         cy.get('.nfd-step-card-subheading').should('contain', 'Bluehost');
     });
