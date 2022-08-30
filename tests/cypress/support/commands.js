@@ -30,7 +30,11 @@ import '@testing-library/cypress/add-commands';
 
 const customerData = require('../fixtures/customerData.json');
 
-Cypress.Commands.add('login', (username, password) => {
+Cypress.Commands.add('login', () => {
+
+	const username = Cypress.env('wpUsername');
+	const password = Cypress.env('wpPassword');
+
 	cy
 		.getCookies()
 		.then(cookies => {

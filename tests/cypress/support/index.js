@@ -21,5 +21,8 @@ Cypress.Cookies.defaults({
 });
 
 before(() => {
-	cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
+
+	// Login to WordPress
+	cy.login();
+
 });
