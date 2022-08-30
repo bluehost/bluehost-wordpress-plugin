@@ -1,3 +1,8 @@
+# File Types
+*.log
+*.sql
+*.zip
+
 # Composer
 /vendor
 
@@ -13,6 +18,7 @@ cypress.env.json
 /tests/cypress/downloads
 /tests/cypress/screenshots
 /tests/cypress/videos
+!/tests/cypress/fixures/db.sql
 
 # Built-app files
 /.docs
@@ -20,8 +26,3 @@ cypress.env.json
 /build/*
 /bin/sizes-manifest.json
 /bluehost-wordpress-plugin
-
-# File Types
-*.log
-*.sql
-*.zip
