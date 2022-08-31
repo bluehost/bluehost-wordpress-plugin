@@ -123,10 +123,18 @@ jobs:
         run: npx cypress run
 
       - name: Run Cypress Tests
+        uses: replayio/action-cypress@v0.2.3
         if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
-        env:
-          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-        run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag php-${{ matrix.phpVersion }},wp-${{ matrix.wpVersion }}
+        with:
+          api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
+          browser: 'Replay Chromium'
+          command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag php-${{ matrix.phpVersion }},wp-${{ matrix.wpVersion }}
+          upload-all: false
+
+      - name: List Replays
+        if: always()
+        shell: bash
+        run: npx @replayio/replay ls --json
 
       - name: Store screenshots of test failures
         if: ${{ failure() }}
