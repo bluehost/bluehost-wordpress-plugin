@@ -119,6 +119,7 @@ jobs:
           api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
           browser: 'Replay Chromium'
           command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+          upload-all: false
 
       - name: List Replays
         if: always()
