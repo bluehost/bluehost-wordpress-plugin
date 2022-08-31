@@ -97,7 +97,7 @@
 
   .marketplace-item .components-card__media {
     position: relative;
-    background-color: #DDDBDD;
+    background-color: rgba(160, 170, 192, .35);
 
     &::after {
       position: absolute;
@@ -155,6 +155,36 @@
     flex-grow: 1;
     padding-top: 4px;
     padding-bottom: 22px;
+  }
+
+  .marketplace-item .components-card__footer {
+    justify-content: space-between;
+
+    .is-secondary svg {
+      display: none;
+    }
+
+    .is-secondary[target=_blank] {
+      box-shadow: unset;
+      outline: unset;
+      margin-right: -10px;
+
+      &:hover,
+      &:active,
+      &:focus {
+        box-shadow: unset;
+        outline: unset;
+        background-color: transparent;
+      }
+
+      svg {
+        display: inline;
+        width: 14px;
+        height: auto;
+        margin-top: 2px;
+        margin-left: 4px;
+      }
+    }
   }
 
 }

@@ -13,6 +13,7 @@
     "author": "David Ryan <dryanpress@chat.wordpress.org>",
     "license": "GPL-2.0-or-later",
     "dependencies": {
+        "@newfold-labs/wp-module-ecommerce": "github:newfold-labs/wp-module-ecommerce#v0.4.7",
         "@wordpress/a11y": "^2.5.1",
         "@wordpress/api-fetch": "^3.6.2",
         "@wordpress/components": "^8.3.2",
@@ -61,8 +62,10 @@
         "license-webpack-plugin": "^2.3.17",
         "lint-staged": "^10.5.4",
         "mustache": "^4.2.0",
+        "node-fetch": "^2.6.7",
         "node-wp-i18n": "^1.2.5",
         "php-parser": "^3.0.3",
+        "semver": "^6.3.0",
         "size-plugin": "^3.0.0",
         "url-loader": "^4.1.1",
         "webpack-assets-manifest": "^4.0.1",
@@ -82,6 +85,7 @@
         "lint:js:fix": "wp-scripts lint-js ./src --fix",
         "lint:pkg-json": "wp-scripts lint-pkg-json",
         "lint:yml": "yamllint --ignore=node_modules/** --ignore=vendor/** **/*.yml",
+        "log:watch": "wp-env run wordpress 'tail -f /var/www/html/wp-content/debug.log'",
         "i18n": "wpi18n addtextdomain && composer run i18n",
         "start": "cross-env NODE_ENV=develop wp-scripts start --config ./bin/webpack.develop.js",
         "start:analyzer": "npm run start --webpack-bundle-analyzer",
@@ -92,7 +96,9 @@
         "create:zip": "cd ./bluehost-wordpress-plugin && zip -r -9 ../bluehost-wordpress-plugin.zip . && ls -lh ../bluehost-wordpress-plugin.zip",
         "prebuild:cleanup": "rm -rf ./bluehost-wordpress-plugin ./bluehost-wordpress-plugin.zip ./vendor",
         "simulate-runner-build": "npm run prebuild:cleanup && npm i && npm run php-deps && npm run build && npm run create:dist && npm run create:zip",
-        "srb": "npm run simulate-runner-build"
+        "srb": "npm run simulate-runner-build",
+        "set-wp-version": "node ./set-latest-wp-version.js",
+        "postprepare": "npm run set-wp-version"
     },
     "lint-staged": {
         "**/*.yml": [
