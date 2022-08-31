@@ -41,7 +41,7 @@ describe('Settings Page', function () {
 		validateSelect(label, values) {
 			cy.server();
 			cy.route('POST', '/index.php?rest_route=/bluehost/v1/settings*').as('update');
-			cy.findAllByLabelText(label).as('select');
+			cy.get(`select[aria-label="${label}"]`).as('select');
 			cy.get('@select').scrollIntoView().should('be.visible');
 			values.forEach((value) => {
 				cy.get('@select').select(String(value));
