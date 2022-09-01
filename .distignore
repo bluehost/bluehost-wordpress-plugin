@@ -10,6 +10,8 @@ tests
 .distignore
 .gitattributes
 .gitignore
+cypress.config.js
+set-latest-wp-version.js
 
 # File Types
 *.json

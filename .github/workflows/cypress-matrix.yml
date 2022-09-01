@@ -1,26 +1,35 @@
-name: Build Plugin
+name: Cypress Test Matrix
+
 on:
-  push:
-    branches:
-      - main
-      - master
-      - develop
-      - release/*
-      - feature/*
-      - add/*
-      - update/*
-      - fix/*
-      - try/*
-    workflow_dispatch:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: On Push to Master
+  test:
+    name: Run Cypress Test Matrix
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        phpVersion:
+          - '7.1'
+          - '7.2'
+          - '7.3'
+          - '7.4'
+          - '8.0'
+          - '8.1'
+        wpVersion:
+          - '5.8'
+          - '5.9'
+          - '6.0'
+
     steps:
 
       - name: Checkout
@@ -91,14 +100,42 @@ jobs:
       - name: Build JavaScript
         run: npm run build
 
-      - name: Prepare files
-        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}
+      - name: Create Distribution Copy
+        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
-      - name: List Files
+      - name: List Distribution Files
         working-directory: ${{ steps.workflow.outputs.DIST }}
         run: find .
 
-      - uses: actions/upload-artifact@v1
+      - name: Configure WordPress
+        run: |
+          echo '{"core": "WordPress/WordPress#tags/${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}","plugins": [ "${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}" ] }' > .wp-env.override.json
+
+      - name: Configure Cypress
+        run: |
+          echo '{"wpVersion": "${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}"}' > cypress.env.json
+
+      - name: Install WordPress
+        run: npx wp-env start --debug
+
+      - name: Run Cypress Tests
+        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' }}
+        run: npx cypress run
+
+      - name: Run Cypress Tests
+        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
+        env:
+          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+        run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag php-${{ matrix.phpVersion }},wp-${{ matrix.wpVersion }}
+
+      - name: Store screenshots of test failures
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
         with:
-          name: ${{ steps.workflow.outputs.PACKAGE }}
-          path: ${{ steps.workflow.outputs.DIST }}
+          name: screenshots
+          path: ./tests/cypress/screenshots
+
+      - name: Output debug.log file contents
+        if: ${{ always() }}
+        continue-on-error: true
+        run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"

@@ -17,10 +17,12 @@ import 'cypress-axe';
 import './commands';
 
 Cypress.Cookies.defaults({
-	preserve: /wp|wordpress/, // Cypress 5.0+
-	//whitelist: /wp|wordpress/, // Cypress <5.0
+	preserve: /wp|wordpress/,
 });
 
 before(() => {
-	cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
+
+	// Login to WordPress
+	cy.login();
+
 });
