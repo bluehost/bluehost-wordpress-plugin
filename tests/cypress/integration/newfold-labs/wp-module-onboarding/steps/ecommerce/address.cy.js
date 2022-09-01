@@ -2,12 +2,13 @@
 
 describe('Step Ecommerce Address/Store Details', function () {
     before(() => {
+        cy.intercept('GET', '**/wp-json/wp/v2/settings*').as('getSettings');
         cy.setCustomerData();
         cy.visit(
             'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
-        );
+        ).wait(2500);
+        cy.wait('@getSettings');
         // cy.injectAxe();
-        cy.wait(2000);
     });
 
     // it('Is Accessible', () => {
@@ -43,16 +44,20 @@ describe('Step Ecommerce Address/Store Details', function () {
     it('Checks if all the inputs are enabled', () => {
         cy.get('input[name="woocommerce_store_address"]')
             .should('be.visible')
-            .and('not.be.disabled');
+            .and('not.be.disabled')
+            .type('Address Line 1');
         cy.get('input[name="woocommerce_store_address_2"]')
             .should('be.visible')
-            .and('not.be.disabled');
+            .and('not.be.disabled')
+            .type('Address Line 2');
         cy.get('input[name="woocommerce_store_city"]')
             .should('be.visible')
-            .and('not.be.disabled');
+            .and('not.be.disabled')
+            .type('Bangalore');
         cy.get('input[name="woocommerce_store_postcode"]')
             .should('be.visible')
-            .and('not.be.disabled');
+            .and('not.be.disabled')
+            .type('560001');
         cy.get('select[name="state"]')
             .should('be.visible')
             .and('not.be.disabled');
@@ -91,13 +96,15 @@ describe('Step Ecommerce Address/Store Details', function () {
     it('Goes to the next step on clicking navigation Next', () => {
         cy.get('.navigation-buttons_next').click();
         cy.url().should('not.include', '#/ecommerce/step/address');
-        cy.go('back');
+        cy.go('back').wait(2000);
     });
 
     it('Goes to the previous step on clicking navigation Back', () => {
+        cy.intercept('get', '**/wp-json/wp/v2/settings*').as('getSettings');
         cy.get('.navigation-buttons_back').click();
         cy.url().should('not.include', '#/ecommerce/step/address');
-        cy.go('back');
+        cy.go('back').wait(2500);
+        cy.wait('@getSettings');
     });
 
     it('Goes to next step on Continue Setup', () => {
