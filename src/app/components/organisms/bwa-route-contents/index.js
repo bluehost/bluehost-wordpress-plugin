@@ -58,6 +58,7 @@ const BWARouteContents = ({...props}) => {
 				<Routes>
 					<Route path="/home" end element={ <HomeRoute /> } />
 					<Route path="/home/page" end element={ <HomeRoute /> } />
+					<Route path="/home/store" end element={ <EcommerceRoute /> } />
 					<Route path="/home/store/:section" end element={ <EcommerceRoute /> } />
 					<Route path="/home/onboarding" end element={ <OnboardingRoute /> } />
 					<Route path="/marketplace" element={ <MarketplaceRoute /> } />
