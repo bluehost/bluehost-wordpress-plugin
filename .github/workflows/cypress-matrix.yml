@@ -112,7 +112,7 @@ jobs:
         run: npx cypress run
 
       - name: Run Cypress Tests
-        uses: replayio/action-cypress@v0.2.18
+        uses: replayio/action-cypress@v0.2.4
         if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
         with:
           api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
