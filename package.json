@@ -12,6 +12,10 @@
     "homepage": "https://github.com/bluehost/bluehost-wordpress-plugin#readme",
     "author": "David Ryan <dryanpress@chat.wordpress.org>",
     "license": "GPL-2.0-or-later",
+    "engines": {
+        "node": ">=16",
+        "npm": ">=7"
+    },
     "dependencies": {
         "@newfold-labs/wp-module-ecommerce": "github:newfold-labs/wp-module-ecommerce#v0.4.7",
         "@wordpress/a11y": "^2.5.1",
