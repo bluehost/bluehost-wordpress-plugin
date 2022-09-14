@@ -2,6 +2,8 @@
 
 namespace Bluehost;
 
+use WP_Recovery_Mode_Link_Service;
+
 /**
  * Class LoginRedirect
  *
@@ -65,6 +67,14 @@ class LoginRedirect {
 	public static function on_login_redirect( $redirect_to, $requested_redirect_to, $user ) {
 
 		if ( self::is_user( $user ) ) {
+			// Don't alter redirects when attempting to enter recovery mode.
+			$action = isset( $_REQUEST['action'] ) ? $_REQUEST['action'] : 'login';
+			$recovery_mode_actions = array( WP_Recovery_Mode_Link_Service::LOGIN_ACTION_ENTER, WP_Recovery_Mode_Link_Service::LOGIN_ACTION_ENTERED );
+
+			if ( in_array( $action, $recovery_mode_actions, true ) {
+				return $redirect_to;
+			}
+
 			// If no redirect is defined and the user is an administrator, redirect to the Bluehost dashboard.
 			if ( empty( $requested_redirect_to ) && self::is_administrator( $user ) ) {
 				return self::get_bluehost_dashboard_url();
