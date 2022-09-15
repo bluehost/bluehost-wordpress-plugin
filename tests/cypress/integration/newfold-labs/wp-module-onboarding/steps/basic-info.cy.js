@@ -129,7 +129,7 @@ describe('Basic Info Page', function () {
         if (cy.get('.navigation-buttons_finish').should('exist')) {
             cy.get('.navigation-buttons_finish').click();
             
-            var correctURL = Cypress.config().baseUrl + '/wp-admin/index.php?page=bluehost#/store/general';
+            var correctURL = Cypress.config().baseUrl + '/wp-admin/index.php?page=bluehost#/store';
             cy.url({ timeout: 8000 }).should('eq', correctURL);
         }
     });
