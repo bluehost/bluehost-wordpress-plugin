@@ -10,5 +10,5 @@ if ( get_option( 'bh_cdata_retry_count' ) ) {
 	delete_option( 'bh_cdata_retry_count' );
 }
 if ( get_transient( 'bh_cdata_pause' ) ) {
-    delete_transient( 'bh_cdata_pause' );
+	delete_transient( 'bh_cdata_pause' );
 }
