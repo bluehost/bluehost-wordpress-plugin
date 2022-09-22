@@ -155,7 +155,7 @@ class AccessToken {
 
 	/**
 	 * Check if we should refresh the token
-	 * 
+	 *
 	 * @return bool
 	 */
 	public static function should_refresh_token() {
