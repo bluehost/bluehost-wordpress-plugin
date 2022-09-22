@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
-            "version": "1.4.5",
+            "version": "1.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehost/bluehost-wp-customer-data.git",
-                "reference": "4ae41c9a37b890e2edb4730916694c8d0fb60dc6"
+                "reference": "a634c3f6b0e63a8664bb05f95700bd573f60bb8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/4ae41c9a37b890e2edb4730916694c8d0fb60dc6",
-                "reference": "4ae41c9a37b890e2edb4730916694c8d0fb60dc6",
+                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/a634c3f6b0e63a8664bb05f95700bd573f60bb8e",
+                "reference": "a634c3f6b0e63a8664bb05f95700bd573f60bb8e",
                 "shasum": ""
             },
             "require": {
@@ -54,10 +54,10 @@
             ],
             "description": "Bluehost Specific Customer Data Module Integrations",
             "support": {
-                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.4.5",
+                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.4.6",
                 "issues": "https://github.com/bluehost/bluehost-wp-customer-data/issues"
             },
-            "time": "2022-09-22T18:42:57+00:00"
+            "time": "2022-09-22T20:31:31+00:00"
         },
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
