@@ -166,11 +166,8 @@ class AccessToken {
 		}
 
 		// require either a user with permissions or a cron event
-		if ( current_user_can( 'manage_options' ) || wp_doing_cron() ) {
-			return true;
-		}
+		return ( current_user_can( 'manage_options' ) || wp_doing_cron() );
 
-		return false;
 	}
 
 }
