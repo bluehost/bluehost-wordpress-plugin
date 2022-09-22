@@ -145,15 +145,18 @@ class AccessToken {
 	 * Check for proper conditions before refreshing the token.
 	 */
 	public static function maybe_refresh_token() {
-		
+
 		// if no token, and should refresh token, go ahead and refresh the token
 		if ( ! self::has_token() && self::should_refresh_token() ) {
 			self::refresh_token();
 		}
+
 	}
 
 	/**
 	 * Check if we should refresh the token
+	 * 
+	 * @return bool
 	 */
 	public static function should_refresh_token() {
 
@@ -161,7 +164,7 @@ class AccessToken {
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			return false;
 		}
-		
+
 		// require either a user with permissions or a cron event
 		if ( current_user_can( 'manage_options' ) || wp_doing_cron() ) {
 			return true;
