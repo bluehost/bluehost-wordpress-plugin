@@ -114,6 +114,8 @@ jobs:
       - name: Run Cypress Tests
         uses: replayio/action-cypress@v0.2.4
         if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
+        env:
+          RECORD_REPLAY_METADATA_TEST_RUN_TITLE: "php-${{ matrix.phpVersion }}, wp-${{ matrix.wpVersion }}"
         with:
           api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
           browser: 'Replay Chromium'
