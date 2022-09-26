@@ -58,6 +58,7 @@
         "wp-forge/collection": "^1.0",
         "wp-forge/helpers": "^1.0",
         "wp-forge/wp-update-handler": "^1.0",
+        "wp-forge/wp-upgrade-handler": "^1.0",
         "wpscholar/url": "^1.2"
     },
     "require-dev": {
