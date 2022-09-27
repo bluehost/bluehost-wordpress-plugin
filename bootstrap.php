@@ -38,9 +38,9 @@ if ( is_admin() ) {
 
 	// Handle plugin upgrades
 	$upgrade_handler = new UpgradeHandler(
-		BLUEHOST_PLUGIN_DIR . '/inc/upgrades',			// Directory where upgrade routines live
-		get_option( 'bluehost_plugin_version', '1.0' ), // Old plugin version (from database)
-		BLUEHOST_PLUGIN_VERSION							// New plugin version (from code)
+		BLUEHOST_PLUGIN_DIR . '/inc/upgrades',  // Directory where upgrade routines live
+		get_option( 'bluehost_plugin_version', '1.0' ),   // Old plugin version (from database)
+		BLUEHOST_PLUGIN_VERSION               // New plugin version (from code)
 	);
 
 	// Returns true if the old version doesn't match the new version
