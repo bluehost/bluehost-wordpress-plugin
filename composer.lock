@@ -60,45 +60,6 @@
             "time": "2022-09-22T20:31:31+00:00"
         },
         {
-            "name": "bluehost/endurance-wp-module-loader",
-            "version": "1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bluehost/endurance-wp-module-loader.git",
-                "reference": "e9d5beedb6fbbfcce02759366e3727da858c85f4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-loader/zipball/e9d5beedb6fbbfcce02759366e3727da858c85f4",
-                "reference": "e9d5beedb6fbbfcce02759366e3727da858c85f4",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "includes/"
-                ],
-                "files": [
-                    "module-loader.php"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Micah Wood",
-                    "email": "micah@wpscholar.com"
-                }
-            ],
-            "description": "An Endurance module that handles registration and management of other modules.",
-            "support": {
-                "source": "https://github.com/bluehost/endurance-wp-module-loader/tree/1.1.1",
-                "issues": "https://github.com/bluehost/endurance-wp-module-loader/issues"
-            },
-            "time": "2022-08-26T17:44:41+00:00"
-        },
-        {
             "name": "doctrine/inflector",
             "version": "v1.2.0",
             "source": {
