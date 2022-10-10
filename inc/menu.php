@@ -37,25 +37,6 @@ function bluehost_add_tool_bar_items( WP_Admin_Bar $admin_bar ) {
 add_action( 'admin_bar_menu', 'bluehost_add_tool_bar_items', 100 );
 
 /**
- * Add Marketplace premium themes link to WP themes.
- */
-function bluehost_add_theme_premium_link() {
-	?>
-	<script type="text/javascript">
-	window.addEventListener('DOMContentLoaded', () => {
-		const themesFilterContainer = document.querySelector('.wp-filter .filter-links');
-		const bluehostPremiumThemesLink = document.createElement('li');
-		
-		bluehostPremiumThemesLink.innerHTML = '<a style="text-decoration: none;" onclick="location.href=\'admin.php?page=bluehost#/marketplace/themes\'"><?php esc_html_e( 'Premium', 'bluehost-wordpress-plugin' ); ?></a>';
-		themesFilterContainer.appendChild(bluehostPremiumThemesLink);
-	});
-	</script>
-	<?php
-}
-
-add_action( 'admin_head-theme-install.php', 'bluehost_add_theme_premium_link' );
-
-/**
  * Add Marketplace premium plugins link to WP plugins.
  */
 function bluehost_add_plugin_premium_link() {
