@@ -45,7 +45,7 @@ function bluehost_add_plugin_premium_link() {
 	window.addEventListener('DOMContentLoaded', () => {
 		const pluginsFilterContainer = document.querySelector('.wp-filter .filter-links');
 		const bluehostPremiumPluginsLink = document.createElement('li');
-		
+
 		bluehostPremiumPluginsLink.innerHTML = '<a style="text-decoration: none;" onclick="location.href=\'admin.php?page=bluehost#/marketplace\'"><?php esc_html_e( 'Premium', 'bluehost-wordpress-plugin' ); ?></a>';
 		pluginsFilterContainer.appendChild(bluehostPremiumPluginsLink);
 	});
