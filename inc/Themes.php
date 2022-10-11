@@ -18,7 +18,7 @@ class Themes {
 	 * @var array
 	 */
 	public static $priority_themes = array(
-		'yith-wonder'
+		'yith-wonder',
 	);
 
 	/**
@@ -95,7 +95,8 @@ class Themes {
 
 		if ( 'query_themes' === $action && 'popular' === $args->browse ) {
 
-			$themes_to_show_first = [];
+			$themes_to_show_first = array();
+
 			foreach ( $res->themes as $key => $theme ) {
 				if ( in_array( $theme->slug, self::$priority_themes, true ) ) {
 					$themes_to_show_first[] = $theme;
@@ -105,7 +106,7 @@ class Themes {
 			}
 
 			$sorted_themes_res = array_merge( $themes_to_show_first, $res->themes );
-			$res->themes = $sorted_themes_res;
+			$res->themes       = $sorted_themes_res;
 		}
 
 		return $res;
