@@ -3,6 +3,7 @@
 use Bluehost\AdminBar;
 use Bluehost\BuildAssets;
 use Bluehost\LoginRedirect;
+use Bluehost\Themes;
 use WP_Forge\WPUpdateHandler\PluginUpdater;
 use WP_Forge\UpgradeHandler\UpgradeHandler;
 
@@ -55,6 +56,7 @@ if ( is_admin() ) {
 AdminBar::init();
 BuildAssets::init();
 LoginRedirect::init();
+Themes::init();
 
 // Disable Yoast SEO onboarding redirect
 add_action(
