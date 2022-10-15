@@ -74,7 +74,6 @@ require __DIR__ . '/inc/admin.php';
 require __DIR__ . '/inc/admin-page-notifications-blocker.php';
 require __DIR__ . '/inc/base.php';
 require __DIR__ . '/inc/cli-init.php';
-require __DIR__ . '/inc/coming-soon.php';
 require __DIR__ . '/inc/jetpack.php';
 require __DIR__ . '/inc/menu.php';
 require __DIR__ . '/inc/Notifications/bootstrap.php';
