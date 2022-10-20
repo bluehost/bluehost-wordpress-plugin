@@ -4,7 +4,7 @@ namespace Bluehost\Notifications;
 
 use NewfoldLabs\WP\Module\Data\HiiveConnection;
 use WP_Forge\Helpers\Arr;
-use wpscholar\Collection;
+use WP_Forge\Collection\Collection;
 
 /**
  * Class NotificationsRepository
