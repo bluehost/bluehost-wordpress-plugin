@@ -83,16 +83,17 @@ $bh_module_container->set(
 
 $wordpress_hosting_page = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://www.bluehost.in/wordpress' : 'https://bluehost.com/wordpress';
 $my_panel               = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://my.bluehost.in/' : 'https://my.bluehost.com/';
-				
+
 // Set a value - scoped to comingsoon index
 $bh_module_container->set(
-	'comingsoon', 
+	'comingsoon',
 	array(
 		'option_name'         => 'mm_coming_soon',
 		'admin_screen_id'     => 'app',
 		'admin_app_url'       => admin_url( 'admin.php?page=bluehost#/home' ),
-		'template_h1'         => __('A New WordPress Site!', 'bluehost-wordpress-plugin'),
+		'template_h1'         => __( 'A New WordPress Site!', 'bluehost-wordpress-plugin' ),
 		'template_h2'         => __( 'Coming Soon!', 'bluehost-wordpress-plugin' ),
+		'template_login_btn'  => true,
 		'template_footer_t'   => sprintf(
 			/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag */
 			esc_html__( 'A %1$sBluehost%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBluehost%6$s.', 'bluehost-wordpress-plugin' ) . '&nbsp;',
