@@ -9,31 +9,31 @@
       },
       {
         "name": "themes",
-        "priority": null,
+        "priority": 0,
         "products_count": 12,
         "title": "Themes"
       },
       {
         "name": "services",
-        "priority": null,
+        "priority": 10,
         "products_count": 11,
         "title": "Services"
       },
       {
         "name": "ecommerce",
-        "priority": null,
+        "priority": 9,
         "products_count": 9,
         "title": "eCommerce"
       },
       {
         "name": "security",
-        "priority": null,
+        "priority": 3,
         "products_count": 4,
         "title": "Security"
       },
       {
         "name": "seo",
-        "priority": null,
+        "priority": 5,
         "products_count": 5,
         "title": "SEO"
       }
