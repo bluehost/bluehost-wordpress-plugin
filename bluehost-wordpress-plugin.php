@@ -88,8 +88,6 @@ $my_panel               = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'h
 $bh_module_container->set(
 	'comingsoon',
 	array(
-		'option_name'         => 'mm_coming_soon',
-		'admin_screen_id'     => 'app',
 		'admin_app_url'       => admin_url( 'admin.php?page=bluehost#/home' ),
 		'template_h1'         => __( 'A New WordPress Site!', 'bluehost-wordpress-plugin' ),
 		'template_h2'         => __( 'Coming Soon!', 'bluehost-wordpress-plugin' ),
