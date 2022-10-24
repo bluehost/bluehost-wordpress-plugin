@@ -8,24 +8,10 @@ describe('Coming Soon Page', function () {
 	});
 
 	it('Coming Soon Toggle Works', () => {
-
-		cy.get('.coming-soon-toggle input[type="checkbox"]').uncheck();
-		cy.get('.coming-soon-toggle input[type="checkbox"]').check();
-		cy.wait(100);
-		cy
-			.get('.edit-site-notices .components-snackbar__content')
-			.contains('div', 'Coming soon activated')
-			.should('be.visible');
-
-		cy
-			.get('.coming-soon-protip .accordion-summary')
-			.contains('p', 'Pro Tip')
-			.should('be.visible');
-		cy.get('.coming-soon-protip').should('not.have.attr', 'open');
-		cy.get('.coming-soon-protip summary').click();
-		cy.wait(100);
-		cy.get('.coming-soon-protip').should('have.attr', 'open');
-		cy.get('.coming-soon-protip .accordion-content').should('be.visible');
+		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').uncheck();
+		cy.wait(1000);
+		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').check();
+		cy.wait(1000);
 	});
 
 	it('Has Coming Soon in Admin Toolbar', () => {
@@ -54,8 +40,9 @@ describe('Coming Soon Page', function () {
 	});
 
 	it('Is Accessible', () => {
+		cy.injectAxe()
 		cy.wait(500);
-		cy.checkA11y();
+		cy.checkA11y('body');
 	});
 
 	it('Has admin login button', () => {
