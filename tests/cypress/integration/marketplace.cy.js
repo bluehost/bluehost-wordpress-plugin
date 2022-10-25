@@ -7,7 +7,7 @@ describe('Marketplace Page', function () {
 		cy.server();
 		cy.intercept({
 			method: 'GET',
-			url: '**newfold-marketplace/v1/marketplace**'
+			url: '**newfold-marketplace**'
 		}, {
 			fixture: 'products'
 		}).as('marketplace');
