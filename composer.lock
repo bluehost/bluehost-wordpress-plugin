@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f01c96098d6c5d83be885d917691afa7",
+    "content-hash": "8683fa4cf61aa3ca85fdd1020e12d6ad",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
@@ -402,16 +402,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "953a58ba55d9d9da73fd5403786282af2e3c897e"
+                "reference": "b882219c78ef1f8e42d730e0bbea609a3622ba02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/953a58ba55d9d9da73fd5403786282af2e3c897e",
-                "reference": "953a58ba55d9d9da73fd5403786282af2e3c897e",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/b882219c78ef1f8e42d730e0bbea609a3622ba02",
+                "reference": "b882219c78ef1f8e42d730e0bbea609a3622ba02",
                 "shasum": ""
             },
             "require": {
@@ -441,10 +441,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.4.1",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.4.2",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2022-10-21T18:55:17+00:00"
+            "time": "2022-10-25T20:50:27+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
