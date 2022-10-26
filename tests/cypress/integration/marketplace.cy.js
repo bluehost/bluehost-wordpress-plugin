@@ -9,7 +9,7 @@ describe('Marketplace Page', function () {
 			method: 'GET',
 			url: '**newfold-marketplace**'
 		}, {
-			fixture: 'products.json'
+			fixture: 'products'
 		}).as('marketplace');
 		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace');
 		cy.injectAxe();
@@ -24,23 +24,23 @@ describe('Marketplace Page', function () {
 		cy.checkA11y('.bwa-route-contents');
 	});
 
-	it('Product grid has 2 items', () => {
-		cy.get('.marketplace-item').should('have.length', 2);
+	it('Product grid has 6 items', () => {
+		cy.get('.marketplace-item').should('have.length', 6);
 	});
 
 	it('First product card renders correctly', () => {
-		cy.get('#marketplace-item-81288755-c7cf-4408-bc2f-8ac67020ba01').as('card');
+		cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738').as('card');
 
 		cy.get('@card')
-			.findByRole('link', {name: 'Add to my Account'})
+			.findByRole('link', {name: 'Buy Now'})
 			.scrollIntoView()
 			.should('be.visible')
 			.should('have.attr', 'href')
-			.and('include', 'marketplace/product/i/bluesky');
+			.and('include', 'marketplace/product/i/yoast');
 
 		cy.get('@card').first().within(() => {
 			cy.get('.components-card__header')
-				.contains('Blue')
+				.contains('Yoast')
 				.should('be.visible');
 			cy.get('.components-card__media').should('be.visible');
 			cy.get('.components-card__header .price')
@@ -50,22 +50,22 @@ describe('Marketplace Page', function () {
 	});
 
 	it('Second product card render correctly', () => {
-		cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738').as('card');
+		cy.get('#marketplace-item-8a7f19b7-21f2-4be2-a764-33b4d4760bb9').as('card');
 
 		cy.get('@card')
 			.findByRole('link', {name: 'Buy Now'})
 			.scrollIntoView()
 			.should('be.visible')
 			.should('have.attr', 'href')
-			.and('include', 'yoa.st');
+			.and('include', 'marketplace/product/i/jetpack');
 
 		cy.get('@card').first().within(() => {
 			cy.get('.components-card__header')
-				.contains('Yoast')
+				.contains('Jetpack')
 				.should('be.visible');
 			cy.get('.components-card__media').should('be.visible');
 			cy.get('.components-card__header .price')
-				.contains('$99.00')
+				.contains('$4.99')
 				.should('be.visible');
 		});
 	});
@@ -95,7 +95,7 @@ describe('Marketplace Page', function () {
 
 	it('Category Tab Filters properly', () => {
 		cy.findByRole('tab', {name: 'Services'}).click();
-		cy.get('.marketplace-item').should('have.length', 6);
+		cy.get('.marketplace-item').should('have.length', 11);
 
 		cy.get('#marketplace-item-0fd107dc-cfcc-4380-86ef-89a9ce01e443 h2')
 			.scrollIntoView()
@@ -103,7 +103,7 @@ describe('Marketplace Page', function () {
 			.should('have.text', 'Full Service');
 
 		cy.findByRole('tab', {name: 'SEO'}).click();
-		cy.get('.marketplace-item').should('have.length', 1);
+		cy.get('.marketplace-item').should('have.length', 5);
 
 		cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738 h2')
 			.scrollIntoView()
