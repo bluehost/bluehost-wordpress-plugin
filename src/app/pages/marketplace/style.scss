@@ -129,10 +129,11 @@
   }
 
   .marketplace-item .components-card__header {
-    position: relative;
+    align-items: baseline;
     border-bottom: none;
     flex-wrap: wrap;
     gap: .7rem;
+    position: relative;
 
     h2,
     h3 {
@@ -140,15 +141,30 @@
       min-width: min-content;
     }
 
+    .price-wrap {
+      margin-left: 0;
+      min-width: max-content;
+      text-align: center;
+    }
+
     .price {
       background-color: rgb(26, 71, 132, .13);
       border-radius: 1rem;
       color: var(--bh-dark-blue);
+      display: block;
       font-size: 1rem;
-      margin-left: 0;
-      padding: 0.25rem 0.75rem;
-      min-width: max-content;
+      padding: 0.25em 0.75em;
     }
+
+    .full-price {
+      background-color: rgb(26, 71, 132, .06);
+      color: var(--bh-gray);
+      font-size: 0.8rem;
+      margin-bottom: .5rem;
+      opacity: .9;
+      text-decoration: line-through;
+    }
+
   }
 
   .marketplace-item .components-card__body {
