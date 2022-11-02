@@ -91,14 +91,18 @@ const AppBody = ( props ) => {
 			</SkipLink>
 			<BWACommonHeader />
 			<NewfoldNotifications
-				apiFetch={apiFetch}
-				classnames={classnames} 
-				context='bluehost-plugin'
-				filter={filter}
-				page={hashedPath}
-				resturl={window.nfdRestRoot}
-				useState={useState}
-				useEffect={useEffect}
+				constants={{
+					context: 'bluehost-plugin',
+					page: hashedPath,
+					resturl: window.nfdRestRoot
+				}}
+				methods={{
+					apiFetch,
+					classnames,
+					filter,
+					useState,
+					useEffect
+				}}
 			/>
 			<BWARouteContents />
 			<BWACommonFooter />
