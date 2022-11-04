@@ -92,3 +92,18 @@ function mojo_clm_site_launched( $new_option, $old_option ) {
 }
 
 add_filter( 'pre_update_option_mm_coming_soon', 'mojo_clm_site_launched', 10, 2 );
+
+/**
+ * Update old value when updating NFD one
+ *
+ * @param mixed $new_option New option value.
+ * @param mixed $old_option Previous option value.
+ *
+ * @return mixed
+ */
+function nfd_site_launched( $new_option, $old_option ) {
+	update_option( 'mm_coming_soon', $new_option );
+	return $new_option;
+}
+
+add_filter( 'pre_update_option_nfd_coming_soon', 'nfd_site_launched', 10, 2 );
