@@ -157,12 +157,11 @@
     }
 
     .full-price {
-      background-color: rgb(26, 71, 132, .06);
-      color: var(--bh-gray);
-      font-size: 0.8rem;
-      margin-bottom: .5rem;
+      margin-bottom: 6px;
       opacity: .9;
+      filter: grayscale(.65);
       text-decoration: line-through;
+      font-size: .9rem;
     }
 
   }
