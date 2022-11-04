@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b52aa920c925bd51c860df5259f6169b",
+    "content-hash": "4379138523a449320fe785e61329033a",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
@@ -496,6 +496,51 @@
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
             "time": "2022-11-03T20:32:47+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-notifications",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-notifications.git",
+                "reference": "4efd73a84332635aed25d85e08d11a98d64db1d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/4efd73a84332635aed25d85e08d11a98d64db1d5",
+                "reference": "4efd73a84332635aed25d85e08d11a98d64db1d5",
+                "shasum": ""
+            },
+            "require": {
+                "newfold-labs/wp-module-data": "^2.0.0",
+                "wp-forge/collection": "^1.0",
+                "wp-forge/helpers": "^1.1.0",
+                "wpscholar/url": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewFoldLabs\\WP\\Module\\Notifications\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "A module for managing Newfold in-site notifications.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.1.0",
+                "issues": "https://github.com/newfold-labs/wp-module-notifications/issues"
+            },
+            "time": "2022-11-02T21:16:35+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
