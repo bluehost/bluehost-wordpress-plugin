@@ -20,17 +20,6 @@ function bluehost_add_tool_bar_items( WP_Admin_Bar $admin_bar ) {
 			);
 			$admin_bar->add_menu( $args );
 		}
-		if ( 'true' === get_option( 'mm_coming_soon', 'false' ) ) {
-			$cs_args = array(
-				'id'    => 'mojo-home',
-				'href'  => admin_url( 'admin.php?page=bluehost#/home' ),
-				'title' => '<div style="background-color: #F89C24; padding: 0 10px;color:#fff;">' . esc_html__( 'Coming Soon Active', 'bluehost-wordpress-plugin' ) . '</div>',
-				'meta'  => array(
-					'title' => esc_attr__( 'Launch Your Site', 'bluehost-wordpress-plugin' ),
-				),
-			);
-			$admin_bar->add_menu( $cs_args );
-		}
 	}
 }
 
