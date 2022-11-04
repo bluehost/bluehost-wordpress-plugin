@@ -9,16 +9,20 @@ describe('Coming Soon Page', function () {
 
 	it('Coming Soon Toggle Works', () => {
 		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').uncheck();
-		cy.wait(1000);
+		cy.wait(2000);
+		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').should('not.be.checked');
+
 		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').check();
-		cy.wait(1000);
+		cy.wait(2000);
+		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').should('be.checked');
+		
 	});
 
 	it('Has Coming Soon in Admin Toolbar', () => {
-		cy.reload();
+		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
 		cy
-			.get('#wp-toolbar #wp-admin-bar-bluehost-coming_soon')
-			.contains('div', 'Coming Soon Active')
+			.get('#wp-toolbar')
+			.contains('#nfd-site-status-text', 'Coming Soon')
 			.should('be.visible');
 	});
 
