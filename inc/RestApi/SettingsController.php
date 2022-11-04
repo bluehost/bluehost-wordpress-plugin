@@ -68,6 +68,7 @@ class SettingsController extends \WP_REST_Controller {
 				switch ( $setting ) {
 					case 'comingSoon':
 						$new_value = ( $new_value ) ? 'true' : 'false';
+						update_option( 'nfd_coming_soon', $new_value );
 						update_option( 'mm_coming_soon', $new_value );
 						break;
 					case 'autoUpdatesMajorCore':
