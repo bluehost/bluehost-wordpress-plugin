@@ -25,16 +25,120 @@ class Themes {
 	 * Initialize themes.php and theme-install.php related customizations.
 	 */
 	public static function init() {
-		add_action( 'admin_head-theme-install.php', array( __CLASS__, 'append_premuim_themes_tab' ) );
+		add_action( 'admin_menu', array( __CLASS__, 'add_premuim_themes_menu_link' ) );
+		add_action( 'admin_head-themes.php', array( __CLASS__, 'add_premuim_themes_button' ) );
+		add_action( 'admin_head-themes.php', array( __CLASS__, 'add_upload_theme_button' ) );
+		add_action( 'admin_head-theme-install.php', array( __CLASS__, 'upload_theme_page' ) );
+		add_action( 'admin_head-theme-install.php', array( __CLASS__, 'add_premuim_themes_tab' ) );
 		add_filter( 'themes_api_args', array( __CLASS__, 'query_block_themes_args' ), 10, 2 );
 		add_filter( 'themes_api_result', array( __CLASS__, 'sort_query_themes_results' ), 10, 3 );
 		// add_action( 'admin_head-theme-install.php', array( __CLASS__, 'recommended_theme_ribbon' ) );
 	}
 
 	/**
+	 * Adds sub-menu links to Appearnce > Themes
+	 */
+	public static function add_premuim_themes_menu_link() {
+		add_submenu_page(
+			'themes.php',
+			'Premium Themes',
+			'Premium Themes',
+			'manage_options',
+			admin_url( 'admin.php?page=bluehost#/marketplace/themes' ),
+			'',
+			1
+		);
+
+		add_submenu_page(
+			'themes.php',
+			'Upload Theme',
+			'Upload Theme',
+			'install_themes',
+			'upload-theme',
+			array( __CLASS__, 'upload_theme_page' )
+		);
+	}
+
+	/**
+	 * Renames WordPress "Add Theme" Button to "WordPress.org Themes"
+	 * Adds "Premium Themes" Button (link to marketplace) to themes.php header
+	 */
+	public static function add_premuim_themes_button() {
+		?>
+
+		<script type="text/javascript">
+		window.addEventListener('DOMContentLoaded', () => {
+			const themesPageWrap = document.querySelector('.wrap');
+			const addNewThemeBtn = themesPageWrap.querySelector('a.page-title-action');
+			addNewThemeBtn.innerText = "WordPress.org Themes";
+
+			const premiumThemesBtn = document.createElement('a');
+			premiumThemesBtn.href = "<?php echo esc_url( admin_url( 'admin.php?page=bluehost#/marketplace/themes' ) ); ?>";
+			premiumThemesBtn.classList.add("hide-if-no-js", "page-title-action");
+			premiumThemesBtn.innerText = "Premium Themes";
+
+			themesPageWrap.insertBefore(premiumThemesBtn, addNewThemeBtn);
+		});
+		</script>
+
+		<?php
+	}
+
+	/**
+	 * Adds "Upload Theme" Button (link to upload_theme_page) to themes.php header
+	 */
+	public static function add_upload_theme_button() {
+		?>
+
+		<script type="text/javascript">
+		window.addEventListener('DOMContentLoaded', () => {
+			const themesPageWrap = document.querySelector('.wrap');
+			const addNewThemeBtn = themesPageWrap.querySelector('a.page-title-action:last-of-type');
+
+			const uploadThemeBtn = document.createElement('a');
+			uploadThemeBtn.href = "<?php echo esc_url( admin_url( 'themes.php?page=upload-theme' ) ); ?>";
+			uploadThemeBtn.classList.add("hide-if-no-js", "page-title-action");
+			uploadThemeBtn.innerText = "Upload";
+
+			themesPageWrap.insertBefore(uploadThemeBtn, addNewThemeBtn.nextSibling);
+		});
+		</script>
+
+		<?php
+	}
+
+	/**
+	 * Adds Upload Theme page to WordPress
+	 */
+	public static function upload_theme_page() {
+		if ( ! isset( $_GET['page'] ) || 'upload-theme' !== $_GET['page'] ) {
+			return;
+		}
+
+		require ABSPATH . 'wp-admin/includes/theme-install.php';
+		global $title;
+
+		?>
+
+		<div class="wrap">
+			<h1 class="wp-heading-inline"><?php echo esc_html( $title ); ?></h1>
+			<a href="<?php echo esc_url( admin_url( 'themes.php' ) ); ?>" class="hide-if-no-js page-title-action">Manage Themes</a>
+
+			<hr class="wp-header-end">
+
+			<div class="show-upload-view">
+				<div class="upload-theme">
+				<?php install_themes_upload(); ?>
+				</div>
+			</div>
+
+		<?php
+	}
+
+	/**
 	 * Add premium Marketplace themes link (as a tab) to the themes browser.
 	 */
-	public static function append_premuim_themes_tab() {
+	public static function add_premuim_themes_tab() {
 		?>
 
 		<script type="text/javascript">
