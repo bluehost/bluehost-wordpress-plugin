@@ -69,7 +69,6 @@ class SettingsController extends \WP_REST_Controller {
 					case 'comingSoon':
 						$new_value = ( $new_value ) ? 'true' : 'false';
 						update_option( 'nfd_coming_soon', $new_value );
-						update_option( 'mm_coming_soon', $new_value );
 						break;
 					case 'autoUpdatesMajorCore':
 						$new_value = ( $new_value ) ? 'true' : 'false';
@@ -172,7 +171,7 @@ class SettingsController extends \WP_REST_Controller {
 		}
 
 		$settings = array(
-			'comingSoon'              => ( 'true' === get_option( 'mm_coming_soon', 'false' ) ),
+			'comingSoon'              => ( 'true' === get_option( 'nfd_coming_soon', 'false' ) ),
 			'autoUpdatesMajorCore'    => $major,
 			'autoUpdatesMinorCore'    => $minor,
 			'autoUpdatesPlugins'      => $plugins,
