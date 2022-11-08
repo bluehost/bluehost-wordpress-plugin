@@ -53,6 +53,31 @@ class Bluehost_Admin_App_Page {
 			),
 		);
 	}
+	
+	/**
+	 * Get Marketplace sublevel pages.
+	 *
+	 * @return array[]
+	 */
+	public static function get_marketplace_subpages() {
+		return array(
+			array(
+				'slug'  => 'marketplace-featured',
+				'path'  => '/marketplace/featured',
+				'label' => __( '- Featured', 'bluehost-wordpress-plugin' ),
+			),
+			array(
+				'slug'  => 'marketplace-themes',
+				'path'  => '/marketplace/themes',
+				'label' => __( '- Themes', 'bluehost-wordpress-plugin' ),
+			),
+			array(
+				'slug'  => 'marketplace-seo',
+				'path'  => '/marketplace/seo',
+				'label' => __( '- SEO', 'bluehost-wordpress-plugin' ),
+			),
+		);
+	}
 
 	/**
 	 * Return instance
@@ -126,6 +151,19 @@ class Bluehost_Admin_App_Page {
 				'bluehost#' . $data['path'],
 				array( $this, 'handle_subpage_redirect' )
 			);
+			// Add Marketplace subpages
+			if ( 'Marketplace' === $data['label'] ) {
+				foreach ( self::get_marketplace_subpages() as $subdata ) {
+					add_submenu_page(
+						'bluehost',
+						$subdata['label'],
+						$subdata['label'],
+						'manage_options',
+						'bluehost#' . $subdata['path'],
+						array( $this, 'handle_subpage_redirect' )
+					);
+				}
+			}
 		}
 	}
 
