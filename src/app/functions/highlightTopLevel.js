@@ -24,6 +24,15 @@ export const handleWPMenuActiveHighlight = ( topLevelSlug ) => {
             liToActivate.classList.add( 'current' );
             bluehostWpSubMenuNode.style = 'display: block;';
         }
+        // handle marketplace deep linking from admin menu
+        if ( topLevelSlug.includes('marketplace-') ) {
+            // get marketplace button
+            const marketplaceCat = topLevelSlug.split('-');
+            const marketplaceButton = document.querySelector( '.components-tab-panel__tabs-item.newfold-marketplace-tab-'+marketplaceCat[1] );
+            if ( marketplaceButton.hasAttribute('aria-selected') && 'false' == marketplaceButton.getAttribute('aria-selected') ) { 
+                marketplaceButton.click();
+            }
+        }
     } catch ( e ) {
         // 
     }
