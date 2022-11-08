@@ -40,19 +40,19 @@ class Bluehost_Admin_App_Page {
 			),
 			array(
 				'slug'  => 'marketplace-featured',
-				'path'  => '/marketplace/featured',
+				'path'  => '/marketplace/featured&from=marketplace-nav-link',
 				'label' => __( ' - Featured', 'bluehost-wordpress-plugin' ),
 				'inapp' => false,
 			),
 			array(
 				'slug'  => 'marketplace-themes',
-				'path'  => '/marketplace/themes',
+				'path'  => '/marketplace/themes&from=marketplace-nav-link',
 				'label' => __( ' - Themes', 'bluehost-wordpress-plugin' ),
 				'inapp' => false,
 			),
 			array(
 				'slug'  => 'marketplace-seo',
-				'path'  => '/marketplace/seo',
+				'path'  => '/marketplace/seo&from=marketplace-nav-link',
 				'label' => __( ' - SEO', 'bluehost-wordpress-plugin' ),
 				'inapp' => false,
 			),
