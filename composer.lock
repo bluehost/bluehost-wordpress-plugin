@@ -453,16 +453,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "1.4.5",
+            "version": "1.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "3c5707e2b2d84aa33c2d439c62c73553fabc66b0"
+                "reference": "40550e9e5a868ceb18b9545c82d7eeafac866510"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/3c5707e2b2d84aa33c2d439c62c73553fabc66b0",
-                "reference": "3c5707e2b2d84aa33c2d439c62c73553fabc66b0",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/40550e9e5a868ceb18b9545c82d7eeafac866510",
+                "reference": "40550e9e5a868ceb18b9545c82d7eeafac866510",
                 "shasum": ""
             },
             "require": {
@@ -492,10 +492,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.4.5",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.4.6",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2022-11-03T20:32:47+00:00"
+            "time": "2022-11-08T17:29:23+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
