@@ -56,7 +56,6 @@ if ( is_admin() ) {
 AdminBar::init();
 BuildAssets::init();
 LoginRedirect::init();
-Themes::init();
 
 // Disable Yoast SEO onboarding redirect
 add_action(
