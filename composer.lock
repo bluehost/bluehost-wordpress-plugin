@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
-            "version": "1.4.6",
+            "version": "1.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehost/bluehost-wp-customer-data.git",
-                "reference": "a634c3f6b0e63a8664bb05f95700bd573f60bb8e"
+                "reference": "67a308dbef35ce6646c872faf3b967ef3a23c624"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/a634c3f6b0e63a8664bb05f95700bd573f60bb8e",
-                "reference": "a634c3f6b0e63a8664bb05f95700bd573f60bb8e",
+                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/67a308dbef35ce6646c872faf3b967ef3a23c624",
+                "reference": "67a308dbef35ce6646c872faf3b967ef3a23c624",
                 "shasum": ""
             },
             "require": {
@@ -54,10 +54,10 @@
             ],
             "description": "Bluehost Specific Customer Data Module Integrations",
             "support": {
-                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.4.6",
+                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.4.7",
                 "issues": "https://github.com/bluehost/bluehost-wp-customer-data/issues"
             },
-            "time": "2022-09-22T20:31:31+00:00"
+            "time": "2022-11-18T21:56:29+00:00"
         },
         {
             "name": "doctrine/inflector",
