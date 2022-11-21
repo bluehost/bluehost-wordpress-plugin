@@ -499,16 +499,16 @@
         },
         {
             "name": "newfold-labs/wp-module-notifications",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-notifications.git",
-                "reference": "4efd73a84332635aed25d85e08d11a98d64db1d5"
+                "reference": "d04b4802f3d40e1e5ef2feda1341fa058aeb6031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/4efd73a84332635aed25d85e08d11a98d64db1d5",
-                "reference": "4efd73a84332635aed25d85e08d11a98d64db1d5",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/d04b4802f3d40e1e5ef2feda1341fa058aeb6031",
+                "reference": "d04b4802f3d40e1e5ef2feda1341fa058aeb6031",
                 "shasum": ""
             },
             "require": {
@@ -537,10 +537,10 @@
             ],
             "description": "A module for managing Newfold in-site notifications.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.1.0",
+                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.1.1",
                 "issues": "https://github.com/newfold-labs/wp-module-notifications/issues"
             },
-            "time": "2022-11-02T21:16:35+00:00"
+            "time": "2022-11-21T16:13:44+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
