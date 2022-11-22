@@ -27,7 +27,12 @@ const DesktopTabs = () => {
 	return (
 		<nav className="bwa-desktop-nav__inner">
 			<ul className="bwa-desktop-nav__items">
-				{ topLevelPages.map( ( item ) => <DesktopTab item={ item } key={ item.slug } /> ) }
+				{ topLevelPages.map(
+					( item ) => (
+						item.inapp ?
+							<DesktopTab item={ item } key={ item.slug } /> : ''
+					)
+				)}
 			</ul>
 		</nav>
 	);

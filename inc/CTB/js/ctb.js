@@ -4,13 +4,13 @@
 		let ctbId = e.target.getAttribute('data-ctb-id');
 		e.target.closest('.ctb-actions').innerHTML = '<div class="ctb-loader"></div>';
 		window.fetch(
-			`${ window.nfdNotifications.restApiUrl }bluehost/v1/ctb/${ ctbId }`,
+			`${ window.bhctb.restApiUrl }bluehost/v1/ctb/${ ctbId }`,
 			{
 				credentials: 'same-origin',
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					'X-WP-Nonce': window.nfdNotifications.restApiNonce,
+					'X-WP-Nonce': window.bhctb.restApiNonce,
 				},
 			}
 		)
@@ -33,12 +33,12 @@
 		let modal = openModal(e);
 		let modalWindow = modal.querySelector('.ctb-modal-content')
 		window.fetch(
-			`${ window.nfdNotifications.restApiUrl }bluehost/v1/ctb/${ e.target.getAttribute('data-ctb-id') }`,
+			`${ window.bhctb.restApiUrl }bluehost/v1/ctb/${ e.target.getAttribute('data-ctb-id') }`,
 			{
 				credentials: 'same-origin',
 				headers: {
 					'Content-Type': 'application/json',
-					'X-WP-Nonce': window.nfdNotifications.restApiNonce,
+					'X-WP-Nonce': window.bhctb.restApiNonce,
 				},
 			}
 		)
@@ -108,13 +108,13 @@
 		if (notice) {
 			notice.parentNode.removeChild(notice);
 			window.fetch(
-				`${ window.nfdNotifications.restApiUrl }bluehost/v1/notifications/${ notice.dataset.id }`,
+				`${ window.bhctb.restApiUrl }newfold-notifications/v1/notifications/${ notice.dataset.id }`,
 				{
 					credentials: 'same-origin',
 					method: 'DELETE',
 					headers: {
 						'Content-Type': 'application/json',
-						'X-WP-Nonce': window.nfdNotifications.restApiNonce,
+						'X-WP-Nonce': window.bhctb.restApiNonce,
 					},
 				}
 			);

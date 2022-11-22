@@ -37,7 +37,7 @@ function create {
 	wp option update staging_environment staging --skip-themes --skip-plugins --quiet || error 'Unable to set environment.'
 	wp search-replace $PRODUCTION_URL $STAGING_URL --skip-themes --skip-plugins --quiet || error 'Unable to update URL on staging.'
 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR  --skip-themes --skip-plugins --quiet || error 'Unable to import global config on staging.'
-	wp option update mm_coming_soon 'true' --path=$STAGING_DIR  --skip-themes --skip-plugins --quiet || error 'Unable to enable the coming soon page on staging.'
+	wp option update nfd_coming_soon 'true' --path=$STAGING_DIR  --skip-themes --skip-plugins --quiet || error 'Unable to enable the coming soon page on staging.'
 	wp rewrite flush --path=$STAGING_DIR --skip-themes --skip-plugins --quiet || error 'Unable to flush rewrite rules.'
 	rewrite_htaccess $STAGING_DIR
 	clear
@@ -71,7 +71,7 @@ function clone {
 	fi
 	wp search-replace $PRODUCTION_URL $STAGING_URL --skip-themes --skip-plugins --quiet || error 'Unable to update URL on staging.'
 	wp option update staging_config "$CONFIG" --format=json --path=$STAGING_DIR --skip-themes --skip-plugins --quiet || error 'Unable to import global config on staging.'
-	wp option update mm_coming_soon 'true' --path=$STAGING_DIR --skip-themes --skip-plugins --quiet || error 'Unable to enable the coming soon page on staging.'
+	wp option update nfd_coming_soon 'true' --path=$STAGING_DIR --skip-themes --skip-plugins --quiet || error 'Unable to enable the coming soon page on staging.'
 	wp rewrite flush --path=$STAGING_DIR --skip-themes --skip-plugins --quiet || error 'Unable to flush rewrite rules.'
 	rm $STAGING_DIR/.export-sql --force
 	rewrite_htaccess $STAGING_DIR
@@ -103,7 +103,7 @@ function deploy_db {
 	rm $STAGING_DIR/.export-sql --force
 	wp option update staging_environment production --path=$PRODUCTION_DIR --skip-themes --skip-plugins --quiet || error 'Unable to set environment.'
 	wp option update staging_config "$CONFIG" --format=json --path=$PRODUCTION_DIR --skip-themes --skip-plugins --quiet || error 'Unable to import global config on production.'
-	wp option delete mm_coming_soon --path=$PRODUCTION_DIR --skip-themes --skip-plugins --quiet || error 'Unable to disable coming soon page.'
+	wp option delete nfd_coming_soon --path=$PRODUCTION_DIR --skip-themes --skip-plugins --quiet || error 'Unable to disable coming soon page.'
 	rewrite_htaccess $PRODUCTION_DIR
 	clear
 	echo \{\"status\" :\"success\",\"message\":\"Database deployed successfully.\"}

@@ -1,0 +1,290 @@
+body {
+    background-color: #fff;
+    background-image: url('images/cs-bluehost-bg.jpg');
+    background-position: top right;
+    background-repeat: no-repeat;
+    font-family: "Open Sans", sans-serif;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+input {
+    font-family: "Open Sans", sans-serif;
+}
+
+::-webkit-input-placeholder {
+    color: #9DAFBD;
+}
+
+::-moz-placeholder {
+    color: #9DAFBD;
+}
+
+:-ms-input-placeholder {
+    color: #9DAFBD;
+}
+
+:-moz-placeholder {
+    color: #9DAFBD;
+}
+
+#wrap {
+    max-width: 560px;
+    margin: 320px auto 120px;
+    color: #444;
+    text-align: center;
+    min-height: auto !important;
+}
+
+#wrap h1 {
+    font-weight: 300;
+    font-size: 28px;
+}
+
+#wrap h2 {
+    font-weight: 300;
+    font-size: 38px;
+}
+
+#wrap p {
+    color: #666;
+    line-height: 1.5;
+}
+
+footer {
+    background-color: #fff;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    color: #666;
+}
+
+footer p {
+    font-size: 14px;
+    line-height: 22px;
+    color: #5B5B5B;
+    padding: 8px;
+    text-align: center;
+}
+
+footer p a {
+    color: #3575D3;
+    text-decoration: none;
+}
+
+footer p a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    border: 1px solid #2e66ba;
+    background: #2e66ba;
+    color: #fff;
+    box-shadow: none;
+    border-radius: 3px;
+    text-decoration: none;
+    margin-top: 25px;
+}
+
+.btn:hover {
+    border: 1px solid #2e66ba;
+    background-color: #fff;
+    color: #2e66ba;
+}
+
+.subscription_widget {
+}
+
+.subscription_widget h2 {
+    color: #5B5B5B;
+    font-size: 38px;
+    letter-spacing: -1px;
+    line-height: 54px;
+    margin-bottom: 10px;
+}
+
+.subscription_widget #subscribe-text p {
+    color: #5B5B5B;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-bottom: 25px;
+}
+
+.subscription_widget #success,
+.subscription_widget #error {
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #5B5B5B;
+    margin-bottom: 25px;
+    display: none;
+    padding: 8px 40px;
+}
+
+.subscription_widget #success {
+    background: #CCE9D0;
+    border: 1px solid #009013;
+}
+
+.subscription_widget #error {
+    background: #FFEAE9;
+    border: 1px solid #F72F26;
+}
+
+.subscription_widget form .inputs {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    margin-bottom: 10px;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.subscription_widget form .inputs.active {
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.subscription_widget form .inputs.email.active #subscribe-label {
+    color: #5B5B5B;
+    clip: auto !important;
+    height: auto !important;
+    position: absolute !important;
+    overflow: visible !important;
+    width: auto !important;
+    left: 16px;
+    font-size: 11px;
+    top: 2px;
+}
+
+.subscription_widget form .inputs.email input[type="email"] {
+    background-color: #fff;
+    background-image: url('images/icon-email.svg');
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    border: 1px solid #5B5B5B;
+    border-radius: 3px;
+    color: #5B5B5B;
+    font-size: 13.5px;
+    margin-top: 5px;
+    margin-right: 6px;
+    min-width: 300px;
+    padding: 14px 15px 14px 45px;
+    max-height: 45px;
+    -webkit-transition: all 0.05s ease-in-out;
+    -moz-transition: all 0.05s ease-in-out;
+    -o-transition: all 0.05s ease-in-out;
+    transition: all 0.05s ease-in-out;
+}
+
+.subscription_widget form .inputs.email.active input[type="email"] {
+    background-image: none;
+    font-size: 14px;
+    padding: 16px 15px 12px 15px;
+    max-height: 45px;
+}
+
+.subscription_widget form .inputs.submit input[type="submit"] {
+    background-color: #3575D3;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 13px;
+    margin: 0;
+    padding: 15px 30px;
+    border: 1px solid #3575D3;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.subscription_widget form .inputs.submit input[type="submit"]:hover {
+    background-color: #5B5B5B;
+    border-color: #5B5B5B;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+@media (min-width: 1920px) {
+    body {
+        background-position-x: center;
+    }
+}
+
+@media (max-width: 1024px) {
+    #wrap {
+        margin: 240px auto 120px;
+    }
+}
+
+@media (max-width: 960px) {
+    #wrap {
+        margin: 120px auto;
+    }
+}
+
+@media (max-width: 640px) {
+    #wrap {
+        margin: 60px auto 120px;
+        max-width: 100%;
+        color: #444;
+        padding: 0 20px;
+    }
+
+    .btn {
+        margin-top: 10px;
+    }
+
+    .subscription_widget form .inputs,
+    .subscription_widget form .inputs.email input[type="email"],
+    .subscription_widget form .inputs.submit input[type="submit"] {
+        width: 100%;
+    }
+
+    .subscription_widget form .inputs.email input[type="email"] {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 360px) {
+    #wrap h1 {
+        font-size: 26px;
+    }
+
+    .btn {
+        margin-top: 40px;
+    }
+}
