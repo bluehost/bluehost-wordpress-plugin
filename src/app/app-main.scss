@@ -84,3 +84,25 @@
  p {
    font-size: 14px;
  }
+
+ .newfold-notifications-wrapper {
+  
+  .newfold-notification {
+    max-width: 1600px;
+    margin: 0 auto .75rem;
+
+    &:first-of-type {
+      margin-top: 1.35rem;
+    }
+
+    @media screen and (max-width: $hd-breakpoint) {
+      margin-left: 1.15rem;
+      margin-right: 1.15rem;
+    }
+  }
+  
+  .notice {
+    margin: 0;
+  }
+
+ }

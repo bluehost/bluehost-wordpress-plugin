@@ -36,7 +36,7 @@ export const initEvents = (tourName, tour) => {
                 step: context.id
             }
         };
-        apiFetch({ path: '/bluehost/v1/notifications/events', method: 'POST', data });
+        apiFetch({ path: '/newfold-notifications/v1/notifications/events', method: 'POST', data });
     }
 
     const noticeConfig = {

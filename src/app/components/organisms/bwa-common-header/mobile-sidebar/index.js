@@ -25,10 +25,12 @@ const PrimaryMenu = () => {
 	});
 	return (
 		<ul className="main">
-			{ topLevelPages.map((item) => (
+			{ topLevelPages.map(
+				(item) => (
+					item.inapp ? 
 					<li className={ ['tab ' + item.slug] } key={ item.slug }>
 						<NavLink to={ item.path } activeClassName="is-active">{ item.label }</NavLink>
-					</li>
+					</li> : ''
 				)
 			) }
 		</ul>
