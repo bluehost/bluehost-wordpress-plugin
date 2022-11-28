@@ -1,6 +1,5 @@
 import { handleWPMenuActiveHighlight, handleWPMenuAugmentation, sendPageviewEvent } from '@app/functions';
 
-import { BWAPageNotices } from '@app/components/molecules';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 import {keyBy} from 'lodash';
@@ -92,7 +91,6 @@ const BWABaseTemplate = ({
 					props.className ? props.className : null
 				]) 
 			}>
-			<BWAPageNotices />
 			{props.children}
 		</section>
 	);
