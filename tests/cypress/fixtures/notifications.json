@@ -1,0 +1,42 @@
+[
+    {
+        "id": "test-1",
+        "locations": [
+            {
+                "context": "bluehost-plugin",
+                "pages": "#/settings"
+            }
+        ],
+        "expiration": 2748863456503,
+        "content": "<div class=\"notice notice-error\"><p>Notice should only display on plugin app settings page<\/p><\/div>"
+    },
+    {
+        "id": "test-2",
+        "locations": [
+            {
+                "context": "bluehost-plugin",
+                "pages": [
+                    "#/home/onboarding",
+                    "#/home"
+                ]
+            }
+        ],
+        "expiration": 2749860279240,
+        "content": "<div class=\"notice notice-warning\"><p>Here is a plugin notice it should display on home and onboarding screens only! <a data-action=\"close\">x<\/a><\/p><\/div>"
+    },
+    {
+        "id": "test-4",
+        "locations": [
+            {
+                "context": "bluehost-plugin",
+                "pages": "all"
+            },
+            {
+                "context": "wp-admin-notice",
+                "pages": "all"
+            }
+        ],
+        "expiration": 2749860279240,
+        "content": "<div class=\"notice notice-warning\"><p>Here is a plugin notice it should display everywhere! <a data-action=\"close\">x<\/a><\/p><\/div>"
+    }
+]
