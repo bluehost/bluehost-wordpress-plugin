@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa9ed6b87bd0fb9ed8516be16da7efe4",
+    "content-hash": "089c0639e09f7902d905dec8bf1b8444",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
@@ -352,7 +352,7 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v0.6.0-rc.2",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
@@ -400,7 +400,7 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.6.0-rc.2",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.6.0",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
             "time": "2022-11-29T15:50:09+00:00"
@@ -5118,7 +5118,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "newfold-labs/wp-module-ecommerce": 5,
         "bluehost/wp-php-standards": 0,
         "wp-cli/wp-cli-bundle": 0,
         "wp-cli/i18n-command": 0
