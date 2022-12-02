@@ -8,7 +8,7 @@
             }
         ],
         "expiration": 2748863456503,
-        "content": "<div class=\"notice notice-error\"><p>Notice should only display on plugin app settings page<\/p><\/div>"
+        "content": "<div class=\"newfold-notice notice notice-success\" style=\"position:relative;\"><p>Notice should only display on plugin app settings page<button type=\"button\" data-action=\"close\" class=\"notice-dismiss\"><span class=\"screen-reader-text\">Dismiss this notice.</span></button><\/p><\/div>"
     },
     {
         "id": "test-2",
@@ -22,7 +22,20 @@
             }
         ],
         "expiration": 2749860279240,
-        "content": "<div class=\"notice notice-warning\"><p>Here is a plugin notice it should display on home and onboarding screens only! <a data-action=\"close\">x<\/a><\/p><\/div>"
+        "content": "<div class=\"newfold-notice notice notice-error\" style=\"position:relative;\"><p>Here is a plugin notice it should display on home and onboarding screens only! <button type=\"button\" data-action=\"close\" class=\"notice-dismiss\"><span class=\"screen-reader-text\">Dismiss this notice.</span></button><\/p><\/div>"
+    },
+    {
+        "id": "test-3",
+        "locations": [
+            {
+                "context": "bluehost-plugin",
+                "pages": [
+                    "#/marketplace"
+                ]
+            }
+        ],
+        "expiration": 2749860279240,
+        "content": "<div class=\"newfold-notice notice notice-info\" style=\"position:relative;\"><p>Here is a plugin notice it should display on marketplace themes screen only! <button type=\"button\" data-action=\"close\" class=\"notice-dismiss\"><span class=\"screen-reader-text\">Dismiss this notice.</span></button><\/p><\/div>"
     },
     {
         "id": "test-4",
@@ -37,6 +50,17 @@
             }
         ],
         "expiration": 2749860279240,
-        "content": "<div class=\"notice notice-warning\"><p>Here is a plugin notice it should display everywhere! <a data-action=\"close\">x<\/a><\/p><\/div>"
+        "content": "<div class=\"newfold-notice notice notice-warning\" style=\"position:relative;\"><p>Here is a notice it should display everywhere in the app and in wp-admin! <button type=\"button\" data-action=\"close\" class=\"notice-dismiss\"><span class=\"screen-reader-text\">Dismiss this notice.</span></button><\/p><\/div>"
+    },
+    {
+        "id": "test-expired",
+        "locations": [
+            {
+                "context": "bluehost-plugin",
+                "pages": "all"
+            }
+        ],
+        "expiration": 1649860279240,
+        "content": "<div class=\"newfold-notice notice notice-error\" style=\"position:relative;\"><p>Here is an expired notice it should never display anywhere even though it has location `all` <button type=\"button\" data-action=\"close\" class=\"notice-dismiss\"><span class=\"screen-reader-text\">Dismiss this notice.</span></button><\/p><\/div>"
     }
 ]
