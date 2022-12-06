@@ -15,11 +15,11 @@ jobs:
         id: package
         env:
           REPO: ${{ github.repository }}
-        run: echo ::set-output name=PACKAGE::${REPO##*/}
+        run: echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
 
       - name: Set Version
         id: tag
-        run: echo ::set-output name=VERSION::${GITHUB_REF##*/}
+        run: echo "VERSION=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
 
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1

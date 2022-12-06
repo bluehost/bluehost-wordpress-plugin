@@ -48,8 +48,8 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           mkdir dist
-          echo ::set-output name=DIST::${PWD}/dist
-          echo ::set-output name=PACKAGE::${REPO##*/}
+          echo "DIST=${PWD}/dist" >> $GITHUB_ENV
+          echo "PACKAGE=${REPO##*/}" >> $GITHUB_ENV
 
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
@@ -59,7 +59,7 @@ jobs:
 
       - name: Get Composer cache directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_ENV
 
       - name: Cache Composer vendor directory
         uses: actions/cache@v2
