@@ -70,7 +70,7 @@ describe('Notifications', function () {
 	});
 
     // dismiss events triggered
-	it.skip('Dismissing notification removes it from the page', () => {
+	it('Dismissing notification removes it from the page', () => {
         cy.get('.newfold-notifications-wrapper #notification-test-2')
             .should('be.visible')
 			.should('have.attr', 'data-id')
