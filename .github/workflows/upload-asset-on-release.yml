@@ -48,8 +48,8 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           mkdir dist
-          echo "DIST=${PWD}/dist" >> $GITHUB_ENV
-          echo "PACKAGE=${REPO##*/}" >> $GITHUB_ENV
+          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
+          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
 
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
@@ -62,7 +62,7 @@ jobs:
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_ENV
 
       - name: Cache Composer vendor directory
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
