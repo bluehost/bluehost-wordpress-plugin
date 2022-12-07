@@ -14,7 +14,6 @@ import {filter} from 'lodash';
 const DEFAULT_STATE = {
 	app: {},
 	env: {},
-	notifications: [],
 	settings: {},
 	wp: {},
 };
@@ -42,16 +41,6 @@ const env = (state = DEFAULT_STATE.env, action) => {
 	}
 
 	return state;
-};
-
-const notifications = (state = DEFAULT_STATE.notifications, action) => {
-	switch (action.type) {
-		case 'FETCH_WINDOW_DATA':
-			return action.bluehost.notifications;
-		case 'DISMISS_NOTIFICATION':
-			return filter(state, ({id}) => id !== action.id);
-	}
-	return state.notifications;
 };
 
 const settings = (state = DEFAULT_STATE.settings, action) => {
@@ -87,7 +76,6 @@ const wp = (state = DEFAULT_STATE.wp, action) => {
 export default combineReducers({
 	app,
 	env,
-	notifications,
 	settings,
 	wp,
 });

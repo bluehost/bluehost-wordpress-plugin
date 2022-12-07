@@ -66,7 +66,3 @@ export function getAdminUrl(state) {
 export function getBluehostPluginDaysSinceInstall(state) {
 	return state.wp.bluehostPluginDaysSinceInstall;
 }
-
-export function getNotifications(state) {
-	return state.notifications;
-}

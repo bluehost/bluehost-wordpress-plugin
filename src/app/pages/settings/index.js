@@ -11,7 +11,6 @@ import { __ } from '@wordpress/i18n';
 
 const SettingsPage = () => (
 	<BWACommonTemplate className="page-settings">
-		{/* <Notification /> */}
 		<BWAHeading level="h2" size={ 0 }>{ __('Settings', 'bluehost-wordpress-plugin') }</BWAHeading>
 		<div className="settings-wrap">
 			<div className="page-settings__grid1">
