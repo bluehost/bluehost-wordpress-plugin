@@ -4,61 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4015be496185d11cddd40990eae77f8b",
+    "content-hash": "f9889b80aba78a1ccf6c34d75ae8d7c7",
     "packages": [
-        {
-            "name": "bluehost/bluehost-wp-customer-data",
-            "version": "1.4.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bluehost/bluehost-wp-customer-data.git",
-                "reference": "67a308dbef35ce6646c872faf3b967ef3a23c624"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/bluehost-wp-customer-data/zipball/67a308dbef35ce6646c872faf3b967ef3a23c624",
-                "reference": "67a308dbef35ce6646c872faf3b967ef3a23c624",
-                "shasum": ""
-            },
-            "require": {
-                "newfold-labs/wp-module-data": "^2.2"
-            },
-            "require-dev": {
-                "bluehost/wp-php-standards": "^1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Bluehost\\WP\\Data\\": "includes"
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "scripts": {
-                "fix": [
-                    "vendor/bin/phpcbf . --standard=Bluehost"
-                ],
-                "lint": [
-                    "vendor/bin/phpcs . --standard=Bluehost -s"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Evan Mullins",
-                    "email": "evan@bluehost.com"
-                }
-            ],
-            "description": "Bluehost Specific Customer Data Module Integrations",
-            "support": {
-                "source": "https://github.com/bluehost/bluehost-wp-customer-data/tree/1.4.7",
-                "issues": "https://github.com/bluehost/bluehost-wp-customer-data/issues"
-            },
-            "time": "2022-11-18T21:56:29+00:00"
-        },
         {
             "name": "doctrine/inflector",
             "version": "v1.2.0",
@@ -304,6 +251,49 @@
             "time": "2022-10-20T16:31:03+00:00"
         },
         {
+            "name": "newfold-labs/wp-module-customer-bluehost",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-customer-bluehost.git",
+                "reference": "cb5891c2671ddafdd17cd8d44e2c7832d04084be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-customer-bluehost/zipball/cb5891c2671ddafdd17cd8d44e2c7832d04084be",
+                "reference": "cb5891c2671ddafdd17cd8d44e2c7832d04084be",
+                "shasum": ""
+            },
+            "require": {
+                "newfold-labs/wp-module-data": "^2.2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewFoldLabs\\WP\\Module\\CustomerBluehost\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php",
+                    "includes/CustomerBluehost.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Mullins",
+                    "email": "evan@bluehost.com"
+                }
+            ],
+            "description": "Customer module to interface with bluehost and the data module.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-customer-bluehost/tree/1.5.0",
+                "issues": "https://github.com/newfold-labs/wp-module-customer-bluehost/issues"
+            },
+            "time": "2022-12-08T21:45:42+00:00"
+        },
+        {
             "name": "newfold-labs/wp-module-data",
             "version": "2.2.2",
             "source": {
@@ -499,16 +489,16 @@
         },
         {
             "name": "newfold-labs/wp-module-notifications",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-notifications.git",
-                "reference": "d04b4802f3d40e1e5ef2feda1341fa058aeb6031"
+                "reference": "ed19e71ec34694cc559946434cd22943ffe53bc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/d04b4802f3d40e1e5ef2feda1341fa058aeb6031",
-                "reference": "d04b4802f3d40e1e5ef2feda1341fa058aeb6031",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/ed19e71ec34694cc559946434cd22943ffe53bc0",
+                "reference": "ed19e71ec34694cc559946434cd22943ffe53bc0",
                 "shasum": ""
             },
             "require": {
@@ -537,10 +527,10 @@
             ],
             "description": "A module for managing Newfold in-site notifications.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.1.1",
+                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.1.2",
                 "issues": "https://github.com/newfold-labs/wp-module-notifications/issues"
             },
-            "time": "2022-11-21T16:13:44+00:00"
+            "time": "2022-12-07T22:45:58+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
@@ -1712,16 +1702,16 @@
         },
         {
             "name": "gettext/gettext",
-            "version": "v4.8.7",
+            "version": "v4.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-gettext/Gettext.git",
-                "reference": "3f7bc5ef23302a9059e64934f3d59e454516bec0"
+                "reference": "302a00aa9d6762c92c884d879c15d3ed05d6a37d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-gettext/Gettext/zipball/3f7bc5ef23302a9059e64934f3d59e454516bec0",
-                "reference": "3f7bc5ef23302a9059e64934f3d59e454516bec0",
+                "url": "https://api.github.com/repos/php-gettext/Gettext/zipball/302a00aa9d6762c92c884d879c15d3ed05d6a37d",
+                "reference": "302a00aa9d6762c92c884d879c15d3ed05d6a37d",
                 "shasum": ""
             },
             "require": {
@@ -1773,7 +1763,7 @@
             "support": {
                 "email": "oom@oscarotero.com",
                 "issues": "https://github.com/oscarotero/Gettext/issues",
-                "source": "https://github.com/php-gettext/Gettext/tree/v4.8.7"
+                "source": "https://github.com/php-gettext/Gettext/tree/v4.8.8"
             },
             "funding": [
                 {
@@ -1789,7 +1779,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-08-02T09:42:10+00:00"
+            "time": "2022-12-08T11:59:50+00:00"
         },
         {
             "name": "gettext/languages",
