@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9889b80aba78a1ccf6c34d75ae8d7c7",
+    "content-hash": "34203758213f4a256fbd2e82333cd5ab",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -252,16 +252,16 @@
         },
         {
             "name": "newfold-labs/wp-module-customer-bluehost",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-customer-bluehost.git",
-                "reference": "436965d29d8200ac5224eb63b5d38a1a7a55afcc"
+                "reference": "8e83090789dc363ea54728a94c1168297471b915"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-customer-bluehost/zipball/436965d29d8200ac5224eb63b5d38a1a7a55afcc",
-                "reference": "436965d29d8200ac5224eb63b5d38a1a7a55afcc",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-customer-bluehost/zipball/8e83090789dc363ea54728a94c1168297471b915",
+                "reference": "8e83090789dc363ea54728a94c1168297471b915",
                 "shasum": ""
             },
             "require": {
@@ -288,10 +288,10 @@
             ],
             "description": "Customer module to interface with bluehost and the data module.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-customer-bluehost/tree/1.5.0",
+                "source": "https://github.com/newfold-labs/wp-module-customer-bluehost/tree/1.5.1",
                 "issues": "https://github.com/newfold-labs/wp-module-customer-bluehost/issues"
             },
-            "time": "2022-12-08T22:27:20+00:00"
+            "time": "2022-12-12T17:56:56+00:00"
         },
         {
             "name": "newfold-labs/wp-module-data",
