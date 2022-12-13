@@ -305,16 +305,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.2.2",
+            "version": "2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "f4f8bf4f1f08c664aa17bc26ba5ba34bded267b0"
+                "reference": "461513855fe25a928a7018a3249ff40a5f1bfa94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/f4f8bf4f1f08c664aa17bc26ba5ba34bded267b0",
-                "reference": "f4f8bf4f1f08c664aa17bc26ba5ba34bded267b0",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/461513855fe25a928a7018a3249ff40a5f1bfa94",
+                "reference": "461513855fe25a928a7018a3249ff40a5f1bfa94",
                 "shasum": ""
             },
             "require": {
@@ -345,10 +345,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.2.2",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.2.3",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2022-08-25T16:50:45+00:00"
+            "time": "2022-12-13T21:10:02+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
@@ -499,16 +499,16 @@
         },
         {
             "name": "newfold-labs/wp-module-notifications",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-notifications.git",
-                "reference": "d04b4802f3d40e1e5ef2feda1341fa058aeb6031"
+                "reference": "ed19e71ec34694cc559946434cd22943ffe53bc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/d04b4802f3d40e1e5ef2feda1341fa058aeb6031",
-                "reference": "d04b4802f3d40e1e5ef2feda1341fa058aeb6031",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/ed19e71ec34694cc559946434cd22943ffe53bc0",
+                "reference": "ed19e71ec34694cc559946434cd22943ffe53bc0",
                 "shasum": ""
             },
             "require": {
@@ -537,10 +537,10 @@
             ],
             "description": "A module for managing Newfold in-site notifications.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.1.1",
+                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.1.2",
                 "issues": "https://github.com/newfold-labs/wp-module-notifications/issues"
             },
-            "time": "2022-11-21T16:13:44+00:00"
+            "time": "2022-12-07T22:45:58+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
@@ -1712,16 +1712,16 @@
         },
         {
             "name": "gettext/gettext",
-            "version": "v4.8.7",
+            "version": "v4.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-gettext/Gettext.git",
-                "reference": "3f7bc5ef23302a9059e64934f3d59e454516bec0"
+                "reference": "302a00aa9d6762c92c884d879c15d3ed05d6a37d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-gettext/Gettext/zipball/3f7bc5ef23302a9059e64934f3d59e454516bec0",
-                "reference": "3f7bc5ef23302a9059e64934f3d59e454516bec0",
+                "url": "https://api.github.com/repos/php-gettext/Gettext/zipball/302a00aa9d6762c92c884d879c15d3ed05d6a37d",
+                "reference": "302a00aa9d6762c92c884d879c15d3ed05d6a37d",
                 "shasum": ""
             },
             "require": {
@@ -1773,7 +1773,7 @@
             "support": {
                 "email": "oom@oscarotero.com",
                 "issues": "https://github.com/oscarotero/Gettext/issues",
-                "source": "https://github.com/php-gettext/Gettext/tree/v4.8.7"
+                "source": "https://github.com/php-gettext/Gettext/tree/v4.8.8"
             },
             "funding": [
                 {
@@ -1789,7 +1789,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-08-02T09:42:10+00:00"
+            "time": "2022-12-08T11:59:50+00:00"
         },
         {
             "name": "gettext/languages",
