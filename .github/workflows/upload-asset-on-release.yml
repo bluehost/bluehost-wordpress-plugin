@@ -99,7 +99,6 @@ jobs:
         run: zip -r ${{ steps.workflow.outputs.PACKAGE }}.zip .
 
       - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
