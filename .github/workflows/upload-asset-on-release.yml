@@ -102,7 +102,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release upload "${{ github.event.release.id }}" ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}.zip
+          gh release upload "${{ github.event.release.tag_name }}" ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}.zip
 
       - name: Clear cache for release API
         if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
