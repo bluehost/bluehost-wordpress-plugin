@@ -22,7 +22,7 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # User PHP 7.4 here for compatibility with the WordPress codesniffer rules.
       - name: Setup PHP
@@ -42,7 +42,7 @@ jobs:
         if: "!! env.GIT_DIFF"
 
       - name: Cache Composer vendor directory
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
