@@ -3,7 +3,6 @@ name: Package Plugin
 on:
   release:
     types:
-      - created
       - published
 
 env:
@@ -103,11 +102,8 @@ jobs:
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: https://uploads.github.com/repos/${{ github.repository }}/releases/${{ github.event.release.id }}/assets{?name,label}
-          asset_path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}.zip
-          asset_name: ${{ steps.workflow.outputs.PACKAGE }}.zip
-          asset_content_type: application/zip
+        run: |
+          gh release upload "${{ github.event.release.id }}" ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}.zip
 
       - name: Clear cache for release API
         if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
