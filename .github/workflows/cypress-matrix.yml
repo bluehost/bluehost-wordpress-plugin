@@ -113,7 +113,7 @@ jobs:
         run: npx cypress run
 
       - name: Run Cypress Tests
-        uses: replayio/action-cypress@v0.2.5
+        uses: replayio/action-cypress@v0.2.6
         if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
         env:
           RECORD_REPLAY_METADATA_TEST_RUN_TITLE: "php-${{ matrix.phpVersion }}, wp-${{ matrix.wpVersion }}"
