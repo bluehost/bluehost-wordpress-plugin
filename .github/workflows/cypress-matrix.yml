@@ -14,6 +14,7 @@ jobs:
   test:
     name: Run Cypress Test Matrix
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     strategy:
       fail-fast: false
@@ -29,11 +30,12 @@ jobs:
           - '5.8'
           - '5.9'
           - '6.0'
+          - '6.1'
 
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -63,7 +65,7 @@ jobs:
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache Composer vendor directory
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -112,7 +114,7 @@ jobs:
         run: npx cypress run
 
       - name: Run Cypress Tests
-        uses: replayio/action-cypress@v0.2.4
+        uses: replayio/action-cypress@v0.2.6
         if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
         env:
           RECORD_REPLAY_METADATA_TEST_RUN_TITLE: "php-${{ matrix.phpVersion }}, wp-${{ matrix.wpVersion }}"
@@ -129,7 +131,7 @@ jobs:
 
       - name: Store screenshots of test failures
         if: ${{ failure() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: screenshots
           path: ./tests/cypress/screenshots
