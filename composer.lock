@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34203758213f4a256fbd2e82333cd5ab",
+    "content-hash": "621786756e456537da43f1478dac284c",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -252,16 +252,16 @@
         },
         {
             "name": "newfold-labs/wp-module-customer-bluehost",
-            "version": "1.5.1",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-customer-bluehost.git",
-                "reference": "8e83090789dc363ea54728a94c1168297471b915"
+                "reference": "f5bb37959999c4308d5b4192f6096cee287719b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-customer-bluehost/zipball/8e83090789dc363ea54728a94c1168297471b915",
-                "reference": "8e83090789dc363ea54728a94c1168297471b915",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-customer-bluehost/zipball/f5bb37959999c4308d5b4192f6096cee287719b5",
+                "reference": "f5bb37959999c4308d5b4192f6096cee287719b5",
                 "shasum": ""
             },
             "require": {
@@ -288,10 +288,10 @@
             ],
             "description": "Customer module to interface with bluehost and the data module.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-customer-bluehost/tree/1.5.1",
+                "source": "https://github.com/newfold-labs/wp-module-customer-bluehost/tree/1.5.2",
                 "issues": "https://github.com/newfold-labs/wp-module-customer-bluehost/issues"
             },
-            "time": "2022-12-12T17:56:56+00:00"
+            "time": "2022-12-16T18:29:41+00:00"
         },
         {
             "name": "newfold-labs/wp-module-data",
@@ -443,16 +443,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "1.4.6",
+            "version": "1.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "40550e9e5a868ceb18b9545c82d7eeafac866510"
+                "reference": "e750d159c0602d7de198cb6932c56baf7677c81e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/40550e9e5a868ceb18b9545c82d7eeafac866510",
-                "reference": "40550e9e5a868ceb18b9545c82d7eeafac866510",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/e750d159c0602d7de198cb6932c56baf7677c81e",
+                "reference": "e750d159c0602d7de198cb6932c56baf7677c81e",
                 "shasum": ""
             },
             "require": {
@@ -482,10 +482,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.4.6",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.4.7",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2022-11-08T17:29:23+00:00"
+            "time": "2022-12-16T18:28:37+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
