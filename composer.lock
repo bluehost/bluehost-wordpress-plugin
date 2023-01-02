@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4015be496185d11cddd40990eae77f8b",
+    "content-hash": "8a9cb82f96e164944a4d814e658cf57c",
     "packages": [
         {
             "name": "bluehost/bluehost-wp-customer-data",
@@ -352,16 +352,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v0.6.0",
+            "version": "v0.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "38d96f7fe930db85d5aac93479b4bb671b3cb576"
+                "reference": "fea6088005817c83693c86c8586d33f5e33e1af4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/38d96f7fe930db85d5aac93479b4bb671b3cb576",
-                "reference": "38d96f7fe930db85d5aac93479b4bb671b3cb576",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/fea6088005817c83693c86c8586d33f5e33e1af4",
+                "reference": "fea6088005817c83693c86c8586d33f5e33e1af4",
                 "shasum": ""
             },
             "require-dev": {
@@ -400,10 +400,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.6.0",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.6.2",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2022-11-29T15:50:09+00:00"
+            "time": "2022-12-14T09:38:56+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -453,16 +453,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "1.4.6",
+            "version": "1.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "40550e9e5a868ceb18b9545c82d7eeafac866510"
+                "reference": "e750d159c0602d7de198cb6932c56baf7677c81e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/40550e9e5a868ceb18b9545c82d7eeafac866510",
-                "reference": "40550e9e5a868ceb18b9545c82d7eeafac866510",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/e750d159c0602d7de198cb6932c56baf7677c81e",
+                "reference": "e750d159c0602d7de198cb6932c56baf7677c81e",
                 "shasum": ""
             },
             "require": {
@@ -492,10 +492,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.4.6",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.4.7",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2022-11-08T17:29:23+00:00"
+            "time": "2022-12-16T18:28:37+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
@@ -3916,16 +3916,16 @@
         },
         {
             "name": "wp-cli/i18n-command",
-            "version": "v2.4.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/i18n-command.git",
-                "reference": "45bc2b47a4ed103b871cd2ec5b483ab55ad12d99"
+                "reference": "22f7e6aa6ba23d0b50c45c75386c8151b991477e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/i18n-command/zipball/45bc2b47a4ed103b871cd2ec5b483ab55ad12d99",
-                "reference": "45bc2b47a4ed103b871cd2ec5b483ab55ad12d99",
+                "url": "https://api.github.com/repos/wp-cli/i18n-command/zipball/22f7e6aa6ba23d0b50c45c75386c8151b991477e",
+                "reference": "22f7e6aa6ba23d0b50c45c75386c8151b991477e",
                 "shasum": ""
             },
             "require": {
@@ -3978,9 +3978,9 @@
             "homepage": "https://github.com/wp-cli/i18n-command",
             "support": {
                 "issues": "https://github.com/wp-cli/i18n-command/issues",
-                "source": "https://github.com/wp-cli/i18n-command/tree/v2.4.0"
+                "source": "https://github.com/wp-cli/i18n-command/tree/v2.4.1"
             },
-            "time": "2022-07-04T21:43:20+00:00"
+            "time": "2022-12-09T19:09:17+00:00"
         },
         {
             "name": "wp-cli/import-command",
