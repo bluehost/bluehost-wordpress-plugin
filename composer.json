@@ -25,15 +25,6 @@
             "only": [
                 "newfold-labs/*"
             ]
-        },
-        "bluehost": {
-            "type": "composer",
-            "url": "https://bluehost.github.io/satis/",
-            "only": [
-                "bluehost/*",
-                "mojoness/*",
-                "endurance/*"
-            ]
         }
     },
     "autoload": {
@@ -63,9 +54,9 @@
         "wpscholar/url": "^1.2.2"
     },
     "require-dev": {
-        "bluehost/wp-php-standards": "@stable",
-        "wp-cli/wp-cli-bundle": "@stable",
-        "wp-cli/i18n-command": "@stable"
+        "newfold-labs/wp-php-standards": "^1.2",
+        "wp-cli/i18n-command": "@stable",
+        "wp-cli/wp-cli-bundle": "@stable"
     },
     "config": {
         "optimize-autoloader": true,
@@ -75,8 +66,6 @@
         },
         "platform-check": false,
         "preferred-install": {
-            "bluehost/*": "source",
-            "endurance/*": "source",
             "newfold-labs/*": "source",
             "*": "dist"
         },
