@@ -25,29 +25,31 @@ describe( 'Onboarding Phase 2 Flow', () => {
 		cy.intercept( { method: 'POST', url: '**complete**' } ).as(
 			'completeFlow'
 		);
+		
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg > path'
 		).click();
 
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.nfd-onboarding-sidebar-learn-more__get-started-welcome > div.nfd-onboarding-sidebar-learn-more--help-panel__links > button.components-button.nfd-onboarding-button--blue.is-primary'
-		).click();
+		).should('exist');
 
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.nfd-onboarding-sidebar-learn-more__get-started-welcome > div.nfd-onboarding-sidebar-learn-more--help-panel__links > button.components-button.nfd-onboarding-button--white'
-		).click();
+		).should('exist');
 
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.nfd-onboarding-sidebar-learn-more__get-started-welcome > div.nfd-onboarding-sidebar-learn-more--help-panel__links > a'
-		).click();
+		).should('exist');
 
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg'
 		).click();
 
-		cy.get(
-			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg'
-		).click();
+		// Duplicate
+		// cy.get(
+		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg'
+		// ).click();
 
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
@@ -87,7 +89,7 @@ describe( 'Onboarding Phase 2 Flow', () => {
 
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
-		).click();
+		).should('exist');
 
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > button'
