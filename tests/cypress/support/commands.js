@@ -28,7 +28,7 @@
 
 import '@testing-library/cypress/add-commands';
 
-// const customerData = require('../fixtures/customerData.json');
+const customerData = require('../fixtures/customerData.json');
 
 Cypress.Commands.add('login', (username, password) => {
 	cy
@@ -85,8 +85,8 @@ Cypress.Commands.add('deletePages', () => {
 });
 
 Cypress.Commands.add('setCustomerData', () => {
-	// let stringifycdata = JSON.stringify(customerData);
-    cy.exec(`npx wp-env run cli wp option update bh_cdata_guapi {"customer":{"customer_id":"1234567890","signup_date":"2022-08-18T15:30:00.000Z"},"plan":{"subtype":"wc_standard"}}`);
+	let cdata = JSON.stringify(customerData);
+    cy.exec(`npx wp-env run cli wp option update bh_cdata_guapi ${cdata}`);
 });
 
 Cypress.Commands.add('clearCustomerData', () => {
