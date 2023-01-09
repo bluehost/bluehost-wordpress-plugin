@@ -187,7 +187,7 @@ describe( 'Onboarding Phase 2 Flow', () => {
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > button'
 		).click();
 
-		// cy.wait( '@getSettings', { timeout: 10000 } );
+		cy.wait( '@getSettings', { timeout: 10000 } );
 
 		// Installing WooCommerce plugin...
 
