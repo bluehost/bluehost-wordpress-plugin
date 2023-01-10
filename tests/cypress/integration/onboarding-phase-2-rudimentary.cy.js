@@ -9,6 +9,13 @@ describe('Onboarding Phase 2 Flow', () => {
 
 	});
 
+	after(() => {
+
+		// Reset this data so that it does not affect the behaviour of other tests.
+		cy.clearCustomerData();
+
+	});
+
 	it('Tests Onboarding Phase 2 Flow', () => {
 
 		cy.intercept({method: 'GET', url: '**settings**'}).as(
@@ -777,13 +784,6 @@ describe('Onboarding Phase 2 Flow', () => {
 		// cy.get(
 		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > button'
 		// ).click();
-	});
-
-	after(() => {
-
-		// Reset this data so that it does not affect the behaviour of other tests.
-		cy.clearCustomerData();
-
 	});
 
 });
