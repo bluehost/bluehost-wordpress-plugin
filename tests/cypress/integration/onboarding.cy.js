@@ -104,14 +104,14 @@ describe('Onboarding', function () {
 	})
 
 	it('Site launched', () => {
-		cy.intercept({method: 'POST', url: '**/bluehost/v1/settings*'}).as('updateSettings');
+		cy.intercept('POST', '**/bluehost/v1/settings*').as('updateSettings');
 		cy.findByRole('button', {name: 'Launch your site'}).scrollIntoView().click();
 		cy.wait('@updateSettings');
 		cy.get('.nf-onboarding-base-step .illustration').should('be.visible').and('have.attr', 'alt', "People jumping and celebrating.");
 	})
 
 	it('Site can be unlaunched', () => {
-		cy.intercept({method: 'POST', url: '**/bluehost/v1/settings*'}).as('updateSettings');
+		cy.intercept('POST', '**/bluehost/v1/settings*').as('updateSettings');
 		cy.findByRole('button', {name: 'Restore Coming Soon'}).scrollIntoView().click();
 		cy.wait('@updateSettings');
 		cy.get('.nf-onboarding-base-step .illustration').should('be.visible').and('have.attr', 'alt', "Person on spaceship with laptop.");
