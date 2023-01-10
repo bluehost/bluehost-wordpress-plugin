@@ -115,5 +115,4 @@ describe('App Header', function () {
 			cy.url().should('include', '#/home');
 		});
 	})
-})
-;
+});

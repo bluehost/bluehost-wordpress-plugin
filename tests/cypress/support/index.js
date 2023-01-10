@@ -18,7 +18,6 @@ import './commands';
 
 Cypress.Cookies.defaults({
 	preserve: /wp|wordpress/, // Cypress 5.0+
-	//whitelist: /wp|wordpress/, // Cypress <5.0
 });
 
 before(() => {
