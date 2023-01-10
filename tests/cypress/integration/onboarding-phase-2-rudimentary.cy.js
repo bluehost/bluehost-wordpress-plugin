@@ -1,31 +1,35 @@
-describe( 'Onboarding Phase 2 Flow', () => {
-	before( () => {
-		cy.setCustomerData();
-		cy.exec( 'npx wp-env run cli wp option set mm_brand BlueHost' );
-		cy.visit( 'wp-admin/index.php?page=nfd-onboarding&flow=ecommerce' );
-		cy.wait( 5000 );
-	} );
+describe('Onboarding Phase 2 Flow', () => {
 
-	it( 'Tests Onboarding Phase 2 Flow', () => {
-		cy.intercept( { method: 'GET', url: '**settings**' } ).as(
+	before(() => {
+
+		cy.setCustomerData();
+		cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
+		cy.visit('wp-admin/index.php?page=nfd-onboarding&flow=ecommerce');
+		cy.wait(5000);
+
+	});
+
+	it('Tests Onboarding Phase 2 Flow', () => {
+
+		cy.intercept({method: 'GET', url: '**settings**'}).as(
 			'getSettings'
 		);
-		cy.intercept( { method: 'GET', url: '**patterns**' } ).as(
+		cy.intercept({method: 'GET', url: '**patterns**'}).as(
 			'getPatterns'
 		);
-		cy.intercept( { method: 'GET', url: '**variations**' } ).as(
+		cy.intercept({method: 'GET', url: '**variations**'}).as(
 			'getVariations'
 		);
-		cy.intercept( { method: 'GET', url: '**site-features**' } ).as(
+		cy.intercept({method: 'GET', url: '**site-features**'}).as(
 			'getSiteFeatures'
 		);
-		cy.intercept( { method: 'POST', url: '**site-features**' } ).as(
+		cy.intercept({method: 'POST', url: '**site-features**'}).as(
 			'setSiteFeatures'
 		);
-		cy.intercept( { method: 'POST', url: '**complete**' } ).as(
+		cy.intercept({method: 'POST', url: '**complete**'}).as(
 			'completeFlow'
 		);
-		
+
 		// Click `learn more` circle i button to open panel
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg > path'
@@ -104,8 +108,8 @@ describe( 'Onboarding Phase 2 Flow', () => {
 		// click the panel x button to close the panel
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
-			).click();
-			
+		).click();
+
 		// click `continue setup` button
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > button'
@@ -161,7 +165,7 @@ describe( 'Onboarding Phase 2 Flow', () => {
 		// type `hello`
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-primary-second > div > input'
-		).type( 'Hello' );
+		).type('Hello');
 
 		// deselect last category
 		cy.get(
@@ -188,7 +192,7 @@ describe( 'Onboarding Phase 2 Flow', () => {
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > button'
 		).click();
 
-		cy.wait( '@getSettings', { timeout: 10000 } );
+		cy.wait('@getSettings', {timeout: 10000});
 
 		// Installing WooCommerce plugin...
 
@@ -773,10 +777,13 @@ describe( 'Onboarding Phase 2 Flow', () => {
 		// cy.get(
 		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > button'
 		// ).click();
-	} );
+	});
 
-	after( () => {
+	after(() => {
+
 		// Reset this data so that it does not affect the behaviour of other tests.
 		cy.clearCustomerData();
-	} );
-} );
+
+	});
+
+});
