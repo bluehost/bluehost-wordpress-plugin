@@ -407,7 +407,7 @@ describe( 'Onboarding Phase 2 Flow', () => {
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
 		).click();
 
-		cy.get( '#inspector-checkbox-control-0' ).click();
+		cy.get( 'input[type="checkbox"]' ).check();
 
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > div > div > button.components-button.navigation-buttons.navigation-buttons_next.is-primary > svg'
