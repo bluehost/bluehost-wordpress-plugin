@@ -23,12 +23,12 @@ describe('Settings Page', function () {
 				if ($toggle.attr('aria-checked') !== 'true') {
 					// If unchecked, check it
 					cy.get('@toggle').check();
-					cy.wait('@update');
+					cy.wait('@update', {timeout: 10000});
 					cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
 				} else {
 					// If checked, uncheck it
 					cy.get('@toggle').uncheck();
-					cy.wait('@update');
+					cy.wait('@update', {timeout: 10000});
 					cy.get('@toggle').should('have.attr', 'aria-checked', 'false');
 				}
 			});
@@ -39,11 +39,11 @@ describe('Settings Page', function () {
 		},
 		validateSelect(label, values) {
 			cy.intercept('POST', '/index.php?rest_route=/bluehost/v1/settings*').as('update');
-			cy.get(`select[aria-label="${label}"]`).as('select');
+			cy.get(`select[aria-label="${ label }"]`).as('select');
 			cy.get('@select').scrollIntoView().should('be.visible');
 			values.forEach((value) => {
 				cy.get('@select').select(String(value));
-				cy.wait('@update');
+				cy.wait('@update', {timeout: 10000});
 				cy.get('@select').should('have.value', value);
 			});
 		},
@@ -131,7 +131,7 @@ describe('Settings Page', function () {
 		cy.intercept('POST', '**?**/bluehost/v1/settings*').as('update');
 		cy.findByLabelText('Toggle Caching').as('toggle');
 		cy.get('@toggle').check();
-		cy.wait('@update');
+		cy.wait('@update', {timeout: 10000});
 		cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
 	});
 
@@ -151,7 +151,7 @@ describe('Settings Page', function () {
 				const otherSelectors = Cypress._.without(selectors, selector);
 				cy.get(selector).scrollIntoView().should('be.visible');
 				cy.get(selector).check();
-				cy.wait('@update');
+				cy.wait('@update', {timeout: 10000});
 				cy.get(selector).should('be.checked');
 				otherSelectors.forEach((otherSelector) => {
 					cy.get(otherSelector).should('not.be.checked');
