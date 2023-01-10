@@ -2,6 +2,7 @@ describe( 'Onboarding Phase 2 Flow', () => {
 	before( () => {
 		cy.setCustomerData();
 		cy.exec( 'npx wp-env run cli wp option set mm_brand BlueHost' );
+		cy.exec( 'npx wp-env run cli wp theme activate yith-wonder' );
 		cy.visit( 'wp-admin/index.php?page=nfd-onboarding&flow=ecommerce' );
 		cy.wait( 5000 );
 	} );
