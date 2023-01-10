@@ -20,12 +20,8 @@ const fn = {
 		return {...defaults, ...overrides};
 	},
 	visitPage(responseOverrides = {}) {
-		cy.intercept({
-				method: 'GET',
-				url: '**?**/bluehost/v1/staging*',
-			},
-			this.getStagingInfo(responseOverrides)
-		).as('stagingInfo');
+		cy.intercept('GET', '**?**/bluehost/v1/staging*', this.getStagingInfo(responseOverrides))
+			.as('stagingInfo');
 		cy.visit('/wp-admin/admin.php?page=bluehost#/tools/staging');
 		cy.wait('@stagingInfo');
 	}
