@@ -4,7 +4,6 @@ const marketplace = require('../fixtures/products.json');
 describe('Marketplace Page', function () {
 
 	before(() => {
-		cy.server();
 		cy.intercept({
 			method: 'GET',
 			url: '**newfold-marketplace**'
