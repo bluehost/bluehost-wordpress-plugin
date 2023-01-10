@@ -1,9 +1,6 @@
 {
-  "customer": {
-    "customer_id": "1234567890",
-    "signup_date": "2022-08-18T15:30:00.000Z"
-  },
-  "plan": {
-    "subtype": "wc_standard"
-  }
+  "customer_id": "1234",
+  "signup_date": "2022-08-18T15:30:00.000Z",
+  "plan_subtype": "wc_standard",
+  "plan_type": "wc_standard"
 }

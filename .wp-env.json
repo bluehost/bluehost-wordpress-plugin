@@ -8,8 +8,12 @@
   },
   "phpVersion": "8.1",
   "plugins": [
+    "https://downloads.wordpress.org/plugin/woocommerce.7.2.2.zip",
     ".",
     "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"
+  ],
+  "themes": [
+    "https://downloads.wordpress.org/theme/yith-wonder.1.1.2.zip"
   ],
   "port": 8882,
   "testsPort": 8883
