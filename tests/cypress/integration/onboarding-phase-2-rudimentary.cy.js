@@ -377,6 +377,8 @@ describe( 'Onboarding Phase 2 Flow', () => {
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > div > div > button.components-button.navigation-buttons.navigation-buttons_next.is-primary'
 		).click();
 
+		cy.wait( 40000 );
+
 		cy.wait( '@getPatterns' );
 		cy.wait( '@getVariations' );
 		cy.wait( 2500 );
