@@ -2,9 +2,9 @@
 /**
  * Plugin Name: Bluehost
  * Description: This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.
- * Version: 2.12.15
+ * Version: 2.12.16
  * Tested up to: 6.1.1
- * Requires at least: 5.8
+ * Requires at least: 5.9
  * Requires PHP: 7.0
  * Author: Bluehost
  * Author URI: https://www.bluehost.com/
@@ -18,6 +18,7 @@
 
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
+
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 
 // Do not access file directly!
@@ -32,7 +33,7 @@ if ( defined( 'BLUEHOST_PLUGIN_VERSION' ) ) {
 }
 
 // Define constants
-define( 'BLUEHOST_PLUGIN_VERSION', '2.12.15' );
+define( 'BLUEHOST_PLUGIN_VERSION', '2.12.16' );
 define( 'BLUEHOST_PLUGIN_FILE', __FILE__ );
 define( 'BLUEHOST_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLUEHOST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -70,7 +71,7 @@ $bh_module_container = new Container();
 $bh_module_container->set(
 	'plugin',
 	$bh_module_container->service(
-		function() {
+		function () {
 			return new Plugin(
 				array(
 					'id'   => 'bluehost',
@@ -93,7 +94,7 @@ $bh_module_container->set(
 		'template_h2'         => __( 'Coming Soon!', 'bluehost-wordpress-plugin' ),
 		'template_login_btn'  => true,
 		'template_footer_t'   => sprintf(
-			/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag */
+		/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag */
 			esc_html__( 'A %1$sBluehost%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBluehost%6$s.', 'bluehost-wordpress-plugin' ) . '&nbsp;',
 			'<a href="' . esc_url( $wordpress_hosting_page ) . '" target="_blank" rel="noopener noreferrer nofollow">',
 			'</a>',
@@ -103,13 +104,13 @@ $bh_module_container->set(
 			'</a>'
 		),
 		'template_page_title' => sprintf(
-			/* translators: %s: Blog name */
+		/* translators: %s: Blog name */
 			__( '%s &mdash; Coming Soon', 'bluehost-wordpress-plugin' ),
 			esc_html( get_option( 'blogname' ) )
 		),
 		'admin_bar_text'      => '<div style="background-color: #ffcf00; color: #191936; padding: 0 1rem;">' . __( 'Coming Soon Active', 'bluehost-wordpress-plugin' ) . '</div>',
 		'admin_notice_text'   => sprintf(
-			/* translators: %1$s is replaced with the opening link tag and %2$s is replaced with the closing link tag, %3$s is the opening link tag to preview the page, %4$s is the closing link tag. */
+		/* translators: %1$s is replaced with the opening link tag and %2$s is replaced with the closing link tag, %3$s is the opening link tag to preview the page, %4$s is the closing link tag. */
 			__( 'Your site is currently displaying a %1$scoming soon page%2$s. Once you are ready, %3$slaunch your site%4$s.', 'bluehost-wordpress-plugin' ),
 			'<a href="' . get_home_url() . '?preview=coming_soon" title="' . __( 'Preview the coming soon landing page', 'bluehost-wordpress-plugin' ) . '">',
 			'</a>',
