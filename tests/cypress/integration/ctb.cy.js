@@ -29,8 +29,8 @@ describe('Click to buy', function () {
 
 		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium', {
             // set nfdConnected to true, so the ctb click will pass to the endpoint and be intercepted
-            onBeforeLoad (win) {
-              win.nfdConnected = true
+            onBeforeLoad: (contentWindow) => {
+                contentWindow.nfdConnected = true
             }
         });
 
