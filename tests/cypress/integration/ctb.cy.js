@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
-const ctbGet = require('../fixtures/ctbGetYoast.json');
-const ctbPost = require('../fixtures/ctbPostYoast.json');
+const ctbGET = require('../fixtures/ctbGET.json');
+const ctbPOST = require('../fixtures/ctbPOST.json');
 
 describe('Click to buy', function () {
 
@@ -17,14 +17,14 @@ describe('Click to buy', function () {
 			method: 'GET',
 			url: '**bluehost/v1/ctb**'
 		}, {
-			fixture: 'ctbGet'
+			fixture: 'ctbGET'
 		}).as('ctbGET');
 
         cy.intercept({
             method: 'POST',
             url: '**bluehost/v1/ctb**'
         }, {
-            fixture: 'ctbPost'
+            fixture: 'ctbPOST'
         }).as('ctbPOST');
 
 		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium');
