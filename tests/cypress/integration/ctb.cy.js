@@ -15,14 +15,14 @@ describe('Click to buy', function () {
 
 		cy.intercept({
 			method: 'GET',
-			url: '**bluehost/v1/ctb**'
+			url: '**?**bluehost/v1/ctb**'
 		}, {
 			fixture: 'ctbGET'
 		}).as('ctbGET');
 
         cy.intercept({
             method: 'POST',
-            url: '**bluehost/v1/ctb**'
+            url: '**?**bluehost/v1/ctb**'
         }, {
             fixture: 'ctbPOST'
         }).as('ctbPOST');
@@ -46,8 +46,8 @@ describe('Click to buy', function () {
         cy.get('[data-action="load-nfd-ctb"]')
             .scrollIntoView()
             .click();
-        //intercept with data
-        cy.wait(1000);
+        // wait for intercept with data
+        cy.wait('@ctbGET');
 
         // check body for noscroll class
         cy.get('body').should('have.class', 'noscroll');
@@ -99,7 +99,7 @@ describe('Click to buy', function () {
         
         // check that buy button hits POST endpoint - intercept
         cy.get('[data-action="purchase-ctb"]').click();
-        cy.wait(1000);
+        cy.wait('@ctbPOST');
 
         // displays success
         cy.get('.ctb-modal-content .nfd-ctb-modal-success')
