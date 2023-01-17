@@ -8,16 +8,19 @@ namespace Bluehost\WP\Admin_App;
  * @package Bluehost\WP\Admin_App
  */
 class Init {
+
 	/**
-	 * @var /stdClass Fully instantiated instance of this class.
+	 * @var /stdClass  Fully instantiated instance of this class.
 	 */
 	protected static $instance;
+
 	/**
-	 * @var string
+	 * @var string filename root
 	 */
 	protected static $filename_root = 'class-';
+
 	/**
-	 * @var array
+	 * @var array page slug stubs
 	 */
 	protected static $page_slug_stubs = array(
 		'mods.php',
@@ -50,6 +53,9 @@ class Init {
 		\add_action( 'load-admin.php', array( $this, 'maybe_redirect_to_staging' ) );
 	}
 
+	/**
+	 * WP Loaded Init
+	 */
 	public function wp_loaded_init() {
 		if ( ! \is_user_logged_in() ) {
 			return;
@@ -98,6 +104,9 @@ class Init {
 		);
 	}
 
+	/**
+	 * Enqueue Dashboard Assets
+	 */
 	public function enqueue_dashboard_assets( $hook ) {
 		if ( 'index.php' === $hook ) {
 			\Bluehost\BuildAssets::inlineWebpackPublicPath( 'bwp-manifest-dashboard' );
@@ -108,7 +117,7 @@ class Init {
 	}
 
 	/**
-	 *
+	 * Load Class Instances
 	 */
 	protected function load_class_instances() {
 		\Bluehost_Admin_App_Mods::return_instance();
