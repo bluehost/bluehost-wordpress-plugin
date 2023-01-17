@@ -29,6 +29,10 @@ describe('Click to buy', function () {
 
 		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium');
 
+        // set nfdConnected to true, so the ctb click will pass to the endpoint and be intercepted
+        cy.window().then((win) => {
+            win.nfdConnected = true;
+        });
 	});
 
 	it('Button has CTB Attributes', () => {
