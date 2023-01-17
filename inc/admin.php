@@ -45,8 +45,8 @@ class Init {
 	 */
 	protected function primary_init() {
 		\add_action( 'init', array( $this, 'wp_loaded_init' ) );
-		\add_action( 'wp_dashboard_setup', array( $this, 'register_admin_widget' ) );
-		\add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_dashboard_assets' ), 30 );
+		// \add_action( 'wp_dashboard_setup', array( $this, 'register_admin_widget' ) );
+		// \add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_dashboard_assets' ), 30 );
 		\add_action( 'load-admin.php', array( $this, 'maybe_redirect_to_staging' ) );
 	}
 
