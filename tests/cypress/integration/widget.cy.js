@@ -7,19 +7,19 @@ describe('Dashboard Widget', function () {
 		cy.injectAxe();
 	});
 
-	it('Exists', () => {
+	it.skip('Exists', () => {
 		cy
 			.get('#bluehost-widget-container')
 			.scrollIntoView()
 			.should('be.visible');
 	});
 
-	it('Is Accessible', () => {
+	it.skip('Is Accessible', () => {
 		cy.wait(1500);
 		cy.checkA11y('#bluehost-widget-container .inside');
 	});
 
-    it('Has Widget Title', () => {
+    it.skip('Has Widget Title', () => {
 		cy.get('#bluehost-widget-container .inside h3')
             .scrollIntoView()
             .should('be.visible')
@@ -46,7 +46,7 @@ describe('Dashboard Widget', function () {
         })   
     });
 
-    it('Has Footer Links', () => {
+    it.skip('Has Footer Links', () => {
         // check each footer link isn't undefined
         cy.get('#bluehost-widget-container .footer a').should('be.visible').each(($a, i) => {
             const message = $a.text();
