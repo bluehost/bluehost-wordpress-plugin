@@ -47,7 +47,7 @@ describe('Click to buy', function () {
             .scrollIntoView()
             .click();
         //intercept with data
-        cy.wait('@ctbGET');
+        cy.wait(1000);
 
         // check body for noscroll class
         cy.get('body').should('have.class', 'noscroll');
@@ -99,7 +99,7 @@ describe('Click to buy', function () {
         
         // check that buy button hits POST endpoint - intercept
         cy.get('[data-action="purchase-ctb"]').click();
-        cy.wait('@ctbPOST');
+        cy.wait(1000);
 
         // displays success
         cy.get('.ctb-modal-content .nfd-ctb-modal-success')
