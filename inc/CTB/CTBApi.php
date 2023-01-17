@@ -3,7 +3,7 @@
 namespace Bluehost\CTB;
 
 use Bluehost\SiteMeta;
-use Bluehost\WP\Data\Customer;
+use NewfoldLabs\WP\Module\CustomerBluehost\CustomerBluehost;
 use NewfoldLabs\WP\Module\Data\HiiveConnection;
 use WP_Error;
 
@@ -31,7 +31,7 @@ class CTBApi {
 				'callback'            => function ( \WP_REST_Request $request ) {
 
 					// Check for customer_id first. If it's not available, then CTB will not work.
-					$customer_data = Customer::collect();
+					$customer_data = CustomerBluehost::collect();
 					if ( empty( $customer_data ) || ! isset( $customer_data['customer_id'] ) ) {
 						return new WP_Error( 500, 'Customer ID is required for CTB' );
 					}
