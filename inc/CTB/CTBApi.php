@@ -69,7 +69,7 @@ class CTBApi {
 				'callback'            => function ( \WP_REST_Request $request ) {
 
 					$ctb_id = $request->get_param( 'id' );
-					$customer_data = Customer::collect();
+					$customer_data = CustomerBluehost::collect();
 					if ( empty( $customer_data ) || ! isset( $customer_data['customer_id'] ) ) {
 						return new WP_Error( 500, 'Customer ID is required to purchase CTB' );
 					}
