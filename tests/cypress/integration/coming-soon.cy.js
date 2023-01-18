@@ -1,19 +1,20 @@
 // <reference types="Cypress" />
 
-describe('Coming Soon Page', function () {
+describe('Coming Soon Page', () => {
 
 	before(() => {
 		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
-		cy.injectAxe();
 	});
 
 	it('Coming Soon Toggle Works', () => {
-		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').uncheck();
-		cy.wait(2000);
+
+		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').should('be.checked');
+		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').click();
+		cy.wait(10000);
 		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').should('not.be.checked');
 
 		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').check();
-		cy.wait(2000);
+		cy.wait(10000);
 		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').should('be.checked');
 		
 	});

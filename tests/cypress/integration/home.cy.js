@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
 
-describe('Home Page', function () {
+describe('Home Page', () => {
 
 	before(() => {
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home/page'); // use internal override
