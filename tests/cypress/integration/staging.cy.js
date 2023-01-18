@@ -92,9 +92,9 @@ describe('Staging Page', function () {
 		cy.intercept({
 			method: 'POST',
 			url: '**?**/bluehost/v1/staging*'
-		},{
-			response: fn.getStagingInfo(),
-		}).as('stagingCreation');
+		},
+			fn.getStagingInfo()
+		).as('stagingCreation');
 		cy.contains('button', 'Create Staging Site').click();
 		cy.wait('@stagingCreation');
 		cy.get('.bluehost-snackbar').should('not.exist');
@@ -120,10 +120,9 @@ describe('Staging Page', function () {
 		cy.intercept({
 			method: 'POST',
 			url: '**?**/bluehost/v1/staging/clone*'
-		},{
-			response: fn.getStagingInfo(),
-			delay: 1000,
-		}).as('cloneStaging');
+		},
+			fn.getStagingInfo()
+		).as('cloneStaging');
 
 		cy.contains('button', 'Clone to Staging').click();
 		cy.get('.bluehost-modal').should('be.visible');
@@ -218,10 +217,9 @@ describe('Staging Page', function () {
 		cy.intercept({
 			method: 'POST',
 			url: '**?**/bluehost/v1/staging/deploy?type=all*'
-		},{
-			response: fn.getStagingInfo(),
-			delay: 1000,
-		}).as('deploy');
+		},
+			fn.getStagingInfo()
+		).as('deploy');
 
 		cy.contains('button', 'Deploy All Changes').click(); // TODO: Broke (disabled), force?
 		cy.get('.bluehost-modal').should('be.visible');
@@ -255,11 +253,9 @@ describe('Staging Page', function () {
 		cy.intercept({
 			method: 'POST',
 			url: '**?**/bluehost/v1/staging/deploy?type=files*'
-		},{
-			response: fn.getStagingInfo(),
-			delay: 1000,
-		}).as('deploy');
-
+		},
+			fn.getStagingInfo()
+		).as('deploy');
 
 		cy.get('.dropdown-button').scrollIntoView();
 		cy.get('.dropdown-button__list').should('not.be.visible');
@@ -298,10 +294,9 @@ describe('Staging Page', function () {
 		cy.intercept({
 			method: 'POST',
 			url: '**?**/bluehost/v1/staging/deploy?type=db*'
-		},{
-			response: fn.getStagingInfo(),
-			delay: 1000,
-		}).as('deploy');
+		},
+			fn.getStagingInfo()
+		).as('deploy');
 
 
 		cy.get('.dropdown-button').scrollIntoView();
@@ -370,15 +365,12 @@ describe('Staging Page', function () {
 		cy.intercept({
 			method: 'POST',
 			url: '**?**/bluehost/v1/staging*'
-		},{
 			headers: {
 				'x-http-method-override': 'DELETE',
 			},
-			response: {
-				'status': 'error',
-				'message': 'Unable to remove staging files.',
-			},
-			delay: 2000,
+		}, {
+			'status': 'error',
+			'message': 'Unable to remove staging files.',
 		}).as('stagingDeletion');
 
 		cy.get('.options-menu').within(() => {
