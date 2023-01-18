@@ -12,6 +12,7 @@ describe('App Header', () => {
 
 	it('Is Accessible', () => {
 		cy.injectAxe();
+		cy.wait(1000);
 		cy.checkA11y('.bwa-common-header__brand');
 	});
 

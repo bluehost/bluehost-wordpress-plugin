@@ -7,14 +7,14 @@ describe('Coming Soon Page', () => {
 	});
 
 	it('Coming Soon Toggle Works', () => {
-
+		cy.intercept('POST', '**?**/bluehost/v1/settings*').as('update');
 		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').should('be.checked');
-		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').click();
-		cy.wait(10000);
+		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').uncheck();
+		cy.wait('@update', {timeout: 10000});
 		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').should('not.be.checked');
 
 		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').check();
-		cy.wait(10000);
+		cy.wait('@update', {timeout: 10000});
 		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').should('be.checked');
 		
 	});

@@ -4,7 +4,6 @@ describe('Blue Sky Product Page', () => {
 
 	before(() => {
 		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/services/blue-sky');
-		cy.injectAxe();
 	});
 
 	it('Exists', () => {
@@ -12,6 +11,7 @@ describe('Blue Sky Product Page', () => {
 	});
 
 	it('Is Accessible', () => {
+		cy.injectAxe();
 		cy.wait(1500);
 		cy.checkA11y('.bwa-route-contents');
 	});

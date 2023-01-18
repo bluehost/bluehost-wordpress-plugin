@@ -1,7 +1,5 @@
 // <reference types="Cypress" />
 
-import 'cypress-axe';
-
 const thumbnailUrl = `https://s.wordpress.com/mshots/v1/${encodeURIComponent('https://www.google.com')}?width=122&height=92`;
 
 const fn = {
@@ -35,7 +33,6 @@ describe('Staging Page', function () {
 
 	before(() => {
 		fn.visitPage({stagingExists: false});
-		cy.injectAxe();
 	});
 
 	it('Exists', () => {
@@ -107,6 +104,8 @@ describe('Staging Page', function () {
 	});
 
 	it('Is Accessible', () => {
+		cy.injectAxe();
+		cy.wait(1000);
 		cy.checkA11y('.bwa-route-contents');
 	});
 

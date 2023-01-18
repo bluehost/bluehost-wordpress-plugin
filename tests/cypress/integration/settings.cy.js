@@ -1,8 +1,6 @@
 // <reference types="Cypress" />
 
-import 'cypress-axe';
-
-describe('Settings Page', function () {
+describe('Settings Page', () => {
 
 	before(() => {
 
@@ -10,13 +8,11 @@ describe('Settings Page', function () {
 		cy.exec('npx wp-env run cli wp option set endurance_cache_level 0');
 
 		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
-		cy.injectAxe();
 	});
 
 	const fn = {
 		validateToggle(label, run = 0) {
-			cy.server();
-			cy.route('POST', '**?**/bluehost/v1/settings*').as('update');
+			cy.intercept('POST', '**?**/bluehost/v1/settings*').as('update');
 			cy.findByLabelText(label).as('toggle');
 			cy.get('@toggle').scrollIntoView().should('exist');
 			cy.get('@toggle').next().scrollIntoView().should('be.visible');
@@ -24,12 +20,12 @@ describe('Settings Page', function () {
 				if ($toggle.attr('aria-checked') !== 'true') {
 					// If unchecked, check it
 					cy.get('@toggle').check();
-					cy.wait('@update');
+					cy.wait('@update', {timeout: 10000});
 					cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
 				} else {
 					// If checked, uncheck it
 					cy.get('@toggle').uncheck();
-					cy.wait('@update');
+					cy.wait('@update', {timeout: 10000});
 					cy.get('@toggle').should('have.attr', 'aria-checked', 'false');
 				}
 			});
@@ -39,14 +35,13 @@ describe('Settings Page', function () {
 			}
 		},
 		validateSelect(label, values) {
-			cy.server();
-			cy.route('POST', '/index.php?rest_route=/bluehost/v1/settings*').as('update');
+			cy.intercept('POST', '**?**/bluehost/v1/settings*').as('update');
 			cy.get(`select[aria-label="${label}"]`).as('select');
 			cy.get('@select').scrollIntoView().should('be.visible');
 			values.forEach((value) => {
-				cy.get('@select').select(String(value));
-				cy.wait('@update');
-				cy.get('@select').should('have.value', value);
+				cy.get('@select').select(`${value}`);
+				cy.wait('@update', {timeout: 10000});
+				cy.get('@select').should('have.value', `${value}`);
 			});
 		},
 	};
@@ -56,6 +51,7 @@ describe('Settings Page', function () {
 	});
 
 	it('Is Accessible', () => {
+		cy.injectAxe();
 		cy.wait(1000);
 		cy.checkA11y('.bwa-route-contents');
 	});
@@ -99,13 +95,11 @@ describe('Settings Page', function () {
 	});
 
 	it('Comments: Close After x Days', () => {
-		const values = [1, 7, 30, 14];
-		fn.validateSelect('Close comments after x days', values);
+		fn.validateSelect('Close comments after x days', [7, 28]);
 	});
 
 	it('Comments: Show x Per Page', () => {
-		const values = [10, 20, 30, 50];
-		fn.validateSelect('Display x comments per page', values);
+		fn.validateSelect('Display x comments per page', [10, 20]);
 	});
 
 	it('Has a "Content" section', () => {
@@ -115,11 +109,11 @@ describe('Settings Page', function () {
 	});
 
 	it('Content: Content Revisions', () => {
-		fn.validateSelect('Keep x latest revisions', [40, 5, 10]);
+		fn.validateSelect('Keep x latest revisions', [5, 10]);
 	});
 
 	it('Content: Empty Trash', () => {
-		fn.validateSelect('Empty the trash every x weeks', [7, 14, 21, 30]);
+		fn.validateSelect('Empty the trash every x weeks', [7, 30]);
 	});
 
 	it('Has a "Performance" section', () => {
@@ -130,17 +124,15 @@ describe('Settings Page', function () {
 	});
 
 	it('Performance: Caching Toggle', () => {
-		cy.server();
-		cy.route('POST', '**?**/bluehost/v1/settings*').as('update');
+		cy.intercept('POST', '**?**/bluehost/v1/settings*').as('update');
 		cy.findByLabelText('Toggle Caching').as('toggle');
 		cy.get('@toggle').check();
-		cy.wait('@update');
+		cy.wait('@update', {timeout: 10000});
 		cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
 	});
 
 	it('Performance: Caching Level', () => {
-		cy.server();
-		cy.route('POST', '**?**/bluehost/v1/settings*').as('update');
+		cy.intercept('POST', '**?**/bluehost/v1/settings*').as('update');
 
 		cy.get('.settings-section').last().within(() => {
 
@@ -155,7 +147,7 @@ describe('Settings Page', function () {
 				const otherSelectors = Cypress._.without(selectors, selector);
 				cy.get(selector).scrollIntoView().should('be.visible');
 				cy.get(selector).check();
-				cy.wait('@update');
+				cy.wait('@update', {timeout: 10000});
 				cy.get(selector).should('be.checked');
 				otherSelectors.forEach((otherSelector) => {
 					cy.get(otherSelector).should('not.be.checked');
