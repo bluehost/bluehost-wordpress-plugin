@@ -18,12 +18,12 @@ const fn = {
 		return {...defaults, ...overrides};
 	},
 	visitPage(responseOverrides = {}) {
-		cy.server();
-		cy.route({
+		cy.intercept({
 			method: 'GET',
-			url: '**?**/bluehost/v1/staging*',
-			response: this.getStagingInfo(responseOverrides),
-		}).as('stagingInfo');
+			url: '**?**/bluehost/v1/staging*'
+		},
+			this.getStagingInfo(responseOverrides)
+		).as('stagingInfo');
 		cy.visit('/wp-admin/admin.php?page=bluehost#/tools/staging');
 		cy.wait('@stagingInfo');
 	}
@@ -63,17 +63,16 @@ describe('Staging Page', function () {
 	});
 
 	it('Creation failure', () => {
-		cy.server();
-		cy.route({
+		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging*',
-			response: fn.getStagingInfo({
+			url: '**?**/bluehost/v1/staging*'
+		},
+			fn.getStagingInfo({
 				stagingExists: false,
 				status: 'error',
 				message: 'Git is not available.'
-			}),
-			delay: 2000,
-		}).as('stagingCreation');
+			})
+		).as('stagingCreation');
 		cy.contains('button', 'Create Staging Site').click();
 		cy.get('.bluehost-staging__step.--creation').within(() => {
 			cy.get('.app-spinner__wrap').should('be.visible');
@@ -90,10 +89,10 @@ describe('Staging Page', function () {
 	});
 
 	it('Creation success', () => {
-		cy.server();
-		cy.route({
+		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging*',
+			url: '**?**/bluehost/v1/staging*'
+		},{
 			response: fn.getStagingInfo(),
 		}).as('stagingCreation');
 		cy.contains('button', 'Create Staging Site').click();
@@ -118,11 +117,10 @@ describe('Staging Page', function () {
 	});
 
 	it('Clone to staging works', () => {
-
-		cy.server();
-		cy.route({
+		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging/clone*',
+			url: '**?**/bluehost/v1/staging/clone*'
+		},{
 			response: fn.getStagingInfo(),
 			delay: 1000,
 		}).as('cloneStaging');
@@ -217,10 +215,10 @@ describe('Staging Page', function () {
 
 	it('Deploy All Changes works', () => {
 
-		cy.server();
-		cy.route({
+		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging/deploy?type=all*',
+			url: '**?**/bluehost/v1/staging/deploy?type=all*'
+		},{
 			response: fn.getStagingInfo(),
 			delay: 1000,
 		}).as('deploy');
@@ -254,10 +252,10 @@ describe('Staging Page', function () {
 	});
 
 	it('Deploy Files works', () => {
-		cy.server();
-		cy.route({
+		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging/deploy?type=files*',
+			url: '**?**/bluehost/v1/staging/deploy?type=files*'
+		},{
 			response: fn.getStagingInfo(),
 			delay: 1000,
 		}).as('deploy');
@@ -297,10 +295,10 @@ describe('Staging Page', function () {
 	});
 
 	it('Deploy Database works', () => {
-		cy.server();
-		cy.route({
+		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging/deploy?type=db*',
+			url: '**?**/bluehost/v1/staging/deploy?type=db*'
+		},{
 			response: fn.getStagingInfo(),
 			delay: 1000,
 		}).as('deploy');
@@ -369,10 +367,10 @@ describe('Staging Page', function () {
 	});
 
 	it('Delete staging failure', () => {
-		cy.server();
-		cy.route({
+		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging*',
+			url: '**?**/bluehost/v1/staging*'
+		},{
 			headers: {
 				'x-http-method-override': 'DELETE',
 			},
@@ -414,18 +412,15 @@ describe('Staging Page', function () {
 	});
 
 	it('Delete staging works', () => {
-		cy.server();
-		cy.route({
+		cy.intercept({
 			method: 'POST',
 			url: '**?**/bluehost/v1/staging*',
 			headers: {
 				'x-http-method-override': 'DELETE',
 			},
-			response: {
-				'status': 'success',
-				'message': 'Staging website destroyed.',
-			},
-			delay: 2000,
+		},{
+			'status': 'success',
+			'message': 'Staging website destroyed.',
 		}).as('stagingDeletion');
 
 		cy.get('.options-menu').within(() => {
