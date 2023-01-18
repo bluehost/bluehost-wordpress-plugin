@@ -364,13 +364,13 @@ describe('Staging Page', function () {
 	it('Delete staging failure', () => {
 		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging*'
+			url: '**?**/bluehost/v1/staging*',
 			headers: {
 				'x-http-method-override': 'DELETE',
 			},
 		}, {
-			'status': 'error',
-			'message': 'Unable to remove staging files.',
+			status: 'error',
+			message: 'Unable to remove staging files.'
 		}).as('stagingDeletion');
 
 		cy.get('.options-menu').within(() => {
@@ -411,8 +411,8 @@ describe('Staging Page', function () {
 				'x-http-method-override': 'DELETE',
 			},
 		},{
-			'status': 'success',
-			'message': 'Staging website destroyed.',
+			status: 'success',
+			message: 'Staging website destroyed.'
 		}).as('stagingDeletion');
 
 		cy.get('.options-menu').within(() => {

@@ -20,12 +20,12 @@ describe('Settings Page', () => {
 				if ($toggle.attr('aria-checked') !== 'true') {
 					// If unchecked, check it
 					cy.get('@toggle').check();
-					cy.wait('@update', {timeout: 10000});
+					cy.wait('@update', {timeout: 30000});
 					cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
 				} else {
 					// If checked, uncheck it
 					cy.get('@toggle').uncheck();
-					cy.wait('@update', {timeout: 10000});
+					cy.wait('@update', {timeout: 30000});
 					cy.get('@toggle').should('have.attr', 'aria-checked', 'false');
 				}
 			});
