@@ -78,7 +78,7 @@ describe('Notifications', () => {
 		cy.wait(500);
 		
 		cy.get('.newfold-notifications-wrapper #notification-test-2')
-            .should('not.be.visible');
+            .should('have.class', 'is-dismissed');
 	});
 
 	// these can be updated later on, but currently the wp-admin tests are not loaded via the api
