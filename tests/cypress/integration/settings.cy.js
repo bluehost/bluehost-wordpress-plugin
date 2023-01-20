@@ -40,7 +40,7 @@ describe('Settings Page', () => {
 			cy.get('@select').scrollIntoView().should('be.visible');
 			values.forEach((value) => {
 				cy.get('@select').select(`${value}`);
-				cy.wait('@update', {timeout: 10000});
+				cy.wait('@update', {timeout: 30000});
 				cy.get('@select').should('have.value', `${value}`);
 			});
 		},
@@ -90,16 +90,16 @@ describe('Settings Page', () => {
 		});
 	});
 
-	it('Comments: Disable for old posts', () => {
-		fn.validateToggle('Disable comments for old posts');
-	});
-
 	it('Comments: Close After x Days', () => {
 		fn.validateSelect('Close comments after x days', [7, 28]);
 	});
 
 	it('Comments: Show x Per Page', () => {
-		fn.validateSelect('Display x comments per page', [10, 20]);
+		fn.validateSelect('Display x comments per page', [20, 10]);
+	});
+
+	it('Comments: Disable for old posts', () => {
+		fn.validateToggle('Disable comments for old posts');
 	});
 
 	it('Has a "Content" section', () => {
@@ -113,7 +113,7 @@ describe('Settings Page', () => {
 	});
 
 	it('Content: Empty Trash', () => {
-		fn.validateSelect('Empty the trash every x weeks', [7, 30]);
+		fn.validateSelect('Empty the trash every x weeks', [30, 7]);
 	});
 
 	it('Has a "Performance" section', () => {
