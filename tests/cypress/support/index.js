@@ -15,6 +15,7 @@
 
 import 'cypress-axe';
 import './commands';
+require('@replayio/cypress/support');
 
 Cypress.Cookies.defaults({
 	preserve: /wp|wordpress/, // Cypress 5.0+
