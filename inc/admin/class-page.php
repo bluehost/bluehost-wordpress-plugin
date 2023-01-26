@@ -23,7 +23,7 @@ class Bluehost_Admin_App_Page {
 	 * Get top level pages.
 	 * These pages are used to generate the plugin submenu via php, see `add_sub_pages` below
 	 * as well as in the plugin's js app to generate menus and track link states.
-	 * 
+	 *
 	 * - slug: a permalink style slug
 	 * - path: the path to generate and track links in the js app
 	 * - full: the path to generate links in the plugin menu in php
