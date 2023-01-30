@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
 
-const thumbnailUrl = `https://s.wordpress.com/mshots/v1/${encodeURIComponent('https://www.google.com')}?width=122&height=92`;
+const thumbnailUrl = `https://s.wordpress.com/mshots/v1/${ encodeURIComponent('https://www.google.com') }?width=122&height=92`;
 
 const fn = {
 	getStagingInfo(overrides = {}) {
@@ -19,13 +19,15 @@ const fn = {
 	},
 	visitPage(responseOverrides = {}) {
 		cy.intercept({
-			method: 'GET',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging/
-		},
-			this.getStagingInfo(responseOverrides)
+				method: 'GET',
+				url: /bluehost(\/|%2F)v1(\/|%2F)staging/
+			},
+			{
+				body: this.getStagingInfo(responseOverrides)
+			}
 		).as('stagingInfo');
 		cy.visit('/wp-admin/admin.php?page=bluehost#/tools/staging');
-		cy.wait('@stagingInfo', {timeout: 30000});
+		cy.wait('@stagingInfo');
 	}
 };
 
@@ -93,10 +95,10 @@ describe('Staging Page', function () {
 
 	it('Creation success', () => {
 		cy.intercept({
-			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging/
-		},
-			fn.getStagingInfo()
+				method: 'POST',
+				url: /bluehost(\/|%2F)v1(\/|%2F)staging/
+			},
+			{ body: fn.getStagingInfo() }
 		).as('stagingCreation');
 		cy.contains('button', 'Create Staging Site').click();
 		cy.wait('@stagingCreation');
@@ -120,15 +122,15 @@ describe('Staging Page', function () {
 	});
 
 	it('Clone to staging works', () => {
-		cy.intercept({
-			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)clone/
-		}, (req) => {
-			req.reply({
+		cy.intercept(
+			{
+				method: 'POST',
+				url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)clone/
+			}, {
 				body: fn.getStagingInfo(),
-				delay: 1000,
-			})
-		}).as('cloneStaging');
+				delay: 1000
+			}
+		).as('cloneStaging');
 
 		cy.contains('button', 'Clone to Staging').click();
 		cy.get('.bluehost-modal').should('be.visible');
@@ -170,7 +172,7 @@ describe('Staging Page', function () {
 	});
 
 	it('Switch to staging works', () => {
-		
+
 		cy.intercept({
 			method: 'GET',
 			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)switch-to/
@@ -179,7 +181,7 @@ describe('Staging Page', function () {
 				body: fn.getStagingInfo(
 					{
 						currentEnvironment: 'staging',
-						load_page:'/wp-admin/admin.php?page=bluehost#/tools/staging'
+						load_page: '/wp-admin/admin.php?page=bluehost#/tools/staging'
 					}
 				),
 				delay: 1000,
@@ -205,7 +207,7 @@ describe('Staging Page', function () {
 		});
 		cy.get('.bluehost-overlay').should('be.visible');
 
-		cy.wait('@stagingSwitch', {timeout:2000});
+		cy.wait('@stagingSwitch');
 
 	});
 });
@@ -270,7 +272,7 @@ describe('Staging Page, staging state', function () {
 
 		cy.get('.bluehost-overlay').should('be.visible');
 		cy.contains('.bluehost-overlay h1', 'Deploying to Production');
-		cy.wait('@deploy', {timeout: 2000});
+		cy.wait('@deploy');
 
 		// Validate that overlay is gone
 		cy.get('.bluehost-overlay').should('not.exist');
@@ -316,7 +318,7 @@ describe('Staging Page, staging state', function () {
 
 		cy.get('.bluehost-overlay').should('be.visible');
 		cy.contains('.bluehost-overlay h1', 'Deploying Files to Production');
-		cy.wait('@deploy', {timeout: 2000});
+		cy.wait('@deploy');
 
 		// Validate that overlay is gone
 		cy.get('.bluehost-overlay').should('not.exist');
@@ -347,7 +349,7 @@ describe('Staging Page, staging state', function () {
 		cy.get('.dropdown-button__list').should('not.be.visible');
 		cy.get('.dropdown-button__toggle').click();
 		cy.get('.dropdown-button__list').scrollIntoView().should('be.visible');
-		cy.contains('.dropdown-button__list-item', 'Deploy Database').click({force:true});
+		cy.contains('.dropdown-button__list-item', 'Deploy Database').click({force: true});
 		cy.get('.dropdown-button__list').should('not.be.visible');
 
 		cy.get('.bluehost-modal').should('be.visible');
@@ -361,7 +363,7 @@ describe('Staging Page, staging state', function () {
 
 		cy.get('.bluehost-overlay').should('be.visible');
 		cy.contains('.bluehost-overlay h1', 'Deploying Database to Production');
-		cy.wait('@deploy', {timeout: 2000});
+		cy.wait('@deploy');
 
 		// Validate that overlay is gone
 		cy.get('.bluehost-overlay').should('not.exist');
@@ -418,7 +420,7 @@ describe('Staging Page, production state', function () {
 	});
 
 	it('Delete staging failure', () => {
-		
+
 		cy.intercept({
 			method: 'POST',
 			url: /bluehost(\/|%2F)v1(\/|%2F)staging/,
@@ -451,7 +453,7 @@ describe('Staging Page, production state', function () {
 		});
 		cy.get('.bluehost-overlay').should('be.visible');
 		cy.contains('.bluehost-overlay h1', 'Deleting Staging Site');
-		cy.wait('@stagingDeletion', {timeout:2000});
+		cy.wait('@stagingDeletion');
 
 		// Validate that overlay is gone
 		cy.get('.bluehost-overlay').should('not.exist');
@@ -466,7 +468,7 @@ describe('Staging Page, production state', function () {
 		cy.get('.bluehost-snackbar').should('not.exist');
 	});
 
-	it('Delete staging works', () => {		
+	it('Delete staging works', () => {
 		cy.intercept({
 			method: 'POST',
 			url: /bluehost(\/|%2F)v1(\/|%2F)staging/,
@@ -499,7 +501,7 @@ describe('Staging Page, production state', function () {
 		});
 		cy.get('.bluehost-overlay').should('be.visible');
 		cy.contains('.bluehost-overlay h1', 'Deleting Staging Site');
-		cy.wait('@stagingDeletion', {timeout:2000});
+		cy.wait('@stagingDeletion');
 
 		// Validate that overlay is gone
 		cy.get('.bluehost-overlay').should('not.exist');
