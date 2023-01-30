@@ -15,6 +15,7 @@
 
 import 'cypress-axe';
 import './commands';
+require('@replayio/cypress/support');
 
 before(() => {
 	cy.login(

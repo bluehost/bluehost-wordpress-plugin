@@ -21,6 +21,14 @@ class Bluehost_Admin_App_Page {
 
 	/**
 	 * Get top level pages.
+	 * These pages are used to generate the plugin submenu via php, see `add_sub_pages` below
+	 * as well as in the plugin's js app to generate menus and track link states.
+	 *
+	 * - slug: a permalink style slug
+	 * - path: the path to generate and track links in the js app
+	 * - full: the path to generate links in the plugin menu in php
+	 * - label: Text label
+	 * - inapp: boolean to distinguish if the link should be added to the menu in the js app
 	 *
 	 * @return array[]
 	 */
@@ -29,48 +37,56 @@ class Bluehost_Admin_App_Page {
 			array(
 				'slug'  => 'home',
 				'path'  => '/home',
+				'full'  => 'bluehost#/home',
 				'label' => __( 'Home', 'bluehost-wordpress-plugin' ),
 				'inapp' => true,
 			),
 			array(
 				'slug'  => 'marketplace',
 				'path'  => '/marketplace',
+				'full'  => 'bluehost#/marketplace',
 				'label' => __( 'Marketplace', 'bluehost-wordpress-plugin' ),
 				'inapp' => true,
 			),
 			array(
 				'slug'  => 'marketplace-featured',
-				'path'  => '/marketplace/featured&from=marketplace-nav-link',
+				'path'  => '/marketplace/featured',
+				'full'  => 'bluehost&from=marketplace-nav-link#/marketplace/featured',
 				'label' => __( ' - Featured', 'bluehost-wordpress-plugin' ),
 				'inapp' => false,
 			),
 			array(
 				'slug'  => 'marketplace-themes',
-				'path'  => '/marketplace/themes&from=marketplace-nav-link',
+				'path'  => '/marketplace/themes',
+				'full'  => 'bluehost&from=marketplace-nav-link#/marketplace/themes',
 				'label' => __( ' - Themes', 'bluehost-wordpress-plugin' ),
 				'inapp' => false,
 			),
 			array(
 				'slug'  => 'marketplace-seo',
-				'path'  => '/marketplace/seo&from=marketplace-nav-link',
+				'path'  => '/marketplace/seo',
+				'full'  => 'bluehost&from=marketplace-nav-link#/marketplace/seo',
 				'label' => __( ' - SEO', 'bluehost-wordpress-plugin' ),
 				'inapp' => false,
 			),
 			array(
 				'slug'  => 'staging',
 				'path'  => '/tools/staging',
+				'full'  => 'bluehost#/tools/staging',
 				'label' => __( 'Staging', 'bluehost-wordpress-plugin' ),
 				'inapp' => true,
 			),
 			array(
 				'slug'  => 'settings',
 				'path'  => '/settings',
+				'full'  => 'bluehost#/settings',
 				'label' => __( 'Settings', 'bluehost-wordpress-plugin' ),
 				'inapp' => true,
 			),
 			array(
 				'slug'  => 'help',
 				'path'  => '/help',
+				'full'  => 'bluehost#/help',
 				'label' => __( 'Help', 'bluehost-wordpress-plugin' ),
 				'inapp' => true,
 			),
@@ -146,7 +162,7 @@ class Bluehost_Admin_App_Page {
 				$data['label'],
 				$data['label'],
 				'manage_options',
-				'bluehost#' . $data['path'],
+				$data['full'],
 				array( $this, 'handle_subpage_redirect' )
 			);
 		}
