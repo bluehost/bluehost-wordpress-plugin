@@ -1,18 +1,19 @@
 // <reference types="Cypress" />
-const marketplace = require('../fixtures/products.json');
 
-describe('Marketplace Page', function () {
+describe('Marketplace Page', () => {
 
 	before(() => {
-		cy.server();
+		// cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
+		// cy.server();
 		cy.intercept({
 			method: 'GET',
 			url: '**newfold-marketplace**'
 		}, {
-			fixture: 'products'
-		}).as('marketplace');
+			fixture: 'products.json'
+		}).as('products');
+
 		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace');
-		cy.injectAxe();
+		cy.wait('@products');
 	});
 
 	it('Exists', () => {
@@ -20,6 +21,7 @@ describe('Marketplace Page', function () {
 	});
 
 	it('Is Accessible', () => {
+		cy.injectAxe();
 		cy.wait(1000);
 		cy.checkA11y('.bwa-route-contents');
 	});
@@ -94,7 +96,10 @@ describe('Marketplace Page', function () {
 	});
 
 	it('Category Tab Filters properly', () => {
-		cy.findByRole('tab', {name: 'Services'}).click();
+		cy.get('button[role="tab"][id$="services"]')
+			.should('have.class', 'newfold-marketplace-tab-services')
+			.should('exist')
+			.click();
 		cy.get('.marketplace-item').should('have.length', 11);
 
 		cy.get('#marketplace-item-0fd107dc-cfcc-4380-86ef-89a9ce01e443 h2')
@@ -102,7 +107,10 @@ describe('Marketplace Page', function () {
 			.should('be.visible')
 			.should('have.text', 'Full Service');
 
-		cy.findByRole('tab', {name: 'SEO'}).click();
+		cy.get('button[role="tab"][id$="seo"]')
+			.should('have.class', 'newfold-marketplace-tab-seo')
+			.should('exist')
+			.click();
 		cy.get('.marketplace-item').should('have.length', 5);
 
 		cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738 h2')
@@ -112,7 +120,11 @@ describe('Marketplace Page', function () {
 	});
 
 	it('Category tabs update path', () => {
-		cy.findByRole('tab', {name: 'Services'}).click();
+		cy.get('button[role="tab"][id$="services"]')
+			.should('have.class', 'newfold-marketplace-tab-services')
+			.should('exist')
+			.click();
+		
 		cy.location().should((loc) => {
 			expect(loc.hash).to.eq('#/marketplace/services')
 		});
