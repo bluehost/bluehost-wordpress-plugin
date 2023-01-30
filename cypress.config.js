@@ -21,6 +21,11 @@ module.exports = defineConfig({
 	chromeWebSecurity: false,
 	viewportWidth: 1024,
 	viewportHeight: 768,
+	blockHosts: [
+		'*doubleclick.net',
+		'*jnn-pa.googleapis.com',
+		'*youtube.com',
+	],
 	e2e: {
 		setupNodeEvents(on, config) {
 

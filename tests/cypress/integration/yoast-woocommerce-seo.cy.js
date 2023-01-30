@@ -12,7 +12,7 @@ describe('Yoast WooCommerce SEO Page', () => {
 
 	it('Is Accessible', () => {
 		cy.injectAxe();
-		cy.wait(1500);
+		cy.wait(500);
 		cy.checkA11y('.bwa-route-contents');
 	});
 

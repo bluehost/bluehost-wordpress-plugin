@@ -3,7 +3,7 @@
 describe('Yoast SEO Premium Page', () => {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium');	
+		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium');
 	});
 
 	it('Exists', () => {
@@ -12,7 +12,7 @@ describe('Yoast SEO Premium Page', () => {
 
 	it('Is Accessible', () => {
 		cy.injectAxe();
-		cy.wait(1500);
+		cy.wait(500);
 		cy.checkA11y('.bwa-route-contents');
 	});
 

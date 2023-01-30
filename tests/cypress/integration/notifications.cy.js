@@ -6,7 +6,7 @@ describe('Notifications', () => {
 
 		cy.intercept({
 			method: 'GET',
-			url: '**?**newfold-notifications**'
+			url: '**newfold-notifications**'
 		}, {
 			fixture: 'notifications.json'
 		}).as('notifications');
