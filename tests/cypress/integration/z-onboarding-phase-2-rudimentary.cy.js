@@ -4,14 +4,13 @@ describe('Onboarding Phase 2 Flow', () => {
 	before(() => {
 		cy.setCustomerData();
 		cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
-		cy.visit('wp-admin/index.php?page=nfd-onboarding&flow=ecommerce');
-		cy.wait(10000);
+		cy.exec('npx wp-env run cli wp option set permalink_structure /%postname%/');
+		cy.visit('wp-admin/index.php?page=nfd-onboarding&flow=ecommerce', {timeout: 10000});
 	});
 
 	after(() => {
 		// Reset this data so that it does not affect the behaviour of other tests.
 		cy.clearCustomerData();
-
 	});
 
 	it('Tests Onboarding Phase 2 Flow', () => {
@@ -39,13 +38,15 @@ describe('Onboarding Phase 2 Flow', () => {
 
 			// Click `learn more` circle i button to open panel
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
-			).should('exist', {timeout: 30000})
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button',
+				{timeout: 30000}
+			).should('exist')
 			.click();
 
 			// check that the `1-1 expert` button is in place
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.nfd-onboarding-sidebar-learn-more__get-started-welcome > div.nfd-onboarding-sidebar-learn-more--help-panel__links > button.components-button.nfd-onboarding-button--blue.is-primary'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.nfd-onboarding-sidebar-learn-more__get-started-welcome > div.nfd-onboarding-sidebar-learn-more--help-panel__links > button.components-button.nfd-onboarding-button--blue.is-primary',
+				{timeout: 30000}
 			).should('exist');
 
 			// check that the `hire our team` button is in place
@@ -128,8 +129,9 @@ describe('Onboarding Phase 2 Flow', () => {
 
 			// click first category
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-secondary-categories > div.subCategoriesSection > span:nth-child(1)'
-			).should('exist', {timeout: 30000})
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-secondary-categories > div.subCategoriesSection > span:nth-child(1)',
+				{timeout: 30000}
+			).should('exist')
 			.click();
 
 			// cy.get(
