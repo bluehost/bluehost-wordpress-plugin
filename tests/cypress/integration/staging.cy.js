@@ -20,7 +20,7 @@ const fn = {
 	visitPage(responseOverrides = {}) {
 		cy.intercept({
 			method: 'GET',
-			url: '**?**/bluehost/v1/staging*'
+			url: /bluehost(\/|%2F)v1(\/|%2F)staging/
 		},
 			this.getStagingInfo(responseOverrides)
 		).as('stagingInfo');
@@ -65,7 +65,7 @@ describe('Staging Page', function () {
 	it('Creation failure', () => {
 		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging*'
+			url: /bluehost(\/|%2F)v1(\/|%2F)staging/
 		}, (req) => {
 			req.reply({
 				body: fn.getStagingInfo({
@@ -94,7 +94,7 @@ describe('Staging Page', function () {
 	it('Creation success', () => {
 		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging*'
+			url: /bluehost(\/|%2F)v1(\/|%2F)staging/
 		},
 			fn.getStagingInfo()
 		).as('stagingCreation');
@@ -122,7 +122,7 @@ describe('Staging Page', function () {
 	it('Clone to staging works', () => {
 		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging/clone*'
+			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)clone/
 		}, (req) => {
 			req.reply({
 				body: fn.getStagingInfo(),
@@ -173,7 +173,7 @@ describe('Staging Page', function () {
 		
 		cy.intercept({
 			method: 'GET',
-			url: '**?**/bluehost/v1/staging/switch-to*'
+			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)switch-to/
 		}, (req) => {
 			req.reply({
 				body: fn.getStagingInfo(
@@ -250,7 +250,7 @@ describe('Staging Page, staging state', function () {
 
 		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging/deploy?type=all*'
+			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy(\?|&)type=all/
 		}, (req) => {
 			req.reply({
 				body: fn.getStagingInfo(),
@@ -290,7 +290,7 @@ describe('Staging Page, staging state', function () {
 
 		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging/deploy?type=files*'
+			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy(\?|&)type=files/
 		}, (req) => {
 			req.reply({
 				body: fn.getStagingInfo(),
@@ -335,7 +335,7 @@ describe('Staging Page, staging state', function () {
 
 		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging/deploy?type=db*'
+			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy(\?|&)type=db/
 		}, (req) => {
 			req.reply({
 				body: fn.getStagingInfo(),
@@ -421,7 +421,7 @@ describe('Staging Page, production state', function () {
 		
 		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging*',
+			url: /bluehost(\/|%2F)v1(\/|%2F)staging/,
 			headers: {
 				'x-http-method-override': 'DELETE',
 			},
@@ -469,7 +469,7 @@ describe('Staging Page, production state', function () {
 	it('Delete staging works', () => {		
 		cy.intercept({
 			method: 'POST',
-			url: '**?**/bluehost/v1/staging*',
+			url: /bluehost(\/|%2F)v1(\/|%2F)staging/,
 			headers: {
 				'x-http-method-override': 'DELETE',
 			},

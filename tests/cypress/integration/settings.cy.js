@@ -12,7 +12,7 @@ describe('Settings Page', () => {
 
 	const fn = {
 		validateToggle(label, run = 0) {
-			cy.intercept('POST', '**?**/bluehost/v1/settings*').as('update');
+			cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
 			cy.findByLabelText(label).as('toggle');
 			cy.get('@toggle').scrollIntoView().should('exist');
 			cy.get('@toggle').next().scrollIntoView().should('be.visible');
@@ -20,12 +20,12 @@ describe('Settings Page', () => {
 				if ($toggle.attr('aria-checked') !== 'true') {
 					// If unchecked, check it
 					cy.get('@toggle').check();
-					cy.wait('@update', {timeout: 30000});
+					cy.wait('@update', {timeout: 10000});
 					cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
 				} else {
 					// If checked, uncheck it
 					cy.get('@toggle').uncheck();
-					cy.wait('@update', {timeout: 30000});
+					cy.wait('@update', {timeout: 10000});
 					cy.get('@toggle').should('have.attr', 'aria-checked', 'false');
 				}
 			});
@@ -35,12 +35,12 @@ describe('Settings Page', () => {
 			}
 		},
 		validateSelect(label, values) {
-			cy.intercept('POST', '**?**/bluehost/v1/settings*').as('update');
+			cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
 			cy.get(`select[aria-label="${label}"]`).as('select');
 			cy.get('@select').scrollIntoView().should('be.visible');
 			values.forEach((value) => {
 				cy.get('@select').select(`${value}`);
-				cy.wait('@update', {timeout: 30000});
+				cy.wait('@update', {timeout: 10000});
 				cy.get('@select').should('have.value', `${value}`);
 			});
 		},
@@ -109,11 +109,11 @@ describe('Settings Page', () => {
 	});
 
 	it('Content: Content Revisions', () => {
-		fn.validateSelect('Keep x latest revisions', [5, 10]);
+		fn.validateSelect('Keep x latest revisions', [40, 5, 10]);
 	});
 
 	it('Content: Empty Trash', () => {
-		fn.validateSelect('Empty the trash every x weeks', [30, 7]);
+		fn.validateSelect('Empty the trash every x weeks', [7, 14, 21, 30]);
 	});
 
 	it('Has a "Performance" section', () => {
@@ -124,7 +124,7 @@ describe('Settings Page', () => {
 	});
 
 	it('Performance: Caching Toggle', () => {
-		cy.intercept('POST', '**?**/bluehost/v1/settings*').as('update');
+		cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
 		cy.findByLabelText('Toggle Caching').as('toggle');
 		cy.get('@toggle').check();
 		cy.wait('@update', {timeout: 10000});
@@ -132,7 +132,7 @@ describe('Settings Page', () => {
 	});
 
 	it('Performance: Caching Level', () => {
-		cy.intercept('POST', '**?**/bluehost/v1/settings*').as('update');
+		cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
 
 		cy.get('.settings-section').last().within(() => {
 
