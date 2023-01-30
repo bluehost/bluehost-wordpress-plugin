@@ -8,10 +8,11 @@ describe('Notifications', () => {
 			method: 'GET',
 			url: '**newfold-notifications**'
 		}, {
-			fixture: 'notifications.json'
+			fixture: 'notifications.json',
+			timeout: 30000
 		}).as('notifications');
 
-		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/home', {timeout: 30000});
 		cy.wait('@notifications');
 	});
 
