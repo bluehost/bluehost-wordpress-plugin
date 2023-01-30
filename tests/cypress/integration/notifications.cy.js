@@ -76,10 +76,13 @@ describe('Notifications', () => {
             .contains('display on home and onboarding screens');
 
 		cy.get('#notification-test-2 .notice-dismiss').click( {force: true } );
+		cy.get('.newfold-notifications-wrapper #notification-test-2')
+			.should('have.class', 'is-dismissed');
+
 		cy.wait(500);
 		
 		cy.get('.newfold-notifications-wrapper #notification-test-2')
-            .should('have.class', 'is-dismissed');
+			.should('not-exist');
 	});
 
 	// these can be updated later on, but currently the wp-admin tests are not loaded via the api
