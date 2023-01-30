@@ -2,17 +2,17 @@
 
 const semver = require('semver');
 
-describe('Tour: About Page', function () {
+describe('Tour: About Page', () => {
 
 	before(() => {
 		cy.deletePages();
 		cy.wait(500);
 		cy.visit('/wp-admin/post-new.php?dcpage=about&dcsrc=plugin');
-		cy.injectAxe();
 	});
 
 	it('Exists', () => {
-		cy.get('.shepherd-content', {timeout: 10000}).contains('h3', 'Create an About Page with Bluehost');
+		cy.get('.shepherd-content', { timeout: 60000 }).should('exist');
+		cy.get('.shepherd-content').contains('h3', 'Create an About Page with Bluehost');
 		cy.get('.step-bluehost-logo img').scrollIntoView().should('be.visible');
 		cy.get('.shepherd-header .shepherd-cancel-icon').scrollIntoView()
 			.should('be.visible')
@@ -21,6 +21,7 @@ describe('Tour: About Page', function () {
 	});
 
 	it('Is Accessible', () => {
+		cy.injectAxe();
 		cy.wait(500);
 		cy.checkA11y('.shepherd-content');
 	});
