@@ -8,8 +8,7 @@ describe('Notifications', () => {
 			method: 'GET',
 			url: '**newfold-notifications**'
 		}, {
-			fixture: 'notifications.json',
-			timeout: 30000
+			fixture: 'notifications.json'
 		}).as('notifications');
 
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home', {timeout: 30000});
@@ -64,6 +63,13 @@ describe('Notifications', () => {
 
     // dismiss events triggered
 	it('Dismissing notification removes it from the page', () => {
+		cy.intercept({
+			method: 'POST',
+			url: '**newfold-notifications**'
+		}, {
+			body: {"id":"test-2"},
+			delay: 1000,
+		}).as('notificationDismiss');
 
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
 
@@ -78,11 +84,15 @@ describe('Notifications', () => {
 		cy.get('#notification-test-2 .notice-dismiss').click( {force: true } );
 		cy.get('.newfold-notifications-wrapper #notification-test-2')
 			.should('have.class', 'is-dismissed');
-
-		cy.wait(500);
-
+		
+		cy.get('.newfold-notifications-wrapper #notification-test-2')
+			.should('not.be.visible');
+		
+		cy.wait('@notificationDismiss');
+		cy.wait(100);
 		cy.get('.newfold-notifications-wrapper #notification-test-2')
 			.should('not.exist');
+		
 	});
 
 	// these can be updated later on, but currently the wp-admin tests are not loaded via the api
