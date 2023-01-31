@@ -3,10 +3,10 @@
 describe('Colors Step Test', function () {
 
     before(() => {
-        // cy.setCustomerData();
+        cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
         // cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/colors');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/theme-styles/preview');
-        // cy.injectAxe();
+        cy.injectAxe();
     });
 
     it('Navigate to Colors Step', () => {
@@ -64,10 +64,6 @@ describe('Colors Step Test', function () {
 
         // Closes Custom Palette
         cy.get('.custom-palette__top').scrollIntoView().click();
-    });
-
-    after(() => {
-        // cy.clearCustomerData();
     });
 
 });

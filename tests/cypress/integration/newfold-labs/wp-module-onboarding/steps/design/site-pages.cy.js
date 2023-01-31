@@ -3,9 +3,9 @@
 describe('Site Pages', function () {
 
     before(() => {
-        // cy.setCustomerData();
+        cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/site-pages');
-        // cy.injectAxe();
+        cy.injectAxe();
     });
 
     it('Is Accessible', () => {
@@ -39,10 +39,6 @@ describe('Site Pages', function () {
         .each(($checkBox) => {
             cy.wrap($checkBox).find('.components-checkbox-control').find('label').click();
         });
-    });
-
-    after(() => {
-        cy.clearCustomerData();
     });
 
 });

@@ -13,7 +13,7 @@
     "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"
   ],
   "themes": [
-    "https://downloads.wordpress.org/theme/yith-wonder.1.1.2.zip"
+    "https://downloads.wordpress.org/theme/yith-wonder.1.2.0.zip"
   ],
   "port": 8882,
   "testsPort": 8883

@@ -3,9 +3,10 @@
 describe('Typography Step Test', function () {
 
     before(() => {
+        cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/typography');
         // cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/theme-styles/preview');
-        // cy.injectAxe();
+        cy.injectAxe();
     });
 
     it('Navigate to Typography Step', () => {

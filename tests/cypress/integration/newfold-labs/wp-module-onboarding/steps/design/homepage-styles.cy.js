@@ -3,8 +3,9 @@
 describe('Homepage Styles Page', function () {
 
     before(() => {
-        // cy.setCustomerData();
+        cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/homepage-menu');
+        cy.injectAxe();
     });
 
     it('Is Accessible', () => {
@@ -37,10 +38,6 @@ describe('Homepage Styles Page', function () {
             cy.wrap($homepage).find(classname.concat('__item__live-preview-container')).click();
             cy.wrap($homepage).find(classname.concat('__item__title-bar--selected')).should('be.visible');
         });
-    });
-
-    after(() => {
-        // cy.clearCustomerData();
     });
 
 });
