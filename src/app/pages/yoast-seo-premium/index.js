@@ -36,6 +36,8 @@ const YoastSEOPremium = () => {
 							utmContent="yseopremium"
 							isLink
 							isPrimary
+							data-action="load-nfd-ctb"
+							data-ctb-id="57d6a568-783c-45e2-a388-847cff155897"
 						>
 							{ __('Get Yoast SEO Premium', 'bluehost-wordpress-plugin') }
 						</Button>
