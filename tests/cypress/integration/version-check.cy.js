@@ -3,8 +3,10 @@
 describe('Page', () => {
 
 	before(() => {
+
 		cy.login();
 		cy.visit('/wp-admin/site-health.php?tab=debug');
+
 	})
 
 	it('Is running the correct WP version', () => {

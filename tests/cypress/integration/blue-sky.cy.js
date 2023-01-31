@@ -1,9 +1,10 @@
 // <reference types="Cypress" />
 
-describe('Blue Sky Product Page', () => {
+describe('Blue Sky Product Page', function () {
 
 	before(() => {
 		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/services/blue-sky');
+		cy.injectAxe();
 	});
 
 	it('Exists', () => {
@@ -11,17 +12,19 @@ describe('Blue Sky Product Page', () => {
 	});
 
 	it('Is Accessible', () => {
-		cy.injectAxe();
 		cy.wait(1500);
 		cy.checkA11y('.bwa-route-contents');
 	});
 
 	it('Has valid calls to action', () => {
-		cy.get('.call-to-action a')
-			.scrollIntoView()
-			.should('be.visible')
-			.should('have.attr', 'href')
-			.and('contain', 'tel:8442118705');
+		cy.findAllByRole('link', {name: '844-211-8705'})
+			.each(($el) => {
+				cy.wrap($el)
+					.scrollIntoView()
+					.should('be.visible')
+					.should('have.attr', 'href')
+					.and('contain', 'tel:8442118705');
+			});
 	});
 
 	it('Shows correct phone number', () => {

@@ -1,6 +1,8 @@
 // <reference types="Cypress" />
 
-describe('Settings Page', () => {
+import 'cypress-axe';
+
+describe('Settings Page', function () {
 
 	before(() => {
 
@@ -8,11 +10,13 @@ describe('Settings Page', () => {
 		cy.exec('npx wp-env run cli wp option set endurance_cache_level 0');
 
 		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
+		cy.injectAxe();
 	});
 
 	const fn = {
 		validateToggle(label, run = 0) {
-			cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
+			cy.server();
+			cy.route('POST', '**?**/bluehost/v1/settings*').as('update');
 			cy.findByLabelText(label).as('toggle');
 			cy.get('@toggle').scrollIntoView().should('exist');
 			cy.get('@toggle').next().scrollIntoView().should('be.visible');
@@ -20,12 +24,12 @@ describe('Settings Page', () => {
 				if ($toggle.attr('aria-checked') !== 'true') {
 					// If unchecked, check it
 					cy.get('@toggle').check();
-					cy.wait('@update', {timeout: 10000});
+					cy.wait('@update');
 					cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
 				} else {
 					// If checked, uncheck it
 					cy.get('@toggle').uncheck();
-					cy.wait('@update', {timeout: 10000});
+					cy.wait('@update');
 					cy.get('@toggle').should('have.attr', 'aria-checked', 'false');
 				}
 			});
@@ -35,13 +39,14 @@ describe('Settings Page', () => {
 			}
 		},
 		validateSelect(label, values) {
-			cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
+			cy.server();
+			cy.route('POST', '/index.php?rest_route=/bluehost/v1/settings*').as('update');
 			cy.get(`select[aria-label="${label}"]`).as('select');
 			cy.get('@select').scrollIntoView().should('be.visible');
 			values.forEach((value) => {
-				cy.get('@select').select(`${value}`);
-				cy.wait('@update', {timeout: 10000});
-				cy.get('@select').should('have.value', `${value}`);
+				cy.get('@select').select(String(value));
+				cy.wait('@update');
+				cy.get('@select').should('have.value', value);
 			});
 		},
 	};
@@ -51,7 +56,6 @@ describe('Settings Page', () => {
 	});
 
 	it('Is Accessible', () => {
-		cy.injectAxe();
 		cy.wait(1000);
 		cy.checkA11y('.bwa-route-contents');
 	});
@@ -90,16 +94,18 @@ describe('Settings Page', () => {
 		});
 	});
 
+	it('Comments: Disable for old posts', () => {
+		fn.validateToggle('Disable comments for old posts');
+	});
+
 	it('Comments: Close After x Days', () => {
-		fn.validateSelect('Close comments after x days', [7, 28]);
+		const values = [1, 7, 30, 14];
+		fn.validateSelect('Close comments after x days', values);
 	});
 
 	it('Comments: Show x Per Page', () => {
-		fn.validateSelect('Display x comments per page', [20, 10]);
-	});
-
-	it('Comments: Disable for old posts', () => {
-		fn.validateToggle('Disable comments for old posts');
+		const values = [10, 20, 30, 50];
+		fn.validateSelect('Display x comments per page', values);
 	});
 
 	it('Has a "Content" section', () => {
@@ -124,15 +130,17 @@ describe('Settings Page', () => {
 	});
 
 	it('Performance: Caching Toggle', () => {
-		cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
+		cy.server();
+		cy.route('POST', '**?**/bluehost/v1/settings*').as('update');
 		cy.findByLabelText('Toggle Caching').as('toggle');
 		cy.get('@toggle').check();
-		cy.wait('@update', {timeout: 10000});
+		cy.wait('@update');
 		cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
 	});
 
 	it('Performance: Caching Level', () => {
-		cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
+		cy.server();
+		cy.route('POST', '**?**/bluehost/v1/settings*').as('update');
 
 		cy.get('.settings-section').last().within(() => {
 
@@ -147,7 +155,7 @@ describe('Settings Page', () => {
 				const otherSelectors = Cypress._.without(selectors, selector);
 				cy.get(selector).scrollIntoView().should('be.visible');
 				cy.get(selector).check();
-				cy.wait('@update', {timeout: 10000});
+				cy.wait('@update');
 				cy.get(selector).should('be.checked');
 				otherSelectors.forEach((otherSelector) => {
 					cy.get(otherSelector).should('not.be.checked');

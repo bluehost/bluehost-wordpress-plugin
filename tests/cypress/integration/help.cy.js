@@ -1,9 +1,10 @@
 // <reference types="Cypress" />
 
-describe('Help Page', () => {
+describe('Help Page', function () {
 
 	before(() => {
 		cy.visit('/wp-admin/admin.php?page=bluehost#/help');
+		cy.injectAxe();
 	});
 
 	it('Exists', () => {
@@ -14,8 +15,7 @@ describe('Help Page', () => {
 	});
 
 	it('Is Accessible', () => {
-		cy.injectAxe();
-		cy.wait(1000);
+		cy.wait(1500);
 		cy.checkA11y('.bwa-route-contents');
 	});
 
@@ -27,14 +27,14 @@ describe('Help Page', () => {
 	});
 
 	it('Has Blue Sky Call to Action', () => {
-		cy.get('.section-blue-sky').findByRole('link', {name: 'Get Blue Sky'}).as('link');
+		cy.findByRole('link', {name: 'Get Blue Sky'}).as('link');
 		cy.get('@link').scrollIntoView().should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
 			.and('contain', '#/marketplace/services/blue-sky');
 	});
 
 	it('Has "Full-Service Website" Call to Action', () => {
-		cy.get('.section-featured-services').findByTestId('full-service').as('link');
+		cy.findByTestId('full-service').as('link');
 		cy.get('@link').scrollIntoView().should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
 			.and('contain', 'https://www.bluehost.com/solutions/full-service')
@@ -42,7 +42,7 @@ describe('Help Page', () => {
 	});
 
 	it('Has "SEO Services" Call to Action', () => {
-		cy.get('.section-featured-services').findByTestId('seo-services').as('link');
+		cy.findByTestId('seo-services').as('link');
 		cy.get('@link').scrollIntoView().should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
 			.and('contain', 'https://www.bluehost.com/solutions/full-service')
@@ -50,7 +50,7 @@ describe('Help Page', () => {
 	});
 
 	it('Has "Request a Consulatation" Call to Action', () => {
-		cy.get('.section-featured-services').findByRole('link', {name: 'Request a consultation'}).as('link');
+		cy.findByRole('link', {name: 'Request a consultation'}).as('link');
 		cy.get('@link').scrollIntoView().should('be.visible');
 		cy.get('@link').should('have.attr', 'href')
 			.and('contain', 'https://www.bluehost.com/solutions/full-service')
@@ -64,7 +64,7 @@ describe('Help Page', () => {
 		});
 
 		it('Has Search Field', () => {
-			cy.get('.resources-search-form').findByLabelText('Search').as('search');
+			cy.findByLabelText('Search').as('search');
 			cy.get('@search').scrollIntoView().should('be.visible');
 		});
 
@@ -127,13 +127,13 @@ describe('Help Page', () => {
 		});
 
 		it('Can search', () => {
-			cy.get('.resources-search-form').findByLabelText('Search').type('How to Start a Blog and Publish Your Post{enter}');
+			cy.findByLabelText('Search').type('How to Start a Blog and Publish Your Post{enter}');
 			cy.get('.resource-card')
 				.should('have.length', 1);
 		});
 
 		it('Has "Visit Resource Center" link', () => {
-			cy.get('.section-resources').findByRole('link', {name: 'Visit resource center'})
+			cy.findByRole('link', {name: 'Visit resource center'})
 				.scrollIntoView()
 				.should('be.visible')
 				.should('have.attr', 'href')

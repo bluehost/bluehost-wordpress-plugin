@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
 
-describe('Dashboard Widget', () => {
+describe('Dashboard Widget', function () {
 
 	before(() => {
 		cy.visit('/wp-admin/index.php');
