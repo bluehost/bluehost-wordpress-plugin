@@ -19,7 +19,8 @@ describe('Site Pages', function () {
     });
 
     it('Check if Drawer toggles', () => {
-        cy.get('.nfd-onboarding-drawer__panel-site-title-container').should('be.visible');
+        cy.get('.nfd-onboarding-drawer__toggle > .components-button').click();
+        cy.get('.nfd-onboarding-drawer__panel-site-title-container').scrollIntoView().should('be.visible');
         cy.get('.nfd-onboarding-drawer__toggle > .components-button').click();
     });
 
