@@ -18,7 +18,7 @@ describe('Typography Step Test', function () {
     it('Check if Drawer opens', () => {
         cy.get('.nfd-onboarding-drawer__panel-site-title-container').scrollIntoView().should('be.visible');
         cy.get('.nfd-onboarding-drawer__toggle > .components-button').click();
-        cy.get('.nfd-onboarding-drawer__panel-site-title-container').scrollIntoView().should('not.be.visible');
+        cy.get('.nfd-onboarding-drawer__panel-site-title-container').should('not.be.visible');
         cy.get('.nfd-onboarding-drawer__toggle > .components-button').click();
     });
 
@@ -26,7 +26,7 @@ describe('Typography Step Test', function () {
         cy.get('.nfd-onboarding-sidebar-learn-more__menu-button').click();
         cy.get('.nfd-onboarding-sidebar__panel').scrollIntoView().should('be.visible');
         cy.get('.nfd-onboarding-sidebar-learn-more__menu-button').click();
-        cy.get('.nfd-onboarding-sidebar__panel').scrollIntoView().should('not.be.visible');
+        cy.get('.nfd-onboarding-sidebar__panel').should('not.be.visible');
     });
 
     it('Check if Default Typography variations exists and are selectable', () => {
