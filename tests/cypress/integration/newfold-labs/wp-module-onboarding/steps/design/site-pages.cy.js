@@ -3,13 +3,12 @@
 describe('Site Pages', function () {
 
     before(() => {
-        cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/site-pages');
         cy.injectAxe();
     });
 
     it('Is Accessible', () => {
-    	cy.wait(3000);
+    	cy.wait(10000);
     	// cy.checkA11y();
     });
 

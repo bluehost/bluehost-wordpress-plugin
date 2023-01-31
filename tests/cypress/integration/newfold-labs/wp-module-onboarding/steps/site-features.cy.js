@@ -3,7 +3,6 @@
 describe('Site Features', function () {
 
     before(() => {
-        cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/site-features');
         cy.injectAxe();
     });
