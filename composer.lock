@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df962346e700d3461e61e91e09e8a7ef",
+    "content-hash": "e4706c5a7c78a648b3207576967ecc98",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -390,7 +390,7 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.6.2",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.6.3",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
             "time": "2022-12-14T09:38:56+00:00"
