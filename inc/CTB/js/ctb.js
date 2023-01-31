@@ -126,7 +126,7 @@
 		() => {
 			document.getElementById('wpwrap').addEventListener('click', function(event) {
 				if (event.target.dataset.action === 'load-nfd-ctb') {
-					if ( window.nfdConnected || window.Cypress ) { // has token and customer id or running cypress
+					if ( window.nfdConnected ) { // has token and customer id
 						event.preventDefault();
 						loadCtb(event);
 					} else {

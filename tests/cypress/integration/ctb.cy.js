@@ -18,7 +18,17 @@ describe('Click to buy', function () {
 			fixture: 'ctbPOST'
 		}).as('ctbPOST');
 
-		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium', {
+			onBeforeLoad(contentWindow) {
+				// set nfdConnected to true, so the ctb click will pass to the endpoint and be intercepted
+				Object.defineProperty(contentWindow, 'nfdConnected', {
+					configurable: false,
+					writable: false,
+					value: true
+				});
+			}
+		});
+
 
 	});
 
