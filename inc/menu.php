@@ -24,22 +24,3 @@ function bluehost_add_tool_bar_items( WP_Admin_Bar $admin_bar ) {
 }
 
 add_action( 'admin_bar_menu', 'bluehost_add_tool_bar_items', 100 );
-
-/**
- * Add Marketplace premium plugins link to WP plugins.
- */
-function bluehost_add_plugin_premium_link() {
-	?>
-	<script type="text/javascript">
-	window.addEventListener('DOMContentLoaded', () => {
-		const pluginsFilterContainer = document.querySelector('.wp-filter .filter-links');
-		const bluehostPremiumPluginsLink = document.createElement('li');
-
-		bluehostPremiumPluginsLink.innerHTML = '<a style="text-decoration: none;" onclick="location.href=\'admin.php?page=bluehost#/marketplace\'"><?php esc_html_e( 'Premium', 'bluehost-wordpress-plugin' ); ?></a>';
-		pluginsFilterContainer.appendChild(bluehostPremiumPluginsLink);
-	});
-	</script>
-	<?php
-}
-
-add_action( 'admin_head-plugin-install.php', 'bluehost_add_plugin_premium_link' );
