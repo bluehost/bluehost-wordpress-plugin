@@ -1,38 +1,24 @@
 // <reference types="Cypress" />
-// const ctbGET = require('../fixtures/ctbGET.json');
-// const ctbPOST = require('../fixtures/ctbPOST.json');
 
 describe('Click to buy', function () {
-
-	before(() => {
-
-		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium');
-		// cy.injectAxe();
-
-	});
 
 	beforeEach(() => {
 
 		cy.intercept({
 			method: 'GET',
-			url: '**?**bluehost/v1/ctb**',
+			url: /bluehost(\/|%2F)v1(\/|%2F)ctb/,
 		},{
-			fixture: 'ctbGET.json'
+			fixture: 'ctbGET'
 		}).as('ctbGET');
 
 		cy.intercept({
 			method: 'POST',
-			url: '**?**bluehost/v1/ctb**'
+			url: /bluehost(\/|%2F)v1(\/|%2F)ctb/,
 		}, {
-			fixture: 'ctbPOST.json'
+			fixture: 'ctbPOST'
 		}).as('ctbPOST');
 
-		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium', {
-			// set nfdConnected to true, so the ctb click will pass to the endpoint and be intercepted
-			onBeforeLoad: (contentWindow) => {
-				contentWindow.nfdConnected = true
-			}
-		});
+		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium');
 
 	});
 
@@ -63,6 +49,16 @@ describe('Click to buy', function () {
 			.scrollIntoView()
 			.should('be.visible');
 
+		//verify ctb content
+		cy.get('.ctb-modal-content .nfd-ctb-modal-product-header')
+			.contains('Yoast SEO Premium');
+
+		cy.get('.ctb-modal-content .nfd-ctb-modal-product-price')
+			.contains('$');
+		
+		cy.get('.ctb-modal-content .nfd-ctb-modal-cc-notice strong')
+			.contains('0009');
+
 		// check for cancel button
 		cy.get('button[data-a11y-dialog-destroy]')
 			.scrollIntoView()
@@ -85,7 +81,7 @@ describe('Click to buy', function () {
 			.should('be.visible');
 
 		// confirm modal closes when overlay is clicked
-		cy.get('.ctb-modal-overlay').click();
+		cy.get('#nfd-ctb-container .ctb-modal-overlay').click({force:true});
 		cy.wait(100);
 		cy.get('.ctb-modal-content').should('not.be.visible');
 	});
@@ -110,6 +106,24 @@ describe('Click to buy', function () {
 		cy.get('.ctb-modal-content .nfd-ctb-modal-success')
 			.scrollIntoView()
 			.should('be.visible');
+
+		// success content displays
+		cy.get('.ctb-modal-content .nfd-ctb-modal-success')
+			.contains('Your Payment Was Successful!');
+
+		cy.get('.ctb-modal-content .nfd-ctb-modal-success-item-left')
+			.contains('Yoast SEO Premium');
+
+		cy.get('.ctb-modal-content .nfd-ctb-modal-success-item-right')
+			.contains('$');
+
+		cy.get('.ctb-modal-content .nfd-ctb-modal-success-item-right')
+			.contains('0009');
+
+		// confirm modal closes when overlay is clicked
+		cy.get('#nfd-ctb-container .ctb-modal-overlay').click({force:true});
+		cy.wait(100);
+		cy.get('.ctb-modal-content').should('not.be.visible');
 	});
 
 });
