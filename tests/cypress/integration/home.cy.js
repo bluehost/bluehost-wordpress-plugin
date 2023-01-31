@@ -1,10 +1,9 @@
 // <reference types="Cypress" />
 
-describe('Home Page', function () {
+describe('Home Page', () => {
 
 	before(() => {
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home/page'); // use internal override
-		cy.injectAxe();
 	});
 
 	it('Exists', () => {
@@ -15,6 +14,7 @@ describe('Home Page', function () {
 	});
 
 	it('Is Accessible', () => {
+		cy.injectAxe();
 		cy.wait(500);
 		cy.checkA11y('.bwa-route-contents');
 	});

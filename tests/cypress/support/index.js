@@ -15,12 +15,11 @@
 
 import 'cypress-axe';
 import './commands';
-
-Cypress.Cookies.defaults({
-	preserve: /wp|wordpress/, // Cypress 5.0+
-	//whitelist: /wp|wordpress/, // Cypress <5.0
-});
+require('@replayio/cypress/support');
 
 before(() => {
-	cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
+	cy.login(
+		Cypress.env('wpUsername'), 
+		Cypress.env('wpPassword')
+	);
 });

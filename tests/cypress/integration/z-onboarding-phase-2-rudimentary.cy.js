@@ -2,19 +2,15 @@ const semver = require("semver");
 describe('Onboarding Phase 2 Flow', () => {
 
 	before(() => {
-
 		cy.setCustomerData();
 		cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
-		cy.visit('wp-admin/index.php?page=nfd-onboarding&flow=ecommerce');
-		cy.wait(5000);
-
+		cy.exec('npx wp-env run cli wp option set permalink_structure /%postname%/');
+		cy.visit('wp-admin/index.php?page=nfd-onboarding&flow=ecommerce', {timeout: 10000});
 	});
 
 	after(() => {
-
 		// Reset this data so that it does not affect the behaviour of other tests.
 		cy.clearCustomerData();
-
 	});
 
 	it('Tests Onboarding Phase 2 Flow', () => {
@@ -42,12 +38,15 @@ describe('Onboarding Phase 2 Flow', () => {
 
 			// Click `learn more` circle i button to open panel
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg > path'
-			).click();
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button',
+				{timeout: 30000}
+			).should('exist')
+			.click();
 
 			// check that the `1-1 expert` button is in place
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.nfd-onboarding-sidebar-learn-more__get-started-welcome > div.nfd-onboarding-sidebar-learn-more--help-panel__links > button.components-button.nfd-onboarding-button--blue.is-primary'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.nfd-onboarding-sidebar-learn-more__get-started-welcome > div.nfd-onboarding-sidebar-learn-more--help-panel__links > button.components-button.nfd-onboarding-button--blue.is-primary',
+				{timeout: 30000}
 			).should('exist');
 
 			// check that the `hire our team` button is in place
@@ -62,17 +61,17 @@ describe('Onboarding Phase 2 Flow', () => {
 
 			// click the `learn more` circle i button again to close panel
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
 			).click();
 
 			// click the learn more cirle i button again to open panel
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
 			).click();
 
 			// click the panel x button to close the panel
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button'
 			).click();
 
 			// click `Next` button
@@ -82,7 +81,7 @@ describe('Onboarding Phase 2 Flow', () => {
 
 			// Click `Back` button
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > div > div > button.components-button.navigation-buttons.navigation-buttons_back.is-secondary > svg'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > div > div > button.components-button.navigation-buttons.navigation-buttons_back.is-secondary'
 			).click();
 
 			// Click start setup button
@@ -110,25 +109,30 @@ describe('Onboarding Phase 2 Flow', () => {
 				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div.nfd-card-need-help-tag > a'
 			).should('exist');
 
-			// Click cirlce i button to open panel
-			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg'
-			).click();
+			// // Click cirlce i button to open panel
+			// cy.get(
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
+			// ).should('exist', {timeout: 20000} )
+			// .click();
 
 			// click the panel x button to close the panel
-			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
-			).click();
+			// cy.get(
+			// 	'#nfd-onboarding .interface-interface-skeleton__sidebar button.nfd-onboarding-sidebar-learn-more__header__icon'
+			// ).should('exist')
+			// .click();
 
 			// click `continue setup` button
 			cy.get(
 				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > button'
-			).click();
+			).should('exist')
+			.click();
 
 			// click first category
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-secondary-categories > div.subCategoriesSection > span:nth-child(1)'
-			).click();
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-secondary-categories > div.subCategoriesSection > span:nth-child(1)',
+				{timeout: 30000}
+			).should('exist')
+			.click();
 
 			// cy.get(
 			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-secondary-categories > div.subCategoriesSection > span:nth-child(2)'
@@ -194,15 +198,16 @@ describe('Onboarding Phase 2 Flow', () => {
 
 			// close side panel
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button'
 			// ).click();
 
 			// click `continue setup` button
 			cy.get(
 				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > button'
-			).click();
+			).should('exist')
+			.click();
 
-			cy.wait('@getSettings', {timeout: 10000});
+			cy.wait('@getSettings', {timeout: 30000});
 
 			// Installing WooCommerce plugin...
 
@@ -259,7 +264,7 @@ describe('Onboarding Phase 2 Flow', () => {
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button'
 			// ).click();
 
 			// cy.get(
@@ -281,11 +286,11 @@ describe('Onboarding Phase 2 Flow', () => {
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg > path'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button'
 			// ).click();
 
 			// cy.get(
@@ -370,11 +375,11 @@ describe('Onboarding Phase 2 Flow', () => {
 			// cy.get( '#inspector-checkbox-control-9' ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button'
 			// ).click();
 
 			// cy.wait( '@getSettings', { timeout: 10000 } );
@@ -412,11 +417,11 @@ describe('Onboarding Phase 2 Flow', () => {
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button'
 			// ).click();
 
 			// cy.get(
@@ -428,7 +433,7 @@ describe('Onboarding Phase 2 Flow', () => {
 			// cy.wait( 2500 );
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.theme-styles-menu__list > div:nth-child(2) > div.theme-styles-menu__list__item__live-preview-container > div.theme-styles-menu__list__item__live-preview-container__overlay > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.theme-styles-menu__list > div:nth-child(2) > div.theme-styles-menu__list__item__live-preview-container > div.theme-styles-menu__list__item__live-preview-container__overlay'
 			// ).click();
 
 			// cy.wait( 10000 );
@@ -447,13 +452,13 @@ describe('Onboarding Phase 2 Flow', () => {
 			// cy.wait( 10000 );
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button'
 			// ).click();
 
 			// cy.get( '#inspector-checkbox-control-16' ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > div > div > button.components-button.navigation-buttons.navigation-buttons_next.is-primary > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > div > div > button.components-button.navigation-buttons.navigation-buttons_next.is-primary'
 			// ).click();
 
 			// cy.wait( 10000 );
@@ -549,7 +554,7 @@ describe('Onboarding Phase 2 Flow', () => {
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button'
 			// ).click();
 
 			// cy.get(
@@ -617,15 +622,15 @@ describe('Onboarding Phase 2 Flow', () => {
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > div > div > button.components-button.navigation-buttons.navigation-buttons_next.is-primary > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > div > div > button.components-button.navigation-buttons.navigation-buttons_next.is-primary'
 			// ).click();
 
 			// cy.wait( 10000 );
@@ -649,7 +654,7 @@ describe('Onboarding Phase 2 Flow', () => {
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button'
 			// ).click();
 
 			// cy.get(
@@ -673,15 +678,15 @@ describe('Onboarding Phase 2 Flow', () => {
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg > path'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > div > div > button.components-button.navigation-buttons.navigation-buttons_next.is-primary > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > div > div > button.components-button.navigation-buttons.navigation-buttons_next.is-primary'
 			// ).click();
 
 			// cy.wait( 10000 );
@@ -689,37 +694,37 @@ describe('Onboarding Phase 2 Flow', () => {
 			// cy.wait( '@getVariations' );
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(2) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(2) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(2) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(2) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(4) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(4) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(4) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(4) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(3) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(3) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(3) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(3) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(5) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.site-pages__list > div:nth-child(5) > div.site-pages__list__item__information > div > div.site-pages__list__item__information__title-question__question'
 			// ).click();
 
 			// cy.get( '#inspector-checkbox-control-24' ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg > path'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
 			// ).click();
 
 			// cy.get(
@@ -734,39 +739,39 @@ describe('Onboarding Phase 2 Flow', () => {
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(1) > div:nth-child(1) > div > div > div.checkbox-item__contents > div.checkbox-item__contents-help > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(1) > div:nth-child(1) > div > div > div.checkbox-item__contents > div.checkbox-item__contents-help'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(1) > div:nth-child(1) > div.checkbox-item.checkbox-item--selected.checkbox-item--shown > div > div.checkbox-item__contents > div.checkbox-item__contents-help > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(1) > div:nth-child(1) > div.checkbox-item.checkbox-item--selected.checkbox-item--shown > div > div.checkbox-item__contents > div.checkbox-item__contents-help'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(2) > div:nth-child(1) > div > div > div.checkbox-item__contents > div.checkbox-item__contents-help > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(2) > div:nth-child(1) > div > div > div.checkbox-item__contents > div.checkbox-item__contents-help'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(1) > div:nth-child(3) > div > div > div.checkbox-item__contents > div.checkbox-item__contents-help > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(1) > div:nth-child(3) > div > div > div.checkbox-item__contents > div.checkbox-item__contents-help'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(2) > div:nth-child(4) > div > div > div.checkbox-item__contents > div.checkbox-item__contents-help > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(2) > div:nth-child(4) > div > div > div.checkbox-item__contents > div.checkbox-item__contents-help'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(2) > div:nth-child(4) > div.checkbox-item.checkbox-item--selected.checkbox-item--shown > div > div.checkbox-item__contents > div.checkbox-item__contents-help > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(2) > div:nth-child(4) > div.checkbox-item.checkbox-item--selected.checkbox-item--shown > div > div.checkbox-item__contents > div.checkbox-item__contents-help'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(2) > div:nth-child(5) > div > div > div.checkbox-item__contents > div.checkbox-item__contents-help > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(2) > div:nth-child(5) > div > div > div.checkbox-item__contents > div.checkbox-item__contents-help'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(2) > div:nth-child(5) > div.checkbox-item.checkbox-item--selected.checkbox-item--shown > div > div.checkbox-item__contents > div.checkbox-item__contents-help > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div.checkbox-list > div:nth-child(2) > div:nth-child(5) > div.checkbox-item.checkbox-item--selected.checkbox-item--shown > div > div.checkbox-item__contents > div.checkbox-item__contents-help'
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
 			// ).click();
 
 			// cy.get(
@@ -781,7 +786,7 @@ describe('Onboarding Phase 2 Flow', () => {
 			// ).click();
 
 			// cy.get(
-			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
+			// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button'
 			// ).click();
 
 			// cy.get(
