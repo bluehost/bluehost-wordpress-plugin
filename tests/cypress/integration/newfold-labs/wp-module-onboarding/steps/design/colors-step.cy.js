@@ -3,22 +3,15 @@
 describe('Colors Step Test', function () {
 
     before(() => {
-        cy.setCustomerData();
-        // cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/colors');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/theme-styles/preview');
-        cy.injectAxe();
+        cy.wait(3000);
     });
 
     it('Navigate to Colors Step', () => {
-        cy.wait(3000);
         // Have to select the Preview Step Checkbox to activate Colors and Typgoraphy
-        cy.get('.theme-styles-preview__checkbox__label').click();
+        cy.get('.theme-styles-preview__checkbox__label').scrollIntoView().click();
         cy.get('.navigation-buttons_next').click();
-    });
-
-    it('Is Accessible', () => {
-    	cy.wait(3000);
-    	// cy.checkA11y();
+        cy.wait(3000);
     });
 
     it('Check if Drawer opens', () => {
@@ -65,10 +58,6 @@ describe('Colors Step Test', function () {
 
         // Closes Custom Palette
         cy.get('.custom-palette__top').scrollIntoView().click();
-    });
-
-    after(() => {
-        cy.clearCustomerData();
     });
 
 });

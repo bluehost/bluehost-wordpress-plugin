@@ -3,23 +3,16 @@
 describe('Typography Step Test', function () {
 
     before(() => {
-        cy.setCustomerData();
-        // cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/typography');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/theme-styles/preview');
-        cy.injectAxe();
+        cy.wait(3000);
     });
 
     it('Navigate to Typography Step', () => {
-        cy.wait(3000);
         // Have to select the Preview Step Checkbox to activate Colors and Typgoraphy
-        cy.get('.theme-styles-preview__checkbox__label').click();
+        cy.get('.theme-styles-preview__checkbox__label').scrollIntoView().click();
         cy.get('.navigation-buttons_next').click();
         cy.get('.navigation-buttons_next').click();
-    });
-
-    it('Is Accessible', () => {
-    	cy.wait(3000);
-    	// cy.checkA11y();
+        cy.wait(3000);
     });
 
     it('Check if Drawer opens', () => {
@@ -43,10 +36,6 @@ describe('Typography Step Test', function () {
             cy.wrap($font).click();
             cy.get('.font-palette-selected').scrollIntoView().should('be.visible');
         });
-    });
-
-    after(() => {
-        cy.clearCustomerData();
     });
 
 });

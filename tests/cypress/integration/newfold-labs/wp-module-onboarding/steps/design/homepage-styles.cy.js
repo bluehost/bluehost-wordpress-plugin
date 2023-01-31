@@ -3,14 +3,8 @@
 describe('Homepage Styles Page', function () {
 
     before(() => {
-        cy.setCustomerData();
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/homepage-menu');
-        cy.injectAxe();
-    });
-
-    it('Is Accessible', () => {
-    	cy.wait(5000);
-    	// cy.checkA11y();
+        cy.wait(5000);
     });
 
     it('Check if Header and Subheader shows up', () => {
@@ -40,10 +34,6 @@ describe('Homepage Styles Page', function () {
             cy.wrap($homepage).find(classname.concat('__item__live-preview-container')).click();
             cy.wrap($homepage).find(classname.concat('__item__title-bar--selected')).should('be.visible');
         });
-    });
-
-    after(() => {
-        cy.clearCustomerData();
     });
 
 });

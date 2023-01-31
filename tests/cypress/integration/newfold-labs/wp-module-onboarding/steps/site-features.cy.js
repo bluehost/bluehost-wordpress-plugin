@@ -3,14 +3,8 @@
 describe('Site Features', function () {
 
     before(() => {
-        cy.setCustomerData();
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/site-features');
-        cy.injectAxe();
-    });
-
-    it('Is Accessible', () => {
         cy.wait(3000);
-        // cy.checkA11y();
     });
 
     it('Check if Header and Subheader shows up', () => {
@@ -41,10 +35,6 @@ describe('Site Features', function () {
                 cy.wrap($checkBoxItem).find('.components-base-control').find('input').scrollIntoView().click();
             });
         });
-    });
-
-    after(() => {
-        cy.clearCustomerData();
     });
 
 });
