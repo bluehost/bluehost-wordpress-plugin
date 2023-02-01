@@ -9,7 +9,6 @@ updates:
       - dependency-type: direct
     schedule:
       interval: "daily"
-    versioning-strategy: increase-if-necessary
     assignees:
       - "wpscholar"
     reviewers:
@@ -45,7 +44,7 @@ updates:
       - "dependencies"
       - "javascript"
 
-      # Maintain dependencies for Composer
+  # Maintain dependencies for Composer
   - package-ecosystem: "composer"
     directory: "/"
     target-branch: "develop"
