@@ -1,0 +1,68 @@
+version: 2
+updates:
+
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: "develop"
+    allow:
+      - dependency-type: direct
+    schedule:
+      interval: "daily"
+    assignees:
+      - "wpscholar"
+    reviewers:
+      - "aalani95"
+      - "circlecube"
+      - "wpscholar"
+    commit-message:
+      prefix: "GitHub Actions"
+      include: "scope"
+    labels:
+      - "dependencies"
+
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    target-branch: "develop"
+    allow:
+      - dependency-type: direct
+    schedule:
+      interval: "daily"
+    versioning-strategy: increase-if-necessary
+    assignees:
+      - "wpscholar"
+    reviewers:
+      - "aalani95"
+      - "circlecube"
+      - "wpscholar"
+    commit-message:
+      prefix: "NPM"
+      prefix-development: "NPM Dev"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "javascript"
+
+  # Maintain dependencies for Composer
+  - package-ecosystem: "composer"
+    directory: "/"
+    target-branch: "develop"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-type: direct
+    versioning-strategy: increase-if-necessary
+    assignees:
+      - "wpscholar"
+    reviewers:
+      - "aalani95"
+      - "circlecube"
+      - "wpscholar"
+    commit-message:
+      prefix: "Composer"
+      prefix-development: "Composer Dev"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "php"
