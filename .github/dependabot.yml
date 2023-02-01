@@ -7,7 +7,7 @@ updates:
     target-branch: "develop"
     schedule:
       interval: "daily"
-    versioning-strategy: "increase"
+    versioning-strategy: increase-if-necessary
     assignees:
       - "wpscholar"
     reviewers:
@@ -24,7 +24,7 @@ updates:
     target-branch: "develop"
     schedule:
       interval: "daily"
-    versioning-strategy: "increase"
+    versioning-strategy: increase-if-necessary
     assignees:
       - "wpscholar"
     reviewers:
@@ -43,7 +43,7 @@ updates:
     target-branch: "develop"
     schedule:
       interval: "daily"
-    versioning-strategy: "increase"
+    versioning-strategy: increase-if-necessary
     assignees:
       - "wpscholar"
     reviewers:
