@@ -15,11 +15,7 @@
 
 import 'cypress-axe';
 import './commands';
-
-Cypress.Cookies.defaults({
-	preserve: /wp|wordpress/, // Cypress 5.0+
-	//whitelist: /wp|wordpress/, // Cypress <5.0
-});
+require('@replayio/cypress/support');
 
 const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/
 Cypress.on('uncaught:exception', (err) => {
@@ -30,5 +26,8 @@ Cypress.on('uncaught:exception', (err) => {
 })
 
 before(() => {
-	cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
+	cy.login(
+		Cypress.env('wpUsername'), 
+		Cypress.env('wpPassword')
+	);
 });

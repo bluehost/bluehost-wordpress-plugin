@@ -6,12 +6,11 @@ describe('Tour: Home Page', function () {
 		cy.deletePages();
 		cy.wait(500);
 		cy.visit('/wp-admin/post-new.php?dcpage=home&dcsrc=plugin');
-		cy.injectAxe();
 	});
 
-
 	it('Exists', () => {
-		cy.get('.shepherd-content', {timeout: 10000}).contains('h3', 'Create a Home Page with Bluehost');
+		cy.get('.shepherd-content', {timeout: 60000}).should('exist');
+		cy.get('.shepherd-content').contains('h3', 'Create a Home Page with Bluehost');
 		cy.get('.step-bluehost-logo img').scrollIntoView().should('be.visible');
 		cy.get('.shepherd-header .shepherd-cancel-icon').scrollIntoView()
 			.should('be.visible')
@@ -20,6 +19,7 @@ describe('Tour: Home Page', function () {
 	});
 
 	it('Is Accessible', () => {
+		cy.injectAxe();
 		cy.wait(1500);
 		cy.checkA11y('.shepherd-content');
 	});

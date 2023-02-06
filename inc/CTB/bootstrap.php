@@ -18,7 +18,7 @@ add_action(
 			'bh-ctb',
 			'bhctb',
 			array(
-				'restApiUrl'   => esc_url_raw( rest_url() ),
+				'restApiUrl'   => esc_url_raw( get_home_url() . '/index.php?rest_route=/' ),
 				'restApiNonce' => wp_create_nonce( 'wp_rest' ),
 			)
 		);

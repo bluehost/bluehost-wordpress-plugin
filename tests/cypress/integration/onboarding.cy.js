@@ -1,13 +1,12 @@
 // <reference types="Cypress" />
 
-describe('Onboarding', function () {
+describe('Onboarding', () => {
 
 	before(() => {
 		// Make sure we are in coming soon mode
 		cy.exec('npx wp-env run cli wp option set nfd_coming_soon true');
 		cy.wait(1500);
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home/onboarding');
-		cy.injectAxe();
 	});
 
 	it('Exists', () => {
@@ -16,6 +15,7 @@ describe('Onboarding', function () {
 	});
 
 	it('Is Accessible', () => {
+		cy.injectAxe();
 		cy.wait(500);
 		cy.checkA11y('.bwa-route-contents');
 	});
@@ -104,18 +104,16 @@ describe('Onboarding', function () {
 	})
 
 	it('Site launched', () => {
-		cy.server();
-		cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
+		cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('updateSettings');
 		cy.findByRole('button', {name: 'Launch your site'}).scrollIntoView().click();
-		cy.wait('@updateSettings');
+		cy.wait('@updateSettings', {timeout: 10000});
 		cy.get('.nf-onboarding-base-step .illustration').should('be.visible').and('have.attr', 'alt', "People jumping and celebrating.");
 	})
 
 	it('Site can be unlaunched', () => {
-		cy.server();
-		cy.route('POST', '**/bluehost/v1/settings*').as('updateSettings');
+		cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('updateSettings');
 		cy.findByRole('button', {name: 'Restore Coming Soon'}).scrollIntoView().click();
-		cy.wait('@updateSettings');
+		cy.wait('@updateSettings', {timeout: 10000});
 		cy.get('.nf-onboarding-base-step .illustration').should('be.visible').and('have.attr', 'alt', "Person on spaceship with laptop.");
 	})
 

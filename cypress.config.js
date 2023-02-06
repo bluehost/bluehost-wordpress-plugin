@@ -21,6 +21,11 @@ module.exports = defineConfig({
 	chromeWebSecurity: false,
 	viewportWidth: 1024,
 	viewportHeight: 768,
+	blockHosts: [
+		'*doubleclick.net',
+		'*jnn-pa.googleapis.com',
+		'*youtube.com',
+	],
 	e2e: {
 		setupNodeEvents(on, config) {
 
@@ -46,6 +51,7 @@ module.exports = defineConfig({
 		baseUrl: 'http://localhost:8882',
 		specPattern: 'tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
 		supportFile: 'tests/cypress/support/index.js',
+		testIsolation: false,
 		// excludeSpecPattern: [
 		// 	'**/wp-module-onboarding/**',
 		// ],
