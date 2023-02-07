@@ -14,7 +14,7 @@ on:
       - fix/*
       - try/*
   pull_request:
-    types: [opened, edited, reopened, ready_for_review]
+    types: [ opened, edited, reopened, ready_for_review ]
   workflow_dispatch:
 
 concurrency:
@@ -99,12 +99,16 @@ jobs:
         run: npx wp-env start --debug
 
       - name: Run Cypress Tests
-        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' }}
+        env:
+          RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
+        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || env.RECORD_REPLAY_API_KEY === '' }}
         run: npx cypress run
 
       - name: Run Cypress Tests
         uses: replayio/action-cypress@v0.2.7
-        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
+        env:
+          RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
+        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' && env.RECORD_REPLAY_API_KEY !== '' }}
         with:
           api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
           browser: 'Replay Chromium'
@@ -117,13 +121,13 @@ jobs:
         run: npx @replayio/replay ls --json
 
       - name: Store screenshots of test failures
-        if: ${{ failure() }}
+        if: failure()
         uses: actions/upload-artifact@v3
         with:
           name: screenshots
           path: ./tests/cypress/screenshots
 
       - name: Output debug.log file contents
-        if: ${{ always() }}
+        if: always()
         continue-on-error: true
         run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
