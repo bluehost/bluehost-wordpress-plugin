@@ -59,7 +59,7 @@ describe('Onboarding Phase 2 Flow', () => {
 				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.nfd-onboarding-sidebar-learn-more__get-started-welcome > div.nfd-onboarding-sidebar-learn-more--help-panel__links > a'
 			).should('exist');
 
-			// click the `learn more` circle i button again to close panel
+			// click the `learn more` circle i button again to close panel.
 			cy.get(
 				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
 			).click();
