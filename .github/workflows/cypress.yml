@@ -101,14 +101,14 @@ jobs:
       - name: Run Cypress Tests
         env:
           RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
-        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || env.RECORD_REPLAY_API_KEY === '' }}
+        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || env.RECORD_REPLAY_API_KEY == '' }}
         run: npx cypress run
 
       - name: Run Cypress Tests
         uses: replayio/action-cypress@v0.2.7
         env:
           RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
-        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' && env.RECORD_REPLAY_API_KEY !== '' }}
+        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' && env.RECORD_REPLAY_API_KEY != '' }}
         with:
           api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
           browser: 'Replay Chromium'
