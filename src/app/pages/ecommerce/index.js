@@ -4,6 +4,8 @@ import { Modal } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { useParams, useNavigate } from "react-router-dom";
 
+import { default as NewfoldMarketplace } from "../../../../vendor/newfold-labs/wp-module-marketplace/components/marketplace/";
+
 import "@newfold-labs/wp-module-ecommerce/bluehost.css";
 import "@newfold-labs/wp-module-ecommerce/styles.scss";
 import "@newfold-labs/wp-module-ecommerce";
@@ -27,7 +29,8 @@ function EcommercePage() {
   };
   const wpModules = {
     Modal,
-    navigate
+    navigate,
+    NewfoldMarketplace
   };
   return (
     <BWACommonTemplate>
