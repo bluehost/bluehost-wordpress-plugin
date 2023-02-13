@@ -38,11 +38,14 @@ describe('Typography Step Test', function () {
     });
 
     it('Check if Default Typography variations exists and are selectable', () => {
-        cy.get('.theme-fonts--drawer')
-        .find('.font-palette')
-        .each(($font) => {
-            cy.wrap($font).click();
+        let previewCount = 0;
+        const className = '.font-palette ';
+        const arr = cy.get(className);
+
+        arr.each(() => {
+            cy.get(className).eq(previewCount).click();
             cy.get('.font-palette-selected').scrollIntoView().should('be.visible');
+            previewCount += 1;
         });
     });
 

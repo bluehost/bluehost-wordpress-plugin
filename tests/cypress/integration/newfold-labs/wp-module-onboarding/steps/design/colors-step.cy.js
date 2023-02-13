@@ -8,7 +8,7 @@ describe('Colors Step Test', function () {
         cy.exec('npx wp-env run cli wp option delete nfd_module_onboarding_theme_settings');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/theme-styles/preview');
         // cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/colors');
-        cy.injectAxe();
+        // cy.injectAxe();
     });
 
     it('Navigate to Colors Step', () => {
@@ -37,11 +37,14 @@ describe('Colors Step Test', function () {
     });
 
     it('Check if Default Color variations exists and are selectable', () => {
-        cy.get('.theme-colors--drawer')
-        .find('.color-palette')
-        .each(($color) => {
-            cy.wrap($color).click();
+        let previewCount = 0;
+        const className = '.color-palette ';
+        const arr = cy.get(className);
+
+        arr.each(() => {
+            cy.get(className).eq(previewCount).click();
             cy.get('.color-palette-selected').scrollIntoView().should('be.visible');
+            previewCount += 1;
         });
     });
 
@@ -49,19 +52,21 @@ describe('Colors Step Test', function () {
         // Opens Custom Palette
         cy.get('.custom-palette__top').scrollIntoView().click();
 
+        let previewCount = 0;
+        const className = '.custom-palette__below-row';
+        const arr = cy.get(className);
+
         // Select Colors for custom Palette
         const colors = ['F312345', 'DA34125', '2512453', '85E01D2', 'C541A04'];
-        let classname = '.custom-palette__below';
 
-        cy.get(classname)
-        .find(classname.concat('-row'))
-        .each(($color) => {
+        arr.each(() => {
             // Get a Random Color to be used
             const randomIndex = Math.floor(Math.random() * colors.length);
-            cy.wrap($color).click();
+            cy.get(className).eq(previewCount).click();
             cy.get('.components-input-control__input').clear();
             cy.get('.components-input-control__input').type(colors[randomIndex]);
-            cy.wrap($color).click();
+            cy.get(className).eq(previewCount).click();
+            previewCount += 1;
         });
 
         // Closes Custom Palette

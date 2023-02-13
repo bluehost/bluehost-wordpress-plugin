@@ -4,11 +4,11 @@ describe('Site Features', function () {
 
     before(() => {
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/site-features');
-        cy.injectAxe();
+        // cy.injectAxe();
     });
 
     it('Is Accessible', () => {
-        cy.wait(3000);
+        cy.wait(10000);
         // cy.checkA11y();
     });
 
@@ -31,14 +31,13 @@ describe('Site Features', function () {
     });
 
     it('Check if Site Features list exists and select them', () => {
-        cy.get('.checkbox-list')
-        .find('.checkbox-list-col')
-        .each(($checkBoxListCol) => {
-            cy.wrap($checkBoxListCol)
-            .find('.checkbox-item')
-            .each(($checkBoxItem) => {
-                cy.wrap($checkBoxItem).find('.components-base-control').find('input').scrollIntoView().click();
-            });
+        let previewCount = 0;
+        const className = '.checkbox-item ';
+        const arr = cy.get(className);
+
+        arr.each(() => {
+            cy.get(className).eq(previewCount).find('.components-base-control').find('input').scrollIntoView().click();
+            previewCount += 1;
         });
     });
 

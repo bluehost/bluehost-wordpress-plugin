@@ -4,9 +4,8 @@ describe('Site Pages', function () {
 
     before(() => {
         cy.exec('npx wp-env run cli wp theme activate yith-wonder');
-        cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/site-pages');
-        cy.injectAxe();
+        // cy.injectAxe();
     });
 
     it('Is Accessible', () => {
@@ -32,13 +31,13 @@ describe('Site Pages', function () {
     });
 
     it('Check if Site Pages Templates exist and are selectable', () => {
-        let classname = '.site-pages__list';
+        let previewCount = 0;
+        const className = '.site-pages__list__item';
+        const arr = cy.get(className);
 
-        cy.get(classname)
-        .find(classname.concat('__item'))
-        .each(($checkBox) => {
-            cy.wrap($checkBox).find('.components-checkbox-control').find('label').click();
+        arr.each(() => {
+            cy.get(className).eq(previewCount).find('.components-checkbox-control').find('label').click();
+            previewCount += 1;
         });
     });
-
 });

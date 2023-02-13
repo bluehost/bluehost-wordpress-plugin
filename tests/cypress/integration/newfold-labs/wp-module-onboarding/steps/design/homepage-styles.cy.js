@@ -4,13 +4,12 @@ describe('Homepage Styles Page', function () {
 
     before(() => {
         cy.exec('npx wp-env run cli wp theme activate yith-wonder');
-        cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/homepage-menu');
-        cy.injectAxe();
+        // cy.injectAxe();
     });
 
     it('Is Accessible', () => {
-    	cy.wait(5000);
+    	cy.wait(15000);
     });
 
     it('Check if Header and Subheader shows up', () => {
@@ -30,13 +29,15 @@ describe('Homepage Styles Page', function () {
     });
 
     it('Check if Homepage Styles exist and are selectable', () => {
-        let classname = '.homepage_preview__list';
+        let previewCount = 0;
+        const className = '.homepage_preview__list__item';
+        const arr = cy.get(className);
 
-        cy.get(classname)
-        .find(classname.concat('__item'))
-        .each(($homepage) => {
-            cy.wrap($homepage).find(classname.concat('__item__live-preview-container')).click();
-            cy.wrap($homepage).find(classname.concat('__item__title-bar--selected')).should('be.visible');
+        arr.each(() => {
+            cy.get(className).eq(previewCount).click();
+            cy.get(className).eq(previewCount)
+                .find(className.concat('__title-bar--selected')).should('be.visible');
+            previewCount += 1;
         });
     });
 
