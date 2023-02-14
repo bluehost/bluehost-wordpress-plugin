@@ -1,9 +1,7 @@
-// <reference types="Cypress" />
-
 describe('What Next Page', function () {
 
     before(() => {
-        // cy.setCustomerData();
+        cy.setCustomerData();
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/what-next');
         cy.wait(5000);
     });
@@ -42,6 +40,10 @@ describe('What Next Page', function () {
         cy.get('.components-modal__screen-overlay').should('not.exist');
     });
 
+    it('Check if whatnext card is visible', () => {
+        cy.get('.whatnext-card').should('be.visible');
+    });
+
     it('Hovering over overview tab panel and asserting the tab data', () => {
         cy.contains('button', 'WHATS NEXT').trigger('mouseover')
             cy.get('.tab-text').should('contain', 'Add content, organize your menu and launch.');
@@ -49,10 +51,6 @@ describe('What Next Page', function () {
             cy.get('.tab-text').should('contain', "Next step or next level, we're your partner.");
         cy.contains('button', 'HIRE OUR EXPERTS').trigger('mouseover')
             cy.get('.tab-text').should('contain', 'Make our great people your people.');
-    });
-
-    it('Check if whatnext card is visible', () => {
-        cy.get('.whatnext-card').should('be.visible');
     });
 
     it('Check if main heading and sub heading shows up', () => {
@@ -83,7 +81,7 @@ describe('What Next Page', function () {
             .should('be.visible')
             .click();
         cy.wait(1000);
-        cy.url().should('not.contain', '#/wp-setup/step/what-next');
+        cy.url().should('not.contain', '/wp-setup/step/what-next');
     });
 
     after(() => {
