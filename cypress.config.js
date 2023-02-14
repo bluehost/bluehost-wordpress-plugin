@@ -53,7 +53,7 @@ module.exports = defineConfig({
 		supportFile: 'tests/cypress/support/index.js',
 		testIsolation: false,
 		excludeSpecPattern: [
-			'**/wp-module-onboarding/**',
+			// '**/wp-module-onboarding/**',
 		],
 	},
 })
