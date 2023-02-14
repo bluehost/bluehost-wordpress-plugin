@@ -5,7 +5,8 @@ describe('Start Setup WP Experience Page', function () {
         cy.setCustomerData();
         cy.visit(
             'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/experience'
-        ).wait(2000);
+        );
+        cy.wait(5000);
         // cy.injectAxe();
     });
 
@@ -46,21 +47,18 @@ describe('Start Setup WP Experience Page', function () {
             .and('have.length', 3);
     });
 
-    it('Checks if all the Radio Buttons are Enabled', () => {
-        cy.get('.components-radio-control__option').each(($radioControl) => {
-            cy.wrap($radioControl).find('input').should('not.be.disabled');
-        });
-    });
-
     it('Check if Continue Setup Button is Disabled when none of the options are checked', () => {
         cy.get('.nfd-card-button').should('be.disabled');
         cy.url().should('contain', 'get-started/experience');
     });
 
-    it('Verifies if the Clicked Radio Button is highlighted.', () => {
-        cy.get('.components-radio-control__option').each(($radioControl) => {
-            cy.wrap($radioControl).find('label').click();
-            cy.wrap($radioControl).find('input').should('be.checked');
+    it('Checks if all the Radio Buttons are Enabled and Highlighted when clicked', () => {
+        let radioCount = 0;
+        const className = '.components-radio-control__option';
+        const arr = cy.get(className);
+        arr.each(() => {
+            cy.get('[type="radio"]').eq(radioCount).click({ force: true }).should('not.be.disabled').should('be.checked');
+            radioCount += 1;
         });
     });
 

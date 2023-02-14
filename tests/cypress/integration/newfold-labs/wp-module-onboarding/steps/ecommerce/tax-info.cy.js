@@ -35,6 +35,13 @@ describe('Step Ecommerce Tax Information', function () {
             .should('not.be.visible');
     });
 
+    it('Check to make sure sidebar opens, content is in place and close sidebar with X', () => {
+        cy.get('.nfd-onboarding-header__end > .components-button').click().and('have.class', 'is-pressed');
+        cy.get('.nfd-onboarding-sidebar-learn-more__ecommerce-tax-info').should('be.visible');
+        cy.get('.nfd-onboarding-sidebar-learn-more__header > button').click();
+        cy.get('.components-panel__header').should('not.exist');
+    });
+
     it('Checks if Heading and Subheading are present.', () => {
         cy.get('.nfd-step-card-heading').should('be.visible');
         cy.get('.nfd-step-card-subheading').should('be.visible');
@@ -50,18 +57,13 @@ describe('Step Ecommerce Tax Information', function () {
         .should('have.length', 3);
     })
 
-    it('Checks if all the tax preference radio control buttons are enabled.', () => {
-        cy.get('.components-radio-control__option')
-        .each(($radioControl) => {
-            cy.wrap($radioControl).find('input').should('not.be.disabled');
-        });
-    });
-
-    it('Checks if the clicked tax preference radio control button is selected.', () => {
-        cy.get('.components-radio-control__option')
-        .each(($radioControl) => {
-            cy.wrap($radioControl).find('label').click();
-            cy.wrap($radioControl).find('input').should('be.checked');
+    it('Checks if all the tax preference radio control buttons are enabled and clickable.', () => {
+        let radioCount = 0;
+        const className = '.components-radio-control__option';
+        const arr = cy.get(className);
+        arr.each(() => {
+            cy.get('[type="radio"]').eq(radioCount).click({ force: true }).should('not.be.disabled').should('be.checked');
+            radioCount += 1;
         });
     });
 

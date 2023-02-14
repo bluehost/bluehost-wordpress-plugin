@@ -41,21 +41,31 @@ describe('Get Started Site Type Secondary', function () {
     });
 
     it('Check different subCategories exist and is selectable', () => {
-        cy.get('.subCategoriesSection').should('be.visible');
-        cy.get('.subCategoriesSection span').each( ($option) => {
-            cy.wrap($option)
+        let categoryCount = 0;
+        const className = '.subCategoriesSection';
+        cy.get(className).should('be.visible');
+        const arr = cy.get(className.concat(' span'))
+        arr.each( () => {
+            cy.get(className.concat(' span')).eq(categoryCount)
                 .click()
                 .should('have.class','chosenSecondaryCategory');
+            categoryCount += 1;
         });
     });
 
     it('Check if input box exists and is editable', () => {
+        let categoryCount = 0;
+        const className = '.subCategoriesSection';
+        cy.get(className).should('be.visible');
         cy.get('.tellUsInput')
             .scrollIntoView()
             .should('be.visible')
             .type('Cars');
-        cy.get('.subCategoriesSection span').each((value) => {
-            cy.get(value).should('not.have.class', 'chosenSecondaryCategory');
+        const arr = cy.get(className.concat(' span'))
+        arr.each( () => {
+            cy.get(className.concat(' span')).eq(categoryCount)
+                .should('not.have.class','chosenSecondaryCategory');
+            categoryCount += 1;
         });
     });
 

@@ -7,7 +7,7 @@ describe('Step Ecommerce Products Info', function () {
             'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/products'
         );
         // cy.injectAxe();
-        cy.wait(2000);
+        cy.wait(3000);
     });
 
     // it('Is Accessible', () => {
@@ -25,7 +25,7 @@ describe('Step Ecommerce Products Info', function () {
         cy.get(':nth-child(3) > .nfd-onboarding-drawer__panel-menu-link')
             .should('have.class', 'active')
             .and('have.attr', 'href')
-            .and('include', '#/ecommerce/step/products')
+            .and('include', '#/ecommerce/step/products');
     });
 
     it('Closes the Drawer and checks if closed.', () => {
@@ -33,6 +33,13 @@ describe('Step Ecommerce Products Info', function () {
         cy.get('.nfd-onboarding-drawer__panel-inner')
             .scrollIntoView()
             .should('not.be.visible');
+    });
+
+    it('Check to make sure sidebar opens, content is in place and close sidebar with X', () => {
+        cy.get('.nfd-onboarding-header__end > .components-button').click().and('have.class', 'is-pressed');
+        cy.get('.nfd-onboarding-sidebar-learn-more__ecommerce-products').should('be.visible');
+        cy.get('.nfd-onboarding-sidebar-learn-more__header > button').click();
+        cy.get('.components-panel__header').should('not.exist');
     });
 
     it('Checks if Heading and Subheading are present', () => {
@@ -60,27 +67,26 @@ describe('Step Ecommerce Products Info', function () {
         });
     });
 
-    it('Checks if all the product count radio controls are enabled.', () => {
-        cy.get('.components-radio-control__option')
-        .each(($radioControl) => {
-            cy.wrap($radioControl).find('input').should('not.be.disabled');
+    it('Checks if all the product count radio controls are enabled and checked.', () => {
+        let radioCount = 0;
+        const className = '.components-radio-control__option';
+        const arr = cy.get(className);
+        arr.each(() => {
+            cy.get('[type="radio"]').eq(radioCount).click({ force: true }).should('not.be.disabled').should('be.checked');
+            radioCount += 1;
         });
     });
 
     it('Checks if all the product checkboxes can be checked.', () => {
-        cy.get('.nfd-product-step-options')
-        .find('.components-checkbox-control')
-        .each(($checkBox) => {
-            cy.wrap($checkBox).find('label').click();
-            cy.wrap($checkBox).find('input').should('be.checked');
-        });
-    });
-
-    it('Checks if the clicked radio control button is selected.', () => {
-        cy.get('.components-radio-control__option')
-        .each(($radioControl) => {
-            cy.wrap($radioControl).find('label').click();
-            cy.wrap($radioControl).find('input').should('be.checked');
+        let checkboxCount = 0;
+        const className = '.components-checkbox-control__input-container';
+        const arr = cy.get(className);
+        arr.each(() => {
+            cy.get(className).eq(checkboxCount).click();
+            cy.get('[type=checkbox]').eq(checkboxCount).should('be.checked');
+            cy.get(className).eq(checkboxCount).click();
+            cy.get('[type=checkbox]').eq(checkboxCount).should('not.be.checked');
+            checkboxCount += 1;
         });
     });
 
