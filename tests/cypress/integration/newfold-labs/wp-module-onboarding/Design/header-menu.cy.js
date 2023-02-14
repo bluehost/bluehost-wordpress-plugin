@@ -2,8 +2,7 @@ describe('Header menu Page', function () {
 
     before(() => {
         cy.exec('npx wp-env run cli wp theme activate yith-wonder');
-        cy.exec('npx wp-env run cli wp option update mm_brand BlueHost');
-        // cy.setCustomerData();
+        cy.setCustomerData();
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/header-menu');
         cy.wait(10000);
     });
