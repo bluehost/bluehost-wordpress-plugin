@@ -1,7 +1,7 @@
 describe('What Next Page', function () {
 
     before(() => {
-        cy.setCustomerData();
+        // cy.setCustomerData();
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/what-next');
         cy.wait(5000);
     });
@@ -84,7 +84,7 @@ describe('What Next Page', function () {
         cy.url().should('not.contain', '/wp-setup/step/what-next');
     });
 
-    after(() => {
-        cy.clearCustomerData();
-    });
+    // after(() => {
+    //     cy.clearCustomerData();
+    // });
 });

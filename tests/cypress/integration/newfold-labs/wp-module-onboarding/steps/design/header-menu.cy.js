@@ -1,8 +1,8 @@
 describe('Header menu Page', function () {
 
     before(() => {
-        cy.exec('npx wp-env run cli wp theme activate yith-wonder');
-        cy.setCustomerData();
+        // cy.exec('npx wp-env run cli wp theme activate yith-wonder');
+        // cy.setCustomerData();
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/header-menu');
         cy.wait(10000);
     });
@@ -64,7 +64,7 @@ describe('Header menu Page', function () {
         cy.url().should('not.contain', '/wp-setup/step/design/header-menu');
     });
 
-    after(() => {
-        cy.clearCustomerData();
-    });
+    // after(() => {
+    //     cy.clearCustomerData();
+    // });
 });
