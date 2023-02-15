@@ -52,19 +52,19 @@ describe('Step Ecommerce Address/Store Details', function () {
             .and('not.be.disabled').select('US');
         cy.get('input[name="woocommerce_store_address"]')
             .should('be.visible')
-            .and('not.be.disabled').type('5335 Gate Pkwy');
+            .and('not.be.disabled').clear().type('5335 Gate Pkwy');
         cy.get('input[name="woocommerce_store_city"]')
             .should('be.visible')
-            .and('not.be.disabled').type('Jacksonville');
+            .and('not.be.disabled').clear().type('Jacksonville');
         cy.get('select[name="state"]')
             .should('be.visible')
             .and('not.be.disabled').select('FL');
         cy.get('input[name="woocommerce_store_postcode"]')
             .should('be.visible')
-            .and('not.be.disabled').type('32256');
+            .and('not.be.disabled').clear().type('32256');
         cy.get('input[name="woocommerce_email_from_address"]')
             .should('be.visible')
-            .and('not.be.disabled').type('test123@gmail.com');
+            .and('not.be.disabled').clear().type('test123@gmail.com');
         cy.get('select[name="woocommerce_currency"]')
             .should('be.visible')
             .and('not.be.disabled').select('USD');
@@ -102,6 +102,12 @@ describe('Step Ecommerce Address/Store Details', function () {
             .and('not.be.disabled');
     });
 
+    it('Goes to next step on Continue Setup', () => {
+        cy.get('.nfd-nav-card-button').scrollIntoView().click();
+        cy.url().should('not.include', '#/ecommerce/step/address');
+        cy.go('back');
+    });
+
     it('Goes to the next step on clicking navigation Next', () => {
         cy.get('.navigation-buttons_next').click();
         cy.url().should('not.include', '#/ecommerce/step/address');
@@ -110,12 +116,6 @@ describe('Step Ecommerce Address/Store Details', function () {
 
     it('Goes to the previous step on clicking navigation Back', () => {
         cy.get('.navigation-buttons_back').click();
-        cy.url().should('not.include', '#/ecommerce/step/address');
-        cy.go('back');
-    });
-
-    it('Goes to next step on Continue Setup', () => {
-        cy.get('.nfd-nav-card-button').scrollIntoView().click();
         cy.url().should('not.include', '#/ecommerce/step/address');
         cy.go('back');
     });

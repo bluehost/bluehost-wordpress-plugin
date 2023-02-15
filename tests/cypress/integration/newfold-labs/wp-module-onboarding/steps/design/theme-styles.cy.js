@@ -4,7 +4,7 @@ describe('Theme Styles Menu and Preview', function () {
 
     before(() => {
         cy.setCustomerData();
-        cy.exec('wp theme activate yith-wonder');
+        cy.exec('npx wp-env run cli wp theme activate yith-wonder');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/theme-styles/menu');
         // cy.injectAxe();
     });
@@ -59,7 +59,7 @@ describe('Theme Styles Menu and Preview', function () {
         cy.get(':nth-child(2) > .theme-styles-menu__list__item__live-preview-container').scrollIntoView().should('be.visible').click();
         cy.url().should('not.include', '#/wp-setup/step/design/theme-styles/menu');
         cy.get(':nth-child(1) > .theme-styles-preview__title-bar').should('be.visible');
-        cy.get('.theme-styles-preview__live-preview-container').should('be.visible');
+        cy.get('.live-preview__container-large').should('be.visible');
     });
 
     it('Check if Theme List is Visible in the Drawer', () => {
@@ -78,7 +78,7 @@ describe('Theme Styles Menu and Preview', function () {
         cy.get('.nfd-onboarding-drawer__panel-back').scrollIntoView().should('be.visible').should('have.text', 'Design');
         const className = ':nth-child(2) > .theme-styles-preview--drawer__list__item__title-bar';
         cy.get(className);
-        cy.get(className + ' > .live-preview-selected-check').should('be.visible');
+        cy.get(className + ' > .live-preview-selected-check').scrollIntoView().should('be.visible');
     });   
 
     it('Check/uncheck Colors and Font Checkbox', () => {

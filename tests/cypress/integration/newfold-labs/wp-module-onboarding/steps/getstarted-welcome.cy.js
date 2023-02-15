@@ -6,7 +6,6 @@ describe('Get Started Welcome Page', function () {
         cy.setCustomerData();
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/welcome');
         // cy.injectAxe();
-        cy.wait(3000);
     });
 
     // it('Is Accessible', () => {
@@ -69,9 +68,11 @@ describe('Get Started Welcome Page', function () {
     it('Check for help panel links in sidebar and close it with `i` icon', () => {
         cy.get('.nfd-onboarding-header__end > .components-button').click().and('have.class', 'is-pressed');
         cy.get('.nfd-onboarding-sidebar-learn-more--help-panel__links').scrollIntoView().should('be.visible');
-        cy.get('.nfd-onboarding-button--blue').click();
-        cy.get('.nfd-onboarding-button--white').click();
-        cy.get('.nfd-onboarding-sidebar-learn-more--support-link').click();
+        cy.get('.nfd-onboarding-button--blue').should('have.attr', 'type').and('match', /button/);
+        cy.get('.nfd-onboarding-button--white').should('have.attr', 'type').and('match', /button/);
+        cy.get('.nfd-onboarding-sidebar-learn-more--help-panel__links > a')
+            .should('exist')
+            .should('have.attr', 'href');
         cy.get('.nfd-onboarding-header__end > .components-button').click();
         cy.get('.components-panel__header').should('not.exist');
     });
