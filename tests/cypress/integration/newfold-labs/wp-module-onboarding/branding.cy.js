@@ -20,7 +20,7 @@ describe('Branding', function () {
     });
 
     it('Has Newfold CSS when mm_brand has an empty value.', () => {
-        cy.exec('npx wp-env run cli wp option set mm_brand ""');
+        cy.exec('npx wp-env run cli wp option update mm_brand ""');
         cy.reload();
         cy.get('body').should('have.class', 'nfd-brand-newfold');
     });
