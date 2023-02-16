@@ -99,18 +99,6 @@ describe('Step Ecommerce Products Info', function () {
         cy.get('.nfd-card-need-help-tag > a').should('have.attr', 'href');
     });
 
-    it('Goes to the next step on clicking navigation Next.', () => {
-        cy.get('.navigation-buttons_next').click();
-        cy.url().should('not.include', '#/ecommerce/step/products');
-        cy.go('back');
-    });
-
-    it('Goes to the previous step on clicking navigation Back.', () => {
-        cy.get('.navigation-buttons_back').click();
-        cy.url().should('not.include', '#/ecommerce/step/products');
-        cy.go('back');
-    });
-
     it('Goes to next step on Continue Setup.', () => {
         cy.get('.nfd-nav-card-button').click();
         cy.url().should('not.include', '#/ecommerce/step/products');

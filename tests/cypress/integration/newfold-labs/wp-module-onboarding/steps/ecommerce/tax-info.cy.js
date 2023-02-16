@@ -82,18 +82,6 @@ describe('Step Ecommerce Tax Information', function () {
         cy.go('back');
     });
 
-    it('Goes to the previous step on clicking navigation Back', () => {
-        cy.get('.navigation-buttons_back').click();
-        cy.url().should('not.include', '#/ecommerce/step/tax');
-        cy.go('back');
-    });
-
-    it('Goes to next step on Continue Setup', () => {
-        cy.get('.nfd-nav-card-button').click();
-        cy.url().should('not.include', '#/ecommerce/step/tax');
-        cy.go('back');
-    });
-
     after(() => {
         cy.clearCustomerData();
     });

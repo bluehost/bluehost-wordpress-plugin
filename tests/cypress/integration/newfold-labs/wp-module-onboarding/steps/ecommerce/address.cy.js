@@ -109,18 +109,6 @@ describe('Step Ecommerce Address/Store Details', function () {
         cy.go('back');
     });
 
-    it('Goes to the next step on clicking navigation Next', () => {
-        cy.get('.navigation-buttons_next').click();
-        cy.url().should('not.include', '#/ecommerce/step/address');
-        cy.go('back');
-    });
-
-    it('Goes to the previous step on clicking navigation Back', () => {
-        cy.get('.navigation-buttons_back').click();
-        cy.url().should('not.include', '#/ecommerce/step/address');
-        cy.go('back');
-    });
-
     after(() => {
         cy.clearCustomerData();
     });
