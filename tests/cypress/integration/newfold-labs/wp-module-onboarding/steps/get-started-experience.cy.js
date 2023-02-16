@@ -3,6 +3,7 @@
 describe('Start Setup WP Experience Page', function () {
     before(() => {
         cy.setCustomerData();
+        cy.exec('npx wp-env run cli wp option delete nfd_module_onboarding_flow');
         cy.visit(
             'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/experience'
         );
@@ -24,11 +25,7 @@ describe('Start Setup WP Experience Page', function () {
 
     it('Check for help panel links in sidebar and close it with `i` icon', () => {
         cy.get('.nfd-onboarding-header__end > .components-button').click().and('have.class', 'is-pressed');
-        cy.get('.nfd-onboarding-sidebar-learn-more--help-panel__links').scrollIntoView().should('be.visible');
-        cy.get('.nfd-onboarding-button--white').should('have.attr', 'type').and('match', /button/);
-        cy.get('.nfd-onboarding-sidebar-learn-more--help-panel__links > a')
-            .should('exist')
-            .should('have.attr', 'href');
+        cy.get('.nfd-onboarding-sidebar-learn-more__get-started-wp-experience').scrollIntoView().should('be.visible');
         cy.get('.nfd-onboarding-header__end > .components-button').click();
         cy.get('.components-panel__header').should('not.exist');
     });
