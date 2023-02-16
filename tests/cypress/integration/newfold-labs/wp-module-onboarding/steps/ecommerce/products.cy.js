@@ -2,7 +2,8 @@
 
 describe('Step Ecommerce Products Info', function () {
     before(() => {
-        cy.setCustomerData();
+        // cy.setCustomerData();
+        cy.exec('npx wp-env run cli wp theme activate woocommerce');
         cy.visit(
             'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/products'
         );
