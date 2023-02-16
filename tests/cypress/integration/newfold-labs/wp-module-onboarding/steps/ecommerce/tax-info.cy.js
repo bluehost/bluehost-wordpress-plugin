@@ -60,10 +60,10 @@ describe('Step Ecommerce Tax Information', function () {
 
     it('Checks if all the tax preference radio control buttons are enabled and clickable.', () => {
         let radioCount = 0;
-        const className = '.components-radio-control__option';
+        const className = '[type="radio"]';
         const arr = cy.get(className);
         arr.each(() => {
-            cy.get('[type="radio"]').eq(radioCount).click({ force: true }).should('not.be.disabled').should('be.checked');
+            cy.get(className).eq(radioCount).click({ force: true }).should('not.be.disabled').should('be.checked');
             radioCount += 1;
         });
     });
