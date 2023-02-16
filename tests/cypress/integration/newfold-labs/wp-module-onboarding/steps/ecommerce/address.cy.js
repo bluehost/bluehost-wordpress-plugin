@@ -3,10 +3,10 @@
 describe('Step Ecommerce Address/Store Details', function () {
     before(() => {
         cy.setCustomerData();
-        cy.exec('npx wp-env run cli wp plugin activate woocommerce');
         cy.visit(
             'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
         );
+        cy.wait(5000);
         // cy.injectAxe();
     });
 

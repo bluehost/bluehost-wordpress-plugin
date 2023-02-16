@@ -8,7 +8,7 @@ describe('Step Ecommerce Products Info', function () {
             'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/products'
         );
         // cy.injectAxe();
-        cy.wait(3000);
+        cy.wait(5000);
     });
 
     // it('Is Accessible', () => {

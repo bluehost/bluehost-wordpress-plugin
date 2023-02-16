@@ -3,12 +3,11 @@
 describe('Step Ecommerce Tax Information', function () {
     before(() => {
         cy.setCustomerData();
-        cy.exec('npx wp-env run cli wp plugin activate woocommerce');
         cy.visit(
             'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/tax'
         );
         // cy.injectAxe();
-        cy.wait(2000);
+        cy.wait(5000);
     });
 
     // it('Is Accessible', () => {
