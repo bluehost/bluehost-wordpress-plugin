@@ -46,7 +46,16 @@ const Home = () => {
 		);
 	}, []);
 
-	if (isNewEcommerceUser && isOnECommercePlan) {
+	const isWooActive = useSelect((select) => {
+		const plugin = select("bluehost/plugin");
+		return (
+			"undefined" !== typeof plugin &&
+			plugin.hasOwnProperty("isWooActive") &&
+			plugin.isWooActive()
+		);
+	}, []);
+
+	if ((isNewEcommerceUser && isOnECommercePlan) || isWooActive) {
 		return <BWARedirect to="/home/store" currentLocation={location} />;
 	}
 
