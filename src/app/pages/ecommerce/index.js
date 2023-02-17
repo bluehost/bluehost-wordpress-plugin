@@ -18,7 +18,10 @@ function EcommercePage() {
   let brandPluginState = useSelect((select) => {
     let store = select("bluehost/plugin");
     return {
-      comingSoon: store.getSetting("comingSoon")
+      comingSoon: store.getSetting("comingSoon"),
+      isOnECommercePlan: store.isOnECommercePlan(),
+      isNewEcommerceUser: store.isNewEcommerceUser(),
+      isWooActive: store.isWooActive(),
     };
   });
   let { section } = useParams();
