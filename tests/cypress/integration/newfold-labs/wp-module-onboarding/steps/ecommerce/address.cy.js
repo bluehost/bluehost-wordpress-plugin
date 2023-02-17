@@ -16,6 +16,7 @@ describe('Step Ecommerce Address/Store Details', function () {
 	// });
 
     it('Checks if Drawer opened', () => {
+        cy.get('.nfd-onboarding-drawer__toggle-buttons').click();
         cy.get('.nfd-onboarding-drawer__panel-inner')
             .scrollIntoView()
             .should('be.visible');
