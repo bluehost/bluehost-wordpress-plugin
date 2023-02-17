@@ -6,7 +6,6 @@ describe('Step Ecommerce Address/Store Details', function () {
         cy.visit(
             'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
         );
-        cy.wait(5000);
         // cy.injectAxe();
     });
 
@@ -16,7 +15,7 @@ describe('Step Ecommerce Address/Store Details', function () {
 	// });
 
     it('Checks if Drawer opened', () => {
-        cy.get('.nfd-onboarding-drawer__toggle-buttons').click();
+        cy.get('.nfd-onboarding-drawer__toggle-button').click();
         cy.get('.nfd-onboarding-drawer__panel-inner')
             .scrollIntoView()
             .should('be.visible');
@@ -44,6 +43,7 @@ describe('Step Ecommerce Address/Store Details', function () {
     });
 
     it('Checks if Heading and Subheading are present', () => {
+        cy.wait(2000);
         cy.get('.nfd-step-card-heading').should('be.visible');
         cy.get('.nfd-step-card-subheading').should('be.visible');
     });

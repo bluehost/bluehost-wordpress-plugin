@@ -59,8 +59,7 @@ describe('Theme Styles Menu and Preview', function () {
         cy.get(':nth-child(2) > .theme-styles-menu__list__item__live-preview-container').scrollIntoView().should('be.visible').click();
         cy.url().should('not.include', '#/wp-setup/step/design/theme-styles/menu');
         cy.get(':nth-child(1) > .theme-styles-preview__title-bar').should('be.visible');
-        cy.wait(3000);
-        cy.get('.live-preview__container-large').scrollIntoView().should('be.visible');
+        cy.get('.theme-styles-preview__live-preview-container', {timeout: '10000'}).scrollIntoView().should('be.visible');
     });
 
     it('Check if Theme List is Visible in the Drawer', () => {
