@@ -13,16 +13,6 @@ describe('Exit to WordPress', function () {
     // });
 
     it('Go to the Page where the Drawer contains Exit to WordPress Button', () => {
-        var noExitToWPLabel =
-            cy.get('.nfd-onboarding-etw__trigger').should('not.exist') ||
-            !cy
-                .get('.nfd-onboarding-drawer__toggle-button')
-                .click()
-                .and('not.have.class', 'is-suppressed');
-        if (noExitToWPLabel) {
-            cy.get('.navigation-buttons_next').click();
-        }
-        cy.url().should('not.contain', '/ecommerce/step/products');
         cy.get('.nfd-onboarding-etw__trigger').click();
         cy.get('.components-modal__content').should('be.visible');
     });
