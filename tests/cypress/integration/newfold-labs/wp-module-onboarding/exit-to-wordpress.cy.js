@@ -4,8 +4,7 @@ describe('Exit to WordPress', function () {
     before(() => {
         cy.setCustomerData();
         cy.visit(
-            'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/products');
-        cy.wait(3000);
+            'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info');
         // cy.injectAxe();
     });
 
