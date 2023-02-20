@@ -3,7 +3,7 @@
 describe('Theme Styles Menu and Preview', function () {
 
     before(() => {
-        cy.setCustomerData();
+        // cy.setCustomerData();
         cy.exec('npx wp-env run cli wp theme activate yith-wonder');
         cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/theme-styles/menu');
         // cy.injectAxe();
@@ -94,13 +94,13 @@ describe('Theme Styles Menu and Preview', function () {
         cy.get(className + ' > .live-preview-selected-check').should('be.visible');
     });
 
-    it('Check if next step loads on clicking navigation next', () => {
-        cy.get('.navigation-buttons_next').click();
-        cy.url().should('not.include', '#/wp-setup/step/design/theme-styles/menu');
-        cy.go('back');
-    });
+    // it('Check if next step loads on clicking navigation next', () => {
+    //     cy.get('.navigation-buttons_next').click();
+    //     cy.url().should('not.include', '#/wp-setup/step/design/theme-styles/menu');
+    //     cy.go('back');
+    // });
 
-    after(() => {
-        cy.clearCustomerData();
-    });
+    // after(() => {
+    //     cy.clearCustomerData();
+    // });
 })

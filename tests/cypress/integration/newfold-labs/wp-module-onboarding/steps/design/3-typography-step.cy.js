@@ -4,10 +4,10 @@ describe('Typography Step Test', function () {
 
     before(() => {
         // cy.exec('npx wp-env run cli wp theme activate yith-wonder');
-        cy.exec('npx wp-env run cli wp option delete nfd_module_onboarding_flow');
-        cy.exec('npx wp-env run cli wp option delete nfd_module_onboarding_theme_settings');
-        cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/theme-styles/preview');
-        // cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/typography');
+        // cy.exec('npx wp-env run cli wp option delete nfd_module_onboarding_flow');
+        // cy.exec('npx wp-env run cli wp option delete nfd_module_onboarding_theme_settings');
+        // cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/theme-styles/preview');
+        cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/typography');
         // cy.injectAxe();
     });
 
