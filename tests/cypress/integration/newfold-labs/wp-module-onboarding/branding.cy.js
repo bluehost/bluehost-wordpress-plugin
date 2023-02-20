@@ -12,15 +12,16 @@ describe('Branding', function () {
 	// 	cy.wait(500);
 	// 	cy.checkA11y();
 	// });
-
+    
     it('Has brand specific CSS.', () => {
         cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
         cy.reload();
         cy.get('body').should('have.class', 'nfd-brand-bluehost');
     });
 
-    it('Has Newfold CSS when mm_brand has an empty value.', () => {
-        cy.exec('npx wp-env run cli wp option update mm_brand ""');
+    it('Has Newfold CSS when mm_brand has an empty value', () => {
+        let emptyString = JSON.stringify("");
+        cy.exec(`npx wp-env run cli wp option update mm_brand '${ emptyString }'`);
         cy.reload();
         cy.get('body').should('have.class', 'nfd-brand-newfold');
     });
