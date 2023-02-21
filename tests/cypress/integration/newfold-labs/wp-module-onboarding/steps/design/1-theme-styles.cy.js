@@ -7,6 +7,7 @@ describe( 'Theme Styles Menu and Preview', function () {
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/theme-styles/menu'
 		);
+		cy.wait( 8000 );
 		// cy.injectAxe();
 	} );
 
