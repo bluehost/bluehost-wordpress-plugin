@@ -59,7 +59,7 @@ describe('Onboarding Phase 2 Flow', () => {
 				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.nfd-onboarding-sidebar-learn-more__get-started-welcome > div.nfd-onboarding-sidebar-learn-more--help-panel__links > a'
 			).should('exist');
 
-			// click the `learn more` circle i button again to close panel
+			// click the `learn more` circle i button again to close panel.
 			cy.get(
 				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
 			).click();
@@ -86,27 +86,27 @@ describe('Onboarding Phase 2 Flow', () => {
 
 			// Click start setup button
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > button'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div > button'
 			).click();
 
 			// Click radio `never used it`
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div.components-base-control.nfd-onboarding-experience-step-tabs.components-radio-control__input.components-radio-control > div > div > div:nth-child(1) > label'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div > div.animate__fade-in--disabled > div.components-base-control.nfd-onboarding-experience-step-tabs.components-radio-control__input.components-radio-control > div > div > div:nth-child(1) > label'
 			).click();
 
 			// click radio `used it some`
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div.components-base-control.nfd-onboarding-experience-step-tabs.components-radio-control__input.components-radio-control > div > div > div:nth-child(2) > label'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div > div.animate__fade-in--disabled > div.components-base-control.nfd-onboarding-experience-step-tabs.components-radio-control__input.components-radio-control > div > div > div:nth-child(2) > label'
 			).click();
 
 			// click radio `I'm an expert`
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div.components-base-control.nfd-onboarding-experience-step-tabs.components-radio-control__input.components-radio-control > div > div > div:nth-child(3) > label'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div > div.animate__fade-in--disabled > div.components-base-control.nfd-onboarding-experience-step-tabs.components-radio-control__input.components-radio-control > div > div > div:nth-child(3) > label'
 			).click();
 
 			// Check that need help link exists
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div.nfd-card-need-help-tag > a'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div > div.nfd-card-need-help-tag > a'
 			).should('exist');
 
 			// // Click cirlce i button to open panel
@@ -123,13 +123,13 @@ describe('Onboarding Phase 2 Flow', () => {
 
 			// click `continue setup` button
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > button'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div > button'
 			).should('exist')
 			.click();
 
 			// click first category
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-secondary-categories > div.subCategoriesSection > span:nth-child(1)',
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div.animate__fade-in--disabled > div.nfd-setup-secondary-categories > div.subCategoriesSection > span:nth-child(1)',
 				{timeout: 30000}
 			).should('exist')
 			.click();
@@ -168,22 +168,22 @@ describe('Onboarding Phase 2 Flow', () => {
 
 			// select last category
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-secondary-categories > div.subCategoriesSection > span:nth-child(10)'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div.animate__fade-in--disabled > div.nfd-setup-secondary-categories > div.subCategoriesSection > span:nth-child(10)'
 			).click();
 
 			// click input
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-primary-second > div > input'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div.animate__fade-in--disabled > div.nfd-setup-primary-second > div > input'
 			).click();
 
 			// type `hello`
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-primary-second > div > input'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div.animate__fade-in--disabled > div.nfd-setup-primary-second > div > input'
 			).type('Hello');
 
 			// deselect last category
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-secondary-categories > div.subCategoriesSection > span:nth-child(10)'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div.animate__fade-in--disabled > div.nfd-setup-secondary-categories > div.subCategoriesSection > span:nth-child(10)'
 			).click();
 
 			// click the header? doesn't seem needed
@@ -203,7 +203,7 @@ describe('Onboarding Phase 2 Flow', () => {
 
 			// click `continue setup` button
 			cy.get(
-				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > button'
+				'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > button'
 			).should('exist')
 			.click();
 
