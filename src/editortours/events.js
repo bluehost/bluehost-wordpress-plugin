@@ -30,12 +30,18 @@ export const initEvents = (tourName, tour) => {
 
     const eventTracking = (context, category)  => {
         let data = {
-            action: 'tour-' + context.tour.options.type,
-            category: category,
+            action: 'tour',
             data: {
-                step: context.id
+                tour: context.tour.options.type,
+                category: category,
             }
         };
+        if ( context.step ) { // for continue events
+            data.data.step = context.step.id;
+        } else if ( context.currentStep ) { // for cancel/complete events
+            data.data.step = context.currentStep.id;
+        }
+
         apiFetch({ path: '/newfold-notifications/v1/notifications/events', method: 'POST', data });
     }
 
