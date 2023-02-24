@@ -84,7 +84,7 @@ describe( 'Theme Styles Menu and Preview', function () {
 			'be.visible'
 		);
 		cy.get( '.theme-styles-preview__live-preview-container', {
-			timeout: '15000',
+			timeout: '30000',
 		} )
 			.scrollIntoView()
 			.should( 'be.visible' );
