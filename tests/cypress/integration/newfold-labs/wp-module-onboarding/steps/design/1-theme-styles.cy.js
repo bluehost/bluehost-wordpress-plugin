@@ -83,11 +83,7 @@ describe( 'Theme Styles Menu and Preview', function () {
 		cy.get( ':nth-child(1) > .theme-styles-preview__title-bar' ).should(
 			'be.visible'
 		);
-		cy.get( '.theme-styles-preview__live-preview-container', {
-			timeout: '30000',
-		} )
-			.scrollIntoView()
-			.should( 'be.visible' );
+		cy.get( '.theme-styles-preview > div:nth-child(3)' ).should( 'be.visible' );
 	} );
 
 	it( 'Check if Theme List is Visible in the Drawer', () => {
@@ -139,12 +135,6 @@ describe( 'Theme Styles Menu and Preview', function () {
 			'be.visible'
 		);
 	} );
-
-	// it('Check if next step loads on clicking navigation next', () => {
-	//     cy.get('.navigation-buttons_next').click();
-	//     cy.url().should('not.include', '#/wp-setup/step/design/theme-styles/menu');
-	//     cy.go('back');
-	// });
 
 	// after(() => {
 	//     cy.clearCustomerData();
