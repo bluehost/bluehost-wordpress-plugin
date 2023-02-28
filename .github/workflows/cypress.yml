@@ -92,9 +92,6 @@ jobs:
         working-directory: ${{ steps.workflow.outputs.DIST }}
         run: find .
 
-      - name: Configure WordPress
-        run: echo '{"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
-        
       - name: Install WordPress
         run: npx wp-env start --debug
 
