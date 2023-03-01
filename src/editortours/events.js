@@ -35,7 +35,6 @@ export const initEvents = (tourName, tour) => {
         } else if ( context.currentStep ) { // for cancel/complete events
             step = context.currentStep.id;
         }
-        console.log( context);
         let data = {
             action: `${action}-tour`,
             category: 'tour',
