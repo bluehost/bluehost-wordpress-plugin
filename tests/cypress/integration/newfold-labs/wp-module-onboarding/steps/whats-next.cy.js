@@ -1,3 +1,6 @@
+// <reference types="Cypress" />
+import { GetCardHeading } from "../wp-module-support/header.cy";
+
 describe( 'What Next Page', function () {
 	before( () => {
 		// cy.setCustomerData();
@@ -58,8 +61,7 @@ describe( 'What Next Page', function () {
 	} );
 
 	it( 'Check if main heading and sub heading shows up', () => {
-		cy.get( '.nfd-step-card-heading' ).should( 'be.visible' );
-		cy.get( '.nfd-step-card-subheading' ).should( 'be.visible' );
+		GetCardHeading();
 	} );
 
 	it( 'Check navigation back is not visible', () => {
