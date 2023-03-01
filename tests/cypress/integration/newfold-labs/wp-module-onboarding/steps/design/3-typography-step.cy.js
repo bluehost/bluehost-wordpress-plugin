@@ -1,4 +1,6 @@
 // <reference types="Cypress" />
+import { DrawerActivityForSubMenu } from "../../wp-module-support/drawer.cy";
+import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
 
 describe( 'Typography Step Test', function () {
 	before( () => {
@@ -25,21 +27,15 @@ describe( 'Typography Step Test', function () {
 		// cy.checkA11y();
 	} );
 
-	it( 'Check if Drawer toggles', () => {
-		cy.get( '.nfd-onboarding-drawer__panel-site-title-container' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-		cy.get( '.nfd-onboarding-drawer__toggle > .components-button' ).click();
-		cy.get( '.nfd-onboarding-drawer__toggle > .components-button' ).click();
+	it( 'Check Drawer Activity', () => {
+		DrawerActivityForSubMenu('Design', '.theme-fonts--drawer', '.font-palette', 12);
 	} );
 
-	it( 'Check if Sidebar toggles', () => {
-		cy.get( '.nfd-onboarding-sidebar-learn-more__menu-button' ).click();
-		cy.get( '.nfd-onboarding-sidebar__panel' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-		cy.get( '.nfd-onboarding-sidebar-learn-more__menu-button' ).click();
-		cy.get( '.nfd-onboarding-sidebar__panel' ).should( 'not.be.visible' );
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__design-typography', 'Typography');
+		CheckIllustrationPanel();
+		CheckInfoPanel();
+		CheckHelpPanelLinks();
 	} );
 
 	it( 'Check if Default Typography variations exists and are selectable', () => {

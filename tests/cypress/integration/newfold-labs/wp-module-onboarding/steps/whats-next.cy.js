@@ -1,5 +1,7 @@
 // <reference types="Cypress" />
+import { DrawerActivityForMenu } from "../wp-module-support/drawer.cy";
 import { GetCardHeading } from "../wp-module-support/header.cy";
+import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
 
 describe( 'What Next Page', function () {
 	before( () => {
@@ -10,32 +12,15 @@ describe( 'What Next Page', function () {
 		cy.wait( 5000 );
 	} );
 
-	it( 'Check to make sure drawer opens', () => {
-		cy.get( '.nfd-onboarding-drawer__toggle' )
-			.should( 'be.visible' )
-			.click();
-		cy.get( '.nfd-onboarding-drawer__panel-inner' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-		cy.get( '.nfd-onboarding-drawer__toggle' ).click();
+	it( 'Check Drawer Activity', () => {
+		DrawerActivityForMenu('Exit to WordPress', ':nth-child(6)', 'What Next', false);
 	} );
 
-	it( 'Check drawer is visible and clickable and continue flow', () => {
-		cy.get( '.nfd-onboarding-drawer__toggle' )
-			.should( 'be.visible' )
-			.click();
-		cy.get( '.nfd-onboarding-etw__trigger' ).should( 'be.visible' ).click();
-		cy.get( '.components-modal__screen-overlay' ).should( 'be.visible' );
-		cy.get( '.nfd-onboarding-etw__buttons > .is-secondary' ).click();
-		cy.get( '.components-modal__screen-overlay' ).should( 'not.exist' );
-	} );
-
-	it( 'Check drawer is visible and clickable and cancel', () => {
-		cy.get( '.nfd-onboarding-drawer__toggle' ).should( 'be.visible' );
-		cy.get( '.nfd-onboarding-etw__trigger' ).should( 'be.visible' ).click();
-		cy.get( '.components-modal__screen-overlay' ).should( 'be.visible' );
-		cy.get( '.components-modal__header > button' ).click();
-		cy.get( '.components-modal__screen-overlay' ).should( 'not.exist' );
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__what-next', "What’s Next");
+		CheckIllustrationPanel('__what-next');
+		CheckInfoPanel(2);
+		CheckHelpPanelLinks();
 	} );
 
 	it( 'Check if whatnext card is visible', () => {
@@ -70,18 +55,6 @@ describe( 'What Next Page', function () {
 
 	it( 'Check if complete setup button is visible', () => {
 		cy.contains( 'button', 'Complete Setup' ).should( 'be.visible' );
-	} );
-
-	it( 'Check Learn more (i) drawer is opening and Technical support buttons are clickable', () => {
-		cy.get( '.nfd-onboarding-sidebar-learn-more__menu-button' )
-			.should( 'be.visible' )
-			.click();
-		cy.get( '.nfd-onboarding-sidebar-learn-more--support-link' ).should(
-			'be.visible'
-		);
-		cy.contains( 'button', 'Hire Our Full-Service Creative Studio' ).should(
-			'be.visible'
-		);
 	} );
 
 	it( 'Check Finish button is visible and finish the setup', () => {

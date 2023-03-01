@@ -1,4 +1,7 @@
 // <reference types="Cypress" />
+import { DrawerActivityForMenu } from "../../wp-module-support/drawer.cy";
+import { GetHeadingTitle } from '../../wp-module-support/header.cy';
+import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
 
 describe( 'Theme Styles Menu and Preview', function () {
 	before( () => {
@@ -11,44 +14,19 @@ describe( 'Theme Styles Menu and Preview', function () {
 		// cy.injectAxe();
 	} );
 
-	it( 'Checks if Drawer opened', () => {
-		cy.get( '.nfd-onboarding-drawer__panel-inner' )
-			.scrollIntoView()
-			.should( 'be.visible' );
+	it( 'Check Drawer Activity', () => {
+		DrawerActivityForMenu('Onboarding Menu', ':nth-child(1)', 'Theme Styles');
 	} );
 
-	it( 'Checks Active Link in the drawer is Theme Styles', () => {
-		cy.get( '.nfd-onboarding-drawer__panel-back' )
-			.should( 'be.visible' )
-			.should( 'have.text', 'Onboarding Menu' );
-		cy.get( ':nth-child(1) > .nfd-onboarding-drawer__panel-menu-link' )
-			.should( 'have.class', 'active' )
-			.should( 'have.text', 'Theme Styles' )
-			.and( 'have.attr', 'href' )
-			.and( 'include', '#/wp-setup/step/design/theme-styles/menu' );
-	} );
-
-	it( 'Closes the Drawer and checks if closed', () => {
-		cy.get( '.nfd-onboarding-drawer__toggle > .components-button' ).click();
-		cy.get( '.nfd-onboarding-drawer__panel-inner' )
-			.scrollIntoView()
-			.should( 'not.be.visible' );
-	} );
-
-	it( 'Check to make sure sidebar opens, content is in place and close sidebar with X', () => {
-		cy.get( '.nfd-onboarding-header__end > .components-button' )
-			.click()
-			.and( 'have.class', 'is-pressed' );
-		cy.get(
-			'.nfd-onboarding-sidebar-learn-more__design-theme-styles-menu'
-		).should( 'be.visible' );
-		cy.get( '.nfd-onboarding-sidebar-learn-more__header > button' ).click();
-		cy.get( '.components-panel__header' ).should( 'not.exist' );
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__design-theme-styles-menu', 'Theme Styles');
+		CheckIllustrationPanel();
+		CheckInfoPanel(2);
+		CheckHelpPanelLinks();
 	} );
 
 	it( 'Checks if Heading and Subheading are present', () => {
-		cy.get( '.nfd-main-heading__title' ).should( 'be.visible' );
-		cy.get( '.nfd-main-heading__subtitle' ).should( 'be.visible' );
+		GetHeadingTitle();
 	} );
 
 	it( 'Check if Default Theme variations exists in Menu', () => {

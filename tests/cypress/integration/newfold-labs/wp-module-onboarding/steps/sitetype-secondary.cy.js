@@ -1,4 +1,7 @@
 // <reference types="Cypress" />
+import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
+import { GetCardHeading } from '../wp-module-support/header.cy';
+import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
 
 describe( 'Get Started Site Type Secondary', function () {
 	before( () => {
@@ -15,23 +18,19 @@ describe( 'Get Started Site Type Secondary', function () {
 	// 	cy.checkA11y('.site-type-card');
 	// });
 
-	it( 'Check if Drawer is closed', () => {
-		cy.get( '.nfd-onboarding-drawer__panel-inner' )
-			.scrollIntoView()
-			.should( 'not.be.visible' );
-	} );
-
-	it( 'Check to make sure drawer does not open', () => {
-		cy.get( '.nfd-onboarding-drawer__toggle > .components-button' ).click();
-		cy.get( '.nfd-onboarding-drawer__panel-inner' )
-			.scrollIntoView()
-			.should( 'not.be.visible' );
+	it( 'Check if the Suppressed Drawer does not open on clicking Toggle Button', () => {
+		CheckDrawerDisabled();
 	} );
 
 	it( 'Check if Header and Subheader shows up', () => {
-		cy.get( '.nfd-step-card-heading' ).should( 'be.visible' );
-		cy.get( '.nfd-step-card-subheading-other' ).should( 'be.visible' );
-		cy.get( '.nfd-step-card-question' ).should( 'be.visible' );
+		GetCardHeading( true );
+	} );
+
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__get-started-site-secondary', 'Store Type');
+		CheckIllustrationPanel();
+		CheckInfoPanel();
+		CheckHelpPanelLinks();
 	} );
 
 	it( 'Check selected category is visible and selected', () => {

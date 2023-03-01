@@ -1,4 +1,7 @@
 // <reference types="Cypress" />
+import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
+import { GetCardHeading } from '../wp-module-support/header.cy';
+import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
 
 describe( 'Start Setup WP Experience Page', function () {
 	before( () => {
@@ -17,37 +20,18 @@ describe( 'Start Setup WP Experience Page', function () {
 	// });
 
 	it( 'Check if the Suppressed Drawer does not open on clicking Toggle Button', () => {
-		cy.get( '.nfd-onboarding-drawer__toggle-button' )
-			.click()
-			.and( 'have.class', 'is-suppressed' );
-		cy.get( '.nfd-onboarding-drawer__panel-scroll-container' )
-			.scrollIntoView()
-			.should( 'not.be.visible' );
+		CheckDrawerDisabled();
 	} );
 
-	it( 'Check for help panel links in sidebar and close it with `i` icon', () => {
-		cy.get( '.nfd-onboarding-header__end > .components-button' )
-			.click()
-			.and( 'have.class', 'is-pressed' );
-		cy.get(
-			'.nfd-onboarding-sidebar-learn-more__get-started-wp-experience'
-		)
-			.scrollIntoView()
-			.should( 'be.visible' );
-		cy.get( '.nfd-onboarding-header__end > .components-button' ).click();
-		cy.get( '.components-panel__header' ).should( 'not.exist' );
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__get-started-wp-experience', 'WordPress Experience');
+		CheckIllustrationPanel();
+		CheckInfoPanel();
+		CheckHelpPanelLinks();
 	} );
 
 	it( 'Check if Headers Load', () => {
-		cy.get( '.nfd-step-card-heading' )
-			.should( 'exist' )
-			.and( 'be.visible' );
-		cy.get( '.nfd-step-card-subheading-other' )
-			.should( 'exist' )
-			.and( 'be.visible' );
-		cy.get( '.nfd-step-card-question' )
-			.should( 'exist' )
-			.and( 'be.visible' );
+		GetCardHeading( true );
 	} );
 
 	it( 'Check if Radio Options load', () => {

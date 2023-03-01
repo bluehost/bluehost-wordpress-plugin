@@ -1,4 +1,7 @@
 // <reference types="Cypress" />
+import { DrawerActivityForMenu } from '../../wp-module-support/drawer.cy';
+import { GetCardHeading } from '../../wp-module-support/header.cy';
+import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
 
 describe( 'Step Ecommerce Tax Information', function () {
 	before( () => {
@@ -15,40 +18,19 @@ describe( 'Step Ecommerce Tax Information', function () {
 	// 	cy.checkA11y();
 	// });
 
-	it( 'Checks if Drawer opened.', () => {
-		cy.get( '.nfd-onboarding-drawer__panel-inner' )
-			.scrollIntoView()
-			.should( 'be.visible' );
+	it( 'Check Drawer Activity', () => {
+		DrawerActivityForMenu('Onboarding Menu', ':nth-child(2)', 'Tax Info');
 	} );
 
-	it( 'Checks active link in the drawer is Tax Info.', () => {
-		cy.get( ':nth-child(2) > .nfd-onboarding-drawer__panel-menu-link' )
-			.should( 'have.class', 'active' )
-			.and( 'have.attr', 'href' )
-			.and( 'include', '#/ecommerce/step/tax' );
-	} );
-
-	it( 'Closes the Drawer and checks if closed.', () => {
-		cy.get( '.nfd-onboarding-drawer__toggle > .components-button' ).click();
-		cy.get( '.nfd-onboarding-drawer__panel-inner' )
-			.scrollIntoView()
-			.should( 'not.be.visible' );
-	} );
-
-	it( 'Check to make sure sidebar opens, content is in place and close sidebar with X', () => {
-		cy.get( '.nfd-onboarding-header__end > .components-button' )
-			.click()
-			.and( 'have.class', 'is-pressed' );
-		cy.get(
-			'.nfd-onboarding-sidebar-learn-more__ecommerce-tax-info'
-		).should( 'be.visible' );
-		cy.get( '.nfd-onboarding-sidebar-learn-more__header > button' ).click();
-		cy.get( '.components-panel__header' ).should( 'not.exist' );
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__ecommerce-tax-info', 'Tax Info');
+		CheckIllustrationPanel();
+		CheckInfoPanel();
+		CheckHelpPanelLinks();
 	} );
 
 	it( 'Checks if Heading and Subheading are present.', () => {
-		cy.get( '.nfd-step-card-heading' ).should( 'be.visible' );
-		cy.get( '.nfd-step-card-subheading' ).should( 'be.visible' );
+		GetCardHeading();
 	} );
 
 	it( 'Checks if Continue Setup is disabled.', () => {

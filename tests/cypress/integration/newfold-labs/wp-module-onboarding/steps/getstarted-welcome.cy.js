@@ -1,4 +1,7 @@
 // <reference types="Cypress" />
+import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
+import { GetCardHeading } from '../wp-module-support/header.cy';
+import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
 
 describe( 'Get Started Welcome Page', function () {
 	before( () => {
@@ -43,28 +46,15 @@ describe( 'Get Started Welcome Page', function () {
 		cy.get( '.components-modal__screen-overlay' ).should( 'not.exist' );
 	} );
 
-	it( 'Check if Drawer is closed', () => {
-		cy.get( '.nfd-onboarding-drawer__panel-inner' ).should(
-			'not.be.visible'
-		);
+	it( 'Check if the Suppressed Drawer does not open on clicking Toggle Button', () => {
+		CheckDrawerDisabled();
 	} );
 
-	it( 'Check to make sure drawer does not open', () => {
-		cy.get( '.nfd-onboarding-drawer__toggle > .components-button' ).click();
-		cy.get( '.nfd-onboarding-drawer__panel-inner' )
-			.scrollIntoView()
-			.should( 'not.be.visible' );
-	} );
-
-	it( 'Check to make sure sidebar opens, content is in place and close sidebar with X', () => {
-		cy.get( '.nfd-onboarding-header__end > .components-button' )
-			.click()
-			.and( 'have.class', 'is-pressed' );
-		cy.get(
-			'.nfd-onboarding-sidebar-learn-more__get-started-welcome'
-		).should( 'be.visible' );
-		cy.get( '.nfd-onboarding-sidebar-learn-more__header > button' ).click();
-		cy.get( '.components-panel__header' ).should( 'not.exist' );
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__get-started-welcome', 'Start Setup');
+		CheckIllustrationPanel();
+		CheckInfoPanel(2);
+		CheckHelpPanelLinks( true, 'Hire Our Full-Service Creative Team' );
 	} );
 
 	it( 'Check if welcome card is visible', () => {
@@ -72,8 +62,7 @@ describe( 'Get Started Welcome Page', function () {
 	} );
 
 	it( 'Check if main heading and sub heading shows up', () => {
-		cy.get( '.nfd-step-card-heading' ).should( 'be.visible' );
-		cy.get( '.nfd-step-card-subheading' ).should( 'be.visible' );
+		GetCardHeading();
 	} );
 
 	it( 'Check for brandname in sub heading', () => {

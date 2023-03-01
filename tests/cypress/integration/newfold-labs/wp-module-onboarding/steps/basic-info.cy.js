@@ -1,4 +1,7 @@
 // <reference types="Cypress" />
+import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy';
+import { GetHeadingTitle } from '../wp-module-support/header.cy';
+import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
 
 describe( 'Basic Info Page', function () {
 	before( () => {
@@ -14,29 +17,19 @@ describe( 'Basic Info Page', function () {
 	// 	cy.checkA11y();
 	// });
 
-	it( 'Check if Drawer opened', () => {
-		cy.get( '.nfd-onboarding-drawer__panel-site-title-container' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-	} );
-
-	it( 'Checks if Basic Info is the current Active Selection in the Drawer', () => {
-		cy.get( ':nth-child(3) > .nfd-onboarding-drawer__panel-menu-link' )
-			.should( 'have.class', 'active' )
-			.and( 'have.attr', 'href' )
-			.and( 'include', '#/wp-setup/step/basic-info' );
-	} );
-
-	it( 'Close the Drawer and check if closed', () => {
-		cy.get( '.nfd-onboarding-drawer__toggle > .components-button' ).click();
-		cy.get( '.nfd-onboarding-drawer__panel-site-title-container' )
-			.scrollIntoView()
-			.should( 'not.be.visible' );
+	it( 'Check Drawer Activity', () => {
+		DrawerActivityForMenu('Exit to WordPress', ':nth-child(3)', 'Basic Info');
 	} );
 
 	it( 'Check if Header and Subheader shows up', () => {
-		cy.get( '.nfd-main-heading__title' ).should( 'be.visible' );
-		cy.get( '.nfd-main-heading__subtitle' ).should( 'be.visible' );
+		GetHeadingTitle();
+	} );
+
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__basic-info', 'Basic Info');
+		CheckIllustrationPanel();
+		CheckInfoPanel();
+		CheckHelpPanelLinks();
 	} );
 
 	it( 'Enter a Title and then Check if it reflects elsewhere', () => {

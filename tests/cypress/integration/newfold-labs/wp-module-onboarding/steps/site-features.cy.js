@@ -1,4 +1,7 @@
 // <reference types="Cypress" />
+import { DrawerActivityForMenu } from "../wp-module-support/drawer.cy";
+import { GetHeadingTitle } from "../wp-module-support/header.cy";
+import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
 
 describe( 'Site Features', function () {
 	before( () => {
@@ -14,27 +17,18 @@ describe( 'Site Features', function () {
 	} );
 
 	it( 'Check if Header and Subheader shows up', () => {
-		cy.get( '.nfd-main-heading__title' ).should( 'be.visible' );
-		cy.get( '.nfd-main-heading__subtitle' ).should( 'be.visible' );
+		GetHeadingTitle();
 	} );
 
-	it( 'Check if Drawer toggles', () => {
-		cy.get( '.nfd-onboarding-drawer__toggle > .components-button' ).click();
-		cy.get( '.nfd-onboarding-drawer__panel-site-title-container' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-		cy.get( '.nfd-onboarding-drawer__toggle > .components-button' ).click();
+	it( 'Check Drawer Activity', () => {
+		DrawerActivityForMenu('Exit to WordPress', ':nth-child(5)', 'Features', false);
 	} );
 
-	it( 'Check if Sidebar toggles', () => {
-		cy.get( '.nfd-onboarding-sidebar-learn-more__menu-button' ).click();
-		cy.get( '.nfd-onboarding-sidebar__panel' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-		cy.get( '.nfd-onboarding-sidebar-learn-more__menu-button' ).click();
-		cy.get( '.nfd-onboarding-sidebar__panel' )
-			.scrollIntoView()
-			.should( 'not.be.visible' );
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__site-features', 'Features');
+		CheckIllustrationPanel();
+		CheckInfoPanel();
+		CheckHelpPanelLinks();
 	} );
 
 	it( 'Check if Site Features list exists and select them', () => {

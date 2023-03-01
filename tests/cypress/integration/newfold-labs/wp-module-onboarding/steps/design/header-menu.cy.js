@@ -1,3 +1,7 @@
+// <reference types="Cypress" />
+import { DrawerActivityForSubMenu } from "../../wp-module-support/drawer.cy";
+import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
+
 describe( 'Header menu Page', function () {
 	before( () => {
 		// cy.exec('npx wp-env run cli wp theme activate yith-wonder');
@@ -8,32 +12,19 @@ describe( 'Header menu Page', function () {
 		cy.wait( 10000 );
 	} );
 
-	it( 'Check to make sure drawer is opening and closing', () => {
-		cy.get( '.nfd-onboarding-drawer__toggle' ).should( 'be.visible' );
-		cy.get( '.theme-header-menu-preview--drawer' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-		cy.get( '.nfd-onboarding-drawer__toggle' ).click();
-		cy.get( '.theme-header-menu-preview--drawer' )
-			.scrollIntoView()
-			.should( 'not.be.visible' );
-		cy.get( '.nfd-onboarding-drawer__toggle' ).click();
+	it( 'Check Drawer Activity', () => {
+		DrawerActivityForSubMenu('Design', '.theme-header-menu-preview--drawer', '.theme-header-menu-preview--drawer__list__item', 4);
 	} );
 
 	it( 'Check to make sure design button is visble', () => {
 		cy.contains( 'button', 'Design' ).should( 'be.visible' );
 	} );
 
-	it( 'Check Learn more (i) drawer is opening and Technical support buttons are clickable', () => {
-		cy.get( '.nfd-onboarding-sidebar-learn-more__menu-button' )
-			.should( 'be.visible' )
-			.click();
-		cy.get( '.nfd-onboarding-sidebar-learn-more--support-link' ).should(
-			'be.visible'
-		);
-		cy.contains( 'button', 'Hire Our Full-Service Creative Studio' ).should(
-			'be.visible'
-		);
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__design-header-menu', 'Header & Menu');
+		CheckIllustrationPanel();
+		CheckInfoPanel(2);
+		CheckHelpPanelLinks();
 	} );
 
 	it( 'Check to make sure different design is selected', () => {

@@ -1,8 +1,10 @@
 // <reference types="Cypress" />
+import { DrawerActivityForSubMenu } from "../../wp-module-support/drawer.cy";
+import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
 
 describe( 'Colors Step Test', function () {
 	before( () => {
-		cy.exec( 'npx wp-env run cli wp theme activate yith-wonder' );
+		// cy.exec( 'npx wp-env run cli wp theme activate yith-wonder' );
 		// cy.exec('npx wp-env run cli wp option delete nfd_module_onboarding_flow');
 		// cy.exec('npx wp-env run cli wp option delete nfd_module_onboarding_theme_settings');
 		cy.visit(
@@ -24,21 +26,15 @@ describe( 'Colors Step Test', function () {
 		// cy.checkA11y();
 	} );
 
-	it( 'Check if Drawer toggles', () => {
-		cy.get( '.nfd-onboarding-drawer__panel-site-title-container' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-		cy.get( '.nfd-onboarding-drawer__toggle > .components-button' ).click();
-		cy.get( '.nfd-onboarding-drawer__toggle > .components-button' ).click();
+	it( 'Check Drawer Activity', () => {
+		DrawerActivityForSubMenu('Design', '.theme-colors--drawer', '.color-palette', 11);
 	} );
 
-	it( 'Check if Sidebar toggles', () => {
-		cy.get( '.nfd-onboarding-sidebar-learn-more__menu-button' ).click();
-		cy.get( '.nfd-onboarding-sidebar__panel' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-		cy.get( '.nfd-onboarding-sidebar-learn-more__menu-button' ).click();
-		cy.get( '.nfd-onboarding-sidebar__panel' ).should( 'not.be.visible' );
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__design-colors', 'Colors');
+		CheckIllustrationPanel();
+		CheckInfoPanel();
+		CheckHelpPanelLinks();
 	} );
 
 	it( 'Check if Default Color variations exists and are selectable', () => {

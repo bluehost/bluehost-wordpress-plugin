@@ -1,5 +1,9 @@
 // <reference types="Cypress" />
 
+import { DrawerActivityForMenu } from "../../wp-module-support/drawer.cy";
+import { GetHeadingTitle } from "../../wp-module-support/header.cy";
+import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
+
 describe( 'Homepage Styles Page', function () {
 	before( () => {
 		// cy.exec('npx wp-env run cli wp theme activate yith-wonder');
@@ -14,23 +18,18 @@ describe( 'Homepage Styles Page', function () {
 	} );
 
 	it( 'Check if Header and Subheader shows up', () => {
-		cy.get( '.nfd-main-heading__title' ).should( 'be.visible' );
-		cy.get( '.nfd-main-heading__subtitle' ).should( 'be.visible' );
+		GetHeadingTitle();
 	} );
 
-	it( 'Check if Drawer toggles', () => {
-		cy.get( '.nfd-onboarding-drawer__panel-site-title-container' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-		cy.get( '.nfd-onboarding-drawer__toggle > .components-button' ).click();
+	it( 'Check Drawer Activity', () => {
+		DrawerActivityForMenu('Onboarding Menu', ':nth-child(3)', 'Homepage Layouts');
 	} );
 
-	it( 'Check if Sidebar toggles', () => {
-		cy.get( '.nfd-onboarding-sidebar-learn-more__menu-button' ).click();
-		cy.get( '.nfd-onboarding-sidebar__panel' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-		cy.get( '.nfd-onboarding-sidebar-learn-more__menu-button' ).click();
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__design-homepage', 'Home Page');
+		CheckIllustrationPanel();
+		CheckInfoPanel(2);
+		CheckHelpPanelLinks();
 	} );
 
 	it( 'Check if Homepage Styles exist and are selectable', () => {
