@@ -74,8 +74,9 @@ $bh_module_container->set(
 		function () {
 			return new Plugin(
 				array(
-					'id'   => 'bluehost',
-					'file' => BLUEHOST_PLUGIN_FILE,
+					'id'    => 'bluehost',
+					'file'  => BLUEHOST_PLUGIN_FILE,
+					'brand' => get_option( 'mm_brand', 'bluehost' ),
 				)
 			);
 		}
