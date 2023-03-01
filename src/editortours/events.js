@@ -28,14 +28,22 @@ export const initEvents = (tourName, tour) => {
     }
     disableLoader();
 
-    const eventTracking = (context, category)  => {
+    const eventTracking = (context, action)  => {
+        let step = null;
+        if ( context.step ) { // for continue events
+            step = context.step.id;
+        } else if ( context.currentStep ) { // for cancel/complete events
+            step = context.currentStep.id;
+        }
         let data = {
-            action: 'tour-' + context.tour.options.type,
-            category: category,
+            action: `${action}-tour`,
+            category: 'tour',
             data: {
-                step: context.id
+                tour: context.tour.options.type,
+                step: step,
             }
         };
+
         apiFetch({ path: '/newfold-notifications/v1/notifications/events', method: 'POST', data });
     }
 
@@ -58,7 +66,7 @@ export const initEvents = (tourName, tour) => {
     });
 
     tour.on('show', context => {
-        eventTracking(context, 'show');
+        eventTracking(context, 'show-step');
     });
 
     tour.on('hide', () => { 
