@@ -9,8 +9,7 @@
   "phpVersion": "8.1",
   "plugins": [
     ".",
-    "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip",
-    "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"
+    "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip"
   ],
   "themes": [
     "https://downloads.wordpress.org/theme/yith-wonder.latest-stable.zip"
