@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
 import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
-import { GetCardHeading } from '../wp-module-support/header.cy';
+import { CheckCardHeadingSubheading } from '../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
 	CheckIllustrationPanel,
@@ -60,7 +60,7 @@ describe( 'Get Started Welcome Page', function () {
 	} );
 
 	it( 'Check if main heading and sub heading shows up', () => {
-		GetCardHeading();
+		CheckCardHeadingSubheading();
 	} );
 
 	it( 'Check for brandname in sub heading', () => {
