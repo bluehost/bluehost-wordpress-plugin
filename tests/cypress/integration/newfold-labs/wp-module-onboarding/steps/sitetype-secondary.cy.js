@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
 import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
-import { GetCardHeading } from '../wp-module-support/header.cy';
+import { CheckCardHeadingSubheading } from '../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
 	CheckIllustrationPanel,
@@ -21,7 +21,7 @@ describe( 'Get Started Site Type Secondary', function () {
 	} );
 
 	it( 'Check if Header and Subheader shows up', () => {
-		GetCardHeading( true );
+		CheckCardHeadingSubheading( true );
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {

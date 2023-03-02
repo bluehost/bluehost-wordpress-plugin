@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
 import { DrawerActivityForMenu } from '../../wp-module-support/drawer.cy';
-import { GetCardHeading } from '../../wp-module-support/header.cy';
+import { CheckCardHeadingSubheading } from '../../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
 	CheckIllustrationPanel,
@@ -28,7 +28,7 @@ describe( 'Step Ecommerce Tax Information', function () {
 	} );
 
 	it( 'Checks if Heading and Subheading are present.', () => {
-		GetCardHeading();
+		CheckCardHeadingSubheading();
 	} );
 
 	it( 'Checks if Continue Setup is disabled.', () => {

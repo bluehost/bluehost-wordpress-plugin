@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
 
-export const GetCardHeading = ( question = false ) => {
+export const CheckCardHeadingSubheading = ( question = false ) => {
 	cy.get( '.nfd-step-card-heading' ).should( 'be.visible' );
 	if ( question ) {
 		cy.get( '.nfd-step-card-subheading-other' ).should( 'be.visible' );

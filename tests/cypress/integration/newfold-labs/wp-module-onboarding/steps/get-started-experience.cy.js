@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
 import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
-import { GetCardHeading } from '../wp-module-support/header.cy';
+import { CheckCardHeadingSubheading } from '../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
 	CheckIllustrationPanel,
@@ -33,7 +33,7 @@ describe( 'Start Setup WP Experience Page', function () {
 	} );
 
 	it( 'Check if Headers Load', () => {
-		GetCardHeading( true );
+		CheckCardHeadingSubheading( true );
 	} );
 
 	it( 'Check if Radio Options load', () => {

@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
 import { DrawerActivityForMenu } from '../../wp-module-support/drawer.cy';
-import { GetCardHeading } from '../../wp-module-support/header.cy';
+import { CheckCardHeadingSubheading } from '../../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
 	CheckIllustrationPanel,
@@ -32,7 +32,7 @@ describe( 'Step Ecommerce Address/Store Details', function () {
 	} );
 
 	it( 'Checks if Heading and Subheading are present', () => {
-		GetCardHeading();
+		CheckCardHeadingSubheading();
 	} );
 
 	it( 'Checks if all the inputs are enabled', () => {
