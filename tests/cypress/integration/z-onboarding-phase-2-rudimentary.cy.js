@@ -2,7 +2,7 @@ const semver = require("semver");
 describe('Onboarding Phase 2 Flow', () => {
 
 	before(() => {
-		cy.setCustomerData();
+		// cy.setCustomerData();
 		cy.exec('npx wp-env run cli wp option set mm_brand BlueHost');
 		cy.exec('npx wp-env run cli wp option set permalink_structure /%postname%/');
 		cy.visit('wp-admin/index.php?page=nfd-onboarding&flow=ecommerce', {timeout: 10000});
@@ -10,7 +10,7 @@ describe('Onboarding Phase 2 Flow', () => {
 
 	after(() => {
 		// Reset this data so that it does not affect the behaviour of other tests.
-		cy.clearCustomerData();
+		// cy.clearCustomerData();
 	});
 
 	it('Tests Onboarding Phase 2 Flow', () => {

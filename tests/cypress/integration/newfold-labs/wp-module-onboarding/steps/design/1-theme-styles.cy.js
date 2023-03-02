@@ -10,7 +10,7 @@ import {
 
 describe( 'Theme Styles Menu and Preview', function () {
 	before( () => {
-		cy.exec( 'npx wp-env run cli wp theme activate yith-wonder' );
+		// cy.exec( 'npx wp-env run cli wp theme activate yith-wonder' );
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/theme-styles/menu'
 		);
