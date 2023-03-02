@@ -19,7 +19,7 @@ describe( 'Theme Styles Menu and Preview', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__design-theme-styles-menu', 'Theme Styles');
+		CheckIntroPanel('__design-theme-styles-menu', 'Theme Styles');
 		CheckIllustrationPanel();
 		CheckInfoPanel(2);
 		CheckHelpPanelLinks();

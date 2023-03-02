@@ -23,7 +23,7 @@ describe( 'Step Ecommerce Products Info', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__ecommerce-products', 'Products Info');
+		CheckIntroPanel('__ecommerce-products', 'Products Info');
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();

@@ -27,7 +27,7 @@ describe( 'Get Started Site Type Secondary', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__get-started-site-secondary', 'Store Type');
+		CheckIntroPanel('__get-started-site-secondary', 'Store Type');
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();

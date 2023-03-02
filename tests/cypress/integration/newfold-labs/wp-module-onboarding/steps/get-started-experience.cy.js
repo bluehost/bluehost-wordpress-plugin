@@ -24,7 +24,7 @@ describe( 'Start Setup WP Experience Page', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__get-started-wp-experience', 'WordPress Experience');
+		CheckIntroPanel('__get-started-wp-experience', 'WordPress Experience');
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();

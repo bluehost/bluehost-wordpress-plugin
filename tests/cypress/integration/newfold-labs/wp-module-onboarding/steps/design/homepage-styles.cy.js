@@ -26,7 +26,7 @@ describe( 'Homepage Styles Page', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__design-homepage', 'Home Page');
+		CheckIntroPanel('__design-homepage', 'Home Page');
 		CheckIllustrationPanel();
 		CheckInfoPanel(2);
 		CheckHelpPanelLinks();

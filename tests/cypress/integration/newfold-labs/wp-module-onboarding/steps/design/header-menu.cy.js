@@ -21,7 +21,7 @@ describe( 'Header menu Page', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__design-header-menu', 'Header & Menu');
+		CheckIntroPanel('__design-header-menu', 'Header & Menu');
 		CheckIllustrationPanel();
 		CheckInfoPanel(2);
 		CheckHelpPanelLinks();

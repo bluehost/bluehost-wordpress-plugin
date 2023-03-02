@@ -1,11 +1,12 @@
 // <reference types="Cypress" />
 
 export const CheckIntroPanel = (sidebarStep, headingText) => {
+    const prefixSidebarStep = '.nfd-onboarding-sidebar-learn-more';
     cy.get( '.nfd-onboarding-header__end > .components-button' )
         .click()
         .and( 'have.class', 'is-pressed' );
-    cy.get(sidebarStep).should('be.visible');
-    const heading = '.nfd-onboarding-sidebar-learn-more--step-intro-panel__container';
+    cy.get(prefixSidebarStep.concat(sidebarStep)).should('be.visible');
+    const heading = prefixSidebarStep.concat('--step-intro-panel__container');
     cy.get(heading.concat('__icon')).should('be.visible');
     cy.get(heading.concat('__text__heading')).should('be.visible').should('have.text', headingText);
     cy.get(heading.concat('__text__heading')).should('be.visible');

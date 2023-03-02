@@ -25,7 +25,7 @@ describe( 'Site Features', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__site-features', 'Features');
+		CheckIntroPanel('__site-features', 'Features');
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();

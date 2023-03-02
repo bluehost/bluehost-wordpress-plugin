@@ -26,7 +26,7 @@ describe( 'Site Pages', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__site-pages', 'Pages');
+		CheckIntroPanel('__site-pages', 'Pages');
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();

@@ -17,7 +17,7 @@ describe( 'What Next Page', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__what-next', "What’s Next");
+		CheckIntroPanel('__what-next', "What’s Next");
 		CheckIllustrationPanel('__what-next');
 		CheckInfoPanel(2);
 		CheckHelpPanelLinks();

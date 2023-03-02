@@ -32,7 +32,7 @@ describe( 'Typography Step Test', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__design-typography', 'Typography');
+		CheckIntroPanel('__design-typography', 'Typography');
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();

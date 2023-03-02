@@ -21,7 +21,7 @@ describe( 'Step Ecommerce Address/Store Details', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__ecommerce-address', 'Street Address');
+		CheckIntroPanel('__ecommerce-address', 'Street Address');
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();

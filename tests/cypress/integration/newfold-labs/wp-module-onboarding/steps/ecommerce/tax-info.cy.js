@@ -23,7 +23,7 @@ describe( 'Step Ecommerce Tax Information', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__ecommerce-tax-info', 'Tax Info');
+		CheckIntroPanel('__ecommerce-tax-info', 'Tax Info');
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();

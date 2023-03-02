@@ -51,7 +51,7 @@ describe( 'Get Started Welcome Page', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('.nfd-onboarding-sidebar-learn-more__get-started-welcome', 'Start Setup');
+		CheckIntroPanel('__get-started-welcome', 'Start Setup');
 		CheckIllustrationPanel();
 		CheckInfoPanel(2);
 		CheckHelpPanelLinks( true, 'Hire Our Full-Service Creative Team' );
