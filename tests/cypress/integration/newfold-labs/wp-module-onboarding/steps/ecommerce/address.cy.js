@@ -1,27 +1,31 @@
 // <reference types="Cypress" />
 import { DrawerActivityForMenu } from '../../wp-module-support/drawer.cy';
 import { GetCardHeading } from '../../wp-module-support/header.cy';
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../../wp-module-support/sidebar.cy';
 
 describe( 'Step Ecommerce Address/Store Details', function () {
 	before( () => {
-		// cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
 		);
-		// cy.injectAxe();
-	} );
-
-	it( 'Is Accessible', () => {
 		cy.wait( 8000 );
 	} );
 
 	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu('Onboarding Menu', ':nth-child(1)', 'Street Address');
+		DrawerActivityForMenu(
+			'Onboarding Menu',
+			':nth-child(1)',
+			'Street Address'
+		);
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__ecommerce-address', 'Street Address');
+		CheckIntroPanel( '__ecommerce-address', 'Street Address' );
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();
@@ -107,8 +111,4 @@ describe( 'Step Ecommerce Address/Store Details', function () {
 		cy.url().should( 'not.include', '#/ecommerce/step/address' );
 		cy.go( 'back' );
 	} );
-
-	// after( () => {
-	// 	cy.clearCustomerData();
-	// } );
 } );

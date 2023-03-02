@@ -1,32 +1,34 @@
 // <reference types="Cypress" />
 import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy';
-import { GetHeadingTitle } from '../wp-module-support/header.cy';
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
+import { CheckHeadingSubheading } from '../wp-module-support/header.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../wp-module-support/sidebar.cy';
 
 describe( 'Basic Info Page', function () {
 	before( () => {
-		// cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info'
 		);
-		// cy.injectAxe();
 	} );
 
-	// it('Is Accessible', () => {
-	// 	cy.wait(500);
-	// 	cy.checkA11y();
-	// });
-
 	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu('Exit to WordPress', ':nth-child(3)', 'Basic Info');
+		DrawerActivityForMenu(
+			'Exit to WordPress',
+			':nth-child(3)',
+			'Basic Info'
+		);
 	} );
 
 	it( 'Check if Header and Subheader shows up', () => {
-		GetHeadingTitle();
+		CheckHeadingSubheading();
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__basic-info', 'Basic Info');
+		CheckIntroPanel( '__basic-info', 'Basic Info' );
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();
@@ -146,8 +148,4 @@ describe( 'Basic Info Page', function () {
 				} );
 		}
 	} );
-
-	// after( () => {
-	// 	cy.clearCustomerData();
-	// } );
 } );

@@ -1,11 +1,14 @@
 // <reference types="Cypress" />
-import { DrawerActivityForSubMenu } from "../../wp-module-support/drawer.cy";
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
+import { DrawerActivityForSubMenu } from '../../wp-module-support/drawer.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../../wp-module-support/sidebar.cy';
 
 describe( 'Header menu Page', function () {
 	before( () => {
-		// cy.exec('npx wp-env run cli wp theme activate yith-wonder');
-		// cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/header-menu'
 		);
@@ -13,7 +16,12 @@ describe( 'Header menu Page', function () {
 	} );
 
 	it( 'Check Drawer Activity', () => {
-		DrawerActivityForSubMenu('Design', '.theme-header-menu-preview--drawer', '.theme-header-menu-preview--drawer__list__item', 4);
+		DrawerActivityForSubMenu(
+			'Design',
+			'.theme-header-menu-preview--drawer',
+			'.theme-header-menu-preview--drawer__list__item',
+			4
+		);
 	} );
 
 	it( 'Check to make sure design button is visble', () => {
@@ -21,9 +29,9 @@ describe( 'Header menu Page', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__design-header-menu', 'Header & Menu');
+		CheckIntroPanel( '__design-header-menu', 'Header & Menu' );
 		CheckIllustrationPanel();
-		CheckInfoPanel(2);
+		CheckInfoPanel( 2 );
 		CheckHelpPanelLinks();
 	} );
 
@@ -54,8 +62,4 @@ describe( 'Header menu Page', function () {
 		cy.wait( 1000 );
 		cy.url().should( 'not.contain', '/wp-setup/step/design/header-menu' );
 	} );
-
-	// after(() => {
-	//     cy.clearCustomerData();
-	// });
 } );

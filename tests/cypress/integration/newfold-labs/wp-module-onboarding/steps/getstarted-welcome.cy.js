@@ -1,21 +1,19 @@
 // <reference types="Cypress" />
 import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
 import { GetCardHeading } from '../wp-module-support/header.cy';
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../wp-module-support/sidebar.cy';
 
 describe( 'Get Started Welcome Page', function () {
 	before( () => {
-		// cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/welcome'
 		);
-		// cy.injectAxe();
 	} );
-
-	// it('Is Accessible', () => {
-	// 	cy.wait(500);
-	// 	cy.checkA11y('.site-type-card');
-	// });
 
 	it( 'Change tab and check', () => {
 		let tabCount = 0;
@@ -51,9 +49,9 @@ describe( 'Get Started Welcome Page', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__get-started-welcome', 'Start Setup');
+		CheckIntroPanel( '__get-started-welcome', 'Start Setup' );
 		CheckIllustrationPanel();
-		CheckInfoPanel(2);
+		CheckInfoPanel( 2 );
 		CheckHelpPanelLinks( true, 'Hire Our Full-Service Creative Team' );
 	} );
 
@@ -87,8 +85,4 @@ describe( 'Get Started Welcome Page', function () {
 		cy.get( '.nfd-onboarding-etw__buttons > .is-primary' ).click();
 		cy.url().should( 'not.contain', '#/wp-setup/step/get-started/welcome' );
 	} );
-
-	// after( () => {
-	// 	cy.clearCustomerData();
-	// } );
 } );

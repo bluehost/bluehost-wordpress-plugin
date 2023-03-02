@@ -1,11 +1,15 @@
 // <reference types="Cypress" />
-import { DrawerActivityForMenu } from "../wp-module-support/drawer.cy";
-import { GetCardHeading } from "../wp-module-support/header.cy";
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
+import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy';
+import { GetCardHeading } from '../wp-module-support/header.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../wp-module-support/sidebar.cy';
 
 describe( 'What Next Page', function () {
 	before( () => {
-		// cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/what-next'
 		);
@@ -13,13 +17,18 @@ describe( 'What Next Page', function () {
 	} );
 
 	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu('Exit to WordPress', ':nth-child(6)', 'What Next', false);
+		DrawerActivityForMenu(
+			'Exit to WordPress',
+			':nth-child(6)',
+			'What Next',
+			false
+		);
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__what-next', "What’s Next");
-		CheckIllustrationPanel('__what-next');
-		CheckInfoPanel(2);
+		CheckIntroPanel( '__what-next', 'What’s Next' );
+		CheckIllustrationPanel( '__what-next' );
+		CheckInfoPanel( 2 );
 		CheckHelpPanelLinks();
 	} );
 
@@ -62,8 +71,4 @@ describe( 'What Next Page', function () {
 		cy.wait( 1000 );
 		cy.url().should( 'not.contain', '/wp-setup/step/what-next' );
 	} );
-
-	// after(() => {
-	//     cy.clearCustomerData();
-	// });
 } );

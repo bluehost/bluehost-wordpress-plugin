@@ -1,30 +1,32 @@
 // <reference types="Cypress" />
 import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
 import { GetCardHeading } from '../wp-module-support/header.cy';
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../wp-module-support/sidebar.cy';
 
 describe( 'Start Setup WP Experience Page', function () {
 	before( () => {
-		// cy.setCustomerData();
 		cy.exec(
 			'npx wp-env run cli wp option delete nfd_module_onboarding_flow'
 		);
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/experience'
 		);
-		// cy.injectAxe();
 	} );
-
-	// it('Is Accessible', () => {
-	// 	cy.checkA11y();
-	// });
 
 	it( 'Check if the Suppressed Drawer does not open on clicking Toggle Button', () => {
 		CheckDrawerDisabled();
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__get-started-wp-experience', 'WordPress Experience');
+		CheckIntroPanel(
+			'__get-started-wp-experience',
+			'WordPress Experience'
+		);
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();
@@ -89,8 +91,4 @@ describe( 'Start Setup WP Experience Page', function () {
 			.should( 'exist' )
 			.should( 'have.attr', 'href' );
 	} );
-
-	// after( () => {
-	// 	cy.clearCustomerData();
-	// } );
 } );
