@@ -5,18 +5,11 @@ import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntro
 
 describe( 'Get Started Site Type Secondary', function () {
 	before( () => {
-		// cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/site-secondary'
 		);
-		// cy.injectAxe();
 		cy.wait( 3000 );
 	} );
-
-	// it('Is Accessible', () => {
-	// 	cy.wait(500);
-	// 	cy.checkA11y('.site-type-card');
-	// });
 
 	it( 'Check if the Suppressed Drawer does not open on clicking Toggle Button', () => {
 		CheckDrawerDisabled();
@@ -117,7 +110,4 @@ describe( 'Get Started Site Type Secondary', function () {
 		cy.go( 'back' );
 	} );
 
-	// after( () => {
-	// 	cy.clearCustomerData();
-	// } );
 } );

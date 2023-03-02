@@ -2,16 +2,10 @@
 
 describe( 'Exit to WordPress', function () {
 	before( () => {
-		cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info'
 		);
-		// cy.injectAxe();
 	} );
-
-	// it('Is Accessible', () => {
-	// 	cy.checkA11y();
-	// });
 
 	it( 'Go to the Page where the Drawer contains Exit to WordPress Button', () => {
 		cy.get( '.nfd-onboarding-etw__trigger' ).click();

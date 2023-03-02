@@ -5,19 +5,13 @@ import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntro
 
 describe( 'Start Setup WP Experience Page', function () {
 	before( () => {
-		// cy.setCustomerData();
 		cy.exec(
 			'npx wp-env run cli wp option delete nfd_module_onboarding_flow'
 		);
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/experience'
 		);
-		// cy.injectAxe();
 	} );
-
-	// it('Is Accessible', () => {
-	// 	cy.checkA11y();
-	// });
 
 	it( 'Check if the Suppressed Drawer does not open on clicking Toggle Button', () => {
 		CheckDrawerDisabled();
@@ -90,7 +84,4 @@ describe( 'Start Setup WP Experience Page', function () {
 			.should( 'have.attr', 'href' );
 	} );
 
-	// after( () => {
-	// 	cy.clearCustomerData();
-	// } );
 } );

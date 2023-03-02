@@ -4,8 +4,6 @@ import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntro
 
 describe( 'Header menu Page', function () {
 	before( () => {
-		// cy.exec('npx wp-env run cli wp theme activate yith-wonder');
-		// cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/header-menu'
 		);
@@ -54,8 +52,4 @@ describe( 'Header menu Page', function () {
 		cy.wait( 1000 );
 		cy.url().should( 'not.contain', '/wp-setup/step/design/header-menu' );
 	} );
-
-	// after(() => {
-	//     cy.clearCustomerData();
-	// });
 } );

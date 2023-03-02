@@ -5,14 +5,9 @@ import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntro
 
 describe( 'Step Ecommerce Address/Store Details', function () {
 	before( () => {
-		// cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
 		);
-		// cy.injectAxe();
-	} );
-
-	it( 'Is Accessible', () => {
 		cy.wait( 8000 );
 	} );
 
@@ -108,7 +103,4 @@ describe( 'Step Ecommerce Address/Store Details', function () {
 		cy.go( 'back' );
 	} );
 
-	// after( () => {
-	// 	cy.clearCustomerData();
-	// } );
 } );

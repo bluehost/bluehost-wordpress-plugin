@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
 import { DrawerActivityForMenu } from "../wp-module-support/drawer.cy";
-import { GetHeadingTitle } from "../wp-module-support/header.cy";
+import { CheckHeadingSubheading } from "../wp-module-support/header.cy";
 import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
 
 describe( 'Site Features', function () {
@@ -8,16 +8,11 @@ describe( 'Site Features', function () {
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/site-features'
 		);
-		// cy.injectAxe();
-	} );
-
-	it( 'Is Accessible', () => {
 		cy.wait( 10000 );
-		// cy.checkA11y();
 	} );
 
 	it( 'Check if Header and Subheader shows up', () => {
-		GetHeadingTitle();
+		CheckHeadingSubheading();
 	} );
 
 	it( 'Check Drawer Activity', () => {

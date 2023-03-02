@@ -4,27 +4,17 @@ import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntro
 
 describe( 'Typography Step Test', function () {
 	before( () => {
-		// cy.exec('npx wp-env run cli wp theme activate yith-wonder');
-		// cy.exec('npx wp-env run cli wp option delete nfd_module_onboarding_flow');
-		// cy.exec('npx wp-env run cli wp option delete nfd_module_onboarding_theme_settings');
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/theme-styles/preview'
 		);
-		// cy.visit('wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/design/typography');
-		// cy.injectAxe();
 	} );
 
 	it( 'Navigate to Typography Step', () => {
 		cy.wait( 10000 );
 		// Have to select the Preview Step Checkbox to activate Colors and Typgoraphy
-		// cy.get('.theme-styles-preview__checkbox__label').click();
 		cy.get( '.navigation-buttons_next' ).click();
 		cy.get( '.navigation-buttons_next' ).click();
-	} );
-
-	it( 'Is Accessible', () => {
 		cy.wait( 10000 );
-		// cy.checkA11y();
 	} );
 
 	it( 'Check Drawer Activity', () => {

@@ -5,17 +5,10 @@ import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntro
 
 describe( 'Get Started Welcome Page', function () {
 	before( () => {
-		// cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/welcome'
 		);
-		// cy.injectAxe();
 	} );
-
-	// it('Is Accessible', () => {
-	// 	cy.wait(500);
-	// 	cy.checkA11y('.site-type-card');
-	// });
 
 	it( 'Change tab and check', () => {
 		let tabCount = 0;
@@ -88,7 +81,4 @@ describe( 'Get Started Welcome Page', function () {
 		cy.url().should( 'not.contain', '#/wp-setup/step/get-started/welcome' );
 	} );
 
-	// after( () => {
-	// 	cy.clearCustomerData();
-	// } );
 } );

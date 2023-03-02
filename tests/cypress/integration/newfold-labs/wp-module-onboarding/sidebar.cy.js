@@ -2,11 +2,9 @@
 
 describe( 'Sidebar', function () {
 	before( () => {
-		// cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/welcome'
 		);
-		// cy.injectAxe();
 	} );
 
 	it( 'Open sidebar and close with X', () => {
@@ -48,7 +46,4 @@ describe( 'Sidebar', function () {
 		cy.get( '.components-panel__header' ).should( 'not.exist' );
 	} );
 
-	// after( () => {
-	// 	cy.clearCustomerData();
-	// } );
 } );

@@ -5,18 +5,11 @@ import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntro
 
 describe( 'Step Ecommerce Tax Information', function () {
 	before( () => {
-		// cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/tax'
 		);
-		// cy.injectAxe();
 		cy.wait( 5000 );
 	} );
-
-	// it('Is Accessible', () => {
-	// 	cy.wait(500);
-	// 	cy.checkA11y();
-	// });
 
 	it( 'Check Drawer Activity', () => {
 		DrawerActivityForMenu('Onboarding Menu', ':nth-child(2)', 'Tax Info');
@@ -74,7 +67,4 @@ describe( 'Step Ecommerce Tax Information', function () {
 		cy.go( 'back' );
 	} );
 
-	// after( () => {
-	// 	cy.clearCustomerData();
-	// } );
 } );

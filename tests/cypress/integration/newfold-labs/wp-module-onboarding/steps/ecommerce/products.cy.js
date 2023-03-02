@@ -5,18 +5,11 @@ import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntro
 
 describe( 'Step Ecommerce Products Info', function () {
 	before( () => {
-		// cy.setCustomerData();
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/products'
 		);
-		// cy.injectAxe();
 		cy.wait( 5000 );
 	} );
-
-	// it('Is Accessible', () => {
-	// 	cy.wait(500);
-	// 	cy.checkA11y();
-	// });
 
 	it( 'Check Drawer Activity', () => {
 		DrawerActivityForMenu('Onboarding Menu', ':nth-child(3)', 'Product Info');
@@ -100,7 +93,4 @@ describe( 'Step Ecommerce Products Info', function () {
 		cy.go( 'back' );
 	} );
 
-	// after( () => {
-	// 	cy.clearCustomerData();
-	// } );
 } );

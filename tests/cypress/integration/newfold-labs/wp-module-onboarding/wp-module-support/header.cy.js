@@ -11,7 +11,7 @@ export const GetCardHeading = (question = false) => {
     }
 }
 
-export const GetHeadingTitle = () => {
+export const CheckHeadingSubheading = () => {
     cy.get( '.nfd-main-heading__title' ).should( 'be.visible' );
 	cy.get( '.nfd-main-heading__subtitle' ).should( 'be.visible' );
 }
