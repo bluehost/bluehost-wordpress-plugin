@@ -1,7 +1,12 @@
 // <reference types="Cypress" />
 import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy';
 import { CheckHeadingSubheading } from '../wp-module-support/header.cy';
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../wp-module-support/sidebar.cy';
 
 describe( 'Basic Info Page', function () {
 	before( () => {
@@ -11,7 +16,11 @@ describe( 'Basic Info Page', function () {
 	} );
 
 	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu('Exit to WordPress', ':nth-child(3)', 'Basic Info');
+		DrawerActivityForMenu(
+			'Exit to WordPress',
+			':nth-child(3)',
+			'Basic Info'
+		);
 	} );
 
 	it( 'Check if Header and Subheader shows up', () => {
@@ -19,7 +28,7 @@ describe( 'Basic Info Page', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__basic-info', 'Basic Info');
+		CheckIntroPanel( '__basic-info', 'Basic Info' );
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();
@@ -139,5 +148,4 @@ describe( 'Basic Info Page', function () {
 				} );
 		}
 	} );
-
 } );

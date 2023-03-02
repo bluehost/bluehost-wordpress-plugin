@@ -1,7 +1,12 @@
 // <reference types="Cypress" />
-import { DrawerActivityForMenu } from "../../wp-module-support/drawer.cy";
+import { DrawerActivityForMenu } from '../../wp-module-support/drawer.cy';
 import { CheckHeadingSubheading } from '../../wp-module-support/header.cy';
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../../wp-module-support/sidebar.cy';
 
 describe( 'Theme Styles Menu and Preview', function () {
 	before( () => {
@@ -13,13 +18,17 @@ describe( 'Theme Styles Menu and Preview', function () {
 	} );
 
 	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu('Onboarding Menu', ':nth-child(1)', 'Theme Styles');
+		DrawerActivityForMenu(
+			'Onboarding Menu',
+			':nth-child(1)',
+			'Theme Styles'
+		);
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__design-theme-styles-menu', 'Theme Styles');
+		CheckIntroPanel( '__design-theme-styles-menu', 'Theme Styles' );
 		CheckIllustrationPanel();
-		CheckInfoPanel(2);
+		CheckInfoPanel( 2 );
 		CheckHelpPanelLinks();
 	} );
 
@@ -59,7 +68,9 @@ describe( 'Theme Styles Menu and Preview', function () {
 		cy.get( ':nth-child(1) > .theme-styles-preview__title-bar' ).should(
 			'be.visible'
 		);
-		cy.get( '.theme-styles-preview > div:nth-child(3)' ).should( 'be.visible' );
+		cy.get( '.theme-styles-preview > div:nth-child(3)' ).should(
+			'be.visible'
+		);
 	} );
 
 	it( 'Check if Theme List is Visible in the Drawer', () => {

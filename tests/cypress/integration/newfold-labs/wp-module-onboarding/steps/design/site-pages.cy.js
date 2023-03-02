@@ -1,7 +1,12 @@
 // <reference types="Cypress" />
-import { DrawerActivityForMenu } from "../../wp-module-support/drawer.cy";
-import { CheckHeadingSubheading } from "../../wp-module-support/header.cy";
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
+import { DrawerActivityForMenu } from '../../wp-module-support/drawer.cy';
+import { CheckHeadingSubheading } from '../../wp-module-support/header.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../../wp-module-support/sidebar.cy';
 
 describe( 'Site Pages', function () {
 	before( () => {
@@ -16,11 +21,15 @@ describe( 'Site Pages', function () {
 	} );
 
 	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu('Onboarding Menu', ':nth-child(4)', 'Page Layouts');
+		DrawerActivityForMenu(
+			'Onboarding Menu',
+			':nth-child(4)',
+			'Page Layouts'
+		);
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__site-pages', 'Pages');
+		CheckIntroPanel( '__site-pages', 'Pages' );
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();

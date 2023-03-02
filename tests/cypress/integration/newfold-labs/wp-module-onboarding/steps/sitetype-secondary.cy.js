@@ -1,7 +1,12 @@
 // <reference types="Cypress" />
 import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
 import { GetCardHeading } from '../wp-module-support/header.cy';
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../wp-module-support/sidebar.cy';
 
 describe( 'Get Started Site Type Secondary', function () {
 	before( () => {
@@ -20,7 +25,7 @@ describe( 'Get Started Site Type Secondary', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__get-started-site-secondary', 'Store Type');
+		CheckIntroPanel( '__get-started-site-secondary', 'Store Type' );
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();
@@ -109,5 +114,4 @@ describe( 'Get Started Site Type Secondary', function () {
 		);
 		cy.go( 'back' );
 	} );
-
 } );

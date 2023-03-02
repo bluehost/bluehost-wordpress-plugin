@@ -1,6 +1,11 @@
 // <reference types="Cypress" />
-import { DrawerActivityForSubMenu } from "../../wp-module-support/drawer.cy";
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
+import { DrawerActivityForSubMenu } from '../../wp-module-support/drawer.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../../wp-module-support/sidebar.cy';
 
 describe( 'Colors Step Test', function () {
 	before( () => {
@@ -18,11 +23,16 @@ describe( 'Colors Step Test', function () {
 	} );
 
 	it( 'Check Drawer Activity', () => {
-		DrawerActivityForSubMenu('Design', '.theme-colors--drawer', '.color-palette', 11);
+		DrawerActivityForSubMenu(
+			'Design',
+			'.theme-colors--drawer',
+			'.color-palette',
+			11
+		);
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__design-colors', 'Colors');
+		CheckIntroPanel( '__design-colors', 'Colors' );
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();

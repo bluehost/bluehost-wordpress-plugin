@@ -1,7 +1,12 @@
 // <reference types="Cypress" />
 import { DrawerActivityForMenu } from '../../wp-module-support/drawer.cy';
 import { GetCardHeading } from '../../wp-module-support/header.cy';
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../../wp-module-support/sidebar.cy';
 
 describe( 'Step Ecommerce Products Info', function () {
 	before( () => {
@@ -12,11 +17,15 @@ describe( 'Step Ecommerce Products Info', function () {
 	} );
 
 	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu('Onboarding Menu', ':nth-child(3)', 'Product Info');
+		DrawerActivityForMenu(
+			'Onboarding Menu',
+			':nth-child(3)',
+			'Product Info'
+		);
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__ecommerce-products', 'Products Info');
+		CheckIntroPanel( '__ecommerce-products', 'Products Info' );
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();
@@ -92,5 +101,4 @@ describe( 'Step Ecommerce Products Info', function () {
 		cy.url().should( 'not.include', '#/ecommerce/step/products' );
 		cy.go( 'back' );
 	} );
-
 } );

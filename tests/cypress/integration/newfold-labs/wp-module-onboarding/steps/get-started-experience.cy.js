@@ -1,7 +1,12 @@
 // <reference types="Cypress" />
 import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
 import { GetCardHeading } from '../wp-module-support/header.cy';
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../wp-module-support/sidebar.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../wp-module-support/sidebar.cy';
 
 describe( 'Start Setup WP Experience Page', function () {
 	before( () => {
@@ -18,7 +23,10 @@ describe( 'Start Setup WP Experience Page', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__get-started-wp-experience', 'WordPress Experience');
+		CheckIntroPanel(
+			'__get-started-wp-experience',
+			'WordPress Experience'
+		);
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();
@@ -83,5 +91,4 @@ describe( 'Start Setup WP Experience Page', function () {
 			.should( 'exist' )
 			.should( 'have.attr', 'href' );
 	} );
-
 } );

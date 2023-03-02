@@ -1,6 +1,11 @@
 // <reference types="Cypress" />
-import { DrawerActivityForSubMenu } from "../../wp-module-support/drawer.cy";
-import { CheckHelpPanelLinks, CheckIllustrationPanel, CheckInfoPanel, CheckIntroPanel } from '../../wp-module-support/sidebar.cy';
+import { DrawerActivityForSubMenu } from '../../wp-module-support/drawer.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../../wp-module-support/sidebar.cy';
 
 describe( 'Typography Step Test', function () {
 	before( () => {
@@ -18,11 +23,16 @@ describe( 'Typography Step Test', function () {
 	} );
 
 	it( 'Check Drawer Activity', () => {
-		DrawerActivityForSubMenu('Design', '.theme-fonts--drawer', '.font-palette', 12);
+		DrawerActivityForSubMenu(
+			'Design',
+			'.theme-fonts--drawer',
+			'.font-palette',
+			12
+		);
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel('__design-typography', 'Typography');
+		CheckIntroPanel( '__design-typography', 'Typography' );
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();
