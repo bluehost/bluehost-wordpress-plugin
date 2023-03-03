@@ -19,6 +19,10 @@ describe( 'Step Ecommerce Address/Store Details', function () {
 	} );
 
 	it( 'Check Drawer Activity', () => {
+		cy.visit(
+			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
+		);
+		cy.wait( 8000 );
 		DrawerActivityForMenu(
 			'Onboarding Menu',
 			':nth-child(1)',
