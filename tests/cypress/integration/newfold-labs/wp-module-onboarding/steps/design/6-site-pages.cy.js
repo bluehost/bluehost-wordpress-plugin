@@ -49,4 +49,9 @@ describe( 'Site Pages', function () {
 			previewCount += 1;
 		} );
 	} );
+
+	after( () => {
+		cy.exec( 'npx wp-env run cli wp plugin activate woocommerce' );
+		cy.wait( 5000 );
+	} );
 } );
