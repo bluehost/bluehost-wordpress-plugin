@@ -10,6 +10,8 @@ import {
 
 describe( 'Step Ecommerce Address/Store Details', function () {
 	before( () => {
+		cy.exec( 'npx wp-env run cli wp plugin activate woocommerce' );
+		cy.wait( 10000 );
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
 		);
@@ -17,6 +19,10 @@ describe( 'Step Ecommerce Address/Store Details', function () {
 	} );
 
 	it( 'Check Drawer Activity', () => {
+		cy.visit(
+			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
+		);
+		cy.wait( 8000 );
 		DrawerActivityForMenu(
 			'Onboarding Menu',
 			':nth-child(1)',
