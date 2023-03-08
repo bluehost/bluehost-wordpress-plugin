@@ -4,11 +4,11 @@ namespace Bluehost\RestApi;
 
 /**
  * Class CustomizeSiteController
- * 
+ *
  * This class is responsible for redirecting the user to the correct destination when they click the "Customize Site" button.
  */
-class CustomizeSiteController extends \WP_REST_Controller
-{
+class CustomizeSiteController extends \WP_REST_Controller {
+	
 	/**
 	 * The namespace of this controller's route.
 	 *
@@ -19,30 +19,28 @@ class CustomizeSiteController extends \WP_REST_Controller
 	/**
 	 * Registers the customizer route
 	 */
-	public function register_routes()
-	{
+	public function register_routes() {
+
 		register_rest_route(
 			$this->namespace,
 			'/customize-site',
 			array(
-				'methods'             =>  \WP_REST_Server::READABLE,
+				'methods'             => \WP_REST_Server::READABLE,
 				'callback'            => array( $this, 'redirect_destination' ),
 			)
 		);
+
 	}
 
 	/**
 	 * Redirects to the correct destination based on the active theme.
-	 *
-	 * @param \WP_REST_Request $request Full details about the request.
-	 *
-	 * @return \WP_REST_Response
 	 */
 	public function redirect_destination() {
-		$is_fse = is_readable( STYLESHEETPATH . '/templates/index.html' );
+		$is_fse      = is_readable( STYLESHEETPATH . '/templates/index.html' );
 		$destination = get_admin_url() . ( $is_fse ? 'site-editor.php' : 'customize.php' );
-		
-		wp_redirect( $destination );
-  		exit;
+
+		wp_safe_redirect( $destination );
+		exit;
 	}
+
 }
