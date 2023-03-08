@@ -8,7 +8,7 @@ namespace Bluehost\RestApi;
  * This class is responsible for redirecting the user to the correct destination when they click the "Customize Site" button.
  */
 class CustomizeSiteController extends \WP_REST_Controller {
-	
+
 	/**
 	 * The namespace of this controller's route.
 	 *
@@ -25,8 +25,8 @@ class CustomizeSiteController extends \WP_REST_Controller {
 			$this->namespace,
 			'/customize-site',
 			array(
-				'methods'             => \WP_REST_Server::READABLE,
-				'callback'            => array( $this, 'redirect_destination' ),
+				'methods'  => \WP_REST_Server::READABLE,
+				'callback' => array( $this, 'redirect_destination' ),
 			)
 		);
 
