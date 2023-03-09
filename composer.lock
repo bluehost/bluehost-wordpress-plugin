@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a9ff1c27a915e7e14e7f97945884a2a",
+    "content-hash": "b6e4e2505f5559c24a8c987fef2df279",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -342,16 +342,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v0.6.4",
+            "version": "v0.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "a8aa51fa4fea5eb6019973149a3fbf1738e477e2"
+                "reference": "8a9b411fdad56c54a75e13999e5306f0f6df5a6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/a8aa51fa4fea5eb6019973149a3fbf1738e477e2",
-                "reference": "a8aa51fa4fea5eb6019973149a3fbf1738e477e2",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/8a9b411fdad56c54a75e13999e5306f0f6df5a6f",
+                "reference": "8a9b411fdad56c54a75e13999e5306f0f6df5a6f",
                 "shasum": ""
             },
             "require-dev": {
@@ -390,10 +390,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.6.4",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.7.1",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-01-17T09:22:08+00:00"
+            "time": "2023-03-09T12:40:58+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -4849,6 +4849,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "wp-cli/i18n-command": 0,
         "wp-cli/wp-cli-bundle": 0
     },
     "prefer-stable": false,
