@@ -94,8 +94,9 @@ describe('Onboarding', () => {
 
 		cy.get('.nf-onboarding-base-step .components-button')
 			.should('be.visible')
-			.and('have.attr', 'href', 'customize.php')
-			.and('have.text', 'Customize your site');
+			.and('have.text', 'Customize your site')
+			.and('have.attr', 'href')
+			.and('include', '/customize-site');
 	})
 
 	it('Launch Tab', () => {
