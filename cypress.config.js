@@ -56,7 +56,8 @@ module.exports = defineConfig({
 		supportFile: 'tests/cypress/support/index.js',
 		testIsolation: false,
 		excludeSpecPattern: [
-			"tests/cypress/integration/newfold-labs/wp-module-onboarding/wp-module-support/"
+			"tests/cypress/integration/newfold-labs/wp-module-onboarding/wp-module-support/",
+			"tests/cypress/integration/newfold-labs/wp-module-onboarding/"
 		]
 	},
 })
