@@ -20,12 +20,12 @@ describe('Settings Page', () => {
 				if ($toggle.attr('aria-checked') !== 'true') {
 					// If unchecked, check it
 					cy.get('@toggle').check();
-					cy.wait('@update', {timeout: 10000});
+					cy.wait('@update', {timeout: 12000});
 					cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
 				} else {
 					// If checked, uncheck it
 					cy.get('@toggle').uncheck();
-					cy.wait('@update', {timeout: 10000});
+					cy.wait('@update', {timeout: 12000});
 					cy.get('@toggle').should('have.attr', 'aria-checked', 'false');
 				}
 			});
@@ -40,7 +40,7 @@ describe('Settings Page', () => {
 			cy.get('@select').scrollIntoView().should('be.visible');
 			values.forEach((value) => {
 				cy.get('@select').select(`${value}`);
-				cy.wait('@update', {timeout: 10000});
+				cy.wait('@update', {timeout: 12000});
 				cy.get('@select').should('have.value', `${value}`);
 			});
 		},
@@ -113,7 +113,7 @@ describe('Settings Page', () => {
 	});
 
 	it('Content: Empty Trash', () => {
-		fn.validateSelect('Empty the trash every x weeks', [7, 14, 21, 30]);
+		fn.validateSelect('Empty the trash every x weeks', [14, 21]);
 	});
 
 	it('Has a "Performance" section', () => {

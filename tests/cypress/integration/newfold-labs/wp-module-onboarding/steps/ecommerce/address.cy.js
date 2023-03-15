@@ -1,112 +1,120 @@
 // <reference types="Cypress" />
+import { DrawerActivityForMenu } from '../../wp-module-support/drawer.cy';
+import { CheckCardHeadingSubheading } from '../../wp-module-support/header.cy';
+import {
+	CheckHelpPanelLinks,
+	CheckIllustrationPanel,
+	CheckInfoPanel,
+	CheckIntroPanel,
+} from '../../wp-module-support/sidebar.cy';
 
-describe('Step Ecommerce Address/Store Details', function () {
-    before(() => {
-        cy.setCustomerData();
-        cy.visit(
-            'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
-        );
-        // cy.injectAxe();
-        cy.wait(2000);
-    });
+describe( 'Step Ecommerce Address/Store Details', function () {
+	before( () => {
+		cy.exec( 'npx wp-env run cli wp plugin activate woocommerce' );
+		cy.wait( 10000 );
+		cy.visit(
+			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
+		);
+		cy.wait( 8000 );
+	} );
 
-    // it('Is Accessible', () => {
-	// 	cy.wait(500);
-	// 	cy.checkA11y();
-	// });
+	it( 'Check Drawer Activity', () => {
+		cy.visit(
+			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
+		);
+		cy.wait( 8000 );
+		DrawerActivityForMenu(
+			'Onboarding Menu',
+			':nth-child(1)',
+			'Street Address'
+		);
+	} );
 
-    it('Checks if Drawer opened', () => {
-        cy.get('.nfd-onboarding-drawer__panel-inner')
-            .scrollIntoView()
-            .should('be.visible');
-    });
+	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+		CheckIntroPanel( '__ecommerce-address', 'Street Address' );
+		CheckIllustrationPanel();
+		CheckInfoPanel();
+		CheckHelpPanelLinks();
+	} );
 
-    it('Checks Active Link in the drawer is Store Details', () => {
-        cy.get(':nth-child(1) > .nfd-onboarding-drawer__panel-menu-link')
-        .should('have.class', 'active')
-        .and('have.attr', 'href')
-        .and('include', '#/ecommerce/step/address')
-    });
+	it( 'Checks if Heading and Subheading are present', () => {
+		CheckCardHeadingSubheading();
+	} );
 
-    it('Closes the Drawer and checks if closed', () => {
-        cy.get('.nfd-onboarding-drawer__toggle > .components-button').click();
-        cy.get('.nfd-onboarding-drawer__panel-inner')
-            .scrollIntoView()
-            .should('not.be.visible');
-    });
+	it( 'Checks if all the inputs are enabled', () => {
+		cy.get( 'select[name="country"]' )
+			.should( 'be.visible' )
+			.and( 'not.be.disabled' )
+			.select( 'US' );
+		cy.get( 'input[name="woocommerce_store_address"]' )
+			.should( 'be.visible' )
+			.and( 'not.be.disabled' )
+			.clear()
+			.type( '5335 Gate Pkwy' );
+		cy.get( 'input[name="woocommerce_store_city"]' )
+			.should( 'be.visible' )
+			.and( 'not.be.disabled' )
+			.clear()
+			.type( 'Jacksonville' );
+		cy.get( 'select[name="state"]' )
+			.should( 'be.visible' )
+			.and( 'not.be.disabled' )
+			.select( 'FL' );
+		cy.get( 'input[name="woocommerce_store_postcode"]' )
+			.should( 'be.visible' )
+			.and( 'not.be.disabled' )
+			.clear()
+			.type( '32256' );
+		cy.get( 'input[name="woocommerce_email_from_address"]' )
+			.should( 'be.visible' )
+			.and( 'not.be.disabled' )
+			.clear()
+			.type( 'test123@gmail.com' );
+		cy.get( 'select[name="woocommerce_currency"]' )
+			.should( 'be.visible' )
+			.and( 'not.be.disabled' )
+			.select( 'USD' );
+	} );
 
-    it('Checks if Heading and Subheading are present', () => {
-        cy.get('.nfd-step-card-heading').should('be.visible');
-        cy.get('.nfd-step-card-subheading').should('be.visible');
-    });
+	it( 'Checks if there are the correct number of countries', () => {
+		cy.get( 'select[name="country"]' )
+			.find( 'option' )
+			.should( 'have.length', 224 );
+	} );
 
-    it('Checks if all the inputs are enabled', () => {
-        cy.get('input[name="woocommerce_store_address"]')
-            .should('be.visible')
-            .and('not.be.disabled');
-        cy.get('input[name="woocommerce_store_address_2"]')
-            .should('be.visible')
-            .and('not.be.disabled');
-        cy.get('input[name="woocommerce_store_city"]')
-            .should('be.visible')
-            .and('not.be.disabled');
-        cy.get('input[name="woocommerce_store_postcode"]')
-            .should('be.visible')
-            .and('not.be.disabled');
-        cy.get('select[name="state"]')
-            .should('be.visible')
-            .and('not.be.disabled');
-        cy.get('select[name="country"]')
-            .should('be.visible')
-            .and('not.be.disabled');
-    });
+	it( 'Populates the correct number of states for a country', () => {
+		cy.get( 'select[name="country"]' ).select( 'US' );
+		cy.get( 'select[name="state"]' )
+			.find( 'option' )
+			.should( 'have.length', 55 );
+	} );
 
-    it('Checks if there are the correct number of countries', () => {
-        cy.get('select[name="country"]')
-            .find('option')
-            .should('have.length', 224);
-    });
+	it( 'Checks if there are the correct number of currencies', () => {
+		cy.get( 'select[name="woocommerce_currency"]' )
+			.find( 'option' )
+			.should( 'have.length', 163 );
+	} );
 
-    it('Populates the correct number of states for a country', () => {
-        cy.get('select[name="country"]').select('IN');
+	it( 'Checks existence of Need Help Tag', () => {
+		cy.get( '.nfd-card-need-help-tag' )
+			.scrollIntoView()
+			.should( 'be.visible' );
+	} );
 
-        cy.get('select[name="state"]').find('option').should('have.length', 37);
-    });
+	it( 'Checks existence of Need Help URL', () => {
+		cy.get( '.nfd-card-need-help-tag > a' ).should( 'have.attr', 'href' );
+	} );
 
-    it('Checks existence of Need Help Tag', () => {
-        cy.get('.nfd-card-need-help-tag').scrollIntoView().should('be.visible');
-    });
+	it( 'Checks if Continue Setup exists and is enabled', () => {
+		cy.get( '.nfd-nav-card-button' )
+			.scrollIntoView()
+			.should( 'be.visible' )
+			.and( 'not.be.disabled' );
+	} );
 
-    it("Checks existence of Need Help URL", () => {
-        cy.get('.nfd-card-need-help-tag > a').should('have.attr', 'href');
-    });
-
-    it('Checks if Continue Setup exists and is enabled', () => {
-        cy.get('.nfd-nav-card-button')
-            .scrollIntoView()
-            .should('be.visible')
-            .and('not.be.disabled');
-    });
-
-    it('Goes to the next step on clicking navigation Next', () => {
-        cy.get('.navigation-buttons_next').click();
-        cy.url().should('not.include', '#/ecommerce/step/address');
-        cy.go('back');
-    });
-
-    it('Goes to the previous step on clicking navigation Back', () => {
-        cy.get('.navigation-buttons_back').click();
-        cy.url().should('not.include', '#/ecommerce/step/address');
-        cy.go('back');
-    });
-
-    it('Goes to next step on Continue Setup', () => {
-        cy.get('.nfd-nav-card-button').click();
-        cy.url().should('not.include', '#/ecommerce/step/address');
-        cy.go('back');
-    });
-
-    after(() => {
-        cy.clearCustomerData();
-    });
-});
+	it( 'Goes to next step on Continue Setup', () => {
+		cy.get( '.nfd-nav-card-button' ).scrollIntoView().click();
+		cy.url().should( 'not.include', '#/ecommerce/step/address' );
+		cy.go( 'back' );
+	} );
+} );

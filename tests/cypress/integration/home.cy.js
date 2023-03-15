@@ -101,7 +101,7 @@ describe('Home Page', () => {
 					cy.contains('a.bluehost.components-button', 'Customize Theme');
 					cy.get('a.bluehost.components-button')
 						.should('have.attr', 'href')
-						.and('include', '/wp-admin/customize.php');
+						.and('include', '/customize-site');
 				});
 
 		});
