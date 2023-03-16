@@ -27,6 +27,7 @@ class CustomizeSiteController extends \WP_REST_Controller {
 			array(
 				'methods'  => \WP_REST_Server::READABLE,
 				'callback' => array( $this, 'redirect_destination' ),
+				'permission_callback' => '__return_true',
 			)
 		);
 
