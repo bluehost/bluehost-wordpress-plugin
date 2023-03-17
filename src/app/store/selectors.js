@@ -25,14 +25,34 @@ export function isTopLevel(state) {
 	return state.app.isTopLevel;
 }
 
-export function isOnECommercePlan(state) {
-  return ["wc_standard", "wc_premium"].includes(
-    state.app.customer.plan_subtype
-  );
-}
-
-export function isNewEcommerceUser(state) {
-	return new Date(state.app.customer.signup_date) >= new Date('2022-08-18T15:30:00.000Z');
+export function getEcommerceCapabilities(state) {
+	let capabilities = new Set();
+	// TODO: Check WC install/activation date for cutoff
+	let isAfterCutOffDate = new Date(state.app.customer.signup_date) >= new Date('2022-08-18T15:30:00.000Z');
+	let planSubtype = state.app.customer.plan_subtype
+	let isOnECommercePlan = ["wc_standard", "wc_premium"].includes(
+		planSubtype
+	);
+	if (planSubtype === "wc_standard") {
+		capabilities.add("standard");
+	}
+	if (planSubtype === "wc_premium") {
+		capabilities.add("premium");
+	}
+	if (isOnECommercePlan) {
+		if (isAfterCutOffDate) {
+			capabilities.add("product");
+			capabilities.add("experience");
+		} else {
+			capabilities.add("upgrade");
+		}
+	} else if (isWooActive(state)) {
+		capabilities.add("upgrade");
+		capabilities.add("experience");
+	} else {
+		capabilities.add("upgrade");
+	}
+	return capabilities;
 }
 
 export function getAllSettings(state) {
