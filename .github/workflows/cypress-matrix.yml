@@ -115,7 +115,7 @@ jobs:
         run: npx cypress run
 
       - name: Run Cypress Tests
-        uses: replayio/action-cypress@v0.2.7
+        uses: replayio/action-cypress@v0.2.8
         env:
           RECORD_REPLAY_METADATA_TEST_RUN_TITLE: "php-${{ matrix.phpVersion }}, wp-${{ matrix.wpVersion }}"
           RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
