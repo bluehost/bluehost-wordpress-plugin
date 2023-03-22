@@ -33,15 +33,14 @@ export function getEcommerceCapabilities(state) {
 	let isOnECommercePlan = ["wc_standard", "wc_premium"].includes(
 		planSubtype
 	);
-	if (planSubtype === "wc_standard") {
-		capabilities.add("standard");
-	}
-	if (planSubtype === "wc_premium") {
-		capabilities.add("premium");
-	}
 	if (isOnECommercePlan) {
+		if (planSubtype === "wc_standard") {
+			capabilities.add("standard");
+		}
+		if (planSubtype === "wc_premium") {
+			capabilities.add("premium");
+		}
 		if (isAfterCutOffDate) {
-			capabilities.add("product");
 			capabilities.add("experience");
 		} else {
 			capabilities.add("upgrade");
