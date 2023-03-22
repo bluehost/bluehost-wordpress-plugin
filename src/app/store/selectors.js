@@ -47,7 +47,7 @@ export function getEcommerceCapabilities(state) {
 			capabilities.add("upgrade");
 		}
 	} else if (isWooActive(state)) {
-		capabilities.add("upgrade");
+		capabilities.add("minimal");
 		capabilities.add("experience");
 	} else {
 		capabilities.add("upgrade");
