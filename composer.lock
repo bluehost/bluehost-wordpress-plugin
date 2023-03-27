@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3de5653552508fbab863675b54535ddf",
+    "content-hash": "e4cc6aef334d6d8c02c3266236ef2086",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -545,16 +545,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "1.2.0",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "637c0c14f162101fde55b2dba52d49cc8858055c"
+                "reference": "15ff4d71eb7c22cbd8ace5bfb2e63210927e4175"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/637c0c14f162101fde55b2dba52d49cc8858055c",
-                "reference": "637c0c14f162101fde55b2dba52d49cc8858055c",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/15ff4d71eb7c22cbd8ace5bfb2e63210927e4175",
+                "reference": "15ff4d71eb7c22cbd8ace5bfb2e63210927e4175",
                 "shasum": ""
             },
             "require": {
@@ -594,9 +594,9 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.2.0"
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.2.2"
             },
-            "time": "2023-03-09T07:49:58+00:00"
+            "time": "2023-03-27T14:09:47+00:00"
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",
