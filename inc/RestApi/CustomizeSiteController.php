@@ -25,8 +25,9 @@ class CustomizeSiteController extends \WP_REST_Controller {
 			$this->namespace,
 			'/customize-site',
 			array(
-				'methods'  => \WP_REST_Server::READABLE,
-				'callback' => array( $this, 'redirect_destination' ),
+				'methods'             => \WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'redirect_destination' ),
+				'permission_callback' => array( $this, 'check_permission' ),
 			)
 		);
 
@@ -41,6 +42,19 @@ class CustomizeSiteController extends \WP_REST_Controller {
 
 		wp_safe_redirect( $destination );
 		exit;
+	}
+
+	/**
+	 * Check permissions for routes.
+	 *
+	 * @return bool|\WP_Error
+	 */
+	public function check_permission() {
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			return new \WP_Error( 'rest_forbidden_context', __( 'Sorry, you are not allowed to access this endpoint.', 'bluehost-wordpress-plugin' ), array( 'status' => rest_authorization_required_code() ) );
+		}
+
+		return true;
 	}
 
 }
