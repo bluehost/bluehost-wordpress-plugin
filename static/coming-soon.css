@@ -41,18 +41,25 @@ input {
     min-height: auto !important;
 }
 
+#wrap .content {
+    background: rgba(255,255,255,.75);
+    padding-bottom: 2rem;
+}
+
 #wrap h1 {
+    color: #333;
     font-weight: 300;
     font-size: 28px;
 }
 
 #wrap h2 {
+    color: #333;
     font-weight: 300;
     font-size: 38px;
 }
 
 #wrap p {
-    color: #666;
+    color: #333;
     line-height: 1.5;
 }
 
@@ -68,7 +75,7 @@ footer {
 footer p {
     font-size: 14px;
     line-height: 22px;
-    color: #5B5B5B;
+    color: #333;
     padding: 8px;
     text-align: center;
 }
