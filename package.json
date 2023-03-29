@@ -100,7 +100,7 @@
         "php-deps": "composer install --no-dev --optimize-autoloader",
         "postprepare": "npm run set-wp-version",
         "set-wp-version": "node ./set-latest-wp-version.js",
-        "simulate-runner-build": "npm run prebuild:cleanup && npm i && npm run php-deps && npm run build && npm run create:dist && npm run create:zip",
+        "simulate-runner-build": "npm run prebuild:cleanup && npm i --legacy-peer-deps && npm run php-deps && npm run build && npm run create:dist && npm run create:zip",
         "srb": "npm run simulate-runner-build",
         "start": "cross-env NODE_ENV=develop wp-scripts start --config ./bin/webpack.develop.js",
         "start:analyzer": "npm run start --webpack-bundle-analyzer",
