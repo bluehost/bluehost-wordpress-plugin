@@ -25,6 +25,10 @@
             "only": [
                 "newfold-labs/*"
             ]
+        },
+        "x-newfold-labs/wp-module-ecommerce": {
+            "type": "vcs",
+            "url": "https://github.com/newfold-labs/wp-module-ecommerce"
         }
     },
     "autoload": {
@@ -40,7 +44,7 @@
         "newfold-labs/wp-module-coming-soon": "^1.0",
         "newfold-labs/wp-module-customer-bluehost": "^1.5.3",
         "newfold-labs/wp-module-data": "^2.3.0",
-        "newfold-labs/wp-module-ecommerce": "0.7.5",
+        "x-newfold-labs/wp-module-ecommerce": "0.7.6",
         "newfold-labs/wp-module-loader": "^1.0.10",
         "newfold-labs/wp-module-marketplace": "^1.5.0",
         "newfold-labs/wp-module-notifications": "^1.1.2",
