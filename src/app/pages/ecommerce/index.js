@@ -28,7 +28,8 @@ function EcommercePage() {
   };
   const wpModules = {
     Modal,
-    navigate
+    navigate,
+    EcomMarketplace,
   };
 
   /**
@@ -37,15 +38,12 @@ function EcommercePage() {
    */
   return (
     <BWACommonTemplate>
-      
-      <EcomMarketplace />
 
       <NewfoldECommerce
         state={eCommerceState}
         actions={eCommerceActions}
         wpModules={wpModules}
         section={section}
-        marketplace={<EcomMarketplace />}
       />
       <div className="grid-col-2">
         <BWAAccountCard />
