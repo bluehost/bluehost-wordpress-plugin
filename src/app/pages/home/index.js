@@ -28,25 +28,16 @@ const Home = () => {
 		return 'undefined' !== typeof plugin && plugin.hasOwnProperty('getSetting') ? ! select('bluehost/plugin').getSetting('comingSoon') : true;
 	}, []);
 
-	const isOnECommercePlan = useSelect((select) => {
+	const eCommerceCapabilities = useSelect((select) => {
 		const plugin = select("bluehost/plugin");
 		return (
 			"undefined" !== typeof plugin &&
-			plugin.hasOwnProperty("isOnECommercePlan") &&
-			plugin.isOnECommercePlan()
+			plugin.hasOwnProperty("getEcommerceCapabilities") &&
+			plugin.getEcommerceCapabilities()
 		);
 	}, []);
 
-	const isNewEcommerceUser = useSelect((select) => {
-		const plugin = select("bluehost/plugin");
-		return (
-			"undefined" !== typeof plugin &&
-			plugin.hasOwnProperty("isNewEcommerceUser") &&
-			plugin.isNewEcommerceUser()
-		);
-	}, []);
-
-	if (isNewEcommerceUser && isOnECommercePlan) {
+	if (eCommerceCapabilities.has("experience")) {
 		return <BWARedirect to="/home/store" currentLocation={location} />;
 	}
 

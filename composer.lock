@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3de5653552508fbab863675b54535ddf",
+    "content-hash": "e841b213321220cada11f43d55a3bef1",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -342,16 +342,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v0.7.2",
+            "version": "v0.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "bfd99abf5f095d69f07cdf1cecd04dfa88fd9361"
+                "reference": "10cd01581e3290941e1c6790f2c90d623c22eba8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/bfd99abf5f095d69f07cdf1cecd04dfa88fd9361",
-                "reference": "bfd99abf5f095d69f07cdf1cecd04dfa88fd9361",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/10cd01581e3290941e1c6790f2c90d623c22eba8",
+                "reference": "10cd01581e3290941e1c6790f2c90d623c22eba8",
                 "shasum": ""
             },
             "require-dev": {
@@ -390,10 +390,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.7.2",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.7.6",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-03-09T15:13:14+00:00"
+            "time": "2023-03-29T15:32:56+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -545,16 +545,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "1.2.0",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "637c0c14f162101fde55b2dba52d49cc8858055c"
+                "reference": "15ff4d71eb7c22cbd8ace5bfb2e63210927e4175"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/637c0c14f162101fde55b2dba52d49cc8858055c",
-                "reference": "637c0c14f162101fde55b2dba52d49cc8858055c",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/15ff4d71eb7c22cbd8ace5bfb2e63210927e4175",
+                "reference": "15ff4d71eb7c22cbd8ace5bfb2e63210927e4175",
                 "shasum": ""
             },
             "require": {
@@ -594,9 +594,9 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.2.0"
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.2.2"
             },
-            "time": "2023-03-09T07:49:58+00:00"
+            "time": "2023-03-27T14:09:47+00:00"
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",
@@ -2796,16 +2796,16 @@
         },
         {
             "name": "wp-cli/checksum-command",
-            "version": "v2.1.13",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/checksum-command.git",
-                "reference": "120d13d7e3780f30ec06638b6f49b4a10d9655b4"
+                "reference": "1a44dfbd3f962283a93ba547142300c98956d811"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/checksum-command/zipball/120d13d7e3780f30ec06638b6f49b4a10d9655b4",
-                "reference": "120d13d7e3780f30ec06638b6f49b4a10d9655b4",
+                "url": "https://api.github.com/repos/wp-cli/checksum-command/zipball/1a44dfbd3f962283a93ba547142300c98956d811",
+                "reference": "1a44dfbd3f962283a93ba547142300c98956d811",
                 "shasum": ""
             },
             "require": {
@@ -2849,9 +2849,9 @@
             "homepage": "https://github.com/wp-cli/checksum-command",
             "support": {
                 "issues": "https://github.com/wp-cli/checksum-command/issues",
-                "source": "https://github.com/wp-cli/checksum-command/tree/v2.1.13"
+                "source": "https://github.com/wp-cli/checksum-command/tree/v2.2.0"
             },
-            "time": "2023-02-17T16:23:17+00:00"
+            "time": "2023-03-24T20:57:16+00:00"
         },
         {
             "name": "wp-cli/config-command",
@@ -3209,16 +3209,16 @@
         },
         {
             "name": "wp-cli/entity-command",
-            "version": "v2.4.1",
+            "version": "v2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/entity-command.git",
-                "reference": "132dd6aa8389101e3b2d8fc54ea228547ef76534"
+                "reference": "694a4a556d2c16860b738787b4c0294a89c4a760"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/entity-command/zipball/132dd6aa8389101e3b2d8fc54ea228547ef76534",
-                "reference": "132dd6aa8389101e3b2d8fc54ea228547ef76534",
+                "url": "https://api.github.com/repos/wp-cli/entity-command/zipball/694a4a556d2c16860b738787b4c0294a89c4a760",
+                "reference": "694a4a556d2c16860b738787b4c0294a89c4a760",
                 "shasum": ""
             },
             "require": {
@@ -3414,9 +3414,9 @@
             "homepage": "https://github.com/wp-cli/entity-command",
             "support": {
                 "issues": "https://github.com/wp-cli/entity-command/issues",
-                "source": "https://github.com/wp-cli/entity-command/tree/v2.4.1"
+                "source": "https://github.com/wp-cli/entity-command/tree/v2.4.2"
             },
-            "time": "2023-02-17T15:09:26+00:00"
+            "time": "2023-03-15T17:10:20+00:00"
         },
         {
             "name": "wp-cli/eval-command",
@@ -4209,16 +4209,16 @@
         },
         {
             "name": "wp-cli/role-command",
-            "version": "v2.0.12",
+            "version": "v2.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/role-command.git",
-                "reference": "80e23679bb3b78607c93f48b49fb71060c3a6576"
+                "reference": "f586e09fe36aa15a213677e0bed3cd0f5e70613b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/role-command/zipball/80e23679bb3b78607c93f48b49fb71060c3a6576",
-                "reference": "80e23679bb3b78607c93f48b49fb71060c3a6576",
+                "url": "https://api.github.com/repos/wp-cli/role-command/zipball/f586e09fe36aa15a213677e0bed3cd0f5e70613b",
+                "reference": "f586e09fe36aa15a213677e0bed3cd0f5e70613b",
                 "shasum": ""
             },
             "require": {
@@ -4269,9 +4269,9 @@
             "homepage": "https://github.com/wp-cli/role-command",
             "support": {
                 "issues": "https://github.com/wp-cli/role-command/issues",
-                "source": "https://github.com/wp-cli/role-command/tree/v2.0.12"
+                "source": "https://github.com/wp-cli/role-command/tree/v2.0.13"
             },
-            "time": "2023-02-27T12:40:56+00:00"
+            "time": "2023-03-16T15:25:24+00:00"
         },
         {
             "name": "wp-cli/scaffold-command",

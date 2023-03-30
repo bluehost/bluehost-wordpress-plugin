@@ -52,7 +52,6 @@ const bluehostPluginConfig = {
 			acronym: settings.acronym,
 		}),
 		new MiniCSSExtractPlugin({ // wp-scripts copy disabled in modifiedWpScripts
-			esModule: false, 
 			filename: settings.webpack.filenamePattern + '.css' 
 		}),
 	],
