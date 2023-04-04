@@ -30,7 +30,7 @@
         "@wordpress/keycodes": "^3.29.0",
         "@wordpress/url": "^3.30.0",
         "algoliasearch": "^4.5.1",
-        "animate.css": "^3.7.2",
+        "animate.css": "^4.1.1",
         "classnames": "^2.2.6",
         "jquery": "^3.6.4",
         "lodash": "^4.17.21",
