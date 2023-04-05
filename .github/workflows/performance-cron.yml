@@ -1,0 +1,23 @@
+name: Visit Performance Test Site Every Thirty Minutes
+
+on:
+  schedule:
+    # Runs "every 30 minutes" (see https://crontab.guru)
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+jobs:
+  visit-site:
+    name: Visit the performance test site
+    runs-on: ubuntu-latest
+    environment: Performance Test Site
+    steps:
+      - name: Login
+        run: |
+          curl --cookie-jar cookies.txt --form log="${{ secrets.USERNAME }}" --form pwd="${{ secrets.PASSWORD }}" ${{ vars.BASE_URL }}/wp-login.php
+      - name: Visit the posts page (3x)
+        run: |
+          curl -b cookies.txt ${{ vars.BASE_URL }}/wp-admin/edit.php -v
+          sleep 5
+          curl -b cookies.txt ${{ vars.BASE_URL }}/wp-admin/edit.php -v
+          sleep 5
+          curl -b cookies.txt ${{ vars.BASE_URL }}/wp-admin/edit.php -v
