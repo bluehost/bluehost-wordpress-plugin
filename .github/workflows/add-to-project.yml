@@ -13,4 +13,4 @@ jobs:
       - uses: actions/add-to-project@v0.5.0
         with:
           project-url: https://github.com/orgs/newfold-labs/projects/1
-          github-token: ${{ secrets.TOKEN }}
+          github-token: ${{ secrets.PROJECT_TOKEN }}
