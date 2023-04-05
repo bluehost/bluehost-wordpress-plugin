@@ -4,6 +4,7 @@ on:
   schedule:
     # Runs "every 30 minutes" (see https://crontab.guru)
     - cron: '*/30 * * * *'
+  workflow_dispatch:
 jobs:
   visit-site:
     name: Visit the performance test site
