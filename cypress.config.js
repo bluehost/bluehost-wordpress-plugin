@@ -62,6 +62,8 @@ module.exports = defineConfig({
 		specPattern: 'tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
 		supportFile: 'tests/cypress/support/index.js',
 		testIsolation: false,
-		excludeSpecPattern: []
+		excludeSpecPattern: [
+			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/wp-module-support/"
+		]
 	},
 })
