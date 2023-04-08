@@ -77,9 +77,11 @@ class Bluehost_Admin_App_Assets {
 		$hasToken      = ! empty( $token );
 		$hasCustomerId = ! empty( $customerData ) && ! empty( $customerData['customer_id'] );
 		$showCTBs      = $hasToken && $hasCustomerId;
+		$isJarvis	   = get_option( 'bh_platform' ) === 'jarvis' ? 'true' : null;
 
 		\wp_add_inline_script( 'bh-ctb', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
 		\wp_add_inline_script( 'bh-ctb', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
+		\wp_add_inline_script( 'bh-ctb', 'window.nfdIsJarvis="' . $isJarvis . '";', 'before' );
 		\wp_add_inline_script( 'bh-ctb', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
 		\wp_add_inline_script( 'bh-ctb', $showCTBs ? 'window.nfdConnected=true;' : 'window.nfdConnected=false;', 'before' );
 	}
