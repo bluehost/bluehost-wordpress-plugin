@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8e46f886dfeb2d173e791d4efd78732",
+    "content-hash": "a05c87dfbc2d251d96f62b58d9285e19",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -201,20 +201,20 @@
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
-                "reference": "ffb88941612c3cdf75f8d96acae05907836253f8"
+                "reference": "da04dd802082a471cda695e2a00ae64a19ca2669"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/ffb88941612c3cdf75f8d96acae05907836253f8",
-                "reference": "ffb88941612c3cdf75f8d96acae05907836253f8",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/da04dd802082a471cda695e2a00ae64a19ca2669",
+                "reference": "da04dd802082a471cda695e2a00ae64a19ca2669",
                 "shasum": ""
             },
             "require-dev": {
-                "bluehost/wp-php-standards": "^1.1"
+                "newfold-labs/wp-php-standards": "^1.2"
             },
             "type": "library",
             "autoload": {
@@ -228,10 +228,10 @@
             },
             "scripts": {
                 "fix": [
-                    "vendor/bin/phpcbf . --standard=Bluehost"
+                    "vendor/bin/phpcbf . --standard=phpcs.xml"
                 ],
                 "lint": [
-                    "vendor/bin/phpcs . --standard=Bluehost -s"
+                    "vendor/bin/phpcs . --standard=phpcs.xml -s"
                 ]
             },
             "license": [
@@ -240,15 +240,15 @@
             "authors": [
                 {
                     "name": "Evan Mullins",
-                    "email": "evan@bluehost.com"
+                    "homepage": "https://evanmullins.com"
                 }
             ],
             "description": "Coming Soon module for WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.1.0",
+                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.1.1",
                 "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
             },
-            "time": "2022-10-20T16:31:03+00:00"
+            "time": "2023-04-11T16:50:31+00:00"
         },
         {
             "name": "newfold-labs/wp-module-customer-bluehost",
@@ -2929,16 +2929,16 @@
         },
         {
             "name": "wp-cli/core-command",
-            "version": "v2.1.9",
+            "version": "v2.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/core-command.git",
-                "reference": "33b3ba0c03efa9f280bab59107532272ac2a4235"
+                "reference": "181f41645a8ca869d886a0ce84fbde2008bdab9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/core-command/zipball/33b3ba0c03efa9f280bab59107532272ac2a4235",
-                "reference": "33b3ba0c03efa9f280bab59107532272ac2a4235",
+                "url": "https://api.github.com/repos/wp-cli/core-command/zipball/181f41645a8ca869d886a0ce84fbde2008bdab9f",
+                "reference": "181f41645a8ca869d886a0ce84fbde2008bdab9f",
                 "shasum": ""
             },
             "require": {
@@ -2994,9 +2994,9 @@
             "homepage": "https://github.com/wp-cli/core-command",
             "support": {
                 "issues": "https://github.com/wp-cli/core-command/issues",
-                "source": "https://github.com/wp-cli/core-command/tree/v2.1.9"
+                "source": "https://github.com/wp-cli/core-command/tree/v2.1.10"
             },
-            "time": "2023-02-17T16:33:19+00:00"
+            "time": "2023-04-10T13:44:51+00:00"
         },
         {
             "name": "wp-cli/cron-command",
@@ -3542,16 +3542,16 @@
         },
         {
             "name": "wp-cli/extension-command",
-            "version": "v2.1.12",
+            "version": "v2.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/extension-command.git",
-                "reference": "31ebccb1dfb9d7fdb60d495fd724385f75caa140"
+                "reference": "e92390ce3a0d95f534ab6c88f9a77bfd4615de47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/extension-command/zipball/31ebccb1dfb9d7fdb60d495fd724385f75caa140",
-                "reference": "31ebccb1dfb9d7fdb60d495fd724385f75caa140",
+                "url": "https://api.github.com/repos/wp-cli/extension-command/zipball/e92390ce3a0d95f534ab6c88f9a77bfd4615de47",
+                "reference": "e92390ce3a0d95f534ab6c88f9a77bfd4615de47",
                 "shasum": ""
             },
             "require": {
@@ -3634,9 +3634,9 @@
             "homepage": "https://github.com/wp-cli/extension-command",
             "support": {
                 "issues": "https://github.com/wp-cli/extension-command/issues",
-                "source": "https://github.com/wp-cli/extension-command/tree/v2.1.12"
+                "source": "https://github.com/wp-cli/extension-command/tree/v2.1.13"
             },
-            "time": "2023-03-03T14:38:19+00:00"
+            "time": "2023-04-04T21:39:30+00:00"
         },
         {
             "name": "wp-cli/i18n-command",
@@ -4086,16 +4086,16 @@
         },
         {
             "name": "wp-cli/php-cli-tools",
-            "version": "v0.11.17",
+            "version": "v0.11.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/php-cli-tools.git",
-                "reference": "f6be76b7c4ee2ef93c9531b8a37bdb7ce42c3728"
+                "reference": "0f503a790698cb36cf835e5c8d09cd4b64bf2325"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/php-cli-tools/zipball/f6be76b7c4ee2ef93c9531b8a37bdb7ce42c3728",
-                "reference": "f6be76b7c4ee2ef93c9531b8a37bdb7ce42c3728",
+                "url": "https://api.github.com/repos/wp-cli/php-cli-tools/zipball/0f503a790698cb36cf835e5c8d09cd4b64bf2325",
+                "reference": "0f503a790698cb36cf835e5c8d09cd4b64bf2325",
                 "shasum": ""
             },
             "require": {
@@ -4143,9 +4143,9 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-cli/php-cli-tools/issues",
-                "source": "https://github.com/wp-cli/php-cli-tools/tree/v0.11.17"
+                "source": "https://github.com/wp-cli/php-cli-tools/tree/v0.11.18"
             },
-            "time": "2023-01-12T01:18:21+00:00"
+            "time": "2023-04-04T16:03:53+00:00"
         },
         {
             "name": "wp-cli/rewrite-command",
