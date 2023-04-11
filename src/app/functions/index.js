@@ -87,6 +87,28 @@ export function getPlatformBaseUrl( path = '' ) {
 	return baseUrl() + path;
 }
 
+/**
+ * Gets Platform URL
+ * 
+ * @param {string} jarvisPath The path to the hosting resource for Jarvis accounts, leave blank for the main page.
+ * @param {string} legacyPath The path to the hosting resource for Legacy accounts, leave blank for the main page.
+ * 
+ * @return {string}
+ * 
+ * @example
+ * getPlatformPathUrl('home', 'app#home')
+ * // returns https://www.bluehost.com/my-account/home if Jarvis or https://my.bluehost.com/hosting/app#home if legacy
+ */
+export function getPlatformPathUrl ( jarvisPath = '', legacyPath = '' ) {
+	const isJarvis = 'undefined' !== typeof window.nfdIsJarvis ? window.nfdIsJarvis : false;
+
+	if (isJarvis) {
+		return getPlatformBaseUrl('/my-account/') + jarvisPath;
+	}
+
+	return getPlatformBaseUrl('/hosting/') + legacyPath;
+}
+
 export { 
 	sendPageviewEvent,
 	handleWPMenuAugmentation,
