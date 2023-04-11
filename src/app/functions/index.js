@@ -70,13 +70,18 @@ export function sendEvent(event) {
  */
 export function getPlatformBaseUrl( path = '' ) {
 	const brand = 'undefined' !== typeof window.nfBrandPlatform ? window.nfBrandPlatform : null;
+	const isJarvis = 'undefined' !== typeof window.nfdIsJarvis ? window.nfdIsJarvis : false;
+
 	const baseUrl = () => {
-		switch(brand) {
-			case 'Bluehost_India':
-				return 'https://my.bluehost.in';
-			default:
-				return 'https://my.bluehost.com';
+		if (brand === 'Bluehost_India') {
+			return 'https://my.bluehost.in';
 		}
+
+		if (isJarvis) {
+			return 'https://www.bluehost.com';
+		}
+
+		return 'https://my.bluehost.com';
 	}
 
 	return baseUrl() + path;

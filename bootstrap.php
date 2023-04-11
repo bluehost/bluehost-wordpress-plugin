@@ -3,7 +3,6 @@
 use Bluehost\AdminBar;
 use Bluehost\BuildAssets;
 use Bluehost\LoginRedirect;
-use Bluehost\Themes;
 use WP_Forge\WPUpdateHandler\PluginUpdater;
 use WP_Forge\UpgradeHandler\UpgradeHandler;
 
@@ -67,6 +66,32 @@ add_action(
 	},
 	2
 );
+
+// Check if Bluehost platform Legacy or Jarvis
+if ( ! get_transient( 'bh_platform' ) ) {
+	$bh_platform  = 'legacy';
+	$bh_host_file = null;
+
+	// Check for Jarvis .host-info file
+	if ( file_exists( ABSPATH . '/.host-info' ) ) {
+		$bh_host_file = file_get_contents( ABSPATH . '/.host-info' );
+	} elseif ( file_exists( ABSPATH . '../.host-info' ) ) {
+		$bh_host_file = file_get_contents( ABSPATH . '../.host-info' );
+	}
+
+	// Check for Jarvis platform
+	if ( null !== $bh_host_file && false !== strpos( $bh_host_file, 'platform=jarvis' ) ) {
+		$bh_platform = 'jarvis';
+	}
+
+	if ( ! get_option( 'bh_platform' ) ) {
+		add_option( 'bh_platform', $bh_platform );
+	} else {
+		update_option( 'bh_platform', $bh_platform );
+	}
+
+	set_transient( 'bh_platform', '1', DAY_IN_SECONDS );
+}
 
 // Require files
 require __DIR__ . '/inc/admin.php';

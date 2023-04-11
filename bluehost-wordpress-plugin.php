@@ -77,6 +77,7 @@ $bh_module_container->set(
 					'id'           => 'bluehost',
 					'file'         => BLUEHOST_PLUGIN_FILE,
 					'brand'        => get_option( 'mm_brand', 'bluehost' ),
+					'platform'     => get_option( 'bh_platform', 'legacy' ),
 					'install_date' => get_option( 'bh_plugin_install_date' ),
 				)
 			);
