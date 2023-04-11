@@ -4,7 +4,7 @@ import { BWAHeading, BWAButton } from '@app/components/atoms';
 import { BWAContentList, BWAContentListRow } from '@app/components/molecules';
 import { __ } from '@wordpress/i18n';
 import { JetpackLogo } from '@app/assets';
-import { getPlatformBaseUrl } from '@app/functions';
+import { getPlatformBaseUrl, getPlatformPathUrl } from '@app/functions';
 
 const baseUrl = select('bluehost/plugin').getAdminUrl();
 
@@ -139,7 +139,7 @@ export const HostingSection = () => {
             title={ __('Manage My Sites', 'bluehost-wordpress-plugin') }
             desc={ __('Manage your site from Bluehost\'s control panel. You can create backups, set security, and improve performance.', 'bluehost-wordpress-plugin') }>
             <BWAButton
-                href={isJarvis ? url + 'details' : url + 'app#/sites'}
+                href={ getPlatformPathUrl('details', 'app#/sites') }
                 isSecondary
                 utmContent="home_hosting_mysites_link"
             >
@@ -154,7 +154,7 @@ export const HostingSection = () => {
             title={ __('Email', 'bluehost-wordpress-plugin') }
             desc={ __('Create email accounts, compose, send, and receive your email from your Bluehost control panel.', 'bluehost-wordpress-plugin') }>
             <BWAButton
-                href={isJarvis ? url + 'home' : url +  'app#/email-office'}
+                href={ getPlatformPathUrl('home', 'app#/email-office') }
                 isSecondary
                 utmContent="home_hosting_email_link"
             >
@@ -169,7 +169,7 @@ export const HostingSection = () => {
             title={ __('Domains', 'bluehost-wordpress-plugin') }
             desc={ __('Find a new domain and assign it to your site or start a new site with a fresh domain.', 'bluehost-wordpress-plugin') }>
             <BWAButton
-                href={isJarvis ? url + 'domain-center/domain-list' : url + 'app#/domains'}
+                href={ getPlatformPathUrl('domain-center/domain-list', 'app#/domains') }
                 isSecondary
                 utmContent="home_hosting_find_domain_link"
             >
