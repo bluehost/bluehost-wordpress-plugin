@@ -19,10 +19,6 @@
         "issues": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
     },
     "repositories": {
-        "newfold-labs/wp-module-ecommerce": {
-            "type": "vcs",
-            "url": "https://github.com/newfold-labs/wp-module-ecommerce"
-        },
         "newfold": {
             "type": "composer",
             "url": "https://newfold-labs.github.io/satis/",
