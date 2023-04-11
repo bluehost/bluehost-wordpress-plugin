@@ -5,6 +5,9 @@ body {
     background-repeat: no-repeat;
     font-family: "Open Sans", sans-serif;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 * {
@@ -35,41 +38,41 @@ input {
 
 #wrap {
     max-width: 560px;
-    margin: 320px auto 120px;
+    width: 100%;
+    margin: 320px auto auto;
     color: #444;
     text-align: center;
     min-height: auto !important;
 }
 
 #wrap .content {
-    background: rgba(255,255,255,.75);
+    background: rgba(215, 223, 236, .5);
     padding-bottom: 2rem;
+    border-radius: 4px;
 }
 
 #wrap h1 {
-    color: #333;
+    color: #111;
     font-weight: 300;
     font-size: 28px;
 }
 
 #wrap h2 {
-    color: #333;
+    color: #111;
     font-weight: 300;
     font-size: 38px;
 }
 
 #wrap p {
-    color: #333;
+    color: #111;
     line-height: 1.5;
 }
 
 footer {
     background-color: #fff;
     width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     color: #666;
+    position:initial;
 }
 
 footer p {
@@ -81,7 +84,7 @@ footer p {
 }
 
 footer p a {
-    color: #3575D3;
+    color: #1555b3;
     text-decoration: underline;
 }
 
@@ -108,7 +111,7 @@ footer p a:hover {
     font-size: 14px;
     line-height: 1.5;
     border: 1px solid #2e66ba;
-    background: #2e66ba;
+    background: #1555b3;
     color: #fff;
     box-shadow: none;
     border-radius: 3px;
@@ -253,22 +256,26 @@ footer p a:hover {
 
 @media (max-width: 1024px) {
     #wrap {
-        margin: 240px auto 120px;
+        margin: 240px auto auto;
     }
 }
 
 @media (max-width: 960px) {
     #wrap {
-        margin: 120px auto;
+        margin: 120px auto auto;
     }
 }
 
 @media (max-width: 640px) {
     #wrap {
-        margin: 60px auto 120px;
+        margin: 60px auto auto;
         max-width: 100%;
         color: #444;
         padding: 0 20px;
+    }
+
+    .content {
+        padding: 20px;
     }
 
     .btn {
