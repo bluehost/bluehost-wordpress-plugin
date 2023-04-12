@@ -123,7 +123,7 @@ jobs:
         if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' && env.RECORD_REPLAY_API_KEY != '' }}
         with:
           api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
-          browser: 'Replay Chromium'
+          browser: 'replay-chromium'
           command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag php-${{ matrix.phpVersion }},wp-${{ matrix.wpVersion }}
           upload-all: false
 
