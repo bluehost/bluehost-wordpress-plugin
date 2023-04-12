@@ -1,6 +1,10 @@
 name: Cypress Test Matrix
 
 on:
+  pull_request:
+    types: [ opened, edited, reopened, ready_for_review ]
+    branches:
+      - 'release/**'
   release:
     types:
       - published
