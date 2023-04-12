@@ -1,6 +1,6 @@
-const {defineConfig} = require('cypress')
+const { defineConfig } = require('cypress')
 const cypressReplay = require("@replayio/cypress");
-const {phpVersion, core} = require('./.wp-env.json')
+const { phpVersion, core } = require('./.wp-env.json')
 const wpVersion = /[^/]*$/.exec(core)[0]
 
 module.exports = defineConfig({
@@ -28,6 +28,7 @@ module.exports = defineConfig({
 	],
 	e2e: {
 		setupNodeEvents(on, config) {
+			const semver = require('semver');
 
 			// Setup Replay
 			cypressReplay.default(on, config);
@@ -40,10 +41,19 @@ module.exports = defineConfig({
 			// Ensure that we have a semantically correct WordPress version number for comparisons.
 			if (config.env.wpVersion) {
 				if (config.env.wpVersion.split('.').length !== 3) {
-					config.env.wpSemverVersion = `${ config.env.wpVersion }.0`;
+					config.env.wpSemverVersion = `${config.env.wpVersion}.0`;
 				} else {
 					config.env.wpSemverVersion = config.env.wpVersion;
 				}
+			}
+
+			if (semver.satisfies(config.env.wpSemverVersion, '<6.1.0')) {
+				config.excludeSpecPattern = config.excludeSpecPattern.concat(
+					[
+						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/**",
+						"tests/cypress/integration/z-onboarding-phase-2-rudimentary.cy.js"
+					]
+				);
 			}
 
 			return config;
@@ -53,7 +63,7 @@ module.exports = defineConfig({
 		supportFile: 'tests/cypress/support/index.js',
 		testIsolation: false,
 		excludeSpecPattern: [
-			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/",
+			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/steps/design/**",
 			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/wp-module-support/"
 		]
 	},
