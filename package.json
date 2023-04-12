@@ -39,7 +39,7 @@
         "react-instantsearch-dom": "^6.39.1",
         "react-player": "^2.12.0",
         "react-router-dom": "^6.9.0",
-        "react-shepherd": "^3.3.3",
+        "react-shepherd": "^4.2.0",
         "react-slick": "^0.29.0",
         "shepherd.js": "^8.3.0",
         "slick-carousel": "^1.8.1"
