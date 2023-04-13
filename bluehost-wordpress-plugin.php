@@ -18,6 +18,8 @@
 
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
+use NewfoldLabs\WP\Module\CustomerBluehost\CustomerBluehost;
+use Bluehost\SiteMeta;
 
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 
@@ -79,6 +81,8 @@ $bh_module_container->set(
 					'brand'        => get_option( 'mm_brand', 'bluehost' ),
 					'platform'     => get_option( 'bh_platform', 'legacy' ),
 					'install_date' => get_option( 'bh_plugin_install_date' ),
+					'customer'     => CustomerBluehost::collect(),
+					'site_id'      => SiteMeta::get_id(),
 				)
 			);
 		}
