@@ -130,8 +130,7 @@ export const PerformanceSection = () => {
 };
 
 export const HostingSection = () => { 
-    const isJarvis = 'undefined' !== typeof window.nfdIsJarvis ? window.nfdIsJarvis : false;
-    const url = isJarvis ? getPlatformBaseUrl('/my-account/') : getPlatformBaseUrl('/hosting/');
+    const isJarvis = 'undefined' !== typeof window.nfdplugin.isJarvis ? window.nfdplugin.isJarvis : false;
 
     const ManageMySitesCard = () => (
         <BWAContentListRow

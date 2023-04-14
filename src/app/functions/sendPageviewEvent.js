@@ -13,7 +13,7 @@ const sendPageviewEvent = (location, title = false) => {
         data: {}
     };
 
-    payload.data.page           = window.bluehostWpAdminUrl + 'admin.php?page=bluehost#' + location.pathname; // full url
+    payload.data.page = window.nfdplugin.bluehostWpAdminUrl + 'admin.php?page=bluehost#' + location.pathname; // full url
     if ( title ) {
         payload.data['page_title']  = title;
     }

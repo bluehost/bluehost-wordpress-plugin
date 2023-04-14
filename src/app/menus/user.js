@@ -18,7 +18,7 @@ import { addUtmParams, getPlatformBaseUrl, getPlatformPathUrl } from '@app/funct
 /**
  * Component Defaults
  */
-const isJarvis = 'undefined' !== typeof window.nfdIsJarvis ? window.nfdIsJarvis : false;
+const isJarvis = 'undefined' !== typeof window.nfdplugin.isJarvis ? window.nfdplugin.isJarvis : false;
 
 let base = [
 	{

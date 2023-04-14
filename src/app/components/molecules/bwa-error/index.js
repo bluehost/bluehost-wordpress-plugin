@@ -10,8 +10,8 @@ import replace from "lodash/replace";
 import { useState } from '@wordpress/element';
 
 const resolvePageUrl = () => {
-	if ( 'undefined' !== typeof window.bluehostWpAdminUrl) {
-		return window.bluehostWpAdminUrl + 'admin.php?page=bluehost';
+	if ( 'undefined' !== typeof window.nfdplugin.bluehostWpAdminUrl) {
+		return window.nfdplugin.bluehostWpAdminUrl + 'admin.php?page=bluehost';
 	} else {
 		let url = window.location.href;
 		return replace( url, getFragment(url), '' ); // nix fragment

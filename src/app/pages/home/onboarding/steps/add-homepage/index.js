@@ -7,7 +7,7 @@ import { filterURLForDisplay } from '@wordpress/url';
 
 export const StartHomepageStep = () => {
     const siteUrl = () => {
-		const adminUrl = 'undefined' !== typeof window.bluehostWpAdminUrl ? window.bluehostWpAdminUrl : false;
+		const adminUrl = 'undefined' !== typeof window.nfdplugin.bluehostWpAdminUrl ? window.nfdplugin.bluehostWpAdminUrl : false;
 		if ( adminUrl ) {
 			return filterURLForDisplay( replace( adminUrl, '/wp-admin', '') );
 		}
