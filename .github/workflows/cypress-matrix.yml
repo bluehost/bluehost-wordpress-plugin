@@ -1,9 +1,10 @@
 name: Cypress Test Matrix
 
 on:
-  release:
-    types:
-      - published
+  pull_request:
+    types: [ opened, edited, reopened, ready_for_review ]
+    branches:
+      - 'release/**'
   workflow_dispatch:
 
 concurrency:
