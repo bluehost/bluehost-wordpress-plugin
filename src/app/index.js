@@ -94,7 +94,7 @@ const AppBody = ( props ) => {
 				constants={{
 					context: 'bluehost-plugin',
 					page: hashedPath,
-					resturl: window.nfdRestRoot
+					resturl: window.nfdplugin.restApiUrl
 				}}
 				methods={{
 					apiFetch,

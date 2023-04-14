@@ -209,7 +209,7 @@ export const DesignBuildSection = ( props ) => {
             title={ __( 'Customizer', 'bluehost-wordpress-plugin' ) }
             desc={ __( 'Make edits and see changes before you update.', 'bluehost-wordpress-plugin' ) }>
             <BWAButton
-                href={ window.nfdRestRoot + '/bluehost/v1/customize-site' }
+                href={ window.nfdplugin.restApiUrl + '/bluehost/v1/customize-site' }
                 isSecondary
             >
                 { __( 'Customize Theme', 'bluehost-wordpress-plugin' ) }

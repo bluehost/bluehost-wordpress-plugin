@@ -76,7 +76,7 @@ class Bluehost_Admin_App_Assets {
 			'common',
 			'nfdplugin',
 			array(
-				'restApiUrl'   => esc_url_raw( \get_home_url() . '/index.php?rest_route=/' ),
+				'restApiUrl'   => esc_url_raw( \get_home_url() . '/index.php?rest_route=' ),
 				'restApiNonce' => \wp_create_nonce( 'wp_rest' ),
 				'bluehostWpAdminUrl'=> \admin_url(),
 				'isJarvis' => $isJarvis,
