@@ -65,6 +65,29 @@ if ( version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 	require dirname( __FILE__ ) . '/bootstrap.php';
 }
 
+/**
+ * Check if site is hosted on Jarvis
+ *
+ * @return bool
+ */
+function bh_is_jarvis() {
+	$is_jarvis     = false;
+	$host_root_dir = $_SERVER['CONTEXT_DOCUMENT_ROOT'] . '/..';
+	$host_file     = null;
+
+	// Check for Jarvis .host-info file
+	if ( file_exists( $host_root_dir . '/.host-info' ) ) {
+		$host_file = file_get_contents( $host_root_dir . '/.host-info' );
+	}
+
+	// Check for Jarvis platform
+	if ( null !== $host_file && false !== strpos( $host_file, 'platform = jarvis' ) ) {
+		$is_jarvis = true;
+	}
+
+	return $is_jarvis;
+}
+
 /*
  * Initialize container values for data module
  */
@@ -79,7 +102,7 @@ $bh_module_container->set(
 					'id'           => 'bluehost',
 					'file'         => BLUEHOST_PLUGIN_FILE,
 					'brand'        => get_option( 'mm_brand', 'bluehost' ),
-					'platform'     => get_option( 'bh_platform', 'legacy' ),
+					'platform'     => bh_is_jarvis() ? 'jarvis' : 'legacy',
 					'install_date' => get_option( 'bh_plugin_install_date' ),
 					'customer'     => CustomerBluehost::collect(),
 					'site_id'      => SiteMeta::get_id(),

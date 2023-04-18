@@ -71,7 +71,7 @@ class Bluehost_Admin_App_Assets {
 	 * Register wp-admin inline scripts which load on all admin
 	 */
 	protected function prepareAdminData() {
-		$isJarvis = get_option( 'bh_platform' ) === 'jarvis' ? 'true' : null;
+		$isJarvis = bh_is_jarvis() ? 'true' : null;
 		wp_localize_script(
 			'common',
 			'nfdplugin',
