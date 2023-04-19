@@ -64,23 +64,47 @@ if ( version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 }
 
 /**
- * Check if site is hosted on Jarvis
+ * Check if platform is Jarvis
  *
  * @return bool
  */
 function bh_is_jarvis() {
-	$is_jarvis    = false;
-	$host_file    = null;
-	$host_homedir = explode( '/', $_SERVER['CONTEXT_DOCUMENT_ROOT'] );
-	$host_homedir = '/' . $host_homedir[1] . '/' . $host_homedir[2];
+	$is_jarvis = false;
+	$host      = array(
+		'dirs'      => explode( '/', ABSPATH ),
+		'user'      => get_current_user(),
+		'homedir'   => null,
+		'info_file' => null,
+	);
+
+	// Build host's home directory
+	foreach ( $host['dirs'] as $dir ) {
+		if ( ! empty( $dir ) ) {
+			$host['homedir'] = $host['homedir'] . '/' . $dir;
+
+			if ( $dir === $host['user'] ) {
+				break;
+			}
+		}
+	}
 
 	// Check for Jarvis .host-info file
-	if ( file_exists( $host_homedir . '/.host-info' ) ) {
-		$host_file = file_get_contents( $host_homedir . '/.host-info' );
+	if ( file_exists( $host['homedir'] . '/.host-info' ) ) {
+		$host['info_file'] = file_get_contents( $host['homedir'] . '/.host-info' );
 	}
 
 	// Check for Jarvis platform
-	if ( null !== $host_file && false !== strpos( $host_file, 'platform = jarvis' ) ) {
+	if ( null !== $host['info_file'] && false !== strpos( $host['info_file'], 'platform = jarvis' ) ) {
+		$is_jarvis = true;
+	}
+
+	if (
+		null !== $host['info_file']
+		&& (
+			false !== stripos( $host['info_file'], 'platform = jarvis' )
+			|| false !== stripos( $host['info_file'], 'platform=jarvis' )
+		)
+	) {
 		$is_jarvis = true;
 	}
 
@@ -105,6 +129,15 @@ $bh_module_container->set(
 					'install_date' => get_option( 'bh_plugin_install_date' ),
 				)
 			);
+		}
+	)
+);
+
+$bh_module_container->set(
+	'isJarvis',
+	$bh_module_container->computed(
+		function () {
+			return bh_is_jarvis();
 		}
 	)
 );
