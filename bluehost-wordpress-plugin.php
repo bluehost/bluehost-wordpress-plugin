@@ -94,10 +94,6 @@ function bh_is_jarvis() {
 	}
 
 	// Check for Jarvis platform
-	if ( null !== $host['info_file'] && false !== strpos( $host['info_file'], 'platform = jarvis' ) ) {
-		$is_jarvis = true;
-	}
-
 	if (
 		null !== $host['info_file']
 		&& (
