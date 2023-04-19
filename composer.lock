@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "799597e9607f607454c04d03a46b5df2",
+    "content-hash": "810a9e0cc75d647d0b4212374262b829",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -251,16 +251,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ctb",
-            "version": "0.4.0",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ctb.git",
-                "reference": "78c9d1af3008aff0297f085cc1d9d742c6a0c0e1"
+                "reference": "8a23278cc6e617c3ada3661ccae7e219a17aa9e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ctb/zipball/78c9d1af3008aff0297f085cc1d9d742c6a0c0e1",
-                "reference": "78c9d1af3008aff0297f085cc1d9d742c6a0c0e1",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ctb/zipball/8a23278cc6e617c3ada3661ccae7e219a17aa9e6",
+                "reference": "8a23278cc6e617c3ada3661ccae7e219a17aa9e6",
                 "shasum": ""
             },
             "require-dev": {
@@ -269,7 +269,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "NewfoldLabs\\WP\\Module\\Ctb\\": "includes"
+                    "NewfoldLabs\\WP\\Module\\CTB\\": "includes"
                 },
                 "files": [
                     "bootstrap.php"
@@ -294,10 +294,10 @@
             ],
             "description": "Newfold module for 'Click to Buy' functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ctb/tree/0.4.0",
+                "source": "https://github.com/newfold-labs/wp-module-ctb/tree/0.5.0",
                 "issues": "https://github.com/newfold-labs/wp-module-ctb/issues"
             },
-            "time": "2023-04-18T18:12:53+00:00"
+            "time": "2023-04-19T21:07:35+00:00"
         },
         {
             "name": "newfold-labs/wp-module-customer-bluehost",
