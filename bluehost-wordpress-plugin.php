@@ -69,13 +69,14 @@ if ( version_compare( PHP_VERSION, '5.6', '>=' ) ) {
  * @return bool
  */
 function bh_is_jarvis() {
-	$is_jarvis     = false;
-	$host_root_dir = $_SERVER['CONTEXT_DOCUMENT_ROOT'] . '/..';
-	$host_file     = null;
+	$is_jarvis    = false;
+	$host_file    = null;
+	$host_homedir = explode( '/', $_SERVER['CONTEXT_DOCUMENT_ROOT'] );
+	$host_homedir = '/' . $host_homedir[1] . '/' . $host_homedir[2];
 
 	// Check for Jarvis .host-info file
-	if ( file_exists( $host_root_dir . '/.host-info' ) ) {
-		$host_file = file_get_contents( $host_root_dir . '/.host-info' );
+	if ( file_exists( $host_homedir . '/.host-info' ) ) {
+		$host_file = file_get_contents( $host_homedir . '/.host-info' );
 	}
 
 	// Check for Jarvis platform
