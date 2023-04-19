@@ -70,7 +70,7 @@ export function sendEvent(event) {
  */
 export function getPlatformBaseUrl( path = '' ) {
 	const brand = 'undefined' !== typeof window.nfdplugin.brandPlatform ? window.nfdplugin.brandPlatform : null;
-	const isJarvis = 'undefined' !== typeof window.nfdplugin.isJarvis ? window.nfdplugin.isJarvis : false;
+	const isJarvis = 'undefined' !== typeof bluehost.env.isJarvis ? bluehost.env.isJarvis : false;
 
 	const baseUrl = () => {
 		if (brand === 'Bluehost_India') {
@@ -100,7 +100,7 @@ export function getPlatformBaseUrl( path = '' ) {
  * // returns https://www.bluehost.com/my-account/home if Jarvis or https://my.bluehost.com/hosting/app#home if legacy
  */
 export function getPlatformPathUrl ( jarvisPath = '', legacyPath = '' ) {
-	const isJarvis = 'undefined' !== typeof window.nfdplugin.isJarvis ? window.nfdplugin.isJarvis : false;
+	const isJarvis = 'undefined' !== typeof bluehost.env.isJarvis ? bluehost.env.isJarvis : false;
 
 	if (isJarvis) {
 		return getPlatformBaseUrl('/my-account/') + jarvisPath;

@@ -79,7 +79,6 @@ class Bluehost_Admin_App_Assets {
 				'restApiUrl'         => esc_url_raw( \get_home_url() . '/index.php?rest_route=' ),
 				'restApiNonce'       => \wp_create_nonce( 'wp_rest' ),
 				'bluehostWpAdminUrl' => \admin_url(),
-				'isJarvis'           => $isJarvis,
 				'brandPlatform'      => \get_option( 'mm_brand' ),
 			)
 		);
@@ -89,6 +88,7 @@ class Bluehost_Admin_App_Assets {
 	 * Register Page JS - only applies to bluehost pages
 	 */
 	protected function prepareData() {
+		global $bh_module_container;
 		$customerData = CustomerBluehost::collect();
 
 		$data = array(
@@ -106,6 +106,7 @@ class Bluehost_Admin_App_Assets {
 				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,
 				'phpVersion' => phpversion(),
 				'isStaging'  => Staging::getInstance()->isStaging(),
+				'isJarvis'   => $bh_module_container->get( 'isJarvis' ),
 			),
 			'wordpress' => array(
 				'hasReusableBlocks'              => \wp_count_posts( 'wp_block' )->publish >= 1,
