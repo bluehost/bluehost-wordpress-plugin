@@ -77,11 +77,9 @@ class Bluehost_Admin_App_Assets {
 		$hasToken      = ! empty( $token );
 		$hasCustomerId = ! empty( $customerData ) && ! empty( $customerData['customer_id'] );
 		$showCTBs      = $hasToken && $hasCustomerId;
-		$isJarvis      = get_option( 'bh_platform' ) === 'jarvis' ? 'true' : null;
 
 		\wp_add_inline_script( 'bh-ctb', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
 		\wp_add_inline_script( 'bh-ctb', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
-		\wp_add_inline_script( 'bh-ctb', 'window.nfdIsJarvis="' . $isJarvis . '";', 'before' );
 		\wp_add_inline_script( 'bh-ctb', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
 		\wp_add_inline_script( 'bh-ctb', $showCTBs ? 'window.nfdConnected=true;' : 'window.nfdConnected=false;', 'before' );
 	}
@@ -90,6 +88,7 @@ class Bluehost_Admin_App_Assets {
 	 * Register Page JS - only applies to bluehost pages
 	 */
 	protected function prepareData() {
+		global $bh_module_container;
 		$customerData = CustomerBluehost::collect();
 
 		$data = array(
@@ -107,6 +106,7 @@ class Bluehost_Admin_App_Assets {
 				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,
 				'phpVersion' => phpversion(),
 				'isStaging'  => Staging::getInstance()->isStaging(),
+				'isJarvis'   => $bh_module_container->get( 'isJarvis' ),
 			),
 			'wordpress'    => array(
 				'hasReusableBlocks'              => \wp_count_posts( 'wp_block' )->publish >= 1,

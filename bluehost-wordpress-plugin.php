@@ -2,7 +2,7 @@
 /**
  * Plugin Name: The Bluehost Plugin
  * Description: This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.
- * Version: 2.13.1
+ * Version: 2.13.2
  * Tested up to: 6.2
  * Requires at least: 5.9
  * Requires PHP: 7.0
@@ -33,7 +33,7 @@ if ( defined( 'BLUEHOST_PLUGIN_VERSION' ) ) {
 }
 
 // Define constants
-define( 'BLUEHOST_PLUGIN_VERSION', '2.13.1' );
+define( 'BLUEHOST_PLUGIN_VERSION', '2.13.2' );
 define( 'BLUEHOST_PLUGIN_FILE', __FILE__ );
 define( 'BLUEHOST_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLUEHOST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -63,6 +63,50 @@ if ( version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 	require dirname( __FILE__ ) . '/bootstrap.php';
 }
 
+/**
+ * Check if platform is Jarvis
+ *
+ * @return bool
+ */
+function bh_is_jarvis() {
+	$is_jarvis = false;
+	$host      = array(
+		'dirs'      => explode( '/', ABSPATH ),
+		'user'      => get_current_user(),
+		'homedir'   => null,
+		'info_file' => null,
+	);
+
+	// Build host's home directory
+	foreach ( $host['dirs'] as $dir ) {
+		if ( ! empty( $dir ) ) {
+			$host['homedir'] = $host['homedir'] . '/' . $dir;
+
+			if ( $dir === $host['user'] ) {
+				break;
+			}
+		}
+	}
+
+	// Check for Jarvis .host-info file
+	if ( file_exists( $host['homedir'] . '/.host-info' ) ) {
+		$host['info_file'] = file_get_contents( $host['homedir'] . '/.host-info' );
+	}
+
+	// Check for Jarvis platform
+	if (
+		null !== $host['info_file']
+		&& (
+			false !== stripos( $host['info_file'], 'platform = jarvis' )
+			|| false !== stripos( $host['info_file'], 'platform=jarvis' )
+		)
+	) {
+		$is_jarvis = true;
+	}
+
+	return $is_jarvis;
+}
+
 /*
  * Initialize container values for data module
  */
@@ -77,10 +121,18 @@ $bh_module_container->set(
 					'id'           => 'bluehost',
 					'file'         => BLUEHOST_PLUGIN_FILE,
 					'brand'        => get_option( 'mm_brand', 'bluehost' ),
-					'platform'     => get_option( 'bh_platform', 'legacy' ),
 					'install_date' => get_option( 'bh_plugin_install_date' ),
 				)
 			);
+		}
+	)
+);
+
+$bh_module_container->set(
+	'isJarvis',
+	$bh_module_container->computed(
+		function () {
+			return bh_is_jarvis();
 		}
 	)
 );
