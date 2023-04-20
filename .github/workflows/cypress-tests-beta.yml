@@ -1,28 +1,14 @@
 name: Cypress Tests Beta Only
 
 on:
-  push:
-    branches:
-      - main
-      - master
-      - trunk
-      - develop
-      - release/*
-      - feature/*
-      - add/*
-      - update/*
-      - fix/*
-      - try/*
-  pull_request:
-    types: [ opened, edited, reopened, ready_for_review ]
-  # schedule:
+  schedule:
     # Runs "Every Monday 6am UTC"
-    # - cron: '0 6 * * 1'
+    - cron: '0 6 * * 1'
   workflow_dispatch:
 
-# concurrency:
-#   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
-#   cancel-in-progress: true
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
   
 jobs:
   test:
