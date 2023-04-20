@@ -76,14 +76,13 @@ class Bluehost_Admin_App_Assets {
 		\wp_add_inline_script( 'common', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
 		\wp_add_inline_script( 'common', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
 		\wp_add_inline_script( 'common', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
-		
-		
+
 		wp_localize_script(
 			'common',
 			'nfdplugin',
 			array(
-				'restApiUrl'         => esc_url_raw( \get_home_url() . '/index.php?rest_route=' ),
-				'restApiNonce'       => \wp_create_nonce( 'wp_rest' ),
+				'restApiUrl'   => esc_url_raw( \get_home_url() . '/index.php?rest_route=' ),
+				'restApiNonce' => \wp_create_nonce( 'wp_rest' ),
 			)
 		);
 	}
