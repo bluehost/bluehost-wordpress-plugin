@@ -84,8 +84,7 @@ jobs:
             const fetch = require('node-fetch');
             fetch('https://api.wordpress.org/core/version-check/1.7/?channel=beta')
               .then(response => response.json())
-              .then(data => console.log(data.offers[0].download))
-              .catch(error => console.error(error));
+              .then(data => data.offers[0].download);
           ")
           echo $wp_beta_zip
         
