@@ -36,7 +36,7 @@ class Bluehost_Admin_App_Mods {
 	 *
 	 */
 	protected function primary_init() {
-		if ( isset( $_GET['page'] ) && 'bluehost' === filter_input( INPUT_GET, 'page', FILTER_SANITIZE_STRING ) ) {
+		if ( isset( $_GET['page'] ) && 'bluehost' === filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ) ) {
 			\add_filter( 'admin_footer_text', array( $this, 'add_brand_to_admin_footer' ) );
 			// \add_filter( 'update_footer', array( $this, 'add_plugin_version_to_update_footer'), 50 );
 		}
