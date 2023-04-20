@@ -72,16 +72,20 @@ class Bluehost_Admin_App_Assets {
 	 * for ctb script which loads on all admin
 	 */
 	protected function prepareAdminData() {
-		$token         = get_option( 'nfd_data_token' );
-		$customerData  = CustomerBluehost::collect();
-		$hasToken      = ! empty( $token );
-		$hasCustomerId = ! empty( $customerData ) && ! empty( $customerData['customer_id'] );
-		$showCTBs      = $hasToken && $hasCustomerId;
 
-		\wp_add_inline_script( 'bh-ctb', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
-		\wp_add_inline_script( 'bh-ctb', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
-		\wp_add_inline_script( 'bh-ctb', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
-		\wp_add_inline_script( 'bh-ctb', $showCTBs ? 'window.nfdConnected=true;' : 'window.nfdConnected=false;', 'before' );
+		\wp_add_inline_script( 'common', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
+		\wp_add_inline_script( 'common', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
+		\wp_add_inline_script( 'common', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
+		
+		
+		wp_localize_script(
+			'common',
+			'nfdplugin',
+			array(
+				'restApiUrl'         => esc_url_raw( \get_home_url() . '/index.php?rest_route=' ),
+				'restApiNonce'       => \wp_create_nonce( 'wp_rest' ),
+			)
+		);
 	}
 
 	/**
