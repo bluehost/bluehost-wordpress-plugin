@@ -14,7 +14,7 @@ class Bluehost_Admin_App_Mods {
 
 	/**
 	 * Get class instance.
-	 * 
+	 *
 	 * @return Bluehost_Admin_App_Mods|stdClass
 	 */
 	public static function return_instance() {
@@ -49,7 +49,7 @@ class Bluehost_Admin_App_Mods {
 
 	/**
 	 * Add the plugin version to the footer too
-	 * 
+	 *
 	 * @param string $version_text The incoming version text.
 	 * @return string The filtered version text.
 	 */
