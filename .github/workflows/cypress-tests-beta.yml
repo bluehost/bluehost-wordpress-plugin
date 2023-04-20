@@ -3,8 +3,12 @@ name: Cypress Tests Beta Only
 on:
   schedule:
     # Runs "Every Monday 6am UTC"
-    - cron: '0 6 * * 1'
+    - cron: '30 9 * * *'
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
 
 jobs:
   test:
