@@ -20,11 +20,14 @@ describe('Click to buy', function () {
 
 		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium', {
 			onBeforeLoad(contentWindow) {
-				// set nfdConnected to true, so the ctb click will pass to the endpoint and be intercepted
-				Object.defineProperty(contentWindow, 'nfdctb.supportsCTB', {
+				let nfdctb = {
+					supportsCTB: true
+				};
+				// set supportsCTB to true, so the ctb click will pass to the endpoint and be intercepted
+				Object.defineProperty(contentWindow, 'nfdctb', {
 					configurable: false,
 					writable: false,
-					value: true
+					value: nfdctb 
 				});
 			}
 		});
