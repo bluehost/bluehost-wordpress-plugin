@@ -38,7 +38,7 @@
         "doctrine/inflector": "1.2.0 as 1.3.1",
         "newfold-labs/wp-module-business-reviews": "^1.1",
         "newfold-labs/wp-module-coming-soon": "^1.1.3",
-        "newfold-labs/wp-module-ctb": "^0.7.0",
+        "newfold-labs/wp-module-ctb": "^1.0.0",
         "newfold-labs/wp-module-customer-bluehost": "^1.5.3",
         "newfold-labs/wp-module-data": "^2.3.0",
         "newfold-labs/wp-module-ecommerce": "0.8.2",

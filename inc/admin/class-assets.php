@@ -77,11 +77,11 @@ class Bluehost_Admin_App_Assets {
 		\wp_add_inline_script( 'common', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
 		\wp_add_inline_script( 'common', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
 
-		wp_localize_script(
+		\wp_localize_script(
 			'common',
 			'nfdplugin',
 			array(
-				'restApiUrl'   => esc_url_raw( \get_home_url() . '/index.php?rest_route=' ),
+				'restApiUrl'   => \esc_url_raw( \get_home_url() . '/index.php?rest_route=' ),
 				'restApiNonce' => \wp_create_nonce( 'wp_rest' ),
 			)
 		);
@@ -102,7 +102,7 @@ class Bluehost_Admin_App_Assets {
 				'pages'                => Bluehost_Admin_App_Page::get_top_level_pages(),
 				'noticesPathsDenyList' => Bluehost_Admin_App_Page::$noticesPathsDenyList, // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				'accountId'            => mojo_site_bin2hex(),
-				'nonce'                => wp_create_nonce( mojo_site_bin2hex() ),
+				'nonce'                => \wp_create_nonce( mojo_site_bin2hex() ),
 				'customer'             => $customerData,
 			),
 			'env'          => array(
