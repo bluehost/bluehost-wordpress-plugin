@@ -18,7 +18,7 @@
 
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
-use NewfoldLabs\WP\Module\CustomerBluehost\CustomerBluehost;
+// use NewfoldLabs\WP\Module\CustomerBluehost\CustomerBluehost;
 use Bluehost\SiteMeta;
 
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
@@ -124,7 +124,7 @@ $bh_module_container->set(
 					'file'         => BLUEHOST_PLUGIN_FILE,
 					'brand'        => get_option( 'mm_brand', 'bluehost' ),
 					'install_date' => get_option( 'bh_plugin_install_date' ),
-					'customer'     => CustomerBluehost::collect(),
+					// 'customer'     => CustomerBluehost::collect(),
 					'site_id'      => SiteMeta::get_id(),
 				)
 			);
