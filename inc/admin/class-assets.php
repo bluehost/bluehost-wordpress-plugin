@@ -72,13 +72,18 @@ class Bluehost_Admin_App_Assets {
 	 * for ctb script which loads on all admin
 	 */
 	protected function prepareAdminData() {
+		// register placeholder script handle with no source
+		wp_register_script( 'newfold-plugin', null, null, BLUEHOST_PLUGIN_VERSION, true );
+		wp_enqueue_script( 'newfold-plugin' );
 
-		\wp_add_inline_script( 'common', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
-		\wp_add_inline_script( 'common', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
-		\wp_add_inline_script( 'common', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
+		// add inline scripts to the handle with global js values
+		\wp_add_inline_script( 'newfold-plugin', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
+		\wp_add_inline_script( 'newfold-plugin', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
+		\wp_add_inline_script( 'newfold-plugin', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
 
+		// place values in nfdplugin object
 		\wp_localize_script(
-			'common',
+			'newfold-plugin',
 			'nfdplugin',
 			array(
 				'restApiUrl'   => \esc_url_raw( \get_home_url() . '/index.php?rest_route=' ),
