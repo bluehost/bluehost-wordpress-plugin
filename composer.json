@@ -45,7 +45,7 @@
         "newfold-labs/wp-module-loader": "^1.0.10",
         "newfold-labs/wp-module-marketplace": "^1.5.0",
         "newfold-labs/wp-module-notifications": "^1.1.2",
-        "newfold-labs/wp-module-onboarding": "1.3.0",
+        "newfold-labs/wp-module-onboarding": "1.4.1",
         "newfold-labs/wp-module-secure-passwords": "^1.1",
         "newfold-labs/wp-module-sso": "^1.0.3",
         "wp-forge/collection": "^1.0.2",
