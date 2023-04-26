@@ -6,25 +6,28 @@ describe('Click to buy', function () {
 
 		cy.intercept({
 			method: 'GET',
-			url: /bluehost(\/|%2F)v1(\/|%2F)ctb/,
+			url: /newfold-ctb(\/|%2F)v1(\/|%2F)ctb/,
 		},{
 			fixture: 'ctbGET'
 		}).as('ctbGET');
 
 		cy.intercept({
 			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)ctb/,
+			url: /newfold-ctb(\/|%2F)v1(\/|%2F)ctb/,
 		}, {
 			fixture: 'ctbPOST'
 		}).as('ctbPOST');
 
 		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium', {
 			onBeforeLoad(contentWindow) {
-				// set nfdConnected to true, so the ctb click will pass to the endpoint and be intercepted
-				Object.defineProperty(contentWindow, 'nfdConnected', {
+				let nfdctb = {
+					supportsCTB: true
+				};
+				// set supportsCTB to true, so the ctb click will pass to the endpoint and be intercepted
+				Object.defineProperty(contentWindow, 'nfdctb', {
 					configurable: false,
 					writable: false,
-					value: true
+					value: nfdctb 
 				});
 			}
 		});
