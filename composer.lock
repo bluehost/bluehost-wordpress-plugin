@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "15db393879dcc84112f27c147695299b",
+    "content-hash": "a902ceffef4f0efaca2bf3672a8c9f7c",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -250,6 +250,56 @@
             "time": "2023-04-19T19:31:25+00:00"
         },
         {
+            "name": "newfold-labs/wp-module-ctb",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-ctb.git",
+                "reference": "949e785b815d55eda15ad0d06dc7a25d83803a93"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ctb/zipball/949e785b815d55eda15ad0d06dc7a25d83803a93",
+                "reference": "949e785b815d55eda15ad0d06dc7a25d83803a93",
+                "shasum": ""
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\CTB\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "scripts": {
+                "fix": [
+                    "vendor/bin/phpcbf . --standard=phpcs.xml"
+                ],
+                "lint": [
+                    "vendor/bin/phpcs . --standard=phpcs.xml -s"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Mullins",
+                    "homepage": "https://evanmullins.com"
+                }
+            ],
+            "description": "Newfold module for 'Click to Buy' functionality in brand plugins",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-ctb/tree/1.0.0",
+                "issues": "https://github.com/newfold-labs/wp-module-ctb/issues"
+            },
+            "time": "2023-04-21T20:08:32+00:00"
+        },
+        {
             "name": "newfold-labs/wp-module-customer-bluehost",
             "version": "1.5.3",
             "source": {
@@ -442,16 +492,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "98b21eb5fc9ac1c78eb8bc61e674b45a682739f3"
+                "reference": "9d2e43d375db62f88f0963a19674f0b4f50116bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/98b21eb5fc9ac1c78eb8bc61e674b45a682739f3",
-                "reference": "98b21eb5fc9ac1c78eb8bc61e674b45a682739f3",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/9d2e43d375db62f88f0963a19674f0b4f50116bd",
+                "reference": "9d2e43d375db62f88f0963a19674f0b4f50116bd",
                 "shasum": ""
             },
             "require": {
@@ -492,10 +542,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.5.0",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.5.1",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2023-03-13T15:56:29+00:00"
+            "time": "2023-04-26T13:31:44+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
@@ -544,16 +594,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "1.3.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "053e660daf5de5c508b856228d498117d1c95f12"
+                "reference": "8f356fa28a87e05cd2d6b24b4365ef31c2119449"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/053e660daf5de5c508b856228d498117d1c95f12",
-                "reference": "053e660daf5de5c508b856228d498117d1c95f12",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/8f356fa28a87e05cd2d6b24b4365ef31c2119449",
+                "reference": "8f356fa28a87e05cd2d6b24b4365ef31c2119449",
                 "shasum": ""
             },
             "require": {
@@ -593,10 +643,10 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.3.0",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.4.1",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2023-04-06T08:04:58+00:00"
+            "time": "2023-04-25T08:06:41+00:00"
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",
