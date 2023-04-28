@@ -344,23 +344,26 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.3",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "6fb2387855bb334f62e924c79d57e58028b45207"
+                "reference": "cc57640d7d5884d5e7ad1028c0da160d0a95c63f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/6fb2387855bb334f62e924c79d57e58028b45207",
-                "reference": "6fb2387855bb334f62e924c79d57e58028b45207",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/cc57640d7d5884d5e7ad1028c0da160d0a95c63f",
+                "reference": "cc57640d7d5884d5e7ad1028c0da160d0a95c63f",
                 "shasum": ""
             },
             "require": {
+                "sultann/wp-query-builder": "@dev",
+                "wp-forge/container": "^2.0",
+                "wp-forge/wp-upgrade-handler": "^1.0",
                 "wpscholar/url": "^1.2"
             },
             "require-dev": {
-                "bluehost/wp-php-standards": "^1.1"
+                "newfold-labs/wp-php-standards": "^1.2"
             },
             "type": "library",
             "autoload": {
@@ -373,10 +376,10 @@
             },
             "scripts": {
                 "fix": [
-                    "vendor/bin/phpcbf . --standard=Bluehost"
+                    "vendor/bin/phpcbf . --standard=phpcs.xml"
                 ],
                 "lint": [
-                    "vendor/bin/phpcs . --standard=Bluehost -s"
+                    "vendor/bin/phpcs . --standard=phpcs.xml -s"
                 ]
             },
             "license": [
@@ -384,10 +387,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.3",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.3.1",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2023-03-10T22:26:03+00:00"
+            "time": "2023-04-28T21:32:35+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
@@ -740,6 +743,104 @@
             "time": "2022-07-15T18:33:14+00:00"
         },
         {
+            "name": "psr/container",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/container.git",
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common Container Interface (PHP FIG PSR-11)",
+            "homepage": "https://github.com/php-fig/container",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interface",
+                "container-interop",
+                "psr"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/container/issues",
+                "source": "https://github.com/php-fig/container/tree/master"
+            },
+            "time": "2017-02-14T16:28:37+00:00"
+        },
+        {
+            "name": "sultann/wp-query-builder",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sultann/wp-query-builder.git",
+                "reference": "2710ae36d33edd4c10dca7290a2e43125243af79"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sultann/wp-query-builder/zipball/2710ae36d33edd4c10dca7290a2e43125243af79",
+                "reference": "2710ae36d33edd4c10dca7290a2e43125243af79",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PluginEver\\QueryBuilder\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MD Sultan Nasir Uddin",
+                    "email": "manikdrmc@gmail.com"
+                }
+            ],
+            "description": "WP Query Builder is a lightweight and efficient SQL Query Builder based on wpdb for WordPress. It supports complicated query generation.",
+            "keywords": [
+                "database",
+                "query builder",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/sultann/wp-query-builder/issues",
+                "source": "https://github.com/sultann/wp-query-builder/tree/v1.0.2"
+            },
+            "time": "2020-06-14T15:12:46+00:00"
+        },
+        {
             "name": "wp-cli/wp-config-transformer",
             "version": "v1.3.3",
             "source": {
@@ -819,6 +920,47 @@
                 "source": "https://github.com/wp-forge/collection/tree/1.0.2"
             },
             "time": "2022-08-26T17:42:31+00:00"
+        },
+        {
+            "name": "wp-forge/container",
+            "version": "2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wp-forge/container.git",
+                "reference": "a4f48079eff2d7e3f31acb09d199d1c1e39de74a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wp-forge/container/zipball/a4f48079eff2d7e3f31acb09d199d1c1e39de74a",
+                "reference": "a4f48079eff2d7e3f31acb09d199d1c1e39de74a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0",
+                "psr/container": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WP_Forge\\Container\\": "includes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "A lightweight, PHP 7.0+ compatible, PSR-11 dependency injection container.",
+            "support": {
+                "issues": "https://github.com/wp-forge/container/issues",
+                "source": "https://github.com/wp-forge/container/tree/2.0"
+            },
+            "time": "2022-08-10T20:22:58+00:00"
         },
         {
             "name": "wp-forge/fluent",
