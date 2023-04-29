@@ -348,12 +348,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "cc57640d7d5884d5e7ad1028c0da160d0a95c63f"
+                "reference": "7c477ebae9801171310af04243ac88465ab405c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/cc57640d7d5884d5e7ad1028c0da160d0a95c63f",
-                "reference": "cc57640d7d5884d5e7ad1028c0da160d0a95c63f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/7c477ebae9801171310af04243ac88465ab405c5",
+                "reference": "7c477ebae9801171310af04243ac88465ab405c5",
                 "shasum": ""
             },
             "require": {
@@ -390,7 +390,7 @@
                 "source": "https://github.com/newfold-labs/wp-module-data/tree/2.3.1",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2023-04-28T21:32:35+00:00"
+            "time": "2023-04-29T17:36:43+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
