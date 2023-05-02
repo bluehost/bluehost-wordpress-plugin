@@ -4,8 +4,8 @@
  * Description: This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.
  * Version: 2.13.3
  * Tested up to: 6.2
- * Requires at least: 5.9
- * Requires PHP: 7.0
+ * Requires at least: 6.0
+ * Requires PHP: 7.1
  * Author: Bluehost
  * Author URI: https://www.bluehost.com/
  * Text Domain: bluehost-wordpress-plugin
@@ -61,8 +61,8 @@ if ( 'standard' !== Bluehost_Plugin_Compatibility_Status::get() ) {
 }
 
 // Check PHP version before initializing to prevent errors if plugin is incompatible.
-if ( version_compare( PHP_VERSION, '5.6', '>=' ) ) {
-	require dirname( __FILE__ ) . '/bootstrap.php';
+if ( version_compare( PHP_VERSION, '7.1', '>=' ) ) {
+	require __DIR__ . '/bootstrap.php';
 }
 
 /**
