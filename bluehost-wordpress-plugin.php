@@ -18,6 +18,7 @@
 
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
+
 // use NewfoldLabs\WP\Module\CustomerBluehost\CustomerBluehost;
 use Bluehost\SiteMeta;
 
@@ -39,8 +40,18 @@ define( 'BLUEHOST_PLUGIN_VERSION', '2.13.3' );
 define( 'BLUEHOST_PLUGIN_FILE', __FILE__ );
 define( 'BLUEHOST_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLUEHOST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
 if ( ! defined( 'NFD_HIIVE_URL' ) ) {
 	define( 'NFD_HIIVE_URL', 'https://hiive.cloud/api' );
+}
+
+if ( defined( 'SITE_UNDER_LOAD' ) && SITE_UNDER_LOAD ) {
+
+	// Load alternate experience
+	require __DIR__ . '/inc/alt-experience/init.php';
+
+	// Short-circuit all plugin functionality
+	return;
 }
 
 // Run Compatibility Scan
