@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a902ceffef4f0efaca2bf3672a8c9f7c",
+    "content-hash": "63ae64bf00e42a64d888fb26ce928636",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -594,16 +594,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "8f356fa28a87e05cd2d6b24b4365ef31c2119449"
+                "reference": "ee2b421a1772421c0ccdd12f1a81f5044142e9a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/8f356fa28a87e05cd2d6b24b4365ef31c2119449",
-                "reference": "8f356fa28a87e05cd2d6b24b4365ef31c2119449",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/ee2b421a1772421c0ccdd12f1a81f5044142e9a6",
+                "reference": "ee2b421a1772421c0ccdd12f1a81f5044142e9a6",
                 "shasum": ""
             },
             "require": {
@@ -643,10 +643,10 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.4.1",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.4.2",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2023-04-25T08:06:41+00:00"
+            "time": "2023-05-04T12:21:29+00:00"
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",
@@ -741,16 +741,16 @@
         },
         {
             "name": "wp-cli/wp-config-transformer",
-            "version": "v1.3.2",
+            "version": "v1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/wp-config-transformer.git",
-                "reference": "474bce451d435993a4c300368557ee7637b58e9b"
+                "reference": "b1a6a013e4a8c74b29ba185368b78a140b3268da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/wp-config-transformer/zipball/474bce451d435993a4c300368557ee7637b58e9b",
-                "reference": "474bce451d435993a4c300368557ee7637b58e9b",
+                "url": "https://api.github.com/repos/wp-cli/wp-config-transformer/zipball/b1a6a013e4a8c74b29ba185368b78a140b3268da",
+                "reference": "b1a6a013e4a8c74b29ba185368b78a140b3268da",
                 "shasum": ""
             },
             "require": {
@@ -779,9 +779,9 @@
             "homepage": "https://github.com/wp-cli/wp-config-transformer",
             "support": {
                 "issues": "https://github.com/wp-cli/wp-config-transformer/issues",
-                "source": "https://github.com/wp-cli/wp-config-transformer/tree/v1.3.2"
+                "source": "https://github.com/wp-cli/wp-config-transformer/tree/v1.3.3"
             },
-            "time": "2023-04-12T22:59:37+00:00"
+            "time": "2023-04-26T19:51:31+00:00"
         },
         {
             "name": "wp-forge/collection",
