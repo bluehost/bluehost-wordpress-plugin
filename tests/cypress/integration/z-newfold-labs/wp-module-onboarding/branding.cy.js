@@ -25,8 +25,8 @@ describe( 'Branding', function () {
 		cy.reload();
 		cy.get( 'body' ).should( 'have.class', 'nfd-brand-wordpress' );
 		cy.get( '.is-bg-primary' )
-			.should( 'have.css', 'background-color', 'rgb(221, 82, 40)' )
-			.should( 'have.css', 'color', 'rgb(242, 242, 242)' );
+			.should( 'have.css', 'background-color', 'rgb(0, 124, 186)' )
+			.should( 'have.css', 'color', 'rgb(255, 255, 255)' );
 		cy.get( '.nfd-step-card-subheading' ).should( 'contain', 'web host' );
 	} );
 
