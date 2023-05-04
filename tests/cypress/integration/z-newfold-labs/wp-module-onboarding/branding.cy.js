@@ -27,7 +27,7 @@ describe( 'Branding', function () {
 		cy.get( '.is-bg-primary' )
 			.should( 'have.css', 'background-color', 'rgb(221, 82, 40)' )
 			.should( 'have.css', 'color', 'rgb(242, 242, 242)' );
-		cy.get( '.nfd-step-card-subheading' ).should( 'contain', 'undefined' );
+		cy.get( '.nfd-step-card-subheading' ).should( 'contain', 'web host' );
 	} );
 
 	it( 'Has brand specific CSS.', () => {
