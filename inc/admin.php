@@ -26,6 +26,7 @@ class Init {
 		'mods.php',
 		'page.php',
 		'assets.php',
+		'utils.php',
 	);
 
 	/**
@@ -123,6 +124,7 @@ class Init {
 		\Bluehost_Admin_App_Mods::return_instance();
 		\Bluehost_Admin_App_Assets::return_instance();
 		\Bluehost_Admin_App_Page::return_instance();
+		\Bluehost_Admin_App_Utils::return_instance();
 		\Newfold\Plugin\DefaultContent\Pages::return_instance();
 		\Newfold\Plugin\Tours\BlockEditor::return_instance();
 	}
