@@ -1,4 +1,5 @@
 import './store';
+import './tailwind.pcss';
 import './app-main.scss';
 
 import {
@@ -18,6 +19,7 @@ import classnames from 'classnames';
 import { dispatch } from '@wordpress/data';
 import {kebabCase} from 'lodash';
 import { useEffect, useState } from '@wordpress/element';
+import { Root } from '@yoast/ui-library';
 
 // component sourced from module
 import { default as NewfoldNotifications } from '../../vendor/newfold-labs/wp-module-notifications/assets/js/components/notifications/'; 
@@ -112,9 +114,11 @@ const AppBody = ( props ) => {
 
 export const App = () => (
 	<ErrorBoundary FallbackComponent={BWAError}>
-		<Router>
-			<AppBody />
-		</Router>
+		<Root context={{ isRtl: false }} >
+			<Router>
+				<AppBody />
+			</Router>
+		</Root>
 	</ErrorBoundary>
 )
 
