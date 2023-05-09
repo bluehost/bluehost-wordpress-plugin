@@ -45,7 +45,7 @@ if ( ! defined( 'NFD_HIIVE_URL' ) ) {
 	define( 'NFD_HIIVE_URL', 'https://hiive.cloud/api' );
 }
 
-if ( defined( 'SITE_UNDER_LOAD' ) && SITE_UNDER_LOAD ) {
+if ( defined( 'BURST_SAFETY_MODE' ) && BURST_SAFETY_MODE ) {
 
 	// Load alternate experience
 	require __DIR__ . '/inc/alt-experience/init.php';
