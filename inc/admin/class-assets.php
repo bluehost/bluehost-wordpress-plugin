@@ -1,7 +1,6 @@
 <?php
 
 use Bluehost\BuildAssets;
-use Bluehost\Staging;
 use NewfoldLabs\WP\Module\CustomerBluehost\CustomerBluehost;
 
 /**
@@ -113,7 +112,7 @@ class Bluehost_Admin_App_Assets {
 			'env'          => array(
 				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,
 				'phpVersion' => phpversion(),
-				'isStaging'  => Staging::getInstance()->isStaging(),
+				'isStaging'  => $bh_module_container->get( 'isStaging' ),
 				'isJarvis'   => $bh_module_container->get( 'isJarvis' ),
 			),
 			'wordpress'    => array(

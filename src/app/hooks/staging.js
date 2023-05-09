@@ -174,7 +174,7 @@ export default function useStaging() {
 
 	useEffect( () => {
 		// Set staging details.
-		callApi( { path: '/bluehost/v1/staging' } )
+		callApi( { path: '/newfold-staging/v1/staging' } )
 			.then( setup );
 	}, [] );
 
@@ -183,7 +183,7 @@ export default function useStaging() {
   */
 	async function createEnv() {
 		setIsCreatingStaging( true );
-		const response = await callApi( { path: '/bluehost/v1/staging', method: 'POST' } );
+		const response = await callApi( { path: '/newfold-staging/v1/staging', method: 'POST' } );
 		if ( response ) {
 			setup( response );
 			setNotice( response.message );
@@ -196,7 +196,7 @@ export default function useStaging() {
   * Delete the staging environment.
   */
 	async function deleteEnv() {
-		const response = await callApi( { path: '/bluehost/v1/staging', method: 'DELETE' } );
+		const response = await callApi( { path: '/newfold-staging/v1/staging', method: 'DELETE' } );
 		if ( response ) {
 			setHasStaging( false );
 			setNotice( __( 'Staging website destroyed.', 'bluehost-wordpress-plugin' ) );
@@ -210,7 +210,7 @@ export default function useStaging() {
   */
 	async function switchToEnv( env ) {
 		setSwitchingTo( env );
-		const response = await callApi( { path: `/bluehost/v1/staging/switch-to?env=${ env }` } );
+		const response = await callApi( { path: `/newfold-staging/v1/staging/switch-to?env=${ env }` } );
 		if ( response && response.hasOwnProperty( 'load_page' ) ) {
 			window.location.href = response.load_page;
 		}
@@ -220,7 +220,7 @@ export default function useStaging() {
   * Clone the production environment to staging.
   */
 	async function cloneEnv() {
-		const response = await callApi( { path: '/bluehost/v1/staging/clone', method: 'POST' } );
+		const response = await callApi( { path: '/newfold-staging/v1/staging/clone', method: 'POST' } );
 		if ( response ) {
 			setNotice( __( 'Website cloned successfully.', 'bluehost-wordpress-plugin' ) );
 		}
@@ -232,7 +232,7 @@ export default function useStaging() {
   * @param {string} type One of 'all', 'files', or 'db'
   */
 	async function deployChanges( type = 'all' ) {
-		const response = await callApi( { path: `/bluehost/v1/staging/deploy?type=${ type }`, method: 'POST' } );
+		const response = await callApi( { path: `/newfold-staging/v1/staging/deploy?type=${ type }`, method: 'POST' } );
 		if ( response ) {
 			setNotice( __( 'Changes deployed successfully.', 'bluehost-wordpress-plugin' ) );
 		}

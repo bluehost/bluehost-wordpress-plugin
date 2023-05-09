@@ -11,7 +11,6 @@ function bluehost_init_rest_api() {
 		'Bluehost\\RestApi\\CachingController',
 		'Bluehost\\RestApi\\CustomizeSiteController',
 		'Bluehost\\RestApi\\SettingsController',
-		'Bluehost\\RestApi\\StagingController',
 	);
 
 	foreach ( $controllers as $controller ) {

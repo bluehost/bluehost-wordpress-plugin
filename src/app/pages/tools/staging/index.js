@@ -1,4 +1,5 @@
 import './style.scss';
+import { default as NewfoldStaging } from '../../../../../vendor/newfold-labs/wp-module-staging/components/staging/';
 
 import {
 	BWADropdownButton,
@@ -29,6 +30,21 @@ import DeploymentBWAOverlay from './deploy-overlay';
 import DeploymentModal from './deploy-modal';
 import Tips from './tips';
 import { useStaging } from '@app/hooks';
+
+import apiFetch from '@wordpress/api-fetch';
+import classnames from 'classnames';
+import { useLocation, useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
+import {
+	// Button,
+	Card,
+	CardBody,
+	CardHeader,
+	CardFooter,
+	CardMedia,
+	TabPanel,
+	// Spinner
+} from '@wordpress/components';
 
 export default function StagingPage() {
 	const [ deployType, setDeployType ] = useState( 'all' );
@@ -81,10 +97,42 @@ export default function StagingPage() {
 		};
 	}, [ notice ] );
 
+	// Components to pass to module
+	const moduleComponents = {
+		Button,
+		Card,
+		CardBody,
+		CardFooter,
+		CardHeader,
+		CardMedia,
+		TabPanel,
+		Spinner
+	};
+	// methods to pass to module
+	const moduleMethods = {
+		apiFetch,
+		classnames,
+		useState,
+		useEffect,
+		useNavigate,
+		useLocation
+	};
+	// constants to pass to module
+	const moduleConstants = {
+		'resturl': window.nfdplugin.restApiUrl,
+		'eventendpoint': '/newfold-data/v1/events/',
+	}
+
 	return (
 		<BWACommonTemplate className="bluehost-staging">
 			<BWAHeading level="h2" size={ 1 } className="is-page-title">{ __( 'Staging', 'bluehost-wordpress-plugin' ) }</BWAHeading>
 			<p>{ __( 'A staging site is a copy of your site where you can safely test changes before publishing them to your production site. It gives you a way to try new things, test updates, and then deploy them when you\'re ready.', 'bluehost-wordpress-plugin' ) }</p>
+
+			<NewfoldStaging 
+				Components={ moduleComponents }
+				methods={ moduleMethods }
+				constants={ moduleConstants }
+			/>
 
 			<div className="bluehost-staging__production-env">
 				<BWAHeading level="h3" size={2}>{ __( 'Production site', 'bluehost-wordpress-plugin' ) }</BWAHeading>
