@@ -51,7 +51,7 @@ function MarketplacePage() {
 		'resturl': window.nfdRestRoot,
 		'eventendpoint': '/newfold-data/v1/events/',
 		'perPage': 12,
-		'supportsCTB': window.nfdConnected,
+		'supportsCTB': window.nfdctb.supportsCTB,
 	}
 
 	return (

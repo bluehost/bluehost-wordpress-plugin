@@ -1,40 +1,22 @@
-name: Cypress Test Matrix
+name: Cypress Tests Beta Only
 
 on:
-  pull_request:
-    types: [ opened, edited, reopened, ready_for_review ]
-    branches:
-      - 'master'
+  schedule:
+    # Runs "Every Monday 6am UTC"
+    - cron: '0 6 * * 1'
   workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
-
+  
 jobs:
   test:
-    name: Run Cypress Test Matrix
+    name: Run Cypress Beta Only Tests
     runs-on: ubuntu-latest
-    timeout-minutes: 40
-
-    strategy:
-      fail-fast: false
-      matrix:
-        phpVersion:
-          - '7.1'
-          - '7.2'
-          - '7.3'
-          - '7.4'
-          - '8.0'
-          - '8.1'
-          - '8.2'
-        wpVersion:
-          - '6.0'
-          - '6.1'
-          - '6.2'
+    timeout-minutes: 45
 
     steps:
-
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -54,7 +36,6 @@ jobs:
           mkdir dist
           echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
           echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
-
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
@@ -72,14 +53,12 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
-
       - name: Show versions
         run: |
           php --version
           composer --version
           node --version
           npm --version
-
       - name: Validate composer.json and composer.lock
         run: composer validate
 
@@ -99,33 +78,38 @@ jobs:
         working-directory: ${{ steps.workflow.outputs.DIST }}
         run: find .
 
+      - name: Fetch WordPress beta version
+        run: |
+          wp_beta_zip=$(node -e "
+            const fetch = require('node-fetch');
+            fetch('https://api.wordpress.org/core/version-check/1.7/?channel=beta')
+              .then(response => response.json())
+              .then(data => data.offers[0].download);
+          ")
+          echo $wp_beta_zip
+        
       - name: Configure WordPress
         run: |
-          echo '{"core": "WordPress/WordPress#tags/${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}","plugins": [ "${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}" ] }' > .wp-env.override.json
-
-      - name: Configure Cypress
-        run: |
-          echo '{"wpVersion": "${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}"}' > cypress.env.json
-
+          echo '{ "core" : "'"${wp_beta_zip}"'" , "plugins":[ "${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}" ] }' > .wp-env.override.json
+        
       - name: Install WordPress
         run: npx wp-env start --debug
 
-      - name: Run Cypress Tests
+      - name: Run Cypress Beta Only Tests
         env:
           RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
         if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || env.RECORD_REPLAY_API_KEY == '' }}
         run: npx cypress run
 
-      - name: Run Cypress Tests
+      - name: Run Cypress Beta Only Tests
         uses: replayio/action-cypress@v0.2.8
         env:
-          RECORD_REPLAY_METADATA_TEST_RUN_TITLE: "php-${{ matrix.phpVersion }}, wp-${{ matrix.wpVersion }}"
           RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
         if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' && env.RECORD_REPLAY_API_KEY != '' }}
         with:
           api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
           browser: 'replay-chromium'
-          command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag php-${{ matrix.phpVersion }},wp-${{ matrix.wpVersion }}
+          command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
           upload-all: false
 
       - name: List Replays
@@ -134,13 +118,13 @@ jobs:
         run: npx @replayio/replay ls --json
 
       - name: Store screenshots of test failures
-        if: ${{ failure() }}
+        if: failure()
         uses: actions/upload-artifact@v3
         with:
           name: screenshots
           path: ./tests/cypress/screenshots
 
       - name: Output debug.log file contents
-        if: ${{ always() }}
+        if: always()
         continue-on-error: true
         run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"

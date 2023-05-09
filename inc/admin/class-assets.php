@@ -72,22 +72,31 @@ class Bluehost_Admin_App_Assets {
 	 * for ctb script which loads on all admin
 	 */
 	protected function prepareAdminData() {
-		$token         = get_option( 'nfd_data_token' );
-		$customerData  = CustomerBluehost::collect();
-		$hasToken      = ! empty( $token );
-		$hasCustomerId = ! empty( $customerData ) && ! empty( $customerData['customer_id'] );
-		$showCTBs      = $hasToken && $hasCustomerId;
+		// register placeholder script handle with no source
+		wp_register_script( 'newfold-plugin', null, null, BLUEHOST_PLUGIN_VERSION, true );
+		wp_enqueue_script( 'newfold-plugin' );
 
-		\wp_add_inline_script( 'bh-ctb', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
-		\wp_add_inline_script( 'bh-ctb', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
-		\wp_add_inline_script( 'bh-ctb', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
-		\wp_add_inline_script( 'bh-ctb', $showCTBs ? 'window.nfdConnected=true;' : 'window.nfdConnected=false;', 'before' );
+		// add inline scripts to the handle with global js values
+		\wp_add_inline_script( 'newfold-plugin', 'window.bluehostWpAdminUrl="' . \admin_url() . '";', 'before' );
+		\wp_add_inline_script( 'newfold-plugin', 'window.nfBrandPlatform="' . \get_option( 'mm_brand' ) . '";', 'before' );
+		\wp_add_inline_script( 'newfold-plugin', 'window.nfdRestRoot="' . \get_home_url() . '/index.php?rest_route=";', 'before' );
+
+		// place values in nfdplugin object
+		\wp_localize_script(
+			'newfold-plugin',
+			'nfdplugin',
+			array(
+				'restApiUrl'   => \esc_url_raw( \get_home_url() . '/index.php?rest_route=' ),
+				'restApiNonce' => \wp_create_nonce( 'wp_rest' ),
+			)
+		);
 	}
 
 	/**
 	 * Register Page JS - only applies to bluehost pages
 	 */
 	protected function prepareData() {
+		global $bh_module_container;
 		$customerData = CustomerBluehost::collect();
 
 		$data = array(
@@ -98,13 +107,14 @@ class Bluehost_Admin_App_Assets {
 				'pages'                => Bluehost_Admin_App_Page::get_top_level_pages(),
 				'noticesPathsDenyList' => Bluehost_Admin_App_Page::$noticesPathsDenyList, // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				'accountId'            => mojo_site_bin2hex(),
-				'nonce'                => wp_create_nonce( mojo_site_bin2hex() ),
+				'nonce'                => \wp_create_nonce( mojo_site_bin2hex() ),
 				'customer'             => $customerData,
 			),
 			'env'          => array(
 				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,
 				'phpVersion' => phpversion(),
 				'isStaging'  => Staging::getInstance()->isStaging(),
+				'isJarvis'   => $bh_module_container->get( 'isJarvis' ),
 			),
 			'wordpress'    => array(
 				'hasReusableBlocks'              => \wp_count_posts( 'wp_block' )->publish >= 1,
