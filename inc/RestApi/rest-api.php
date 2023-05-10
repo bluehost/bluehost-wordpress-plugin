@@ -9,7 +9,6 @@ function bluehost_init_rest_api() {
 		'Bluehost\\RestApi\\AdminErrorController',
 		'Bluehost\\RestApi\\BluehostBlogController',
 		'Bluehost\\RestApi\\CachingController',
-		'Bluehost\\RestApi\\CustomizeSiteController',
 		'Bluehost\\RestApi\\SettingsController',
 		'Bluehost\\RestApi\\StagingController',
 	);
