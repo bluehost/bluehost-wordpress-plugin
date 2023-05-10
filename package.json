@@ -80,7 +80,7 @@
         "build": "cross-env NODE_ENV=production wp-scripts build --config ./bin/webpack.production.js",
         "check-engines": "wp-scripts check-engines",
         "check-licenses": "wp-scripts check-licenses --production",
-        "create:dist": "rsync -r --exclude-from=.distignore . ./bluehost-wordpress-plugin",
+        "create:dist": "rsync -r --include-from=.distinclude --exclude-from=.distignore . ./bluehost-wordpress-plugin",
         "create:zip": "cd ./bluehost-wordpress-plugin && zip -r -9 ../bluehost-wordpress-plugin.zip . && ls -lh ../bluehost-wordpress-plugin.zip",
         "cypress": "npm cypress open",
         "cypress:record": "RECORD_ALL_CONTENT=1 RECORD_REPLAY_METADATA_FILE=$(mktemp) npx cypress run --browser 'Replay Chromium'",
