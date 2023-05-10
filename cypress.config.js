@@ -47,11 +47,21 @@ module.exports = defineConfig({
 				}
 			}
 
+			// Exclude onboarding tests for WordPress lower than 6.1
 			if (semver.satisfies(config.env.wpSemverVersion, '<6.1.0')) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
 					[
 						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/**",
 						"tests/cypress/integration/z-onboarding-phase-2-rudimentary.cy.js"
+					]
+				);
+			}
+
+			// Exclude onboarding/ecommerce tests for PHP lower than 7.3 (7.1 and 7.2)
+			if (semver.satisfies(config.env.phpVersion, '<7.3.0')) {
+				config.excludeSpecPattern = config.excludeSpecPattern.concat(
+					[
+						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/ecommerce/**",
 					]
 				);
 			}

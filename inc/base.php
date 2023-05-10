@@ -81,38 +81,6 @@ function bh_install_date_filter( $install_date ) {
 add_filter( 'nfd_install_date_filter', 'bh_install_date_filter' );
 
 /**
- * Makes a GET request to an API and caches the results.
- *
- * @param string $api_url - the api url
- *
- * @return array|WP_Error
- */
-function bh_api_cache( $api_url ) {
-	$hash      = md5( $api_url );
-	$transient = get_transient( 'bh_api_calls' );
-	if ( false === $transient || ! isset( $transient[ $hash ] ) ) {
-		$transient[ $hash ] = wp_remote_get( $api_url, array( 'timeout' => 15 ) );
-		if ( ! is_wp_error( $transient[ $hash ] ) ) {
-			set_transient( 'bh_api_calls', $transient, DAY_IN_SECONDS );
-		}
-	}
-
-	return $transient[ $hash ];
-}
-
-/**
- * Clear cached API responses.
- */
-function bh_clear_api_calls() {
-	if ( is_admin() ) {
-		delete_transient( 'bh_api_calls' );
-	}
-}
-
-add_action( 'wp_login', 'bh_clear_api_calls' );
-add_action( 'pre_current_active_plugins', 'bh_clear_api_calls' );
-
-/**
  * Use mojo news feed
  *
  * @param string $feed - incoming feed url

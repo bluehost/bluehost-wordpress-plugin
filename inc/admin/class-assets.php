@@ -105,6 +105,7 @@ class Bluehost_Admin_App_Assets {
 				'isTopLevel'           => 0,
 				'pages'                => Bluehost_Admin_App_Page::get_top_level_pages(),
 				'noticesPathsDenyList' => Bluehost_Admin_App_Page::$noticesPathsDenyList, // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+				'customizeSiteUrl'     => Bluehost_Admin_App_Utils::get_customize_site_url(),
 				'accountId'            => mojo_site_bin2hex(),
 				'nonce'                => \wp_create_nonce( mojo_site_bin2hex() ),
 				'customer'             => $customerData,
@@ -116,6 +117,7 @@ class Bluehost_Admin_App_Assets {
 				'isJarvis'   => $bh_module_container->get( 'isJarvis' ),
 			),
 			'wordpress'    => array(
+				'isFSE'                          => Bluehost_Admin_App_Utils::is_fse(),
 				'hasReusableBlocks'              => \wp_count_posts( 'wp_block' )->publish >= 1,
 				'isJetpackActive'                => class_exists( 'Jetpack' ) ? 1 : 0,
 				'isWooActive'                    => class_exists( 'woocommerce' ) ? 1 : 0,

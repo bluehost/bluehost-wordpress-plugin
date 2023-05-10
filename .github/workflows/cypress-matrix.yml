@@ -2,7 +2,7 @@ name: Cypress Test Matrix
 
 on:
   pull_request:
-    types: [ opened, edited, reopened, ready_for_review ]
+    types: [ opened, edited, reopened, ready_for_review, synchronize ]
     branches:
       - 'master'
   workflow_dispatch:
@@ -93,7 +93,7 @@ jobs:
         run: npm run build
 
       - name: Create Distribution Copy
-        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+        run: rsync -r --include-from=.distinclude --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
       - name: List Distribution Files
         working-directory: ${{ steps.workflow.outputs.DIST }}
