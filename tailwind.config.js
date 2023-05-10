@@ -22,8 +22,8 @@ module.exports = {
   },
   content: [
     ...yoastPreset.content,
-    "./node_modules/@newfold-labs/**/*.js",
-    "./vendor/newfold-labs/**/*.js",
+    "./node_modules/@newfold-labs/**/**/*.js",
+    "./vendor/newfold-labs/**/**/*.js",
     "./src/**/*.js",
   ],
 };
