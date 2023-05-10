@@ -19,7 +19,7 @@
     "dependencies": {
         "@newfold-labs/wp-module-ecommerce": "github:newfold-labs/wp-module-ecommerce#v0.8.3",
         "@wordpress/a11y": "^3.30.0",
-        "@wordpress/api-fetch": "^3.6.2",
+        "@wordpress/api-fetch": "^6.29.0",
         "@wordpress/components": "^23.7.0",
         "@wordpress/data": "^8.6.0",
         "@wordpress/dom": "^3.30.0",
