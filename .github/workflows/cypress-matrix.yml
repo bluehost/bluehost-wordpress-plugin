@@ -2,7 +2,7 @@ name: Cypress Test Matrix
 
 on:
   pull_request:
-    types: [ opened, edited, reopened, ready_for_review ]
+    types: [ opened, edited, reopened, ready_for_review, synchronize ]
     branches:
       - 'master'
   workflow_dispatch:
