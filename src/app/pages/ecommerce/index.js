@@ -8,6 +8,7 @@ import "@newfold-labs/wp-module-ecommerce/bluehost.css";
 import "@newfold-labs/wp-module-ecommerce/styles.scss";
 import "@newfold-labs/wp-module-ecommerce";
 import "./styles.scss";
+import MarketplaceLite from '../../../../vendor/newfold-labs/wp-module-marketplace/components/marketplaceLite/';
 
 const NewfoldECommerce = window.NewfoldECommerce;
 
@@ -28,7 +29,8 @@ function EcommercePage() {
   };
   const wpModules = {
     Modal,
-    navigate
+    navigate,
+    MarketplaceLite,
   };
   return (
     <BWACommonTemplate>
