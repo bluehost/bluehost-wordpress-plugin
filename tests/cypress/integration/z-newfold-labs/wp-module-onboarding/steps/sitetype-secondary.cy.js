@@ -33,16 +33,16 @@ describe( 'Get Started Site Type Secondary', function () {
 
 	it( 'Check selected category is visible and selected', () => {
 		cy.get( '.category-scrolling-wrapper' ).should( 'be.visible' );
-		cy.get( '.categName' ).should( 'contain', 'Business' );
+		cy.get( '.category-scrolling-wrapper__type-text' ).should( 'contain', 'Business' );
 	} );
 
 	it( 'Check different subCategories exist and is selectable', () => {
 		let categoryCount = 0;
 		const className = '.subCategoriesSection';
 		cy.get( className ).should( 'be.visible' );
-		const arr = cy.get( className.concat( ' span' ) );
+		const arr = cy.get( className.concat( ' div' ) );
 		arr.each( () => {
-			cy.get( className.concat( ' span' ) )
+			cy.get( className.concat( ' div' ) )
 				.eq( categoryCount )
 				.click()
 				.should( 'have.class', 'chosenSecondaryCategory' );
@@ -54,13 +54,13 @@ describe( 'Get Started Site Type Secondary', function () {
 		let categoryCount = 0;
 		const className = '.subCategoriesSection';
 		cy.get( className ).should( 'be.visible' );
-		cy.get( '.tellUsInput' )
+		cy.get( '.nfd-setup-primary-custom__tellus-input' )
 			.scrollIntoView()
 			.should( 'be.visible' )
 			.type( 'Cars' );
-		const arr = cy.get( className.concat( ' span' ) );
+		const arr = cy.get( className.concat( ' div' ) );
 		arr.each( () => {
-			cy.get( className.concat( ' span' ) )
+			cy.get( className.concat( ' div' ) )
 				.eq( categoryCount )
 				.should( 'not.have.class', 'chosenSecondaryCategory' );
 			categoryCount += 1;
@@ -72,7 +72,7 @@ describe( 'Get Started Site Type Secondary', function () {
 		cy.get( '.subCategoriesSection' )
 			.children()
 			.should( 'have.class', 'chosenSecondaryCategory' );
-		cy.get( '.tellUsInput' )
+		cy.get( '.nfd-setup-primary-custom__tellus-input' )
 			.scrollIntoView()
 			.should( 'be.visible' )
 			.should( 'be.empty' );
