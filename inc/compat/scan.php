@@ -15,8 +15,8 @@ class Bluehost_Plugin_Compatibility_Scan {
 		'incompatible_plugins' => array(
 			'mojo-marketplace-wp-plugin/mojo-marketplace.php',
 		),
-		'min_wp'               => '5.2',
-		'min_php'              => '5.6',
+		'min_wp'               => '6.0',
+		'min_php'              => '7.1',
 		'php_extensions'       => array(),
 		'multisite'            => false,
 	);

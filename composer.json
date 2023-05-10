@@ -1,93 +1,94 @@
 {
-    "name": "bluehost/bluehost-wordpress-plugin",
-    "description": "This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
-    "type": "wordpress-plugin",
-    "license": "GPL-2.0-or-later",
-    "authors": [
-        {
-            "name": "Mike Hansen",
-            "homepage": "https://mikehansen.me/"
-        },
-        {
-            "name": "Micah Wood",
-            "email": "micah@wpscholar.com",
-            "homepage": "https://wpscholar.com"
-        }
-    ],
-    "support": {
-        "source": "https://github.com/bluehost/bluehost-wordpress-plugin",
-        "issues": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
+  "name": "bluehost/bluehost-wordpress-plugin",
+  "description": "This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Mike Hansen",
+      "homepage": "https://mikehansen.me/"
     },
-    "repositories": {
-        "newfold": {
-            "type": "composer",
-            "url": "https://newfold-labs.github.io/satis/",
-            "only": [
-                "newfold-labs/*"
-            ]
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "Bluehost\\": "inc/",
-            "Newfold\\Plugin\\": "inc/"
-        }
-    },
-    "require": {
-        "ext-iconv": "*",
-        "doctrine/inflector": "1.2.0 as 1.3.1",
-        "newfold-labs/wp-module-business-reviews": "^1.1",
-        "newfold-labs/wp-module-coming-soon": "^1.1.3",
-        "newfold-labs/wp-module-ctb": "^1.0.0",
-        "newfold-labs/wp-module-customer-bluehost": "^1.5.3",
-        "newfold-labs/wp-module-data": "^2.3.1",
-        "newfold-labs/wp-module-ecommerce": "0.8.3",
-        "newfold-labs/wp-module-loader": "^1.0.10",
-        "newfold-labs/wp-module-marketplace": "^1.5.1",
-        "newfold-labs/wp-module-notifications": "^1.1.2",
-        "newfold-labs/wp-module-onboarding": "1.5.0",
-        "newfold-labs/wp-module-secure-passwords": "^1.1",
-        "newfold-labs/wp-module-sso": "^1.0.3",
-        "wp-forge/collection": "^1.0.2",
-        "wp-forge/helpers": "^1.1.1",
-        "wp-forge/wp-update-handler": "^1.0.1",
-        "wp-forge/wp-upgrade-handler": "^1.0",
-        "wpscholar/url": "^1.2.2"
-    },
-    "require-dev": {
-        "newfold-labs/wp-php-standards": "^1.2",
-        "wp-cli/i18n-command": "@stable",
-        "wp-cli/wp-cli-bundle": "@stable"
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "sort-packages": true,
-        "platform": {
-            "php": "7.0.0"
-        },
-        "platform-check": false,
-        "preferred-install": {
-            "newfold-labs/*": "source",
-            "*": "dist"
-        },
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    },
-    "scripts": {
-        "fix": [
-            "vendor/bin/phpcbf --standard=phpcs.xml ."
-        ],
-        "i18n": [
-            "vendor/bin/wp i18n make-pot . ./languages/bluehost-wordpress-plugin.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/bluehost/bluehost-wordpress-plugin/issues\",\"POT-Creation-Date\":null}' --exclude=assets,storybook,tests"
-        ],
-        "lint": [
-            "vendor/bin/phpcs --standard=phpcs.xml -s ."
-        ]
-    },
-    "scripts-descriptions": {
-        "fix": "Automatically fix coding standards issues where possible.",
-        "i18n": "Generate a .pot file for translation.",
-        "lint": "Check files against coding standards."
+    {
+      "name": "Micah Wood",
+      "email": "micah@wpscholar.com",
+      "homepage": "https://wpscholar.com"
     }
+  ],
+  "support": {
+    "source": "https://github.com/bluehost/bluehost-wordpress-plugin",
+    "issues": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bluehost\\": "inc/",
+      "Newfold\\Plugin\\": "inc/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "platform": {
+      "php": "7.0.0"
+    },
+    "platform-check": false,
+    "preferred-install": {
+      "newfold-labs/*": "source",
+      "*": "dist"
+    },
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "scripts": {
+    "fix": [
+      "vendor/bin/phpcbf --standard=phpcs.xml ."
+    ],
+    "i18n": [
+      "vendor/bin/wp i18n make-pot . ./languages/bluehost-wordpress-plugin.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/bluehost/bluehost-wordpress-plugin/issues\",\"POT-Creation-Date\":null}' --exclude=assets,storybook,tests"
+    ],
+    "lint": [
+      "vendor/bin/phpcs --standard=phpcs.xml -s ."
+    ]
+  },
+  "scripts-descriptions": {
+    "fix": "Automatically fix coding standards issues where possible.",
+    "i18n": "Generate a .pot file for translation.",
+    "lint": "Check files against coding standards."
+  },
+  "repositories": {
+    "newfold": {
+      "type": "composer",
+      "url": "https://newfold-labs.github.io/satis/",
+      "only": [
+        "newfold-labs/*"
+      ]
+    }
+  },
+  "require": {
+    "ext-iconv": "*",
+    "doctrine/inflector": "1.2.0 as 1.3.1",
+    "newfold-labs/wp-module-business-reviews": "^1.1",
+    "newfold-labs/wp-module-coming-soon": "^1.1.3",
+    "newfold-labs/wp-module-ctb": "^1.0.0",
+    "newfold-labs/wp-module-customer-bluehost": "^1.5.3",
+    "newfold-labs/wp-module-data": "^2.3",
+    "newfold-labs/wp-module-ecommerce": "0.8.3",
+    "newfold-labs/wp-module-loader": "^1.0.10",
+    "newfold-labs/wp-module-marketplace": "^1.5.1",
+    "newfold-labs/wp-module-notifications": "^1.1.2",
+    "newfold-labs/wp-module-onboarding": "1.6.0",
+    "newfold-labs/wp-module-secure-passwords": "^1.1",
+    "newfold-labs/wp-module-sso": "^1.0.3",
+    "wp-forge/collection": "^1.0.2",
+    "wp-forge/helpers": "^1.1.1",
+    "wp-forge/wp-update-handler": "^1.0.1",
+    "wp-forge/wp-upgrade-handler": "^1.0",
+    "wpscholar/url": "^1.2.2"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "newfold-labs/wp-php-standards": "^1.2",
+    "wp-cli/i18n-command": "@stable",
+    "wp-cli/wp-cli-bundle": "@stable"
+  }
 }

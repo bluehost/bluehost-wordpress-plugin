@@ -99,9 +99,19 @@ describe('Home Page', () => {
 					cy.contains('p', 'Make edits and see changes before you update.');
 
 					cy.contains('a.bluehost.components-button', 'Customize Theme');
-					cy.get('a.bluehost.components-button')
-						.should('have.attr', 'href')
-						.and('include', '/customize-site');
+
+					cy.window().then((win) => {
+						if ('undefined' !== typeof win.bluehost.wordpress.isFSE && win.bluehost.wordpress.isFSE) {
+							cy.get('a.bluehost.components-button')
+							.should('have.attr', 'href')
+							.and('include', '/site-editor');
+						} else {
+							cy.get('a.bluehost.components-button')
+							.should('have.attr', 'href')
+							.and('include', '/customize');
+						}
+					});
+					
 				});
 
 		});
