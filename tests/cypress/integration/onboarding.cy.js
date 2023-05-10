@@ -92,11 +92,23 @@ describe('Onboarding', () => {
 		cy.get('.nf-onboarding-base-step .illustration')
 			.should('be.visible').and('have.attr', 'alt', "Designer working on a website");
 
-		cy.get('.nf-onboarding-base-step .components-button')
-			.should('be.visible')
-			.and('have.text', 'Customize your site')
-			.and('have.attr', 'href')
-			.and('include', '/customize-site');
+			cy.window().then((win) => {
+				if ('undefined' !== typeof win.bluehost.wordpress.isFSE && win.bluehost.wordpress.isFSE) {
+					cy.get('.nf-onboarding-base-step .components-button')
+					.should('be.visible')
+					.and('have.text', 'Customize your site')
+					.and('have.attr', 'href')
+					.and('include', '/site-editor');
+				} else {
+					cy.get('.nf-onboarding-base-step .components-button')
+					.should('be.visible')
+					.and('have.text', 'Customize your site')
+					.and('have.attr', 'href')
+					.and('include', '/customize');
+				}
+			});
+
+		
 	})
 
 	it('Launch Tab', () => {

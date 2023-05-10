@@ -1,3 +1,4 @@
+import { select } from '@wordpress/data';
 import { addQueryArgs } from '@wordpress/url';
 import apiFetch from '@wordpress/api-fetch';
 import handleWPMenuActiveHighlight from './highlightTopLevel';
@@ -110,9 +111,25 @@ export function getPlatformPathUrl ( jarvisPath = '', legacyPath = '' ) {
 	return getPlatformBaseUrl('/hosting/') + legacyPath;
 }
 
+/**
+ * Get the correct site editor url between FSE and classic Customizer.
+ * 
+ * @returns {string}
+ */
+export function getSiteCustomizerUrl() {
+        const customizerUrl = 'undefined' !== typeof bluehost.app.customizeSiteUrl ? bluehost.app.customizeSiteUrl : false;
+
+        if (!customizerUrl) {
+			const adminUrl = select('bluehost/plugin').getAdminUrl();
+            return adminUrl + 'customize.php';
+        }
+
+        return customizerUrl;
+}
+
 export { 
 	sendPageviewEvent,
 	handleWPMenuAugmentation,
 	handleWPMenuActiveHighlight,
-	userTrigger
+	userTrigger,
 };

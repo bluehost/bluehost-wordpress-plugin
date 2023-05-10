@@ -4,7 +4,7 @@ import { BWAHeading, BWAButton } from '@app/components/atoms';
 import { BWAContentList, BWAContentListRow } from '@app/components/molecules';
 import { __ } from '@wordpress/i18n';
 import { JetpackLogo } from '@app/assets';
-import { getPlatformBaseUrl, getPlatformPathUrl } from '@app/functions';
+import { getPlatformBaseUrl, getPlatformPathUrl, getSiteCustomizerUrl } from '@app/functions';
 
 const baseUrl = select('bluehost/plugin').getAdminUrl();
 
@@ -210,7 +210,7 @@ export const DesignBuildSection = ( props ) => {
             title={ __( 'Customizer', 'bluehost-wordpress-plugin' ) }
             desc={ __( 'Make edits and see changes before you update.', 'bluehost-wordpress-plugin' ) }>
             <BWAButton
-                href={ window.nfdRestRoot + '/bluehost/v1/customize-site' }
+                href={ getSiteCustomizerUrl() }
                 isSecondary
             >
                 { __( 'Customize Theme', 'bluehost-wordpress-plugin' ) }
