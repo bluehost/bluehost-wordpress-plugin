@@ -10,8 +10,8 @@ import {
 } from '@app/components/molecules';
 import {
 	BWAHeading,
-	BWAButton as Button,
-	BWASpinner as Spinner,
+	BWAButton,
+	BWASpinner,
 } from '@app/components/atoms';
 import {
 	RadioButtonDisabledIcon,
@@ -36,14 +36,15 @@ import classnames from 'classnames';
 import { useLocation, useNavigate } from 'react-router-dom';
 // import { useEffect } from 'react';
 import {
-	// Button,
+	Button,
 	Card,
 	CardBody,
 	CardHeader,
 	CardFooter,
 	CardMedia,
+	Icon,
 	TabPanel,
-	// Spinner
+	Spinner,
 } from '@wordpress/components';
 
 export default function StagingPage() {
@@ -105,6 +106,7 @@ export default function StagingPage() {
 		CardFooter,
 		CardHeader,
 		CardMedia,
+		Icon,
 		TabPanel,
 		Spinner
 	};
@@ -120,13 +122,17 @@ export default function StagingPage() {
 	// constants to pass to module
 	const moduleConstants = {
 		'resturl': window.nfdplugin.restApiUrl,
+		'restnonce': window.nfdplugin.restApiNonce,
 		'eventendpoint': '/newfold-data/v1/events/',
+		'stagingLongDescription': __( 'A staging site is a copy of your site where you can safely test changes before publishing them to your production site. It gives you a way to try new things, test updates, and then deploy them when you\'re ready.', 'bluehost-wordpress-plugin' ),
+		'stagingDescription': __( 'This is an unpublished copy of your website.', 'bluehost-wordpress-plugin' ),
+		'productionDescription': __( 'This is your live website.', 'bluehost-wordpress-plugin' ),
+		'cloneButtonText': __( 'Clone to Staging', 'bluehost-wordpress-plugin' ),
 	}
 
 	return (
 		<BWACommonTemplate className="bluehost-staging">
 			<BWAHeading level="h2" size={ 1 } className="is-page-title">{ __( 'Staging', 'bluehost-wordpress-plugin' ) }</BWAHeading>
-			<p>{ __( 'A staging site is a copy of your site where you can safely test changes before publishing them to your production site. It gives you a way to try new things, test updates, and then deploy them when you\'re ready.', 'bluehost-wordpress-plugin' ) }</p>
 
 			<NewfoldStaging 
 				Components={ moduleComponents }
@@ -136,18 +142,18 @@ export default function StagingPage() {
 
 			<div className="bluehost-staging__production-env">
 				<BWAHeading level="h3" size={2}>{ __( 'Production site', 'bluehost-wordpress-plugin' ) }</BWAHeading>
-				<p>{ __( 'This is your live website.', 'bluehost-wordpress-plugin' ) }</p>
+				<p>{ moduleConstants.productionDescription }</p>
 				<BWAEnvironmentCard
 					color="green"
 					deploymentActionsComponent={
 						hasStaging && (
-							<Button
+							<BWAButton
 								disabled={ ! isProduction }
 								isSecondary
 								onClick={ () => setShowCloneModal( true ) }
 							>
-								{ __( 'Clone to Staging', 'bluehost-wordpress-plugin' ) }
-							</Button>
+								{ moduleConstants.cloneButtonText }
+							</BWAButton>
 						)
 					}
 					environmentName={ __( 'Live Site', 'bluehost-wordpress-plugin' ) }
@@ -175,7 +181,7 @@ export default function StagingPage() {
 					if ( isCreatingStaging ) {
 						return (
 							<div className={ `bluehost-staging__step --creation` }>
-								<Spinner />
+								<BWASpinner />
 								<div>{ __( 'Creating your staging site. This usually takes a few minutes...', 'bluehost-wordpress-plugin' ) }</div>
 								<p>
 									{ __( 'You can wait or close this window and access your staging site from the staging menu after setup is complete.', 'bluehost-wordpress-plugin' ) }
@@ -188,9 +194,9 @@ export default function StagingPage() {
 						return (
 							<div className="bluehost-staging__step --default">
 								<p>{ __( 'You don\'t have a staging site yet.', 'bluehost-wordpress-plugin' ) }</p>
-								<Button isPrimary onClick={ createEnv }>
+								<BWAButton isPrimary onClick={ createEnv }>
 									{ __( 'Create Staging Site', 'bluehost-wordpress-plugin' ) }
-								</Button>
+								</BWAButton>
 							</div>
 						);
 					}
@@ -198,7 +204,7 @@ export default function StagingPage() {
 					return (
 						<div className={ `bluehost-staging__step --ready` }>
 							<p>
-								{ __( 'This is an unpublished copy of your website.', 'bluehost-wordpress-plugin' ) }
+								{ moduleConstants.stagingDescription }
 							</p>
 							<BWAEnvironmentCard
 								color="black"

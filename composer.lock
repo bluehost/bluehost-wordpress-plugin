@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b79f20f9a485b8b61b4ccadeea466f7",
+    "content-hash": "dd4dbef63df2669bd6f80cda08383a7c",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -741,6 +741,56 @@
                 "issues": "https://github.com/newfold-labs/wp-module-sso/issues"
             },
             "time": "2022-07-15T18:33:14+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-staging",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-staging.git",
+                "reference": "91b13d7f7118c96a76fc92a8bc89eae5ab1097ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/91b13d7f7118c96a76fc92a8bc89eae5ab1097ad",
+                "reference": "91b13d7f7118c96a76fc92a8bc89eae5ab1097ad",
+                "shasum": ""
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Staging\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "scripts": {
+                "fix": [
+                    "vendor/bin/phpcbf . --standard=phpcs.xml"
+                ],
+                "lint": [
+                    "vendor/bin/phpcs . --standard=phpcs.xml -s"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Mullins",
+                    "homepage": "https://evanmullins.com"
+                }
+            ],
+            "description": "Newfold module for staging functionality in brand plugins",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-staging/tree/main",
+                "issues": "https://github.com/newfold-labs/wp-module-staging/issues"
+            },
+            "time": "2023-05-11T15:26:51+00:00"
         },
         {
             "name": "psr/container",
@@ -2382,12 +2432,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "f86a07b7eb07f9297e939d8c5f97178b2c189dfe"
+                "reference": "bc1d6711a0a8bb1f2db39755266a44bd74614c72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/f86a07b7eb07f9297e939d8c5f97178b2c189dfe",
-                "reference": "f86a07b7eb07f9297e939d8c5f97178b2c189dfe",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/bc1d6711a0a8bb1f2db39755266a44bd74614c72",
+                "reference": "bc1d6711a0a8bb1f2db39755266a44bd74614c72",
                 "shasum": ""
             },
             "conflict": {
@@ -2572,6 +2622,7 @@
                 "ibexa/core": ">=4,<4.0.7|>=4.1,<4.1.4|>=4.2,<4.2.3",
                 "ibexa/graphql": ">=2.5,<2.5.31|>=3.3,<3.3.28|>=4.2,<4.2.3",
                 "ibexa/post-install": "<=1.0.4",
+                "ibexa/user": ">=4,<4.4.3",
                 "icecoder/icecoder": "<=8.1",
                 "idno/known": "<=1.3.1",
                 "illuminate/auth": ">=4,<4.0.99|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.10",
@@ -2980,20 +3031,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-06T00:13:11+00:00"
+            "time": "2023-05-10T22:04:31+00:00"
         },
         {
             "name": "seld/jsonlint",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/jsonlint.git",
-                "reference": "4211420d25eba80712bff236a98960ef68b866b7"
+                "reference": "594fd6462aad8ecee0b45ca5045acea4776667f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/4211420d25eba80712bff236a98960ef68b866b7",
-                "reference": "4211420d25eba80712bff236a98960ef68b866b7",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/594fd6462aad8ecee0b45ca5045acea4776667f1",
+                "reference": "594fd6462aad8ecee0b45ca5045acea4776667f1",
                 "shasum": ""
             },
             "require": {
@@ -3032,7 +3083,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/jsonlint/issues",
-                "source": "https://github.com/Seldaek/jsonlint/tree/1.9.0"
+                "source": "https://github.com/Seldaek/jsonlint/tree/1.10.0"
             },
             "funding": [
                 {
@@ -3044,7 +3095,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-01T13:37:23+00:00"
+            "time": "2023-05-11T13:16:46+00:00"
         },
         {
             "name": "seld/phar-utils",
@@ -5141,16 +5192,16 @@
         },
         {
             "name": "wp-cli/search-replace-command",
-            "version": "v2.0.20",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/search-replace-command.git",
-                "reference": "6b195e3f39dd18270710b28343a8038f5927dd2c"
+                "reference": "c23820436dcac45662e7a6833bbdfa542b0f21a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/search-replace-command/zipball/6b195e3f39dd18270710b28343a8038f5927dd2c",
-                "reference": "6b195e3f39dd18270710b28343a8038f5927dd2c",
+                "url": "https://api.github.com/repos/wp-cli/search-replace-command/zipball/c23820436dcac45662e7a6833bbdfa542b0f21a0",
+                "reference": "c23820436dcac45662e7a6833bbdfa542b0f21a0",
                 "shasum": ""
             },
             "require": {
@@ -5195,9 +5246,9 @@
             "homepage": "https://github.com/wp-cli/search-replace-command",
             "support": {
                 "issues": "https://github.com/wp-cli/search-replace-command/issues",
-                "source": "https://github.com/wp-cli/search-replace-command/tree/v2.0.20"
+                "source": "https://github.com/wp-cli/search-replace-command/tree/v2.1.0"
             },
-            "time": "2023-02-17T16:23:58+00:00"
+            "time": "2023-05-11T08:09:28+00:00"
         },
         {
             "name": "wp-cli/server-command",
@@ -5649,6 +5700,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "newfold-labs/wp-module-staging": 20,
         "roave/security-advisories": 20,
         "wp-cli/i18n-command": 0,
         "wp-cli/wp-cli-bundle": 0

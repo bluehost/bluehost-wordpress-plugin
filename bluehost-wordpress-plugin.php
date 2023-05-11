@@ -133,6 +133,7 @@ $bh_module_container->set(
 				array(
 					'id'           => 'bluehost',
 					'file'         => BLUEHOST_PLUGIN_FILE,
+					'dir'          => BLUEHOST_PLUGIN_DIR,
 					'brand'        => get_option( 'mm_brand', 'bluehost' ),
 					'install_date' => get_option( 'bh_plugin_install_date' ),
 					// 'customer'     => CustomerBluehost::collect(),

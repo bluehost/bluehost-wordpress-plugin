@@ -56,13 +56,6 @@
     "lint": "Check files against coding standards."
   },
   "repositories": {
-    "local": {
-      "type": "path",
-      "url": "../../../../../../modules/wp-module-staging",
-      "options": {
-        "symlink": true
-      }
-    },
     "newfold": {
       "type": "composer",
       "url": "https://newfold-labs.github.io/satis/",
@@ -86,6 +79,7 @@
     "newfold-labs/wp-module-onboarding": "1.6.0",
     "newfold-labs/wp-module-secure-passwords": "^1.1",
     "newfold-labs/wp-module-sso": "^1.0.3",
+    "newfold-labs/wp-module-staging": "dev-main",
     "wp-forge/collection": "^1.0.2",
     "wp-forge/helpers": "^1.1.1",
     "wp-forge/wp-update-handler": "^1.0.1",
