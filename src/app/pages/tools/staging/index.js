@@ -33,17 +33,14 @@ import { useStaging } from '@app/hooks';
 
 import apiFetch from '@wordpress/api-fetch';
 import classnames from 'classnames';
-import { useLocation, useNavigate } from 'react-router-dom';
-// import { useEffect } from 'react';
 import {
 	Button,
+	ButtonGroup,
 	Card,
 	CardBody,
 	CardHeader,
 	CardFooter,
-	CardMedia,
 	Icon,
-	TabPanel,
 	Spinner,
 } from '@wordpress/components';
 
@@ -101,13 +98,12 @@ export default function StagingPage() {
 	// Components to pass to module
 	const moduleComponents = {
 		Button,
+		ButtonGroup,
 		Card,
 		CardBody,
 		CardFooter,
 		CardHeader,
-		CardMedia,
 		Icon,
-		TabPanel,
 		Spinner
 	};
 	// methods to pass to module
@@ -115,9 +111,7 @@ export default function StagingPage() {
 		apiFetch,
 		classnames,
 		useState,
-		useEffect,
-		useNavigate,
-		useLocation
+		useEffect
 	};
 	// constants to pass to module
 	const moduleConstants = {
@@ -128,6 +122,7 @@ export default function StagingPage() {
 		'stagingDescription': __( 'This is an unpublished copy of your website.', 'bluehost-wordpress-plugin' ),
 		'productionDescription': __( 'This is your live website.', 'bluehost-wordpress-plugin' ),
 		'cloneButtonText': __( 'Clone to Staging', 'bluehost-wordpress-plugin' ),
+		'unknownErrorMsg': 'An unknown error occurred',
 	}
 
 	return (
