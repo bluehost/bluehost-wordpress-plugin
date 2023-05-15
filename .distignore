@@ -1,0 +1,23 @@
+# Directories
+.git
+.github
+/bin
+node_modules
+/src
+tests
+
+# Files
+.distignore
+.gitattributes
+.gitignore
+
+# File Types
+*.json
+*.lock
+*.log
+*.md
+*.sql
+*.tar.gz
+*.xml
+*.yml
+*.zip

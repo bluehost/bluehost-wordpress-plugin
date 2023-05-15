@@ -1,0 +1,57 @@
+{
+    "name": "wp-plugin-blueprint",
+    "description": "WordPress plugin that integrates your WordPress site with the Blueprint control panel, including performance, security, and update features.",
+    "license": "GPL-2.0-or-later",
+    "version": "0.1.0",
+    "private": true,
+    "author": {
+        "name": "Evan Mullins",
+        "url": "https://evanmullins.com"
+    },
+    "devDependencies": {
+        "@testing-library/cypress": "^9.0.0",
+        "@wordpress/env": "^5.15.0",
+        "@wordpress/scripts": "^26.1.0",
+        "cypress": "^12.9.0",
+        "cypress-axe": "^1.4.0"
+    },
+    "scripts": {
+        "build": "wp-scripts build",
+        "check-engines": "wp-scripts check-engines",
+        "check-licenses": "wp-scripts check-licenses --production",
+        "develop": "npm run start",
+        "develop:analyzer": "npm run start:analyzer",
+        "lint:css": "wp-scripts lint-style '**/*.css'",
+        "lint:js": "wp-scripts lint-js ./src",
+        "lint:js:fix": "wp-scripts lint-js ./src --fix",
+        "lint:pkg-json": "wp-scripts lint-pkg-json",
+        "lint:yml": "yamllint --ignore=node_modules/** --ignore=vendor/** **/*.yml",
+        "i18n": "wpi18n addtextdomain && composer run i18n",
+        "start": "NODE_ENV=develop wp-scripts start",
+        "start:analyzer": "npm run start --webpack-bundle-analyzer",
+        "storybook:dev": "start-storybook -c ./storybook",
+        "storybook:build": "build-storybook -c ./storybook -o ./.docs",
+        "test:e2e": "npx cypress run",
+        "test:unit": "wp-scripts test-unit-js",
+        "create:dist": "rsync -r --exclude-from=.distignore . ./wp-plugin-blueprint",
+        "php-deps": "composer install --no-dev --optimize-autoloader",
+        "create:zip": "cd ./wp-plugin-blueprint && zip -r -9 ../wp-plugin-blueprint.zip . && ls -lh ../wp-plugin-blueprint.zip",
+        "prebuild:cleanup": "rm -rf ./build ./wp-plugin-blueprint ./wp-plugin-blueprint.zip ./vendor",
+        "simulate-runner-build": "npm run prebuild:cleanup && npm i && npm run php-deps && npm run build && npm run create:dist && npm run create:zip",
+        "srb": "npm run simulate-runner-build"
+    },
+    "dependencies": {
+        "@wordpress/compose": "^6.7.0",
+        "@wordpress/dom-ready": "^3.30.0",
+        "@wordpress/element": "^5.7.0",
+        "@wordpress/i18n": "^4.30.0",
+        "@wordpress/icons": "^9.21.0",
+        "classnames": "^2.3.2",
+        "jquery": "^3.6.4",
+        "lodash": "^4.17.21",
+        "react": "^18.2.0",
+        "react-error-boundary": "^4.0.3",
+        "react-router-dom": "^6.10.0",
+        "react-use": "^17.4.0"
+    }
+}

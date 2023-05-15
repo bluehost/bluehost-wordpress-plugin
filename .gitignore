@@ -1,0 +1,24 @@
+# Composer
+/vendor
+
+#node_modules
+/node_modules
+
+# System and IDE files
+.DS_Store
+.idea
+
+# Cypress
+cypress.env.json
+/tests/cypress/screenshots
+/tests/cypress/videos
+
+# Built-app files
+/.docs
+/build/*
+/wp-plugin-blueprint
+
+# File Types
+*.log
+*.sql
+*.zip
