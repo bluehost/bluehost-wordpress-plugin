@@ -1,0 +1,66 @@
+.wppb {
+
+    .components-card__header {
+        background: var(--color-off-white);
+        border: 1px solid var(--color-border);
+    }
+
+    .components-radio-control__option label span {
+        
+        strong {
+            font-size: 16px;
+            padding-top: 1px;
+        }
+        
+        span {
+            display: block;
+            opacity: 0.75;
+            padding: 0.5rem 0 0.25rem 1.75rem;
+            transition: .2s opacity ease;
+        }
+
+        em {
+            display: block;
+            opacity: 0.6;
+            padding: 0 0 0.75rem 1.75rem;
+            transition: .2s opacity ease;
+        }
+
+        &:hover {
+            span,
+            em {
+                opacity: 1;
+            }
+        }
+
+    }
+
+    /* WP 5.5 || WP 5.6 */
+    [class*="wppb-wp-5.5"],
+    [class*="wppb-wp-5.6"] {
+        .components-radio-control__input[type="radio"]:checked::before {
+            margin-top: 5px;
+            margin-left: 5px;
+
+            @media screen and (min-width: 782px) {
+                margin-top: 1px;
+                margin-left: 1px;
+            }
+            
+        }
+    }
+
+    /* WP 5.7 */
+    [class*="wppb-wp-5.7"] {
+        .components-radio-control__input[type="radio"]:checked::before {
+                transform: translate(3px, 3px);
+
+            @media screen and (min-width: 600px) {
+                    transform: translate(1px, 1px);
+
+            }
+            
+        }
+    }
+
+}
