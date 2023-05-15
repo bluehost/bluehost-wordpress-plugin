@@ -61,3 +61,36 @@
 		}
 	}
 }
+
+@layer components {
+	.yst-root {
+		.yst-button {
+			@apply
+			focus:yst-ring-primary;
+		}
+
+		/* Variants */
+
+		.yst-button--primary {
+			@apply
+			yst-bg-primary
+
+			hover:yst-bg-primary-dark
+			focus:yst-ring-primary;
+		}
+
+		.yst-button--secondary {
+			@apply
+			yst-text-black
+			yst-bg-white
+			yst-border-primary
+
+			hover:yst-text-black
+			hover:yst-bg-primary-light
+			focus:yst-text-title
+			focus:yst-ring-primary
+			visited:yst-text-black
+			visited:hover:yst-text-title;
+		}
+	}
+}

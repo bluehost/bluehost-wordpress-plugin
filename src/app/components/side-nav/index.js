@@ -59,7 +59,7 @@ export const SideNavMenu = () => {
 
         // open active's submenu if it exists
         const activeMenu = document.querySelector('.wppb-app-sidenav .active');
-        if (null !== activeMenu.nextSibling && activeMenu.nextSibling.classList.contains('wppb-app-navitem-submenu')) {
+        if (activeMenu && null !== activeMenu.nextSibling && activeMenu.nextSibling.classList.contains('wppb-app-navitem-submenu')) {
             activeMenu.nextSibling.classList.toggle('yst-hidden');
         }
     }
@@ -78,19 +78,6 @@ export const SideNavMenu = () => {
 }
 
 export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, subItems }) => {
-    const subMenuToggle = (e) => {
-        // close any open submenus
-        const subMenus = document.querySelectorAll('.wppb-app-navitem-submenu');
-        subMenus.forEach((subMenu) => {
-            subMenu.classList.add('yst-hidden');
-        });
-
-        // open target submenu if it exists
-        if (null !== e.target.nextSibling && e.target.nextSibling.classList.contains('wppb-app-navitem-submenu')) {
-            e.target.nextSibling.classList.toggle('yst-hidden');
-        }
-    }
-
     return (
         <li className="yst-mb-0">
             <NavLink
