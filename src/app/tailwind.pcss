@@ -66,7 +66,16 @@
 	.yst-root {
 		.yst-button {
 			@apply
+			yst-px-4
+			yst-gap-2
+			yst-font-medium
 			focus:yst-ring-primary;
+
+			svg {
+				@apply
+				yst-w-5
+				yst-h-5;
+			}
 		}
 
 		/* Variants */
@@ -91,6 +100,16 @@
 			focus:yst-ring-primary
 			visited:yst-text-black
 			visited:hover:yst-text-title;
+		}
+
+		.yst-button--standout {
+			@apply
+			yst-bg-secondary
+			yst-text-[#1E293B]
+
+			hover:yst-bg-secondary-dark
+			hover:yst-text-[#1E293B]
+			focus:yst-text-[#1E293B];
 		}
 	}
 }

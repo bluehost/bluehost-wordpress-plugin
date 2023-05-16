@@ -1,4 +1,6 @@
+import { Button } from "@yoast/ui-library";
 import { SectionContainer, SectionHeader, SectionContent } from "../../components/section";
+import { RocketLaunchIcon } from "@heroicons/react/24/outline";
 
 const Example = () => {
     return (
@@ -25,7 +27,11 @@ const Example = () => {
 
             <SectionContent className={'wppb-app-example-section3'}>
                 <div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <Button className="yst-button--standout yst-mt-4">
+                        <RocketLaunchIcon />
+                        Launch your Site
+                    </Button>
                 </div>
             </SectionContent>
         </SectionContainer>
