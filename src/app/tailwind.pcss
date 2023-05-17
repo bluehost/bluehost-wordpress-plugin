@@ -31,22 +31,22 @@
 
 @layer components {
 	.yst-root {
+		.yst-title {
+			@apply
+			yst-text-title
+		}
+	}
+}
+
+@layer components {
+	.yst-root {
 		.yst-link {
 			@apply
-			yst-text-indigo-600
-			yst-cursor-pointer
-			yst-underline
+			yst-text-primary
 
-			hover:yst-text-indigo-500
-			focus:yst-text-indigo-500
-			focus:yst-outline-none
-			focus:yst-ring-1
-			focus:yst-ring-offset-1
-			focus:yst-ring-offset-transparent
-			focus:yst-ring-primary
-			focus:yst-rounded-sm
-			visited:yst-text-primary-500
-			visited:hover:yst-text-primary-400;
+			hover:yst-text-primary-dark
+			visited:yst-text-primary-dark
+			visited:hover:yst-text-primary-dark;
 		}
 
 		.yst-link--primary {

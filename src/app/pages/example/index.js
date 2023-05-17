@@ -5,8 +5,8 @@ import { Page } from "../../components/page";
 
 const Example = () => {
     return (
-        <Page className={"wppb-example"}>
-            <SectionContainer className={'wppb-app-example-page'}>
+        <Page className={"wppb-app-example-page"}>
+            <SectionContainer className={'wppb-app-example-container'}>
                 <SectionHeader
                     title={'Example Section'}
                     subTitle={'Ut ultricies sem lacus, at ullamcorper erat maximus vel. Nunc libero nunc, auctor ac tempor id, vestibulum eu sem.'}

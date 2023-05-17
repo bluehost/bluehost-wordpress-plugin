@@ -13,8 +13,8 @@ export const SectionHeader = ({
     title,
     subTitle,
     className,
-    primaryAction = { title, className, onClick },
-    secondaryAction = { title, className, onClick }
+    primaryAction = { title: false, className: false, onClick: false },
+    secondaryAction = { title: false, className: false, onClick: false }
 }) => {
     return (
         <div
