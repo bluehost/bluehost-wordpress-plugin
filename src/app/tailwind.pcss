@@ -8,6 +8,8 @@
 
 @layer base {
 	.yst-root {
+		@apply
+		yst-text-body;
 
 		a {
 			@apply
@@ -24,7 +26,6 @@
 			visited:yst-text-primary
 			visited:hover:yst-text-primary-dark;
 		}
-
 	}
 }
 
@@ -48,10 +49,6 @@
 			visited:hover:yst-text-primary-400;
 		}
 
-		/* Variants */
-		.yst-link--default {
-		}
-
 		.yst-link--primary {
 			@apply yst-text-primary-600 hover:yst-text-primary-500 focus:yst-text-primary-500 focus:yst-ring-primary-600;
 		}
@@ -68,7 +65,6 @@
 			@apply
 			yst-px-4
 			yst-gap-2
-			yst-font-medium
 			focus:yst-ring-primary;
 
 			svg {

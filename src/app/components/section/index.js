@@ -25,7 +25,7 @@ export const SectionHeader = ({
             }>
             <div className="yst-w-7/12 yst-flex yst-flex-col yst-gap-3">
                 {title && <h2 className="yst-text-2xl yst-font-medium yst-text-title">{title}</h2>}
-                {subTitle && <p className="yst-text-body">{subTitle}</p>}
+                {subTitle && <p>{subTitle}</p>}
             </div>
             <div className="yst-w-5/12 yst-flex yst-flex-row-reverse yst-gap-3">
                 {primaryAction.title &&

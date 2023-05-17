@@ -1,5 +1,6 @@
-import { LockClosedIcon, LockOpenIcon } from "@heroicons/react/24/outline";
 import { Button, Link } from "@yoast/ui-library";
+import { LockClosedIcon, LockOpenIcon } from "@heroicons/react/24/outline";
+import { BluehostIcon, WordPressIcon } from "../icons";
 
 export const SiteInfoBar = () => {
     const siteTitle = "The Wild Fig";
@@ -27,8 +28,8 @@ export const SiteInfoBar = () => {
                             <span className="yst-text-white yst-text-tiny">{siteDomain}</span>
                         </div>
                         {isTempDomain &&
-                            <Link 
-                                href="https://bluehost.com" 
+                            <Link
+                                href="https://bluehost.com"
                                 target="_blank"
                                 className="yst-text-[#D2D5DA] yst-text-tiny"
                             >
@@ -39,9 +40,16 @@ export const SiteInfoBar = () => {
                 </div>
 
                 <div className="yst-grow yst-flex yst-items-center yst-justify-end yst-gap-3">
-                    <Button variant="primary">Bluehost Account</Button>
-                    <Button variant="primary">View Site</Button>
+                    <Button variant="primary" className="yst-bg-[#383F4A] yst-text-tiny">
+                        <BluehostIcon />
+                        Bluehost Account
+                    </Button>
+                    <Button variant="primary" className="yst-bg-white yst-text-[#212936] yst-text-tiny">
+                        <WordPressIcon />
+                        View Site
+                    </Button>
                 </div>
+                
             </div>
         </div>
     );
