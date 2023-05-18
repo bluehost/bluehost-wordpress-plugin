@@ -22,11 +22,10 @@ const MarketplaceItem = (product) => {
                 <Card.Footer className="yst-flex yst-justify-between yst-items-baseline">
                     <div className="yst-flex yst-flex-col yst-items-center yst-gap-2 yst-text-[#1E293B] yst-font-medium">
                         {/* price */}
-                        <span className="yst-bg-[#E2E8F0] yst-py-1 yst-px-3 yst-rounded-full">$129.99</span>
+                        <span className="yst-bg-[#E2E8F0] yst-py-1 yst-px-3 yst-rounded-full">$129.99/yr</span>
                         {/* full price */}
-                        <span className="yst-line-through">$149.99</span>
+                        <span className="yst-line-through">$149.99/yr</span>
                     </div>
-
                     <Button>Buy Now</Button>
                 </Card.Footer>
             </Card>

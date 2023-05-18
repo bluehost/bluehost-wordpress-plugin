@@ -14,19 +14,15 @@ import { Page } from "../../components/page";
 import MarketplaceList from './MarketplaceList';
 import MarketplaceLoading from './MarketplaceLoading';
 import MarketplaceError from './MarketplaceError';
+import { set } from 'lodash';
 
 const MarketplacePage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
+    const [marketplaceItems, setMarketplaceItems] = useState([]);
+    const [products, setProducts] = useState([]);
 
-    const products = [1, 2, 3, 4, 5, 6, 7, 8];
-
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false);
-            setIsError(true);
-        }, 5000);
-    }, []);
+    let location = useLocation();
 
     // constants to pass to module
     const moduleConstants = {
@@ -35,6 +31,42 @@ const MarketplacePage = () => {
         'perPage': 12,
         'supportsCTB': false, // not needed, but explicity setting to false anyway
     }
+
+    useEffect(() => {
+        apiFetch({
+            url: `${moduleConstants.resturl}/newfold-marketplace/v1/marketplace`
+        }).then((response) => {
+            // check response for data
+            if (!response.hasOwnProperty('categories') || !response.hasOwnProperty('products')) {
+                setIsError(true);
+            } else {
+                setMarketplaceItems(response.products.data);
+            }
+        })
+    }, []);
+
+    useEffect(() => {
+        if (marketplaceItems.length > 0) {
+            filterProducts();
+        }
+    }, [marketplaceItems, location]);
+
+    const filterProducts = () => {
+        const urlpath = location.pathname.substring(
+            location.pathname.lastIndexOf('/') + 1
+        );
+        const category = urlpath === 'marketplace' ? 'featured' : urlpath;
+
+        const filterdProducts = marketplaceItems.filter((product) => {
+            return product.categories.some(element => {
+                return element.toLowerCase() === category.toLowerCase();
+              });
+              
+        });            
+
+        setProducts(filterdProducts);
+        setIsLoading(false);
+    };
 
     return (
         <Page className={"wppb-app-marketplace-page"}>
@@ -49,9 +81,7 @@ const MarketplacePage = () => {
 
                     {isLoading && <MarketplaceLoading />}
                     {isError && <MarketplaceError />}
-                    {!isLoading && !isError &&
-                        <MarketplaceList products={products}/>
-                    }
+                    {!isLoading && !isError && <MarketplaceList products={products} />}
 
                 </SectionContent>
             </SectionContainer>

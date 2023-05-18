@@ -68,6 +68,10 @@ export const routes = [
 		Icon: ShoppingBagIcon,
 		subRoutes: [
 			{
+				name: '/marketplace/featured',
+				title: __( 'Featured', 'wp-plugin-blueprint' ),
+			},
+			{
 				name: '/marketplace/services',
 				title: __( 'Services', 'wp-plugin-blueprint' ),
 			},

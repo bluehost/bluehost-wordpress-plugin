@@ -4,8 +4,7 @@ module.exports = {
   presets: [yoastPreset],
   content: [
     ...yoastPreset.content,
-    "./node_modules/@newfold-labs/**/*.js",
-    "./vendor/newfold-labs/**/*.js",
+    "./node_modules/@newfold-labs/wp-module-ecommerce/build/index.js",
     "./src/**/*.js",
   ],
   theme: {
