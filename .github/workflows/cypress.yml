@@ -112,7 +112,7 @@ jobs:
         with:
           api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
           browser: 'replay-chromium'
-          command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+          command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag bluehost
           upload-all: false
 
       - name: List Replays
