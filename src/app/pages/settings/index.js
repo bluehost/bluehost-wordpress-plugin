@@ -6,30 +6,24 @@ import CommentSettings from './commentSettings';
 import ContentSettings from './contentSettings';
 import PerformanceCallout from './performanceCallout';
 import { useViewportMatch } from '@wordpress/compose';
+import { Page } from '../../components/page';
+import { SectionContainer, SectionHeader, SectionContent } from '../../components/section';
 
 const Settings = () => {
-	const isWideViewport = useViewportMatch( 'large' );
 	return (
-		<div className="wppb-Settings grid col2 has-page-graphic">
-			<AutomaticUpdates />
-			{ isWideViewport && (
-				<div>
-					<img
-						src={ graphicUrl }
-						style={ {
-							float: 'right',
-							width: '70%',
-							height: 'auto',
-						} }
-						alt={ __( 'Website building illustration', 'wp-plugin-blueprint' ) }
-					/>
-				</div>
-			) }
-			<ComingSoon />
-			<ContentSettings />
-			<CommentSettings />
-			<PerformanceCallout />
-		</div>
+		<Page title="Settings" className={"wppb-app-settings-page"}>
+			<SectionContainer className={'wppb-app-settings-container'}>
+                <SectionHeader
+                    title={'Settings'}
+                    subTitle={'This is where you can manage common settings for your website.'}
+                    className={'wppb-app-settings-header'}
+                />
+
+                <SectionContent separator={true} className={'wppb-app-settings-section1'}>
+                    <ComingSoon />
+                </SectionContent>
+            </SectionContainer>
+		</Page>
 	);
 };
 

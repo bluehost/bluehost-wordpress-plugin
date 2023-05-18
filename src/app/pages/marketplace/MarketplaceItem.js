@@ -1,34 +1,69 @@
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Button, Card, Link, Title } from "@yoast/ui-library";
 
-const MarketplaceItem = (product) => {
+const MarketplaceItem = ({ product }) => {
+    const renderPrimaryCTA = () => {
+        const supportCTB = 'undefined' !== typeof nfdctb ? nfdctb.supportCTB : false;
+
+        if (supportCTB && product.clickToBuyId) {
+            return (
+                <Button
+                    as="a"
+                    href={product.primaryUrl}
+                    target="_blank"
+                    data-action="load-nfd-ctb"
+                    data-ctb-id={product.clickToBuyId}
+                >
+                    {product.primaryCallToAction}
+                </Button>
+            );
+        } else {
+            return (
+                <Button
+                    as="a"
+                    href={product.primaryUrl}
+                    target="_blank"
+                >
+                    {product.primaryCallToAction}
+                </Button>
+            );
+        }
+    };
+
     return (
-            <Card className="wppb-app-marketplace-item">
-                <Card.Header className="yst-h-auto yst-p-0">
-                    <img src="https://picsum.photos/238/133" className="yst-w-full yst-aspect-video" />
-                </Card.Header>
+        <Card className="wppb-app-marketplace-item">
+            <Card.Header className="yst-h-auto yst-p-0">
+                <img src={product.productThumbnailUrl} alt={product.name + ' thumbnail'} className="yst-w-full yst-aspect-video" />
+            </Card.Header>
 
-                <Card.Content className="yst-flex yst-flex-col yst-gap-3">
-                    <Title as="h3" size="4">
-                        Yoast Premium
-                    </Title>
-                    <p>SEO made easy! Improve your ranking in search engines, boost performance and visibility, get social previews, a redirect manager, internal linking suggestions and 24/7 premium support.</p>
-                    <Link as="a" className="yst-inline-flex yst-items-center yst-gap-1.5 yst-w-max yst-no-underline">
-                        <span className="yst-text-primary">Learn More</span>
-                        <ArrowRightIcon className="yst-text-[#18181B] yst-w-3"/>
+            <Card.Content className="yst-flex yst-flex-col yst-gap-3">
+                <Title as="h3" size="4">
+                    {product.name}
+                </Title>
+                <p>{product.description}</p>
+                {product.secondaryCallToAction &&
+                    <Link as="a" href={product.secondaryUrl} target="_blank" className="yst-inline-flex yst-items-center yst-gap-1.5 yst-w-max yst-no-underline">
+                        <span className="yst-text-primary">{product.secondaryCallToAction}</span>
+                        <ArrowRightIcon className="yst-text-[#18181B] yst-w-3" />
                     </Link>
-                </Card.Content>
+                }
+            </Card.Content>
 
-                <Card.Footer className="yst-flex yst-justify-between yst-items-baseline">
-                    <div className="yst-flex yst-flex-col yst-items-center yst-gap-2 yst-text-[#1E293B] yst-font-medium">
-                        {/* price */}
-                        <span className="yst-bg-[#E2E8F0] yst-py-1 yst-px-3 yst-rounded-full">$129.99/yr</span>
-                        {/* full price */}
-                        <span className="yst-line-through">$149.99/yr</span>
-                    </div>
-                    <Button>Buy Now</Button>
-                </Card.Footer>
-            </Card>
+            <Card.Footer className="yst-flex yst-justify-between yst-items-baseline">
+                <div className="yst-flex yst-flex-col yst-items-center yst-gap-2 yst-text-[#1E293B] yst-font-medium">
+                    {/* price */}
+                    <span className="yst-bg-[#E2E8F0] yst-py-1 yst-px-3 yst-rounded-full">{product.price_formatted}</span>
+                    {/* full price */}
+                    {product.full_price_formatted &&
+                        <span className="yst-line-through">{product.full_price_formatted}</span>
+                    }
+                </div>
+
+                {product.primaryCallToAction && product.primaryUrl &&
+                   renderPrimaryCTA()
+                }
+            </Card.Footer>
+        </Card >
     );
 }
 

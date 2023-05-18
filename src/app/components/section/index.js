@@ -1,4 +1,4 @@
-import { Button } from "@yoast/ui-library";
+import { Button, Title } from "@yoast/ui-library";
 import classNames from "classnames";
 
 export const SectionContainer = ({ className, children }) => {
@@ -38,11 +38,11 @@ export const SectionHeader = ({
                         {primaryAction.title}
                     </Button>
                 }
-                {secondaryAction.title && 
-                    <Button 
-                        as="button" 
-                        variant="secondary" 
-                        className={secondaryAction.className} 
+                {secondaryAction.title &&
+                    <Button
+                        as="button"
+                        variant="secondary"
+                        className={secondaryAction.className}
                         onClick={secondaryAction.onClick}
                     >
                         {secondaryAction.title}
@@ -65,5 +65,27 @@ export const SectionContent = ({ separator = false, className, children }) => {
                 {children}
             </div>
         </div>
+    );
+}
+
+export const SectionSettings = ({ className, children, title, description }) => {
+    return (
+        <section className={classNames("yst-grid 2xl:yst-grid-cols-3 2xl:yst-gap-12", className)}>
+            <div className="yst-col-span-1">
+                <div className="yst-max-w-screen-sm">
+                    <Title as="h4" size="4">
+                        {title}
+                    </Title>
+                    {description && <p className="yst-mt-2">{description}</p>}
+                </div>
+            </div>
+
+            <fieldset className="yst-min-w-0 yst-mt-8 2xl:yst-mt-0 2xl:yst-col-span-2">
+                <legend className="yst-sr-only">{title}</legend>
+                <div className="st-space-y-8">
+                    {children}
+                </div>
+            </fieldset>
+        </section>
     );
 }
