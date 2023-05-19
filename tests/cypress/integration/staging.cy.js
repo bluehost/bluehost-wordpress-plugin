@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
 
-const thumbnailUrl = `https://s.wordpress.com/mshots/v1/${ encodeURIComponent('https://www.google.com') }?width=122&height=92`;
+// const thumbnailUrl = `https://s.wordpress.com/mshots/v1/${ encodeURIComponent('https://www.google.com') }?width=122&height=92`;
 
 const fn = {
 	getStagingInfo(overrides = {}) {
@@ -8,11 +8,11 @@ const fn = {
 			creationDate: 'Sep 26, 2019',
 			currentEnvironment: 'production',
 			productionDir: '/app/public/',
-			productionThumbnailUrl: thumbnailUrl,
+			// productionThumbnailUrl: thumbnailUrl,
 			productionUrl: 'https://mysite.com',
 			stagingDir: '/app/public/staging/1821',
 			stagingExists: true,
-			stagingThumbnailUrl: thumbnailUrl,
+			// stagingThumbnailUrl: thumbnailUrl,
 			stagingUrl: 'https://mysite.local/staging/1821'
 		};
 		return {...defaults, ...overrides};
@@ -20,7 +20,7 @@ const fn = {
 	visitPage(responseOverrides = {}) {
 		cy.intercept({
 				method: 'GET',
-				url: /bluehost(\/|%2F)v1(\/|%2F)staging/
+				url: /newfold-staging(\/|%2F)v1(\/|%2F)staging/
 			},
 			{
 				body: this.getStagingInfo(responseOverrides)
@@ -67,7 +67,7 @@ describe('Staging Page', function () {
 	it('Creation failure', () => {
 		cy.intercept({
 			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging/
+			url: /newfold-labs(\/|%2F)v1(\/|%2F)staging/
 		}, (req) => {
 			req.reply({
 				body: fn.getStagingInfo({
@@ -96,7 +96,7 @@ describe('Staging Page', function () {
 	it('Creation success', () => {
 		cy.intercept({
 				method: 'POST',
-				url: /bluehost(\/|%2F)v1(\/|%2F)staging/
+				url: /newfold-labs(\/|%2F)v1(\/|%2F)staging/
 			},
 			{ body: fn.getStagingInfo() }
 		).as('stagingCreation');
@@ -125,7 +125,7 @@ describe('Staging Page', function () {
 		cy.intercept(
 			{
 				method: 'POST',
-				url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)clone/
+				url: /newfold-labs(\/|%2F)v1(\/|%2F)staging(\/|%2F)clone/
 			}, {
 				body: fn.getStagingInfo(),
 				delay: 1000
@@ -175,7 +175,7 @@ describe('Staging Page', function () {
 
 		cy.intercept({
 			method: 'GET',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)switch-to/
+			url: /newfold-labs(\/|%2F)v1(\/|%2F)staging(\/|%2F)switch-to/
 		}, (req) => {
 			req.reply({
 				body: fn.getStagingInfo(
@@ -252,7 +252,7 @@ describe('Staging Page, staging state', function () {
 
 		cy.intercept({
 			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy(\?|&)type=all/
+			url: /newfold-labs(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy(\?|&)type=all/
 		}, (req) => {
 			req.reply({
 				body: fn.getStagingInfo(),
@@ -292,7 +292,7 @@ describe('Staging Page, staging state', function () {
 
 		cy.intercept({
 			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy(\?|&)type=files/
+			url: /newfold-labs(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy(\?|&)type=files/
 		}, (req) => {
 			req.reply({
 				body: fn.getStagingInfo(),
@@ -337,7 +337,7 @@ describe('Staging Page, staging state', function () {
 
 		cy.intercept({
 			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy(\?|&)type=db/
+			url: /newfold-labs(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy(\?|&)type=db/
 		}, (req) => {
 			req.reply({
 				body: fn.getStagingInfo(),
@@ -423,7 +423,7 @@ describe('Staging Page, production state', function () {
 
 		cy.intercept({
 			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging/,
+			url: /newfold-labs(\/|%2F)v1(\/|%2F)staging/,
 			headers: {
 				'x-http-method-override': 'DELETE',
 			},
@@ -471,7 +471,7 @@ describe('Staging Page, production state', function () {
 	it('Delete staging works', () => {
 		cy.intercept({
 			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging/,
+			url: /newfold-labs(\/|%2F)v1(\/|%2F)staging/,
 			headers: {
 				'x-http-method-override': 'DELETE',
 			},
