@@ -27,7 +27,11 @@ const Settings = () => {
                     <AutomaticUpdates />
                 </SectionContent>
 
-				<SectionContent separator={true} className={'wppb-app-settings-update'}>
+				<SectionContent separator={true} className={'wppb-app-settings-comments'}>
+                    <CommentSettings />
+                </SectionContent>
+
+				<SectionContent className={'wppb-app-settings-update'}>
                     <Performance />
                 </SectionContent>
             </SectionContainer>

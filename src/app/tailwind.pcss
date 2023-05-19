@@ -170,6 +170,47 @@
 	}
 }
 
+/* Select Field */
+@layer components {
+	.yst-root {
+		.yst-select__button {
+			@apply
+			focus:yst-ring-primary
+			focus:yst-border-primary;
+		}
+
+		.yst-select__option {
+			&--active {
+				@apply yst-bg-[#CDD0D6];
+			}
+
+			&--selected {
+				@apply yst-bg-primary;
+			}
+		}
+
+		.yst-select-field__spaced {
+			.yst-select-field__select {
+				@apply
+				yst-flex
+				yst-items-center
+				yst-justify-between
+				yst-gap-4;
+			}
+
+			.yst-select__button {
+				@apply yst-w-24;
+			}
+
+			.yst-select__options {
+				@apply 
+				yst-w-40
+				yst-right-0;
+			}
+		}
+	}
+}
+
 /* Notifications */
 @layer components {
 	.yst-root {
