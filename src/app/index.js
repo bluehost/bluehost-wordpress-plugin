@@ -24,6 +24,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { useState } from '@wordpress/element';
 import { SideNav } from './components/side-nav';
 import { SiteInfoBar } from './components/site-info';
+import { NotificationFeed } from './components/notifications/feed';
 
 const Notices = () => {
 	if ( 'undefined' === typeof noticesStore ) {
@@ -112,12 +113,14 @@ const AppBody = ( props ) => {
 export const App = () => (
 	<AppStoreProvider>
 		<Root context={ { isRtl: false } }>
-			<Router>
-				<div className="wppb-app-container yst-p-4 min-[783px]:yst-p-8 yst-flex yst-gap-6 yst-max-w-full xl:yst-max-w-screen-xl 2xl:yst-max-w-screen-2xl yst-my-0 yst-mx-auto">
-					<SideNav />
-					<AppBody />
-				</div>
-			</Router>
+			<NotificationFeed>
+				<Router>
+					<div className="wppb-app-container yst-p-4 min-[783px]:yst-p-8 yst-flex yst-gap-6 yst-max-w-full xl:yst-max-w-screen-xl 2xl:yst-max-w-screen-2xl yst-my-0 yst-mx-auto">
+						<SideNav />
+						<AppBody />
+					</div>
+				</Router>
+			</NotificationFeed>
 		</Root>
 	</AppStoreProvider>
 );
