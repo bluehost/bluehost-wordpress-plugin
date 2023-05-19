@@ -4,7 +4,7 @@ import AutomaticUpdates from './automaticUpdates';
 import ComingSoon from './comingSoon';
 import CommentSettings from './commentSettings';
 import ContentSettings from './contentSettings';
-import PerformanceCallout from './performanceCallout';
+import Performance from './performance';
 import { useViewportMatch } from '@wordpress/compose';
 import { Page } from '../../components/page';
 import { SectionContainer, SectionHeader, SectionContent } from '../../components/section';
@@ -19,8 +19,16 @@ const Settings = () => {
                     className={'wppb-app-settings-header'}
                 />
 
-                <SectionContent separator={true} className={'wppb-app-settings-section1'}>
+                <SectionContent separator={true} className={'wppb-app-settings-coming-soon'}>
                     <ComingSoon />
+                </SectionContent>
+
+				<SectionContent separator={true} className={'wppb-app-settings-update'}>
+                    <AutomaticUpdates />
+                </SectionContent>
+
+				<SectionContent separator={true} className={'wppb-app-settings-update'}>
+                    <Performance />
                 </SectionContent>
             </SectionContainer>
 		</Page>

@@ -6,6 +6,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Configs */
 @layer base {
 	.yst-root {
 		@apply
@@ -29,6 +30,7 @@
 	}
 }
 
+/* Titles */
 @layer components {
 	.yst-root {
 		.yst-title {
@@ -38,6 +40,7 @@
 	}
 }
 
+/* Links */
 @layer components {
 	.yst-root {
 		.yst-link {
@@ -59,6 +62,7 @@
 	}
 }
 
+/* Buttons */
 @layer components {
 	.yst-root {
 		.yst-button {
@@ -106,6 +110,62 @@
 			hover:yst-bg-secondary-dark
 			hover:yst-text-[#1E293B]
 			focus:yst-text-[#1E293B];
+		}
+	}
+}
+
+/* Toggle / Toggle Field */
+@layer components {
+	.yst-root {
+		.yst-toggle {
+			@apply
+			yst-bg-[#CDD0D6]
+
+			focus:yst-ring-primary;
+		}
+
+		.yst-toggle--checked {
+			@apply yst-bg-primary;
+		}
+
+		.yst-toggle__icon--check {
+			@apply yst-text-primary;
+		}
+
+		.yst-toggle__icon--x {
+			@apply yst-text-[#9CA3AF];
+		}
+
+		.yst-toggle-field__description {
+			@apply yst-mr-[10.5rem];
+		}
+	}
+}
+
+/* Radio Input */
+@layer components {
+	.yst-root {
+		.yst-radio-group {
+			.yst-radio__description {
+				@apply
+				yst-mb-2 
+				yst-ml-7 
+				yst-mr-[10.5rem];
+			}
+		}
+
+		.yst-radio__input {
+			@apply
+			yst-text-primary
+			yst-shadow-none
+
+			focus:yst-ring-primary;
+
+			&:checked {
+				&::before {
+					@apply yst-bg-transparent;
+				}
+			}
 		}
 	}
 }

@@ -70,7 +70,7 @@ export const SectionContent = ({ separator = false, className, children }) => {
 
 export const SectionSettings = ({ className, children, title, description }) => {
     return (
-        <section className={classNames("yst-grid 2xl:yst-grid-cols-3 2xl:yst-gap-12", className)}>
+        <section className={classNames("yst-grid xl:yst-grid-cols-3 xl:yst-gap-12", className)}>
             <div className="yst-col-span-1">
                 <div className="yst-max-w-screen-sm">
                     <Title as="h4" size="4">
@@ -80,7 +80,7 @@ export const SectionSettings = ({ className, children, title, description }) => 
                 </div>
             </div>
 
-            <fieldset className="yst-min-w-0 yst-mt-8 2xl:yst-mt-0 2xl:yst-col-span-2">
+            <fieldset className="yst-min-w-0 yst-mt-8 xl:yst-mt-0 xl:yst-col-span-2">
                 <legend className="yst-sr-only">{title}</legend>
                 <div className="st-space-y-8">
                     {children}
