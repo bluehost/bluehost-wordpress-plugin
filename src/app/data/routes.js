@@ -3,6 +3,7 @@ import {
 	ShoppingBagIcon,
 	WrenchScrewdriverIcon, 
 	AdjustmentsHorizontalIcon,
+	BuildingStorefrontIcon,
 	QuestionMarkCircleIcon } 
 from '@heroicons/react/24/outline';
 import { Route, Routes } from 'react-router-dom';
@@ -13,7 +14,10 @@ import Settings from '../pages/settings';
 import Performance from '../pages/performance';
 import Example from '../pages/example';
 import Help from '../pages/help';
+import Store from '../pages/ecommerce/page';
 
+const addPartialMatch = (prefix, path) =>
+  prefix === path ? `${prefix}/*` : path;
 
 export const AppRoutes = () => {
 	return (
@@ -22,11 +26,10 @@ export const AppRoutes = () => {
 				<Route
 					end
 					key={ page.name }
-					path={
-						'/marketplace' === page.name
-							? '/marketplace/*'
-							: page.name
-					}
+					path={ addPartialMatch(
+						'/marketplace',
+						addPartialMatch( '/store', page.name )
+					)}
 					element={ <page.Component /> }
 				/>
 			) ) }
@@ -48,6 +51,7 @@ export const AppRoutes = () => {
 const topRoutePaths = [
 	'/home',
 	'/marketplace',
+	'/store',
 	'/performance',
 	'/settings',
 	'/example',
@@ -60,6 +64,22 @@ export const routes = [
 		title: __( 'Home', 'wp-plugin-blueprint' ),
 		Component: Home,
 		Icon: HomeIcon,
+	},
+	{
+		name: '/store',
+		title: __( 'Store', 'wp-plugin-blueprint' ),
+		Component: Store,
+		Icon: BuildingStorefrontIcon,
+		subRoutes: [
+			{
+				name: '/store/products',
+				title: __( 'Products & Services', 'wp-plugin-blueprint' ),
+			},
+			{
+				name: '/store/details',
+				title: __( 'Store Details', 'wp-plugin-blueprint' ),
+			},
+		],
 	},
 	{
 		name: '/marketplace',
@@ -96,7 +116,7 @@ export const routes = [
 	},
 	{
 		name: '/performance',
-		title: __( 'performance', 'wp-plugin-blueprint' ),
+		title: __( 'Performance', 'wp-plugin-blueprint' ),
 		Component: Performance,
 		Icon: WrenchScrewdriverIcon,
 	},
