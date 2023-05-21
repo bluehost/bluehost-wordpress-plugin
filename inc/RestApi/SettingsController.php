@@ -106,6 +106,7 @@ class SettingsController extends \WP_REST_Controller {
 						update_option( 'auto_update_translation', $new_value );
 						break;
 					case 'disableCommentsOldPosts':
+						$new_value = ( $new_value ) ? 'true' : 'false';
 						update_option( 'close_comments_for_old_posts', $new_value );
 						break;
 					case 'closeCommentsDays':

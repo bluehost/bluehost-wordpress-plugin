@@ -1,11 +1,7 @@
-import './stylesheet.scss';
-import graphicUrl from '../../../../assets/svg/website-content.svg';
 import AutomaticUpdates from './automaticUpdates';
 import ComingSoon from './comingSoon';
 import CommentSettings from './commentSettings';
-import ContentSettings from './contentSettings';
 import Performance from './performance';
-import { useViewportMatch } from '@wordpress/compose';
 import { Page } from '../../components/page';
 import { SectionContainer, SectionHeader, SectionContent } from '../../components/section';
 
