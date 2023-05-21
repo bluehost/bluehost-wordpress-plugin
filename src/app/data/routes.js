@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
 import Home from '../pages/home';
 import Marketplace from '../pages/marketplace';
 import Settings from '../pages/settings';
-import Performance from '../pages/performance';
+import Staging from '../pages/staging';
 import Example from '../pages/example';
 import Help from '../pages/help';
 import Store from '../pages/ecommerce/page';
@@ -52,7 +52,7 @@ const topRoutePaths = [
 	'/home',
 	'/marketplace',
 	'/store',
-	'/performance',
+	'/staging',
 	'/settings',
 	'/example',
 ];
@@ -115,9 +115,9 @@ export const routes = [
 		],
 	},
 	{
-		name: '/performance',
-		title: __( 'Performance', 'wp-plugin-blueprint' ),
-		Component: Performance,
+		name: '/staging',
+		title: __( 'Staging', 'wp-plugin-blueprint' ),
+		Component: Staging,
 		Icon: WrenchScrewdriverIcon,
 	},
 	{
