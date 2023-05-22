@@ -47,8 +47,11 @@ module.exports = defineConfig({
 				}
 			}
 
-			// Exclude onboarding tests for WordPress lower than 6.1
-			if (semver.satisfies(config.env.wpSemverVersion, '<6.1.0')) {
+			/*
+				Exclude onboarding tests for WordPress lower than 6.1 and PHP 7.3.0.
+				Woocommerce does not support PHP versions less than 7.3.0.
+			*/
+			if (semver.satisfies(config.env.wpSemverVersion, '<6.1.0' || semver.satisfies( config.env.phpVersion, '<7.3.0' ))) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
 					[
 						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/**",
