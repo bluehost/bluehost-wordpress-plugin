@@ -14,7 +14,6 @@ import { Page } from "../../components/page";
 import MarketplaceList from './MarketplaceList';
 import MarketplaceLoading from './MarketplaceLoading';
 import MarketplaceError from './MarketplaceError';
-import { set } from 'lodash';
 
 const MarketplacePage = () => {
     const [isLoading, setIsLoading] = useState(true);

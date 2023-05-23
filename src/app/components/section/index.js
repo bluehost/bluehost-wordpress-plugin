@@ -76,7 +76,7 @@ export const SectionSettings = ({ className, children, title, description }) => 
                     <Title as="h4" size="4">
                         {title}
                     </Title>
-                    {description && <p className="yst-mt-2">{description}</p>}
+                    {description && <div className="yst-mt-2">{description}</div>}
                 </div>
             </div>
 
