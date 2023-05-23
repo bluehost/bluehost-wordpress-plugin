@@ -57,7 +57,7 @@
         "doctrine/inflector": "1.2.0 as 1.3.1",
         "newfold-labs/wp-module-coming-soon": "^1.1.0",
         "newfold-labs/wp-module-data": "^2.3.0",
-        "newfold-labs/wp-module-ecommerce": "0.9.0",
+        "newfold-labs/wp-module-ecommerce": "dev-next/ui-redesign",
         "newfold-labs/wp-module-loader": "^1.0.10",
         "newfold-labs/wp-module-marketplace": "^1.5.0",
         "newfold-labs/wp-module-notifications": "^1.1.2",
