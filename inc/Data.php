@@ -27,6 +27,8 @@ final class Data {
 			'resturl'   => \get_home_url() . '/index.php?rest_route=',
 			'wpversion' => $wp_version,
 			'admin'     => \admin_url(),
+			'siteurl'   => \get_site_url(),
+			'sitetitle' => \get_bloginfo( 'name' ),
 			'assets'    => BLUEPRINT_PLUGIN_URL . 'assets/',
 		);
 

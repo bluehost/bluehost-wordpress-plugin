@@ -1,12 +1,12 @@
-import { Button, Link } from "@yoast/ui-library";
 import { LockClosedIcon, LockOpenIcon } from "@heroicons/react/24/outline";
+import { Button } from "@yoast/ui-library";
 import { BluehostIcon, WordPressIcon } from "../icons";
 
 export const SiteInfoBar = () => {
-    const siteTitle = "The Wild Fig";
-    const siteDomain = "ezu.slf.mybluehost.me";
-    const isTempDomain = true;
-    const hasSSL = true;
+    const { siteurl, sitetitle } = window.WPPB;
+    const parsedUrl = new URL(siteurl);
+    const siteDomain = parsedUrl.hostname;
+    const hasSSL = parsedUrl.protocol.includes("https");
 
     const renderPadLock = () => {
         if (hasSSL) {
@@ -17,25 +17,16 @@ export const SiteInfoBar = () => {
     }
 
     return (
-        <div className="wppb-app-site-info yst-bg-[#212936] yst-w-full yst-py-6 yst-px-8 yst-mb-8 yst-border yst-border-[#E2E8F0] yst-rounded-lg">
+        <div className="wppb-app-site-info yst-bg-[#212936] yst-w-full yst-py-6 yst-px-8 yst-mb-8 yst-border yst-border-line yst-rounded-lg">
             <div className="yst-flex yst-items-center yst-gap-4">
 
                 <div className="yst-grow yst-flex yst-flex-col yst-gap-1.5">
-                    <h3 className="yst-text-white yst-text-2xl yst-font-semibold">{siteTitle}</h3>
+                    <h3 className="yst-text-white yst-text-2xl yst-font-semibold">{sitetitle}</h3>
                     <div className="yst-flex yst-items-center yst-gap-3 yst-font-medium">
                         <div className="yst-flex yst-items-center yst-gap-1">
                             {renderPadLock()}
                             <span className="yst-text-white yst-text-tiny">{siteDomain}</span>
                         </div>
-                        {isTempDomain &&
-                            <Link
-                                href="https://bluehost.com"
-                                target="_blank"
-                                className="yst-text-[#D2D5DA] yst-text-tiny"
-                            >
-                                <span>Purchase a Domain</span>
-                            </Link>
-                        }
                     </div>
                 </div>
 
@@ -44,7 +35,7 @@ export const SiteInfoBar = () => {
                         <BluehostIcon />
                         Bluehost Account
                     </Button>
-                    <Button variant="primary" className="yst-bg-white yst-text-[#212936] yst-text-tiny">
+                    <Button as="a" href={siteurl} target="_blank" variant="primary" className="yst-bg-white yst-text-[#212936] yst-text-tiny">
                         <WordPressIcon />
                         View Site
                     </Button>

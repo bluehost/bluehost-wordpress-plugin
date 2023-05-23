@@ -1,18 +1,14 @@
+import { Page } from '../../components/page';
+import { FreeAddonsSection } from './freeAddonsSection';
 import './stylesheet.scss';
-import ComingSoonSection from './comingSoonSection';
-import WebContentSection from './webContentSection';
-import WebHostingSection from './webHostingSection';
-import SettingsSection from './settingsSection';
-import { useEffect } from 'react';
+import { WelcomeSection } from './welcomeSection';
 
 const Home = () => {
 	return (
-		<div className="wppb-home">
-			<ComingSoonSection />
-			<WebContentSection />
-			<SettingsSection />
-			<WebHostingSection />
-		</div>
+		<Page className="wppb-home">
+			<WelcomeSection />
+			<FreeAddonsSection />
+		</Page>
 	);
 };
 
