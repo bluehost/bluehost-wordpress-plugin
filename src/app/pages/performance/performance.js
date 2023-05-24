@@ -1,5 +1,5 @@
 import AppStore from '../../data/store';
-import { blueprintSettingsApiFetch, blueprintPurgeCacheApiFetch } from '../../util/helpers';
+import { bluehostSettingsApiFetch, bluehostPurgeCacheApiFetch } from '../../util/helpers';
 import { useUpdateEffect } from 'react-use';
 import { useState } from '@wordpress/element';
 import { useNotification } from '../../components/notifications/feed';
@@ -12,41 +12,41 @@ const CacheSettings = ({ setError, notify }) => {
 
     const cacheOptions = [
         {
-            label: __('Disabled', 'wp-plugin-blueprint'),
-            description: __('No cache enabled. Every page load is fresh.', 'wp-plugin-blueprint') +
+            label: __('Disabled', 'wp-plugin-bluehost'),
+            description: __('No cache enabled. Every page load is fresh.', 'wp-plugin-bluehost') +
                 ' ' +
-                __('Not recommended.', 'wp-plugin-blueprint'),
+                __('Not recommended.', 'wp-plugin-bluehost'),
             value: 0,
-            notice: __('Caching disabled.', 'wp-plugin-blueprint'),
+            notice: __('Caching disabled.', 'wp-plugin-bluehost'),
         },
         {
-            label: __('Assets Only', 'wp-plugin-blueprint'),
-            description: __('Cache static assets like images and the appearance of your site for 1 hour.', 'wp-plugin-blueprint') +
+            label: __('Assets Only', 'wp-plugin-bluehost'),
+            description: __('Cache static assets like images and the appearance of your site for 1 hour.', 'wp-plugin-bluehost') +
                 ' ' +
-                __('Tuned for online stores and member sites that need to be fresh.', 'wp-plugin-blueprint'),
+                __('Tuned for online stores and member sites that need to be fresh.', 'wp-plugin-bluehost'),
             value: 1,
-            notice: __('Cache enabled for assets only.', 'wp-plugin-blueprint'),
+            notice: __('Cache enabled for assets only.', 'wp-plugin-bluehost'),
         },
         {
-            label: __('Assets & Web Pages', 'wp-plugin-blueprint'),
-            description: __('Cache static assets for 24 hours and web pages for 2 hours.', 'wp-plugin-blueprint') +
+            label: __('Assets & Web Pages', 'wp-plugin-bluehost'),
+            description: __('Cache static assets for 24 hours and web pages for 2 hours.', 'wp-plugin-bluehost') +
                 ' ' +
-                __('Tuned for sites that change at least weekly.', 'wp-plugin-blueprint'),
+                __('Tuned for sites that change at least weekly.', 'wp-plugin-bluehost'),
             value: 2,
-            notice: __('Cache enabled for assets and pages.', 'wp-plugin-blueprint'),
+            notice: __('Cache enabled for assets and pages.', 'wp-plugin-bluehost'),
         },
         {
-            label: __('Assets & Web Pages - Extended', 'wp-plugin-blueprint'),
-            description: __('Assets & Web Pages - Extended', 'wp-plugin-blueprint') +
+            label: __('Assets & Web Pages - Extended', 'wp-plugin-bluehost'),
+            description: __('Assets & Web Pages - Extended', 'wp-plugin-bluehost') +
                 ' ' +
-                __('Tuned for sites that update a few times a month or less.', 'wp-plugin-blueprint'),
+                __('Tuned for sites that update a few times a month or less.', 'wp-plugin-bluehost'),
             value: 3,
-            notice: __('Cache enabled for assets and pages (extended).', 'wp-plugin-blueprint'),
+            notice: __('Cache enabled for assets and pages (extended).', 'wp-plugin-bluehost'),
         },
     ];
 
     const getCacheLevelNoticeTitle = () => {
-        return __('Cache setting saved', 'wp-plugin-blueprint');
+        return __('Cache setting saved', 'wp-plugin-bluehost');
     };
 
     const getCacheLevelNoticeText = () => {
@@ -54,7 +54,7 @@ const CacheSettings = ({ setError, notify }) => {
     };
 
     const handleCacheLevelChange = (e) => {
-        blueprintSettingsApiFetch({ cacheLevel: parseInt(e.target.value) }, setError, (response) => {
+        bluehostSettingsApiFetch({ cacheLevel: parseInt(e.target.value) }, setError, (response) => {
             setCacheLevel(parseInt(e.target.value));
         });
     };
@@ -112,7 +112,7 @@ const ClearCache = ({ setError, notify }) => {
     const { store, setStore } = useContext(AppStore);
 
     const getCacheClearNoticeTitle = () => {
-        return __('Cache cleared', 'wp-plugin-blueprint');
+        return __('Cache cleared', 'wp-plugin-bluehost');
     };
 
     const notifySuccess = () => {
@@ -124,7 +124,7 @@ const ClearCache = ({ setError, notify }) => {
     };
 
     const clearCache = () => {
-        blueprintPurgeCacheApiFetch({}, setError, (response) => {
+        bluehostPurgeCacheApiFetch({}, setError, (response) => {
             notifySuccess();
         });
     };
@@ -132,19 +132,19 @@ const ClearCache = ({ setError, notify }) => {
     return (
         <div className="yst-flex yst-flex-col yst-gap-4">
             <div className="yst-flex yst-justify-between yst-items-center">
-                <Label>{__('Clear Cache', 'wp-plugin-blueprint')}</Label>
+                <Label>{__('Clear Cache', 'wp-plugin-bluehost')}</Label>
                 <Button
                     variant="secondary"
                     onClick={clearCache}
                 >
-                    {__('Clear All Cache Now', 'wp-plugin-blueprint')}
+                    {__('Clear All Cache Now', 'wp-plugin-bluehost')}
                 </Button>
             </div>
             <p className="yst-mr-[10.5rem]">
                 {
-                    __('We automatically clear your cache', 'wp-plugin-blueprint') +
+                    __('We automatically clear your cache', 'wp-plugin-bluehost') +
                     ', ' +
-                    __("as you work (creating content, changing settings, installing plugins and more). But you can manually clear it here to be confident it's fresh.", 'wp-plugin-blueprint')
+                    __("as you work (creating content, changing settings, installing plugins and more). But you can manually clear it here to be confident it's fresh.", 'wp-plugin-bluehost')
                 }
             </p>
 
@@ -159,12 +159,12 @@ const Performance = () => {
 
     return (
         <SectionSettings
-            title={__('Performance', 'wp-plugin-blueprint')}
+            title={__('Performance', 'wp-plugin-bluehost')}
             description={__('Boost speed and performance by storing a copy of your website content, files, and images online so the pages of your website load faster for your visitors.',
-                'wp-plugin-blueprint')}
+                'wp-plugin-bluehost')}
         >
             <div className="yst-flex yst-flex-col yst-gap-4">
-                <Label>{__('Caching', 'wp-plugin-blueprint')}</Label>
+                <Label>{__('Caching', 'wp-plugin-bluehost')}</Label>
 
                 <div className="yst-flex yst-flex-col yst-gap-6">
                     <CacheSettings setError={setError} notify={notify} />
@@ -172,7 +172,7 @@ const Performance = () => {
 
                     {isError &&
                         <Alert variant="error">
-                            {__('Oops! Something went wrong. Please try again.', 'wp-plugin-blueprint')}
+                            {__('Oops! Something went wrong. Please try again.', 'wp-plugin-bluehost')}
                         </Alert>
                     }
                 </div>

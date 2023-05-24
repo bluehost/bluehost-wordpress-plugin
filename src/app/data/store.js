@@ -9,9 +9,9 @@ const DEFAULT = {
 
 const AppStore = createContext( DEFAULT );
 
-export const blueprintApiFetchSettings = async ( options = {} ) => {
+export const bluehostApiFetchSettings = async ( options = {} ) => {
 	return await apiFetch( {
-		url: window.WPPB.resturl + '/blueprint/v1/settings',
+		url: window.WPPBH.resturl + '/bluehost/v1/settings',
 		...options,
 	} );
 };
@@ -35,10 +35,10 @@ export const AppStoreProvider = ( { children } ) => {
 
 	useEffect( () => {
 		if ( false === booted ) {
-			blueprintApiFetchSettings()
+			bluehostApiFetchSettings()
 				.then( ( settings ) => {
-					setStore( { ...store, ...window.WPPB, ...settings } );
-					window.WPPB.migrated = true;
+					setStore( { ...store, ...window.WPPBH, ...settings } );
+					window.WPPBH.migrated = true;
 					setBooted( true );
 				} )
 				.catch( ( error ) => {

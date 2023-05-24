@@ -1,4 +1,4 @@
-.wppb-section {
+.wppbh-section {
     margin: 0 0 2rem;
     position: relative;
 
@@ -35,9 +35,9 @@
     }
 
 
-    &.wppb-section-coming-soon {
+    &.wppbh-section-coming-soon {
 
-        .wppb-section-graphic {
+        .wppbh-section-graphic {
             top: -3rem;
             right: -6rem; 
         }
@@ -74,7 +74,7 @@
     }
 }
 
-.wppb-section-card {
+.wppbh-section-card {
     position: relative;
     z-index: 1;
 
@@ -85,7 +85,7 @@
     .components-card__footer {
         flex-direction: column;
         
-        .wppb-cardlist-content {
+        .wppbh-cardlist-content {
             width: 100%;
             .components-heading {
                 display: flex;
@@ -111,7 +111,7 @@
         @media screen and (min-width: 700px) {
             flex-direction: row;
 
-            .wppb-cardlist-content {
+            .wppbh-cardlist-content {
                 max-width: 60%;
             }
 

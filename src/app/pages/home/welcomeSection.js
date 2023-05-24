@@ -13,7 +13,7 @@ import {
 } from "../../components/section";
 import AppStore from "../../data/store";
 import WelcomeIllustration from "../../images/section-home-welcome.png";
-import { blueprintSettingsApiFetch } from "../../util/helpers";
+import { bluehostSettingsApiFetch } from "../../util/helpers";
 
 function OnboardingCheckListItem({ children, isComplete }) {
   return (
@@ -49,7 +49,7 @@ const checkListItems = [
 export function WelcomeSection() {
   let { store, setStore } = useContext(AppStore);
   const toggleComingSoon = () =>
-    blueprintSettingsApiFetch(
+    bluehostSettingsApiFetch(
       { comingSoon: !store.comingSoon },
       console.error,
       (response) => {

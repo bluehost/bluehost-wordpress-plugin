@@ -17,7 +17,7 @@
             "config": {
                 "WP_TESTS_DOMAIN": "localhost:8881",
                 "WP_TESTS_EMAIL": "evan@bluehost.com",
-                "WP_TESTS_TITLE": "Blueprint WordPress Plugin",
+                "WP_TESTS_TITLE": "Bluehost WordPress Plugin",
                 "WP_TESTS_BINARY": "php"
             }
         }

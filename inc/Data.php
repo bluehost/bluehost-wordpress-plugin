@@ -2,19 +2,19 @@
 /**
  * All data retrieval and saving happens from this file.
  *
- * @package WPPluginBlueprint
+ * @package WPPluginBluehost
  */
 
-namespace Blueprint;
+namespace Bluehost;
 
 /**
- * \Blueprint\Data
+ * \Bluehost\Data
  * This class does not have a constructor to get instantiated, just static methods.
  */
 final class Data {
 
 	/**
-	 * Data loaded onto window.WPPB
+	 * Data loaded onto window.WPPBH
 	 *
 	 * @return array
 	 */
@@ -22,8 +22,8 @@ final class Data {
 		global $wp_version;
 
 		$runtime = array(
-			'url'       => BLUEPRINT_BUILD_URL,
-			'version'   => BLUEPRINT_PLUGIN_VERSION,
+			'url'       => BLUEHOST_BUILD_URL,
+			'version'   => BLUEHOST_PLUGIN_VERSION,
 			'resturl'   => \get_home_url() . '/index.php?rest_route=',
 			'wpversion' => $wp_version,
 			'admin'     => \admin_url(),
@@ -33,7 +33,7 @@ final class Data {
 				'brand'    => 'bluehost',
 				'isJarvis' => false
 			),
-			'assets'    => BLUEPRINT_PLUGIN_URL . 'assets/',
+			'assets'    => BLUEHOST_PLUGIN_URL . 'assets/',
 		);
 
 		return $runtime;

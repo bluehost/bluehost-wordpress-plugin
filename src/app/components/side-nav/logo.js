@@ -1,6 +1,6 @@
 import { Button } from '@wordpress/components';
 import { Heading } from '..';
-import { ReactComponent as Brand } from '../../../../assets/svg/blueprint-logo.svg';
+import { ReactComponent as Brand } from '../../../../assets/svg/bluehost-logo.svg';
 import { delay } from 'lodash';
 
 const Mark = () => {
@@ -14,7 +14,7 @@ const Mark = () => {
 	};
 	return (
 		<Button
-			icon={ <Brand className="wppb-logo" /> }
+			icon={ <Brand className="wppbh-logo" /> }
 			style={ { width: '160px', height: 'auto' } }
 			onMouseUp={ defocus }
 			className="logo-mark yst-p-0"
@@ -25,10 +25,10 @@ const Mark = () => {
 
 const Logo = () => {
 	return (
-		<div className="wppb-logo-wrap">
+		<div className="wppbh-logo-wrap">
 			<Mark />
 			<Heading level="2" className="screen-reader-text">
-				{ __( 'Blueprint WordPress Plugin', 'wp-plugin-blueprint' ) }
+				{ __( 'Bluehost WordPress Plugin', 'wp-plugin-bluehost' ) }
 			</Heading>
 		</div>
 	);

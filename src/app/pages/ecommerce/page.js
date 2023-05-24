@@ -4,7 +4,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useNotification } from "../../components/notifications/feed";
 import { Page } from "../../components/page";
 import AppStore from "../../data/store";
-import { blueprintSettingsApiFetch } from "../../util/helpers";
+import { bluehostSettingsApiFetch } from "../../util/helpers";
 import "./styles.scss";
 
 const ECommerce = () => {
@@ -22,7 +22,7 @@ const ECommerce = () => {
 
   let actions = {
     toggleComingSoon: () =>
-      blueprintSettingsApiFetch(
+      bluehostSettingsApiFetch(
         { comingSoon: !store.comingSoon },
         console.error,
         (response) => {

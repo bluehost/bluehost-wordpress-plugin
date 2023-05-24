@@ -2,7 +2,7 @@ import { dispatch } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
 
 let lastNoticeId;
-const W_NAV = document.querySelector( '#toplevel_page_blueprint .wp-submenu' );
+const W_NAV = document.querySelector( '#toplevel_page_bluehost .wp-submenu' );
 /**
  * Set active nav in wp admin sub pages.
  *
@@ -32,7 +32,7 @@ export const setActiveSubnav = ( path ) => {
 					}
 					// highlight our home nav for root level access
 					const W_HOME_NAV = document.querySelector(
-						'.wppb-nav a[href="#/home"]'
+						'.wppbh-nav a[href="#/home"]'
 					);
 					if ( W_HOME_NAV ) {
 						if ( path === '/' || path === '/home' ) {
@@ -70,17 +70,17 @@ export const dispatchUpdateSnackbar = ( text = 'Settings Saved' ) => {
 };
 
 /**
- * Wrapper method to post setting to blueprint endpoint
+ * Wrapper method to post setting to bluehost endpoint
  *
  * @param {*} data object of data
  * @param passError setter for the error in component
  * @param thenCallback method to call in promise then
  * @return apiFetch promise
  */
-export const blueprintSettingsApiFetch = ( data, passError, thenCallback ) => {
+export const bluehostSettingsApiFetch = ( data, passError, thenCallback ) => {
 	return apiFetch( {
-		// path: 'blueprint/v1/settings', //  can't use path bacause it breaks on temp domains
-		url: window.WPPB.resturl + '/blueprint/v1/settings',
+		// path: 'bluehost/v1/settings', //  can't use path bacause it breaks on temp domains
+		url: window.WPPBH.resturl + '/bluehost/v1/settings',
 		method: 'POST',
 		data,
 	} )
@@ -93,16 +93,16 @@ export const blueprintSettingsApiFetch = ( data, passError, thenCallback ) => {
 };
 
 /**
- * Wrapper method to post request to blueprint cache endpoint
+ * Wrapper method to post request to bluehost cache endpoint
  *
  * @param {*} data object of data
  * @param passError setter for the error in component
  * @param thenCallback method to call in promise then
  * @return apiFetch promise
  */
-export const blueprintPurgeCacheApiFetch = ( data, passError, thenCallback ) => {
+export const bluehostPurgeCacheApiFetch = ( data, passError, thenCallback ) => {
 	return apiFetch( {
-		url: window.WPPB.resturl + '/blueprint/v1/caching',
+		url: window.WPPBH.resturl + '/bluehost/v1/caching',
 		method: 'DELETE',
 		data,
 	} )
@@ -119,7 +119,7 @@ export const blueprintPurgeCacheApiFetch = ( data, passError, thenCallback ) => 
  */
 export const comingSoonAdminbarToggle = ( comingSoon ) => {
 	const comingsoonadminbar = document.getElementById(
-		'wp-admin-bar-blueprint-coming_soon'
+		'wp-admin-bar-bluehost-coming_soon'
 	);
 	if ( ! comingsoonadminbar ) {
 		return;
@@ -138,8 +138,8 @@ export const comingSoonAdminbarToggle = ( comingSoon ) => {
  * @return {string}
  */
 export function getPlatformBaseUrl( path = '' ) {
-	const brand = window.WPPB.env.brand;
-	const isJarvis = window.WPPB.env.isJarvis;
+	const brand = window.WPPBH.env.brand;
+	const isJarvis = window.WPPBH.env.isJarvis;
 
 	const baseUrl = () => {
 		if (brand === 'Bluehost_India') {
@@ -169,7 +169,7 @@ export function getPlatformBaseUrl( path = '' ) {
  * // returns https://www.bluehost.com/my-account/home if Jarvis or https://my.bluehost.com/hosting/app#home if legacy
  */
 export function getPlatformPathUrl ( jarvisPath = '', legacyPath = '' ) {
-	const isJarvis = window.WPPB.env.isJarvis;
+	const isJarvis = window.WPPBH.env.isJarvis;
 
 	if (isJarvis) {
 		return getPlatformBaseUrl('/my-account/') + jarvisPath;

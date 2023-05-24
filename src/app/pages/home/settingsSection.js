@@ -12,34 +12,34 @@ import { Icon, settings, store } from '@wordpress/icons';
 
 const SettingsSection = () => {
 	return (
-		<section className="wppb-section wppb-section-home-settings">
+		<section className="wppbh-section wppbh-section-home-settings">
 			<img
 				src={ graphicUrl }
 				className="section-graphic"
-				alt={ __( 'Settings illustration', 'wp-plugin-blueprint' ) }
+				alt={ __( 'Settings illustration', 'wp-plugin-bluehost' ) }
 			/>
-			<Card size="large" className="wppb-section-card">
+			<Card size="large" className="wppbh-section-card">
 				<CardHeader>
 					<Heading level="3">
-						{ __( 'Settings and Performance', 'wp-plugin-blueprint' ) }
+						{ __( 'Settings and Performance', 'wp-plugin-bluehost' ) }
 					</Heading>
 					<p>
 						{ __(
 							'Customize & fine-tune your site.',
-							'wp-plugin-blueprint'
+							'wp-plugin-bluehost'
 						) }
 					</p>
 				</CardHeader>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Icon icon={ settings } />{ ' ' }
-							{ __( 'Manage Settings', 'wp-plugin-blueprint' ) }
+							{ __( 'Manage Settings', 'wp-plugin-bluehost' ) }
 						</Heading>
 						<p>
 							{ __(
 								'Adjust auto-updates, comments, backed-up revisions & more.',
-								'wp-plugin-blueprint'
+								'wp-plugin-bluehost'
 							) }
 						</p>
 					</div>
@@ -49,19 +49,19 @@ const SettingsSection = () => {
 						icon={ settings }
 						className="callout-link-settings"
 					>
-						{ __( 'Settings', 'wp-plugin-blueprint' ) }
+						{ __( 'Settings', 'wp-plugin-bluehost' ) }
 					</Button>
 				</CardFooter>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Dashicon icon="performance" />{ ' ' }
-							{ __( 'Performance', 'wp-plugin-blueprint' ) }
+							{ __( 'Performance', 'wp-plugin-bluehost' ) }
 						</Heading>
 						<p>
 							{ __(
 								'Strike the balance between fresh updates and fastest delivery.',
-								'wp-plugin-blueprint'
+								'wp-plugin-bluehost'
 							) }
 						</p>
 					</div>
@@ -71,19 +71,19 @@ const SettingsSection = () => {
 						icon={ <Dashicon icon="performance" /> }
 						className="callout-link-performance"
 					>
-						{ __( 'Performance', 'wp-plugin-blueprint' ) }
+						{ __( 'Performance', 'wp-plugin-bluehost' ) }
 					</Button>
 				</CardFooter>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Icon icon={ store } />{ ' ' }
-							{ __( 'Marketplace', 'wp-plugin-blueprint' ) }
+							{ __( 'Marketplace', 'wp-plugin-bluehost' ) }
 						</Heading>
 						<p>
 							{ __(
 								'Add site services, themes or plugins from our marketplace.',
-								'wp-plugin-blueprint'
+								'wp-plugin-bluehost'
 							) }
 						</p>
 					</div>
@@ -93,7 +93,7 @@ const SettingsSection = () => {
 						icon={ store }
 						className="callout-link-marketplace"
 					>
-						{ __( 'Visit Marketplace', 'wp-plugin-blueprint' ) }
+						{ __( 'Visit Marketplace', 'wp-plugin-bluehost' ) }
 					</Button>
 				</CardFooter>
 			</Card>

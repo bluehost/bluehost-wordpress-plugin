@@ -8,7 +8,7 @@ import { WelcomeSection } from './welcomeSection';
 
 const Home = () => {
 	return (
-		<Page className="wppb-home">
+		<Page className="wppbh-home">
 			<WelcomeSection />
 			<FreeAddonsSection />
 			<SectionContainer>

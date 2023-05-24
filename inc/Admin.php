@@ -2,13 +2,13 @@
 /**
  * Register Admin page and features.
  *
- * @package WPPluginBlueprint
+ * @package WPPluginBluehost
  */
 
-namespace Blueprint;
+namespace Bluehost;
 
 /**
- * \Blueprint\Admin
+ * \Bluehost\Admin
  */
 final class Admin {
 
@@ -19,15 +19,15 @@ final class Admin {
 		/* Add Page to WordPress Admin Menu. */
 		\add_action( 'admin_menu', array( __CLASS__, 'page' ) );
 		/* Load Page Scripts & Styles. */
-		\add_action( 'load-toplevel_page_blueprint', array( __CLASS__, 'assets' ) );
+		\add_action( 'load-toplevel_page_bluehost', array( __CLASS__, 'assets' ) );
 		/* Load i18 files */
 		\add_action( 'init', array( __CLASS__, 'load_text_domain' ), 100 );
 		/* Add Links to WordPress Plugins list item. */
-		\add_filter( 'plugin_action_links_wp-plugin-blueprint/wp-plugin-blueprint.php', array( __CLASS__, 'actions' ) );
+		\add_filter( 'plugin_action_links_wp-plugin-bluehost/wp-plugin-bluehost.php', array( __CLASS__, 'actions' ) );
 		/* Add inline style to hide subnav link */
 		\add_action( 'admin_head', array( __CLASS__, 'admin_nav_style' ) );
 
-		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_SANITIZE_STRING ), 'blueprint' ) >= 0 ) { // phpcs:ignore
+		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_SANITIZE_STRING ), 'bluehost' ) >= 0 ) { // phpcs:ignore
 			\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
 		}
 	}
@@ -41,12 +41,13 @@ final class Admin {
 	 */
 	public static function subpages() {
 		return array(
-			'blueprint#/home'        => __( 'Home', 'wp-plugin-blueprint' ),
-			'blueprint#/marketplace' => __( 'Marketplace', 'wp-plugin-blueprint' ),
-			'blueprint#/store'       => __( 'Store', 'wp-plugin-blueprint' ),
-			'blueprint#/performance' => __( 'Performance', 'wp-plugin-blueprint' ),
-			'blueprint#/settings'    => __( 'Settings', 'wp-plugin-blueprint' ),
-			'blueprint#/help'        => __( 'Help', 'wp-plugin-blueprint' ),
+			'bluehost#/home'        => __( 'Home', 'wp-plugin-bluehost' ),
+			'bluehost#/store'       => __( 'Store', 'wp-plugin-bluehost' ),
+			'bluehost#/marketplace' => __( 'Marketplace', 'wp-plugin-bluehost' ),
+			'bluehost#/performance' => __( 'Performance', 'wp-plugin-bluehost' ),
+			'bluehost#/settings'    => __( 'Settings', 'wp-plugin-bluehost' ),
+			'bluehost#/staging'     => __( 'Staging', 'wp-plugin-bluehost' ),
+			'bluehost#/help'        => __( 'Help', 'wp-plugin-bluehost' ),
 		);
 	}
 
@@ -56,9 +57,9 @@ final class Admin {
 	 */
 	public static function admin_nav_style() {
 		echo '<style>';
-		echo 'ul#adminmenu a.toplevel_page_blueprint.wp-has-current-submenu:after, ul#adminmenu>li#toplevel_page_blueprint.current>a.current:after { border-right-color: #fff !important; }';
-		echo 'li#toplevel_page_blueprint > ul > li.wp-first-item { display: none !important; }';
-		echo '#wp-toolbar #wp-admin-bar-blueprint-coming_soon .ab-item { padding: 0; }';
+		echo 'ul#adminmenu a.toplevel_page_bluehost.wp-has-current-submenu:after, ul#adminmenu>li#toplevel_page_bluehost.current>a.current:after { border-right-color: #fff !important; }';
+		echo 'li#toplevel_page_bluehost > ul > li.wp-first-item { display: none !important; }';
+		echo '#wp-toolbar #wp-admin-bar-bluehost-coming_soon .ab-item { padding: 0; }';
 		echo '</style>';
 	}
 
@@ -68,22 +69,21 @@ final class Admin {
 	 * @return void
 	 */
 	public static function page() {
-		// get the blueprint-logo.svg and encode for base64 at https://base64.guru/converter/encode/image/svg
-		$blueprint_icon = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01IDBDNy43NjE0IDAgMTAgMi4yMzg1NyAxMCA1VjBIMTVDMTcuNzYxNCAwIDIwIDIuMjM4NTcgMjAgNUMyMCA3Ljc2MTQgMTcuNzYxNCAxMCAxNSAxMEMxNy43NjE0IDEwIDIwIDEyLjIzODYgMjAgMTVDMjAgMTYuMzcxMiAxOS40NDgxIDE3LjYxMzQgMTguNTU0MyAxOC41MTY3TDE4LjUzNTUgMTguNTM1NUwxOC41MTg5IDE4LjU1MkMxNy42MTU0IDE5LjQ0NzEgMTYuMzcyMyAyMCAxNSAyMEMxMy42MzcxIDIwIDEyLjQwMTUgMTkuNDU0NiAxMS40OTk1IDE4LjU3MDJDMTEuNDg3OCAxOC41NTg3IDExLjQ3NjEgMTguNTQ3MSAxMS40NjQ0IDE4LjUzNTVDMTEuNDUzNSAxOC41MjQ2IDExLjQ0MjYgMTguNTEzNiAxMS40MzE4IDE4LjUwMjZDMTAuNTQ2MiAxNy42MDA1IDEwIDE2LjM2NCAxMCAxNUMxMCAxNy43NjE0IDcuNzYxNCAyMCA1IDIwQzIuMjM4NTcgMjAgMCAxNy43NjE0IDAgMTVWMTBINUMyLjIzODU3IDEwIDAgNy43NjE0IDAgNUMwIDIuMjM4NTcgMi4yMzg1NyAwIDUgMFpNOSA1QzkgNy4yMDkxNSA3LjIwOTE1IDkgNSA5VjFDNy4yMDkxNSAxIDkgMi43OTA4NiA5IDVaTTE5IDE1QzE5IDEyLjc5MDggMTcuMjA5MiAxMSAxNSAxMUMxMi43OTA4IDExIDExIDEyLjc5MDggMTEgMTVIMTlaTTEgMTFWMTVDMSAxNy4yMDkyIDIuNzkwODYgMTkgNSAxOUM3LjIwOTE1IDE5IDkgMTcuMjA5MiA5IDE1VjExSDFaTTExIDlWMUgxNUMxNy4yMDkyIDEgMTkgMi43OTA4NiAxOSA1QzE5IDcuMjA5MTUgMTcuMjA5MiA5IDE1IDlIMTFaIiBmaWxsPSIjOUNBMkE3Ii8+Cjwvc3ZnPgo=';
+		$bluehost_icon = 'data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1OC4wMyA1OC4xMyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5iaC13aGl0ZTwvdGl0bGU+PGcgaWQ9Il9Hcm91cF8iIGRhdGEtbmFtZT0iJmx0O0dyb3VwJmd0OyI+PGcgaWQ9Il9Hcm91cF8yIiBkYXRhLW5hbWU9IiZsdDtHcm91cCZndDsiPjxnIGlkPSJfR3JvdXBfMyIgZGF0YS1uYW1lPSImbHQ7R3JvdXAmZ3Q7Ij48cmVjdCBpZD0iX1BhdGhfIiBkYXRhLW5hbWU9IiZsdDtQYXRoJmd0OyIgY2xhc3M9ImNscy0xIiB3aWR0aD0iMTYuMiIgaGVpZ2h0PSIxNi4yMSIvPjxyZWN0IGlkPSJfUGF0aF8yIiBkYXRhLW5hbWU9IiZsdDtQYXRoJmd0OyIgY2xhc3M9ImNscy0xIiB4PSIyMC45MSIgd2lkdGg9IjE2LjIxIiBoZWlnaHQ9IjE2LjIxIi8+PHJlY3QgaWQ9Il9QYXRoXzMiIGRhdGEtbmFtZT0iJmx0O1BhdGgmZ3Q7IiBjbGFzcz0iY2xzLTEiIHg9IjQxLjgyIiB3aWR0aD0iMTYuMjEiIGhlaWdodD0iMTYuMjEiLz48cmVjdCBpZD0iX1BhdGhfNCIgZGF0YS1uYW1lPSImbHQ7UGF0aCZndDsiIGNsYXNzPSJjbHMtMSIgeT0iMjAuOTYiIHdpZHRoPSIxNi4yIiBoZWlnaHQ9IjE2LjIxIi8+PHJlY3QgaWQ9Il9QYXRoXzUiIGRhdGEtbmFtZT0iJmx0O1BhdGgmZ3Q7IiBjbGFzcz0iY2xzLTEiIHg9IjIwLjkxIiB5PSIyMC45NiIgd2lkdGg9IjE2LjIxIiBoZWlnaHQ9IjE2LjIxIi8+PHJlY3QgaWQ9Il9QYXRoXzYiIGRhdGEtbmFtZT0iJmx0O1BhdGgmZ3Q7IiBjbGFzcz0iY2xzLTEiIHg9IjQxLjgyIiB5PSIyMC45NiIgd2lkdGg9IjE2LjIxIiBoZWlnaHQ9IjE2LjIxIi8+PHJlY3QgaWQ9Il9QYXRoXzciIGRhdGEtbmFtZT0iJmx0O1BhdGgmZ3Q7IiBjbGFzcz0iY2xzLTEiIHk9IjQxLjkyIiB3aWR0aD0iMTYuMiIgaGVpZ2h0PSIxNi4yMSIvPjxyZWN0IGlkPSJfUGF0aF84IiBkYXRhLW5hbWU9IiZsdDtQYXRoJmd0OyIgY2xhc3M9ImNscy0xIiB4PSIyMC45MSIgeT0iNDEuOTIiIHdpZHRoPSIxNi4yMSIgaGVpZ2h0PSIxNi4yMSIvPjxyZWN0IGlkPSJfUGF0aF85IiBkYXRhLW5hbWU9IiZsdDtQYXRoJmd0OyIgY2xhc3M9ImNscy0xIiB4PSI0MS44MiIgeT0iNDEuOTIiIHdpZHRoPSIxNi4yMSIgaGVpZ2h0PSIxNi4yMSIvPjwvZz48L2c+PC9nPjwvc3ZnPg==';
 
 		\add_menu_page(
-			__( 'Blueprint', 'wp-plugin-blueprint' ),
-			__( 'Blueprint', 'wp-plugin-blueprint' ),
+			__( 'Bluehost', 'wp-plugin-bluehost' ),
+			__( 'Bluehost', 'wp-plugin-bluehost' ),
 			'manage_options',
-			'blueprint',
+			'bluehost',
 			array( __CLASS__, 'render' ),
-			$blueprint_icon,
+			$bluehost_icon,
 			0
 		);
 
 		foreach ( self::subpages() as $route => $title ) {
 			\add_submenu_page(
-				'blueprint',
+				'bluehost',
 				$title,
 				$title,
 				'manage_options',
@@ -101,24 +101,24 @@ final class Admin {
 	public static function render() {
 		global $wp_version;
 
-		echo '<!-- Blueprint -->' . PHP_EOL;
+		echo '<!-- Bluehost -->' . PHP_EOL;
 
 		if ( version_compare( $wp_version, '5.4', '>=' ) ) {
-			echo '<div id="wppb-app" class="wppb wppb_app"></div>' . PHP_EOL;
+			echo '<div id="wppbh-app" class="wppbh wppbh_app"></div>' . PHP_EOL;
 		} else {
 			// fallback messaging for WordPress older than 5.4
-			echo '<div id="wppb-app" class="wppb wppb_app">' . PHP_EOL;
-			echo '<header class="wppb-header" style="min-height: 90px; padding: 1rem; margin-bottom: 1.5rem;"><div class="wppb-header-inner"><div class="wppb-logo-wrap">' . PHP_EOL;
-			echo '<img src="' . esc_url( BLUEPRINT_PLUGIN_URL . 'assets/svg/blueprint-logo.svg' ) . '" alt="Blueprint logo" />' . PHP_EOL;
+			echo '<div id="wppbh-app" class="wppbh wppbh_app">' . PHP_EOL;
+			echo '<header class="wppbh-header" style="min-height: 90px; padding: 1rem; margin-bottom: 1.5rem;"><div class="wppbh-header-inner"><div class="wppbh-logo-wrap">' . PHP_EOL;
+			echo '<img src="' . esc_url( BLUEHOST_PLUGIN_URL . 'assets/svg/bluehost-logo.svg' ) . '" alt="Bluehost logo" />' . PHP_EOL;
 			echo '</div></div></header>' . PHP_EOL;
 			echo '<div class="wrap">' . PHP_EOL;
-			echo '<div class="card" style="margin-left: 20px;"><h2 class="title">' . esc_html__( 'Please update to a newer WordPress version.', 'wp-plugin-blueprint' ) . '</h2>' . PHP_EOL;
-			echo '<p>' . esc_html__( 'There are new WordPress components which this plugin requires in order to render the interface.', 'wp-plugin-blueprint' ) . '</p>' . PHP_EOL;
-			echo '<p><a href="' . esc_url( admin_url( 'update-core.php' ) ) . '" class="button component-button is-primary button-primary" variant="primary">' . esc_html__( 'Please update now', 'wp-plugin-blueprint' ) . '</a></p>' . PHP_EOL;
+			echo '<div class="card" style="margin-left: 20px;"><h2 class="title">' . esc_html__( 'Please update to a newer WordPress version.', 'wp-plugin-bluehost' ) . '</h2>' . PHP_EOL;
+			echo '<p>' . esc_html__( 'There are new WordPress components which this plugin requires in order to render the interface.', 'wp-plugin-bluehost' ) . '</p>' . PHP_EOL;
+			echo '<p><a href="' . esc_url( admin_url( 'update-core.php' ) ) . '" class="button component-button is-primary button-primary" variant="primary">' . esc_html__( 'Please update now', 'wp-plugin-bluehost' ) . '</a></p>' . PHP_EOL;
 			echo '</div></div></div>' . PHP_EOL;
 		}
 
-		echo '<!-- /Blueprint -->' . PHP_EOL;
+		echo '<!-- /Bluehost -->' . PHP_EOL;
 	}
 
 	/**
@@ -127,7 +127,7 @@ final class Admin {
 	 * @return void
 	 */
 	public static function assets() {
-		$asset_file = BLUEPRINT_BUILD_DIR . '/index.asset.php';
+		$asset_file = BLUEHOST_BUILD_DIR . '/index.asset.php';
 
 		if ( is_readable( $asset_file ) ) {
 			$asset = include_once $asset_file;
@@ -136,37 +136,37 @@ final class Admin {
 		}
 
 		\wp_register_script(
-			'blueprint-script',
-			BLUEPRINT_BUILD_URL . '/index.js',
+			'bluehost-script',
+			BLUEHOST_BUILD_URL . '/index.js',
 			array_merge( $asset['dependencies'] ),
 			$asset['version'],
 			true
 		);
 
 		\wp_set_script_translations(
-			'blueprint-script',
-			'wp-plugin-blueprint',
-			BLUEPRINT_PLUGIN_DIR . '/languages'
+			'bluehost-script',
+			'wp-plugin-bluehost',
+			BLUEHOST_PLUGIN_DIR . '/languages'
 		);
 
-		include BLUEPRINT_PLUGIN_DIR . '/inc/Data.php';
+		include BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
 		\wp_add_inline_script(
-			'blueprint-script',
-			'var WPPB =' . \wp_json_encode( Data::runtime() ) . ';',
+			'bluehost-script',
+			'var WPPBH =' . \wp_json_encode( Data::runtime() ) . ';',
 			'before'
 		);
 
 		\wp_register_style(
-			'blueprint-style',
-			BLUEPRINT_BUILD_URL . '/index.css',
+			'bluehost-style',
+			BLUEHOST_BUILD_URL . '/index.css',
 			array( 'wp-components' ),
 			$asset['version']
 		);
 
 		$screen = get_current_screen();
-		if ( false !== strpos( $screen->id, 'blueprint' ) ) {
-			\wp_enqueue_script( 'blueprint-script' );
-			\wp_enqueue_style( 'blueprint-style' );
+		if ( false !== strpos( $screen->id, 'bluehost' ) ) {
+			\wp_enqueue_script( 'bluehost-script' );
+			\wp_enqueue_style( 'bluehost-style' );
 		}
 	}
 
@@ -178,20 +178,20 @@ final class Admin {
 	public static function load_text_domain() {
 
 		\load_plugin_textdomain(
-			'wp-plugin-blueprint',
+			'wp-plugin-bluehost',
 			false,
-			BLUEPRINT_PLUGIN_DIR . '/languages'
+			BLUEHOST_PLUGIN_DIR . '/languages'
 		);
 
 		\load_script_textdomain(
-			'blueprint-script',
-			'wp-plugin-blueprint',
-			BLUEPRINT_PLUGIN_DIR . '/languages'
+			'bluehost-script',
+			'wp-plugin-bluehost',
+			BLUEHOST_PLUGIN_DIR . '/languages'
 		);
 	}
 
 	/**
-	 * Add Links to WordPress Plugins list item for Blueprint.
+	 * Add Links to WordPress Plugins list item for Bluehost.
 	 *
 	 * @param  array $actions - array of action links for Plugin row item.
 	 * @return array
@@ -199,8 +199,8 @@ final class Admin {
 	public static function actions( $actions ) {
 		return array_merge(
 			array(
-				'overview' => '<a href="' . \admin_url( 'admin.php?page=blueprint#/home' ) . '">' . __( 'Home', 'wp-plugin-blueprint' ) . '</a>',
-				'settings' => '<a href="' . \admin_url( 'admin.php?page=blueprint#/settings' ) . '">' . __( 'Settings', 'wp-plugin-blueprint' ) . '</a>',
+				'overview' => '<a href="' . \admin_url( 'admin.php?page=bluehost#/home' ) . '">' . __( 'Home', 'wp-plugin-bluehost' ) . '</a>',
+				'settings' => '<a href="' . \admin_url( 'admin.php?page=bluehost#/settings' ) . '">' . __( 'Settings', 'wp-plugin-bluehost' ) . '</a>',
 			),
 			$actions
 		);
@@ -213,7 +213,7 @@ final class Admin {
 	 * @return string
 	 */
 	public static function add_brand_to_admin_footer( $footer_text ) {
-		$footer_text = \sprintf( \__( 'Thank you for creating with <a href="https://wordpress.org/">WordPress</a> and <a href="https://blueprint.com/about-us">Blueprint</a>.', 'wp-plugin-blueprint' ) );
+		$footer_text = \sprintf( \__( 'Thank you for creating with <a href="https://wordpress.org/">WordPress</a> and <a href="https://bluehost.com/about-us">Bluehost</a>.', 'wp-plugin-bluehost' ) );
 		return $footer_text;
 	}
-} // END \Blueprint\Admin
+} // END \Bluehost\Admin

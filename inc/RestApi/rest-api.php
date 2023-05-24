@@ -2,10 +2,10 @@
 /**
  * This file sets up custom api controllers for the plugin.
  *
- * @package WPPluginBlueprint
+ * @package WPPluginBluehost
  */
 
-namespace Blueprint;
+namespace Bluehost;
 
 /**
  * Instantiate controllers and register routes.
@@ -13,8 +13,8 @@ namespace Blueprint;
 function init_rest_api() {
 
 	$controllers = array(
-		'Blueprint\\RestApi\\CachingController',
-		'Blueprint\\RestApi\\SettingsController',
+		'Bluehost\\RestApi\\CachingController',
+		'Bluehost\\RestApi\\SettingsController',
 	);
 
 	foreach ( $controllers as $controller ) {

@@ -2,10 +2,10 @@
 /**
  * Manage legacy mojo performance settings.
  *
- * @package WPPluginBlueprint
+ * @package WPPluginBluehost
  */
 
-namespace Blueprint;
+namespace Bluehost;
 
 /**
  * Callback to Toggle Mojo Cache level

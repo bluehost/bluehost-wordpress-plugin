@@ -2,13 +2,13 @@
 /**
  * Register AdminBar help button.
  *
- * @package WPPluginBlueprint
+ * @package WPPluginBluehost
  */
 
-namespace Blueprint;
+namespace Bluehost;
 
 /**
- * \Blueprint\AdminBar
+ * \Bluehost\AdminBar
  */
 class AdminBar {
 
@@ -31,11 +31,11 @@ class AdminBar {
 		global $wp_admin_bar;
 		$wp_admin_bar->add_menu(
 			array(
-				'id'    => 'blueprint-support',
-				'title' => __( 'Need help?', 'wp-plugin-blueprint' ),
-				'href'  => admin_url( 'admin.php?page=blueprint#/help' ),
+				'id'    => 'bluehost-support',
+				'title' => __( 'Need help?', 'wp-plugin-bluehost' ),
+				'href'  => admin_url( 'admin.php?page=bluehost#/help' ),
 				'meta'  => array(
-					'title' => esc_attr__( 'We\'re here for you!', 'wp-plugin-blueprint' ),
+					'title' => esc_attr__( 'We\'re here for you!', 'wp-plugin-bluehost' ),
 				),
 			)
 		);

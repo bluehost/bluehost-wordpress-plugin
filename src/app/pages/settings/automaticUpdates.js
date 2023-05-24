@@ -1,5 +1,5 @@
 import AppStore from '../../data/store';
-import { blueprintSettingsApiFetch } from '../../util/helpers';
+import { bluehostSettingsApiFetch } from '../../util/helpers';
 import { useUpdateEffect } from 'react-use';
 import { useState } from '@wordpress/element';
 import { Alert, ToggleField } from "@yoast/ui-library";
@@ -14,17 +14,17 @@ const AutomaticUpdatesMajorCore = ({ setError, notify }) => {
 
 	const getCoreNoticeTitle = () => {
 		return autoUpdatesMajorCore
-			? __('Enabled Core auto-updates', 'wp-plugin-blueprint')
-			: __('Disabled Core auto-updates', 'wp-plugin-blueprint');
+			? __('Enabled Core auto-updates', 'wp-plugin-bluehost')
+			: __('Disabled Core auto-updates', 'wp-plugin-bluehost');
 	};
 	const getCoreNoticeText = () => {
 		return autoUpdatesMajorCore
-			? __('WordPress will automatically update.', 'wp-plugin-blueprint')
-			: __('WordPress must be manually updated.', 'wp-plugin-blueprint');
+			? __('WordPress will automatically update.', 'wp-plugin-bluehost')
+			: __('WordPress must be manually updated.', 'wp-plugin-bluehost');
 	};
 
 	const toggleAutoUpdatesMajorCore = () => {
-		blueprintSettingsApiFetch({ autoUpdatesMajorCore: !autoUpdatesMajorCore }, setError, (response) => {
+		bluehostSettingsApiFetch({ autoUpdatesMajorCore: !autoUpdatesMajorCore }, setError, (response) => {
 			setAutoUpdatesCore(!autoUpdatesMajorCore);
 		});
 	};
@@ -54,7 +54,7 @@ const AutomaticUpdatesMajorCore = ({ setError, notify }) => {
 	return (
 		<ToggleField
 			id="autoupdate-core-toggle"
-			label={__('WordPress Core', 'wp-plugin-blueprint')}
+			label={__('WordPress Core', 'wp-plugin-bluehost')}
 			checked={autoUpdatesMajorCore}
 			onChange={toggleAutoUpdatesMajorCore}
 		/>
@@ -69,17 +69,17 @@ const AutomaticUpdatesPlugins = ({ setError, notify }) => {
 
 	const getPluginsNoticeTitle = () => {
 		return autoUpdatesPlugins
-			? __('Enabled Plugins auto-update', 'wp-plugin-blueprint')
-			: __('Disabled Plugins auto-update', 'wp-plugin-blueprint');
+			? __('Enabled Plugins auto-update', 'wp-plugin-bluehost')
+			: __('Disabled Plugins auto-update', 'wp-plugin-bluehost');
 	};
 	const getPluginsNoticeText = () => {
 		return autoUpdatesPlugins
-			? __('All plugins will automatically update.', 'wp-plugin-blueprint')
-			: __('Each plugin must be manually updated.', 'wp-plugin-blueprint');
+			? __('All plugins will automatically update.', 'wp-plugin-bluehost')
+			: __('Each plugin must be manually updated.', 'wp-plugin-bluehost');
 	};
 
 	const toggleAutoUpdatesPlugins = () => {
-		blueprintSettingsApiFetch({ autoUpdatesPlugins: !autoUpdatesPlugins }, setError, (response) => {
+		bluehostSettingsApiFetch({ autoUpdatesPlugins: !autoUpdatesPlugins }, setError, (response) => {
 			setAutoUpdatesPlugins(!autoUpdatesPlugins);
 		});
 	};
@@ -109,7 +109,7 @@ const AutomaticUpdatesPlugins = ({ setError, notify }) => {
 	return (
 		<ToggleField
 			id="autoupdate-plugins-toggle"
-			label={__('Plugins', 'wp-plugin-blueprint')}
+			label={__('Plugins', 'wp-plugin-bluehost')}
 			checked={autoUpdatesPlugins}
 			onChange={toggleAutoUpdatesPlugins}
 		/>
@@ -124,18 +124,18 @@ const AutomaticUpdatesThemes = ({ setError, notify }) => {
 
 	const getThemesNoticeTitle = () => {
 		return autoUpdatesThemes
-			? __('Enabled Themes auto-update', 'wp-plugin-blueprint')
-			: __('Disabled Themes auto-update', 'wp-plugin-blueprint');
+			? __('Enabled Themes auto-update', 'wp-plugin-bluehost')
+			: __('Disabled Themes auto-update', 'wp-plugin-bluehost');
 	};
 
 	const getThemesNoticeText = () => {
 		return autoUpdatesThemes
-			? __('All themes will automatically update.', 'wp-plugin-blueprint')
-			: __('Each theme must be manually updated.', 'wp-plugin-blueprint');
+			? __('All themes will automatically update.', 'wp-plugin-bluehost')
+			: __('Each theme must be manually updated.', 'wp-plugin-bluehost');
 	};
 
 	const toggleAutoUpdatesThemes = () => {
-		blueprintSettingsApiFetch({ autoUpdatesThemes: !autoUpdatesThemes }, setError, (response) => {
+		bluehostSettingsApiFetch({ autoUpdatesThemes: !autoUpdatesThemes }, setError, (response) => {
 			setAutoUpdatesThemes(!autoUpdatesThemes);
 		});
 	};
@@ -165,7 +165,7 @@ const AutomaticUpdatesThemes = ({ setError, notify }) => {
 	return (
 		<ToggleField
 			id="autoupdate-themes-toggle"
-			label={__('Themes', 'wp-plugin-blueprint')}
+			label={__('Themes', 'wp-plugin-bluehost')}
 			checked={autoUpdatesThemes}
 			onChange={toggleAutoUpdatesThemes}
 		/>
@@ -179,8 +179,8 @@ const AutomaticUpdates = () => {
 
 	return (
 		<SectionSettings
-			title={__('Automatic Updates', 'wp-plugin-blueprint')}
-			description={__('Keeping automatic updates on ensures timely security fixes and the latest features.', 'wp-plugin-blueprint')}
+			title={__('Automatic Updates', 'wp-plugin-bluehost')}
+			description={__('Keeping automatic updates on ensures timely security fixes and the latest features.', 'wp-plugin-bluehost')}
 		>
 			<div className="yst-flex yst-flex-col yst-gap-4">
 				<AutomaticUpdatesMajorCore setError={setError} notify={notify} />
@@ -188,7 +188,7 @@ const AutomaticUpdates = () => {
 				<AutomaticUpdatesThemes setError={setError} notify={notify} />
 				{isError &&
 					<Alert variant="error">
-						{__('Oops! Something went wrong. Please try again.', 'wp-plugin-blueprint')}
+						{__('Oops! Something went wrong. Please try again.', 'wp-plugin-bluehost')}
 					</Alert>
 				}
 			</div>

@@ -1,8 +1,8 @@
 {
-    "name": "wp-plugin-blueprint",
-    "description": "WordPress plugin that integrates your WordPress site with the Blueprint control panel, including performance, security, and update features.",
+    "name": "wp-plugin-bluehost",
+    "description": "WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
     "license": "GPL-2.0-or-later",
-    "version": "0.1.0",
+    "version": "3.0.0",
     "private": true,
     "author": {
         "name": "Evan Mullins",
@@ -36,10 +36,10 @@
         "storybook:build": "build-storybook -c ./storybook -o ./.docs",
         "test:e2e": "npx cypress run",
         "test:unit": "wp-scripts test-unit-js",
-        "create:dist": "rsync -r --exclude-from=.distignore . ./wp-plugin-blueprint",
+        "create:dist": "rsync -r --exclude-from=.distignore . ./wp-plugin-bluehost",
         "php-deps": "composer install --no-dev --optimize-autoloader",
-        "create:zip": "cd ./wp-plugin-blueprint && zip -r -9 ../wp-plugin-blueprint.zip . && ls -lh ../wp-plugin-blueprint.zip",
-        "prebuild:cleanup": "rm -rf ./build ./wp-plugin-blueprint ./wp-plugin-blueprint.zip ./vendor",
+        "create:zip": "cd ./wp-plugin-bluehost && zip -r -9 ../wp-plugin-bluehost.zip . && ls -lh ../wp-plugin-bluehost.zip",
+        "prebuild:cleanup": "rm -rf ./build ./wp-plugin-bluehost ./wp-plugin-bluehost.zip ./vendor",
         "simulate-runner-build": "npm run prebuild:cleanup && npm i && npm run php-deps && npm run build && npm run create:dist && npm run create:zip",
         "srb": "npm run simulate-runner-build"
     },

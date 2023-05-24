@@ -1,5 +1,5 @@
 import AppStore from '../../data/store';
-import { blueprintSettingsApiFetch } from '../../util/helpers';
+import { bluehostSettingsApiFetch } from '../../util/helpers';
 import { useUpdateEffect } from 'react-use';
 import { useState } from '@wordpress/element';
 import { Alert, SelectField, ToggleField } from "@yoast/ui-library";
@@ -14,18 +14,18 @@ const OldPostsComments = ({ setError, notify }) => {
 
 	const disableCommentsNoticeTitle = () => {
 		return disableCommentsOldPosts
-			? __('Disabled old post comments', 'wp-plugin-blueprint')
-			: __('Enabled old post comments', 'wp-plugin-blueprint');
+			? __('Disabled old post comments', 'wp-plugin-bluehost')
+			: __('Enabled old post comments', 'wp-plugin-bluehost');
 	};
 
 	const disableCommentsNoticeText = () => {
 		return disableCommentsOldPosts
-			? __('Comments on old posts are disabled.', 'wp-plugin-blueprint')
-			: __('Comments are allowed on old posts.', 'wp-plugin-blueprint');
+			? __('Comments on old posts are disabled.', 'wp-plugin-bluehost')
+			: __('Comments are allowed on old posts.', 'wp-plugin-bluehost');
 	};
 
 	const toggleDisableCommentsOldPosts = () => {
-		blueprintSettingsApiFetch({ disableCommentsOldPosts: !disableCommentsOldPosts }, setError, (response) => {
+		bluehostSettingsApiFetch({ disableCommentsOldPosts: !disableCommentsOldPosts }, setError, (response) => {
 			setDisableCommentsOldPosts(!disableCommentsOldPosts);
 		});
 	};
@@ -57,7 +57,7 @@ const OldPostsComments = ({ setError, notify }) => {
 			id="disable-comments-toggle"
 			label={__(
 				'Disable comments for older posts',
-				'wp-plugin-blueprint'
+				'wp-plugin-bluehost'
 			)}
 			checked={disableCommentsOldPosts}
 			onChange={toggleDisableCommentsOldPosts}
@@ -74,21 +74,21 @@ const CloseCommentsDays = ({ setError, notify }) => {
 
 	const closeCommentsDaysNoticeTitle = () => {
 		return (
-			__('Comments setting saved ', 'wp-plugin-blueprint')
+			__('Comments setting saved ', 'wp-plugin-bluehost')
 		);
 	};
 
 	const closeCommentsDaysNoticeText = () => {
 		//`Comments on posts are disabled after ${closeCommentsDays} days.`
 		return (
-			__('Comments on posts are disabled after ', 'wp-plugin-blueprint') +
+			__('Comments on posts are disabled after ', 'wp-plugin-bluehost') +
 			closeCommentsDays +
-			_n(' day.', ' days.', closeCommentsDays, 'wp-plugin-blueprint')
+			_n(' day.', ' days.', closeCommentsDays, 'wp-plugin-bluehost')
 		);
 	};
 
 	const handleCloseCommentsDaysChange = (value) => {
-		blueprintSettingsApiFetch({ closeCommentsDays: value }, setError, (response) => {
+		bluehostSettingsApiFetch({ closeCommentsDays: value }, setError, (response) => {
 			setNumCloseCommentsDays(value);
 		});
 	};
@@ -118,7 +118,7 @@ const CloseCommentsDays = ({ setError, notify }) => {
 	return (
 		<SelectField
 			id="close-comments-days-select"
-			label={__('Close comments after ', 'wp-plugin-blueprint') + '(days)'}
+			label={__('Close comments after ', 'wp-plugin-bluehost') + '(days)'}
 			value={closeCommentsDays}
 			selectedLabel={closeCommentsDays}
 			options={[
@@ -147,25 +147,25 @@ const CommentsPerPage = ({ setError, notify }) => {
 	);
 
 	const commentsPerPageNoticeTitle = () => {
-		return __('Comments setting saved.', 'wp-plugin-blueprint');
+		return __('Comments setting saved.', 'wp-plugin-bluehost');
 	};
 
 	const commentsPerPageNoticeText = () => {
 		//`Posts will display ${commentsPerPage} comments at a time.`
 		return (
-			__('Posts will display ', 'wp-plugin-blueprint') +
+			__('Posts will display ', 'wp-plugin-bluehost') +
 			commentsPerPage +
 			_n(
 				' comment at a time.',
 				' comments at a time.',
 				commentsPerPage,
-				'wp-plugin-blueprint'
+				'wp-plugin-bluehost'
 			)
 		);
 	};
 
 	const handleCommentsPerPageChange = (value) => {
-		blueprintSettingsApiFetch({ commentsPerPage: value }, setError, (response) => {
+		bluehostSettingsApiFetch({ commentsPerPage: value }, setError, (response) => {
 			setNumCommentsPerPage(value);
 		});
 	};
@@ -195,8 +195,8 @@ const CommentsPerPage = ({ setError, notify }) => {
 	return (
 		<SelectField
 			id="comments-per-page-select"
-			label={__('Display ', 'wp-plugin-blueprint') +
-				__('comments per page.', 'wp-plugin-blueprint')}
+			label={__('Display ', 'wp-plugin-bluehost') +
+				__('comments per page.', 'wp-plugin-bluehost')}
 			value={commentsPerPage}
 			selectedLabel={commentsPerPage}
 			options={[
@@ -218,8 +218,8 @@ const CommentSettings = () => {
 	let notify = useNotification();
 	return (
 		<SectionSettings
-			title={__('Comments', 'wp-plugin-blueprint')}
-			description={__('Comments allow visitors to provide feedback and respond to your posts or pages.', 'wp-plugin-blueprint')}
+			title={__('Comments', 'wp-plugin-bluehost')}
+			description={__('Comments allow visitors to provide feedback and respond to your posts or pages.', 'wp-plugin-bluehost')}
 		>
 			<div className="yst-flex yst-flex-col yst-gap-4">
 				<OldPostsComments setError={setError} notify={notify} />
@@ -227,7 +227,7 @@ const CommentSettings = () => {
 				<CommentsPerPage setError={setError} notify={notify} />
 				{isError &&
 					<Alert variant="error">
-						{__('Oops! Something went wrong. Please try again.', 'wp-plugin-blueprint')}
+						{__('Oops! Something went wrong. Please try again.', 'wp-plugin-bluehost')}
 					</Alert>
 				}
 			</div>

@@ -12,7 +12,7 @@ import {
 
 const Help = () => {
 	return (
-		<div className="wppb-help">
+		<div className="wppbh-help">
 			<div className="help grid col3">
 				{ help.map( ( item ) => (
 					<Card

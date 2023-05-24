@@ -9,7 +9,7 @@ describe('Marketplace Page', function () {
 		}, {
 			fixture: 'products'
 		}).as('products');
-		cy.visit('/wp-admin/admin.php?page=blueprint#/marketplace');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace');
 		cy.wait('@products');
 	});
 
@@ -20,7 +20,7 @@ describe('Marketplace Page', function () {
 	it('Is Accessible', () => {
 		cy.injectAxe();
 		cy.wait(1000);
-		cy.checkA11y('.wppb-app-body');
+		cy.checkA11y('.wppbh-app-body');
 	});
 
 	it('Product grid has 4 items', () => {

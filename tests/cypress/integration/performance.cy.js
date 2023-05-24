@@ -3,14 +3,14 @@
 describe('Performance Page', function () {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=blueprint#/performance');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/performance');
 		cy.injectAxe();
 		
 	});
 
 	it('Is Accessible', () => {
 		cy.wait(500);
-		cy.checkA11y('.wppb-app-body');
+		cy.checkA11y('.wppbh-app-body');
 	});
 
 	it('Has Cache Settings', () => {

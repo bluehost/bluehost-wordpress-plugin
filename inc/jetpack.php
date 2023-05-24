@@ -2,10 +2,10 @@
 /**
  * This file customizes Jetpack modules and blocks.
  *
- * @package WPPluginBlueprint
+ * @package WPPluginBluehost
  */
 
-namespace Blueprint;
+namespace Bluehost;
 
 /**
  * Customize the default Jetpack modules that should be enabled.

@@ -4,10 +4,10 @@
  *
  * By default, all auto-updates are enabled (including major releases).
  *
- * @package WPPluginBlueprint
+ * @package WPPluginBluehost
  */
 
-namespace Blueprint;
+namespace Bluehost;
 
 /**
  * Convert string boolean values to actual booleans.
@@ -112,8 +112,8 @@ function plugin_auto_update_setting_html( $html ) {
 		'<span class="label">Auto-updates enabled</span>',
 		sprintf(
 		/* translators: %s Settings > General page URL. */
-			__( 'Auto-updates enabled on the <a href="%s">Blueprint > Settings</a> page.', 'wp-plugin-blueprint' ),
-			admin_url( 'admin.php?page=blueprint#/settings' )
+			__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'wp-plugin-bluehost' ),
+			admin_url( 'admin.php?page=bluehost#/settings' )
 		),
 		$html
 	);
@@ -140,8 +140,8 @@ function theme_auto_update_setting_html( $html ) {
 
 	return sprintf(
 	/* translators: %s Settings > General page URL. */
-		__( 'Auto-updates enabled on the <a href="%s">Blueprint > Settings</a> page.', 'wp-plugin-blueprint' ),
-		admin_url( 'admin.php?page=blueprint#/settings' )
+		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'wp-plugin-bluehost' ),
+		admin_url( 'admin.php?page=bluehost#/settings' )
 	);
 }
 
@@ -163,12 +163,12 @@ function theme_auto_update_setting_template( $template ) {
 	}
 
 	$template_string = '<# } else if ( data.autoupdate.forced ) { #>
-					' . __( 'Auto-updates enabled', 'wp-plugin-blueprint' );
+					' . __( 'Auto-updates enabled', 'wp-plugin-bluehost' );
 	$replacement     = '<# } else if ( data.autoupdate.forced ) { #>';
 	$replacement    .= sprintf(
 	/* translators: %s Settings > General page URL. */
-		__( 'Auto-updates enabled on the <a href="%s">Blueprint > Settings</a> page.', 'wp-plugin-blueprint' ),
-		admin_url( 'admin.php?page=blueprint#/settings' )
+		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'wp-plugin-bluehost' ),
+		admin_url( 'admin.php?page=bluehost#/settings' )
 	);
 
 	return str_replace( $template_string, $replacement, $template );

@@ -2,5 +2,5 @@
 /**
  * Silence is Golden.
  *
- * @package WPPluginBlueprint
+ * @package WPPluginBluehost
  **/

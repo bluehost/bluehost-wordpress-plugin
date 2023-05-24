@@ -3,7 +3,7 @@ import { Button } from "@yoast/ui-library";
 import { BluehostIcon, WordPressIcon } from "../icons";
 
 export const SiteInfoBar = () => {
-    const { siteurl, sitetitle } = window.WPPB;
+    const { siteurl, sitetitle } = window.WPPBH;
     const parsedUrl = new URL(siteurl);
     const siteDomain = parsedUrl.hostname;
     const hasSSL = parsedUrl.protocol.includes("https");
@@ -17,7 +17,7 @@ export const SiteInfoBar = () => {
     }
 
     return (
-        <div className="wppb-app-site-info yst-bg-[#212936] yst-w-full yst-py-6 yst-px-8 yst-mb-8 yst-border yst-border-line yst-rounded-lg">
+        <div className="wppbh-app-site-info yst-bg-[#212936] yst-w-full yst-py-6 yst-px-8 yst-mb-8 yst-border yst-border-line yst-rounded-lg">
             <div className="yst-flex yst-items-center yst-gap-4">
 
                 <div className="yst-grow yst-flex yst-flex-col yst-gap-1.5">

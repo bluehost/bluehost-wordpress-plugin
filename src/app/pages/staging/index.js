@@ -19,13 +19,13 @@ const ProductionSite = ({
 }) => {
     return (
         <SectionSettings
-            title={__('Production site', 'wp-plugin-blueprint')}
+            title={__('Production site', 'wp-plugin-bluehost')}
             description={
                 <Radio
                     defaultChecked={isProduction ? true : false}
-                    label={isProduction ? __('Currently editing', 'wp-plugin-blueprint') : __('Not currently editing', 'wp-plugin-blueprint') }
-                    id="wppb-production-toggle"
-                    name="wppb-staging-selector"
+                    label={isProduction ? __('Currently editing', 'wp-plugin-bluehost') : __('Not currently editing', 'wp-plugin-bluehost') }
+                    id="wppbh-production-toggle"
+                    name="wppbh-staging-selector"
                     value="1"
                     onChange={() => {
                         switchToMe();
@@ -48,7 +48,7 @@ const ProductionSite = ({
                                 'Clone'
                             )
                         }}>
-                        {__('Clone to staging', 'wp-plugin-blueprint')}
+                        {__('Clone to staging', 'wp-plugin-bluehost')}
                     </Button>
                 }
             </div>
@@ -71,13 +71,13 @@ const StagingSite = ({
 
     return (
         <SectionSettings
-            title={__('Staging site', 'wp-plugin-blueprint')}
-            description={!hasStaging ? __("You don't have a staging site yet.", 'wp-plugin-blueprint') :
+            title={__('Staging site', 'wp-plugin-bluehost')}
+            description={!hasStaging ? __("You don't have a staging site yet.", 'wp-plugin-bluehost') :
                 <Radio
                     defaultChecked={isProduction ? false : true}
-                    label={isProduction ? __('Not currently editing', 'wp-plugin-blueprint') : __('Currently editing', 'wp-plugin-blueprint') }
-                    id="wppb-staging-toggle"
-                    name="wppb-staging-selector"
+                    label={isProduction ? __('Not currently editing', 'wp-plugin-bluehost') : __('Currently editing', 'wp-plugin-bluehost') }
+                    id="wppbh-staging-toggle"
+                    name="wppbh-staging-selector"
                     value="2"
                     onChange={() => {
                         switchToMe();
@@ -91,7 +91,7 @@ const StagingSite = ({
                         <Button variant="secondary" onClick={() => { 
                             createMe()
                         }}>
-                            {__('Create staging site', 'wp-plugin-blueprint')}
+                            {__('Create staging site', 'wp-plugin-bluehost')}
                         </Button>
                     </div>
                 }
@@ -107,8 +107,8 @@ const StagingSite = ({
                         <div className="yst-flex yst-gap-1.5 yst-relative">
                             <Select
                                 disabled={ isProduction ? true : false }
-                                id="wppb-staging-select"
-                                name="wppb-staging"
+                                id="wppbh-staging-select"
+                                name="wppbh-staging"
                                 className="yst-w-48"
                                 value={deployOption}
                                 onChange={(value) => { setDeployOption(value) }}
@@ -129,7 +129,7 @@ const StagingSite = ({
                             />
                             <Button
                                 disabled={isProduction ? true : false }
-                                title={__('Deploy', 'wp-plugin-blueprint')}
+                                title={__('Deploy', 'wp-plugin-bluehost')}
                                 onClick={() => { 
                                     // console.log('Open confirm modal: Deploy stagin option to production');
                                     // deployMe(deployOption);
@@ -148,7 +148,7 @@ const StagingSite = ({
                             <Button
                                 disabled={isProduction ? false : true }
                                 variant="error"
-                                title={__('Delete Staging Site', 'wp-plugin-blueprint')}
+                                title={__('Delete Staging Site', 'wp-plugin-bluehost')}
                                 onClick={() => { 
                                     // console.log('Open confirm modal: Delete stagin option to production');
                                     // deleteMe();
@@ -175,7 +175,7 @@ const StagingSite = ({
 const Staging = () => {
     const apiNamespace = '/newfold-staging/v1/';
 	const unknownErrorMsg = 'An unknown error has occurred.';
-    const resturl = window.WPPB.resturl;
+    const resturl = window.WPPBH.resturl;
     // const restnonce = ;
 	const [ isLoading, setIsLoading ] = useState( true );
 	const [ isThinking, setIsThinking ] = useState( false );
@@ -519,16 +519,16 @@ const Staging = () => {
     };
 
     return (
-        <Page title={__('Staging', 'wp-plugin-blueprint')} className={`wppb-app-staging-page ${isThinking ? 'is-thinking' : ''}`}>
-            <SectionContainer className={'wppb-app-staging-container'}>
+        <Page title={__('Staging', 'wp-plugin-bluehost')} className={`wppbh-app-staging-page ${isThinking ? 'is-thinking' : ''}`}>
+            <SectionContainer className={'wppbh-app-staging-container'}>
                 <SectionHeader
-                    title={__('Staging', 'wp-plugin-blueprint')}
+                    title={__('Staging', 'wp-plugin-bluehost')}
                     subTitle={__('A staging site is a duplicate of your live site, offering a secure environment to experiment, test updates, and deploy when ready.',
-                        'wp-plugin-blueprint')}
-                    className={'wppb-app-staging-header'}
+                        'wp-plugin-bluehost')}
+                    className={'wppbh-app-staging-header'}
                 />
 
-                <SectionContent separator={true} className={'wppb-app-staging-prod'}>
+                <SectionContent separator={true} className={'wppbh-app-staging-prod'}>
                     <ProductionSite
                         isProduction={isProduction}
                         hasStaging={hasStaging}
@@ -538,7 +538,7 @@ const Staging = () => {
                         setModal={setModal}
                     />
                 </SectionContent>
-                <SectionContent className={'wppb-app-staging-staging'}>
+                <SectionContent className={'wppbh-app-staging-staging'}>
                     <StagingSite
                         isProduction={isProduction}
                         hasStaging={hasStaging}
