@@ -26,6 +26,7 @@ Cypress.on('uncaught:exception', (err) => {
 })
 
 before(() => {
+	cy.setPermalinkStructure();
 	cy.login(
 		Cypress.env('wpUsername'), 
 		Cypress.env('wpPassword')
