@@ -1,0 +1,19 @@
+.wppb-app-staging-page.is-thinking {
+    position: relative;
+    user-select: none;
+
+    &:before {
+        background: rgb(0,0,0);
+        border-radius: 8px;
+        content: '';
+        cursor: progress;
+        display: block;
+        height: 100%;
+        opacity: .3;
+        pointer-events: all;
+        position: absolute;
+        user-select: none;
+        width: 100%;
+        z-index: 1;
+    }
+}
