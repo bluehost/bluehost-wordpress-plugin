@@ -218,8 +218,8 @@ const CommentSettings = () => {
 	let notify = useNotification();
 	return (
 		<SectionSettings
-			title="Comments"
-			description="Comments allow visitors to provide feedback and respond to your posts or pages."
+			title={__('Comments', 'wp-plugin-blueprint')}
+			description={__('Comments allow visitors to provide feedback and respond to your posts or pages.', 'wp-plugin-blueprint')}
 		>
 			<div className="yst-flex yst-flex-col yst-gap-4">
 				<OldPostsComments setError={setError} notify={notify} />

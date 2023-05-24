@@ -10,8 +10,8 @@ const Settings = () => {
 		<Page title="Settings" className={"wppb-app-settings-page"}>
 			<SectionContainer className={'wppb-app-settings-container'}>
                 <SectionHeader
-                    title={'Settings'}
-                    subTitle={'This is where you can manage common settings for your website.'}
+                    title={__('Settings', 'wp-plugin-blueprint')}
+                    subTitle={__('This is where you can manage common settings for your website.', 'wp-plugin-blueprint')}
                     className={'wppb-app-settings-header'}
                 />
 
@@ -27,7 +27,7 @@ const Settings = () => {
                     <CommentSettings />
                 </SectionContent>
 
-				<SectionContent className={'wppb-app-settings-update'}>
+				<SectionContent className={'wppb-app-settings-performance'}>
                     <Performance />
                 </SectionContent>
             </SectionContainer>

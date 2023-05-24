@@ -159,11 +159,12 @@ const Performance = () => {
 
     return (
         <SectionSettings
-            title="Performance"
-            description="Boost speed and performance by storing a copy of your website content, files, and images online so the pages of your website load faster for your visitors."
+            title={__('Performance', 'wp-plugin-blueprint')}
+            description={__('Boost speed and performance by storing a copy of your website content, files, and images online so the pages of your website load faster for your visitors.',
+                'wp-plugin-blueprint')}
         >
             <div className="yst-flex yst-flex-col yst-gap-4">
-                <Label>Caching</Label>
+                <Label>{__('Caching', 'wp-plugin-blueprint')}</Label>
 
                 <div className="yst-flex yst-flex-col yst-gap-6">
                     <CacheSettings setError={setError} notify={notify} />

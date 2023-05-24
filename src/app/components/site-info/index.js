@@ -31,11 +31,22 @@ export const SiteInfoBar = () => {
                 </div>
 
                 <div className="yst-grow yst-flex yst-items-center yst-justify-end yst-gap-3">
-                    <Button variant="primary" className="yst-bg-[#383F4A] yst-text-tiny">
+                    <Button 
+                        as="a"
+                        href="https://www.bluehost.com/web-hosting/cplogin"
+                        target="_blank"
+                        variant="primary" 
+                        className="yst-bg-[#383F4A] yst-text-tiny">
                         <BluehostIcon />
                         Bluehost Account
                     </Button>
-                    <Button as="a" href={siteurl} target="_blank" variant="primary" className="yst-bg-white yst-text-[#212936] yst-text-tiny">
+                    <Button 
+                        as="a" 
+                        href={siteurl} 
+                        target="_blank" 
+                        variant="primary" 
+                        className="yst-bg-white yst-text-[#212936] yst-text-tiny"
+                    >
                         <WordPressIcon />
                         View Site
                     </Button>
