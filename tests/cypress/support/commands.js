@@ -44,6 +44,9 @@ Cypress.Commands.add('login', (username, password) => {
                 cy.visit('/wp-login.php').wait(1000);
                 cy.get('#user_login').type(username);
                 cy.get('#user_pass').type(`${password}{enter}`);
+
+                // Speed up tests by setting permalink structure once
+                cy.setPermalinkStructure();
             }
         });
 });
