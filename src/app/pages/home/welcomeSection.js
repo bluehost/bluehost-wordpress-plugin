@@ -22,7 +22,8 @@ function OnboardingCheckListItem({ children, isComplete }) {
         "yst-flex yst-gap-3",
         "yst-py-4 yst-px-5 yst-m-0",
         "yst-border-b yst-border-line last:yst-border-b-0",
-        "yst-text-sm yst-cursor-pointer"
+        "yst-text-sm yst-cursor-pointer",
+        "hover:yst-bg-canvas"
       )}
     >
       <CheckCircleIcon
