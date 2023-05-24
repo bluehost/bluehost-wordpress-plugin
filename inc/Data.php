@@ -29,6 +29,10 @@ final class Data {
 			'admin'     => \admin_url(),
 			'siteurl'   => \get_site_url(),
 			'sitetitle' => \get_bloginfo( 'name' ),
+			'env'       => array(
+				'brand'    => 'bluehost',
+				'isJarvis' => false
+			),
 			'assets'    => BLUEPRINT_PLUGIN_URL . 'assets/',
 		);
 

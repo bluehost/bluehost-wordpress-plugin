@@ -130,3 +130,50 @@ export const comingSoonAdminbarToggle = ( comingSoon ) => {
 		comingsoonadminbar.classList.remove( 'hideme' );
 	}
 };
+
+/**
+ * Get's Base Platform URL
+ * @param {string} path The path to a resource within the platform, leave blank for root.
+ * 
+ * @return {string}
+ */
+export function getPlatformBaseUrl( path = '' ) {
+	const brand = window.WPPB.env.brand;
+	const isJarvis = window.WPPB.env.isJarvis;
+
+	const baseUrl = () => {
+		if (brand === 'Bluehost_India') {
+			return 'https://my.bluehost.in';
+		}
+
+		if (isJarvis) {
+			return 'https://www.bluehost.com';
+		}
+
+		return 'https://my.bluehost.com';
+	}
+
+	return baseUrl() + path;
+}
+
+/**
+ * Gets Platform URL
+ * 
+ * @param {string} jarvisPath The path to the hosting resource for Jarvis accounts, leave blank for the main page.
+ * @param {string} legacyPath The path to the hosting resource for Legacy accounts, leave blank for the main page.
+ * 
+ * @return {string}
+ * 
+ * @example
+ * getPlatformPathUrl('home', 'app#home')
+ * // returns https://www.bluehost.com/my-account/home if Jarvis or https://my.bluehost.com/hosting/app#home if legacy
+ */
+export function getPlatformPathUrl ( jarvisPath = '', legacyPath = '' ) {
+	const isJarvis = window.WPPB.env.isJarvis;
+
+	if (isJarvis) {
+		return getPlatformBaseUrl('/my-account/') + jarvisPath;
+	}
+
+	return getPlatformBaseUrl('/hosting/') + legacyPath;
+}

@@ -43,6 +43,7 @@ final class Admin {
 		return array(
 			'blueprint#/home'        => __( 'Home', 'wp-plugin-blueprint' ),
 			'blueprint#/marketplace' => __( 'Marketplace', 'wp-plugin-blueprint' ),
+			'blueprint#/store'       => __( 'Store', 'wp-plugin-blueprint' ),
 			'blueprint#/performance' => __( 'Performance', 'wp-plugin-blueprint' ),
 			'blueprint#/settings'    => __( 'Settings', 'wp-plugin-blueprint' ),
 			'blueprint#/help'        => __( 'Help', 'wp-plugin-blueprint' ),

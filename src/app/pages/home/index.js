@@ -1,5 +1,8 @@
 import { Page } from '../../components/page';
+import { SectionContainer, SectionContent } from '../../components/section';
+import { AccountCard } from './accountCard';
 import { FreeAddonsSection } from './freeAddonsSection';
+import { HelpCard } from './helpCard';
 import './stylesheet.scss';
 import { WelcomeSection } from './welcomeSection';
 
@@ -8,6 +11,14 @@ const Home = () => {
 		<Page className="wppb-home">
 			<WelcomeSection />
 			<FreeAddonsSection />
+			<SectionContainer>
+				<SectionContent >
+					<div className="yst-grid yst-grid-cols-2 yst-gap-6">
+						<AccountCard />
+						<HelpCard />
+					</div>
+				</SectionContent>
+			</SectionContainer>
 		</Page>
 	);
 };
