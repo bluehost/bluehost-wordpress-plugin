@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 export const SectionContainer = ({ className, children }) => {
     return (
-        <div className={classNames("wppb-app-section-container yst-bg-white yst-w-full yst-rounded-lg yst-shadow", className)}>
+        <div className={classNames("wppbh-app-section-container yst-bg-white yst-w-full yst-rounded-lg yst-shadow", className)}>
             {children}
         </div>
     );
@@ -20,7 +20,7 @@ export const SectionHeader = ({
         <div
             className={
                 classNames(
-                    "wppb-app-section-header yst-p-8 yst-border-b yst-border-line yst-flex yst-items-baseline yst-gap-4",
+                    "wppbh-app-section-header yst-p-8 yst-border-b yst-border-line yst-flex yst-items-baseline yst-gap-4",
                     className)
             }>
             <div className="yst-w-7/12 yst-flex yst-flex-col yst-gap-3">
@@ -55,7 +55,7 @@ export const SectionHeader = ({
 
 export const SectionContent = ({ separator = false, className, children }) => {
     return (
-        <div className={classNames("wppb-app-section-content yst-p-8 yst-pb-0", className)}>
+        <div className={classNames("wppbh-app-section-content yst-p-8 yst-pb-0", className)}>
             <div className={
                 classNames(
                     "yst-pb-8",

@@ -1,4 +1,4 @@
-.wppb-header {
+.wppbh-header {
     align-content: center;
     background: var(--color-white);
     display:flex;
@@ -15,7 +15,7 @@
     }
 }
 
-// .wppb-logo-wrap {
+// .wppbh-logo-wrap {
 //     margin-left: 12px;
 //     a.components-button {
 //         padding: 2rem 12px;
@@ -26,16 +26,16 @@
 //     }
 // }
 
-.wppb-nav-utility {
+.wppbh-nav-utility {
     align-content: center;
     display: flex;
 }
-.wppb-nav-utility-link {
+.wppbh-nav-utility-link {
     display: block;
     margin: 6px 16px 0 0;
 }
 
-.wppb-nav {
+.wppbh-nav {
     padding: 1.33rem;
     will-change: background-color;
     transition: background-color 0.33s ease;
@@ -43,7 +43,7 @@
     background: linear-gradient(114deg, var(--color-primary) 45%, var(--color-primary) 60%, var(--color-primary) 80%);
 }
 
-.wppb-nav-large {
+.wppbh-nav-large {
     display: flex;
     list-style: none;
     max-width: 1320px;
@@ -58,7 +58,7 @@
             margin-left: 1rem;
         }
     }
-    .wppb-nav-large__link {
+    .wppbh-nav-large__link {
         display: inline;
         color: var(--color-white) !important;
         cursor: pointer;
@@ -98,11 +98,11 @@
 }
 
 
-.wppb-page {
-    // marketplace and default green applied in .wppb-nav
+.wppbh-page {
+    // marketplace and default green applied in .wppbh-nav
 }
 
-.wppb-nav-utility {
+.wppbh-nav-utility {
 
     a {
         text-decoration: none;

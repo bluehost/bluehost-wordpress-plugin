@@ -3,7 +3,7 @@
  * so that lazy-loading works correctly. This value is set in /includes/Data.php in runtime().
  */
 export default () => {
-	if ( 'undefined' !== typeof window.WPPB && 'url' in window.WPPB ) {
-		__webpack_public_path__ = window.WPPB.url;
+	if ( 'undefined' !== typeof window.WPPBH && 'url' in window.WPPBH ) {
+		__webpack_public_path__ = window.WPPBH.url;
 	}
 };

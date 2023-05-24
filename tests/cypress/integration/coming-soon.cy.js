@@ -31,7 +31,7 @@ describe('Coming Soon', function () {
 	it('Has Coming Soon Section on Home', () => {
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
 		cy
-			.get('.wppb-section-coming-soon')
+			.get('.wppbh-section-coming-soon')
 			.scrollIntoView()
 			.contains('h3', 'Coming Soon')
 			.should('be.visible');
@@ -49,7 +49,7 @@ describe('Coming Soon', function () {
 	});
 
 	it('Home Coming Soon Section Launches', () => {
-		cy.get('.wppb-section-coming-soon button.is-primary').click();
+		cy.get('.wppbh-section-coming-soon button.is-primary').click();
 		cy.wait(500);
 		// This is currently overridden by the ecom module
 		// cy
@@ -58,16 +58,16 @@ describe('Coming Soon', function () {
 		// 	.should('not.be.visible');
 
 		cy
-			.get('.wppb-section-coming-soon')
+			.get('.wppbh-section-coming-soon')
 			.scrollIntoView()
 			.contains('h3', 'Site Launched')
 			.should('be.visible');
 
-		cy.get('.wppb-section-coming-soon button.is-secondary').click();
+		cy.get('.wppbh-section-coming-soon button.is-secondary').click();
 
 		
 		cy
-			.get('.wppb-section-coming-soon')
+			.get('.wppbh-section-coming-soon')
 			.scrollIntoView()
 			.contains('h3', 'Coming Soon')
 			.should('be.visible');
@@ -97,16 +97,16 @@ describe('Coming Soon', function () {
 
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
 		cy
-			.get('.wppb-section-coming-soon')
+			.get('.wppbh-section-coming-soon')
 			.scrollIntoView()
 			.contains('h3', 'Coming Soon')
 			.should('be.visible');
 
-		cy.get('.wppb-section-coming-soon button.is-primary').click();
-		cy.get('.wppb-section-coming-soon button.is-link').click(); //dismiss
+		cy.get('.wppbh-section-coming-soon button.is-primary').click();
+		cy.get('.wppbh-section-coming-soon button.is-link').click(); //dismiss
 
 		cy
-			.get('.wppb-section-coming-soon')
+			.get('.wppbh-section-coming-soon')
 			.should('not.exist');
 
 		cy.logout();

@@ -11,13 +11,13 @@ import {
 
 const WebContentSection = () => {
 	return (
-		<section className="wppb-section wppb-section-home-content">
+		<section className="wppbh-section wppbh-section-home-content">
 			<img
 				src={ graphicUrl }
 				className="section-graphic"
 				alt={ __( 'Website illustration', 'wp-plugin-bluehost' ) }
 			/>
-			<Card size="large" className="wppb-section-card">
+			<Card size="large" className="wppbh-section-card">
 				<CardHeader>
 					<Heading level="3">
 						{ __( 'Website Content', 'wp-plugin-bluehost' ) }
@@ -30,7 +30,7 @@ const WebContentSection = () => {
 					</p>
 				</CardHeader>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Dashicon icon="admin-post" />{ ' ' }
 							{ __( 'Blog', 'wp-plugin-bluehost' ) }
@@ -44,7 +44,7 @@ const WebContentSection = () => {
 					</div>
 					<Button
 						variant="primary"
-						href={ WPPB.admin + 'post-new.php' }
+						href={ WPPBH.admin + 'post-new.php' }
 						icon="admin-post"
 					>
 						{ ' ' }
@@ -52,7 +52,7 @@ const WebContentSection = () => {
 					</Button>
 				</CardFooter>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Dashicon icon="welcome-add-page" />{ ' ' }
 							{ __( 'Pages', 'wp-plugin-bluehost' ) }
@@ -66,14 +66,14 @@ const WebContentSection = () => {
 					</div>
 					<Button
 						variant="primary"
-						href={ WPPB.admin + 'post-new.php?post_type=page' }
+						href={ WPPBH.admin + 'post-new.php?post_type=page' }
 						icon="welcome-add-page"
 					>
 						{ __( 'New Page', 'wp-plugin-bluehost' ) }
 					</Button>
 				</CardFooter>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Dashicon icon="category" />{ ' ' }
 							{ __( 'Categories', 'wp-plugin-bluehost' ) }
@@ -87,7 +87,7 @@ const WebContentSection = () => {
 					</div>
 					<Button
 						variant="secondary"
-						href={ WPPB.admin + 'edit-tags.php?taxonomy=category' }
+						href={ WPPBH.admin + 'edit-tags.php?taxonomy=category' }
 						icon="category"
 					>
 						{ __( 'Manage Categories', 'wp-plugin-bluehost' ) }

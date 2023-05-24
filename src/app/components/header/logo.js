@@ -14,7 +14,7 @@ const Mark = () => {
 	};
 	return (
 		<Button
-			icon={ <Brand className="wppb-logo" /> }
+			icon={ <Brand className="wppbh-logo" /> }
 			style={ { height: '39px' } }
 			iconSize={ 39 }
 			onMouseUp={ defocus }
@@ -26,7 +26,7 @@ const Mark = () => {
 
 const Logo = () => {
 	return (
-		<div className="wppb-logo-wrap">
+		<div className="wppbh-logo-wrap">
 			<Mark />
 			<Heading level="2" className="screen-reader-text">
 				{ __( 'Bluehost WordPress Plugin', 'wp-plugin-bluehost' ) }

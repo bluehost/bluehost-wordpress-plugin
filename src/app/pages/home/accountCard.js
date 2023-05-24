@@ -10,7 +10,7 @@ import { Card, Title } from "@yoast/ui-library";
 import { getPlatformBaseUrl, getPlatformPathUrl } from "../../util/helpers";
 import classNames from "classnames";
 
-const isJarvis = window.WPPB.env.isJarvis;
+const isJarvis = window.WPPBH.env.isJarvis;
 
 const base = [
   {

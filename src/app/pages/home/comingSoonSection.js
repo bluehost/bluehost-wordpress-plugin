@@ -101,8 +101,8 @@ const ComingSoonSection = () => {
 
 	if ( isError ) {
 		return (
-			<section className="wppb-section coming-soon">
-				<ErrorCard error={ isError } className="wppb-section-card" />
+			<section className="wppbh-section coming-soon">
+				<ErrorCard error={ isError } className="wppbh-section-card" />
 			</section>
 		);
 	}
@@ -111,14 +111,14 @@ const ComingSoonSection = () => {
 		return <></>;
 	}
 	return (
-		<section className="wppb-section wppb-section-coming-soon">
+		<section className="wppbh-section wppbh-section-coming-soon">
 			<img
 				src={ graphicUrl }
 				className={ getComingSoonGraphicClass() }
 				style={ { top: 0, width: '280px', height: 'auto' } }
 				alt={ __( 'Launch site', 'wp-plugin-bluehost' ) }
 			/>
-			<Card size="large" className="wppb-section-card">
+			<Card size="large" className="wppbh-section-card">
 				<CardHeader>
 					<Heading level="3">{ getComingSoonHeadline() }</Heading>
 					<p>{ getComingSoonSubhead() }</p>

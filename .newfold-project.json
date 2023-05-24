@@ -20,10 +20,10 @@
     "namespace": "Bluehost",
     "prefixes": {
         "long": "WPPluginBluehost",
-        "short": "wppb",
-        "function": "wppb_",
-        "constant": "WPPB_",
-        "meta": "wppb_",
-        "slug": "wppb-"
+        "short": "wppbh",
+        "function": "wppbh_",
+        "constant": "WPPBH_",
+        "meta": "wppbh_",
+        "slug": "wppbh-"
     }
 }

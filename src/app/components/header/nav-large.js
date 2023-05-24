@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { topRoutes } from '../../data/routes';
 
 const NavLarge = () => (
-	<ul className="wppb-nav-large">
+	<ul className="wppbh-nav-large">
 		{ topRoutes.map( ( page ) => (
-			<li key={ page.name } className="wppb-nav-large__item">
-				<div className="wppb-nav-large__inner">
+			<li key={ page.name } className="wppbh-nav-large__item">
+				<div className="wppbh-nav-large__inner">
 					<NavLink
 						to={ page.name }
 						className={ classNames(
-							`wppb-nav-large__link`,
+							`wppbh-nav-large__link`,
 							`link-${ page.title }`
 						) }
 					>

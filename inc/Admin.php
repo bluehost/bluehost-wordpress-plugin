@@ -104,11 +104,11 @@ final class Admin {
 		echo '<!-- Bluehost -->' . PHP_EOL;
 
 		if ( version_compare( $wp_version, '5.4', '>=' ) ) {
-			echo '<div id="wppb-app" class="wppb wppb_app"></div>' . PHP_EOL;
+			echo '<div id="wppbh-app" class="wppbh wppbh_app"></div>' . PHP_EOL;
 		} else {
 			// fallback messaging for WordPress older than 5.4
-			echo '<div id="wppb-app" class="wppb wppb_app">' . PHP_EOL;
-			echo '<header class="wppb-header" style="min-height: 90px; padding: 1rem; margin-bottom: 1.5rem;"><div class="wppb-header-inner"><div class="wppb-logo-wrap">' . PHP_EOL;
+			echo '<div id="wppbh-app" class="wppbh wppbh_app">' . PHP_EOL;
+			echo '<header class="wppbh-header" style="min-height: 90px; padding: 1rem; margin-bottom: 1.5rem;"><div class="wppbh-header-inner"><div class="wppbh-logo-wrap">' . PHP_EOL;
 			echo '<img src="' . esc_url( BLUEHOST_PLUGIN_URL . 'assets/svg/bluehost-logo.svg' ) . '" alt="Bluehost logo" />' . PHP_EOL;
 			echo '</div></div></header>' . PHP_EOL;
 			echo '<div class="wrap">' . PHP_EOL;
@@ -152,7 +152,7 @@ final class Admin {
 		include BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
 		\wp_add_inline_script(
 			'bluehost-script',
-			'var WPPB =' . \wp_json_encode( Data::runtime() ) . ';',
+			'var WPPBH =' . \wp_json_encode( Data::runtime() ) . ';',
 			'before'
 		);
 

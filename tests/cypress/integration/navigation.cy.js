@@ -9,7 +9,7 @@ describe('Navigation', function () {
 	});
 
 	it('Logo Links to home', () => {
-		cy.get('.wppb-logo-wrap').click();
+		cy.get('.wppbh-logo-wrap').click();
 		cy.wait(500);
 		cy.hash().should('eq', '#/home');
 	});

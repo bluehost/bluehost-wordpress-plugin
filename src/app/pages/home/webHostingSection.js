@@ -11,13 +11,13 @@ import {
 
 const WebHostingSection = () => {
 	return (
-		<section className="wppb-section wppb-section-home-hosting">
+		<section className="wppbh-section wppbh-section-home-hosting">
 			<img
 				src={ graphicUrl }
 				className="section-graphic"
 				alt={ __( 'Hosting illustration', 'wp-plugin-bluehost' ) }
 			/>
-			<Card size="large" className="wppb-section-card">
+			<Card size="large" className="wppbh-section-card">
 				<CardHeader>
 					<Heading level="3">
 						{ __( 'Web Hosting', 'wp-plugin-bluehost' ) }
@@ -30,7 +30,7 @@ const WebHostingSection = () => {
 					</p>
 				</CardHeader>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Dashicon icon="desktop" />{ ' ' }
 							{ __( 'Manage Hosting', 'wp-plugin-bluehost' ) }
@@ -59,7 +59,7 @@ const WebHostingSection = () => {
 					</Button>
 				</CardFooter>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Dashicon icon="email" />{ ' ' }
 							{ __( 'Email', 'wp-plugin-bluehost' ) }
@@ -88,7 +88,7 @@ const WebHostingSection = () => {
 					</Button>
 				</CardFooter>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Dashicon icon="admin-site" />{ ' ' }
 							{ __( 'Domains', 'wp-plugin-bluehost' ) }
@@ -117,7 +117,7 @@ const WebHostingSection = () => {
 					</Button>
 				</CardFooter>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Dashicon icon="sos" />{ ' ' }
 							{ __( 'Help', 'wp-plugin-bluehost' ) }

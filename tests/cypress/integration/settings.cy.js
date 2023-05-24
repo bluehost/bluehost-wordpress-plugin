@@ -10,7 +10,7 @@ describe('Settings Page', function () {
 
 	it('Is Accessible', () => {
 		cy.wait(500);
-		cy.checkA11y('.wppb-app-body');
+		cy.checkA11y('.wppbh-app-body');
 	});
 
 	it('Has Auto Updates Settings', () => {
@@ -58,7 +58,7 @@ describe('Settings Page', function () {
 		cy.get('.autoupdate-all-toggle input[type="checkbox"]').should('not.be.checked');
 		cy.wait(100);
 		cy
-			.get('.wppb-app-snackbar')
+			.get('.wppbh-app-snackbar')
 			.contains('.components-snackbar__content', 'update')
 			.should('be.visible');
 
@@ -71,7 +71,7 @@ describe('Settings Page', function () {
 		cy.wait(100);
 		cy.get('.autoupdate-all-toggle input[type="checkbox"]').should('be.checked');
 		cy
-			.get('.wppb-app-snackbar')
+			.get('.wppbh-app-snackbar')
 			.contains('.components-snackbar__content', 'update')
 			.should('be.visible');
 
@@ -93,7 +93,7 @@ describe('Settings Page', function () {
 		cy.get('.content-revisions-select label').contains('span', '40').should('be.visible');
 		cy.wait(100);
 		cy
-			.get('.wppb-app-snackbar')
+			.get('.wppbh-app-snackbar')
 			.contains('.components-snackbar__content', 'revision')
 			.should('be.visible');
 	});
@@ -111,7 +111,7 @@ describe('Settings Page', function () {
 		cy.get('.comments-per-page-select label').contains('span', '10').should('be.visible');
 		cy.wait(100);
 		cy
-			.get('.wppb-app-snackbar')
+			.get('.wppbh-app-snackbar')
 			.contains('.components-snackbar__content', 'Comments')
 			.should('be.visible');
 

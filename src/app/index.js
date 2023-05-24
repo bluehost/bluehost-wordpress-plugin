@@ -49,7 +49,7 @@ const Notices = () => {
 
 const handlePageLoad = () => {
 	const location = useLocation();
-	const routeContents = document.querySelector( '.wppb-app-body-inner' );
+	const routeContents = document.querySelector( '.wppbh-app-body-inner' );
 	useEffect( () => {
 		setActiveSubnav( location.pathname );
 		window.scrollTo( 0, 0 );
@@ -68,11 +68,11 @@ const AppBody = ( props ) => {
 
 	return (
 		<main
-			id="wppb-app-rendered"
+			id="wppbh-app-rendered"
 			className={ classnames(
 				'wpadmin-brand-bluehost',
-				`wppb-wp-${ WPPB.wpversion }`,
-				`wppb-page-${ kebabCase( location.pathname ) }`,
+				`wppbh-wp-${ WPPBH.wpversion }`,
+				`wppbh-page-${ kebabCase( location.pathname ) }`,
 				props.className,
 				'yst-w-full'
 			) }
@@ -82,7 +82,7 @@ const AppBody = ( props ) => {
 				constants={{
 					context: 'bluehost-plugin',
 					page: hashedPath,
-					resturl: window.WPPB.resturl
+					resturl: window.WPPBH.resturl
 				}}
 				methods={{
 					apiFetch,
@@ -92,8 +92,8 @@ const AppBody = ( props ) => {
 					useEffect
 				}}
 			/>
-			<div className="wppb-app-body">
-				<div className="wppb-app-body-inner">
+			<div className="wppbh-app-body">
+				<div className="wppbh-app-body-inner">
 					<ErrorBoundary FallbackComponent={ <ErrorCard /> }>
 						{ hasError && <ErrorCard error={ hasError } /> }
 						<SiteInfoBar />
@@ -103,7 +103,7 @@ const AppBody = ( props ) => {
 				</div>
 			</div>
 
-			<div className="wppb-app-snackbar">
+			<div className="wppbh-app-snackbar">
 				<Notices />
 			</div>
 		</main>
@@ -115,7 +115,7 @@ export const App = () => (
 		<Root context={ { isRtl: false } }>
 			<NotificationFeed>
 				<Router>
-					<div className="wppb-app-container yst-p-4 min-[783px]:yst-p-8 yst-flex yst-gap-6 yst-max-w-full xl:yst-max-w-screen-xl 2xl:yst-max-w-screen-2xl yst-my-0 yst-mx-auto">
+					<div className="wppbh-app-container yst-p-4 min-[783px]:yst-p-8 yst-flex yst-gap-6 yst-max-w-full xl:yst-max-w-screen-xl 2xl:yst-max-w-screen-2xl yst-my-0 yst-mx-auto">
 						<SideNav />
 						<AppBody />
 					</div>

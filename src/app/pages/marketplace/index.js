@@ -25,7 +25,7 @@ const MarketplacePage = () => {
 
     // constants to pass to module
     const moduleConstants = {
-        'resturl': window.WPPB.resturl,
+        'resturl': window.WPPBH.resturl,
         'eventendpoint': '/newfold-data/v1/events/',
         'perPage': 12,
         'supportsCTB': false, // not needed, but explicity setting to false anyway
@@ -68,15 +68,15 @@ const MarketplacePage = () => {
     };
 
     return (
-        <Page className={"wppb-app-marketplace-page"}>
-            <SectionContainer className={'wppb-app-marketplace-container'}>
+        <Page className={"wppbh-app-marketplace-page"}>
+            <SectionContainer className={'wppbh-app-marketplace-container'}>
                 <SectionHeader
                     title={__('Marketplace', 'wp-plugin-bluehost')}
                     subTitle={__('Explore our featured collection of tools and services.', 'wp-plugin-bluehost')}
-                    className={'wppb-app-marketplace-header'}
+                    className={'wppbh-app-marketplace-header'}
                 />
 
-                <SectionContent className={'wppb-app-marketplace-content'}>
+                <SectionContent className={'wppbh-app-marketplace-content'}>
 
                     {isLoading && <MarketplaceLoading />}
                     {isError && <MarketplaceError />}

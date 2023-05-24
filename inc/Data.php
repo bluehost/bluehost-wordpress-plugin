@@ -14,7 +14,7 @@ namespace Bluehost;
 final class Data {
 
 	/**
-	 * Data loaded onto window.WPPB
+	 * Data loaded onto window.WPPBH
 	 *
 	 * @return array
 	 */

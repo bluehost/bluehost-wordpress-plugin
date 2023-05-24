@@ -12,13 +12,13 @@ import { Icon, settings, store } from '@wordpress/icons';
 
 const SettingsSection = () => {
 	return (
-		<section className="wppb-section wppb-section-home-settings">
+		<section className="wppbh-section wppbh-section-home-settings">
 			<img
 				src={ graphicUrl }
 				className="section-graphic"
 				alt={ __( 'Settings illustration', 'wp-plugin-bluehost' ) }
 			/>
-			<Card size="large" className="wppb-section-card">
+			<Card size="large" className="wppbh-section-card">
 				<CardHeader>
 					<Heading level="3">
 						{ __( 'Settings and Performance', 'wp-plugin-bluehost' ) }
@@ -31,7 +31,7 @@ const SettingsSection = () => {
 					</p>
 				</CardHeader>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Icon icon={ settings } />{ ' ' }
 							{ __( 'Manage Settings', 'wp-plugin-bluehost' ) }
@@ -53,7 +53,7 @@ const SettingsSection = () => {
 					</Button>
 				</CardFooter>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Dashicon icon="performance" />{ ' ' }
 							{ __( 'Performance', 'wp-plugin-bluehost' ) }
@@ -75,7 +75,7 @@ const SettingsSection = () => {
 					</Button>
 				</CardFooter>
 				<CardFooter>
-					<div className="wppb-cardlist-content">
+					<div className="wppbh-cardlist-content">
 						<Heading level="4">
 							<Icon icon={ store } />{ ' ' }
 							{ __( 'Marketplace', 'wp-plugin-bluehost' ) }
