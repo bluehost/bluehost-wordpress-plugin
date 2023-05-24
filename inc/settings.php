@@ -3,10 +3,10 @@
  * Functionality related to Settings
  * see RestApi/SettingsController.php for implementation
  *
- * @package WPPluginBlueprint
+ * @package WPPluginBluehost
  */
 
-namespace Blueprint;
+namespace Bluehost;
 
 /**
  * Filter wp revisions according to plugin setting

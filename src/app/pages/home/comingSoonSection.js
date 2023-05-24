@@ -2,7 +2,7 @@ import graphicUrl from '../../../../assets/svg/coming-soon.svg';
 import { Heading, ErrorCard } from '../../components';
 import AppStore from '../../data/store';
 import {
-	blueprintSettingsApiFetch,
+	bluehostSettingsApiFetch,
 	dispatchUpdateSnackbar,
 	comingSoonAdminbarToggle,
 } from '../../util/helpers';
@@ -24,23 +24,23 @@ const ComingSoonSection = () => {
 
 	const getComingSoonHeadline = () => {
 		return comingSoon
-			? __( 'Coming Soon', 'wp-plugin-blueprint' )
-			: __( 'Site Launched', 'wp-plugin-blueprint' );
+			? __( 'Coming Soon', 'wp-plugin-bluehost' )
+			: __( 'Site Launched', 'wp-plugin-bluehost' );
 	};
 	const getComingSoonSubhead = () => {
 		return comingSoon
-			? __( 'Site visitors see "Coming Soon"', 'wp-plugin-blueprint' )
-			: __( 'Your site is live!', 'wp-plugin-blueprint' );
+			? __( 'Site visitors see "Coming Soon"', 'wp-plugin-bluehost' )
+			: __( 'Your site is live!', 'wp-plugin-bluehost' );
 	};
 	const getComingSoonBody = () => {
 		return comingSoon
 			? __(
 					"Once you've finished setting up your site, launch it so your visitors can reach it.",
-					'wp-plugin-blueprint'
+					'wp-plugin-bluehost'
 			  )
 			: __(
 					'Congratulations! Visitors will now see the site. You can always turn Coming Soon on from the Settings tab above.',
-					'wp-plugin-blueprint'
+					'wp-plugin-bluehost'
 			  );
 	};
 	const getComingSoonGraphicClass = () => {
@@ -56,7 +56,7 @@ const ComingSoonSection = () => {
 					setWasComingSoon( () => true );
 				} }
 			>
-				{ __( 'Launch Site', 'wp-plugin-blueprint' ) }
+				{ __( 'Launch Site', 'wp-plugin-bluehost' ) }
 			</Button>
 		) : (
 			<>
@@ -68,7 +68,7 @@ const ComingSoonSection = () => {
 						setWasComingSoon( () => true );
 					} }
 				>
-					{ __( 'Restore Coming Soon', 'wp-plugin-blueprint' ) }
+					{ __( 'Restore Coming Soon', 'wp-plugin-bluehost' ) }
 				</Button>
 				<Button
 					variant="link"
@@ -77,19 +77,19 @@ const ComingSoonSection = () => {
 						setWasComingSoon( () => false );
 					} }
 				>
-					{ __( 'Dismiss', 'wp-plugin-blueprint' ) }
+					{ __( 'Dismiss', 'wp-plugin-bluehost' ) }
 				</Button>
 			</>
 		);
 	};
 	const getComingSoonNoticeText = () => {
 		return comingSoon
-			? __( 'Coming soon activated.', 'wp-plugin-blueprint' )
-			: __( 'Coming soon deactivated.', 'wp-plugin-blueprint' );
+			? __( 'Coming soon activated.', 'wp-plugin-bluehost' )
+			: __( 'Coming soon deactivated.', 'wp-plugin-bluehost' );
 	};
 
 	useUpdateEffect( () => {
-		blueprintSettingsApiFetch( { comingSoon }, setError, ( response ) => {
+		bluehostSettingsApiFetch( { comingSoon }, setError, ( response ) => {
 			setStore( {
 				...store,
 				comingSoon,
@@ -116,7 +116,7 @@ const ComingSoonSection = () => {
 				src={ graphicUrl }
 				className={ getComingSoonGraphicClass() }
 				style={ { top: 0, width: '280px', height: 'auto' } }
-				alt={ __( 'Launch site', 'wp-plugin-blueprint' ) }
+				alt={ __( 'Launch site', 'wp-plugin-bluehost' ) }
 			/>
 			<Card size="large" className="wppb-section-card">
 				<CardHeader>

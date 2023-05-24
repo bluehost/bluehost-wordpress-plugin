@@ -5,10 +5,10 @@
  * Checks for legacy plugins and deactivates them in favor of self (this plugin).
  * Ensures that only a single notice is displayed per plugin.
  *
- * @package WPPluginBlueprint
+ * @package WPPluginBluehost
  */
 
-namespace Blueprint;
+namespace Bluehost;
 
 /**
  * Class NDF_Plugin_Compat_Check
@@ -158,7 +158,7 @@ class NFD_Plugin_Compat_Check {
 					'nfd_plugin_incompatible',
 					sprintf(
 						/* translators: 1: plugin name 2: incompatible plugin name */
-						__( '"%1$s" has self-deactivated. It is incompatible with "%2$s".', 'wp-plugin-blueprint' ),
+						__( '"%1$s" has self-deactivated. It is incompatible with "%2$s".', 'wp-plugin-bluehost' ),
 						$this->name,
 						$incompatible_name
 					)
@@ -185,7 +185,7 @@ class NFD_Plugin_Compat_Check {
 					'nfd_plugin_legacy',
 					sprintf(
 						/* translators: 1: legacy plugin name 2: plugin name */
-						__( '"%1$s" has been deactivated. It is incompatible with "%2$s".', 'wp-plugin-blueprint' ),
+						__( '"%1$s" has been deactivated. It is incompatible with "%2$s".', 'wp-plugin-bluehost' ),
 						$legacy_name,
 						$this->name
 					)

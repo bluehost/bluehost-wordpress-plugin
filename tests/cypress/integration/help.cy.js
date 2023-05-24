@@ -3,7 +3,7 @@
 describe('Help Page', function () {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=blueprint#/help');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/help');
 	});
 	
 	it('Is Accessible', () => {

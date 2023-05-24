@@ -1,6 +1,6 @@
 import { Button } from '@wordpress/components';
 import { Heading } from '..';
-import { ReactComponent as Brand } from '../../../../assets/svg/blueprint-logo.svg';
+import { ReactComponent as Brand } from '../../../../assets/svg/bluehost-logo.svg';
 import { delay } from 'lodash';
 
 const Mark = () => {
@@ -28,7 +28,7 @@ const Logo = () => {
 		<div className="wppb-logo-wrap">
 			<Mark />
 			<Heading level="2" className="screen-reader-text">
-				{ __( 'Blueprint WordPress Plugin', 'wp-plugin-blueprint' ) }
+				{ __( 'Bluehost WordPress Plugin', 'wp-plugin-bluehost' ) }
 			</Heading>
 		</div>
 	);

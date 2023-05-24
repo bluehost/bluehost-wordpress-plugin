@@ -70,7 +70,7 @@ const AppBody = ( props ) => {
 		<main
 			id="wppb-app-rendered"
 			className={ classnames(
-				'wpadmin-brand-blueprint',
+				'wpadmin-brand-bluehost',
 				`wppb-wp-${ WPPB.wpversion }`,
 				`wppb-page-${ kebabCase( location.pathname ) }`,
 				props.className,
@@ -80,7 +80,7 @@ const AppBody = ( props ) => {
 			{/* <Header /> */}
 			<NewfoldNotifications
 				constants={{
-					context: 'blueprint-plugin',
+					context: 'bluehost-plugin',
 					page: hashedPath,
 					resturl: window.WPPB.resturl
 				}}

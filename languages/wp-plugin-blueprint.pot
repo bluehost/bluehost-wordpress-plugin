@@ -1,9 +1,9 @@
-# Copyright (C) 2023 Blueprint
+# Copyright (C) 2023 Bluehost
 # This file is distributed under the GPL 2.0 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: The Blueprint Plugin 0.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-blueprint\n"
+"Project-Id-Version: The Bluehost Plugin 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-bluehost\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -12,29 +12,29 @@ msgstr ""
 "POT-Creation-Date: 2023-03-08T20:13:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
-"X-Domain: wp-plugin-blueprint\n"
+"X-Domain: wp-plugin-bluehost\n"
 
 #. Plugin Name of the plugin
-msgid "The Blueprint Plugin"
+msgid "The Bluehost Plugin"
 msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-msgid "https://blueprint.com"
+msgid "https://bluehost.com"
 msgstr ""
 
 #. Description of the plugin
-msgid "WordPress plugin that integrates a WordPress site with the Blueprint control panel, including performance, security, and update features."
+msgid "WordPress plugin that integrates a WordPress site with the Bluehost control panel, including performance, security, and update features."
 msgstr ""
 
 #. Author of the plugin
 #: inc/Admin.php:72
 #: inc/Admin.php:73
-msgid "Blueprint"
+msgid "Bluehost"
 msgstr ""
 
 #: bootstrap.php:21
-msgid "Please install the Blueprint Plugin dependencies."
+msgid "Please install the Bluehost Plugin dependencies."
 msgstr ""
 
 #: bootstrap.php:57
@@ -45,9 +45,9 @@ msgstr ""
 msgid "A New WordPress Site"
 msgstr ""
 
-#. translators: %1$s is replaced with opening link tag taking you to blueprint.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.blueprint.com, %6$s is replaced with closing link tag
+#. translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag
 #: bootstrap.php:61
-msgid "A %1$sBlueprint%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBlueprint%6$s."
+msgid "A %1$sBluehost%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBluehost%6$s."
 msgstr ""
 
 #. translators: %s: Blog name
@@ -122,7 +122,7 @@ msgid "Please update now"
 msgstr ""
 
 #: inc/Admin.php:187
-msgid "Thank you for creating with <a href=\"https://wordpress.org/\">WordPress</a> and <a href=\"https://blueprint.com/about-us\">Blueprint</a>."
+msgid "Thank you for creating with <a href=\"https://wordpress.org/\">WordPress</a> and <a href=\"https://bluehost.com/about-us\">Bluehost</a>."
 msgstr ""
 
 #: inc/AdminBar.php:35
@@ -176,7 +176,7 @@ msgstr ""
 #: inc/updates.php:115
 #: inc/updates.php:143
 #: inc/updates.php:170
-msgid "Auto-updates enabled on the <a href=\"%s\">Blueprint > Settings</a> page."
+msgid "Auto-updates enabled on the <a href=\"%s\">Bluehost > Settings</a> page."
 msgstr ""
 
 #: inc/updates.php:166
@@ -247,7 +247,7 @@ msgid "There's nothing here!"
 msgstr ""
 
 #: src/app/components/header/logo.js:32
-msgid "Blueprint WordPress Plugin"
+msgid "Bluehost WordPress Plugin"
 msgstr ""
 
 #: src/app/data/help.js:4
@@ -288,7 +288,7 @@ msgid "Tweet"
 msgstr ""
 
 #: src/app/data/help.js:38
-msgid "Find our team at @blueprint for updates on our products and support from our team."
+msgid "Find our team at @bluehost for updates on our products and support from our team."
 msgstr ""
 
 #: src/app/data/help.js:43
@@ -325,7 +325,7 @@ msgid "Blog"
 msgstr ""
 
 #: src/app/data/help.js:71
-msgid "Learn best practices, get insider tips and find the latest news about Blueprint."
+msgid "Learn best practices, get insider tips and find the latest news about Bluehost."
 msgstr ""
 
 #: src/app/data/help.js:76
@@ -481,7 +481,7 @@ msgid "Web Hosting"
 msgstr ""
 
 #: src/app/pages/home/webHostingSection.js:26
-msgid "Access & manage your Blueprint account."
+msgid "Access & manage your Bluehost account."
 msgstr ""
 
 #: src/app/pages/home/webHostingSection.js:36
@@ -713,7 +713,7 @@ msgid "Still building your site? Need to make a big change?"
 msgstr ""
 
 #: src/app/pages/settings/comingSoon.js:69
-msgid "Your Blueprint Coming Soon page lets you hide your site from visitors while you make the magic happen."
+msgid "Your Bluehost Coming Soon page lets you hide your site from visitors while you make the magic happen."
 msgstr ""
 
 #: src/app/pages/settings/comingSoon.js:75

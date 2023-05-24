@@ -1,7 +1,7 @@
 import AppStore from '../../data/store';
 import { Heading, ErrorCard, Accordion } from '../../components';
 import {
-	blueprintSettingsApiFetch,
+	bluehostSettingsApiFetch,
 	dispatchUpdateSnackbar,
 } from '../../util/helpers';
 import {
@@ -28,13 +28,13 @@ const ContentSettings = () => {
 		// `Keep ${contentRevisions} latest revision(s)`
 		return (
 			<span>
-				{ __( 'Keep ', 'wp-plugin-blueprint' ) }
+				{ __( 'Keep ', 'wp-plugin-bluehost' ) }
 				<strong>{ contentRevisions }</strong>
 				{ _n(
 					' latest revision',
 					' latest revisions',
 					parseInt( contentRevisions ),
-					'wp-plugin-blueprint'
+					'wp-plugin-bluehost'
 				) }
 			</span>
 		);
@@ -43,13 +43,13 @@ const ContentSettings = () => {
 		//`Posts will save ${contentRevisions} revisions.`
 		return (
 			<span>
-				{ __( 'Posts will save ', 'wp-plugin-blueprint' ) }
+				{ __( 'Posts will save ', 'wp-plugin-bluehost' ) }
 				<strong>{ contentRevisions }</strong>
 				{ _n(
 					' revision.',
 					' revisions.',
 					parseInt( contentRevisions ),
-					'wp-plugin-blueprint'
+					'wp-plugin-bluehost'
 				) }
 			</span>
 		);
@@ -61,9 +61,9 @@ const ContentSettings = () => {
 		// `Empty trash every ${numTrashWeeks} week(s).`
 		return (
 			<span>
-				{ __( 'Empty trash every ', 'wp-plugin-blueprint' ) }
+				{ __( 'Empty trash every ', 'wp-plugin-bluehost' ) }
 				<strong>{ numTrashWeeks }</strong>
-				{ _n( ' week.', ' weeks.', numTrashWeeks, 'wp-plugin-blueprint' ) }
+				{ _n( ' week.', ' weeks.', numTrashWeeks, 'wp-plugin-bluehost' ) }
 			</span>
 		);
 	};
@@ -73,10 +73,10 @@ const ContentSettings = () => {
 			<span>
 				{ __(
 					'The trash will automatically empty every ',
-					'wp-plugin-blueprint'
+					'wp-plugin-bluehost'
 				) }
 				<strong>{ numTrashWeeks }</strong>
-				{ _n( ' week.', ' weeks.', numTrashWeeks, 'wp-plugin-blueprint' ) }
+				{ _n( ' week.', ' weeks.', numTrashWeeks, 'wp-plugin-bluehost' ) }
 			</span>
 		);
 	};
@@ -85,7 +85,7 @@ const ContentSettings = () => {
 	};
 
 	useUpdateEffect( () => {
-		blueprintSettingsApiFetch( { contentRevisions }, setError, ( response ) => {
+		bluehostSettingsApiFetch( { contentRevisions }, setError, ( response ) => {
 			setStore( {
 				...store,
 				contentRevisions,
@@ -96,7 +96,7 @@ const ContentSettings = () => {
 
 	useUpdateEffect( () => {
 		numTrashWeeks = Math.floor( emptyTrashDays / 7 );
-		blueprintSettingsApiFetch( { emptyTrashDays }, setError, ( response ) => {
+		bluehostSettingsApiFetch( { emptyTrashDays }, setError, ( response ) => {
 			setStore( {
 				...store,
 				emptyTrashDays,
@@ -112,7 +112,7 @@ const ContentSettings = () => {
 		<Card className="card-content-settings">
 			<CardHeader>
 				<Heading level="3">
-					{ __( 'Content Options', 'wp-plugin-blueprint' ) }
+					{ __( 'Content Options', 'wp-plugin-bluehost' ) }
 				</Heading>
 			</CardHeader>
 			<CardBody className="content-revisions-setting">
@@ -123,7 +123,7 @@ const ContentSettings = () => {
 					help={ sprintf(
 						'Saving drafts and updating published content creates revisions. Make changes with confidence, knowing you can take %s steps back.',
 						contentRevisions,
-						'wp-plugin-blueprint'
+						'wp-plugin-bluehost'
 					) }
 					options={ [
 						{ label: '1', value: '1' },
@@ -156,13 +156,13 @@ const ContentSettings = () => {
 					className="content-protip"
 					summary={ __(
 						'Pro Tip: Keep your site fast with fewer revisions & frequent cleanup',
-						'wp-plugin-blueprint'
+						'wp-plugin-bluehost'
 					) }
 				>
 					<p>
 						{ __(
 							'When you have a large site with lots of revisions, it can slightly slow down your public site and WordPress Admin. For the best results, keep only a few revisions and empty the trash frequently.',
-							'wp-plugin-blueprint'
+							'wp-plugin-bluehost'
 						) }
 					</p>
 				</Accordion>

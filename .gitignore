@@ -16,7 +16,8 @@ cypress.env.json
 # Built-app files
 /.docs
 /build/*
-/wp-plugin-blueprint
+/wp-plugin-bluehost
+/bluehost-wordpress-plugin
 
 # File Types
 *.log

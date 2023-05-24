@@ -6,7 +6,7 @@ import domReady from '@wordpress/dom-ready';
 import { render } from '@wordpress/element';
 
 const WP_ADM_PAGE_ROOT_ELEMENT = 'wppb-app';
-const W_ASCI = `Welcome to Blueprint!`;
+const W_ASCI = `Welcome to Bluehost!`;
 console.log( W_ASCI );
 
 const WPPBRender = () => {

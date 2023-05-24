@@ -3,14 +3,14 @@
 describe('Home Page', function () {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=blueprint#/home');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
 		cy.injectAxe();
 		
 	});
 
 	it('Header Exists', () => {
 		cy
-			.get('.wppb-header').contains('h2', 'Blueprint')
+			.get('.wppb-header').contains('h2', 'Bluehost')
 			.scrollIntoView()
 			.should('be.visible');
 	});

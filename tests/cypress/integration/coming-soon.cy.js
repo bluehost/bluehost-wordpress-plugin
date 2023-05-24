@@ -3,7 +3,7 @@
 describe('Coming Soon', function () {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=blueprint#/settings');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
 		cy.injectAxe();
 		
 	});
@@ -29,7 +29,7 @@ describe('Coming Soon', function () {
 	});
 
 	it('Has Coming Soon Section on Home', () => {
-		cy.visit('/wp-admin/admin.php?page=blueprint#/home');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
 		cy
 			.get('.wppb-section-coming-soon')
 			.scrollIntoView()
@@ -43,7 +43,7 @@ describe('Coming Soon', function () {
 
 		// This is currently overridden by the ecom module
 		// cy
-		// 	.get('#wp-toolbar #wp-admin-bar-blueprint-coming_soon')
+		// 	.get('#wp-toolbar #wp-admin-bar-bluehost-coming_soon')
 		// 	.contains('div', 'Coming Soon Active')
 		// 	.should('be.visible');
 	});
@@ -53,7 +53,7 @@ describe('Coming Soon', function () {
 		cy.wait(500);
 		// This is currently overridden by the ecom module
 		// cy
-		// 	.get('#wp-toolbar #wp-admin-bar-blueprint-coming_soon')
+		// 	.get('#wp-toolbar #wp-admin-bar-bluehost-coming_soon')
 		// 	.contains('div', 'Coming Soon Active')
 		// 	.should('not.be.visible');
 
@@ -92,10 +92,10 @@ describe('Coming Soon', function () {
 
 	it('Launching launches site', () => {
 		cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
-		cy.visit('/wp-admin/admin.php?page=blueprint#/settings');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
 		cy.get('.coming-soon-toggle input[type="checkbox"]').should('be.checked');
 
-		cy.visit('/wp-admin/admin.php?page=blueprint#/home');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
 		cy
 			.get('.wppb-section-coming-soon')
 			.scrollIntoView()
@@ -117,6 +117,6 @@ describe('Coming Soon', function () {
 			.should('not.exist');
 
 		cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
-		cy.visit('/wp-admin/admin.php?page=blueprint#/settings');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
 	})
 });

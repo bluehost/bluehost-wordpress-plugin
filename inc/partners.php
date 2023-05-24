@@ -2,10 +2,10 @@
 /**
  * This file adds filters for partler links.
  *
- * @package WPPluginBlueprint
+ * @package WPPluginBluehost
  */
 
-namespace Blueprint;
+namespace Bluehost;
 
 /**
  * WPForms upgrade affiliate link.

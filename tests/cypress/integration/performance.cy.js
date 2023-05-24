@@ -3,7 +3,7 @@
 describe('Performance Page', function () {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=blueprint#/performance');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/performance');
 		cy.injectAxe();
 		
 	});

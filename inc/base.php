@@ -2,18 +2,18 @@
 /**
  * Base functions
  *
- * @package WPPluginBlueprint
+ * @package WPPluginBluehost
  */
 
-namespace Blueprint;
+namespace Bluehost;
 
 /**
  * Check if plugin install date exists.
  *
  * @return bool
  */
-function blueprint_has_plugin_install_date() {
-	return ! empty( get_option( 'blueprint_plugin_install_date', '' ) );
+function bluehost_has_plugin_install_date() {
+	return ! empty( get_option( 'bluehost_plugin_install_date', '' ) );
 }
 
 /**
@@ -21,8 +21,8 @@ function blueprint_has_plugin_install_date() {
  *
  * @return string
  */
-function blueprint_get_plugin_install_date() {
-	return (string) get_option( 'blueprint_plugin_install_date', gmdate( 'U' ) );
+function bluehost_get_plugin_install_date() {
+	return (string) get_option( 'bluehost_plugin_install_date', gmdate( 'U' ) );
 }
 
 /**
@@ -30,8 +30,8 @@ function blueprint_get_plugin_install_date() {
  *
  * @param string $value Date in Unix timestamp format.
  */
-function blueprint_set_plugin_install_date( $value ) {
-	update_option( 'blueprint_plugin_install_date', $value, true );
+function bluehost_set_plugin_install_date( $value ) {
+	update_option( 'bluehost_plugin_install_date', $value, true );
 }
 
 
@@ -40,14 +40,14 @@ function blueprint_set_plugin_install_date( $value ) {
  *
  * @return int
  */
-function blueprint_get_days_since_plugin_install_date() {
-	return absint( ( gmdate( 'U' ) - blueprint_get_plugin_install_date() ) / DAY_IN_SECONDS );
+function bluehost_get_days_since_plugin_install_date() {
+	return absint( ( gmdate( 'U' ) - bluehost_get_plugin_install_date() ) / DAY_IN_SECONDS );
 }
 
 /**
  * Basic setup
  */
-function blueprint_setup() {
+function bluehost_setup() {
 	if ( ( '' === get_option( 'mm_master_aff' ) || false === get_option( 'mm_master_aff' ) ) && defined( 'MMAFF' ) ) {
 		update_option( 'mm_master_aff', MMAFF );
 	}
@@ -65,16 +65,16 @@ function blueprint_setup() {
 		$events['hourly'][ $event['ea'] ] = $event;
 		update_option( 'mm_cron', $events );
 	}
-	if ( ! blueprint_has_plugin_install_date() ) {
+	if ( ! bluehost_has_plugin_install_date() ) {
 		$date = false;
 		if ( ! empty( $install_date ) ) {
 			$date = \DateTime::createFromFormat( 'M d, Y', $install_date );
 		}
-		blueprint_set_plugin_install_date( $date ? $date->format( 'U' ) : gmdate( 'U' ) );
+		bluehost_set_plugin_install_date( $date ? $date->format( 'U' ) : gmdate( 'U' ) );
 	}
 }
 
-add_action( 'admin_init', __NAMESPACE__ . '\\blueprint_setup' );
+add_action( 'admin_init', __NAMESPACE__ . '\\bluehost_setup' );
 
 
 /**
@@ -83,7 +83,7 @@ add_action( 'admin_init', __NAMESPACE__ . '\\blueprint_setup' );
  * @param string $install_date value from hook
  * @return int
  */
-function blueprint_install_date_filter( $install_date ) {
-	return blueprint_get_plugin_install_date();
+function bluehost_install_date_filter( $install_date ) {
+	return bluehost_get_plugin_install_date();
 }
-add_filter( 'nfd_install_date_filter', __NAMESPACE__ . '\\blueprint_install_date_filter' );
+add_filter( 'nfd_install_date_filter', __NAMESPACE__ . '\\bluehost_install_date_filter' );

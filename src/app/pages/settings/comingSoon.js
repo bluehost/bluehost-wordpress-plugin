@@ -1,6 +1,6 @@
 import AppStore from '../../data/store';
 import {
-	blueprintSettingsApiFetch,
+	bluehostSettingsApiFetch,
 	comingSoonAdminbarToggle,
 } from '../../util/helpers';
 import { useState } from '@wordpress/element';
@@ -18,24 +18,24 @@ const ComingSoon = () => {
 
 	const getComingSoonNoticeTitle = () => {
 		return comingSoon
-			? __('Coming soon activated', 'wp-plugin-blueprint')
-			: __('Coming soon deactivated', 'wp-plugin-blueprint');
+			? __('Coming soon activated', 'wp-plugin-bluehost')
+			: __('Coming soon deactivated', 'wp-plugin-bluehost');
 	};
 
 	const getComingSoonNoticeText = () => {
 		return comingSoon
 			? __(
 				'Coming soon page is active. Site requires login.',
-				'wp-plugin-blueprint'
+				'wp-plugin-bluehost'
 			)
 			: __(
 				'Coming soon page is not active. Site is live to visitors.',
-				'wp-plugin-blueprint'
+				'wp-plugin-bluehost'
 			);
 	};
 
 	const toggleComingSoon = () => {
-		blueprintSettingsApiFetch({ comingSoon: !comingSoon }, setError, (response) => {
+		bluehostSettingsApiFetch({ comingSoon: !comingSoon }, setError, (response) => {
 			setComingSoon(!comingSoon);
 		});
 	};
@@ -65,16 +65,16 @@ const ComingSoon = () => {
 
 	return (
 		<SectionSettings
-			title={__('Maintenance Mode', 'wp-plugin-blueprint')}
-			description={__('Still building your site? Need to make a big change?', 'wp-plugin-blueprint')}
+			title={__('Maintenance Mode', 'wp-plugin-bluehost')}
+			description={__('Still building your site? Need to make a big change?', 'wp-plugin-bluehost')}
 		>
 			<div className="yst-flex yst-flex-col yst-gap-6">
 				<ToggleField
 					id="coming-soon-toggle"
 					label="Coming soon page"
 					description={__(
-						'Your Blueprint Coming Soon page lets you hide your site from visitors while you make the magic happen.',
-						'wp-plugin-blueprint'
+						'Your Bluehost Coming Soon page lets you hide your site from visitors while you make the magic happen.',
+						'wp-plugin-bluehost'
 					)}
 					checked={comingSoon}
 					onChange={() => {
@@ -84,13 +84,13 @@ const ComingSoon = () => {
 
 				{comingSoon &&
 					<Alert variant="info">
-						{__('Your website is currently displaying a "Coming Soon" page.', 'wp-plugin-blueprint')}
+						{__('Your website is currently displaying a "Coming Soon" page.', 'wp-plugin-bluehost')}
 					</Alert>
 				}
 
 				{isError &&
 					<Alert variant="error">
-						{__('Oops! Something went wrong. Please try again.', 'wp-plugin-blueprint')}
+						{__('Oops! Something went wrong. Please try again.', 'wp-plugin-bluehost')}
 					</Alert>
 				}
 			</div>

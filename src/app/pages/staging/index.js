@@ -19,11 +19,11 @@ const ProductionSite = ({
 }) => {
     return (
         <SectionSettings
-            title={__('Production site', 'wp-plugin-blueprint')}
+            title={__('Production site', 'wp-plugin-bluehost')}
             description={
                 <Radio
                     defaultChecked={isProduction ? true : false}
-                    label={isProduction ? __('Currently editing', 'wp-plugin-blueprint') : __('Not currently editing', 'wp-plugin-blueprint') }
+                    label={isProduction ? __('Currently editing', 'wp-plugin-bluehost') : __('Not currently editing', 'wp-plugin-bluehost') }
                     id="wppb-production-toggle"
                     name="wppb-staging-selector"
                     value="1"
@@ -48,7 +48,7 @@ const ProductionSite = ({
                                 'Clone'
                             )
                         }}>
-                        {__('Clone to staging', 'wp-plugin-blueprint')}
+                        {__('Clone to staging', 'wp-plugin-bluehost')}
                     </Button>
                 }
             </div>
@@ -71,11 +71,11 @@ const StagingSite = ({
 
     return (
         <SectionSettings
-            title={__('Staging site', 'wp-plugin-blueprint')}
-            description={!hasStaging ? __("You don't have a staging site yet.", 'wp-plugin-blueprint') :
+            title={__('Staging site', 'wp-plugin-bluehost')}
+            description={!hasStaging ? __("You don't have a staging site yet.", 'wp-plugin-bluehost') :
                 <Radio
                     defaultChecked={isProduction ? false : true}
-                    label={isProduction ? __('Not currently editing', 'wp-plugin-blueprint') : __('Currently editing', 'wp-plugin-blueprint') }
+                    label={isProduction ? __('Not currently editing', 'wp-plugin-bluehost') : __('Currently editing', 'wp-plugin-bluehost') }
                     id="wppb-staging-toggle"
                     name="wppb-staging-selector"
                     value="2"
@@ -91,7 +91,7 @@ const StagingSite = ({
                         <Button variant="secondary" onClick={() => { 
                             createMe()
                         }}>
-                            {__('Create staging site', 'wp-plugin-blueprint')}
+                            {__('Create staging site', 'wp-plugin-bluehost')}
                         </Button>
                     </div>
                 }
@@ -129,7 +129,7 @@ const StagingSite = ({
                             />
                             <Button
                                 disabled={isProduction ? true : false }
-                                title={__('Deploy', 'wp-plugin-blueprint')}
+                                title={__('Deploy', 'wp-plugin-bluehost')}
                                 onClick={() => { 
                                     // console.log('Open confirm modal: Deploy stagin option to production');
                                     // deployMe(deployOption);
@@ -148,7 +148,7 @@ const StagingSite = ({
                             <Button
                                 disabled={isProduction ? false : true }
                                 variant="error"
-                                title={__('Delete Staging Site', 'wp-plugin-blueprint')}
+                                title={__('Delete Staging Site', 'wp-plugin-bluehost')}
                                 onClick={() => { 
                                     // console.log('Open confirm modal: Delete stagin option to production');
                                     // deleteMe();
@@ -519,12 +519,12 @@ const Staging = () => {
     };
 
     return (
-        <Page title={__('Staging', 'wp-plugin-blueprint')} className={`wppb-app-staging-page ${isThinking ? 'is-thinking' : ''}`}>
+        <Page title={__('Staging', 'wp-plugin-bluehost')} className={`wppb-app-staging-page ${isThinking ? 'is-thinking' : ''}`}>
             <SectionContainer className={'wppb-app-staging-container'}>
                 <SectionHeader
-                    title={__('Staging', 'wp-plugin-blueprint')}
+                    title={__('Staging', 'wp-plugin-bluehost')}
                     subTitle={__('A staging site is a duplicate of your live site, offering a secure environment to experiment, test updates, and deploy when ready.',
-                        'wp-plugin-blueprint')}
+                        'wp-plugin-bluehost')}
                     className={'wppb-app-staging-header'}
                 />
 

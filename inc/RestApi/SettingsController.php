@@ -1,6 +1,6 @@
 <?php
 
-namespace Blueprint\RestApi;
+namespace Bluehost\RestApi;
 
 /**
  * Class SettingsController
@@ -12,7 +12,7 @@ class SettingsController extends \WP_REST_Controller {
 	 *
 	 * @var string
 	 */
-	protected $namespace = 'blueprint/v1';
+	protected $namespace = 'bluehost/v1';
 
 	/**
 	 * Registers the settings route
@@ -86,7 +86,7 @@ class SettingsController extends \WP_REST_Controller {
 					case 'autoUpdatesPlugins':
 						// Keep the WordPress Core setting in sync.
 						if ( $new_value ) {
-							\Blueprint\sync_plugin_update_settings();
+							\Bluehost\sync_plugin_update_settings();
 						}
 
 						$new_value = ( $new_value ) ? 'true' : 'false';
@@ -95,7 +95,7 @@ class SettingsController extends \WP_REST_Controller {
 					case 'autoUpdatesThemes':
 						// Keep the WordPress Core setting in sync.
 						if ( $new_value ) {
-							\Blueprint\sync_theme_update_settings();
+							\Bluehost\sync_theme_update_settings();
 						}
 
 						$new_value = ( $new_value ) ? 'true' : 'false';
@@ -198,7 +198,7 @@ class SettingsController extends \WP_REST_Controller {
 	 */
 	public function check_permission() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new \WP_Error( 'rest_forbidden_context', __( 'Sorry, you are not allowed to access this endpoint.', 'wp-plugin-blueprint' ), array( 'status' => rest_authorization_required_code() ) );
+			return new \WP_Error( 'rest_forbidden_context', __( 'Sorry, you are not allowed to access this endpoint.', 'wp-plugin-bluehost' ), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
