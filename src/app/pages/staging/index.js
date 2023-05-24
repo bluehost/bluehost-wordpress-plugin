@@ -1,24 +1,21 @@
 import './stylesheet.scss';
 
-import { Button, Radio, Select } from '@yoast/ui-library';
+import { Button, Radio, Select, Modal } from '@yoast/ui-library';
 import { Page } from '../../components/page';
 import { SectionContainer, SectionHeader, SectionContent, SectionSettings } from '../../components/section';
 import { useState } from '@wordpress/element';
-import { ArrowPathIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { ArrowPathIcon, TrashIcon, XMarkIcon, CheckIcon } from '@heroicons/react/24/outline';
 import apiFetch from '@wordpress/api-fetch';
 import { useEffect } from 'react';
 import { useNotification } from '../../components/notifications/feed';
 
-const productionDomain = 'https://pkp.rjp.mybluehost.me';
-const stagingDomain = 'https://pkp.rjp.mybluehost.me/staging/2134';
-
 const ProductionSite = ({ 
     hasStaging, 
     isProduction, 
-    setIsProduction, 
     productionUrl,
     switchToMe,
     cloneMe,
+    setModal,
 }) => {
     return (
         <SectionSettings
@@ -31,8 +28,6 @@ const ProductionSite = ({
                     name="wppb-staging-selector"
                     value="1"
                     onChange={() => {
-                        setIsProduction(true);
-                        console.log('Production active');
                         switchToMe();
                     }}
                 />
@@ -45,8 +40,13 @@ const ProductionSite = ({
                         variant="secondary"
                         disabled={isProduction ? false : true}
                         onClick={() => { 
-                            console.log('Open confirm modal: Clone production to staging');
-                            cloneMe();
+                            setModal(
+                                'Confirm Clone Action',
+                                'This will overwrite anything in staging and update it to an exact clone of the current production site. Are you sure you want to proceed?',
+                                cloneMe,
+                                null,
+                                'Clone'
+                            )
                         }}>
                         {__('Clone to staging', 'wp-plugin-blueprint')}
                     </Button>
@@ -58,14 +58,14 @@ const ProductionSite = ({
 
 const StagingSite = ({ 
     hasStaging, 
-    setHasStaging, 
     isProduction, 
-    setIsProduction, 
     createMe,
     deployMe,
     deleteMe,
     switchToMe,
-    stagingUrl
+    stagingUrl,
+    setModal,
+    creationDate,
 }) => {
     const [deployOption, setDeployOption] = useState( 'all' );
 
@@ -80,8 +80,6 @@ const StagingSite = ({
                     name="wppb-staging-selector"
                     value="2"
                     onChange={() => {
-                        setIsProduction(false);
-                        console.log('Staging active');
                         switchToMe();
                     }}
                 />
@@ -91,7 +89,7 @@ const StagingSite = ({
                 {!hasStaging &&
                     <div className="yst-flex yst-justify-end yst-w-full">
                         <Button variant="secondary" onClick={() => { 
-                            create()
+                            createMe()
                         }}>
                             {__('Create staging site', 'wp-plugin-blueprint')}
                         </Button>
@@ -99,7 +97,13 @@ const StagingSite = ({
                 }
                 {hasStaging &&
                     <>
-                        <div>{stagingUrl}</div>
+                        <div>
+                            {stagingUrl}
+                            <dl className="yst-flex yst-justify-between yst-items-center yst-flex-wrap yst-gap-3">
+                                <dt>Created:</dt>
+                                <dd>{creationDate}</dd>
+                            </dl>
+                        </div>
                         <div className="yst-flex yst-gap-1.5 yst-relative">
                             <Select
                                 disabled={ isProduction ? true : false }
@@ -127,8 +131,15 @@ const StagingSite = ({
                                 disabled={isProduction ? true : false }
                                 title={__('Deploy', 'wp-plugin-blueprint')}
                                 onClick={() => { 
-                                    console.log('Open confirm modal: Deploy stagin option to production');
-                                    deployMe(deployOption);
+                                    // console.log('Open confirm modal: Deploy stagin option to production');
+                                    // deployMe(deployOption);
+                                    setModal(
+                                        'Confirm Deployment',
+                                        'This will deploy staging to production and overwrite current production site. Are you sure you want to proceed?',
+                                        deployMe,
+                                        deployOption,
+                                        'Deploy'
+                                    )
                                 }}
                             >
                                 <ArrowPathIcon />
@@ -137,10 +148,17 @@ const StagingSite = ({
                             <Button
                                 disabled={isProduction ? false : true }
                                 variant="error"
-                                title={__('Delete', 'wp-plugin-blueprint')}
+                                title={__('Delete Staging Site', 'wp-plugin-blueprint')}
                                 onClick={() => { 
-                                    console.log('Open confirm modal: Delete stagin option to production');
-                                    deleteMe();
+                                    // console.log('Open confirm modal: Delete stagin option to production');
+                                    // deleteMe();
+                                    setModal(
+                                        'Confirm Delete',
+                                        'This will permanently delete staging site. Are you sure you want to proceed? You can recreate another staging site at any time, but any specific changes you\'ve made to this staging site will be lost.',
+                                        deleteMe,
+                                        null,
+                                        'Delete'
+                                    )
                                 }}
                             >
                                 <TrashIcon />
@@ -152,7 +170,7 @@ const StagingSite = ({
             </div>
         </SectionSettings>
     );
-}
+};
 
 const Staging = () => {
     const apiNamespace = '/newfold-staging/v1/';
@@ -163,7 +181,6 @@ const Staging = () => {
 	const [ isThinking, setIsThinking ] = useState( false );
 	const [ isError, setIsError ] = useState( false );
 	const [ notice, setNotice ] = useState( '' );
-	const [ showManageStaging, setShowManageStaging ] = useState( false );
 	const [ errorMessage, setErrorMessage ] = useState( null );
 	const [ isCreatingStaging, setIsCreatingStaging ] = useState( false );
 	const [ hasStaging, setHasStaging ] = useState( null );
@@ -174,6 +191,8 @@ const Staging = () => {
 	const [ stagingDir, setStagingDir ] = useState( null );
 	const [ stagingUrl, setStagingUrl ] = useState( null );
 	const [ switchingTo, setSwitchingTo ] = useState( '' );
+    const [ modalChildren, setModalChildren ] = useState( <div /> );
+    const [ modalOpen, setModalOpen ] = useState( false );
 
 	let notify = useNotification();
 
@@ -361,7 +380,13 @@ const Staging = () => {
         if ( !isProduction ) {
             console.log('Already on staging.');
         } else {
-            switchToEnv( 'staging');
+            setModal(
+                'Switch to Staging',
+                'This will navigate you to the staging environment',
+                switchToEnv,
+                'staging',
+                'Switch'
+            );
         }
     };
 
@@ -369,7 +394,13 @@ const Staging = () => {
         if ( isProduction ) {
             console.log('Already on production.');
         } else {
-            switchToEnv( 'production' );
+            setModal(
+                'Switch to Production',
+                'This will navigate you to the production environment',
+                switchToEnv,
+                'production',
+                'Switch'
+            );
         }
     };
 
@@ -456,6 +487,36 @@ const Staging = () => {
 			errorCallback( error );
 		})
 	};
+    const modalClose = () => {
+        console.log('modal close');
+        setModalOpen(false);
+    }
+    const setModal = (title, description, callback, callbackParams=null, ctaText="Proceed") => {
+        setModalChildren(
+            <Modal.Panel>
+                <Modal.Title className="yst-text-2xl yst-font-medium yst-text-title">{title}</Modal.Title>
+                <Modal.Description className="yst-mt-8 yst-mb-8">{description}</Modal.Description>
+                <div className="yst-flex yst-justify-between yst-items-center yst-flex-wrap yst-gap-3">
+                    <Button
+                        variant="error"
+                        onClick={ () => { setModalOpen(false); }}
+                        >
+                        <XMarkIcon /> Cancel
+                    </Button>
+                    <Button
+                        variant="primary"
+                        onClick={ () => { 
+                            setModalOpen(false);
+                            callback(callbackParams);
+                        }}
+                        >
+                        <CheckIcon /> {ctaText}
+                    </Button>
+                </div>
+            </Modal.Panel>
+        );
+        setModalOpen(true);
+    };
 
     return (
         <Page title={__('Staging', 'wp-plugin-blueprint')} className={`wppb-app-staging-page ${isThinking ? 'is-thinking' : ''}`}>
@@ -470,17 +531,16 @@ const Staging = () => {
                 <SectionContent separator={true} className={'wppb-app-staging-prod'}>
                     <ProductionSite
                         isProduction={isProduction}
-                        setIsProduction={setIsProduction}
                         hasStaging={hasStaging}
                         productionUrl={productionUrl}
                         cloneMe={clone}
                         switchToMe={switchToProduction}
+                        setModal={setModal}
                     />
                 </SectionContent>
                 <SectionContent className={'wppb-app-staging-staging'}>
                     <StagingSite
                         isProduction={isProduction}
-                        setIsProduction={setIsProduction}
                         hasStaging={hasStaging}
                         setHasStaging={setHasStaging}
                         createMe={createStaging}
@@ -488,28 +548,15 @@ const Staging = () => {
                         deployMe={deployStaging}
                         switchToMe={switchToStaging}
                         stagingUrl={stagingUrl}
+                        creationDate={creationDate}
+                        setModal={setModal}
                     />
                 </SectionContent>
-                <SectionContent>
-                    <dl>
-                        <dt>Status</dt>
-                        <dd><code>{ notice }</code></dd>
-                        <dt>Current Environment</dt>
-                        <dd><code>{ isProduction ? 'production' : 'staging' }</code></dd>
-                        <dt>Production Url</dt>
-                        <dd><code>{ productionUrl }</code></dd>
-                        <dt>Production Directory</dt>
-                        <dd><code>{ productionDir }</code></dd>
-                        <dt>Staging Exists</dt>
-                        <dd><code>{ hasStaging ? 'true' : 'false' }</code></dd>
-                        <dt>Creation Date</dt>
-                        <dd><code>{ creationDate }</code></dd>
-                        <dt>Staging Url</dt>
-                        <dd><code>{ stagingUrl }</code></dd>
-                        <dt>Staging Directory</dt>
-                        <dd><code>{ stagingDir }</code></dd>
-                    </dl>
-                </SectionContent>
+                <Modal 
+                    isOpen={ modalOpen }
+                    onClose={ modalClose }
+                    children={ modalChildren }
+                />
             </SectionContainer>
         </Page>
     );
