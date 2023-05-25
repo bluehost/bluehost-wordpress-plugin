@@ -23,6 +23,7 @@ export const SideNavMenu = () => {
                         name={page.name}
                         icon={page.Icon}
                         path={page.name}
+                        action={page.action}
                         subItems={page.subRoutes}
                     />
 
@@ -42,6 +43,7 @@ export const SideNavMenu = () => {
                         name={page.name}
                         icon={page.Icon}
                         path={page.name}
+                        action={page.action}
                         subItems={page.subRoutes}
                     />
 
@@ -77,10 +79,11 @@ export const SideNavMenu = () => {
     );
 }
 
-export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, subItems }) => {
+export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, action, subItems }) => {
     return (
         <li className="yst-mb-0">
             <NavLink
+                onClick={action ? action : null}
                 to={path}
                 className={`wppbh-app-navitem wppbh-app-navitem-${name} yst-flex yst-items-center yst-gap-3 yst-px-3 yst-py-2 yst-rounded-md yst-text-sm yst-font-medium yst-text-title leading-none hover:yst-bg-slate-50 [&.active]:yst-bg-[#E2E8F0]`}
             >

@@ -28,7 +28,7 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
  *
  * @return bool
  */
-function bh_is_jarvis() {
+function bluehost_is_jarvis() {
 	$is_jarvis = false;
 	$host      = array(
 		'dirs'      => explode( '/', ABSPATH ),
@@ -102,7 +102,7 @@ $bluehost_module_container->set(
 	'isJarvis',
 	$bluehost_module_container->computed(
 		function () {
-			return bh_is_jarvis();
+			return bluehost_is_jarvis();
 		}
 	)
 );
