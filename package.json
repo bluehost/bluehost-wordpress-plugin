@@ -1,47 +1,27 @@
 {
-    "name": "wp-plugin-bluehost",
+    "name": "bluehost-wordpress-plugin",
     "description": "WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
     "license": "GPL-2.0-or-later",
     "version": "3.0.0",
     "private": true,
-    "author": {
-        "name": "Evan Mullins",
-        "url": "https://evanmullins.com"
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bluehost/bluehost-wordpress-plugin.git"
     },
-    "devDependencies": {
-        "@tailwindcss/forms": "^0.5.3",
-        "@testing-library/cypress": "^9.0.0",
-        "@wordpress/env": "^5.15.0",
-        "@wordpress/scripts": "^26.1.0",
-        "@yoast/tailwindcss-preset": "^2.2.0",
-        "cypress": "^12.9.0",
-        "cypress-axe": "^1.4.0",
-        "tailwindcss": "^3.3.2"
+    "bugs": {
+        "url": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
     },
-    "scripts": {
-        "build": "wp-scripts build",
-        "check-engines": "wp-scripts check-engines",
-        "check-licenses": "wp-scripts check-licenses --production",
-        "develop": "npm run start",
-        "develop:analyzer": "npm run start:analyzer",
-        "lint:css": "wp-scripts lint-style '**/*.css'",
-        "lint:js": "wp-scripts lint-js ./src",
-        "lint:js:fix": "wp-scripts lint-js ./src --fix",
-        "lint:pkg-json": "wp-scripts lint-pkg-json",
-        "lint:yml": "yamllint --ignore=node_modules/** --ignore=vendor/** **/*.yml",
-        "i18n": "wpi18n addtextdomain && composer run i18n",
-        "start": "NODE_ENV=develop wp-scripts start",
-        "start:analyzer": "npm run start --webpack-bundle-analyzer",
-        "storybook:dev": "start-storybook -c ./storybook",
-        "storybook:build": "build-storybook -c ./storybook -o ./.docs",
-        "test:e2e": "npx cypress run",
-        "test:unit": "wp-scripts test-unit-js",
-        "create:dist": "rsync -r --exclude-from=.distignore . ./wp-plugin-bluehost",
-        "php-deps": "composer install --no-dev --optimize-autoloader",
-        "create:zip": "cd ./wp-plugin-bluehost && zip -r -9 ../wp-plugin-bluehost.zip . && ls -lh ../wp-plugin-bluehost.zip",
-        "prebuild:cleanup": "rm -rf ./build ./wp-plugin-bluehost ./wp-plugin-bluehost.zip ./vendor",
-        "simulate-runner-build": "npm run prebuild:cleanup && npm i && npm run php-deps && npm run build && npm run create:dist && npm run create:zip",
-        "srb": "npm run simulate-runner-build"
+    "homepage": "https://github.com/bluehost/bluehost-wordpress-plugin#readme",
+    "contributors": [
+        "Abdulrahman Al Ani (https://alani.dev/)",
+        "Evan Mullins (https://evanmullins.com)",
+        "Jonathan Desrosiers (https://jonathandesrosiers.com)",
+        "Micah Wood (https://wpscholar.com)",
+        "William Earnhardt (https://wearnhardt.com)"
+    ],
+    "engines": {
+        "node": ">=16",
+        "npm": ">=7"
     },
     "dependencies": {
         "@heroicons/react": "^2.0.18",
@@ -60,5 +40,43 @@
         "react-error-boundary": "^4.0.3",
         "react-router-dom": "^6.10.0",
         "react-use": "^17.4.0"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.3",
+        "@testing-library/cypress": "^9.0.0",
+        "@replayio/cypress": "^0.5.10",
+        "@wordpress/env": "^5.15.0",
+        "@wordpress/scripts": "^26.1.0",
+        "@yoast/tailwindcss-preset": "^2.2.0",
+        "cypress": "^12.9.0",
+        "cypress-axe": "^1.4.0",
+        "tailwindcss": "^3.3.2"
+    },
+    "scripts": {
+        "build": "wp-scripts build",
+        "check-engines": "wp-scripts check-engines",
+        "check-licenses": "wp-scripts check-licenses --production",
+        "cypress": "npm cypress open",
+        "cypress:record": "RECORD_ALL_CONTENT=1 RECORD_REPLAY_METADATA_FILE=$(mktemp) npx cypress run --browser 'Replay Chromium'",
+        "develop": "npm run start",
+        "develop:analyzer": "npm run start:analyzer",
+        "lint:css": "wp-scripts lint-style '**/*.css'",
+        "lint:js": "wp-scripts lint-js ./src",
+        "lint:js:fix": "wp-scripts lint-js ./src --fix",
+        "lint:pkg-json": "wp-scripts lint-pkg-json",
+        "lint:yml": "yamllint --ignore=node_modules/** --ignore=vendor/** **/*.yml",
+        "i18n": "wpi18n addtextdomain && composer run i18n",
+        "start": "NODE_ENV=develop wp-scripts start",
+        "start:analyzer": "npm run start --webpack-bundle-analyzer",
+        "storybook:dev": "start-storybook -c ./storybook",
+        "storybook:build": "build-storybook -c ./storybook -o ./.docs",
+        "test:e2e": "npx cypress run",
+        "test:unit": "wp-scripts test-unit-js",
+        "create:dist": "rsync -r --exclude-from=.distignore . ./bluehost-wordpress-plugin",
+        "php-deps": "composer install --no-dev --optimize-autoloader",
+        "create:zip": "cd ./bluehost-wordpress-plugin && zip -r -9 ../bluehost-wordpress-plugin.zip . && ls -lh ../bluehost-wordpress-plugin.zip",
+        "prebuild:cleanup": "rm -rf ./build ./bluehost-wordpress-plugin ./bluehost-wordpress-plugin.zip ./vendor",
+        "simulate-runner-build": "npm run prebuild:cleanup && npm i && npm run php-deps && npm run build && npm run create:dist && npm run create:zip",
+        "srb": "npm run simulate-runner-build"
     }
 }
