@@ -23,6 +23,7 @@ export const SideNavMenu = () => {
                         name={page.name}
                         icon={page.Icon}
                         path={page.name}
+                        action={page.action}
                         subItems={page.subRoutes}
                     />
 
@@ -42,6 +43,7 @@ export const SideNavMenu = () => {
                         name={page.name}
                         icon={page.Icon}
                         path={page.name}
+                        action={page.action}
                         subItems={page.subRoutes}
                     />
 
@@ -77,10 +79,11 @@ export const SideNavMenu = () => {
     );
 }
 
-export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, subItems }) => {
+export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, action, subItems }) => {
     return (
         <li className="yst-mb-0">
             <NavLink
+                onClick={(action && action instanceof Function) ? action : null}
                 to={path}
                 className={`wppbh-app-navitem wppbh-app-navitem-${name} yst-flex yst-items-center yst-gap-3 yst-px-3 yst-py-2 yst-rounded-md yst-text-sm yst-font-medium yst-text-title leading-none hover:yst-bg-slate-50 [&.active]:yst-bg-[#E2E8F0]`}
             >
@@ -97,6 +100,7 @@ export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, subItems
                             label={subItem.title}
                             name={subItem.name}
                             path={subItem.name}
+                            action={subItem.action}
                         />
                     ))}
                 </ul>
@@ -105,10 +109,12 @@ export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, subItems
     );
 }
 
-export const SideNavMenuSubItem = ({ label, name, path }) => {
+export const SideNavMenuSubItem = ({ label, name, path, action }) => {
     return (
         <li className="yst-m-0 yst-pb-1">
-            <NavLink to={path} className={`wppbh-app-subnavitem-${name} yst-flex yst-items-center yst-gap-3 yst-px-3 yst-py-2 yst-rounded-md yst-text-sm yst-font-medium yst-text-body leading-none hover:yst-bg-slate-50 [&.active]:yst-bg-[#E2E8F0] [&.active]:yst-text-title`}>
+            <NavLink
+                onClick={(action && action instanceof Function) ? action : null} 
+                to={path} className={`wppbh-app-subnavitem-${name} yst-flex yst-items-center yst-gap-3 yst-px-3 yst-py-2 yst-rounded-md yst-text-sm yst-font-medium yst-text-body leading-none hover:yst-bg-slate-50 [&.active]:yst-bg-[#E2E8F0] [&.active]:yst-text-title`}>
                 {label}
             </NavLink>
         </li>

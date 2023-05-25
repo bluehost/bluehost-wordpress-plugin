@@ -23,6 +23,50 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 	return;
 }
 
+/**
+ * Check if platform is Jarvis
+ *
+ * @return bool
+ */
+function bluehost_is_jarvis() {
+	$is_jarvis = false;
+	$host      = array(
+		'dirs'      => explode( '/', ABSPATH ),
+		'user'      => get_current_user(),
+		'homedir'   => null,
+		'info_file' => null,
+	);
+
+	// Build host's home directory
+	foreach ( $host['dirs'] as $dir ) {
+		if ( ! empty( $dir ) ) {
+			$host['homedir'] = $host['homedir'] . '/' . $dir;
+
+			if ( $dir === $host['user'] ) {
+				break;
+			}
+		}
+	}
+
+	// Check for Jarvis .host-info file
+	if ( file_exists( $host['homedir'] . '/.host-info' ) ) {
+		$host['info_file'] = file_get_contents( $host['homedir'] . '/.host-info' );
+	}
+
+	// Check for Jarvis platform
+	if (
+		null !== $host['info_file']
+		&& (
+			false !== stripos( $host['info_file'], 'platform = jarvis' )
+			|| false !== stripos( $host['info_file'], 'platform=jarvis' )
+		)
+	) {
+		$is_jarvis = true;
+	}
+
+	return $is_jarvis;
+}
+
 /*
  * Initialize coming soon module via container
  */
@@ -52,6 +96,15 @@ $bluehost_module_container->set(
 $bluehost_module_container->set(
 	'marketplace_brand',
 	'bluehost'
+);
+
+$bluehost_module_container->set(
+	'isJarvis',
+	$bluehost_module_container->computed(
+		function () {
+			return bluehost_is_jarvis();
+		}
+	)
 );
 
 // Set coming soon values

@@ -15,11 +15,15 @@ import Performance from '../pages/performance';
 import Settings from '../pages/settings';
 import Staging from '../pages/staging';
 import Example from '../pages/example';
-import Help from '../pages/help';
 import Store from '../pages/ecommerce/page';
 
 const addPartialMatch = (prefix, path) =>
   prefix === path ? `${prefix}/*` : path;
+
+const HelpDeskAI = (e) => {
+	e.preventDefault();
+	return alert('Open AI Help');
+}
 
 export const AppRoutes = () => {
 	return (
@@ -144,8 +148,8 @@ export const routes = [
 	{
 		name: '/help',
 		title: __( 'Help', 'wp-plugin-bluehost' ),
-		Component: Help,
 		Icon: QuestionMarkCircleIcon,
+		action: HelpDeskAI,
 	},
 ];
 
