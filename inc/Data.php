@@ -20,6 +20,7 @@ final class Data {
 	 */
 	public static function runtime() {
 		global $wp_version;
+		global $bluehost_module_container;
 
 		$runtime = array(
 			'url'       => BLUEHOST_BUILD_URL,
@@ -31,7 +32,7 @@ final class Data {
 			'sitetitle' => \get_bloginfo( 'name' ),
 			'env'       => array(
 				'brand'    => 'bluehost',
-				'isJarvis' => false
+				'isJarvis' => $bluehost_module_container->get( 'isJarvis' ),
 			),
 			'assets'    => BLUEHOST_PLUGIN_URL . 'assets/',
 		);
