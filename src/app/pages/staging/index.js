@@ -180,8 +180,6 @@ const Staging = () => {
 	const [ isLoading, setIsLoading ] = useState( true );
 	const [ isThinking, setIsThinking ] = useState( false );
 	const [ isError, setIsError ] = useState( false );
-	const [ notice, setNotice ] = useState( '' );
-	const [ errorMessage, setErrorMessage ] = useState( null );
 	const [ isCreatingStaging, setIsCreatingStaging ] = useState( false );
 	const [ hasStaging, setHasStaging ] = useState( null );
 	const [ isProduction, setIsProduction ] = useState( true );
@@ -224,11 +222,10 @@ const Staging = () => {
 	};
 
 	const setError = ( error ) => {
-		console.log('setError', error);
+		// console.log('setError', error);
 		setIsLoading( false );
         setIsThinking( false );
 		setIsError(true);
-		setErrorMessage(error);
         makeNotice( 'error', 'Error', error, 'error' );
 	};
 
@@ -247,7 +244,7 @@ const Staging = () => {
 
 	};
 
-    const makeNotice = (id, title, description, variant="success", duration=5000) => {
+    const makeNotice = (id, title, description, variant="success", duration=false) => {
         notify.push(`staging-notice-${id}`, {
             title,
             description: (
@@ -268,24 +265,22 @@ const Staging = () => {
 	}, [] );
 
 	const init = () => {
-		console.log('Init - Loading Staging Data');
+		// console.log('Init - Loading Staging Data');
 		setIsError(false);
 		setIsLoading(true);
 		stagingApiFetch(
 			'staging/', 
 			'GET', 
 			(response) => {
-				console.log('Init callback', response);
+				console.log('Init Staging Data:', response);
 				// validate response data
 				if ( response.hasOwnProperty('currentEnvironment') ) {
 					//setup with fresh data
 					setup( response );
 				} else if ( response.hasOwnProperty('code') && response.code === 'error_response' ) {
-					// report error received
-					setError( response.message );
+					setError( response.message ); // report known error
 				} else {
-					// report unknown error
-					setError( unknownErrorMsg );
+					setError( unknownErrorMsg ); // report unknown error
 				}
 				setIsThinking( false );
                 setIsLoading( false );
@@ -294,29 +289,24 @@ const Staging = () => {
 	}
 
 	const createStaging = () => {
-		console.log('create staging');
+		// console.log('create staging');
+        makeNotice( 'creating', 'Working...', 'Creating a staging site, this should take about a minute.', 'info', 8000 );
 		setIsCreatingStaging(true);
 		stagingApiFetch(
 			'staging/', 
 			'POST', 
 			(response) => {
-				console.log('Create Staging Callback', response);
-				// validate response data
-				if ( response.hasOwnProperty('currentEnvironment') ) {
-					//setup with fresh data
-					setup( response );
-				} else if ( response.hasOwnProperty('status') ) {
-					//setup with fresh data
-					if ( response.status === 'success' ){
-						setup( response );
-						setNotice( response.message );
-                        makeNotice( 'created', 'Staging Created', notice );
-					} else {
-						setError( response.message );
-					}
+				// console.log('Create Staging Callback', response);
+				if ( response.hasOwnProperty('status') ) {
+                    if ( response.status === 'success' ){
+                        //setup with fresh data
+                        setup( response );
+                        makeNotice( 'created', 'Staging Created', response.message );
+				    } else {
+                        setError( response.message ); // report known error
+                    }
 				} else {
-					// report unknown error
-					setError( unknownErrorMsg );
+					setError( unknownErrorMsg ); // report unknown error
 				}
 				setIsThinking( false );
 				setIsCreatingStaging(false);
@@ -325,25 +315,24 @@ const Staging = () => {
 	};
 
 	const deleteStaging = () => {
-		console.log('delete staging');
+		// console.log('delete staging');
+        makeNotice( 'deleting', 'Working...', 'Deleting the staging site, this should take about a minute.', 'info', 8000 );
 		stagingApiFetch(
 			'staging/', 
 			'DELETE', 
 			(response) => {
-				console.log('Delete staging callback', response);
+				// console.log('Delete staging callback', response);
 				// validate response data
 				if ( response.hasOwnProperty('status') ) {
-					// setup with fresh data
-					if ( response.status === 'success' ){
+                    if ( response.status === 'success' ){
+                        // setup with fresh data
 						setHasStaging( false );
-						setNotice( response.message );
-                        makeNotice( 'deleted', 'Deleted', notice, 'warning' );
+                        makeNotice( 'deleted', 'Deleted Staging', response.message );
 					} else {
 						setError( response.message );
 					}
 				} else {
-					// report unknown error
-					setError( unknownErrorMsg );
+					setError( unknownErrorMsg ); // report unknown error
 				}
 				setIsThinking( false );
 			}
@@ -351,25 +340,24 @@ const Staging = () => {
 	};
 
 	const clone = () => {
-		console.log('clone production to staging');
+		// console.log('clone production to staging');
+        makeNotice( 'cloning', 'Working...', 'Cloning production to staging, this should take about a minute.', 'info', 8000 );
 		stagingApiFetch(
 			'staging/clone/', 
 			'POST', 
 			(response) => {
-				console.log('Clone Callback', response);
+				// console.log('Clone Callback', response);
 				// validate response data
 				if ( response.hasOwnProperty('status') ) {
 					// setup with fresh data
 					if ( response.status === 'success' ){
 						setHasStaging( true );
-						setNotice( response.message );
-                        makeNotice( 'cloned', 'Cloned to Staging', notice );
+                        makeNotice( 'cloned', 'Cloned to Staging', response.message );
 					} else {
 						setError( response.message );
 					}
 				} else {
-					// report unknown error
-					setError( unknownErrorMsg );
+					setError( unknownErrorMsg ); // report unknown error
 				}
 				setIsThinking( false );
 			}
@@ -409,11 +397,11 @@ const Staging = () => {
 	 * @param {string} env One of 'staging' or 'production'
 	 */
 	const switchToEnv = ( env ) => {
-		console.log('switching to', env, `/switch-to?env=${ env }`);
+		// console.log('switching to', env, `/switch-to?env=${ env }`);
 		setSwitchingTo( env );
         setIsThinking( true );
-		setNotice('Switching to '+env);
-        makeNotice( 'switch-to', 'Switching Environments', notice, 'info' );
+        makeNotice( 'switching', 'Working...', 'Switching to the ' + env + ' environment, this should take about a minute.', 'info', 8000 );
+
 		stagingApiFetch(
 			`staging/switch-to&env=${env}`, 
 			'GET', 
@@ -426,8 +414,7 @@ const Staging = () => {
 				} else if ( response.hasOwnProperty('status') && response.status === 'error' ) {
 					setError(response.message);
 				} else {
-					// report unknown error
-					setError( unknownErrorMsg );
+					setError( unknownErrorMsg ); // report unknown error
 				}
 			}
 		);
@@ -438,24 +425,23 @@ const Staging = () => {
 	 * @param {string} type One of 'all', 'files', or 'db'
 	 */
 	const deployStaging = ( type ) => {
-		console.log('Deploy', type);
+		// console.log('Deploy', type);
+        makeNotice( 'deploying', 'Working...', 'Deploying from staging to production, this should take about a minute.', 'info', 8000 );
 		stagingApiFetch(
 			`staging/deploy&type=${type}`, 
 			'POST', 
 			(response) => {
-				console.log('Deploy Callback', response);
+				// console.log('Deploy Callback', response);
 				// validate response data
 				if ( response.hasOwnProperty('status') ) {
 					// setup with fresh data
 					if ( response.status === 'success' ){
-						setNotice( response.message );
-                        makeNotice( 'deployed', 'Deployed', notice );
+                        makeNotice( 'deployed', 'Deployed', response.message );
 					} else {
 						setError( response.message );
 					}
 				} else {
-					// report unknown error
-					setError( unknownErrorMsg );
+					setError( unknownErrorMsg ); // report unknown error
 				}
 				setIsThinking( false );
 			}
@@ -488,7 +474,6 @@ const Staging = () => {
 		})
 	};
     const modalClose = () => {
-        console.log('modal close');
         setModalOpen(false);
     }
     const setModal = (title, description, callback, callbackParams=null, ctaText="Proceed") => {
@@ -518,8 +503,16 @@ const Staging = () => {
         setModalOpen(true);
     };
 
+    const getClasses = () => {
+        if ( isLoading ) {
+            return 'wppbh-app-staging-page is-loading';
+        } else if ( isThinking ) {
+            return 'wppbh-app-staging-page is-thinking';
+        }
+    };
+
     return (
-        <Page title={__('Staging', 'wp-plugin-bluehost')} className={`wppbh-app-staging-page ${isThinking ? 'is-thinking' : ''}`}>
+        <Page title={__('Staging', 'wp-plugin-bluehost')} className={getClasses()}>
             <SectionContainer className={'wppbh-app-staging-container'}>
                 <SectionHeader
                     title={__('Staging', 'wp-plugin-bluehost')}
