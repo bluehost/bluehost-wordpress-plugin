@@ -22,11 +22,12 @@ const ProductionSite = ({
             title={__('Production site', 'wp-plugin-bluehost')}
             description={
                 <Radio
-                    checked={isProduction ? true : false}
+                    defaultChecked={isProduction === true ? true : false}
+                    checked={isProduction === true ? true : false}
                     label={isProduction ? __('Currently editing', 'wp-plugin-bluehost') : __('Not currently editing', 'wp-plugin-bluehost') }
                     id="wppbh-production-toggle"
                     name="wppbh-staging-selector"
-                    value="1"
+                    value="production"
                     onChange={() => {
                         switchToMe();
                     }}
@@ -74,11 +75,12 @@ const StagingSite = ({
             title={__('Staging site', 'wp-plugin-bluehost')}
             description={!hasStaging ? __("You don't have a staging site yet.", 'wp-plugin-bluehost') :
                 <Radio
+                    defaultChecked={isProduction ? false : true}
                     checked={isProduction ? false : true}
                     label={isProduction ? __('Not currently editing', 'wp-plugin-bluehost') : __('Currently editing', 'wp-plugin-bluehost') }
                     id="wppbh-staging-toggle"
                     name="wppbh-staging-selector"
-                    value="2"
+                    value="staging"
                     onChange={() => {
                         switchToMe();
                     }}
