@@ -140,7 +140,7 @@ const ClearCache = ({ setError, notify }) => {
                     {__('Clear All Cache Now', 'wp-plugin-bluehost')}
                 </Button>
             </div>
-            <p className="yst-mr-[10.5rem]">
+            <p className="lg:yst-mr-[10.5rem]">
                 {
                     __('We automatically clear your cache', 'wp-plugin-bluehost') +
                     ', ' +

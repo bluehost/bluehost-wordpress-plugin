@@ -6,7 +6,6 @@ import { useLocation, HashRouter as Router } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
 import { SnackbarList, Spinner } from '@wordpress/components';
 import classnames from 'classnames';
-import Header from './components/header';
 import AppRoutes from './data/routes';
 import ErrorCard from './components/errorCard';
 import { useDispatch, useSelect } from '@wordpress/data';
@@ -15,16 +14,16 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { store as noticesStore } from '@wordpress/notices';
 import { setActiveSubnav } from './util/helpers';
 import { kebabCase, filter } from 'lodash';
-import { Root, Alert } from "@yoast/ui-library";
+import { Root } from "@yoast/ui-library";
+import { AppNav } from './components/app-nav';
+import { SiteInfoBar } from './components/site-info';
+import { NotificationFeed } from './components/notifications/feed';
 
 // component sourced from module
 import { default as NewfoldNotifications } from '../../vendor/newfold-labs/wp-module-notifications/assets/js/components/notifications/';
 // to pass to notifications module
 import apiFetch from '@wordpress/api-fetch';
 import { useState } from '@wordpress/element';
-import { SideNav } from './components/side-nav';
-import { SiteInfoBar } from './components/site-info';
-import { NotificationFeed } from './components/notifications/feed';
 
 const Notices = () => {
 	if ( 'undefined' === typeof noticesStore ) {
@@ -74,7 +73,7 @@ const AppBody = ( props ) => {
 				`wppbh-wp-${ WPPBH.wpversion }`,
 				`wppbh-page-${ kebabCase( location.pathname ) }`,
 				props.className,
-				'yst-w-full'
+				'yst-w-full yst-p-4 min-[783px]:yst-p-0'
 			) }
 		>
 			{/* <Header /> */}
@@ -115,8 +114,8 @@ export const App = () => (
 		<Root context={ { isRtl: false } }>
 			<NotificationFeed>
 				<Router>
-					<div className="wppbh-app-container yst-p-4 min-[783px]:yst-p-8 yst-flex yst-gap-6 yst-max-w-full xl:yst-max-w-screen-xl 2xl:yst-max-w-screen-2xl yst-my-0 yst-mx-auto">
-						<SideNav />
+					<div className="wppbh-app-container min-[783px]:yst-p-8 min-[783px]:yst-flex yst-gap-6 yst-max-w-full xl:yst-max-w-screen-xl 2xl:yst-max-w-screen-2xl yst-my-0 yst-mx-auto">
+						<AppNav />
 						<AppBody />
 					</div>
 				</Router>

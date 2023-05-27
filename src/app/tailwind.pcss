@@ -137,7 +137,11 @@
 		}
 
 		.yst-toggle-field__description {
-			@apply yst-mr-[10.5rem];
+			@apply 
+			yst-mt-3
+			yst-mr-2
+			sm:yst-mr-[10.5rem]
+			sm:yst-mt-0;
 		}
 	}
 }
@@ -150,7 +154,7 @@
 				@apply
 				yst-mb-2 
 				yst-ml-7 
-				yst-mr-[10.5rem];
+				lg:yst-mr-[10.5rem];
 			}
 		}
 
@@ -223,11 +227,26 @@
 
 /* Modal */
 @layer components {
-	.yst.root {
+	.yst-root {
+		/* mobile menu modal */
+		.wppbh-app-sidenav-mobile {
+            .yst-modal__close {
+                @apply 
+                yst-flex
+                yst-bg-white
+                yst-rounded-full
+                yst-top-[-36px] 
+                yst-right-0;
+            }
 
-		.yst-modal__close-button {
-			@apply
-			focus:yst-ring-primary;
-		}
-	}
+            .yst-modal__close-button {
+                @apply
+                yst-text-body
+                yst-rounded-full
+				yst-p-1
+                hover:yst-text-title
+                focus:yst-ring-primary;
+            }
+        }
+    }
 }
