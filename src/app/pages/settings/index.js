@@ -26,6 +26,8 @@ const Settings = () => {
                     <CommentSettings />
                 </SectionContent>
 
+                <p>Missing Content settings</p>
+
             </SectionContainer>
 		</Page>
 	);
