@@ -73,7 +73,7 @@ export const SectionSettings = ({ className, children, title, description }) => 
         <section className={classNames("yst-grid xl:yst-grid-cols-3 xl:yst-gap-12", className)}>
             <div className="yst-col-span-1">
                 <div className="yst-max-w-screen-sm">
-                    <Title as="h4" size="4">
+                    <Title as="h3" size="4">
                         {title}
                     </Title>
                     {description && <div className="yst-mt-2">{description}</div>}
