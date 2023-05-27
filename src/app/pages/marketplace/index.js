@@ -73,7 +73,7 @@ const MarketplacePage = () => {
                 <SectionHeader
                     title={__('Marketplace', 'wp-plugin-bluehost')}
                     subTitle={__('Explore our featured collection of tools and services.', 'wp-plugin-bluehost')}
-                    className={'wppbh-app-marketplace-header'}
+                    className={'wppbh-app-marketplace-header components-card__header'}
                 />
 
                 <SectionContent className={'wppbh-app-marketplace-content'}>

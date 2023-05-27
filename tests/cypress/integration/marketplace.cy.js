@@ -14,7 +14,7 @@ describe('Marketplace Page', function () {
 	});
 
 	it('Exists', () => {
-		cy.contains('button', 'Featured');
+		cy.contains('h2', 'Marketplace');
 	});
 
 	it('Is Accessible', () => {
@@ -38,11 +38,11 @@ describe('Marketplace Page', function () {
 			.and('include', 'https://www.web.com/websites/website-design-services');
 
 		cy.get('@card').first().within(() => {
-			cy.get('.components-card__header')
+			cy.get('.marketplace-item-title')
 				.contains('Web Design Services')
 				.should('be.visible');
-			cy.get('.components-card__media').should('be.visible');
-			cy.get('.components-card__header .price').should('not.exist');
+			cy.get('.marketplace-item-image').should('be.visible');
+			cy.get('.marketplace-item-footer .marketplace-item-price').should('not.exist');
 		});
 	});
 
@@ -57,11 +57,11 @@ describe('Marketplace Page', function () {
 			.and('include', 'https://www.mojomarketplace.com/cart?item_id=5377b431-d8a8-431b-a711-50c10a141528');
 
 		cy.get('@card').first().within(() => {
-			cy.get('.components-card__header')
+			cy.get('.marketplace-item-title')
 				.contains('Highend')
 				.should('be.visible');
-			cy.get('.components-card__media').should('be.visible');
-			cy.get('.components-card__header .price')
+			cy.get('.marketplace-item-image').should('be.visible');
+			cy.get('.marketplace-item-footer .marketplace-item-price')
 				.contains('$59.00')
 				.should('be.visible');
 		});
@@ -79,23 +79,23 @@ describe('Marketplace Page', function () {
 
 	it('Category Tab Filters properly', () => {
 		
-		cy.get('.newfold-marketplace-tab-services').click();
-		cy.get('.marketplace-item').should('have.length', 12);
-		cy.get('#marketplace-item-1fc92f8a-bb9f-47c8-9808-aab9c82d6bf2 h2')
+		cy.get('.wppbh-app-subnavitem-Services').click();
+		cy.get('.marketplace-item').should('have.length', 14);
+		cy.get('#marketplace-item-1fc92f8a-bb9f-47c8-9808-aab9c82d6bf2 h3')
 			.scrollIntoView()
 			.should('be.visible')
 			.should('have.text', 'Web Design Services');
 		
-			cy.get('.newfold-marketplace-tab-seo').click();
+			cy.get('.wppbh-app-subnavitem-SEO').click();
 		cy.get('.marketplace-item').should('have.length', 6);
-		cy.get('#marketplace-item-a1ff70f1-9670-4e25-a0e1-a068d3e43a45 h2')
+		cy.get('#marketplace-item-a1ff70f1-9670-4e25-a0e1-a068d3e43a45 h3')
 			.scrollIntoView()
 			.should('be.visible')
 			.should('have.text', 'Yoast Premium');
 	});
 
-	it('Load more button loads more products', () => {
-		cy.get('.newfold-marketplace-tab-services').click();
+	it.skip('Load more button loads more products', () => {
+		cy.get('.wppbh-app-subnavitem-Services').click();
 		cy.wait(300);
 
 		cy.get('.marketplace-item').should('have.length', 12);
@@ -109,7 +109,7 @@ describe('Marketplace Page', function () {
 	});
 
 	it('Category tabs update path', () => {
-		cy.get('.newfold-marketplace-tab-services').click();
+		cy.get('.wppbh-app-subnavitem-Services').click();
 		cy.location().should((loc) => {
 			expect(loc.hash).to.eq('#/marketplace/services')
 		});

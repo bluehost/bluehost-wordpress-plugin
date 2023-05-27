@@ -31,13 +31,13 @@ const MarketplaceItem = ({ product }) => {
     };
 
     return (
-        <Card className="wppbh-app-marketplace-item">
+        <Card className="wppbh-app-marketplace-item marketplace-item" id={`marketplace-item-${ product.id }`}>
             <Card.Header className="yst-h-auto yst-p-0">
-                <img src={product.productThumbnailUrl} alt={product.name + ' thumbnail'} className="yst-w-full yst-aspect-video" />
+                <img src={product.productThumbnailUrl} alt={product.name + ' thumbnail'} className="yst-w-full yst-aspect-video marketplace-item-image" />
             </Card.Header>
 
             <Card.Content className="yst-flex yst-flex-col yst-gap-3">
-                <Title as="h3" size="4">
+                <Title as="h3" size="4" className="marketplace-item-title">
                     {product.name}
                 </Title>
                 <p>{product.description}</p>
@@ -49,13 +49,14 @@ const MarketplaceItem = ({ product }) => {
                 }
             </Card.Content>
 
-            <Card.Footer className="yst-flex yst-justify-between yst-items-baseline">
+            <Card.Footer className="yst-flex yst-justify-between yst-items-baseline marketplace-item-footer">
                 <div className="yst-flex yst-flex-col yst-items-center yst-gap-2 yst-text-[#1E293B] yst-font-medium">
-                    {/* price */}
-                    <span className="yst-bg-[#E2E8F0] yst-py-1 yst-px-3 yst-rounded-full">{product.price_formatted}</span>
+                    { product.price > 0 && product.price_formatted &&
+                        <span className="yst-bg-[#E2E8F0] yst-py-1 yst-px-3 yst-rounded-full marketplace-item-price">{product.price_formatted}</span>
+                    }
                     {/* full price */}
                     {product.full_price_formatted &&
-                        <span className="yst-line-through">{product.full_price_formatted}</span>
+                        <span className="yst-line-through marketplace-item-fullprice">{product.full_price_formatted}</span>
                     }
                 </div>
 

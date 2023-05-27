@@ -114,7 +114,7 @@ export const SideNavMenuSubItem = ({ label, name, path, action }) => {
         <li className="yst-m-0 yst-pb-1">
             <NavLink
                 onClick={(action && action instanceof Function) ? action : null} 
-                to={path} className={`wppbh-app-subnavitem-${name} yst-flex yst-items-center yst-gap-3 yst-px-3 yst-py-2 yst-rounded-md yst-text-sm yst-font-medium yst-text-body leading-none hover:yst-bg-slate-50 [&.active]:yst-bg-[#E2E8F0] [&.active]:yst-text-title`}>
+                to={path} className={`wppbh-app-subnavitem-${name} wppbh-app-subnavitem-${label} yst-flex yst-items-center yst-gap-3 yst-px-3 yst-py-2 yst-rounded-md yst-text-sm yst-font-medium yst-text-body leading-none hover:yst-bg-slate-50 [&.active]:yst-bg-[#E2E8F0] [&.active]:yst-text-title`}>
                 {label}
             </NavLink>
         </li>
