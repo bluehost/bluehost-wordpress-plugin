@@ -274,7 +274,7 @@ const Staging = () => {
 			'staging/', 
 			'GET', 
 			(response) => {
-				console.log('Init Staging Data:', response);
+				// console.log('Init Staging Data:', response);
 				// validate response data
 				if ( response.hasOwnProperty('currentEnvironment') ) {
 					//setup with fresh data
@@ -368,7 +368,7 @@ const Staging = () => {
 
     const switchToStaging = () => {
         if ( !isProduction ) {
-            console.log('Already on staging.');
+            // console.log('Already on staging.');
         } else {
             setModal(
                 'Switch to Staging',
@@ -382,7 +382,7 @@ const Staging = () => {
 
     const switchToProduction = () => {
         if ( isProduction ) {
-            console.log('Already on production.');
+            // console.log('Already on production.');
         } else {
             setModal(
                 'Switch to Production',
@@ -402,17 +402,18 @@ const Staging = () => {
 		// console.log('switching to', env, `/switch-to?env=${ env }`);
 		setSwitchingTo( env );
         setIsThinking( true );
-        makeNotice( 'switching', 'Working...', 'Switching to the ' + env + ' environment, this should take about a minute.', 'info', 8000 );
+        makeNotice( 'switching', 'Working...', `Switching to the ${env} environment, this should take about a minute.`, 'info', 8000 );
 
 		stagingApiFetch(
 			`staging/switch-to&env=${env}`, 
 			'GET', 
 			(response) => {
-				console.log('Switch Callback', response);
+				// console.log('Switch Callback', response);
 				// validate response data
 				if ( response.hasOwnProperty( 'load_page' ) ) {
 					window.location.href = response.load_page;
 					// navigate(response.load_page);
+                    makeNotice( 'redirecting', 'Reloading', `Loading the ${env} environment now.`, 'success', 8000 );
 				} else if ( response.hasOwnProperty('status') && response.status === 'error' ) {
 					setError(response.message);
 				} else {
