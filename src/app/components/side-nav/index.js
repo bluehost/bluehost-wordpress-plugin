@@ -85,7 +85,7 @@ export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, action, 
             <NavLink
                 onClick={(action && action instanceof Function) ? action : null}
                 to={path}
-                className={`wppbh-app-navitem wppbh-app-navitem-${name} yst-flex yst-items-center yst-gap-3 yst-px-3 yst-py-2 yst-rounded-md yst-text-sm yst-font-medium yst-text-title leading-none hover:yst-bg-slate-50 [&.active]:yst-bg-[#E2E8F0]`}
+                className={`wppbh-app-navitem wppbh-app-navitem-${name} wppbh-app-navitem-${label} yst-flex yst-items-center yst-gap-3 yst-px-3 yst-py-2 yst-rounded-md yst-text-sm yst-font-medium yst-text-title leading-none hover:yst-bg-slate-50 [&.active]:yst-bg-[#E2E8F0]`}
             >
                 {Icon &&
                     <Icon className="yst-flex-shrink-0 yst--ml-1 yst-h-6 yst-w-6" />
