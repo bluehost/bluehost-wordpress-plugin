@@ -62,7 +62,7 @@ const topRoutePaths = [
 	'/performance',
 	'/settings',
 	'/staging',
-	'/example',
+	// '/example',
 ];
 const utilityRoutePaths = [ '/help' ];
 
@@ -140,12 +140,12 @@ export const routes = [
 		Component: Settings,
 		Icon: AdjustmentsHorizontalIcon,
 	},
-	{
-		name: '/example',
-		title: __( 'Example', 'wp-plugin-bluehost' ),
-		Component: Example,
-		Icon: AdjustmentsHorizontalIcon,
-	},
+	// {
+	// 	name: '/example',
+	// 	title: __( 'Example', 'wp-plugin-bluehost' ),
+	// 	Component: Example,
+	// 	Icon: AdjustmentsHorizontalIcon,
+	// },
 	{
 		name: '/help',
 		title: __( 'Help', 'wp-plugin-bluehost' ),
