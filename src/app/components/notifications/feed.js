@@ -8,6 +8,8 @@ const actions = { PUSH: "push", DISMISS: "dismiss" };
  * @property {string} title
  * @property {React.ReactNode | string[]} description
  * @property {"info" | "success" | "error" | "warning"} variant
+ * @property {number} autoDismiss
+ * @property {(id) => void | null} onDismiss
  * @property {"bottom-left" | "bottom-center" | "top-center"} position
  */
 
@@ -64,7 +66,12 @@ export function NotificationFeed({ children }) {
                 {...entry}
                 {...contentProps}
                 dismissScreenReaderLabel="Dismiss"
-                onDismiss={(id) => dispatch({ type: actions.DISMISS, id })}
+                onDismiss={(id) => {
+                  dispatch({ type: actions.DISMISS, id });
+                  if (entry.onDismiss) {
+                    entry.onDismiss(id);
+                  }
+                }}
               />
             );
           })}
