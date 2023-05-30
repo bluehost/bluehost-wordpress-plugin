@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "35c08b6c235a9433c9efbe27371e0d07",
+    "content-hash": "4f3170614c2e4ac6a40374f8fd7ab48f",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -301,16 +301,16 @@
         },
         {
             "name": "newfold-labs/wp-module-customer-bluehost",
-            "version": "dev-update/include-required-classes",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-customer-bluehost.git",
-                "reference": "9f8d9a9d21809736d2866430d030095bd44b346a"
+                "reference": "c0b205c9619c657264e0eb7efa29fba191102045"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-customer-bluehost/zipball/9f8d9a9d21809736d2866430d030095bd44b346a",
-                "reference": "9f8d9a9d21809736d2866430d030095bd44b346a",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-customer-bluehost/zipball/c0b205c9619c657264e0eb7efa29fba191102045",
+                "reference": "c0b205c9619c657264e0eb7efa29fba191102045",
                 "shasum": ""
             },
             "require": {
@@ -340,10 +340,10 @@
             ],
             "description": "Customer module to interface with bluehost and the data module.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-customer-bluehost/tree/update/include-required-classes",
+                "source": "https://github.com/newfold-labs/wp-module-customer-bluehost/tree/1.6.0",
                 "issues": "https://github.com/newfold-labs/wp-module-customer-bluehost/issues"
             },
-            "time": "2023-05-30T20:44:14+00:00"
+            "time": "2023-05-30T21:27:34+00:00"
         },
         {
             "name": "newfold-labs/wp-module-data",
@@ -833,16 +833,16 @@
         },
         {
             "name": "newfold-labs/wp-module-staging",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-staging.git",
-                "reference": "c715a0f385133a79bdb7b1d295c5aa06b0e89123"
+                "reference": "8da3c8ce284bfc0ff9c253767ea72f59da63bf44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/c715a0f385133a79bdb7b1d295c5aa06b0e89123",
-                "reference": "c715a0f385133a79bdb7b1d295c5aa06b0e89123",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/8da3c8ce284bfc0ff9c253767ea72f59da63bf44",
+                "reference": "8da3c8ce284bfc0ff9c253767ea72f59da63bf44",
                 "shasum": ""
             },
             "require-dev": {
@@ -876,10 +876,10 @@
             ],
             "description": "Newfold module for staging functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-staging/tree/1.0.1",
+                "source": "https://github.com/newfold-labs/wp-module-staging/tree/1.0.2",
                 "issues": "https://github.com/newfold-labs/wp-module-staging/issues"
             },
-            "time": "2023-05-26T20:20:18+00:00"
+            "time": "2023-05-30T20:49:52+00:00"
         },
         {
             "name": "wp-cli/wp-config-transformer",
@@ -2369,7 +2369,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "newfold-labs/wp-module-customer-bluehost": 20,
         "newfold-labs/wp-module-ecommerce": 20
     },
     "prefer-stable": false,
