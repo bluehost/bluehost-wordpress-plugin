@@ -39,6 +39,7 @@ const ProductionSite = ({
                 {hasStaging &&
                     <Button
                         variant="secondary"
+                        id="staging-clone-button"
                         disabled={isProduction ? false : true}
                         onClick={() => { 
                             setModal(
@@ -90,7 +91,10 @@ const StagingSite = ({
             <div className="yst-flex yst-justify-between yst-items-center yst-flex-wrap yst-gap-3">
                 {!hasStaging &&
                     <div className="yst-flex yst-justify-end yst-w-full">
-                        <Button variant="secondary" onClick={() => { 
+                        <Button 
+                            variant="secondary"
+                            id="staging-create-button"
+                            onClick={() => { 
                             createMe()
                         }}>
                             {__('Create staging site', 'wp-plugin-bluehost')}
@@ -131,6 +135,7 @@ const StagingSite = ({
                             />
                             <Button
                                 disabled={isProduction ? true : false }
+                                id="staging-deploy-button"
                                 title={__('Deploy', 'wp-plugin-bluehost')}
                                 onClick={() => { 
                                     // console.log('Open confirm modal: Deploy stagin option to production');
@@ -150,6 +155,7 @@ const StagingSite = ({
                             <Button
                                 disabled={isProduction ? false : true }
                                 variant="error"
+                                id="staging-delete-button"
                                 title={__('Delete Staging Site', 'wp-plugin-bluehost')}
                                 onClick={() => { 
                                     // console.log('Open confirm modal: Delete stagin option to production');
@@ -182,7 +188,7 @@ const Staging = () => {
 	const [ isLoading, setIsLoading ] = useState( true );
 	const [ isThinking, setIsThinking ] = useState( false );
 	const [ isError, setIsError ] = useState( false );
-	const [ isCreatingStaging, setIsCreatingStaging ] = useState( false );
+	// const [ isCreatingStaging, setIsCreatingStaging ] = useState( false );
 	const [ hasStaging, setHasStaging ] = useState( null );
 	const [ isProduction, setIsProduction ] = useState( true );
 	const [ creationDate, setCreationDate ] = useState( null );
@@ -190,7 +196,7 @@ const Staging = () => {
 	const [ productionUrl, setProductionUrl ] = useState( null );
 	const [ stagingDir, setStagingDir ] = useState( null );
 	const [ stagingUrl, setStagingUrl ] = useState( null );
-	const [ switchingTo, setSwitchingTo ] = useState( '' );
+	// const [ switchingTo, setSwitchingTo ] = useState( '' );
     const [ modalChildren, setModalChildren ] = useState( <div /> );
     const [ modalOpen, setModalOpen ] = useState( false );
 
@@ -293,7 +299,7 @@ const Staging = () => {
 	const createStaging = () => {
 		// console.log('create staging');
         makeNotice( 'creating', 'Working...', 'Creating a staging site, this should take about a minute.', 'info', 8000 );
-		setIsCreatingStaging(true);
+		// setIsCreatingStaging(true);
 		stagingApiFetch(
 			'staging/', 
 			'POST', 
@@ -311,7 +317,7 @@ const Staging = () => {
 					setError( unknownErrorMsg ); // report unknown error
 				}
 				setIsThinking( false );
-				setIsCreatingStaging(false);
+				// setIsCreatingStaging(false);
 			}
 		);
 	};
@@ -400,7 +406,7 @@ const Staging = () => {
 	 */
 	const switchToEnv = ( env ) => {
 		// console.log('switching to', env, `/switch-to?env=${ env }`);
-		setSwitchingTo( env );
+		// setSwitchingTo( env );
         setIsThinking( true );
         makeNotice( 'switching', 'Working...', `Switching to the ${env} environment, this should take about a minute.`, 'info', 8000 );
 

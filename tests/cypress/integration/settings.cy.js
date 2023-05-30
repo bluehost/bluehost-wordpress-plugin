@@ -4,11 +4,11 @@ describe('Settings Page', function () {
 
 	before(() => {
 		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
-		cy.injectAxe();
 		
 	});
 
 	it('Is Accessible', () => {
+		cy.injectAxe();
 		cy.wait(500);
 		cy.checkA11y('.wppbh-app-body');
 	});
