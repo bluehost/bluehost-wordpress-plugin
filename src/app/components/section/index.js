@@ -20,35 +20,38 @@ export const SectionHeader = ({
         <div
             className={
                 classNames(
-                    "wppbh-app-section-header yst-p-8 yst-border-b yst-border-line yst-flex yst-items-baseline yst-gap-4",
+                    "wppbh-app-section-header yst-p-8 yst-border-b yst-border-line yst-flex yst-flex-col xl:yst-flex-row yst-items-baseline yst-gap-4",
                     className)
             }>
-            <div className="yst-w-7/12 yst-flex yst-flex-col yst-gap-3">
+            <div className="xl:yst-w-7/12 yst-flex yst-flex-col yst-gap-3">
                 {title && <h2 className="yst-text-2xl yst-font-medium yst-text-title">{title}</h2>}
                 {subTitle && <p>{subTitle}</p>}
             </div>
-            <div className="yst-w-5/12 yst-flex yst-flex-row-reverse yst-gap-3">
-                {primaryAction.title &&
-                    <Button
-                        as="button"
-                        variant="primary"
-                        className={primaryAction.className}
-                        onClick={primaryAction.onClick}
-                    >
-                        {primaryAction.title}
-                    </Button>
-                }
-                {secondaryAction.title &&
-                    <Button
-                        as="button"
-                        variant="secondary"
-                        className={secondaryAction.className}
-                        onClick={secondaryAction.onClick}
-                    >
-                        {secondaryAction.title}
-                    </Button>
-                }
-            </div>
+            {(primaryAction.title || secondaryAction.title) &&
+                <div className="xl:yst-w-5/12 yst-flex yst-flex-row-reverse yst-flex-wrap yst-gap-3">
+                    {primaryAction.title &&
+                        <Button
+                            as="button"
+                            variant="primary"
+                            className={classNames("yst-w-full min-[400px]:yst-w-auto", primaryAction.className)}
+                            onClick={primaryAction.onClick}
+                        >
+                            {primaryAction.title}
+                        </Button>
+                    }
+                    {secondaryAction.title &&
+                        <Button
+                            as="button"
+                            variant="secondary"
+                            className={classNames("yst-w-full min-[400px]:yst-w-auto", secondaryAction.className)}
+                            onClick={secondaryAction.onClick}
+                        >
+                            {secondaryAction.title}
+                        </Button>
+                    }
+                </div>
+            }
+
         </div>
     );
 }

@@ -49,7 +49,7 @@ const MarketplaceItem = ({ product }) => {
                 }
             </Card.Content>
 
-            <Card.Footer className="yst-flex yst-justify-between yst-items-baseline marketplace-item-footer">
+            <Card.Footer className="yst-flex yst-justify-between yst-items-baseline yst-flex-wrap yst-gap-2 marketplace-item-footer">
                 <div className="yst-flex yst-flex-col yst-items-center yst-gap-2 yst-text-[#1E293B] yst-font-medium">
                     { product.price > 0 && product.price_formatted &&
                         <span className="yst-bg-[#E2E8F0] yst-py-1 yst-px-3 yst-rounded-full marketplace-item-price">{product.price_formatted}</span>

@@ -10,17 +10,18 @@ from '@heroicons/react/24/outline';
 import { Route, Routes } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
 import Home from '../pages/home';
+import Store from '../pages/ecommerce/page';
 import Marketplace from '../pages/marketplace';
 import Performance from '../pages/performance';
 import Settings from '../pages/settings';
 import Staging from '../pages/staging';
 import Example from '../pages/example';
-import Store from '../pages/ecommerce/page';
+import Help from '../pages/help';
 
 const addPartialMatch = (prefix, path) =>
   prefix === path ? `${prefix}/*` : path;
 
-const HelpDeskAI = (e) => {
+const HelpCenterAI = (e) => {
 	e.preventDefault();
 	return alert('Open AI Help');
 }
@@ -61,7 +62,7 @@ const topRoutePaths = [
 	'/performance',
 	'/settings',
 	'/staging',
-	'/example',
+	// '/example',
 ];
 const utilityRoutePaths = [ '/help' ];
 
@@ -139,17 +140,18 @@ export const routes = [
 		Component: Settings,
 		Icon: AdjustmentsHorizontalIcon,
 	},
-	{
-		name: '/example',
-		title: __( 'Example', 'wp-plugin-bluehost' ),
-		Component: Example,
-		Icon: AdjustmentsHorizontalIcon,
-	},
+	// {
+	// 	name: '/example',
+	// 	title: __( 'Example', 'wp-plugin-bluehost' ),
+	// 	Component: Example,
+	// 	Icon: AdjustmentsHorizontalIcon,
+	// },
 	{
 		name: '/help',
 		title: __( 'Help', 'wp-plugin-bluehost' ),
+		Component: Help,
 		Icon: QuestionMarkCircleIcon,
-		action: HelpDeskAI,
+		action: window.WPPBH.capabilities.canAccessHelpCenter ? HelpCenterAI : false,
 	},
 ];
 

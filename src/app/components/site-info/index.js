@@ -19,9 +19,9 @@ export const SiteInfoBar = () => {
 
     return (
         <div className="wppbh-app-site-info yst-bg-[#212936] yst-w-full yst-py-6 yst-px-8 yst-mb-8 yst-border yst-border-line yst-rounded-lg">
-            <div className="yst-flex yst-items-center yst-gap-4">
+            <div className="yst-flex yst-justify-between yst-items-center yst-flex-wrap yst-gap-4">
 
-                <div className="yst-grow yst-flex yst-flex-col yst-gap-1.5">
+                <div className="yst-w-max yst-flex yst-flex-col yst-gap-1.5">
                     <h3 className="yst-text-white yst-text-2xl yst-font-semibold">{sitetitle}</h3>
                     <div className="yst-flex yst-items-center yst-gap-3 yst-font-medium">
                         <div className="yst-flex yst-items-center yst-gap-1">
@@ -31,13 +31,13 @@ export const SiteInfoBar = () => {
                     </div>
                 </div>
 
-                <div className="yst-grow yst-flex yst-items-center yst-justify-end yst-gap-3">
+                <div className="yst-w-max yst-flex yst-items-center yst-flex-wrap yst-gap-3">
                     <Button 
                         as="a"
                         href={getPlatformBaseUrl("/" + "web-hosting/cplogin")}
                         target="_blank"
                         variant="primary" 
-                        className="yst-bg-[#383F4A] yst-text-tiny">
+                        className="yst-bg-[#383F4A] yst-text-tiny yst-w-full min-[400px]:yst-w-auto">
                         <BluehostIcon />
                         Bluehost Account
                     </Button>
@@ -46,7 +46,7 @@ export const SiteInfoBar = () => {
                         href={siteurl} 
                         target="_blank" 
                         variant="primary" 
-                        className="yst-bg-white yst-text-[#212936] yst-text-tiny"
+                        className="yst-bg-white yst-text-[#212936] yst-text-tiny yst-w-full min-[400px]:yst-w-auto"
                     >
                         <WordPressIcon />
                         View Site

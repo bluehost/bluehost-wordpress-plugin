@@ -1,47 +1,61 @@
-import './stylesheet.scss';
-import { Heading } from '../../components';
+import { Page } from '../../components/page';
+import { SectionContainer, SectionContent, SectionHeader } from '../../components/section';
 import help from '../../data/help';
-import {
-	Button,
-	Card,
-	CardBody,
-	CardHeader,
-	CardFooter,
-	Dashicon,
-} from '@wordpress/components';
+import { Button, Card, Title } from "@yoast/ui-library";
+
+const HelpCard = ({ item }) => {
+    return ( 
+        <Card className="wppbh-help-card">
+            <Card.Content>
+                <Title 
+					as="h4" 
+					size="4"
+					className="yst-mb-2"	
+				>{item.title}</Title>
+                <p>{item.description}</p>
+            </Card.Content>
+
+            <Card.Footer>
+                <Button
+                    variant="secondary"
+                    as="a"
+                    className="yst-w-full"
+                    href={item.url}
+                    target="_blank"
+                >
+                    {item.cta}
+                </Button>
+            </Card.Footer>
+        </Card>
+     );
+}
 
 const Help = () => {
-	return (
-		<div className="wppbh-help">
-			<div className="help grid col3">
-				{ help.map( ( item ) => (
-					<Card
-						size="small"
-						className={ `card-help card-help-${ item.name }` }
-						key={ item.name }
-					>
-						<CardHeader>
-							<Heading level="3">{ item.title }</Heading>
-						</CardHeader>
-						<CardBody>
-							{ /* {<item.Svg />} */ }
-							<p>{ item.description }</p>
-						</CardBody>
-						<CardFooter>
-							<Button
-								variant="primary"
-								href={ item.url }
-								target="_blank"
-								icon={ <Dashicon icon={ item.icon } /> }
-							>
-								{ ' ' }
-								{ item.cta }{ ' ' }
-							</Button>
-						</CardFooter>
-					</Card>
-				) ) }
+	const renderHelpCards = () => {
+		const helpItems = help;
+
+		return (
+			<div className="yst-grid yst-gap-6 yst-grid-cols-1 sm:yst-grid-cols-2 xl:yst-grid-cols-3 2xl:yst-grid-cols-4">
+				{helpItems.map((item) => (
+					<HelpCard key={item.name} item={item} />
+				))}
 			</div>
-		</div>
+		);
+	};
+	return (
+		<Page className={"wppbh-app-help-page"}>
+			<SectionContainer className={'wppbh-app-help-container'}>
+				<SectionHeader
+					title={__('Help', 'wp-plugin-bluehost')}
+					subTitle={__('We are available 24/7 to help answer questions and solve your problems.',
+					'wp-plugin-bluehost')}
+				/>
+
+				<SectionContent>
+					{renderHelpCards()}
+				</SectionContent>
+			</SectionContainer>
+		</Page>
 	);
 };
 

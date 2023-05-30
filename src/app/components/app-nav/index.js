@@ -1,7 +1,10 @@
-import { SidebarNavigation } from "@yoast/ui-library"
-import { NavLink } from 'react-router-dom';
+import { Modal, SidebarNavigation } from "@yoast/ui-library"
+import { NavLink, useLocation } from 'react-router-dom';
+import { useViewportMatch } from '@wordpress/compose';
 import Logo from "./logo";
 import { topRoutes, utilityRoutes } from "../../data/routes";
+import { Bars3Icon } from "@heroicons/react/24/outline";
+import { useEffect } from 'react';
 
 export const SideNavHeader = () => {
     return (
@@ -113,7 +116,7 @@ export const SideNavMenuSubItem = ({ label, name, path, action }) => {
     return (
         <li className="yst-m-0 yst-pb-1">
             <NavLink
-                onClick={(action && action instanceof Function) ? action : null} 
+                onClick={(action && action instanceof Function) ? action : null}
                 to={path} className={`wppbh-app-subnavitem-${name} wppbh-app-subnavitem-${label} yst-flex yst-items-center yst-gap-3 yst-px-3 yst-py-2 yst-rounded-md yst-text-sm yst-font-medium yst-text-body leading-none hover:yst-bg-slate-50 [&.active]:yst-bg-[#E2E8F0] [&.active]:yst-text-title`}>
                 {label}
             </NavLink>
@@ -131,5 +134,59 @@ export const SideNav = () => {
                 </SidebarNavigation.Sidebar>
             </SidebarNavigation>
         </aside>
+    );
+}
+
+export const MobileNav = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    let location = useLocation();
+    // Close mobile nav when location changes
+    useEffect(() => {
+        setIsOpen(false);
+    }, [location]);
+
+    return (
+        <header className="yst-sticky yst-z-30 yst-top-0 min-[600px]:yst-top-[46px] yst-border-b yst-border-line">
+            <div className="yst-flex yst-justify-between yst-items-center yst-bg-white">
+
+                <div className="yst-px-4">
+                    <Logo />
+                </div>
+                <button
+                    role="button"
+                    className="yst-h-16 yst-px-4 yst-text-body yst-flex yst-items-center focus:yst-outline-none focus:yst-ring-2 focus:yst-ring-inset focus:yst-ring-primary"
+                    onClick={() => { setIsOpen(true) }}
+                >
+                    <span className="yst-sr-only">Open Navingation Menu</span>
+                    <Bars3Icon className="yst-w-6 yst-h-6" />
+                </button>
+
+                <Modal
+                    isOpen={isOpen}
+                    onClose={() => setIsOpen(false)}
+                    className="wppbh-app-sidenav-mobile yst-z-40"
+                    initialFocus
+                >
+                    <Modal.Panel className="yst-p-0 yst-overflow-visible">
+                        <div className="wppbh-app-sidenav yst-p-5 yst-max-h-[70vh] yst-overflow-y-auto">
+                            <SideNavMenu />
+                        </div>
+                    </Modal.Panel>
+                </Modal>
+
+            </div>
+        </header>
+    );
+}
+
+export const AppNav = () => {
+    const isLargeViewport = useViewportMatch('medium');
+
+    return (
+        <>
+            {(isLargeViewport && <SideNav />) || <MobileNav />}
+        </>
+
     );
 }
