@@ -100,6 +100,13 @@ describe('Click to buy', function () {
 
 	it('CTB purchase functions properly', () => {
 		cy.intercept({
+			method: 'GET',
+			url: /newfold-ctb(\/|%2F)v1(\/|%2F)ctb/,
+		},{
+			fixture: 'ctbGET'
+		}).as('ctbGET');
+
+		cy.intercept({
 			method: 'POST',
 			url: /newfold-ctb(\/|%2F)v1(\/|%2F)ctb/,
 		}, {
@@ -108,7 +115,8 @@ describe('Click to buy', function () {
 		
 		// click CTB (again)
 		cy.get('[data-action="load-nfd-ctb"]').click();
-
+		cy.wait('@ctbGET');
+		
 		// check for buy button
 		cy.get('[data-action="purchase-ctb"]')
 			.scrollIntoView()
