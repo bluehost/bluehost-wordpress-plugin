@@ -11,7 +11,7 @@ const Home = () => {
 		<Page className="wppbh-home">
 			<WelcomeSection />
 			<FreeAddonsSection />
-			<SectionContainer>
+			<SectionContainer className="wppbh-account-help-section">
 				<SectionContent >
 					<div className="yst-grid yst-grid-cols-2 yst-gap-6">
 						<AccountCard />

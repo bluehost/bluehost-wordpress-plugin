@@ -61,7 +61,7 @@ export function WelcomeSection() {
       }
     );
   return (
-    <SectionContainer>
+    <SectionContainer className="wppbh-welcome-section">
       <SectionHeader title={"Home"} />
       <SectionContent className="wppbh-app-section-home">
         <div className="yst-flex yst-flex-col yst-gap-6">
@@ -74,7 +74,7 @@ export function WelcomeSection() {
               </span>
               <img
                 src={WelcomeIllustration}
-                alt=""
+                alt="Congrats Illustration"
                 className="yst-self-baseline"
               />
             </div>

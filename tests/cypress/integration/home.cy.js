@@ -8,9 +8,9 @@ describe('Home Page', function () {
 		
 	});
 
-	it('Header Exists', () => {
+	it('Site Info Exists', () => {
 		cy
-			.get('.wppbh-header').contains('h2', 'Bluehost')
+			.get('.wppbh-app-site-info').contains('h3', 'bluehost-wordpress-plugin')
 			.scrollIntoView()
 			.should('be.visible');
 	});
@@ -20,23 +20,30 @@ describe('Home Page', function () {
 		cy.checkA11y('.wppbh-app-body');
 	});
 
-	it('Web Content Section Exists', () => {
+	it('Welcome Section Exists', () => {
 		cy
-			.get('.wppbh-section-home-content').contains('h3', 'Content')
+			.get('.wppbh-welcome-section').contains('h2', 'Home')
 			.scrollIntoView()
 			.should('be.visible');
 	});
 
-	it('Settings Section Exists', () => {
+	it('Additional Features Section Exists', () => {
 		cy
-			.get('.wppbh-section-home-settings').contains('h3', 'Settings')
+			.get('.wppb-app-section-container').contains('h2', 'Additional Features')
 			.scrollIntoView()
 			.should('be.visible');
 	});
 
-	it('Hosting Section Exists', () => {
+	it('Account Section Exists', () => {
 		cy
-			.get('.wppbh-section-home-hosting').contains('h3', 'Hosting')
+			.get('.wppbh-account-help-section').contains('h1', 'Bluehost Account')
+			.scrollIntoView()
+			.should('be.visible');
+	});
+
+	it('Help Section Exists', () => {
+		cy
+			.get('.wppbh-account-help-section').contains('h1', 'Need some help?')
 			.scrollIntoView()
 			.should('be.visible');
 	});
