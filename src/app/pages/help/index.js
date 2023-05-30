@@ -5,10 +5,10 @@ import { Button, Card, Title } from "@yoast/ui-library";
 
 const HelpCard = ({ item }) => {
     return ( 
-        <Card className="wppbh-help-card">
+        <Card className={`wppbh-help-card card-help-${item.name}`}>
             <Card.Content>
                 <Title 
-					as="h4" 
+					as="h3" 
 					size="4"
 					className="yst-mb-2"	
 				>{item.title}</Title>
