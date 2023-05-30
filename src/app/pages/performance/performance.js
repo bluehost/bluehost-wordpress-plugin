@@ -83,6 +83,7 @@ const CacheSettings = ({ setError, notify }) => {
 
     return (
         <RadioGroup
+            className="cache-options"
             id="cache-type"
             name="cache-level"
             value=""
@@ -130,11 +131,13 @@ const ClearCache = ({ setError, notify }) => {
     };
 
     return (
-        <div className="yst-flex yst-flex-col yst-gap-4">
+        <div className="yst-flex yst-flex-col yst-gap-4 clear-cache">
             <div className="yst-flex yst-justify-between yst-items-center">
                 <Label>{__('Clear Cache', 'wp-plugin-bluehost')}</Label>
                 <Button
                     variant="secondary"
+                    className="clear-cache-button"
+                    // disabled={cacheLevel > 0 ? false : true}
                     onClick={clearCache}
                 >
                     {__('Clear All Cache Now', 'wp-plugin-bluehost')}

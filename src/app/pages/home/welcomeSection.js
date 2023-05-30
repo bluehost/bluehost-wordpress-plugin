@@ -13,7 +13,7 @@ import {
 } from "../../components/section";
 import AppStore from "../../data/store";
 import WelcomeIllustration from "../../images/section-home-welcome.png";
-import { bluehostSettingsApiFetch } from "../../util/helpers";
+import { bluehostSettingsApiFetch, comingSoonAdminbarToggle } from "../../util/helpers";
 
 function OnboardingCheckListItem({ children, isComplete }) {
   return (
@@ -57,12 +57,13 @@ export function WelcomeSection() {
           ...store,
           comingSoon: !store.comingSoon,
         });
+        comingSoonAdminbarToggle(store.comingSoon);
       }
     );
   return (
     <SectionContainer>
       <SectionHeader title={"Home"} />
-      <SectionContent>
+      <SectionContent className="wppbh-app-section-home">
         <div className="yst-flex yst-flex-col yst-gap-6">
           <div className="yst-grid yst-grid-cols-2 yst-gap-6">
             <div className="yst-flex yst-flex-col yst-gap-4">

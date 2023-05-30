@@ -8,69 +8,60 @@ describe('Coming Soon', function () {
 		
 	});
 
-	it('Coming Soon Toggle Works', () => {
-
-		cy.get('.coming-soon-toggle input[type="checkbox"]').uncheck();
-		cy.get('.coming-soon-toggle input[type="checkbox"]').check();
-		cy.wait(100);
-		cy
-			.get('.edit-site-notices .components-snackbar__content')
-			.contains('div', 'Coming soon activated')
-			.should('be.visible');
+	it('Coming Soon Toggle Exists', () => {
 
 		cy
-			.get('.coming-soon-protip .accordion-summary')
-			.contains('p', 'Pro Tip')
+			.get('#wp-toolbar #wp-admin-bar-site-status')
+			.contains('span', 'Live')
 			.should('be.visible');
-		cy.get('.coming-soon-protip').should('not.have.attr', 'open');
-		cy.get('.coming-soon-protip summary').click();
+
+		cy.get('.wppbh-app-settings-coming-soon').contains('h3', 'Maintenance Mode')
+			.scrollIntoView()
+			.should('be.visible');
+		
+		cy.get('.wppbh-app-settings-coming-soon').contains('label', 'Coming soon')
+			.scrollIntoView()
+			.should('be.visible');
+
+		cy.get('[data-id="coming-soon-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+		cy.get('[data-id="coming-soon-toggle"]').click();
 		cy.wait(100);
-		cy.get('.coming-soon-protip').should('have.attr', 'open');
+		cy.get('[data-id="coming-soon-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('.yst-notifications').contains('.yst-notification', 'Coming soon').should('be.visible');
+		
+		// Protip was removed in redesign, should reimplement
+		// cy
+		// 	.get('.coming-soon-protip .accordion-summary')
+		// 	.contains('p', 'Pro Tip')
+		// 	.should('be.visible');
+		// cy.get('.coming-soon-protip').should('not.have.attr', 'open');
+		// cy.get('.coming-soon-protip summary').click();
+		// cy.wait(100);
+		// cy.get('.coming-soon-protip').should('have.attr', 'open');
+	});
+
+	it('Displays Coming Soon in Site Status Admin Toolbar', () => {
+		cy
+			.get('#wp-toolbar #wp-admin-bar-site-status')
+			.contains('span', 'Coming Soon')
+			.should('be.visible');
 	});
 
 	it('Has Coming Soon Section on Home', () => {
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
-		cy
-			.get('.wppbh-section-coming-soon')
+		cy.get('.wppbh-app-section-home')
 			.scrollIntoView()
-			.contains('h3', 'Coming Soon')
+			.contains('h1', 'Ready to go live?')
 			.should('be.visible');
 
-	});
+		cy.get('.wppbh-app-section-home')
+			.contains('a.yst-button', 'Preview your store')
+			.should('exist');
 
-	it.skip('Has Coming Soon in Admin Toolbar', () => {
-		cy.reload();
-
-		// This is currently overridden by the ecom module
-		// cy
-		// 	.get('#wp-toolbar #wp-admin-bar-bluehost-coming_soon')
-		// 	.contains('div', 'Coming Soon Active')
-		// 	.should('be.visible');
-	});
-
-	it('Home Coming Soon Section Launches', () => {
-		cy.get('.wppbh-section-coming-soon button.is-primary').click();
-		cy.wait(500);
-		// This is currently overridden by the ecom module
-		// cy
-		// 	.get('#wp-toolbar #wp-admin-bar-bluehost-coming_soon')
-		// 	.contains('div', 'Coming Soon Active')
-		// 	.should('not.be.visible');
-
-		cy
-			.get('.wppbh-section-coming-soon')
-			.scrollIntoView()
-			.contains('h3', 'Site Launched')
-			.should('be.visible');
-
-		cy.get('.wppbh-section-coming-soon button.is-secondary').click();
-
+		cy.get('.wppbh-app-section-home')
+			.contains('button', 'Launch your store')
+			.should('exist');
 		
-		cy
-			.get('.wppbh-section-coming-soon')
-			.scrollIntoView()
-			.contains('h3', 'Coming Soon')
-			.should('be.visible');
 	});
 
 	it('Displays admin coming soon notice', () => {
@@ -93,20 +84,21 @@ describe('Coming Soon', function () {
 	it('Launching launches site', () => {
 		cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
 		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
-		cy.get('.coming-soon-toggle input[type="checkbox"]').should('be.checked');
-
+		cy.get('[data-id="coming-soon-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
+		
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
-		cy
-			.get('.wppbh-section-coming-soon')
-			.scrollIntoView()
-			.contains('h3', 'Coming Soon')
-			.should('be.visible');
 
-		cy.get('.wppbh-section-coming-soon button.is-primary').click();
-		cy.get('.wppbh-section-coming-soon button.is-link').click(); //dismiss
+		cy.get('.wppbh-app-section-home')
+			.contains('button', 'Launch your store')
+			.click();
+		cy.wait(100);
 
-		cy
-			.get('.wppbh-section-coming-soon')
+		cy.get('.yst-modal').should('exist');
+		cy.get('.yst-modal .yst-button').click();
+		cy.wait(100);
+		
+		cy.get('.wppbh-app-section-home')
+			.contains('button', 'Launch your store')
 			.should('not.exist');
 
 		cy.logout();

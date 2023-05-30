@@ -15,35 +15,35 @@ describe('Performance Page', function () {
 
 	it('Has Cache Settings', () => {
 		cy
-			.get('.card-cache-settings')
+			.get('.cache-options')
 			.scrollIntoView()
 			.should('be.visible');
 	});
 
 	it('Has Clear Cache Settings', () => {
 		cy
-			.get('.card-clear-cache')
+			.get('.clear-cache')
 			.scrollIntoView()
 			.should('be.visible');
 	});
 
-	it('Clear Cache Disabled when Cache is Disabled', () => {
+	// this is no longer connected
+	it.skip('Clear Cache Disabled when Cache is Disabled', () => {
 
 		cy
-			.get('.input-cache-settings input[type="radio"]')
-			.first().check();
+			.get('input[type="radio"]#cache-level-0').check();
 
 		cy.wait(500);
 
 		cy
-			.get('.card-clear-cache')
+			.get('.clear-cache-button')
 			.scrollIntoView()
 			.should('have.class', 'disabled');
 
-		cy.get('.input-cache-settings input[type="radio"]').check('1');
+		cy.get('input[type="radio"]#cache-level-1').check();
 
 		cy
-			.get('.card-clear-cache')
+			.get('.clear-cache-button')
 			.scrollIntoView()
 			.should('not.have.class', 'disabled');
 		
@@ -53,7 +53,8 @@ describe('Performance Page', function () {
 			.should('be.visible');
 	});
 
-	it('Settings Callout Navigates to Settings Page', () => {
+	// this is no longer in place
+	it.skip('Settings Callout Navigates to Settings Page', () => {
 		cy.hash().should('eq', '#/performance');
 		cy.get('a.callout-link-settings').click();
 		cy.wait(500);

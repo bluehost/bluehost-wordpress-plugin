@@ -123,12 +123,6 @@ export const routes = [
 		],
 	},
 	{
-		name: '/staging',
-		title: __( 'Staging', 'wp-plugin-bluehost' ),
-		Component: Staging,
-		Icon: WrenchScrewdriverIcon,
-	},
-	{
 		name: '/performance',
 		title: __( 'Performance', 'wp-plugin-bluehost' ),
 		Component: Performance,
@@ -139,6 +133,12 @@ export const routes = [
 		title: __( 'Settings', 'wp-plugin-bluehost' ),
 		Component: Settings,
 		Icon: AdjustmentsHorizontalIcon,
+	},
+	{
+		name: '/staging',
+		title: __( 'Staging', 'wp-plugin-bluehost' ),
+		Component: Staging,
+		Icon: WrenchScrewdriverIcon,
 	},
 	// {
 	// 	name: '/example',
