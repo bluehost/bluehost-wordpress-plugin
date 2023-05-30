@@ -27,7 +27,7 @@ final class Admin {
 		/* Add inline style to hide subnav link */
 		\add_action( 'admin_head', array( __CLASS__, 'admin_nav_style' ) );
 
-		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_SANITIZE_STRING ), 'bluehost' ) >= 0 ) { // phpcs:ignore
+		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) { // phpcs:ignore
 			\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
 		}
 	}
@@ -155,6 +155,15 @@ final class Admin {
 			'var WPPBH =' . \wp_json_encode( Data::runtime() ) . ';',
 			'before'
 		);
+		\wp_register_script( 'newfold-plugin', null, null, BLUEHOST_PLUGIN_VERSION, true );
+		\wp_localize_script(
+			'newfold-plugin',
+			'nfdplugin',
+			array(
+				'restApiUrl'   => \esc_url_raw( \get_home_url() . '/index.php?rest_route=' ),
+				'restApiNonce' => \wp_create_nonce( 'wp_rest' ),
+			)
+		);
 
 		\wp_register_style(
 			'bluehost-style',
@@ -166,6 +175,7 @@ final class Admin {
 		$screen = get_current_screen();
 		if ( false !== strpos( $screen->id, 'bluehost' ) ) {
 			\wp_enqueue_script( 'bluehost-script' );
+			\wp_enqueue_script( 'newfold-plugin' );
 			\wp_enqueue_style( 'bluehost-style' );
 		}
 	}

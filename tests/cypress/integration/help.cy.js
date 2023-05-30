@@ -12,12 +12,6 @@ describe('Help Page', function () {
 		cy.checkA11y('.wppbh-app-body');
 	});
 
-	it('Email Card Exists', () => {
-		cy.get('.card-help-ticket').contains('h3', 'Email')
-			.scrollIntoView()
-			.should('be.visible');
-	});
-
 	it('Phone Card Exists', () => {
 		cy.get('.card-help-phone').contains('h3', 'Phone')
 			.scrollIntoView()
@@ -36,26 +30,32 @@ describe('Help Page', function () {
 			.should('be.visible');
 	});
 
-	it('Online Support Card Exists', () => {
-		cy.get('.card-help-help').contains('h3', 'Online Support')
-			.scrollIntoView()
-			.should('be.visible');
-	});
-
-	it('Online Academy Card Exists', () => {
-		cy.get('.card-help-academy').contains('h3', 'Online Academy')
-			.scrollIntoView()
-			.should('be.visible');
-	});
-
-	it('Blog Card Exists', () => {
-		cy.get('.card-help-blog').contains('h3', 'Blog')
-			.scrollIntoView()
-			.should('be.visible');
-	});
-
 	it('Youtube Card Exists', () => {
-		cy.get('.card-help-video').contains('h3', 'Video')
+		cy.get('.card-help-youtube').contains('h3', 'YouTube')
+			.scrollIntoView()
+			.should('be.visible');
+	});
+
+	it('Online Support Card Exists', () => {
+		cy.get('.card-help-kb').contains('h3', 'Knowledge Base')
+			.scrollIntoView()
+			.should('be.visible');
+	});
+
+	it('Resources Card Exists', () => {
+		cy.get('.card-help-resources').contains('h3', 'Resources')
+			.scrollIntoView()
+			.should('be.visible');
+	});
+
+	it('Events Card Exists', () => {
+		cy.get('.card-help-events').contains('h3', 'Events and Webinars')
+			.scrollIntoView()
+			.should('be.visible');
+	});
+
+	it('Website Card Exists', () => {
+		cy.get('.card-help-website').contains('h3', 'Bluehost Website')
 			.scrollIntoView()
 			.should('be.visible');
 	});

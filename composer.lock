@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9000efa85ffbaebc250f7f914ceceb47",
+    "content-hash": "4f3170614c2e4ac6a40374f8fd7ab48f",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -301,16 +301,16 @@
         },
         {
             "name": "newfold-labs/wp-module-customer-bluehost",
-            "version": "1.5.3",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-customer-bluehost.git",
-                "reference": "6327cf7ae18553acf79f9b507473ea02fabec263"
+                "reference": "c0b205c9619c657264e0eb7efa29fba191102045"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-customer-bluehost/zipball/6327cf7ae18553acf79f9b507473ea02fabec263",
-                "reference": "6327cf7ae18553acf79f9b507473ea02fabec263",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-customer-bluehost/zipball/c0b205c9619c657264e0eb7efa29fba191102045",
+                "reference": "c0b205c9619c657264e0eb7efa29fba191102045",
                 "shasum": ""
             },
             "require": {
@@ -319,11 +319,14 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "NewFoldLabs\\WP\\Module\\CustomerBluehost\\": "includes"
+                    "NewfoldLabs\\WP\\Module\\CustomerBluehost\\": "includes"
                 },
                 "files": [
                     "bootstrap.php",
-                    "includes/CustomerBluehost.php"
+                    "includes/AccessToken.php",
+                    "includes/CustomerBluehost.php",
+                    "includes/ResponseUtilities.php",
+                    "includes/SiteMeta.php"
                 ]
             },
             "license": [
@@ -332,15 +335,15 @@
             "authors": [
                 {
                     "name": "Evan Mullins",
-                    "email": "evan@bluehost.com"
+                    "homepage": "https://evanmullins.com"
                 }
             ],
             "description": "Customer module to interface with bluehost and the data module.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-customer-bluehost/tree/1.5.3",
+                "source": "https://github.com/newfold-labs/wp-module-customer-bluehost/tree/1.6.0",
                 "issues": "https://github.com/newfold-labs/wp-module-customer-bluehost/issues"
             },
-            "time": "2023-02-01T18:13:21+00:00"
+            "time": "2023-05-30T21:27:34+00:00"
         },
         {
             "name": "newfold-labs/wp-module-data",
@@ -397,16 +400,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "4570bdab9392f8119b9539ced7eea02c3bad59df"
+                "reference": "d6b4fd3bbaeaeaaa0df66e916853b7f995a01d22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/4570bdab9392f8119b9539ced7eea02c3bad59df",
-                "reference": "4570bdab9392f8119b9539ced7eea02c3bad59df",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/d6b4fd3bbaeaeaaa0df66e916853b7f995a01d22",
+                "reference": "d6b4fd3bbaeaeaaa0df66e916853b7f995a01d22",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-installer": "0.0.1"
+                "newfold-labs/wp-module-installer": "0.0.2"
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "@stable",
@@ -444,23 +447,23 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.10.1-rc.1",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/next/ui-redesign",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-05-30T16:26:55+00:00"
+            "time": "2023-05-30T17:21:13+00:00"
         },
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "0.0.1",
+            "version": "0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "c7e6370f469750e5699f42966d6686049e644c07"
+                "reference": "0c2998a51826efa3c0a7bbaf798b5ef18a6080f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/c7e6370f469750e5699f42966d6686049e644c07",
-                "reference": "c7e6370f469750e5699f42966d6686049e644c07",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/0c2998a51826efa3c0a7bbaf798b5ef18a6080f9",
+                "reference": "0c2998a51826efa3c0a7bbaf798b5ef18a6080f9",
                 "shasum": ""
             },
             "type": "library",
@@ -483,10 +486,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/0.0.1",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/0.0.2",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2023-05-26T06:25:08+00:00"
+            "time": "2023-05-30T15:25:40+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -830,16 +833,16 @@
         },
         {
             "name": "newfold-labs/wp-module-staging",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-staging.git",
-                "reference": "c715a0f385133a79bdb7b1d295c5aa06b0e89123"
+                "reference": "8da3c8ce284bfc0ff9c253767ea72f59da63bf44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/c715a0f385133a79bdb7b1d295c5aa06b0e89123",
-                "reference": "c715a0f385133a79bdb7b1d295c5aa06b0e89123",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/8da3c8ce284bfc0ff9c253767ea72f59da63bf44",
+                "reference": "8da3c8ce284bfc0ff9c253767ea72f59da63bf44",
                 "shasum": ""
             },
             "require-dev": {
@@ -873,10 +876,10 @@
             ],
             "description": "Newfold module for staging functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-staging/tree/1.0.1",
+                "source": "https://github.com/newfold-labs/wp-module-staging/tree/1.0.2",
                 "issues": "https://github.com/newfold-labs/wp-module-staging/issues"
             },
-            "time": "2023-05-26T20:20:18+00:00"
+            "time": "2023-05-30T20:49:52+00:00"
         },
         {
             "name": "wp-cli/wp-config-transformer",
