@@ -3,9 +3,9 @@ import { Button, Card, Link, Title } from "@yoast/ui-library";
 
 const MarketplaceItem = ({ product }) => {
     const renderPrimaryCTA = () => {
-        const supportCTB = 'undefined' !== typeof nfdctb ? nfdctb.supportCTB : false;
+        const supportsCTB = 'undefined' !== typeof nfdctb ? nfdctb.supportsCTB : false;
 
-        if (supportCTB && product.clickToBuyId) {
+        if (supportsCTB && product.clickToBuyId) {
             return (
                 <Button
                     as="a"
