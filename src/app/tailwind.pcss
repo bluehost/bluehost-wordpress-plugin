@@ -146,6 +146,27 @@
 	}
 }
 
+/* Checkbox */
+@layer components {
+	.yst-root {
+		.yst-checkbox {
+			.yst-checkbox__input {
+				@apply
+				yst-text-primary
+				yst-shadow-none
+	
+				focus:yst-ring-primary;
+
+				&:checked {
+					&::before {
+						@apply yst-hidden;
+					}
+				}
+			}
+		}
+	}
+}
+
 /* Radio Input */
 @layer components {
 	.yst-root {
