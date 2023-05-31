@@ -22,7 +22,7 @@ describe('Home Page', function () {
 
 	it('Welcome Section Exists', () => {
 		cy
-			.get('.wppbh-welcome-section').contains('h2', 'Home')
+			.get('.wppb-app-section-container').contains('h2', 'Home')
 			.scrollIntoView()
 			.should('be.visible');
 	});
