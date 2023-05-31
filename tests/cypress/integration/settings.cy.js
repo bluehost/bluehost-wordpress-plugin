@@ -84,24 +84,24 @@ describe('Settings Page', function () {
 	});
 
 	it.skip('Content Settings Work', () => {
-		cy.get('.content-revisions-select select').select('20');
-		cy.get('.content-revisions-select select').select('1');
-		cy
-			.get('.content-revisions-select label')
-			.scrollIntoView()
-			.contains('strong', '1')
-			.should('be.visible');
-		cy
-			.get('.content-revisions-setting .components-base-control__help')
-			.should('be.visible');
+		// cy.get('.content-revisions-select select').select('20');
+		// cy.get('.content-revisions-select select').select('1');
+		// cy
+		// 	.get('.content-revisions-select label')
+		// 	.scrollIntoView()
+		// 	.contains('strong', '1')
+		// 	.should('be.visible');
+		// cy
+		// 	.get('.content-revisions-setting .components-base-control__help')
+		// 	.should('be.visible');
 
-		cy.get('.content-revisions-select select').select('40');
-		cy.get('.content-revisions-select label').contains('span', '40').should('be.visible');
-		cy.wait(100);
-		cy
-			.get('.wppbh-app-snackbar')
-			.contains('.components-snackbar__content', 'revision')
-			.should('be.visible');
+		// cy.get('.content-revisions-select select').select('40');
+		// cy.get('.content-revisions-select label').contains('span', '40').should('be.visible');
+		// cy.wait(100);
+		// cy
+		// 	.get('.wppbh-app-snackbar')
+		// 	.contains('.components-snackbar__content', 'revision')
+		// 	.should('be.visible');
 	});
 
 	it.skip('Comment Settings Work', () => {

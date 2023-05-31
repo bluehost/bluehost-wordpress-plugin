@@ -1,6 +1,7 @@
 import AutomaticUpdates from './automaticUpdates';
 import ComingSoon from './comingSoon';
 import CommentSettings from './commentSettings';
+import ContentSettings from './contentSettings';
 import { Page } from '../../components/page';
 import { SectionContainer, SectionHeader, SectionContent } from '../../components/section';
 
@@ -22,11 +23,13 @@ const Settings = () => {
                     <AutomaticUpdates />
                 </SectionContent>
 
-				<SectionContent className={'wppbh-app-settings-comments'}>
+				<SectionContent separator={true} className={'wppbh-app-settings-comments'}>
                     <CommentSettings />
                 </SectionContent>
 
-                <p>Missing Content settings</p>
+                <SectionContent className={'wppbh-app-settings-content'}>
+                    <ContentSettings />
+                </SectionContent>
 
             </SectionContainer>
 		</Page>
