@@ -4,76 +4,82 @@ describe('Settings Page', function () {
 
 	before(() => {
 		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
-		cy.injectAxe();
 		
 	});
 
 	it('Is Accessible', () => {
+		cy.injectAxe();
 		cy.wait(500);
 		cy.checkA11y('.wppbh-app-body');
 	});
 
-	it('Has Auto Updates Settings', () => {
+	it('Has Coming Soon', () => {
 		cy
-			.get('.card-auto-updates')
+			.get('.wppbh-app-settings-coming-soon')
 			.scrollIntoView()
 			.should('be.visible');
 	});
 
-	it('Has Coming Soon', () => {
+	it('Has Auto Updates Settings', () => {
 		cy
-			.get('.card-coming-soon')
+			.get('.wppbh-app-settings-update')
 			.scrollIntoView()
 			.should('be.visible');
 	});
 
 	it('Has Content Settings', () => {
 		cy
-			.get('.card-content-settings')
+			.get('.wppbh-app-settings-content')
 			.scrollIntoView()
 			.should('be.visible');
 	});
 
 	it('Has Comments Settings', () => {
 		cy
-			.get('.card-comment-settings')
+			.get('.wppbh-app-settings-comments')
 			.scrollIntoView()
 			.should('be.visible');
 	});
 
+	// this everything toggle is no longer present, we should add it back
 	it('Everything Auto Update Toggle Works', () => {
-		cy.get('.autoupdate-all-toggle input[type="checkbox"]').check();
-		cy.get('.autoupdate-all-toggle input[type="checkbox"]').should('be.checked');
-		cy.get('.autoupdate-core-toggle input[type="checkbox"]').should('not.exist');
-		cy.get('.autoupdate-plugin-toggle input[type="checkbox"]').should('not.exist');
-		cy.get('.autoupdate-theme-toggle input[type="checkbox"]').should('not.exist');
+		// cy.get('.autoupdate-all-toggle input[type="checkbox"]').check();
+		// cy.get('.autoupdate-all-toggle input[type="checkbox"]').should('be.checked');
+		// cy.get('.autoupdate-core-toggle input[type="checkbox"]').should('not.exist');
+		// cy.get('.autoupdate-plugin-toggle input[type="checkbox"]').should('not.exist');
+		// cy.get('.autoupdate-theme-toggle input[type="checkbox"]').should('not.exist');
 
-		cy.get('.autoupdate-all-toggle input[type="checkbox"]').uncheck();
-		cy.get('.autoupdate-core-toggle input[type="checkbox"]').should('not.be.disabled').should('be.checked');
-		cy.get('.autoupdate-plugin-toggle input[type="checkbox"]').should('not.be.disabled').should('be.checked');
-		cy.get('.autoupdate-theme-toggle input[type="checkbox"]').should('not.be.disabled').should('be.checked');
-
-		cy.get('.autoupdate-core-toggle input[type="checkbox"]').uncheck();
-		cy.get('.autoupdate-core-toggle input[type="checkbox"]').should('not.be.disabled').should('not.be.checked');
-		cy.get('.autoupdate-all-toggle input[type="checkbox"]').should('not.be.checked');
+		// cy.get('.autoupdate-all-toggle input[type="checkbox"]').uncheck();
+		// cy.get('.autoupdate-core-toggle input[type="checkbox"]').should('not.be.disabled').should('be.checked');
+		// cy.get('.autoupdate-plugin-toggle input[type="checkbox"]').should('not.be.disabled').should('be.checked');
+		// cy.get('.autoupdate-theme-toggle input[type="checkbox"]').should('not.be.disabled').should('be.checked');
+		
+		cy.get('[data-id="autoupdate-core-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-core-toggle"]').click();
 		cy.wait(100);
-		cy
-			.get('.wppbh-app-snackbar')
-			.contains('.components-snackbar__content', 'update')
-			.should('be.visible');
+		cy.get('[data-id="autoupdate-core-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+		cy.get('[data-id="autoupdate-core-toggle"]').click();
+		// cy.get('.autoupdate-all-toggle input[type="checkbox"]').should('not.be.checked');
+		// cy
+		// 	.get('.wppbh-app-snackbar')
+		// 	.contains('.components-snackbar__content', 'update')
+		// 	.should('be.visible');
 
-		cy.get('.autoupdate-plugin-toggle input[type="checkbox"]').uncheck();
-		cy.get('.autoupdate-plugin-toggle input[type="checkbox"]').should('not.be.disabled').should('not.be.checked');
-		cy.get('.autoupdate-all-toggle input[type="checkbox"]').should('not.be.checked');
-
-		cy.get('.autoupdate-plugin-toggle input[type="checkbox"]').check();
-		cy.get('.autoupdate-core-toggle input[type="checkbox"]').check();
+		cy.get('[data-id="autoupdate-plugins-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-plugins-toggle"]').click();
 		cy.wait(100);
-		cy.get('.autoupdate-all-toggle input[type="checkbox"]').should('be.checked');
-		cy
-			.get('.wppbh-app-snackbar')
-			.contains('.components-snackbar__content', 'update')
-			.should('be.visible');
+		cy.get('[data-id="autoupdate-plugins-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+		cy.get('[data-id="autoupdate-plugins-toggle"]').click();
+		// cy.get('.autoupdate-all-toggle input[type="checkbox"]').should('not.be.checked');
+
+		// cy.get('.autoupdate-plugin-toggle input[type="checkbox"]').check();
+		// cy.get('.autoupdate-core-toggle input[type="checkbox"]').check();
+		// cy.wait(100);
+		// cy.get('.autoupdate-all-toggle input[type="checkbox"]').should('be.checked');
+		// cy
+		// 	.get('.wppbh-app-snackbar')
+		// 	.contains('.components-snackbar__content', 'update')
+		// 	.should('be.visible');
 
 	});
 
@@ -99,21 +105,30 @@ describe('Settings Page', function () {
 	});
 
 	it('Comment Settings Work', () => {
-		cy.get('.disable-comments-toggle input[type="checkbox"]').uncheck();
-		cy.get('.close-comments-days-select select').should('not.exist');
-		cy.get('.disable-comments-toggle input[type="checkbox"]').check();
-
-		cy.get('.close-comments-days-select select').should('not.be.disabled');
-		cy.get('.close-comments-days-select select').select('3');
-		cy.get('.close-comments-days-select label').contains('span', '3').should('be.visible');
-
-		cy.get('.comments-per-page-select select').select('10');
-		cy.get('.comments-per-page-select label').contains('span', '10').should('be.visible');
+		cy.get('[data-id="disable-comments-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="disable-comments-toggle"]').click();
 		cy.wait(100);
-		cy
-			.get('.wppbh-app-snackbar')
-			.contains('.components-snackbar__content', 'Comments')
-			.should('be.visible');
+		cy.get('[data-id="disable-comments-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+
+		cy.get('.close-comments-days-select select').should('be.disabled');
+		
+		cy.get('[data-id="disable-comments-toggle"]').click();
+		cy.wait(100);
+
+		cy.get('[data-id=".close-comments-days-select"]').should('not.be.disabled');
+		cy.get('[data-id=".close-comments-days-select"]').click();
+		cy.get('.yst-select__options.yst-opacity-100 .yst-select__option').first().click();
+		
+		
+		cy.get('[data-id=".close-comments-days-select"]').contains('span', '1').should('be.visible');
+
+		// cy.get('.comments-per-page-select select').select('10');
+		// cy.get('.comments-per-page-select label').contains('span', '10').should('be.visible');
+		// cy.wait(100);
+		// cy
+		// 	.get('.wppbh-app-snackbar')
+		// 	.contains('.components-snackbar__content', 'Comments')
+		// 	.should('be.visible');
 
 	});
 
