@@ -139,7 +139,7 @@ export const comingSoonAdminbarToggle = ( comingSoon ) => {
  * 
  * @return {string}
  */
-export function getPlatformBaseUrl( path = '' ) {
+export const getPlatformBaseUrl = ( path = '' ) => {
 	const brand = window.WPPBH.env.brand;
 	const isJarvis = window.WPPBH.env.isJarvis;
 
@@ -156,7 +156,7 @@ export function getPlatformBaseUrl( path = '' ) {
 	}
 
 	return baseUrl() + path;
-}
+};
 
 /**
  * Gets Platform URL
@@ -170,7 +170,7 @@ export function getPlatformBaseUrl( path = '' ) {
  * getPlatformPathUrl('home', 'app#home')
  * // returns https://www.bluehost.com/my-account/home if Jarvis or https://my.bluehost.com/hosting/app#home if legacy
  */
-export function getPlatformPathUrl ( jarvisPath = '', legacyPath = '' ) {
+export const getPlatformPathUrl = ( jarvisPath = '', legacyPath = '' ) => {
 	const isJarvis = window.WPPBH.env.isJarvis;
 
 	if (isJarvis) {
@@ -178,4 +178,25 @@ export function getPlatformPathUrl ( jarvisPath = '', legacyPath = '' ) {
 	}
 
 	return getPlatformBaseUrl('/hosting/') + legacyPath;
-}
+};
+
+/**
+ * Handles help center links click, will open help center slide if user has access
+ * or navigate to help page if user doesn't have access
+ * 
+ * @return void
+ */
+export const handleHelpLinksClick = () => {
+	const canAccessHelpCenter = window.WPPBH.capabilities.canAccessHelpCenter;
+	if (canAccessHelpCenter) {
+		document.addEventListener('click', (e) => {
+			if (
+				e.target.classList.contains('wppbh-help-link') ||
+				e.target.href.includes('admin.php?page=bluehost#/help')
+			) {
+				e.preventDefault();
+				alert('Help center link clicked!');
+			}
+		});
+	}
+}; 

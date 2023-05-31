@@ -16,7 +16,7 @@ export function HelpCard() {
             Call or chat 24/7 for support or let our experts build your site for
             you.
           </p>
-          <Button variant="secondary" as="a" href="#/help">
+          <Button variant="secondary" as="a" href="#/help" className="wppbh-help-link">
             Help me
           </Button>
         </div>
