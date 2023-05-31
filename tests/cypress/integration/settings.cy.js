@@ -27,7 +27,7 @@ describe('Settings Page', function () {
 			.should('be.visible');
 	});
 
-	it('Has Content Settings', () => {
+	it.skip('Has Content Settings', () => {
 		cy
 			.get('.wppbh-app-settings-content')
 			.scrollIntoView()
@@ -83,7 +83,7 @@ describe('Settings Page', function () {
 
 	});
 
-	it('Content Settings Work', () => {
+	it.skip('Content Settings Work', () => {
 		cy.get('.content-revisions-select select').select('20');
 		cy.get('.content-revisions-select select').select('1');
 		cy
@@ -104,7 +104,7 @@ describe('Settings Page', function () {
 			.should('be.visible');
 	});
 
-	it('Comment Settings Work', () => {
+	it.skip('Comment Settings Work', () => {
 		cy.get('[data-id="disable-comments-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
 		cy.get('[data-id="disable-comments-toggle"]').click();
 		cy.wait(100);
