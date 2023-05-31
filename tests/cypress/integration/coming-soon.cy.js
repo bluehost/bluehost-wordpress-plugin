@@ -10,8 +10,7 @@ describe('Coming Soon', function () {
 
 	it('Coming Soon Toggle Exists', () => {
 
-		cy
-			.get('#wp-toolbar #wp-admin-bar-site-status')
+		cy.get('#wp-toolbar #wp-admin-bar-site-status')
 			.contains('span', 'Live')
 			.should('be.visible');
 
@@ -41,24 +40,23 @@ describe('Coming Soon', function () {
 	});
 
 	it('Displays Coming Soon in Site Status Admin Toolbar', () => {
-		cy
-			.get('#wp-toolbar #wp-admin-bar-site-status')
+		cy.get('#wp-toolbar #wp-admin-bar-site-status')
 			.contains('span', 'Coming Soon')
 			.should('be.visible');
 	});
 
 	it('Has Coming Soon Section on Home', () => {
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
-		cy.get('.wppbh-app-section-home')
+		cy.get('.wppbh-home .wppb-app-section-content').first()
 			.scrollIntoView()
 			.contains('h1', 'Ready to go live?')
 			.should('be.visible');
 
-		cy.get('.wppbh-app-section-home')
-			.contains('a.yst-button', 'Preview your store')
+		cy.get('.wppbh-home .wppb-app-section-content')
+			.contains('a.yst-button', 'Preview your store').first()
 			.should('exist');
 
-		cy.get('.wppbh-app-section-home')
+		cy.get('.wppbh-home .wppb-app-section-content').first()
 			.contains('button', 'Launch your store')
 			.should('exist');
 		
@@ -66,8 +64,7 @@ describe('Coming Soon', function () {
 
 	it('Displays admin coming soon notice', () => {
 		cy.visit('/wp-admin/index.php');
-		cy
-			.get('.notice-warning')
+		cy.get('.notice-warning')
 			.contains('p', 'coming')
 			.should('be.visible');
 	});
@@ -75,8 +72,7 @@ describe('Coming Soon', function () {
 	it('Displays Coming Soon on Frontend', () => {
 		cy.logout();
 		cy.visit('/');
-		cy
-			.get('body')
+		cy.get('body')
 			.contains('h1', 'Coming')
 			.should('be.visible');
 	});
@@ -88,23 +84,18 @@ describe('Coming Soon', function () {
 		
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
 
-		cy.get('.wppbh-app-section-home')
+		cy.get('.wppbh-home .wppb-app-section-content').first()
 			.contains('button', 'Launch your store')
 			.click();
 		cy.wait(100);
-
-		cy.get('.yst-modal').should('exist');
-		cy.get('.yst-modal .yst-button').click();
-		cy.wait(100);
 		
-		cy.get('.wppbh-app-section-home')
+		cy.get('.wppbh-home .wppb-app-section-content').first()
 			.contains('button', 'Launch your store')
 			.should('not.exist');
 
 		cy.logout();
 		cy.visit('/');
-		cy
-			.get('body')
+		cy.get('body')
 			.contains('h1', 'Coming soon')
 			.should('not.exist');
 
