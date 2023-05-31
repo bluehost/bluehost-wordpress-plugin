@@ -59,9 +59,16 @@
     "newfold": {
       "type": "composer",
       "url": "https://newfold-labs.github.io/satis/",
-      "only": [
-        "newfold-labs/*"
+      "exclude": [
+        "newfold-labs/wp-module-help-center"
       ]
+    },
+    "help-center": {
+        "type": "path",
+        "url": "../wp-module-help-center",
+        "options": {
+            "symlink": true
+        }
     }
   },
   "require": {
@@ -79,6 +86,7 @@
     "newfold-labs/wp-module-onboarding": "1.7.0",
     "newfold-labs/wp-module-secure-passwords": "^1.1",
     "newfold-labs/wp-module-sso": "^1.0.3",
+    "newfold-labs/wp-module-help-center": "@dev",
     "wp-forge/collection": "^1.0.2",
     "wp-forge/helpers": "^1.1.1",
     "wp-forge/wp-update-handler": "^1.0.1",

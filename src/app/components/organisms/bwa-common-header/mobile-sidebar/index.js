@@ -27,7 +27,7 @@ const PrimaryMenu = () => {
 		<ul className="main">
 			{ topLevelPages.map(
 				(item) => (
-					item.inapp ? 
+					item.inapp && !item.action ?
 					<li className={ ['tab ' + item.slug] } key={ item.slug }>
 						<NavLink to={ item.path } activeClassName="is-active">{ item.label }</NavLink>
 					</li> : ''

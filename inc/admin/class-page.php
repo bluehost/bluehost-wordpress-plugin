@@ -1,5 +1,7 @@
 <?php
 
+use NewfoldLabs\WP\Module\Data\SiteCapabilities;
+
 /**
  * Class Bluehost_Admin_App_Page
  */
@@ -33,7 +35,10 @@ class Bluehost_Admin_App_Page {
 	 * @return array[]
 	 */
 	public static function get_top_level_pages() {
-		return array(
+		$capability = new SiteCapabilities();
+
+		$help_enabled = $capability->get( 'canAccessHelpCenter' );
+		$pages        = array(
 			array(
 				'slug'  => 'home',
 				'path'  => '/home',
@@ -83,14 +88,21 @@ class Bluehost_Admin_App_Page {
 				'label' => __( 'Settings', 'bluehost-wordpress-plugin' ),
 				'inapp' => true,
 			),
-			array(
-				'slug'  => 'help',
-				'path'  => '/help',
-				'full'  => 'bluehost#/help',
-				'label' => __( 'Help', 'bluehost-wordpress-plugin' ),
-				'inapp' => true,
-			),
 		);
+
+		if ( $help_enabled ) {
+			array_push(
+				$pages,
+				array(
+					'slug'   => 'help',
+					'path'   => '/help',
+					'full'   => 'bluehost#/help',
+					'label'  => __( 'Help', 'bluehost-wordpress-plugin' ),
+					'inapp'  => true,
+					'action' => true,
+				),
+			);
+		}
 	}
 
 	/**

@@ -4,20 +4,28 @@ import { BWANavLink as NavLink } from '@app/components/atoms';
 import { __ } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
 
-const DesktopTab = ( { item, ...props } ) => (
-	<li
-		className={ 'bwa-desktop-nav__item ' + item.slug }
-		key={ item.slug }
-		{ ...props }
-	>
-		<NavLink
-			to={ item.path }
-			className="bwa-desktop-nav__link"
-			activeClassName="active"
-		>
-			{ item.label }
-		</NavLink>
-	</li>
+const DesktopTab = ({ item, ...props }) => (
+  <li
+    className={"bwa-desktop-nav__item " + item.slug}
+    key={item.slug}
+    {...props}
+  >
+    {item.action ? (
+      <a className="bwa-desktop-nav__link" id={`${item.label}-menu`} onClick={() => {
+        window.newfoldEmbeddedHelp.toggleNFDLaunchedEmbeddedHelp();
+        let classNames = document.getElementById(`${item.label}-menu`).classList;
+        classNames.contains("active") ? classNames.remove("active") : classNames.add("active");
+      }}>{item.label}</a>
+    ) : (
+      <NavLink
+        to={item.path}
+        className="bwa-desktop-nav__link"
+        activeClassName="active"
+      >
+        {item.label}
+      </NavLink>
+    )}
+  </li>
 );
 
 const DesktopTabs = () => {

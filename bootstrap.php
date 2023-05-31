@@ -1,6 +1,5 @@
 <?php
 
-use Bluehost\AdminBar;
 use Bluehost\BuildAssets;
 use Bluehost\LoginRedirect;
 use WP_Forge\WPUpdateHandler\PluginUpdater;
@@ -52,7 +51,6 @@ if ( is_admin() ) {
 	}
 }
 
-AdminBar::init();
 BuildAssets::init();
 LoginRedirect::init();
 

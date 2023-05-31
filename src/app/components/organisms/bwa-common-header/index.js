@@ -44,7 +44,9 @@ const HeaderIcons = () => (
 					className="components-button"
 					aria-label="Help"
 					data-testid="help-icon"
-					href="#/help"
+					onClick={() => {
+						window.newfoldEmbeddedHelp.toggleNFDLaunchedEmbeddedHelp();
+					}}
 					rel="noreferrer noopener"
 				>
 					<HelpIcon />
@@ -61,7 +63,7 @@ const BWACommonHeader = ({ ...props}) => (
 		<div className="bwa-common-header__brand">
 			<div className="col" style={{ maxWidth: '1600px', margin: '0 auto' }}>
 				<HeaderLogo />
-				<HeaderIcons />
+				{/* <HeaderIcons /> */}
 			</div>
 		</div>
 		<div className="bwa-desktop-nav" tabIndex="-1" data-testid="desktop-nav">
