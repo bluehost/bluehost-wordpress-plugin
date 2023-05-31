@@ -396,7 +396,7 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "dev-next/ui-redesign",
+            "version": "v0.10.1-rc.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
@@ -447,7 +447,7 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/next/ui-redesign",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.10.1-rc.1",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
             "time": "2023-05-30T17:21:13+00:00"
@@ -2369,7 +2369,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "newfold-labs/wp-module-ecommerce": 20
+        "newfold-labs/wp-module-ecommerce": 5
     },
     "prefer-stable": false,
     "prefer-lowest": false,
