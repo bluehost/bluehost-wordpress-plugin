@@ -38,13 +38,8 @@ The legacy 2.x version can be found on the `master` branch.
 
 ### Pre-Releases
 
-- Once code in the `develop` branch is ready for release testing, a `X.Y.Z-alpha.1` version should be created and MUST
-  be tagged as a pre-release. Subsequent alpha releases should increment the last digit of the version
-  (e.g. `X. Y.Z-alpha.2`). Alpha releases are open to having new features added and/or bugs fixed. Tagging a release 
-  will trigger the full test matrix. Any test failures should be addressed.
-- After all features are finalized and added to the release, a beta version should be tagged and MUST be marked as a
-  pre-release. Beta releases are only open to having bugs fixed. Version numbers should follow the same pattern as the
-  alpha versions (e.g. `X.Y. Z-beta.1`). Tagging a release will trigger the full test matrix. Any test failures should be addressed.
+- Once code in the `develop` branch is ready for release testing, a `X.Y.Z-alpha.1` version should be created and MUST be tagged as a pre-release. Subsequent alpha releases should increment the last digit of the version (e.g. `X.Y.Z-alpha.2`). Alpha releases are open to having new features added and/or bugs fixed. Tagging a release will trigger the full test matrix. Any test failures should be addressed.
+- After all features are finalized and added to the release, a beta version should be tagged and MUST be marked as a pre-release. Beta releases are only open to having bugs fixed. Version numbers should follow the same pattern as the alpha versions (e.g. `X.Y.Z-beta.1`). Tagging a release will trigger the full test matrix. Any test failures should be addressed.
 
 ### Production Release
 
@@ -66,8 +61,7 @@ Steps to follow when releasing a new version of the plugin:
 - Confirm no issues are found in testing. 
 - If issues are found, push changes directly to the release branch, tag a new pre-release
   version (e.g. `X.Y.Z-rc.2`) and run through the manual testing process again.
-- When ready to release, merge the release branch into the `master` branch and be sure any changes made directly on 
-  the release branch are also merged back into the `develop` branch.
+- When ready to release, merge the release branch into the `master` branch and be sure any changes made directly on the release branch are also merged back into the `develop` branch.
 - Create a [new release](https://github.com/bluehost/bluehost-wordpress-plugin/releases/new) tagged (X.Y.Z) and
   named (Version X.Y.Z) for the version. This should NOT be marked as a pre-release.
 - Ensure the satis [build](https://bluehost.github.io/satis/#bluehost/bluehost-wordpress-plugin)
