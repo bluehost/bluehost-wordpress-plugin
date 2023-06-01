@@ -43,9 +43,9 @@ export const setActiveSubnav = ( path ) => {
 					}
 					// handle help
 					if ( path === '/help' ) {
-						if ( window.WPPBH.capabilities.canAccessHelpCenter && !window.newfoldEmbeddedHelp.isOpen ) {
+						if ( window.WPPBH.capabilities.canAccessHelpCenter && !window.newfoldEmbeddedHelp.isDefaultOpen ) {
 							window.newfoldEmbeddedHelp.toggleNFDLaunchedEmbeddedHelp();
-							window.newfoldEmbeddedHelp.isOpen = true; // since this fires multiple times on load
+							window.newfoldEmbeddedHelp.isDefaultOpen = true; // since this fires multiple times on load
 						}
 					}
 				}
@@ -204,5 +204,4 @@ export const handleHelpLinksClick = () => {
 			window.newfoldEmbeddedHelp.hasListeners = true;
 		}
 	}
-	console.log('handleHelpLinksClick');
 }; 
