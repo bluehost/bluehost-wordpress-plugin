@@ -7,7 +7,7 @@ import {
   ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
 import { Card, Title } from "@yoast/ui-library";
-import { getPlatformBaseUrl, getPlatformPathUrl } from "../../util/helpers";
+import { addUtmParams, getPlatformBaseUrl, getPlatformPathUrl } from "../../util/helpers";
 import classNames from "classnames";
 
 const isJarvis = window.WPPBH.env.isJarvis;
@@ -16,35 +16,35 @@ const base = [
   {
     icon: CpuChipIcon,
     id: "account_link",
-    href: getPlatformPathUrl("home", "app"),
+    href: addUtmParams( getPlatformPathUrl("home", "app") ),
     label: __("Control Panel", "bluehost-wordpress-plugin"),
     color: "yst-fill-gray",
   },
   {
     icon: GiftIcon,
     id: "products_link",
-    href: getPlatformPathUrl("market-place", "account_center#products"),
+    href: addUtmParams( getPlatformPathUrl("market-place", "account_center#products") ),
     label: __("Products", "bluehost-wordpress-plugin"),
     color: "yst-fill-primary-dark",
   },
   {
     icon: CreditCardIcon,
     id: "billing_link",
-    href: getPlatformPathUrl("renewal-center", "account_center#billing"),
+    href: addUtmParams( getPlatformPathUrl("renewal-center", "account_center#billing") ),
     label: __("Billing", "bluehost-wordpress-plugin"),
     color: "yst-fill-primary",
   },
   {
     icon: EnvelopeIcon,
     id: "mail_link",
-    href: getPlatformPathUrl("home", "app#/email-office"),
+    href: addUtmParams( getPlatformPathUrl("home", "app#/email-office") ),
     label: __("Mail & Office", "bluehost-wordpress-plugin"),
     color: "yst-fill-[#5b5b5b]",
   },
   {
     icon: ShieldCheckIcon,
     id: "security_link",
-    href: getPlatformPathUrl("security", "account_center#security"),
+    href: addUtmParams( getPlatformPathUrl("security", "account_center#security") ),
     label: __("Security", "bluehost-wordpress-plugin"),
     color: "yst-fill-[#17b212]",
   },
@@ -52,8 +52,8 @@ const base = [
     icon: IdentificationIcon,
     id: "validation_token_link",
     href: isJarvis
-      ? getPlatformPathUrl("account-center")
-      : getPlatformBaseUrl("/cgi/token"),
+      ? addUtmParams( getPlatformPathUrl("account-center") )
+      : addUtmParams( getPlatformBaseUrl("/cgi/token") ),
     label: __("Validation Token", "bluehost-wordpress-plugin"),
     color: "yst-fill-[#f89c24]",
   },
