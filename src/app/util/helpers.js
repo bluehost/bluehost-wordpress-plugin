@@ -41,6 +41,13 @@ export const setActiveSubnav = ( path ) => {
 							W_HOME_NAV.classList.remove( 'active' );
 						}
 					}
+					// handle help
+					if ( path === '/help' ) {
+						if ( window.WPPBH.capabilities.canAccessHelpCenter && !window.newfoldEmbeddedHelp.isDefaultOpen ) {
+							window.newfoldEmbeddedHelp.toggleNFDLaunchedEmbeddedHelp();
+							window.newfoldEmbeddedHelp.isDefaultOpen = true; // since this fires multiple times on load
+						}
+					}
 				}
 			}
 		}
@@ -187,16 +194,14 @@ export const getPlatformPathUrl = ( jarvisPath = '', legacyPath = '' ) => {
  * @return void
  */
 export const handleHelpLinksClick = () => {
-	const canAccessHelpCenter = window.WPPBH.capabilities.canAccessHelpCenter;
-	if (canAccessHelpCenter) {
-		document.addEventListener('click', (e) => {
-			if (
-				e.target.classList.contains('wppbh-help-link') ||
-				e.target.href.includes('admin.php?page=bluehost#/help')
-			) {
+	if (window.WPPBH.capabilities.canAccessHelpCenter && !window.newfoldEmbeddedHelp.hasListeners) {
+		const helpLinks = document.querySelectorAll('[href*="#/help"]');
+		if (helpLinks) {
+			helpLinks.forEach(el => el.addEventListener('click', (e) => {
 				e.preventDefault();
-				alert('Help center link clicked!');
-			}
-		});
+				window.newfoldEmbeddedHelp.toggleNFDLaunchedEmbeddedHelp();
+			}));
+			window.newfoldEmbeddedHelp.hasListeners = true;
+		}
 	}
 }; 

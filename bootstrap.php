@@ -179,7 +179,6 @@ if ( is_admin() ) {
 
 // Required files
 require BLUEHOST_PLUGIN_DIR . '/inc/Admin.php';
-require BLUEHOST_PLUGIN_DIR . '/inc/AdminBar.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/base.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/jetpack.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/partners.php';
@@ -194,5 +193,3 @@ require BLUEHOST_PLUGIN_DIR . '/inc/updates.php';
 if ( is_admin() ) {
 	new Admin();
 }
-
-AdminBar::init();
