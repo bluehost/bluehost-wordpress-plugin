@@ -400,12 +400,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "d8f8f8e504cb6dc66638c705a92ded37900fe03f"
+                "reference": "e6f9d73bbac4a1658499b600325a520521016671"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/d8f8f8e504cb6dc66638c705a92ded37900fe03f",
-                "reference": "d8f8f8e504cb6dc66638c705a92ded37900fe03f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/e6f9d73bbac4a1658499b600325a520521016671",
+                "reference": "e6f9d73bbac4a1658499b600325a520521016671",
                 "shasum": ""
             },
             "require": {
