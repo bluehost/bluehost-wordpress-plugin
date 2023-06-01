@@ -114,7 +114,7 @@ export const App = () => (
 		<Root context={ { isRtl: false } }>
 			<NotificationFeed>
 				<Router>
-					<div className="wppbh-app-container min-[783px]:yst-p-8 min-[783px]:yst-flex yst-gap-6 yst-max-w-full xl:yst-max-w-screen-xl 2xl:yst-max-w-screen-2xl yst-my-0 yst-mx-auto">
+					<div className="wppbh-app-container min-[783px]:yst-p-8 min-[783px]:yst-flex yst-gap-6 yst-max-w-full xl:yst-max-w-screen-xl 2xl:yst-max-w-screen-2xl yst-my-0">
 						<AppNav />
 						<AppBody />
 					</div>

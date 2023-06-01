@@ -29,7 +29,7 @@ final class Data {
 			'wpversion'    => $wp_version,
 			'admin'        => \admin_url(),
 			'siteurl'      => \get_site_url(),
-			'sitetitle'    => \get_bloginfo( 'name' ),
+			'sitetitle'    => htmlspecialchars_decode( \get_bloginfo( 'name' ) ),
 			'env'          => array(
 				'brand'    => get_option( 'mm_brand' ),
 				'isJarvis' => $bluehost_module_container->get('isJarvis'),
