@@ -120,6 +120,7 @@ const CloseCommentsDays = ({ setError, notify }) => {
 			id="close-comments-days-select"
 			label={__('Close comments after ', 'wp-plugin-bluehost') + '(days)'}
 			value={closeCommentsDays}
+			disabled={store.disableCommentsOldPosts?false:true}
 			selectedLabel={closeCommentsDays}
 			options={[
 				{ label: '1', value: '1' },
