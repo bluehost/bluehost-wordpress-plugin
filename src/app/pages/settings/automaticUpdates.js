@@ -6,6 +6,87 @@ import { Alert, ToggleField } from "@yoast/ui-library";
 import { SectionSettings } from "../../components/section";
 import { useNotification } from '../../components/notifications/feed';
 
+const AutomaticUpdatesAll = ({ setError, notify }) => {
+	const { store, setStore } = useContext(AppStore);
+	const [autoUpdatesAll, setAutoUpdatesAll] = useState(
+		store.autoUpdatesMajorCore &&
+		store.autoUpdatesPlugins &&
+		store.autoUpdatesThemes
+		? true
+		: false
+	);
+
+	const getAllNoticeTitle = () => {
+		return autoUpdatesAll
+			? __('Enabled All auto-updates', 'wp-plugin-bluehost')
+			: __('Disabled All auto-updates', 'wp-plugin-bluehost');
+	};
+	const getAllNoticeText = () => {
+		return autoUpdatesAll
+			? __('Everything will automatically update.', 'wp-plugin-bluehost')
+			: __('Custom auto-update settings.', 'wp-plugin-bluehost');
+	};
+
+	const toggleAutoUpdatesAll = () => {
+		if ( autoUpdatesAll ) { // is unchecking
+			// just uncheck this one
+			setAutoUpdatesAll(!autoUpdatesAll);
+		} else { // is checking
+			bluehostSettingsApiFetch(
+				{ 
+					autoUpdatesMajorCore: true,
+					autoUpdatesPlugins: true,
+					autoUpdatesThemes: true
+				}, 
+				setError, 
+				(response) => {
+					setAutoUpdatesAll(!autoUpdatesAll);
+				}
+			);
+		}
+	};
+
+	const notifySuccess = () => {
+		notify.push("everything-autoupdate-notice", {
+			title: getAllNoticeTitle(),
+			description: (
+				<span>
+					{getAllNoticeText()}
+				</span>
+			),
+			variant: "success",
+			autoDismiss: 5000,
+		});
+	};
+
+	useEffect( () => {
+		if ( store.autoUpdatesMajorCore && store.autoUpdatesPlugins && store.autoUpdatesThemes ) {
+			setAutoUpdatesAll( true );
+		} else {
+			setAutoUpdatesAll( false );
+		}
+	}, [ store.autoUpdatesMajorCore, store.autoUpdatesPlugins, store.autoUpdatesThemes ] );
+
+	useUpdateEffect(() => {
+		
+		setStore({
+			...store,
+			autoUpdatesAll,
+		});
+
+		notifySuccess();
+	}, [autoUpdatesAll]);
+
+	return (
+		<ToggleField
+			id="autoupdate-core-toggle"
+			label={__('Manage All Updates', 'wp-plugin-bluehost')}
+			checked={autoUpdatesAll}
+			onChange={toggleAutoUpdatesAll}
+		/>
+	);
+}
+
 const AutomaticUpdatesMajorCore = ({ setError, notify }) => {
 	const { store, setStore } = useContext(AppStore);
 	const [autoUpdatesMajorCore, setAutoUpdatesCore] = useState(
@@ -55,7 +136,8 @@ const AutomaticUpdatesMajorCore = ({ setError, notify }) => {
 		<ToggleField
 			id="autoupdate-core-toggle"
 			label={__('WordPress Core', 'wp-plugin-bluehost')}
-			checked={autoUpdatesMajorCore}
+			checked={autoUpdatesMajorCore || store.autoUpdatesAll}
+			disabled={store.autoUpdatesAll?true:false}
 			onChange={toggleAutoUpdatesMajorCore}
 		/>
 	);
@@ -110,7 +192,8 @@ const AutomaticUpdatesPlugins = ({ setError, notify }) => {
 		<ToggleField
 			id="autoupdate-plugins-toggle"
 			label={__('Plugins', 'wp-plugin-bluehost')}
-			checked={autoUpdatesPlugins}
+			checked={autoUpdatesPlugins || store.autoUpdatesAll}
+			disabled={store.autoUpdatesAll?true:false}
 			onChange={toggleAutoUpdatesPlugins}
 		/>
 	);
@@ -166,7 +249,8 @@ const AutomaticUpdatesThemes = ({ setError, notify }) => {
 		<ToggleField
 			id="autoupdate-themes-toggle"
 			label={__('Themes', 'wp-plugin-bluehost')}
-			checked={autoUpdatesThemes}
+			checked={autoUpdatesThemes || store.autoUpdatesAll}
+			disabled={store.autoUpdatesAll?true:false}
 			onChange={toggleAutoUpdatesThemes}
 		/>
 	);
@@ -183,6 +267,7 @@ const AutomaticUpdates = () => {
 			description={__('Keeping automatic updates on ensures timely security fixes and the latest features.', 'wp-plugin-bluehost')}
 		>
 			<div className="yst-flex yst-flex-col yst-gap-4">
+				<AutomaticUpdatesAll setError={setError} notify={notify} />
 				<AutomaticUpdatesMajorCore setError={setError} notify={notify} />
 				<AutomaticUpdatesPlugins setError={setError} notify={notify} />
 				<AutomaticUpdatesThemes setError={setError} notify={notify} />
