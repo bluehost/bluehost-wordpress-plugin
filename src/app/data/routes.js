@@ -23,7 +23,7 @@ const addPartialMatch = (prefix, path) =>
 
 const HelpCenterAI = (e) => {
 	e.preventDefault();
-	return alert('Open AI Help');
+	window.newfoldEmbeddedHelp.toggleNFDLaunchedEmbeddedHelp();
 }
 
 export const AppRoutes = () => {
@@ -62,7 +62,6 @@ const topRoutePaths = [
 	'/performance',
 	'/settings',
 	'/staging',
-	// '/example',
 ];
 const utilityRoutePaths = [ '/help' ];
 
@@ -140,12 +139,6 @@ export const routes = [
 		Component: Staging,
 		Icon: WrenchScrewdriverIcon,
 	},
-	// {
-	// 	name: '/example',
-	// 	title: __( 'Example', 'wp-plugin-bluehost' ),
-	// 	Component: Example,
-	// 	Icon: AdjustmentsHorizontalIcon,
-	// },
 	{
 		name: '/help',
 		title: __( 'Help', 'wp-plugin-bluehost' ),

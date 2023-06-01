@@ -61,6 +61,7 @@
     "newfold-labs/wp-module-customer-bluehost": "^1.6.0",
     "newfold-labs/wp-module-data": "^2.3.4",
     "newfold-labs/wp-module-ecommerce": "0.10.1-rc.2",
+    "newfold-labs/wp-module-help-center": "^1.0.0",
     "newfold-labs/wp-module-loader": "^1.0.10",
     "newfold-labs/wp-module-marketplace": "^1.5.1",
     "newfold-labs/wp-module-notifications": "^1.1.2",
