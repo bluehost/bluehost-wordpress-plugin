@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f791c6a9de140643984b1f7e038d383d",
+    "content-hash": "06bd5ef9f5dbddf0083503ca6b94088f",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -785,6 +785,56 @@
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
             "time": "2023-05-22T08:08:01+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-patterns",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-patterns.git",
+                "reference": "0c9dcea00678b4954949ebf9a2a08204cb58da58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/0c9dcea00678b4954949ebf9a2a08204cb58da58",
+                "reference": "0c9dcea00678b4954949ebf9a2a08204cb58da58",
+                "shasum": ""
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Patterns\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "scripts": {
+                "lint": [
+                    "vendor/bin/phpcs . --standard=Newfold"
+                ],
+                "clean": [
+                    "vendor/bin/phpcbf . --standard=Newfold"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Hristina Conjic",
+                    "email": "hristina.conjic@newfold.com"
+                }
+            ],
+            "description": "WordPress Cloud Patterns",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/0.1.0",
+                "issues": "https://github.com/newfold-labs/wp-module-patterns/issues"
+            },
+            "time": "2023-05-30T16:39:18+00:00"
         },
         {
             "name": "newfold-labs/wp-module-performance",
