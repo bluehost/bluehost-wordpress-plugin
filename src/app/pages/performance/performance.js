@@ -137,7 +137,7 @@ const ClearCache = ({ setError, notify }) => {
                 <Button
                     variant="secondary"
                     className="clear-cache-button"
-                    // disabled={cacheLevel > 0 ? false : true}
+                    disabled={store.cacheLevel > 0 ? false : true}
                     onClick={clearCache}
                 >
                     {__('Clear All Cache Now', 'wp-plugin-bluehost')}
