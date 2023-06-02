@@ -123,6 +123,7 @@ describe('Settings Page', function () {
 		cy.get('[data-id="autoupdate-core-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
 		cy.get('[data-id="autoupdate-plugins-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
 		cy.get('[data-id="autoupdate-themes-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.wait(5000); // let notifications clear out
 	});
 
 	it('Content Settings Work', () => {
