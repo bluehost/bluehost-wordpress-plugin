@@ -79,7 +79,7 @@ const AutomaticUpdatesAll = ({ setError, notify }) => {
 
 	return (
 		<ToggleField
-			id="autoupdate-core-toggle"
+			id="autoupdate-all-toggle"
 			label={__('Manage All Updates', 'wp-plugin-bluehost')}
 			checked={autoUpdatesAll}
 			onChange={toggleAutoUpdatesAll}
