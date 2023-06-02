@@ -239,3 +239,25 @@ body.toplevel_page_bluehost {
         }
     }
 }
+
+.newfold-notifications-wrapper {
+  
+    .newfold-notification {
+      max-width: 1600px;
+      margin: 0 auto .75rem;
+      transition: opacity .2s ease;
+  
+      &:first-of-type {
+        margin-top: 1.35rem;
+      }
+  
+      &.is-dismissed {
+        opacity: 0;
+      }
+    }
+    
+    .notice {
+      margin: 0;
+    }
+  
+   }

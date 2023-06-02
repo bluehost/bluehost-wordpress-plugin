@@ -26,6 +26,14 @@ const ContentRevisions = ({ setError, notify }) => {
 		);
 	};
 
+	const contentRevisionsDescriptionText = () => {
+		return (
+			__('Saving drafts and updating published content creates revisions. Make changes with confidence, knowing you can take ', 'wp-plugin-bluehost') +
+			contentRevisions +
+			_n(' step back.', ' steps back.', parseInt(contentRevisions), 'wp-plugin-bluehost')
+		);
+	};
+
 	const handleContentRevisionsChange = (value) => {
 		bluehostSettingsApiFetch({ contentRevisions: value }, setError, (response) => {
 			setNumContentRevisions(value);
@@ -58,11 +66,7 @@ const ContentRevisions = ({ setError, notify }) => {
 		<SelectField
 			id="content-revisions-select"
 			label={__('Number of revisions posts can save ', 'wp-plugin-bluehost')}
-			description={sprintf(
-				'Saving drafts and updating published content creates revisions. Make changes with confidence, knowing you can take %s steps back.',
-				contentRevisions,
-				'wp-plugin-bluehost'
-			)}
+			description={contentRevisionsDescriptionText()}
 			value={contentRevisions}
 			selectedLabel={contentRevisions}
 			options={[

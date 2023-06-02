@@ -123,7 +123,6 @@ describe('Settings Page', function () {
 		cy.get('[data-id="autoupdate-core-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
 		cy.get('[data-id="autoupdate-plugins-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
 		cy.get('[data-id="autoupdate-themes-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
-		cy.wait(5000); // let notifications clear out
 	});
 
 	it('Content Settings Work', () => {
@@ -135,8 +134,8 @@ describe('Settings Page', function () {
 			.find('li:first')
 			.click(); // 1
 		cy.wait(100);
-		cy.get('.yst-notifications')
-			.contains('span', 'Posts will save 1 revision')
+		cy.get('#content-revisions-select__description')
+			.contains('you can take 1 step back.')
 			.should('be.visible');
 		
 		cy.get('[data-id="content-revisions-select"]').click();
@@ -147,8 +146,8 @@ describe('Settings Page', function () {
 			.find('li:last')
 			.click(); // 40
 		cy.wait(100);
-		cy.get('.yst-notifications')
-			.contains('span', 'Posts will save 40 revisions')
+		cy.get('#content-revisions-select__description')
+			.contains('you can take 40 steps back.')
 			.should('be.visible');
 
 		cy.get('[data-id="content-revisions-select"]').click();
@@ -158,6 +157,9 @@ describe('Settings Page', function () {
 			.next('ul.yst-select__options')
 			.find('li:nth-child(2)')
 			.click(); // 5
+		cy.get('#content-revisions-select__description')
+			.contains('you can take 5 steps back.')
+			.should('be.visible');
 		
 		// Empty Trash Setting
 		cy.get('[data-id="empty-trash-select"]').click();
@@ -168,8 +170,8 @@ describe('Settings Page', function () {
 			.find('li:nth-child(2)')
 			.click(); // 2
 		cy.wait(100);
-		cy.get('.yst-notifications')
-			.contains('span', 'The trash will automatically empty every 2 weeks.')
+		cy.get('#empty-trash-select__description')
+			.contains('The trash will automatically empty every 2 weeks.')
 			.should('be.visible');
 		
 		cy.get('[data-id="empty-trash-select"]').click();
@@ -180,8 +182,8 @@ describe('Settings Page', function () {
 			.find('li:last')
 			.click(); // 4
 		cy.wait(100);
-		cy.get('.yst-notifications')
-			.contains('span', 'The trash will automatically empty every 4 weeks.')
+		cy.get('#empty-trash-select__description')
+			.contains('The trash will automatically empty every 4 weeks.')
 			.should('be.visible');
 	});
 
@@ -194,17 +196,14 @@ describe('Settings Page', function () {
 			.find('li:first')
 			.click(); // 10
 		cy.wait(100);
-		cy.get('.yst-notifications')
-			.contains('span', 'Posts will display 10 comments at a time')
+		cy.get('.wppbh-app-settings-comments')
+			.contains('label', 'Display 10 comments per page.')
 			.should('be.visible');
 		
 		cy.get('[data-id="disable-comments-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
 		cy.get('[data-id="close-comments-days-select"]').should('be.disabled');
 		cy.get('[data-id="disable-comments-toggle"]').click();
 		cy.wait(100);
-		cy.get('.yst-notifications')
-			.contains('p', 'Disabled old post comments')
-			.should('be.visible');
 
 		cy.get('[data-id="disable-comments-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
 		cy.get('[data-id="close-comments-days-select"]').should('not.be.disabled');
@@ -218,8 +217,8 @@ describe('Settings Page', function () {
 			.find('li:last')
 			.click(); // 100
 		cy.wait(100);
-		cy.get('.yst-notifications')
-			.contains('span', 'Comments on posts are disabled after 100 days.')
+		cy.get('.wppbh-app-settings-comments')
+			.contains('label', 'Close comments after 100 days.')
 			.should('be.visible');
 		
 		cy.get('[data-id="close-comments-days-select"]').click();
@@ -230,8 +229,8 @@ describe('Settings Page', function () {
 			.find('li:nth-child(6)')
 			.click(); // 14
 		cy.wait(100);
-		cy.get('.yst-notifications')
-			.contains('span', 'Comments on posts are disabled after 14 days.')
+		cy.get('.wppbh-app-settings-comments')
+			.contains('label', 'Close comments after 14 days.')
 			.should('be.visible');
 		
 		cy.get('[data-id="disable-comments-toggle"]').click();
