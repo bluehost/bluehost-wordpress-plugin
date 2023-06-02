@@ -22,7 +22,7 @@ const ContentRevisions = ({ setError, notify }) => {
 		return (
 			__('Posts will save  ', 'wp-plugin-bluehost') +
 			contentRevisions +
-			_n(' revision.', ' revisions.', contentRevisions, 'wp-plugin-bluehost')
+			_n(' revision.', ' revisions.', parseInt(contentRevisions), 'wp-plugin-bluehost')
 		);
 	};
 
@@ -95,7 +95,7 @@ const EmptyTrash = ({ setError, notify }) => {
 		return (
 			__('The trash will automatically empty every ', 'wp-plugin-bluehost') +
 			numTrashWeeks +
-			_n( ' week.', ' weeks.', numTrashWeeks, 'wp-plugin-bluehost' )
+			_n( ' week.', ' weeks.', parseInt(numTrashWeeks), 'wp-plugin-bluehost' )
 		);
 	};
 
@@ -135,7 +135,7 @@ const EmptyTrash = ({ setError, notify }) => {
 			description={
 			__('The trash will automatically empty every ', 'wp-plugin-bluehost') +
 			numTrashWeeks +
-			 _n( ' week.', ' weeks.', numTrashWeeks, 'wp-plugin-bluehost' )
+			 _n( ' week.', ' weeks.', parseInt(numTrashWeeks), 'wp-plugin-bluehost' )
 			}
 			value={emptyTrashDays}
 			selectedLabel={numTrashWeeks}

@@ -137,7 +137,7 @@ const AutomaticUpdatesMajorCore = ({ setError, notify }) => {
 			id="autoupdate-core-toggle"
 			label={__('WordPress Core', 'wp-plugin-bluehost')}
 			checked={autoUpdatesMajorCore || store.autoUpdatesAll}
-			disabled={store.autoUpdatesAll?true:false}
+			disabled={store.autoUpdatesAll}
 			onChange={toggleAutoUpdatesMajorCore}
 		/>
 	);
@@ -193,7 +193,7 @@ const AutomaticUpdatesPlugins = ({ setError, notify }) => {
 			id="autoupdate-plugins-toggle"
 			label={__('Plugins', 'wp-plugin-bluehost')}
 			checked={autoUpdatesPlugins || store.autoUpdatesAll}
-			disabled={store.autoUpdatesAll?true:false}
+			disabled={store.autoUpdatesAll}
 			onChange={toggleAutoUpdatesPlugins}
 		/>
 	);
@@ -250,7 +250,7 @@ const AutomaticUpdatesThemes = ({ setError, notify }) => {
 			id="autoupdate-themes-toggle"
 			label={__('Themes', 'wp-plugin-bluehost')}
 			checked={autoUpdatesThemes || store.autoUpdatesAll}
-			disabled={store.autoUpdatesAll?true:false}
+			disabled={store.autoUpdatesAll}
 			onChange={toggleAutoUpdatesThemes}
 		/>
 	);

@@ -171,6 +171,7 @@ class SettingsController extends \WP_REST_Controller {
 
 		$settings = array(
 			'comingSoon'              => ( 'true' === get_option( 'nfd_coming_soon', 'false' ) ),
+			'autoUpdatesAll'          => $major && $plugins && $themes,
 			'autoUpdatesMajorCore'    => $major,
 			'autoUpdatesMinorCore'    => $minor,
 			'autoUpdatesPlugins'      => $plugins,
