@@ -23,12 +23,12 @@ const Settings = () => {
                     <AutomaticUpdates />
                 </SectionContent>
 
-				<SectionContent separator={true} className={'wppbh-app-settings-comments'}>
-                    <CommentSettings />
+                <SectionContent separator={true} className={'wppbh-app-settings-content'}>
+                    <ContentSettings />
                 </SectionContent>
 
-                <SectionContent className={'wppbh-app-settings-content'}>
-                    <ContentSettings />
+				<SectionContent className={'wppbh-app-settings-comments'}>
+                    <CommentSettings />
                 </SectionContent>
 
             </SectionContainer>
