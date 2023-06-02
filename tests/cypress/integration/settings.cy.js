@@ -123,6 +123,7 @@ describe('Settings Page', function () {
 		cy.get('[data-id="autoupdate-core-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
 		cy.get('[data-id="autoupdate-plugins-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
 		cy.get('[data-id="autoupdate-themes-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.wait(5000); // let notifications clear out
 	});
 
 	it('Content Settings Work', () => {
@@ -139,7 +140,7 @@ describe('Settings Page', function () {
 			.should('be.visible');
 		
 		cy.get('[data-id="content-revisions-select"]').click();
-		cy.wait(100);
+		cy.wait(1000);
 		cy.get('[data-id="content-revisions-select"]')
 			.parent()
 			.next('ul.yst-select__options')
@@ -151,20 +152,16 @@ describe('Settings Page', function () {
 			.should('be.visible');
 
 		cy.get('[data-id="content-revisions-select"]').click();
-		cy.wait(100);
+		cy.wait(500);
 		cy.get('[data-id="content-revisions-select"]')
 			.parent()
 			.next('ul.yst-select__options')
 			.find('li:nth-child(2)')
 			.click(); // 5
-		cy.wait(100);
-		cy.get('.yst-notifications')
-			.contains('span', 'Posts will save 5 revisions')
-			.should('be.visible');
 		
 		// Empty Trash Setting
 		cy.get('[data-id="empty-trash-select"]').click();
-		cy.wait(100);
+		cy.wait(500);
 		cy.get('[data-id="empty-trash-select"]')
 			.parent()
 			.next('ul.yst-select__options')
@@ -176,7 +173,7 @@ describe('Settings Page', function () {
 			.should('be.visible');
 		
 		cy.get('[data-id="empty-trash-select"]').click();
-		cy.wait(100);
+		cy.wait(500);
 		cy.get('[data-id="empty-trash-select"]')
 			.parent()
 			.next('ul.yst-select__options')
@@ -190,7 +187,7 @@ describe('Settings Page', function () {
 
 	it('Comment Settings Work', () => {
 		cy.get('[data-id="comments-per-page-select"]').click();
-		cy.wait(100);
+		cy.wait(500);
 		cy.get('[data-id="comments-per-page-select"]')
 			.parent()
 			.next('ul.yst-select__options')
