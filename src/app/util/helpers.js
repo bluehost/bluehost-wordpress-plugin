@@ -1,5 +1,6 @@
 import { dispatch } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
+import { addQueryArgs } from '@wordpress/url';
 
 let lastNoticeId;
 const W_NAV = document.querySelector( '#toplevel_page_bluehost .wp-submenu' );
@@ -139,6 +140,24 @@ export const comingSoonAdminbarToggle = ( comingSoon ) => {
 		comingsoonadminbar.textContent = "Coming Soon";
 	}
 };
+
+/**
+ * Decorates an external link URL with UTM params.
+ *
+ * The utm_term, if passed, should be the link anchor text.
+ * The utm_content should be the unique identifier for the link.
+ * The utm_campaign is optional and reserved for special occasions.
+ *
+ * @param {string} url The original URL.
+ * @param {Object} params The URL parameters to add.
+ *
+ * @return {string} The new URL.
+ */
+export const addUtmParams = (url, params = {}) => {
+	params.utm_source = `wp-admin/admin.php?page=bluehost${window.location.hash}`;
+	params.utm_medium = 'bluehost_plugin';
+	return addQueryArgs(url, params);
+}
 
 /**
  * Get's Base Platform URL

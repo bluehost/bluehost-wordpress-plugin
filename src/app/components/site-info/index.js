@@ -1,7 +1,7 @@
 import { LockClosedIcon, LockOpenIcon } from "@heroicons/react/24/outline";
 import { Button } from "@yoast/ui-library";
 import { BluehostIcon, WordPressIcon } from "../icons";
-import { getPlatformBaseUrl } from "../../util/helpers";
+import { getPlatformBaseUrl, addUtmParams } from "../../util/helpers";
 
 export const SiteInfoBar = () => {
     const { siteurl, sitetitle } = window.WPPBH;
@@ -34,7 +34,7 @@ export const SiteInfoBar = () => {
                 <div className="yst-w-max yst-flex yst-items-center yst-flex-wrap yst-gap-3">
                     <Button 
                         as="a"
-                        href={getPlatformBaseUrl("/" + "web-hosting/cplogin")}
+                        href={addUtmParams( getPlatformBaseUrl("/" + "web-hosting/cplogin") )}
                         target="_blank"
                         variant="primary" 
                         className="yst-bg-[#383F4A] yst-text-tiny yst-w-full min-[400px]:yst-w-auto">
