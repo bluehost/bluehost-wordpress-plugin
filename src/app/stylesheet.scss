@@ -254,11 +254,6 @@ body.toplevel_page_bluehost {
       &.is-dismissed {
         opacity: 0;
       }
-  
-      @media screen and (max-width: $hd-breakpoint) {
-        margin-left: 1.15rem;
-        margin-right: 1.15rem;
-      }
     }
     
     .notice {
