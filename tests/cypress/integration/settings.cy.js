@@ -135,8 +135,8 @@ describe('Settings Page', function () {
 			.find('li:first')
 			.click(); // 1
 		cy.wait(100);
-		cy.get('.yst-notifications')
-			.contains('span', 'Posts will save 1 revision')
+		cy.get('#content-revisions-select__description')
+			.contains('you can take 1 step back.')
 			.should('be.visible');
 		
 		cy.get('[data-id="content-revisions-select"]').click();
@@ -147,8 +147,8 @@ describe('Settings Page', function () {
 			.find('li:last')
 			.click(); // 40
 		cy.wait(100);
-		cy.get('.yst-notifications')
-			.contains('span', 'Posts will save 40 revisions')
+		cy.get('#content-revisions-select__description')
+			.contains('you can take 40 steps back.')
 			.should('be.visible');
 
 		cy.get('[data-id="content-revisions-select"]').click();
@@ -158,6 +158,9 @@ describe('Settings Page', function () {
 			.next('ul.yst-select__options')
 			.find('li:nth-child(2)')
 			.click(); // 5
+		cy.get('#content-revisions-select__description')
+			.contains('you can take 5 steps back.')
+			.should('be.visible');
 		
 		// Empty Trash Setting
 		cy.get('[data-id="empty-trash-select"]').click();
@@ -180,7 +183,6 @@ describe('Settings Page', function () {
 			.find('li:last')
 			.click(); // 4
 		cy.wait(100);
-		
 		cy.get('#empty-trash-select__description')
 			.contains('The trash will automatically empty every 4 weeks.')
 			.should('be.visible');
