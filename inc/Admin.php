@@ -13,13 +13,20 @@ namespace Bluehost;
 final class Admin {
 
 	/**
+	 * Page name.
+	 *
+	 * @var string
+	 */
+	protected $page_hook = 'bluehost';
+
+	/**
 	 * Register functionality using WordPress Actions.
 	 */
 	public function __construct() {
 		/* Add Page to WordPress Admin Menu. */
 		\add_action( 'admin_menu', array( __CLASS__, 'page' ) );
 		/* Load Page Scripts & Styles. */
-		\add_action( 'load-toplevel_page_bluehost', array( __CLASS__, 'assets' ) );
+		\add_action( 'admin_enqueue_scripts', array( __CLASS__, 'assets' ) );
 		/* Load i18 files */
 		\add_action( 'init', array( __CLASS__, 'load_text_domain' ), 100 );
 		/* Add Links to WordPress Plugins list item. */
@@ -126,35 +133,55 @@ final class Admin {
 	 *
 	 * @return void
 	 */
-	public static function assets() {
-		$asset_file = BLUEHOST_BUILD_DIR . '/index.asset.php';
+	public static function assets( $hook ) {
 
-		if ( is_readable( $asset_file ) ) {
-			$asset = include_once $asset_file;
-		} else {
-			return;
+		// These assets will be loaded in the bluehost app space only
+		if ( false !== stripos( $hook, $page_hook ) ) {
+
+			$asset_file = BLUEHOST_BUILD_DIR . '/index.asset.php';
+
+			if ( is_readable( $asset_file ) ) {
+				$asset = include_once $asset_file;
+			} else {
+				return;
+			}
+
+			\wp_register_script(
+				'bluehost-script',
+				BLUEHOST_BUILD_URL . '/index.js',
+				array_merge( $asset['dependencies'] ),
+				$asset['version'],
+				true
+			);
+
+			\wp_set_script_translations(
+				'bluehost-script',
+				'wp-plugin-bluehost',
+				BLUEHOST_PLUGIN_DIR . '/languages'
+			);
+
+			include BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
+			\wp_add_inline_script(
+				'bluehost-script',
+				'var WPPBH =' . \wp_json_encode( Data::runtime() ) . ';',
+				'before'
+			);
+
+			\wp_register_style(
+				'bluehost-style',
+				BLUEHOST_BUILD_URL . '/index.css',
+				array( 'wp-components' ),
+				$asset['version']
+			);
+
+			$screen = get_current_screen();
+			if ( false !== strpos( $screen->id, 'bluehost' ) ) {
+				\wp_enqueue_script( 'bluehost-script' );
+				\wp_enqueue_style( 'bluehost-style' );
+			}
 		}
 
-		\wp_register_script(
-			'bluehost-script',
-			BLUEHOST_BUILD_URL . '/index.js',
-			array_merge( $asset['dependencies'] ),
-			$asset['version'],
-			true
-		);
-
-		\wp_set_script_translations(
-			'bluehost-script',
-			'wp-plugin-bluehost',
-			BLUEHOST_PLUGIN_DIR . '/languages'
-		);
-
-		include BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
-		\wp_add_inline_script(
-			'bluehost-script',
-			'var WPPBH =' . \wp_json_encode( Data::runtime() ) . ';',
-			'before'
-		);
+		// These assets are loaded in all wp-admin
 		\wp_register_script( 'newfold-plugin', null, null, BLUEHOST_PLUGIN_VERSION, true );
 		\wp_localize_script(
 			'newfold-plugin',
@@ -164,20 +191,7 @@ final class Admin {
 				'restApiNonce' => \wp_create_nonce( 'wp_rest' ),
 			)
 		);
-
-		\wp_register_style(
-			'bluehost-style',
-			BLUEHOST_BUILD_URL . '/index.css',
-			array( 'wp-components' ),
-			$asset['version']
-		);
-
-		$screen = get_current_screen();
-		if ( false !== strpos( $screen->id, 'bluehost' ) ) {
-			\wp_enqueue_script( 'bluehost-script' );
-			\wp_enqueue_script( 'newfold-plugin' );
-			\wp_enqueue_style( 'bluehost-style' );
-		}
+		\wp_enqueue_script( 'newfold-plugin' );
 	}
 
 	/**

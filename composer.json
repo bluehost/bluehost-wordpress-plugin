@@ -66,6 +66,7 @@
     "newfold-labs/wp-module-marketplace": "^1.5.1",
     "newfold-labs/wp-module-notifications": "^1.1.2",
     "newfold-labs/wp-module-onboarding": "^1.7.0",
+    "newfold-labs/wp-module-patterns": "0.1.0",
     "newfold-labs/wp-module-performance": "^1.0.1",
     "newfold-labs/wp-module-secure-passwords": "^1.1",
     "newfold-labs/wp-module-sso": "^1.0.4",

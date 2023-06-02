@@ -83,7 +83,16 @@ const CloseCommentsDays = ({ setError, notify }) => {
 		return (
 			__('Comments on posts are disabled after ', 'wp-plugin-bluehost') +
 			closeCommentsDays +
-			_n(' day.', ' days.', closeCommentsDays, 'wp-plugin-bluehost')
+			_n(' day.', ' days.', parseInt(closeCommentsDays), 'wp-plugin-bluehost')
+		);
+	};
+
+	const closeCommentsDaysLabelText = () => {
+		//`Close comments after ${closeCommentsDays} days.`
+		return (
+			__('Close comments after ', 'wp-plugin-bluehost') +
+			closeCommentsDays +
+			_n(' day.', ' days.', parseInt(closeCommentsDays), 'wp-plugin-bluehost')
 		);
 	};
 
@@ -118,7 +127,7 @@ const CloseCommentsDays = ({ setError, notify }) => {
 	return (
 		<SelectField
 			id="close-comments-days-select"
-			label={__('Close comments after ', 'wp-plugin-bluehost') + '(days)'}
+			label={closeCommentsDaysLabelText}
 			value={closeCommentsDays}
 			disabled={store.disableCommentsOldPosts?false:true}
 			selectedLabel={closeCommentsDays}
@@ -159,7 +168,7 @@ const CommentsPerPage = ({ setError, notify }) => {
 			_n(
 				' comment at a time.',
 				' comments at a time.',
-				commentsPerPage,
+				parseInt(commentsPerPage),
 				'wp-plugin-bluehost'
 			)
 		);
@@ -196,8 +205,8 @@ const CommentsPerPage = ({ setError, notify }) => {
 	return (
 		<SelectField
 			id="comments-per-page-select"
-			label={__('Display ', 'wp-plugin-bluehost') +
-				__('comments per page.', 'wp-plugin-bluehost')}
+			label={__('Display ', 'wp-plugin-bluehost') + commentsPerPage +
+				__(' comments per page.', 'wp-plugin-bluehost')}
 			value={commentsPerPage}
 			selectedLabel={commentsPerPage}
 			options={[

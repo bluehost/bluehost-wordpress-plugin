@@ -22,7 +22,15 @@ const ContentRevisions = ({ setError, notify }) => {
 		return (
 			__('Posts will save  ', 'wp-plugin-bluehost') +
 			contentRevisions +
-			_n(' revision.', ' revisions.', contentRevisions, 'wp-plugin-bluehost')
+			_n(' revision.', ' revisions.', parseInt(contentRevisions), 'wp-plugin-bluehost')
+		);
+	};
+
+	const contentRevisionsDescriptionText = () => {
+		return (
+			__('Saving drafts and updating published content creates revisions. Make changes with confidence, knowing you can take ', 'wp-plugin-bluehost') +
+			contentRevisions +
+			_n(' step back.', ' steps back.', parseInt(contentRevisions), 'wp-plugin-bluehost')
 		);
 	};
 
@@ -58,11 +66,7 @@ const ContentRevisions = ({ setError, notify }) => {
 		<SelectField
 			id="content-revisions-select"
 			label={__('Number of revisions posts can save ', 'wp-plugin-bluehost')}
-			description={sprintf(
-				'Saving drafts and updating published content creates revisions. Make changes with confidence, knowing you can take %s steps back.',
-				contentRevisions,
-				'wp-plugin-bluehost'
-			)}
+			description={contentRevisionsDescriptionText()}
 			value={contentRevisions}
 			selectedLabel={contentRevisions}
 			options={[
@@ -95,7 +99,7 @@ const EmptyTrash = ({ setError, notify }) => {
 		return (
 			__('The trash will automatically empty every ', 'wp-plugin-bluehost') +
 			numTrashWeeks +
-			_n( ' week.', ' weeks.', numTrashWeeks, 'wp-plugin-bluehost' )
+			_n( ' week.', ' weeks.', parseInt(numTrashWeeks), 'wp-plugin-bluehost' )
 		);
 	};
 
@@ -135,7 +139,7 @@ const EmptyTrash = ({ setError, notify }) => {
 			description={
 			__('The trash will automatically empty every ', 'wp-plugin-bluehost') +
 			numTrashWeeks +
-			 _n( ' week.', ' weeks.', numTrashWeeks, 'wp-plugin-bluehost' )
+			 _n( ' week.', ' weeks.', parseInt(numTrashWeeks), 'wp-plugin-bluehost' )
 			}
 			value={emptyTrashDays}
 			selectedLabel={numTrashWeeks}
