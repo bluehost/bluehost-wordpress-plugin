@@ -45,7 +45,6 @@ module.exports = defineConfig({
 					config.env.wpSemverVersion = config.env.wpVersion;
 				}
 			}
-
 			// Exclude onboarding tests for WordPress lower than 6.1
 			if (semver.satisfies(config.env.wpSemverVersion, '<6.1.0')) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
@@ -56,8 +55,16 @@ module.exports = defineConfig({
 				);
 			}
 
+			// Ensure that we have a semantically correct PHP version number for comparisons.
+			if (config.env.phpVersion) {
+				if (config.env.phpVersion.split('.').length !== 3) {
+					config.env.phpSemverVersion = `${config.env.phpVersion}.0`;
+				} else {
+					config.env.phpSemverVersion = config.env.phpVersion;
+				}
+			}
 			// Exclude onboarding/ecommerce tests for PHP lower than 7.3 (7.1 and 7.2)
-			if (semver.satisfies(config.env.phpVersion, '<7.3.0')) {
+			if (semver.satisfies(config.env.phpSemverVersion, '<7.3.0')) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
 					[
 						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/steps/ecommerce/**",
