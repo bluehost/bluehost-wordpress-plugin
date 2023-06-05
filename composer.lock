@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0a31d7520d4a842e8b71a4681c739aa",
+    "content-hash": "87e0f99d11c1eaeb03eab8985c619f7f",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -499,16 +499,16 @@
         },
         {
             "name": "newfold-labs/wp-module-help-center",
-            "version": "1.0.1",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-help-center.git",
-                "reference": "3555510f1dc20833a586859458dd76964ccebefb"
+                "reference": "682b0dbff6a987bfb5ce9dfbac48a6d382f051d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/3555510f1dc20833a586859458dd76964ccebefb",
-                "reference": "3555510f1dc20833a586859458dd76964ccebefb",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/682b0dbff6a987bfb5ce9dfbac48a6d382f051d8",
+                "reference": "682b0dbff6a987bfb5ce9dfbac48a6d382f051d8",
                 "shasum": ""
             },
             "require": {
@@ -538,10 +538,10 @@
             ],
             "description": "HelpCenter",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/1.0.1",
+                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/1.0.3",
                 "issues": "https://github.com/newfold-labs/wp-module-help-center/issues"
             },
-            "time": "2023-06-01T18:39:47+00:00"
+            "time": "2023-06-05T17:44:54+00:00"
         },
         {
             "name": "newfold-labs/wp-module-installer",
