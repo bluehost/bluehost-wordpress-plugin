@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06bd5ef9f5dbddf0083503ca6b94088f",
+    "content-hash": "c0a31d7520d4a842e8b71a4681c739aa",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -441,20 +441,20 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v0.10.1-rc-2",
+            "version": "v1.0.0-rc-1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "d8f8f8e504cb6dc66638c705a92ded37900fe03f"
+                "reference": "8f72cde095cac902dc0a028606792ba82ac002bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/d8f8f8e504cb6dc66638c705a92ded37900fe03f",
-                "reference": "d8f8f8e504cb6dc66638c705a92ded37900fe03f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/8f72cde095cac902dc0a028606792ba82ac002bd",
+                "reference": "8f72cde095cac902dc0a028606792ba82ac002bd",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-installer": "0.0.2"
+                "newfold-labs/wp-module-installer": "1.0.0"
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "@stable",
@@ -492,10 +492,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.10.1-rc-2",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.0.0-rc-1",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-05-31T18:20:30+00:00"
+            "time": "2023-06-05T14:18:24+00:00"
         },
         {
             "name": "newfold-labs/wp-module-help-center",
@@ -545,17 +545,20 @@
         },
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "0.0.2",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "0c2998a51826efa3c0a7bbaf798b5ef18a6080f9"
+                "reference": "5896e00fc6c6d830d3e5e30c03a780a46f7fb448"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/0c2998a51826efa3c0a7bbaf798b5ef18a6080f9",
-                "reference": "0c2998a51826efa3c0a7bbaf798b5ef18a6080f9",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/5896e00fc6c6d830d3e5e30c03a780a46f7fb448",
+                "reference": "5896e00fc6c6d830d3e5e30c03a780a46f7fb448",
                 "shasum": ""
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
             },
             "type": "library",
             "autoload": {
@@ -577,10 +580,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/0.0.2",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.0.0",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2023-05-30T15:25:40+00:00"
+            "time": "2023-06-04T10:11:09+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -732,20 +735,21 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "1d1006c0d69512051780b8331796fb977a0cd289"
+                "reference": "151ccba87ba7617e9e20a92ff20f72ebef7f46c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/1d1006c0d69512051780b8331796fb977a0cd289",
-                "reference": "1d1006c0d69512051780b8331796fb977a0cd289",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/151ccba87ba7617e9e20a92ff20f72ebef7f46c6",
+                "reference": "151ccba87ba7617e9e20a92ff20f72ebef7f46c6",
                 "shasum": ""
             },
             "require": {
                 "mustache/mustache": "~2.5",
+                "newfold-labs/wp-module-installer": "^1.0.0",
                 "wp-cli/wp-config-transformer": "~1.3.0"
             },
             "require-dev": {
@@ -781,10 +785,10 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.7.0",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.8.0",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2023-05-22T08:08:01+00:00"
+            "time": "2023-06-05T10:18:00+00:00"
         },
         {
             "name": "newfold-labs/wp-module-patterns",
@@ -1979,87 +1983,6 @@
             "time": "2022-10-24T09:00:36+00:00"
         },
         {
-            "name": "rmccue/requests",
-            "version": "v2.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WordPress/Requests.git",
-                "reference": "7d0f8394ea7846a7086978318c306123118445dc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/Requests/zipball/7d0f8394ea7846a7086978318c306123118445dc",
-                "reference": "7d0f8394ea7846a7086978318c306123118445dc",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-                "php-parallel-lint/php-console-highlighter": "^0.5.0",
-                "php-parallel-lint/php-parallel-lint": "^1.3.1",
-                "phpcompatibility/php-compatibility": "^9.0",
-                "requests/test-server": "dev-main",
-                "roave/security-advisories": "dev-latest",
-                "squizlabs/php_codesniffer": "^3.6",
-                "wp-coding-standards/wpcs": "^2.0",
-                "yoast/phpunit-polyfills": "^1.0.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "library/Deprecated.php"
-                ],
-                "psr-4": {
-                    "WpOrg\\Requests\\": "src/"
-                },
-                "classmap": [
-                    "library/Requests.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "ISC"
-            ],
-            "authors": [
-                {
-                    "name": "Ryan McCue",
-                    "homepage": "https://rmccue.io/"
-                },
-                {
-                    "name": "Alain Schlesser",
-                    "homepage": "https://github.com/schlessera"
-                },
-                {
-                    "name": "Juliette Reinders Folmer",
-                    "homepage": "https://github.com/jrfnl"
-                },
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/WordPress/Requests/graphs/contributors"
-                }
-            ],
-            "description": "A HTTP library written in PHP, for human beings.",
-            "homepage": "https://requests.ryanmccue.info/",
-            "keywords": [
-                "curl",
-                "fsockopen",
-                "http",
-                "idna",
-                "ipv6",
-                "iri",
-                "sockets"
-            ],
-            "support": {
-                "docs": "https://requests.ryanmccue.info/",
-                "issues": "https://github.com/WordPress/Requests/issues",
-                "source": "https://github.com/WordPress/Requests"
-            },
-            "time": "2023-04-04T09:01:49+00:00"
-        },
-        {
             "name": "squizlabs/php_codesniffer",
             "version": "3.7.2",
             "source": {
@@ -2352,23 +2275,22 @@
         },
         {
             "name": "wp-cli/wp-cli",
-            "version": "v2.8.0",
+            "version": "v2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/wp-cli.git",
-                "reference": "acfc0c6cd4fc6a14e034b06afc4a0b37ebf9dcf7"
+                "reference": "5dd2340b9a01c3cfdbaf5e93a140759fdd190eee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/acfc0c6cd4fc6a14e034b06afc4a0b37ebf9dcf7",
-                "reference": "acfc0c6cd4fc6a14e034b06afc4a0b37ebf9dcf7",
+                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/5dd2340b9a01c3cfdbaf5e93a140759fdd190eee",
+                "reference": "5dd2340b9a01c3cfdbaf5e93a140759fdd190eee",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "mustache/mustache": "^2.14.1",
                 "php": "^5.6 || ^7.0 || ^8.0",
-                "rmccue/requests": "^2",
                 "symfony/finder": ">2.7",
                 "wp-cli/mustangostang-spyc": "^0.6.3",
                 "wp-cli/php-cli-tools": "~0.11.2"
@@ -2392,7 +2314,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.8.x-dev"
+                    "dev-main": "2.9.x-dev"
                 }
             },
             "autoload": {
@@ -2419,7 +2341,7 @@
                 "issues": "https://github.com/wp-cli/wp-cli/issues",
                 "source": "https://github.com/wp-cli/wp-cli"
             },
-            "time": "2023-05-31T16:51:26+00:00"
+            "time": "2023-06-05T06:55:55+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
