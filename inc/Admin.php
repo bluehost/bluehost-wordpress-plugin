@@ -13,13 +13,6 @@ namespace Bluehost;
 final class Admin {
 
 	/**
-	 * Page name.
-	 *
-	 * @var string
-	 */
-	protected $page_hook = 'bluehost';
-
-	/**
 	 * Register functionality using WordPress Actions.
 	 */
 	public function __construct() {
@@ -136,7 +129,7 @@ final class Admin {
 	public static function assets( $hook ) {
 
 		// These assets will be loaded in the bluehost app space only
-		if ( false !== stripos( $hook, $page_hook ) ) {
+		if ( false !== stripos( $hook, 'bluehost' ) ) {
 
 			$asset_file = BLUEHOST_BUILD_DIR . '/index.asset.php';
 
