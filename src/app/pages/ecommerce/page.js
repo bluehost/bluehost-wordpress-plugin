@@ -9,7 +9,7 @@ import "./styles.scss";
 
 const ECommerce = () => {
   const { store, setStore } = useContext(AppStore);
-  let params = useSearchParams();
+  let [params] = useSearchParams();
   let location = useLocation();
   let navigate = useNavigate();
   let notify = useNotification();
