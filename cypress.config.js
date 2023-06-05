@@ -60,7 +60,7 @@ module.exports = defineConfig({
 			if (semver.satisfies(config.env.phpVersion, '<7.3.0')) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
 					[
-						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/ecommerce/**",
+						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/steps/ecommerce/**",
 					]
 				);
 			}
