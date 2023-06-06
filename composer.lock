@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87e0f99d11c1eaeb03eab8985c619f7f",
+    "content-hash": "309c5ad869602ebc11b8d41030303a0d",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -441,16 +441,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.0.0-rc-1",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "8f72cde095cac902dc0a028606792ba82ac002bd"
+                "reference": "1b727c3017f1f62f2b50c26b1ba36fa25ba93e38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/8f72cde095cac902dc0a028606792ba82ac002bd",
-                "reference": "8f72cde095cac902dc0a028606792ba82ac002bd",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/1b727c3017f1f62f2b50c26b1ba36fa25ba93e38",
+                "reference": "1b727c3017f1f62f2b50c26b1ba36fa25ba93e38",
                 "shasum": ""
             },
             "require": {
@@ -492,10 +492,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.0.0-rc-1",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.0.0",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-06-05T14:18:24+00:00"
+            "time": "2023-06-06T16:25:23+00:00"
         },
         {
             "name": "newfold-labs/wp-module-help-center",
@@ -2452,9 +2452,7 @@
         }
     ],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "newfold-labs/wp-module-ecommerce": 5
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
