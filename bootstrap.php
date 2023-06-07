@@ -145,7 +145,7 @@ $bluehost_module_container->set(
 setContainer( $bluehost_module_container );
 
 // Set up the updater endpoint and map values
-$updateurl     = 'https://hiive.cloud/workers/release-api/plugins/newfold-labs/wp-plugin-bluehost'; // Custom API GET endpoint
+$updateurl     = 'https://hiive.cloud/workers/release-api/plugins/bluehost/bluehost-wordpress-plugin'; // Custom API GET endpoint
 $pluginUpdater = new PluginUpdater( BLUEHOST_PLUGIN_FILE, $updateurl );
 $pluginUpdater->setDataMap(
 	array(
