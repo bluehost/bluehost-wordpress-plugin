@@ -166,16 +166,16 @@
         },
         {
             "name": "newfold-labs/wp-module-business-reviews",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-business-reviews.git",
-                "reference": "4fedf784d4f53240773127dc13d1e8690498722f"
+                "reference": "b5319eeef7ec72ecceb857f0ae8c6ae61ffa8027"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-business-reviews/zipball/4fedf784d4f53240773127dc13d1e8690498722f",
-                "reference": "4fedf784d4f53240773127dc13d1e8690498722f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-business-reviews/zipball/b5319eeef7ec72ecceb857f0ae8c6ae61ffa8027",
+                "reference": "b5319eeef7ec72ecceb857f0ae8c6ae61ffa8027",
                 "shasum": ""
             },
             "type": "library",
@@ -195,9 +195,9 @@
             ],
             "description": "Newfold Bluehost Business Reviews Integration",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-business-reviews/tree/1.1.0"
+                "source": "https://github.com/newfold-labs/wp-module-business-reviews/tree/1.1.1"
             },
-            "time": "2022-09-30T20:05:07+00:00"
+            "time": "2023-06-06T17:53:42+00:00"
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
