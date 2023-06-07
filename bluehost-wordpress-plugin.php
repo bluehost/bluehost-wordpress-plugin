@@ -39,6 +39,15 @@ if ( ! defined( 'NFD_HIIVE_URL' ) ) {
 	define( 'NFD_HIIVE_URL', 'https://hiive.cloud/api' );
 }
 
+if ( defined( 'BURST_SAFETY_MODE' ) && BURST_SAFETY_MODE ) {
+
+	// Load alternate experience
+	require __DIR__ . '/inc/alt-experience/init.php';
+
+	// Short-circuit all plugin functionality
+	return;
+}
+
 define( 'BLUEHOST_BUILD_DIR', BLUEHOST_PLUGIN_DIR . 'build/' . BLUEHOST_PLUGIN_VERSION );
 define( 'BLUEHOST_BUILD_URL', BLUEHOST_PLUGIN_URL . 'build/' . BLUEHOST_PLUGIN_VERSION );
 
