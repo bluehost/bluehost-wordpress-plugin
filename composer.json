@@ -1,5 +1,5 @@
 {
-  "name": "newfold-labs/wp-plugin-bluehost",
+  "name": "bluehost/bluehost-wordpress-plugin",
   "description": "WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
   "type": "wordpress-plugin",
   "license": [
