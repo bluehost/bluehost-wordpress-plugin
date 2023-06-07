@@ -58,8 +58,8 @@ if ( 'plugins.php' === $pagenow ) {
 
 	$plugin_check = new Plugin_PHP_Compat_Check( __FILE__ );
 
-	$plugin_check->min_php_version = '5.3';
-	$plugin_check->min_wp_version  = '4.7';
+	$plugin_check->min_php_version = '7.1';
+	$plugin_check->min_wp_version  = '6.0';
 
 	$plugin_check->check_plugin_requirements();
 }
