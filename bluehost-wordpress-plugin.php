@@ -39,6 +39,15 @@ if ( ! defined( 'NFD_HIIVE_URL' ) ) {
 	define( 'NFD_HIIVE_URL', 'https://hiive.cloud/api' );
 }
 
+if ( defined( 'BURST_SAFETY_MODE' ) && BURST_SAFETY_MODE ) {
+
+	// Load alternate experience
+	require __DIR__ . '/inc/alt-experience/init.php';
+
+	// Short-circuit all plugin functionality
+	return;
+}
+
 define( 'BLUEHOST_BUILD_DIR', BLUEHOST_PLUGIN_DIR . 'build/' . BLUEHOST_PLUGIN_VERSION );
 define( 'BLUEHOST_BUILD_URL', BLUEHOST_PLUGIN_URL . 'build/' . BLUEHOST_PLUGIN_VERSION );
 
@@ -49,8 +58,8 @@ if ( 'plugins.php' === $pagenow ) {
 
 	$plugin_check = new Plugin_PHP_Compat_Check( __FILE__ );
 
-	$plugin_check->min_php_version = '5.3';
-	$plugin_check->min_wp_version  = '4.7';
+	$plugin_check->min_php_version = '7.1';
+	$plugin_check->min_wp_version  = '6.0';
 
 	$plugin_check->check_plugin_requirements();
 }
