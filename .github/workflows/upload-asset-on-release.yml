@@ -21,6 +21,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Validate version number
+        if: ${{ (github.repository == 'bluehost/bluehost-wordpress-plugin') && (github.event.release.prerelease == false) }}
+        run: |
+          taggedVersion=${{ env.VERSION }}
+          pluginHeaderVersion=`grep "Version:" bluehost-wordpress-plugin.php | grep -Eo "[0-9\.]*"`
+          pluginConstantVersion=`grep "'BLUEHOST_PLUGIN_VERSION'" bluehost-wordpress-plugin.php | grep -Eo "[0-9\.]*"`
+          pluginPackageVersion=`grep "version" package.json | grep -Eo "[0-9\.]*"`
+          echo "Tagged version: $taggedVersion"
+          echo "Plugin header version: $pluginHeaderVersion"
+          echo "Plugin constant version: $pluginConstantVersion"
+          echo "Plugin package version: $pluginPackageVersion"
+          [[ "$taggedVersion" == "$pluginHeaderVersion" ]] || exit 1
+          [[ "$taggedVersion" == "$pluginConstantVersion" ]] || exit 1
+          [[ "$taggedVersion" == "$pluginPackageVersion" ]] || exit 1
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
