@@ -3,7 +3,7 @@
 describe( 'Exit to WordPress', function () {
 	before( () => {
 		cy.visit(
-			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info'
+			'wp-admin/?page=nfd-onboarding#/wp-setup/step/basic-info'
 		);
 	} );
 

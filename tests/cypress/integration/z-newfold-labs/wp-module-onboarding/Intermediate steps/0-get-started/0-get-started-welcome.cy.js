@@ -1,17 +1,17 @@
 // <reference types="Cypress" />
-import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
-import { CheckCardHeadingSubheading } from '../wp-module-support/header.cy';
+import { CheckDrawerDisabled } from '../../wp-module-support/drawer.cy';
+import { CheckCardHeadingSubheading } from '../../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
 	CheckIllustrationPanel,
 	CheckInfoPanel,
 	CheckIntroPanel,
-} from '../wp-module-support/sidebar.cy';
+} from '../../wp-module-support/sidebar.cy';
 
 describe( 'Get Started Welcome Page', function () {
 	before( () => {
 		cy.visit(
-			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/welcome'
+			'wp-admin/?page=nfd-onboarding#/wp-setup/step/get-started/welcome'
 		);
 	} );
 

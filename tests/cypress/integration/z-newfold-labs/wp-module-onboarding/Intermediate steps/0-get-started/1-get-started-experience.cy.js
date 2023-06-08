@@ -1,12 +1,12 @@
 // <reference types="Cypress" />
-import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
-import { CheckCardHeadingSubheading } from '../wp-module-support/header.cy';
+import { CheckDrawerDisabled } from '../../wp-module-support/drawer.cy';
+import { CheckCardHeadingSubheading } from '../../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
 	CheckIllustrationPanel,
 	CheckInfoPanel,
 	CheckIntroPanel,
-} from '../wp-module-support/sidebar.cy';
+} from '../../wp-module-support/sidebar.cy';
 
 describe( 'Start Setup WP Experience Page', function () {
 	before( () => {
@@ -14,7 +14,7 @@ describe( 'Start Setup WP Experience Page', function () {
 			'npx wp-env run cli wp option delete nfd_module_onboarding_flow'
 		);
 		cy.visit(
-			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/experience'
+			'wp-admin/?page=nfd-onboarding#/wp-setup/step/get-started/experience'
 		);
 	} );
 
