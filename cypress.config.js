@@ -60,7 +60,7 @@ module.exports = defineConfig({
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
 					[
 						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/**",
-						"tests/cypress/integration/z-onboarding-phase-2-rudimentary.cy.js"
+						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/Last step/z-onboarding-phase-2-rudimentary.cy.js"
 					]
 				);
 			}
@@ -72,7 +72,7 @@ module.exports = defineConfig({
 			if (semver.satisfies(config.env.phpSemverVersion, '<7.3.0')) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
 					[
-						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/steps/ecommerce/**",
+						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/Intermediate steps/2-ecommerce/**",
 					]
 				);
 			}
@@ -84,7 +84,7 @@ module.exports = defineConfig({
 		supportFile: 'tests/cypress/support/index.js',
 		testIsolation: false,
 		excludeSpecPattern: [
-			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/steps/design/**",
+			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/Intermediate steps/4-design/**",
 			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/wp-module-support/"
 		]
 	},
