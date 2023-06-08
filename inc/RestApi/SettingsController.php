@@ -86,7 +86,7 @@ class SettingsController extends \WP_REST_Controller {
 					case 'autoUpdatesPlugins':
 						// Keep the WordPress Core setting in sync.
 						if ( $new_value ) {
-							bh_sync_plugin_update_settings();
+							\Bluehost\sync_plugin_update_settings();
 						}
 
 						$new_value = ( $new_value ) ? 'true' : 'false';
@@ -95,7 +95,7 @@ class SettingsController extends \WP_REST_Controller {
 					case 'autoUpdatesThemes':
 						// Keep the WordPress Core setting in sync.
 						if ( $new_value ) {
-							bh_sync_theme_update_settings();
+							\Bluehost\sync_theme_update_settings();
 						}
 
 						$new_value = ( $new_value ) ? 'true' : 'false';
@@ -106,6 +106,7 @@ class SettingsController extends \WP_REST_Controller {
 						update_option( 'auto_update_translation', $new_value );
 						break;
 					case 'disableCommentsOldPosts':
+						$new_value = ( $new_value ) ? 'true' : 'false';
 						update_option( 'close_comments_for_old_posts', $new_value );
 						break;
 					case 'closeCommentsDays':
@@ -115,15 +116,13 @@ class SettingsController extends \WP_REST_Controller {
 						update_option( 'comments_per_page', $new_value );
 						break;
 					case 'contentRevisions':
-						$revisions = intval( $new_value );
-						exec( "wp config set WP_POST_REVISIONS $revisions --type=constant --raw" ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.system_calls_exec
+						update_option( 'nfd_wp_post_revisions', intval( $new_value ) );
 						break;
 					case 'emptyTrashDays':
-						$days = intval( $new_value );
-						exec( "wp config set EMPTY_TRASH_DAYS $days --type=constant --raw" ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.system_calls_exec
+						update_option( 'nfd_empty_trash_days', intval( $new_value ) );
 						break;
 					case 'cacheLevel':
-						update_option( 'endurance_cache_level', $new_value );
+						update_option( 'newfold_cache_level', $new_value );
 						break;
 					case 'hasSetHomepage':
 						update_option( 'bh_has_set_homepage', (bool) $new_value );
@@ -172,17 +171,18 @@ class SettingsController extends \WP_REST_Controller {
 
 		$settings = array(
 			'comingSoon'              => ( 'true' === get_option( 'nfd_coming_soon', 'false' ) ),
+			'autoUpdatesAll'          => $major && $plugins && $themes,
 			'autoUpdatesMajorCore'    => $major,
 			'autoUpdatesMinorCore'    => $minor,
 			'autoUpdatesPlugins'      => $plugins,
 			'autoUpdatesThemes'       => $themes,
 			'autoUpdatesTranslations' => $translations,
-			'disableCommentsOldPosts' => ( 1 === get_option( 'close_comments_for_old_posts', 0 ) ),
+			'disableCommentsOldPosts' => ( 'true' === get_option( 'close_comments_for_old_posts', 'false' ) ),
 			'closeCommentsDays'       => intval( get_option( 'close_comments_days_old', 14 ) ),
 			'commentsPerPage'         => intval( get_option( 'comments_per_page', 50 ) ),
-			'contentRevisions'        => intval( defined( 'WP_POST_REVISIONS' ) ? WP_POST_REVISIONS : 5 ),
-			'emptyTrashDays'          => intval( defined( 'EMPTY_TRASH_DAYS' ) ? EMPTY_TRASH_DAYS : 30 ),
-			'cacheLevel'              => intval( get_option( 'endurance_cache_level', 2 ) ),
+			'contentRevisions'        => intval( get_option( 'nfd_wp_post_revisions', 5 ) ),
+			'emptyTrashDays'          => intval( get_option( 'nfd_empty_trash_days', 30 ) ),
+			'cacheLevel'              => intval( get_option( 'newfold_cache_level', 2 ) ),
 			'hasSetHomepage'          => (bool) get_option( 'bh_has_set_homepage', false ),
 			'showOnFront'             => (string) get_option( 'show_on_front' ),
 			'pageOnFront'             => (int) get_option( 'page_on_front' ),
@@ -199,7 +199,7 @@ class SettingsController extends \WP_REST_Controller {
 	 */
 	public function check_permission() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new \WP_Error( 'rest_forbidden_context', __( 'Sorry, you are not allowed to access this endpoint.', 'bluehost-wordpress-plugin' ), array( 'status' => rest_authorization_required_code() ) );
+			return new \WP_Error( 'rest_forbidden_context', __( 'Sorry, you are not allowed to access this endpoint.', 'wp-plugin-bluehost' ), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;

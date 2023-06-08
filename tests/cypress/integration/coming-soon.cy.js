@@ -1,73 +1,105 @@
 // <reference types="Cypress" />
 
-describe('Coming Soon Page', () => {
+describe('Coming Soon', function () {
 
 	before(() => {
-		// Make sure coming soon is active to start
-		cy.exec('npx wp-env run cli wp option set nfd_coming_soon true');
-
 		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
-	});
-
-	it('Coming Soon Toggle Works', () => {
-		cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
-		// verify coming soon is checked when active
-		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').should('have.attr', 'aria-checked', 'true');
-		
-		// verify coming soon unchecks properly
-		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').uncheck();
-		cy.wait('@update', {timeout: 10000});
-		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').should('have.attr', 'aria-checked', 'false');
-	
-		// verify coming soon checks again properly
-		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').check();
-		cy.wait('@update', {timeout: 10000});
-		cy.get('.onoffswitch__checkbox[aria-label="Coming Soon Page"]').should('have.attr', 'aria-checked', 'true');
+		cy.injectAxe();
 		
 	});
 
-	it('Has Coming Soon in Admin Toolbar', () => {
-		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
-		cy
-			.get('#wp-toolbar')
-			.contains('#nfd-site-status-text', 'Coming Soon')
+	it('Coming Soon Toggle Exists', () => {
+
+		cy.get('#wp-toolbar #wp-admin-bar-site-status')
+			.contains('span', 'Live')
 			.should('be.visible');
+
+		cy.get('.wppbh-app-settings-coming-soon').contains('h3', 'Maintenance Mode')
+			.scrollIntoView()
+			.should('be.visible');
+		
+		cy.get('.wppbh-app-settings-coming-soon').contains('label', 'Coming soon')
+			.scrollIntoView()
+			.should('be.visible');
+
+		cy.get('[data-id="coming-soon-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+		cy.get('[data-id="coming-soon-toggle"]').click();
+		cy.wait(100);
+		cy.get('[data-id="coming-soon-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('.yst-notifications').contains('.yst-notification', 'Coming soon').should('be.visible');
+		
+		// Protip was removed in redesign, should reimplement
+		// cy
+		// 	.get('.coming-soon-protip .accordion-summary')
+		// 	.contains('p', 'Pro Tip')
+		// 	.should('be.visible');
+		// cy.get('.coming-soon-protip').should('not.have.attr', 'open');
+		// cy.get('.coming-soon-protip summary').click();
+		// cy.wait(100);
+		// cy.get('.coming-soon-protip').should('have.attr', 'open');
+	});
+
+	it('Displays Coming Soon in Site Status Admin Toolbar', () => {
+		cy.get('#wp-toolbar #wp-admin-bar-site-status')
+			.contains('span', 'Coming Soon')
+			.should('be.visible');
+	});
+
+	it('Has Coming Soon Section on Home', () => {
+		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
+		cy.get('.wppbh-home .wppb-app-section-content').first()
+			.scrollIntoView()
+			.contains('h1', 'Ready to go live?')
+			.should('be.visible');
+
+		cy.get('.wppbh-home .wppb-app-section-content')
+			.contains('a.yst-button', 'Preview your store').first()
+			.should('exist');
+
+		cy.get('.wppbh-home .wppb-app-section-content').first()
+			.contains('button', 'Launch your store')
+			.should('exist');
+		
 	});
 
 	it('Displays admin coming soon notice', () => {
 		cy.visit('/wp-admin/index.php');
-		cy
-			.get('.notice-warning')
+		cy.get('.notice-warning')
 			.contains('p', 'coming')
 			.should('be.visible');
 	});
 
 	it('Displays Coming Soon on Frontend', () => {
-		cy.get('#wp-admin-bar-logout a').click({ force: true });
+		cy.logout();
 		cy.visit('/');
-		cy
-			.get('body')
-			.contains('h2', 'Coming Soon')
+		cy.get('body')
+			.contains('h1', 'Coming')
 			.should('be.visible');
 	});
 
-	it('Is Accessible', () => {
-		cy.injectAxe()
-		cy.wait(500);
-		cy.checkA11y('body');
-	});
+	it('Launching launches site', () => {
+		cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
+		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
+		cy.get('[data-id="coming-soon-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
+		
+		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
 
-	it('Has admin login button', () => {
-		cy
-			.get('body')
-			.contains('a', 'Admin Login')
-			.should('be.visible')
-			.should('have.attr', 'href')
-			.and('include', '/wp-login.php');
-	});
+		cy.get('.wppbh-home .wppb-app-section-content').first()
+			.contains('button', 'Launch your store')
+			.click();
+		cy.wait(100);
+		
+		cy.get('.wppbh-home .wppb-app-section-content').first()
+			.contains('button', 'Launch your store')
+			.should('not.exist');
 
-	// Also need to check when coming soon is disabled
-	// - that site loads properly
-	// - that admin notice does not display
+		cy.logout();
+		cy.visit('/');
+		cy.get('body')
+			.contains('h1', 'Coming soon')
+			.should('not.exist');
 
+		cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
+		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
+	})
 });

@@ -10,15 +10,13 @@
 
 # Cypress
 cypress.env.json
-/tests/cypress/downloads
 /tests/cypress/screenshots
 /tests/cypress/videos
 
 # Built-app files
 /.docs
-/assets/*
 /build/*
-/bin/sizes-manifest.json
+/wp-plugin-bluehost
 /bluehost-wordpress-plugin
 
 # File Types

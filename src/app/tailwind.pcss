@@ -1,0 +1,292 @@
+/* Import main CSS including all components. */
+@import "@yoast/ui-library";
+
+/* Tailwind layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Configs */
+@layer base {
+	.yst-root {
+		@apply
+		yst-text-body;
+
+		a {
+			@apply
+			yst-no-underline	
+			yst-text-primary
+			hover:yst-text-primary-dark
+			focus:yst-text-primary-dark
+			focus:yst-outline-none
+			focus:yst-ring-1
+			focus:yst-ring-offset-1
+			focus:yst-ring-offset-transparent
+			focus:yst-ring-primary-dark
+			focus:yst-rounded-sm
+			visited:yst-text-primary
+			visited:hover:yst-text-primary-dark;
+		}
+	}
+}
+
+/* Titles */
+@layer components {
+	.yst-root {
+		.yst-title {
+			@apply
+			yst-text-title
+		}
+	}
+}
+
+/* Links */
+@layer components {
+	.yst-root {
+		.yst-link {
+			@apply
+			yst-text-primary
+
+			hover:yst-text-primary-dark
+			visited:yst-text-primary-dark
+			visited:hover:yst-text-primary-dark;
+		}
+
+		.yst-link--primary {
+			@apply yst-text-primary-600 hover:yst-text-primary-500 focus:yst-text-primary-500 focus:yst-ring-primary-600;
+		}
+
+		.yst-link--error {
+			@apply yst-text-red-600 hover:yst-text-red-500 focus:yst-text-red-500 focus:yst-ring-red-600;
+		}
+	}
+}
+
+/* Buttons */
+@layer components {
+	.yst-root {
+		.yst-button {
+			@apply
+			yst-px-4
+			yst-gap-2
+			focus:yst-ring-primary;
+
+			svg {
+				@apply
+				yst-w-5
+				yst-h-5;
+			}
+		}
+
+		/* Variants */
+
+		.yst-button--primary {
+			@apply
+			yst-bg-primary
+
+			hover:yst-bg-primary-dark
+			focus:yst-ring-primary;
+		}
+
+		.yst-button--secondary {
+			@apply
+			yst-text-black
+			yst-bg-white
+			yst-border-primary
+
+			hover:yst-text-black
+			hover:yst-bg-primary-light
+			focus:yst-text-title
+			focus:yst-ring-primary
+			visited:yst-text-black
+			visited:hover:yst-text-title;
+		}
+
+		.yst-button--standout {
+			@apply
+			yst-bg-secondary
+			yst-text-[#1E293B]
+
+			hover:yst-bg-secondary-dark
+			hover:yst-text-[#1E293B]
+			focus:yst-text-[#1E293B];
+		}
+	}
+}
+
+/* Toggle / Toggle Field */
+@layer components {
+	.yst-root {
+		.yst-toggle {
+			@apply
+			yst-bg-[#CDD0D6]
+
+			focus:yst-ring-primary;
+		}
+
+		.yst-toggle--checked {
+			@apply yst-bg-primary;
+		}
+
+		.yst-toggle__icon--check {
+			@apply yst-text-primary;
+		}
+
+		.yst-toggle__icon--x {
+			@apply yst-text-[#9CA3AF];
+		}
+
+		.yst-toggle-field__description {
+			@apply 
+			yst-mt-3
+			yst-mr-2
+			sm:yst-mr-[10.5rem]
+			sm:yst-mt-0;
+		}
+	}
+}
+
+/* Checkbox */
+@layer components {
+	.yst-root {
+		.yst-checkbox {
+			.yst-checkbox__input {
+				@apply
+				yst-text-primary
+				yst-shadow-none
+	
+				focus:yst-ring-primary;
+
+				&:checked {
+					&::before {
+						@apply yst-hidden;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* Radio Input */
+@layer components {
+	.yst-root {
+		.yst-radio-group {
+			.yst-radio__description {
+				@apply
+				yst-mb-2 
+				yst-ml-7 
+				lg:yst-mr-[10.5rem];
+			}
+		}
+
+		.yst-radio__input {
+			@apply
+			yst-text-primary
+			yst-shadow-none
+
+			focus:yst-ring-primary;
+
+			&:checked {
+				&::before {
+					@apply yst-bg-transparent;
+				}
+			}
+		}
+	}
+}
+
+/* Select Field */
+@layer components {
+	.yst-root {
+		.yst-select__button {
+			@apply
+			focus:yst-ring-primary
+			focus:yst-border-primary;
+		}
+
+		.yst-select__option {
+			&--active {
+				@apply yst-bg-[#CDD0D6];
+			}
+
+			&--selected {
+				@apply yst-bg-primary;
+			}
+		}
+
+		.yst-select-field__spaced {
+			.yst-select-field__select {
+				@apply
+				yst-flex
+				yst-items-center
+				yst-justify-between
+				yst-gap-4;
+			}
+
+			.yst-select__button {
+				@apply yst-w-24;
+			}
+
+			.yst-select__options {
+				@apply 
+				yst-w-40
+				yst-right-0;
+			}
+
+			.yst-select-field__description {
+				@apply lg:yst-mr-[10.5rem];
+			}
+		}
+	}
+}
+
+/* Notifications */
+@layer components {
+	.yst-root {
+
+		.yst-notifications {
+			z-index: 9991;
+		}
+
+        .yst-notifications--bottom-left {
+            @apply yst-left-[12%];
+        }
+	}
+}
+
+/* Modal */
+@layer components {
+	.yst-root {
+		/* mobile menu modal */
+		.wppbh-app-sidenav-mobile {
+            .yst-modal__close {
+                @apply 
+                yst-flex
+                yst-bg-white
+                yst-rounded-full
+                yst-top-[-36px] 
+                yst-right-0;
+            }
+
+            .yst-modal__close-button {
+                @apply
+                yst-text-body
+                yst-rounded-full
+				yst-p-1
+                hover:yst-text-title
+                focus:yst-ring-primary;
+            }
+        }
+    }
+}
+
+/* Text Input Field */
+@layer components {
+	.yst-root {
+		.yst-text-input {
+			@apply
+			focus:yst-ring-primary
+			focus:yst-border-primary;
+		}
+	}
+}

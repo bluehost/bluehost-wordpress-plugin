@@ -1,136 +1,121 @@
 // <reference types="Cypress" />
 
-describe('Marketplace Page', () => {
+describe('Marketplace Page', function () {
 
 	before(() => {
-		// cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
-		// cy.server();
 		cy.intercept({
 			method: 'GET',
-			url: '**newfold-marketplace**'
+			url: /newfold-marketplace(\/|%2F)v1(\/|%2F)marketplace/
 		}, {
-			fixture: 'products.json'
+			fixture: 'products'
 		}).as('products');
-
 		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace');
 		cy.wait('@products');
 	});
 
 	it('Exists', () => {
-		cy.contains('button', 'Featured');
+		cy.contains('h2', 'Marketplace');
 	});
 
 	it('Is Accessible', () => {
 		cy.injectAxe();
 		cy.wait(1000);
-		cy.checkA11y('.bwa-route-contents');
+		cy.checkA11y('.wppbh-app-body');
 	});
 
-	it('Product grid has 6 items', () => {
-		cy.get('.marketplace-item').should('have.length', 6);
+	it('Product grid has 4 items', () => {
+		cy.get('.marketplace-item').should('have.length', 4);
 	});
 
 	it('First product card renders correctly', () => {
-		cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738').as('card');
+		cy.get('#marketplace-item-1fc92f8a-bb9f-47c8-9808-aab9c82d6bf2').as('card');
 
 		cy.get('@card')
-			.findByRole('link', {name: 'Buy Now'})
+			.findByRole('link', {name: 'Learn More'})
 			.scrollIntoView()
 			.should('be.visible')
 			.should('have.attr', 'href')
-			.and('include', 'marketplace/product/i/yoast');
+			.and('include', 'https://www.web.com/websites/website-design-services');
 
 		cy.get('@card').first().within(() => {
-			cy.get('.components-card__header')
-				.contains('Yoast')
+			cy.get('.marketplace-item-title')
+				.contains('Web Design Services')
 				.should('be.visible');
-			cy.get('.components-card__media').should('be.visible');
-			cy.get('.components-card__header .price')
-				.contains('$')
-				.should('exist');
+			cy.get('.marketplace-item-image').should('be.visible');
+			cy.get('.marketplace-item-footer .marketplace-item-price').should('not.exist');
 		});
 	});
 
 	it('Second product card render correctly', () => {
-		cy.get('#marketplace-item-8a7f19b7-21f2-4be2-a764-33b4d4760bb9').as('card');
+		cy.get('#marketplace-item-2a1dadb5-f58d-4ae4-a26b-27efb09136eb').as('card');
 
 		cy.get('@card')
 			.findByRole('link', {name: 'Buy Now'})
 			.scrollIntoView()
 			.should('be.visible')
 			.should('have.attr', 'href')
-			.and('include', 'marketplace/product/i/jetpack');
+			.and('include', 'https://www.mojomarketplace.com/cart?item_id=5377b431-d8a8-431b-a711-50c10a141528');
 
 		cy.get('@card').first().within(() => {
-			cy.get('.components-card__header')
-				.contains('Jetpack')
+			cy.get('.marketplace-item-title')
+				.contains('Highend')
 				.should('be.visible');
-			cy.get('.components-card__media').should('be.visible');
-			cy.get('.components-card__header .price')
-				.contains('$4.99')
+			cy.get('.marketplace-item-image').should('be.visible');
+			cy.get('.marketplace-item-footer .marketplace-item-price')
+				.contains('$59.00')
 				.should('be.visible');
 		});
 	});
-
+	
 	it('CTA links have target=_blank', () => {
-		cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738').as('card');
+		cy.get('#marketplace-item-1fc92f8a-bb9f-47c8-9808-aab9c82d6bf2').as('card');
 
 		cy.get('@card')
-			.findByRole('link', {name: 'Buy Now'})
+			.findByRole('link', {name: 'Learn More'})
 			.scrollIntoView()
 			.should('have.attr', 'target')
 			.and('include', '_blank');
 	});
 
-	// Not enough products in fixture to require load more button.
-	it.skip('Load more button loads more products', () => {
-		cy.get('.marketplace-item').should('have.length', 12);
-
-		cy.contains('button', 'Load More');
-
-		cy.get('.marketplaceList button')
-			.scrollIntoView()
-			.click();
-
-		cy.get('.marketplace-item').should('have.length', 18);
-	});
-
 	it('Category Tab Filters properly', () => {
-		cy.get('button[role="tab"][id$="services"]')
-			.should('have.class', 'newfold-marketplace-tab-services')
-			.should('exist')
-			.click();
-		cy.get('.marketplace-item').should('have.length', 11);
-
-		cy.get('#marketplace-item-0fd107dc-cfcc-4380-86ef-89a9ce01e443 h2')
+		
+		cy.get('.wppbh-app-subnavitem-Services').click();
+		cy.get('.marketplace-item').should('have.length', 14);
+		cy.get('#marketplace-item-1fc92f8a-bb9f-47c8-9808-aab9c82d6bf2 h3')
 			.scrollIntoView()
 			.should('be.visible')
-			.should('have.text', 'Full Service');
-
-		cy.get('button[role="tab"][id$="seo"]')
-			.should('have.class', 'newfold-marketplace-tab-seo')
-			.should('exist')
-			.click();
-		cy.get('.marketplace-item').should('have.length', 5);
-
-		cy.get('#marketplace-item-7beee5ae-2e91-4282-9930-15ada43fc738 h2')
+			.should('have.text', 'Web Design Services');
+		
+			cy.get('.wppbh-app-subnavitem-SEO').click();
+		cy.get('.marketplace-item').should('have.length', 6);
+		cy.get('#marketplace-item-a1ff70f1-9670-4e25-a0e1-a068d3e43a45 h3')
 			.scrollIntoView()
 			.should('be.visible')
 			.should('have.text', 'Yoast Premium');
 	});
 
-	it('Category tabs update path', () => {
-		cy.get('button[role="tab"][id$="services"]')
-			.should('have.class', 'newfold-marketplace-tab-services')
-			.should('exist')
+	it.skip('Load more button loads more products', () => {
+		cy.get('.wppbh-app-subnavitem-Services').click();
+		cy.wait(300);
+
+		cy.get('.marketplace-item').should('have.length', 12);
+		cy.contains('button', 'Load More');
+		cy.get('.marketplace-list button')
+			.scrollIntoView()
 			.click();
-		
+		cy.wait(300);
+
+		cy.get('.marketplace-item').should('have.length', 14);
+	});
+
+	it('Category tabs update path', () => {
+		cy.get('.wppbh-app-subnavitem-Services').click();
 		cy.location().should((loc) => {
 			expect(loc.hash).to.eq('#/marketplace/services')
 		});
 	});
 
-	// CTB Not included yet.
+	// CTB Not supported yet
 	it.skip('Product CTB cards render correctly', () => {
 		cy.get('.marketplace-item-ec14a614-8672-4094-8310-cb0b1eb0f176').as('card');
 

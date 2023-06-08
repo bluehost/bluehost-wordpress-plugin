@@ -24,7 +24,7 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.WEBHOOK_TOKEN }}
+          token: ${{ secrets.SATIS_WEBHOOK_TOKEN }}
           repository: bluehost/satis
           event-type: 'Trigger Satis Build'
           client-payload: >-

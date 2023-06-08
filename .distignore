@@ -8,12 +8,8 @@ tests
 
 # Files
 .distignore
-.distinclude
 .gitattributes
 .gitignore
-.nvm
-cypress.config.js
-set-latest-wp-version.js
 
 # File Types
 *.json
@@ -25,15 +21,3 @@ set-latest-wp-version.js
 *.xml
 *.yml
 *.zip
-
-# BEGIN NEWFOLD LABS RULES
-vendor/newfold-labs/wp-module-onboarding/src
-vendor/newfold-labs/wp-module-ecommerce/src
-vendor/newfold-labs/*/tests
-vendor/newfold-labs/*/.github
-vendor/newfold-labs/*/.*
-vendor/newfold-labs/*/*.xml
-vendor/newfold-labs/*/*.json
-vendor/newfold-labs/*/*.lock
-vendor/newfold-labs/*/*.scss
-# END NEWFOLD LABS RULES

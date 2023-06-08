@@ -1,519 +1,300 @@
 // <reference types="Cypress" />
 
-const thumbnailUrl = `https://s.wordpress.com/mshots/v1/${ encodeURIComponent('https://www.google.com') }?width=122&height=92`;
-
-const fn = {
-	getStagingInfo(overrides = {}) {
-		const defaults = {
-			creationDate: 'Sep 26, 2019',
-			currentEnvironment: 'production',
-			productionDir: '/app/public/',
-			productionThumbnailUrl: thumbnailUrl,
-			productionUrl: 'https://mysite.com',
-			stagingDir: '/app/public/staging/1821',
-			stagingExists: true,
-			stagingThumbnailUrl: thumbnailUrl,
-			stagingUrl: 'https://mysite.local/staging/1821'
-		};
-		return {...defaults, ...overrides};
-	},
-	visitPage(responseOverrides = {}) {
-		cy.intercept({
-				method: 'GET',
-				url: /bluehost(\/|%2F)v1(\/|%2F)staging/
-			},
-			{
-				body: this.getStagingInfo(responseOverrides)
-			}
-		).as('stagingInfo');
-		cy.visit('/wp-admin/admin.php?page=bluehost#/tools/staging');
-		cy.wait('@stagingInfo');
-	}
-};
-
 describe('Staging Page', function () {
 
 	before(() => {
-		fn.visitPage({stagingExists: false});
-	});
-
-	it('Exists', () => {
-		cy.contains('h2', 'Staging');
-		cy.contains('h3', 'Production site');
-		cy.contains('h3', 'Staging site');
-	});
-
-	it('Only has production', () => {
-		cy.get('.environment-card').should('have.length', 1);
-		cy.get('input[type="radio"]').should('have.length', 0);
-	});
-
-	it('Production card is valid', () => {
-		cy.get('.environment-card').within(() => {
-
-			// Disable screenshots for now.
-			/*cy.get('.environment-card__screenshot')
-				.should('have.css', 'background-image')
-				.and('equals', `url("${thumbnailUrl}")`);*/
-
-			cy.contains('.environment-card__title', fn.getStagingInfo().productionUrl).should('be.visible');
-
-			cy.contains('.environment-card__badge.--green', 'Live Site');
-
-			cy.contains('button', 'Clone to Staging').should('not.exist');
-		});
-	});
-
-	it('Creation failure', () => {
 		cy.intercept({
-			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging/
-		}, (req) => {
-			req.reply({
-				body: fn.getStagingInfo({
-					stagingExists: false,
-					status: 'error',
-					message: 'Git is not available.',
-				}),
-				delay: 1000,
-			})
-		}).as('stagingCreation');
-		cy.contains('button', 'Create Staging Site').click();
-		cy.get('.bluehost-staging__step.--creation').within(() => {
-			cy.get('.app-spinner__wrap').should('be.visible');
-			cy.contains('div', 'Creating your staging site. This usually takes a few minutes...');
-		});
-		cy.wait('@stagingCreation');
-		cy.get('.bluehost-snackbar.is-error').should('be.visible');
-		cy.contains('.bluehost-snackbar__message', 'Git is not available.');
-	});
-
-	it('Can dismiss snackbar', () => {
-		cy.get('h2').click();
-		cy.get('.bluehost-snackbar').should('not.exist');
-	});
-
-	it('Creation success', () => {
-		cy.intercept({
-				method: 'POST',
-				url: /bluehost(\/|%2F)v1(\/|%2F)staging/
-			},
-			{ body: fn.getStagingInfo() }
-		).as('stagingCreation');
-		cy.contains('button', 'Create Staging Site').click();
-		cy.wait('@stagingCreation');
-		cy.get('.bluehost-snackbar').should('not.exist');
-		cy.get('.environment-card').should('have.length', 2);
-		cy.get('input[type="radio"]').should('have.length', 2);
+			method: 'GET',
+			url: /newfold-staging(\/|%2F)v1(\/|%2F)staging/
+		}, {
+			fixture: 'stagingInit'
+		}).as('stagingInit');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/staging');
+		cy.wait('@stagingInit');
 	});
 
 	it('Is Accessible', () => {
 		cy.injectAxe();
-		cy.wait(1000);
-		cy.checkA11y('.bwa-route-contents');
+		cy.wait(500);
+		cy.checkA11y('.wppbh-app-body');
 	});
 
-	it('Production site is active', () => {
-		cy.get('input[type="radio"]').first().should('be.checked');
+	it('Displays in Production Environment Properly', () => {
+		cy.get('.wppbh-app-staging-prod')
+			.scrollIntoView()
+			.should('be.visible');
+
+
+        cy.get('#wppbh-production-toggle')
+            .should('be.checked');
+        cy.get('.wppbh-app-staging-prod')
+            .contains('h3', 'Production site')
+            .should('be.visible');
+        cy.get('.wppbh-app-staging-prod')
+            .contains('label[for="wppbh-production-toggle"]', 'Currently editing')
+            .should('be.visible');
+        
+        cy.get('.wppbh-app-staging-staging')
+            .contains('h3', 'Staging site')
+            .should('be.visible');
+        cy.get('.wppbh-app-staging-staging')
+            .contains('label[for="wppbh-staging-toggle"]', 'Not currently editing')
+            .should('be.visible');
+        cy.get('#wppbh-staging-toggle')
+            .should('not.be.checked');
+        cy.get('.wppbh-app-staging-staging')
+            .contains('div', 'https://localhost:8882/staging/1234').should('be.visible');
+        cy.get('.wppbh-app-staging-staging')
+            .contains('div', 'May 30, 2023').should('be.visible');
+        
+        
+        cy.get('#staging-clone-button')
+            .should('not.be.disabled');
+        cy.get('#staging-delete-button')
+            .should('not.be.disabled');
+        cy.get('#staging-deploy-button')
+            .should('be.disabled');
 	});
 
-	it('Clone to staging button exists', () => {
-		cy.contains('button', 'Clone to Staging').scrollIntoView().should('be.visible');
-	});
+    it('Errors as expected', () => {
+        cy.get('#staging-clone-button').click();
+        cy.get('.yst-modal')
+            .contains('h1', 'Confirm Clone Action')
+            .should('be.visible');
+        cy.get('.yst-modal .yst-button--primary')
+            .contains('Clone')
+            .should('be.visible').click();
+        cy.wait(100);
 
-	it('Clone to staging works', () => {
-		cy.intercept(
-			{
-				method: 'POST',
-				url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)clone/
-			}, {
-				body: fn.getStagingInfo(),
-				delay: 1000
-			}
-		).as('cloneStaging');
+        cy.get('.yst-notifications')
+            .contains('p', 'Error')
+            .should('be.visible');
+    });
 
-		cy.contains('button', 'Clone to Staging').click();
-		cy.get('.bluehost-modal').should('be.visible');
-		cy.get('.bluehost-modal').within(() => {
-			cy.contains('h1', 'Clone production to staging?');
-			cy.contains('.bluehost-modal__content', 'Are you sure you want to clone production to staging? This will permanently overwrite your staging site.');
-			cy.contains('.bluehost-warning', 'This action cannot be undone');
-			cy.contains('button', 'Cancel');
-			cy.contains('button.is-primary', 'Clone').click();
-		});
+    it('Clone Works', () => {
+        cy.intercept({
+			method: 'POST',
+			url: /newfold-staging(\/|%2F)v1(\/|%2F)staging(\/|%2F)clone/
+		}, {
+			fixture: 'stagingClone'
+		}).as('stagingClone');
 
-		cy.get('.bluehost-overlay').should('be.visible');
-		cy.contains('.bluehost-overlay h1', 'Cloning Production Site');
-		cy.wait('@cloneStaging');
+        cy.get('#staging-clone-button').click();
+        cy.get('.yst-modal')
+            .contains('h1', 'Confirm Clone Action')
+            .should('be.visible');
+        cy.get('.yst-modal .yst-button--primary')
+            .contains('Clone')
+            .should('be.visible')
+            .click();
 
-		// Validate that overlay is gone
-		cy.get('.bluehost-overlay').should('not.exist');
+        cy.wait('@stagingClone');
 
-		// Validate snackbar
-		cy.get('.bluehost-snackbar').should('be.visible').should('have.class', 'is-success');
-		cy.contains('.bluehost-snackbar__title', 'Success');
-		cy.contains('.bluehost-snackbar__message', 'Website cloned successfully.');
+        cy.get('.yst-notifications')
+            .contains('p', 'Cloned to Staging')
+            .should('be.visible');
+    });
 
-	});
+    it('Delete Works', () => {
+        cy.intercept({
+			url: /newfold-staging(\/|%2F)v1(\/|%2F)staging/
+		}, {
+			fixture: 'stagingDelete'
+		}).as('stagingDelete');
 
-	it('Staging card is valid', () => {
-		cy.get('.environment-card').last().scrollIntoView().within(() => {
+        cy.get('#staging-delete-button').click();
+        cy.get('.yst-modal')
+            .contains('h1', 'Confirm Delete')
+            .should('be.visible');
+        cy.get('.yst-modal .yst-button--primary')
+            .contains('Delete')
+            .should('be.visible')
+            .click();
 
-			cy.contains('.environment-card__title', fn.getStagingInfo().stagingUrl).should('be.visible');
+        cy.wait('@stagingDelete');
 
-			cy.contains('.environment-card__badge.--black', 'Staging Site');
+        cy.get('.yst-notifications')
+            .contains('p', 'Deleted Staging')
+            .should('be.visible');
+        
+        cy.get('.wppbh-app-staging-staging')
+            .contains('h3', 'Staging site')
+            .should('be.visible');
+        cy.get('.wppbh-app-staging-staging')
+            .contains('label[for="wppbh-staging-toggle"]', 'Not currently editing')
+            .should('not.exist');
+        cy.get('.wppbh-app-staging-staging')
+            .contains('div', 'https://localhost:8882/staging/1234')
+            .should('not.exist');
+        cy.get('.wppbh-app-staging-staging')
+            .contains('div', "You don't have a staging site yet")
+            .should('be.visible');
+        cy.get('#staging-create-button')
+            .should('be.visible')
+            .should('not.be.disabled');
 
-			cy.get('.dropdown-button').scrollIntoView().within((el) => {
-				cy.get(el).should('be.visible');
-				cy.get('.dropdown-button__button-group button').should('be.disabled');
-			});
-			cy.get('.options-menu').scrollIntoView().should('be.visible');
-		});
-	});
+    });
 
-	it('Switch to staging works', () => {
+    it('Create Works', () => {
+        cy.intercept({
+			method: 'POST',
+			url: /newfold-staging(\/|%2F)v1(\/|%2F)staging/
+		}, {
+			fixture: 'stagingCreate',
+            delay: 1000,
+		}).as('stagingCreate');
 
+        cy.get('.wppbh-app-staging-staging')
+            .contains('div', "You don't have a staging site yet")
+            .should('be.visible');
+
+        cy.get('#staging-create-button')
+            .should('be.visible')
+            .click();
+        cy.wait(100);
+        
+        cy.get('.wppbh-page')
+            .should('have.class', 'is-thinking');
+        cy.wait('@stagingCreate');
+
+        cy.get('.wppbh-page')
+            .should('not.have.class', 'is-thinking');
+
+        cy.get('.wppbh-app-staging-staging')
+            .contains('h3', 'Staging site')
+            .should('be.visible');
+        cy.get('.wppbh-app-staging-staging')
+            .contains('label[for="wppbh-staging-toggle"]', 'Not currently editing')
+            .should('be.visible');
+        cy.get('.wppbh-app-staging-staging')
+            .contains('div', 'https://localhost:8882/staging/1234')
+            .should('be.visible');
+
+    });
+
+    it('Switch Works', () => {
+        cy.intercept({
+			method: 'GET',
+			url: /newfold-staging(\/|%2F)v1(\/|%2F)staging(\/|%2F)switch-to&env=staging/
+		}, {
+			fixture: 'stagingSwitch',
+            delay: 500,
+		}).as('stagingSwitch');
+        
+        cy.get('#wppbh-production-toggle')
+            .should('be.checked');
+        cy.get('#wppbh-staging-toggle')
+            .should('not.be.checked');
+        cy.get('#wppbh-staging-toggle')
+            .click();
+        cy.get('.yst-modal')
+            .contains('h1', 'Switch to Staging')
+            .should('be.visible');
+        cy.get('.yst-modal .yst-button--error')
+            .contains('Cancel')
+            .should('be.visible')
+            .click();
+        cy.get('.yst-modal h1')
+            .should('not.exist');
+        cy.get('#wppbh-production-toggle')
+            .should('be.checked');
+        cy.get('#wppbh-staging-toggle')
+            .should('not.be.checked');
+        
+        cy.get('#wppbh-staging-toggle')
+            .click();
+        cy.get('.yst-modal .yst-button--primary')
+            .contains('Switch')
+            .should('be.visible')
+            .click();
+
+        cy.get('.yst-notifications')
+            .contains('p', 'Working...')
+            .should('be.visible');
+
+        cy.wait('@stagingSwitch');
+
+        cy.get('.yst-notifications')
+            .contains('p', 'Reloading')
+            .should('be.visible');
+
+        // actual reload cancelled by fixture containing a load_page value of `#`
+    });
+});
+
+describe('Staging Page - Staging environmant', function () {
+
+	before(() => {
 		cy.intercept({
 			method: 'GET',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)switch-to/
-		}, (req) => {
-			req.reply({
-				body: fn.getStagingInfo(
-					{
-						currentEnvironment: 'staging',
-						load_page: '/wp-admin/admin.php?page=bluehost#/tools/staging'
-					}
-				),
-				delay: 1000,
-			})
-		}).as('stagingSwitch');
-
-		cy.get('.bluehost-overlay').should('not.exist');
-		cy.get('input[type="radio"]').last().click();
-		cy.get('.bluehost-overlay').should('be.visible').should('have.length', 1);
-		cy.get('.bluehost-overlay').within(() => {
-			cy.contains('h1', 'Loading Staging Site').should('be.visible');
-			cy.contains('p', 'This should only take a minute').should('be.visible');
-			cy.get('.bluehost-staging__overlay-image')
-				.should('be.visible')
-				.should('have.attr', 'src')
-				.and('include', 'data:image/svg+xml;base64');
-			cy.get('.slick-slider')
-				.should('be.visible')
-				.and('contain', 'Tip');
-			cy.get('.slick-dots')
-				.children()
-				.should('have.length', 3);
-		});
-		cy.get('.bluehost-overlay').should('be.visible');
-
-		cy.wait('@stagingSwitch');
-
-	});
-});
-
-describe('Staging Page, staging state', function () {
-
-	before(() => {
-		cy.visit('/wp-admin/admin.php?page=bluehost');
-		fn.visitPage({
-			stagingExists: true,
-			currentEnvironment: 'staging'
-		});
+			url: /newfold-staging(\/|%2F)v1(\/|%2F)staging/
+		}, {
+			fixture: 'stagingStaging'
+		}).as('stagingStaging');
+		cy.visit('/wp-admin/admin.php?page=bluehost#/staging');
+		cy.wait('@stagingStaging');
 	});
 
-	it('Loads in staging state', () => {
+    it('Displays staging environemnt properly', () => {
 
-		cy.get('.bluehost-overlay').should('not.exist');
-		cy.get('input[type="radio"]').last().should('be.checked');
-	});
+        cy.get('#wppbh-production-toggle')
+            .should('not.be.checked');
+        cy.get('.wppbh-app-staging-prod')
+            .contains('h3', 'Production site')
+            .should('be.visible');
+        cy.get('.wppbh-app-staging-prod')
+            .contains('label[for="wppbh-production-toggle"]', 'Not currently editing')
+            .should('be.visible');
+        
+        cy.get('#wppbh-staging-toggle')
+            .should('be.checked');
+        cy.get('.wppbh-app-staging-staging')
+            .contains('h3', 'Staging site')
+            .should('be.visible');
+        cy.get('.wppbh-app-staging-staging')
+            .contains('label[for="wppbh-staging-toggle"]', 'Currently editing')
+            .should('be.visible');
+        
+        cy.get('#staging-clone-button')
+            .should('be.disabled');
+        cy.get('#staging-delete-button')
+            .should('be.disabled');
+        cy.get('#staging-deploy-button')
+            .should('not.be.disabled');
+    });
 
-	it('Clone to staging button is disabled', () => {
-		cy.contains('button', 'Clone to Staging').scrollIntoView().should('be.visible').should('be.disabled');
-	});
-
-	it('Deploy dropdown button is active', () => {
-		cy.get('.dropdown-button').scrollIntoView().within((el) => {
-			cy.get(el).should('be.visible');
-			cy.get('.dropdown-button__button-group button').should('not.be.disabled');
-		});
-	});
-
-	it('Deploy dropdown button toggle works', () => {
-		cy.get('.dropdown-button').scrollIntoView();
-		cy.get('.dropdown-button__list').should('not.be.visible');
-		cy.get('.dropdown-button__toggle').click(); // TODO: CLICK BROKEN, TRY FORCE
-		cy.get('.dropdown-button__list').scrollIntoView().should('be.visible');
-		cy.get('.dropdown-button__toggle').click();
-		cy.get('.dropdown-button__list').should('not.be.visible');
-	});
-
-	it('Deploy All Changes works', () => {
-
-		cy.intercept({
+    it('Deploy Works', () => {
+        cy.intercept({
 			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy(\?|&)type=all/
-		}, (req) => {
-			req.reply({
-				body: fn.getStagingInfo(),
-				delay: 1000,
-			})
-		}).as('deploy');
+			url: /newfold-staging(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy/
+		}, {
+			fixture: 'stagingDeploy',
+            delay: 500,
+		}).as('stagingDeploy');
 
-		cy.contains('button', 'Deploy All Changes').click(); // TODO: Broke (disabled), force?
-		cy.get('.bluehost-modal').should('be.visible');
-		cy.get('.bluehost-modal').within(() => {
-			cy.contains('h1', 'Deploy to Production?');
-			cy.contains('.bluehost-modal__content', 'This will override your production site. Are you sure you want to deploy everything from staging to production?');
-			cy.contains('.bluehost-warning', 'This action cannot be undone');
-			cy.contains('button', 'Cancel');
-			cy.contains('button.is-primary', 'Deploy').click();
-		});
+        cy.get('#staging-deploy-button').click();
+        cy.get('.yst-modal')
+            .contains('h1', 'Confirm Deployment')
+            .should('be.visible');
+        cy.get('.yst-modal .yst-button--error')
+            .contains('Cancel')
+            .should('be.visible');
+        cy.get('.yst-modal .yst-button--primary')
+            .contains('Deploy')
+            .should('be.visible')
+            .click();
 
-		cy.get('.bluehost-overlay').should('be.visible');
-		cy.contains('.bluehost-overlay h1', 'Deploying to Production');
-		cy.wait('@deploy');
+        cy.get('.yst-notifications')
+            .contains('p', 'Working...')
+            .should('be.visible');
 
-		// Validate that overlay is gone
-		cy.get('.bluehost-overlay').should('not.exist');
+        cy.wait('@stagingDeploy');
 
-		// Validate snackbar
-		cy.get('.bluehost-snackbar').should('be.visible').should('have.class', 'is-success');
-		cy.contains('.bluehost-snackbar__title', 'Success');
-		cy.contains('.bluehost-snackbar__message', 'Changes deployed successfully.');
 
-		// Dismiss snackbar
-		cy.get('.bluehost-snackbar__close').click();
-		cy.get('.bluehost-snackbar').should('not.exist');
+        cy.get('.yst-notifications')
+            .contains('p', 'Deployed')
+            .should('be.visible');
 
-	});
-
-	it('Deploy Files works', () => {
-
-		cy.intercept({
-			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy(\?|&)type=files/
-		}, (req) => {
-			req.reply({
-				body: fn.getStagingInfo(),
-				delay: 1000,
-			})
-		}).as('deploy');
-
-		cy.get('.dropdown-button').scrollIntoView();
-		cy.get('.dropdown-button__list').should('not.be.visible');
-		cy.get('.dropdown-button__toggle').click();
-		cy.get('.dropdown-button__list').scrollIntoView().should('be.visible');
-		cy.contains('.dropdown-button__list-item', 'Deploy Files Only').click();
-		cy.get('.dropdown-button__list').should('not.be.visible');
-
-		cy.get('.bluehost-modal').should('be.visible');
-		cy.get('.bluehost-modal').within(() => {
-			cy.contains('h1', 'Deploy Files to Production?');
-			cy.contains('.bluehost-modal__content', 'This will override your production site. Are you sure you want to deploy all staging files to production?');
-			cy.contains('.bluehost-warning', 'This action cannot be undone');
-			cy.contains('button', 'Cancel');
-			cy.contains('button.is-primary', 'Deploy').click();
-		});
-
-		cy.get('.bluehost-overlay').should('be.visible');
-		cy.contains('.bluehost-overlay h1', 'Deploying Files to Production');
-		cy.wait('@deploy');
-
-		// Validate that overlay is gone
-		cy.get('.bluehost-overlay').should('not.exist');
-
-		// Validate snackbar
-		cy.get('.bluehost-snackbar').should('be.visible').should('have.class', 'is-success');
-		cy.contains('.bluehost-snackbar__title', 'Success');
-		cy.contains('.bluehost-snackbar__message', 'Changes deployed successfully.');
-
-		// Dismiss snackbar
-		cy.get('.bluehost-snackbar__close').click();
-		cy.get('.bluehost-snackbar').should('not.exist');
-	});
-
-	it('Deploy Database works', () => {
-
-		cy.intercept({
-			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging(\/|%2F)deploy(\?|&)type=db/
-		}, (req) => {
-			req.reply({
-				body: fn.getStagingInfo(),
-				delay: 1000,
-			})
-		}).as('deploy');
-
-		cy.get('.dropdown-button').scrollIntoView();
-		cy.get('.dropdown-button__list').should('not.be.visible');
-		cy.get('.dropdown-button__toggle').click();
-		cy.get('.dropdown-button__list').scrollIntoView().should('be.visible');
-		cy.contains('.dropdown-button__list-item', 'Deploy Database').click({force: true});
-		cy.get('.dropdown-button__list').should('not.be.visible');
-
-		cy.get('.bluehost-modal').should('be.visible');
-		cy.get('.bluehost-modal').within(() => {
-			cy.contains('h1', 'Deploy Database to Production?');
-			cy.contains('.bluehost-modal__content', 'This will override your production site. Are you sure you want to deploy the database from staging to production?');
-			cy.contains('.bluehost-warning', 'This action cannot be undone');
-			cy.contains('button', 'Cancel');
-			cy.contains('button.is-primary', 'Deploy').click();
-		});
-
-		cy.get('.bluehost-overlay').should('be.visible');
-		cy.contains('.bluehost-overlay h1', 'Deploying Database to Production');
-		cy.wait('@deploy');
-
-		// Validate that overlay is gone
-		cy.get('.bluehost-overlay').should('not.exist');
-
-		// Validate snackbar
-		cy.get('.bluehost-snackbar').should('be.visible').should('have.class', 'is-success');
-		cy.contains('.bluehost-snackbar__title', 'Success');
-		cy.contains('.bluehost-snackbar__message', 'Changes deployed successfully.');
-
-		// Dismiss snackbar
-		cy.get('.bluehost-snackbar__close').click();
-		cy.get('.bluehost-snackbar').should('not.exist');
-	});
-
-	it('Staging options menu should not exist', () => {
-		// TODO: Broken
-		cy.get('.options-menu').should('not.exist');
-	});
-
-	it('Switch to production works', () => {
-		cy.get('.bluehost-overlay').should('not.exist');
-		cy.get('input[type="radio"]').first().click();
-		cy.get('.bluehost-overlay').should('be.visible').should('have.length', 1);
-		cy.get('.bluehost-overlay').within(() => {
-			cy.contains('h1', 'Loading Production Site').should('be.visible');
-			cy.contains('p', 'This should only take a minute').should('be.visible');
-			cy.get('.bluehost-staging__overlay-image')
-				.should('be.visible')
-				.should('have.attr', 'src')
-				.and('include', 'data:image/svg+xml;base64');
-			cy.get('.slick-slider')
-				.should('be.visible')
-				.and('contain', 'Tip');
-			cy.get('.slick-dots').children().should('have.length', 3);
-		});
-		cy.get('.bluehost-overlay').should('be.visible');
-
-	});
-});
-
-describe('Staging Page, production state', function () {
-
-	before(() => {
-		cy.visit('/wp-admin/admin.php?page=bluehost');
-		fn.visitPage({
-			stagingExists: true,
-			currentEnvironment: 'production'
-		});
-	});
-
-	it('Loads in production state', () => {
-		cy.get('.bluehost-overlay').should('not.exist');
-		cy.get('input[type="radio"]').first().should('be.checked');
-	});
-
-	it('Delete staging failure', () => {
-
-		cy.intercept({
-			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging/,
-			headers: {
-				'x-http-method-override': 'DELETE',
-			},
-		}, (req) => {
-			req.reply({
-				body: fn.getStagingInfo({
-					stagingExists: false,
-					status: 'error',
-					message: 'Unable to remove staging files.',
-				}),
-				delay: 1000,
-			})
-		}).as('stagingDeletion');
-
-		cy.get('.options-menu').within(() => {
-			cy.get('.options-menu__toggle').click();
-			cy.contains('.options-menu__list-item', 'Delete').scrollIntoView().should('be.visible');
-			cy.contains('.options-menu__list-item', 'Delete').click();
-		});
-		cy.get('.bluehost-modal').should('be.visible');
-		cy.get('.bluehost-modal').within(() => {
-			cy.contains('h1', 'Delete staging site?');
-			cy.contains('.bluehost-modal__content', 'Are you sure you want to delete this staging site? This will permanently delete the staging instance from your site.');
-			cy.contains('.bluehost-warning', 'This action cannot be undone');
-			cy.contains('button', 'Cancel');
-			cy.contains('button.is-primary', 'Delete').click();
-		});
-		cy.get('.bluehost-overlay').should('be.visible');
-		cy.contains('.bluehost-overlay h1', 'Deleting Staging Site');
-		cy.wait('@stagingDeletion');
-
-		// Validate that overlay is gone
-		cy.get('.bluehost-overlay').should('not.exist');
-
-		// Validate snackbar
-		cy.get('.bluehost-snackbar').should('be.visible').should('have.class', 'is-error');
-		cy.contains('.bluehost-snackbar__title', 'Error');
-		cy.contains('.bluehost-snackbar__message', 'Unable to remove staging files.');
-
-		// Dismiss snackbar
-		cy.get('.bluehost-snackbar__close').click();
-		cy.get('.bluehost-snackbar').should('not.exist');
-	});
-
-	it('Delete staging works', () => {
-		cy.intercept({
-			method: 'POST',
-			url: /bluehost(\/|%2F)v1(\/|%2F)staging/,
-			headers: {
-				'x-http-method-override': 'DELETE',
-			},
-		}, (req) => {
-			req.reply({
-				body: fn.getStagingInfo({
-					stagingExists: false,
-					status: 'success',
-					message: 'Staging website destroyed.',
-				}),
-				delay: 1000,
-			})
-		}).as('stagingDeletion');
-
-		cy.get('.options-menu').within(() => {
-			cy.get('.options-menu__toggle').click();
-			cy.contains('.options-menu__list-item', 'Delete').scrollIntoView().should('be.visible');
-			cy.contains('.options-menu__list-item', 'Delete').click();
-		});
-		cy.get('.bluehost-modal').should('be.visible');
-		cy.get('.bluehost-modal').within(() => {
-			cy.contains('h1', 'Delete staging site?');
-			cy.contains('.bluehost-modal__content', 'Are you sure you want to delete this staging site? This will permanently delete the staging instance from your site.');
-			cy.contains('.bluehost-warning', 'This action cannot be undone');
-			cy.contains('button', 'Cancel');
-			cy.contains('button.is-primary', 'Delete').click();
-		});
-		cy.get('.bluehost-overlay').should('be.visible');
-		cy.contains('.bluehost-overlay h1', 'Deleting Staging Site');
-		cy.wait('@stagingDeletion');
-
-		// Validate that overlay is gone
-		cy.get('.bluehost-overlay').should('not.exist');
-
-		// Validate snackbar
-		cy.get('.bluehost-snackbar').should('be.visible').should('have.class', 'is-success');
-		cy.contains('.bluehost-snackbar__title', 'Success');
-		cy.contains('.bluehost-snackbar__message', 'Staging website destroyed.');
-
-		// Dismiss snackbar
-		cy.get('.bluehost-snackbar__close').click();
-		cy.get('.bluehost-snackbar').should('not.exist');
-	});
+    });
 
 });

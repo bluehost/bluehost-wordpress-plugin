@@ -1,1 +1,6 @@
-<?php // Silence is Golden.
+<?php
+/**
+ * Silence is Golden.
+ *
+ * @package WPPluginBluehost
+ **/

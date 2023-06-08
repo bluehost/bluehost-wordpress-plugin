@@ -1,0 +1,55 @@
+.wppbh-app-staging-page.is-loading {
+    position: relative;
+    user-select: none;
+
+    &::before {
+        background: rgba(0,0,0,1);
+        border-radius: 8px;
+        content: '';
+        cursor: progress;
+        display: block;
+        height: 100%;
+        opacity: .1;
+        pointer-events: all;
+        position: absolute;
+        user-select: none;
+        width: 100%;
+        z-index: 1;
+    }
+}
+.wppbh-app-staging-page.is-thinking {
+    position: relative;
+    user-select: none;
+
+    &::before {
+        background: rgba(255,255,255,1);
+        border-radius: 8px;
+        content: '';
+        cursor: progress;
+        display: block;
+        height: 100%;
+        opacity: .75;
+        pointer-events: all;
+        position: absolute;
+        user-select: none;
+        width: 100%;
+        z-index: 1;
+    }
+
+    &::after{
+        background-image: url(../../images/loading-logo.svg);
+        background-position: center center;
+        background-size: 200px auto;
+        background-repeat: no-repeat;
+        content: '';
+        cursor: progress;
+        display: block;
+        height: 100%;
+        opacity: 0.75;
+        pointer-events: all;
+        position: absolute;
+        user-select: none;
+        width: 100%;
+        z-index: 2;
+    }
+}

@@ -1,100 +1,87 @@
-import './store';
-import './app-main.scss';
+import './stylesheet.scss';
+import './tailwind.pcss';
 
-import {
-	BWACommonFooter,
-	BWACommonHeader,
-	BWARouteContents
-} from '@app/components/organisms';
-import { HashRouter as Router, useLocation } from 'react-router-dom';
-
-import {
-	BWAError,
-} from '@app/components/molecules';
-import { userTrigger } from '@app/functions';
-import { ErrorBoundary } from 'react-error-boundary';
+import AppStore, { AppStoreProvider } from './data/store';
+import { useLocation, HashRouter as Router } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
+import { SnackbarList, Spinner } from '@wordpress/components';
 import classnames from 'classnames';
-import { dispatch } from '@wordpress/data';
-import {kebabCase} from 'lodash';
-import { useEffect, useState } from '@wordpress/element';
+import AppRoutes from './data/routes';
+import ErrorCard from './components/errorCard';
+import { useDispatch, useSelect } from '@wordpress/data';
+import { useEffect } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { store as noticesStore } from '@wordpress/notices';
+import { setActiveSubnav } from './util/helpers';
+import { kebabCase, filter } from 'lodash';
+import { Root } from "@yoast/ui-library";
+import { AppNav } from './components/app-nav';
+import { SiteInfoBar } from './components/site-info';
+import { NotificationFeed } from './components/notifications/feed';
 
 // component sourced from module
-import { default as NewfoldNotifications } from '../../vendor/newfold-labs/wp-module-notifications/assets/js/components/notifications/'; 
+import { default as NewfoldNotifications } from '../../vendor/newfold-labs/wp-module-notifications/assets/js/components/notifications/';
 // to pass to notifications module
 import apiFetch from '@wordpress/api-fetch';
-import { filter } from 'lodash';
+import { useState } from '@wordpress/element';
+
+const Notices = () => {
+	if ( 'undefined' === typeof noticesStore ) {
+		return null;
+	}
+	const notices = useSelect(
+		( select ) =>
+			select( noticesStore )
+				.getNotices()
+				.filter( ( notice ) => notice.type === 'snackbar' ),
+		[]
+	);
+	const { removeNotice } = useDispatch( noticesStore );
+	return (
+		<SnackbarList
+			className="edit-site-notices"
+			notices={ notices }
+			onRemove={ removeNotice }
+		/>
+	);
+};
+
+const handlePageLoad = () => {
+	const location = useLocation();
+	const routeContents = document.querySelector( '.wppbh-app-body-inner' );
+	useEffect( () => {
+		setActiveSubnav( location.pathname );
+		window.scrollTo( 0, 0 );
+		if ( routeContents ) {
+			routeContents.focus( { preventScroll: true } );
+		}
+	}, [ location.pathname ] );
+};
 
 const AppBody = ( props ) => {
-	const [isAppBooted, setAppBooted] = useState(false);
-
-	if ( ! isAppBooted ) {
-		dispatch( 'bluehost/plugin' ).fetchWindowData();
-		document.body.classList.add( 'is-booted' );
-		setAppBooted(true);
-	}
-
-	let location = useLocation();
-	let kebabRoute = kebabCase( location.pathname );
+	const location = useLocation();
 	const hashedPath = '#' + location.pathname;
-	
-	const handleNavFocus = ( event ) => {
-		userTrigger(event, () => { 
-			const desktopTabs = document.querySelector('.bwa-desktop-nav__items');
-			if ( desktopTabs ) {
-				desktopTabs.focus({ preventScroll: true })
-			}
-		})
-	}
+	const { booted, hasError } = useContext( AppStore );
 
-	const handleContentFocus = ( event ) => {
-		userTrigger(event, () => { 
-			const routeContents = document.querySelector('.bwa-route-contents');
-			if ( routeContents ) {
-				routeContents.focus({ preventScroll: true })
-			}
-		})
-	}
+	handlePageLoad();
 
-	const SkipLink = ( { href = '#', onClick, onKeyDown, children } ) => (
-		<a 
-			className="screen-reader-shortcut bwa-skip-link" 
-			href={href} 
-			onClick={onClick} 
-			onKeyDown={onKeyDown}
-		>
-			{ children }
-		</a>
-	);
-	
 	return (
-		<main 
-			id="bwa-app" 
+		<main
+			id="wppbh-app-rendered"
 			className={ classnames(
 				'wpadmin-brand-bluehost',
-				'bwa-page-' + kebabRoute,
-				props.className
+				`wppbh-wp-${ WPPBH.wpversion }`,
+				`wppbh-page-${ kebabCase( location.pathname ) }`,
+				props.className,
+				'yst-w-full yst-p-4 min-[783px]:yst-p-0'
 			) }
-			data-bwa-app-route={location.pathname}
 		>
-			<SkipLink 
-				onClick={ handleNavFocus } 
-				onKeyDown={ handleNavFocus }
-			>
-				{ __( 'Skip to Navigation', 'bluehost-wordpress-plugin' ) }
-			</SkipLink>
-			<SkipLink 
-				onClick={ handleContentFocus } 
-				onKeyDown={ handleContentFocus }
-			>
-				{ __( 'Skip to Content', 'bluehost-wordpress-plugin' ) }
-			</SkipLink>
-			<BWACommonHeader />
+			{/* <Header /> */}
 			<NewfoldNotifications
 				constants={{
 					context: 'bluehost-plugin',
 					page: hashedPath,
-					resturl: window.nfdRestRoot
+					resturl: window.WPPBH.resturl
 				}}
 				methods={{
 					apiFetch,
@@ -104,18 +91,37 @@ const AppBody = ( props ) => {
 					useEffect
 				}}
 			/>
-			<BWARouteContents />
-			<BWACommonFooter />
+			<div className="wppbh-app-body">
+				<div className="wppbh-app-body-inner">
+					<ErrorBoundary FallbackComponent={ <ErrorCard /> }>
+						{ hasError && <ErrorCard error={ hasError } /> }
+						<SiteInfoBar />
+						{ ( true === booted && <AppRoutes /> ) ||
+							( ! hasError && <Spinner /> ) }
+					</ErrorBoundary>
+				</div>
+			</div>
+
+			<div className="wppbh-app-snackbar">
+				<Notices />
+			</div>
 		</main>
-	)
-}
+	);
+};
 
 export const App = () => (
-	<ErrorBoundary FallbackComponent={BWAError}>
-		<Router>
-			<AppBody />
-		</Router>
-	</ErrorBoundary>
-)
+	<AppStoreProvider>
+		<Root context={ { isRtl: false } }>
+			<NotificationFeed>
+				<Router>
+					<div className="wppbh-app-container min-[783px]:yst-p-8 min-[783px]:yst-flex yst-gap-6 yst-max-w-full xl:yst-max-w-screen-xl 2xl:yst-max-w-screen-2xl yst-my-0">
+						<AppNav />
+						<AppBody />
+					</div>
+				</Router>
+			</NotificationFeed>
+		</Root>
+	</AppStoreProvider>
+);
 
 export default App;

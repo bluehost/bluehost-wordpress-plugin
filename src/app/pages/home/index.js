@@ -1,71 +1,26 @@
-import './style.scss';
-
-import { Redirect, useLocation } from 'react-router-dom';
-
-import { BWACommonTemplate } from '@app/components/templates';
-import { BWARedirect } from '@app/components/atoms';
-import {
-	DesignBuildSection,
-	HostingSection,
-	PerformanceSection,
-	TrafficEngagementSection,
-	ContentSection,
-	WelcomeSection
-} from './sections'
-import { __ } from '@wordpress/i18n';
-import { useSelect } from '@wordpress/data';
+import { Page } from '../../components/page';
+import { SectionContainer, SectionContent } from '../../components/section';
+import { AccountCard } from './accountCard';
+import { FreeAddonsSection } from './freeAddonsSection';
+import { HelpCard } from './helpCard';
+import './stylesheet.scss';
+import { WelcomeSection } from './welcomeSection';
 
 const Home = () => {
-	const location = useLocation();
-
-	const daysSinceInstall = useSelect((select) => {
-		const plugin = select('bluehost/plugin');
-		return 'undefined' !== typeof plugin && plugin.hasOwnProperty('getBluehostPluginDaysSinceInstall') ? select('bluehost/plugin').getBluehostPluginDaysSinceInstall() : 31;
-	}, []);
-
-	const hasSiteLaunched = useSelect((select) => {
-		const plugin = select('bluehost/plugin');
-		return 'undefined' !== typeof plugin && plugin.hasOwnProperty('getSetting') ? ! select('bluehost/plugin').getSetting('comingSoon') : true;
-	}, []);
-
-	const eCommerceCapabilities = useSelect((select) => {
-		const plugin = select("bluehost/plugin");
-		return (
-			"undefined" !== typeof plugin &&
-			plugin.hasOwnProperty("getEcommerceCapabilities") &&
-			plugin.getEcommerceCapabilities()
-		);
-	}, []);
-
-	if (eCommerceCapabilities.has("experience")) {
-		return <BWARedirect to="/home/store" currentLocation={location} />;
-	}
-
-	let showOnboarding = !hasSiteLaunched || daysSinceInstall <= 30;
-	
-	if(
-		location.pathname === '/home/page' ||
-		location.state && 
-		'undefined' !== typeof location.state.redirect && 
-		'override' === location.state.redirect
-	) {
-		showOnboarding = false;
-	}
-
-	return showOnboarding 
-			? <BWARedirect to="/home/onboarding" currentLocation={location} />
-			: (
-				<BWACommonTemplate descriptivePageTitle={__('Home', 'bluehost-wordpress-plugin')}>
-					<div className="page-home__container">
-						<WelcomeSection />
-						<ContentSection />
-						<DesignBuildSection />
-						<TrafficEngagementSection />
-						<PerformanceSection />
-						<HostingSection />
+	return (
+		<Page className="wppbh-home">
+			<WelcomeSection />
+			<FreeAddonsSection />
+			<SectionContainer className="wppbh-account-help-section">
+				<SectionContent >
+					<div className="yst-grid yst-grid-cols-2 yst-gap-6">
+						<AccountCard />
+						<HelpCard />
 					</div>
-				</BWACommonTemplate>
-			);
+				</SectionContent>
+			</SectionContainer>
+		</Page>
+	);
 };
 
 export default Home;

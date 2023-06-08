@@ -43,10 +43,11 @@ describe('Notifications', () => {
 			.should('not.exist');
 
 		// cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
-		cy.get('.bwa-desktop-nav__item.settings').click();
-		cy.wait(200);
+		cy.get('.wppbh-app-navitem-Settings').click();
+		cy.wait(500);
 
         cy.get('.newfold-notifications-wrapper #notification-test-1')
+			.scrollIntoView()
             .should('be.visible')
 			.should('have.attr', 'data-id')
 			.and('equal', 'test-1');
@@ -64,32 +65,29 @@ describe('Notifications', () => {
     // dismiss events triggered
 	it('Dismissing notification removes it from the page', () => {
 		cy.intercept({
-			method: 'POST',
-			url: '**newfold-notifications**'
+			method: 'DELETE',
+			url: /newfold-notifications(\/|%2F)v1(\/|%2F)notifications/
 		}, {
-			body: {"id":"test-2"},
-			delay: 1000,
+			body: {"id":"test-2"}
 		}).as('notificationDismiss');
 
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
 
         cy.get('.newfold-notifications-wrapper #notification-test-2')
+			.scrollIntoView()
             .should('be.visible')
 			.should('have.attr', 'data-id')
 			.and('equal', 'test-2');
-        
+        	
+		cy.get('.newfold-notifications-wrapper #notification-test-2')
+			.should('be.visible');
         cy.get('.newfold-notifications-wrapper #notification-test-2')
             .contains('display on home and onboarding screens');
+		
 
-		cy.get('#notification-test-2 .notice-dismiss').click( {force: true } );
-		cy.get('.newfold-notifications-wrapper #notification-test-2')
-			.should('have.class', 'is-dismissed');
-		
-		cy.get('.newfold-notifications-wrapper #notification-test-2')
-			.should('not.be.visible');
-		
-		cy.wait('@notificationDismiss');
-		cy.wait(100);
+		cy.get('#notification-test-2 button.notice-dismiss[data-action="close"]').click();		
+		// cy.wait('@notificationDismiss');
+		cy.wait(2000);
 		cy.get('.newfold-notifications-wrapper #notification-test-2')
 			.should('not.exist');
 		

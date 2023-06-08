@@ -1,16 +1,20 @@
 <?php
+/**
+ * This file sets up custom api controllers for the plugin.
+ *
+ * @package WPPluginBluehost
+ */
+
+namespace Bluehost;
 
 /**
  * Instantiate controllers and register routes.
  */
-function bluehost_init_rest_api() {
+function init_rest_api() {
 
 	$controllers = array(
-		'Bluehost\\RestApi\\AdminErrorController',
-		'Bluehost\\RestApi\\BluehostBlogController',
 		'Bluehost\\RestApi\\CachingController',
 		'Bluehost\\RestApi\\SettingsController',
-		'Bluehost\\RestApi\\StagingController',
 	);
 
 	foreach ( $controllers as $controller ) {
@@ -24,4 +28,4 @@ function bluehost_init_rest_api() {
 	}
 }
 
-add_action( 'rest_api_init', 'bluehost_init_rest_api' );
+add_action( 'rest_api_init', __NAMESPACE__ . '\\init_rest_api' );

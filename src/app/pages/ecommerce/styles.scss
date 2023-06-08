@@ -1,9 +1,12 @@
-.grid-col-2 {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.yst-root {
+  .yst-modal.no-overlay {
+    .yst-modal__overlay {
+      display: none;
+    }
   }
-  margin-top: 2rem;
-  gap: 2rem;
+  .yst-feature-upsell.hide-html {
+    .yst-flex {
+      background-color: rgb(255 255 255 / 0.5);
+    }
+  }
 }

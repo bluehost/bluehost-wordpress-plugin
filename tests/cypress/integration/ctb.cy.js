@@ -2,23 +2,15 @@
 
 describe('Click to buy', function () {
 
-	beforeEach(() => {
-
+	before(() => {
 		cy.intercept({
 			method: 'GET',
-			url: /newfold-ctb(\/|%2F)v1(\/|%2F)ctb/,
-		},{
-			fixture: 'ctbGET'
-		}).as('ctbGET');
-
-		cy.intercept({
-			method: 'POST',
-			url: /newfold-ctb(\/|%2F)v1(\/|%2F)ctb/,
+			url: /newfold-marketplace(\/|%2F)v1(\/|%2F)marketplace/
 		}, {
-			fixture: 'ctbPOST'
-		}).as('ctbPOST');
+			fixture: 'products'
+		}).as('products');
 
-		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace/plugins/yoast-seo-premium', {
+		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace', {
 			onBeforeLoad(contentWindow) {
 				let nfdctb = {
 					supportsCTB: true
@@ -31,20 +23,27 @@ describe('Click to buy', function () {
 				});
 			}
 		});
-
-
+		cy.wait('@products');
 	});
 
 	it('Button has CTB Attributes', () => {
-		cy.get('[data-action="load-nfd-ctb"]')
+		cy.get('#marketplace-item-a1ff70f1-9670-4e25-a0e1-a068d3e43a45')
 			.scrollIntoView()
 			.should('exist')
-			.should('be.visible')
+			.should('be.visible');
+		cy.get('.yst-button--primary[data-action="load-nfd-ctb"]')
 			.should('have.attr', 'data-ctb-id')
 			.and('equal', '57d6a568-783c-45e2-a388-847cff155897');
 	});
 
 	it('CTB modal is functional', () => {
+		cy.intercept({
+			method: 'GET',
+			url: /newfold-ctb(\/|%2F)v1(\/|%2F)ctb/,
+		},{
+			fixture: 'ctbGET'
+		}).as('ctbGET');
+
 		cy.get('body').should('not.have.class', 'noscroll');
 
 		cy.get('[data-action="load-nfd-ctb"]')
@@ -100,9 +99,24 @@ describe('Click to buy', function () {
 	});
 
 	it('CTB purchase functions properly', () => {
+		cy.intercept({
+			method: 'GET',
+			url: /newfold-ctb(\/|%2F)v1(\/|%2F)ctb/,
+		},{
+			fixture: 'ctbGET'
+		}).as('ctbGET');
+
+		cy.intercept({
+			method: 'POST',
+			url: /newfold-ctb(\/|%2F)v1(\/|%2F)ctb/,
+		}, {
+			fixture: 'ctbPOST'
+		}).as('ctbPOST');
+		
 		// click CTB (again)
 		cy.get('[data-action="load-nfd-ctb"]').click();
-
+		cy.wait('@ctbGET');
+		
 		// check for buy button
 		cy.get('[data-action="purchase-ctb"]')
 			.scrollIntoView()

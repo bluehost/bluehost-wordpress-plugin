@@ -1,29 +1,39 @@
-import './style.scss';
+import AutomaticUpdates from './automaticUpdates';
+import ComingSoon from './comingSoon';
+import CommentSettings from './commentSettings';
+import ContentSettings from './contentSettings';
+import { Page } from '../../components/page';
+import { SectionContainer, SectionHeader, SectionContent } from '../../components/section';
 
-import AutomaticUpdates from './automatic-updates';
-import { BWACommonTemplate } from '@app/components/templates';
-import { BWAHeading } from '@app/components/atoms';
-import Comments from './comments';
-import Content from './content';
-import SettingsPerformance from './performance';
-import SiteControls from './site-controls';
-import { __ } from '@wordpress/i18n';
+const Settings = () => {
+	return (
+		<Page title="Settings" className={"wppbh-app-settings-page"}>
+			<SectionContainer className={'wppbh-app-settings-container'}>
+                <SectionHeader
+                    title={__('Settings', 'wp-plugin-bluehost')}
+                    subTitle={__('This is where you can manage common settings for your website.', 'wp-plugin-bluehost')}
+                    className={'wppbh-app-settings-header'}
+                />
 
-const SettingsPage = () => (
-	<BWACommonTemplate className="page-settings">
-		<BWAHeading level="h2" size={ 0 }>{ __('Settings', 'bluehost-wordpress-plugin') }</BWAHeading>
-		<div className="settings-wrap">
-			<div className="page-settings__grid1">
-				<AutomaticUpdates />
-				<SiteControls />
-				<Comments />
-				<Content />
-			</div>
-			<div className="page-settings__grid2">
-				<SettingsPerformance />
-			</div>
-		</div>
-	</BWACommonTemplate>
-);
+                <SectionContent separator={true} className={'wppbh-app-settings-coming-soon'}>
+                    <ComingSoon />
+                </SectionContent>
 
-export default SettingsPage;
+				<SectionContent separator={true} className={'wppbh-app-settings-update'}>
+                    <AutomaticUpdates />
+                </SectionContent>
+
+                <SectionContent separator={true} className={'wppbh-app-settings-content'}>
+                    <ContentSettings />
+                </SectionContent>
+
+				<SectionContent className={'wppbh-app-settings-comments'}>
+                    <CommentSettings />
+                </SectionContent>
+
+            </SectionContainer>
+		</Page>
+	);
+};
+
+export default Settings;

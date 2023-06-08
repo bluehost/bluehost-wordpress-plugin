@@ -1,167 +1,243 @@
 // <reference types="Cypress" />
 
-describe('Settings Page', () => {
+describe('Settings Page', function () {
 
 	before(() => {
-
-		// Make sure caching is disabled by default
-		cy.exec('npx wp-env run cli wp option set endurance_cache_level 0');
-
 		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
-	});
-
-	const fn = {
-		validateToggle(label, run = 0) {
-			cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
-			cy.findByLabelText(label).as('toggle');
-			cy.get('@toggle').scrollIntoView().should('exist');
-			cy.get('@toggle').next().scrollIntoView().should('be.visible');
-			cy.get('@toggle').then(($toggle) => {
-				if ($toggle.attr('aria-checked') !== 'true') {
-					// If unchecked, check it
-					cy.get('@toggle').check();
-					cy.wait('@update', {timeout: 12000});
-					cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
-				} else {
-					// If checked, uncheck it
-					cy.get('@toggle').uncheck();
-					cy.wait('@update', {timeout: 12000});
-					cy.get('@toggle').should('have.attr', 'aria-checked', 'false');
-				}
-			});
-			// Do the inverse as well
-			if (!run) {
-				this.validateToggle(label, run + 1);
-			}
-		},
-		validateSelect(label, values) {
-			cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
-			cy.get(`select[aria-label="${label}"]`).as('select');
-			cy.get('@select').scrollIntoView().should('be.visible');
-			values.forEach((value) => {
-				cy.get('@select').select(`${value}`);
-				cy.wait('@update', {timeout: 12000});
-				cy.get('@select').should('have.value', `${value}`);
-			});
-		},
-	};
-
-	it('Exists', () => {
-		cy.get('.settings-section').should('have.length', 5);
+		
 	});
 
 	it('Is Accessible', () => {
 		cy.injectAxe();
+		cy.wait(500);
+		cy.checkA11y('.wppbh-app-body');
+	});
+
+	it('Has Coming Soon', () => {
+		cy
+			.get('.wppbh-app-settings-coming-soon')
+			.scrollIntoView()
+			.should('be.visible');
+	});
+
+	it('Has Auto Updates Settings', () => {
+		cy
+			.get('.wppbh-app-settings-update')
+			.scrollIntoView()
+			.should('be.visible');
+	});
+
+	it('Has Content Settings', () => {
+		cy
+			.get('.wppbh-app-settings-content')
+			.scrollIntoView()
+			.should('be.visible');
+	});
+
+	it('Has Comments Settings', () => {
+		cy
+			.get('.wppbh-app-settings-comments')
+			.scrollIntoView()
+			.should('be.visible');
+	});
+
+	it('On load update all is checked, which forces other updates to check and disabled state', () => {
+		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-core-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-plugins-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-themes-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+	});
+
+	it('Disable ALL toggle, leaves everything checked, but enables them', () => {
+		cy.get('[data-id="autoupdate-all-toggle"]').click();
+		cy.wait(100);
+        cy.get('.yst-notifications')
+            .contains('p', 'Disabled All auto-updates')
+            .should('be.visible');
+		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+		cy.get('[data-id="autoupdate-core-toggle"]').should('not.be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-plugins-toggle"]').should('not.be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-themes-toggle"]').should('not.be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+	});
+
+	it('Core toggle works', () => {
+		cy.get('[data-id="autoupdate-core-toggle"]').should('not.be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-core-toggle"]').click();
+		cy.wait(100);
+		cy.get('[data-id="autoupdate-core-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+        cy.get('.yst-notifications')
+			.contains('p', 'Disabled Core auto-updates')
+			.should('be.visible');
+		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+	});
+
+	it('Plugins toggle works', () => {
+		cy.get('[data-id="autoupdate-plugins-toggle"]').should('not.be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-plugins-toggle"]').click();
+		cy.wait(100);
+		cy.get('[data-id="autoupdate-plugins-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+        cy.get('.yst-notifications')
+			.contains('p', 'Disabled Plugins auto-update')
+			.should('be.visible');
+		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+	});
+
+	it('Themes toggle works', () => {
+		cy.get('[data-id="autoupdate-themes-toggle"]').should('not.be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-themes-toggle"]').click();
+		cy.wait(100);
+		cy.get('[data-id="autoupdate-themes-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+        cy.get('.yst-notifications')
+			.contains('p', 'Disabled Themes auto-update')
+			.should('be.visible');
+		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+	});
+
+	it('All toggle activates all', () => {
+		cy.get('[data-id="autoupdate-all-toggle"]').click();
+		cy.wait(100);
+		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-core-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-plugins-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-themes-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+	});
+
+	it('Disabling All toggle returns to previous state', () => {
+		cy.get('[data-id="autoupdate-all-toggle"]').click();
+		cy.wait(100);
+        cy.get('.yst-notifications')
+            .contains('p', 'Disabled All auto-updates')
+            .should('be.visible');
+		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+		cy.get('[data-id="autoupdate-core-toggle"]').should('not.be.disabled').should('have.attr', 'aria-checked').and('include', 'false');
+		cy.get('[data-id="autoupdate-plugins-toggle"]').should('not.be.disabled').should('have.attr', 'aria-checked').and('include', 'false');
+		cy.get('[data-id="autoupdate-themes-toggle"]').should('not.be.disabled').should('have.attr', 'aria-checked').and('include', 'false');
+	});
+
+	it('All Toggle takes over again when all are enabled', () => {
+		cy.get('[data-id="autoupdate-core-toggle"]').click();
+		cy.get('[data-id="autoupdate-plugins-toggle"]').click();
+		cy.get('[data-id="autoupdate-themes-toggle"]').click();
+		cy.wait(100);
+		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-core-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-plugins-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="autoupdate-themes-toggle"]').should('be.disabled').should('have.attr', 'aria-checked').and('include', 'true');
+	});
+
+	it('Content Settings Work', () => {
+		cy.get('[data-id="content-revisions-select"]').click();
+		cy.wait(100);
+		cy.get('[data-id="content-revisions-select"]')
+			.parent()
+			.next('ul.yst-select__options')
+			.find('li:first')
+			.click(); // 1
+		cy.wait(100);
+		cy.get('#content-revisions-select__description')
+			.contains('you can take 1 step back.')
+			.should('be.visible');
+		
+		cy.get('[data-id="content-revisions-select"]').click();
 		cy.wait(1000);
-		cy.checkA11y('.bwa-route-contents');
+		cy.get('[data-id="content-revisions-select"]')
+			.parent()
+			.next('ul.yst-select__options')
+			.find('li:last')
+			.click(); // 40
+		cy.wait(100);
+		cy.get('#content-revisions-select__description')
+			.contains('you can take 40 steps back.')
+			.should('be.visible');
+
+		cy.get('[data-id="content-revisions-select"]').click();
+		cy.wait(500);
+		cy.get('[data-id="content-revisions-select"]')
+			.parent()
+			.next('ul.yst-select__options')
+			.find('li:nth-child(2)')
+			.click(); // 5
+		cy.get('#content-revisions-select__description')
+			.contains('you can take 5 steps back.')
+			.should('be.visible');
+		
+		// Empty Trash Setting
+		cy.get('[data-id="empty-trash-select"]').click();
+		cy.wait(500);
+		cy.get('[data-id="empty-trash-select"]')
+			.parent()
+			.next('ul.yst-select__options')
+			.find('li:nth-child(2)')
+			.click(); // 2
+		cy.wait(100);
+		cy.get('#empty-trash-select__description')
+			.contains('The trash will automatically empty every 2 weeks.')
+			.should('be.visible');
+		
+		cy.get('[data-id="empty-trash-select"]').click();
+		cy.wait(500);
+		cy.get('[data-id="empty-trash-select"]')
+			.parent()
+			.next('ul.yst-select__options')
+			.find('li:last')
+			.click(); // 4
+		cy.wait(100);
+		cy.get('#empty-trash-select__description')
+			.contains('The trash will automatically empty every 4 weeks.')
+			.should('be.visible');
 	});
 
-	it('Has an "Automatic Updates" section', () => {
-		cy.get('.settings-section').first().within(() => {
-			cy.contains('h3', 'Automatic Updates');
-		});
-	});
+	it('Comment Settings Work', () => {
+		cy.get('[data-id="comments-per-page-select"]').click();
+		cy.wait(500);
+		cy.get('[data-id="comments-per-page-select"]')
+			.parent()
+			.next('ul.yst-select__options')
+			.find('li:first')
+			.click(); // 10
+		cy.wait(100);
+		cy.get('.wppbh-app-settings-comments')
+			.contains('label', 'Display 10 comments per page.')
+			.should('be.visible');
+		
+		cy.get('[data-id="disable-comments-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+		cy.get('[data-id="close-comments-days-select"]').should('be.disabled');
+		cy.get('[data-id="disable-comments-toggle"]').click();
+		cy.wait(100);
 
-	it('Automatic Updates: WordPress Core', () => {
-		fn.validateToggle('WordPress Core');
-	});
+		cy.get('[data-id="disable-comments-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
+		cy.get('[data-id="close-comments-days-select"]').should('not.be.disabled');
 
-	it('Automatic Updates: Themes', () => {
-		fn.validateToggle('Themes');
-	});
+		// Close comments after days
+		cy.get('[data-id="close-comments-days-select"]').click();
+		cy.wait(100);
+		cy.get('[data-id="close-comments-days-select"]')
+			.parent()
+			.next('ul.yst-select__options')
+			.find('li:last')
+			.click(); // 100
+		cy.wait(100);
+		cy.get('.wppbh-app-settings-comments')
+			.contains('label', 'Close comments after 100 days.')
+			.should('be.visible');
+		
+		cy.get('[data-id="close-comments-days-select"]').click();
+		cy.wait(100);
+		cy.get('[data-id="close-comments-days-select"]')
+			.parent()
+			.next('ul.yst-select__options')
+			.find('li:nth-child(6)')
+			.click(); // 14
+		cy.wait(100);
+		cy.get('.wppbh-app-settings-comments')
+			.contains('label', 'Close comments after 14 days.')
+			.should('be.visible');
+		
+		cy.get('[data-id="disable-comments-toggle"]').click();
+		cy.wait(100);
+		cy.get('[data-id="disable-comments-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
+		cy.get('[data-id="close-comments-days-select"]').should('be.disabled');
 
-	it('Automatic Updates: Plugins', () => {
-		fn.validateToggle('Plugins');
-	});
-
-	it('Has a "Site Controls" section', () => {
-		cy.get('.settings-section').eq(1).within(() => {
-			cy.contains('h3', 'Site Controls');
-		});
-	});
-
-	it('Site Controls: Coming Soon', () => {
-		fn.validateToggle('Coming Soon Page');
-	});
-
-	it('Has a "Comments" section', () => {
-		cy.get('.settings-section').eq(2).within(() => {
-			cy.contains('h3', 'Comments');
-		});
-	});
-
-	it('Comments: Close After x Days', () => {
-		fn.validateSelect('Close comments after x days', [7, 28]);
-	});
-
-	it('Comments: Show x Per Page', () => {
-		fn.validateSelect('Display x comments per page', [20, 10]);
-	});
-
-	it('Comments: Disable for old posts', () => {
-		fn.validateToggle('Disable comments for old posts');
-	});
-
-	it('Has a "Content" section', () => {
-		cy.get('.settings-section').eq(3).within(() => {
-			cy.contains('h3', 'Content');
-		});
-	});
-
-	it('Content: Content Revisions', () => {
-		fn.validateSelect('Keep x latest revisions', [40, 5, 10]);
-	});
-
-	it('Content: Empty Trash', () => {
-		fn.validateSelect('Empty the trash every x weeks', [14, 21]);
-	});
-
-	it('Has a "Performance" section', () => {
-		cy.get('.settings-section').last().within(() => {
-			cy.findByRole('heading', {name: 'Performance', level: 3}).scrollIntoView().should('be.visible');
-			cy.findByRole('heading', {name: 'Caching', level: 4}).scrollIntoView().should('be.visible');
-		});
-	});
-
-	it('Performance: Caching Toggle', () => {
-		cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
-		cy.findByLabelText('Toggle Caching').as('toggle');
-		cy.get('@toggle').check();
-		cy.wait('@update', {timeout: 10000});
-		cy.get('@toggle').should('have.attr', 'aria-checked', 'true');
-	});
-
-	it('Performance: Caching Level', () => {
-		cy.intercept('POST', /bluehost(\/|%2F)v1(\/|%2F)settings/).as('update');
-
-		cy.get('.settings-section').last().within(() => {
-
-			cy.findByRole('heading', {name: 'Caching Level', level: 5}).scrollIntoView().should('be.visible');
-
-			cy.findByLabelText('Assets Only').as('assetsOnly');
-			cy.findByLabelText('Assets & Web Pages').as('assetsWeb');
-			cy.findByLabelText('Assets & Web Pages - Extended').as('assetsExt');
-
-			const selectors = ['@assetsOnly', '@assetsWeb', '@assetsExt'];
-			selectors.forEach((selector) => {
-				const otherSelectors = Cypress._.without(selectors, selector);
-				cy.get(selector).scrollIntoView().should('be.visible');
-				cy.get(selector).check();
-				cy.wait('@update', {timeout: 10000});
-				cy.get(selector).should('be.checked');
-				otherSelectors.forEach((otherSelector) => {
-					cy.get(otherSelector).should('not.be.checked');
-				});
-			});
-		});
-	});
-
-	it('Performance: Clear Everything', () => {
-		cy.get('.settings-section').last().within(() => {
-			cy.get('button').first().within(() => {
-				cy.contains('Clear Everything');
-			});
-		});
 	});
 
 });
