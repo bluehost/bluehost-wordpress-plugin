@@ -31,7 +31,7 @@ describe( 'Exit to WordPress', function () {
 	it( 'Exit to WordPress Page', () => {
 		cy.get( '.nfd-onboarding-etw__trigger' ).click();
 		cy.get( '.nfd-onboarding-etw__buttons > .is-primary' ).click();
-		cy.url( { timeout: 12000 } ).should( 'contain', 'bluehost' );
+		cy.url( { timeout: 12000 } ).should( 'contain', 'index.php' );
 	} );
 
 	after( () => {
