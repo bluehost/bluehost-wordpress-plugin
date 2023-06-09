@@ -33,7 +33,10 @@ describe( 'Get Started Site Type Secondary', function () {
 
 	it( 'Check selected category is visible and selected', () => {
 		cy.get( '.category-scrolling-wrapper' ).should( 'be.visible' );
-		cy.get( '.category-scrolling-wrapper__type-text' ).should( 'contain', 'Business' );
+		cy.get( '.category-scrolling-wrapper__type-text' ).should(
+			'contain',
+			'Business'
+		);
 	} );
 
 	it( 'Check different subCategories exist and is selectable', () => {

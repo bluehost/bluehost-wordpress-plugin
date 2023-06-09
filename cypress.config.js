@@ -45,25 +45,15 @@ module.exports = defineConfig({
 					config.env.wpSemverVersion = config.env.wpVersion;
 				}
 			}
-
 			// Exclude onboarding tests for WordPress lower than 6.1
 			if (semver.satisfies(config.env.wpSemverVersion, '<6.1.0')) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
 					[
-						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/**",
-						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/Last step/z-onboarding-phase-2-rudimentary.cy.js"
+						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/**"
 					]
 				);
 			}
 
-			/*
-				Exclude onboarding/ecommerce tests for PHP lower than 7.3 (7.1 and 7.2).
-				Woocommerce does not support PHP versions below 7.3.0.
-			*/
-			if (semver.satisfies(config.env.phpSemverVersion, '<7.3.0')) {
-				config.excludeSpecPattern = config.excludeSpecPattern.concat(
-					[
-						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/Intermediate steps/2-ecommerce/**",
 			// Ensure that we have a semantically correct PHP version number for comparisons.
 			if (config.env.phpVersion) {
 				if (config.env.phpVersion.split('.').length !== 3) {
@@ -73,7 +63,12 @@ module.exports = defineConfig({
 				}
 			}
 			// Exclude onboarding/ecommerce tests for PHP lower than 7.3 (7.1 and 7.2)
-			
+			if (semver.satisfies(config.env.phpSemverVersion, '<7.3.0')) {
+				config.excludeSpecPattern = config.excludeSpecPattern.concat(
+					[
+						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/Intermediate steps/2-ecommerce/**",
+					]
+				);
 			}
 
 			return config;
@@ -83,7 +78,7 @@ module.exports = defineConfig({
 		supportFile: 'tests/cypress/support/index.js',
 		testIsolation: false,
 		excludeSpecPattern: [
-			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/Intermediate steps/4-design/**",
+			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/Intermediate steps/4-design**",
 			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/wp-module-support/"
 		]
   },

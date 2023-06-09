@@ -31,7 +31,6 @@ describe( 'Get Started Site Type Primary', function () {
 		CheckHelpPanelLinks();
 	} );
 
-
 	it( 'Check different Categories exist and is selectable', () => {
 		let categoryCount = 0;
 		const className = '.nfd-card-pri-category';

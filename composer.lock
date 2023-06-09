@@ -739,7 +739,6 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "1d1006c0d69512051780b8331796fb977a0cd289"
                 "reference": "132f8da95ba9746d7808764363476874fe35b968"
             },
             "dist": {
@@ -1985,8 +1984,8 @@
             "time": "2022-10-24T09:00:36+00:00"
         },
         {
-            "name": "wp-cli/php-cli-tools",
-            "version": "v0.11.18",
+            "name": "squizlabs/php_codesniffer",
+            "version": "3.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",

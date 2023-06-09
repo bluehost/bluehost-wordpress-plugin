@@ -75,5 +75,4 @@ describe( 'Step Ecommerce Tax Information', function () {
 	after( () => {
 		cy.exec( 'npx wp-env run cli wp plugin deactivate woocommerce' );
 	} );
-
 } );

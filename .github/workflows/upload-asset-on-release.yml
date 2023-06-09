@@ -119,8 +119,4 @@ jobs:
         uses: dhollerbach/actions.send-message-to-ms-teams@1.0.10
         with:
           webhook: '${{ secrets.TEAMS_WEBHOOK_URL }}'
-          message: "Bluehost plugin version ${{ env.VERSION }} has been released!"      - name: Send message to ms teams
-        uses: dhollerbach/actions.send-message-to-ms-teams@1.0.10
-        with:
-          webhook: '${{ secrets.TEAMS_WEBHOOK_URL }}'
           message: "Bluehost plugin version ${{ env.VERSION }} has been released!"
