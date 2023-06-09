@@ -78,7 +78,7 @@ describe( 'Basic Info Page', function () {
 		)
 			.should( 'exist' )
 			.scrollIntoView()
-			.should( 'be.visible' );
+			.should( 'be.visible', { force: true } );
 	} );
 
 	it( 'Check if Social Media URL checks are done', () => {
