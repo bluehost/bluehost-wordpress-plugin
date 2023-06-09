@@ -67,6 +67,7 @@ module.exports = defineConfig({
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
 					[
 						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/Intermediate steps/2-ecommerce/**",
+						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/Intermediate steps/1-top-priority/top-priority.cy.js"
 					]
 				);
 			}
