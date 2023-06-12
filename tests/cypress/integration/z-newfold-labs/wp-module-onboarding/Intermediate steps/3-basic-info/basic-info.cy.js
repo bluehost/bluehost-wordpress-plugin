@@ -72,13 +72,13 @@ describe( 'Basic Info Page', function () {
 			.should( 'not.be.visible' );
 
 		// Open Social Media Accordion
-		cy.get( '.social-form__top-row_icon' ).click({force: true});
+		cy.get( '.social-form__top-row_icon' ).click();
 		cy.get(
 			':nth-child(7) > .social-form__label > .social-form__label_name'
 		)
 			.should( 'exist' )
 			.scrollIntoView()
-			.should( 'be.visible', { force: true } );
+			.should( 'be.visible' , {timeout:3000});
 	} );
 
 	it( 'Check if Social Media URL checks are done', () => {
