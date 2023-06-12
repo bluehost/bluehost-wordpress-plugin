@@ -843,16 +843,16 @@
         },
         {
             "name": "newfold-labs/wp-module-performance",
-            "version": "1.1",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-performance.git",
-                "reference": "28ebfc22abd15f49c8423c7ce159f8272cbe5883"
+                "reference": "7efc4f25a9e576d6aae79f9e3472630bc8e46fcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/28ebfc22abd15f49c8423c7ce159f8272cbe5883",
-                "reference": "28ebfc22abd15f49c8423c7ce159f8272cbe5883",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/7efc4f25a9e576d6aae79f9e3472630bc8e46fcd",
+                "reference": "7efc4f25a9e576d6aae79f9e3472630bc8e46fcd",
                 "shasum": ""
             },
             "require": {
@@ -881,10 +881,10 @@
             ],
             "description": "A module for managing caching functionality.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-performance/tree/1.1",
+                "source": "https://github.com/newfold-labs/wp-module-performance/tree/1.1.1",
                 "issues": "https://github.com/newfold-labs/wp-module-performance/issues"
             },
-            "time": "2023-05-26T18:08:24+00:00"
+            "time": "2023-06-12T11:20:05+00:00"
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",
