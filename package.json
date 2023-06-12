@@ -1,6 +1,7 @@
 {
     "name": "bluehost-wordpress-plugin",
     "description": "A WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
+    "version": "2.13.8",
     "private": true,
     "repository": {
         "type": "git",
