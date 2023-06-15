@@ -45,12 +45,12 @@ describe( 'Get Started Site Type Secondary', function () {
 		cy.get( '.category-scrolling-wrapper__left-btn' )
 			.should('be.visible')
 			.click();
-		cy.get( '.category-scrolling-wrapper__type-text' ).should('not contain', category_selected);
+		cy.get( '.category-scrolling-wrapper__type-text' ).should('not.contain', category_selected);
 		cy.reload();
 		cy.get('.category-scrolling-wrapper__right-btn-icon')
 			.should('be.visible')
 			.click();
-		cy.get( '.category-scrolling-wrapper__type-text' ).should('not contain', category_selected);
+		cy.get( '.category-scrolling-wrapper__type-text' ).should('not.contain', category_selected);
 	});
 
 	it( 'Check different subCategories exist and is selectable', () => {
