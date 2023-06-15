@@ -3,9 +3,6 @@
 describe( 'Branding', function () {
 	before( () => {
 		cy.clearCustomerData();
-		cy.exec(
-			'npx wp-env run cli wp option update bh_plugin_install_date 1685972326'
-		);
 		cy.visit( 'wp-admin/index.php?page=nfd-onboarding' );
 	} );
 
