@@ -1,3 +1,4 @@
+import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import { dispatch } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
@@ -167,7 +168,7 @@ export const addUtmParams = (url, params = {}) => {
  */
 export const getPlatformBaseUrl = ( path = '' ) => {
 	const brand = window.WPPBH.env.brand;
-	const isJarvis = window.WPPBH.env.isJarvis;
+	const isJarvis = NewfoldRuntime.sdk.isJarvis;
 
 	const baseUrl = () => {
 		if (brand === 'Bluehost_India') {
@@ -197,7 +198,7 @@ export const getPlatformBaseUrl = ( path = '' ) => {
  * // returns https://www.bluehost.com/my-account/home if Jarvis or https://my.bluehost.com/hosting/app#home if legacy
  */
 export const getPlatformPathUrl = ( jarvisPath = '', legacyPath = '' ) => {
-	const isJarvis = window.WPPBH.env.isJarvis;
+	const isJarvis = NewfoldRuntime.sdk.isJarvis;
 
 	if (isJarvis) {
 		return getPlatformBaseUrl('/my-account/') + jarvisPath;
@@ -213,7 +214,7 @@ export const getPlatformPathUrl = ( jarvisPath = '', legacyPath = '' ) => {
  * @return void
  */
 export const handleHelpLinksClick = () => {
-	if (window.WPPBH.capabilities.canAccessHelpCenter && !window.newfoldEmbeddedHelp.hasListeners) {
+	if (NewfoldRuntime.hasCapability( 'canAccessHelpCenter' ) && !window.newfoldEmbeddedHelp.hasListeners) {
 		const helpLinks = document.querySelectorAll('[href*="#/help"]');
 		if (helpLinks) {
 			helpLinks.forEach(el => el.addEventListener('click', (e) => {

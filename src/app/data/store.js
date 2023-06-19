@@ -1,5 +1,5 @@
+import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import { createContext, useMemo } from '@wordpress/element';
-
 import apiFetch from '@wordpress/api-fetch';
 
 const DEFAULT = {
@@ -11,7 +11,7 @@ const AppStore = createContext( DEFAULT );
 
 export const bluehostApiFetchSettings = async ( options = {} ) => {
 	return await apiFetch( {
-		url: window.WPPBH.resturl + '/bluehost/v1/settings',
+		url: NewfoldRuntime.createApiUrl('/bluehost/v1/settings'),
 		...options,
 	} );
 };
