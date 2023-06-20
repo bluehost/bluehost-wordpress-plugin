@@ -441,16 +441,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.0.2",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "e75ff8b3734956546b71c02995c14bdd4456976f"
+                "reference": "4fdd504e99bf2e09339e147c67274aecce323614"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/e75ff8b3734956546b71c02995c14bdd4456976f",
-                "reference": "e75ff8b3734956546b71c02995c14bdd4456976f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/4fdd504e99bf2e09339e147c67274aecce323614",
+                "reference": "4fdd504e99bf2e09339e147c67274aecce323614",
                 "shasum": ""
             },
             "require": {
@@ -492,10 +492,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.0.2",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.0.4",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-06-07T06:02:45+00:00"
+            "time": "2023-06-20T14:57:36+00:00"
         },
         {
             "name": "newfold-labs/wp-module-help-center",
