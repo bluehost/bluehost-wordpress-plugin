@@ -887,6 +887,58 @@
             "time": "2023-06-12T11:20:05+00:00"
         },
         {
+            "name": "newfold-labs/wp-module-runtime",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-runtime.git",
+                "reference": "3b3eb2d4c5c55c5401aaa4cd66faea8626c6f9d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/3b3eb2d4c5c55c5401aaa4cd66faea8626c6f9d6",
+                "reference": "3b3eb2d4c5c55c5401aaa4cd66faea8626c6f9d6",
+                "shasum": ""
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "@stable",
+                "wp-cli/i18n-command": "@stable",
+                "wp-cli/wp-cli-bundle": "@stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Runtime\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "scripts": {
+                "fix": [
+                    "vendor/bin/phpcbf --standard=phpcs.xml ."
+                ],
+                "lint": [
+                    "vendor/bin/phpcs --standard=phpcs.xml -s ."
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Beyond",
+                    "email": "team-spartans@newfold.com"
+                }
+            ],
+            "description": "Runtime for Newfold WP modules and plugins",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/v1.0.0",
+                "issues": "https://github.com/newfold-labs/wp-module-runtime/issues"
+            },
+            "time": "2023-06-20T11:30:59+00:00"
+        },
+        {
             "name": "newfold-labs/wp-module-secure-passwords",
             "version": "1.1.0",
             "source": {
