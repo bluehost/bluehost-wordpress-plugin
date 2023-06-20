@@ -53,11 +53,11 @@ describe('Coming Soon', function () {
 			.should('be.visible');
 
 		cy.get('.wppbh-home .wppb-app-section-content')
-			.contains('a.yst-button', 'Preview your store').first()
+			.contains('a.yst-button', 'Preview your').first()
 			.should('exist');
 
 		cy.get('.wppbh-home .wppb-app-section-content').first()
-			.contains('button', 'Launch your store')
+			.contains('button', 'Launch your')
 			.should('exist');
 		
 	});
@@ -85,12 +85,12 @@ describe('Coming Soon', function () {
 		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
 
 		cy.get('.wppbh-home .wppb-app-section-content').first()
-			.contains('button', 'Launch your store')
+			.contains('button', 'Launch your')
 			.click();
 		cy.wait(100);
 		
 		cy.get('.wppbh-home .wppb-app-section-content').first()
-			.contains('button', 'Launch your store')
+			.contains('button', 'Launch your')
 			.should('not.exist');
 
 		cy.logout();
