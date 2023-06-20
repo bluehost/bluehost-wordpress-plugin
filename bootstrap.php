@@ -157,6 +157,18 @@ $pluginUpdater->setDataMap(
 		'tested'        => 'tested.wp',
 	)
 );
+$pluginUpdater->setDataOverrides(
+	[
+		'banners' => [
+			'2x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-banner.svg',
+			'1x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-banner.svg',
+		],
+		'icons' => [
+			'2x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-icon.svg',
+			'1x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-icon.svg',
+		],
+	]
+);
 
 // Handle any upgrade routines (only in the admin)
 if ( is_admin() ) {
