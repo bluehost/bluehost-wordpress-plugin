@@ -132,3 +132,5 @@ class LoginRedirect {
 	}
 
 }
+
+LoginRedirect::init();
