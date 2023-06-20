@@ -193,6 +193,7 @@ if ( is_admin() ) {
 require BLUEHOST_PLUGIN_DIR . '/inc/Admin.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/base.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/jetpack.php';
+require BLUEHOST_PLUGIN_DIR . '/inc/LoginRedirect.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/partners.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/performance.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/RestApi/CachingController.php';
