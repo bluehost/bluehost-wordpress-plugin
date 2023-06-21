@@ -37,8 +37,7 @@ export const AppStoreProvider = ( { children } ) => {
 		if ( false === booted ) {
 			bluehostApiFetchSettings()
 				.then( ( settings ) => {
-					setStore( { ...store, ...window.WPPBH, ...settings } );
-					window.WPPBH.migrated = true;
+					setStore( { ...store, ...settings } );
 					setBooted( true );
 				} )
 				.catch( ( error ) => {

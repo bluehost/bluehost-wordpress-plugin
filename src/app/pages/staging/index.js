@@ -1,5 +1,6 @@
 import './stylesheet.scss';
 
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import { Button, Radio, Select, Modal } from '@yoast/ui-library';
 import { Page } from '../../components/page';
 import { SectionContainer, SectionHeader, SectionContent, SectionSettings } from '../../components/section';
@@ -183,7 +184,6 @@ const StagingSite = ({
 const Staging = () => {
     const apiNamespace = '/newfold-staging/v1/';
 	const unknownErrorMsg = 'An unknown error has occurred.';
-    const resturl = window.WPPBH.resturl;
     // const restnonce = ;
 	const [ isLoading, setIsLoading ] = useState( true );
 	const [ isThinking, setIsThinking ] = useState( false );
@@ -471,7 +471,7 @@ const Staging = () => {
 		// setIsLoading( true );
         setIsThinking( true );
 		return apiFetch({
-			url: resturl + apiNamespace + path,
+			url: NewfoldRuntime.createApiUrl( apiNamespace + path ),
 			method,
 			// beforeSend: (xhr) => {
 			// 	xhr.setRequestHeader( 'X-WP-Nonce', restnonce );

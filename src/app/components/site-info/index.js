@@ -1,11 +1,12 @@
 import { LockClosedIcon, LockOpenIcon } from "@heroicons/react/24/outline";
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import { Button } from "@yoast/ui-library";
 import { BluehostIcon, WordPressIcon } from "../icons";
 import { getPlatformBaseUrl, addUtmParams } from "../../util/helpers";
 
 export const SiteInfoBar = () => {
-    const { siteurl, sitetitle } = window.WPPBH;
-    const parsedUrl = new URL(siteurl);
+    const { url, title } = NewfoldRuntime.siteDetails;
+    const parsedUrl = new URL(url);
     const siteDomain = parsedUrl.hostname;
     const hasSSL = parsedUrl.protocol.includes("https");
 
@@ -22,7 +23,7 @@ export const SiteInfoBar = () => {
             <div className="yst-flex yst-justify-between yst-items-center yst-flex-wrap yst-gap-4">
 
                 <div className="yst-w-max yst-flex yst-flex-col yst-gap-1.5">
-                    <h3 className="yst-text-white yst-text-2xl yst-font-semibold">{sitetitle}</h3>
+                    <h3 className="yst-text-white yst-text-2xl yst-font-semibold">{title}</h3>
                     <div className="yst-flex yst-items-center yst-gap-3 yst-font-medium">
                         <div className="yst-flex yst-items-center yst-gap-1">
                             {renderPadLock()}
@@ -43,7 +44,7 @@ export const SiteInfoBar = () => {
                     </Button>
                     <Button 
                         as="a" 
-                        href={siteurl} 
+                        href={url}
                         target="_blank" 
                         variant="primary" 
                         className="yst-bg-white yst-text-[#212936] yst-text-tiny yst-w-full min-[400px]:yst-w-auto"

@@ -45,7 +45,7 @@ export const setActiveSubnav = ( path ) => {
 					}
 					// handle help
 					if ( path === '/help' ) {
-						if ( window.WPPBH.capabilities.canAccessHelpCenter && !window.newfoldEmbeddedHelp.isDefaultOpen ) {
+						if ( NewfoldRuntime.hasCapability( 'canAccessHelpCenter' ) && !window.newfoldEmbeddedHelp.isDefaultOpen ) {
 							window.newfoldEmbeddedHelp.toggleNFDLaunchedEmbeddedHelp();
 							window.newfoldEmbeddedHelp.isDefaultOpen = true; // since this fires multiple times on load
 						}
@@ -89,7 +89,7 @@ export const dispatchUpdateSnackbar = ( text = 'Settings Saved' ) => {
 export const bluehostSettingsApiFetch = ( data, passError, thenCallback ) => {
 	return apiFetch( {
 		// path: 'bluehost/v1/settings', //  can't use path bacause it breaks on temp domains
-		url: window.WPPBH.resturl + '/bluehost/v1/settings',
+		url: NewfoldRuntime.createApiUrl( '/bluehost/v1/settings' ),
 		method: 'POST',
 		data,
 	} )
@@ -111,7 +111,7 @@ export const bluehostSettingsApiFetch = ( data, passError, thenCallback ) => {
  */
 export const bluehostPurgeCacheApiFetch = ( data, passError, thenCallback ) => {
 	return apiFetch( {
-		url: window.WPPBH.resturl + '/bluehost/v1/caching',
+		url: NewfoldRuntime.createApiUrl( '/bluehost/v1/caching' ),
 		method: 'DELETE',
 		data,
 	} )
@@ -167,7 +167,7 @@ export const addUtmParams = (url, params = {}) => {
  * @return {string}
  */
 export const getPlatformBaseUrl = ( path = '' ) => {
-	const brand = window.WPPBH.env.brand;
+	const brand = NewfoldRuntime.sdk.plugin.brand;
 	const isJarvis = NewfoldRuntime.sdk.isJarvis;
 
 	const baseUrl = () => {

@@ -3,7 +3,7 @@
  * so that lazy-loading works correctly. This value is set in /includes/Data.php in runtime().
  */
 export default () => {
-	if ( 'undefined' !== typeof window.WPPBH && 'url' in window.WPPBH ) {
-		__webpack_public_path__ = window.WPPBH.url;
+	if ( 'undefined' !== typeof window.NewfoldRuntime && 'sdk' in window.NewfoldRuntime ) {
+		__webpack_public_path__ = window.NewfoldRuntime.sdk.plugin.url;
 	}
 };

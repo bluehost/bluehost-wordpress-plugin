@@ -35,10 +35,8 @@ final class Admin {
 	}
 
 	public static function add_to_runtime( $sdk ) {
-		global $bluehost_module_container;
-		return array_merge( $sdk, array( 
-			'isJarvis' => $bluehost_module_container->get('isJarvis')
-		 ) );
+		include BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
+		return array_merge( $sdk, Data::runtime() );
 	}
 
 	/**
@@ -160,13 +158,6 @@ final class Admin {
 				'bluehost-script',
 				'wp-plugin-bluehost',
 				BLUEHOST_PLUGIN_DIR . '/languages'
-			);
-
-			include BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
-			\wp_add_inline_script(
-				'bluehost-script',
-				'var WPPBH =' . \wp_json_encode( Data::runtime() ) . ';',
-				'before'
 			);
 
 			\wp_register_style(
