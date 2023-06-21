@@ -103,14 +103,3 @@ function nfd_site_launched( $new_option, $old_option ) {
 }
 
 add_filter( 'pre_update_option_nfd_coming_soon', 'nfd_site_launched', 10, 2 );
-
-/**
- * Tell jetpack that the site is in construction mode.
- * See https://github.com/Automattic/jetpack/blob/trunk/projects/plugins/jetpack/_inc/lib/class.core-rest-api-endpoints.php#L1122-L1143
- */
-function nfd_jetpack_construction() {
-	if ( 'true' === get_option( 'nfd_coming_soon', 'false' ) ) {
-		return true;
-	}
-}
-add_filter( 'jetpack_is_under_construction_plugin', 'nfd_jetpack_construction' );
