@@ -888,16 +888,16 @@
         },
         {
             "name": "newfold-labs/wp-module-runtime",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-runtime.git",
-                "reference": "3b3eb2d4c5c55c5401aaa4cd66faea8626c6f9d6"
+                "reference": "3e90b24903e6747b0ae41912e57c9d950d5b0dbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/3b3eb2d4c5c55c5401aaa4cd66faea8626c6f9d6",
-                "reference": "3b3eb2d4c5c55c5401aaa4cd66faea8626c6f9d6",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/3e90b24903e6747b0ae41912e57c9d950d5b0dbd",
+                "reference": "3e90b24903e6747b0ae41912e57c9d950d5b0dbd",
                 "shasum": ""
             },
             "require-dev": {
@@ -933,10 +933,10 @@
             ],
             "description": "Runtime for Newfold WP modules and plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/v1.0.0",
+                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/v1.0.1",
                 "issues": "https://github.com/newfold-labs/wp-module-runtime/issues"
             },
-            "time": "2023-06-20T11:30:59+00:00"
+            "time": "2023-06-21T08:31:28+00:00"
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",
