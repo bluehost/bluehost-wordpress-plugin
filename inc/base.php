@@ -90,16 +90,16 @@ add_filter( 'nfd_install_date_filter', __NAMESPACE__ . '\\bluehost_install_date_
 
 
 /**
- * Update old value when updating NFD one
+ * Update mm value when updating nfd one
  *
  * @param mixed $new_option New option value.
  * @param mixed $old_option Previous option value.
  *
  * @return mixed
  */
-function nfd_site_launched( $new_option, $old_option ) {
+function site_launched( $new_option, $old_option ) {
 	update_option( 'mm_coming_soon', $new_option );
 	return $new_option;
 }
 
-add_filter( 'pre_update_option_nfd_coming_soon', 'nfd_site_launched', 10, 2 );
+add_filter( 'pre_update_option_nfd_coming_soon', __NAMESPACE__ . '\\site_launched', 10, 2 );
