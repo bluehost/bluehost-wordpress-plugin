@@ -1,64 +1,91 @@
-:root {
-    --color-primary: #6FAC2F;
-    --color-primary-dark: #568f1b;
-    --color-title: #484848;
-    --color-text: #4F595C;
-    --color-link: #00A1EF;
-    --color-border: rgba(0, 0, 0, 0.1);
-    --color-error: #E83323;
-    --color-error-light: #ffebea;
-    --color-white: #FFFFFF;
-    --color-off-white: #F0F0F5;
-    --color-black: #000000;
-}
-
 body {
-    background-color: var(--color-white);
-    color: var(--color-text);
-}
-
-body,
-input {
-    font-family: "Open Sans",sans-serif;
-}
-
-.content {
-    background-image: url("../images/coming-soon.png");
-    background-position: center top;
+    background-color: #fff;
+    background-image: url('../images/cs-bluehost-bg.jpg');
+    background-position: top right;
     background-repeat: no-repeat;
-    background-size: 345px 239px;
-    padding: 250px 0 0;
-    max-width: 420px;
+    font-family: "Open Sans", sans-serif;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+input {
+    font-family: "Open Sans", sans-serif;
+}
+
+::-webkit-input-placeholder {
+    color: #9DAFBD;
+}
+
+::-moz-placeholder {
+    color: #9DAFBD;
+}
+
+:-ms-input-placeholder {
+    color: #9DAFBD;
+}
+
+:-moz-placeholder {
+    color: #9DAFBD;
+}
+
+#wrap {
+    max-width: 560px;
+    width: 100%;
+    margin: 320px auto auto;
+    color: #444;
+    text-align: center;
+    min-height: auto !important;
+}
+
+#wrap .content {
+    background: rgba(215, 223, 236, .5);
+    padding-bottom: 2rem;
+    border-radius: 4px;
 }
 
 #wrap h1 {
-    color: var(--color-title);
-    font-weight: 600;
-    font-family: 'Noto Serif', serif;;
+    color: #111;
+    font-weight: 300;
     font-size: 28px;
-    letter-spacing: 0.15px;
-    line-height: 36px;
 }
 
 #wrap h2 {
-    color: var(--color-title);
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 18px;
-    letter-spacing: 0.75px;
-    text-transform: uppercase;
+    color: #111;
+    font-weight: 300;
+    font-size: 38px;
+}
+
+#wrap p {
+    color: #111;
+    line-height: 1.5;
+}
+
+footer {
+    background-color: #fff;
+    width: 100%;
+    color: #666;
+    position:initial;
 }
 
 footer p {
     font-size: 14px;
     line-height: 22px;
-    color: var(--color-text);
+    color: #333;
     padding: 8px;
+    text-align: center;
 }
 
 footer p a {
-    color: var(--color-primary-dark);
-    text-decoration: none;
+    color: #1555b3;
+    text-decoration: underline;
 }
 
 footer p a:hover {
@@ -66,63 +93,212 @@ footer p a:hover {
 }
 
 .btn {
-    background: var(--color-primary);
-    border: 5px solid var(--color-primary);
-    color: var(--color-white);
-    font-size: 14px;
+    display: inline-block;
     font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 8px 16px;
+    font-size: 14px;
     line-height: 1.5;
-    padding: 6px 30px;
+    border: 1px solid #2e66ba;
+    background: #1555b3;
+    color: #fff;
+    box-shadow: none;
+    border-radius: 3px;
+    text-decoration: none;
+    margin-top: 25px;
 }
 
 .btn:hover {
-    background-color: var(--color-primary-dark);
-    border-color: var(--color-primary-dark);
-    color: var(--color-white);
+    border: 1px solid #2e66ba;
+    background-color: #fff;
+    color: #2e66ba;
 }
 
-#subscribe-text p {
+.subscription_widget {
+}
+
+.subscription_widget h2 {
+    color: #5B5B5B;
+    font-size: 38px;
+    letter-spacing: -1px;
+    line-height: 54px;
+    margin-bottom: 10px;
+}
+
+.subscription_widget #subscribe-text p {
+    color: #5B5B5B;
+    font-size: 16px;
+    letter-spacing: 0;
     line-height: 24px;
     margin-bottom: 25px;
 }
 
-.status-message {
+.subscription_widget #success,
+.subscription_widget #error {
+    border-radius: 4px;
     font-size: 14px;
     line-height: 24px;
-    color: var(--color-text);
+    color: #5B5B5B;
     margin-bottom: 25px;
     display: none;
     padding: 8px 40px;
 }
 
-#success {
-    background: var(--color-primary);
-    border: 5px solid var(--color-primary);
+.subscription_widget #success {
+    background: #CCE9D0;
+    border: 1px solid #009013;
 }
 
-#error-invalid,
-#error-active {
-    border: 5px solid var(--color-error);
+.subscription_widget #error {
+    background: #FFEAE9;
+    border: 1px solid #F72F26;
 }
 
-form .inputs {
+.subscription_widget form .inputs {
     display: inline-block;
     position: relative;
     vertical-align: middle;
-    transition: all 0.1s ease;
+    margin-bottom: 10px;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
-form .inputs label {
-    display: none;
+.subscription_widget form .inputs.active {
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
-form .inputs.email input[type="email"] {
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
+.subscription_widget form .inputs.email.active #subscribe-label {
+    color: #5B5B5B;
+    clip: auto !important;
+    height: auto !important;
+    position: absolute !important;
+    overflow: visible !important;
+    width: auto !important;
+    left: 16px;
     font-size: 11px;
-    min-width: 240px;
-    padding: 14px 15px;
+    top: 2px;
+}
+
+.subscription_widget form .inputs.email input[type="email"] {
+    background-color: #fff;
+    background-image: url('images/icon-email.svg');
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    border: 1px solid #5B5B5B;
+    border-radius: 3px;
+    color: #5B5B5B;
+    font-size: 13.5px;
+    margin-top: 5px;
+    margin-right: 6px;
+    min-width: 300px;
+    padding: 14px 15px 14px 45px;
     max-height: 45px;
-    transition: all 0.05s ease;
+    -webkit-transition: all 0.05s ease-in-out;
+    -moz-transition: all 0.05s ease-in-out;
+    -o-transition: all 0.05s ease-in-out;
+    transition: all 0.05s ease-in-out;
+}
+
+.subscription_widget form .inputs.email.active input[type="email"] {
+    background-image: none;
+    font-size: 14px;
+    padding: 16px 15px 12px 15px;
+    max-height: 45px;
+}
+
+.subscription_widget form .inputs.submit input[type="submit"] {
+    background-color: #3575D3;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 13px;
+    margin: 0;
+    padding: 15px 30px;
+    border: 1px solid #3575D3;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.subscription_widget form .inputs.submit input[type="submit"]:hover {
+    background-color: #5B5B5B;
+    border-color: #5B5B5B;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+@media (min-width: 1920px) {
+    body {
+        background-position-x: center;
+    }
+}
+
+@media (max-width: 1024px) {
+    #wrap {
+        margin: 240px auto auto;
+    }
+}
+
+@media (max-width: 960px) {
+    #wrap {
+        margin: 120px auto auto;
+    }
+}
+
+@media (max-width: 640px) {
+    #wrap {
+        margin: 60px auto auto;
+        max-width: 100%;
+        color: #444;
+        padding: 0 20px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .btn {
+        margin-top: 10px;
+    }
+
+    .subscription_widget form .inputs,
+    .subscription_widget form .inputs.email input[type="email"],
+    .subscription_widget form .inputs.submit input[type="submit"] {
+        width: 100%;
+    }
+
+    .subscription_widget form .inputs.email input[type="email"] {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 360px) {
+    #wrap h1 {
+        font-size: 26px;
+    }
+
+    .btn {
+        margin-top: 40px;
+    }
 }
