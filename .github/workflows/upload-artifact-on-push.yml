@@ -69,6 +69,7 @@ jobs:
           npm --version
 
       - name: Validate composer.json and composer.lock
+        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
         run: composer validate
 
       - name: Install PHP Dependencies
