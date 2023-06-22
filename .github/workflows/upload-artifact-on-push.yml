@@ -21,7 +21,6 @@ jobs:
   build:
     name: On Push to Master
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
     steps:
 
       - name: Checkout
@@ -74,6 +73,9 @@ jobs:
 
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
+
+      - name: Setup Registry
+        run: printf "@newfold-labs:registry=https://npm.pkg.github.com/\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_READ_PACKAGES }}" > .npmrc
 
       - name: NPM Install
         run: npm install --legacy-peer-deps
