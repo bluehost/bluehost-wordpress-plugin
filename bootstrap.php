@@ -157,6 +157,18 @@ $pluginUpdater->setDataMap(
 		'tested'        => 'tested.wp',
 	)
 );
+$pluginUpdater->setDataOverrides(
+	[
+		'banners' => [
+			'2x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-banner.svg',
+			'1x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-banner.svg',
+		],
+		'icons' => [
+			'2x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-icon.svg',
+			'1x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-icon.svg',
+		],
+	]
+);
 
 // Handle any upgrade routines (only in the admin)
 if ( is_admin() ) {
@@ -181,6 +193,7 @@ if ( is_admin() ) {
 require BLUEHOST_PLUGIN_DIR . '/inc/Admin.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/base.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/jetpack.php';
+require BLUEHOST_PLUGIN_DIR . '/inc/LoginRedirect.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/partners.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/performance.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/RestApi/CachingController.php';
