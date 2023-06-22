@@ -122,7 +122,7 @@ $bluehost_module_container->set(
 			'</a>',
 			'<a href="' . esc_url( wp_login_url() ) . '">',
 			'</a>',
-			'<a href="' . esc_url( 'https://www.bluehost.com/my-account/account-center/login' ) . '" target="_blank" rel="noopener noreferrer nofollow">',
+			'<a href="' . esc_url( 'https://my.bluehost.com/web-hosting/cplogin' ) . '" target="_blank" rel="noopener noreferrer nofollow">',
 			'</a>'
 		),
 		'template_page_title' => sprintf(
