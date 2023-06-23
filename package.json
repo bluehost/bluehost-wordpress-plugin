@@ -2,7 +2,7 @@
     "name": "bluehost-wordpress-plugin",
     "description": "WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
     "license": "GPL-2.0-or-later",
-    "version": "3.0.2",
+    "version": "3.0.4",
     "private": true,
     "repository": {
         "type": "git",
@@ -25,7 +25,7 @@
     },
     "dependencies": {
         "@heroicons/react": "^2.0.18",
-        "@newfold-labs/wp-module-ecommerce": "github:newfold-labs/wp-module-ecommerce#v1.0.5",
+        "@newfold-labs/wp-module-ecommerce": "github:newfold-labs/wp-module-ecommerce#v1.0.6",
         "@newfold-labs/wp-module-runtime": "^1.0.1",
         "@reduxjs/toolkit": "^1.9.5",
         "@wordpress/compose": "^6.12.0",
@@ -38,7 +38,7 @@
         "jquery": "^3.7.0",
         "lodash": "^4.17.21",
         "react": "^18.2.0",
-        "react-error-boundary": "^4.0.3",
+        "react-error-boundary": "^4.0.10",
         "react-router-dom": "^6.13.0",
         "react-use": "^17.4.0"
     },
@@ -49,7 +49,7 @@
         "@wordpress/env": "^5.16.0",
         "@wordpress/scripts": "^26.6.0",
         "@yoast/tailwindcss-preset": "^2.2.0",
-        "cypress": "^12.14.0",
+        "cypress": "^12.15.0",
         "cypress-axe": "^1.4.0",
         "tailwindcss": "^3.3.2"
     },

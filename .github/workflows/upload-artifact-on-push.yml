@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - master
       - develop
       - release/*
       - feature/*
@@ -11,6 +10,8 @@ on:
       - update/*
       - fix/*
       - try/*
+      - master-2.x
+      - develop-2.x
   workflow_dispatch:
 
 concurrency:
@@ -19,13 +20,25 @@ concurrency:
 
 jobs:
   build:
-    name: On Push to Master
+    name: On Push
     runs-on: ubuntu-latest
     if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
     steps:
 
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Validate version number
+        if: ${{ (github.repository == 'bluehost/bluehost-wordpress-plugin') }}
+        run: |
+          pluginHeaderVersion=`grep "Version:" bluehost-wordpress-plugin.php | grep -Eo "[0-9\.]*"`
+          pluginConstantVersion=`grep "'BLUEHOST_PLUGIN_VERSION'" bluehost-wordpress-plugin.php | grep -Eo "[0-9\.]*"`
+          pluginPackageVersion=`grep "version" package.json | grep -Eo "[0-9\.]*"`
+          echo "Plugin header version: $pluginHeaderVersion"
+          echo "Plugin constant version: $pluginConstantVersion"
+          echo "Plugin package version: $pluginPackageVersion"
+          [[ "$pluginPackageVersion" == "$pluginHeaderVersion" ]] || exit 1
+          [[ "$pluginPackageVersion" == "$pluginConstantVersion" ]] || exit 1
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2

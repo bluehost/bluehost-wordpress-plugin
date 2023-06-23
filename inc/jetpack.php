@@ -45,3 +45,14 @@ function jetpack_unregister_blocks( $blocks ) {
 }
 
 add_filter( 'jetpack_set_available_blocks', __NAMESPACE__ . '\\jetpack_unregister_blocks' );
+
+/**
+ * Tell jetpack that the site is in construction mode.
+ * See https://github.com/Automattic/jetpack/blob/trunk/projects/plugins/jetpack/_inc/lib/class.core-rest-api-endpoints.php#L1122-L1143
+ */
+function jetpack_construction() {
+	if ( 'true' === get_option( 'nfd_coming_soon', 'false' ) ) {
+		return true;
+	}
+}
+add_filter( 'jetpack_is_under_construction_plugin', __NAMESPACE__ . '\\jetpack_construction' );
