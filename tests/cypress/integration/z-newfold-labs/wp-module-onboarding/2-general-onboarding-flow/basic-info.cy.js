@@ -1,12 +1,12 @@
 // <reference types="Cypress" />
-import { DrawerActivityForMenu } from '../../wp-module-support/drawer.cy';
-import { CheckHeadingSubheading } from '../../wp-module-support/header.cy';
+import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy'; 
+import { CheckHeadingSubheading } from '../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
 	CheckIllustrationPanel,
 	CheckInfoPanel,
 	CheckIntroPanel,
-} from '../../wp-module-support/sidebar.cy';
+} from '../wp-module-support/sidebar.cy';
 
 describe( 'Basic Info Page', function () {
 	before( () => {

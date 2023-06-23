@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
-import { DrawerActivityForMenu } from '../../wp-module-support/drawer.cy';
-import { CheckHeadingSubheading } from '../../wp-module-support/header.cy';
+import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy';
+import { CheckHeadingSubheading } from '../wp-module-support/header.cy';
 
 describe( 'Top Priority Page', function () {
 	before( () => {

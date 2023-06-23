@@ -1,12 +1,12 @@
 // <reference types="Cypress" />
-import { CheckDrawerDisabled } from '../../wp-module-support/drawer.cy';
-import { CheckCardHeadingSubheading } from '../../wp-module-support/header.cy';
+import { CheckDrawerDisabled } from '../wp-module-support/drawer.cy';
+import { CheckCardHeadingSubheading } from '../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
 	CheckIllustrationPanel,
 	CheckInfoPanel,
 	CheckIntroPanel,
-} from '../../wp-module-support/sidebar.cy';
+} from '../wp-module-support/sidebar.cy';
 
 describe( 'Get Started Site Type Primary', function () {
 	before( () => {
