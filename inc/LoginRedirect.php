@@ -14,9 +14,7 @@ class LoginRedirect {
 	 */
 	public static function init() {
 		add_action( 'login_redirect', array( __CLASS__, 'on_login_redirect' ), 10, 3 );
-		add_action( 'login_init', array( __CLASS__, 'on_login_init' ), 10, 3 );
-        add_action( 'admin_init', array( __CLASS__, 'disable_yoast_onboarding_redirect' ), 2 );
-		add_filter( 'login_form_defaults', array( __CLASS__, 'filter_login_form_defaults' ) );
+		add_action( 'admin_init', array( __CLASS__, 'disable_yoast_onboarding_redirect' ), 2 );
 		add_filter( 'newfold_sso_success_url_default', array( __CLASS__, 'get_default_redirect_url' ) );
 	}
 
@@ -29,29 +27,6 @@ class LoginRedirect {
 	 */
 	public static function get_default_redirect_url( $url ) {
 		return current_user_can( 'manage_options' ) ? self::get_bluehost_dashboard_url() : $url;
-	}
-
-	/**
-	 * Set the $_REQUEST['redirect_to'] value on the login_init action since there isn't a better way to do it before
-	 * WordPress automatically defaults it to the WordPress dashboard URL.
-	 */
-	public static function on_login_init() {
-		if ( ! isset( $_REQUEST['redirect_to'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$_REQUEST['redirect_to'] = self::get_bluehost_dashboard_url();
-		}
-	}
-
-	/**
-	 * Set default redirect used in the wp_login_form() function.
-	 *
-	 * @param array $defaults Collection of existing defaults.
-	 *
-	 * @return array
-	 */
-	public static function filter_login_form_defaults( array $defaults ) {
-		$defaults['redirect'] = self::get_bluehost_dashboard_url();
-
-		return $defaults;
 	}
 
 	/**
