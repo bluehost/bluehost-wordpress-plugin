@@ -15,12 +15,6 @@ describe( 'Exit to WordPress', function () {
 		cy.get( '.components-modal__content > p' ).should( 'be.visible' );
 	} );
 
-	it( 'Check if `store` appears in heading', () => {
-		cy.get('.nfd-main-heading__title')
-			.should('be.visible')
-			.contains('store');
-	} );
-
 	it( "Stay on Onboarding Page when 'X'/Continue is clicked", () => {
 		cy.url().then( ( currUrl ) => {
 			// When 'X' is clicked

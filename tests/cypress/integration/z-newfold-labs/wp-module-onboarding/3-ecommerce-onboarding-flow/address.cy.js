@@ -11,6 +11,7 @@ import {
 describe( 'Step Ecommerce Address/Store Details', function () {
 	before( () => {
 		cy.wait( 10000 );
+		cy.exec('npx wp-env run cli wp option delete nfd_module_onboarding_flow');
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
 		);

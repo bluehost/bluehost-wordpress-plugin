@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
 import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy';
-import { CheckHeadingSubheading } from '../../wp-module-support/header.cy';
+import { CheckHeadingSubheading } from '../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
 	CheckIllustrationPanel,
