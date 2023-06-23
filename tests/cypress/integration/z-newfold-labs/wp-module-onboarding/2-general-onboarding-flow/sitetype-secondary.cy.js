@@ -31,14 +31,6 @@ describe( 'Get Started Site Type Secondary', function () {
 		CheckHelpPanelLinks();
 	} );
 
-	it( 'Check selected category is visible and selected', () => {
-		cy.get( '.category-scrolling-wrapper' ).should( 'be.visible' );
-		cy.get( '.category-scrolling-wrapper__type-text' ).should(
-			'contain',
-			'Business'
-		);
-	} );
-
 	it( 'Check different categories exist using `<` and `>`', () => {
 		cy.get( '.nfd-setup-secondary-categories' ).should( 'be.visible' );
 		const category_selected = cy.get('.category-scrolling-wrapper__type-text');

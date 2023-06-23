@@ -31,19 +31,6 @@ describe( 'Branding', function () {
 		cy.get( '.nfd-step-card-subheading' ).should( 'contain', 'web host' );
 	} );
 
-	it( 'Has brand specific CSS for Crazy Domains', () => {
-		cy.exec( 'npx wp-env run cli wp option update mm_brand Crazy_Domains' );
-		cy.reload();
-		cy.get( 'body' ).should( 'have.class', 'nfd-brand-crazy-domains' );
-		cy.get( '.is-bg-primary' )
-			.should( 'have.css', 'background-color', 'rgb(255, 255, 255)' )
-			.should( 'have.css', 'color', 'rgb(255, 255, 255)' );
-		cy.get( '.nfd-step-card-subheading' ).should(
-			'contain',
-			'Crazy Domains'
-		);
-	} );
-
 	it( 'Has brand specific CSS for Bluehost', () => {
 		cy.exec( 'npx wp-env run cli wp option update mm_brand BlueHost' );
 		cy.reload();

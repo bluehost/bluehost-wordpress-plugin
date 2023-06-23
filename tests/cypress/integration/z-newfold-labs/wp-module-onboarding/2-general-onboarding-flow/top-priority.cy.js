@@ -29,7 +29,6 @@ describe( 'Top Priority Page', function () {
 
 	it( 'Click on different cards and move on to next page', () => {
 		let previewCount = 0;
-		const IndexCommerce = 0;
 		const className = '.components-surface.components-card.nfd-card';
 		const arr = cy.get( className );
 		arr.each( () => {
@@ -43,7 +42,6 @@ describe( 'Top Priority Page', function () {
 				.invoke( 'text' )
 				.then( ( $ele ) => {
 					if ( $ele !== 'Selling' ) {
-						cy.log( previewCount );
 						cy.get(
 							'.components-button.navigation-buttons.navigation-buttons_next.is-primary'
 						).click();

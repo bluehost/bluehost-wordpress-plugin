@@ -11,7 +11,7 @@ import {
 describe( 'Basic Info Page', function () {
 	before( () => {
 		cy.visit(
-			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info'
+			'wp-admin/?page=nfd-onboarding#/wp-setup/step/basic-info'
 		);
 	} );
 
@@ -34,6 +34,12 @@ describe( 'Basic Info Page', function () {
 		CheckHelpPanelLinks();
 	} );
 
+	it( 'Check if Header has text `website` in it', () => {
+		cy.get( '.nfd-main-heading__title' )
+			.should('be.visible')
+			.contains('website');
+	} );
+	
 	it( 'Enter a Title and then Check if it reflects elsewhere', () => {
 		const title = 'Hello WordPress';
 		const titleBox = cy.get( ':nth-child(1) > label > .nfd-input__field' );
