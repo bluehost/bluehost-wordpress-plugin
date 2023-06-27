@@ -3,7 +3,7 @@
 describe( 'Sidebar', function () {
 	before( () => {
 		cy.visit(
-			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/welcome'
+			'wp-admin/?page=nfd-onboarding#/wp-setup/step/get-started/welcome'
 		);
 	} );
 

@@ -2,9 +2,7 @@
 
 describe( 'Exit to WordPress', function () {
 	before( () => {
-		cy.visit(
-			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info'
-		);
+		cy.visit( 'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info' );
 	} );
 
 	it( 'Go to the Page where the Drawer contains Exit to WordPress Button', () => {

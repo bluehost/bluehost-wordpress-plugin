@@ -1,5 +1,5 @@
 // <reference types="Cypress" />
-import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy';
+import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy'; 
 import { CheckHeadingSubheading } from '../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
@@ -11,7 +11,7 @@ import {
 describe( 'Basic Info Page', function () {
 	before( () => {
 		cy.visit(
-			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/basic-info'
+			'wp-admin/?page=nfd-onboarding#/wp-setup/step/basic-info'
 		);
 	} );
 
@@ -34,12 +34,18 @@ describe( 'Basic Info Page', function () {
 		CheckHelpPanelLinks();
 	} );
 
+	it( 'Check if Header has text `website` in it', () => {
+		cy.get( '.nfd-main-heading__title' )
+			.should('be.visible')
+			.contains('website');
+	} );
+	
 	it( 'Enter a Title and then Check if it reflects elsewhere', () => {
 		const title = 'Hello WordPress';
 		const titleBox = cy.get( ':nth-child(1) > label > .nfd-input__field' );
 		if ( titleBox.should( 'exist' ) ) {
 			titleBox.scrollIntoView();
-			titleBox.clear();
+			titleBox.clear({force: true});
 			cy.wait( 1000 );
 			titleBox.type( title );
 
@@ -55,7 +61,7 @@ describe( 'Basic Info Page', function () {
 		const descBox = cy.get( ':nth-child(2) > label > .nfd-input__field' );
 		if ( descBox.should( 'exist' ) ) {
 			descBox.scrollIntoView();
-			descBox.clear();
+			descBox.clear({force: true});
 			cy.wait( 1000 );
 			descBox.type( desc );
 
@@ -72,13 +78,13 @@ describe( 'Basic Info Page', function () {
 			.should( 'not.be.visible' );
 
 		// Open Social Media Accordion
-		cy.get( '.social-form__top-row_icon' ).click();
+		cy.get( '.social-form__top-row_icon' ).invoke('click');
 		cy.get(
 			':nth-child(7) > .social-form__label > .social-form__label_name'
 		)
 			.should( 'exist' )
 			.scrollIntoView()
-			.should( 'be.visible' );
+			.should('have.css', 'opacity', '1');
 	} );
 
 	it( 'Check if Social Media URL checks are done', () => {
@@ -89,7 +95,7 @@ describe( 'Basic Info Page', function () {
 		const socialTest = cy.get( '#facebook' );
 
 		if ( socialTest.should( 'exist' ) ) {
-			socialTest.clear();
+			socialTest.clear({force: true});
 			cy.get(
 				'[style="background-image: var(--facebook-colored-icon);"]'
 			).should( 'have.css', 'opacity', '0.5' );

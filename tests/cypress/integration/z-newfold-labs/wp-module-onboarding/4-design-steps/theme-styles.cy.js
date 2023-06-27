@@ -121,5 +121,4 @@ describe( 'Theme Styles Menu and Preview', function () {
 			'be.visible'
 		);
 	} );
-
 } );
