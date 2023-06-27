@@ -108,6 +108,9 @@ $bluehost_module_container->set(
 	)
 );
 
+// properly get branding links depending on market
+$wordpress_hosting_page = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://www.bluehost.in?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin' : 'https://bluehost.com?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin';
+$my_panel               = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://my.bluehost.in/web-hosting/cplogin' : 'https://my.bluehost.com/web-hosting/cplogin';
 // Set coming soon values
 $bluehost_module_container->set(
 	'comingsoon',
@@ -118,11 +121,11 @@ $bluehost_module_container->set(
 		'template_footer_t'   => sprintf(
 			/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag */
 			esc_html__( 'A %1$sBluehost%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBluehost%6$s.', 'wp-plugin-bluehost' ) . '&nbsp;',
-			'<a href="' . esc_url( 'https://www.bluehost.com/websites/wordpress' ) . '" target="_blank" rel="noopener noreferrer nofollow">',
+			'<a href="' . esc_url( $wordpress_hosting_page ) . '" target="_blank" rel="noopener noreferrer nofollow">',
 			'</a>',
 			'<a href="' . esc_url( wp_login_url() ) . '">',
 			'</a>',
-			'<a href="' . esc_url( 'https://www.bluehost.com/my-account/account-center/login' ) . '" target="_blank" rel="noopener noreferrer nofollow">',
+			'<a href="' . esc_url( $my_panel ) . '" target="_blank" rel="noopener noreferrer nofollow">',
 			'</a>'
 		),
 		'template_page_title' => sprintf(
@@ -157,6 +160,18 @@ $pluginUpdater->setDataMap(
 		'tested'        => 'tested.wp',
 	)
 );
+$pluginUpdater->setDataOverrides(
+	[
+		'banners' => [
+			'2x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-banner.svg',
+			'1x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-banner.svg',
+		],
+		'icons' => [
+			'2x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-icon.svg',
+			'1x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-icon.svg',
+		],
+	]
+);
 
 // Handle any upgrade routines (only in the admin)
 if ( is_admin() ) {
@@ -181,6 +196,7 @@ if ( is_admin() ) {
 require BLUEHOST_PLUGIN_DIR . '/inc/Admin.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/base.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/jetpack.php';
+require BLUEHOST_PLUGIN_DIR . '/inc/LoginRedirect.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/partners.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/performance.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/RestApi/CachingController.php';

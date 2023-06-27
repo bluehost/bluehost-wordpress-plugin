@@ -97,7 +97,7 @@ describe( 'Basic Info Page', function () {
 		if ( socialTest.should( 'exist' ) ) {
 			socialTest.clear({force: true});
 			cy.get(
-				'[style="background-image: var(--facebook-colored-icon);"]'
+				'.browser-content_social_icon[style="background-image: var(--facebook-icon);"]'
 			).should( 'have.css', 'opacity', '0.5' );
 
 			socialTest.type( invalidURL );
@@ -106,7 +106,7 @@ describe( 'Basic Info Page', function () {
 			// Shows the message to the User in case of Invalid URL
 			cy.get( '.Tooltip-Wrapper', { timeout: 3000 } ).should( 'exist' );
 			cy.get(
-				'[style="background-image: var(--facebook-colored-icon);"]'
+				'.browser-content_social_icon[style="background-image: var(--facebook-icon);"]'
 			).should( 'have.css', 'opacity', '0.75' );
 
 			socialTest.clear();
@@ -115,7 +115,7 @@ describe( 'Basic Info Page', function () {
 				'not.exist'
 			);
 			cy.get(
-				'[style="background-image: var(--facebook-colored-icon);"]'
+				'.browser-content_social_icon[style="background-image: var(--facebook-icon);"]'
 			).should( 'have.css', 'opacity', '1' );
 
 			// Close Social Media Accordion
