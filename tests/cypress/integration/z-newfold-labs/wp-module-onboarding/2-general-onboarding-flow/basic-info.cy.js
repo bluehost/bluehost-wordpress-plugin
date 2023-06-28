@@ -1,5 +1,5 @@
 // <reference types="Cypress" />
-import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy'; 
+import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy';
 import { CheckHeadingSubheading } from '../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
@@ -39,13 +39,13 @@ describe( 'Basic Info Page', function () {
 			.should('be.visible')
 			.contains('website');
 	} );
-	
+
 	it( 'Enter a Title and then Check if it reflects elsewhere', () => {
 		const title = 'Hello WordPress';
 		const titleBox = cy.get( ':nth-child(1) > label > .nfd-input__field' );
 		if ( titleBox.should( 'exist' ) ) {
 			titleBox.scrollIntoView();
-			titleBox.clear({force: true});
+			titleBox.clear();
 			cy.wait( 1000 );
 			titleBox.type( title );
 
@@ -61,7 +61,7 @@ describe( 'Basic Info Page', function () {
 		const descBox = cy.get( ':nth-child(2) > label > .nfd-input__field' );
 		if ( descBox.should( 'exist' ) ) {
 			descBox.scrollIntoView();
-			descBox.clear({force: true});
+			descBox.clear();
 			cy.wait( 1000 );
 			descBox.type( desc );
 
@@ -78,13 +78,13 @@ describe( 'Basic Info Page', function () {
 			.should( 'not.be.visible' );
 
 		// Open Social Media Accordion
-		cy.get( '.social-form__top-row_icon' ).invoke('click');
+		cy.get( '.social-form__top-row_icon' ).click();
 		cy.get(
 			':nth-child(7) > .social-form__label > .social-form__label_name'
 		)
 			.should( 'exist' )
 			.scrollIntoView()
-			.should('have.css', 'opacity', '1');
+			.should( 'be.visible' );
 	} );
 
 	it( 'Check if Social Media URL checks are done', () => {
@@ -95,9 +95,9 @@ describe( 'Basic Info Page', function () {
 		const socialTest = cy.get( '#facebook' );
 
 		if ( socialTest.should( 'exist' ) ) {
-			socialTest.clear({force: true});
+			socialTest.clear();
 			cy.get(
-				'[style="background-image: var(--facebook-colored-icon);"]'
+				'.browser-content_social_icon[style="background-image: var(--facebook-icon);"]'
 			).should( 'have.css', 'opacity', '0.5' );
 
 			socialTest.type( invalidURL );
@@ -106,7 +106,7 @@ describe( 'Basic Info Page', function () {
 			// Shows the message to the User in case of Invalid URL
 			cy.get( '.Tooltip-Wrapper', { timeout: 3000 } ).should( 'exist' );
 			cy.get(
-				'[style="background-image: var(--facebook-colored-icon);"]'
+				'.browser-content_social_icon[style="background-image: var(--facebook-icon);"]'
 			).should( 'have.css', 'opacity', '0.75' );
 
 			socialTest.clear();
@@ -115,7 +115,7 @@ describe( 'Basic Info Page', function () {
 				'not.exist'
 			);
 			cy.get(
-				'[style="background-image: var(--facebook-colored-icon);"]'
+				'.browser-content_social_icon[style="background-image: var(--facebook-icon);"]'
 			).should( 'have.css', 'opacity', '1' );
 
 			// Close Social Media Accordion
