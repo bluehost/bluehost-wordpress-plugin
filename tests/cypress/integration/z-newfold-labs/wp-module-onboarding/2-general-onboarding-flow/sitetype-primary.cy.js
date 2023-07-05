@@ -8,10 +8,10 @@ import {
 	CheckIntroPanel,
 } from '../wp-module-support/sidebar.cy';
 
-describe( 'Get Started Site Type Secondary', function () {
+describe( 'Get Started Site Type Primary', function () {
 	before( () => {
 		cy.visit(
-			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/site-secondary'
+			'wp-admin/?page=nfd-onboarding#/wp-setup/step/get-started/site-primary'
 		);
 		cy.wait( 3000 );
 	} );
@@ -25,53 +25,45 @@ describe( 'Get Started Site Type Secondary', function () {
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
-		CheckIntroPanel( '__get-started-site-secondary', 'Store Type' );
+		CheckIntroPanel( '__get-started-site-secondary', 'Site Type' );
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();
 	} );
 
-	it( 'Check selected category is visible and selected', () => {
-		cy.get( '.category-scrolling-wrapper' ).should( 'be.visible' );
-		cy.get( '.category-scrolling-wrapper__type-text' ).should( 'contain', 'Business' );
-	} );
-
-	it( 'Check different subCategories exist and is selectable', () => {
+	it( 'Check different Categories exist and is selectable', () => {
 		let categoryCount = 0;
-		const className = '.subCategoriesSection';
+		const className = '.nfd-card-pri-category';
 		cy.get( className ).should( 'be.visible' );
-		const arr = cy.get( className.concat( ' div' ) );
+		const arr = cy.get( className );
 		arr.each( () => {
-			cy.get( className.concat( ' div' ) )
+			cy.get( className )
 				.eq( categoryCount )
 				.click()
-				.should( 'have.class', 'chosenSecondaryCategory' );
+				.should( 'have.class', 'chosenPrimaryCategory' );
 			categoryCount += 1;
 		} );
 	} );
 
 	it( 'Check if input box exists and is editable', () => {
 		let categoryCount = 0;
-		const className = '.subCategoriesSection';
+		const className = '.nfd-card-pri-category';
 		cy.get( className ).should( 'be.visible' );
 		cy.get( '.nfd-setup-primary-custom__tellus-input' )
 			.scrollIntoView()
 			.should( 'be.visible' )
-			.type( 'Cars' );
-		const arr = cy.get( className.concat( ' div' ) );
+			.type( 'Not Business' );
+		const arr = cy.get( className );
 		arr.each( () => {
-			cy.get( className.concat( ' div' ) )
+			cy.get( className )
 				.eq( categoryCount )
-				.should( 'not.have.class', 'chosenSecondaryCategory' );
+				.should( 'not.have.class', 'chosenPrimaryCategory' );
 			categoryCount += 1;
 		} );
 	} );
 
-	it( 'Check selecting subCategory resets input box', () => {
-		cy.get( '.subCategoriesSection span' ).first().click();
-		cy.get( '.subCategoriesSection' )
-			.children()
-			.should( 'have.class', 'chosenSecondaryCategory' );
+	it( 'Check selecting Category resets input box', () => {
+		cy.get( '.nfd-card-pri-category-wrapper span' ).first().click();
 		cy.get( '.nfd-setup-primary-custom__tellus-input' )
 			.scrollIntoView()
 			.should( 'be.visible' )
@@ -92,7 +84,7 @@ describe( 'Get Started Site Type Secondary', function () {
 		cy.get( '.navigation-buttons_next' ).click();
 		cy.url().should(
 			'not.include',
-			'#/wp-setup/step/get-started/site-secondary'
+			'#/wp-setup/step/get-started/site-primary'
 		);
 		cy.go( 'back' );
 	} );
@@ -101,7 +93,7 @@ describe( 'Get Started Site Type Secondary', function () {
 		cy.get( '.navigation-buttons_back' ).click();
 		cy.url().should(
 			'not.include',
-			'#/wp-setup/step/get-started/site-secondary'
+			'#/wp-setup/step/get-started/site-primary'
 		);
 		cy.go( 'back' );
 	} );
@@ -110,7 +102,7 @@ describe( 'Get Started Site Type Secondary', function () {
 		cy.get( '.nfd-nav-card-button' ).click();
 		cy.url().should(
 			'not.include',
-			'#/wp-setup/step/get-started/site-secondary'
+			'#/wp-setup/step/get-started/site-primary'
 		);
 		cy.go( 'back' );
 	} );

@@ -10,11 +10,8 @@ import {
 
 describe( 'Start Setup WP Experience Page', function () {
 	before( () => {
-		cy.exec(
-			'npx wp-env run cli wp option delete nfd_module_onboarding_flow'
-		);
 		cy.visit(
-			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/experience'
+			'wp-admin/?page=nfd-onboarding#/wp-setup/step/get-started/experience'
 		);
 	} );
 
@@ -34,6 +31,12 @@ describe( 'Start Setup WP Experience Page', function () {
 
 	it( 'Check if Headers Load', () => {
 		CheckCardHeadingSubheading( true );
+	} );
+
+	it( 'Check if `site` appears in heading', () => {
+		cy.get('.nfd-step-card-heading')
+			.should('be.visible')
+			.contains('site');
 	} );
 
 	it( 'Check if Radio Options load', () => {

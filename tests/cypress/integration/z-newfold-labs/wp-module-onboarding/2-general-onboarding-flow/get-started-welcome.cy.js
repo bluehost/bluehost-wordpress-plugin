@@ -11,7 +11,7 @@ import {
 describe( 'Get Started Welcome Page', function () {
 	before( () => {
 		cy.visit(
-			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/wp-setup/step/get-started/welcome'
+			'wp-admin/?page=nfd-onboarding#/wp-setup/step/get-started/welcome'
 		);
 	} );
 
@@ -64,9 +64,13 @@ describe( 'Get Started Welcome Page', function () {
 	} );
 
 	it( 'Check for brandname in sub heading', () => {
-		cy.exec( 'npx wp-env run cli wp option set mm_brand BlueHost' );
-		cy.reload();
 		cy.get( '.nfd-step-card-subheading' ).should( 'contain', 'Bluehost' );
+	} );
+
+	it( 'Check if `website` appears in heading', () => {
+		cy.get('.nfd-step-card-heading')
+			.should('be.visible')
+			.contains('website');
 	} );
 
 	it( 'Check navigation back is not visible', () => {
