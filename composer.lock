@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a361cfcdc06578b709ac844dd937ca2",
+    "content-hash": "839068986bebd6776efb2649a1c40e0f",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -648,12 +648,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "3e428bfd2e913042d4c5c6eca05e9b91bac9228a"
+                "reference": "fae746b945fcf2fcc2d31e60a4095aade5fd2ae4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/3e428bfd2e913042d4c5c6eca05e9b91bac9228a",
-                "reference": "3e428bfd2e913042d4c5c6eca05e9b91bac9228a",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/fae746b945fcf2fcc2d31e60a4095aade5fd2ae4",
+                "reference": "fae746b945fcf2fcc2d31e60a4095aade5fd2ae4",
                 "shasum": ""
             },
             "require": {
@@ -698,7 +698,7 @@
                 "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.8.3",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2023-07-03T12:53:38+00:00"
+            "time": "2023-07-03T07:57:09+00:00"
         },
         {
             "name": "newfold-labs/wp-module-patterns",
