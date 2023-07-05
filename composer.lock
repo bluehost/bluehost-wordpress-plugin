@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b061629ca61956fda300be67aaf69ba",
+    "content-hash": "df29471f87f9fbf0ad805e9462b2fbad",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -163,6 +163,51 @@
                 "source": "https://github.com/newfold-labs/container/tree/1.2.2"
             },
             "time": "2022-08-26T17:23:54+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-ai",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-ai.git",
+                "reference": "c6b73ec1733b471ef70c8ce043bc304f681d9672"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ai/zipball/c6b73ec1733b471ef70c8ce043bc304f681d9672",
+                "reference": "c6b73ec1733b471ef70c8ce043bc304f681d9672",
+                "shasum": ""
+            },
+            "require": {
+                "newfold-labs/wp-module-data": "^2.3.1"
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "@stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\AI\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@bluehost.com"
+                }
+            ],
+            "description": "A module for providing artificial intelligence capabilities.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-ai/tree/1.0.1",
+                "issues": "https://github.com/newfold-labs/wp-module-ai/issues"
+            },
+            "time": "2023-05-31T11:06:57+00:00"
         },
         {
             "name": "newfold-labs/wp-module-business-reviews",
@@ -451,6 +496,52 @@
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
             "time": "2023-07-03T14:23:01+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-help-center",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-help-center.git",
+                "reference": "b3eb984b4bf5914b5faea4a61e1ffd10cabed835"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/b3eb984b4bf5914b5faea4a61e1ffd10cabed835",
+                "reference": "b3eb984b4bf5914b5faea4a61e1ffd10cabed835",
+                "shasum": ""
+            },
+            "require": {
+                "newfold-labs/wp-module-ai": "^1.0.1",
+                "newfold-labs/wp-module-data": "^2.3.4"
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "@stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\HelpCenter\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Faizaan Mohammed",
+                    "email": "faizaan.md@newfold.com"
+                }
+            ],
+            "description": "HelpCenter",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/1.0.7",
+                "issues": "https://github.com/newfold-labs/wp-module-help-center/issues"
+            },
+            "time": "2023-07-05T15:09:15+00:00"
         },
         {
             "name": "newfold-labs/wp-module-installer",
