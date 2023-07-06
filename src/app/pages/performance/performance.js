@@ -1,7 +1,7 @@
 import AppStore from '../../data/store';
 import { bluehostSettingsApiFetch, bluehostPurgeCacheApiFetch } from '../../util/helpers';
 import { useUpdateEffect } from 'react-use';
-import { useState } from '@wordpress/element';
+import { Fragment, useState } from '@wordpress/element';
 import { useNotification } from '../../components/notifications/feed';
 import { Alert, Button, Label, RadioGroup } from "@yoast/ui-library";
 import { SectionSettings } from "../../components/section";
@@ -90,7 +90,7 @@ const CacheSettings = ({ setError, notify }) => {
         >
             {cacheOptions.map((option) => {
                 return (
-                    <>
+                    <Fragment key={option.value}>
                         <RadioGroup.Radio
                             defaultChecked={option.value === store.cacheLevel}
                             id={'cache-level-' + option.value}
@@ -102,7 +102,7 @@ const CacheSettings = ({ setError, notify }) => {
                         <div className="yst-radio__description">
                             {option.description}
                         </div>
-                    </>
+                    </Fragment>
                 );
             })}
         </RadioGroup>
