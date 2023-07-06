@@ -35,6 +35,7 @@ final class Data {
 				'isJarvis' => $bluehost_module_container->get('isJarvis'),
 			),
 			'capabilities' => array(
+				'hasYithExtended'     => $bluehost_module_container->get('capabilities')->get('hasYithExtended'),
 				'canAccessHelpCenter' => $bluehost_module_container->get('capabilities')->get('canAccessHelpCenter'),
 			),
 			'assets'       => BLUEHOST_PLUGIN_URL . 'assets/',
