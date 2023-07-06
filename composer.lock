@@ -499,16 +499,16 @@
         },
         {
             "name": "newfold-labs/wp-module-help-center",
-            "version": "1.0.7",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-help-center.git",
-                "reference": "b3eb984b4bf5914b5faea4a61e1ffd10cabed835"
+                "reference": "fb61730301dd4630713be7b5bb0dde98b1f45765"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/b3eb984b4bf5914b5faea4a61e1ffd10cabed835",
-                "reference": "b3eb984b4bf5914b5faea4a61e1ffd10cabed835",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/fb61730301dd4630713be7b5bb0dde98b1f45765",
+                "reference": "fb61730301dd4630713be7b5bb0dde98b1f45765",
                 "shasum": ""
             },
             "require": {
@@ -538,10 +538,10 @@
             ],
             "description": "HelpCenter",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/1.0.7",
+                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/1.0.8",
                 "issues": "https://github.com/newfold-labs/wp-module-help-center/issues"
             },
-            "time": "2023-07-05T15:09:15+00:00"
+            "time": "2023-07-06T19:05:27+00:00"
         },
         {
             "name": "newfold-labs/wp-module-installer",
@@ -1989,12 +1989,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "6ea60363203786a5dd5617c28e933280bb61f78b"
+                "reference": "a4c9287bd95774381d3202805b41ab68b8f91647"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/6ea60363203786a5dd5617c28e933280bb61f78b",
-                "reference": "6ea60363203786a5dd5617c28e933280bb61f78b",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/a4c9287bd95774381d3202805b41ab68b8f91647",
+                "reference": "a4c9287bd95774381d3202805b41ab68b8f91647",
                 "shasum": ""
             },
             "conflict": {
@@ -2248,7 +2248,7 @@
                 "marcwillmann/turn": "<0.3.3",
                 "matyhtf/framework": "<3.0.6",
                 "mautic/core": "<4.3|= 2.13.1",
-                "mediawiki/core": "<=1.39.3",
+                "mediawiki/core": ">=1.27,<1.27.6|>=1.29,<1.29.3|>=1.30,<1.30.2|>=1.31,<1.31.9|>=1.32,<1.32.6|>=1.32.99,<1.33.3|>=1.33.99,<1.34.3|>=1.34.99,<1.35",
                 "mediawiki/matomo": "<2.4.3",
                 "melisplatform/melis-asset-manager": "<5.0.1",
                 "melisplatform/melis-cms": "<5.0.1",
@@ -2508,6 +2508,7 @@
                 "webklex/laravel-imap": "<5.3",
                 "webklex/php-imap": "<5.3",
                 "webpa/webpa": "<3.1.2",
+                "wikibase/wikibase": "<=1.39.3",
                 "wikimedia/parsoid": "<0.12.2",
                 "willdurand/js-translation-bundle": "<2.1.1",
                 "wintercms/winter": "<1.0.475|>=1.1,<1.1.10|>=1.2,<1.2.1",
@@ -2598,7 +2599,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-05T23:04:23+00:00"
+            "time": "2023-07-06T19:04:22+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
