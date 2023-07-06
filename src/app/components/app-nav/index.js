@@ -101,6 +101,7 @@ export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, action, 
                 <ul className="wppbh-app-navitem-submenu yst-hidden yst-ml-8 yst-m-2 yst-space-y-1.5">
                     {subItems.map((subItem) => (
                         <SideNavMenuSubItem
+                            key={subItem.name}
                             label={subItem.title}
                             name={subItem.name}
                             path={subItem.name}
