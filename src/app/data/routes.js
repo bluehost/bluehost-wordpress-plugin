@@ -82,11 +82,17 @@ export const routes = [
 				name: '/store/products',
 				title: __( 'Products & Services', 'wp-plugin-bluehost' ),
 			},
+			window.WPPBH.capabilities.hasYithExtended
+			? {
+				name: "/store/sales_discounts",
+				title: __("Sales & Discounts", "wp-plugin-bluehost"),
+			}
+			: null,
 			{
 				name: '/store/details',
 				title: __( 'Store Details', 'wp-plugin-bluehost' ),
 			},
-		],
+		].filter(Boolean),
 	},
 	{
 		name: '/marketplace',
