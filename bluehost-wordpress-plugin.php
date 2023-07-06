@@ -11,7 +11,7 @@
  * Plugin Name:       The Bluehost Plugin
  * Plugin URI:        https://bluehost.com
  * Description:       WordPress plugin that integrates a WordPress site with the Bluehost control panel, including performance, security, and update features.
- * Version:           3.0.5
+ * Version:           3.0.6
  * Requires at least: 6.0
  * Requires PHP:      7.1
  * Tested up to:      6.2.2
@@ -31,7 +31,7 @@ if ( defined( 'BLUEHOST_PLUGIN_VERSION' ) ) {
 }
 
 // Define constants
-define( 'BLUEHOST_PLUGIN_VERSION', '3.0.5' );
+define( 'BLUEHOST_PLUGIN_VERSION', '3.0.6' );
 define( 'BLUEHOST_PLUGIN_FILE', __FILE__ );
 define( 'BLUEHOST_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLUEHOST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
