@@ -20,7 +20,8 @@ describe( 'Step Ecommerce Products Info', function () {
 		DrawerActivityForMenu(
 			'Onboarding Menu',
 			':nth-child(3)',
-			'Product Info'
+			'Product Info',
+			false
 		);
 	} );
 

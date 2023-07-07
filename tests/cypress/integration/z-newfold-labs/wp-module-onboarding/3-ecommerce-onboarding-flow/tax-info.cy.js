@@ -17,7 +17,7 @@ describe( 'Step Ecommerce Tax Information', function () {
 	} );
 
 	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu( 'Onboarding Menu', ':nth-child(2)', 'Tax Info' );
+		DrawerActivityForMenu( 'Onboarding Menu', ':nth-child(2)', 'Tax Info', false );
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
