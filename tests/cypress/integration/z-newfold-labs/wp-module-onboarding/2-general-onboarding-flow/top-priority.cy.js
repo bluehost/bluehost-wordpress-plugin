@@ -63,9 +63,6 @@ describe( 'Top Priority Page', function () {
 					.find( '.nfd-card__body_title' )
 					.invoke( 'text' )
 					.then( ( $ele ) => {
-						cy.exec(
-							'npx wp-env run cli wp plugin activate woocommerce'
-						);
 						cy.get(
 							'.components-button.navigation-buttons.navigation-buttons_next.is-primary'
 						).click();

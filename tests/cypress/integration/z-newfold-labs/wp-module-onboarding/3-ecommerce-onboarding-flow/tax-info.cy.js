@@ -71,8 +71,4 @@ describe( 'Step Ecommerce Tax Information', function () {
 		cy.url().should( 'not.include', '#/ecommerce/step/tax' );
 		cy.go( 'back' );
 	} );
-
-	after( () => {
-		cy.exec( 'npx wp-env run cli wp plugin deactivate woocommerce' );
-	} );
 } );
