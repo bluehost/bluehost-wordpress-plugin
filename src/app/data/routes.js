@@ -83,7 +83,7 @@ export const routes = [
 				name: '/store/products',
 				title: __( 'Products & Services', 'wp-plugin-bluehost' ),
 			},
-			window.WPPBH.capabilities.hasYithExtended
+			NewfoldRuntime.hasCapability( 'hasYithExtended' )
 			? {
 				name: "/store/sales_discounts",
 				title: __("Sales & Discounts", "wp-plugin-bluehost"),
