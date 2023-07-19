@@ -1,12 +1,12 @@
 // <reference types="Cypress" />
-import { DrawerActivityForMenu } from '../../wp-module-support/drawer.cy';
-import { CheckCardHeadingSubheading } from '../../wp-module-support/header.cy';
+import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy';
+import { CheckCardHeadingSubheading } from '../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
 	CheckIllustrationPanel,
 	CheckInfoPanel,
 	CheckIntroPanel,
-} from '../../wp-module-support/sidebar.cy';
+} from '../wp-module-support/sidebar.cy';
 
 describe( 'Step Ecommerce Tax Information', function () {
 	before( () => {
@@ -17,7 +17,7 @@ describe( 'Step Ecommerce Tax Information', function () {
 	} );
 
 	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu( 'Onboarding Menu', ':nth-child(2)', 'Tax Info' );
+		DrawerActivityForMenu( 'Onboarding Menu', ':nth-child(2)', 'Tax Info', false );
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
@@ -71,9 +71,4 @@ describe( 'Step Ecommerce Tax Information', function () {
 		cy.url().should( 'not.include', '#/ecommerce/step/tax' );
 		cy.go( 'back' );
 	} );
-
-	after( () => {
-		cy.exec( 'npx wp-env run cli wp plugin deactivate woocommerce' );
-	} );
-
 } );

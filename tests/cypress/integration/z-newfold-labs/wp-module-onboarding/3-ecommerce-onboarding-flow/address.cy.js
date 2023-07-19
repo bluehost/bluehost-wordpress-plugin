@@ -1,17 +1,17 @@
 // <reference types="Cypress" />
-import { DrawerActivityForMenu } from '../../wp-module-support/drawer.cy';
-import { CheckCardHeadingSubheading } from '../../wp-module-support/header.cy';
+import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy';
+import { CheckCardHeadingSubheading } from '../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
 	CheckIllustrationPanel,
 	CheckInfoPanel,
 	CheckIntroPanel,
-} from '../../wp-module-support/sidebar.cy';
+} from '../wp-module-support/sidebar.cy';
 
 describe( 'Step Ecommerce Address/Store Details', function () {
 	before( () => {
-		cy.exec( 'npx wp-env run cli wp plugin activate woocommerce' );
 		cy.wait( 10000 );
+		cy.exec('npx wp-env run cli wp option delete nfd_module_onboarding_flow');
 		cy.visit(
 			'wp-admin/?page=nfd-onboarding&flow=ecommerce#/ecommerce/step/address'
 		);

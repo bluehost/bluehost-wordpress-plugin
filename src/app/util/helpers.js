@@ -214,7 +214,7 @@ export const getPlatformPathUrl = ( jarvisPath = '', legacyPath = '' ) => {
  * @return void
  */
 export const handleHelpLinksClick = () => {
-	if (NewfoldRuntime.hasCapability( 'canAccessHelpCenter' ) && !window.newfoldEmbeddedHelp.hasListeners) {
+	if (NewfoldRuntime.hasCapability( 'canAccessHelpCenter' ) && window.newfoldEmbeddedHelp && !window.newfoldEmbeddedHelp.hasListeners) {
 		const helpLinks = document.querySelectorAll('[href*="#/help"]');
 		if (helpLinks) {
 			helpLinks.forEach(el => el.addEventListener('click', (e) => {
