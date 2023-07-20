@@ -14,31 +14,21 @@ namespace Bluehost;
 final class Data {
 
 	/**
-	 * Data loaded onto window.WPPBH
+	 * Data loaded onto window.NewfoldRuntime
 	 *
 	 * @return array
 	 */
 	public static function runtime() {
-		global $wp_version;
 		global $bluehost_module_container;
 
 		$runtime = array(
-			'url'          => BLUEHOST_BUILD_URL,
-			'version'      => BLUEHOST_PLUGIN_VERSION,
-			'resturl'      => \get_home_url() . '/index.php?rest_route=',
-			'wpversion'    => $wp_version,
-			'admin'        => \admin_url(),
-			'siteurl'      => \get_site_url(),
-			'sitetitle'    => htmlspecialchars_decode( \get_bloginfo( 'name' ) ),
-			'env'          => array(
-				'brand'    => get_option( 'mm_brand' ),
-				'isJarvis' => $bluehost_module_container->get('isJarvis'),
+			'isJarvis' => $bluehost_module_container->get('isJarvis'),
+			'plugin'   => array(
+				'url'          => BLUEHOST_BUILD_URL,
+				'version'      => BLUEHOST_PLUGIN_VERSION,
+				'assets'       => BLUEHOST_PLUGIN_URL . 'assets/',
+				'brand'    => $bluehost_module_container->plugin()->brand,
 			),
-			'capabilities' => array(
-				'hasYithExtended'     => $bluehost_module_container->get('capabilities')->get('hasYithExtended'),
-				'canAccessHelpCenter' => $bluehost_module_container->get('capabilities')->get('canAccessHelpCenter'),
-			),
-			'assets'       => BLUEHOST_PLUGIN_URL . 'assets/',
 		);
 
 		return $runtime;

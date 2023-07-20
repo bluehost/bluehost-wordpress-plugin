@@ -1,3 +1,4 @@
+import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import { dispatch } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
@@ -44,7 +45,7 @@ export const setActiveSubnav = ( path ) => {
 					}
 					// handle help
 					if ( path === '/help' ) {
-						if ( window.WPPBH.capabilities.canAccessHelpCenter && !window.newfoldEmbeddedHelp.isDefaultOpen ) {
+						if ( NewfoldRuntime.hasCapability( 'canAccessHelpCenter' ) && !window.newfoldEmbeddedHelp.isDefaultOpen ) {
 							window.newfoldEmbeddedHelp.toggleNFDLaunchedEmbeddedHelp();
 							window.newfoldEmbeddedHelp.isDefaultOpen = true; // since this fires multiple times on load
 						}
@@ -88,7 +89,7 @@ export const dispatchUpdateSnackbar = ( text = 'Settings Saved' ) => {
 export const bluehostSettingsApiFetch = ( data, passError, thenCallback ) => {
 	return apiFetch( {
 		// path: 'bluehost/v1/settings', //  can't use path bacause it breaks on temp domains
-		url: window.WPPBH.resturl + '/bluehost/v1/settings',
+		url: NewfoldRuntime.createApiUrl( '/bluehost/v1/settings' ),
 		method: 'POST',
 		data,
 	} )
@@ -110,7 +111,7 @@ export const bluehostSettingsApiFetch = ( data, passError, thenCallback ) => {
  */
 export const bluehostPurgeCacheApiFetch = ( data, passError, thenCallback ) => {
 	return apiFetch( {
-		url: window.WPPBH.resturl + '/bluehost/v1/caching',
+		url: NewfoldRuntime.createApiUrl( '/bluehost/v1/caching' ),
 		method: 'DELETE',
 		data,
 	} )
@@ -166,8 +167,8 @@ export const addUtmParams = (url, params = {}) => {
  * @return {string}
  */
 export const getPlatformBaseUrl = ( path = '' ) => {
-	const brand = window.WPPBH.env.brand;
-	const isJarvis = window.WPPBH.env.isJarvis;
+	const brand = NewfoldRuntime.sdk.plugin.brand;
+	const isJarvis = NewfoldRuntime.sdk.isJarvis;
 
 	const baseUrl = () => {
 		if (brand === 'Bluehost_India') {
@@ -197,7 +198,7 @@ export const getPlatformBaseUrl = ( path = '' ) => {
  * // returns https://www.bluehost.com/my-account/home if Jarvis or https://my.bluehost.com/hosting/app#home if legacy
  */
 export const getPlatformPathUrl = ( jarvisPath = '', legacyPath = '' ) => {
-	const isJarvis = window.WPPBH.env.isJarvis;
+	const isJarvis = NewfoldRuntime.sdk.isJarvis;
 
 	if (isJarvis) {
 		return getPlatformBaseUrl('/my-account/') + jarvisPath;
@@ -213,7 +214,7 @@ export const getPlatformPathUrl = ( jarvisPath = '', legacyPath = '' ) => {
  * @return void
  */
 export const handleHelpLinksClick = () => {
-	if (window.WPPBH.capabilities.canAccessHelpCenter && window.newfoldEmbeddedHelp && !window.newfoldEmbeddedHelp.hasListeners) {
+	if (NewfoldRuntime.hasCapability( 'canAccessHelpCenter' ) && window.newfoldEmbeddedHelp && !window.newfoldEmbeddedHelp.hasListeners) {
 		const helpLinks = document.querySelectorAll('[href*="#/help"]');
 		if (helpLinks) {
 			helpLinks.forEach(el => el.addEventListener('click', (e) => {

@@ -27,9 +27,16 @@ final class Admin {
 		/* Add inline style to hide subnav link */
 		\add_action( 'admin_head', array( __CLASS__, 'admin_nav_style' ) );
 
+		\add_filter('newfold-runtime', array( __CLASS__, 'add_to_runtime' ) );
+
 		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) { // phpcs:ignore
 			\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
 		}
+	}
+
+	public static function add_to_runtime( $sdk ) {
+		include BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
+		return array_merge( $sdk, Data::runtime() );
 	}
 
 	/**
@@ -151,13 +158,6 @@ final class Admin {
 				'bluehost-script',
 				'wp-plugin-bluehost',
 				BLUEHOST_PLUGIN_DIR . '/languages'
-			);
-
-			include BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
-			\wp_add_inline_script(
-				'bluehost-script',
-				'var WPPBH =' . \wp_json_encode( Data::runtime() ) . ';',
-				'before'
 			);
 
 			\wp_register_style(

@@ -6,11 +6,12 @@ import {
   IdentificationIcon,
   ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import { Card, Title } from "@yoast/ui-library";
 import { addUtmParams, getPlatformBaseUrl, getPlatformPathUrl } from "../../util/helpers";
 import classNames from "classnames";
 
-const isJarvis = window.WPPBH.env.isJarvis;
+const isJarvis = NewfoldRuntime.sdk.isJarvis;
 
 const base = [
   {
