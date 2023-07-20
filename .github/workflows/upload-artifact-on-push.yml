@@ -90,7 +90,7 @@ jobs:
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
       - name: Setup Registry
-        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.READ_GH_PACKAGES }}" >> .npmrc
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_READ_GH_PACKAGES }}" >> .npmrc
 
       - name: NPM Install
         run: npm install --legacy-peer-deps
