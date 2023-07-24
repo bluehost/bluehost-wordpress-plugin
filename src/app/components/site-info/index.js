@@ -46,13 +46,13 @@ export const SiteInfoBar = () => {
                     </Button>
                     <Button 
                         as="a" 
-                        href={(isWooCommerce && isStore) ? `${url}/shop`: url}
+                        href={(isWooCommerce && isStore) ? `${url}/shop` : url}
                         target="_blank" 
                         variant="primary" 
                         className="yst-bg-white yst-text-[#212936] yst-text-tiny yst-w-full min-[400px]:yst-w-auto"
                     >
                         <WordPressIcon />
-                        {(isWooCommerce && isStore)?'View Store': 'View Site'}
+                        {(isWooCommerce && isStore) ? 'View Store' : 'View Site'}
                     </Button>
                 </div>
                 
