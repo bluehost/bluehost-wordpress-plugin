@@ -175,7 +175,7 @@ describe('Staging Page', function () {
     it('Switch Works', () => {
         cy.intercept({
 			method: 'GET',
-			url: /newfold-staging(\/|%2F)v1(\/|%2F)staging(\/|%2F)switch-to&env=staging/
+			url: /newfold-staging(\/|%2F)v1(\/|%2F)staging(\/|%2F)switch-to(\&|%26)env(\=|%3D)staging/
 		}, {
 			fixture: 'stagingSwitch',
             delay: 500,

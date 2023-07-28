@@ -1,7 +1,8 @@
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import { getPlatformBaseUrl } from "../util/helpers";
 
 const getSupportPhoneNumber = () => {
-	const brand = window.WPPBH.env.brand;
+	const brand = NewfoldRuntime.sdk.plugin.brand;
 
 	if ( brand === 'Bluehost_India' ) {
 		return '1800-419-4426';

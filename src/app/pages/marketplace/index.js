@@ -1,6 +1,7 @@
 import './stylesheet.scss';
 
 // to pass to marketplace module
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import apiFetch from '@wordpress/api-fetch';
 import classnames from 'classnames';
 import { useState } from '@wordpress/element';
@@ -25,7 +26,6 @@ const MarketplacePage = () => {
 
     // constants to pass to module
     const moduleConstants = {
-        'resturl': window.WPPBH.resturl,
         'eventendpoint': '/newfold-data/v1/events/',
         'perPage': 12,
         'supportsCTB': false, // not needed, but explicity setting to false anyway
@@ -33,7 +33,7 @@ const MarketplacePage = () => {
 
     useEffect(() => {
         apiFetch({
-            url: `${moduleConstants.resturl}/newfold-marketplace/v1/marketplace`
+            url: NewfoldRuntime.createApiUrl( `/newfold-marketplace/v1/marketplace` )
         }).then((response) => {
             // check response for data
             if (!response.hasOwnProperty('categories') || !response.hasOwnProperty('products')) {

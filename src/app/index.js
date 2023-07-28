@@ -3,6 +3,7 @@ import './tailwind.pcss';
 
 import AppStore, { AppStoreProvider } from './data/store';
 import { useLocation, HashRouter as Router } from 'react-router-dom';
+import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import { __ } from '@wordpress/i18n';
 import { SnackbarList, Spinner } from '@wordpress/components';
 import classnames from 'classnames';
@@ -70,7 +71,7 @@ const AppBody = ( props ) => {
 			id="wppbh-app-rendered"
 			className={ classnames(
 				'wpadmin-brand-bluehost',
-				`wppbh-wp-${ WPPBH.wpversion }`,
+				`wppbh-wp-${ NewfoldRuntime.sdk.wpversion }`,
 				`wppbh-page-${ kebabCase( location.pathname ) }`,
 				props.className,
 				'yst-w-full yst-p-4 min-[783px]:yst-p-0'
@@ -81,7 +82,7 @@ const AppBody = ( props ) => {
 				constants={{
 					context: 'bluehost-plugin',
 					page: hashedPath,
-					resturl: window.WPPBH.resturl
+					resturl: NewfoldRuntime.createApiUrl("")
 				}}
 				methods={{
 					apiFetch,

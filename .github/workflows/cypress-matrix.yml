@@ -87,6 +87,9 @@ jobs:
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
+      - name: Setup Registry
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_READ_GH_PACKAGES }}" >> .npmrc
+
       - name: NPM Install
         run: npm install --legacy-peer-deps
 
@@ -118,7 +121,7 @@ jobs:
         run: npx cypress run
 
       - name: Run Cypress Tests
-        uses: replayio/action-cypress@v0.2.8
+        uses: replayio/action-cypress@v0.3.1
         env:
           RECORD_REPLAY_METADATA_TEST_RUN_TITLE: "php-${{ matrix.phpVersion }}, wp-${{ matrix.wpVersion }}"
           RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
