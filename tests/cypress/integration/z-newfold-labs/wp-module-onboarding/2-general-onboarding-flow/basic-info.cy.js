@@ -29,7 +29,6 @@ describe( 'Basic Info Page', function () {
 	it( 'Check if Header and Subheader shows up', () => {
 		DrawerClose();
 		CheckHeadingSubheading();
-		cy.get('.nfd-onboarding-drawer__toggle').click();
 	} );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
