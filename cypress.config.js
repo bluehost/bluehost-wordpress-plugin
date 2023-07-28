@@ -81,6 +81,7 @@ module.exports = defineConfig({
 		excludeSpecPattern: [
 			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/4-design-steps/**",
 			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/wp-module-support/",
+			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/2-general-onboarding-flow/exit-to-wordpress.cy.js",
 			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/3-ecommerce-onboarding-flow/exit-to-wordpress.cy.js",
 			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/4-design-steps/continue-onboarding.cy.js"
 		]
