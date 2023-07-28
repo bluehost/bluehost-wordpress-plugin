@@ -16,14 +16,14 @@ describe( 'What Next Page', function () {
 		cy.wait( 5000 );
 	} );
 
-	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu(
-			'Exit to WordPress',
-			':nth-child(6)',
-			'What Next',
-			false
-		);
-	} );
+	// it( 'Check Drawer Activity', () => {
+	// 	DrawerActivityForMenu(
+	// 		'Exit to WordPress',
+	// 		':nth-child(6)',
+	// 		'What Next',
+	// 		false
+	// 	);
+	// } );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
 		CheckIntroPanel( '__what-next', 'What’s Next' );

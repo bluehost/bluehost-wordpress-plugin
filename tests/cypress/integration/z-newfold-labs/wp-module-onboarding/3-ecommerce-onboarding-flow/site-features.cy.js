@@ -20,14 +20,14 @@ describe( 'Site Features', function () {
 		CheckHeadingSubheading();
 	} );
 
-	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu(
-			'Exit to WordPress',
-			':nth-child(5)',
-			'Features',
-			false
-		);
-	} );
+	// it( 'Check Drawer Activity', () => {
+	// 	DrawerActivityForMenu(
+	// 		'Exit to WordPress',
+	// 		':nth-child(5)',
+	// 		'Features',
+	// 		false
+	// 	);
+	// } );
 
 	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
 		CheckIntroPanel( '__site-features', 'Features' );

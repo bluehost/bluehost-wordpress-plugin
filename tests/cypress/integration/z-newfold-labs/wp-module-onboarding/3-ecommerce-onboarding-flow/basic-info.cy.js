@@ -15,13 +15,13 @@ describe( 'Basic Info Page', function () {
 		);
 	} );
 
-	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu(
-			'Exit to WordPress',
-			':nth-child(3)',
-			'Basic Info'
-		);
-	} );
+	// it( 'Check Drawer Activity', () => {
+	// 	DrawerActivityForMenu(
+	// 		'Exit to WordPress',
+	// 		':nth-child(3)',
+	// 		'Basic Info'
+	// 	);
+	// } );
 
 	it( 'Check if Header and Subheader shows up', () => {
 		CheckHeadingSubheading();

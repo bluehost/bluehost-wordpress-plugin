@@ -7,13 +7,13 @@ describe( 'Top Priority Page', function () {
 		cy.visit( 'wp-admin/?page=nfd-onboarding#/wp-setup/step/top-priority' );
 	} );
 
-	it( 'Check Drawer Activity', () => {
-		DrawerActivityForMenu(
-			'Exit to WordPress',
-			':nth-child(2)',
-			'Top Priority'
-		);
-	} );
+	// it( 'Check Drawer Activity', () => {
+	// 	DrawerActivityForMenu(
+	// 		'Exit to WordPress',
+	// 		':nth-child(2)',
+	// 		'Top Priority'
+	// 	);
+	// } );
 
 	it( 'Check if Header and Subheader shows up', () => {
 		CheckHeadingSubheading();

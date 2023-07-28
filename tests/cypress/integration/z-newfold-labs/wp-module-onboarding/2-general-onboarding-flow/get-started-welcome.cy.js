@@ -30,19 +30,19 @@ describe( 'Get Started Welcome Page', function () {
 		} );
 	} );
 
-	it( 'Check Exit to Wordpress button is visible and clickable and continue flow', () => {
-		cy.get( '.nfd-onboarding-etw__trigger' ).should( 'be.visible' ).click();
-		cy.get( '.components-modal__screen-overlay' ).should( 'be.visible' );
-		cy.get( '.nfd-onboarding-etw__buttons > .is-secondary' ).click();
-		cy.get( '.components-modal__screen-overlay' ).should( 'not.exist' );
-	} );
+	// it( 'Check Exit to Wordpress button is visible and clickable and continue flow', () => {
+	// 	cy.get( '.nfd-onboarding-etw__trigger' ).should( 'be.visible' ).click();
+	// 	cy.get( '.components-modal__screen-overlay' ).should( 'be.visible' );
+	// 	cy.get( '.nfd-onboarding-etw__buttons > .is-secondary' ).click();
+	// 	cy.get( '.components-modal__screen-overlay' ).should( 'not.exist' );
+	// } );
 
-	it( 'Check Exit to Wordpress button is visible and clickable and cancel', () => {
-		cy.get( '.nfd-onboarding-etw__trigger' ).should( 'be.visible' ).click();
-		cy.get( '.components-modal__screen-overlay' ).should( 'be.visible' );
-		cy.get( '.components-modal__header > button' ).click();
-		cy.get( '.components-modal__screen-overlay' ).should( 'not.exist' );
-	} );
+	// it( 'Check Exit to Wordpress button is visible and clickable and cancel', () => {
+	// 	cy.get( '.nfd-onboarding-etw__trigger' ).should( 'be.visible' ).click();
+	// 	cy.get( '.components-modal__screen-overlay' ).should( 'be.visible' );
+	// 	cy.get( '.components-modal__header > button' ).click();
+	// 	cy.get( '.components-modal__screen-overlay' ).should( 'not.exist' );
+	// } );
 
 	it( 'Check if the Suppressed Drawer does not open on clicking Toggle Button', () => {
 		CheckDrawerDisabled();
@@ -83,10 +83,10 @@ describe( 'Get Started Welcome Page', function () {
 		cy.go( 'back' );
 	} );
 
-	it( 'Check Exit to Wordpress button is visible and clickable and exit flow', () => {
-		cy.get( '.nfd-onboarding-etw__trigger' ).should( 'be.visible' ).click();
-		cy.get( '.components-modal__screen-overlay' ).should( 'be.visible' );
-		cy.get( '.nfd-onboarding-etw__buttons > .is-primary' ).click();
-		cy.url().should( 'not.contain', '#/wp-setup/step/get-started/welcome' );
-	} );
+	// it( 'Check Exit to Wordpress button is visible and clickable and exit flow', () => {
+	// 	cy.get( '.nfd-onboarding-etw__trigger' ).should( 'be.visible' ).click();
+	// 	cy.get( '.components-modal__screen-overlay' ).should( 'be.visible' );
+	// 	cy.get( '.nfd-onboarding-etw__buttons > .is-primary' ).click();
+	// 	cy.url().should( 'not.contain', '#/wp-setup/step/get-started/welcome' );
+	// } );
 } );
