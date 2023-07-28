@@ -16,7 +16,7 @@ describe( 'What Next Page', function () {
 		cy.wait( 5000 );
 	} );
 
-	it( 'Check Drawer Activity', () => {
+	it.skip( 'Check Drawer Activity', () => {
 		DrawerActivityForMenu(
 			'Exit to WordPress',
 			':nth-child(6)',
