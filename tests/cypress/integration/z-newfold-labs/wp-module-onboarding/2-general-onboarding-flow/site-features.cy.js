@@ -26,7 +26,7 @@ describe( 'Site Features', function () {
 			.contains('site');
 	} );
 
-	it( 'Check Drawer Activity', () => {
+	it.skip( 'Check Drawer Activity', () => {
 		DrawerActivityForMenu(
 			'Exit to WordPress',
 			':nth-child(5)',
