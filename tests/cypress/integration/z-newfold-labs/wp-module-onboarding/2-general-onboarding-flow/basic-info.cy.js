@@ -1,5 +1,8 @@
 // <reference types="Cypress" />
-import { DrawerActivityForMenu } from '../wp-module-support/drawer.cy';
+import {
+	DrawerActivityForMenu,
+	DrawerClose
+} from '../wp-module-support/drawer.cy';
 import { CheckHeadingSubheading } from '../wp-module-support/header.cy';
 import {
 	CheckHelpPanelLinks,
@@ -24,6 +27,7 @@ describe( 'Basic Info Page', function () {
 	} );
 
 	it( 'Check if Header and Subheader shows up', () => {
+		DrawerClose();
 		CheckHeadingSubheading();
 	} );
 
