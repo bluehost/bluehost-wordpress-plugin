@@ -27,6 +27,7 @@ describe( 'Basic Info Page', function () {
 	} );
 
 	it( 'Check if Header and Subheader shows up', () => {
+		cy.wait(3000);
 		DrawerClose();
 		CheckHeadingSubheading();
 	} );
