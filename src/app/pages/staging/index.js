@@ -471,7 +471,7 @@ const Staging = () => {
 		// setIsLoading( true );
         setIsThinking( true );
 		return apiFetch({
-			url: NewfoldRuntime.createApiUrl( apiNamespace + path ),
+			url: NewfoldRuntime.createApiUrl( apiNamespace ) + path,
 			method,
 			// beforeSend: (xhr) => {
 			// 	xhr.setRequestHeader( 'X-WP-Nonce', restnonce );
