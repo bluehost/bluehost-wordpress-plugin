@@ -29,7 +29,7 @@ console.log( W_ASCI );
 
 const WPPBHRender = () => {
 	const DOM_ELEMENT = document.getElementById( WP_ADM_PAGE_ROOT_ELEMENT );
-	if ( null !== DOM_ELEMENT && 'undefined' !== typeof render ) {
+	if ( null !== DOM_ELEMENT && 'undefined' !== typeof createRoot ) {
 		const root = createRoot( DOM_ELEMENT );
 		root.render( <App /> );
 	}
