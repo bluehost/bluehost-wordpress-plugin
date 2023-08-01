@@ -10,7 +10,7 @@ module.exports = defineConfig({
     wpPassword: 'password',
     wpVersion,
     phpVersion,
-	pluginid: 'bluehost',
+	pluginId: 'bluehost',
   },
   downloadsFolder: 'tests/cypress/downloads',
   fixturesFolder: 'tests/cypress/fixtures',
