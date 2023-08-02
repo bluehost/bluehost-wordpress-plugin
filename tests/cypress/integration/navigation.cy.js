@@ -69,8 +69,7 @@ describe('Navigation', function () {
 			.get('.wppbh-app-navitem-Marketplace')
 			.scrollIntoView()
 			.should('not.have.class', 'active');
-		cy.get('.wppbh-app-navitem-Marketplace').trigger('click');
-		cy.get('#wppbh-app').click();
+		cy.get('.wppbh-app-navitem-Marketplace').click();
 
 		cy.wait(500);
 		cy.hash().should('eq', '#/marketplace');
