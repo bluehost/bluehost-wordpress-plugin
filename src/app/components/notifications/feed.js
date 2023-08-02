@@ -63,6 +63,7 @@ export function NotificationFeed({ children }) {
             return (
               <Notifications.Notification
                 id={key}
+                key={key}
                 {...entry}
                 {...contentProps}
                 dismissScreenReaderLabel="Dismiss"
