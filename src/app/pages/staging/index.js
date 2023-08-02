@@ -275,7 +275,8 @@ const Staging = () => {
 		setIsError(false);
 		setIsLoading(true);
 		stagingApiFetch(
-			'staging/', 
+			'staging',
+            null,
 			'GET', 
 			(response) => {
 				// console.log('Init Staging Data:', response);
@@ -299,8 +300,9 @@ const Staging = () => {
         makeNotice( 'creating', 'Working...', 'Creating a staging site, this should take about a minute.', 'info', 8000 );
 		// setIsCreatingStaging(true);
 		stagingApiFetch(
-			'staging/', 
-			'POST', 
+			'staging',
+            null,
+			'POST',
 			(response) => {
 				// console.log('Create Staging Callback', response);
 				if ( response.hasOwnProperty('status') ) {
@@ -324,7 +326,8 @@ const Staging = () => {
 		// console.log('delete staging');
         makeNotice( 'deleting', 'Working...', 'Deleting the staging site, this should take about a minute.', 'info', 8000 );
 		stagingApiFetch(
-			'staging/', 
+			'staging',
+            null, 
 			'DELETE', 
 			(response) => {
 				// console.log('Delete staging callback', response);
@@ -349,7 +352,8 @@ const Staging = () => {
 		// console.log('clone production to staging');
         makeNotice( 'cloning', 'Working...', 'Cloning production to staging, this should take about a minute.', 'info', 8000 );
 		stagingApiFetch(
-			'staging/clone/', 
+			'staging/clone',
+            null,
 			'POST', 
 			(response) => {
 				// console.log('Clone Callback', response);
@@ -409,7 +413,8 @@ const Staging = () => {
         makeNotice( 'switching', 'Working...', `Switching to the ${env} environment, this should take about a minute.`, 'info', 8000 );
 
 		stagingApiFetch(
-			`staging/switch-to&env=${env}`, 
+			'staging/switch-to',
+            {'env': env}, 
 			'GET', 
 			(response) => {
 				// console.log('Switch Callback', response);
@@ -435,7 +440,8 @@ const Staging = () => {
 		// console.log('Deploy', type);
         makeNotice( 'deploying', 'Working...', 'Deploying from staging to production, this should take about a minute.', 'info', 8000 );
 		stagingApiFetch(
-			`staging/deploy&type=${type}`, 
+			'staging/deploy',
+            {'type': type}, 
 			'POST', 
 			(response) => {
 				// console.log('Deploy Callback', response);
@@ -464,16 +470,17 @@ const Staging = () => {
 	 * @param passError setter for the error in component
 	 * @return apiFetch promise
 	 */
-	const stagingApiFetch = (path = '', method = 'GET', thenCallback, errorCallback = catchError) => {
-		// setIsError( false );
-		// setIsLoading( true );
+	const stagingApiFetch = (
+        path = '', 
+        qs = {}, 
+        method = 'GET', 
+        thenCallback, 
+        errorCallback = catchError
+    ) => {
         setIsThinking( true );
 		return apiFetch({
-			url: NewfoldRuntime.createApiUrl( apiNamespace + path ),
+			url: NewfoldRuntime.createApiUrl( apiNamespace + path, qs),
 			method,
-			// beforeSend: (xhr) => {
-			// 	xhr.setRequestHeader( 'X-WP-Nonce', restnonce );
-			// },
 		}).then( (response) => {
 			thenCallback( response );
 		}).catch( (error) => {
