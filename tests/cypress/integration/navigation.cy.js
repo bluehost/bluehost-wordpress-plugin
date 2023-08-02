@@ -64,10 +64,14 @@ describe('Navigation', function () {
 	});
 	
 	it('Subnav links properly navigates', () => {
+
 		cy
-			.get('.wppbh-app-navitem-Marketplace').
-			should('not.have.class', 'active');
-		cy.get('.wppbh-app-navitem-Marketplace').click();
+			.get('.wppbh-app-navitem-Marketplace')
+			.scrollIntoView()
+			.should('not.have.class', 'active');
+		cy.get('.wppbh-app-navitem-Marketplace').trigger('click');
+		cy.get('#wppbh-app').click();
+
 		cy.wait(500);
 		cy.hash().should('eq', '#/marketplace');
 		cy
@@ -78,19 +82,19 @@ describe('Navigation', function () {
 			.should('have.attr', 'href')
 			.and('match', /marketplace/);
 
-			cy.get('.wppbh-app-subnavitem-Services').click();
-			cy.wait(500);
-			cy.hash().should('eq', '#/marketplace/services');
-			cy
-				.get('.wppbh-app-subnavitem-Services')
-				.should('have.class', 'active');
-			cy
-				.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu li.current a')
-				.should('have.attr', 'href')
-				.and('match', /marketplace/);
-			cy
-				.get('.wppbh-app-navitem-Marketplace')
-				.should('have.class', 'active');
+		cy.get('.wppbh-app-subnavitem-Services').click();
+		cy.wait(500);
+		cy.hash().should('eq', '#/marketplace/services');
+		cy
+			.get('.wppbh-app-subnavitem-Services')
+			.should('have.class', 'active');
+		cy
+			.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu li.current a')
+			.should('have.attr', 'href')
+			.and('match', /marketplace/);
+		cy
+			.get('.wppbh-app-navitem-Marketplace')
+			.should('have.class', 'active');
 		
 
 		cy.get('.wppbh-app-subnavitem-SEO').click();
