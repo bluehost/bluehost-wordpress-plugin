@@ -416,7 +416,7 @@ const Staging = () => {
 
 		stagingApiFetch(
 			'staging/switch-to',
-            env, 
+            {'env': env}, 
 			'GET', 
 			(response) => {
 				// console.log('Switch Callback', response);
@@ -443,7 +443,7 @@ const Staging = () => {
         makeNotice( 'deploying', 'Working...', 'Deploying from staging to production, this should take about a minute.', 'info', 8000 );
 		stagingApiFetch(
 			'staging/deploy',
-            type, 
+            {'type': type}, 
 			'POST', 
 			(response) => {
 				// console.log('Deploy Callback', response);
