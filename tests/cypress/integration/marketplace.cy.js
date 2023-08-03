@@ -9,7 +9,7 @@ describe('Marketplace Page', function () {
 		}, {
 			fixture: 'products'
 		}).as('products');
-		cy.visit('/wp-admin/admin.php?page=bluehost#/marketplace');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/marketplace');
 		cy.wait('@products');
 	});
 

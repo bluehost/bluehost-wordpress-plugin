@@ -11,7 +11,7 @@ describe('Notifications', () => {
 			fixture: 'notifications.json'
 		}).as('notifications');
 
-		cy.visit('/wp-admin/admin.php?page=bluehost#/home', {timeout: 30000});
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/home', {timeout: 30000});
 		cy.wait('@notifications');
 	});
 
@@ -42,7 +42,7 @@ describe('Notifications', () => {
         cy.get('.newfold-notifications-wrapper #notification-test-1')
 			.should('not.exist');
 
-		// cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
+		// cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/settings');
 		cy.get('.wppbh-app-navitem-Settings').click();
 		cy.wait(500);
 
@@ -71,7 +71,7 @@ describe('Notifications', () => {
 			body: {"id":"test-2"}
 		}).as('notificationDismiss');
 
-		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/home');
 
         cy.get('.newfold-notifications-wrapper #notification-test-2')
 			.scrollIntoView()

@@ -9,7 +9,7 @@ describe('Staging Page', function () {
 		}, {
 			fixture: 'stagingInit'
 		}).as('stagingInit');
-		cy.visit('/wp-admin/admin.php?page=bluehost#/staging');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/staging');
 		cy.wait('@stagingInit');
 	});
 
@@ -231,7 +231,7 @@ describe('Staging Page - Staging environmant', function () {
 		}, {
 			fixture: 'stagingStaging'
 		}).as('stagingStaging');
-		cy.visit('/wp-admin/admin.php?page=bluehost#/staging');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/staging');
 		cy.wait('@stagingStaging');
 	});
 

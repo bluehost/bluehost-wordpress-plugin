@@ -3,9 +3,8 @@
 describe('Coming Soon', function () {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/settings');
 		cy.injectAxe();
-		
 	});
 
 	it('Coming Soon Toggle Exists', () => {
@@ -46,7 +45,7 @@ describe('Coming Soon', function () {
 	});
 
 	it('Has Coming Soon Section on Home', () => {
-		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/home');
 		cy.get('.wppbh-home .wppb-app-section-content').first()
 			.scrollIntoView()
 			.contains('h1', 'Ready to go live?')
@@ -79,10 +78,10 @@ describe('Coming Soon', function () {
 
 	it('Launching launches site', () => {
 		cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
-		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/settings');
 		cy.get('[data-id="coming-soon-toggle"]').should('have.attr', 'aria-checked').and('include', 'true');
 		
-		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/home');
 
 		cy.get('.wppbh-home .wppb-app-section-content').first()
 			.contains('button', 'Launch your')
@@ -100,6 +99,6 @@ describe('Coming Soon', function () {
 			.should('not.exist');
 
 		cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
-		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/settings');
 	})
 });

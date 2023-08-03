@@ -3,7 +3,7 @@
 describe('Settings Page', function () {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=bluehost#/settings');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/settings');
 		
 	});
 
