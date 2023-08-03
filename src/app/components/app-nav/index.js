@@ -16,6 +16,8 @@ export const SideNavHeader = () => {
 }
 
 export const SideNavMenu = () => {
+    let location = useLocation();
+
     const primaryMenu = () => {
         return (
             <ul className="yst-flex yst-flex-col yst-gap-1.5">
@@ -40,7 +42,7 @@ export const SideNavMenu = () => {
         return (
             <ul className="yst-flex yst-flex-col yst-gap-1.5 yst-mt-4 yst-pt-4 yst-border-t yst-border-[#D8DEE4]">
                 {utilityRoutes.map((page) => (
-
+                    
                     <SideNavMenuItem
                         key={page.name}
                         label={page.title}
@@ -66,14 +68,14 @@ export const SideNavMenu = () => {
         // open active's submenu if it exists
         const activeMenu = document.querySelector('.wppbh-app-sidenav .active');
         if (activeMenu && null !== activeMenu.nextSibling && activeMenu.nextSibling.classList.contains('wppbh-app-navitem-submenu')) {
-            activeMenu.nextSibling.classList.toggle('yst-hidden');
+            activeMenu.nextSibling.classList.remove('yst-hidden');
         }
     }
 
     useEffect(() => {
         SubMenusManager();
         document.onclick = SubMenusManager;
-    });
+    }, [location]);
 
     return (
         <div className="yst-px-0.5 yst-space-y-6">

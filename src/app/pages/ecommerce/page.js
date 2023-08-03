@@ -6,6 +6,7 @@ import { Page } from "../../components/page";
 import AppStore from "../../data/store";
 import { bluehostSettingsApiFetch } from "../../util/helpers";
 import "./styles.scss";
+import "@newfold-labs/wp-module-ecommerce/bluehost.css";
 
 const ECommerce = () => {
   const { store, setStore } = useContext(AppStore);
