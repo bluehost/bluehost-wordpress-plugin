@@ -3,7 +3,7 @@
 describe('Home Page', function () {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=bluehost#/home');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/home');
 		cy.injectAxe();
 		
 	});
