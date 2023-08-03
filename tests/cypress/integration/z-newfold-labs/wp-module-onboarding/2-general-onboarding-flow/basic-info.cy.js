@@ -27,6 +27,7 @@ describe( 'Basic Info Page', function () {
 	} );
 
 	it( 'Check if Header and Subheader shows up', () => {
+		cy.wait(3000);
 		DrawerClose();
 		CheckHeadingSubheading();
 	} );
@@ -88,7 +89,7 @@ describe( 'Basic Info Page', function () {
 		)
 			.should( 'exist' )
 			.scrollIntoView()
-			.should( 'be.visible' );
+			.should('have.css', 'opacity', '1');
 	} );
 
 	it( 'Check if Social Media URL checks are done', () => {

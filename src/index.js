@@ -3,7 +3,7 @@ import './webpack-public-path';
 
 import App from './app';
 import domReady from '@wordpress/dom-ready';
-import { render } from '@wordpress/element';
+import {createRoot, render} from '@wordpress/element';
 
 const WP_ADM_PAGE_ROOT_ELEMENT = 'wppbh-app';
 const W_ASCI = `
@@ -25,13 +25,18 @@ const W_ASCI = `
 @@@(((((((((@@((((((((((@@(((((((((@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 `;
-console.log( W_ASCI );
+console.log(W_ASCI);
 
 const WPPBHRender = () => {
-	const DOM_ELEMENT = document.getElementById( WP_ADM_PAGE_ROOT_ELEMENT );
-	if ( null !== DOM_ELEMENT && 'undefined' !== typeof render ) {
-		render( <App />, DOM_ELEMENT );
-	}
+    const DOM_ELEMENT = document.getElementById(WP_ADM_PAGE_ROOT_ELEMENT);
+    if (null !== DOM_ELEMENT) {
+        if ('undefined' !== typeof createRoot) {
+            // WP 6.2+ only
+            createRoot(DOM_ELEMENT).render(<App/>);
+        } else if ('undefined' !== typeof render) {
+            render(<App/>, DOM_ELEMENT);
+        }
+    }
 };
 
-domReady( WPPBHRender );
+domReady(WPPBHRender);
