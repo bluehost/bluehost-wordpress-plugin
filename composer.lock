@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f44757c4cfd69cc74d32e02c8d9cda9",
+    "content-hash": "4a79c9dd9cfab4c8082f937f63ea1554",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -322,16 +322,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ctb",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ctb.git",
-                "reference": "949e785b815d55eda15ad0d06dc7a25d83803a93"
+                "reference": "1d6ba251ccfa3272cb3852cd41a9f60478c6a950"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ctb/zipball/949e785b815d55eda15ad0d06dc7a25d83803a93",
-                "reference": "949e785b815d55eda15ad0d06dc7a25d83803a93",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ctb/zipball/1d6ba251ccfa3272cb3852cd41a9f60478c6a950",
+                "reference": "1d6ba251ccfa3272cb3852cd41a9f60478c6a950",
                 "shasum": ""
             },
             "require-dev": {
@@ -365,10 +365,10 @@
             ],
             "description": "Newfold module for 'Click to Buy' functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ctb/tree/1.0.0",
+                "source": "https://github.com/newfold-labs/wp-module-ctb/tree/1.0.1",
                 "issues": "https://github.com/newfold-labs/wp-module-ctb/issues"
             },
-            "time": "2023-04-21T20:08:32+00:00"
+            "time": "2023-08-04T16:28:20+00:00"
         },
         {
             "name": "newfold-labs/wp-module-customer-bluehost",
@@ -525,16 +525,16 @@
         },
         {
             "name": "newfold-labs/wp-module-help-center",
-            "version": "1.0.11",
+            "version": "1.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-help-center.git",
-                "reference": "f428589a04aeeefe93f5f315c7bdc05e72c7d738"
+                "reference": "c83630206397b9c438edcca26087a2450523bebb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/f428589a04aeeefe93f5f315c7bdc05e72c7d738",
-                "reference": "f428589a04aeeefe93f5f315c7bdc05e72c7d738",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/c83630206397b9c438edcca26087a2450523bebb",
+                "reference": "c83630206397b9c438edcca26087a2450523bebb",
                 "shasum": ""
             },
             "require": {
@@ -564,10 +564,10 @@
             ],
             "description": "HelpCenter",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/1.0.11",
+                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/1.0.13",
                 "issues": "https://github.com/newfold-labs/wp-module-help-center/issues"
             },
-            "time": "2023-08-03T19:54:28+00:00"
+            "time": "2023-08-04T05:31:44+00:00"
         },
         {
             "name": "newfold-labs/wp-module-installer",
@@ -1058,16 +1058,16 @@
         },
         {
             "name": "newfold-labs/wp-module-staging",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-staging.git",
-                "reference": "8da3c8ce284bfc0ff9c253767ea72f59da63bf44"
+                "reference": "d640323a87704f4d5172a9ebd69e6d74aa05f86f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/8da3c8ce284bfc0ff9c253767ea72f59da63bf44",
-                "reference": "8da3c8ce284bfc0ff9c253767ea72f59da63bf44",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/d640323a87704f4d5172a9ebd69e6d74aa05f86f",
+                "reference": "d640323a87704f4d5172a9ebd69e6d74aa05f86f",
                 "shasum": ""
             },
             "require-dev": {
@@ -1101,10 +1101,10 @@
             ],
             "description": "Newfold module for staging functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-staging/tree/1.0.2",
+                "source": "https://github.com/newfold-labs/wp-module-staging/tree/1.0.3",
                 "issues": "https://github.com/newfold-labs/wp-module-staging/issues"
             },
-            "time": "2023-05-30T20:49:52+00:00"
+            "time": "2023-08-04T17:19:37+00:00"
         },
         {
             "name": "wp-cli/wp-config-transformer",
