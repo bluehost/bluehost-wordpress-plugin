@@ -101,11 +101,11 @@ jobs:
       - name: Install WordPress
         run: npx wp-env start --debug
 
-      - name: Run Cypress Tests
+      - name: Run Cypress Tests and Genrate Report
         env:
           RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
         if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || env.RECORD_REPLAY_API_KEY == '' }}
-        run: npx cypress run
+        run: npx cypress run --reporter mochawesome
 
       - name: Run Cypress Tests
         uses: replayio/action-cypress@v0.3.1
@@ -117,9 +117,6 @@ jobs:
           browser: 'replay-chromium'
           command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag bluehost
           upload-all: false
-
-      - name: Run Cypress Tests and Genrate Report
-        run: npx cypress run --reporter mochawesome
 
       - name: List Replays
         if: always()
