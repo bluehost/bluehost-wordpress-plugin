@@ -2,7 +2,7 @@ name: Cypress Test Matrix
 
 on:
   pull_request:
-    # types: [ opened, edited, reopened, ready_for_review, synchronize ]
+    types: [ opened, edited, reopened, ready_for_review, synchronize ]
     branches:
       - main
       - master
@@ -118,7 +118,7 @@ jobs:
         env:
           RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
         if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || env.RECORD_REPLAY_API_KEY == '' }}
-        run: npx cypress run
+        run: npx cypress run --reporter mochawesome
 
       - name: Run Cypress Tests
         uses: replayio/action-cypress@v0.3.1
@@ -148,3 +148,16 @@ jobs:
         if: ${{ always() }}
         continue-on-error: true
         run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
+
+      - name: Merge Mochawesome reports and generate unique HTML report
+        run: |
+            npx mochawesome-merge tests/cypress/report/mochawesome/*.json > mochawesome-report-${{ github.run_id }}.json
+            npx marge mochawesome-report-${{ github.run_id }}.json
+
+      - name: Microsoft Teams Notification
+        uses: dhollerbach/actions.send-message-to-ms-teams@1.0.10
+        with:
+          webhook: ${{ secrets.PRESS2_WEBHOOK_URL }}
+          message: "The Cypress tests have completed. See the attached report." 
+        env:
+            REPORT_PATH: mochawesome-report-${{ github.run_id }}/mochawesome-report.html
