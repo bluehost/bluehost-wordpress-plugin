@@ -118,6 +118,9 @@ jobs:
           command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag bluehost
           upload-all: false
 
+      - name: Run Cypress Tests and Genrate Report
+        run: npx cypress run --reporter mochawesome
+
       - name: List Replays
         if: always()
         shell: bash
@@ -134,3 +137,19 @@ jobs:
         if: always()
         continue-on-error: true
         run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
+
+      - name: Merge Mochawesome reports and generate unique HTML report
+        run: |
+            npx mochawesome-merge tests/cypress/report/mochawesome/*.json > mochawesome-report.json
+            npx marge mochawesome-report.json
+            mv mochawesome-report mochawesome-report-${{ github.run_id }}
+            rm mochawesome-report.json 
+
+      - name: Send Microsoft Teams notification
+        uses: MicrosoftTeams/github-action-for-teams@v0.1
+        with:
+          webhook-url: ${{ secrets.PRESS2_WEBHOOK_URL }}
+          title: "Cypress Tests Report"
+          message: "The Cypress tests have completed. See the attached report."
+        env:
+          REPORT_PATH: mochawesome-report-${{ github.run_id }}/mochawesome-report.html
