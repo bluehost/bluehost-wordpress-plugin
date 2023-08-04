@@ -155,9 +155,8 @@ jobs:
             npx marge mochawesome-report-${{ github.run_id }}.json
 
       - name: Microsoft Teams Notification
-        uses: dhollerbach/actions.send-message-to-ms-teams@1.0.10
+        uses: microsoft/teams-webhook@v1
         with:
-          webhook: ${{ secrets.PRESS2_WEBHOOK_URL }}
+          url: ${{ secrets.PRESS2_WEBHOOK_URL }}
           message: "The Cypress tests have completed. See the attached report." 
-        env:
-            REPORT_PATH: mochawesome-report-${{ github.run_id }}/mochawesome-report.html
+          file: mochawesome-report-${{ github.run_id }}/mochawesome-report.html
