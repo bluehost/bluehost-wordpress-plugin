@@ -18,6 +18,7 @@ import Settings from '../pages/settings';
 import Staging from '../pages/staging';
 import Example from '../pages/example';
 import Help from '../pages/help';
+import { ReactComponent as HelpIcon } from "../components/icons/HelpIcon.svg";
 
 const addPartialMatch = (prefix, path) =>
   prefix === path ? `${prefix}/*` : path;
@@ -150,7 +151,7 @@ export const routes = [
 		name: '/help',
 		title: __( 'Help', 'wp-plugin-bluehost' ),
 		Component: Help,
-		Icon: QuestionMarkCircleIcon,
+		Icon: HelpIcon,
 		action: NewfoldRuntime.hasCapability( 'canAccessHelpCenter' ) ? HelpCenterAI : false,
 	},
 ];
