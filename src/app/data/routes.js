@@ -90,6 +90,12 @@ export const routes = [
 				title: __("Sales & Discounts", "wp-plugin-bluehost"),
 			}
 			: null,
+			NewfoldRuntime.hasCapability( 'isEcommerce' )
+			? {
+				name: '/store/payments',
+				title: __( 'Payments', 'wp-plugin-bluehost' ),
+			}
+			: null,
 			{
 				name: '/store/details',
 				title: __( 'Store Details', 'wp-plugin-bluehost' ),
