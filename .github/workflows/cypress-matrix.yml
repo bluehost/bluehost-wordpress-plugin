@@ -158,7 +158,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: mochawesome-report
-          path: ./mochawesome-report-${{ github.run_id }}.html/mochawesome-report.html
+          path: ./mochawesome-report-${{ github.run_id }}/mochawesome-report.html
 
       - name: Send report to Microsoft Teams
         run: |
