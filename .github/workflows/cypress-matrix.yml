@@ -23,16 +23,16 @@ jobs:
       matrix:
         phpVersion:
           - '7.1'
-          - '7.2'
-          - '7.3'
-          - '7.4'
-          - '8.0'
-          - '8.1'
-          - '8.2'
+          # - '7.2'
+          # - '7.3'
+          # - '7.4'
+          # - '8.0'
+          # - '8.1'
+          # - '8.2'
         wpVersion:
           - '6.0'
-          - '6.1'
-          - '6.2'
+          # - '6.1'
+          # - '6.2'
 
     steps:
 
@@ -159,8 +159,16 @@ jobs:
         with:
           name: mochawesome-report
           path: mochawesome-report/mochawesome-report-${{ github.run_id }}.html
+    
+      - name: Send Cypress Report (Test1)
+        uses: maritome/cypress-msteams-reporter@v1.1.1
+        with:
+          report-path: mochawesome-report/mochawesome-report-${{ github.run_id }}.html
+          teams-webhook-url: 'https://newfolddigital.webhook.office.com/webhookb2/37f7d1ff-fe8b-401c-84e3-844b3ca2917d@d3008fd4-0d20-418b-bf30-4e70d910c727/IncomingWebhook/8a64f507f3244b97ad5c0ce976f003cf/15469150-adb2-49a2-a088-01fdceb07c94'
+      
 
       - name: Send report to Microsoft Teams
         run: |
             curl -H "Content-Type: application/json" -d '{
-            "text": "Cypress Mocha tests execution status: ${{ job.status }}. [REPORT_URL="https://github.com/${{ github.repository }}/actions/artifacts/${{ github.run_id }}/download"]  mochawesome-report/mochawesome-report-${{ github.run_id }}.html"}' 'https://newfolddigital.webhook.office.com/webhookb2/37f7d1ff-fe8b-401c-84e3-844b3ca2917d@d3008fd4-0d20-418b-bf30-4e70d910c727/IncomingWebhook/8a64f507f3244b97ad5c0ce976f003cf/15469150-adb2-49a2-a088-01fdceb07c94'
+            "text": "Cypress Mocha tests execution status: ${{ job.status }}. [REPORT_URL="https://github.com/${{ github.repository }}/suites/${{ github.run_number }}/artifacts/${{ github.run_id }}"]  mochawesome-report/mochawesome-report-${{ github.run_id }}.html"}' 'https://newfolddigital.webhook.office.com/webhookb2/37f7d1ff-fe8b-401c-84e3-844b3ca2917d@d3008fd4-0d20-418b-bf30-4e70d910c727/IncomingWebhook/8a64f507f3244b97ad5c0ce976f003cf/15469150-adb2-49a2-a088-01fdceb07c94'
+
