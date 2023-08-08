@@ -152,11 +152,9 @@ jobs:
       - name: Merge Mochawesome reports and generate unique HTML report
         run: |
             npx mochawesome-merge tests/cypress/report/mochawesome/*.json > mochawesome-report-${{ github.run_id }}.json
-            npx marge mochawesome-report-${{ github.run_id }}.json
 
-      - name: Microsoft Teams Notification
-        uses: actions/microsoft-teams@v2
-        with:
-          teams_webhook_url: ${{ secrets.PRESS2_WEBHOOK_URL }}
-          title: "The Cypress tests have completed. See the attached report." 
-          file: mochawesome-report-${{ github.run_id }}/mochawesome-report.html
+      - name: Send report to Microsoft Teams
+        run: |
+            curl -H "Content-Type: application/json" -d '{
+            "text": "Cypress Mocha tests execution status: ${{ job.status }}. [View Report]  mochawesome-report-${{ github.run_id }}/mochawesome-report.json"
+            }'    ${{ secrets.PRESS2_WEBHOOK_URL }}
