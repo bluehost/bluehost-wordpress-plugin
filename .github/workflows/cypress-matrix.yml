@@ -156,5 +156,4 @@ jobs:
       - name: Send report to Microsoft Teams
         run: |
             curl -H "Content-Type: application/json" -d '{
-            "text": "Cypress Mocha tests execution status: ${{ job.status }}. [View Report]  mochawesome-report-${{ github.run_id }}/mochawesome-report.json"
-            }'    ${{ secrets.PRESS2_WEBHOOK_URL }}
+            "text": "Cypress Mocha tests execution status: ${{ job.status }}. [View Report]  mochawesome-report-${{ github.run_id }}/mochawesome-report.json"}' 'https://newfolddigital.webhook.office.com/webhookb2/37f7d1ff-fe8b-401c-84e3-844b3ca2917d@d3008fd4-0d20-418b-bf30-4e70d910c727/IncomingWebhook/8a64f507f3244b97ad5c0ce976f003cf/15469150-adb2-49a2-a088-01fdceb07c94'
