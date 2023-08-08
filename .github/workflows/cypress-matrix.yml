@@ -153,6 +153,12 @@ jobs:
         run: |
             npx mochawesome-merge tests/cypress/report/mochawesome/*.json > mochawesome-report-${{ github.run_id }}.json
 
+      - name: Archive Mochawesome report
+        uses: actions/upload-artifact@v3
+        with:
+          name: mochawesome-report-${{ github.run_id }}
+          path: ./mochawesome-report-${{ github.run_id }}.json
+
       - name: Send report to Microsoft Teams
         run: |
             curl -H "Content-Type: application/json" -d '{
