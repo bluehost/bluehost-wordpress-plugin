@@ -148,3 +148,14 @@ jobs:
         if: ${{ always() }}
         continue-on-error: true
         run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
+      
+      - name: Send Cypress Test Report to MS Teams
+        run: |
+            echo "Sending test results to Microsoft Teams..."
+            results=$(npx cypress report --reporter json | jq -r .results)
+            curl -X POST -H "Content-Type: application/json" -d "$results" "${{ secrets.PRESS2_WEBHOOK_URL }}"
+            shell: /usr/bin/bash -e {0}
+        env:
+          COMPOSER_PROCESS_TIMEOUT: 0
+          COMPOSER_NO_INTERACTION: 1
+          COMPOSER_NO_AUDIT: 1
