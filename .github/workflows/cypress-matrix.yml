@@ -152,14 +152,15 @@ jobs:
       - name: Merge Mochawesome reports and generate unique HTML report
         run: |
             npx mochawesome-merge tests/cypress/report/mochawesome/*.json > mochawesome-report-${{ github.run_id }}.json
+            npx marge mochawesome-report-${{ github.run_id }}.json
 
       - name: Archive Mochawesome report
         uses: actions/upload-artifact@v3
         with:
-          name: mochawesome-report-${{ github.run_id }}
-          path: ./mochawesome-report-${{ github.run_id }}.json
+          name: mochawesome-report
+          path: ./mochawesome-report-${{ github.run_id }}.html/mochawesome-report.html
 
       - name: Send report to Microsoft Teams
         run: |
             curl -H "Content-Type: application/json" -d '{
-            "text": "Cypress Mocha tests execution status: ${{ job.status }}. [View Report]  mochawesome-report-${{ github.run_id }}/mochawesome-report.json"}' 'https://newfolddigital.webhook.office.com/webhookb2/37f7d1ff-fe8b-401c-84e3-844b3ca2917d@d3008fd4-0d20-418b-bf30-4e70d910c727/IncomingWebhook/8a64f507f3244b97ad5c0ce976f003cf/15469150-adb2-49a2-a088-01fdceb07c94'
+            "text": "Cypress Mocha tests execution status: ${{ job.status }}. [REPORT_URL="https://github.com/${{ github.repository }}/actions/artifacts/${{ github.run_id }}/download"]  mochawesome-report-${{ github.run_id }}/mochawesome-report.html"}' 'https://newfolddigital.webhook.office.com/webhookb2/37f7d1ff-fe8b-401c-84e3-844b3ca2917d@d3008fd4-0d20-418b-bf30-4e70d910c727/IncomingWebhook/8a64f507f3244b97ad5c0ce976f003cf/15469150-adb2-49a2-a088-01fdceb07c94'
