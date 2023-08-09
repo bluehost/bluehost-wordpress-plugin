@@ -46,7 +46,7 @@ module.exports = defineConfig({
 				}
 			}
 			// Exclude onboarding tests for WordPress lower than 6.1
-			if (semver.satisfies(config.env.wpSemverVersion, '<6.1.0')) {
+			if (semver.satisfies(config.env.wpSemverVersion, '<6.2.0')) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
 					[
 						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/**"
