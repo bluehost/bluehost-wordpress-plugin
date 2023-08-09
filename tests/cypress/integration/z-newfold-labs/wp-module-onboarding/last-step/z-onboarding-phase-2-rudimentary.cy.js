@@ -2,9 +2,9 @@ const semver = require( 'semver' );
 describe( 'Onboarding Phase 2 Flow', () => {
 	before( () => {
 		cy.setCustomerData();
-		cy.exec( 'npx wp-env run cli wp option set mm_brand BlueHost' );
+		cy.exec( 'wp option set mm_brand BlueHost --path="/Users/arun.sh/Desktop/LocalWP Sites/bluehost-plugin-dev/app/public"' );
 		cy.exec(
-			'npx wp-env run cli wp option set permalink_structure /%postname%/'
+			'wp option set permalink_structure /%postname%/ --path="/Users/arun.sh/Desktop/LocalWP Sites/bluehost-plugin-dev/app/public"'
 		);
 		cy.visit( 'wp-admin/index.php?page=nfd-onboarding&flow=ecommerce', {
 			timeout: 10000,
@@ -114,6 +114,12 @@ describe( 'Onboarding Phase 2 Flow', () => {
 			// click `continue setup` button
 			cy.get(
 				'#nfd-onboarding > div > div.nfd-interface-interface-skeleton__editor > div.nfd-interface-interface-skeleton__body > div.nfd-interface-interface-skeleton__content > main > div > div > div > div > button'
+			)
+				.should( 'exist' )
+				.click();
+
+			cy.get(
+				'#nfd-onboarding > div > div.nfd-interface-interface-skeleton__editor > div.nfd-interface-interface-skeleton__body > div.nfd-interface-interface-skeleton__content > main > div > div > div > button'
 			)
 				.should( 'exist' )
 				.click();

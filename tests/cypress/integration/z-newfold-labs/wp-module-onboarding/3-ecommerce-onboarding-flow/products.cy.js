@@ -19,7 +19,7 @@ describe( 'Step Ecommerce Products Info', function () {
 	it( 'Check Drawer Activity', () => {
 		DrawerActivityForMenu(
 			'Onboarding Menu',
-			':nth-child(3)',
+			':nth-child(2)',
 			'Product Info',
 			false
 		);
