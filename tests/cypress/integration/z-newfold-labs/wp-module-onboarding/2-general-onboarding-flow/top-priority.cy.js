@@ -48,6 +48,7 @@ describe( 'Top Priority Page', function () {
 						cy.url().should( 'include', 'step/basic-info', {
 							timeout: 30000,
 						} );
+						cy.wait(5000);
 						cy.go( 'back' );
 						cy.get(
 							'.nfd-card__body.nfd-selected-card> .nfd-card__body_title'

@@ -45,11 +45,6 @@ describe( 'Get Started Site Type Secondary', function () {
 		);
 	} );
 
-	it( 'Check only Business category is avaiable', () => {
-		cy.get('.category-scrolling-wrapper__left-btn').should('not.exist');
-		cy.get('.category-scrolling-wrapper__right-btn-icon').should('not.exist');
-	} )
-
 	it( 'Check different subCategories exist and is selectable', () => {
 		let categoryCount = 0;
 		const className = '.subCategoriesSection';

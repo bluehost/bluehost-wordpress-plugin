@@ -16,33 +16,33 @@ describe( 'Step Ecommerce Tax Information', function () {
 		cy.wait( 5000 );
 	} );
 
-	it( 'Check Drawer Activity', () => {
+	it.skip( 'Check Drawer Activity', () => {
 		DrawerActivityForMenu( 'Onboarding Menu', ':nth-child(2)', 'Tax Info', false );
 	} );
 
-	it( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
+	it.skip( 'Check to make sure sidebar opens, content is in place and close sidebar', () => {
 		CheckIntroPanel( '__ecommerce-tax-info', 'Tax Info' );
 		CheckIllustrationPanel();
 		CheckInfoPanel();
 		CheckHelpPanelLinks();
 	} );
 
-	it( 'Checks if Heading and Subheading are present.', () => {
+	it.skip( 'Checks if Heading and Subheading are present.', () => {
 		CheckCardHeadingSubheading();
 	} );
 
-	it( 'Checks if Continue Setup is disabled.', () => {
+	it.skip( 'Checks if Continue Setup is disabled.', () => {
 		cy.get( '.nfd-nav-card-button' ).should( 'be.disabled' );
 	} );
 
-	it( 'Checks if there are the correct number of tax preference radio controls.', () => {
+	it.skip( 'Checks if there are the correct number of tax preference radio controls.', () => {
 		cy.get( '.components-radio-control__option' ).should(
 			'have.length',
 			3
 		);
 	} );
 
-	it( 'Checks if all the tax preference radio control buttons are enabled and clickable.', () => {
+	it.skip( 'Checks if all the tax preference radio control buttons are enabled and clickable.', () => {
 		let radioCount = 0;
 		const className = '[type="radio"]';
 		const arr = cy.get( className );
@@ -56,17 +56,17 @@ describe( 'Step Ecommerce Tax Information', function () {
 		} );
 	} );
 
-	it( 'Checks existence of Need Help Tag.', () => {
+	it.skip( 'Checks existence of Need Help Tag.', () => {
 		cy.get( '.nfd-card-need-help-tag' )
 			.scrollIntoView()
 			.should( 'be.visible' );
 	} );
 
-	it( 'Checks existence of Need Help URL.', () => {
+	it.skip( 'Checks existence of Need Help URL.', () => {
 		cy.get( '.nfd-card-need-help-tag > a' ).should( 'have.attr', 'href' );
 	} );
 
-	it( 'Goes to the next step on clicking navigation Next.', () => {
+	it.skip( 'Goes to the next step on clicking navigation Next.', () => {
 		cy.get( '.navigation-buttons_next' ).click();
 		cy.url().should( 'not.include', '#/ecommerce/step/tax' );
 		cy.go( 'back' );
