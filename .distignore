@@ -7,9 +7,9 @@ node_modules
 tests
 
 # Files
-.distignore
-.gitattributes
-.gitignore
+.*
+cypress.config.js
+set-latest-wp-version.js
 
 # File Types
 *.json
@@ -21,3 +21,10 @@ tests
 *.xml
 *.yml
 *.zip
+*.scss
+
+# Newfold src files
+vendor/newfold-labs/wp-module-ecommerce/src
+vendor/newfold-labs/wp-module-help-center/src
+vendor/newfold-labs/wp-module-onboarding/src
+vendor/newfold-labs/wp-module-patterns/src

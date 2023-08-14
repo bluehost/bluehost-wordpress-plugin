@@ -1,6 +1,8 @@
 # Directories
 
 # Files
-vendor/newfold-labs/wp-module-data/src/Data/Static/site-classification.json
+/vendor/newfold-labs/wp-module-data/src/Data/Static/site-classification.json
+/vendor/newfold-labs/wp-module-patterns/build/*/blocks/block.json
+/vendor/newfold-labs/wp-module-staging/lib/.staging
 
 # File Types

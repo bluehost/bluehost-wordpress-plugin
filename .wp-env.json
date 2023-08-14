@@ -1,31 +1,31 @@
 {
-    "core": "WordPress/WordPress#tags/6.3",
-    "config": {
-        "WP_DEBUG": true,
-        "WP_DEBUG_LOG": true,
-        "WP_DEBUG_DISPLAY": false,
-        "FS_METHOD": "direct"
-    },
-    "phpVersion": "8.1",
-    "plugins": [
-        "."
-    ],
-    "mappings": {
-        "wp-content/plugins/wpforms-lite": "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"
-    },
-    "themes": [
-        "https://downloads.wordpress.org/theme/yith-wonder.latest-stable.zip"
-    ],
-    "port": 8882,
-    "testsPort": 8883,
-    "env": {
-        "tests": {
-            "config": {
-                "WP_SITEURL": "localhost:8881",
-                "WP_TESTS_DOMAIN": "localhost:8881",
-                "WP_TESTS_TITLE": "Bluehost WordPress Plugin",
-                "WP_TESTS_BINARY": "php"
-            }
-        }
+  "core": "WordPress/WordPress#tags/6.3",
+  "config": {
+    "WP_DEBUG": true,
+    "WP_DEBUG_LOG": true,
+    "WP_DEBUG_DISPLAY": false,
+    "FS_METHOD": "direct"
+  },
+  "phpVersion": "8.1",
+  "plugins": [
+    "."
+  ],
+  "mappings": {
+    "wp-content/plugins/wpforms-lite": "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"
+  },
+  "themes": [
+    "https://downloads.wordpress.org/theme/yith-wonder.latest-stable.zip"
+  ],
+  "port": 8882,
+  "testsPort": 8883,
+  "env": {
+    "tests": {
+      "config": {
+        "WP_SITEURL": "localhost:8881",
+        "WP_TESTS_DOMAIN": "localhost:8881",
+        "WP_TESTS_TITLE": "Bluehost WordPress Plugin",
+        "WP_TESTS_BINARY": "php"
+      }
     }
+  }
 }
