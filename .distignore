@@ -7,14 +7,9 @@ node_modules
 tests
 
 # Files
-.distignore
-.distinclude
-.gitattributes
-.gitignore
-.npmrc
+.*
 cypress.config.js
 set-latest-wp-version.js
-.*
 
 # File Types
 *.json
