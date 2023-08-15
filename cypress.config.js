@@ -39,23 +39,6 @@ module.exports = defineConfig({
 				config.baseUrl = config.env.baseUrl;
 			}
 
-			// Ensure that we have a semantically correct WordPress version number for comparisons.
-			if (config.env.wpVersion) {
-				if (config.env.wpVersion.split('.').length !== 3) {
-					config.env.wpSemverVersion = `${config.env.wpVersion}.0`;
-				} else {
-					config.env.wpSemverVersion = config.env.wpVersion;
-				}
-			}
-			// Exclude onboarding tests for WordPress lower than 6.1
-			if (semver.satisfies(config.env.wpSemverVersion, '<6.2.0')) {
-				config.excludeSpecPattern = config.excludeSpecPattern.concat(
-					[
-						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/**"
-					]
-				);
-			}
-
 			// Ensure that we have a semantically correct PHP version number for comparisons.
 			if (config.env.phpVersion) {
 				if (config.env.phpVersion.split('.').length !== 3) {
