@@ -3,7 +3,7 @@
 describe('Navigation', function () {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=bluehost');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') );
 		cy.injectAxe();
 		
 	});

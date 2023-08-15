@@ -3,7 +3,7 @@
 describe('Performance Page', function () {
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=bluehost#/performance');
+		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/performance');
 		cy.injectAxe();
 		
 	});
