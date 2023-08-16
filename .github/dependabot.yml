@@ -29,7 +29,7 @@ updates:
       - dependency-type: direct
     schedule:
       interval: "daily"
-    versioning-strategy: increase-if-necessary
+    versioning-strategy: increase
     assignees:
       - "wpscholar"
     reviewers:
@@ -52,7 +52,7 @@ updates:
       interval: "daily"
     allow:
       - dependency-type: direct
-    versioning-strategy: increase-if-necessary
+    versioning-strategy: increase
     assignees:
       - "wpscholar"
     reviewers:
