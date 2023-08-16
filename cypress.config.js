@@ -4,12 +4,14 @@ const { phpVersion, core } = require('./.wp-env.json')
 const wpVersion = /[^/]*$/.exec(core)[0]
 
 module.exports = defineConfig({
-	projectId: "h78f39",
+  projectId: "h78f39",
   env: {
     wpUsername: 'admin',
     wpPassword: 'password',
     wpVersion,
     phpVersion,
+	pluginId: 'bluehost',
+	appId: 'wppbh',
   },
   downloadsFolder: 'tests/cypress/downloads',
   fixturesFolder: 'tests/cypress/fixtures',
@@ -45,7 +47,7 @@ module.exports = defineConfig({
 					config.env.wpSemverVersion = config.env.wpVersion;
 				}
 			}
-			// Exclude onboarding tests for WordPress lower than 6.1
+			// Exclude onboarding tests for WordPress lower than WordPress 6.2.0
 			if (semver.satisfies(config.env.wpSemverVersion, '<6.2.0')) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
 					[
@@ -75,7 +77,10 @@ module.exports = defineConfig({
 			return config;
 		},
     baseUrl: 'http://localhost:8882',
-		specPattern: 'tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
+		specPattern: [
+			"tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}",
+			"vendor/newfold-labs/**/tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}",
+		],
 		supportFile: 'tests/cypress/support/index.js',
 		testIsolation: false,
 		excludeSpecPattern: [
