@@ -17,7 +17,7 @@ const Mark = () => {
 			icon={ <Brand className="wppbh-logo" /> }
 			style={ { width: '160px', height: 'auto' } }
 			onMouseUp={ defocus }
-			className="logo-mark yst-p-0"
+			className="logo-mark nfd-p-0"
 			href="#/home"
 		/>
 	);

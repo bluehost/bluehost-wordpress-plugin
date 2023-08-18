@@ -1,4 +1,4 @@
-import { Title } from "@yoast/ui-library";
+import { Title } from "@newfold/ui-component-library";
 
 const MarketplaceError = () => {
     const errorFigure = () => {
@@ -660,10 +660,10 @@ const MarketplaceError = () => {
         );
     }
     return (
-        <div className="yst-h-96 yst-flex yst-justify-center yst-items-center">
-            <div className="yst-max-w-[400px] yst-max-h-full yst-flex yst-flex-col yst-items-center yst-gap-3">
+        <div className="nfd-h-96 nfd-flex nfd-justify-center nfd-items-center">
+            <div className="nfd-max-w-[400px] nfd-max-h-full nfd-flex nfd-flex-col nfd-items-center nfd-gap-3">
                 {errorFigure()}
-                <Title as="h4" size="2" className="yst-text-center">
+                <Title as="h4" size="2" className="nfd-text-center">
                     Oops! Our Marketplace is currently unavailable. Please try again later.
                 </Title>
             </div>

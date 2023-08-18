@@ -1,7 +1,7 @@
 import './stylesheet.scss';
 
 import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
-import { Button, Radio, Select, Modal } from '@yoast/ui-library';
+import { Button, Radio, Select, Modal } from '@newfold/ui-component-library';
 import { Page } from '../../components/page';
 import { SectionContainer, SectionHeader, SectionContent, SectionSettings } from '../../components/section';
 import { useState } from '@wordpress/element';
@@ -34,7 +34,7 @@ const ProductionSite = ({
                 />
             }
         >
-            <div className="yst-flex yst-justify-between yst-items-center yst-flex-wrap yst-gap-3">
+            <div className="nfd-flex nfd-justify-between nfd-items-center nfd-flex-wrap nfd-gap-3">
                 <div>{productionUrl}</div>
                 {hasStaging &&
                     <Button
@@ -87,9 +87,9 @@ const StagingSite = ({
                 />
             }
         >
-            <div className="yst-flex yst-justify-between yst-items-center yst-flex-wrap yst-gap-3">
+            <div className="nfd-flex nfd-justify-between nfd-items-center nfd-flex-wrap nfd-gap-3">
                 {!hasStaging &&
-                    <div className="yst-flex yst-justify-end yst-w-full">
+                    <div className="nfd-flex nfd-justify-end nfd-w-full">
                         <Button 
                             variant="secondary"
                             id="staging-create-button"
@@ -104,17 +104,17 @@ const StagingSite = ({
                     <>
                         <div>
                             {stagingUrl}
-                            <dl className="yst-flex yst-justify-between yst-items-center yst-flex-wrap yst-gap-3">
+                            <dl className="nfd-flex nfd-justify-between nfd-items-center nfd-flex-wrap nfd-gap-3">
                                 <dt>Created:</dt>
                                 <dd>{creationDate}</dd>
                             </dl>
                         </div>
-                        <div className="yst-flex yst-gap-1.5 yst-relative">
+                        <div className="nfd-flex nfd-gap-1.5 nfd-relative">
                             <Select
                                 disabled={ isProduction ? true : false }
                                 id="wppbh-staging-select"
                                 name="wppbh-staging"
-                                className="yst-w-48"
+                                className="nfd-w-48"
                                 value={deployOption}
                                 onChange={(value) => { setDeployOption(value) }}
                                 options={[
@@ -436,7 +436,7 @@ const Staging = () => {
 	 * 
 	 * @param {string} type One of 'all', 'files', or 'db'
 	 */
-	const deployStaging = ( type ) => {
+	const deplonfdaging = ( type ) => {
 		// console.log('Deploy', type);
         makeNotice( 'deploying', 'Working...', 'Deploying from staging to production, this should take about a minute.', 'info', 8000 );
 		stagingApiFetch(
@@ -493,9 +493,9 @@ const Staging = () => {
     const setModal = (title, description, callback, callbackParams=null, ctaText="Proceed") => {
         setModalChildren(
             <Modal.Panel>
-                <Modal.Title className="yst-text-2xl yst-font-medium yst-text-title">{title}</Modal.Title>
-                <Modal.Description className="yst-mt-8 yst-mb-8">{description}</Modal.Description>
-                <div className="yst-flex yst-justify-between yst-items-center yst-flex-wrap yst-gap-3">
+                <Modal.Title className="nfd-text-2xl nfd-font-medium nfd-text-title">{title}</Modal.Title>
+                <Modal.Description className="nfd-mt-8 nfd-mb-8">{description}</Modal.Description>
+                <div className="nfd-flex nfd-justify-between nfd-items-center nfd-flex-wrap nfd-gap-3">
                     <Button
                         variant="error"
                         onClick={ () => { setModalOpen(false); }}
@@ -552,7 +552,7 @@ const Staging = () => {
                         setHasStaging={setHasStaging}
                         createMe={createStaging}
                         deleteMe={deleteStaging}
-                        deployMe={deployStaging}
+                        deployMe={deplonfdaging}
                         switchToMe={switchToStaging}
                         stagingUrl={stagingUrl}
                         creationDate={creationDate}

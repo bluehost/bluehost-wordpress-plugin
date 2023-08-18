@@ -8,7 +8,7 @@ import { useState } from '@wordpress/element';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-import { Button } from "@yoast/ui-library";
+import { Button } from "@newfold/ui-component-library";
 import { SectionContainer, SectionHeader, SectionContent } from "../../components/section";
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
 import { Page } from "../../components/page";

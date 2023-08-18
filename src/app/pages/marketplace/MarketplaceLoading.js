@@ -1,8 +1,8 @@
-import { Spinner } from "@yoast/ui-library";
+import { Spinner } from "@newfold/ui-component-library";
 
 const MarketplaceLoading = () => {
     return (
-        <div className="yst-h-96 yst-flex yst-justify-center yst-items-center yst-text-primary">
+        <div className="nfd-h-96 nfd-flex nfd-justify-center nfd-items-center nfd-text-primary">
             <Spinner size="8" />
         </div>
     );

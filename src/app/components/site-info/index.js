@@ -1,6 +1,6 @@
 import { LockClosedIcon, LockOpenIcon } from "@heroicons/react/24/outline";
 import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
-import { Button } from "@yoast/ui-library";
+import { Button } from "@newfold/ui-component-library";
 import { BluehostIcon, WordPressIcon } from "../icons";
 import { getPlatformPathUrl, addUtmParams } from "../../util/helpers";
 
@@ -14,33 +14,33 @@ export const SiteInfoBar = () => {
 
     const renderPadLock = () => {
         if (hasSSL) {
-            return <LockClosedIcon className="yst-w-auto yst-h-3.5 yst-text-[#1CD67D]" />
+            return <LockClosedIcon className="nfd-w-auto nfd-h-3.5 nfd-text-[#1CD67D]" />
         }
 
-        return <LockOpenIcon className="yst-w-auto yst-h-3.5 yst-text-[#d61c1c]" />
+        return <LockOpenIcon className="nfd-w-auto nfd-h-3.5 nfd-text-[#d61c1c]" />
     }
 
     return (
-        <div className="wppbh-app-site-info yst-bg-[#212936] yst-w-full yst-py-6 yst-px-8 yst-mb-8 yst-border yst-border-line yst-rounded-lg">
-            <div className="yst-flex yst-justify-between yst-items-center yst-flex-wrap yst-gap-4">
+        <div className="wppbh-app-site-info nfd-bg-[#212936] nfd-w-full nfd-py-6 nfd-px-8 nfd-mb-8 nfd-border nfd-border-line nfd-rounded-lg">
+            <div className="nfd-flex nfd-justify-between nfd-items-center nfd-flex-wrap nfd-gap-4">
 
-                <div className="yst-w-max yst-flex yst-flex-col yst-gap-1.5">
-                    <h3 className="yst-text-white yst-text-2xl yst-font-semibold">{title}</h3>
-                    <div className="yst-flex yst-items-center yst-gap-3 yst-font-medium">
-                        <div className="yst-flex yst-items-center yst-gap-1">
+                <div className="nfd-w-max nfd-flex nfd-flex-col nfd-gap-1.5">
+                    <h3 className="nfd-text-white nfd-text-2xl nfd-font-semibold">{title}</h3>
+                    <div className="nfd-flex nfd-items-center nfd-gap-3 nfd-font-medium">
+                        <div className="nfd-flex nfd-items-center nfd-gap-1">
                             {renderPadLock()}
-                            <span className="yst-text-white yst-text-tiny">{siteDomain}</span>
+                            <span className="nfd-text-white nfd-text-tiny">{siteDomain}</span>
                         </div>
                     </div>
                 </div>
 
-                <div className="yst-w-max yst-flex yst-items-center yst-flex-wrap yst-gap-3">
+                <div className="nfd-w-max nfd-flex nfd-items-center nfd-flex-wrap nfd-gap-3">
                     <Button 
                         as="a"
                         href={addUtmParams(getPlatformPathUrl("hosting/details", "app/#/sites"))}
                         target="_blank"
                         variant="primary" 
-                        className="yst-bg-[#383F4A] yst-text-tiny yst-w-full min-[400px]:yst-w-auto">
+                        className="nfd-bg-[#383F4A] nfd-text-tiny nfd-w-full min-[400px]:nfd-w-auto">
                         <BluehostIcon />
                         Bluehost Account
                     </Button>
@@ -49,7 +49,7 @@ export const SiteInfoBar = () => {
                         href={(isWooCommerce && isStore) ? `${url}/shop` : url}
                         target="_blank" 
                         variant="primary" 
-                        className="yst-bg-white yst-text-[#212936] yst-text-tiny yst-w-full min-[400px]:yst-w-auto"
+                        className="nfd-bg-white nfd-text-[#212936] nfd-text-tiny nfd-w-full min-[400px]:nfd-w-auto"
                     >
                         <WordPressIcon />
                         {(isWooCommerce && isStore) ? 'View Store' : 'View Site'}
