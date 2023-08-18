@@ -56,20 +56,3 @@ function jetpack_construction() {
 	}
 }
 add_filter( 'jetpack_is_under_construction_plugin', __NAMESPACE__ . '\\jetpack_construction' );
-
-/**
- * Enable Sharing with Jetpack and WooCommerce
- */
-function plugin_activated( $plugin, $network_activation ) {
-	switch( $plugin ) {
-		case 'woocommerce/woocommerce.php':
-			// Enable the usage tracking option by default https://woocommerce.com/usage-tracking/
-			update_option( 'woocommerce_allow_tracking', 'yes' );
-			break;
-		case 'jetpack/jetpack.php':
-			// set the privacy settings to allow sharing information with analytics by default https://automattic.com/cookies/
-			break;
-	}
-}
-
-add_action( 'activated_plugin', __NAMESPACE__ . '\\plugin_activated', 10, 2 );
