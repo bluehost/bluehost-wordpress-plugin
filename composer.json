@@ -57,8 +57,8 @@
   },
   "require": {
     "newfold-labs/wp-module-business-reviews": "^1.1.1",
-    "newfold-labs/wp-module-coming-soon": "^1.1.7",
-    "newfold-labs/wp-module-ctb": "^1.0.1",
+    "newfold-labs/wp-module-coming-soon": "^1.1.8",
+    "newfold-labs/wp-module-ctb": "^1.0.2",
     "newfold-labs/wp-module-customer-bluehost": "^1.6.0",
     "newfold-labs/wp-module-data": "^2.4.3",
     "newfold-labs/wp-module-ecommerce": "^1.1.2",
@@ -72,7 +72,7 @@
     "newfold-labs/wp-module-runtime": "^1.0.2",
     "newfold-labs/wp-module-secure-passwords": "^1.1",
     "newfold-labs/wp-module-sso": "^1.0.4",
-    "newfold-labs/wp-module-staging": "^1.0.3",
+    "newfold-labs/wp-module-staging": "^1.0.4",
     "wp-forge/wp-update-handler": "^1.0",
     "wp-forge/wp-upgrade-handler": "^1.0"
   }
