@@ -436,7 +436,7 @@ const Staging = () => {
 	 * 
 	 * @param {string} type One of 'all', 'files', or 'db'
 	 */
-	const deplonfdaging = ( type ) => {
+	const deployStaging = ( type ) => {
 		// console.log('Deploy', type);
         makeNotice( 'deploying', 'Working...', 'Deploying from staging to production, this should take about a minute.', 'info', 8000 );
 		stagingApiFetch(
@@ -552,7 +552,7 @@ const Staging = () => {
                         setHasStaging={setHasStaging}
                         createMe={createStaging}
                         deleteMe={deleteStaging}
-                        deployMe={deplonfdaging}
+                        deployMe={deployStaging}
                         switchToMe={switchToStaging}
                         stagingUrl={stagingUrl}
                         creationDate={creationDate}
