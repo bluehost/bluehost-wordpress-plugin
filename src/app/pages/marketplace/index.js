@@ -1,13 +1,9 @@
-// to pass to marketplace module
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import apiFetch from '@wordpress/api-fetch';
-import classnames from 'classnames';
-import { useState } from '@wordpress/element';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useState, useEffect } from '@wordpress/element';
+import { useLocation } from 'react-router-dom';
 import { SectionContainer, SectionHeader, SectionContent } from "../../components/section";
 import { Page } from "../../components/page";
-
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 // component sourced from marketplace module
 import { default as NewfoldMarketplace } from '../../../../vendor/newfold-labs/wp-module-marketplace/components/marketplace/';
 
@@ -18,7 +14,7 @@ const MarketplacePage = () => {
         'eventendpoint': '/newfold-data/v1/events/',
         'perPage': 12,
         'supportsCTB': true,
-    }
+    };
 
     // methods to pass to module
     const moduleMethods = {
