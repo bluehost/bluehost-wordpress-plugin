@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bad615805b8c6654620945880f54f320",
+    "content-hash": "3ee06bbc99c50ab06e4be0778451d6c8",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -659,16 +659,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "2.0.0-beta.1",
+            "version": "2.0.0-beta.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "ede1419d5ae3710369e5d6f72a351c7a7b294516"
+                "reference": "019f4ebae77211722c987675410f5e14cc7b96e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/ede1419d5ae3710369e5d6f72a351c7a7b294516",
-                "reference": "ede1419d5ae3710369e5d6f72a351c7a7b294516",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/019f4ebae77211722c987675410f5e14cc7b96e7",
+                "reference": "019f4ebae77211722c987675410f5e14cc7b96e7",
                 "shasum": ""
             },
             "require": {
@@ -709,10 +709,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/2.0.0-beta.1",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/2.0.0-beta.2",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2023-08-23T16:25:01+00:00"
+            "time": "2023-08-23T22:40:15+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
