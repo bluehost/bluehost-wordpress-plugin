@@ -1,9 +1,11 @@
 import apiFetch from '@wordpress/api-fetch';
+import classnames from 'classnames';
 import { useState, useEffect } from '@wordpress/element';
 import { useLocation } from 'react-router-dom';
 import { SectionContainer, SectionHeader, SectionContent } from "../../components/section";
 import { Page } from "../../components/page";
 import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+
 // component sourced from marketplace module
 import { default as NewfoldMarketplace } from '../../../../vendor/newfold-labs/wp-module-marketplace/components/marketplace/';
 
