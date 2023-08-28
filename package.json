@@ -27,7 +27,7 @@
         "@heroicons/react": "^2.0.18",
         "@newfold-labs/wp-module-ecommerce": "^1.1.1",
         "@newfold-labs/wp-module-runtime": "^1.0.2",
-        "@newfold/ui-component-library": "^0.1.1-3",
+        "@newfold/ui-component-library": "^1.0.0",
         "@reduxjs/toolkit": "^1.9.5",
         "@wordpress/compose": "^6.16.0",
         "@wordpress/dom-ready": "^3.39.0",
