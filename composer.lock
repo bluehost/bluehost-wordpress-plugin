@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd5b6a3c621b9e71af53060a187a7fdd",
+    "content-hash": "04232734fca628336a6fc1cdcebae6ef",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -761,16 +761,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "1.10.1",
+            "version": "1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "494ec704db0f57d29066094a48244ec3bd3a9b5b"
+                "reference": "ec63cfa68ddc94f4dd04746ff9d2a0a8f96c16c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/494ec704db0f57d29066094a48244ec3bd3a9b5b",
-                "reference": "494ec704db0f57d29066094a48244ec3bd3a9b5b",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/ec63cfa68ddc94f4dd04746ff9d2a0a8f96c16c6",
+                "reference": "ec63cfa68ddc94f4dd04746ff9d2a0a8f96c16c6",
                 "shasum": ""
             },
             "require": {
@@ -813,10 +813,10 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.10.1",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.10.2",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2023-08-10T11:12:05+00:00"
+            "time": "2023-08-28T12:26:03+00:00"
         },
         {
             "name": "newfold-labs/wp-module-patterns",
@@ -1058,16 +1058,16 @@
         },
         {
             "name": "newfold-labs/wp-module-staging",
-            "version": "1.1.0-beta.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-staging.git",
-                "reference": "1ccdb6316ce1db34cb7a0969deb5bae62e854046"
+                "reference": "498a01958be9f47fbc7c0befa5db723b4b1905b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/1ccdb6316ce1db34cb7a0969deb5bae62e854046",
-                "reference": "1ccdb6316ce1db34cb7a0969deb5bae62e854046",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/498a01958be9f47fbc7c0befa5db723b4b1905b3",
+                "reference": "498a01958be9f47fbc7c0befa5db723b4b1905b3",
                 "shasum": ""
             },
             "require-dev": {
@@ -1101,10 +1101,10 @@
             ],
             "description": "Newfold module for staging functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-staging/tree/1.1.0-beta.1",
+                "source": "https://github.com/newfold-labs/wp-module-staging/tree/1.1.0",
                 "issues": "https://github.com/newfold-labs/wp-module-staging/issues"
             },
-            "time": "2023-08-25T21:08:14+00:00"
+            "time": "2023-08-28T15:22:37+00:00"
         },
         {
             "name": "wp-cli/wp-config-transformer",
@@ -2063,16 +2063,16 @@
         },
         {
             "name": "phpcsstandards/phpcsextra",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHPCSExtra.git",
-                "reference": "61a9be9f74a53735f7c421d7de8dc64fa80488e6"
+                "reference": "98bcdbacbda14b1db85f710b1853125726795bbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSExtra/zipball/61a9be9f74a53735f7c421d7de8dc64fa80488e6",
-                "reference": "61a9be9f74a53735f7c421d7de8dc64fa80488e6",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSExtra/zipball/98bcdbacbda14b1db85f710b1853125726795bbc",
+                "reference": "98bcdbacbda14b1db85f710b1853125726795bbc",
                 "shasum": ""
             },
             "require": {
@@ -2122,7 +2122,7 @@
                 "issues": "https://github.com/PHPCSStandards/PHPCSExtra/issues",
                 "source": "https://github.com/PHPCSStandards/PHPCSExtra"
             },
-            "time": "2023-07-19T19:40:11+00:00"
+            "time": "2023-08-26T04:46:45+00:00"
         },
         {
             "name": "phpcsstandards/phpcsutils",
@@ -3339,7 +3339,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "newfold-labs/wp-module-staging": 10,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
