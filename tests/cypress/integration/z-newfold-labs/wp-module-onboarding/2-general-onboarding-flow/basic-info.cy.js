@@ -109,6 +109,7 @@ describe( 'Basic Info Page', function () {
 
 			// The URL Checker runs on a debounce
 			// Shows the message to the User in case of Invalid URL
+			cy.get( '#twitter' ).click();
 			cy.get( '.Tooltip-Wrapper', { timeout: 3000 } ).should( 'exist' );
 			cy.get(
 				'.browser-content_social_icon[style="background-image: var(--facebook-icon);"]'
@@ -116,6 +117,7 @@ describe( 'Basic Info Page', function () {
 
 			socialTest.clear();
 			socialTest.type( validURL );
+			cy.get( '#instagram' ).click();
 			cy.get( '.Tooltip-Wrapper', { timeout: 3000 } ).should(
 				'not.exist'
 			);
