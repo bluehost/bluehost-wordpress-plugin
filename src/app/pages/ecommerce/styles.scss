@@ -9,4 +9,23 @@
       background-color: rgb(255 255 255 / 0.5);
     }
   }
+
+  /* Needed temporarily for WonderCart styles with old references to yst classes */
+  .yst-button {
+    gap: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    &.yst-button--primary {
+      border-color: transparent;
+      background-color: rgb(25 107 222);
+      color: rgb(255 255 255);
+    }
+    &.yst-button--secondary {
+      border-color: rgb(25 107 222);
+      background-color: rgb(255 255 255);
+      color: rgb(0 0 0);
+    }
+  }
+
 }
