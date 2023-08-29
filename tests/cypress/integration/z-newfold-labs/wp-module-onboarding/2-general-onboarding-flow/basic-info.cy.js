@@ -97,6 +97,7 @@ describe( 'Basic Info Page', function () {
 		const validURL = 'https://www.facebook.com';
 
 		// Facebook Social Media Component
+		const socialTest2 = cy.get( '#twitter' );
 		const socialTest = cy.get( '#facebook' );
 
 		if ( socialTest.should( 'exist' ) ) {
@@ -105,7 +106,9 @@ describe( 'Basic Info Page', function () {
 				'.browser-content_social_icon[style="background-image: var(--facebook-icon);"]'
 			).should( 'have.css', 'opacity', '0.5' );
 
+			socialTest.focus();
 			socialTest.type( invalidURL );
+			socialTest2.focus();
 
 			// The URL Checker runs on a debounce
 			// Shows the message to the User in case of Invalid URL
@@ -114,8 +117,10 @@ describe( 'Basic Info Page', function () {
 				'.browser-content_social_icon[style="background-image: var(--facebook-icon);"]'
 			).should( 'have.css', 'opacity', '0.75' );
 
+			socialTest.focus();
 			socialTest.clear();
 			socialTest.type( validURL );
+			socialTest2.focus();
 			cy.get( '.Tooltip-Wrapper', { timeout: 3000 } ).should(
 				'not.exist'
 			);
