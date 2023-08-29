@@ -1,12 +1,31 @@
-.yst-root {
-  .yst-modal.no-overlay {
-    .yst-modal__overlay {
+.nfd-root {
+  .nfd-modal.no-overlay {
+    .nfd-modal__overlay {
       display: none;
     }
   }
-  .yst-feature-upsell.hide-html {
-    .yst-flex {
+  .nfd-feature-upsell.hide-html {
+    .nfd-flex {
       background-color: rgb(255 255 255 / 0.5);
     }
   }
+
+  /* Needed temporarily for WonderCart styles with old references to yst classes */
+  .yst-button,
+  .yst-button--primary {
+    background-color: rgb(25 107 222);
+    border-color: transparent;
+    color: rgb(255 255 255);
+    font-size: .8125rem;
+    font-weight: 500;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+
+    &.yst-button--secondary {
+      background-color: rgb(255 255 255);
+      border-color: rgb(25 107 222);
+      color: rgb(0 0 0);
+    }
+  }
+
 }

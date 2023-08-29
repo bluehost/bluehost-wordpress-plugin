@@ -1,4 +1,4 @@
-import { Modal, SidebarNavigation } from "@yoast/ui-library"
+import { Modal, SidebarNavigation } from "@newfold/ui-component-library"
 import { NavLink, useLocation } from 'react-router-dom';
 import { useViewportMatch } from '@wordpress/compose';
 import Logo from "./logo";
@@ -9,7 +9,7 @@ import { handleHelpLinksClick } from "../../util/helpers";
 
 export const SideNavHeader = () => {
     return (
-        <header className="yst-pt-2 yst-px-3 yst-mb-6 yst-space-y-6">
+        <header className="nfd-pt-2 nfd-px-3 nfd-mb-6 nfd-space-y-6">
             <Logo />
         </header>
     );
@@ -20,7 +20,7 @@ export const SideNavMenu = () => {
 
     const primaryMenu = () => {
         return (
-            <ul className="yst-flex yst-flex-col yst-gap-1.5">
+            <ul className="nfd-flex nfd-flex-col nfd-gap-1.5">
                 {topRoutes.map((page) => (
 
                     <SideNavMenuItem
@@ -40,7 +40,7 @@ export const SideNavMenu = () => {
 
     const secondaryMenu = () => {
         return (
-            <ul className="yst-flex yst-flex-col yst-gap-1.5 yst-mt-4 yst-pt-4 yst-border-t yst-border-[#D8DEE4]">
+            <ul className="nfd-flex nfd-flex-col nfd-gap-1.5 nfd-mt-4 nfd-pt-4 nfd-border-t nfd-border-[#D8DEE4]">
                 {utilityRoutes.map((page) => (
                     
                     <SideNavMenuItem
@@ -62,13 +62,13 @@ export const SideNavMenu = () => {
         // close any open submenus
         const subMenus = document.querySelectorAll('.wppbh-app-navitem-submenu');
         subMenus.forEach((subMenu) => {
-            subMenu.classList.add('yst-hidden');
+            subMenu.classList.add('nfd-hidden');
         });
 
         // open active's submenu if it exists
         const activeMenu = document.querySelector('.wppbh-app-sidenav .active');
         if (activeMenu && null !== activeMenu.nextSibling && activeMenu.nextSibling.classList.contains('wppbh-app-navitem-submenu')) {
-            activeMenu.nextSibling.classList.remove('yst-hidden');
+            activeMenu.nextSibling.classList.remove('nfd-hidden');
         }
     }
 
@@ -78,7 +78,7 @@ export const SideNavMenu = () => {
     }, [location]);
 
     return (
-        <div className="yst-px-0.5 yst-space-y-6">
+        <div className="nfd-px-0.5 nfd-space-y-6">
             {primaryMenu()}
             {secondaryMenu()}
         </div>
@@ -87,20 +87,20 @@ export const SideNavMenu = () => {
 
 export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, action, subItems }) => {
     return (
-        <li className="yst-mb-0">
+        <li className="nfd-mb-0">
             <NavLink
                 onClick={(action && action instanceof Function) ? action : null}
                 to={path}
-                className={`wppbh-app-navitem wppbh-app-navitem-${label} yst-flex yst-items-center yst-gap-3 yst-px-3 yst-py-2 yst-rounded-md yst-text-sm yst-font-medium yst-text-title leading-none hover:yst-bg-slate-50 [&.active]:yst-bg-[#E2E8F0]`}
+                className={`wppbh-app-navitem wppbh-app-navitem-${label} nfd-flex nfd-items-center nfd-gap-3 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-title leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E2E8F0]`}
             >
                 {Icon &&
-                    <Icon className="yst-flex-shrink-0 yst--ml-1 yst-h-6 yst-w-6" />
+                    <Icon className="nfd-flex-shrink-0 nfd--ml-1 nfd-h-6 nfd-w-6" />
                 }
                 {label}
             </NavLink>
 
             {subItems && subItems.length > 0 &&
-                <ul className="wppbh-app-navitem-submenu yst-hidden yst-ml-8 yst-m-2 yst-space-y-1.5">
+                <ul className="wppbh-app-navitem-submenu nfd-hidden nfd-ml-8 nfd-m-2 nfd-space-y-1.5">
                     {subItems.map((subItem) => (
                         <SideNavMenuSubItem
                             key={subItem.name}
@@ -118,11 +118,11 @@ export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, action, 
 
 export const SideNavMenuSubItem = ({ label, name, path, action }) => {
     return (
-        <li className="yst-m-0 yst-pb-1">
+        <li className="nfd-m-0 nfd-pb-1">
             <NavLink
                 onClick={(action && action instanceof Function) ? action : null}
                 to={path} 
-                className={`wppbh-app-subnavitem wppbh-app-subnavitem-${label} yst-flex yst-items-center yst-gap-3 yst-px-3 yst-py-2 yst-rounded-md yst-text-sm yst-font-medium yst-text-body leading-none hover:yst-bg-slate-50 [&.active]:yst-bg-[#E2E8F0] [&.active]:yst-text-title`}
+                className={`wppbh-app-subnavitem wppbh-app-subnavitem-${label} nfd-flex nfd-items-center nfd-gap-3 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-body leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E2E8F0] [&.active]:nfd-text-title`}
             >
                 {label}
             </NavLink>
@@ -132,7 +132,7 @@ export const SideNavMenuSubItem = ({ label, name, path, action }) => {
 
 export const SideNav = () => {
     return (
-        <aside className="wppbh-app-sidenav yst-shrink-0 yst-hidden min-[783px]:yst-block yst-pb-6 yst-bottom-0 yst-w-56">
+        <aside className="wppbh-app-sidenav nfd-shrink-0 nfd-hidden min-[783px]:nfd-block nfd-pb-6 nfd-bottom-0 nfd-w-56">
             <SidebarNavigation>
                 <SidebarNavigation.Sidebar>
                     <SideNavHeader />
@@ -153,29 +153,29 @@ export const MobileNav = () => {
     }, [location]);
 
     return (
-        <header className="yst-sticky yst-z-30 yst-top-0 min-[600px]:yst-top-[46px] yst-border-b yst-border-line">
-            <div className="yst-flex yst-justify-between yst-items-center yst-bg-white">
+        <header className="nfd-sticky nfd-z-30 nfd-top-0 min-[600px]:nfd-top-[46px] nfd-border-b nfd-border-line">
+            <div className="nfd-flex nfd-justify-between nfd-items-center nfd-bg-white">
 
-                <div className="yst-px-4">
+                <div className="nfd-px-4">
                     <Logo />
                 </div>
                 <button
                     role="button"
-                    className="yst-h-16 yst-px-4 yst-text-body yst-flex yst-items-center focus:yst-outline-none focus:yst-ring-2 focus:yst-ring-inset focus:yst-ring-primary"
+                    className="nfd-h-16 nfd-px-4 nfd-text-body nfd-flex nfd-items-center focus:nfd-outline-none focus:nfd-ring-2 focus:nfd-ring-inset focus:nfd-ring-primary"
                     onClick={() => { setIsOpen(true) }}
                 >
-                    <span className="yst-sr-only">Open Navingation Menu</span>
-                    <Bars3Icon className="yst-w-6 yst-h-6" />
+                    <span className="nfd-sr-only">Open Navingation Menu</span>
+                    <Bars3Icon className="nfd-w-6 nfd-h-6" />
                 </button>
 
                 <Modal
                     isOpen={isOpen}
                     onClose={() => setIsOpen(false)}
-                    className="wppbh-app-sidenav-mobile yst-z-40"
+                    className="wppbh-app-sidenav-mobile nfd-z-40"
                     initialFocus
                 >
-                    <Modal.Panel className="yst-p-0 yst-overflow-visible">
-                        <div className="wppbh-app-sidenav yst-p-5 yst-max-h-[70vh] yst-overflow-y-auto">
+                    <Modal.Panel className="nfd-p-0 nfd-overflow-visible">
+                        <div className="wppbh-app-sidenav nfd-p-5 nfd-max-h-[70vh] nfd-overflow-y-auto">
                             <SideNavMenu />
                         </div>
                     </Modal.Panel>
