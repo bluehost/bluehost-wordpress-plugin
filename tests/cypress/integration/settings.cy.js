@@ -51,7 +51,7 @@ describe('Settings Page', function () {
 	it('Disable ALL toggle, leaves everything checked, but enables them', () => {
 		cy.get('[data-id="autoupdate-all-toggle"]').click();
 		cy.wait(100);
-        cy.get('.yst-notifications')
+        cy.get('.nfd-notifications')
             .contains('p', 'Disabled All auto-updates')
             .should('be.visible');
 		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
@@ -65,7 +65,7 @@ describe('Settings Page', function () {
 		cy.get('[data-id="autoupdate-core-toggle"]').click();
 		cy.wait(100);
 		cy.get('[data-id="autoupdate-core-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
-        cy.get('.yst-notifications')
+        cy.get('.nfd-notifications')
 			.contains('p', 'Disabled Core auto-updates')
 			.should('be.visible');
 		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
@@ -76,7 +76,7 @@ describe('Settings Page', function () {
 		cy.get('[data-id="autoupdate-plugins-toggle"]').click();
 		cy.wait(100);
 		cy.get('[data-id="autoupdate-plugins-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
-        cy.get('.yst-notifications')
+        cy.get('.nfd-notifications')
 			.contains('p', 'Disabled Plugins auto-update')
 			.should('be.visible');
 		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
@@ -87,7 +87,7 @@ describe('Settings Page', function () {
 		cy.get('[data-id="autoupdate-themes-toggle"]').click();
 		cy.wait(100);
 		cy.get('[data-id="autoupdate-themes-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
-        cy.get('.yst-notifications')
+        cy.get('.nfd-notifications')
 			.contains('p', 'Disabled Themes auto-update')
 			.should('be.visible');
 		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
@@ -105,7 +105,7 @@ describe('Settings Page', function () {
 	it('Disabling All toggle returns to previous state', () => {
 		cy.get('[data-id="autoupdate-all-toggle"]').click();
 		cy.wait(100);
-        cy.get('.yst-notifications')
+        cy.get('.nfd-notifications')
             .contains('p', 'Disabled All auto-updates')
             .should('be.visible');
 		cy.get('[data-id="autoupdate-all-toggle"]').should('have.attr', 'aria-checked').and('include', 'false');
@@ -130,7 +130,7 @@ describe('Settings Page', function () {
 		cy.wait(100);
 		cy.get('[data-id="content-revisions-select"]')
 			.parent()
-			.next('ul.yst-select__options')
+			.next('ul.nfd-select__options')
 			.find('li:first')
 			.click(); // 1
 		cy.wait(100);
@@ -142,7 +142,7 @@ describe('Settings Page', function () {
 		cy.wait(1000);
 		cy.get('[data-id="content-revisions-select"]')
 			.parent()
-			.next('ul.yst-select__options')
+			.next('ul.nfd-select__options')
 			.find('li:last')
 			.click(); // 40
 		cy.wait(100);
@@ -154,7 +154,7 @@ describe('Settings Page', function () {
 		cy.wait(500);
 		cy.get('[data-id="content-revisions-select"]')
 			.parent()
-			.next('ul.yst-select__options')
+			.next('ul.nfd-select__options')
 			.find('li:nth-child(2)')
 			.click(); // 5
 		cy.get('#content-revisions-select__description')
@@ -166,7 +166,7 @@ describe('Settings Page', function () {
 		cy.wait(500);
 		cy.get('[data-id="empty-trash-select"]')
 			.parent()
-			.next('ul.yst-select__options')
+			.next('ul.nfd-select__options')
 			.find('li:nth-child(2)')
 			.click(); // 2
 		cy.wait(100);
@@ -178,7 +178,7 @@ describe('Settings Page', function () {
 		cy.wait(500);
 		cy.get('[data-id="empty-trash-select"]')
 			.parent()
-			.next('ul.yst-select__options')
+			.next('ul.nfd-select__options')
 			.find('li:last')
 			.click(); // 4
 		cy.wait(100);
@@ -192,7 +192,7 @@ describe('Settings Page', function () {
 		cy.wait(500);
 		cy.get('[data-id="comments-per-page-select"]')
 			.parent()
-			.next('ul.yst-select__options')
+			.next('ul.nfd-select__options')
 			.find('li:first')
 			.click(); // 10
 		cy.wait(100);
@@ -213,7 +213,7 @@ describe('Settings Page', function () {
 		cy.wait(100);
 		cy.get('[data-id="close-comments-days-select"]')
 			.parent()
-			.next('ul.yst-select__options')
+			.next('ul.nfd-select__options')
 			.find('li:last')
 			.click(); // 100
 		cy.wait(100);
@@ -225,7 +225,7 @@ describe('Settings Page', function () {
 		cy.wait(100);
 		cy.get('[data-id="close-comments-days-select"]')
 			.parent()
-			.next('ul.yst-select__options')
+			.next('ul.nfd-select__options')
 			.find('li:nth-child(6)')
 			.click(); // 14
 		cy.wait(100);

@@ -1,5 +1,5 @@
 /* Import main CSS including all components. */
-@import "@yoast/ui-library";
+@import "@newfold/ui-component-library";
 
 /* Tailwind layers */
 @tailwind base;
@@ -8,158 +8,158 @@
 
 /* Configs */
 @layer base {
-	.yst-root {
+	.nfd-root {
 		@apply
-		yst-text-body;
+		nfd-text-body;
 
 		a {
 			@apply
-			yst-no-underline	
-			yst-text-primary
-			hover:yst-text-primary-dark
-			focus:yst-text-primary-dark
-			focus:yst-outline-none
-			focus:yst-ring-1
-			focus:yst-ring-offset-1
-			focus:yst-ring-offset-transparent
-			focus:yst-ring-primary-dark
-			focus:yst-rounded-sm
-			visited:yst-text-primary
-			visited:hover:yst-text-primary-dark;
+			nfd-no-underline	
+			nfd-text-primary
+			hover:nfd-text-primary-dark
+			focus:nfd-text-primary-dark
+			focus:nfd-outline-none
+			focus:nfd-ring-1
+			focus:nfd-ring-offset-1
+			focus:nfd-ring-offset-transparent
+			focus:nfd-ring-primary-dark
+			focus:nfd-rounded-sm
+			visited:nfd-text-primary
+			visited:hover:nfd-text-primary-dark;
 		}
 	}
 }
 
 /* Titles */
 @layer components {
-	.yst-root {
-		.yst-title {
+	.nfd-root {
+		.nfd-title {
 			@apply
-			yst-text-title
+			nfd-text-title
 		}
 	}
 }
 
 /* Links */
 @layer components {
-	.yst-root {
-		.yst-link {
+	.nfd-root {
+		.nfd-link {
 			@apply
-			yst-text-primary
+			nfd-text-primary
 
-			hover:yst-text-primary-dark
-			visited:yst-text-primary-dark
-			visited:hover:yst-text-primary-dark;
+			hover:nfd-text-primary-dark
+			visited:nfd-text-primary-dark
+			visited:hover:nfd-text-primary-dark;
 		}
 
-		.yst-link--primary {
-			@apply yst-text-primary-600 hover:yst-text-primary-500 focus:yst-text-primary-500 focus:yst-ring-primary-600;
+		.nfd-link--primary {
+			@apply nfd-text-primary-600 hover:nfd-text-primary-500 focus:nfd-text-primary-500 focus:nfd-ring-primary-600;
 		}
 
-		.yst-link--error {
-			@apply yst-text-red-600 hover:yst-text-red-500 focus:yst-text-red-500 focus:yst-ring-red-600;
+		.nfd-link--error {
+			@apply nfd-text-red-600 hover:nfd-text-red-500 focus:nfd-text-red-500 focus:nfd-ring-red-600;
 		}
 	}
 }
 
 /* Buttons */
 @layer components {
-	.yst-root {
-		.yst-button {
+	.nfd-root {
+		.nfd-button {
 			@apply
-			yst-px-4
-			yst-gap-2
-			focus:yst-ring-primary;
+			nfd-px-4
+			nfd-gap-2
+			focus:nfd-ring-primary;
 
 			svg {
 				@apply
-				yst-w-5
-				yst-h-5;
+				nfd-w-5
+				nfd-h-5;
 			}
 		}
 
 		/* Variants */
 
-		.yst-button--primary {
+		.nfd-button--primary {
 			@apply
-			yst-bg-primary
+			nfd-bg-primary
 
-			hover:yst-bg-primary-dark
-			focus:yst-ring-primary;
+			hover:nfd-bg-primary-dark
+			focus:nfd-ring-primary;
 		}
 
-		.yst-button--secondary {
+		.nfd-button--secondary {
 			@apply
-			yst-text-black
-			yst-bg-white
-			yst-border-primary
+			nfd-text-black
+			nfd-bg-white
+			nfd-border-primary
 
-			hover:yst-text-black
-			hover:yst-bg-primary-light
-			focus:yst-text-title
-			focus:yst-ring-primary
-			visited:yst-text-black
-			visited:hover:yst-text-title;
+			hover:nfd-text-black
+			hover:nfd-bg-primary-light
+			focus:nfd-text-title
+			focus:nfd-ring-primary
+			visited:nfd-text-black
+			visited:hover:nfd-text-title;
 		}
 
-		.yst-button--standout {
+		.nfd-button--standout {
 			@apply
-			yst-bg-secondary
-			yst-text-[#1E293B]
+			nfd-bg-secondary
+			nfd-text-[#1E293B]
 
-			hover:yst-bg-secondary-dark
-			hover:yst-text-[#1E293B]
-			focus:yst-text-[#1E293B];
+			hover:nfd-bg-secondary-dark
+			hover:nfd-text-[#1E293B]
+			focus:nfd-text-[#1E293B];
 		}
 	}
 }
 
 /* Toggle / Toggle Field */
 @layer components {
-	.yst-root {
-		.yst-toggle {
+	.nfd-root {
+		.nfd-toggle {
 			@apply
-			yst-bg-[#CDD0D6]
+			nfd-bg-[#CDD0D6]
 
-			focus:yst-ring-primary;
+			focus:nfd-ring-primary;
 		}
 
-		.yst-toggle--checked {
-			@apply yst-bg-primary;
+		.nfd-toggle--checked {
+			@apply nfd-bg-primary;
 		}
 
-		.yst-toggle__icon--check {
-			@apply yst-text-primary;
+		.nfd-toggle__icon--check {
+			@apply nfd-text-primary;
 		}
 
-		.yst-toggle__icon--x {
-			@apply yst-text-[#9CA3AF];
+		.nfd-toggle__icon--x {
+			@apply nfd-text-[#9CA3AF];
 		}
 
-		.yst-toggle-field__description {
+		.nfd-toggle-field__description {
 			@apply 
-			yst-mt-3
-			yst-mr-2
-			sm:yst-mr-[10.5rem]
-			sm:yst-mt-0;
+			nfd-mt-3
+			nfd-mr-2
+			sm:nfd-mr-[10.5rem]
+			sm:nfd-mt-0;
 		}
 	}
 }
 
 /* Checkbox */
 @layer components {
-	.yst-root {
-		.yst-checkbox {
-			.yst-checkbox__input {
+	.nfd-root {
+		.nfd-checkbox {
+			.nfd-checkbox__input {
 				@apply
-				yst-text-primary
-				yst-shadow-none
+				nfd-text-primary
+				nfd-shadow-none
 	
-				focus:yst-ring-primary;
+				focus:nfd-ring-primary;
 
 				&:checked {
 					&::before {
-						@apply yst-hidden;
+						@apply nfd-hidden;
 					}
 				}
 			}
@@ -169,26 +169,26 @@
 
 /* Radio Input */
 @layer components {
-	.yst-root {
-		.yst-radio-group {
-			.yst-radio__description {
+	.nfd-root {
+		.nfd-radio-group {
+			.nfd-radio__description {
 				@apply
-				yst-mb-2 
-				yst-ml-7 
-				lg:yst-mr-[10.5rem];
+				nfd-mb-2 
+				nfd-ml-7 
+				lg:nfd-mr-[10.5rem];
 			}
 		}
 
-		.yst-radio__input {
+		.nfd-radio__input {
 			@apply
-			yst-text-primary
-			yst-shadow-none
+			nfd-text-primary
+			nfd-shadow-none
 
-			focus:yst-ring-primary;
+			focus:nfd-ring-primary;
 
 			&:checked {
 				&::before {
-					@apply yst-bg-transparent;
+					@apply nfd-bg-transparent;
 				}
 			}
 		}
@@ -197,44 +197,44 @@
 
 /* Select Field */
 @layer components {
-	.yst-root {
-		.yst-select__button {
+	.nfd-root {
+		.nfd-select__button {
 			@apply
-			focus:yst-ring-primary
-			focus:yst-border-primary;
+			focus:nfd-ring-primary
+			focus:nfd-border-primary;
 		}
 
-		.yst-select__option {
+		.nfd-select__option {
 			&--active {
-				@apply yst-bg-[#CDD0D6];
+				@apply nfd-bg-[#CDD0D6];
 			}
 
 			&--selected {
-				@apply yst-bg-primary;
+				@apply nfd-bg-primary;
 			}
 		}
 
-		.yst-select-field__spaced {
-			.yst-select-field__select {
+		.nfd-select-field__spaced {
+			.nfd-select-field__select {
 				@apply
-				yst-flex
-				yst-items-center
-				yst-justify-between
-				yst-gap-4;
+				nfd-flex
+				nfd-items-center
+				nfd-justify-between
+				nfd-gap-4;
 			}
 
-			.yst-select__button {
-				@apply yst-w-24;
+			.nfd-select__button {
+				@apply nfd-w-24;
 			}
 
-			.yst-select__options {
+			.nfd-select__options {
 				@apply 
-				yst-w-40
-				yst-right-0;
+				nfd-w-40
+				nfd-right-0;
 			}
 
-			.yst-select-field__description {
-				@apply lg:yst-mr-[10.5rem];
+			.nfd-select-field__description {
+				@apply lg:nfd-mr-[10.5rem];
 			}
 		}
 	}
@@ -242,39 +242,39 @@
 
 /* Notifications */
 @layer components {
-	.yst-root {
+	.nfd-root {
 
-		.yst-notifications {
+		.nfd-notifications {
 			z-index: 9991;
 		}
 
-        .yst-notifications--bottom-left {
-            @apply yst-left-[12%];
+        .nfd-notifications--bottom-left {
+            @apply nfd-left-[12%];
         }
 	}
 }
 
 /* Modal */
 @layer components {
-	.yst-root {
+	.nfd-root {
 		/* mobile menu modal */
 		.wppbh-app-sidenav-mobile {
-            .yst-modal__close {
+            .nfd-modal__close {
                 @apply 
-                yst-flex
-                yst-bg-white
-                yst-rounded-full
-                yst-top-[-36px] 
-                yst-right-0;
+                nfd-flex
+                nfd-bg-white
+                nfd-rounded-full
+                nfd-top-[-36px] 
+                nfd-right-0;
             }
 
-            .yst-modal__close-button {
+            .nfd-modal__close-button {
                 @apply
-                yst-text-body
-                yst-rounded-full
-				yst-p-1
-                hover:yst-text-title
-                focus:yst-ring-primary;
+                nfd-text-body
+                nfd-rounded-full
+				nfd-p-1
+                hover:nfd-text-title
+                focus:nfd-ring-primary;
             }
         }
     }
@@ -282,11 +282,11 @@
 
 /* Text Input Field */
 @layer components {
-	.yst-root {
-		.yst-text-input {
+	.nfd-root {
+		.nfd-text-input {
 			@apply
-			focus:yst-ring-primary
-			focus:yst-border-primary;
+			focus:nfd-ring-primary
+			focus:nfd-border-primary;
 		}
 	}
 }

@@ -1,4 +1,4 @@
-import { Button } from "@yoast/ui-library";
+import { Button } from "@newfold/ui-component-library";
 import { SectionContainer, SectionHeader, SectionContent } from "../../components/section";
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
 import { Page } from "../../components/page";
@@ -30,7 +30,7 @@ const Example = () => {
                 <SectionContent className={'wppbh-app-example-section3'}>
                     <div>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <Button className="yst-button--standout yst-mt-4">
+                        <Button className="nfd-button--standout nfd-mt-4">
                             <RocketLaunchIcon />
                             Launch your Site
                         </Button>
