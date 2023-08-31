@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ae45d85b26a7a105206d2be53da8a79",
+    "content-hash": "3ba5c64fc74592284c7ce5f9410b72cc",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -870,16 +870,16 @@
         },
         {
             "name": "newfold-labs/wp-module-performance",
-            "version": "1.1.1",
+            "version": "1.2.0-beta.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-performance.git",
-                "reference": "7efc4f25a9e576d6aae79f9e3472630bc8e46fcd"
+                "reference": "bb6be827a2fdcc11485542a4cc8040a5eff29e43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/7efc4f25a9e576d6aae79f9e3472630bc8e46fcd",
-                "reference": "7efc4f25a9e576d6aae79f9e3472630bc8e46fcd",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/bb6be827a2fdcc11485542a4cc8040a5eff29e43",
+                "reference": "bb6be827a2fdcc11485542a4cc8040a5eff29e43",
                 "shasum": ""
             },
             "require": {
@@ -908,10 +908,10 @@
             ],
             "description": "A module for managing caching functionality.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-performance/tree/1.1.1",
+                "source": "https://github.com/newfold-labs/wp-module-performance/tree/1.2.0-beta.1",
                 "issues": "https://github.com/newfold-labs/wp-module-performance/issues"
             },
-            "time": "2023-06-12T11:20:05+00:00"
+            "time": "2023-08-31T20:27:03+00:00"
         },
         {
             "name": "newfold-labs/wp-module-runtime",
@@ -2203,12 +2203,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "05cbd34d3f34203a5be403e69e1fc9fef70d546a"
+                "reference": "9971379442eb64596a59f6c3b89ec66fac58c611"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/05cbd34d3f34203a5be403e69e1fc9fef70d546a",
-                "reference": "05cbd34d3f34203a5be403e69e1fc9fef70d546a",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/9971379442eb64596a59f6c3b89ec66fac58c611",
+                "reference": "9971379442eb64596a59f6c3b89ec66fac58c611",
                 "shasum": ""
             },
             "conflict": {
@@ -2499,6 +2499,7 @@
                 "mobiledetect/mobiledetectlib": "<2.8.32",
                 "modx/revolution": "<=2.8.3.0-patch",
                 "mojo42/jirafeau": "<4.4",
+                "mongodb/mongodb": ">=1,<1.9.2",
                 "monolog/monolog": ">=1.8,<1.12",
                 "moodle/moodle": "<4.2.0.0-RC2-dev|==4.2",
                 "movim/moxl": ">=0.8,<=0.10",
@@ -2748,6 +2749,7 @@
                 "typo3/swiftmailer": ">=4.1,<4.1.99|>=5.4,<5.4.5",
                 "typo3fluid/fluid": ">=2,<2.0.8|>=2.1,<2.1.7|>=2.2,<2.2.4|>=2.3,<2.3.7|>=2.4,<2.4.4|>=2.5,<2.5.11|>=2.6,<2.6.10",
                 "ua-parser/uap-php": "<3.8",
+                "uasoft-indonesia/badaso": "<=2.9.7",
                 "unisharp/laravel-filemanager": "<=2.5.1",
                 "userfrosting/userfrosting": ">=0.3.1,<4.6.3",
                 "usmanhalalit/pixie": "<1.0.3|>=2,<2.0.2",
@@ -2859,7 +2861,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-29T19:04:20+00:00"
+            "time": "2023-08-31T19:04:14+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -3293,7 +3295,7 @@
         },
         {
             "name": "wp-phpunit/wp-phpunit",
-            "version": "6.3.0",
+            "version": "6.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-phpunit/wp-phpunit.git",
@@ -3343,6 +3345,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "newfold-labs/wp-module-performance": 10,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
