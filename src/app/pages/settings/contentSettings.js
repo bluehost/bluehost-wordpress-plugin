@@ -2,7 +2,7 @@ import AppStore from '../../data/store';
 import { bluehostSettingsApiFetch } from '../../util/helpers';
 import { useUpdateEffect } from 'react-use';
 import { useState } from '@wordpress/element';
-import { Alert, SelectField } from "@yoast/ui-library";
+import { Alert, SelectField } from "@newfold/ui-component-library";
 import { SectionSettings } from "../../components/section";
 import { useNotification } from '../../components/notifications/feed';
 
@@ -77,7 +77,7 @@ const ContentRevisions = ({ setError, notify }) => {
 				{ label: '40', value: '40' },
 			]}
 			onChange={handleContentRevisionsChange}
-			className="yst-select-field__spaced"
+			className="nfd-select-field__spaced"
 		/>
 	);
 }
@@ -150,7 +150,7 @@ const EmptyTrash = ({ setError, notify }) => {
 				{ label: '4', value: '30' },
 			]}
 			onChange={handleEmptyTrashDaysChange}
-			className="yst-select-field__spaced"
+			className="nfd-select-field__spaced"
 		/>
 	);
 }
@@ -164,7 +164,7 @@ const ContentSettings = () => {
 			title={__('Content Options', 'wp-plugin-bluehost')}
 			description={__('Controls for content revisions and how often to empty the trash.', 'wp-plugin-bluehost')}
 		>
-			<div className="yst-flex yst-flex-col yst-gap-4">
+			<div className="nfd-flex nfd-flex-col nfd-gap-4">
 				<ContentRevisions setError={setError} notify={notify} />
 				<EmptyTrash setError={setError} notify={notify} />
 				
