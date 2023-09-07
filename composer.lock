@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "394011395162527dee7365800a557a9e",
+    "content-hash": "4d38ac36f79c9ed7eb88d0f06b7b0636",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -870,16 +870,16 @@
         },
         {
             "name": "newfold-labs/wp-module-performance",
-            "version": "1.2.0-beta.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-performance.git",
-                "reference": "331b6a49bae35e7e0f0c4a2227e107d7a051e13c"
+                "reference": "1cace04628a5d684862328293c1a9c97022fc6c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/331b6a49bae35e7e0f0c4a2227e107d7a051e13c",
-                "reference": "331b6a49bae35e7e0f0c4a2227e107d7a051e13c",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/1cace04628a5d684862328293c1a9c97022fc6c9",
+                "reference": "1cace04628a5d684862328293c1a9c97022fc6c9",
                 "shasum": ""
             },
             "require": {
@@ -908,10 +908,10 @@
             ],
             "description": "A module for managing caching functionality.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-performance/tree/1.2.0-beta.2",
+                "source": "https://github.com/newfold-labs/wp-module-performance/tree/1.2.0",
                 "issues": "https://github.com/newfold-labs/wp-module-performance/issues"
             },
-            "time": "2023-08-31T21:44:07+00:00"
+            "time": "2023-09-06T14:21:16+00:00"
         },
         {
             "name": "newfold-labs/wp-module-runtime",
@@ -3345,7 +3345,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "newfold-labs/wp-module-performance": 10,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
