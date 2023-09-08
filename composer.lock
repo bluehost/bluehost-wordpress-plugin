@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32d6f67339f6ad97755ade80b52c7dd1",
+    "content-hash": "eb853017bad02169daa5013e7f1fb2b5",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -525,16 +525,16 @@
         },
         {
             "name": "newfold-labs/wp-module-global-ctb",
-            "version": "2.0.0-beta.2",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-global-ctb.git",
-                "reference": "7e39d32c3b8ec13e5b48a4174f37fdad24359325"
+                "reference": "272357ea1fa6ae9642b4e741a0d6bc2f9473608c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-global-ctb/zipball/7e39d32c3b8ec13e5b48a4174f37fdad24359325",
-                "reference": "7e39d32c3b8ec13e5b48a4174f37fdad24359325",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-global-ctb/zipball/272357ea1fa6ae9642b4e741a0d6bc2f9473608c",
+                "reference": "272357ea1fa6ae9642b4e741a0d6bc2f9473608c",
                 "shasum": ""
             },
             "require-dev": {
@@ -543,7 +543,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "NewfoldLabs\\WP\\Module\\GCTB\\": "includes"
+                    "NewfoldLabs\\WP\\Module\\GlobalCTB\\": "includes"
                 },
                 "files": [
                     "bootstrap.php"
@@ -568,10 +568,10 @@
             ],
             "description": "Newfold module for 'Click to Buy' functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-global-ctb/tree/2.0.0-beta.2",
+                "source": "https://github.com/newfold-labs/wp-module-global-ctb/tree/main",
                 "issues": "https://github.com/newfold-labs/wp-module-global-ctb/issues"
             },
-            "time": "2023-09-08T16:27:53+00:00"
+            "time": "2023-09-08T19:00:31+00:00"
         },
         {
             "name": "newfold-labs/wp-module-help-center",
@@ -3395,7 +3395,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "newfold-labs/wp-module-global-ctb": 10,
+        "newfold-labs/wp-module-global-ctb": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
