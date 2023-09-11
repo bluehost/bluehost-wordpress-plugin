@@ -52,7 +52,7 @@
     "roave/security-advisories": "dev-latest",
     "newfold-labs/wp-php-standards": "^1.2",
     "wp-cli/i18n-command": "^2.4.3",
-    "wp-phpunit/wp-phpunit": "^6.2"
+    "wp-phpunit/wp-phpunit": "^6.3.1"
   },
   "require": {
     "newfold-labs/wp-module-business-reviews": "^1.1.1",
@@ -67,7 +67,7 @@
     "newfold-labs/wp-module-notifications": "^1.1.4",
     "newfold-labs/wp-module-onboarding": "^1.10.3",
     "newfold-labs/wp-module-patterns": "^0.1.4",
-    "newfold-labs/wp-module-performance": "^1.2.0",
+    "newfold-labs/wp-module-performance": "^1.2.1",
     "newfold-labs/wp-module-runtime": "^1.0.2",
     "newfold-labs/wp-module-secure-passwords": "^1.1",
     "newfold-labs/wp-module-sso": "^1.0.4",
