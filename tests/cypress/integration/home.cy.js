@@ -22,14 +22,14 @@ describe('Home Page', function () {
 
 	it('Welcome Section Exists', () => {
 		cy
-			.get('.wppb-app-section-container').contains('h2', 'Home')
+			.get('.nfd-app-section-container').contains('h2', 'Home')
 			.scrollIntoView()
 			.should('be.visible');
 	});
 
 	it('Additional Features Section Exists', () => {
 		cy
-			.get('.wppb-app-section-container').contains('h2', 'Additional Features')
+			.get('.nfd-app-section-container').contains('h2', 'Additional Features')
 			.scrollIntoView()
 			.should('be.visible');
 	});
