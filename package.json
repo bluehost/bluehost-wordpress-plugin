@@ -1,7 +1,7 @@
 {
     "description": "WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
     "license": "GPL-2.0-or-later",
-    "version": "3.1.0",
+    "version": "3.2.0",
     "private": true,
     "repository": {
         "type": "git",
