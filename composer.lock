@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6026e6b44c2e16e968dde8b5a0f0a809",
+    "content-hash": "d166906fb7b3cbc300a86c8f1df6bbc1",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -915,16 +915,16 @@
         },
         {
             "name": "newfold-labs/wp-module-runtime",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-runtime.git",
-                "reference": "9de4f765c12194c7356c2fbaf8182a56d9ba4433"
+                "reference": "df808eecacfff88319367fd6f54c3bfb77d378ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/9de4f765c12194c7356c2fbaf8182a56d9ba4433",
-                "reference": "9de4f765c12194c7356c2fbaf8182a56d9ba4433",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/df808eecacfff88319367fd6f54c3bfb77d378ae",
+                "reference": "df808eecacfff88319367fd6f54c3bfb77d378ae",
                 "shasum": ""
             },
             "require-dev": {
@@ -960,10 +960,10 @@
             ],
             "description": "Runtime for Newfold WP modules and plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/v1.0.3",
+                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/v1.0.4",
                 "issues": "https://github.com/newfold-labs/wp-module-runtime/issues"
             },
-            "time": "2023-09-12T09:39:39+00:00"
+            "time": "2023-09-12T22:13:20+00:00"
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",
@@ -2203,12 +2203,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "6cbe3472c940a80f587886423020673520d36a29"
+                "reference": "0619000d51429baac52f0b24a90c44779a01e383"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/6cbe3472c940a80f587886423020673520d36a29",
-                "reference": "6cbe3472c940a80f587886423020673520d36a29",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/0619000d51429baac52f0b24a90c44779a01e383",
+                "reference": "0619000d51429baac52f0b24a90c44779a01e383",
                 "shasum": ""
             },
             "conflict": {
@@ -2275,6 +2275,7 @@
                 "cart2quote/module-quotation": ">=4.1.6,<=4.4.5|>=5,<5.4.4",
                 "cartalyst/sentry": "<=2.1.6",
                 "catfan/medoo": "<1.7.5",
+                "cecil/cecil": "<7.47.1",
                 "centreon/centreon": "<22.10.0.0-beta1",
                 "cesnet/simplesamlphp-module-proxystatistics": "<3.1",
                 "chriskacerguis/codeigniter-restserver": "<=2.7.1",
@@ -2862,7 +2863,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-09-11T21:04:03+00:00"
+            "time": "2023-09-12T20:04:25+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
