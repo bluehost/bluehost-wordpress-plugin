@@ -9,7 +9,7 @@ import { WelcomeSection } from './welcomeSection';
 const Home = () => {
 	return (
 		<Page className="wppbh-home">
-			<a href="https://google.com" data-ctb="test">Test CTB</a>
+			<a href="https://google.com" data-ctb-id="test">Test CTB</a>
 			<WelcomeSection />
 			<FreeAddonsSection />
 			<SectionContainer className="wppbh-account-help-section">
