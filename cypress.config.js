@@ -21,12 +21,12 @@ module.exports = defineConfig({
   videoUploadOnPasses: false,
   chromeWebSecurity: false,
   viewportWidth: 1024,
-	viewportHeight: 768,
-	blockHosts: [
-		'*doubleclick.net',
-		'*jnn-pa.googleapis.com',
-		'*youtube.com',
-	],
+  viewportHeight: 768,
+  blockHosts: [
+    '*doubleclick.net',
+    '*jnn-pa.googleapis.com',
+    '*youtube.com',
+  ],
   e2e: {
 		setupNodeEvents(on, config) {
 			const semver = require('semver');
@@ -51,7 +51,7 @@ module.exports = defineConfig({
 			if (semver.satisfies(config.env.wpSemverVersion, '<6.2.0')) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
 					[
-						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/**"
+						"vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/**"
 					]
 				);
 			}
@@ -68,8 +68,8 @@ module.exports = defineConfig({
 			if (semver.satisfies(config.env.phpSemverVersion, '<7.3.0')) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat(
 					[
-						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/3-ecommerce-onboarding-flow/**",
-						"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/2-general-onboarding-flow/top-priority.cy.js"
+						"vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/3-ecommerce-onboarding-flow/**",
+						"vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/2-general-onboarding-flow/top-priority.cy.js"
 					]
 				);
 			}
@@ -84,8 +84,8 @@ module.exports = defineConfig({
 		supportFile: 'tests/cypress/support/index.js',
 		testIsolation: false,
 		excludeSpecPattern: [
-			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/4-design-steps/**",
-			"tests/cypress/integration/z-newfold-labs/wp-module-onboarding/wp-module-support/"
+			"vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/4-design-steps/**",
+			"vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/wp-module-support/"
 		]
   },
 })

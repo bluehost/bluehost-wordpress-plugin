@@ -13,7 +13,7 @@ const Home = () => {
 			<FreeAddonsSection />
 			<SectionContainer className="wppbh-account-help-section">
 				<SectionContent >
-					<div className="yst-grid yst-grid-cols-2 yst-gap-6">
+					<div className="nfd-grid nfd-grid-cols-2 nfd-gap-6">
 						<AccountCard />
 						<HelpCard />
 					</div>

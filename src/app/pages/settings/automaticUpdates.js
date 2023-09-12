@@ -2,7 +2,7 @@ import AppStore from '../../data/store';
 import { bluehostSettingsApiFetch } from '../../util/helpers';
 import { useUpdateEffect } from 'react-use';
 import { useState } from '@wordpress/element';
-import { Alert, ToggleField } from "@yoast/ui-library";
+import { Alert, ToggleField } from "@newfold/ui-component-library";
 import { SectionSettings } from "../../components/section";
 import { useNotification } from '../../components/notifications/feed';
 
@@ -266,7 +266,7 @@ const AutomaticUpdates = () => {
 			title={__('Automatic Updates', 'wp-plugin-bluehost')}
 			description={__('Keeping automatic updates on ensures timely security fixes and the latest features.', 'wp-plugin-bluehost')}
 		>
-			<div className="yst-flex yst-flex-col yst-gap-4">
+			<div className="nfd-flex nfd-flex-col nfd-gap-4">
 				<AutomaticUpdatesAll setError={setError} notify={notify} />
 				<AutomaticUpdatesMajorCore setError={setError} notify={notify} />
 				<AutomaticUpdatesPlugins setError={setError} notify={notify} />

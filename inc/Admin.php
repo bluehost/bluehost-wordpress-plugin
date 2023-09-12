@@ -35,7 +35,7 @@ final class Admin {
 	}
 
 	public static function add_to_runtime( $sdk ) {
-		include BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
+		include_once BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
 		return array_merge( $sdk, Data::runtime() );
 	}
 

@@ -15,7 +15,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { store as noticesStore } from '@wordpress/notices';
 import { setActiveSubnav } from './util/helpers';
 import { kebabCase, filter } from 'lodash';
-import { Root } from "@yoast/ui-library";
+import { Root } from "@newfold/ui-component-library";
 import { AppNav } from './components/app-nav';
 import { SiteInfoBar } from './components/site-info';
 import { NotificationFeed } from './components/notifications/feed';
@@ -74,7 +74,7 @@ const AppBody = ( props ) => {
 				`wppbh-wp-${ NewfoldRuntime.sdk.wpversion }`,
 				`wppbh-page-${ kebabCase( location.pathname ) }`,
 				props.className,
-				'yst-w-full yst-p-4 min-[783px]:yst-p-0'
+				'nfd-w-full nfd-p-4 min-[783px]:nfd-p-0'
 			) }
 		>
 			{/* <Header /> */}
@@ -115,7 +115,7 @@ export const App = () => (
 		<Root context={ { isRtl: false } }>
 			<NotificationFeed>
 				<Router>
-					<div className="wppbh-app-container min-[783px]:yst-p-8 min-[783px]:yst-flex yst-gap-6 yst-max-w-full xl:yst-max-w-screen-xl 2xl:yst-max-w-screen-2xl yst-my-0">
+					<div className="wppbh-app-container min-[783px]:nfd-p-8 min-[783px]:nfd-flex nfd-gap-6 nfd-max-w-full xl:nfd-max-w-screen-xl 2xl:nfd-max-w-screen-2xl nfd-my-0">
 						<AppNav />
 						<AppBody />
 					</div>

@@ -5,7 +5,7 @@ import {
 } from '../../util/helpers';
 import { useState } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
-import { Alert, ToggleField } from "@yoast/ui-library";
+import { Alert, ToggleField } from "@newfold/ui-component-library";
 import { SectionSettings } from "../../components/section";
 import { useNotification } from '../../components/notifications/feed';
 
@@ -68,7 +68,7 @@ const ComingSoon = () => {
 			title={__('Maintenance Mode', 'wp-plugin-bluehost')}
 			description={__('Still building your site? Need to make a big change?', 'wp-plugin-bluehost')}
 		>
-			<div className="yst-flex yst-flex-col yst-gap-6">
+			<div className="nfd-flex nfd-flex-col nfd-gap-6">
 				<ToggleField
 					id="coming-soon-toggle"
 					label="Coming soon page"
