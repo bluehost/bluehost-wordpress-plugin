@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "768e54cb873f200416917580b1b09e8a",
+    "content-hash": "d5d82a728d23e08b00cd1c9413a764e3",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -467,16 +467,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.2.2",
+            "version": "v1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "3385c278c5185189fe966fde2ffde3c40ddebad3"
+                "reference": "9a6fa36362c5e26fa21df83f6fea299732a0d5d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/3385c278c5185189fe966fde2ffde3c40ddebad3",
-                "reference": "3385c278c5185189fe966fde2ffde3c40ddebad3",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/9a6fa36362c5e26fa21df83f6fea299732a0d5d3",
+                "reference": "9a6fa36362c5e26fa21df83f6fea299732a0d5d3",
                 "shasum": ""
             },
             "require": {
@@ -518,10 +518,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.2.2",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.2.3",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-09-07T15:21:45+00:00"
+            "time": "2023-09-12T10:56:18+00:00"
         },
         {
             "name": "newfold-labs/wp-module-help-center",
@@ -870,16 +870,16 @@
         },
         {
             "name": "newfold-labs/wp-module-performance",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-performance.git",
-                "reference": "1cace04628a5d684862328293c1a9c97022fc6c9"
+                "reference": "b341bb7dbdf6a5b9038d670deffc5df1f2029973"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/1cace04628a5d684862328293c1a9c97022fc6c9",
-                "reference": "1cace04628a5d684862328293c1a9c97022fc6c9",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/b341bb7dbdf6a5b9038d670deffc5df1f2029973",
+                "reference": "b341bb7dbdf6a5b9038d670deffc5df1f2029973",
                 "shasum": ""
             },
             "require": {
@@ -908,23 +908,23 @@
             ],
             "description": "A module for managing caching functionality.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-performance/tree/1.2.0",
+                "source": "https://github.com/newfold-labs/wp-module-performance/tree/1.2.1",
                 "issues": "https://github.com/newfold-labs/wp-module-performance/issues"
             },
-            "time": "2023-09-06T14:21:16+00:00"
+            "time": "2023-09-11T18:50:56+00:00"
         },
         {
             "name": "newfold-labs/wp-module-runtime",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-runtime.git",
-                "reference": "5c1081fc3ba3f0cc047351578c9c205f0d4c304c"
+                "reference": "9de4f765c12194c7356c2fbaf8182a56d9ba4433"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/5c1081fc3ba3f0cc047351578c9c205f0d4c304c",
-                "reference": "5c1081fc3ba3f0cc047351578c9c205f0d4c304c",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/9de4f765c12194c7356c2fbaf8182a56d9ba4433",
+                "reference": "9de4f765c12194c7356c2fbaf8182a56d9ba4433",
                 "shasum": ""
             },
             "require-dev": {
@@ -960,10 +960,10 @@
             ],
             "description": "Runtime for Newfold WP modules and plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/v1.0.2",
+                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/v1.0.3",
                 "issues": "https://github.com/newfold-labs/wp-module-runtime/issues"
             },
-            "time": "2023-08-03T17:28:47+00:00"
+            "time": "2023-09-12T09:39:39+00:00"
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",
@@ -2203,12 +2203,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "244ae4d2e7c97fd65c23c34990f4e98571fd4729"
+                "reference": "6cbe3472c940a80f587886423020673520d36a29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/244ae4d2e7c97fd65c23c34990f4e98571fd4729",
-                "reference": "244ae4d2e7c97fd65c23c34990f4e98571fd4729",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/6cbe3472c940a80f587886423020673520d36a29",
+                "reference": "6cbe3472c940a80f587886423020673520d36a29",
                 "shasum": ""
             },
             "conflict": {
@@ -2532,7 +2532,7 @@
                 "open-web-analytics/open-web-analytics": "<1.7.4",
                 "opencart/opencart": "<=3.0.3.7",
                 "openid/php-openid": "<2.3",
-                "openmage/magento-lts": "<19.4.22|>=20,<20.0.19",
+                "openmage/magento-lts": "<=19.5|>=20,<=20.1",
                 "opensource-workshop/connect-cms": "<1.7.2|>=2,<2.3.2",
                 "orchid/platform": ">=9,<9.4.4|>=14.0.0.0-alpha4,<14.5",
                 "oro/commerce": ">=4.1,<5.0.6",
@@ -2862,7 +2862,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-09-11T14:04:42+00:00"
+            "time": "2023-09-11T21:04:03+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
