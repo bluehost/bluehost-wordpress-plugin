@@ -204,6 +204,7 @@ require BLUEHOST_PLUGIN_DIR . '/inc/RestApi/SettingsController.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/RestApi/rest-api.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/settings.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/updates.php';
+require BLUEHOST_PLUGIN_DIR . '/inc/YoastAI.php';
 
 /* WordPress Admin Page & Features */
 if ( is_admin() ) {
