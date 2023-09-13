@@ -24,10 +24,10 @@ final class Data {
 		$runtime = array(
 			'isJarvis' => $bluehost_module_container->get('isJarvis'),
 			'plugin'   => array(
-				'url'          => BLUEHOST_BUILD_URL,
-				'version'      => BLUEHOST_PLUGIN_VERSION,
-				'assets'       => BLUEHOST_PLUGIN_URL . 'assets/',
-				'brand'    => $bluehost_module_container->plugin()->brand,
+				'url'     => BLUEHOST_BUILD_URL,
+				'version' => BLUEHOST_PLUGIN_VERSION,
+				'assets'  => BLUEHOST_PLUGIN_URL . 'assets/',
+				'brand'   => $bluehost_module_container->plugin()->brand,
 			),
 		);
 

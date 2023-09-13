@@ -28,6 +28,7 @@ final class Admin {
 		\add_action( 'admin_head', array( __CLASS__, 'admin_nav_style' ) );
 
 		\add_filter('newfold-runtime', array( __CLASS__, 'add_to_runtime' ) );
+		\add_filter('newfold_runtime', array( __CLASS__, 'add_to_runtime' ) );
 
 		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) { // phpcs:ignore
 			\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
