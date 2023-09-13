@@ -90,7 +90,7 @@ export const routes = [
 				title: __("Sales & Discounts", "wp-plugin-bluehost"),
 			}
 			: null,
-			NewfoldRuntime.hasCapability( 'isEcommerce' )
+			NewfoldRuntime.isWoo
 			? {
 				name: '/store/payments',
 				title: __( 'Payments', 'wp-plugin-bluehost' ),
