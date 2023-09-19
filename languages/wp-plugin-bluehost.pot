@@ -1,0 +1,823 @@
+# Copyright (C) 2023 Bluehost
+# This file is distributed under the GPL 2.0 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: The Bluehost Plugin 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-bluehost\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-03-08T20:13:41+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: wp-plugin-bluehost\n"
+
+#. Plugin Name of the plugin
+msgid "The Bluehost Plugin"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://bluehost.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "WordPress plugin that integrates a WordPress site with the Bluehost control panel, including performance, security, and update features."
+msgstr ""
+
+#. Author of the plugin
+#: inc/Admin.php:72
+#: inc/Admin.php:73
+msgid "Bluehost"
+msgstr ""
+
+#: bootstrap.php:21
+msgid "Please install the Bluehost Plugin dependencies."
+msgstr ""
+
+#: bootstrap.php:57
+msgid "Coming Soon!"
+msgstr ""
+
+#: bootstrap.php:58
+msgid "A New WordPress Site"
+msgstr ""
+
+#. translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag
+#: bootstrap.php:61
+msgid "A %1$sBluehost%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBluehost%6$s."
+msgstr ""
+
+#. translators: %s: Blog name
+#: bootstrap.php:71
+msgid "%s &mdash; Coming Soon"
+msgstr ""
+
+#: bootstrap.php:74
+msgid "Coming Soon Active"
+msgstr ""
+
+#. translators: %1$s is replaced with the opening link tag to preview the page, and %2$s is replaced with the closing link tag, %3$s is the opening link tag, %4$s is the closing link tag.
+#: bootstrap.php:77
+msgid "Your site is currently displaying a %1$scoming soon page%2$s. Once you are ready, %3$slaunch your site%4$s."
+msgstr ""
+
+#: bootstrap.php:78
+msgid "Preview the coming soon landing page"
+msgstr ""
+
+#: inc/Admin.php:42
+#: inc/Admin.php:173
+#: build/0.1.0/index.js:1
+#: src/app/data/routes.js:52
+msgid "Home"
+msgstr ""
+
+#: inc/Admin.php:43
+#: build/0.1.0/index.js:1
+#: src/app/data/routes.js:58
+#: src/app/pages/home/settingsSection.js:81
+msgid "Marketplace"
+msgstr ""
+
+#: inc/Admin.php:44
+#: build/0.1.0/index.js:1
+#: src/app/data/routes.js:64
+#: src/app/pages/home/settingsSection.js:59
+#: src/app/pages/home/settingsSection.js:74
+#: src/app/pages/settings/performanceCallout.js:16
+#: src/app/pages/settings/performanceCallout.js:32
+msgid "Performance"
+msgstr ""
+
+#: inc/Admin.php:45
+#: inc/Admin.php:174
+#: build/0.1.0/index.js:1
+#: src/app/data/routes.js:70
+#: src/app/pages/home/settingsSection.js:52
+#: src/app/pages/performance/settingsCallout.js:16
+#: src/app/pages/performance/settingsCallout.js:32
+msgid "Settings"
+msgstr ""
+
+#: inc/Admin.php:46
+#: build/0.1.0/index.js:1
+#: src/app/data/routes.js:76
+#: src/app/pages/home/webHostingSection.js:123
+msgid "Help"
+msgstr ""
+
+#: inc/Admin.php:112
+msgid "Please update to a newer WordPress version."
+msgstr ""
+
+#: inc/Admin.php:113
+msgid "There are new WordPress components which this plugin requires in order to render the interface."
+msgstr ""
+
+#: inc/Admin.php:114
+msgid "Please update now"
+msgstr ""
+
+#: inc/Admin.php:187
+msgid "Thank you for creating with <a href=\"https://wordpress.org/\">WordPress</a> and <a href=\"https://bluehost.com/about\">Bluehost</a>."
+msgstr ""
+
+#: inc/AdminBar.php:35
+msgid "Need help?"
+msgstr ""
+
+#: inc/AdminBar.php:38
+msgid "We're here for you!"
+msgstr ""
+
+#. translators: 1: plugin name 2: incompatible plugin name
+#: inc/plugin-nfd-compat-check.php:161
+msgid "\"%1$s\" has self-deactivated. It is incompatible with \"%2$s\"."
+msgstr ""
+
+#. translators: 1: legacy plugin name 2: plugin name
+#: inc/plugin-nfd-compat-check.php:188
+msgid "\"%1$s\" has been deactivated. It is incompatible with \"%2$s\"."
+msgstr ""
+
+#. translators: 1: plugin name 2: minimum required PHP version, current PHP version
+#: inc/plugin-php-compat-check.php:123
+msgid "%1$s requires PHP version %2$s or later. You are currently running version %3$s."
+msgstr ""
+
+#: inc/plugin-php-compat-check.php:124
+msgid " Please contact your web host about upgrading PHP."
+msgstr ""
+
+#. translators: 1: plugin name 2: required PHP extension
+#: inc/plugin-php-compat-check.php:139
+msgid "%1$s requires the %2$s PHP extension."
+msgstr ""
+
+#. translators: 1: plugin name 2: minimum required WordPress version 3: current WordPress version
+#: inc/plugin-php-compat-check.php:155
+msgid "%1$s requires WordPress version %2$s or later. You are currently running version %3$s."
+msgstr ""
+
+#. translators: plugin name
+#: inc/plugin-php-compat-check.php:193
+msgid "The \"%s\" plugin has been deactivated."
+msgstr ""
+
+#: inc/RestApi/CachingController.php:65
+#: inc/RestApi/SettingsController.php:200
+msgid "Sorry, you are not allowed to access this endpoint."
+msgstr ""
+
+#. translators: %s Settings > General page URL.
+#: inc/updates.php:115
+#: inc/updates.php:143
+#: inc/updates.php:170
+msgid "Auto-updates enabled on the <a href=\"%s\">Bluehost > Settings</a> page."
+msgstr ""
+
+#: inc/updates.php:166
+msgid "Auto-updates enabled"
+msgstr ""
+
+#: build/0.1.0/index.js:1
+#: src/app/components/errorCard/index.js:27
+msgid "Oh No, An Error!"
+msgstr ""
+
+#: build/0.1.0/index.js:1
+#: src/app/components/errorCard/index.js:32
+msgid "You found an error, please refresh the page and try again!"
+msgstr ""
+
+#: build/0.1.0/index.js:1
+#: src/app/components/errorCard/index.js:38
+msgid "If the error persists, please contact support."
+msgstr ""
+
+#: build/0.1.0/index.js:1
+#: src/app/components/errorCard/index.js:48
+msgid " Error code: "
+msgstr ""
+
+#: build/0.1.0/index.js:1
+#: src/app/pages/settings/commentSettings.js:48
+#: src/app/pages/settings/commentSettings.js:61
+#: src/app/pages/settings/commentSettings.js:69
+msgid " day."
+msgid_plural " days."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/0.1.0/index.js:1
+#: src/app/pages/settings/commentSettings.js:78
+msgid " comment per page."
+msgid_plural " comments per page."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/0.1.0/index.js:1
+#: src/app/pages/settings/commentSettings.js:93
+msgid " comment at a time."
+msgid_plural " comments at a time."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/0.1.0/index.js:1
+#: src/app/pages/settings/contentSettings.js:33
+msgid " latest revision"
+msgid_plural " latest revisions"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/0.1.0/index.js:1
+#: src/app/pages/settings/contentSettings.js:66
+#: src/app/pages/settings/contentSettings.js:79
+msgid " week."
+msgid_plural " weeks."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/0.1.0/index.js:1
+#: src/app/data/routes.js:31
+msgid "There's nothing here!"
+msgstr ""
+
+#: src/app/components/header/logo.js:32
+msgid "Bluehost WordPress Plugin"
+msgstr ""
+
+#: src/app/data/help.js:4
+#: src/app/data/help.js:10
+msgid "Email Us"
+msgstr ""
+
+#: src/app/data/help.js:5
+msgid "Log in to your Account Manager to submit a support ticket. Once you open a ticket, we'll respond promptly to get it resolved."
+msgstr ""
+
+#: src/app/data/help.js:15
+msgid "Phone"
+msgstr ""
+
+#: src/app/data/help.js:16
+msgid "Contact one of our friendly Customer Care Specialists, as we are waiting to help at 213 559 2459. Open 24 hours - 7 days."
+msgstr ""
+
+#: src/app/data/help.js:21
+msgid "Call Us"
+msgstr ""
+
+#: src/app/data/help.js:26
+msgid "Chat"
+msgstr ""
+
+#: src/app/data/help.js:27
+msgid "Chat with one of our friendly Customer Care Specialists, as we are waiting to help. Open 24 hours - 7 days."
+msgstr ""
+
+#: src/app/data/help.js:32
+msgid "Live Chat"
+msgstr ""
+
+#: src/app/data/help.js:37
+msgid "Tweet"
+msgstr ""
+
+#: src/app/data/help.js:38
+msgid "Find our team at @bluehost for updates on our products and support from our team."
+msgstr ""
+
+#: src/app/data/help.js:43
+msgid "Tweet Us"
+msgstr ""
+
+#: src/app/data/help.js:48
+msgid "Online Support"
+msgstr ""
+
+#: src/app/data/help.js:49
+msgid "Find tutorials, answers and guides in our online support knowledge base."
+msgstr ""
+
+#: src/app/data/help.js:54
+msgid "We can help"
+msgstr ""
+
+#: src/app/data/help.js:59
+msgid "Online Academy"
+msgstr ""
+
+#: src/app/data/help.js:60
+msgid "Boost your online knowledge and get ahead of the competition."
+msgstr ""
+
+#: src/app/data/help.js:65
+msgid "View Courses"
+msgstr ""
+
+#: src/app/data/help.js:70
+#: src/app/pages/home/webContentSection.js:36
+msgid "Blog"
+msgstr ""
+
+#: src/app/data/help.js:71
+msgid "Learn best practices, get insider tips and find the latest news about Bluehost."
+msgstr ""
+
+#: src/app/data/help.js:76
+msgid "Learn Stuff"
+msgstr ""
+
+#: src/app/data/help.js:81
+msgid "Video Tutorials"
+msgstr ""
+
+#: src/app/data/help.js:82
+msgid "Check out our video library of step-by-step tutorials."
+msgstr ""
+
+#: src/app/data/help.js:87
+msgid "Watch Now"
+msgstr ""
+
+#: src/app/pages/home/comingSoonSection.js:27
+#: src/app/pages/settings/comingSoon.js:58
+#: src/app/pages/settings/comingSoon.js:84
+msgid "Coming Soon"
+msgstr ""
+
+#: src/app/pages/home/comingSoonSection.js:28
+msgid "Site Launched"
+msgstr ""
+
+#: src/app/pages/home/comingSoonSection.js:32
+msgid "Site visitors see \"Coming Soon\""
+msgstr ""
+
+#: src/app/pages/home/comingSoonSection.js:33
+msgid "Your site is live!"
+msgstr ""
+
+#: src/app/pages/home/comingSoonSection.js:37
+msgid "Once you've finished setting up your site, launch it so your visitors can reach it."
+msgstr ""
+
+#: src/app/pages/home/comingSoonSection.js:41
+msgid "Congratulations! Visitors will now see the site. You can always turn Coming Soon on from the Settings tab above."
+msgstr ""
+
+#: src/app/pages/home/comingSoonSection.js:59
+msgid "Launch Site"
+msgstr ""
+
+#: src/app/pages/home/comingSoonSection.js:71
+msgid "Restore Coming Soon"
+msgstr ""
+
+#: src/app/pages/home/comingSoonSection.js:80
+msgid "Dismiss"
+msgstr ""
+
+#: src/app/pages/home/comingSoonSection.js:87
+#: src/app/pages/settings/comingSoon.js:25
+msgid "Coming soon activated."
+msgstr ""
+
+#: src/app/pages/home/comingSoonSection.js:88
+#: src/app/pages/settings/comingSoon.js:26
+msgid "Coming soon deactivated."
+msgstr ""
+
+#: src/app/pages/home/comingSoonSection.js:119
+msgid "Launch site"
+msgstr ""
+
+#: src/app/pages/home/settingsSection.js:19
+msgid "Settings illustration"
+msgstr ""
+
+#: src/app/pages/home/settingsSection.js:24
+msgid "Settings and Performance"
+msgstr ""
+
+#: src/app/pages/home/settingsSection.js:27
+msgid "Customize & fine-tune your site."
+msgstr ""
+
+#: src/app/pages/home/settingsSection.js:37
+msgid "Manage Settings"
+msgstr ""
+
+#: src/app/pages/home/settingsSection.js:40
+msgid "Adjust auto-updates, comments, backed-up revisions & more."
+msgstr ""
+
+#: src/app/pages/home/settingsSection.js:62
+msgid "Strike the balance between fresh updates and fastest delivery."
+msgstr ""
+
+#: src/app/pages/home/settingsSection.js:84
+msgid "Add site services, themes or plugins from our marketplace."
+msgstr ""
+
+#: src/app/pages/home/settingsSection.js:96
+msgid "Visit Marketplace"
+msgstr ""
+
+#: src/app/pages/home/webContentSection.js:18
+msgid "Website illustration"
+msgstr ""
+
+#: src/app/pages/home/webContentSection.js:23
+msgid "Website Content"
+msgstr ""
+
+#: src/app/pages/home/webContentSection.js:26
+msgid "Create, manage & sort your story."
+msgstr ""
+
+#: src/app/pages/home/webContentSection.js:39
+msgid "Update your site with news as your story unfolds."
+msgstr ""
+
+#: src/app/pages/home/webContentSection.js:51
+msgid "New Post"
+msgstr ""
+
+#: src/app/pages/home/webContentSection.js:58
+msgid "Pages"
+msgstr ""
+
+#: src/app/pages/home/webContentSection.js:61
+msgid "Share who you are, what you're about and how to get in touch."
+msgstr ""
+
+#: src/app/pages/home/webContentSection.js:72
+msgid "New Page"
+msgstr ""
+
+#: src/app/pages/home/webContentSection.js:79
+msgid "Categories"
+msgstr ""
+
+#: src/app/pages/home/webContentSection.js:82
+msgid "Sort your story so visitors can focus on their interests."
+msgstr ""
+
+#: src/app/pages/home/webContentSection.js:93
+msgid "Manage Categories"
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:18
+msgid "Hosting illustration"
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:23
+msgid "Web Hosting"
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:26
+msgid "Access & manage your Bluehost account."
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:36
+msgid "Manage Hosting"
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:39
+msgid "Manage site backups, performance options and billing."
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:58
+msgid "Manage Sites"
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:65
+msgid "Email"
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:68
+msgid "Create new email addresses and manage your inbox."
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:87
+msgid "Manage Email"
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:94
+msgid "Domains"
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:97
+msgid "Find fresh domains, point them at sites and get found online."
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:116
+msgid "Find a Domain"
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:126
+msgid "Find how-to articles in our Knowledge Base and speak with our award-winning support team."
+msgstr ""
+
+#: src/app/pages/home/webHostingSection.js:138
+msgid "Get Help"
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:25
+msgid "Disabled"
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:27
+msgid "No cache enabled. Every page load is fresh."
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:32
+msgid "Not recommended."
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:41
+msgid "Assets Only"
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:43
+msgid "Cache static assets like images and the appearance of your site for 1 hour."
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:49
+msgid "Tuned for online stores and member sites that need to be fresh."
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:63
+msgid "Assets & Web Pages"
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:66
+msgid "Cache static assets for 24 hours and web pages for 2 hours."
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:72
+msgid "Tuned for sites that change at least weekly."
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:86
+msgid "Assets & Web Pages - Extended"
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:92
+msgid "Cache static assets for 1 week and web pages for 8 hours."
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:98
+msgid "Tuned for sites that update a few times a month or less."
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:131
+msgid "Cache Level"
+msgstr ""
+
+#: src/app/pages/performance/cacheSettings.js:135
+msgid "Improve delivery speed for this site by storing a static cached copy that gets regenerated regularly. This can help attract and retain visitors!"
+msgstr ""
+
+#: src/app/pages/performance/clearCache.js:21
+msgid "Cache cleared"
+msgstr ""
+
+#: src/app/pages/performance/clearCache.js:41
+msgid "Clear Cache"
+msgstr ""
+
+#: src/app/pages/performance/clearCache.js:46
+msgid "We automatically clear your cache"
+msgstr ""
+
+#: src/app/pages/performance/clearCache.js:52
+msgid "as you work (creating content, changing settings, installing plugins and more). But you can manually clear it here to be confident it's fresh."
+msgstr ""
+
+#: src/app/pages/performance/clearCache.js:65
+msgid "Clear All Cache Now"
+msgstr ""
+
+#: src/app/pages/performance/index.js:23
+msgid "Rocket launch illustration"
+msgstr ""
+
+#: src/app/pages/performance/settingsCallout.js:20
+msgid "Looking for other Settings? You can refine auto-updates, comments and backups of content revisions on the Settings page."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:41
+msgid "Everything will auto-update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:42
+msgid "Custom auto-update settings."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:46
+msgid "We're on top of all your updates."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:47
+msgid "Turn on for the safest, best experience."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:51
+msgid "WordPress Core will auto-update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:52
+msgid "WordPress Core will not auto-update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:56
+msgid "WordPress will automatically update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:57
+msgid "WordPress must be manually updated."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:61
+msgid "Plugins will auto-update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:62
+msgid "Plugins will not auto-update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:66
+msgid "All plugins will automatically update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:67
+msgid "Each plugin must be manually updated."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:71
+msgid "Themes will auto-update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:72
+msgid "Theme will not auto-update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:76
+msgid "All themes will automatically update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:77
+msgid "Each theme must be manually updated."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:151
+msgid "Automatic Updates"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:155
+msgid "We strongly recommend letting us manage updates to automatically receive critical security patches, bug fixes and new features as they become available."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:163
+msgid "Managed"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:181
+msgid "WordPress Core"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:198
+msgid "Plugins"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:215
+msgid "Themes"
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:30
+msgid "Coming soon page is active. Site requires login."
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:34
+msgid "Coming soon page is not active. Site is live to visitors."
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:63
+msgid "Still building your site? Need to make a big change?"
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:69
+msgid "Your Bluehost Coming Soon page lets you hide your site from visitors while you make the magic happen."
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:75
+msgid "Come back here anytime to turn it on or off as you want to drop a curtain over your site."
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:95
+msgid "Pro Tip: Begin collecting subscribers"
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:101
+msgid "Activate the \"Jetpack\" plugin, connect your site, and enable the \"Subscriptions\" module to build your following. Subscribers are notified when you publish new posts."
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:34
+msgid "Comments on old posts are disabled."
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:35
+msgid "Comments are allowed on old posts."
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:39
+msgid "Old post comments disabled."
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:40
+msgid "Old post comments enabled."
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:46
+msgid "Close comments after "
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:56
+msgid "Comments on posts are disabled after "
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:67
+msgid "Disabled comments on posts older than "
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:76
+msgid "Display "
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:91
+msgid "Posts will display "
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:103
+msgid "Comments per page setting saved."
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:150
+msgid "Comments"
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:154
+msgid "Make blog post comments disabled on older posts and control how many to display."
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:163
+msgid "Disable comments for older posts"
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:31
+msgid "Keep "
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:46
+msgid "Posts will save "
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:48
+msgid " revision."
+msgid_plural " revisions."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/app/pages/settings/contentSettings.js:64
+msgid "Empty trash every "
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:74
+msgid "The trash will automatically empty every "
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:115
+msgid "Content Options"
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:157
+msgid "Pro Tip: Keep your site fast with fewer revisions & frequent cleanup"
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:163
+msgid "When you have a large site with lots of revisions, it can slightly slow down your public site and WordPress Admin. For the best results, keep only a few revisions and empty the trash frequently."
+msgstr ""
+
+#: src/app/pages/settings/index.js:24
+msgid "Website building illustration"
+msgstr ""
+
+#: src/app/pages/settings/performanceCallout.js:20
+msgid "Manage site performance and caching settings as well as clear the site cache."
+msgstr ""

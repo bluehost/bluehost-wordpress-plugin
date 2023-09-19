@@ -28,41 +28,39 @@
 
 import '@testing-library/cypress/add-commands';
 
-const customerData = require('../fixtures/customerData.json');
-
 Cypress.Commands.add('login', (username, password) => {
-    cy
-        .getCookies()
-        .then(cookies => {
-            let hasMatch = false;
-            cookies.forEach((cookie) => {
-                if (cookie.name.substr(0, 20) === 'wordpress_logged_in_') {
-                    hasMatch = true;
-                }
-            });
-            if (!hasMatch) {
-                cy.visit('/wp-login.php').wait(1000);
-                cy.get('#user_login').type(username);
-                cy.get('#user_pass').type(`${password}{enter}`);
+	cy
+		.getCookies()
+		.then(cookies => {
+			let hasMatch = false;
+			cookies.forEach((cookie) => {
+				if (cookie.name.substr(0, 20) === 'wordpress_logged_in_') {
+					hasMatch = true;
+				}
+			});
+			if (!hasMatch) {
+				cy.visit('/wp-login.php').wait(1000);
+				cy.get('#user_login').type(username);
+				cy.get('#user_pass').type(`${ password }{enter}`);
 
                 // Speed up tests by setting permalink structure once
                 cy.setPermalinkStructure();
-            }
-        });
+			}
+		});
 });
 
 Cypress.Commands.add('logout', () => {
-    cy
-        .getCookies()
-        .then(
-            cookies => {
-                cookies.forEach(
-                    cookie => {
-                        cy.clearCookie(cookie.name);
-                    }
-                )
-            }
-        );
+	cy
+		.getCookies()
+		.then(
+			cookies => {
+				cookies.forEach(
+					cookie => {
+						cy.clearCookie(cookie.name);
+					}
+				)
+			}
+		);
 });
 
 Cypress.Commands.add('setPermalinkStructure', ((structure = '/%postname%/') => {
@@ -88,13 +86,4 @@ Cypress.Commands.add('deletePages', () => {
 
         }
     });
-});
-
-Cypress.Commands.add('setCustomerData', () => {
-    let cdata = JSON.stringify(customerData).replaceAll(',', '\\,');
-    cy.exec(`npx wp-env run cli wp option update bh_cdata_guapi '${cdata}'`);
-});
-
-Cypress.Commands.add('clearCustomerData', () => {
-    cy.exec('npx wp-env run cli wp option delete bh_cdata bh_cdata_guapi');
 });

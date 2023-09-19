@@ -1,0 +1,28 @@
+{
+    "name": "Bluehost WordPress Plugin",
+    "description": "WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
+    "url": "https://bluehost.com",
+    "package": {
+        "vendor": "newfold",
+        "name": "wp-plugin-bluehost"
+    },
+    "license": {
+        "slug": "GPL-2.0-or-later",
+        "name": "GPL 2.0 or later",
+        "url": "https://www.gnu.org/licenses/gpl-2.0.html"
+    },
+    "author": {
+        "name": "Evan Mullins",
+        "url": "https://evanmullins.com"
+    },
+    "text_domain": "wp-plugin-bluehost",
+    "namespace": "Bluehost",
+    "prefixes": {
+        "long": "WPPluginBluehost",
+        "short": "wppbh",
+        "function": "wppbh_",
+        "constant": "WPPBH_",
+        "meta": "wppbh_",
+        "slug": "wppbh-"
+    }
+}

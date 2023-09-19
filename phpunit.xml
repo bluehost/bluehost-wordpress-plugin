@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         bootstrap="./tests/phpunit/bootstrap.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+>
+    <php>
+        <ini name="display_errors" value="true"/>
+        <env name="WP_PHPUNIT__TESTS_CONFIG" value="tests/phpunit/wp-tests-config.php" />
+    </php>
+    <testsuites>
+        <testsuite name="Application Test Suite">
+            <directory>tests/phpunit</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

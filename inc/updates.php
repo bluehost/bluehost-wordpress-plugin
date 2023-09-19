@@ -4,8 +4,10 @@
  *
  * By default, all auto-updates are enabled (including major releases).
  *
- * @package bluehost-wordpress-plugin
+ * @package WPPluginBluehost
  */
+
+namespace Bluehost;
 
 /**
  * Convert string boolean values to actual booleans.
@@ -15,7 +17,7 @@
  *
  * @return bool The conversion result.
  */
-function bh_auto_update_make_bool( $value, $default = true ) {
+function auto_update_make_bool( $value, $default = true ) {
 	if ( 'false' === $value ) {
 		$value = false;
 	}
@@ -38,7 +40,7 @@ function bh_auto_update_make_bool( $value, $default = true ) {
  *              Core's default behavior.
  * @since 5.5.0 When plugin and theme auto-updates are set to "off", WordPress core will manage
  */
-function bh_auto_update_configure() {
+function auto_update_configure() {
 	global $wp_version;
 
 	$settings = array(
@@ -63,7 +65,7 @@ function bh_auto_update_configure() {
 			}
 		}
 
-		$settings = array_map( 'bh_auto_update_make_bool', $settings );
+		$settings = array_map( __NAMESPACE__ . '\\auto_update_make_bool', $settings );
 
 		// WordPress 5.6 introduces the ability to opt-in to major updates. Let Core handle this now.
 		if ( version_compare( $wp_version, '5.6', '>=' ) ) {
@@ -89,7 +91,7 @@ function bh_auto_update_configure() {
 	}
 }
 
-add_action( 'plugins_loaded', 'bh_auto_update_configure', 5 );
+add_action( 'plugins_loaded', __NAMESPACE__ . '\\auto_update_configure', 5 );
 
 /**
  * Changes the text in the Automatic updates column of the plugin list table to inform the user
@@ -99,8 +101,8 @@ add_action( 'plugins_loaded', 'bh_auto_update_configure', 5 );
  *
  * @return string The adjusted HTML for the automatic updates column.
  */
-function bh_plugin_auto_update_setting_html( $html ) {
-	$bulk_auto_update_enabled = bh_auto_update_make_bool( get_option( 'auto_update_plugin', true ) );
+function plugin_auto_update_setting_html( $html ) {
+	$bulk_auto_update_enabled = auto_update_make_bool( get_option( 'auto_update_plugin', true ) );
 
 	if ( ! $bulk_auto_update_enabled ) {
 		return $html;
@@ -110,14 +112,14 @@ function bh_plugin_auto_update_setting_html( $html ) {
 		'<span class="label">Auto-updates enabled</span>',
 		sprintf(
 		/* translators: %s Settings > General page URL. */
-			__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'bluehost-wordpress-plugin' ),
+			__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'wp-plugin-bluehost' ),
 			admin_url( 'admin.php?page=bluehost#/settings' )
 		),
 		$html
 	);
 }
 
-add_filter( 'plugin_auto_update_setting_html', 'bh_plugin_auto_update_setting_html' );
+add_filter( 'plugin_auto_update_setting_html', __NAMESPACE__ . '\\plugin_auto_update_setting_html' );
 
 /**
  * Changes the text in the Automatic updates column of the theme list table to inform the user
@@ -129,8 +131,8 @@ add_filter( 'plugin_auto_update_setting_html', 'bh_plugin_auto_update_setting_ht
  *
  * @return string The adjusted HTML for the automatic updates column.
  */
-function bh_theme_auto_update_setting_html( $html ) {
-	$bulk_auto_update_enabled = bh_auto_update_make_bool( get_option( 'auto_update_theme', true ) );
+function theme_auto_update_setting_html( $html ) {
+	$bulk_auto_update_enabled = auto_update_make_bool( get_option( 'auto_update_theme', true ) );
 
 	if ( ! $bulk_auto_update_enabled ) {
 		return $html;
@@ -138,12 +140,12 @@ function bh_theme_auto_update_setting_html( $html ) {
 
 	return sprintf(
 	/* translators: %s Settings > General page URL. */
-		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'bluehost-wordpress-plugin' ),
+		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'wp-plugin-bluehost' ),
 		admin_url( 'admin.php?page=bluehost#/settings' )
 	);
 }
 
-add_filter( 'theme_auto_update_setting_html', 'bh_theme_auto_update_setting_html' );
+add_filter( 'theme_auto_update_setting_html', __NAMESPACE__ . '\\theme_auto_update_setting_html' );
 
 /**
  * Changes the text in the theme details overlay to inform the user
@@ -153,26 +155,26 @@ add_filter( 'theme_auto_update_setting_html', 'bh_theme_auto_update_setting_html
  *
  * @return string The modified JavaScript template for displaying the auto-update setting link.
  */
-function bh_theme_auto_update_setting_template( $template ) {
-	$bulk_auto_update_enabled = bh_auto_update_make_bool( get_option( 'auto_update_theme', true ) );
+function theme_auto_update_setting_template( $template ) {
+	$bulk_auto_update_enabled = auto_update_make_bool( get_option( 'auto_update_theme', true ) );
 
 	if ( ! $bulk_auto_update_enabled ) {
 		return $template;
 	}
 
 	$template_string = '<# } else if ( data.autoupdate.forced ) { #>
-					' . __( 'Auto-updates enabled', 'bluehost-wordpress-plugin' );
+					' . __( 'Auto-updates enabled', 'wp-plugin-bluehost' );
 	$replacement     = '<# } else if ( data.autoupdate.forced ) { #>';
 	$replacement    .= sprintf(
 	/* translators: %s Settings > General page URL. */
-		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'bluehost-wordpress-plugin' ),
+		__( 'Auto-updates enabled on the <a href="%s">Bluehost > Settings</a> page.', 'wp-plugin-bluehost' ),
 		admin_url( 'admin.php?page=bluehost#/settings' )
 	);
 
 	return str_replace( $template_string, $replacement, $template );
 }
 
-add_filter( 'theme_auto_update_setting_template', 'bh_theme_auto_update_setting_template' );
+add_filter( 'theme_auto_update_setting_template', __NAMESPACE__ . '\\theme_auto_update_setting_template' );
 
 /**
  * Sync the plugin's Core major auto-update setting with core's.
@@ -180,7 +182,7 @@ add_filter( 'theme_auto_update_setting_template', 'bh_theme_auto_update_setting_
  * @param mixed $old_value The old option value.
  * @param mixed $value     The new option value.
  */
-function bh_sync_plugin_major_auto_core_update_option( $old_value, $value ) {
+function sync_plugin_major_auto_core_update_option( $old_value, $value ) {
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 		return;
 	}
@@ -192,7 +194,7 @@ function bh_sync_plugin_major_auto_core_update_option( $old_value, $value ) {
 	}
 }
 
-add_action( 'update_option_auto_update_core_major', 'bh_sync_plugin_major_auto_core_update_option', 10, 2 );
+add_action( 'update_option_auto_update_core_major', __NAMESPACE__ . '\\sync_plugin_major_auto_core_update_option', 10, 2 );
 
 
 /**
@@ -206,7 +208,7 @@ add_action( 'update_option_auto_update_core_major', 'bh_sync_plugin_major_auto_c
  *
  * @return bool True if the value was updated, false otherwise.
  */
-function bh_sync_plugin_update_settings() {
+function sync_plugin_update_settings() {
 	if ( ! function_exists( 'get_plugins' ) ) {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
@@ -225,7 +227,7 @@ function bh_sync_plugin_update_settings() {
  *
  * @return bool True if the value was updated, false otherwise.
  */
-function bh_sync_theme_update_settings() {
+function sync_theme_update_settings() {
 	if ( ! function_exists( 'wp_get_themes' ) ) {
 		require_once ABSPATH . WPINC . '/theme.php';
 	}
@@ -239,7 +241,7 @@ function bh_sync_theme_update_settings() {
  * @param string $plugin_file Path to the plugin file relative to the plugins directory.
  * @param bool   $deleted     Whether the plugin deletion was successful.
  */
-function bh_deleted_plugin( $plugin_file, $deleted ) {
+function deleted_plugin( $plugin_file, $deleted ) {
 	if ( ! $deleted ) {
 		return;
 	}
@@ -249,10 +251,10 @@ function bh_deleted_plugin( $plugin_file, $deleted ) {
 		return;
 	}
 
-	bh_sync_plugin_update_settings();
+	sync_plugin_update_settings();
 }
 
-add_action( 'deleted_plugin', 'bh_deleted_plugin', 10, 2 );
+add_action( 'deleted_plugin', __NAMESPACE__ . '\\deleted_plugin', 10, 2 );
 
 /**
  * Updates the WordPress Core theme auto-update option when a theme is deleted.
@@ -260,7 +262,7 @@ add_action( 'deleted_plugin', 'bh_deleted_plugin', 10, 2 );
  * @param string $stylesheet Stylesheet of the theme to delete.
  * @param bool   $deleted    Whether the theme deletion was successful.
  */
-function bh_deleted_theme( $stylesheet, $deleted ) {
+function deleted_theme( $stylesheet, $deleted ) {
 	if ( ! $deleted ) {
 		return;
 	}
@@ -270,18 +272,18 @@ function bh_deleted_theme( $stylesheet, $deleted ) {
 		return;
 	}
 
-	bh_sync_theme_update_settings();
+	sync_theme_update_settings();
 }
 
-add_action( 'deleted_theme', 'bh_deleted_plugin', 10, 2 );
+add_action( 'deleted_theme', __NAMESPACE__ . '\\deleted_plugin', 10, 2 );
 
 /**
  * Updates the WordPress Core theme auto-update option when a theme is deleted.
  *
- * This is a backwards compatibility version of `bh_deleted_theme`, which uses the `deleted_theme` action hook that was
+ * This is a backwards compatibility version of `deleted_theme`, which uses the `deleted_theme` action hook that was
  * added in WordPress 5.8.0.
  */
-function bh_delete_site_transient_update_themes() {
+function delete_site_transient_update_themes() {
 	global $wp_version;
 
 	// The `deleted_theme` hook was introduced in WordPress 5.8.
@@ -294,10 +296,10 @@ function bh_delete_site_transient_update_themes() {
 		return;
 	}
 
-	bh_sync_theme_update_settings();
+	sync_theme_update_settings();
 }
 
-add_action( 'delete_site_transient_update_themes', 'bh_delete_site_transient_update_themes', 10, 0 );
+add_action( 'delete_site_transient_update_themes', __NAMESPACE__ . '\\delete_site_transient_update_themes', 10, 0 );
 
 /**
  * Updates the WordPress Core options for plugin and theme auto-updates when one is updated.
@@ -323,7 +325,7 @@ add_action( 'delete_site_transient_update_themes', 'bh_delete_site_transient_upd
  *     }
  * }
  */
-function bh_upgrader_process_complete( $upgrader, $hook_extra ) {
+function upgrader_process_complete( $upgrader, $hook_extra ) {
 	if ( ! in_array( $hook_extra['type'], array( 'plugin', 'theme' ), true ) ) {
 		return;
 	}
@@ -334,13 +336,13 @@ function bh_upgrader_process_complete( $upgrader, $hook_extra ) {
 	}
 
 	if ( 'plugin' === $hook_extra['type'] ) {
-		bh_sync_plugin_update_settings();
+		sync_plugin_update_settings();
 	} else {
-		bh_sync_theme_update_settings();
+		sync_theme_update_settings();
 	}
 }
 
-add_action( 'upgrader_process_complete', 'bh_upgrader_process_complete', 10, 2 );
+add_action( 'upgrader_process_complete', __NAMESPACE__ . '\\upgrader_process_complete', 10, 2 );
 
 /**
  * When upgrading from < 5.6, sync the plugin option with Core's new option.
@@ -348,7 +350,7 @@ add_action( 'upgrader_process_complete', 'bh_upgrader_process_complete', 10, 2 )
  * @param int $wp_db_version         The new $wp_db_version.
  * @param int $wp_current_db_version The old (current) $wp_db_version.
  */
-function bh_core_update_560( $wp_db_version, $wp_current_db_version ) {
+function core_update_560( $wp_db_version, $wp_current_db_version ) {
 	if ( 49572 > $wp_current_db_version && 49572 < $wp_db_version ) {
 		$update_option = get_option( 'allow_major_auto_core_updates', 'true' );
 
@@ -360,4 +362,4 @@ function bh_core_update_560( $wp_db_version, $wp_current_db_version ) {
 	}
 }
 
-add_action( 'wp_upgrade', 'bh_core_update_560', 10, 2 );
+add_action( 'wp_upgrade', __NAMESPACE__ . '\\core_update_560', 10, 2 );

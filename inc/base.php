@@ -1,12 +1,19 @@
 <?php
+/**
+ * Base functions
+ *
+ * @package WPPluginBluehost
+ */
+
+namespace Bluehost;
 
 /**
  * Check if plugin install date exists.
  *
  * @return bool
  */
-function bh_has_plugin_install_date() {
-	return ! empty( get_option( 'bh_plugin_install_date', '' ) );
+function bluehost_has_plugin_install_date() {
+	return ! empty( get_option( 'bluehost_plugin_install_date', '' ) );
 }
 
 /**
@@ -14,8 +21,8 @@ function bh_has_plugin_install_date() {
  *
  * @return string
  */
-function bh_get_plugin_install_date() {
-	return (string) get_option( 'bh_plugin_install_date', gmdate( 'U' ) );
+function bluehost_get_plugin_install_date() {
+	return (string) get_option( 'bluehost_plugin_install_date', gmdate( 'U' ) );
 }
 
 /**
@@ -23,131 +30,76 @@ function bh_get_plugin_install_date() {
  *
  * @param string $value Date in Unix timestamp format.
  */
-function bh_set_plugin_install_date( $value ) {
-	update_option( 'bh_plugin_install_date', $value, true );
+function bluehost_set_plugin_install_date( $value ) {
+	update_option( 'bluehost_plugin_install_date', $value, true );
 }
+
 
 /**
  * Get the number of days since the plugin was installed.
  *
  * @return int
  */
-function bh_get_days_since_plugin_install_date() {
-	return absint( ( gmdate( 'U' ) - bh_get_plugin_install_date() ) / DAY_IN_SECONDS );
+function bluehost_get_days_since_plugin_install_date() {
+	return absint( ( gmdate( 'U' ) - bluehost_get_plugin_install_date() ) / DAY_IN_SECONDS );
 }
 
 /**
  * Basic setup
  */
-function bh_setup() {
+function bluehost_setup() {
 	if ( ( '' === get_option( 'mm_master_aff' ) || false === get_option( 'mm_master_aff' ) ) && defined( 'MMAFF' ) ) {
 		update_option( 'mm_master_aff', MMAFF );
 	}
 	$install_date = get_option( 'mm_install_date' );
 	if ( empty( $install_date ) ) {
-		update_option( 'mm_install_date', gmdate( 'M d, Y' ) );
+		update_option( 'mm_install_date', date( 'M d, Y' ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 		$event                            = array(
 			't'    => 'event',
 			'ec'   => 'plugin_status',
 			'ea'   => 'installed',
-			'el'   => 'Install date: ' . get_option( 'mm_install_date', gmdate( 'M d, Y' ) ),
+			'el'   => 'Install date: ' . get_option( 'mm_install_date', date( 'M d, Y' ) ),  // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 			'keep' => false,
 		);
 		$events                           = get_option( 'mm_cron', array() );
 		$events['hourly'][ $event['ea'] ] = $event;
 		update_option( 'mm_cron', $events );
 	}
-	if ( ! bh_has_plugin_install_date() ) {
+	if ( ! bluehost_has_plugin_install_date() ) {
 		$date = false;
 		if ( ! empty( $install_date ) ) {
-			$date = DateTime::createFromFormat( 'M d, Y', $install_date );
+			$date = \DateTime::createFromFormat( 'M d, Y', $install_date );
 		}
-		bh_set_plugin_install_date( $date ? $date->format( 'U' ) : gmdate( 'U' ) );
+		bluehost_set_plugin_install_date( $date ? $date->format( 'U' ) : gmdate( 'U' ) );
 	}
 }
 
-add_action( 'admin_init', 'bh_setup' );
+add_action( 'admin_init', __NAMESPACE__ . '\\bluehost_setup' );
+
 
 /**
- * Install date filter
+ * Filter the date used in data module
  *
- * @param string $install_date - incoming install date
- * @return string filtered install date
+ * @param string $install_date value from hook
+ * @return int
  */
-function bh_install_date_filter( $install_date ) {
-	return bh_get_plugin_install_date();
+function bluehost_install_date_filter( $install_date ) {
+	return bluehost_get_plugin_install_date();
 }
+add_filter( 'nfd_install_date_filter', __NAMESPACE__ . '\\bluehost_install_date_filter' );
 
-add_filter( 'nfd_install_date_filter', 'bh_install_date_filter' );
 
 /**
- * Use mojo news feed
+ * Update mm value when updating nfd one
  *
- * @param string $feed - incoming feed url
- */
-function mojo_better_news_feed( $feed ) {
-	return 'http://feeds.feedburner.com/wp-pipes';
-}
-
-add_filter( 'dashboard_secondary_feed', 'mojo_better_news_feed' );
-add_filter( 'dashboard_secondary_link', 'mojo_better_news_feed' );
-
-/**
- * Set mojo news transient expiry
- */
-function mojo_adjust_feed_transient_lifetime() {
-	return 3 * HOUR_IN_SECONDS;
-}
-
-add_filter( 'wp_feed_cache_transient_lifetime', 'mojo_adjust_feed_transient_lifetime' );
-
-/**
- * Undocumented
- */
-function mojo_site_bin2hex() {
-	$path = ABSPATH;
-	$path = explode( 'public_html/', $path );
-	if ( 2 === count( $path ) ) {
-		$path = '/public_html/' . $path[1];
-	} else {
-		return false;
-	}
-
-	$path_hash = bin2hex( $path );
-
-	return $path_hash;
-}
-
-/**
- * Get the client IP address.
+ * @param mixed $new_option New option value.
+ * @param mixed $old_option Previous option value.
  *
- * @return string
+ * @return mixed
  */
-function bh_get_client_ip() {
-
-	// Default to REMOTE_ADDR
-	$ip = ( isset( $_SERVER['REMOTE_ADDR'] ) ) ? $_SERVER['REMOTE_ADDR'] : null;
-
-	$proxy_headers = array(
-		'HTTP_CF_CONNECTING_IP', // CloudFlare
-		'HTTP_FASTLY_CLIENT_IP', // Fastly
-		'HTTP_INCAP_CLIENT_IP', // Incapsula
-		'HTTP_TRUE_CLIENT_IP', // CloudFlare Enterprise
-		'HTTP_X_FORWARDED_FOR', // Any proxy
-		'HTTP_X_SUCURI_CLIENTIP', // Sucuri
-	);
-
-	// Check for alternate headers indicating a forwarded IP address
-	foreach ( $proxy_headers as $proxy_header ) {
-		if ( ! empty( $_SERVER[ $proxy_header ] ) ) {
-			$forwarded_ips = explode( ',', $_SERVER[ $proxy_header ] );
-			$forwarded_ip  = array_shift( $forwarded_ips );
-			if ( $forwarded_ip ) {
-				$ip = $forwarded_ip;
-				break;
-			}
-		}
-	}
-
-	return $ip;
+function site_launched( $new_option, $old_option ) {
+	update_option( 'mm_coming_soon', $new_option );
+	return $new_option;
 }
+
+add_filter( 'pre_update_option_nfd_coming_soon', __NAMESPACE__ . '\\site_launched', 10, 2 );

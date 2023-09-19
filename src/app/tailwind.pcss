@@ -1,0 +1,292 @@
+/* Import main CSS including all components. */
+@import "@newfold/ui-component-library";
+
+/* Tailwind layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Configs */
+@layer base {
+	.nfd-root {
+		@apply
+		nfd-text-body;
+
+		a {
+			@apply
+			nfd-no-underline	
+			nfd-text-primary
+			hover:nfd-text-primary-dark
+			focus:nfd-text-primary-dark
+			focus:nfd-outline-none
+			focus:nfd-ring-1
+			focus:nfd-ring-offset-1
+			focus:nfd-ring-offset-transparent
+			focus:nfd-ring-primary-dark
+			focus:nfd-rounded-sm
+			visited:nfd-text-primary
+			visited:hover:nfd-text-primary-dark;
+		}
+	}
+}
+
+/* Titles */
+@layer components {
+	.nfd-root {
+		.nfd-title {
+			@apply
+			nfd-text-title
+		}
+	}
+}
+
+/* Links */
+@layer components {
+	.nfd-root {
+		.nfd-link {
+			@apply
+			nfd-text-primary
+
+			hover:nfd-text-primary-dark
+			visited:nfd-text-primary-dark
+			visited:hover:nfd-text-primary-dark;
+		}
+
+		.nfd-link--primary {
+			@apply nfd-text-primary-600 hover:nfd-text-primary-500 focus:nfd-text-primary-500 focus:nfd-ring-primary-600;
+		}
+
+		.nfd-link--error {
+			@apply nfd-text-red-600 hover:nfd-text-red-500 focus:nfd-text-red-500 focus:nfd-ring-red-600;
+		}
+	}
+}
+
+/* Buttons */
+@layer components {
+	.nfd-root {
+		.nfd-button {
+			@apply
+			nfd-px-4
+			nfd-gap-2
+			focus:nfd-ring-primary;
+
+			svg {
+				@apply
+				nfd-w-5
+				nfd-h-5;
+			}
+		}
+
+		/* Variants */
+
+		.nfd-button--primary {
+			@apply
+			nfd-bg-primary
+
+			hover:nfd-bg-primary-dark
+			focus:nfd-ring-primary;
+		}
+
+		.nfd-button--secondary {
+			@apply
+			nfd-text-black
+			nfd-bg-white
+			nfd-border-primary
+
+			hover:nfd-text-black
+			hover:nfd-bg-primary-light
+			focus:nfd-text-title
+			focus:nfd-ring-primary
+			visited:nfd-text-black
+			visited:hover:nfd-text-title;
+		}
+
+		.nfd-button--standout {
+			@apply
+			nfd-bg-secondary
+			nfd-text-[#1E293B]
+
+			hover:nfd-bg-secondary-dark
+			hover:nfd-text-[#1E293B]
+			focus:nfd-text-[#1E293B];
+		}
+	}
+}
+
+/* Toggle / Toggle Field */
+@layer components {
+	.nfd-root {
+		.nfd-toggle {
+			@apply
+			nfd-bg-[#CDD0D6]
+
+			focus:nfd-ring-primary;
+		}
+
+		.nfd-toggle--checked {
+			@apply nfd-bg-primary;
+		}
+
+		.nfd-toggle__icon--check {
+			@apply nfd-text-primary;
+		}
+
+		.nfd-toggle__icon--x {
+			@apply nfd-text-[#9CA3AF];
+		}
+
+		.nfd-toggle-field__description {
+			@apply 
+			nfd-mt-3
+			nfd-mr-2
+			sm:nfd-mr-[10.5rem]
+			sm:nfd-mt-0;
+		}
+	}
+}
+
+/* Checkbox */
+@layer components {
+	.nfd-root {
+		.nfd-checkbox {
+			.nfd-checkbox__input {
+				@apply
+				nfd-text-primary
+				nfd-shadow-none
+	
+				focus:nfd-ring-primary;
+
+				&:checked {
+					&::before {
+						@apply nfd-hidden;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* Radio Input */
+@layer components {
+	.nfd-root {
+		.nfd-radio-group {
+			.nfd-radio__description {
+				@apply
+				nfd-mb-2 
+				nfd-ml-7 
+				lg:nfd-mr-[10.5rem];
+			}
+		}
+
+		.nfd-radio__input {
+			@apply
+			nfd-text-primary
+			nfd-shadow-none
+
+			focus:nfd-ring-primary;
+
+			&:checked {
+				&::before {
+					@apply nfd-bg-transparent;
+				}
+			}
+		}
+	}
+}
+
+/* Select Field */
+@layer components {
+	.nfd-root {
+		.nfd-select__button {
+			@apply
+			focus:nfd-ring-primary
+			focus:nfd-border-primary;
+		}
+
+		.nfd-select__option {
+			&--active {
+				@apply nfd-bg-[#CDD0D6];
+			}
+
+			&--selected {
+				@apply nfd-bg-primary;
+			}
+		}
+
+		.nfd-select-field__spaced {
+			.nfd-select-field__select {
+				@apply
+				nfd-flex
+				nfd-items-center
+				nfd-justify-between
+				nfd-gap-4;
+			}
+
+			.nfd-select__button {
+				@apply nfd-w-24;
+			}
+
+			.nfd-select__options {
+				@apply 
+				nfd-w-40
+				nfd-right-0;
+			}
+
+			.nfd-select-field__description {
+				@apply lg:nfd-mr-[10.5rem];
+			}
+		}
+	}
+}
+
+/* Notifications */
+@layer components {
+	.nfd-root {
+
+		.nfd-notifications {
+			z-index: 9991;
+		}
+
+        .nfd-notifications--bottom-left {
+            @apply nfd-left-[12%];
+        }
+	}
+}
+
+/* Modal */
+@layer components {
+	.nfd-root {
+		/* mobile menu modal */
+		.wppbh-app-sidenav-mobile {
+            .nfd-modal__close {
+                @apply 
+                nfd-flex
+                nfd-bg-white
+                nfd-rounded-full
+                nfd-top-[-36px] 
+                nfd-right-0;
+            }
+
+            .nfd-modal__close-button {
+                @apply
+                nfd-text-body
+                nfd-rounded-full
+				nfd-p-1
+                hover:nfd-text-title
+                focus:nfd-ring-primary;
+            }
+        }
+    }
+}
+
+/* Text Input Field */
+@layer components {
+	.nfd-root {
+		.nfd-text-input {
+			@apply
+			focus:nfd-ring-primary
+			focus:nfd-border-primary;
+		}
+	}
+}

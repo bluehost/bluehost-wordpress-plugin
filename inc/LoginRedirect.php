@@ -15,6 +15,7 @@ class LoginRedirect {
 	public static function init() {
 		add_action( 'login_redirect', array( __CLASS__, 'on_login_redirect' ), 10, 3 );
 		add_action( 'login_init', array( __CLASS__, 'on_login_init' ), 10, 3 );
+        add_action( 'admin_init', array( __CLASS__, 'disable_yoast_onboarding_redirect' ), 2 );
 		add_filter( 'login_form_defaults', array( __CLASS__, 'filter_login_form_defaults' ) );
 		add_filter( 'newfold_sso_success_url_default', array( __CLASS__, 'get_default_redirect_url' ) );
 	}
@@ -66,7 +67,7 @@ class LoginRedirect {
 
 		if ( self::is_user( $user ) ) {
 			// If no redirect is defined and the user is an administrator, redirect to the Bluehost dashboard.
-			if ( empty( $requested_redirect_to ) && self::is_administrator( $user ) ) {
+			if ( (empty( $requested_redirect_to ) || admin_url( '/' ) === $requested_redirect_to ) && self::is_administrator( $user ) ) {
 				return self::get_bluehost_dashboard_url();
 			}
 
@@ -78,6 +79,15 @@ class LoginRedirect {
 
 		return $redirect_to;
 	}
+
+    /**
+     * Disable Yoast onboarding redirect.
+     */
+    public static function disable_yoast_onboarding_redirect() {
+        if ( class_exists( 'WPSEO_Options' ) ) {
+			\WPSEO_Options::set( 'should_redirect_after_install_free', false );
+		}
+    }
 
 	/**
 	 * Check if we have a valid user.
@@ -122,3 +132,5 @@ class LoginRedirect {
 	}
 
 }
+
+LoginRedirect::init();
