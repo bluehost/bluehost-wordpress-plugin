@@ -72,8 +72,8 @@ describe('Notifications', () => {
 	before(() => {
 
 		cy.intercept({
-			method: 'GET',
-			url: '**newfold-notifications**'
+			method: 'get',
+            url: /newfold-notifications(\/|%2F)v1(\/|%2F)notifications/
 		}, notificationsfixture ).as('getnotifications');
 
 		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/home', {timeout: 30000});
