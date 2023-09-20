@@ -51,7 +51,7 @@
   "require-dev": {
     "roave/security-advisories": "dev-latest",
     "newfold-labs/wp-php-standards": "^1.2",
-    "wp-cli/i18n-command": "^2.4.3",
+    "wp-cli/i18n-command": "^2.4.4",
     "wp-phpunit/wp-phpunit": "^6.3.1"
   },
   "require": {
