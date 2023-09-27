@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc80432c9ed24703155e763c9dbae113",
+    "content-hash": "2c42f289ac5533f2bb0f0cda80651b1e",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -467,16 +467,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.2.5",
+            "version": "v1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "bf058c635edab19dde69d52ad3ce89dd78dc89cc"
+                "reference": "6bf5b8e15586c555a8cc47f1aa342dc39069fa23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/bf058c635edab19dde69d52ad3ce89dd78dc89cc",
-                "reference": "bf058c635edab19dde69d52ad3ce89dd78dc89cc",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/6bf5b8e15586c555a8cc47f1aa342dc39069fa23",
+                "reference": "6bf5b8e15586c555a8cc47f1aa342dc39069fa23",
                 "shasum": ""
             },
             "require": {
@@ -518,23 +518,23 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.2.5",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.2.6",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-09-26T10:16:53+00:00"
+            "time": "2023-09-27T13:12:33+00:00"
         },
         {
             "name": "newfold-labs/wp-module-global-ctb",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-global-ctb.git",
-                "reference": "c31f00076cdadd5613451fc1cd9543a8fd4319df"
+                "reference": "06909ff1e025a034f69f7886426fe3b87d99743c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-global-ctb/zipball/c31f00076cdadd5613451fc1cd9543a8fd4319df",
-                "reference": "c31f00076cdadd5613451fc1cd9543a8fd4319df",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-global-ctb/zipball/06909ff1e025a034f69f7886426fe3b87d99743c",
+                "reference": "06909ff1e025a034f69f7886426fe3b87d99743c",
                 "shasum": ""
             },
             "require-dev": {
@@ -568,10 +568,10 @@
             ],
             "description": "Newfold module for 'Click to Buy' functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-global-ctb/tree/1.0.3",
+                "source": "https://github.com/newfold-labs/wp-module-global-ctb/tree/1.0.4",
                 "issues": "https://github.com/newfold-labs/wp-module-global-ctb/issues"
             },
-            "time": "2023-09-22T22:04:21+00:00"
+            "time": "2023-09-26T15:25:13+00:00"
         },
         {
             "name": "newfold-labs/wp-module-help-center",
@@ -2253,12 +2253,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "ea3fc67b2c04a0af64eb18579946c5b83b6f3067"
+                "reference": "f312827af7c250c18a555862ef18012fb0de81ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/ea3fc67b2c04a0af64eb18579946c5b83b6f3067",
-                "reference": "ea3fc67b2c04a0af64eb18579946c5b83b6f3067",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/f312827af7c250c18a555862ef18012fb0de81ff",
+                "reference": "f312827af7c250c18a555862ef18012fb0de81ff",
                 "shasum": ""
             },
             "conflict": {
@@ -2398,7 +2398,7 @@
                 "ezsystems/ezplatform-richtext": ">=2.3,<2.3.7.1-dev",
                 "ezsystems/ezplatform-user": ">=1,<1.0.1",
                 "ezsystems/ezpublish-kernel": "<6.13.8.2-dev|>=7,<7.5.30",
-                "ezsystems/ezpublish-legacy": "<=2017.12.7.3|>=2018.06,<=2019.03.5.1",
+                "ezsystems/ezpublish-legacy": "<=2017.12.7.3|>=2018.6,<=2019.03.5.1",
                 "ezsystems/platform-ui-assets-bundle": ">=4.2,<4.2.3",
                 "ezsystems/repository-forms": ">=2.3,<2.3.2.1-dev|>=2.5,<2.5.15",
                 "ezyang/htmlpurifier": "<4.1.1",
@@ -2703,7 +2703,7 @@
                 "simplesamlphp/simplesamlphp-module-openidprovider": "<0.9",
                 "simplito/elliptic-php": "<1.0.6",
                 "sitegeist/fluid-components": "<3.5",
-                "sjbr/sr-freecap": "<=2.5.2",
+                "sjbr/sr-freecap": "<2.4.6|>=2.5,<2.5.3",
                 "slim/psr7": "<1.4.1|>=1.5,<1.5.1|>=1.6,<1.6.1",
                 "slim/slim": "<2.6",
                 "slub/slub-events": "<3.0.3",
@@ -2923,7 +2923,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-09-25T18:04:45+00:00"
+            "time": "2023-09-27T13:05:42+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
