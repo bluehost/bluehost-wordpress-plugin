@@ -29,7 +29,7 @@
         "@newfold/ui-component-library": "^1.0.0",
         "@reduxjs/toolkit": "^1.9.5",
         "@wordpress/compose": "^6.18.0",
-        "@wordpress/dom-ready": "^3.41.0",
+        "@wordpress/dom-ready": "^3.42.0",
         "@wordpress/element": "^5.18.0",
         "@wordpress/i18n": "^4.41.0",
         "@wordpress/icons": "^9.32.0",
