@@ -815,12 +815,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "0a869da55c0b1d30a3b82f5ba1f8f7beb13af541"
+                "reference": "be6a011d78660058fbeb1d43192cd92ff8fde8c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/0a869da55c0b1d30a3b82f5ba1f8f7beb13af541",
-                "reference": "0a869da55c0b1d30a3b82f5ba1f8f7beb13af541",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/be6a011d78660058fbeb1d43192cd92ff8fde8c9",
+                "reference": "be6a011d78660058fbeb1d43192cd92ff8fde8c9",
                 "shasum": ""
             },
             "require": {
@@ -866,7 +866,7 @@
                 "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.11.0",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2023-09-28T08:16:22+00:00"
+            "time": "2023-09-28T08:56:05+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
