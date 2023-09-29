@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ad36b4561bfdf2856ed39a4e31dfd2f",
+    "content-hash": "508bad3ce9269d4d4ece2fb6fa64e98b",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -418,16 +418,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.4.6",
+            "version": "2.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "03bc7b42c7957ee983944721f8251d772985abee"
+                "reference": "c8b20f346302221c3ac18125a651fce66ebe2516"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/03bc7b42c7957ee983944721f8251d772985abee",
-                "reference": "03bc7b42c7957ee983944721f8251d772985abee",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/c8b20f346302221c3ac18125a651fce66ebe2516",
+                "reference": "c8b20f346302221c3ac18125a651fce66ebe2516",
                 "shasum": ""
             },
             "require": {
@@ -441,7 +441,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "NewfoldLabs\\WP\\Module\\Data\\": "src/"
+                    "NewfoldLabs\\WP\\Module\\Data\\": "includes/"
                 },
                 "files": [
                     "bootstrap.php"
@@ -460,10 +460,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.6",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.7",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2023-09-22T19:59:31+00:00"
+            "time": "2023-09-28T17:34:55+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
