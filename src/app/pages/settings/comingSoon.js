@@ -63,9 +63,23 @@ const ComingSoon = () => {
 		comingSoonAdminbarToggle(comingSoon);
 	}, [comingSoon]);
 
+	const getComingSoonSectionTitle = () => {
+		const getStatus = () => {
+			return (
+				comingSoon 
+				? <span className="nfd-text-[#e10001]">Coming Soon</span>
+				: <span className="nfd-text-[#008112]">Live</span>
+			);
+		};
+
+		return (
+			<span>{__('Site Status', 'wp-plugin-bluehost')}: {getStatus()}</span>
+		)
+	};
+
 	return (
 		<SectionSettings
-			title={__('Maintenance Mode', 'wp-plugin-bluehost')}
+			title={getComingSoonSectionTitle()}
 			description={__('Still building your site? Need to make a big change?', 'wp-plugin-bluehost')}
 		>
 			<div className="nfd-flex nfd-flex-col nfd-gap-6">

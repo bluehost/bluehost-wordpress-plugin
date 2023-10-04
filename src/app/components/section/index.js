@@ -1,5 +1,8 @@
 import { Button, Title } from "@newfold/ui-component-library";
+import { useState, useEffect} from '@wordpress/element';
 import classNames from "classnames";
+import { set } from "lodash";
+import { useSearchParams } from 'react-router-dom';
 
 export const SectionContainer = ({ className, children }) => {
     return (
@@ -56,9 +59,31 @@ export const SectionHeader = ({
     );
 }
 
-export const SectionContent = ({ separator = false, className, children }) => {
+export const SectionContent = ({ 
+    separator = false,
+    id,
+    className,
+    children 
+}) => {
+    const [isTarget, setIsTarget] = useState(false);
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    useEffect(() => {
+        if (searchParams.has('target') && searchParams.get('target') === id) {
+            setIsTarget(true);
+            setTimeout(() => {
+                setSearchParams({ target: 'false' });
+                setIsTarget(false);
+            }, 9500);
+        }
+    }, [searchParams]);
+    
     return (
-        <div className={classNames("wppbh-app-section-content nfd-p-8 nfd-pb-0", className)}>
+        <div id={id} className={classNames(
+            "wppbh-app-section-content nfd-p-8 nfd-pb-0", 
+            className,
+            isTarget && "wppbh-animation-blink"
+        )}>
             <div className={
                 classNames(
                     "nfd-pb-8",
