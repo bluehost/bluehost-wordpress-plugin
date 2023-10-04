@@ -67,8 +67,8 @@ const ComingSoon = () => {
 		const getStatus = () => {
 			return (
 				comingSoon 
-				? <span className="nfd-text-[#e10001]">Coming Soon</span>
-				: <span className="nfd-text-[#008112]">Live</span>
+				? <span className="nfd-text-[#e10001]">{__('Coming Soon', 'wp-plugin-bluehost')}</span>
+				: <span className="nfd-text-[#008112]">{__('Live', 'wp-plugin-bluehost')}</span>
 			);
 		};
 
