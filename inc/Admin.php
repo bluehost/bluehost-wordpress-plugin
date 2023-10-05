@@ -151,7 +151,7 @@ final class Admin {
 			\wp_register_script(
 				'bluehost-script',
 				BLUEHOST_BUILD_URL . '/index.js',
-				array_merge( $asset['dependencies'] ),
+				array_merge( $asset['dependencies'], [ 'nfd-runtime' ] ),
 				$asset['version'],
 				true
 			);
