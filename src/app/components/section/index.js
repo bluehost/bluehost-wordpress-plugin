@@ -1,8 +1,6 @@
 import { Button, Title } from "@newfold/ui-component-library";
 import { useState, useEffect} from '@wordpress/element';
 import classNames from "classnames";
-import { set } from "lodash";
-import { useSearchParams } from 'react-router-dom';
 
 export const SectionContainer = ({ className, children }) => {
     return (
@@ -63,20 +61,31 @@ export const SectionContent = ({
     separator = false,
     id,
     className,
-    children 
+    children
 }) => {
     const [isTarget, setIsTarget] = useState(false);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const searchParams = new URLSearchParams(window.location.search);
 
     useEffect(() => {
-        if (searchParams.has('target') && searchParams.get('target') === id) {
+        if (searchParams.has('nfd-target') && searchParams.get('nfd-target') === id) {
             setIsTarget(true);
+            
             setTimeout(() => {
-                setSearchParams({ target: 'false' });
                 setIsTarget(false);
+                removeTargetQueryParam();
             }, 9500);
         }
     }, [searchParams]);
+
+    /*
+    * Remove the 'nfd-target={id}' query param from the URL
+    */
+    const removeTargetQueryParam = () => {
+        searchParams.delete('nfd-target');
+        const currentURL = window.location.href;
+        const updatedURL = currentURL.replace(`&nfd-target=${id}`, '');
+        window.history.replaceState(null, null, updatedURL);
+    }
     
     return (
         <div id={id} className={classNames(
