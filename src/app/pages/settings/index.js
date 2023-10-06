@@ -15,7 +15,7 @@ const Settings = () => {
                     className={'wppbh-app-settings-header'}
                 />
 
-                <SectionContent separator={true} className={'wppbh-app-settings-coming-soon'}>
+                <SectionContent separator={true} id={'coming-soon-section'} className={'wppbh-app-settings-coming-soon'}>
                     <ComingSoon />
                 </SectionContent>
 
