@@ -88,4 +88,6 @@ module.exports = defineConfig({
 			"vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/wp-module-support/"
 		]
   },
+  retries: 1,
+  experimentalMemoryManagement: true,
 })

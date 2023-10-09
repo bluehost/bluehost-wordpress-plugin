@@ -4,27 +4,35 @@
 /bin
 node_modules
 /src
-tests
+/tests
 
 # Files
-.*
+/.*
 cypress.config.js
 set-latest-wp-version.js
+webpack.config.js
 
 # File Types
-*.json
-*.lock
-*.log
-*.md
-*.sql
-*.tar.gz
-*.xml
-*.yml
-*.zip
-*.scss
+/*.json
+/*.lock
+/*.log
+/*.md
+/*.sql
+/*.tar.gz
+/*.xml
+/*.yml
+/*.zip
+/*.scss
 
-# Newfold src files
-vendor/newfold-labs/wp-module-ecommerce/src
-vendor/newfold-labs/wp-module-help-center/src
-vendor/newfold-labs/wp-module-onboarding/src
-vendor/newfold-labs/wp-module-patterns/src
+# BEGIN NEWFOLD LABS RULES
+vendor/newfold-labs/*/src
+vendor/newfold-labs/*/source
+vendor/newfold-labs/*/tests
+vendor/newfold-labs/*/.*
+vendor/newfold-labs/*/*.xml
+vendor/newfold-labs/*/*.json
+vendor/newfold-labs/*/*.lock
+vendor/newfold-labs/*/*.scss
+vendor/newfold-labs/*/*.md
+vendor/newfold-labs/*/*.config.js
+vendor/newfold-labs/*/LICENSE
