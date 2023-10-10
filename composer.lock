@@ -528,20 +528,21 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.2.6",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "6bf5b8e15586c555a8cc47f1aa342dc39069fa23"
+                "reference": "8589c85bd93347a64e2f1ef19cb4c1ad8b85af27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/6bf5b8e15586c555a8cc47f1aa342dc39069fa23",
-                "reference": "6bf5b8e15586c555a8cc47f1aa342dc39069fa23",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/8589c85bd93347a64e2f1ef19cb4c1ad8b85af27",
+                "reference": "8589c85bd93347a64e2f1ef19cb4c1ad8b85af27",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-installer": "^1.1"
+                "newfold-labs/wp-module-installer": "^1.1",
+                "newfold-labs/wp-module-onboarding-data": "^0.0.2"
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "@stable",
@@ -579,10 +580,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.2.6",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.0",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-09-27T13:12:33+00:00"
+            "time": "2023-10-06T10:58:11+00:00"
         },
         {
             "name": "newfold-labs/wp-module-global-ctb",
@@ -969,6 +970,47 @@
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
             },
             "time": "2023-10-06T10:38:41+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-onboarding-data",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
+                "reference": "d0c6c03d24c6b15e8516007146ac226a4af14449"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/d0c6c03d24c6b15e8516007146ac226a4af14449",
+                "reference": "d0c6c03d24c6b15e8516007146ac226a4af14449",
+                "shasum": ""
+            },
+            "require": {
+                "newfold-labs/wp-module-data": "^2.4.3",
+                "newfold-labs/wp-module-installer": "^1.1",
+                "wp-forge/wp-upgrade-handler": "^1.0"
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Onboarding\\Data\\": "includes/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "arunshenoy99",
+                    "email": "devarunshenoy99@gmail.com"
+                }
+            ],
+            "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/0.0.2",
+                "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
+            },
+            "time": "2023-09-28T08:43:53+00:00"
         },
         {
             "name": "newfold-labs/wp-module-patterns",
@@ -2355,12 +2397,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "66dba7265a37e4081f443ed8211d507cd3cce5ef"
+                "reference": "85afa852eeecec97cec35d987dcfbc602c025620"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/66dba7265a37e4081f443ed8211d507cd3cce5ef",
-                "reference": "66dba7265a37e4081f443ed8211d507cd3cce5ef",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/85afa852eeecec97cec35d987dcfbc602c025620",
+                "reference": "85afa852eeecec97cec35d987dcfbc602c025620",
                 "shasum": ""
             },
             "conflict": {
