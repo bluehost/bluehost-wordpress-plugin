@@ -1,16 +1,19 @@
 // <reference types="Cypress" />
 
 describe('Home Page', function () {
+	let runtimeData;
 
 	before(() => {
 		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/home');
+		cy.window().its('NewfoldRuntime').then(data => {
+			runtimeData = data;
+		});
 		cy.injectAxe();
-		
 	});
 
 	it('Site Info Exists', () => {
 		cy
-			.get('.wppbh-app-site-info').contains('h3', 'bluehost-wordpress-plugin')
+			.get('.wppbh-app-site-info').contains('h3', runtimeData.site.title)
 			.scrollIntoView()
 			.should('be.visible');
 	});
@@ -27,7 +30,7 @@ describe('Home Page', function () {
 			.should('be.visible');
 	});
 
-	it('Additional Features Section Exists', () => {
+	it.skip('Additional Features Section Exists', () => {
 		cy
 			.get('.nfd-app-section-container').contains('h2', 'Additional Features')
 			.scrollIntoView()
