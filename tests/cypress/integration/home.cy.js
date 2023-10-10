@@ -1,19 +1,19 @@
 // <reference types="Cypress" />
 
 describe('Home Page', function () {
-	let runtimeData;
+	let NewfoldRuntime;
 
 	before(() => {
 		cy.visit('/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/home');
 		cy.window().its('NewfoldRuntime').then(data => {
-			runtimeData = data;
+			NewfoldRuntime = data;
 		});
 		cy.injectAxe();
 	});
 
 	it('Site Info Exists', () => {
 		cy
-			.get('.wppbh-app-site-info').contains('h3', runtimeData.site.title)
+			.get('.wppbh-app-site-info').contains('h3', NewfoldRuntime.site.title)
 			.scrollIntoView()
 			.should('be.visible');
 	});
