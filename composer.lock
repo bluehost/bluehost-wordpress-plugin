@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "940d048aed57fecaac623bfdcc7d61bd",
+    "content-hash": "218ccb837c139911e8bcd796c9a00e5f",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -418,16 +418,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.4.7",
+            "version": "2.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "c8b20f346302221c3ac18125a651fce66ebe2516"
+                "reference": "360de7c1eed2b3367162eeae0053988686a6db69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/c8b20f346302221c3ac18125a651fce66ebe2516",
-                "reference": "c8b20f346302221c3ac18125a651fce66ebe2516",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/360de7c1eed2b3367162eeae0053988686a6db69",
+                "reference": "360de7c1eed2b3367162eeae0053988686a6db69",
                 "shasum": ""
             },
             "require": {
@@ -460,10 +460,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.7",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.8",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2023-09-28T17:34:55+00:00"
+            "time": "2023-10-04T14:06:48+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
