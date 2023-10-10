@@ -72,7 +72,7 @@ function bluehost_is_jarvis() {
  */
 $bluehost_module_container = new Container(
 	array(
-		'cache_types' => array( 'browser', 'file', 'skip404' ),
+		'cache_types' => array( 'browser', 'skip404' ),
 	)
 );
 
