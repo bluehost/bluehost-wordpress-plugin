@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "218ccb837c139911e8bcd796c9a00e5f",
+    "content-hash": "f33ae9406e76a602c9b0c476871d3167",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -464,6 +464,67 @@
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
             "time": "2023-10-04T14:06:48+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-deactivation",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-deactivation.git",
+                "reference": "66d9e4d888426094ee6eb3b66d03404a6e8110e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-deactivation/zipball/66d9e4d888426094ee6eb3b66d03404a6e8110e3",
+                "reference": "66d9e4d888426094ee6eb3b66d03404a6e8110e3",
+                "shasum": ""
+            },
+            "require": {
+                "newfold-labs/wp-module-data": "^2.0.0"
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Deactivation\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "scripts": {
+                "fix": [
+                    "vendor/bin/phpcbf --standard=phpcs.xml ."
+                ],
+                "lint": [
+                    "vendor/bin/phpcs --standard=phpcs.xml -s ."
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                },
+                {
+                    "name": "Evan Mullins",
+                    "email": "evanrm@gmail.com"
+                },
+                {
+                    "name": "Al Ani",
+                    "email": "hey@alani.dev"
+                }
+            ],
+            "description": "A Module for handling WordPress brand plugins and modules deactivations",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-deactivation/tree/1.0.0",
+                "issues": "https://github.com/newfold-labs/wp-module-deactivation/issues"
+            },
+            "time": "2023-10-10T18:09:35+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
