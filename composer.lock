@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8dd099488200d0f96e14bcb2ca3a3b4",
+    "content-hash": "940d048aed57fecaac623bfdcc7d61bd",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -272,16 +272,16 @@
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
-            "version": "1.1.9",
+            "version": "1.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
-                "reference": "796ec3c20a0d023f18704f6147ce505c6460af7c"
+                "reference": "af5bf5924eba109807ef91270cba33c978aa695d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/796ec3c20a0d023f18704f6147ce505c6460af7c",
-                "reference": "796ec3c20a0d023f18704f6147ce505c6460af7c",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/af5bf5924eba109807ef91270cba33c978aa695d",
+                "reference": "af5bf5924eba109807ef91270cba33c978aa695d",
                 "shasum": ""
             },
             "require-dev": {
@@ -315,10 +315,10 @@
             ],
             "description": "Coming Soon module for WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.1.9",
+                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.1.10",
                 "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
             },
-            "time": "2023-09-06T19:45:39+00:00"
+            "time": "2023-10-04T16:23:44+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ctb",
@@ -1007,16 +1007,16 @@
         },
         {
             "name": "newfold-labs/wp-module-runtime",
-            "version": "v1.0.6",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-runtime.git",
-                "reference": "5b88eef8f550023dbd5010dfa3f147205cb44483"
+                "reference": "f661d423dc35026f3101355b5f6f67ed84ae3f9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/5b88eef8f550023dbd5010dfa3f147205cb44483",
-                "reference": "5b88eef8f550023dbd5010dfa3f147205cb44483",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/f661d423dc35026f3101355b5f6f67ed84ae3f9c",
+                "reference": "f661d423dc35026f3101355b5f6f67ed84ae3f9c",
                 "shasum": ""
             },
             "require-dev": {
@@ -1052,10 +1052,10 @@
             ],
             "description": "Runtime for Newfold WP modules and plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/v1.0.6",
+                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/v1.0.7",
                 "issues": "https://github.com/newfold-labs/wp-module-runtime/issues"
             },
-            "time": "2023-09-26T09:56:33+00:00"
+            "time": "2023-10-09T19:28:02+00:00"
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",

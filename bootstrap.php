@@ -20,6 +20,7 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 	if ( 'local' === wp_get_environment_type() ) {
 		wp_die( esc_html( __( 'Please install the Bluehost Plugin dependencies.', 'wp-plugin-bluehost' ) ) );
 	}
+
 	return;
 }
 
@@ -72,7 +73,7 @@ function bluehost_is_jarvis() {
  */
 $bluehost_module_container = new Container(
 	array(
-		'cache_types' => array( 'browser', 'file', 'skip404' ),
+		'cache_types' => array( 'browser', 'skip404' ),
 	)
 );
 
@@ -80,7 +81,7 @@ $bluehost_module_container = new Container(
 $bluehost_module_container->set(
 	'plugin',
 	$bluehost_module_container->service(
-		function() {
+		function () {
 			return new Plugin(
 				array(
 					'id'           => 'bluehost',
@@ -166,7 +167,7 @@ $pluginUpdater->setDataOverrides(
 			'2x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-banner.svg',
 			'1x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-banner.svg',
 		],
-		'icons' => [
+		'icons'   => [
 			'2x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-icon.svg',
 			'1x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-icon.svg',
 		],
@@ -178,9 +179,9 @@ if ( is_admin() ) {
 
 	// Handle plugin upgrades
 	$upgrade_handler = new UpgradeHandler(
-		BLUEHOST_PLUGIN_DIR . '/inc/upgrades',            // Directory where upgrade routines live
+		BLUEHOST_PLUGIN_DIR . '/inc/upgrades',                    // Directory where upgrade routines live
 		get_option( 'bluehost_plugin_version', '0.1.0' ), // Old plugin version (from database)
-		BLUEHOST_PLUGIN_VERSION                           // New plugin version (from code)
+		BLUEHOST_PLUGIN_VERSION                                  // New plugin version (from code)
 	);
 
 	// Returns true if the old version doesn't match the new version
