@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "03720319bd4ffd82050204cab231811f",
+    "content-hash": "bf356aada4c755c7c5cb6412b1137abb",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -528,21 +528,21 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "8589c85bd93347a64e2f1ef19cb4c1ad8b85af27"
+                "reference": "58a01c0b313f1cba857147d4ecdb3189e9c18a9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/8589c85bd93347a64e2f1ef19cb4c1ad8b85af27",
-                "reference": "8589c85bd93347a64e2f1ef19cb4c1ad8b85af27",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/58a01c0b313f1cba857147d4ecdb3189e9c18a9c",
+                "reference": "58a01c0b313f1cba857147d4ecdb3189e9c18a9c",
                 "shasum": ""
             },
             "require": {
                 "newfold-labs/wp-module-installer": "^1.1",
-                "newfold-labs/wp-module-onboarding-data": "^0.0.2"
+                "newfold-labs/wp-module-onboarding-data": "^0.0"
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "@stable",
@@ -580,10 +580,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.0",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.1",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-10-06T10:58:11+00:00"
+            "time": "2023-10-11T07:08:22+00:00"
         },
         {
             "name": "newfold-labs/wp-module-global-ctb",
@@ -932,16 +932,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
-            "version": "0.0.2",
+            "version": "0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
-                "reference": "d0c6c03d24c6b15e8516007146ac226a4af14449"
+                "reference": "6c8cef5e2efd0fb3678b122582979a1c4c580c87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/d0c6c03d24c6b15e8516007146ac226a4af14449",
-                "reference": "d0c6c03d24c6b15e8516007146ac226a4af14449",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/6c8cef5e2efd0fb3678b122582979a1c4c580c87",
+                "reference": "6c8cef5e2efd0fb3678b122582979a1c4c580c87",
                 "shasum": ""
             },
             "require": {
@@ -966,10 +966,10 @@
             ],
             "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/0.0.2",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/0.0.3",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
             },
-            "time": "2023-09-28T08:43:53+00:00"
+            "time": "2023-10-06T10:38:41+00:00"
         },
         {
             "name": "newfold-labs/wp-module-patterns",
@@ -3528,5 +3528,5 @@
     "platform-overrides": {
         "php": "7.1.0"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
