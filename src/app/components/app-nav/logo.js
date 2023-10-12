@@ -14,7 +14,7 @@ const Mark = () => {
 	};
 	return (
 		<Button
-			icon={ <Brand className="wppbh-logo" /> }
+			icon={ <Brand className="wppbh-logo nfd-w-full nfd-h-auto" /> }
 			style={ { width: '160px', height: 'auto' } }
 			onMouseUp={ defocus }
 			className="logo-mark nfd-p-0"
