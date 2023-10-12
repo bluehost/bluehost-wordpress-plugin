@@ -1,4 +1,5 @@
 import { Button, Title } from "@newfold/ui-component-library";
+import { useState, useEffect} from '@wordpress/element';
 import classNames from "classnames";
 
 export const SectionContainer = ({ className, children }) => {
@@ -56,9 +57,42 @@ export const SectionHeader = ({
     );
 }
 
-export const SectionContent = ({ separator = false, className, children }) => {
+export const SectionContent = ({ 
+    separator = false,
+    id,
+    className,
+    children
+}) => {
+    const [isTarget, setIsTarget] = useState(false);
+    const searchParams = new URLSearchParams(window.location.search);
+
+    useEffect(() => {
+        if (searchParams.has('nfd-target') && searchParams.get('nfd-target') === id) {
+            setIsTarget(true);
+            
+            setTimeout(() => {
+                setIsTarget(false);
+                removeTargetQueryParam();
+            }, 9500);
+        }
+    }, [searchParams]);
+
+    /*
+    * Remove the 'nfd-target={id}' query param from the URL
+    */
+    const removeTargetQueryParam = () => {
+        searchParams.delete('nfd-target');
+        const currentURL = window.location.href;
+        const updatedURL = currentURL.replace(`&nfd-target=${id}`, '');
+        window.history.replaceState(null, null, updatedURL);
+    }
+    
     return (
-        <div className={classNames("wppbh-app-section-content nfd-p-8 nfd-pb-0", className)}>
+        <div id={id} className={classNames(
+            "wppbh-app-section-content nfd-p-8 nfd-pb-0", 
+            className,
+            isTarget && "wppbh-animation-blink"
+        )}>
             <div className={
                 classNames(
                     "nfd-pb-8",
