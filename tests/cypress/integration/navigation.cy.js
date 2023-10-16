@@ -8,20 +8,16 @@ describe('Navigation', function () {
 		
 	});
 
+	it('Admin submenu shouldn\'t exist inside app', () => {
+		cy
+			.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu')
+			.should('not.exist');
+	});
+
 	it('Logo Links to home', () => {
 		cy.get('.wppbh-logo-wrap').click();
 		cy.wait(500);
 		cy.hash().should('eq', '#/home');
-	});
-	
-	it('Admin Subnav properly highlights', () => {
-		cy
-			.get('#adminmenu #toplevel_page_bluehost')
-			.should('have.class', 'wp-has-current-submenu');
-		cy
-			.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu li.current a')
-			.should('have.attr', 'href')
-			.and('match', /home/);
 	});
 
 	// test main nav
@@ -35,10 +31,6 @@ describe('Navigation', function () {
 		cy
 			.get('.wppbh-app-navitem-Marketplace')
 			.should('have.class', 'active');
-		cy
-			.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu li.current a')
-			.should('have.attr', 'href')
-			.and('match', /marketplace/);
 
 		cy.get('.wppbh-app-navitem-Performance').click();
 		cy.wait(500);
@@ -49,18 +41,10 @@ describe('Navigation', function () {
 		cy
 			.get('.wppbh-app-navitem-Marketplace')
 			.should('not.have.class', 'active');
-		cy
-			.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu li.current a')
-			.should('have.attr', 'href')
-			.and('match', /performance/);
 
 		cy.get('.wppbh-app-navitem-Settings').click();
 		cy.wait(500);
 		cy.hash().should('eq', '#/settings');
-		cy
-			.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu li.current a')
-			.should('have.attr', 'href')
-			.and('match', /settings/);
 	});
 	
 	it('Subnav links properly navigates', () => {
@@ -76,10 +60,6 @@ describe('Navigation', function () {
 		cy
 			.get('.wppbh-app-navitem-Marketplace')
 			.should('have.class', 'active');
-		cy
-			.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu li.current a')
-			.should('have.attr', 'href')
-			.and('match', /marketplace/);
 
 		cy.get('.wppbh-app-subnavitem-Services').click();
 		cy.wait(500);
@@ -87,10 +67,6 @@ describe('Navigation', function () {
 		cy
 			.get('.wppbh-app-subnavitem-Services')
 			.should('have.class', 'active');
-		cy
-			.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu li.current a')
-			.should('have.attr', 'href')
-			.and('match', /marketplace/);
 		cy
 			.get('.wppbh-app-navitem-Marketplace')
 			.should('have.class', 'active');
@@ -106,13 +82,9 @@ describe('Navigation', function () {
 			.get('.wppbh-app-subnavitem-Services')
 			.should('not.have.class', 'active');
 		cy
-			.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu li.current a')
-			.should('have.attr', 'href')
-			.and('match', /marketplace/);
-		cy
 			.get('.wppbh-app-navitem-Marketplace')
 			.should('have.class', 'active');
-			
+
 		cy.get('.wppbh-app-navitem-Performance').click();
 			cy.wait(500);
 		cy
@@ -124,6 +96,22 @@ describe('Navigation', function () {
 		cy
 			.get('.wppbh-app-navitem-Marketplace')
 			.should('not.have.class', 'active');
+	});
+
+	it('Admin submenu exist outside the app', () => {
+		cy.visit('/wp-admin/index.php');
+		cy
+			.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu')
+			.should('exist');
+		cy
+		.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu li a[href="admin.php?page=bluehost#/home"]')
+		.should('exist');
+		cy
+		.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu li a[href="admin.php?page=bluehost#/marketplace"]')
+		.should('exist');
+		cy
+		.get('#adminmenu #toplevel_page_bluehost ul.wp-submenu li a[href="admin.php?page=bluehost#/settings"]')
+		.should('exist');
 	});
 
 	// utility nav is no more, leaving this in place un case we bring it back anytime soon.

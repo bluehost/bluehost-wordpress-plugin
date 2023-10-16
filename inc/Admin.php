@@ -27,8 +27,8 @@ final class Admin {
 		/* Add inline style to hide subnav link */
 		\add_action( 'admin_head', array( __CLASS__, 'admin_nav_style' ) );
 
-		\add_filter('newfold-runtime', array( __CLASS__, 'add_to_runtime' ) );
-		\add_filter('newfold_runtime', array( __CLASS__, 'add_to_runtime' ) );
+		\add_filter( 'newfold-runtime', array( __CLASS__, 'add_to_runtime' ) );
+		\add_filter( 'newfold_runtime', array( __CLASS__, 'add_to_runtime' ) );
 
 		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) { // phpcs:ignore
 			\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
@@ -37,6 +37,7 @@ final class Admin {
 
 	public static function add_to_runtime( $sdk ) {
 		include_once BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
+
 		return array_merge( $sdk, Data::runtime() );
 	}
 
@@ -89,15 +90,18 @@ final class Admin {
 			0
 		);
 
-		foreach ( self::subpages() as $route => $title ) {
-			\add_submenu_page(
-				'bluehost',
-				$title,
-				$title,
-				'manage_options',
-				$route,
-				array( __CLASS__, 'render' )
-			);
+		// If we're outside of Bluehost, add subpages to Bluehost menu
+		if ( false === ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) ) { // phpcs:ignore
+			foreach ( self::subpages() as $route => $title ) {
+				\add_submenu_page(
+					'bluehost',
+					$title,
+					$title,
+					'manage_options',
+					$route,
+					array( __CLASS__, 'render' )
+				);
+			}
 		}
 	}
 
@@ -150,7 +154,7 @@ final class Admin {
 			\wp_register_script(
 				'bluehost-script',
 				BLUEHOST_BUILD_URL . '/index.js',
-				array_merge( $asset['dependencies'] ),
+				array_merge( $asset['dependencies'], [ 'nfd-runtime' ] ),
 				$asset['version'],
 				true
 			);
@@ -211,7 +215,8 @@ final class Admin {
 	/**
 	 * Add Links to WordPress Plugins list item for Bluehost.
 	 *
-	 * @param  array $actions - array of action links for Plugin row item.
+	 * @param array $actions - array of action links for Plugin row item.
+	 *
 	 * @return array
 	 */
 	public static function actions( $actions ) {
@@ -228,10 +233,12 @@ final class Admin {
 	 * Filter WordPress Admin Footer Text "Thank you for creating with..."
 	 *
 	 * @param string $footer_text footer text
+	 *
 	 * @return string
 	 */
 	public static function add_brand_to_admin_footer( $footer_text ) {
 		$footer_text = \sprintf( \__( 'Thank you for creating with <a href="https://wordpress.org/">WordPress</a> and <a href="https://bluehost.com/about">Bluehost</a>.', 'wp-plugin-bluehost' ) );
+
 		return $footer_text;
 	}
 } // END \Bluehost\Admin
