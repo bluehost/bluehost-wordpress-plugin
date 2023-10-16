@@ -14,7 +14,7 @@
  * Version:           3.4.1
  * Requires at least: 6.0
  * Requires PHP:      7.1
- * Tested up to:      6.3
+ * Tested up to:      6.3.2
  * Author:            Bluehost
  * Author URI:        https://bluehost.com
  * Text Domain:       wp-plugin-bluehost
