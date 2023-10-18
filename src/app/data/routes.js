@@ -84,7 +84,7 @@ export const routes = [
 				name: '/store/products',
 				title: __( 'Products & Services', 'wp-plugin-bluehost' ),
 			},
-			NewfoldRuntime.hasCapability( 'hasYithExtended' )
+			NewfoldRuntime.hasCapability( 'hasYithExtended' ) || NewfoldRuntime.hasCapability('canAccessGlobalCTB')
 			? {
 				name: "/store/sales_discounts",
 				title: __("Sales & Discounts", "wp-plugin-bluehost"),
