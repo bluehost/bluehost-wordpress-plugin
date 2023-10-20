@@ -36,6 +36,15 @@ jobs:
           [[ "$taggedVersion" == "$pluginConstantVersion" ]] || exit 1
           [[ "$taggedVersion" == "$pluginPackageVersion" ]] || exit 1
 
+      - name: Validate WP Versions
+        if: ${{ (github.repository == 'bluehost/bluehost-wordpress-plugin') && (github.event.release.prerelease == false) }}
+        run: |
+          pluginHeaderTestedVersion=`grep "Tested up to:" bluehost-wordpress-plugin.php | grep -Eo "[0-9\.]*"`
+          wpEnvVersion=`grep "WordPress/WordPress#tags/" .wp-env.json | grep -Eo "[0-9\.]*"`
+          echo "Plugin header tested version: $pluginHeaderTestedVersion"
+          echo "wp-env version: $wpEnvVersion"
+          [[ "$wpEnvVersion" == "$pluginHeaderTestedVersion" ]] || exit 1
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
