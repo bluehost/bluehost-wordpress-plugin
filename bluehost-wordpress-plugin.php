@@ -10,6 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       The Bluehost Plugin
  * Plugin URI:        https://bluehost.com
+ * Update URI:        https://github.com/bluehost/bluehost-wordpress-plugin
  * Description:       WordPress plugin that integrates a WordPress site with the Bluehost control panel, including performance, security, and update features.
  * Version:           3.5.0
  * Requires at least: 6.0
