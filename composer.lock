@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9707367fe1db9e73e9cc59742d2e872c",
+    "content-hash": "50caab0ec947da75d8f973c98a55bb56",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -637,16 +637,16 @@
         },
         {
             "name": "newfold-labs/wp-module-help-center",
-            "version": "1.0.17",
+            "version": "1.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-help-center.git",
-                "reference": "6fa7bc4b30a1e99ee04081262817883e3cb5ec78"
+                "reference": "51f8b2b8c26ac26659f2b0fa59993caa6bb6e811"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/6fa7bc4b30a1e99ee04081262817883e3cb5ec78",
-                "reference": "6fa7bc4b30a1e99ee04081262817883e3cb5ec78",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/51f8b2b8c26ac26659f2b0fa59993caa6bb6e811",
+                "reference": "51f8b2b8c26ac26659f2b0fa59993caa6bb6e811",
                 "shasum": ""
             },
             "require": {
@@ -676,10 +676,10 @@
             ],
             "description": "HelpCenter",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/1.0.17",
+                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/1.0.20",
                 "issues": "https://github.com/newfold-labs/wp-module-help-center/issues"
             },
-            "time": "2023-09-18T19:28:31+00:00"
+            "time": "2023-10-19T05:49:06+00:00"
         },
         {
             "name": "newfold-labs/wp-module-installer",
@@ -3529,5 +3529,5 @@
     "platform-overrides": {
         "php": "7.1.0"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
