@@ -140,7 +140,7 @@ $bluehost_module_container->set(
 			__( 'Your site is currently displaying a %1$scoming soon page%2$s. Once you are ready, %3$slaunch your site%4$s.', 'wp-plugin-bluehost' ),
 			'<a href="' . get_home_url() . '?preview=coming_soon" title="' . __( 'Preview the coming soon landing page', 'wp-plugin-bluehost' ) . '">',
 			'</a>',
-			'<a href="' . esc_url( admin_url( 'admin.php?page=bluehost#/home' ) ) . '">',
+			'<a href="' . esc_url( admin_url( 'admin.php?page=bluehost&nfd-target=coming-soon-section#/settings' ) ) . '">',
 			'</a>'
 		),
 		'template_styles'     => esc_url( BLUEHOST_PLUGIN_URL . 'assets/styles/coming-soon.css' ),
