@@ -56,7 +56,7 @@
   },
   "require": {
     "newfold-labs/wp-module-business-reviews": "^1.1.1",
-    "newfold-labs/wp-module-coming-soon": "^1.1.10",
+    "newfold-labs/wp-module-coming-soon": "^1.1.11",
     "newfold-labs/wp-module-ctb": "^1.1.2",
     "newfold-labs/wp-module-customer-bluehost": "^1.6.0",
     "newfold-labs/wp-module-data": "^2.4.8",
