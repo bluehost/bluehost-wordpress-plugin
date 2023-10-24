@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95c36f504db2e3ce99ac8ba4db2a32f7",
+    "content-hash": "bbd674bb7fe096556c52888fd0bd1f02",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -637,16 +637,16 @@
         },
         {
             "name": "newfold-labs/wp-module-help-center",
-            "version": "1.0.20",
+            "version": "1.0.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-help-center.git",
-                "reference": "51f8b2b8c26ac26659f2b0fa59993caa6bb6e811"
+                "reference": "0826b1623fd710877ac4ceeafa1265820de13b1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/51f8b2b8c26ac26659f2b0fa59993caa6bb6e811",
-                "reference": "51f8b2b8c26ac26659f2b0fa59993caa6bb6e811",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/0826b1623fd710877ac4ceeafa1265820de13b1b",
+                "reference": "0826b1623fd710877ac4ceeafa1265820de13b1b",
                 "shasum": ""
             },
             "require": {
@@ -676,10 +676,10 @@
             ],
             "description": "HelpCenter",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/1.0.20",
+                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/1.0.21",
                 "issues": "https://github.com/newfold-labs/wp-module-help-center/issues"
             },
-            "time": "2023-10-19T05:49:06+00:00"
+            "time": "2023-10-24T15:24:33+00:00"
         },
         {
             "name": "newfold-labs/wp-module-installer",
@@ -973,16 +973,16 @@
         },
         {
             "name": "newfold-labs/wp-module-patterns",
-            "version": "0.1.6",
+            "version": "0.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-patterns.git",
-                "reference": "3a446d1923c6c9bee13d86d0fda4cc4585742959"
+                "reference": "092fb8cf74458314432c6b8ebfeb3b33fd2d04ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/3a446d1923c6c9bee13d86d0fda4cc4585742959",
-                "reference": "3a446d1923c6c9bee13d86d0fda4cc4585742959",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/092fb8cf74458314432c6b8ebfeb3b33fd2d04ae",
+                "reference": "092fb8cf74458314432c6b8ebfeb3b33fd2d04ae",
                 "shasum": ""
             },
             "require-dev": {
@@ -1016,10 +1016,10 @@
             ],
             "description": "WordPress Cloud Patterns",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/0.1.6",
+                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/0.1.7",
                 "issues": "https://github.com/newfold-labs/wp-module-patterns/issues"
             },
-            "time": "2023-10-16T19:35:02+00:00"
+            "time": "2023-10-24T11:10:33+00:00"
         },
         {
             "name": "newfold-labs/wp-module-performance",
