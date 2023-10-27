@@ -199,7 +199,6 @@ require BLUEHOST_PLUGIN_DIR . '/inc/base.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/jetpack.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/LoginRedirect.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/partners.php';
-require BLUEHOST_PLUGIN_DIR . '/inc/performance.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/RestApi/CachingController.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/RestApi/SettingsController.php';
 require BLUEHOST_PLUGIN_DIR . '/inc/RestApi/rest-api.php';
