@@ -94,14 +94,14 @@ const WebinarsBanner = () => {
 					</div>
 
 					<div className="nfd-flex nfd-flex-col nfd-gap-4 nfd-w-full">
-						<Title as="h3" className="nfd-text-base">FREE Monthly Webinar: {nextWebinar.title}</Title>
+						<Title as="h2" className="nfd-text-base">FREE Monthly Webinar: {nextWebinar.title}</Title>
 
 						{(nextWebinar.hasDescription || nextWebinar.hasTopics) &&
 							<div>
 								{nextWebinar.description && <p className="nfd-mb-1.5">{nextWebinar.description}</p>}
 								{nextWebinar.topics &&
 									<>
-										<Title as="h5">Topics:</Title>
+										<Title as="h3" size="5">Topics:</Title>
 										<ul className="nfd-list-none nfd-list-inside nfd-flex nfd-flex-wrap nfd-gap-x-4 nfd-row-gap-2 nfd-mt-2 nfd-pr-2">
 											{nextWebinar.topics.map((topic, index) => <WebinarListItem key={index}>{topic}</WebinarListItem>)}
 										</ul>
