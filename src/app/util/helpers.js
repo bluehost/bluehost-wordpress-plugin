@@ -167,7 +167,7 @@ export const addUtmParams = (url, params = {}) => {
  * @return {string}
  */
 export const getPlatformBaseUrl = ( path = '' ) => {
-	const brand = NewfoldRuntime.sdk.plugin.brand;
+	const brand = NewfoldRuntime.plugin.brand;
 	const isJarvis = NewfoldRuntime.capabilities.isJarvis;
 
 	const baseUrl = () => {
