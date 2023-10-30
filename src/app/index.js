@@ -71,7 +71,7 @@ const AppBody = ( props ) => {
 			id="wppbh-app-rendered"
 			className={ classnames(
 				'wpadmin-brand-bluehost',
-				`wppbh-wp-${ NewfoldRuntime.sdk.wpversion }`,
+				`wppbh-wp-${ NewfoldRuntime.wpVersion }`,
 				`wppbh-page-${ kebabCase( location.pathname ) }`,
 				props.className,
 				'nfd-w-full nfd-p-4 min-[783px]:nfd-p-0'
