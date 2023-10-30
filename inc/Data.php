@@ -22,7 +22,6 @@ final class Data {
 		global $bluehost_module_container;
 
 		$runtime = array(
-			'isJarvis' => $bluehost_module_container->get('isJarvis'),
 			'plugin'   => array(
 				'url'     => BLUEHOST_BUILD_URL,
 				'version' => BLUEHOST_PLUGIN_VERSION,
