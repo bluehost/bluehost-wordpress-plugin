@@ -168,14 +168,13 @@ export const addUtmParams = (url, params = {}) => {
  */
 export const getPlatformBaseUrl = ( path = '' ) => {
 	const brand = NewfoldRuntime.plugin.brand;
-	const isJarvis = NewfoldRuntime.capabilities.isJarvis;
 
 	const baseUrl = () => {
 		if (brand === 'Bluehost_India') {
 			return 'https://my.bluehost.in';
 		}
 
-		if (isJarvis) {
+		if (isJarvis()) {
 			return 'https://www.bluehost.com';
 		}
 
@@ -198,9 +197,8 @@ export const getPlatformBaseUrl = ( path = '' ) => {
  * // returns https://www.bluehost.com/my-account/home if Jarvis or https://my.bluehost.com/hosting/app#home if legacy
  */
 export const getPlatformPathUrl = ( jarvisPath = '', legacyPath = '' ) => {
-	const isJarvis = NewfoldRuntime.capabilities.isJarvis;
 
-	if (isJarvis) {
+	if (isJarvis()) {
 		return getPlatformBaseUrl('/my-account/') + jarvisPath;
 	}
 
@@ -225,3 +223,18 @@ export const handleHelpLinksClick = () => {
 		}
 	}
 }; 
+
+/**
+ * Check if this is a jarvis site or not. 
+ * Deafults to true in cases where the capabilites are not set such as 
+ * in local and test environments that do not receive capabilities.
+ * 
+ * @return boolean
+ */
+export const isJarvis = () => {
+	if ( NewfoldRuntime.hasCapability( 'isJarvis' ) ) {
+		return NewfoldRuntime.capabilities.isJarvis;
+	} else {
+		return true;
+	}
+};

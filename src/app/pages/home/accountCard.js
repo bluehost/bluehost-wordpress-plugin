@@ -8,17 +8,15 @@ import {
 } from "@heroicons/react/24/outline";
 import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import { Card, Title } from "@newfold/ui-component-library";
-import { addUtmParams, getPlatformPathUrl, getPlatformBaseUrl } from "../../util/helpers";
+import { addUtmParams, getPlatformPathUrl, getPlatformBaseUrl, isJarvis } from "../../util/helpers";
 import classNames from "classnames";
-
-const isJarvis = NewfoldRuntime.capabilities.isJarvis;
 
 const base = [
   {
     icon: CpuChipIcon,
     id: "account_link",
     href: addUtmParams( getPlatformPathUrl("hosting/list", "app") ),
-    label: isJarvis
+    label: isJarvis()
       ? __("Hosting", "bluehost-wordpress-plugin")
       : __("Control Panel", "bluehost-wordpress-plugin"),
     color: "nfd-fill-gray",
@@ -27,7 +25,7 @@ const base = [
     icon: GiftIcon,
     id: "products_link",
     href: addUtmParams( getPlatformPathUrl("renewal-center", "account_center#products") ),
-    label: isJarvis 
+    label: isJarvis() 
       ? __("Renewal Center", "bluehost-wordpress-plugin")
       : __("Products", "bluehost-wordpress-plugin"),
     color: "nfd-fill-primary-dark",
@@ -36,7 +34,7 @@ const base = [
     icon: CreditCardIcon,
     id: "billing_link",
     href: addUtmParams( getPlatformPathUrl("billing-center", "account_center#billing") ),
-    label: isJarvis
+    label: isJarvis()
       ? __("Payment Methods", "bluehost-wordpress-plugin")
       : __("Billing", "bluehost-wordpress-plugin"),
     color: "nfd-fill-primary",
@@ -45,7 +43,7 @@ const base = [
     icon: EnvelopeIcon,
     id: "mail_link",
     href: addUtmParams( getPlatformPathUrl("home", "app#/email-office") ),
-    label: isJarvis
+    label: isJarvis()
       ? __("Mail", "bluehost-wordpress-plugin")
       : __("Mail & Office", "bluehost-wordpress-plugin"),
     color: "nfd-fill-[#5b5b5b]",
@@ -60,10 +58,10 @@ const base = [
   {
     icon: IdentificationIcon,
     id: "validation_token_link",
-    href: isJarvis
+    href: isJarvis()
       ? addUtmParams( getPlatformPathUrl("account-center") )
       : addUtmParams( getPlatformBaseUrl("/cgi/token") ),
-    label: isJarvis
+    label: isJarvis()
       ? __("Profile", "bluehost-wordpress-plugin")
       : __("Validation Token", "bluehost-wordpress-plugin"),
     color: "nfd-fill-[#f89c24]",
