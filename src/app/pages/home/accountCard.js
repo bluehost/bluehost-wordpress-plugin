@@ -11,7 +11,7 @@ import { Card, Title } from "@newfold/ui-component-library";
 import { addUtmParams, getPlatformPathUrl, getPlatformBaseUrl } from "../../util/helpers";
 import classNames from "classnames";
 
-const isJarvis = NewfoldRuntime.sdk.isJarvis;
+const isJarvis = NewfoldRuntime.capabilities.isJarvis;
 
 const base = [
   {

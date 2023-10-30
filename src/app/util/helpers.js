@@ -168,7 +168,7 @@ export const addUtmParams = (url, params = {}) => {
  */
 export const getPlatformBaseUrl = ( path = '' ) => {
 	const brand = NewfoldRuntime.sdk.plugin.brand;
-	const isJarvis = NewfoldRuntime.sdk.isJarvis;
+	const isJarvis = NewfoldRuntime.capabilities.isJarvis;
 
 	const baseUrl = () => {
 		if (brand === 'Bluehost_India') {
@@ -198,7 +198,7 @@ export const getPlatformBaseUrl = ( path = '' ) => {
  * // returns https://www.bluehost.com/my-account/home if Jarvis or https://my.bluehost.com/hosting/app#home if legacy
  */
 export const getPlatformPathUrl = ( jarvisPath = '', legacyPath = '' ) => {
-	const isJarvis = NewfoldRuntime.sdk.isJarvis;
+	const isJarvis = NewfoldRuntime.capabilities.isJarvis;
 
 	if (isJarvis) {
 		return getPlatformBaseUrl('/my-account/') + jarvisPath;
