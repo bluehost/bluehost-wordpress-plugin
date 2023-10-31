@@ -226,14 +226,14 @@ export const handleHelpLinksClick = () => {
 
 /**
  * Check if this is a jarvis site or not. 
- * Deafults to true in cases where the capabilites are not set such as 
+ * Defaults to true in cases where the capabilites are not set such as 
  * in local and test environments that do not receive capabilities.
  * 
  * @return boolean
  */
 export const isJarvis = () => {
 	if ( NewfoldRuntime.hasCapability( 'isJarvis' ) ) {
-		return NewfoldRuntime.capabilities.isJarvis;
+		return window.NewfoldRuntime.capabilities.isJarvis;
 	} else {
 		return true;
 	}
