@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "71a0dd2b58d43be87f2f367b0cd09958",
+    "content-hash": "a8235d201e4471c586df8bd8eefe598a",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -587,16 +587,16 @@
         },
         {
             "name": "newfold-labs/wp-module-global-ctb",
-            "version": "1.0.8",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-global-ctb.git",
-                "reference": "45b67e7b42a3d44d0a188263b65c355ef8661fa8"
+                "reference": "a759fb17949c82977987391727de063fe2ded594"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-global-ctb/zipball/45b67e7b42a3d44d0a188263b65c355ef8661fa8",
-                "reference": "45b67e7b42a3d44d0a188263b65c355ef8661fa8",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-global-ctb/zipball/a759fb17949c82977987391727de063fe2ded594",
+                "reference": "a759fb17949c82977987391727de063fe2ded594",
                 "shasum": ""
             },
             "require-dev": {
@@ -630,10 +630,10 @@
             ],
             "description": "Newfold module for 'Click to Buy' functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-global-ctb/tree/1.0.8",
+                "source": "https://github.com/newfold-labs/wp-module-global-ctb/tree/1.0.9",
                 "issues": "https://github.com/newfold-labs/wp-module-global-ctb/issues"
             },
-            "time": "2023-10-27T22:31:46+00:00"
+            "time": "2023-11-03T15:59:01+00:00"
         },
         {
             "name": "newfold-labs/wp-module-help-center",
@@ -3533,5 +3533,5 @@
     "platform-overrides": {
         "php": "7.1.0"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
