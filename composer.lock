@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d2bdcf2d1b6b942f68ad71ad563fd6d8",
+    "content-hash": "46ebab28d67d259db3dbb6f58f26173b",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -528,16 +528,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.3.7",
+            "version": "v1.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "9174011f62e995ec3b4b92bf9d7014b0a947f9cb"
+                "reference": "dc87a1feae60dc0b5df0795ded184a5bc859131b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/9174011f62e995ec3b4b92bf9d7014b0a947f9cb",
-                "reference": "9174011f62e995ec3b4b92bf9d7014b0a947f9cb",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/dc87a1feae60dc0b5df0795ded184a5bc859131b",
+                "reference": "dc87a1feae60dc0b5df0795ded184a5bc859131b",
                 "shasum": ""
             },
             "require": {
@@ -580,10 +580,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.7",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.9",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-10-31T15:19:39+00:00"
+            "time": "2023-11-06T11:21:13+00:00"
         },
         {
             "name": "newfold-labs/wp-module-global-ctb",
@@ -873,16 +873,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "1.11.7",
+            "version": "1.11.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "c118868056d24635add01747a7562b94fd716773"
+                "reference": "196e62b8d741e825b11b52648cb23cd505597ca7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/c118868056d24635add01747a7562b94fd716773",
-                "reference": "c118868056d24635add01747a7562b94fd716773",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/196e62b8d741e825b11b52648cb23cd505597ca7",
+                "reference": "196e62b8d741e825b11b52648cb23cd505597ca7",
                 "shasum": ""
             },
             "require": {
@@ -925,10 +925,10 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.11.7",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/1.11.8",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2023-11-03T12:19:53+00:00"
+            "time": "2023-11-07T11:23:21+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
