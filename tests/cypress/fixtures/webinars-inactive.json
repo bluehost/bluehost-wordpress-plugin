@@ -1,0 +1,40 @@
+{
+    "items": [
+        {
+            "title": "Maximize Productivity with Time Management",
+            "description" : "Phasellus sagittis gravida molestie. Vivamus dictum, massa luctus tempus imperdiet, ligula leo ultrices purus, sit amet consectetur ligula turpis non nisi.",
+            "date": "November 15, 2022",
+            "time": "2pm - 3pm EST",
+            "ctaText": "Sign Up Today",
+            "link": "https://www.bluehost.com/blog/events/how-to-start-with-seo-yoast/"
+        },
+        {
+            "title": "Build your brand with WordPress",
+            "description": "Join us for a free webinar on how to build your brand with WordPress.",
+            "topics": [
+                "Explore SEO and WordPress",
+                "Gain valuable tips for building your brand",
+                "Content marketing",
+                "eCommerce integration"
+            ],
+            "date": "August 31, 2040",
+            "time": "1pm - 2pm EST",
+            "ctaText": "Register Now",
+            "link": "https://www.bluehost.com/blog/events/next-event-post"
+        },
+        {
+            "title": "Mastering the Art of Public Speaking",
+            "topics": [
+                "Overcoming stage fright and nervousness",
+                "Crafting compelling speeches and presentations",
+                "Engaging your audience effectively",
+                "Tips for confident and impactful public speaking"
+            ],
+            "date": "December 10, 2050",
+            "time": "3pm - 4pm EST",
+            "ctaText": "Enroll Now",
+            "link": "https://www.bluehost.com/blog/events/yoast-seo-news-october-edition/"
+        }
+    ],
+    "isActive": false
+}
