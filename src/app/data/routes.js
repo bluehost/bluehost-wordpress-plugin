@@ -16,8 +16,8 @@ import Marketplace from '../pages/marketplace';
 import Performance from '../pages/performance';
 import Settings from '../pages/settings';
 import Staging from '../pages/staging';
-import Example from '../pages/example';
 import Help from '../pages/help';
+import { getMarketplaceSubnavRoutes } from '../../../vendor/newfold-labs/wp-module-marketplace/components/marketplaceSubnav';
 import { ReactComponent as HelpIcon } from "../components/icons/HelpIcon.svg";
 
 const addPartialMatch = (prefix, path) =>
@@ -107,33 +107,7 @@ export const routes = [
 		title: __( 'Marketplace', 'wp-plugin-bluehost' ),
 		Component: Marketplace,
 		Icon: ShoppingBagIcon,
-		subRoutes: [
-			{
-				name: '/marketplace/featured',
-				title: __( 'Featured', 'wp-plugin-bluehost' ),
-			},
-			{
-				name: '/marketplace/services',
-				title: __( 'Services', 'wp-plugin-bluehost' ),
-			},
-			{
-				name: '/marketplace/ecommerce',
-				title: __( 'eCommerce', 'wp-plugin-bluehost' ),
-			},
-			{
-				name: '/marketplace/seo',
-				title: __( 'SEO', 'wp-plugin-bluehost' ),
-			},
-			{
-				name: '/marketplace/security',
-				title: __( 'Security', 'wp-plugin-bluehost' ),
-			},
-			{
-				name: '/marketplace/themes',
-				title: __( 'Themes', 'wp-plugin-bluehost' ),
-			},
-
-		],
+		subRoutes: await getMarketplaceSubnavRoutes(),
 	},
 	{
 		name: '/performance',
