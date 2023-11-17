@@ -78,7 +78,7 @@ const AppBody = ( props ) => {
 				'nfd-w-full nfd-p-4 min-[783px]:nfd-p-0'
 			) }
 		>
-			{/* <Header /> */}
+
 			<NewfoldNotifications
 				constants={{
 					context: 'bluehost-plugin',
