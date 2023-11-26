@@ -12,7 +12,7 @@ const Home = () => {
 			<WelcomeSection />
 			<WebinarsBanner />
 			<SectionContainer className="wppbh-account-help-section">
-				<SectionContent >
+				<SectionContent>
 					<div className="nfd-grid nfd-grid-cols-2 nfd-gap-6">
 						<AccountCard />
 						<HelpCard />
