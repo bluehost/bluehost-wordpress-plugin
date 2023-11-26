@@ -78,7 +78,7 @@ const base = [
 	},
 ];
 
-export const AccountCard = ( { props } ) => {
+const AccountCard = ( { props } ) => {
 	return (
 		<Card { ...props }>
 			<Card.Content>
@@ -107,3 +107,5 @@ export const AccountCard = ( { props } ) => {
 		</Card>
 	);
 };
+
+export default AccountCard;

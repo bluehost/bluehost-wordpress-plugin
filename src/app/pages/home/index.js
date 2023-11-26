@@ -1,10 +1,10 @@
-import { Page } from '../../components/page';
-import { SectionContainer, SectionContent } from '../../components/section';
-import WebinarsBanner from 'App/components/webinars-banner';
-import { AccountCard } from './accountCard';
-import { HelpCard } from './helpCard';
 import './stylesheet.scss';
-import { WelcomeSection } from './welcomeSection';
+import { Page } from 'App/components/page';
+import { SectionContainer, SectionContent } from 'App/components/section';
+import WebinarsBanner from 'App/components/webinars-banner';
+import AccountCard from './accountCard';
+import HelpCard from './helpCard';
+import WelcomeSection from './welcomeSection';
 
 const Home = () => {
 	return (

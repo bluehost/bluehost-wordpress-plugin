@@ -1,6 +1,7 @@
 import { Button, Card, Title } from '@newfold/ui-component-library';
-import SupportIllustration from '../../images/section-home-help-me.svg';
-export function HelpCard() {
+import SupportIllustration from 'App/images/section-home-help-me.svg';
+
+const HelpCard = ( {} ) => {
 	return (
 		<Card className="wppbh-help-card">
 			<Card.Content>
@@ -28,4 +29,6 @@ export function HelpCard() {
 			</Card.Content>
 		</Card>
 	);
-}
+};
+
+export default HelpCard;

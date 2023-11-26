@@ -4,9 +4,10 @@ import AppStore from 'App/data/store';
 import { bluehostSettingsApiFetch } from 'App/util/helpers';
 import { useNotification } from 'App/components/notifications';
 
-export function WelcomeSection() {
+const WelcomeSection = ( {} ) => {
 	const { store, setStore } = useContext( AppStore );
 	const notify = useNotification();
+
 	const toggleComingSoon = () =>
 		bluehostSettingsApiFetch(
 			{ comingSoon: ! store.comingSoon },
@@ -14,6 +15,7 @@ export function WelcomeSection() {
 			console.error,
 			() => setStore( { ...store, comingSoon: ! store.comingSoon } )
 		);
+
 	return (
 		<OnboardingScreen
 			comingSoon={ store.comingSoon }
@@ -21,4 +23,6 @@ export function WelcomeSection() {
 			notify={ notify }
 		/>
 	);
-}
+};
+
+export default WelcomeSection;
