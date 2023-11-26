@@ -22,7 +22,7 @@ import { SectionContainer, SectionContent } from 'App/components/section';
  */
 const WebinarsBanner = () => {
 	const [ webinars, setWebinars ] = useState( [] );
-	const [ nextWebinar, setNextWebinar ] = useState( null );
+	const [ upcomingWebinar, setUpcomingWebinar ] = useState( null );
 
 	useEffect( () => {
 		fetchWebinars();
@@ -52,7 +52,7 @@ const WebinarsBanner = () => {
 	};
 
 	useEffect( () => {
-		setNextWebinar( getNextWebinar() );
+		setUpcomingWebinar( getNextWebinar() );
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ webinars ] );
 
@@ -69,7 +69,6 @@ const WebinarsBanner = () => {
 			( a, b ) => new Date( a.date ) - new Date( b.date )
 		);
 
-		// eslint-disable-next-line no-shadow
 		const nextWebinar = futureWebinars[ 0 ];
 		if (
 			nextWebinar.hasOwnProperty( 'title' ) &&
@@ -102,7 +101,7 @@ const WebinarsBanner = () => {
 		);
 	};
 
-	if ( ! nextWebinar ) {
+	if ( ! upcomingWebinar ) {
 		return null;
 	}
 
@@ -116,24 +115,24 @@ const WebinarsBanner = () => {
 
 					<div className="nfd-flex nfd-flex-col nfd-gap-4 nfd-w-full">
 						<Title as="h2" className="nfd-text-base">
-							FREE Monthly Webinar: { nextWebinar.title }
+							FREE Monthly Webinar: { upcomingWebinar.title }
 						</Title>
 
-						{ ( nextWebinar.hasDescription ||
-							nextWebinar.hasTopics ) && (
+						{ ( upcomingWebinar.hasDescription ||
+							upcomingWebinar.hasTopics ) && (
 							<div>
-								{ nextWebinar.description && (
+								{ upcomingWebinar.description && (
 									<p className="nfd-mb-1.5">
-										{ nextWebinar.description }
+										{ upcomingWebinar.description }
 									</p>
 								) }
-								{ nextWebinar.topics && (
+								{ upcomingWebinar.topics && (
 									<>
 										<Title as="h3" size="5">
 											Topics:
 										</Title>
 										<ul className="nfd-list-none nfd-list-inside nfd-flex nfd-flex-wrap nfd-gap-x-4 nfd-row-gap-2 nfd-mt-2 nfd-pr-2">
-											{ nextWebinar.topics.map(
+											{ upcomingWebinar.topics.map(
 												( topic, index ) => (
 													<WebinarListItem
 														key={ index }
@@ -151,12 +150,12 @@ const WebinarsBanner = () => {
 						<div className="nfd-flex nfd-gap-6">
 							<div className="nfd-flex nfd-items-center nfd-gap-1">
 								<CalendarIcon className="nfd-w-4 nfd-h-4" />
-								<span>{ nextWebinar.date }</span>
+								<span>{ upcomingWebinar.date }</span>
 							</div>
-							{ nextWebinar.hasTime && (
+							{ upcomingWebinar.hasTime && (
 								<div className="nfd-flex nfd-items-center nfd-gap-1">
 									<ClockIcon className="nfd-w-4 nfd-h-4" />
-									<span>{ nextWebinar.time }</span>
+									<span>{ upcomingWebinar.time }</span>
 								</div>
 							) }
 						</div>
@@ -165,12 +164,12 @@ const WebinarsBanner = () => {
 					<div>
 						<Button
 							as="a"
-							href={ nextWebinar.link }
+							href={ upcomingWebinar.link }
 							target="_blank"
 							variant="secondary"
 							className="nfd-w-max nfd-bg-transparent"
 						>
-							{ nextWebinar.ctaText } <ArrowRightIcon />
+							{ upcomingWebinar.ctaText } <ArrowRightIcon />
 						</Button>
 					</div>
 				</div>
