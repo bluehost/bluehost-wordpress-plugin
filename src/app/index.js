@@ -14,6 +14,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 // eslint-disable-next-line import/no-unresolved
 import { store as noticesStore } from '@wordpress/notices';
 import { kebabCase, filter } from 'lodash';
+import { useHandlePageLoad } from './util/hooks';
 import { Root } from '@newfold/ui-component-library';
 import { AppNav } from './components/app-nav';
 import { SiteInfoBar } from './components/site-info';
@@ -49,6 +50,8 @@ const AppBody = ( props ) => {
 	const location = useLocation();
 	const hashedPath = '#' + location.pathname;
 	const { booted, hasError } = useContext( AppStore );
+
+	useHandlePageLoad();
 
 	return (
 		<main
