@@ -1,0 +1,49 @@
+name: ESLint
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - trunk
+      - develop
+      - release/*
+      - feature/*
+      - add/*
+      - update/*
+      - fix/*
+      - try/*'
+    paths:
+      - 'src/**/*.js'
+  pull_request:
+    types: [ opened, edited, reopened, ready_for_review ]
+    paths: 
+      - 'src/**/*.js'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16.x
+          cache: 'npm'
+
+      - name: Setup Registry
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
+
+      - name: NPM Install
+        run: npm ci --legacy-peer-deps
+
+      - name: ESLint
+        run: npm run lint:js
