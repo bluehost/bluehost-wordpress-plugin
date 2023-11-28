@@ -55,7 +55,7 @@ export const SiteInfoBar = () => {
 						className="nfd-bg-[#383F4A] nfd-text-tiny nfd-w-full min-[400px]:nfd-w-auto"
 					>
 						<BluehostIcon />
-						Bluehost Account
+						{ __( 'Bluehost Account', 'wp-plugin-bluehost' ) }
 					</Button>
 					<Button
 						as="a"
@@ -68,8 +68,8 @@ export const SiteInfoBar = () => {
 					>
 						<WordPressIcon />
 						{ isWooCommerce && isStore
-							? 'View Store'
-							: 'View Site' }
+							? __( 'View Store', 'wp-plugin-bluehost' )
+							: __( 'View Site', 'wp-plugin-bluehost' ) }
 					</Button>
 				</div>
 			</div>

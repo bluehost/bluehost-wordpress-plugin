@@ -12,10 +12,17 @@ const HelpCard = ( {} ) => {
 						src={ SupportIllustration }
 						alt="Help Agent Illustration"
 					/>
-					<p>From DIY to full-service help.</p>
 					<p>
-						Call or chat 24/7 for support or let our experts build
-						your site for you.
+						{ __(
+							'From DIY to full-service help.',
+							'wp-plugin-bluehost'
+						) }
+					</p>
+					<p>
+						{ __(
+							'Call or chat 24/7 for support or let our experts build your site for you.',
+							'wp-plugin-bluehost'
+						) }
 					</p>
 					<Button
 						variant="secondary"
@@ -23,7 +30,7 @@ const HelpCard = ( {} ) => {
 						href="#/help"
 						className="wppbh-help-link"
 					>
-						Help me
+						{ __( 'Get Help', 'wp-plugin-bluehost' ) }
 					</Button>
 				</div>
 			</Card.Content>
