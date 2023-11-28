@@ -26,7 +26,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  eslint:
+  ESLint:
     runs-on: ubuntu-latest
     steps:
 
