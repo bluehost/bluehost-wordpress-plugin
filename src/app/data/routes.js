@@ -17,7 +17,7 @@ import Performance from '../pages/performance';
 import Settings from '../pages/settings';
 import Staging from '../pages/staging';
 import Help from '../pages/help';
-import { getMarketplaceSubnavRoutes } from '../../../vendor/newfold-labs/wp-module-marketplace/components/marketplaceSubnav';
+import { getMarketplaceSubnavRoutes } from 'Modules/wp-module-marketplace/components/marketplaceSubnav';
 import { ReactComponent as HelpIcon } from "../components/icons/HelpIcon.svg";
 
 const addPartialMatch = (prefix, path) =>

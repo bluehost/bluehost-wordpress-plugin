@@ -6,7 +6,7 @@ import { Page } from "../../components/page";
 import { SectionContainer, SectionHeader, SectionContent } from "../../components/section";
 import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 // component sourced from marketplace module
-import { default as NewfoldMarketplace } from '../../../../vendor/newfold-labs/wp-module-marketplace/components/marketplace/';
+import { default as NewfoldMarketplace } from 'Modules/wp-module-marketplace/components/marketplace/';
 
 const MarketplacePage = () => {
 

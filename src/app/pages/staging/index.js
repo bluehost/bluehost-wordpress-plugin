@@ -8,7 +8,7 @@ import { Page } from '../../components/page';
 import { SectionContainer, SectionHeader, SectionContent, SectionSettings } from '../../components/section';
 import { useNotification } from '../../components/notifications/feed';
 // component sourced from staging module
-import { default as NewfoldStaging } from '../../../../vendor/newfold-labs/wp-module-staging/components/staging/';
+import { default as NewfoldStaging } from 'Modules/wp-module-staging/components/staging/';
 
 const Staging = () => {
     

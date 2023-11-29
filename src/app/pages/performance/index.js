@@ -12,7 +12,7 @@ import {
     bluehostPurgeCacheApiFetch as newfoldPurgeCacheApiFetch
 } from '../../util/helpers';
 
-import { default as NewfoldPerformance } from '../../../../vendor/newfold-labs/wp-module-performance/components/performance/';
+import { default as NewfoldPerformance } from 'Modules/wp-module-performance/components/performance/';
 
 const PerformancePage = () => {
 
