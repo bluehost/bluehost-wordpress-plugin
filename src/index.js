@@ -8,8 +8,8 @@ import App from './app';
 const WP_ADM_PAGE_ROOT_ELEMENT = 'wppbh-app';
 
 // eslint-disable-next-line no-console
-console.log(`%cWelcome to Bluehost!
-
+console.log(
+	`%cWelcome to Bluehost!
 %c
 ██████████████████████████████████████
 ███         ██          ██         ███
@@ -27,8 +27,10 @@ console.log(`%cWelcome to Bluehost!
 ███         ██          ██         ███
 ███         ██          ██         ███
 ██████████████████████████████████████
-`, 'color: #196bde; font-size: 2em; font-weight: 900;', 'background: #fff; color: #196bde; font-weight: 400;');
-
+`,
+	'color: #196bde; font-size: 2em; font-weight: 900;',
+	'background: #fff; color: #196bde; font-weight: 400;'
+);
 
 const WPPBHRender = () => {
 	const DOM_ELEMENT = document.getElementById( WP_ADM_PAGE_ROOT_ELEMENT );
