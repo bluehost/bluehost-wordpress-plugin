@@ -21,7 +21,7 @@ import { SiteInfoBar } from './components/site-info';
 import { NotificationFeed } from './components/notifications/feed';
 
 // component sourced from module
-import { default as NewfoldNotifications } from 'Modules/wp-module-notifications/assets/js/components/notifications/';
+import { default as NewfoldNotifications } from '@modules/wp-module-notifications/assets/js/components/notifications/';
 // to pass to notifications module
 import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
