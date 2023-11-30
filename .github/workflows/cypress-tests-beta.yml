@@ -98,27 +98,13 @@ jobs:
       - name: Install WordPress
         run: npx wp-env start --debug
 
-      - name: Run Cypress Beta Only Tests
-        env:
-          RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
-        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || env.RECORD_REPLAY_API_KEY == '' }}
-        run: npx cypress run
+      - name: Run Cypress Tests
+        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || github.actor == 'dependabot[bot]' }}
+        run: npm run test:e2e -- --browser chrome
 
-      - name: Run Cypress Beta Only Tests
-        uses: replayio/action-cypress@v0.3.1
-        env:
-          RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
-        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' && env.RECORD_REPLAY_API_KEY != '' }}
-        with:
-          api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
-          browser: 'replay-chromium'
-          command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
-          upload-all: false
-
-      - name: List Replays
-        if: always()
-        shell: bash
-        run: npx @replayio/replay ls --json
+      - name: Run Cypress Tests
+        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' && github.actor != 'dependabot[bot]' }}
+        run: npm run test:e2e -- --browser chrome --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag "bluehost, wp-beta"
 
       - name: Store screenshots of test failures
         if: failure()
