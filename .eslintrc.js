@@ -6,6 +6,7 @@ module.exports = {
 				map: [
 					[ 'App', './src/app' ],
 					[ 'Assets', './aseets' ],
+					[ '@modules', './vendor/newfold-labs' ],
 				],
 				extensions: [ '.js', '.jsx', '.json' ],
 			},

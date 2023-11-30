@@ -11,6 +11,7 @@ const alias = {
 	Assets: path.resolve( __dirname, '/assets/' ),
 	Store: path.resolve( __dirname, '/src/app/data/store.js' ),
 	Routes: path.resolve( __dirname, '/src/app/data/routes.js' ),
+	'@modules': path.resolve( __dirname, '/vendor/newfold-labs/' ),
 };
 /**
  * Make most-common imports available globally to ease import debt.

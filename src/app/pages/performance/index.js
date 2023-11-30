@@ -17,7 +17,7 @@ import {
 	bluehostPurgeCacheApiFetch as newfoldPurgeCacheApiFetch,
 } from 'App/util/helpers';
 
-import { default as NewfoldPerformance } from '../../../../vendor/newfold-labs/wp-module-performance/components/performance/';
+import { default as NewfoldPerformance } from '@modules/wp-module-performance/components/performance/';
 
 const PerformancePage = () => {
 	// constants to pass to module

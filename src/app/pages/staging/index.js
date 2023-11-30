@@ -12,7 +12,7 @@ import {
 } from 'App/components/section';
 import { useNotification } from 'App/components/notifications';
 // component sourced from staging module
-import { default as NewfoldStaging } from '../../../../vendor/newfold-labs/wp-module-staging/components/staging/';
+import { default as NewfoldStaging } from '@modules/wp-module-staging/components/staging/';
 
 const Staging = () => {
 	// constants to pass to module

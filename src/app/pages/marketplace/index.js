@@ -10,7 +10,7 @@ import {
 } from 'App/components/section';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 // component sourced from marketplace module
-import { default as NewfoldMarketplace } from '../../../../vendor/newfold-labs/wp-module-marketplace/components/marketplace/';
+import { default as NewfoldMarketplace } from '@modules/wp-module-marketplace/components/marketplace/';
 
 const MarketplacePage = () => {
 	// constants to pass to module
