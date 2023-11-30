@@ -1,3 +1,4 @@
+import { Title } from '@newfold/ui-component-library';
 import './stylesheet.scss';
 import {
 	Card,
@@ -6,7 +7,6 @@ import {
 	CardFooter,
 	Dashicon,
 } from '@wordpress/components';
-import { Heading } from '../../components';
 import { dispatchUpdateSnackbar } from '../../util/helpers';
 
 const ErrorCard = ( { error, className, notice = 'Error!' } ) => {
@@ -15,7 +15,7 @@ const ErrorCard = ( { error, className, notice = 'Error!' } ) => {
 	return (
 		<Card className={ classNames( 'error-card', className ) }>
 			<CardHeader>
-				<Heading level="3">
+				<Title as="h3">
 					<Dashicon
 						icon="warning"
 						style={ {
@@ -25,7 +25,7 @@ const ErrorCard = ( { error, className, notice = 'Error!' } ) => {
 						} }
 					/>{ ' ' }
 					{ __( 'Oh No, An Error!', 'wp-plugin-bluehost' ) }
-				</Heading>
+				</Title>
 			</CardHeader>
 			<CardBody>
 				<p>

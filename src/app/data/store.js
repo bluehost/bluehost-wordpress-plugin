@@ -11,7 +11,7 @@ const AppStore = createContext( DEFAULT );
 
 export const bluehostApiFetchSettings = async ( options = {} ) => {
 	return await apiFetch( {
-		url: NewfoldRuntime.createApiUrl('/bluehost/v1/settings'),
+		url: NewfoldRuntime.createApiUrl( '/bluehost/v1/settings' ),
 		...options,
 	} );
 };
@@ -44,6 +44,7 @@ export const AppStoreProvider = ( { children } ) => {
 					setError( error );
 				} );
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [] );
 
 	return (
