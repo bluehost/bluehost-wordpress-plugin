@@ -15,7 +15,6 @@
 
 import 'cypress-axe';
 import './commands';
-require('@replayio/cypress/support');
 
 const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/
 Cypress.on('uncaught:exception', (err) => {
