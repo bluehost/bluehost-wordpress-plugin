@@ -43,7 +43,6 @@
         "semver": "^7.5.4"
     },
     "devDependencies": {
-        "@replayio/cypress": "^1.6.2",
         "@tailwindcss/forms": "^0.5.6",
         "@testing-library/cypress": "^10.0.1",
         "@wordpress/env": "^8.11.0",
@@ -59,7 +58,6 @@
         "create:dist": "rsync -r --include-from=.distinclude --exclude-from=.distignore . ./bluehost-wordpress-plugin",
         "create:zip": "cd ./bluehost-wordpress-plugin && zip -r -9 ../bluehost-wordpress-plugin.zip . && ls -lh ../bluehost-wordpress-plugin.zip",
         "cypress": "npm cypress open",
-        "cypress:record": "RECORD_ALL_CONTENT=1 RECORD_REPLAY_METADATA_FILE=$(mktemp) npx cypress run --browser 'Replay Chromium'",
         "develop": "npm run start",
         "develop:analyzer": "npm run start:analyzer",
         "i18n": "wpi18n addtextdomain && composer run i18n",
