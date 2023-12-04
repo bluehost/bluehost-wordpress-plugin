@@ -1,5 +1,9 @@
 import { useLocation } from 'react-router-dom';
 
+/**
+ * Scrolls to top of page on route change.
+ * @return {boolean} - true
+ */
 const useHandlePageLoad = () => {
 	const location = useLocation();
 	const routeContents = document.querySelector( '.wppbh-app-body-inner' );

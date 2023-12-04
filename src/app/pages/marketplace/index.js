@@ -2,12 +2,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect } from '@wordpress/element';
 import { useLocation } from 'react-router-dom';
 import classnames from 'classnames';
-import { Page } from 'App/components/page';
-import {
-	SectionContainer,
-	SectionHeader,
-	SectionContent,
-} from 'App/components/section';
+import { Container, Page } from '@newfold/ui-component-library';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 // component sourced from marketplace module
 import { default as NewfoldMarketplace } from '@modules/wp-module-marketplace/components/marketplace/';
@@ -44,20 +39,14 @@ const MarketplacePage = () => {
 		NewfoldRuntime,
 	};
 
-	const moduleComponents = {
-		SectionHeader,
-		SectionContent,
-	};
-
 	return (
 		<Page className={ 'wppbh-app-marketplace-page' }>
-			<SectionContainer className={ 'wppbh-app-marketplace-container' }>
+			<Container className={ 'wppbh-app-marketplace-container' }>
 				<NewfoldMarketplace
 					methods={ moduleMethods }
 					constants={ moduleConstants }
-					Components={ moduleComponents }
 				/>
-			</SectionContainer>
+			</Container>
 		</Page>
 	);
 };

@@ -1,9 +1,8 @@
 import { useState } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
-import { Alert, ToggleField } from '@newfold/ui-component-library';
+import { Alert, Container, ToggleField } from '@newfold/ui-component-library';
 import AppStore from '../../data/store';
 import { bluehostSettingsApiFetch } from '../../util/helpers';
-import { SectionSettings } from 'App/components/section';
 import { useNotification } from 'App/components/notifications';
 
 const AutomaticUpdatesAll = ( { setError, notify } ) => {
@@ -286,7 +285,7 @@ const AutomaticUpdates = () => {
 	const notify = useNotification();
 
 	return (
-		<SectionSettings
+		<Container.SettingsField
 			title={ __( 'Automatic Updates', 'wp-plugin-bluehost' ) }
 			description={ __(
 				'Keeping automatic updates on ensures timely security fixes and the latest features.',
@@ -316,7 +315,7 @@ const AutomaticUpdates = () => {
 					</Alert>
 				) }
 			</div>
-		</SectionSettings>
+		</Container.SettingsField>
 	);
 };
 

@@ -1,19 +1,16 @@
+import classNames from 'classnames';
+import { Container, Page } from '@newfold/ui-component-library';
+import useContainerBlockIsTarget from 'App/util/hooks/useContainerBlockTarget';
 import AutomaticUpdates from './automaticUpdates';
-import ComingSoon from './comingSoon';
 import CommentSettings from './commentSettings';
+import ComingSoon from './comingSoon';
 import ContentSettings from './contentSettings';
-import { Page } from 'App/components/page';
-import {
-	SectionContainer,
-	SectionHeader,
-	SectionContent,
-} from 'App/components/section';
 
 const Settings = () => {
 	return (
 		<Page title="Settings" className={ 'wppbh-app-settings-page' }>
-			<SectionContainer className={ 'wppbh-app-settings-container' }>
-				<SectionHeader
+			<Container className={ 'wppbh-app-settings-container' }>
+				<Container.Header
 					title={ __( 'Settings', 'wp-plugin-bluehost' ) }
 					subTitle={ __(
 						'This is where you can manage common settings for your website.',
@@ -22,32 +19,36 @@ const Settings = () => {
 					className={ 'wppbh-app-settings-header' }
 				/>
 
-				<SectionContent
+				<Container.Block
 					separator={ true }
 					id={ 'coming-soon-section' }
-					className={ 'wppbh-app-settings-coming-soon' }
+					className={ classNames(
+						'wppbh-app-settings-coming-soon',
+						useContainerBlockIsTarget( 'coming-soon-section' ) &&
+							'wppbh-animation-blink'
+					) }
 				>
 					<ComingSoon />
-				</SectionContent>
+				</Container.Block>
 
-				<SectionContent
+				<Container.Block
 					separator={ true }
 					className={ 'wppbh-app-settings-update' }
 				>
 					<AutomaticUpdates />
-				</SectionContent>
+				</Container.Block>
 
-				<SectionContent
+				<Container.Block
 					separator={ true }
 					className={ 'wppbh-app-settings-content' }
 				>
 					<ContentSettings />
-				</SectionContent>
+				</Container.Block>
 
-				<SectionContent className={ 'wppbh-app-settings-comments' }>
+				<Container.Block className={ 'wppbh-app-settings-comments' }>
 					<CommentSettings />
-				</SectionContent>
-			</SectionContainer>
+				</Container.Block>
+			</Container>
 		</Page>
 	);
 };

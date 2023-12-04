@@ -1,21 +1,15 @@
-import AppStore from '../../data/store';
-import { Page } from '../../components/page';
-import { useState, useEffect, useContext, Fragment } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
-import classnames from 'classnames';
+import { useState, useEffect, useContext, Fragment } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
+import classnames from 'classnames';
+import { Container, Page } from '@newfold/ui-component-library';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
-import {
-	SectionContainer,
-	SectionHeader,
-	SectionContent,
-	SectionSettings,
-} from 'App/components/section';
-import { useNotification } from 'App/components/notifications';
+import AppStore from '../../data/store';
 import {
 	bluehostSettingsApiFetch as newfoldSettingsApiFetch,
 	bluehostPurgeCacheApiFetch as newfoldPurgeCacheApiFetch,
 } from 'App/util/helpers';
+import { useNotification } from 'App/components/notifications';
 
 import { default as NewfoldPerformance } from '@modules/wp-module-performance/components/performance/';
 
@@ -39,18 +33,13 @@ const PerformancePage = () => {
 	};
 
 	const moduleComponents = {
-		Page,
-		SectionHeader,
-		SectionContent,
-		SectionSettings,
-		SectionContainer,
 		Fragment,
 	};
 
 	return (
 		<Page title="Performance" className={ 'wppbh-app-settings-page' }>
-			<SectionContainer className={ 'wppbh-app-settings-container' }>
-				<SectionHeader
+			<Container className={ 'wppbh-app-settings-container' }>
+				<Container.Header
 					title={ __( 'Performance', 'wp-plugin-bluehost' ) }
 					subTitle={ __(
 						'This is where you can manage cache settings for your website.',
@@ -63,7 +52,7 @@ const PerformancePage = () => {
 					methods={ moduleMethods }
 					Components={ moduleComponents }
 				/>
-			</SectionContainer>
+			</Container>
 		</Page>
 	);
 };

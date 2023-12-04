@@ -1,9 +1,8 @@
 import { useState } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
-import { Alert, SelectField } from '@newfold/ui-component-library';
+import { Alert, Container, SelectField } from '@newfold/ui-component-library';
 import AppStore from 'App/data/store';
 import { bluehostSettingsApiFetch } from 'App/util/helpers';
-import { SectionSettings } from 'App/components/section';
 import { useNotification } from 'App/components/notifications';
 
 const ContentRevisions = ( { setError, notify } ) => {
@@ -190,7 +189,7 @@ const ContentSettings = () => {
 
 	const notify = useNotification();
 	return (
-		<SectionSettings
+		<Container.SettingsField
 			title={ __( 'Content Options', 'wp-plugin-bluehost' ) }
 			description={ __(
 				'Controls for content revisions and how often to empty the trash.',
@@ -210,7 +209,7 @@ const ContentSettings = () => {
 					</Alert>
 				) }
 			</div>
-		</SectionSettings>
+		</Container.SettingsField>
 	);
 };
 
