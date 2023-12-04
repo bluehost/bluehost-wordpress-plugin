@@ -1,4 +1,5 @@
 version: 2
+registries: "*"
 updates:
 
   # Maintain dependencies for GitHub Actions
