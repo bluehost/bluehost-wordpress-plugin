@@ -1,6 +1,6 @@
 import { Button } from '@wordpress/components';
-import { Heading } from '..';
-import { ReactComponent as Brand } from '../../../../assets/svg/bluehost-logo.svg';
+import { Title } from '@newfold/ui-component-library';
+import { ReactComponent as Brand } from 'Assets/svg/bluehost-logo.svg';
 import { delay } from 'lodash';
 
 const Mark = () => {
@@ -27,9 +27,9 @@ const Logo = () => {
 	return (
 		<div className="wppbh-logo-wrap">
 			<Mark />
-			<Heading level="2" className="screen-reader-text">
+			<Title as="h2" className="nfd-sr-only">
 				{ __( 'Bluehost WordPress Plugin', 'wp-plugin-bluehost' ) }
-			</Heading>
+			</Title>
 		</div>
 	);
 };

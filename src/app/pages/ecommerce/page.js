@@ -1,45 +1,51 @@
-import { NewfoldECommerce } from "@newfold-labs/wp-module-ecommerce";
-import { useContext } from "@wordpress/element";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { useNotification } from "../../components/notifications/feed";
-import { Page } from "../../components/page";
-import AppStore from "../../data/store";
-import { bluehostSettingsApiFetch } from "../../util/helpers";
-import "./styles.scss";
-import "@newfold-labs/wp-module-ecommerce/bluehost.css";
+import './styles.scss';
+import { useContext } from '@wordpress/element';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { NewfoldECommerce } from '@newfold-labs/wp-module-ecommerce';
+import '@newfold-labs/wp-module-ecommerce/bluehost.css';
+import AppStore from 'App/data/store';
+import { bluehostSettingsApiFetch } from 'App/util/helpers';
+import { Page } from 'App/components/page';
+import { useNotification } from 'App/components/notifications';
 
 const ECommerce = () => {
-  const { store, setStore } = useContext(AppStore);
-  let [params] = useSearchParams();
-  let location = useLocation();
-  let navigate = useNavigate();
-  let notify = useNotification();
-  let state = {
-    wp: { comingSoon: store?.comingSoon },
-    params,
-    location: location.pathname,
-  };
-  let wpModules = { navigate, notify };
+	const { store, setStore } = useContext( AppStore );
+	const [ params ] = useSearchParams();
+	const location = useLocation();
+	const navigate = useNavigate();
+	const notify = useNotification();
+	const state = {
+		wp: { comingSoon: store?.comingSoon },
+		params,
+		location: location.pathname,
+	};
+	const wpModules = { navigate, notify };
 
-  let actions = {
-    toggleComingSoon: () =>
-      bluehostSettingsApiFetch(
-        { comingSoon: !store.comingSoon },
-        console.error,
-        (response) => {
-          setStore({
-            ...store,
-            comingSoon: !store.comingSoon,
-          });
-        }
-      ),
-  };
+	const actions = {
+		toggleComingSoon: () =>
+			bluehostSettingsApiFetch(
+				{ comingSoon: ! store.comingSoon },
+				// eslint-disable-next-line no-console
+				console.error,
+				// eslint-disable-next-line no-unused-vars
+				( response ) => {
+					setStore( {
+						...store,
+						comingSoon: ! store.comingSoon,
+					} );
+				}
+			),
+	};
 
-  return (
-    <Page>
-      <NewfoldECommerce state={state} wpModules={wpModules} actions={actions} />
-    </Page>
-  );
+	return (
+		<Page>
+			<NewfoldECommerce
+				state={ state }
+				wpModules={ wpModules }
+				actions={ actions }
+			/>
+		</Page>
+	);
 };
 
 export default ECommerce;
