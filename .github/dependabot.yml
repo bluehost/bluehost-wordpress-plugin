@@ -4,7 +4,6 @@ updates:
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
-    registries: "*"
     target-branch: "develop"
     allow:
       - dependency-type: direct
@@ -19,7 +18,6 @@ updates:
   # Maintain dependencies for npm
   - package-ecosystem: "npm"
     directory: "/"
-    registries: "*"
     target-branch: "develop"
     allow:
       - dependency-type: direct
@@ -43,7 +41,6 @@ updates:
   # Maintain dependencies for Composer
   - package-ecosystem: "composer"
     directory: "/"
-    registries: "*"
     target-branch: "develop"
     schedule:
       interval: "daily"
