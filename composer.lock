@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f15566237f8c435286952bd6ac7dd2f8",
+    "content-hash": "2730ca21dbfbe1f3b9893a10d832d31f",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -418,16 +418,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.4.9",
+            "version": "2.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "672ba89b7f3fa7721e8be4cd79653f21d9a3a503"
+                "reference": "a21d4579037add8bb921426f8d41e15d13b81af3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/672ba89b7f3fa7721e8be4cd79653f21d9a3a503",
-                "reference": "672ba89b7f3fa7721e8be4cd79653f21d9a3a503",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/a21d4579037add8bb921426f8d41e15d13b81af3",
+                "reference": "a21d4579037add8bb921426f8d41e15d13b81af3",
                 "shasum": ""
             },
             "require": {
@@ -460,23 +460,23 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.9",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.13",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2023-10-23T14:39:19+00:00"
+            "time": "2023-11-29T18:53:24+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-deactivation.git",
-                "reference": "dd8bf1820a0bd136e1a673d3a4b916b4c581179a"
+                "reference": "5668c206ea868c0baaca201042ca7c24404c7be1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-deactivation/zipball/dd8bf1820a0bd136e1a673d3a4b916b4c581179a",
-                "reference": "dd8bf1820a0bd136e1a673d3a4b916b4c581179a",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-deactivation/zipball/5668c206ea868c0baaca201042ca7c24404c7be1",
+                "reference": "5668c206ea868c0baaca201042ca7c24404c7be1",
                 "shasum": ""
             },
             "require": {
@@ -521,10 +521,10 @@
             ],
             "description": "A Module for handling WordPress brand plugins and modules deactivations",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-deactivation/tree/1.0.2",
+                "source": "https://github.com/newfold-labs/wp-module-deactivation/tree/1.0.3",
                 "issues": "https://github.com/newfold-labs/wp-module-deactivation/issues"
             },
-            "time": "2023-10-17T22:48:37+00:00"
+            "time": "2023-11-29T19:20:56+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
@@ -3536,5 +3536,5 @@
     "platform-overrides": {
         "php": "7.1.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
