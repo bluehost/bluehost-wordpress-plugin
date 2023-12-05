@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f9f12b882b0e6b5ed7a3117834fa027",
+    "content-hash": "0800af5443c9ad7875e9ade6a41a5244",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1251,16 +1251,16 @@
         },
         {
             "name": "newfold-labs/wp-module-staging",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-staging.git",
-                "reference": "c2dd6a1a381c3473cffab0d8eb49b1bd8dd0f966"
+                "reference": "87a8f2659ad256fa03a0ae2932950cb6d745dfa4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/c2dd6a1a381c3473cffab0d8eb49b1bd8dd0f966",
-                "reference": "c2dd6a1a381c3473cffab0d8eb49b1bd8dd0f966",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/87a8f2659ad256fa03a0ae2932950cb6d745dfa4",
+                "reference": "87a8f2659ad256fa03a0ae2932950cb6d745dfa4",
                 "shasum": ""
             },
             "require-dev": {
@@ -1294,10 +1294,10 @@
             ],
             "description": "Newfold module for staging functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-staging/tree/1.2.2",
+                "source": "https://github.com/newfold-labs/wp-module-staging/tree/1.2.3",
                 "issues": "https://github.com/newfold-labs/wp-module-staging/issues"
             },
-            "time": "2023-12-04T23:24:25+00:00"
+            "time": "2023-12-05T18:18:33+00:00"
         },
         {
             "name": "wp-cli/wp-config-transformer",
@@ -3576,5 +3576,5 @@
     "platform-overrides": {
         "php": "7.1.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
