@@ -1,12 +1,11 @@
 import { useState, useEffect } from '@wordpress/element';
-import { Button, Title } from '@newfold/ui-component-library';
+import { Button, Container, Title } from '@newfold/ui-component-library';
 import {
 	ArrowRightIcon,
 	CalendarIcon,
 	ClockIcon,
 } from '@heroicons/react/24/outline';
 import { ReactComponent as WebinarsVector } from 'App/images/webinars-vector.svg';
-import { SectionContainer, SectionContent } from 'App/components/section';
 
 /**
  * A component that displays the next monthly webinar.
@@ -106,8 +105,8 @@ const WebinarsBanner = () => {
 	}
 
 	return (
-		<SectionContainer className="wppbh-webinars-banner-section nfd-bg-[#E5F6FE]">
-			<SectionContent>
+		<Container className="wppbh-webinars-banner-section nfd-bg-[#E5F6FE]">
+			<Container.Block>
 				<div className="nfd-flex nfd-flex-col nfd-gap-8 xl:nfd-flex-row xl:nfd-items-center">
 					<div className="max-[1378px]:nfd-hidden">
 						<WebinarsVector />
@@ -173,8 +172,8 @@ const WebinarsBanner = () => {
 						</Button>
 					</div>
 				</div>
-			</SectionContent>
-		</SectionContainer>
+			</Container.Block>
+		</Container>
 	);
 };
 

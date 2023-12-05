@@ -3,13 +3,6 @@ import { useState, useEffect } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 import classnames from 'classnames';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
-import { Page } from 'App/components/page';
-import {
-	SectionContainer,
-	SectionHeader,
-	SectionContent,
-	SectionSettings,
-} from 'App/components/section';
 import { useNotification } from 'App/components/notifications';
 // component sourced from staging module
 import { default as NewfoldStaging } from '@modules/wp-module-staging/components/staging/';
@@ -32,17 +25,8 @@ const Staging = () => {
 		useNotification,
 	};
 
-	const moduleComponents = {
-		Page,
-		SectionHeader,
-		SectionContent,
-		SectionSettings,
-		SectionContainer,
-	};
-
 	return (
 		<NewfoldStaging
-			Components={ moduleComponents }
 			constants={ moduleConstants }
 			methods={ moduleMethods }
 		/>

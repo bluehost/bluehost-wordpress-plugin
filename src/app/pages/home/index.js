@@ -1,6 +1,4 @@
-import './stylesheet.scss';
-import { Page } from 'App/components/page';
-import { SectionContainer, SectionContent } from 'App/components/section';
+import { Container, Page } from '@newfold/ui-component-library';
 import WebinarsBanner from 'App/components/webinars-banner';
 import AccountCard from './accountCard';
 import HelpCard from './helpCard';
@@ -11,14 +9,14 @@ const Home = () => {
 		<Page className="wppbh-home">
 			<WelcomeSection />
 			<WebinarsBanner />
-			<SectionContainer className="wppbh-account-help-section">
-				<SectionContent>
+			<Container className="wppbh-account-help-section">
+				<Container.Block>
 					<div className="nfd-grid nfd-grid-cols-2 nfd-gap-6">
 						<AccountCard />
 						<HelpCard />
 					</div>
-				</SectionContent>
-			</SectionContainer>
+				</Container.Block>
+			</Container>
 		</Page>
 	);
 };
