@@ -271,7 +271,7 @@ describe( 'Settings Page', function () {
 			.click(); // 10
 		cy.wait( 100 );
 		cy.get( '.wppbh-app-settings-comments' )
-			.contains( 'label', 'Display 10 comments per page.' )
+			.contains( 'label', 'Comments to display per page' )
 			.should( 'be.visible' );
 
 		cy.get( '[data-id="disable-comments-toggle"]' )
@@ -300,7 +300,7 @@ describe( 'Settings Page', function () {
 			.click(); // 100
 		cy.wait( 100 );
 		cy.get( '.wppbh-app-settings-comments' )
-			.contains( 'label', 'Close comments after 100 days.' )
+			.contains( 'label', 'Comments to display per page' )
 			.should( 'be.visible' );
 
 		cy.get( '[data-id="close-comments-days-select"]' ).click();
