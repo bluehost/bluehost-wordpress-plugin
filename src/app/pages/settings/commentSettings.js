@@ -220,9 +220,7 @@ const CommentsPerPage = ( { setError, notify } ) => {
 		<SelectField
 			id="comments-per-page-select"
 			label={
-				__( 'Display ', 'wp-plugin-bluehost' ) +
-				commentsPerPage +
-				__( ' comments per page.', 'wp-plugin-bluehost' )
+				__( 'Comments to display per page', 'wp-plugin-bluehost' )
 			}
 			value={ commentsPerPage }
 			selectedLabel={ commentsPerPage }
