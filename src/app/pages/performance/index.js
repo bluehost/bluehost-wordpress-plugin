@@ -41,7 +41,7 @@ const PerformancePage = () => {
 			<Container className={ 'wppbh-app-settings-container' }>
 				<Container.Header
 					title={ __( 'Performance', 'wp-plugin-bluehost' ) }
-					subTitle={ __(
+					description={ __(
 						'This is where you can manage cache settings for your website.',
 						'wp-plugin-bluehost'
 					) }

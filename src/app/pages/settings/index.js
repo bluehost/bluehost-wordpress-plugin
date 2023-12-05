@@ -12,7 +12,7 @@ const Settings = () => {
 			<Container className={ 'wppbh-app-settings-container' }>
 				<Container.Header
 					title={ __( 'Settings', 'wp-plugin-bluehost' ) }
-					subTitle={ __(
+					description={ __(
 						'This is where you can manage common settings for your website.',
 						'wp-plugin-bluehost'
 					) }
