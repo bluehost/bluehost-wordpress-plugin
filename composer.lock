@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b4dc0f0725e0a8a3bbe5e0232804f67",
+    "content-hash": "b282091e7b299248e3acaba530906a42",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -418,16 +418,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.4.13",
+            "version": "2.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "a21d4579037add8bb921426f8d41e15d13b81af3"
+                "reference": "3bdc70e9f0784832c2955bd2f887215cd38c4425"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/a21d4579037add8bb921426f8d41e15d13b81af3",
-                "reference": "a21d4579037add8bb921426f8d41e15d13b81af3",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/3bdc70e9f0784832c2955bd2f887215cd38c4425",
+                "reference": "3bdc70e9f0784832c2955bd2f887215cd38c4425",
                 "shasum": ""
             },
             "require": {
@@ -460,10 +460,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.13",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.14",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2023-11-29T18:53:24+00:00"
+            "time": "2023-12-04T19:34:50+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
@@ -771,16 +771,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "3f836e2ae93e97e91a677e12ceb65fda90ee4d86"
+                "reference": "89984da21a9b069a1c47320d3b2bffbf89201e17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/3f836e2ae93e97e91a677e12ceb65fda90ee4d86",
-                "reference": "3f836e2ae93e97e91a677e12ceb65fda90ee4d86",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/89984da21a9b069a1c47320d3b2bffbf89201e17",
+                "reference": "89984da21a9b069a1c47320d3b2bffbf89201e17",
                 "shasum": ""
             },
             "require": {
@@ -821,10 +821,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/2.1.0",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/2.2.0",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2023-11-07T15:19:22+00:00"
+            "time": "2023-12-04T23:25:24+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
