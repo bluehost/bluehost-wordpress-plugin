@@ -1017,12 +1017,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-patterns.git",
-                "reference": "1169c206db5d5a2b4c424eb1dddaca1afdc5f491"
+                "reference": "ebec3c249969d86fd74e95c2f86860b7f5918ee5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/1169c206db5d5a2b4c424eb1dddaca1afdc5f491",
-                "reference": "1169c206db5d5a2b4c424eb1dddaca1afdc5f491",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/ebec3c249969d86fd74e95c2f86860b7f5918ee5",
+                "reference": "ebec3c249969d86fd74e95c2f86860b7f5918ee5",
                 "shasum": ""
             },
             "require-dev": {
@@ -1059,7 +1059,7 @@
                 "source": "https://github.com/newfold-labs/wp-module-patterns/tree/0.1.11",
                 "issues": "https://github.com/newfold-labs/wp-module-patterns/issues"
             },
-            "time": "2023-12-05T18:40:20+00:00"
+            "time": "2023-12-05T20:56:40+00:00"
         },
         {
             "name": "newfold-labs/wp-module-performance",
