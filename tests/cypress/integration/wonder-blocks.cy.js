@@ -13,7 +13,7 @@ describe( 'Wonder Blocks', function () {
 		cy.wait( 1000 );
 		cy.get( 'body' ).click( { force: true } ); // clear welcome guide
 		cy.wait( 100 );
-		cy.get( '#nfd-wba-toolbar-button' ).click( { force: true } );
+		cy.get( '#nfd-wba-toolbar-button button' ).click();
 		cy.wait( 100 );
 		// body has class modal-open
 		cy.get( 'body' ).should( 'have.class', 'modal-open' );
@@ -27,14 +27,14 @@ describe( 'Wonder Blocks', function () {
 		).should( 'exist' );
 		cy.get(
 			'.nfd-wba-modal__header button[aria-label="Close dialog"]'
-		).click( { force: true } );
+		).click();
 		cy.wait( 100 );
 		cy.get( 'body' ).should( 'not.have.class', 'modal-open' );
 		cy.get( '.nfd-wba-modal[role="dialog"]' ).should( 'not.exist' );
 	} );
 
 	it( 'ESC button closes modal too', () => {
-		cy.get( '#nfd-wba-toolbar-button' ).click( { force: true } );
+		cy.get( '#nfd-wba-toolbar-button button' ).click();
 		cy.wait( 100 );
 		cy.get( '.nfd-wba-modal[role="dialog"]' ).should( 'be.visible' );
 		cy.get( 'body' ).type( '{esc}' );
