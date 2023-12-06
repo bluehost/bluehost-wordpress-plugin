@@ -1,5 +1,5 @@
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
-import { getPlatformBaseUrl } from "../util/helpers";
+import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
+import { getPlatformBaseUrl } from '../util/helpers';
 
 const getSupportPhoneNumber = () => {
 	const brand = NewfoldRuntime.plugin.brand;
@@ -9,13 +9,14 @@ const getSupportPhoneNumber = () => {
 	}
 
 	return '888-401-4678';
-}
+};
 const help = [
 	{
 		name: 'phone',
 		title: __( 'Phone', 'wp-plugin-bluehost' ),
+		// eslint-disable-next-line @wordpress/i18n-no-variables
 		description: __(
-			"Contact one of our friendly Customer Care Specialists, as we are waiting to help at " + getSupportPhoneNumber() + ". Open 24 hours - 7 days.",
+			`Contact one of our friendly Customer Care Specialists, as we are waiting to help at ${ getSupportPhoneNumber() }. Open 24 hours - 7 days.`,
 			'wp-plugin-bluehost'
 		),
 		icon: false,
@@ -31,7 +32,9 @@ const help = [
 		),
 		icon: false,
 		cta: __( 'Live Chat', 'wp-plugin-bluehost' ),
-		url: getPlatformBaseUrl() + '/contact/?utm_campaign=&utm_content=help_chat_link&utm_term=live_chat&utm_medium=brand_plugin&utm_source=wp-admin/admin.php?page=bluehost#/help',
+		url:
+			getPlatformBaseUrl() +
+			'/contact/?utm_campaign=&utm_content=help_chat_link&utm_term=live_chat&utm_medium=brand_plugin&utm_source=wp-admin/admin.php?page=bluehost#/help',
 	},
 	{
 		name: 'twitter',
@@ -48,7 +51,7 @@ const help = [
 		name: 'youtube',
 		title: __( 'YouTube', 'wp-plugin-bluehost' ),
 		description: __(
-			"Find tutorials, answers, interviews and guides on our YouTube channel.",
+			'Find tutorials, answers, interviews and guides on our YouTube channel.',
 			'wp-plugin-bluehost'
 		),
 		icon: false,
@@ -64,7 +67,9 @@ const help = [
 		),
 		icon: false,
 		cta: __( 'Visit Knowledge Base', 'wp-plugin-bluehost' ),
-		url: getPlatformBaseUrl() + '/help/?utm_campaign=&utm_content=help_help_link&utm_term=we_can_help&utm_medium=brand_plugin&utm_source=wp-admin/admin.php?page=bluehost#/help',
+		url:
+			getPlatformBaseUrl() +
+			'/help/?utm_campaign=&utm_content=help_help_link&utm_term=we_can_help&utm_medium=brand_plugin&utm_source=wp-admin/admin.php?page=bluehost#/help',
 	},
 	{
 		name: 'resources',
@@ -75,7 +80,9 @@ const help = [
 		),
 		icon: false,
 		cta: __( 'Explore Resources', 'wp-plugin-bluehost' ),
-		url: getPlatformBaseUrl() + '/blog/?utm_campaign=&utm_content=help_kb_link&utm_term=find_answers&utm_medium=brand_plugin&utm_source=wp-admin/admin.php?page=bluehost#/help',
+		url:
+			getPlatformBaseUrl() +
+			'/blog/?utm_campaign=&utm_content=help_kb_link&utm_term=find_answers&utm_medium=brand_plugin&utm_source=wp-admin/admin.php?page=bluehost#/help',
 	},
 	{
 		name: 'events',

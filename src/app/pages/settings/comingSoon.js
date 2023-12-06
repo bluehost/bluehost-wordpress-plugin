@@ -1,115 +1,130 @@
+import { useState } from '@wordpress/element';
+import { useUpdateEffect } from 'react-use';
+import { Alert, Container, ToggleField } from '@newfold/ui-component-library';
 import AppStore from '../../data/store';
 import {
 	bluehostSettingsApiFetch,
 	comingSoonAdminbarToggle,
 } from '../../util/helpers';
-import { useState } from '@wordpress/element';
-import { useUpdateEffect } from 'react-use';
-import { Alert, ToggleField } from "@newfold/ui-component-library";
-import { SectionSettings } from "../../components/section";
-import { useNotification } from '../../components/notifications/feed';
+import { useNotification } from 'App/components/notifications';
 
 const ComingSoon = () => {
-	const { store, setStore } = useContext(AppStore);
-	const [comingSoon, setComingSoon] = useState(store.comingSoon);
-	const [isError, setError] = useState(false);
+	const { store, setStore } = useContext( AppStore );
+	const [ comingSoon, setComingSoon ] = useState( store.comingSoon );
+	const [ isError, setError ] = useState( false );
 
-	let notify = useNotification();
+	const notify = useNotification();
 
 	const getComingSoonNoticeTitle = () => {
 		return comingSoon
-			? __('Coming soon activated', 'wp-plugin-bluehost')
-			: __('Coming soon deactivated', 'wp-plugin-bluehost');
+			? __( 'Coming soon activated', 'wp-plugin-bluehost' )
+			: __( 'Coming soon deactivated', 'wp-plugin-bluehost' );
 	};
 
 	const getComingSoonNoticeText = () => {
 		return comingSoon
 			? __(
-				'Coming soon page is active. Site requires login.',
-				'wp-plugin-bluehost'
-			)
+					'Coming soon page is active. Site requires login.',
+					'wp-plugin-bluehost'
+			  )
 			: __(
-				'Coming soon page is not active. Site is live to visitors.',
-				'wp-plugin-bluehost'
-			);
+					'Coming soon page is not active. Site is live to visitors.',
+					'wp-plugin-bluehost'
+			  );
 	};
 
 	const toggleComingSoon = () => {
-		bluehostSettingsApiFetch({ comingSoon: !comingSoon }, setError, (response) => {
-			setComingSoon(!comingSoon);
-		});
+		bluehostSettingsApiFetch(
+			{ comingSoon: ! comingSoon },
+			setError,
+			// eslint-disable-next-line no-unused-vars
+			( response ) => {
+				setComingSoon( ! comingSoon );
+			}
+		);
 	};
 
 	const notifySuccess = () => {
-		notify.push("coming-soon-toggle-notice", {
+		notify.push( 'coming-soon-toggle-notice', {
 			title: getComingSoonNoticeTitle(),
-			description: (
-				<span>
-					{getComingSoonNoticeText()}
-				</span>
-			),
-			variant: "success",
+			description: <span>{ getComingSoonNoticeText() }</span>,
+			variant: 'success',
 			autoDismiss: 5000,
-		});
+		} );
 	};
 
-	useUpdateEffect(() => {
-		setStore({
+	useUpdateEffect( () => {
+		setStore( {
 			...store,
 			comingSoon,
-		});
+		} );
 
 		notifySuccess();
-		comingSoonAdminbarToggle(comingSoon);
-	}, [comingSoon]);
+		comingSoonAdminbarToggle( comingSoon );
+	}, [ comingSoon ] );
 
 	const getComingSoonSectionTitle = () => {
 		const getStatus = () => {
-			return (
-				comingSoon 
-				? <span className="nfd-text-[#e10001]">{__('Coming Soon', 'wp-plugin-bluehost')}</span>
-				: <span className="nfd-text-[#008112]">{__('Live', 'wp-plugin-bluehost')}</span>
+			return comingSoon ? (
+				<span className="nfd-text-[#e10001]">
+					{ __( 'Coming Soon', 'wp-plugin-bluehost' ) }
+				</span>
+			) : (
+				<span className="nfd-text-[#008112]">
+					{ __( 'Live', 'wp-plugin-bluehost' ) }
+				</span>
 			);
 		};
 
 		return (
-			<span>{__('Site Status', 'wp-plugin-bluehost')}: {getStatus()}</span>
-		)
+			<span>
+				{ __( 'Site Status', 'wp-plugin-bluehost' ) }: { getStatus() }
+			</span>
+		);
 	};
 
 	return (
-		<SectionSettings
-			title={getComingSoonSectionTitle()}
-			description={__('Still building your site? Need to make a big change?', 'wp-plugin-bluehost')}
+		<Container.SettingsField
+			title={ getComingSoonSectionTitle() }
+			description={ __(
+				'Still building your site? Need to make a big change?',
+				'wp-plugin-bluehost'
+			) }
 		>
 			<div className="nfd-flex nfd-flex-col nfd-gap-6">
 				<ToggleField
 					id="coming-soon-toggle"
 					label="Coming soon page"
-					description={__(
+					description={ __(
 						'Your Bluehost Coming Soon page lets you hide your site from visitors while you make the magic happen.',
 						'wp-plugin-bluehost'
-					)}
-					checked={comingSoon}
-					onChange={() => {
+					) }
+					checked={ comingSoon }
+					onChange={ () => {
 						toggleComingSoon();
-					}}
+					} }
 				/>
 
-				{comingSoon &&
+				{ comingSoon && (
 					<Alert variant="info">
-						{__('Your website is currently displaying a "Coming Soon" page.', 'wp-plugin-bluehost')}
+						{ __(
+							'Your website is currently displaying a "Coming Soon" page.',
+							'wp-plugin-bluehost'
+						) }
 					</Alert>
-				}
+				) }
 
-				{isError &&
+				{ isError && (
 					<Alert variant="error">
-						{__('Oops! Something went wrong. Please try again.', 'wp-plugin-bluehost')}
+						{ __(
+							'Oops! Something went wrong. Please try again.',
+							'wp-plugin-bluehost'
+						) }
 					</Alert>
-				}
+				) }
 			</div>
-		</SectionSettings>
+		</Container.SettingsField>
 	);
-}
+};
 
 export default ComingSoon;

@@ -1,37 +1,54 @@
+import classNames from 'classnames';
+import { Container, Page } from '@newfold/ui-component-library';
+import useContainerBlockIsTarget from 'App/util/hooks/useContainerBlockTarget';
 import AutomaticUpdates from './automaticUpdates';
-import ComingSoon from './comingSoon';
 import CommentSettings from './commentSettings';
+import ComingSoon from './comingSoon';
 import ContentSettings from './contentSettings';
-import { Page } from '../../components/page';
-import { SectionContainer, SectionHeader, SectionContent } from '../../components/section';
 
 const Settings = () => {
 	return (
-		<Page title="Settings" className={"wppbh-app-settings-page"}>
-			<SectionContainer className={'wppbh-app-settings-container'}>
-                <SectionHeader
-                    title={__('Settings', 'wp-plugin-bluehost')}
-                    subTitle={__('This is where you can manage common settings for your website.', 'wp-plugin-bluehost')}
-                    className={'wppbh-app-settings-header'}
-                />
+		<Page title="Settings" className={ 'wppbh-app-settings-page' }>
+			<Container className={ 'wppbh-app-settings-container' }>
+				<Container.Header
+					title={ __( 'Settings', 'wp-plugin-bluehost' ) }
+					description={ __(
+						'This is where you can manage common settings for your website.',
+						'wp-plugin-bluehost'
+					) }
+					className={ 'wppbh-app-settings-header' }
+				/>
 
-                <SectionContent separator={true} id={'coming-soon-section'} className={'wppbh-app-settings-coming-soon'}>
-                    <ComingSoon />
-                </SectionContent>
+				<Container.Block
+					separator={ true }
+					id={ 'coming-soon-section' }
+					className={ classNames(
+						'wppbh-app-settings-coming-soon',
+						useContainerBlockIsTarget( 'coming-soon-section' ) &&
+							'wppbh-animation-blink'
+					) }
+				>
+					<ComingSoon />
+				</Container.Block>
 
-				<SectionContent separator={true} className={'wppbh-app-settings-update'}>
-                    <AutomaticUpdates />
-                </SectionContent>
+				<Container.Block
+					separator={ true }
+					className={ 'wppbh-app-settings-update' }
+				>
+					<AutomaticUpdates />
+				</Container.Block>
 
-                <SectionContent separator={true} className={'wppbh-app-settings-content'}>
-                    <ContentSettings />
-                </SectionContent>
+				<Container.Block
+					separator={ true }
+					className={ 'wppbh-app-settings-content' }
+				>
+					<ContentSettings />
+				</Container.Block>
 
-				<SectionContent className={'wppbh-app-settings-comments'}>
-                    <CommentSettings />
-                </SectionContent>
-
-            </SectionContainer>
+				<Container.Block className={ 'wppbh-app-settings-comments' }>
+					<CommentSettings />
+				</Container.Block>
+			</Container>
 		</Page>
 	);
 };

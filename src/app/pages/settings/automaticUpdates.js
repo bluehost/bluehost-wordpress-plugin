@@ -1,284 +1,325 @@
+import { useState } from '@wordpress/element';
+import { useUpdateEffect } from 'react-use';
+import { Alert, Container, ToggleField } from '@newfold/ui-component-library';
 import AppStore from '../../data/store';
 import { bluehostSettingsApiFetch } from '../../util/helpers';
-import { useUpdateEffect } from 'react-use';
-import { useState } from '@wordpress/element';
-import { Alert, ToggleField } from "@newfold/ui-component-library";
-import { SectionSettings } from "../../components/section";
-import { useNotification } from '../../components/notifications/feed';
+import { useNotification } from 'App/components/notifications';
 
-const AutomaticUpdatesAll = ({ setError, notify }) => {
-	const { store, setStore } = useContext(AppStore);
-	const [autoUpdatesAll, setAutoUpdatesAll] = useState(
+const AutomaticUpdatesAll = ( { setError, notify } ) => {
+	const { store, setStore } = useContext( AppStore );
+	const [ autoUpdatesAll, setAutoUpdatesAll ] = useState(
 		store.autoUpdatesMajorCore &&
-		store.autoUpdatesPlugins &&
-		store.autoUpdatesThemes
-		? true
-		: false
+			store.autoUpdatesPlugins &&
+			store.autoUpdatesThemes
+			? true
+			: false
 	);
 
 	const getAllNoticeTitle = () => {
 		return autoUpdatesAll
-			? __('Enabled All auto-updates', 'wp-plugin-bluehost')
-			: __('Disabled All auto-updates', 'wp-plugin-bluehost');
+			? __( 'Enabled All auto-updates', 'wp-plugin-bluehost' )
+			: __( 'Disabled All auto-updates', 'wp-plugin-bluehost' );
 	};
 	const getAllNoticeText = () => {
 		return autoUpdatesAll
-			? __('Everything will automatically update.', 'wp-plugin-bluehost')
-			: __('Custom auto-update settings.', 'wp-plugin-bluehost');
+			? __(
+					'Everything will automatically update.',
+					'wp-plugin-bluehost'
+			  )
+			: __( 'Custom auto-update settings.', 'wp-plugin-bluehost' );
 	};
 
 	const toggleAutoUpdatesAll = () => {
-		if ( autoUpdatesAll ) { // is unchecking
+		if ( autoUpdatesAll ) {
+			// is unchecking
 			// just uncheck this one
-			setAutoUpdatesAll(!autoUpdatesAll);
-		} else { // is checking
+			setAutoUpdatesAll( ! autoUpdatesAll );
+		} else {
+			// is checking
 			bluehostSettingsApiFetch(
-				{ 
+				{
 					autoUpdatesMajorCore: true,
 					autoUpdatesPlugins: true,
-					autoUpdatesThemes: true
-				}, 
-				setError, 
-				(response) => {
-					setAutoUpdatesAll(!autoUpdatesAll);
+					autoUpdatesThemes: true,
+				},
+				setError,
+				// eslint-disable-next-line no-unused-vars
+				( response ) => {
+					setAutoUpdatesAll( ! autoUpdatesAll );
 				}
 			);
 		}
 	};
 
 	const notifySuccess = () => {
-		notify.push("everything-autoupdate-notice", {
+		notify.push( 'everything-autoupdate-notice', {
 			title: getAllNoticeTitle(),
-			description: (
-				<span>
-					{getAllNoticeText()}
-				</span>
-			),
-			variant: "success",
+			description: <span>{ getAllNoticeText() }</span>,
+			variant: 'success',
 			autoDismiss: 5000,
-		});
+		} );
 	};
 
 	useEffect( () => {
-		if ( store.autoUpdatesMajorCore && store.autoUpdatesPlugins && store.autoUpdatesThemes ) {
+		if (
+			store.autoUpdatesMajorCore &&
+			store.autoUpdatesPlugins &&
+			store.autoUpdatesThemes
+		) {
 			setAutoUpdatesAll( true );
 		} else {
 			setAutoUpdatesAll( false );
 		}
-	}, [ store.autoUpdatesMajorCore, store.autoUpdatesPlugins, store.autoUpdatesThemes ] );
+	}, [
+		store.autoUpdatesMajorCore,
+		store.autoUpdatesPlugins,
+		store.autoUpdatesThemes,
+	] );
 
-	useUpdateEffect(() => {
-		
-		setStore({
+	useUpdateEffect( () => {
+		setStore( {
 			...store,
 			autoUpdatesAll,
-		});
+		} );
 
 		notifySuccess();
-	}, [autoUpdatesAll]);
+	}, [ autoUpdatesAll ] );
 
 	return (
 		<ToggleField
 			id="autoupdate-all-toggle"
-			label={__('Manage All Updates', 'wp-plugin-bluehost')}
-			checked={autoUpdatesAll}
-			onChange={toggleAutoUpdatesAll}
+			label={ __(
+				'Automatically keep all up to date',
+				'wp-plugin-bluehost'
+			) }
+			checked={ autoUpdatesAll }
+			onChange={ toggleAutoUpdatesAll }
 		/>
 	);
-}
+};
 
-const AutomaticUpdatesMajorCore = ({ setError, notify }) => {
-	const { store, setStore } = useContext(AppStore);
-	const [autoUpdatesMajorCore, setAutoUpdatesCore] = useState(
+const AutomaticUpdatesMajorCore = ( { setError, notify } ) => {
+	const { store, setStore } = useContext( AppStore );
+	const [ autoUpdatesMajorCore, setAutoUpdatesCore ] = useState(
 		store.autoUpdatesMajorCore
 	);
 
 	const getCoreNoticeTitle = () => {
 		return autoUpdatesMajorCore
-			? __('Enabled Core auto-updates', 'wp-plugin-bluehost')
-			: __('Disabled Core auto-updates', 'wp-plugin-bluehost');
+			? __( 'Enabled Core auto-updates', 'wp-plugin-bluehost' )
+			: __( 'Disabled Core auto-updates', 'wp-plugin-bluehost' );
 	};
 	const getCoreNoticeText = () => {
 		return autoUpdatesMajorCore
-			? __('WordPress will automatically update.', 'wp-plugin-bluehost')
-			: __('WordPress must be manually updated.', 'wp-plugin-bluehost');
+			? __( 'WordPress will automatically update.', 'wp-plugin-bluehost' )
+			: __( 'WordPress must be manually updated.', 'wp-plugin-bluehost' );
 	};
 
 	const toggleAutoUpdatesMajorCore = () => {
-		bluehostSettingsApiFetch({ autoUpdatesMajorCore: !autoUpdatesMajorCore }, setError, (response) => {
-			setAutoUpdatesCore(!autoUpdatesMajorCore);
-		});
+		bluehostSettingsApiFetch(
+			{ autoUpdatesMajorCore: ! autoUpdatesMajorCore },
+			setError,
+			// eslint-disable-next-line no-unused-vars
+			( response ) => {
+				setAutoUpdatesCore( ! autoUpdatesMajorCore );
+			}
+		);
 	};
 
 	const notifySuccess = () => {
-		notify.push("major-core-autoupdate-notice", {
+		notify.push( 'major-core-autoupdate-notice', {
 			title: getCoreNoticeTitle(),
-			description: (
-				<span>
-					{getCoreNoticeText()}
-				</span>
-			),
-			variant: "success",
+			description: <span>{ getCoreNoticeText() }</span>,
+			variant: 'success',
 			autoDismiss: 5000,
-		});
+		} );
 	};
 
-	useUpdateEffect(() => {
-		setStore({
+	useUpdateEffect( () => {
+		setStore( {
 			...store,
 			autoUpdatesMajorCore,
-		});
+		} );
 
 		notifySuccess();
-	}, [autoUpdatesMajorCore]);
+	}, [ autoUpdatesMajorCore ] );
 
 	return (
 		<ToggleField
 			id="autoupdate-core-toggle"
-			label={__('WordPress Core', 'wp-plugin-bluehost')}
-			checked={autoUpdatesMajorCore || store.autoUpdatesAll}
-			disabled={store.autoUpdatesAll}
-			onChange={toggleAutoUpdatesMajorCore}
+			label={ __( 'WordPress Core', 'wp-plugin-bluehost' ) }
+			checked={ autoUpdatesMajorCore || store.autoUpdatesAll }
+			disabled={ store.autoUpdatesAll }
+			onChange={ toggleAutoUpdatesMajorCore }
 		/>
 	);
-}
+};
 
-const AutomaticUpdatesPlugins = ({ setError, notify }) => {
-	const { store, setStore } = useContext(AppStore);
-	const [autoUpdatesPlugins, setAutoUpdatesPlugins] = useState(
+const AutomaticUpdatesPlugins = ( { setError, notify } ) => {
+	const { store, setStore } = useContext( AppStore );
+	const [ autoUpdatesPlugins, setAutoUpdatesPlugins ] = useState(
 		store.autoUpdatesPlugins
 	);
 
 	const getPluginsNoticeTitle = () => {
 		return autoUpdatesPlugins
-			? __('Enabled Plugins auto-update', 'wp-plugin-bluehost')
-			: __('Disabled Plugins auto-update', 'wp-plugin-bluehost');
+			? __( 'Enabled Plugins auto-update', 'wp-plugin-bluehost' )
+			: __( 'Disabled Plugins auto-update', 'wp-plugin-bluehost' );
 	};
 	const getPluginsNoticeText = () => {
 		return autoUpdatesPlugins
-			? __('All plugins will automatically update.', 'wp-plugin-bluehost')
-			: __('Each plugin must be manually updated.', 'wp-plugin-bluehost');
+			? __(
+					'All plugins will automatically update.',
+					'wp-plugin-bluehost'
+			  )
+			: __(
+					'Each plugin must be manually updated.',
+					'wp-plugin-bluehost'
+			  );
 	};
 
 	const toggleAutoUpdatesPlugins = () => {
-		bluehostSettingsApiFetch({ autoUpdatesPlugins: !autoUpdatesPlugins }, setError, (response) => {
-			setAutoUpdatesPlugins(!autoUpdatesPlugins);
-		});
+		bluehostSettingsApiFetch(
+			{ autoUpdatesPlugins: ! autoUpdatesPlugins },
+			setError,
+			// eslint-disable-next-line no-unused-vars
+			( response ) => {
+				setAutoUpdatesPlugins( ! autoUpdatesPlugins );
+			}
+		);
 	};
 
 	const notifySuccess = () => {
-		notify.push("plugins-autoupdate-notice", {
+		notify.push( 'plugins-autoupdate-notice', {
 			title: getPluginsNoticeTitle(),
-			description: (
-				<span>
-					{getPluginsNoticeText()}
-				</span>
-			),
-			variant: "success",
+			description: <span>{ getPluginsNoticeText() }</span>,
+			variant: 'success',
 			autoDismiss: 5000,
-		});
+		} );
 	};
 
-	useUpdateEffect(() => {
-		setStore({
+	useUpdateEffect( () => {
+		setStore( {
 			...store,
 			autoUpdatesPlugins,
-		});
+		} );
 
 		notifySuccess();
-	}, [autoUpdatesPlugins]);
+	}, [ autoUpdatesPlugins ] );
 
 	return (
 		<ToggleField
 			id="autoupdate-plugins-toggle"
-			label={__('Plugins', 'wp-plugin-bluehost')}
-			checked={autoUpdatesPlugins || store.autoUpdatesAll}
-			disabled={store.autoUpdatesAll}
-			onChange={toggleAutoUpdatesPlugins}
+			label={ __( 'Plugins', 'wp-plugin-bluehost' ) }
+			checked={ autoUpdatesPlugins || store.autoUpdatesAll }
+			disabled={ store.autoUpdatesAll }
+			onChange={ toggleAutoUpdatesPlugins }
 		/>
 	);
-}
+};
 
-const AutomaticUpdatesThemes = ({ setError, notify }) => {
-	const { store, setStore } = useContext(AppStore);
-	const [autoUpdatesThemes, setAutoUpdatesThemes] = useState(
+const AutomaticUpdatesThemes = ( { setError, notify } ) => {
+	const { store, setStore } = useContext( AppStore );
+	const [ autoUpdatesThemes, setAutoUpdatesThemes ] = useState(
 		store.autoUpdatesThemes
 	);
 
 	const getThemesNoticeTitle = () => {
 		return autoUpdatesThemes
-			? __('Enabled Themes auto-update', 'wp-plugin-bluehost')
-			: __('Disabled Themes auto-update', 'wp-plugin-bluehost');
+			? __( 'Enabled Themes auto-update', 'wp-plugin-bluehost' )
+			: __( 'Disabled Themes auto-update', 'wp-plugin-bluehost' );
 	};
 
 	const getThemesNoticeText = () => {
 		return autoUpdatesThemes
-			? __('All themes will automatically update.', 'wp-plugin-bluehost')
-			: __('Each theme must be manually updated.', 'wp-plugin-bluehost');
+			? __(
+					'All themes will automatically update.',
+					'wp-plugin-bluehost'
+			  )
+			: __(
+					'Each theme must be manually updated.',
+					'wp-plugin-bluehost'
+			  );
 	};
 
 	const toggleAutoUpdatesThemes = () => {
-		bluehostSettingsApiFetch({ autoUpdatesThemes: !autoUpdatesThemes }, setError, (response) => {
-			setAutoUpdatesThemes(!autoUpdatesThemes);
-		});
+		bluehostSettingsApiFetch(
+			{ autoUpdatesThemes: ! autoUpdatesThemes },
+			setError,
+			// eslint-disable-next-line no-unused-vars
+			( response ) => {
+				setAutoUpdatesThemes( ! autoUpdatesThemes );
+			}
+		);
 	};
 
 	const notifySuccess = () => {
-		notify.push("themes-autoupdate-notice", {
+		notify.push( 'themes-autoupdate-notice', {
 			title: getThemesNoticeTitle(),
-			description: (
-				<span>
-					{getThemesNoticeText()}
-				</span>
-			),
-			variant: "success",
+			description: <span>{ getThemesNoticeText() }</span>,
+			variant: 'success',
 			autoDismiss: 5000,
-		});
+		} );
 	};
 
-	useUpdateEffect(() => {
-		setStore({
+	useUpdateEffect( () => {
+		setStore( {
 			...store,
 			autoUpdatesThemes,
-		});
+		} );
 
 		notifySuccess();
-	}, [autoUpdatesThemes]);
+	}, [ autoUpdatesThemes ] );
 
 	return (
 		<ToggleField
 			id="autoupdate-themes-toggle"
-			label={__('Themes', 'wp-plugin-bluehost')}
-			checked={autoUpdatesThemes || store.autoUpdatesAll}
-			disabled={store.autoUpdatesAll}
-			onChange={toggleAutoUpdatesThemes}
+			label={ __( 'Themes', 'wp-plugin-bluehost' ) }
+			checked={ autoUpdatesThemes || store.autoUpdatesAll }
+			disabled={ store.autoUpdatesAll }
+			onChange={ toggleAutoUpdatesThemes }
 		/>
 	);
-}
+};
 
 const AutomaticUpdates = () => {
-	const [isError, setError] = useState(false);
+	const [ isError, setError ] = useState( false );
 
-	let notify = useNotification();
+	const notify = useNotification();
 
 	return (
-		<SectionSettings
-			title={__('Automatic Updates', 'wp-plugin-bluehost')}
-			description={__('Keeping automatic updates on ensures timely security fixes and the latest features.', 'wp-plugin-bluehost')}
+		<Container.SettingsField
+			title={ __( 'Automatic Updates', 'wp-plugin-bluehost' ) }
+			description={ __(
+				'Keeping automatic updates on ensures timely security fixes and the latest features.',
+				'wp-plugin-bluehost'
+			) }
 		>
 			<div className="nfd-flex nfd-flex-col nfd-gap-4">
-				<AutomaticUpdatesAll setError={setError} notify={notify} />
-				<AutomaticUpdatesMajorCore setError={setError} notify={notify} />
-				<AutomaticUpdatesPlugins setError={setError} notify={notify} />
-				<AutomaticUpdatesThemes setError={setError} notify={notify} />
-				{isError &&
+				<AutomaticUpdatesAll setError={ setError } notify={ notify } />
+				<AutomaticUpdatesMajorCore
+					setError={ setError }
+					notify={ notify }
+				/>
+				<AutomaticUpdatesPlugins
+					setError={ setError }
+					notify={ notify }
+				/>
+				<AutomaticUpdatesThemes
+					setError={ setError }
+					notify={ notify }
+				/>
+				{ isError && (
 					<Alert variant="error">
-						{__('Oops! Something went wrong. Please try again.', 'wp-plugin-bluehost')}
+						{ __(
+							'Oops! Something went wrong. Please try again.',
+							'wp-plugin-bluehost'
+						) }
 					</Alert>
-				}
+				) }
 			</div>
-		</SectionSettings>
+		</Container.SettingsField>
 	);
-}
+};
 
 export default AutomaticUpdates;

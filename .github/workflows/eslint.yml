@@ -1,22 +1,35 @@
-name: Cypress Tests Beta Only
+name: ESLint
 
 on:
-  schedule:
-    # Runs "Every Monday 6am UTC"
-    - cron: '0 6 * * 1'
+  push:
+    branches:
+      - main
+      - master
+      - trunk
+      - develop
+      - release/*
+      - feature/*
+      - add/*
+      - update/*
+      - fix/*
+      - try/*'
+    paths:
+      - 'src/**/*.js'
+  pull_request:
+    types: [ opened, edited, reopened, ready_for_review ]
+    paths: 
+      - 'src/**/*.js'
   workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
-  
-jobs:
-  test:
-    name: Run Cypress Beta Only Tests
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
 
+jobs:
+  ESLint:
+    runs-on: ubuntu-latest
     steps:
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -36,6 +49,7 @@ jobs:
           mkdir dist
           echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
           echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
+
       - name: Use Node.js 16.x
         uses: actions/setup-node@v4
         with:
@@ -53,15 +67,17 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
+
       - name: Show versions
         run: |
           php --version
           composer --version
           node --version
           npm --version
+
       - name: Validate composer.json and composer.lock
         run: composer validate
-
+  
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
@@ -69,47 +85,7 @@ jobs:
         run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
 
       - name: NPM Install
-        run: npm install --legacy-peer-deps
+        run: npm ci --legacy-peer-deps
 
-      - name: Build JavaScript
-        run: npm run build
-
-      - name: Create Distribution Copy
-        run: rsync -r --include-from=.distinclude --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
-
-      - name: List Distribution Files
-        working-directory: ${{ steps.workflow.outputs.DIST }}
-        run: find .
-
-      - name: Fetch WordPress beta version
-        run: |
-          wp_beta_zip=$(node -e "
-            const fetch = require('node-fetch');
-            fetch('https://api.wordpress.org/core/version-check/1.7/?channel=beta')
-              .then(response => response.json())
-              .then(data => data.offers[0].download);
-          ")
-          echo $wp_beta_zip
-        
-      - name: Configure WordPress
-        run: |
-          echo '{ "core" : "'"${wp_beta_zip}"'" , "plugins":[ "${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}" ] }' > .wp-env.override.json
-        
-      - name: Install WordPress
-        run: npx wp-env start --debug
-
-      - name: Run Cypress Tests
-        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
-        run: npm run test:e2e -- --browser chrome
-
-      - name: Store screenshots of test failures
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: screenshots
-          path: ./tests/cypress/screenshots
-
-      - name: Output debug.log file contents
-        if: always()
-        continue-on-error: true
-        run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
+      - name: ESLint
+        run: npm run lint:js

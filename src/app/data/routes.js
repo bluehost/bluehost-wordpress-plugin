@@ -1,12 +1,11 @@
-import { 
+import {
 	HomeIcon,
 	ShoppingBagIcon,
 	WrenchScrewdriverIcon,
-	BoltIcon, 
+	BoltIcon,
 	AdjustmentsHorizontalIcon,
 	BuildingStorefrontIcon,
-	QuestionMarkCircleIcon } 
-from '@heroicons/react/24/outline';
+} from '@heroicons/react/24/outline';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import { Route, Routes } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
@@ -17,16 +16,16 @@ import Performance from '../pages/performance';
 import Settings from '../pages/settings';
 import Staging from '../pages/staging';
 import Help from '../pages/help';
-import { getMarketplaceSubnavRoutes } from '../../../vendor/newfold-labs/wp-module-marketplace/components/marketplaceSubnav';
-import { ReactComponent as HelpIcon } from "../components/icons/HelpIcon.svg";
+import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
+import { ReactComponent as HelpIcon } from '../components/icons/HelpIcon.svg';
 
-const addPartialMatch = (prefix, path) =>
-  prefix === path ? `${prefix}/*` : path;
+const addPartialMatch = ( prefix, path ) =>
+	prefix === path ? `${ prefix }/*` : path;
 
-const HelpCenterAI = (e) => {
+const HelpCenterAI = ( e ) => {
 	e.preventDefault();
 	window.newfoldEmbeddedHelp.toggleNFDLaunchedEmbeddedHelp();
-}
+};
 
 export const AppRoutes = () => {
 	return (
@@ -38,7 +37,7 @@ export const AppRoutes = () => {
 					path={ addPartialMatch(
 						'/marketplace',
 						addPartialMatch( '/store', page.name )
-					)}
+					) }
 					element={ <page.Component /> }
 				/>
 			) ) }
@@ -48,7 +47,10 @@ export const AppRoutes = () => {
 				element={
 					<main style={ { padding: '1rem' } }>
 						<p>
-							{ __( "There's nothing here!", 'wp-plugin-bluehost' ) }
+							{ __(
+								"There's nothing here!",
+								'wp-plugin-bluehost'
+							) }
 						</p>
 					</main>
 				}
@@ -84,23 +86,24 @@ export const routes = [
 				name: '/store/products',
 				title: __( 'Products & Services', 'wp-plugin-bluehost' ),
 			},
-			NewfoldRuntime.hasCapability( 'hasYithExtended' ) || NewfoldRuntime.hasCapability('canAccessGlobalCTB')
-			? {
-				name: "/store/sales_discounts",
-				title: __("Sales & Discounts", "wp-plugin-bluehost"),
-			}
-			: null,
+			NewfoldRuntime.hasCapability( 'hasYithExtended' ) ||
+			NewfoldRuntime.hasCapability( 'canAccessGlobalCTB' )
+				? {
+						name: '/store/sales_discounts',
+						title: __( 'Sales & Discounts', 'wp-plugin-bluehost' ),
+				  }
+				: null,
 			NewfoldRuntime.isWoo
-			? {
-				name: '/store/payments',
-				title: __( 'Payments', 'wp-plugin-bluehost' ),
-			}
-			: null,
+				? {
+						name: '/store/payments',
+						title: __( 'Payments', 'wp-plugin-bluehost' ),
+				  }
+				: null,
 			{
 				name: '/store/details',
 				title: __( 'Store Details', 'wp-plugin-bluehost' ),
 			},
-		].filter(Boolean),
+		].filter( Boolean ),
 	},
 	{
 		name: '/marketplace',
@@ -132,7 +135,9 @@ export const routes = [
 		title: __( 'Help', 'wp-plugin-bluehost' ),
 		Component: Help,
 		Icon: HelpIcon,
-		action: NewfoldRuntime.hasCapability( 'canAccessHelpCenter' ) ? HelpCenterAI : false,
+		action: NewfoldRuntime.hasCapability( 'canAccessHelpCenter' )
+			? HelpCenterAI
+			: false,
 	},
 ];
 
