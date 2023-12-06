@@ -8,7 +8,7 @@
  */
 
 if ( ! function_exists( 'get_plugins' ) ) {
-	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	include_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
 
 $auto_update_plugins = get_option( 'auto_update_plugin', 'true' );

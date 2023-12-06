@@ -17,7 +17,7 @@ namespace Bluehost;
  *
  * @return bool The conversion result.
  */
-function auto_update_make_bool( $value, $default = true ) {
+function auto_update_make_bool( $value, $default = true ) { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.defaultFound
 	if ( 'false' === $value ) {
 		$value = false;
 	}
@@ -43,12 +43,12 @@ function auto_update_make_bool( $value, $default = true ) {
 function auto_update_configure() {
 	global $wp_version;
 
-	$settings = array(
+	$settings = [
 		'allow_major_auto_core_updates' => get_option( 'allow_major_auto_core_updates', true ),
 		'allow_minor_auto_core_updates' => get_option( 'allow_minor_auto_core_updates', true ),
 		'auto_update_plugin'            => get_option( 'auto_update_plugin', true ),
 		'auto_update_theme'             => get_option( 'auto_update_theme', true ),
-	);
+	];
 
 	// only change setting if the updater is not disabled
 	if ( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) || AUTOMATIC_UPDATER_DISABLED === false ) {
@@ -196,7 +196,6 @@ function sync_plugin_major_auto_core_update_option( $old_value, $value ) {
 
 add_action( 'update_option_auto_update_core_major', __NAMESPACE__ . '\\sync_plugin_major_auto_core_update_option', 10, 2 );
 
-
 /**
  * Ensures all installed plugins are set to auto-update.
  *
@@ -210,7 +209,7 @@ add_action( 'update_option_auto_update_core_major', __NAMESPACE__ . '\\sync_plug
  */
 function sync_plugin_update_settings() {
 	if ( ! function_exists( 'get_plugins' ) ) {
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
 
 	return update_site_option( 'auto_update_plugins', array_keys( get_plugins() ) );
@@ -229,7 +228,7 @@ function sync_plugin_update_settings() {
  */
 function sync_theme_update_settings() {
 	if ( ! function_exists( 'wp_get_themes' ) ) {
-		require_once ABSPATH . WPINC . '/theme.php';
+		include_once ABSPATH . WPINC . '/theme.php';
 	}
 
 	return update_site_option( 'auto_update_themes', array_keys( wp_get_themes() ) );
@@ -304,29 +303,30 @@ add_action( 'delete_site_transient_update_themes', __NAMESPACE__ . '\\delete_sit
 /**
  * Updates the WordPress Core options for plugin and theme auto-updates when one is updated.
  *
- * @param WP_Upgrader $upgrader WP_Upgrader instance. In other contexts, $this, might be a
- *                              Theme_Upgrader, Plugin_Upgrader, Core_Upgrade, or Language_Pack_Upgrader instance.
+ * @param WP_Upgrader $upgrader   WP_Upgrader instance. In other contexts, $this, might be a
+ *                                Theme_Upgrader, Plugin_Upgrader, Core_Upgrade, or
+ *                                Language_Pack_Upgrader instance.
  * @param array       $hook_extra {
- *     Array of bulk item update data.
+ *                                Array of bulk item update data.
  *
- *     @type string $action       Type of action. Default 'update'.
- *     @type string $type         Type of update process. Accepts 'plugin', 'theme', 'translation', or 'core'.
- *     @type bool   $bulk         Whether the update process is a bulk update. Default true.
- *     @type array  $plugins      Array of the basename paths of the plugins' main files.
- *     @type array  $themes       The theme slugs.
- *     @type array  $translations {
- *         Array of translations update data.
+ * @type string $action       Type of action. Default 'update'.
+ * @type string $type         Type of update process. Accepts 'plugin', 'theme', 'translation', or 'core'.
+ * @type bool   $bulk         Whether the update process is a bulk update. Default true.
+ * @type array  $plugins      Array of the basename paths of the plugins' main files.
+ * @type array  $themes       The theme slugs.
+ * @type array  $translations {
+ *              Array of translations update data.
  *
- *         @type string $language The locale the translation is for.
- *         @type string $type     Type of translation. Accepts 'plugin', 'theme', or 'core'.
- *         @type string $slug     Text domain the translation is for. The slug of a theme/plugin or
- *                                'default' for core translations.
- *         @type string $version  The version of a theme, plugin, or core.
- *     }
- * }
+ * @type string $language The locale the translation is for.
+ * @type string $type     Type of translation. Accepts 'plugin', 'theme', or 'core'.
+ * @type string $slug     Text domain the translation is for. The slug of a theme/plugin or
+ *              'default' for core translations.
+ * @type string $version  The version of a theme, plugin, or core.
+ *              }
+ *              }
  */
 function upgrader_process_complete( $upgrader, $hook_extra ) {
-	if ( ! in_array( $hook_extra['type'], array( 'plugin', 'theme' ), true ) ) {
+	if ( ! in_array( $hook_extra['type'], [ 'plugin', 'theme' ], true ) ) {
 		return;
 	}
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * Functionality related to Settings
- * see RestApi/SettingsController.php for implementation
+ * see RestApi/SettingsController.php for implementation.
  *
  * @package WPPluginBluehost
  */
@@ -9,15 +9,17 @@
 namespace Bluehost;
 
 /**
- * Filter wp revisions according to plugin setting
+ * Filter wp revisions according to plugin setting.
  *
- * @param int            $num Number of posts to retain (unused).
+ * @param int            $num  Number of posts to retain (unused).
  * @param WP_Post|object $post Post object (unused).
+ *
  * @return int
  */
-function nfd_settings_revisions( $num, $post ) {
+function nfd_settings_revisions( $num, $post ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 	return get_option( 'nfd_wp_post_revisions', 5 );
 }
+
 add_filter( 'wp_revisions_to_keep', __NAMESPACE__ . '\\nfd_settings_revisions', 10, 2 );
 
 if ( ! defined( 'EMPTY_TRASH_DAYS' ) ) {

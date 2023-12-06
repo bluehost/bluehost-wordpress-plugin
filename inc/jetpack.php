@@ -31,10 +31,10 @@ add_filter( 'jetpack_get_default_modules', __NAMESPACE__ . '\\customize_jetpack_
  * @return array
  */
 function jetpack_unregister_blocks( $blocks ) {
-	$blocks_to_deregister = array(
+	$blocks_to_deregister = [
 		'mailchimp',
 		'revue',
-	);
+	];
 	foreach ( $blocks_to_deregister as $block_slug ) {
 		$found = array_search( $block_slug, $blocks, true );
 		if ( false !== $found ) {
@@ -48,11 +48,12 @@ add_filter( 'jetpack_set_available_blocks', __NAMESPACE__ . '\\jetpack_unregiste
 
 /**
  * Tell jetpack that the site is in construction mode.
- * See https://github.com/Automattic/jetpack/blob/trunk/projects/plugins/jetpack/_inc/lib/class.core-rest-api-endpoints.php#L1122-L1143
+ * See https://github.com/Automattic/jetpack/blob/trunk/projects/plugins/jetpack/_inc/lib/class.core-rest-api-endpoints.php#L1122-L1143.
  */
 function jetpack_construction() {
 	if ( 'true' === get_option( 'nfd_coming_soon', 'false' ) ) {
 		return true;
 	}
 }
+
 add_filter( 'jetpack_is_under_construction_plugin', __NAMESPACE__ . '\\jetpack_construction' );

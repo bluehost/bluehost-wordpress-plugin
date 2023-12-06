@@ -3,7 +3,7 @@
 namespace Bluehost\RestApi;
 
 /**
- * Class SettingsController
+ * Class SettingsController.
  */
 class SettingsController extends \WP_REST_Controller {
 
@@ -15,27 +15,26 @@ class SettingsController extends \WP_REST_Controller {
 	protected $namespace = 'bluehost/v1';
 
 	/**
-	 * Registers the settings route
+	 * Registers the settings route.
 	 */
 	public function register_routes() {
 
 		register_rest_route(
 			$this->namespace,
 			'/settings',
-			array(
-				array(
+			[
+				[
 					'methods'             => \WP_REST_Server::READABLE,
-					'callback'            => array( $this, 'get_item' ),
-					'permission_callback' => array( $this, 'check_permission' ),
-				),
-				array(
+					'callback'            => [ $this, 'get_item' ],
+					'permission_callback' => [ $this, 'check_permission' ],
+				],
+				[
 					'methods'             => \WP_REST_Server::EDITABLE,
-					'callback'            => array( $this, 'update_item' ),
-					'permission_callback' => array( $this, 'check_permission' ),
-				),
-			)
+					'callback'            => [ $this, 'update_item' ],
+					'permission_callback' => [ $this, 'check_permission' ],
+				],
+			]
 		);
-
 	}
 
 	/**
@@ -141,7 +140,7 @@ class SettingsController extends \WP_REST_Controller {
 	}
 
 	/**
-	 * Retrieve the existing saved array of settings
+	 * Retrieve the existing saved array of settings.
 	 *
 	 * @return array $settings List of the settings and their values
 	 */
@@ -169,7 +168,7 @@ class SettingsController extends \WP_REST_Controller {
 			$translations = false;
 		}
 
-		$settings = array(
+		$settings = [
 			'comingSoon'              => ( 'true' === get_option( 'nfd_coming_soon', 'false' ) ),
 			'autoUpdatesAll'          => $major && $plugins && $themes,
 			'autoUpdatesMajorCore'    => $major,
@@ -186,10 +185,9 @@ class SettingsController extends \WP_REST_Controller {
 			'hasSetHomepage'          => (bool) get_option( 'bh_has_set_homepage', false ),
 			'showOnFront'             => (string) get_option( 'show_on_front' ),
 			'pageOnFront'             => (int) get_option( 'page_on_front' ),
-		);
+		];
 
 		return $settings;
-
 	}
 
 	/**
@@ -199,10 +197,9 @@ class SettingsController extends \WP_REST_Controller {
 	 */
 	public function check_permission() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return new \WP_Error( 'rest_forbidden_context', __( 'Sorry, you are not allowed to access this endpoint.', 'wp-plugin-bluehost' ), array( 'status' => rest_authorization_required_code() ) );
+			return new \WP_Error( 'rest_forbidden_context', __( 'Sorry, you are not allowed to access this endpoint.', 'wp-plugin-bluehost' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;
 	}
-
 }

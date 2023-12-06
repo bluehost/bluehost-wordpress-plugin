@@ -34,15 +34,13 @@ function aioseo_upgrade_affiliate_link( $url ) {
 add_filter( 'aioseo_upgrade_link', __NAMESPACE__ . '\\aioseo_upgrade_affiliate_link' );
 
 /**
- * Enable Sharing with WooCommerce
- * 
- * @param string $plugin the plugin
- * @param boolean $network_activation flag is network activated
- * 
- * @return void
+ * Enable Sharing with WooCommerce.
+ *
+ * @param string $plugin             the plugin
+ * @param bool   $network_activation flag is network activated
  */
-function plugin_activated( $plugin, $network_activation ) {
-	switch( $plugin ) {
+function plugin_activated( $plugin, $network_activation ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+	switch ( $plugin ) {
 		case 'woocommerce/woocommerce.php':
 			// Enable the usage tracking option by default https://woocommerce.com/usage-tracking/
 			update_option( 'woocommerce_allow_tracking', 'yes' );

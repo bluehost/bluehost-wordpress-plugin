@@ -1,6 +1,6 @@
 <?php
 /**
- * Handle updates for version 2.12.11
+ * Handle updates for version 2.12.11.
  *
  * Update the plugin legacy coming soon option.
  *

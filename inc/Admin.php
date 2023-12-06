@@ -8,7 +8,7 @@
 namespace Bluehost;
 
 /**
- * \Bluehost\Admin
+ * \Bluehost\Admin.
  */
 final class Admin {
 
@@ -17,24 +17,31 @@ final class Admin {
 	 */
 	public function __construct() {
 		/* Add Page to WordPress Admin Menu. */
-		\add_action( 'admin_menu', array( __CLASS__, 'page' ) );
+		\add_action( 'admin_menu', [ __CLASS__, 'page' ] );
 		/* Load Page Scripts & Styles. */
-		\add_action( 'admin_enqueue_scripts', array( __CLASS__, 'assets' ) );
+		\add_action( 'admin_enqueue_scripts', [ __CLASS__, 'assets' ] );
 		/* Load i18 files */
-		\add_action( 'init', array( __CLASS__, 'load_text_domain' ), 100 );
+		\add_action( 'init', [ __CLASS__, 'load_text_domain' ], 100 );
 		/* Add Links to WordPress Plugins list item. */
-		\add_filter( 'plugin_action_links_wp-plugin-bluehost/wp-plugin-bluehost.php', array( __CLASS__, 'actions' ) );
+		\add_filter( 'plugin_action_links_wp-plugin-bluehost/wp-plugin-bluehost.php', [ __CLASS__, 'actions' ] );
 		/* Add inline style to hide subnav link */
-		\add_action( 'admin_head', array( __CLASS__, 'admin_nav_style' ) );
+		\add_action( 'admin_head', [ __CLASS__, 'admin_nav_style' ] );
 
-		\add_filter( 'newfold-runtime', array( __CLASS__, 'add_to_runtime' ) );
-		\add_filter( 'newfold_runtime', array( __CLASS__, 'add_to_runtime' ) );
+		\add_filter( 'newfold-runtime', [ __CLASS__, 'add_to_runtime' ] );
+		\add_filter( 'newfold_runtime', [ __CLASS__, 'add_to_runtime' ] );
 
 		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) { // phpcs:ignore
-			\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
+			\add_action( 'admin_footer_text', [ __CLASS__, 'add_brand_to_admin_footer' ] );
 		}
 	}
 
+	/**
+	 * Add Bluehost data to runtime.
+	 *
+	 * @param array $sdk - array of data to be passed to runtime.
+	 *
+	 * @return array
+	 */
 	public static function add_to_runtime( $sdk ) {
 		include_once BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
 
@@ -49,7 +56,7 @@ final class Admin {
 	 * @return array
 	 */
 	public static function subpages() {
-		return array(
+		return [
 			'bluehost#/home'        => __( 'Home', 'wp-plugin-bluehost' ),
 			'bluehost#/store'       => __( 'Store', 'wp-plugin-bluehost' ),
 			'bluehost#/marketplace' => __( 'Marketplace', 'wp-plugin-bluehost' ),
@@ -57,12 +64,12 @@ final class Admin {
 			'bluehost#/settings'    => __( 'Settings', 'wp-plugin-bluehost' ),
 			'bluehost#/staging'     => __( 'Staging', 'wp-plugin-bluehost' ),
 			'bluehost#/help'        => __( 'Help', 'wp-plugin-bluehost' ),
-		);
+		];
 	}
 
 	/**
 	 * Add inline script to admin screens
-	 *  - hide extra link in subnav
+	 *  - hide extra link in subnav.
 	 */
 	public static function admin_nav_style() {
 		echo '<style>';
@@ -74,8 +81,6 @@ final class Admin {
 
 	/**
 	 * Add WordPress Page to Appearance submenu.
-	 *
-	 * @return void
 	 */
 	public static function page() {
 		$bluehost_icon = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA0MCA0MCI+CiAgICA8cGF0aCBmaWxsPSIjYTdhYWFkIiBkPSJNNCA0aDguOTMzdjguOTIzSDRWNFptMTEuNTMgMGg4Ljk0djguOTIzaC04Ljk0VjRabTExLjUzMSAwSDM2djguOTIzaC04LjkzOVY0Wk00IDE1LjUzOGg4LjkzM3Y4LjkyNEg0di04LjkyNFptMTEuNTMgMGg4Ljk0djguOTI0aC04Ljk0di04LjkyNFptMTEuNTMxIDBIMzZ2OC45MjRoLTguOTM5di04LjkyNFpNNCAyNy4wNzdoOC45MzNWMzZINHYtOC45MjNabTExLjUzIDBoOC45NFYzNmgtOC45NHYtOC45MjNabTExLjUzMSAwSDM2VjM2aC04LjkzOXYtOC45MjNaIi8+Cjwvc3ZnPg==';
@@ -85,7 +90,7 @@ final class Admin {
 			__( 'Bluehost', 'wp-plugin-bluehost' ),
 			'manage_options',
 			'bluehost',
-			array( __CLASS__, 'render' ),
+			[ __CLASS__, 'render' ],
 			$bluehost_icon,
 			0
 		);
@@ -99,7 +104,7 @@ final class Admin {
 					$title,
 					'manage_options',
 					$route,
-					array( __CLASS__, 'render' )
+					[ __CLASS__, 'render' ]
 				);
 			}
 		}
@@ -107,8 +112,6 @@ final class Admin {
 
 	/**
 	 * Render DOM element for React to load onto.
-	 *
-	 * @return void
 	 */
 	public static function render() {
 		global $wp_version;
@@ -136,7 +139,7 @@ final class Admin {
 	/**
 	 * Load Page Scripts & Styles.
 	 *
-	 * @return void
+	 * @param string $hook Page hook.
 	 */
 	public static function assets( $hook ) {
 
@@ -168,7 +171,7 @@ final class Admin {
 			\wp_register_style(
 				'bluehost-style',
 				BLUEHOST_BUILD_URL . '/index.css',
-				array( 'wp-components' ),
+				[ 'wp-components' ],
 				$asset['version']
 			);
 
@@ -184,18 +187,16 @@ final class Admin {
 		\wp_localize_script(
 			'newfold-plugin',
 			'nfdplugin',
-			array(
+			[
 				'restApiUrl'   => \esc_url_raw( \get_home_url() . '/index.php?rest_route=' ),
 				'restApiNonce' => \wp_create_nonce( 'wp_rest' ),
-			)
+			]
 		);
 		\wp_enqueue_script( 'newfold-plugin' );
 	}
 
 	/**
-	 * Load text domain for plugin
-	 *
-	 * @return void
+	 * Load text domain for plugin.
 	 */
 	public static function load_text_domain() {
 
@@ -221,16 +222,16 @@ final class Admin {
 	 */
 	public static function actions( $actions ) {
 		return array_merge(
-			array(
+			[
 				'overview' => '<a href="' . \admin_url( 'admin.php?page=bluehost#/home' ) . '">' . __( 'Home', 'wp-plugin-bluehost' ) . '</a>',
 				'settings' => '<a href="' . \admin_url( 'admin.php?page=bluehost#/settings' ) . '">' . __( 'Settings', 'wp-plugin-bluehost' ) . '</a>',
-			),
+			],
 			$actions
 		);
 	}
 
 	/**
-	 * Filter WordPress Admin Footer Text "Thank you for creating with..."
+	 * Filter WordPress Admin Footer Text "Thank you for creating with...".
 	 *
 	 * @param string $footer_text footer text
 	 *

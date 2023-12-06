@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin bootstrap file
+ * Plugin bootstrap file.
  *
  * @package WPPluginBluehost
  */
 
 namespace Bluehost;
 
-use WP_Forge\WPUpdateHandler\PluginUpdater;
-use WP_Forge\UpgradeHandler\UpgradeHandler;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
+use WP_Forge\UpgradeHandler\UpgradeHandler;
+use WP_Forge\WPUpdateHandler\PluginUpdater;
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 
 // Composer autoloader
@@ -28,9 +28,9 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
  * Initialize coming soon module via container
  */
 $bluehost_module_container = new Container(
-	array(
-		'cache_types' => array( 'browser', 'skip404' ),
-	)
+	[
+		'cache_types' => [ 'browser', 'skip404' ],
+	]
 );
 
 // Set plugin to container
@@ -39,13 +39,13 @@ $bluehost_module_container->set(
 	$bluehost_module_container->service(
 		function () {
 			return new Plugin(
-				array(
+				[
 					'id'           => 'bluehost',
 					'file'         => BLUEHOST_PLUGIN_FILE,
 					'brand'        => get_option( 'mm_brand', 'bluehost' ),
 					'install_date' => get_option( 'bluehost_plugin_install_date' ),
 					'site_id'      => \NewfoldLabs\WP\Module\CustomerBluehost\SiteMeta::get_id(),
-				)
+				]
 			);
 		}
 	)
@@ -57,12 +57,12 @@ $bluehost_module_container->set(
 );
 
 // properly get branding links depending on market
-$wordpress_hosting_page = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://www.bluehost.in?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin' : 'https://bluehost.com?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin';
-$my_panel               = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://my.bluehost.in/web-hosting/cplogin' : 'https://my.bluehost.com/web-hosting/cplogin';
+$wordpress_hosting_page = ( 'Bluehost_India' === get_option( 'mm_brand' ) ) ? 'https://www.bluehost.in?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin' : 'https://bluehost.com?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin';
+$my_panel               = ( 'Bluehost_India' === get_option( 'mm_brand' ) ) ? 'https://my.bluehost.in/web-hosting/cplogin' : 'https://my.bluehost.com/web-hosting/cplogin';
 // Set coming soon values
 $bluehost_module_container->set(
 	'comingsoon',
-	array(
+	[
 		'admin_app_url'       => admin_url( 'admin.php?page=bluehost#/home' ),
 		'template_h1'         => __( 'Coming Soon!', 'wp-plugin-bluehost' ),
 		'template_h2'         => __( 'A New WordPress Site', 'wp-plugin-bluehost' ),
@@ -91,7 +91,7 @@ $bluehost_module_container->set(
 			'</a>'
 		),
 		'template_styles'     => esc_url( BLUEHOST_PLUGIN_URL . 'assets/styles/coming-soon.css' ),
-	)
+	]
 );
 setContainer( $bluehost_module_container );
 
@@ -99,14 +99,14 @@ setContainer( $bluehost_module_container );
 $updateurl     = 'https://hiive.cloud/workers/release-api/plugins/bluehost/bluehost-wordpress-plugin'; // Custom API GET endpoint
 $pluginUpdater = new PluginUpdater( BLUEHOST_PLUGIN_FILE, $updateurl );
 $pluginUpdater->setDataMap(
-	array(
+	[
 		'version'       => 'version.latest',
 		'download_link' => 'download',
 		'last_updated'  => 'updated',
 		'requires'      => 'requires.wp',
 		'requires_php'  => 'requires.php',
 		'tested'        => 'tested.wp',
-	)
+	]
 );
 $pluginUpdater->setDataOverrides(
 	[

@@ -1,6 +1,6 @@
 <?php
 /**
- * Base functions
+ * Base functions.
  *
  * @package WPPluginBluehost
  */
@@ -34,7 +34,6 @@ function bluehost_set_plugin_install_date( $value ) {
 	update_option( 'bluehost_plugin_install_date', $value, true );
 }
 
-
 /**
  * Get the number of days since the plugin was installed.
  *
@@ -45,7 +44,7 @@ function bluehost_get_days_since_plugin_install_date() {
 }
 
 /**
- * Basic setup
+ * Basic setup.
  */
 function bluehost_setup() {
 	if ( ( '' === get_option( 'mm_master_aff' ) || false === get_option( 'mm_master_aff' ) ) && defined( 'MMAFF' ) ) {
@@ -54,14 +53,14 @@ function bluehost_setup() {
 	$install_date = get_option( 'mm_install_date' );
 	if ( empty( $install_date ) ) {
 		update_option( 'mm_install_date', date( 'M d, Y' ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
-		$event                            = array(
-			't'    => 'event',
-			'ec'   => 'plugin_status',
-			'ea'   => 'installed',
-			'el'   => 'Install date: ' . get_option( 'mm_install_date', date( 'M d, Y' ) ),  // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
-			'keep' => false,
-		);
-		$events                           = get_option( 'mm_cron', array() );
+		$event                            = [
+			't'  => 'event',
+			'ec' => 'plugin_status',
+			'ea' => 'installed',
+			'el' => 'Install date: ' . get_option( 'mm_install_date', date( 'M d, Y' ) ),  // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+			'keep'   => false,
+		];
+		$events                           = get_option( 'mm_cron', [] );
 		$events['hourly'][ $event['ea'] ] = $event;
 		update_option( 'mm_cron', $events );
 	}
@@ -76,28 +75,28 @@ function bluehost_setup() {
 
 add_action( 'admin_init', __NAMESPACE__ . '\\bluehost_setup' );
 
-
 /**
- * Filter the date used in data module
+ * Filter the date used in data module.
  *
  * @param string $install_date value from hook
+ *
  * @return int
  */
-function bluehost_install_date_filter( $install_date ) {
+function bluehost_install_date_filter( $install_date ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
 	return bluehost_get_plugin_install_date();
 }
+
 add_filter( 'nfd_install_date_filter', __NAMESPACE__ . '\\bluehost_install_date_filter' );
 
-
 /**
- * Update mm value when updating nfd one
+ * Update mm value when updating nfd one.
  *
  * @param mixed $new_option New option value.
  * @param mixed $old_option Previous option value.
  *
  * @return mixed
  */
-function site_launched( $new_option, $old_option ) {
+function site_launched( $new_option, $old_option ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 	update_option( 'mm_coming_soon', $new_option );
 	return $new_option;
 }

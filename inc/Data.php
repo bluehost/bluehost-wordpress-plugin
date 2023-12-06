@@ -14,23 +14,22 @@ namespace Bluehost;
 final class Data {
 
 	/**
-	 * Data loaded onto window.NewfoldRuntime
+	 * Data loaded onto window.NewfoldRuntime.
 	 *
 	 * @return array
 	 */
 	public static function runtime() {
 		global $bluehost_module_container;
 
-		$runtime = array(
-			'plugin'   => array(
+		$runtime = [
+			'plugin' => [
 				'url'     => BLUEHOST_BUILD_URL,
 				'version' => BLUEHOST_PLUGIN_VERSION,
 				'assets'  => BLUEHOST_PLUGIN_URL . 'assets/',
 				'brand'   => $bluehost_module_container->plugin()->brand,
-			),
-		);
+			],
+		];
 
 		return $runtime;
 	}
-
 }

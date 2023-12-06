@@ -11,28 +11,28 @@
 namespace Bluehost;
 
 /**
- * Class NDF_Plugin_Compat_Check
+ * Class NDF_Plugin_Compat_Check.
  *
  * This class is responsible for performing basic checks to see if there are other plugins that would conflict with this one.
  */
 class NFD_Plugin_Compat_Check {
 
 	/**
-	 * A reference to the main plugin file (relative to plugins dir) or plugin slug
+	 * A reference to the main plugin file (relative to plugins dir) or plugin slug.
 	 *
 	 * @var string
 	 */
 	public $slug;
 
 	/**
-	 * Plugin name
+	 * Plugin name.
 	 *
 	 * @var string
 	 */
 	public $name = '';
 
 	/**
-	 * Global list of plugins with associated error (to prevent duplicate notices)
+	 * Global list of plugins with associated error (to prevent duplicate notices).
 	 *
 	 * conflict {
 	 *  plugin: slug,
@@ -43,7 +43,6 @@ class NFD_Plugin_Compat_Check {
 	 */
 	public $conflicts;
 
-
 	/**
 	 * Newfold incompatibe plugins
 	 * Don't allow this plugin to be installed while these are active.
@@ -51,7 +50,7 @@ class NFD_Plugin_Compat_Check {
 	 *
 	 * @var array
 	 */
-	public $incompatible_plugins = array();
+	public $incompatible_plugins = [];
 
 	/**
 	 * Newfold legacy plugins
@@ -60,41 +59,43 @@ class NFD_Plugin_Compat_Check {
 	 *
 	 * @var array
 	 */
-	public $legacy_plugins = array();
+	public $legacy_plugins = [];
 
 	/**
-	 * Setup our class properties
+	 * Setup our class properties.
 	 *
 	 * @param string $file Plugin file
 	 */
 	public function __construct( $file ) {
-		require_once ABSPATH . '/wp-admin/includes/plugin.php';
+		include_once ABSPATH . '/wp-admin/includes/plugin.php';
 		// require_once ABSPATH . '/wp-includes/option.php';
 		$this->slug      = $this->get_plugin_slug( $file );
 		$this->name      = $this->get_plugin_name( $file );
-		$this->conflicts = get_option( 'nfd_plugins_compat_check_conflicts', array() );
+		$this->conflicts = get_option( 'nfd_plugins_compat_check_conflicts', [] );
 	}
 
 	/**
-	 * Get the plugin name from the plugin file headers
+	 * Get the plugin name from the plugin file headers.
 	 *
 	 * @param string $file Plugin file
+	 *
 	 * @return string
 	 */
 	public function get_plugin_name( $file ) {
-		$plugin = get_file_data( $file, array( 'name' => 'Plugin Name' ) );
+		$plugin = get_file_data( $file, [ 'name' => 'Plugin Name' ] );
 		return isset( $plugin['name'] ) ? $plugin['name'] : '';
 	}
 
 	/**
-	 * Get the plugin slug from the plugin path
+	 * Get the plugin slug from the plugin path.
 	 *
 	 * @param string $file Plugin file
+	 *
 	 * @return string
 	 */
 	public function get_plugin_slug( $file ) {
 		$wp = ABSPATH . 'wp-content/plugins/';
-		if ( strpos( $file, $wp ) === 0 ) {
+		if ( 0 === strpos( $file, $wp ) ) {
 			$file = substr( $file, strlen( $wp ) );
 		}
 		return $file;
@@ -114,7 +115,7 @@ class NFD_Plugin_Compat_Check {
 				// Suppress 'Plugin Activated' notice
 				unset( $_GET['activate'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$this->deactivate();
-				add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+				add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 
 				// Fail check, disable self
 				return false;
@@ -129,7 +130,7 @@ class NFD_Plugin_Compat_Check {
 				// Suppress 'Plugin Activated' notice
 				unset( $_GET['activate'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$this->deactivate();
-				add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+				add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 
 				// Pass check, but disable other plugin
 				return true;
@@ -139,7 +140,7 @@ class NFD_Plugin_Compat_Check {
 		// Pre-existing conflict found
 		// and the errors are loaded from option without displaying the notice yet
 		if ( $this->has_errors() ) {
-			add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+			add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 		}
 
 		// Pass check, enable self
@@ -157,17 +158,17 @@ class NFD_Plugin_Compat_Check {
 				$error->add(
 					'nfd_plugin_incompatible',
 					sprintf(
-						/* translators: 1: plugin name 2: incompatible plugin name */
+					/* translators: 1: plugin name 2: incompatible plugin name */
 						__( '"%1$s" has self-deactivated. It is incompatible with "%2$s".', 'wp-plugin-bluehost' ),
 						$this->name,
 						$incompatible_name
 					)
 				);
-				$this->conflicts[] = array(
+				$this->conflicts[] = [
 					'slug'   => $this->slug,
 					'source' => $this->slug,
 					'error'  => $error,
-				);
+				];
 				update_option( 'nfd_plugins_compat_check_conflicts', $this->conflicts );
 			}
 		}
@@ -184,24 +185,24 @@ class NFD_Plugin_Compat_Check {
 				$error->add(
 					'nfd_plugin_legacy',
 					sprintf(
-						/* translators: 1: legacy plugin name 2: plugin name */
+					/* translators: 1: legacy plugin name 2: plugin name */
 						__( '"%1$s" has been deactivated. It is incompatible with "%2$s".', 'wp-plugin-bluehost' ),
 						$legacy_name,
 						$this->name
 					)
 				);
-				$this->conflicts[] = array(
+				$this->conflicts[] = [
 					'slug'   => $legacy_file,
 					'source' => $this->slug,
 					'error'  => $error,
-				);
+				];
 				update_option( 'nfd_plugins_compat_check_conflicts', $this->conflicts );
 			}
 		}
 	}
 
 	/**
-	 * Check if any errors were encountered during our plugin checks
+	 * Check if any errors were encountered during our plugin checks.
 	 *
 	 * @return bool
 	 */
@@ -215,7 +216,7 @@ class NFD_Plugin_Compat_Check {
 	}
 
 	/**
-	 * Deactivate the plugin
+	 * Deactivate the plugin.
 	 */
 	public function deactivate() {
 		$conflict_plugins = array_column( $this->conflicts, 'slug' );
@@ -225,7 +226,7 @@ class NFD_Plugin_Compat_Check {
 	}
 
 	/**
-	 * Display error messages in the admin
+	 * Display error messages in the admin.
 	 */
 	public function admin_notices() {
 		$conflict_errors = array_column( $this->conflicts, 'error' );
@@ -238,5 +239,4 @@ class NFD_Plugin_Compat_Check {
 		}
 		delete_option( 'nfd_plugins_compat_check_conflicts' );
 	}
-
 }
