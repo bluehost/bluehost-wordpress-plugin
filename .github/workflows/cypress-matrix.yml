@@ -115,11 +115,11 @@ jobs:
         run: npx wp-env start --debug
 
       - name: Run Cypress Tests
-        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || github.actor == 'dependabot[bot]' }}
+        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || github.actor == 'dependabot[bot]' || github.event.label.name != 'debug' }}
         run: npm run test:e2e -- --browser chrome
 
       - name: Run Cypress Tests
-        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' && github.actor != 'dependabot[bot]' }}
+        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' && github.actor != 'dependabot[bot]' && github.event.label.name == 'debug' }}
         run: npm run test:e2e -- --browser chrome --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag "bluehost,php-${{ matrix.phpVersion }},wp-${{ matrix.wpVersion }}"
 
       - name: Store screenshots of test failures
