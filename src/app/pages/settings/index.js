@@ -5,6 +5,7 @@ import AutomaticUpdates from "./automaticUpdates";
 import CommentSettings from "./commentSettings";
 import ComingSoon from "./comingSoon";
 import ContentSettings from "./contentSettings";
+import SocialMediaAccounts from "./socialMediaAccounts";
 
 const Settings = () => {
   return (
@@ -35,7 +36,13 @@ const Settings = () => {
           separator={true}
           className={"wppbh-app-settings-update"}
         >
-          //facebookconnect
+          <SocialMediaAccounts />
+        </Container.Block>
+
+        <Container.Block
+          separator={true}
+          className={"wppbh-app-settings-update"}
+        >
           <AutomaticUpdates />
         </Container.Block>
 

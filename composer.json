@@ -30,9 +30,16 @@
     "newfold": {
       "type": "composer",
       "url": "https://newfold-labs.github.io/satis/",
-      "only": [
-        "newfold-labs/*"
+      "exclude": [
+        "newfold-labs/wp-module-ecommerce"
       ]
+    },
+    "dashboard": {
+      "type": "path",
+      "url": "/Users/manikanta.kailasa/projects/ecommerce/wp-module-ecommerce",
+      "options": {
+        "symlink": true
+      }
     }
   },
   "scripts": {
