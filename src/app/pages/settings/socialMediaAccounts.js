@@ -1,7 +1,7 @@
 import { Button, Container } from "@newfold/ui-component-library";
 import { useState } from "react";
 import {
-  FacebookConnectPluginsView,
+  FacebookConnectPluginView,
   facebookConnectHelper,
 } from "@newfold/wp-module-facebook";
 
@@ -9,7 +9,6 @@ const SocialMediaAccounts = () => {
   const [showModal, setShowModal] = useState(false);
 
   const handleFacebookConnect = () => {
-    console.log("called");
     facebookConnectHelper().then((res) => console.log(res));
   };
   let input = false;
@@ -29,7 +28,7 @@ const SocialMediaAccounts = () => {
           Add
         </Button>
       </div>
-      <FacebookConnectPluginsView />
+      <FacebookConnectPluginView />
       {showModal && (
         <>
           <div
