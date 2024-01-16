@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b220b61ad95429118dfd336835647b43",
+    "content-hash": "c69da3e7cf9043d2b1bafa1cfa9c4cfc",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -272,16 +272,16 @@
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
-            "version": "1.1.14",
+            "version": "1.1.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
-                "reference": "98f13af0aeccab8b3d387c4bc731a48c6cf49668"
+                "reference": "09e5a9bac43102bb0ebc2547b0952a85b17c6138"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/98f13af0aeccab8b3d387c4bc731a48c6cf49668",
-                "reference": "98f13af0aeccab8b3d387c4bc731a48c6cf49668",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/09e5a9bac43102bb0ebc2547b0952a85b17c6138",
+                "reference": "09e5a9bac43102bb0ebc2547b0952a85b17c6138",
                 "shasum": ""
             },
             "require": {
@@ -318,10 +318,10 @@
             ],
             "description": "Coming Soon module for WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.1.14",
+                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.1.15",
                 "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
             },
-            "time": "2024-01-11T20:19:06+00:00"
+            "time": "2024-01-16T16:23:29+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ctb",
@@ -531,16 +531,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.3.18",
+            "version": "v1.3.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "4d7681e4e311072281ebdbd7d551c8132639416c"
+                "reference": "d3999bad6e8ac64660f2e272895219674e2bc2b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/4d7681e4e311072281ebdbd7d551c8132639416c",
-                "reference": "4d7681e4e311072281ebdbd7d551c8132639416c",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/d3999bad6e8ac64660f2e272895219674e2bc2b3",
+                "reference": "d3999bad6e8ac64660f2e272895219674e2bc2b3",
                 "shasum": ""
             },
             "require": {
@@ -583,10 +583,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.18",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.19",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-01-11T22:51:14+00:00"
+            "time": "2024-01-12T13:10:30+00:00"
         },
         {
             "name": "newfold-labs/wp-module-global-ctb",
