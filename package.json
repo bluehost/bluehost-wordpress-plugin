@@ -45,7 +45,7 @@
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.7",
         "@testing-library/cypress": "^10.0.1",
-        "@wordpress/env": "^8.13.0",
+        "@wordpress/env": "^9.1.0",
         "@wordpress/eslint-plugin": "^17.6.0",
         "@wordpress/scripts": "^26.18.0",
         "cypress": "^13.6.1",
