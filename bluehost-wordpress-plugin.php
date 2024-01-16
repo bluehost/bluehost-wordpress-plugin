@@ -78,9 +78,10 @@ $nfd_plugins_check->legacy_plugins = array(
 	'The Web.com Plugin'       => 'wp-plugin-web/wp-plugin-web.php',
 	'The Crazy Domains Plugin' => 'wp-plugin-web/wp-plugin-crazy-domains.php',
 );
+// Check plugin requirements
 $pass_nfd_check = $nfd_plugins_check->check_plugin_requirements();
 
 // Check PHP version before initializing to prevent errors if plugin is incompatible.
 if ( $pass_nfd_check && version_compare( PHP_VERSION, '5.3', '>=' ) ) {
-	require dirname( __FILE__ ) . '/bootstrap.php';
+	require __DIR__ . '/bootstrap.php';
 }
