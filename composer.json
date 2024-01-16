@@ -38,15 +38,26 @@
   "scripts": {
     "fix": "vendor/bin/phpcbf --standard=phpcs.xml .",
     "lint": "vendor/bin/phpcs --standard=phpcs.xml -s .",
+    "i18n-pot": "vendor/bin/wp i18n make-pot . ./languages/wp-plugin-bluehost.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/bluehost/bluehost-wordpress-plugin/issues\",\"POT-Creation-Date\":\"2023-03-08T20:13:41+00:00\"}' --exclude=assets,tests,src",
+    "i18n-po": "vendor/bin/wp i18n update-po ./languages/wp-plugin-bluehost.pot ./languages",
+    "i18n-mo": "vendor/bin/wp i18n make-mo ./languages",
+    "i18n-json": "vendor/bin/wp i18n make-json ./languages --no-purge --pretty-print",
+    "i18n-json-rename": "for f in ./languages/*.json; do mv \"$f\" \"$(echo \"$f\" | sed 's/[0-9a-fA-F]\\{32\\}/bluehost-script/')\"; done",
     "i18n": [
-      "vendor/bin/wp i18n make-pot . ./languages/bluehost-wordpress-plugin.pot --headers=Report-Msgid-Bugs-To:https://github.com/bluehost/bluehost-wordpress-plugin/issues --exclude=assets,storybook,tests,src",
-      "vendor/bin/wp i18n make-pot . ./languages/bluehost-wordpress-plugin.pot --headers=POT-Creation-Date:null --exclude=assets,storybook,tests,src"
+      "@i18n-pot",
+      "@i18n-po",
+      "@i18n-mo"
     ]
   },
   "scripts-descriptions": {
     "fix": "Automatically fix coding standards issues where possible.",
     "lint": "Check files against coding standards.",
-    "i18n": "Generate a .pot file for translation."
+    "i18n": "Generate new language files.",
+    "i18n-pot": "Generate a .pot file for translation.",
+    "i18n-po": "Update existing .po files.",
+    "i18n-mo": "Generate new language .mo files.",
+    "i18n-json": "Generate new language .json files.",
+    "i18n-json-rename": "Rename the language json files to remove the pesky hash."
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
