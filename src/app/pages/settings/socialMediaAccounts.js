@@ -70,7 +70,7 @@ const SocialMediaAccounts = () => {
                   </div>
                 </form>
                 <div
-                  className="nfd-relative nfd-p-6 nfd-flex nfd-flex-row"
+                  className="nfd-relative nfd-p-6 nfd-flex nfd-flex-row nfd-items-center"
                   style={{ cursor: "pointer" }}
                   onClick={() => handleFacebookConnect()}
                 >
