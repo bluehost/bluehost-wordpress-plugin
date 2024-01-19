@@ -3,7 +3,7 @@ import { useState } from "react";
 import {
   FacebookConnectPluginView,
   facebookConnectHelper,
-} from "@newfold/wp-module-facebook";
+} from "@newfold-labs/wp-module-facebook";
 
 const SocialMediaAccounts = () => {
   const [showModal, setShowModal] = useState(false);
