@@ -1,15 +1,30 @@
 import { Button, Container } from "@newfold/ui-component-library";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FacebookConnectPluginView,
   facebookConnectHelper,
+  getFacebookUserProfileDetails,
 } from "@newfold-labs/wp-module-facebook";
 
 const SocialMediaAccounts = () => {
   const [showModal, setShowModal] = useState(false);
+  const [fbLogin, setFbLogin] = useState(false);
+  const [loginInfo, setLoginInfo] = useState();
+
+  const getFbDetails = () => {
+    getFacebookUserProfileDetails().then((res) => {
+      setFbLogin(res === "token not found!" ? false : true);
+      if (Array.isArray(res)) setLoginInfo(res[0]);
+      else setLoginInfo(res);
+    });
+  };
+
+  useEffect(() => {
+    getFbDetails();
+  }, []);
 
   const handleFacebookConnect = () => {
-    facebookConnectHelper().then((res) => console.log(res));
+    facebookConnectHelper(getFbDetails).then(() => {});
   };
   let input = false;
   return (
@@ -28,7 +43,11 @@ const SocialMediaAccounts = () => {
           Add
         </Button>
       </div>
-      <FacebookConnectPluginView />
+      <FacebookConnectPluginView
+        fbLogin={fbLogin}
+        loginInfo={loginInfo}
+        getFbDetails={getFbDetails}
+      />
       {showModal && (
         <>
           <div
