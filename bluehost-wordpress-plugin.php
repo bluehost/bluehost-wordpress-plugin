@@ -82,6 +82,6 @@ $nfd_plugins_check->legacy_plugins = array(
 $pass_nfd_check = $nfd_plugins_check->check_plugin_requirements();
 
 // Check PHP version before initializing to prevent errors if plugin is incompatible.
-if ( $pass_nfd_check && version_compare( PHP_VERSION, '5.3', '>=' ) ) {
+if ( $pass_nfd_check && version_compare( PHP_VERSION, '7.1', '>=' ) ) {
 	require __DIR__ . '/bootstrap.php';
 }
