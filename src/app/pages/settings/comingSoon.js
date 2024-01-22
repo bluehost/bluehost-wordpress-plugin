@@ -67,11 +67,11 @@ const ComingSoon = () => {
 		const getStatus = () => {
 			return comingSoon ? (
 				<span className="nfd-text-[#e10001]">
-					{ __( 'Coming Soon', 'wp-plugin-bluehost' ) }
+					{ __( 'NOT LIVE', 'wp-plugin-bluehost' ) }
 				</span>
 			) : (
 				<span className="nfd-text-[#008112]">
-					{ __( 'Live', 'wp-plugin-bluehost' ) }
+					{ __( 'LIVE', 'wp-plugin-bluehost' ) }
 				</span>
 			);
 		};
@@ -87,16 +87,17 @@ const ComingSoon = () => {
 		<Container.SettingsField
 			title={ getComingSoonSectionTitle() }
 			description={ __(
-				'Still building your site? Need to make a big change?',
+				comingSoon ? 'Turn off \'Maintenance Mode\' when you are ready to launch your website.'
+				: 'Turn on \"Maintenance Mode\" when you need to make major changes to your website.',
 				'wp-plugin-bluehost'
 			) }
 		>
 			<div className="nfd-flex nfd-flex-col nfd-gap-6">
 				<ToggleField
 					id="coming-soon-toggle"
-					label="Coming soon page"
+					label="Maintenance Mode"
 					description={ __(
-						'Your Bluehost Coming Soon page lets you hide your site from visitors while you make the magic happen.',
+						'When this is enabled, a placeholder page will be displayed to your website visitors to show that your site is still under construction or undergoing significant changes.',
 						'wp-plugin-bluehost'
 					) }
 					checked={ comingSoon }
