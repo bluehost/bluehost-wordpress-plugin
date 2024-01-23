@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "edf012a9b787f3ee22f67e27a643676e",
+    "content-hash": "f6b557bbe1685d279a7c3239779a2d93",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1017,16 +1017,16 @@
         },
         {
             "name": "newfold-labs/wp-module-patterns",
-            "version": "0.1.12",
+            "version": "0.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-patterns.git",
-                "reference": "6f4189c97a9e37f24531af8cfae986041d4b613b"
+                "reference": "e270df68693808a662ec86943c778a907936cdd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/6f4189c97a9e37f24531af8cfae986041d4b613b",
-                "reference": "6f4189c97a9e37f24531af8cfae986041d4b613b",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/e270df68693808a662ec86943c778a907936cdd9",
+                "reference": "e270df68693808a662ec86943c778a907936cdd9",
                 "shasum": ""
             },
             "require-dev": {
@@ -1060,10 +1060,10 @@
             ],
             "description": "WordPress Cloud Patterns",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/0.1.12",
+                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/0.1.13",
                 "issues": "https://github.com/newfold-labs/wp-module-patterns/issues"
             },
-            "time": "2024-01-03T21:56:57+00:00"
+            "time": "2024-01-22T16:46:37+00:00"
         },
         {
             "name": "newfold-labs/wp-module-performance",
@@ -3675,5 +3675,5 @@
     "platform-overrides": {
         "php": "7.1.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
