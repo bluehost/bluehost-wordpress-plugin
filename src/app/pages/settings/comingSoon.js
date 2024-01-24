@@ -87,15 +87,15 @@ const ComingSoon = () => {
 		<Container.SettingsField
 			title={ getComingSoonSectionTitle() }
 			description={ __(
-				comingSoon ? 'Turn off \'Maintenance Mode\' when you are ready to launch your website.'
-				: 'Turn on \"Maintenance Mode\" when you need to make major changes to your website.',
+				comingSoon ? 'Turn off your "Coming Soon" page when you are ready to launch your website.'
+				: 'Turn on your "Coming Soon" page when you need to make major changes to your website.',
 				'wp-plugin-bluehost'
 			) }
 		>
 			<div className="nfd-flex nfd-flex-col nfd-gap-6">
 				<ToggleField
 					id="coming-soon-toggle"
-					label="Maintenance Mode"
+					label="Coming Soon page"
 					description={ __(
 						'When this is enabled, a placeholder page will be displayed to your website visitors to show that your site is still under construction or undergoing significant changes.',
 						'wp-plugin-bluehost'
