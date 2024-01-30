@@ -42,12 +42,6 @@ module.exports = defineConfig( {
 					config.env.wpSemverVersion = config.env.wpVersion;
 				}
 			}
-			// Exclude onboarding tests for WordPress lower than WordPress 6.2.0
-			if ( semver.satisfies( config.env.wpSemverVersion, '<6.2.0' ) ) {
-				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
-					'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/**',
-				] );
-			}
 
 			// Ensure that we have a semantically correct PHP version number for comparisons.
 			if ( config.env.phpVersion ) {
@@ -75,8 +69,7 @@ module.exports = defineConfig( {
 		supportFile: 'tests/cypress/support/index.js',
 		testIsolation: false,
 		excludeSpecPattern: [
-			'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/4-design-steps/**',
-			'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/wp-module-support/',
+			'vendor/newfold-labs/**/tests/cypress/integration/wp-module-support/*.cy.js', // skip any module's wp-module-support files
 		],
 	},
 	retries: 1,
