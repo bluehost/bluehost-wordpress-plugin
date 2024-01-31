@@ -5,11 +5,11 @@ describe( 'Help Page', function () {
 		cy.visit(
 			'/wp-admin/admin.php?page=' + Cypress.env( 'pluginId' ) + '#/help'
 		);
+		cy.injectAxe();
 	} );
 
 	it( 'Is Accessible', () => {
-		cy.injectAxe();
-		cy.wait( 500 );
+		cy.wait( 750 );
 		cy.checkA11y( '.wppbh-app-body' );
 	} );
 
