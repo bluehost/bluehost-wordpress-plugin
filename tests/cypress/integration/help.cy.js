@@ -1,15 +1,31 @@
 // <reference types="Cypress" />
+const notificationsFixture = require( '..//fixtures/notifications.json' );
+const productsFixture = require( '..//fixtures/products.json' );
 
 describe( 'Help Page', function () {
 	before( () => {
+		cy.intercept(
+			{
+				method: 'GET',
+				url: /newfold-marketplace(\/|%2F)v1(\/|%2F)marketplace/,
+			},
+			productsFixture
+		);
+		cy.intercept(
+			{
+				method: 'GET',
+				url: /newfold-notifications(\/|%2F)v1(\/|%2F)notifications/,
+			},
+			notificationsFixture
+		);
 		cy.visit(
-			'/wp-admin/admin.php?page=' + Cypress.env( 'pluginId' ) + '#/help'
+			'/wp-admin/admin.php?page=' + Cypress.env( 'pluginId' ) + '#/help',
+			{ timeout: 30000 }
 		);
 		cy.injectAxe();
 	} );
 
 	it( 'Is Accessible', () => {
-		cy.wait( 1500 );
 		cy.checkA11y( '.wppbh-app-body' );
 	} );
 
