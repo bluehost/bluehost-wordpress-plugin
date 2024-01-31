@@ -38,7 +38,6 @@ class CachingController extends \WP_REST_Controller {
 				'permission_callback' => array( $this, 'check_permission' ),
 			)
 		);
-
 	}
 
 	/**
@@ -52,7 +51,6 @@ class CachingController extends \WP_REST_Controller {
 			'status'  => 'success',
 			'message' => 'Cache purged',
 		);
-
 	}
 
 	/**
@@ -67,5 +65,4 @@ class CachingController extends \WP_REST_Controller {
 
 		return true;
 	}
-
 }

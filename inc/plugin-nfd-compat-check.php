@@ -238,5 +238,4 @@ class NFD_Plugin_Compat_Check {
 		}
 		delete_option( 'nfd_plugins_compat_check_conflicts' );
 	}
-
 }

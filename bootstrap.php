@@ -67,10 +67,10 @@ $hosting_link           = 'https://www.bluehost.com/hosting/shared';
 $bluehost_module_container->set(
 	'comingsoon',
 	array(
-		'admin_app_url'       => admin_url( 'admin.php?page=bluehost#/home' ),
-		'template_h1'         => __( 'Coming Soon!', 'wp-plugin-bluehost' ),
-		'template_h2'         => __( 'A New WordPress Site', 'wp-plugin-bluehost' ),
-		'template_coming_soon_links'   => sprintf(
+		'admin_app_url'              => admin_url( 'admin.php?page=bluehost#/home' ),
+		'template_h1'                => __( 'Coming Soon!', 'wp-plugin-bluehost' ),
+		'template_h2'                => __( 'A New WordPress Site', 'wp-plugin-bluehost' ),
+		'template_coming_soon_links' => sprintf(
 			esc_html__( ' %1$sHow to Build a Website: A Practical Guide to WordPress on Bluehost%2$s   %3$sHow to Migrate a Website to Bluehost?%4$s  %5$sWhy choose Bluehost for WordPress?%6$s', 'wp-plugin-bluehost' ) . '&nbsp;',
 			'<a href="' . esc_url( $website_guide_link ) . '" target="_blank" rel="noopener noreferrer nofollow">',
 			'</a><span class="dashicons dashicons-wordpress"></span><br/>',
@@ -79,7 +79,7 @@ $bluehost_module_container->set(
 			'<a href="' . esc_url( $hosting_link ) . '" target="_blank" rel="noopener noreferrer nofollow">',
 			'</a><br/> '
 		),
-		'template_footer_t'   => sprintf(
+		'template_footer_t'          => sprintf(
 			/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag */
 			esc_html__( 'A %1$sBluehost%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBluehost%6$s.', 'wp-plugin-bluehost' ) . '&nbsp;',
 			'<a href="' . esc_url( $wordpress_hosting_page ) . '" target="_blank" rel="noopener noreferrer nofollow">',
@@ -89,13 +89,13 @@ $bluehost_module_container->set(
 			'<a href="' . esc_url( $my_panel ) . '" target="_blank" rel="noopener noreferrer nofollow">',
 			'</a>'
 		),
-		'template_page_title' => sprintf(
+		'template_page_title'        => sprintf(
 			/* translators: %s: Blog name */
 			__( '%s &mdash; Coming Soon', 'wp-plugin-bluehost' ),
 			esc_html( get_option( 'blogname' ) )
 		),
-		'admin_bar_text'      => '<div style="background-color: #FEC101; color: #000; padding: 0 1rem;">' . __( 'Coming Soon Active', 'wp-plugin-bluehost' ) . '</div>',
-		'admin_notice_text'   => sprintf(
+		'admin_bar_text'             => '<div style="background-color: #FEC101; color: #000; padding: 0 1rem;">' . __( 'Coming Soon Active', 'wp-plugin-bluehost' ) . '</div>',
+		'admin_notice_text'          => sprintf(
 			/* translators: %1$s is replaced with the opening link tag to preview the page, and %2$s is replaced with the closing link tag, %3$s is the opening link tag, %4$s is the closing link tag. */
 			__( 'Your site is currently displaying a %1$scoming soon page%2$s. Once you are ready, %3$slaunch your site%4$s.', 'wp-plugin-bluehost' ),
 			'<a href="' . get_home_url() . '?preview=coming_soon" title="' . __( 'Preview the coming soon landing page', 'wp-plugin-bluehost' ) . '">',
@@ -103,7 +103,7 @@ $bluehost_module_container->set(
 			'<a href="' . esc_url( admin_url( 'admin.php?page=bluehost&nfd-target=coming-soon-section#/settings' ) ) . '">',
 			'</a>'
 		),
-		'template_styles'     => esc_url( BLUEHOST_PLUGIN_URL . 'assets/styles/coming-soon.css' ),
+		'template_styles'            => esc_url( BLUEHOST_PLUGIN_URL . 'assets/styles/coming-soon.css' ),
 	)
 );
 setContainer( $bluehost_module_container );
@@ -122,16 +122,16 @@ $pluginUpdater->setDataMap(
 	)
 );
 $pluginUpdater->setDataOverrides(
-	[
-		'banners' => [
+	array(
+		'banners' => array(
 			'2x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-banner.svg',
 			'1x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-banner.svg',
-		],
-		'icons'   => [
+		),
+		'icons'   => array(
 			'2x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-icon.svg',
 			'1x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-icon.svg',
-		],
-	]
+		),
+	)
 );
 
 // Handle any upgrade routines (only in the admin)
