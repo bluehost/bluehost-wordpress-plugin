@@ -59,6 +59,10 @@ $bluehost_module_container->set(
 // properly get branding links depending on market
 $wordpress_hosting_page = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://www.bluehost.in?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin' : 'https://bluehost.com?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin';
 $my_panel               = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://my.bluehost.in/web-hosting/cplogin' : 'https://my.bluehost.com/web-hosting/cplogin';
+$website_guide_link     = 'https://www.bluehost.com/blog/how-to-create-a-website-guide/';
+$migrate_link           = 'https://www.bluehost.com/blog/how-to-migrate-a-wordpress-website-to-a-new-server/';
+$hosting_link           = 'https://www.bluehost.com/hosting/shared';
+
 // Set coming soon values
 $bluehost_module_container->set(
 	'comingsoon',
@@ -66,6 +70,16 @@ $bluehost_module_container->set(
 		'admin_app_url'       => admin_url( 'admin.php?page=bluehost#/home' ),
 		'template_h1'         => __( 'Coming Soon!', 'wp-plugin-bluehost' ),
 		'template_h2'         => __( 'A New WordPress Site', 'wp-plugin-bluehost' ),
+		'template_coming_soon_links'   => sprintf(
+			/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag */
+			esc_html__( ' %1$sHow to Build a Website: A Practical Guide to WordPress on Bluehost%2$s   %3$sHow to Migrate a Website to Bluehost?%4$s  %5$sWhy choose Bluehost for WordPress?%6$s.', 'wp-plugin-bluehost' ) . '&nbsp;',
+			'<a href="' . esc_url( $website_guide_link ) . '" target="_blank" rel="noopener noreferrer nofollow">',
+			'</a><span class="dashicons dashicons-wordpress"></span><br/>',
+			'<a href="' . esc_url( $migrate_link ) . '" target="_blank" rel="noopener noreferrer nofollow">',
+			'</a><br/>',
+			'<a href="' . esc_url( $hosting_link ) . '" target="_blank" rel="noopener noreferrer nofollow">',
+			'<Icon className="nfd-flex-shrink-0 nfd--ml-1 nfd-h-6 nfd-w-6" /></a><br/> '
+		),
 		'template_footer_t'   => sprintf(
 			/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag */
 			esc_html__( 'A %1$sBluehost%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBluehost%6$s.', 'wp-plugin-bluehost' ) . '&nbsp;',

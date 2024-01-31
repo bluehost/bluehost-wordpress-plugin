@@ -302,3 +302,13 @@ footer p a:hover {
         margin-top: 40px;
     }
 }
+
+.comingsoon_links {
+    font-size:13px;
+   }
+   
+.comingsoon_links a {
+    text-decoration: none;
+    line-height: 18px;
+    color: #1555b3;
+}
