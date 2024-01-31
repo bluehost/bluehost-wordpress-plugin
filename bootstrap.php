@@ -77,7 +77,7 @@ $bluehost_module_container->set(
 			'<a href="' . esc_url( $migrate_link ) . '" target="_blank" rel="noopener noreferrer nofollow">',
 			'</a><br/>',
 			'<a href="' . esc_url( $hosting_link ) . '" target="_blank" rel="noopener noreferrer nofollow">',
-			'<Icon className="nfd-flex-shrink-0 nfd--ml-1 nfd-h-6 nfd-w-6" /></a><br/> '
+			'</a><br/> '
 		),
 		'template_footer_t'   => sprintf(
 			/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag */
