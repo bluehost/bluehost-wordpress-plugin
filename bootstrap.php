@@ -71,7 +71,7 @@ $bluehost_module_container->set(
 		'template_h1'         => __( 'Coming Soon!', 'wp-plugin-bluehost' ),
 		'template_h2'         => __( 'A New WordPress Site', 'wp-plugin-bluehost' ),
 		'template_coming_soon_links'   => sprintf(
-			esc_html__( ' %1$sHow to Build a Website: A Practical Guide to WordPress on Bluehost%2$s   %3$sHow to Migrate a Website to Bluehost?%4$s  %5$sWhy choose Bluehost for WordPress?%6$s.', 'wp-plugin-bluehost' ) . '&nbsp;',
+			esc_html__( ' %1$sHow to Build a Website: A Practical Guide to WordPress on Bluehost%2$s   %3$sHow to Migrate a Website to Bluehost?%4$s  %5$sWhy choose Bluehost for WordPress?%6$s', 'wp-plugin-bluehost' ) . '&nbsp;',
 			'<a href="' . esc_url( $website_guide_link ) . '" target="_blank" rel="noopener noreferrer nofollow">',
 			'</a><span class="dashicons dashicons-wordpress"></span><br/>',
 			'<a href="' . esc_url( $migrate_link ) . '" target="_blank" rel="noopener noreferrer nofollow">',
