@@ -9,7 +9,7 @@ describe( 'Help Page', function () {
 	} );
 
 	it( 'Is Accessible', () => {
-		cy.wait( 750 );
+		cy.wait( 1500 );
 		cy.checkA11y( '.wppbh-app-body' );
 	} );
 
