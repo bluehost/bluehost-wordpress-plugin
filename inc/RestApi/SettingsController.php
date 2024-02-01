@@ -175,7 +175,7 @@ class SettingsController extends \WP_REST_Controller {
 		}
 
 		$settings = array(
-			'comingSoon'              => container()->get( 'comingSoon' )->is_enabled(),
+			'comingSoon'              => container()->has( 'comingSoon' ),
 			'autoUpdatesAll'          => $major && $plugins && $themes,
 			'autoUpdatesMajorCore'    => $major,
 			'autoUpdatesMinorCore'    => $minor,
