@@ -1,6 +1,6 @@
 // <reference types="Cypress" />
-const notificationsFixture = require( '..//fixtures/notifications.json' );
-const productsFixture = require( '..//fixtures/products.json' );
+const pluginNotificationsFixture = require( '../fixtures/plugin-notifications.json' );
+const pluginProductsFixture = require( '../fixtures/plugin-products.json' );
 
 describe( 'Help Page', function () {
 	before( () => {
@@ -9,15 +9,15 @@ describe( 'Help Page', function () {
 				method: 'GET',
 				url: /newfold-marketplace(\/|%2F)v1(\/|%2F)marketplace/,
 			},
-			productsFixture
-		);
+			pluginProductsFixture
+		).as( 'pluginProductsFixture' );
 		cy.intercept(
 			{
 				method: 'GET',
 				url: /newfold-notifications(\/|%2F)v1(\/|%2F)notifications/,
 			},
-			notificationsFixture
-		);
+			pluginNotificationsFixture
+		).as( 'pluginNotificationsFixture' );
 		cy.visit(
 			'/wp-admin/admin.php?page=' + Cypress.env( 'pluginId' ) + '#/help',
 			{ timeout: 30000 }
