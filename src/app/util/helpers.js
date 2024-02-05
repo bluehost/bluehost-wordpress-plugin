@@ -74,19 +74,7 @@ export const bluehostPurgeCacheApiFetch = ( data, passError, thenCallback ) => {
  * @param {boolean} comingSoon Whether or not the site is coming soon.
  */
 export const comingSoonAdminbarToggle = ( comingSoon ) => {
-	const comingsoonadminbar = document.getElementById(
-		'nfd-site-status-text'
-	);
-	if ( ! comingsoonadminbar ) {
-		return;
-	}
-	if ( ! comingSoon ) {
-		comingsoonadminbar.style.color = '#048200';
-		comingsoonadminbar.textContent = 'Live';
-	} else {
-		comingsoonadminbar.style.color = '#E01C1C';
-		comingsoonadminbar.textContent = 'Coming Soon';
-	}
+	window.NewfoldRuntime.comingSoon.toggleAdminBarSiteStatus( comingSoon );
 };
 
 /**

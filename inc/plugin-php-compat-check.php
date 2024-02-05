@@ -193,5 +193,4 @@ class Plugin_PHP_Compat_Check {
 		printf( esc_html__( 'The "%s" plugin has been deactivated.', 'wp-plugin-bluehost' ), esc_html( $this->name ) );
 		echo '</p></div>';
 	}
-
 }
