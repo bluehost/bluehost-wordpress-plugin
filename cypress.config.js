@@ -11,6 +11,7 @@ module.exports = defineConfig( {
 		phpVersion,
 		pluginId: 'bluehost',
 		appId: 'wppbh',
+		pluginSlug: 'bluehost-wordpress-plugin',
 	},
 	downloadsFolder: 'tests/cypress/downloads',
 	fixturesFolder: 'tests/cypress/fixtures',
