@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53714f961812a49eaf9ee90e688d82f7",
+    "content-hash": "052fe3e2e9ae4f737f82cd86acff4688",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -323,6 +323,60 @@
                 "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
             },
             "time": "2024-01-31T17:46:37+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-context",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-context.git",
+                "reference": "22956a095998ec6753dd763a3d48c74ce7576b6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-context/zipball/22956a095998ec6753dd763a3d48c74ce7576b6f",
+                "reference": "22956a095998ec6753dd763a3d48c74ce7576b6f",
+                "shasum": ""
+            },
+            "require": {
+                "wp-forge/helpers": "^2.0"
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Context\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "scripts": {
+                "fix": [
+                    "vendor/bin/phpcbf . --standard=phpcs.xml"
+                ],
+                "lint": [
+                    "vendor/bin/phpcs . --standard=phpcs.xml -s"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Mullins",
+                    "homepage": "https://evanmullins.com"
+                }
+            ],
+            "description": "Newfold module to determine context for various brands and platforms.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-context/tree/main",
+                "issues": "https://github.com/newfold-labs/wp-module-context/issues"
+            },
+            "time": "2024-02-16T19:05:15+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ctb",
@@ -863,22 +917,22 @@
         },
         {
             "name": "newfold-labs/wp-module-notifications",
-            "version": "1.2.4",
+            "version": "1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-notifications.git",
-                "reference": "f8ac38165a441e7a6ed90b0dde1edcfe2fb11139"
+                "reference": "156e68323677e9ac323e7c972ea126416f21db09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/f8ac38165a441e7a6ed90b0dde1edcfe2fb11139",
-                "reference": "f8ac38165a441e7a6ed90b0dde1edcfe2fb11139",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/156e68323677e9ac323e7c972ea126416f21db09",
+                "reference": "156e68323677e9ac323e7c972ea126416f21db09",
                 "shasum": ""
             },
             "require": {
                 "newfold-labs/wp-module-data": "^2.0.0",
                 "wp-forge/collection": "^1.0",
-                "wp-forge/helpers": "^1.1.0",
+                "wp-forge/helpers": "^2.0",
                 "wpscholar/url": "^1.2"
             },
             "type": "library",
@@ -901,10 +955,10 @@
             ],
             "description": "A module for managing Newfold in-site notifications.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.2.4",
+                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.2.5",
                 "issues": "https://github.com/newfold-labs/wp-module-notifications/issues"
             },
-            "time": "2024-02-08T18:38:31+00:00"
+            "time": "2024-02-16T18:47:35+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
@@ -1416,16 +1470,16 @@
         },
         {
             "name": "wp-forge/helpers",
-            "version": "1.1.1",
+            "version": "2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-forge/helpers.git",
-                "reference": "59e97eeeba51f195f8f7478efb6820295ae218e4"
+                "reference": "28ebc09a3390dbff427270a4ed2b93395e8b9b78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-forge/helpers/zipball/59e97eeeba51f195f8f7478efb6820295ae218e4",
-                "reference": "59e97eeeba51f195f8f7478efb6820295ae218e4",
+                "url": "https://api.github.com/repos/wp-forge/helpers/zipball/28ebc09a3390dbff427270a4ed2b93395e8b9b78",
+                "reference": "28ebc09a3390dbff427270a4ed2b93395e8b9b78",
                 "shasum": ""
             },
             "require": {
@@ -1454,9 +1508,9 @@
             "description": "A collection of helpers for WordPress and PHP development.",
             "support": {
                 "issues": "https://github.com/wp-forge/helpers/issues",
-                "source": "https://github.com/wp-forge/helpers/tree/1.1.1"
+                "source": "https://github.com/wp-forge/helpers/tree/2.0"
             },
-            "time": "2021-07-15T11:41:27+00:00"
+            "time": "2022-01-06T13:10:47+00:00"
         },
         {
             "name": "wp-forge/wp-htaccess-manager",
@@ -1582,20 +1636,20 @@
         },
         {
             "name": "wp-forge/wp-update-handler",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-forge/wp-update-handler.git",
-                "reference": "deb2beae787381158dc8c60b1cdcd241333a8784"
+                "reference": "4dbc5e0dd4dfbb5808f9d53b1b3afd65c3db7435"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-forge/wp-update-handler/zipball/deb2beae787381158dc8c60b1cdcd241333a8784",
-                "reference": "deb2beae787381158dc8c60b1cdcd241333a8784",
+                "url": "https://api.github.com/repos/wp-forge/wp-update-handler/zipball/4dbc5e0dd4dfbb5808f9d53b1b3afd65c3db7435",
+                "reference": "4dbc5e0dd4dfbb5808f9d53b1b3afd65c3db7435",
                 "shasum": ""
             },
             "require": {
-                "wp-forge/helpers": "^1.1"
+                "wp-forge/helpers": "^2.0"
             },
             "require-dev": {
                 "wpscholar/phpcs-standards-wpscholar": "^1.0"
@@ -1619,9 +1673,9 @@
             "description": "A WordPress package for updating custom plugins and themes based on an API response from a custom update server.",
             "support": {
                 "issues": "https://github.com/wp-forge/wp-update-handler/issues",
-                "source": "https://github.com/wp-forge/wp-update-handler/tree/1.0.1"
+                "source": "https://github.com/wp-forge/wp-update-handler/tree/1.0.2"
             },
-            "time": "2022-08-26T17:36:12+00:00"
+            "time": "2024-02-16T18:07:08+00:00"
         },
         {
             "name": "wp-forge/wp-upgrade-handler",
@@ -3659,6 +3713,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "newfold-labs/wp-module-context": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
