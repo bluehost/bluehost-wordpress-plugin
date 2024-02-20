@@ -28,7 +28,7 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 }
 
 /*
- * Initialize coming soon module via container
+ * Initialize module settings via container
  */
 $bluehost_module_container = new Container(
 	array(
@@ -109,24 +109,35 @@ $bluehost_module_container->set(
 		'template_styles'            => esc_url( BLUEHOST_PLUGIN_URL . 'assets/styles/coming-soon.css' ),
 	)
 );
-setContainer( $bluehost_module_container );
 
+// require for now because autoloading is not working as expected
 require_once BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-context/bootstrap.php';
 require_once BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-context/includes/Context.php';
 require_once BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-context/includes/functions.php';
+
+// Test adding wp-cloud constants
 define( 'IS_ATOMIC', true );
 define( 'ATOMIC_CLIENT_ID', '2' );
+
 add_action(
     'newfold/context/set',
     function () {
 
+		// set brand
  		setContext( 'brand.name', 'bluehost' );
-		// detect wp-cloud
+		
+		// set platform
 		$platform = 'default';
 		if ( defined( 'IS_ATOMIC' ) && IS_ATOMIC && defined( 'ATOMIC_CLIENT_ID' ) && '2' === ATOMIC_CLIENT_ID ) {
 			$platform = 'atomic';
 		}
 		setContext( 'platform', $platform );
+
+		// set container
+		$bluehost_module_container->set(
+			'context',
+			\NewfoldLabs\WP\Context\Context::all()
+		);
 	}
 );
 add_filter(
@@ -135,6 +146,9 @@ add_filter(
 		return array_merge( $runtime, array( 'context' => \NewfoldLabs\WP\Context\Context::all() ) );
 	}
 );
+
+
+setContainer( $bluehost_module_container );
 
 // Set up the updater endpoint and map values
 $updateurl     = 'https://hiive.cloud/workers/release-api/plugins/bluehost/bluehost-wordpress-plugin'; // Custom API GET endpoint
