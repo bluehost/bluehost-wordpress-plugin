@@ -7,6 +7,8 @@
 
 namespace Bluehost;
 
+use function NewfoldLabs\WP\Context\getContext;
+
 /**
  * \Bluehost\Admin
  */
@@ -56,14 +58,50 @@ final class Admin {
 	 * @return array
 	 */
 	public static function subpages() {
-		return array(
+		global $bluehost_module_container;
+		require_once BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-context/includes/functions.php';
+
+		$home = array(
 			'bluehost#/home'        => __( 'Home', 'wp-plugin-bluehost' ),
+		);
+		$store = array(
 			'bluehost#/store'       => __( 'Store', 'wp-plugin-bluehost' ),
+		);
+		$marketplace = array(
 			'bluehost#/marketplace' => __( 'Marketplace', 'wp-plugin-bluehost' ),
+		);
+		$performance = array(
 			'bluehost#/performance' => __( 'Performance', 'wp-plugin-bluehost' ),
+		);
+		$settings = array(
 			'bluehost#/settings'    => __( 'Settings', 'wp-plugin-bluehost' ),
+		);
+		$staging = array(
 			'bluehost#/staging'     => __( 'Staging', 'wp-plugin-bluehost' ),
+		);
+		$help = array(
 			'bluehost#/help'        => __( 'Help', 'wp-plugin-bluehost' ),
+		);
+
+		// wp-cloud adjustments
+		if ( 'atomic' === getContext('platform') ) {
+			return array_merge(
+				$home,
+				$store,
+				$marketplace,
+				$settings,
+				$help
+			);
+		}
+
+		return array_merge(
+			$home,
+			$store,
+			$marketplace,
+			$performance,
+			$settings,
+			$staging,
+			$help
 		);
 	}
 

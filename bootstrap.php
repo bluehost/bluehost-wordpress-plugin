@@ -11,7 +11,10 @@ use WP_Forge\WPUpdateHandler\PluginUpdater;
 use WP_Forge\UpgradeHandler\UpgradeHandler;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
+use NewfoldLabs\WP\Context\Context;
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
+use function NewfoldLabs\WP\Context\setContext;
+use function NewfoldLabs\WP\Context\getContext;
 
 // Composer autoloader
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -107,6 +110,31 @@ $bluehost_module_container->set(
 	)
 );
 setContainer( $bluehost_module_container );
+
+require_once BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-context/bootstrap.php';
+require_once BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-context/includes/Context.php';
+require_once BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-context/includes/functions.php';
+define( 'IS_ATOMIC', true );
+define( 'ATOMIC_CLIENT_ID', '2' );
+add_action(
+    'newfold/context/set',
+    function () {
+
+ 		setContext( 'brand.name', 'bluehost' );
+		// detect wp-cloud
+		$platform = 'default';
+		if ( defined( 'IS_ATOMIC' ) && IS_ATOMIC && defined( 'ATOMIC_CLIENT_ID' ) && '2' === ATOMIC_CLIENT_ID ) {
+			$platform = 'atomic';
+		}
+		setContext( 'platform', $platform );
+	}
+);
+add_filter(
+	'newfold_runtime',
+	function( $runtime ) {
+		return array_merge( $runtime, array( 'context' => \NewfoldLabs\WP\Context\Context::all() ) );
+	}
+);
 
 // Set up the updater endpoint and map values
 $updateurl     = 'https://hiive.cloud/workers/release-api/plugins/bluehost/bluehost-wordpress-plugin'; // Custom API GET endpoint
