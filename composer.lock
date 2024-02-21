@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "052fe3e2e9ae4f737f82cd86acff4688",
+    "content-hash": "79378dc061f7fdd529fd391091ef9f48",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -326,16 +326,16 @@
         },
         {
             "name": "newfold-labs/wp-module-context",
-            "version": "dev-main",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-context.git",
-                "reference": "22956a095998ec6753dd763a3d48c74ce7576b6f"
+                "reference": "aff2a223b4d1ff7b93df1bffa29d61f700101921"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-context/zipball/22956a095998ec6753dd763a3d48c74ce7576b6f",
-                "reference": "22956a095998ec6753dd763a3d48c74ce7576b6f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-context/zipball/aff2a223b4d1ff7b93df1bffa29d61f700101921",
+                "reference": "aff2a223b4d1ff7b93df1bffa29d61f700101921",
                 "shasum": ""
             },
             "require": {
@@ -344,13 +344,13 @@
             "require-dev": {
                 "newfold-labs/wp-php-standards": "^1.2"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "NewfoldLabs\\WP\\Module\\Context\\": "includes"
+                    "NewfoldLabs\\WP\\Context\\": "includes"
                 },
                 "files": [
+                    "includes/functions.php",
                     "bootstrap.php"
                 ]
             },
@@ -373,10 +373,10 @@
             ],
             "description": "Newfold module to determine context for various brands and platforms.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-context/tree/main",
+                "source": "https://github.com/newfold-labs/wp-module-context/tree/0.3.0",
                 "issues": "https://github.com/newfold-labs/wp-module-context/issues"
             },
-            "time": "2024-02-16T19:05:15+00:00"
+            "time": "2024-02-21T22:38:37+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ctb",
@@ -3713,7 +3713,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "newfold-labs/wp-module-context": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,

@@ -14,7 +14,6 @@ use NewfoldLabs\WP\ModuleLoader\Plugin;
 use NewfoldLabs\WP\Context\Context;
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 use function NewfoldLabs\WP\Context\setContext;
-use function NewfoldLabs\WP\Context\getContext;
 
 // Composer autoloader
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -30,10 +29,19 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 /*
  * Initialize module settings via container
  */
-$bluehost_module_container = new Container(
-	array(
-		'cache_types' => array( 'browser', 'skip404' ),
-	)
+$bluehost_module_container = new Container();
+
+// Test adding wp-cloud constants
+define( 'IS_ATOMIC', true );
+define( 'ATOMIC_CLIENT_ID', '2' );
+
+// Context setup
+add_action(
+    'newfold/context/set',
+    function () {
+		// set brand
+ 		setContext( 'brand.name', 'bluehost' );
+	}
 );
 
 // Set plugin to container
@@ -54,6 +62,13 @@ $bluehost_module_container->set(
 	)
 );
 
+// Set performance settings
+$bluehost_module_container->set(
+	'cache_types',
+	array( 'browser', 'skip404' )
+);
+
+// Marketplace settings
 $bluehost_module_container->set(
 	'marketplace_brand',
 	'bluehost'
@@ -109,44 +124,6 @@ $bluehost_module_container->set(
 		'template_styles'            => esc_url( BLUEHOST_PLUGIN_URL . 'assets/styles/coming-soon.css' ),
 	)
 );
-
-// require for now because autoloading is not working as expected
-require_once BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-context/bootstrap.php';
-require_once BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-context/includes/Context.php';
-require_once BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-context/includes/functions.php';
-
-// Test adding wp-cloud constants
-define( 'IS_ATOMIC', true );
-define( 'ATOMIC_CLIENT_ID', '2' );
-
-add_action(
-    'newfold/context/set',
-    function () {
-
-		// set brand
- 		setContext( 'brand.name', 'bluehost' );
-		
-		// set platform
-		$platform = 'default';
-		if ( defined( 'IS_ATOMIC' ) && IS_ATOMIC && defined( 'ATOMIC_CLIENT_ID' ) && '2' === ATOMIC_CLIENT_ID ) {
-			$platform = 'atomic';
-		}
-		setContext( 'platform', $platform );
-
-		// set container
-		$bluehost_module_container->set(
-			'context',
-			\NewfoldLabs\WP\Context\Context::all()
-		);
-	}
-);
-add_filter(
-	'newfold_runtime',
-	function( $runtime ) {
-		return array_merge( $runtime, array( 'context' => \NewfoldLabs\WP\Context\Context::all() ) );
-	}
-);
-
 
 setContainer( $bluehost_module_container );
 
