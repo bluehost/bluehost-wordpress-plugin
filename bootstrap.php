@@ -14,6 +14,7 @@ use NewfoldLabs\WP\ModuleLoader\Plugin;
 use NewfoldLabs\WP\Context\Context;
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 use function NewfoldLabs\WP\Context\setContext;
+use function NewfoldLabs\WP\Context\getContext;
 
 // Composer autoloader
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -63,10 +64,11 @@ $bluehost_module_container->set(
 );
 
 // Set performance settings
-$bluehost_module_container->set(
-	'cache_types',
-	array( 'browser', 'skip404' )
-);
+$cache_types = array( 'browser', 'skip404' );
+if ( 'atomic' === getContext( 'platform' ) ) {
+	$cache_types = array();
+}
+$bluehost_module_container->set( 'cache_types', $cache_types );
 
 // Marketplace settings
 $bluehost_module_container->set(
