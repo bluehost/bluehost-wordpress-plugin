@@ -73,10 +73,10 @@ $bluehost_module_container->set( 'cache_types', $cache_types );
 // Marketplace settings
 $bluehost_module_container->set(
 	'marketplace_brand',
-	'bluehost'
+	'atomic' !== getContext( 'platform' ) ? 'bluehost' : 'bluehost-cloud'
 );
 
-// properly get branding links depending on market
+// Properly get branding links depending on market
 $wordpress_hosting_page = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://www.bluehost.in?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin' : 'https://bluehost.com?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin';
 $my_panel               = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://my.bluehost.in/web-hosting/cplogin' : 'https://my.bluehost.com/web-hosting/cplogin';
 $website_guide_link     = 'https://www.bluehost.com/blog/how-to-create-a-website-guide/';
