@@ -63,17 +63,26 @@ $bluehost_module_container->set(
 	)
 );
 
-// Set performance settings
-$cache_types = array( 'browser', 'skip404' );
-if ( 'atomic' === getContext( 'platform' ) ) {
-	$cache_types = array();
-}
-$bluehost_module_container->set( 'cache_types', $cache_types );
+// Assign container values based on context
+add_action(
+	'plugins_loaded',
+	function ()  {
+		global $bluehost_module_container;
 
-// Marketplace settings
-$bluehost_module_container->set(
-	'marketplace_brand',
-	'atomic' !== getContext( 'platform' ) ? 'bluehost' : 'bluehost-cloud'
+		// Performance default settings
+		$cache_types = array( 'browser', 'skip404' );
+		// Marketplace default settings
+		$marketplace_brand = 'bluehost';
+
+		// Platform overrides
+		if ( 'atomic' === getContext( 'platform' ) ) {
+			$cache_types = array();
+			$marketplace_brand = 'bluehost-cloud';
+		}
+
+		$bluehost_module_container->set( 'cache_types', $cache_types );
+		$bluehost_module_container->set( 'marketplace_brand', $marketplace_brand );
+	}
 );
 
 // Properly get branding links depending on market
