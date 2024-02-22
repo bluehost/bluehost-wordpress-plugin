@@ -82,7 +82,8 @@ add_action(
 
 		$bluehost_module_container->set( 'cache_types', $cache_types );
 		$bluehost_module_container->set( 'marketplace_brand', $marketplace_brand );
-	}
+	},
+	11
 );
 
 // Properly get branding links depending on market
