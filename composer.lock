@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53714f961812a49eaf9ee90e688d82f7",
+    "content-hash": "807db21eaf69ff5572a7d816de3173f7",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -810,16 +810,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "2.2.1",
+            "version": "2.2.3",
             "source": {
                 "type": "git",
-                "url": "git@github.com:newfold-labs/wp-module-marketplace.git",
-                "reference": "bdf2f27ceb9ca8201b77b0018ad2e606f3e241a9"
+                "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
+                "reference": "f4b4760c893cedc4cb39d53f0dd267d41533dd3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/bdf2f27ceb9ca8201b77b0018ad2e606f3e241a9",
-                "reference": "bdf2f27ceb9ca8201b77b0018ad2e606f3e241a9",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/f4b4760c893cedc4cb39d53f0dd267d41533dd3d",
+                "reference": "f4b4760c893cedc4cb39d53f0dd267d41533dd3d",
                 "shasum": ""
             },
             "require": {
@@ -859,7 +859,11 @@
                 }
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
-            "time": "2024-02-02T13:43:27+00:00"
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/2.2.3",
+                "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
+            },
+            "time": "2024-02-21T20:02:03+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
