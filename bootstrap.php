@@ -65,7 +65,7 @@ $bluehost_module_container->set(
 // Assign container values based on context
 add_action(
 	'plugins_loaded',
-	function ()  {
+	function () {
 		global $bluehost_module_container;
 
 		// Performance default settings
