@@ -37,10 +37,10 @@ $bluehost_module_container = new Container();
 
 // Context setup
 add_action(
-    'newfold/context/set',
-    function () {
+	'newfold/context/set',
+	function () {
 		// set brand
- 		setContext( 'brand.name', 'bluehost' );
+		setContext( 'brand.name', 'bluehost' );
 	}
 );
 
@@ -75,7 +75,7 @@ add_action(
 
 		// Platform overrides
 		if ( 'atomic' === getContext( 'platform' ) ) {
-			$cache_types = array();
+			$cache_types       = array();
 			$marketplace_brand = 'bluehost-cloud';
 		}
 
