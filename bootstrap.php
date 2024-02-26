@@ -32,9 +32,6 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
  */
 $bluehost_module_container = new Container();
 
-// Test adding wp-cloud constants
-// define( 'IS_ATOMIC', true );
-
 // Context setup
 add_action(
 	'newfold/context/set',

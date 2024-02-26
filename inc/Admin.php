@@ -59,7 +59,6 @@ final class Admin {
 	 */
 	public static function subpages() {
 		global $bluehost_module_container;
-		require_once BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-context/includes/functions.php';
 
 		$home        = array(
 			'bluehost#/home' => __( 'Home', 'wp-plugin-bluehost' ),
