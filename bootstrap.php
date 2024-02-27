@@ -11,7 +11,10 @@ use WP_Forge\WPUpdateHandler\PluginUpdater;
 use WP_Forge\UpgradeHandler\UpgradeHandler;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
+use NewfoldLabs\WP\Context\Context;
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
+use function NewfoldLabs\WP\Context\setContext;
+use function NewfoldLabs\WP\Context\getContext;
 
 // Composer autoloader
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -25,12 +28,17 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 }
 
 /*
- * Initialize coming soon module via container
+ * Initialize module settings via container
  */
-$bluehost_module_container = new Container(
-	array(
-		'cache_types' => array( 'browser', 'skip404' ),
-	)
+$bluehost_module_container = new Container();
+
+// Context setup
+add_action(
+	'newfold/context/set',
+	function () {
+		// set brand
+		setContext( 'brand.name', 'bluehost' );
+	}
 );
 
 // Set plugin to container
@@ -51,12 +59,32 @@ $bluehost_module_container->set(
 	)
 );
 
-$bluehost_module_container->set(
-	'marketplace_brand',
-	'bluehost'
+// Assign container values based on context
+add_action(
+	'plugins_loaded',
+	function () {
+		global $bluehost_module_container;
+
+		// Performance default settings
+		$cache_types = array( 'browser', 'skip404' );
+		// Marketplace default settings
+		$marketplace_brand = 'bluehost';
+
+		// Platform overrides
+		if ( 'atomic' === getContext( 'platform' ) ) {
+			$cache_types       = array();
+			$marketplace_brand = 'bluehost-cloud';
+		}
+
+		if ( $bluehost_module_container ) {
+			$bluehost_module_container->set( 'cache_types', $cache_types );
+			$bluehost_module_container->set( 'marketplace_brand', $marketplace_brand );
+		}
+	},
+	11
 );
 
-// properly get branding links depending on market
+// Properly get branding links depending on market
 $wordpress_hosting_page = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://www.bluehost.in?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin' : 'https://bluehost.com?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin';
 $my_panel               = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://my.bluehost.in/web-hosting/cplogin' : 'https://my.bluehost.com/web-hosting/cplogin';
 $website_guide_link     = 'https://www.bluehost.com/blog/how-to-create-a-website-guide/';
@@ -106,6 +134,7 @@ $bluehost_module_container->set(
 		'template_styles'            => esc_url( BLUEHOST_PLUGIN_URL . 'assets/styles/coming-soon.css' ),
 	)
 );
+
 setContainer( $bluehost_module_container );
 
 // Set up the updater endpoint and map values
