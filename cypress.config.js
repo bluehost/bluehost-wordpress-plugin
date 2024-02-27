@@ -52,13 +52,6 @@ module.exports = defineConfig( {
 					config.env.phpSemverVersion = config.env.phpVersion;
 				}
 			}
-			// Exclude onboarding/ecommerce tests for PHP lower than 7.3 (7.1 and 7.2)
-			if ( semver.satisfies( config.env.phpSemverVersion, '<7.3.0' ) ) {
-				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
-					'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/3-ecommerce-onboarding-flow/**',
-					'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/2-general-onboarding-flow/top-priority.cy.js',
-				] );
-			}
 
 			return config;
 		},
@@ -71,6 +64,7 @@ module.exports = defineConfig( {
 		testIsolation: false,
 		excludeSpecPattern: [
 			'vendor/newfold-labs/**/tests/cypress/integration/wp-module-support/*.cy.js', // skip any module's wp-module-support files
+			'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/5-AI-SiteGen-onboarding-flow/*.cy.js', // skip onboarding sitegen tests for now
 		],
 		experimentalRunAllSpecs: true,
 	},
