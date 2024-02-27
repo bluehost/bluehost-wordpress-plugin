@@ -76,8 +76,10 @@ add_action(
 			$marketplace_brand = 'bluehost-cloud';
 		}
 
-		$bluehost_module_container->set( 'cache_types', $cache_types );
-		$bluehost_module_container->set( 'marketplace_brand', $marketplace_brand );
+		if ( $bluehost_module_container ) {
+			$bluehost_module_container->set( 'cache_types', $cache_types );
+			$bluehost_module_container->set( 'marketplace_brand', $marketplace_brand );
+		}
 	},
 	11
 );
