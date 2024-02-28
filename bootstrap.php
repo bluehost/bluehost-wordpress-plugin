@@ -52,7 +52,6 @@ $bluehost_module_container->set(
 					'file'         => BLUEHOST_PLUGIN_FILE,
 					'brand'        => get_option( 'mm_brand', 'bluehost' ),
 					'install_date' => get_option( 'bluehost_plugin_install_date' ),
-					'site_id'      => \NewfoldLabs\WP\Module\CustomerBluehost\SiteMeta::get_id(),
 				)
 			);
 		}
