@@ -42,7 +42,7 @@ Cypress.Commands.add( 'login', ( username, password ) => {
 			cy.get( '#user_pass' ).type( `${ password }{enter}` );
 
 			// Speed up tests by setting permalink structure once
-			cy.setPermalinkStructure();
+			// cy.setPermalinkStructure();
 		}
 	} );
 } );
