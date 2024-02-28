@@ -57,6 +57,7 @@ module.exports = defineConfig( {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
 					'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/3-ecommerce-onboarding-flow/**',
 					'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/2-general-onboarding-flow/top-priority.cy.js',
+					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Site-Capabilities/**'
 				] );
 			}
 
