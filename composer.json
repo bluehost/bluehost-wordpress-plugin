@@ -15,7 +15,7 @@
     "optimize-autoloader": true,
     "sort-packages": true,
     "platform": {
-      "php": "7.1.0"
+      "php": "7.3.0"
     },
     "platform-check": false,
     "allow-plugins": {
