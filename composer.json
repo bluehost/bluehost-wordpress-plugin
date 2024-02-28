@@ -66,7 +66,7 @@
     "wp-phpunit/wp-phpunit": "^6.4.2"
   },
   "require": {
-    "newfold-labs/wp-module-coming-soon": "^1.2.0",
+    "newfold-labs/wp-module-coming-soon": "^1.2.1",
     "newfold-labs/wp-module-context": "^1.0.0",
     "newfold-labs/wp-module-data": "^2.4.18",
     "newfold-labs/wp-module-deactivation": "^1.0.5",
