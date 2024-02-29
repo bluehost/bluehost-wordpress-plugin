@@ -25,7 +25,10 @@ final class Admin {
 		/* Load i18 files */
 		\add_action( 'init', array( __CLASS__, 'load_text_domain' ), 100 );
 		/* Add Links to WordPress Plugins list item. */
-		\add_filter( 'plugin_action_links_bluehost-wordpress-plugin/bluehost-wordpress-plugin.php', array( __CLASS__, 'actions' ) );
+		$plugin_basename = defined( 'BLUEHOST_PLUGIN_FILE' )
+			? plugin_basename( constant( 'BLUEHOST_PLUGIN_FILE' ) )
+			: 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php';
+		\add_filter( "plugin_action_links_{$plugin_basename}", array( __CLASS__, 'actions' ) );
 		/* Add inline style to hide subnav link */
 		\add_action( 'admin_head', array( __CLASS__, 'admin_nav_style' ) );
 
