@@ -1,7 +1,18 @@
 {
-    "description": "WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
-    "license": "GPL-2.0-or-later",
+    "name": "bluehost-wordpress-plugin",
     "version": "3.9.0",
+    "description": "WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
+    "author": {
+        "name": "Bluehost",
+        "url": "https://www.bluehost.com/"
+    },
+    "license": "GPL-2.0-or-later",
+    "keywords": [
+        "bluehost",
+        "wordpress",
+        "plugin"
+    ],
+    "homepage": "https://github.com/bluehost/bluehost-wordpress-plugin#readme",
     "private": true,
     "repository": {
         "type": "git",
@@ -10,7 +21,6 @@
     "bugs": {
         "url": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
     },
-    "homepage": "https://github.com/bluehost/bluehost-wordpress-plugin#readme",
     "contributors": [
         "Abdulrahman Al Ani (https://alani.dev/)",
         "Evan Mullins (https://evanmullins.com)",
@@ -49,11 +59,15 @@
         "@wordpress/env": "^9.2.0",
         "@wordpress/eslint-plugin": "^17.6.0",
         "@wordpress/scripts": "^27.1.0",
+        "concurrently": "8.2.2",
         "cypress": "^13.6.6",
         "cypress-axe": "^1.5.0",
         "eslint-import-resolver-alias": "^1.1.2",
         "eslint-plugin-import": "^2.29.1",
-        "tailwindcss": "^3.4.1"
+        "tailwindcss": "^3.4.1",
+        "webpack": "^5.89.0",
+        "webpack-merge": "^5.10.0",
+        "yaml-lint": "^1.7.0"
     },
     "scripts": {
         "build": "NODE_ENV=production wp-scripts build",
@@ -62,14 +76,20 @@
         "create:dist": "rsync -r --include-from=.distinclude --exclude-from=.distignore . ./bluehost-wordpress-plugin",
         "create:zip": "cd ./bluehost-wordpress-plugin && zip -r -9 ../bluehost-wordpress-plugin.zip . && ls -lh ../bluehost-wordpress-plugin.zip",
         "cypress": "npm cypress open",
-        "develop": "npm run start",
         "develop:analyzer": "npm run start:analyzer",
-        "i18n": "wpi18n addtextdomain && composer run i18n",
+        "develop": "npm run start",
+        "i18n:js": "npm run wpi18n addtextdomain",
+        "i18n:php": "composer run i18n",
+        "i18n": "concurrently \"npm:i18n:*\"",
         "lint:css": "wp-scripts lint-style '**/*.css'",
-        "lint:js": "wp-scripts lint-js ./src",
+        "lint:fix": "concurrently \"npm:lint:*fix\"",
         "lint:js:fix": "wp-scripts lint-js ./src --fix",
+        "lint:js": "wp-scripts lint-js ./src",
+        "lint:php": "composer run test",
+        "lint:php:fix": "composer run fix",
         "lint:pkg-json": "wp-scripts lint-pkg-json",
         "lint:yml": "yamllint --ignore=node_modules/** --ignore=vendor/** **/*.yml",
+        "lint": "concurrently \"npm:lint:*(!fix)\"",
         "log:watch": "wp-env run wordpress 'tail -f /var/www/html/wp-content/debug.log'",
         "php-deps": "composer install --no-dev --optimize-autoloader",
         "postprepare": "npm run set-wp-version",
@@ -77,11 +97,12 @@
         "set-wp-version": "node ./set-latest-wp-version.js",
         "simulate-runner-build": "npm run prebuild:cleanup && npm i --legacy-peer-deps && npm run php-deps && npm run build && npm run create:dist && npm run create:zip",
         "srb": "npm run simulate-runner-build",
-        "start": "NODE_ENV=develop wp-scripts start",
         "start:analyzer": "npm run start --webpack-bundle-analyzer",
-        "storybook:dev": "start-storybook -c ./storybook",
+        "start": "NODE_ENV=develop wp-scripts start",
         "storybook:build": "build-storybook -c ./storybook -o ./.docs",
+        "storybook:dev": "start-storybook -c ./storybook",
         "test:e2e": "npx cypress run",
-        "test:unit": "wp-scripts test-unit-js"
+        "test:unit": "wp-scripts test-unit-js",
+        "test": "concurrently \"npm:test:*\""
     }
 }
