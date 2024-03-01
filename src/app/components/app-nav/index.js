@@ -21,17 +21,20 @@ export const SideNavMenu = () => {
 	const primaryMenu = () => {
 		return (
 			<ul className="nfd-flex nfd-flex-col nfd-gap-1.5">
-				{ topRoutes.map( ( page ) => (
-					<SideNavMenuItem
-						key={ page.name }
-						label={ page.title }
-						name={ page.name }
-						icon={ page.Icon }
-						path={ page.name }
-						action={ page.action }
-						subItems={ page.subRoutes }
-					/>
-				) ) }
+				{ topRoutes.map(
+					( page ) =>
+						true === page.condition && (
+							<SideNavMenuItem
+								key={ page.name }
+								label={ page.title }
+								name={ page.name }
+								icon={ page.Icon }
+								path={ page.name }
+								action={ page.action }
+								subItems={ page.subRoutes }
+							/>
+						)
+				) }
 			</ul>
 		);
 	};
