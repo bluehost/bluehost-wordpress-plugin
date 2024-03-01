@@ -30,17 +30,20 @@ const HelpCenterAI = ( e ) => {
 export const AppRoutes = () => {
 	return (
 		<Routes>
-			{ routes.map( ( page ) => (
-				<Route
-					end
-					key={ page.name }
-					path={ addPartialMatch(
-						'/marketplace',
-						addPartialMatch( '/store', page.name )
-					) }
-					element={ <page.Component /> }
-				/>
-			) ) }
+			{ routes.map(
+				( page ) =>
+					true === page.condition && (
+						<Route
+							end
+							key={ page.name }
+							path={ addPartialMatch(
+								'/marketplace',
+								addPartialMatch( '/store', page.name )
+							) }
+							element={ <page.Component /> }
+						/>
+					)
+			) }
 			<Route path="/" element={ <Home /> } />
 			<Route
 				path="*"
@@ -75,6 +78,7 @@ export const routes = [
 		title: __( 'Home', 'wp-plugin-bluehost' ),
 		Component: Home,
 		Icon: HomeIcon,
+		condition: true,
 	},
 	{
 		name: '/store',
@@ -104,6 +108,7 @@ export const routes = [
 				title: __( 'Store Details', 'wp-plugin-bluehost' ),
 			},
 		].filter( Boolean ),
+		condition: true,
 	},
 	{
 		name: '/marketplace',
@@ -111,30 +116,35 @@ export const routes = [
 		Component: Marketplace,
 		Icon: ShoppingBagIcon,
 		subRoutes: await getMarketplaceSubnavRoutes(),
+		condition: true,
 	},
 	{
 		name: '/performance',
 		title: __( 'Performance', 'wp-plugin-bluehost' ),
 		Component: Performance,
 		Icon: BoltIcon,
+		condition: 'atomic' !== window.NewfoldRuntime.context.platform,
 	},
 	{
 		name: '/settings',
 		title: __( 'Settings', 'wp-plugin-bluehost' ),
 		Component: Settings,
 		Icon: AdjustmentsHorizontalIcon,
+		condition: true,
 	},
 	{
 		name: '/staging',
 		title: __( 'Staging', 'wp-plugin-bluehost' ),
 		Component: Staging,
 		Icon: WrenchScrewdriverIcon,
+		condition: 'atomic' !== window.NewfoldRuntime.context.platform,
 	},
 	{
 		name: '/help',
 		title: __( 'Help', 'wp-plugin-bluehost' ),
 		Component: Help,
 		Icon: HelpIcon,
+		condition: true,
 		action: NewfoldRuntime.hasCapability( 'canAccessHelpCenter' )
 			? HelpCenterAI
 			: false,
