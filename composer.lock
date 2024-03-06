@@ -885,12 +885,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "35910872d3bca2ae8095308d559716ecfddb579c"
+                "reference": "8fc1a49b43b3db5d65bc42261c174dd7fd110c70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/35910872d3bca2ae8095308d559716ecfddb579c",
-                "reference": "35910872d3bca2ae8095308d559716ecfddb579c",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/8fc1a49b43b3db5d65bc42261c174dd7fd110c70",
+                "reference": "8fc1a49b43b3db5d65bc42261c174dd7fd110c70",
                 "shasum": ""
             },
             "require": {
@@ -939,7 +939,7 @@
                 "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.1.6",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2024-03-05T14:14:41+00:00"
+            "time": "2024-03-06T08:58:22+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
@@ -2406,12 +2406,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "da77e3d08db7ecddce118186977b21d04149b2f9"
+                "reference": "5e00628ceaa787ae9459f0b6a9320b2b7953d7f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/da77e3d08db7ecddce118186977b21d04149b2f9",
-                "reference": "da77e3d08db7ecddce118186977b21d04149b2f9",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/5e00628ceaa787ae9459f0b6a9320b2b7953d7f0",
+                "reference": "5e00628ceaa787ae9459f0b6a9320b2b7953d7f0",
                 "shasum": ""
             },
             "conflict": {
@@ -3138,7 +3138,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-04T21:04:58+00:00"
+            "time": "2024-03-05T22:04:04+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
