@@ -30,19 +30,20 @@ const HelpCenterAI = ( e ) => {
 export const AppRoutes = () => {
 	return (
 		<Routes>
-			{ routes.map( ( page ) => (
-				true === page.condition && (
-					<Route
-						end
-						key={ page.name }
-						path={ addPartialMatch(
-							'/marketplace',
-							addPartialMatch( '/store', page.name )
-						) }
-						element={ <page.Component /> }
-					/>
-				)
-			) ) }
+			{ routes.map(
+				( page ) =>
+					true === page.condition && (
+						<Route
+							end
+							key={ page.name }
+							path={ addPartialMatch(
+								'/marketplace',
+								addPartialMatch( '/store', page.name )
+							) }
+							element={ <page.Component /> }
+						/>
+					)
+			) }
 			<Route path="/" element={ <Home /> } />
 			<Route
 				path="*"

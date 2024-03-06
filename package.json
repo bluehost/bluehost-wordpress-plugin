@@ -1,8 +1,18 @@
 {
+    "name": "bluehost-wordpress-plugin",
+    "version": "3.9.1",
     "description": "WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
+    "author": {
+        "name": "Bluehost",
+        "homepage": "https://bluehost.com"
+    },
     "license": "GPL-2.0-or-later",
-    "version": "3.9.0",
     "private": true,
+    "keywords": [
+        "wordpress",
+        "plugin"
+    ],
+    "homepage": "https://github.com/bluehost/bluehost-wordpress-plugin#readme",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/bluehost/bluehost-wordpress-plugin.git"
@@ -10,7 +20,6 @@
     "bugs": {
         "url": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
     },
-    "homepage": "https://github.com/bluehost/bluehost-wordpress-plugin#readme",
     "contributors": [
         "Abdulrahman Al Ani (https://alani.dev/)",
         "Evan Mullins (https://evanmullins.com)",
