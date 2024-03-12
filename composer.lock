@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b815b78141cad500f340b28f31690db",
+    "content-hash": "c8074f2fc29a02a46bc64d5a6b0fae49",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -455,16 +455,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.3.23",
+            "version": "v1.3.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "66d2f7c3c93780974987ce8566169220aee27e87"
+                "reference": "baabe57f9c14df3e976b3907ca34c4706df917c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/66d2f7c3c93780974987ce8566169220aee27e87",
-                "reference": "66d2f7c3c93780974987ce8566169220aee27e87",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/baabe57f9c14df3e976b3907ca34c4706df917c3",
+                "reference": "baabe57f9c14df3e976b3907ca34c4706df917c3",
                 "shasum": ""
             },
             "require": {
@@ -507,10 +507,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.23",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.24",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-02-22T16:51:37+00:00"
+            "time": "2024-03-12T12:49:07+00:00"
         },
         {
             "name": "newfold-labs/wp-module-facebook",
@@ -2406,12 +2406,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "5e00628ceaa787ae9459f0b6a9320b2b7953d7f0"
+                "reference": "b277ce69c1a9c9faf39c084652418695c8a31f73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/5e00628ceaa787ae9459f0b6a9320b2b7953d7f0",
-                "reference": "5e00628ceaa787ae9459f0b6a9320b2b7953d7f0",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/b277ce69c1a9c9faf39c084652418695c8a31f73",
+                "reference": "b277ce69c1a9c9faf39c084652418695c8a31f73",
                 "shasum": ""
             },
             "conflict": {
@@ -2494,7 +2494,7 @@
                 "codeigniter4/shield": "<1.0.0.0-beta8",
                 "codiad/codiad": "<=2.8.4",
                 "composer/composer": "<1.10.27|>=2,<2.2.23|>=2.3,<2.7",
-                "concrete5/concrete5": "<9.2.5",
+                "concrete5/concrete5": "<9.2.7",
                 "concrete5/core": "<8.5.8|>=9,<9.1",
                 "contao-components/mediaelement": ">=2.14.2,<2.21.1",
                 "contao/contao": ">=4,<4.4.56|>=4.5,<4.9.40|>=4.10,<4.11.7|>=4.13,<4.13.21|>=5.1,<5.1.4",
@@ -2823,7 +2823,7 @@
                 "pixelfed/pixelfed": "<0.11.11",
                 "plotly/plotly.js": "<2.25.2",
                 "pocketmine/bedrock-protocol": "<8.0.2",
-                "pocketmine/pocketmine-mp": "<=4.23|>=5,<5.3.1",
+                "pocketmine/pocketmine-mp": "<5.11.2",
                 "pocketmine/raklib": ">=0.14,<0.14.6|>=0.15,<0.15.1",
                 "pressbooks/pressbooks": "<5.18",
                 "prestashop/autoupgrade": ">=4,<4.10.1",
@@ -2855,7 +2855,7 @@
                 "react/http": ">=0.7,<1.9",
                 "really-simple-plugins/complianz-gdpr": "<6.4.2",
                 "redaxo/source": "<=5.15.1",
-                "remdex/livehelperchat": "<3.99",
+                "remdex/livehelperchat": "<4.29",
                 "reportico-web/reportico": "<=7.1.21",
                 "rhukster/dom-sanitizer": "<1.0.7",
                 "rmccue/requests": ">=1.6,<1.8",
@@ -2872,10 +2872,10 @@
                 "sfroemken/url_redirect": "<=1.2.1",
                 "sheng/yiicms": "<=1.2",
                 "shopware/core": "<=6.5.7.3",
-                "shopware/platform": "<=6.5.7.3",
+                "shopware/platform": "<=6.5.7.3|>=6.5.8,<6.5.8.7-dev",
                 "shopware/production": "<=6.3.5.2",
                 "shopware/shopware": "<=5.7.17",
-                "shopware/storefront": "<=6.4.8.1",
+                "shopware/storefront": "<=6.4.8.1|>=6.5.8,<6.5.8.7-dev",
                 "shopxo/shopxo": "<2.2.6",
                 "showdoc/showdoc": "<2.10.4",
                 "silverstripe-australia/advancedreports": ">=1,<=2",
@@ -2944,7 +2944,7 @@
                 "symfony/dependency-injection": ">=2,<2.0.17|>=2.7,<2.7.51|>=2.8,<2.8.50|>=3,<3.4.26|>=4,<4.1.12|>=4.2,<4.2.7",
                 "symfony/error-handler": ">=4.4,<4.4.4|>=5,<5.0.4",
                 "symfony/form": ">=2.3,<2.3.35|>=2.4,<2.6.12|>=2.7,<2.7.50|>=2.8,<2.8.49|>=3,<3.4.20|>=4,<4.0.15|>=4.1,<4.1.9|>=4.2,<4.2.1",
-                "symfony/framework-bundle": ">=2,<2.3.18|>=2.4,<2.4.8|>=2.5,<2.5.2|>=2.7,<2.7.51|>=2.8,<2.8.50|>=3,<3.4.26|>=4,<4.1.12|>=4.2,<4.2.7|>=5.3.14,<=5.3.14|>=5.4.3,<=5.4.3|>=6.0.3,<=6.0.3",
+                "symfony/framework-bundle": ">=2,<2.3.18|>=2.4,<2.4.8|>=2.5,<2.5.2|>=2.7,<2.7.51|>=2.8,<2.8.50|>=3,<3.4.26|>=4,<4.1.12|>=4.2,<4.2.7|>=5.3.14,<5.3.15|>=5.4.3,<5.4.4|>=6.0.3,<6.0.4",
                 "symfony/http-foundation": ">=2,<2.8.52|>=3,<3.4.35|>=4,<4.2.12|>=4.3,<4.3.8|>=4.4,<4.4.7|>=5,<5.0.7",
                 "symfony/http-kernel": ">=2,<4.4.50|>=5,<5.4.20|>=6,<6.0.20|>=6.1,<6.1.12|>=6.2,<6.2.6",
                 "symfony/intl": ">=2.7,<2.7.38|>=2.8,<2.8.31|>=3,<3.2.14|>=3.3,<3.3.13",
@@ -3138,7 +3138,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-05T22:04:04+00:00"
+            "time": "2024-03-12T12:05:26+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
