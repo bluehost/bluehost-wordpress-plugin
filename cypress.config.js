@@ -56,7 +56,8 @@ module.exports = defineConfig( {
 			// Exclude ecommerce tests for WordPress lower than 6.3 (6.2) or PHP lower than 7.4 (7.1, 7.2 and 7.3)
 			if ( semver.satisfies( config.env.wpSemverVersion, '<6.3.0' ) || semver.satisfies( config.env.phpSemverVersion, '<7.4.0' )) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
-					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Site-Capabilities/**'
+					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Site-Capabilities/**',
+					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/homePageWithWoo.cy.js'
 				] );
 			}
 
