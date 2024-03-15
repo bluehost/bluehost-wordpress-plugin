@@ -101,7 +101,7 @@ jobs:
       - name: Install WordPress
         run: npx wp-env start --debug
 
-      - name: Run Cypress Tests
+      - name: Run Cypress Cloud Tests
         if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || github.actor == 'dependabot[bot]' }}
         run: npm run test:e2e -- --browser chrome
 
