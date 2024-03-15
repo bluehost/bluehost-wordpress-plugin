@@ -1,8 +1,10 @@
+/* eslint-disable prettier/prettier */
 import { useState } from '@wordpress/element';
-import classNames from 'classnames';
 import { Alert, Container, Page } from '@newfold/ui-component-library';
-import ComingSoon from '../settings/comingSoon';
-import useContainerBlockIsTarget from 'App/util/hooks/useContainerBlockTarget';
+import SitePages from './sitePages';
+import BlogPosts from './blogPosts';
+import BookingAndAppointments from './bookingAndAppointments';
+import StorePages from './storePages';
 
 const PagesAndPosts = () => {
   const [comingSoon, setComingSoon] = useState(false);
@@ -36,17 +38,12 @@ const PagesAndPosts = () => {
           )}
         </Container.Header>
 
-        <Container.Block
-          separator={true}
-          id={'coming-soon-section'}
-          className={classNames(
-            'wppbh-app-settings-coming-soon',
-            useContainerBlockIsTarget('coming-soon-section') &&
-              'wppbh-animation-blink'
-          )}
-        >
-          <ComingSoon />
-        </Container.Block>
+        <div className="nfd-grid nfd-grid-cols-2 nfd-gap-0">
+          <SitePages />
+          <BlogPosts />
+          <BookingAndAppointments />
+          <StorePages />
+        </div>
       </Container>
     </Page>
   );
