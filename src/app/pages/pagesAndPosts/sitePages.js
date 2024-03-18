@@ -16,8 +16,10 @@ const SitePages = () => {
       <p>{__('Edit your homepage and other existing pages or add new pages to your site.', 'wp-plugin-bluehost')}</p>
     </Card.Content>
     <div className="nfd-flex nfd-justify-end nfd-gap-6 nfd-items-center">
-      <a href='/wp-admin/edit.php?post_type=page'>{__('view all', 'wp-plugin-bluehost')}</a>
-      <Button>{__('Add New', 'wp-plugin-bluehost')}</Button>
+      <a href='edit.php?post_type=page'>{__('view all', 'wp-plugin-bluehost')}</a>
+      <a href='post-new.php?post_type=page'>
+        <Button onClick>{__('Add New', 'wp-plugin-bluehost')}</Button>
+      </a>
     </div>
   </Card >;
 };

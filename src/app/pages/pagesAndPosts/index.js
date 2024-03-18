@@ -23,7 +23,7 @@ const PagesAndPosts = () => {
                 variant="warning"
                 className="nfd-text-sm nfd-bg-transparent nfd-p-0 "
               >
-                <span className="nfd-text-red-700">Your site is not live.</span>
+                <span className="nfd-text-red-700">{__('Your site is not live.', 'wp-plugin-bluehost')}</span>
               </Alert>
             )
           }

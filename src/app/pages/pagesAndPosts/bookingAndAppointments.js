@@ -16,10 +16,12 @@ const BookingAndAppointments = () => {
       <p>{__('Add your list of services, setup a booking calendar, and edit your bookings form.', 'wp-plugin-bluehost')}</p>
     </Card.Content>
     <div className="nfd-flex nfd-justify-end nfd-gap-6 nfd-items-center">
-      <a>{__('view all', 'wp-plugin-bluehost')}</a>
-      <Button>{__('Add New', 'wp-plugin-bluehost')}</Button>
+      <a href='edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1'>{__('view all', 'wp-plugin-bluehost')}</a>
+      <a href='edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1'>
+        <Button>{__('Add New', 'wp-plugin-bluehost')}</Button>
+      </a>
     </div>
-  </Card >;
+  </Card >;c
 };
 
 export default BookingAndAppointments;
