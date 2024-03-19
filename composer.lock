@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb35fe33de934ac147e55f77bcf0b985",
+    "content-hash": "a2467a156ef295a42efd7678235b79a4",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -157,7 +157,7 @@
             "version": "1.2.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/newfold-labs/container.git",
+                "url": "git@github.com:newfold-labs/container.git",
                 "reference": "19bb75bb4a64a282f7d142fff9f3418177022851"
             },
             "dist": {
@@ -185,9 +185,6 @@
                 }
             ],
             "description": "A lightweight, PHP 7.0+ compatible, PSR-11 dependency injection container.",
-            "support": {
-                "source": "https://github.com/newfold-labs/container/tree/1.2.2"
-            },
             "time": "2022-08-26T17:23:54+00:00"
         },
         {
@@ -403,16 +400,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.4.19",
+            "version": "2.4.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "f12eb13775497758dc7671ed57fb45a5f7c74c42"
+                "reference": "f1389abb1808dd00d9b50b8d41bbd7c253640e77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/f12eb13775497758dc7671ed57fb45a5f7c74c42",
-                "reference": "f12eb13775497758dc7671ed57fb45a5f7c74c42",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/f1389abb1808dd00d9b50b8d41bbd7c253640e77",
+                "reference": "f1389abb1808dd00d9b50b8d41bbd7c253640e77",
                 "shasum": ""
             },
             "require": {
@@ -453,23 +450,23 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.19",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.20",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-03-13T20:15:30+00:00"
+            "time": "2024-03-18T21:40:35+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
-            "version": "1.0.5",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-deactivation.git",
-                "reference": "6706a53af02c1fd2b9cbe2ae88d53f28eec6e80f"
+                "reference": "83447e20df29e774c74cf0e2a82735e1a0b544f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-deactivation/zipball/6706a53af02c1fd2b9cbe2ae88d53f28eec6e80f",
-                "reference": "6706a53af02c1fd2b9cbe2ae88d53f28eec6e80f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-deactivation/zipball/83447e20df29e774c74cf0e2a82735e1a0b544f6",
+                "reference": "83447e20df29e774c74cf0e2a82735e1a0b544f6",
                 "shasum": ""
             },
             "require": {
@@ -514,10 +511,10 @@
             ],
             "description": "A Module for handling WordPress brand plugins and modules deactivations",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-deactivation/tree/1.0.5",
+                "source": "https://github.com/newfold-labs/wp-module-deactivation/tree/1.1.0",
                 "issues": "https://github.com/newfold-labs/wp-module-deactivation/issues"
             },
-            "time": "2024-02-08T18:34:32+00:00"
+            "time": "2024-03-18T18:28:09+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
