@@ -49,30 +49,38 @@ msgstr ""
 msgid "A New WordPress Site"
 msgstr ""
 
-#: bootstrap.php:101
-msgid " %1$sHow to Build a Website: A Practical Guide to WordPress on Bluehost%2$s   %3$sHow to Migrate a Website to Bluehost?%4$s  %5$sWhy choose Bluehost for WordPress?%6$s"
+#: bootstrap.php:102
+msgid "How to Build a Website: A Practical Guide to WordPress on Bluehost"
+msgstr ""
+
+#: bootstrap.php:105
+msgid "How to Migrate a Website to Bluehost?"
+msgstr ""
+
+#: bootstrap.php:108
+msgid "Why choose Bluehost for your WordPress site?"
 msgstr ""
 
 #. translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag
-#: bootstrap.php:111
+#: bootstrap.php:112
 msgid "A %1$sBluehost%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBluehost%6$s."
 msgstr ""
 
 #. translators: %s: Blog name
-#: bootstrap.php:121
+#: bootstrap.php:122
 msgid "%s &mdash; Coming Soon"
 msgstr ""
 
-#: bootstrap.php:124
+#: bootstrap.php:125
 msgid "Coming Soon Active"
 msgstr ""
 
 #. translators: %1$s is replaced with the opening link tag to preview the page, and %2$s is replaced with the closing link tag, %3$s is the opening link tag, %4$s is the closing link tag.
-#: bootstrap.php:127
+#: bootstrap.php:128
 msgid "Your site is currently displaying a %1$scoming soon page%2$s. Once you are ready, %3$slaunch your site%4$s."
 msgstr ""
 
-#: bootstrap.php:128
+#: bootstrap.php:129
 msgid "Preview the coming soon landing page"
 msgstr ""
 
