@@ -94,7 +94,7 @@ export const routes = [
 			NewfoldRuntime.hasCapability( 'canAccessGlobalCTB' )
 				? {
 						name: '/store/sales_discounts',
-						title: __( 'Sales & Discounts', 'wp-plugin-bluehost' ),
+						title: __( 'Sales & Promotions', 'wp-plugin-bluehost' ),
 				  }
 				: null,
 			NewfoldRuntime.isWoo
