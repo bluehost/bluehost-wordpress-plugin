@@ -58,6 +58,7 @@
         "@wordpress/env": "^9.5.0",
         "@wordpress/eslint-plugin": "^17.10.0",
         "@wordpress/scripts": "^27.4.0",
+        "concurrently": "8.2.2",
         "cypress": "^13.7.0",
         "cypress-axe": "^1.5.0",
         "eslint-import-resolver-alias": "^1.1.2",
@@ -77,8 +78,11 @@
         "lint:css": "wp-scripts lint-style '**/*.css'",
         "lint:js": "wp-scripts lint-js ./src",
         "lint:js:fix": "wp-scripts lint-js ./src --fix",
+        "lint:php": "composer run lint",
+        "lint:php:fix": "composer run fix",
         "lint:pkg-json": "wp-scripts lint-pkg-json",
         "lint:yml": "yamllint --ignore=node_modules/** --ignore=vendor/** **/*.yml",
+        "lint": "concurrently \"npm:lint:*(!:fix)\"",
         "log:watch": "wp-env run wordpress 'tail -f /var/www/html/wp-content/debug.log'",
         "php-deps": "composer install --no-dev --optimize-autoloader",
         "postprepare": "npm run set-wp-version",
@@ -91,6 +95,7 @@
         "storybook:dev": "start-storybook -c ./storybook",
         "storybook:build": "build-storybook -c ./storybook -o ./.docs",
         "test:e2e": "npx cypress run",
-        "test:unit": "wp-scripts test-unit-js"
+        "test:unit": "wp-scripts test-unit-js",
+        "test": "concurrently \"npm:test:*\""
     }
 }

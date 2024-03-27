@@ -1,0 +1,78 @@
+<ruleset name="Bluehost-Plugin">
+	<!-- Usage instructions: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage -->
+	<!-- Annotated ruleset: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
+
+	<!-- - - - - - - - - - -->
+	<!-- Files to process  -->
+	<!-- - - - - - - - - - -->
+
+	<!-- What to scan: -->
+	<file>./bluehost-wordpress-plugin.php</file> <!-- Main plugin file.-->
+	<file>./inc</file> <!-- The rest of the plugin files. -->
+
+	<!-- What to ignore: -->
+	<exclude-pattern>./assets</exclude-pattern>
+	<exclude-pattern>./build</exclude-pattern>
+
+	<!-- - - - - - - - - - -->
+	<!-- Configuration     -->
+	<!-- - - - - - - - - - -->
+
+	<!-- Show progresss & use colors. -->
+	<arg value="sp"/>
+	<arg name="colors"/>
+
+	<!-- Enables parallel processing when available for faster results. -->
+	<arg name="parallel" value="8"/>
+
+	<!-- Strip the file paths down to the relevant bit and only apply to .php files. -->
+	<arg name="basepath" value="./"/>
+	<arg name="extensions" value="php"/>
+
+	<!-- Minimum versions required. -->
+	<config name="testVersion" value="7.0-"/>
+	<config name="minimum_supported_wp_version" value="5.0"/>
+
+	<!-- - - - - - - - - - -->
+	<!-- Rules             -->
+	<!-- - - - - - - - - - -->
+
+	<!-- No PHP syntax errors. -->
+	<rule ref="Generic.PHP.Syntax"/>
+
+	<!-- See https://github.com/newfold-labs/wp-php-standards for more info. -->
+	<rule ref="Newfold"/>
+
+	<!-- Disallow long array syntax. -->
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax" />
+
+	<!-- Namespacing required for classes. -->
+	<rule ref="PSR1.Classes.ClassDeclaration" />
+
+	<!-- WordPress Coding Standards that we don't want to enforce. -->
+	<rule ref="WordPress-Core">
+			<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
+			<exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid"/>
+			<exclude name="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase"/>
+			<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+			<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+	</rule>
+
+	<!-- Make sure our text is localized with the correct text domain. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="wp-plugin-bluehost" />
+		</properties>
+	</rule>
+
+	<!-- Commenting standards. -->
+	<rule ref="Generic.Commenting.Todo.CommentFound">
+		<message>Please review this TODO comment: %s</message>
+  	<severity>3</severity>
+ 	</rule>
+
+	<!-- Gotta end those inline comments with a period. -->
+	<rule ref="Squiz.Commenting.InlineComment.InvalidEndChar">
+		<type>warning</type>
+	</rule>
+</ruleset>
