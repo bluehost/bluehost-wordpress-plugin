@@ -7,4 +7,4 @@ use NewfoldLabs\WP\Module\Performance\CacheTypes\File;
 File::removeRules();
 
 // Purge the file-based cache
-( new CachePurgingService( array( new File() ) ) )->purgeAll();
+( new CachePurgingService( [ new File() ] ) )->purgeAll();

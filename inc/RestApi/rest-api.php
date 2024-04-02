@@ -12,10 +12,10 @@ namespace Bluehost;
  */
 function init_rest_api() {
 
-	$controllers = array(
+	$controllers = [
 		'Bluehost\\RestApi\\CachingController',
 		'Bluehost\\RestApi\\SettingsController',
-	);
+	];
 
 	foreach ( $controllers as $controller ) {
 		/**

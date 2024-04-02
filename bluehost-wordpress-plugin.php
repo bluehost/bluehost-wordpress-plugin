@@ -69,15 +69,15 @@ if ( 'plugins.php' === $pagenow ) {
 require_once BLUEHOST_PLUGIN_DIR . '/inc/plugin-nfd-compat-check.php';
 $nfd_plugins_check = new NFD_Plugin_Compat_Check( BLUEHOST_PLUGIN_FILE );
 // Defer to Incompatible plugin, self-deactivate
-$nfd_plugins_check->incompatible_plugins = array();
+$nfd_plugins_check->incompatible_plugins = [];
 // Deactivate legacy plugin
-$nfd_plugins_check->legacy_plugins = array(
+$nfd_plugins_check->legacy_plugins = [
 	'The MOJO Marketplace'     => 'mojo-marketplace-wp-plugin/mojo-marketplace.php',
 	'The MOJO Plugin'          => 'wp-plugin-mojo/wp-plugin-mojo.php',
 	'The HostGator Plugin'     => 'wp-plugin-hostgator/wp-plugin-hostgator.php',
 	'The Web.com Plugin'       => 'wp-plugin-web/wp-plugin-web.php',
 	'The Crazy Domains Plugin' => 'wp-plugin-web/wp-plugin-crazy-domains.php',
-);
+];
 // Check plugin requirements
 $pass_nfd_check = $nfd_plugins_check->check_plugin_requirements();
 

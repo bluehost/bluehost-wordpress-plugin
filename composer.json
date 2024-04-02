@@ -36,7 +36,7 @@
     }
   },
   "scripts": {
-    "fix:standards": [
+    "fix-standards": [
         "./vendor/bin/phpcbf --standard=./.phpcs.dist.xml .",
         "PHP_CS_FIXER_IGNORE_ENV=true ./vendor/bin/php-cs-fixer fix -v --diff"
     ],

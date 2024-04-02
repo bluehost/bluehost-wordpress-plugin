@@ -51,7 +51,7 @@ class NFD_Plugin_Compat_Check {
 	 *
 	 * @var array
 	 */
-	public $incompatible_plugins = array();
+	public $incompatible_plugins = [];
 
 	/**
 	 * Newfold legacy plugins
@@ -60,7 +60,7 @@ class NFD_Plugin_Compat_Check {
 	 *
 	 * @var array
 	 */
-	public $legacy_plugins = array();
+	public $legacy_plugins = [];
 
 	/**
 	 * Setup our class properties
@@ -72,7 +72,7 @@ class NFD_Plugin_Compat_Check {
 		// require_once ABSPATH . '/wp-includes/option.php';
 		$this->slug      = $this->get_plugin_slug( $file );
 		$this->name      = $this->get_plugin_name( $file );
-		$this->conflicts = get_option( 'nfd_plugins_compat_check_conflicts', array() );
+		$this->conflicts = get_option( 'nfd_plugins_compat_check_conflicts', [] );
 	}
 
 	/**
@@ -82,7 +82,7 @@ class NFD_Plugin_Compat_Check {
 	 * @return string
 	 */
 	public function get_plugin_name( $file ) {
-		$plugin = get_file_data( $file, array( 'name' => 'Plugin Name' ) );
+		$plugin = get_file_data( $file, [ 'name' => 'Plugin Name' ] );
 		return isset( $plugin['name'] ) ? $plugin['name'] : '';
 	}
 
@@ -114,7 +114,7 @@ class NFD_Plugin_Compat_Check {
 				// Suppress 'Plugin Activated' notice
 				unset( $_GET['activate'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$this->deactivate();
-				add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+				add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 
 				// Fail check, disable self
 				return false;
@@ -129,7 +129,7 @@ class NFD_Plugin_Compat_Check {
 				// Suppress 'Plugin Activated' notice
 				unset( $_GET['activate'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$this->deactivate();
-				add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+				add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 
 				// Pass check, but disable other plugin
 				return true;
@@ -139,7 +139,7 @@ class NFD_Plugin_Compat_Check {
 		// Pre-existing conflict found
 		// and the errors are loaded from option without displaying the notice yet
 		if ( $this->has_errors() ) {
-			add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+			add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 		}
 
 		// Pass check, enable self
@@ -163,11 +163,11 @@ class NFD_Plugin_Compat_Check {
 						$incompatible_name
 					)
 				);
-				$this->conflicts[] = array(
+				$this->conflicts[] = [
 					'slug'   => $this->slug,
 					'source' => $this->slug,
 					'error'  => $error,
-				);
+				];
 				update_option( 'nfd_plugins_compat_check_conflicts', $this->conflicts );
 			}
 		}
@@ -190,11 +190,11 @@ class NFD_Plugin_Compat_Check {
 						$this->name
 					)
 				);
-				$this->conflicts[] = array(
+				$this->conflicts[] = [
 					'slug'   => $legacy_file,
 					'source' => $this->slug,
 					'error'  => $error,
-				);
+				];
 				update_option( 'nfd_plugins_compat_check_conflicts', $this->conflicts );
 			}
 		}

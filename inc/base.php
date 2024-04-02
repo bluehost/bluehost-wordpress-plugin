@@ -54,14 +54,14 @@ function bluehost_setup() {
 	$install_date = get_option( 'mm_install_date' );
 	if ( empty( $install_date ) ) {
 		update_option( 'mm_install_date', date( 'M d, Y' ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
-		$event                            = array(
+		$event                            = [
 			't'    => 'event',
 			'ec'   => 'plugin_status',
 			'ea'   => 'installed',
 			'el'   => 'Install date: ' . get_option( 'mm_install_date', date( 'M d, Y' ) ),  // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 			'keep' => false,
-		);
-		$events                           = get_option( 'mm_cron', array() );
+		];
+		$events                           = get_option( 'mm_cron', [] );
 		$events['hourly'][ $event['ea'] ] = $event;
 		update_option( 'mm_cron', $events );
 	}

@@ -47,12 +47,12 @@ $bluehost_module_container->set(
 	$bluehost_module_container->service(
 		function () {
 			return new Plugin(
-				array(
+				[
 					'id'           => 'bluehost',
 					'file'         => BLUEHOST_PLUGIN_FILE,
 					'brand'        => get_option( 'mm_brand', 'bluehost' ),
 					'install_date' => get_option( 'bluehost_plugin_install_date' ),
-				)
+				]
 			);
 		}
 	)
@@ -65,13 +65,13 @@ add_action(
 		global $bluehost_module_container;
 
 		// Performance default settings
-		$cache_types = array( 'browser', 'skip404' );
+		$cache_types = [ 'browser', 'skip404' ];
 		// Marketplace default settings
 		$marketplace_brand = 'bluehost';
 
 		// Platform overrides
 		if ( 'atomic' === getContext( 'platform' ) ) {
-			$cache_types       = array();
+			$cache_types       = [];
 			$marketplace_brand = 'bluehost-cloud';
 		}
 
@@ -93,7 +93,7 @@ $hosting_link           = 'https://www.bluehost.com/hosting/shared';
 // Set coming soon values
 $bluehost_module_container->set(
 	'comingsoon',
-	array(
+	[
 		'admin_app_url'              => admin_url( 'admin.php?page=bluehost#/home' ),
 		'template_h1'                => __( 'Coming Soon!', 'wp-plugin-bluehost' ),
 		'template_h2'                => __( 'A New WordPress Site', 'wp-plugin-bluehost' ),
@@ -132,7 +132,7 @@ $bluehost_module_container->set(
 			'</a>'
 		),
 		'template_styles'            => esc_url( BLUEHOST_PLUGIN_URL . 'assets/styles/coming-soon.css' ),
-	)
+	]
 );
 
 setContainer( $bluehost_module_container );
@@ -141,26 +141,26 @@ setContainer( $bluehost_module_container );
 $updateurl     = 'https://hiive.cloud/workers/release-api/plugins/bluehost/bluehost-wordpress-plugin'; // Custom API GET endpoint
 $pluginUpdater = new PluginUpdater( BLUEHOST_PLUGIN_FILE, $updateurl );
 $pluginUpdater->setDataMap(
-	array(
+	[
 		'version'       => 'version.latest',
 		'download_link' => 'download',
 		'last_updated'  => 'updated',
 		'requires'      => 'requires.wp',
 		'requires_php'  => 'requires.php',
 		'tested'        => 'tested.wp',
-	)
+	]
 );
 $pluginUpdater->setDataOverrides(
-	array(
-		'banners' => array(
+	[
+		'banners' => [
 			'2x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-banner.svg',
 			'1x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-banner.svg',
-		),
-		'icons'   => array(
+		],
+		'icons'   => [
 			'2x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-icon.svg',
 			'1x' => 'https://cdn.hiive.space/marketplace/vendors-assets/bluehost-icon.svg',
-		),
-	)
+		],
+	]
 );
 
 // Handle any upgrade routines (only in the admin)

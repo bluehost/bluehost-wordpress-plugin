@@ -13,15 +13,15 @@ class YoastAI {
 	 * Initialize the Yoast AI class.
 	 */
 	public static function init() {
-		add_action( 'init', array( __CLASS__, 'on_yoast_plugin_activation' ) );
-		add_filter( 'http_request_args', array( __CLASS__, 'modify_http_request_args' ), 10, 2 );
+		add_action( 'init', [ __CLASS__, 'on_yoast_plugin_activation' ] );
+		add_filter( 'http_request_args', [ __CLASS__, 'modify_http_request_args' ], 10, 2 );
 	}
 
 	/**
 	 * Register Yoast plugin activation hook to enable the Yoast AI generator on new activations.
 	 */
 	public static function on_yoast_plugin_activation() {
-		register_activation_hook( 'wordpress-seo/wp-seo.php', array( __CLASS__, 'enable_on_new_activations' ) );
+		register_activation_hook( 'wordpress-seo/wp-seo.php', [ __CLASS__, 'enable_on_new_activations' ] );
 	}
 
 	/**

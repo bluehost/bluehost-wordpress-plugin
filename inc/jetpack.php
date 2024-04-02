@@ -31,10 +31,10 @@ add_filter( 'jetpack_get_default_modules', __NAMESPACE__ . '\\customize_jetpack_
  * @return array
  */
 function jetpack_unregister_blocks( $blocks ) {
-	$blocks_to_deregister = array(
+	$blocks_to_deregister = [
 		'mailchimp',
 		'revue',
-	);
+	];
 	foreach ( $blocks_to_deregister as $block_slug ) {
 		$found = array_search( $block_slug, $blocks, true );
 		if ( false !== $found ) {

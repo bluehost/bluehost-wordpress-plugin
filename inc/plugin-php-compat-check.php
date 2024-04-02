@@ -19,7 +19,7 @@ class Plugin_PHP_Compat_Check {
 	 *
 	 * @var array
 	 */
-	public $callbacks = array();
+	public $callbacks = [];
 
 	/**
 	 * Collection of errors
@@ -61,7 +61,7 @@ class Plugin_PHP_Compat_Check {
 	 *
 	 * @var array
 	 */
-	public $req_php_extensions = array();
+	public $req_php_extensions = [];
 
 	/**
 	 * Setup our class properties
@@ -80,7 +80,7 @@ class Plugin_PHP_Compat_Check {
 	 * @return string
 	 */
 	public function get_plugin_name() {
-		$plugin = get_file_data( $this->file, array( 'name' => 'Plugin Name' ) );
+		$plugin = get_file_data( $this->file, [ 'name' => 'Plugin Name' ] );
 
 		return isset( $plugin['name'] ) ? $plugin['name'] : '';
 	}
@@ -102,7 +102,7 @@ class Plugin_PHP_Compat_Check {
 		if ( ! empty( $this->callbacks ) ) {
 			foreach ( $this->callbacks as $callback ) {
 				if ( is_callable( $callback ) ) {
-					call_user_func_array( $callback, array( $this ) );
+					call_user_func_array( $callback, [ $this ] );
 				}
 			}
 		}
@@ -110,7 +110,7 @@ class Plugin_PHP_Compat_Check {
 			// Suppress 'Plugin Activated' notice
 			unset( $_GET['activate'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$this->deactivate();
-			add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+			add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 		}
 	}
 
