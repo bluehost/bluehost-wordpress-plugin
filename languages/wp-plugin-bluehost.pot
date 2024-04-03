@@ -2,7 +2,7 @@
 # This file is distributed under the GPL 2.0 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: The Bluehost Plugin 3.8.0\n"
+"Project-Id-Version: The Bluehost Plugin 3.9.2\n"
 "Report-Msgid-Bugs-To: https://github.com/bluehost/bluehost-wordpress-plugin/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,426 +11,354 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2023-03-08T20:13:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: wp-plugin-bluehost\n"
 
 #. Plugin Name of the plugin
+#: bluehost-wordpress-plugin.php
 msgid "The Bluehost Plugin"
 msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
+#: bluehost-wordpress-plugin.php
 msgid "https://bluehost.com"
 msgstr ""
 
 #. Description of the plugin
+#: bluehost-wordpress-plugin.php
 msgid "WordPress plugin that integrates a WordPress site with the Bluehost control panel, including performance, security, and update features."
 msgstr ""
 
 #. Author of the plugin
-#: bluehost-wordpress-plugin/inc/Admin.php:84
-#: bluehost-wordpress-plugin/inc/Admin.php:85
-#: inc/Admin.php:84
-#: inc/Admin.php:85
+#: bluehost-wordpress-plugin.php
+#: inc/Admin.php:131
+#: inc/Admin.php:132
 msgid "Bluehost"
 msgstr ""
 
-#: bluehost-wordpress-plugin/bootstrap.php:21
-#: bootstrap.php:21
+#: bootstrap.php:24
 msgid "Please install the Bluehost Plugin dependencies."
 msgstr ""
 
-#: bluehost-wordpress-plugin/bootstrap.php:67
-#: bootstrap.php:67
+#: bootstrap.php:98
 msgid "Coming Soon!"
 msgstr ""
 
-#: bluehost-wordpress-plugin/bootstrap.php:68
-#: bootstrap.php:68
+#: bootstrap.php:99
 msgid "A New WordPress Site"
 msgstr ""
 
+#: bootstrap.php:102
+msgid "How to Build a Website: A Practical Guide to WordPress on Bluehost"
+msgstr ""
+
+#: bootstrap.php:105
+msgid "How to Migrate a Website to Bluehost?"
+msgstr ""
+
+#: bootstrap.php:108
+msgid "Why choose Bluehost for your WordPress site?"
+msgstr ""
+
 #. translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag
-#: bluehost-wordpress-plugin/bootstrap.php:71
-#: bootstrap.php:71
+#: bootstrap.php:112
 msgid "A %1$sBluehost%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBluehost%6$s."
 msgstr ""
 
 #. translators: %s: Blog name
-#: bluehost-wordpress-plugin/bootstrap.php:81
-#: bootstrap.php:81
+#: bootstrap.php:122
 msgid "%s &mdash; Coming Soon"
 msgstr ""
 
-#: bluehost-wordpress-plugin/bootstrap.php:84
-#: bootstrap.php:84
+#: bootstrap.php:125
 msgid "Coming Soon Active"
 msgstr ""
 
 #. translators: %1$s is replaced with the opening link tag to preview the page, and %2$s is replaced with the closing link tag, %3$s is the opening link tag, %4$s is the closing link tag.
-#: bluehost-wordpress-plugin/bootstrap.php:87
-#: bootstrap.php:87
+#: bootstrap.php:128
 msgid "Your site is currently displaying a %1$scoming soon page%2$s. Once you are ready, %3$slaunch your site%4$s."
 msgstr ""
 
-#: bluehost-wordpress-plugin/bootstrap.php:88
-#: bootstrap.php:88
+#: bootstrap.php:129
 msgid "Preview the coming soon landing page"
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/Admin.php:53
-#: bluehost-wordpress-plugin/inc/Admin.php:225
-#: inc/Admin.php:53
-#: inc/Admin.php:225
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: inc/Admin.php:67
+#: inc/Admin.php:274
+#: build/3.9.2/index.js:1
 msgid "Home"
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/Admin.php:54
-#: inc/Admin.php:54
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: inc/Admin.php:70
+#: build/3.9.2/index.js:1
 msgid "Store"
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/Admin.php:55
-#: inc/Admin.php:55
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: inc/Admin.php:73
+#: build/3.9.2/index.js:1
 msgid "Marketplace"
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/Admin.php:56
-#: inc/Admin.php:56
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: inc/Admin.php:76
+#: build/3.9.2/index.js:1
 msgid "Performance"
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/Admin.php:57
-#: bluehost-wordpress-plugin/inc/Admin.php:226
-#: inc/Admin.php:57
-#: inc/Admin.php:226
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: inc/Admin.php:79
+#: inc/Admin.php:275
+#: build/3.9.2/index.js:1
 msgid "Settings"
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/Admin.php:58
-#: inc/Admin.php:58
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: inc/Admin.php:82
+#: build/3.9.2/index.js:1
 msgid "Staging"
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/Admin.php:59
-#: inc/Admin.php:59
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: inc/Admin.php:85
+#: build/3.9.2/index.js:1
 msgid "Help"
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/Admin.php:127
-#: inc/Admin.php:127
+#: inc/Admin.php:174
 msgid "Please update to a newer WordPress version."
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/Admin.php:128
-#: inc/Admin.php:128
+#: inc/Admin.php:175
 msgid "There are new WordPress components which this plugin requires in order to render the interface."
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/Admin.php:129
-#: inc/Admin.php:129
+#: inc/Admin.php:176
 msgid "Please update now"
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/Admin.php:240
-#: inc/Admin.php:240
+#: inc/Admin.php:289
 msgid "Thank you for creating with <a href=\"https://wordpress.org/\">WordPress</a> and <a href=\"https://bluehost.com/about\">Bluehost</a>."
 msgstr ""
 
 #. translators: 1: plugin name 2: incompatible plugin name
-#: bluehost-wordpress-plugin/inc/plugin-nfd-compat-check.php:161
 #: inc/plugin-nfd-compat-check.php:161
 msgid "\"%1$s\" has self-deactivated. It is incompatible with \"%2$s\"."
 msgstr ""
 
 #. translators: 1: legacy plugin name 2: plugin name
-#: bluehost-wordpress-plugin/inc/plugin-nfd-compat-check.php:188
 #: inc/plugin-nfd-compat-check.php:188
 msgid "\"%1$s\" has been deactivated. It is incompatible with \"%2$s\"."
 msgstr ""
 
 #. translators: 1: plugin name 2: minimum required PHP version, current PHP version
-#: bluehost-wordpress-plugin/inc/plugin-php-compat-check.php:123
 #: inc/plugin-php-compat-check.php:123
 msgid "%1$s requires PHP version %2$s or later. You are currently running version %3$s."
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/plugin-php-compat-check.php:124
 #: inc/plugin-php-compat-check.php:124
 msgid " Please contact your web host about upgrading PHP."
 msgstr ""
 
 #. translators: 1: plugin name 2: required PHP extension
-#: bluehost-wordpress-plugin/inc/plugin-php-compat-check.php:139
 #: inc/plugin-php-compat-check.php:139
 msgid "%1$s requires the %2$s PHP extension."
 msgstr ""
 
 #. translators: 1: plugin name 2: minimum required WordPress version 3: current WordPress version
-#: bluehost-wordpress-plugin/inc/plugin-php-compat-check.php:155
 #: inc/plugin-php-compat-check.php:155
 msgid "%1$s requires WordPress version %2$s or later. You are currently running version %3$s."
 msgstr ""
 
 #. translators: plugin name
-#: bluehost-wordpress-plugin/inc/plugin-php-compat-check.php:193
 #: inc/plugin-php-compat-check.php:193
 msgid "The \"%s\" plugin has been deactivated."
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/RestApi/CachingController.php:65
-#: bluehost-wordpress-plugin/inc/RestApi/SettingsController.php:202
-#: inc/RestApi/CachingController.php:65
-#: inc/RestApi/SettingsController.php:202
+#: inc/RestApi/CachingController.php:63
+#: inc/RestApi/SettingsController.php:205
 msgid "Sorry, you are not allowed to access this endpoint."
 msgstr ""
 
 #. translators: %s Settings > General page URL.
-#: bluehost-wordpress-plugin/inc/updates.php:115
-#: bluehost-wordpress-plugin/inc/updates.php:143
-#: bluehost-wordpress-plugin/inc/updates.php:170
 #: inc/updates.php:115
 #: inc/updates.php:143
 #: inc/updates.php:170
 msgid "Auto-updates enabled on the <a href=\"%s\">Bluehost > Settings</a> page."
 msgstr ""
 
-#: bluehost-wordpress-plugin/inc/updates.php:166
 #: inc/updates.php:166
 msgid "Auto-updates enabled"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Bluehost WordPress Plugin"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Oh No, An Error!"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "You found an error, please refresh the page and try again!"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "If the error persists, please contact support."
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid " Error code: "
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
+msgid "Bluehost Account"
+msgstr ""
+
+#: build/3.9.2/index.js:1
 msgid "There's nothing here!"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Products & Services"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
-msgid "Sales & Discounts"
+#: build/3.9.2/index.js:1
+msgid "Sales & Promotions"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Payments"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Store Details"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Phone"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Call Us"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Chat"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Chat with one of our friendly Customer Care Specialists, as we are waiting to help. Open 24 hours - 7 days."
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Live Chat"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Tweet"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Find our team at @bluehost for updates on our products and support from our team."
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Tweet Us"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "YouTube"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Find tutorials, answers, interviews and guides on our YouTube channel."
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Watch Now"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Knowledge Base"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Articles, guides, how-tos, instructions, and answers to our client's most frequently asked questions."
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Visit Knowledge Base"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Resources"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Boost your online knowledge and get ahead of the competition."
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Explore Resources"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Events and Webinars"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Team Bluehost organizes multiple webinars and events throughout the year. We are also sponsors and speak at most WordCamps across the world. Join us at our next event!"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "More Info"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Bluehost Website"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Not finding what you need? Visit our website for more information about our products and services."
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Go to Bluehost"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-msgid "Manage All Updates"
+#: build/3.9.2/index.js:1
+msgid "Automatically keep all up to date"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "WordPress Core"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Plugins"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Themes"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Automatic Updates"
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Keeping automatic updates on ensures timely security fixes and the latest features."
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid "Oops! Something went wrong. Please try again."
 msgstr ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid " day."
 msgid_plural " days."
 msgstr[0] ""
 msgstr[1] ""
 
-#: bluehost-wordpress-plugin/build/3.6.0/index.js:1
-#: build/3.8.0/index.js:1
+#: build/3.9.2/index.js:1
 msgid " comment at a time."
 msgid_plural " comments at a time."
 msgstr[0] ""
 msgstr[1] ""
-
-#: build/3.8.0/index.js:1
-msgid "Bluehost Account"
-msgstr ""
-
-#: build/3.8.0/index.js:1
-msgid "Automatically keep all up to date"
-msgstr ""

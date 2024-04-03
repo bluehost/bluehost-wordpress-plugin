@@ -96,17 +96,17 @@ export const routes = [
         title: __('Products & Services', 'wp-plugin-bluehost'),
       },
       NewfoldRuntime.hasCapability('hasYithExtended') ||
-      NewfoldRuntime.hasCapability('canAccessGlobalCTB')
+        NewfoldRuntime.hasCapability('canAccessGlobalCTB')
         ? {
-            name: '/store/sales_discounts',
-            title: __('Sales & Discounts', 'wp-plugin-bluehost'),
-          }
+          name: '/store/sales_discounts',
+          title: __('Sales & Promotions', 'wp-plugin-bluehost'),
+        }
         : null,
       NewfoldRuntime.isWoo
         ? {
-            name: '/store/payments',
-            title: __('Payments', 'wp-plugin-bluehost'),
-          }
+          name: '/store/payments',
+          title: __('Payments', 'wp-plugin-bluehost'),
+        }
         : null,
       {
         name: '/store/details',

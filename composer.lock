@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0d2d2a7279c16a4ae35895921686a95",
+    "content-hash": "8ab8a60787a939fe45d343bc858c2ea1",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -189,6 +189,64 @@
                 "source": "https://github.com/newfold-labs/container/tree/1.2.2"
             },
             "time": "2022-08-26T17:23:54+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-activation",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-activation.git",
+                "reference": "e84749f2299f876bf6cd03f37eb9bf8103a731f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-activation/zipball/e84749f2299f876bf6cd03f37eb9bf8103a731f7",
+                "reference": "e84749f2299f876bf6cd03f37eb9bf8103a731f7",
+                "shasum": ""
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Activation\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "scripts": {
+                "fix": [
+                    "vendor/bin/phpcbf --standard=phpcs.xml ."
+                ],
+                "lint": [
+                    "vendor/bin/phpcs --standard=phpcs.xml -s ."
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                },
+                {
+                    "name": "Evan Mullins",
+                    "email": "evanrm@gmail.com"
+                },
+                {
+                    "name": "Al Ani",
+                    "email": "hey@alani.dev"
+                }
+            ],
+            "description": "A Module for handling WordPress brand plugins activations",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-activation/tree/1.0.1",
+                "issues": "https://github.com/newfold-labs/wp-module-activation/issues"
+            },
+            "time": "2024-03-15T16:42:51+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ai",
