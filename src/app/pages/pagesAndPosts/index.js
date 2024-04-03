@@ -41,7 +41,7 @@ const PagesAndPosts = () => {
         <div className="nfd-grid nfd-grid-cols-2 nfd-gap-0">
           <SitePages />
           <BlogPosts />
-          <BookingAndAppointments />
+          {window.NewfoldRuntime.isYithBookingActive && <BookingAndAppointments />}
           <StorePages />
         </div>
       </Container>

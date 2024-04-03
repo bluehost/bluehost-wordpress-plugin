@@ -16,8 +16,10 @@ const StorePages = () => {
       <p>{__('Edit your store "Thank you", shopping cart, product details, and product category pages.', 'wp-plugin-bluehost')}</p>
     </Card.Content>
     <div className="nfd-flex nfd-justify-end nfd-gap-6 nfd-items-center">
-      <a>{__('view all', 'wp-plugin-bluehost')}</a>
-      <Button>{__('Add New', 'wp-plugin-bluehost')}</Button>
+      <a href='edit.php?post_type=product'>{__('view all', 'wp-plugin-bluehost')}</a>
+      <a href='post-new.php?post_type=product'>
+        <Button>{__('Add New', 'wp-plugin-bluehost')}</Button>
+      </a>
     </div>
   </Card >;
 };
