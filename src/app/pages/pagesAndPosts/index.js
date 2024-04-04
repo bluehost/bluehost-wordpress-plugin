@@ -4,7 +4,7 @@ import { Alert, Container, Page } from '@newfold/ui-component-library';
 import SitePages from './sitePages';
 import BlogPosts from './blogPosts';
 import BookingAndAppointments from './bookingAndAppointments';
-import StorePages from './storePages';
+import StorePages from './ProductsPages';
 
 const PagesAndPosts = () => {
   const [comingSoon, setComingSoon] = useState(false);
