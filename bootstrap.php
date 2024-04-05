@@ -97,15 +97,16 @@ $bluehost_module_container->set(
 		'admin_app_url'              => admin_url( 'admin.php?page=bluehost#/home' ),
 		'template_h1'                => __( 'Coming Soon!', 'wp-plugin-bluehost' ),
 		'template_h2'                => __( 'A New WordPress Site', 'wp-plugin-bluehost' ),
-		'template_coming_soon_links' => sprintf(
-			esc_html__( ' %1$sHow to Build a Website: A Practical Guide to WordPress on Bluehost%2$s   %3$sHow to Migrate a Website to Bluehost?%4$s  %5$sWhy choose Bluehost for WordPress?%6$s', 'wp-plugin-bluehost' ) . '&nbsp;',
-			'<a href="' . esc_url( $website_guide_link ) . '" target="_blank" rel="noopener noreferrer nofollow">',
-			'</a><span class="dashicons dashicons-wordpress"></span><br/>',
-			'<a href="' . esc_url( $migrate_link ) . '" target="_blank" rel="noopener noreferrer nofollow">',
+		'template_coming_soon_links' =>
+			'<a href="' . esc_url( $website_guide_link ) . '" target="_blank" rel="noopener noreferrer nofollow">' .
+			__( 'How to Build a Website: A Practical Guide to WordPress on Bluehost', 'wp-plugin-bluehost' ) .
+			'</a><br/>' .
+			'<a href="' . esc_url( $migrate_link ) . '" target="_blank" rel="noopener noreferrer nofollow">' .
+			__( 'How to Migrate a Website to Bluehost?', 'wp-plugin-bluehost' ) .
+			'</a><br/>' .
+			'<a href="' . esc_url( $hosting_link ) . '" target="_blank" rel="noopener noreferrer nofollow">' .
+			__( 'Why choose Bluehost for your WordPress site?', 'wp-plugin-bluehost' ) .
 			'</a><br/>',
-			'<a href="' . esc_url( $hosting_link ) . '" target="_blank" rel="noopener noreferrer nofollow">',
-			'</a><br/> '
-		),
 		'template_footer_t'          => sprintf(
 			/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag */
 			esc_html__( 'A %1$sBluehost%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBluehost%6$s.', 'wp-plugin-bluehost' ) . '&nbsp;',
