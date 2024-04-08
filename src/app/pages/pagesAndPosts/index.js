@@ -31,9 +31,7 @@ const PagesAndPosts = () => {
         >
           {comingSoon && (
             <p>
-              Visitors to your site will see your "Coming Soon" page and not
-              your actual site. Visit "<a href="#/settings">Settings</a>" to set
-              your site live.
+              {__('Visitors to your site will see your "Coming Soon" page and not your actual site. Visit', 'wp-plugin-bluehost')} <a href="#/settings">{__('"Settings"','wp-plugin-bluehost')}</a> {__('to set your site live.','wp-plugin-bluehost')}
             </p>
           )}
         </Container.Header>
