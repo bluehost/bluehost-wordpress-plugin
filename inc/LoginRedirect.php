@@ -3,7 +3,7 @@
 namespace Bluehost;
 
 /**
- * Class LoginRedirect
+ * Class LoginRedirect.
  *
  * @package Bluehost
  */

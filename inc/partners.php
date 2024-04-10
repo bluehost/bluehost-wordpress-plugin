@@ -34,12 +34,10 @@ function aioseo_upgrade_affiliate_link( $url ) {
 add_filter( 'aioseo_upgrade_link', __NAMESPACE__ . '\\aioseo_upgrade_affiliate_link' );
 
 /**
- * Enable Sharing with WooCommerce
+ * Enable Sharing with WooCommerce.
  *
- * @param string  $plugin the plugin
- * @param boolean $network_activation flag is network activated
- *
- * @return void
+ * @param string $plugin             the plugin
+ * @param bool   $network_activation flag is network activated
  */
 function plugin_activated( $plugin, $network_activation ) {
 	switch ( $plugin ) {

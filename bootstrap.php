@@ -1,20 +1,20 @@
 <?php
 /**
- * Plugin bootstrap file
+ * Plugin bootstrap file.
  *
  * @package WPPluginBluehost
  */
 
 namespace Bluehost;
 
-use WP_Forge\WPUpdateHandler\PluginUpdater;
-use WP_Forge\UpgradeHandler\UpgradeHandler;
+use NewfoldLabs\WP\Context\Context;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
-use NewfoldLabs\WP\Context\Context;
-use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
-use function NewfoldLabs\WP\Context\setContext;
+use WP_Forge\UpgradeHandler\UpgradeHandler;
+use WP_Forge\WPUpdateHandler\PluginUpdater;
 use function NewfoldLabs\WP\Context\getContext;
+use function NewfoldLabs\WP\Context\setContext;
+use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 
 // Composer autoloader
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -84,8 +84,8 @@ add_action(
 );
 
 // Properly get branding links depending on market
-$wordpress_hosting_page = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://www.bluehost.in?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin' : 'https://bluehost.com?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin';
-$my_panel               = ( get_option( 'mm_brand' ) === 'Bluehost_India' ) ? 'https://my.bluehost.in/web-hosting/cplogin' : 'https://my.bluehost.com/web-hosting/cplogin';
+$wordpress_hosting_page = ( 'Bluehost_India' === get_option( 'mm_brand' ) ) ? 'https://www.bluehost.in?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin' : 'https://bluehost.com?utm_source=coming-soon-template&amp;utm_medium=bluehost_plugin';
+$my_panel               = ( 'Bluehost_India' === get_option( 'mm_brand' ) ) ? 'https://my.bluehost.in/web-hosting/cplogin' : 'https://my.bluehost.com/web-hosting/cplogin';
 $website_guide_link     = 'https://www.bluehost.com/blog/how-to-create-a-website-guide/';
 $migrate_link           = 'https://www.bluehost.com/blog/how-to-migrate-a-wordpress-website-to-a-new-server/';
 $hosting_link           = 'https://www.bluehost.com/hosting/shared';
@@ -97,16 +97,16 @@ $bluehost_module_container->set(
 		'admin_app_url'              => admin_url( 'admin.php?page=bluehost#/home' ),
 		'template_h1'                => __( 'Coming Soon!', 'wp-plugin-bluehost' ),
 		'template_h2'                => __( 'A New WordPress Site', 'wp-plugin-bluehost' ),
-		'template_coming_soon_links' =>
-			'<a href="' . esc_url( $website_guide_link ) . '" target="_blank" rel="noopener noreferrer nofollow">' .
-			__( 'How to Build a Website: A Practical Guide to WordPress on Bluehost', 'wp-plugin-bluehost' ) .
-			'</a><br/>' .
-			'<a href="' . esc_url( $migrate_link ) . '" target="_blank" rel="noopener noreferrer nofollow">' .
-			__( 'How to Migrate a Website to Bluehost?', 'wp-plugin-bluehost' ) .
-			'</a><br/>' .
-			'<a href="' . esc_url( $hosting_link ) . '" target="_blank" rel="noopener noreferrer nofollow">' .
-			__( 'Why choose Bluehost for your WordPress site?', 'wp-plugin-bluehost' ) .
-			'</a><br/>',
+		'template_coming_soon_links'
+			=> '<a href="' . esc_url( $website_guide_link ) . '" target="_blank" rel="noopener noreferrer nofollow">'
+			. __( 'How to Build a Website: A Practical Guide to WordPress on Bluehost', 'wp-plugin-bluehost' )
+			. '</a><br/>'
+			. '<a href="' . esc_url( $migrate_link ) . '" target="_blank" rel="noopener noreferrer nofollow">'
+			. __( 'How to Migrate a Website to Bluehost?', 'wp-plugin-bluehost' )
+			. '</a><br/>'
+			. '<a href="' . esc_url( $hosting_link ) . '" target="_blank" rel="noopener noreferrer nofollow">'
+			. __( 'Why choose Bluehost for your WordPress site?', 'wp-plugin-bluehost' )
+			. '</a><br/>',
 		'template_footer_t'          => sprintf(
 			/* translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag */
 			esc_html__( 'A %1$sBluehost%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBluehost%6$s.', 'wp-plugin-bluehost' ) . '&nbsp;',

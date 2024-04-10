@@ -3,7 +3,7 @@
 namespace Bluehost;
 
 /**
- * Class YoastAI
+ * Class YoastAI.
  *
  * @package Bluehost
  */
@@ -25,7 +25,7 @@ class YoastAI {
 	}
 
 	/**
-	 * Filter Yoast SEO default settings to enable AI on new installations/activations
+	 * Filter Yoast SEO default settings to enable AI on new installations/activations.
 	 */
 	public static function enable_on_new_activations() {
 		add_filter(
@@ -44,7 +44,7 @@ class YoastAI {
 	 * Add a custom header to outbound Yoast AI requests for Bluehost customers.
 	 *
 	 * @param Array  $parsed_args - The args
-	 * @param String $url - The URL
+	 * @param String $url         - The URL
 	 */
 	public static function modify_http_request_args( $parsed_args, $url ) {
 		$parsed_url = wp_parse_url( $url );

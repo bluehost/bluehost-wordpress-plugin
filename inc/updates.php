@@ -196,7 +196,6 @@ function sync_plugin_major_auto_core_update_option( $old_value, $value ) {
 
 add_action( 'update_option_auto_update_core_major', __NAMESPACE__ . '\\sync_plugin_major_auto_core_update_option', 10, 2 );
 
-
 /**
  * Ensures all installed plugins are set to auto-update.
  *
@@ -304,10 +303,10 @@ add_action( 'delete_site_transient_update_themes', __NAMESPACE__ . '\\delete_sit
 /**
  * Updates the WordPress Core options for plugin and theme auto-updates when one is updated.
  *
- * @param WP_Upgrader $upgrader WP_Upgrader instance. In other contexts, $this, might be a
- *                              Theme_Upgrader, Plugin_Upgrader, Core_Upgrade, or Language_Pack_Upgrader instance.
+ * @param WP_Upgrader $upgrader   WP_Upgrader instance. In other contexts, $this, might be a
+ *                                Theme_Upgrader, Plugin_Upgrader, Core_Upgrade, or Language_Pack_Upgrader instance.
  * @param array       $hook_extra {
- *     Array of bulk item update data.
+ *                                Array of bulk item update data.
  *
  *     @type string $action       Type of action. Default 'update'.
  *     @type string $type         Type of update process. Accepts 'plugin', 'theme', 'translation', or 'core'.

@@ -5,7 +5,7 @@ namespace Bluehost\RestApi;
 use function NewfoldLabs\WP\ModuleLoader\container;
 
 /**
- * Class CachingController
+ * Class CachingController.
  */
 class CachingController extends \WP_REST_Controller {
 
@@ -25,7 +25,7 @@ class CachingController extends \WP_REST_Controller {
 	}
 
 	/**
-	 * Registers the settings route
+	 * Registers the settings route.
 	 */
 	public function register_routes() {
 
@@ -41,7 +41,7 @@ class CachingController extends \WP_REST_Controller {
 	}
 
 	/**
-	 * Clears the entire cache
+	 * Clears the entire cache.
 	 */
 	public function purge_all() {
 

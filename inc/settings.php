@@ -1,7 +1,7 @@
 <?php
 /**
  * Functionality related to Settings
- * see RestApi/SettingsController.php for implementation
+ * see RestApi/SettingsController.php for implementation.
  *
  * @package WPPluginBluehost
  */
@@ -9,10 +9,11 @@
 namespace Bluehost;
 
 /**
- * Filter wp revisions according to plugin setting
+ * Filter wp revisions according to plugin setting.
  *
- * @param int            $num Number of posts to retain (unused).
+ * @param int            $num  Number of posts to retain (unused).
  * @param WP_Post|object $post Post object (unused).
+ *
  * @return int
  */
 function nfd_settings_revisions( $num, $post ) {
