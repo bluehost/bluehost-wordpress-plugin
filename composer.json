@@ -63,7 +63,7 @@
     "roave/security-advisories": "dev-latest",
     "newfold-labs/wp-php-standards": "^1.2",
     "wp-cli/i18n-command": "^2.5.0",
-    "wp-phpunit/wp-phpunit": "^6.4.2"
+    "wp-phpunit/wp-phpunit": "^6.5.2"
   },
   "require": {
     "newfold-labs/wp-module-activation": "^1.0.1",
