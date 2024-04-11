@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db91ae62cc37d21c85c9c2534702f62e",
+    "content-hash": "6db319f4bad4b842a79102e011a12a3a",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1051,16 +1051,16 @@
         },
         {
             "name": "newfold-labs/wp-module-patterns",
-            "version": "0.1.15",
+            "version": "0.1.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-patterns.git",
-                "reference": "4d82192a614f21b5e083fcd2c7893677dd974f9c"
+                "reference": "92fde7daaf5d86a2567b22c9d31db4060b346933"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/4d82192a614f21b5e083fcd2c7893677dd974f9c",
-                "reference": "4d82192a614f21b5e083fcd2c7893677dd974f9c",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/92fde7daaf5d86a2567b22c9d31db4060b346933",
+                "reference": "92fde7daaf5d86a2567b22c9d31db4060b346933",
                 "shasum": ""
             },
             "require-dev": {
@@ -1094,10 +1094,10 @@
             ],
             "description": "WordPress Cloud Patterns",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/0.1.15",
+                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/0.1.17",
                 "issues": "https://github.com/newfold-labs/wp-module-patterns/issues"
             },
-            "time": "2024-03-15T15:00:55+00:00"
+            "time": "2024-04-10T19:48:10+00:00"
         },
         {
             "name": "newfold-labs/wp-module-performance",
