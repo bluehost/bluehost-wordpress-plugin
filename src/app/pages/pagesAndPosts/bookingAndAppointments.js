@@ -3,9 +3,9 @@ import { Button, Card, Title } from '@newfold/ui-component-library';
 const BookingAndAppointments = () => {
 	return (
 		<Card
+			className="hover:nfd-bg-[#F2F9FE]"
 			style={ {
 				borderRadius: 0,
-				borderTop: 0,
 			} }
 		>
 			<Card.Content>

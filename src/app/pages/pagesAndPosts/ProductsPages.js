@@ -3,9 +3,9 @@ import { Button, Card, Title } from '@newfold/ui-component-library';
 const ProductsPages = () => {
 	return (
 		<Card
+			className="hover:nfd-bg-[#FEFCEA]"
 			style={ {
 				borderRadius: 0,
-				borderTop: 0,
 			} }
 		>
 			<Card.Content>
