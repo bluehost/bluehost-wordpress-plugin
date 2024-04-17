@@ -3,7 +3,7 @@ import { Button, Card, Title } from '@newfold/ui-component-library';
 const BookingAndAppointments = () => {
 	return (
 		<Card
-			className="hover:nfd-bg-[#F2F9FE]"
+			className="hover:nfd-bg-[#F2F9FE] wppbh-app-bookings"
 			style={ {
 				borderRadius: 0,
 			} }

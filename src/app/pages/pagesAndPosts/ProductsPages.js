@@ -3,7 +3,7 @@ import { Button, Card, Title } from '@newfold/ui-component-library';
 const ProductsPages = () => {
 	return (
 		<Card
-			className="hover:nfd-bg-[#FEFCEA]"
+			className="hover:nfd-bg-[#FEFCEA] wppbh-app-products"
 			style={ {
 				borderRadius: 0,
 			} }
