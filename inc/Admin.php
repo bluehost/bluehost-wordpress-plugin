@@ -66,6 +66,9 @@ final class Admin {
 		$home        = array(
 			'bluehost#/home' => __( 'Home', 'wp-plugin-bluehost' ),
 		);
+		$pagesAndPosts        = array(
+			'bluehost#/pages&posts' => __( 'Pages & Posts', 'wp-plugin-bluehost' ),
+		);
 		$store       = array(
 			'bluehost#/store' => __( 'Store', 'wp-plugin-bluehost' ),
 		);
@@ -89,6 +92,7 @@ final class Admin {
 		if ( 'atomic' === getContext( 'platform' ) ) {
 			return array_merge(
 				$home,
+				$pagesAndPosts,
 				$store,
 				$marketplace,
 				$settings,
@@ -98,6 +102,7 @@ final class Admin {
 
 		return array_merge(
 			$home,
+			$pagesAndPosts,
 			$store,
 			$marketplace,
 			$performance,

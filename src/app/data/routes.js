@@ -5,6 +5,7 @@ import {
 	BoltIcon,
 	AdjustmentsHorizontalIcon,
 	BuildingStorefrontIcon,
+	DocumentDuplicateIcon,
 } from '@heroicons/react/24/outline';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import { Route, Routes } from 'react-router-dom';
@@ -18,6 +19,7 @@ import Staging from '../pages/staging';
 import Help from '../pages/help';
 import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
 import { ReactComponent as HelpIcon } from '../components/icons/HelpIcon.svg';
+import PagesAndPosts from '../pages/pagesAndPosts';
 
 const addPartialMatch = ( prefix, path ) =>
 	prefix === path ? `${ prefix }/*` : path;
@@ -64,6 +66,7 @@ export const AppRoutes = () => {
 
 const topRoutePaths = [
 	'/home',
+	'/pages&posts',
 	'/store',
 	'/marketplace',
 	'/performance',
@@ -78,6 +81,13 @@ export const routes = [
 		title: __( 'Home', 'wp-plugin-bluehost' ),
 		Component: Home,
 		Icon: HomeIcon,
+		condition: true,
+	},
+	{
+		name: '/pages&posts',
+		title: __( 'Pages & Posts', 'wp-plugin-bluehost' ),
+		Component: PagesAndPosts,
+		Icon: DocumentDuplicateIcon,
 		condition: true,
 	},
 	{
