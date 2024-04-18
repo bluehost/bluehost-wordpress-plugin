@@ -4,7 +4,7 @@
  *
  * @package           WPPluginBluehost
  * @author            Newfold Digital
- * @copyright         Copyright 2023 by Newfold Digital - All rights reserved.
+ * @copyright         Copyright 2024 by Newfold Digital - All rights reserved.
  * @license           GPL-2.0-or-later
  *
  * @wordpress-plugin
