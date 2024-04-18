@@ -36,7 +36,7 @@ const SitePages = () => {
 			</Card.Content>
 			<div className="nfd-flex nfd-justify-end nfd-gap-6 nfd-items-center">
 				<a href="edit.php?post_type=page">
-					{ __( 'view all', 'wp-plugin-bluehost' ) }
+					{ __( 'View all', 'wp-plugin-bluehost' ) }
 				</a>
 				<a href="post-new.php?post_type=page">
 					<Button onClick>

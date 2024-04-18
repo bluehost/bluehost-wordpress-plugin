@@ -36,7 +36,7 @@ const BookingAndAppointments = () => {
 			</Card.Content>
 			<div className="nfd-flex nfd-justify-end nfd-gap-6 nfd-items-center">
 				<a href="edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1">
-					{ __( 'view all', 'wp-plugin-bluehost' ) }
+					{ __( 'View all', 'wp-plugin-bluehost' ) }
 				</a>
 				<a href="edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1">
 					<Button>{ __( 'Add New', 'wp-plugin-bluehost' ) }</Button>

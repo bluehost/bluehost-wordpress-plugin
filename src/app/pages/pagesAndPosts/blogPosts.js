@@ -36,7 +36,7 @@ const BlogPosts = () => {
 			</Card.Content>
 			<div className="nfd-flex nfd-justify-end nfd-gap-6 nfd-items-center">
 				<a href="edit.php">
-					{ __( 'view all', 'wp-plugin-bluehost' ) }
+					{ __( 'View all', 'wp-plugin-bluehost' ) }
 				</a>
 				<a href="post-new.php">
 					<Button>{ __( 'Add New', 'wp-plugin-bluehost' ) }</Button>

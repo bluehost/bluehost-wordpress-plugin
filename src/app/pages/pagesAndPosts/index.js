@@ -1,16 +1,14 @@
-import { useState } from '@wordpress/element';
 import { Alert, Container, Page } from '@newfold/ui-component-library';
+import { useContext } from '@wordpress/element';
+
 import SitePages from './sitePages';
 import BlogPosts from './blogPosts';
 import BookingAndAppointments from './bookingAndAppointments';
 import ProductsPages from './ProductsPages';
+import AppStore from '../../data/store';
 
 const PagesAndPosts = () => {
-	const [ comingSoon, setComingSoon ] = useState( false );
-	window.NewfoldRuntime.comingSoon
-		.isEnabled()
-		.then( ( res ) => setComingSoon( res ) );
-
+	const { store } = useContext( AppStore );
 	return (
 		<Page
 			title="Pages & Posts"
@@ -20,7 +18,7 @@ const PagesAndPosts = () => {
 				<Container.Header
 					title={ __( 'Pages & Posts', 'wp-plugin-bluehost' ) }
 					description={
-						comingSoon ? (
+						store?.comingSoon ? (
 							<Alert
 								variant="warning"
 								className="nfd-text-sm nfd-bg-transparent nfd-p-0 "
@@ -48,7 +46,7 @@ const PagesAndPosts = () => {
 					}
 					className={ 'wppbh-app-settings-header' }
 				>
-					{ comingSoon ? (
+					{ store?.comingSoon ? (
 						<p>
 							{ __(
 								'Visitors to your site will see your "Coming Soon" page and not your actual site. Visit',
