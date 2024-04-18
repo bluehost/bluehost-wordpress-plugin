@@ -86,9 +86,7 @@ describe( 'Pages & Posts', function () {
 			);
 			cy.go( 'back' );
 		} else {
-			cy.get( '.wppbh-app-bookings' )
-				.findByText( 'Bookings & Appointments' )
-				.should( 'not.exist' );
+			cy.findByText( 'Bookings & Appointments' ).should( 'not.exist' );
 		}
 	} );
 
@@ -109,9 +107,7 @@ describe( 'Pages & Posts', function () {
 			cy.url().should( 'include', 'post-new.php?post_type=product' );
 			cy.go( 'back' );
 		} else {
-			cy.get( '.wppbh-app-products' )
-				.findByText( 'Products' )
-				.should( 'not.exist' );
+			cy.findByText( 'Products' ).should( 'not.exist' );
 		}
 	} );
 } );
