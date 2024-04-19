@@ -34,7 +34,7 @@ const Settings = () => {
 
 				<Container.Block
 					separator={ true }
-					className={ 'wppbh-app-settings-update' }
+					className={ 'wppbh-app-settings-social' }
 				>
 					<SocialMediaAccounts />
 				</Container.Block>
