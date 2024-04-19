@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "88cf4a4c8380aa2c7d73b41f66e0423a",
+    "content-hash": "e19a86afcee8f15e5aa8a3a5a111465d",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -403,16 +403,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.4.23",
+            "version": "2.4.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "386157fa9d6ac00dac28a79c7b6d26b40434d047"
+                "reference": "177d1662b5b38d6921d8e661603e4f57436e3955"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/386157fa9d6ac00dac28a79c7b6d26b40434d047",
-                "reference": "386157fa9d6ac00dac28a79c7b6d26b40434d047",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/177d1662b5b38d6921d8e661603e4f57436e3955",
+                "reference": "177d1662b5b38d6921d8e661603e4f57436e3955",
                 "shasum": ""
             },
             "require": {
@@ -453,10 +453,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.23",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.24",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-04-10T15:02:13+00:00"
+            "time": "2024-04-18T19:17:37+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
@@ -1252,20 +1252,23 @@
         },
         {
             "name": "newfold-labs/wp-module-sso",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-sso.git",
-                "reference": "cf93ca94508d522ffb91c04b99b7c70b01580cd4"
+                "reference": "3281a2a73b6d74bcb01ab8cde01854ed064ba5a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-sso/zipball/cf93ca94508d522ffb91c04b99b7c70b01580cd4",
-                "reference": "cf93ca94508d522ffb91c04b99b7c70b01580cd4",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-sso/zipball/3281a2a73b6d74bcb01ab8cde01854ed064ba5a7",
+                "reference": "3281a2a73b6d74bcb01ab8cde01854ed064ba5a7",
                 "shasum": ""
             },
             "require": {
                 "newfold-labs/wp-module-data": ">=2.1"
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
             },
             "type": "library",
             "autoload": {
@@ -1287,10 +1290,10 @@
             ],
             "description": "Single sign-on functionality for Newfold WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-sso/tree/1.0.4",
+                "source": "https://github.com/newfold-labs/wp-module-sso/tree/1.0.5",
                 "issues": "https://github.com/newfold-labs/wp-module-sso/issues"
             },
-            "time": "2023-05-26T18:37:51+00:00"
+            "time": "2024-04-18T19:11:14+00:00"
         },
         {
             "name": "newfold-labs/wp-module-staging",
