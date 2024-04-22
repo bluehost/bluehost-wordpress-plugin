@@ -5,7 +5,7 @@ describe( 'Pages & Posts', function () {
 		cy.visit(
 			'/wp-admin/admin.php?page=' +
 				Cypress.env( 'pluginId' ) +
-				'#/pages&posts'
+				'#/pages-and-posts'
 		);
 		cy.window()
 			.its( 'NewfoldRuntime' )

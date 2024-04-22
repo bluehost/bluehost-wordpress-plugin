@@ -67,7 +67,7 @@ final class Admin {
 			'bluehost#/home' => __( 'Home', 'wp-plugin-bluehost' ),
 		);
 		$pagesAndPosts        = array(
-			'bluehost#/pages&posts' => __( 'Pages & Posts', 'wp-plugin-bluehost' ),
+			'bluehost#/pages-and-posts' => __( 'Pages & Posts', 'wp-plugin-bluehost' ),
 		);
 		$store       = array(
 			'bluehost#/store' => __( 'Store', 'wp-plugin-bluehost' ),

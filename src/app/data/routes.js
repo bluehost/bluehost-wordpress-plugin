@@ -19,7 +19,7 @@ import Staging from '../pages/staging';
 import Help from '../pages/help';
 import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
 import { ReactComponent as HelpIcon } from '../components/icons/HelpIcon.svg';
-import PagesAndPosts from '../pages/pagesAndPosts';
+import PagesAndPosts from '../pages/pages-and-posts';
 
 const addPartialMatch = ( prefix, path ) =>
 	prefix === path ? `${ prefix }/*` : path;
@@ -66,7 +66,7 @@ export const AppRoutes = () => {
 
 const topRoutePaths = [
 	'/home',
-	'/pages&posts',
+	'/pages-and-posts',
 	'/store',
 	'/marketplace',
 	'/performance',
@@ -84,7 +84,7 @@ export const routes = [
 		condition: true,
 	},
 	{
-		name: '/pages&posts',
+		name: '/pages-and-posts',
 		title: __( 'Pages & Posts', 'wp-plugin-bluehost' ),
 		Component: PagesAndPosts,
 		Icon: DocumentDuplicateIcon,
