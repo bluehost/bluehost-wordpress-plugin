@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "39153d9a7aa6485c67915cc197eb4e5d",
+    "content-hash": "14858c34b38832e025c36d2f003d9782",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1105,16 +1105,16 @@
         },
         {
             "name": "newfold-labs/wp-module-performance",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-performance.git",
-                "reference": "3d11c8da5928cc29899876bf9b1ea41b76cfc8cd"
+                "reference": "5e4c87d404788c61ea55e3c62e29e5df48c36340"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/3d11c8da5928cc29899876bf9b1ea41b76cfc8cd",
-                "reference": "3d11c8da5928cc29899876bf9b1ea41b76cfc8cd",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/5e4c87d404788c61ea55e3c62e29e5df48c36340",
+                "reference": "5e4c87d404788c61ea55e3c62e29e5df48c36340",
                 "shasum": ""
             },
             "require": {
@@ -1144,10 +1144,10 @@
             ],
             "description": "A module for managing caching functionality.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-performance/tree/1.4.0",
+                "source": "https://github.com/newfold-labs/wp-module-performance/tree/1.4.1",
                 "issues": "https://github.com/newfold-labs/wp-module-performance/issues"
             },
-            "time": "2024-02-27T20:09:07+00:00"
+            "time": "2024-04-22T22:30:42+00:00"
         },
         {
             "name": "newfold-labs/wp-module-runtime",
@@ -3888,5 +3888,5 @@
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
