@@ -1,17 +1,16 @@
 import { useEffect, useState } from '@wordpress/element';
+import apiFetch from '@wordpress/api-fetch';
 import { useViewportMatch } from '@wordpress/compose';
+import { addQueryArgs } from '@wordpress/url';
+import classnames from 'classnames';
+import { filter } from 'lodash';
 import { Modal, SidebarNavigation } from '@newfold/ui-component-library';
+import { default as NewfoldNotifications } from '@modules/wp-module-notifications/assets/js/components/notifications/';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { topRoutes, utilityRoutes } from 'App/data/routes';
 import { handleHelpLinksClick } from '../../util/helpers';
 import Logo from './logo';
-
-import apiFetch from '@wordpress/api-fetch';
-import { addQueryArgs } from '@wordpress/url';
-import classnames from 'classnames';
-import { filter } from 'lodash';
-import { default as NewfoldNotifications } from '@modules/wp-module-notifications/assets/js/components/notifications/';
 
 export const SideNavHeader = () => {
 	return (
