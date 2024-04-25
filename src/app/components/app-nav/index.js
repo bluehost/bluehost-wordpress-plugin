@@ -7,6 +7,12 @@ import { topRoutes, utilityRoutes } from 'App/data/routes';
 import { handleHelpLinksClick } from '../../util/helpers';
 import Logo from './logo';
 
+import apiFetch from '@wordpress/api-fetch';
+import { addQueryArgs } from '@wordpress/url';
+import classnames from 'classnames';
+import { filter } from 'lodash';
+import { default as NewfoldNotifications } from '@modules/wp-module-notifications/assets/js/components/notifications/';
+
 export const SideNavHeader = () => {
 	return (
 		<header className="nfd-pt-2 nfd-px-3 nfd-mb-6 nfd-space-y-6">
@@ -146,6 +152,9 @@ export const SideNavMenuSubItem = ( { label, path, action } ) => {
 };
 
 export const SideNav = () => {
+	const location = useLocation();
+	const hashedPath = '#' + location.pathname;
+
 	return (
 		<aside className="wppbh-app-sidenav nfd-shrink-0 nfd-hidden min-[783px]:nfd-block nfd-pb-6 nfd-bottom-0 nfd-w-56">
 			<SidebarNavigation>
@@ -154,6 +163,20 @@ export const SideNav = () => {
 					<SideNavMenu />
 				</SidebarNavigation.Sidebar>
 			</SidebarNavigation>
+			<NewfoldNotifications
+				constants={ {
+					context: 'bluehost-app-nav',
+					page: hashedPath,
+				} }
+				methods={ {
+					apiFetch,
+					addQueryArgs,
+					classnames,
+					filter,
+					useState,
+					useEffect,
+				} }
+			/>
 		</aside>
 	);
 };
