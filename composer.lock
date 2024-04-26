@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b6feba64a1a3a41aca68f84d00bab32",
+    "content-hash": "af3b1480664ef81c9f69ed24f42e6204",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -619,6 +619,58 @@
                 "issues": "https://github.com/newfold-labs/wp-module-facebook/issues"
             },
             "time": "2024-02-12T08:48:41+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-features",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-features.git",
+                "reference": "b8642cadff5ec6909c134fa87c605b5de4d2585a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-features/zipball/b8642cadff5ec6909c134fa87c605b5de4d2585a",
+                "reference": "b8642cadff5ec6909c134fa87c605b5de4d2585a",
+                "shasum": ""
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Features\\": "includes"
+                }
+            },
+            "scripts": {
+                "fix": [
+                    "vendor/bin/phpcbf . --standard=phpcs.xml"
+                ],
+                "lint": [
+                    "vendor/bin/phpcs . --standard=phpcs.xml -s"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "homepage": "https://wpscholar.com"
+                },
+                {
+                    "name": "Evan Mullins",
+                    "homepage": "https://evanmullins.com"
+                }
+            ],
+            "description": "A module for providing an interface for features.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-features/tree/main",
+                "issues": "https://github.com/newfold-labs/wp-module-features/issues"
+            },
+            "time": "2024-04-19T20:13:00+00:00"
         },
         {
             "name": "newfold-labs/wp-module-global-ctb",
@@ -1297,20 +1349,21 @@
         },
         {
             "name": "newfold-labs/wp-module-staging",
-            "version": "1.3.3",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-staging.git",
-                "reference": "c464472e3a5886d9639563262e776b33f8135398"
+                "reference": "079390d91200c0d12c2d537baca7a1c7ba7ca29c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/c464472e3a5886d9639563262e776b33f8135398",
-                "reference": "c464472e3a5886d9639563262e776b33f8135398",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/079390d91200c0d12c2d537baca7a1c7ba7ca29c",
+                "reference": "079390d91200c0d12c2d537baca7a1c7ba7ca29c",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-context": "^1.0"
+                "newfold-labs/wp-module-context": "^1.0",
+                "newfold-labs/wp-module-features": "dev-main"
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "^1.2"
@@ -1343,10 +1396,10 @@
             ],
             "description": "Newfold module for staging functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-staging/tree/1.3.3",
+                "source": "https://github.com/newfold-labs/wp-module-staging/tree/add/staging-feature",
                 "issues": "https://github.com/newfold-labs/wp-module-staging/issues"
             },
-            "time": "2024-04-10T20:37:51+00:00"
+            "time": "2024-04-25T21:19:11+00:00"
         },
         {
             "name": "wp-cli/wp-config-transformer",
@@ -3879,6 +3932,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "newfold-labs/wp-module-features": 20,
+        "newfold-labs/wp-module-staging": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,

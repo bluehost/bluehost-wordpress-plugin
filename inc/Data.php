@@ -19,7 +19,7 @@ final class Data {
 	 * @return array
 	 */
 	public static function runtime() {
-		global $bluehost_module_container;
+		global $bluehost_module_container, $newfold_features;
 
 		$runtime = array(
 			'plugin' => array(
@@ -28,6 +28,7 @@ final class Data {
 				'assets'  => BLUEHOST_PLUGIN_URL . 'assets/',
 				'brand'   => $bluehost_module_container->plugin()->brand,
 			),
+			'features' => $newfold_features->all(),
 		);
 
 		return $runtime;

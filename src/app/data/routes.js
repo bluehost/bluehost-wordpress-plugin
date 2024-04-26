@@ -137,7 +137,7 @@ export const routes = [
 		title: __( 'Staging', 'wp-plugin-bluehost' ),
 		Component: Staging,
 		Icon: WrenchScrewdriverIcon,
-		condition: 'atomic' !== window.NewfoldRuntime.context.platform,
+		condition: window.NewfoldRuntime.features.staging,
 	},
 	{
 		name: '/help',

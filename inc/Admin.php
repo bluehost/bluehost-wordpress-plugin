@@ -61,7 +61,7 @@ final class Admin {
 	 * @return array
 	 */
 	public static function subpages() {
-		global $bluehost_module_container;
+		global $bluehost_module_container, $newfold_features;
 
 		$home        = array(
 			'bluehost#/home' => __( 'Home', 'wp-plugin-bluehost' ),
@@ -72,29 +72,24 @@ final class Admin {
 		$marketplace = array(
 			'bluehost#/marketplace' => __( 'Marketplace', 'wp-plugin-bluehost' ),
 		);
-		$performance = array(
-			'bluehost#/performance' => __( 'Performance', 'wp-plugin-bluehost' ),
-		);
-		$settings    = array(
+		// wp-cloud adjustment
+		$performance = ( 'atomic' === getContext( 'platform' ) )
+			? array(
+				'bluehost#/performance' => __( 'Performance', 'wp-plugin-bluehost' ),
+			)
+			: array();
+		$settings = array(
 			'bluehost#/settings' => __( 'Settings', 'wp-plugin-bluehost' ),
 		);
-		$staging     = array(
-			'bluehost#/staging' => __( 'Staging', 'wp-plugin-bluehost' ),
-		);
+		// only add staging link if feature is enabled
+		$staging     = $newfold_features->get('staging')
+		  	? array(
+				'bluehost#/staging' => __( 'Staging', 'wp-plugin-bluehost' ),
+			)
+			: array();
 		$help        = array(
 			'bluehost#/help' => __( 'Help', 'wp-plugin-bluehost' ),
 		);
-
-		// wp-cloud adjustments
-		if ( 'atomic' === getContext( 'platform' ) ) {
-			return array_merge(
-				$home,
-				$store,
-				$marketplace,
-				$settings,
-				$help
-			);
-		}
 
 		return array_merge(
 			$home,

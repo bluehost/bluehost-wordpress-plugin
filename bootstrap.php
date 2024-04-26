@@ -199,3 +199,7 @@ require BLUEHOST_PLUGIN_DIR . '/inc/YoastAI.php';
 if ( is_admin() ) {
 	new Admin();
 }
+
+
+
+require_once BLUEHOST_PLUGIN_DIR . '/vendor/newfold-labs/wp-module-features/bootstrap.php';
