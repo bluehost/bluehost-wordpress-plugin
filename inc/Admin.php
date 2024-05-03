@@ -8,6 +8,7 @@
 namespace Bluehost;
 
 use function NewfoldLabs\WP\Context\getContext;
+use function NewfoldLabs\WP\Module\Features\isEnabled;
 
 /**
  * \Bluehost\Admin
@@ -61,7 +62,7 @@ final class Admin {
 	 * @return array
 	 */
 	public static function subpages() {
-		global $bluehost_module_container, $newfold_features;
+		global $bluehost_module_container;
 
 		$home        = array(
 			'bluehost#/home' => __( 'Home', 'wp-plugin-bluehost' ),
@@ -78,16 +79,16 @@ final class Admin {
 				'bluehost#/performance' => __( 'Performance', 'wp-plugin-bluehost' ),
 			)
 			: array();
-		$settings = array(
+		$settings    = array(
 			'bluehost#/settings' => __( 'Settings', 'wp-plugin-bluehost' ),
 		);
 		// only add staging link if feature is enabled
-		$staging     = $newfold_features->get('staging')
-		  	? array(
+		$staging = isEnabled( 'staging' )
+			? array(
 				'bluehost#/staging' => __( 'Staging', 'wp-plugin-bluehost' ),
 			)
 			: array();
-		$help        = array(
+		$help    = array(
 			'bluehost#/help' => __( 'Help', 'wp-plugin-bluehost' ),
 		);
 

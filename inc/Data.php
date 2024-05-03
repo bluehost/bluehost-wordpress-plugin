@@ -7,6 +7,8 @@
 
 namespace Bluehost;
 
+use function NewfoldLabs\WP\Module\Features\getFeatures;
+
 /**
  * \Bluehost\Data
  * This class does not have a constructor to get instantiated, just static methods.
@@ -19,16 +21,16 @@ final class Data {
 	 * @return array
 	 */
 	public static function runtime() {
-		global $bluehost_module_container, $newfold_features;
+		global $bluehost_module_container;
 
 		$runtime = array(
-			'plugin' => array(
+			'plugin'   => array(
 				'url'     => BLUEHOST_BUILD_URL,
 				'version' => BLUEHOST_PLUGIN_VERSION,
 				'assets'  => BLUEHOST_PLUGIN_URL . 'assets/',
 				'brand'   => $bluehost_module_container->plugin()->brand,
 			),
-			'features' => $newfold_features->all(),
+			'features' => getFeatures(), // just for now until we expose via js api endpoint
 		);
 
 		return $runtime;
