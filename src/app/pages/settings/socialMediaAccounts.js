@@ -53,7 +53,10 @@ const SocialMediaAccounts = () => {
 					variant="outlined"
 					onClick={ () => setShowModal( true ) }
 				>
-					Add
+					{ __(
+						"Add",
+						'wp-plugin-bluehost'
+					) }
 				</Button>
 			</div>
 			<FacebookConnectPluginView
