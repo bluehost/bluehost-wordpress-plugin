@@ -77,7 +77,7 @@ final class Admin {
 			'bluehost#/marketplace' => __( 'Marketplace', 'wp-plugin-bluehost' ),
 		);
 		// wp-cloud adjustment
-		$performance = ( 'atomic' === getContext( 'platform' ) )
+		$performance = isEnabled( 'performance' )
 			? array(
 				'bluehost#/performance' => __( 'Performance', 'wp-plugin-bluehost' ),
 			)
@@ -203,7 +203,7 @@ final class Admin {
 			\wp_register_script(
 				'bluehost-script',
 				BLUEHOST_BUILD_URL . '/index.js',
-				array_merge( $asset['dependencies'], array( 'nfd-runtime' ) ),
+				array_merge( $asset['dependencies'], array( 'newfold-features', 'nfd-runtime' ) ),
 				$asset['version'],
 				true
 			);

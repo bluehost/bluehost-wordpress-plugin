@@ -133,7 +133,7 @@ export const routes = [
 		title: __( 'Performance', 'wp-plugin-bluehost' ),
 		Component: Performance,
 		Icon: BoltIcon,
-		condition: 'atomic' !== window.NewfoldRuntime.context.platform,
+		condition: window.NewfoldRuntime.features.performance,
 	},
 	{
 		name: '/settings',
