@@ -133,7 +133,7 @@ export const routes = [
 		title: __( 'Performance', 'wp-plugin-bluehost' ),
 		Component: Performance,
 		Icon: BoltIcon,
-		condition: window.NewfoldRuntime.features.performance,
+		condition: await window.NewfoldFeatures.isEnabled( 'performance' ),
 	},
 	{
 		name: '/settings',
@@ -147,7 +147,7 @@ export const routes = [
 		title: __( 'Staging', 'wp-plugin-bluehost' ),
 		Component: Staging,
 		Icon: WrenchScrewdriverIcon,
-		condition: window.NewfoldRuntime.features.staging,
+		condition: await window.NewfoldFeatures.isEnabled( 'staging' ),
 	},
 	{
 		name: '/help',

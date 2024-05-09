@@ -29,8 +29,7 @@ final class Data {
 				'version' => BLUEHOST_PLUGIN_VERSION,
 				'assets'  => BLUEHOST_PLUGIN_URL . 'assets/',
 				'brand'   => $bluehost_module_container->plugin()->brand,
-			),
-			'features' => getFeatures(), // just for now until we expose via js api endpoint
+			)
 		);
 
 		return $runtime;
