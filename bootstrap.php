@@ -201,9 +201,5 @@ if ( is_admin() ) {
 	new Admin();
 }
 
-// These shouldn't be needed once the autoloader is properly running in tagged releases
-require_once BLUEHOST_PLUGIN_DIR . '/vendor/newfold-labs/wp-module-staging/includes/StagingFeature.php';
-require_once BLUEHOST_PLUGIN_DIR . '/vendor/newfold-labs/wp-module-performance/includes/PerformanceFeature.php';
-require_once BLUEHOST_PLUGIN_DIR . '/vendor/newfold-labs/wp-module-features/includes/functions.php';
-// Instantiate Features singleton
+// Instantiate the Features singleton
 Features::getInstance();
