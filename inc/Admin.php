@@ -64,19 +64,19 @@ final class Admin {
 	public static function subpages() {
 		global $bluehost_module_container;
 
-		$home        = array(
+		$home          = array(
 			'bluehost#/home' => __( 'Home', 'wp-plugin-bluehost' ),
 		);
-		$pagesAndPosts        = array(
+		$pagesAndPosts = array(
 			'bluehost#/pages-and-posts' => __( 'Pages & Posts', 'wp-plugin-bluehost' ),
 		);
-		$store       = array(
+		$store         = array(
 			'bluehost#/store' => __( 'Store', 'wp-plugin-bluehost' ),
 		);
-		$marketplace = array(
+		$marketplace   = array(
 			'bluehost#/marketplace' => __( 'Marketplace', 'wp-plugin-bluehost' ),
 		);
-		// wp-cloud adjustment
+		// add performance if enabled
 		$performance = isEnabled( 'performance' )
 			? array(
 				'bluehost#/performance' => __( 'Performance', 'wp-plugin-bluehost' ),
@@ -85,7 +85,7 @@ final class Admin {
 		$settings    = array(
 			'bluehost#/settings' => __( 'Settings', 'wp-plugin-bluehost' ),
 		);
-		// only add staging link if feature is enabled
+		// add staging if enabled
 		$staging = isEnabled( 'staging' )
 			? array(
 				'bluehost#/staging' => __( 'Staging', 'wp-plugin-bluehost' ),
