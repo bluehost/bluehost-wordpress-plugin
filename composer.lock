@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bff208a681d3f78123d054a7114608f",
+    "content-hash": "83a8ae9bf8571069bb0a2ba04563fafa",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -451,16 +451,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.4.24",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "177d1662b5b38d6921d8e661603e4f57436e3955"
+                "reference": "42bdfdece373e194b405f6b9a9e2a9e07154dfb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/177d1662b5b38d6921d8e661603e4f57436e3955",
-                "reference": "177d1662b5b38d6921d8e661603e4f57436e3955",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/42bdfdece373e194b405f6b9a9e2a9e07154dfb9",
+                "reference": "42bdfdece373e194b405f6b9a9e2a9e07154dfb9",
                 "shasum": ""
             },
             "require": {
@@ -472,6 +472,7 @@
             },
             "require-dev": {
                 "10up/wp_mock": "^0.4.2",
+                "johnpbloch/wordpress": "*",
                 "newfold-labs/wp-php-standards": "^1.2"
             },
             "type": "library",
@@ -501,10 +502,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.24",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.5.0",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-04-18T19:17:37+00:00"
+            "time": "2024-05-15T00:31:16+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
