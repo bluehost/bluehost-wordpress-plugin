@@ -951,16 +951,16 @@
         },
         {
             "name": "newfold-labs/wp-module-migration",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-migration.git",
-                "reference": "06bef1f285797a89d5e7561af564eb0caa954317"
+                "reference": "6c14249e1aba88bf23434352301f55649074dd68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/06bef1f285797a89d5e7561af564eb0caa954317",
-                "reference": "06bef1f285797a89d5e7561af564eb0caa954317",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/6c14249e1aba88bf23434352301f55649074dd68",
+                "reference": "6c14249e1aba88bf23434352301f55649074dd68",
                 "shasum": ""
             },
             "require": {
@@ -998,10 +998,10 @@
             ],
             "description": "Initiates the migration process",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-migration/tree/v1.0.1",
+                "source": "https://github.com/newfold-labs/wp-module-migration/tree/v1.0.2",
                 "issues": "https://github.com/newfold-labs/wp-module-migration/issues"
             },
-            "time": "2024-05-03T08:33:23+00:00"
+            "time": "2024-05-16T12:09:32+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
