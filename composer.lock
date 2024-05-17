@@ -766,6 +766,45 @@
             "time": "2024-04-26T13:58:31+00:00"
         },
         {
+            "name": "newfold-labs/wp-module-install-checker",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-install-checker.git",
+                "reference": "9d43e916b8c4e752b45c868b41340b84bcb686a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-install-checker/zipball/9d43e916b8c4e752b45c868b41340b84bcb686a6",
+                "reference": "9d43e916b8c4e752b45c868b41340b84bcb686a6",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\InstallChecker\\": "includes/"
+                }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "homepage": "https://wpscholar.com"
+                }
+            ],
+            "description": "A module that handles checking a WordPress installation to see if it is a fresh install and to fetch the estimated installation date.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-install-checker/tree/1.0.3",
+                "issues": "https://github.com/newfold-labs/wp-module-install-checker/issues"
+            },
+            "time": "2024-01-31T18:12:34+00:00"
+        },
+        {
             "name": "newfold-labs/wp-module-installer",
             "version": "1.1.4",
             "source": {
@@ -1088,9 +1127,12 @@
             "require": {
                 "mustache/mustache": "^2.14",
                 "newfold-labs/wp-module-ai": "^1.1",
+                "newfold-labs/wp-module-coming-soon": "^1.2",
                 "newfold-labs/wp-module-data": "^2.0",
+                "newfold-labs/wp-module-install-checker": "^1.0",
                 "newfold-labs/wp-module-installer": "^1.1",
                 "newfold-labs/wp-module-patterns": "^1.0",
+                "newfold-labs/wp-module-performance": "^1.4",
                 "wp-forge/wp-upgrade-handler": "^1.0"
             },
             "require-dev": {
@@ -4031,5 +4073,5 @@
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
