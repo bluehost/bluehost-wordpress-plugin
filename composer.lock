@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5e0bc29bb1c0ad66281f63a00b708c4",
+    "content-hash": "e8f901b20b05e235ff097c2e5b54d08f",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -671,16 +671,16 @@
         },
         {
             "name": "newfold-labs/wp-module-features",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-features.git",
-                "reference": "a6780ec96584aab97036468de5d42939978b39c6"
+                "reference": "30f5139deed56ee36a06c0b1107fcc91bffe6229"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-features/zipball/a6780ec96584aab97036468de5d42939978b39c6",
-                "reference": "a6780ec96584aab97036468de5d42939978b39c6",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-features/zipball/30f5139deed56ee36a06c0b1107fcc91bffe6229",
+                "reference": "30f5139deed56ee36a06c0b1107fcc91bffe6229",
                 "shasum": ""
             },
             "require": {
@@ -721,10 +721,10 @@
             ],
             "description": "A module for providing an interface for features.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-features/tree/1.1.0",
+                "source": "https://github.com/newfold-labs/wp-module-features/tree/1.1.1",
                 "issues": "https://github.com/newfold-labs/wp-module-features/issues"
             },
-            "time": "2024-05-13T17:34:22+00:00"
+            "time": "2024-05-17T17:55:47+00:00"
         },
         {
             "name": "newfold-labs/wp-module-global-ctb",
