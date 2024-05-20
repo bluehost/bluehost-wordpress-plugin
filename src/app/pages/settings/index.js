@@ -5,6 +5,7 @@ import AutomaticUpdates from './automaticUpdates';
 import CommentSettings from './commentSettings';
 import ComingSoon from './comingSoon';
 import ContentSettings from './contentSettings';
+import SocialMediaAccounts from './socialMediaAccounts';
 
 const Settings = () => {
 	return (
@@ -29,6 +30,13 @@ const Settings = () => {
 					) }
 				>
 					<ComingSoon />
+				</Container.Block>
+
+				<Container.Block
+					separator={ true }
+					className={ 'wppbh-app-settings-social' }
+				>
+					<SocialMediaAccounts />
 				</Container.Block>
 
 				<Container.Block
