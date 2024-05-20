@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e8b9b1f9938da4e0265daa57c5069b9",
+    "content-hash": "3a6cd4cacbf7fe845f8dc70e633765fe",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1051,17 +1051,13 @@
         {
             "name": "newfold-labs/wp-module-onboarding",
             "version": "2.3.1",
-            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
                 "reference": "411ffa50a12a040213be6204e5f27612b7974286"
-                "reference": "411ffa50a12a040213be6204e5f27612b7974286"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/411ffa50a12a040213be6204e5f27612b7974286",
-                "reference": "411ffa50a12a040213be6204e5f27612b7974286",
                 "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/411ffa50a12a040213be6204e5f27612b7974286",
                 "reference": "411ffa50a12a040213be6204e5f27612b7974286",
                 "shasum": ""
@@ -1110,26 +1106,20 @@
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
                 "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.3.1",
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.3.1",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2024-05-16T11:37:24+00:00"
             "time": "2024-05-16T11:37:24+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
             "version": "1.1.9",
-            "version": "1.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
                 "reference": "7d61b2fc732ddfb2d67d7dfe6bfec4851b3996a8"
-                "reference": "7d61b2fc732ddfb2d67d7dfe6bfec4851b3996a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/7d61b2fc732ddfb2d67d7dfe6bfec4851b3996a8",
-                "reference": "7d61b2fc732ddfb2d67d7dfe6bfec4851b3996a8",
                 "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/7d61b2fc732ddfb2d67d7dfe6bfec4851b3996a8",
                 "reference": "7d61b2fc732ddfb2d67d7dfe6bfec4851b3996a8",
                 "shasum": ""
@@ -1167,10 +1157,8 @@
             "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
             "support": {
                 "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.1.9",
-                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.1.9",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
             },
-            "time": "2024-05-16T10:57:14+00:00"
             "time": "2024-05-16T10:57:14+00:00"
         },
         {
@@ -2010,16 +1998,16 @@
         },
         {
             "name": "gettext/gettext",
-            "version": "v4.8.11",
+            "version": "v4.8.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-gettext/Gettext.git",
-                "reference": "b632aaf5e4579d0b2ae8bc61785e238bff4c5156"
+                "reference": "11af89ee6c087db3cf09ce2111a150bca5c46e12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-gettext/Gettext/zipball/b632aaf5e4579d0b2ae8bc61785e238bff4c5156",
-                "reference": "b632aaf5e4579d0b2ae8bc61785e238bff4c5156",
+                "url": "https://api.github.com/repos/php-gettext/Gettext/zipball/11af89ee6c087db3cf09ce2111a150bca5c46e12",
+                "reference": "11af89ee6c087db3cf09ce2111a150bca5c46e12",
                 "shasum": ""
             },
             "require": {
@@ -2071,7 +2059,7 @@
             "support": {
                 "email": "oom@oscarotero.com",
                 "issues": "https://github.com/oscarotero/Gettext/issues",
-                "source": "https://github.com/php-gettext/Gettext/tree/v4.8.11"
+                "source": "https://github.com/php-gettext/Gettext/tree/v4.8.12"
             },
             "funding": [
                 {
@@ -2087,7 +2075,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-08-14T15:15:05+00:00"
+            "time": "2024-05-18T10:25:07+00:00"
         },
         {
             "name": "gettext/languages",
@@ -2625,12 +2613,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "c8cc0081bff33f9080302f312e3479c13d1f592d"
+                "reference": "5a190e68aef110a461c04c09b148660a377da4db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/c8cc0081bff33f9080302f312e3479c13d1f592d",
-                "reference": "c8cc0081bff33f9080302f312e3479c13d1f592d",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/5a190e68aef110a461c04c09b148660a377da4db",
+                "reference": "5a190e68aef110a461c04c09b148660a377da4db",
                 "shasum": ""
             },
             "conflict": {
@@ -2997,8 +2985,8 @@
                 "neos/flow": ">=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1|>=2.3,<2.3.16|>=3,<3.0.12|>=3.1,<3.1.10|>=3.2,<3.2.13|>=3.3,<3.3.13|>=4,<4.0.6",
                 "neos/form": ">=1.2,<4.3.3|>=5,<5.0.9|>=5.1,<5.1.3",
                 "neos/media-browser": "<7.3.19|>=8,<8.0.16|>=8.1,<8.1.11|>=8.2,<8.2.11|>=8.3,<8.3.9",
-                "neos/neos": ">=1.1,<1.1.3|>=1.2,<1.2.13|>=2,<2.0.4|>=2.3,<2.9.99|>=3,<3.0.20|>=3.1,<3.1.18|>=3.2,<3.2.14|>=3.3,<5.3.10|>=7,<7.0.9|>=7.1,<7.1.7|>=7.2,<7.2.6|>=7.3,<7.3.4|>=8,<8.0.2",
-                "neos/swiftmailer": ">=4.1,<4.1.99|>=5.4,<5.4.5",
+                "neos/neos": ">=1.1,<1.1.3|>=1.2,<1.2.13|>=2,<2.0.4|>=2.3,<3.0.20|>=3.1,<3.1.18|>=3.2,<3.2.14|>=3.3,<5.3.10|>=7,<7.0.9|>=7.1,<7.1.7|>=7.2,<7.2.6|>=7.3,<7.3.4|>=8,<8.0.2",
+                "neos/swiftmailer": "<5.4.5",
                 "netgen/tagsbundle": ">=3.4,<3.4.11|>=4,<4.0.15",
                 "nette/application": ">=2,<2.0.19|>=2.1,<2.1.13|>=2.2,<2.2.10|>=2.3,<2.3.14|>=2.4,<2.4.16|>=3,<3.0.6",
                 "nette/nette": ">=2,<2.0.19|>=2.1,<2.1.13",
@@ -3198,7 +3186,7 @@
                 "sylius/grid-bundle": "<1.10.1",
                 "sylius/paypal-plugin": ">=1,<1.2.4|>=1.3,<1.3.1",
                 "sylius/resource-bundle": ">=1,<1.3.14|>=1.4,<1.4.7|>=1.5,<1.5.2|>=1.6,<1.6.4",
-                "sylius/sylius": "<1.12.16|>=1.13.0.0-alpha1,<1.13.1",
+                "sylius/sylius": "<1.9.10|>=1.10,<1.10.11|>=1.11,<1.11.2|>=1.12.0.0-alpha1,<1.12.16|>=1.13.0.0-alpha1,<1.13.1",
                 "symbiote/silverstripe-multivaluefield": ">=3,<3.0.99",
                 "symbiote/silverstripe-queuedjobs": ">=3,<3.0.2|>=3.1,<3.1.4|>=4,<4.0.7|>=4.1,<4.1.2|>=4.2,<4.2.4|>=4.3,<4.3.3|>=4.4,<4.4.3|>=4.5,<4.5.1|>=4.6,<4.6.4",
                 "symbiote/silverstripe-seed": "<6.0.3",
@@ -3413,7 +3401,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-15T23:04:18+00:00"
+            "time": "2024-05-20T05:04:57+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
