@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a6cd4cacbf7fe845f8dc70e633765fe",
+    "content-hash": "810b56e4371276706ed3b6190e09b036",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -570,21 +570,21 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.3.30",
+            "version": "v1.3.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "6ee512b00d2957cd2ace59bfcc351852246835b5"
+                "reference": "24ef99c9b697f2c30172a95c5f6fa0470b9b2604"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/6ee512b00d2957cd2ace59bfcc351852246835b5",
-                "reference": "6ee512b00d2957cd2ace59bfcc351852246835b5",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/24ef99c9b697f2c30172a95c5f6fa0470b9b2604",
+                "reference": "24ef99c9b697f2c30172a95c5f6fa0470b9b2604",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-installer": "^1.1",
-                "newfold-labs/wp-module-onboarding-data": "^1.1"
+                "newfold-labs/wp-module-installer": "^1.1.4",
+                "newfold-labs/wp-module-onboarding-data": "^1.1.8"
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "@stable",
@@ -622,10 +622,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.30",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.31",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-05-03T09:49:53+00:00"
+            "time": "2024-05-20T12:40:55+00:00"
         },
         {
             "name": "newfold-labs/wp-module-facebook",
@@ -2521,22 +2521,22 @@
         },
         {
             "name": "phpcsstandards/phpcsutils",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHPCSUtils.git",
-                "reference": "c457da9dabb60eb7106dd5e3c05132b1a6539c6a"
+                "reference": "87b233b00daf83fb70f40c9a28692be017ea7c6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/c457da9dabb60eb7106dd5e3c05132b1a6539c6a",
-                "reference": "c457da9dabb60eb7106dd5e3c05132b1a6539c6a",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/87b233b00daf83fb70f40c9a28692be017ea7c6c",
+                "reference": "87b233b00daf83fb70f40c9a28692be017ea7c6c",
                 "shasum": ""
             },
             "require": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7 || ^1.0",
                 "php": ">=5.4",
-                "squizlabs/php_codesniffer": "^3.9.0 || 4.0.x-dev@dev"
+                "squizlabs/php_codesniffer": "^3.10.0 || 4.0.x-dev@dev"
             },
             "require-dev": {
                 "ext-filter": "*",
@@ -2605,7 +2605,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-04-24T11:47:18+00:00"
+            "time": "2024-05-20T13:34:27+00:00"
         },
         {
             "name": "roave/security-advisories",
@@ -2613,12 +2613,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "5a190e68aef110a461c04c09b148660a377da4db"
+                "reference": "7a1a6552ac2f0fd7131d2552be221f2dd6eb19fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/5a190e68aef110a461c04c09b148660a377da4db",
-                "reference": "5a190e68aef110a461c04c09b148660a377da4db",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/7a1a6552ac2f0fd7131d2552be221f2dd6eb19fa",
+                "reference": "7a1a6552ac2f0fd7131d2552be221f2dd6eb19fa",
                 "shasum": ""
             },
             "conflict": {
@@ -3275,6 +3275,7 @@
                 "uvdesk/core-framework": "<=1.1.1",
                 "vanilla/safecurl": "<0.9.2",
                 "verbb/comments": "<1.5.5",
+                "verbb/formie": "<2.1.6",
                 "verbb/image-resizer": "<2.0.9",
                 "verbb/knock-knock": "<1.2.8",
                 "verot/class.upload.php": "<=2.1.6",
@@ -3306,7 +3307,7 @@
                 "wpanel/wpanel4-cms": "<=4.3.1",
                 "wpcloud/wp-stateless": "<3.2",
                 "wpglobus/wpglobus": "<=1.9.6",
-                "wwbn/avideo": "<=12.4",
+                "wwbn/avideo": "<14.3",
                 "xataface/xataface": "<3",
                 "xpressengine/xpressengine": "<3.0.15",
                 "yab/quarx": "<2.4.5",
@@ -3401,20 +3402,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-20T05:04:57+00:00"
+            "time": "2024-05-20T21:04:23+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.9.2",
+            "version": "3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "aac1f6f347a5c5ac6bc98ad395007df00990f480"
+                "reference": "57e09801c2fbae2d257b8b75bebb3deeb7e9deb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/aac1f6f347a5c5ac6bc98ad395007df00990f480",
-                "reference": "aac1f6f347a5c5ac6bc98ad395007df00990f480",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/57e09801c2fbae2d257b8b75bebb3deeb7e9deb2",
+                "reference": "57e09801c2fbae2d257b8b75bebb3deeb7e9deb2",
                 "shasum": ""
             },
             "require": {
@@ -3481,7 +3482,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-04-23T20:25:34+00:00"
+            "time": "2024-05-20T08:11:32+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
