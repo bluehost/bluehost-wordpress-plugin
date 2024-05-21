@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c3a39da4589c6a1d9d598cbab4e0b33",
+    "content-hash": "eab976f0136aacb364ba5c223dbe66a5",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -724,16 +724,16 @@
         },
         {
             "name": "newfold-labs/wp-module-features",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-features.git",
-                "reference": "e46032e09a14ab76e28ca20c276a76fa0c6a9023"
+                "reference": "5e3a792207804cef0dbeefcd3c8df75db24b8e79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-features/zipball/e46032e09a14ab76e28ca20c276a76fa0c6a9023",
-                "reference": "e46032e09a14ab76e28ca20c276a76fa0c6a9023",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-features/zipball/5e3a792207804cef0dbeefcd3c8df75db24b8e79",
+                "reference": "5e3a792207804cef0dbeefcd3c8df75db24b8e79",
                 "shasum": ""
             },
             "require": {
@@ -774,10 +774,10 @@
             ],
             "description": "A module for providing an interface for features.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-features/tree/1.2.0",
+                "source": "https://github.com/newfold-labs/wp-module-features/tree/1.2.1",
                 "issues": "https://github.com/newfold-labs/wp-module-features/issues"
             },
-            "time": "2024-05-20T16:52:34+00:00"
+            "time": "2024-05-21T18:03:02+00:00"
         },
         {
             "name": "newfold-labs/wp-module-global-ctb",
