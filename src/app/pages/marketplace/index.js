@@ -1,11 +1,11 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect } from '@wordpress/element';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useMatch } from 'react-router-dom';
 import classnames from 'classnames';
 import { Container, Page } from '@newfold/ui-component-library';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 // component sourced from marketplace module
-import { default as NewfoldMarketplace } from '@modules/wp-module-marketplace/components/marketplace/';
+import { default as NewfoldMarketplace } from '@modules/wp-module-marketplace/components/';
 
 const MarketplacePage = () => {
 	// constants to pass to module
@@ -36,6 +36,7 @@ const MarketplacePage = () => {
 		useState,
 		useEffect,
 		useLocation,
+		useMatch,
 		NewfoldRuntime,
 	};
 
