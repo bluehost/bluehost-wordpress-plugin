@@ -49,13 +49,39 @@ export const bluehostSettingsApiFetch = ( data, passError, thenCallback ) => {
 };
 
 /**
+ * Wrapper method for toggling a feature via the features API
+ *
+ * @param {string}   featureName  the name of the feature
+ * @param {Function} thenCallback method to call in promise then
+ * @return {Promise} Features API promise with attached then callback
+ */
+export const featureToggle = async ( featureName, thenCallback ) => {
+	if ( true === window.NewfoldFeatures.features[ featureName ] ) {
+		return window.NewfoldFeatures.disable( featureName ).then(
+			( response ) => {
+				thenCallback( response );
+			}
+		);
+	}
+	// else
+	return window.NewfoldFeatures.enable( featureName ).then( ( response ) => {
+		thenCallback( response );
+	} );
+};
+
+/**
  * Wrapper method to post request to bluehost cache endpoint
  *
  * @param {Object}   data         object of data
  * @param {Function} passError    setter for the error in component
  * @param {Function} thenCallback method to call in promise then
+ * @return {Promise} apiFetch promise with attached then and catch callbacks
  */
-export const bluehostPurgeCacheApiFetch = ( data, passError, thenCallback ) => {
+export const bluehostPurgeCacheApiFetch = async (
+	data,
+	passError,
+	thenCallback
+) => {
 	return apiFetch( {
 		url: NewfoldRuntime.createApiUrl( '/bluehost/v1/caching' ),
 		method: 'DELETE',
