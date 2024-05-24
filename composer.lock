@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "810b56e4371276706ed3b6190e09b036",
+    "content-hash": "bec5e08f041cec32d86cb823adf955ca",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -397,16 +397,16 @@
         },
         {
             "name": "newfold-labs/wp-module-context",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-context.git",
-                "reference": "0d852f83f353f1631309e5ae7da9cb1e046bc984"
+                "reference": "fb57e927df45ef33573fe7f429ef1e088b0a6df0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-context/zipball/0d852f83f353f1631309e5ae7da9cb1e046bc984",
-                "reference": "0d852f83f353f1631309e5ae7da9cb1e046bc984",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-context/zipball/fb57e927df45ef33573fe7f429ef1e088b0a6df0",
+                "reference": "fb57e927df45ef33573fe7f429ef1e088b0a6df0",
                 "shasum": ""
             },
             "require": {
@@ -444,10 +444,10 @@
             ],
             "description": "Newfold module to determine context for various brands and platforms.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-context/tree/1.0.0",
+                "source": "https://github.com/newfold-labs/wp-module-context/tree/1.0.1",
                 "issues": "https://github.com/newfold-labs/wp-module-context/issues"
             },
-            "time": "2024-02-22T18:22:13+00:00"
+            "time": "2024-05-23T20:34:28+00:00"
         },
         {
             "name": "newfold-labs/wp-module-data",
@@ -4074,5 +4074,5 @@
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
