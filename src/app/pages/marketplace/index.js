@@ -26,6 +26,18 @@ const MarketplacePage = () => {
 				'bluehost-wordpress-plugin'
 			),
 			loadMore: __( 'Load More', 'bluehost-wordpress-plugin' ),
+			productPage: {
+				error: {
+					title: __(
+						'Oops! Something Went Wrong',
+						'bluehost-wordpress-plugin'
+					),
+					description: __(
+						'An error occurred while loading the content. Please try again later.',
+						'bluehost-wordpress-plugin'
+					),
+				},
+			},
 		},
 	};
 
