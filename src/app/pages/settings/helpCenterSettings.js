@@ -38,6 +38,7 @@ const HelpCenterSettings = () => {
 				setHelpCenter( ! helpCenter );
 			} else {
 				setHelpCenterLocked( true );
+				setError( true );
 				notifyError();
 			}
 		} );

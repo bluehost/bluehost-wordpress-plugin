@@ -40,6 +40,7 @@ const WonderBlocksSettings = () => {
 				setWonderBlocks( ! wonderBlocks );
 			} else {
 				setWonderBlocksLocked( true );
+				setError( true );
 				notifyError();
 			}
 		} );

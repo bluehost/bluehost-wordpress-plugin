@@ -6,7 +6,6 @@ import PerformanceFeatureSettings from '../settings/performanceFeatureSettings';
 import { Container, Page } from '@newfold/ui-component-library';
 
 const Admin = () => {
-
 	return (
 		<Page title="Admin" className={ 'wppbh-app-settings-page' }>
 			<Container className={ 'wppbh-app-settings-container' }>

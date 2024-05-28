@@ -34,6 +34,7 @@ const StagingFeatureSettings = () => {
 				setStaging( ! staging );
 			} else {
 				setStagingLocked( true );
+				setError( true );
 				notifyError();
 			}
 		} );

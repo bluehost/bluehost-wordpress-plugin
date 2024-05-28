@@ -37,6 +37,7 @@ const PerformanceFeatureSettings = () => {
 				setPerformance( ! performance );
 			} else {
 				setPerformanceLocked( true );
+				setError( true );
 				notifyError();
 			}
 		} );

@@ -70,10 +70,12 @@ export const featureToggle = async ( featureName, thenCallback ) => {
 };
 
 /**
- * Helper to update UI elements with a class
- * @param {boolean} enabled whether the element should be activated or deactivated
- * @param {string} selector the css selector to find the element
- * @param {string} className the css class to add/remove
+ * Helper to update UI elements as features are enabled/disabled
+ *
+ * @param {string}  selector    css selector to find the element
+ * @param {boolean} enabled     whether the element is now activated/deactivated
+ * @param {string}  className   the css class to add/remove - default 'nfd-disabled'
+ * @param {boolean} forceReload whether this update requires a forced page reload - default false
  */
 export const updateUI = (
 	selector,
