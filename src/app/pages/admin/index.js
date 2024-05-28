@@ -29,7 +29,7 @@ const Admin = () => {
 					>
 						<WonderBlocksSettings />
 						<br />
-						<HelpCenterSettings />
+						<HelpCenterSettings forceShow={ true } />
 						<br />
 						<StagingFeatureSettings />
 						<br />

@@ -7,8 +7,6 @@
 
 namespace Bluehost;
 
-use function NewfoldLabs\WP\Module\Features\getFeatures;
-
 /**
  * \Bluehost\Data
  * This class does not have a constructor to get instantiated, just static methods.

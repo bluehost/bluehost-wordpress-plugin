@@ -5,7 +5,7 @@ import AppStore from '../../data/store';
 import { featureToggle, updateUI } from '../../util/helpers';
 import { useNotification } from 'App/components/notifications';
 
-const HelpCenterSettings = () => {
+const HelpCenterSettings = ( { forceShow = false } ) => {
 	const { store, setStore } = useContext( AppStore );
 	const [ helpCenter, setHelpCenter ] = useState( store.features.helpCenter );
 	const [ helpCenterLocked, setHelpCenterLocked ] = useState(
@@ -75,17 +75,19 @@ const HelpCenterSettings = () => {
 
 	return (
 		<div className="nfd-flex nfd-flex-col nfd-gap-6">
-			<ToggleField
-				id="help-center-toggle"
-				label="Help Center"
-				description={ __(
-					'The Help Center provides guided, step-by-step assistance as you build your site.',
-					'wp-plugin-bluehost'
-				) }
-				disabled={ helpCenterLocked }
-				checked={ helpCenter }
-				onChange={ toggleHelpCenter }
-			/>
+			{ ( ! helpCenterLocked || forceShow ) && (
+				<ToggleField
+					id="help-center-toggle"
+					label="Help Center"
+					description={ __(
+						'The Help Center provides guided, step-by-step assistance as you build your site.',
+						'wp-plugin-bluehost'
+					) }
+					disabled={ helpCenterLocked }
+					checked={ helpCenter }
+					onChange={ toggleHelpCenter }
+				/>
+			) }
 
 			{ isError && (
 				<Alert variant="error">
