@@ -70,6 +70,31 @@ export const featureToggle = async ( featureName, thenCallback ) => {
 };
 
 /**
+ * Helper to update UI elements with a class
+ * @param {boolean} enabled whether the element should be activated or deactivated
+ * @param {string} selector the css selector to find the element
+ * @param {string} className the css class to add/remove
+ */
+export const updateUI = (
+	selector,
+	enabled = true,
+	className = 'nfd-disabled',
+	forceReload = false
+) => {
+	const element = document.querySelector( selector );
+	if ( element ) {
+		if ( ! enabled ) {
+			element.classList.add( className );
+		} else {
+			element.classList.remove( className );
+		}
+	}
+	if ( forceReload ) {
+		window.location.reload();
+	}
+};
+
+/**
  * Wrapper method to post request to bluehost cache endpoint
  *
  * @param {Object}   data         object of data

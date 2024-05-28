@@ -2,7 +2,7 @@ import { useState } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
 import { Alert, ToggleField } from '@newfold/ui-component-library';
 import AppStore from '../../data/store';
-import { featureToggle } from '../../util/helpers';
+import { featureToggle, updateUI } from '../../util/helpers';
 import { useNotification } from 'App/components/notifications';
 
 const HelpCenterSettings = () => {
@@ -22,11 +22,11 @@ const HelpCenterSettings = () => {
 	const getHelpCenterNoticeText = () => {
 		return helpCenter
 			? __(
-					'You need to reload the page to see the Help Center.',
+					'Reload the page to access the Help Center.',
 					'wp-plugin-bluehost'
 			  )
 			: __(
-					'The help center will no longer display.',
+					'The Help Center will no longer display.',
 					'wp-plugin-bluehost'
 			  );
 	};
@@ -41,18 +41,6 @@ const HelpCenterSettings = () => {
 				notifyError();
 			}
 		} );
-	};
-
-	const updateUI = ( enabled, selector ) => {
-		const element = document.querySelector( selector );
-		if ( element ) {
-			if ( ! enabled ) {
-				element.classList.add( 'nfd-disabled' );
-			} else {
-				element.classList.remove( 'nfd-disabled' );
-				// window.location.reload();
-			}
-		}
 	};
 
 	const notifyError = () => {
@@ -81,7 +69,7 @@ const HelpCenterSettings = () => {
 			helpCenter,
 		} );
 		notifySuccess( getHelpCenterNoticeTitle, getHelpCenterNoticeText );
-		updateUI( helpCenter, '#wp-admin-bar-help-center' );
+		updateUI( '#wp-admin-bar-help-center', helpCenter );
 	}, [ helpCenter ] );
 
 	return (
@@ -90,7 +78,7 @@ const HelpCenterSettings = () => {
 				id="help-center-toggle"
 				label="Help Center"
 				description={ __(
-					'The Help Center page can give you all kinds of WordPress answers from a prompt with the help of AI.',
+					'The Help Center provides guided, step-by-step assistance as you build your site.',
 					'wp-plugin-bluehost'
 				) }
 				disabled={ helpCenterLocked }

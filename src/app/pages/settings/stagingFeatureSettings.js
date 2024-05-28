@@ -2,44 +2,38 @@ import { useState } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
 import { Alert, ToggleField } from '@newfold/ui-component-library';
 import AppStore from '../../data/store';
-import { featureToggle } from '../../util/helpers';
+import { featureToggle, updateUI } from '../../util/helpers';
 import { useNotification } from 'App/components/notifications';
 
-const WonderBlocksSettings = () => {
+const StagingFeatureSettings = () => {
 	const { store, setStore } = useContext( AppStore );
-	const [ wonderBlocks, setWonderBlocks ] = useState(
-		store.features.patterns
-	);
-	const [ wonderBlocksLocked, setWonderBlocksLocked ] = useState(
-		! store.toggleableFeatures.patterns
+	const [ staging, setStaging ] = useState( store.features.staging );
+	const [ stagingLocked, setStagingLocked ] = useState(
+		! store.toggleableFeatures.staging
 	);
 	const [ isError, setError ] = useState( false );
 	const notify = useNotification();
 
-	const getWonderBlocksNoticeTitle = () => {
-		return wonderBlocks
-			? __( 'Wonder Blocks Enabled', 'wp-plugin-bluehost' )
-			: __( 'Wonder Blocks Disabled', 'wp-plugin-bluehost' );
+	const getStagingNoticeTitle = () => {
+		return staging
+			? __( 'Staging Enabled', 'wp-plugin-bluehost' )
+			: __( 'Staging Disabled', 'wp-plugin-bluehost' );
 	};
-	const getWonderBlocksNoticeText = () => {
-		return wonderBlocks
+	const getStagingNoticeText = () => {
+		return staging
 			? __(
-					'Create new content to see Wonder Blocks in action.',
+					'You need to reload the page to manage Staging.',
 					'wp-plugin-bluehost'
 			  )
-			: __(
-					'Wonder Blocks will no longer display.',
-					'wp-plugin-bluehost'
-			  );
+			: __( 'Staging will no longer display.', 'wp-plugin-bluehost' );
 	};
 
-	const toggleWonderBlocks = () => {
-		featureToggle( 'patterns', ( response ) => {
-			// console.log( response );
+	const toggleStaging = () => {
+		featureToggle( 'staging', ( response ) => {
 			if ( response.success ) {
-				setWonderBlocks( ! wonderBlocks );
+				setStaging( ! staging );
 			} else {
-				setWonderBlocksLocked( true );
+				setStagingLocked( true );
 				notifyError();
 			}
 		} );
@@ -68,23 +62,24 @@ const WonderBlocksSettings = () => {
 	useUpdateEffect( () => {
 		setStore( {
 			...store,
-			wonderBlocks,
+			staging,
 		} );
-		notifySuccess( getWonderBlocksNoticeTitle, getWonderBlocksNoticeText );
-	}, [ wonderBlocks ] );
+		notifySuccess( getStagingNoticeTitle, getStagingNoticeText );
+		updateUI( '.wppbh-app-navitem-Staging', staging );
+	}, [ staging ] );
 
 	return (
 		<div className="nfd-flex nfd-flex-col nfd-gap-6">
 			<ToggleField
-				id="help-center-toggle"
-				label="Wonder Blocks"
+				id="staging-toggle"
+				label="Staging"
 				description={ __(
-					'Wonder Blocks provides a library of customizable block patterns and page templates.',
+					'The staging feature provides a way to copy a site to test new updates, features or content.',
 					'wp-plugin-bluehost'
 				) }
-				disabled={ wonderBlocksLocked }
-				checked={ wonderBlocks }
-				onChange={ toggleWonderBlocks }
+				disabled={ stagingLocked }
+				checked={ staging }
+				onChange={ toggleStaging }
 			/>
 
 			{ isError && (
@@ -99,4 +94,4 @@ const WonderBlocksSettings = () => {
 	);
 };
 
-export default WonderBlocksSettings;
+export default StagingFeatureSettings;
