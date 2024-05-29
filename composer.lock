@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e2b0e3e7dfbfc769a19e1f0abe1c269a",
+    "content-hash": "f634968d6e647346ab9624a415b15218",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -835,16 +835,16 @@
         },
         {
             "name": "newfold-labs/wp-module-help-center",
-            "version": "dev-feature/help-center-feature",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-help-center.git",
-                "reference": "8486ea254648ac0782561ff6b121de0fd6390009"
+                "reference": "da9d0d08d5067285c7d36d31b8db58434af2184e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/8486ea254648ac0782561ff6b121de0fd6390009",
-                "reference": "8486ea254648ac0782561ff6b121de0fd6390009",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/da9d0d08d5067285c7d36d31b8db58434af2184e",
+                "reference": "da9d0d08d5067285c7d36d31b8db58434af2184e",
                 "shasum": ""
             },
             "require": {
@@ -875,10 +875,10 @@
             ],
             "description": "HelpCenter",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/feature/help-center-feature",
+                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/2.0.0",
                 "issues": "https://github.com/newfold-labs/wp-module-help-center/issues"
             },
-            "time": "2024-05-28T19:50:56+00:00"
+            "time": "2024-05-29T14:37:29+00:00"
         },
         {
             "name": "newfold-labs/wp-module-install-checker",
@@ -1529,16 +1529,16 @@
         },
         {
             "name": "newfold-labs/wp-module-staging",
-            "version": "dev-add/staging-feature",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-staging.git",
-                "reference": "ae85ec034b3764438d53b08df409883a48435f3f"
+                "reference": "dae822eec83521f6538844877ee98e637004514d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/ae85ec034b3764438d53b08df409883a48435f3f",
-                "reference": "ae85ec034b3764438d53b08df409883a48435f3f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/dae822eec83521f6538844877ee98e637004514d",
+                "reference": "dae822eec83521f6538844877ee98e637004514d",
                 "shasum": ""
             },
             "require": {
@@ -1576,10 +1576,10 @@
             ],
             "description": "Newfold module for staging functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-staging/tree/add/staging-feature",
+                "source": "https://github.com/newfold-labs/wp-module-staging/tree/2.0.0",
                 "issues": "https://github.com/newfold-labs/wp-module-staging/issues"
             },
-            "time": "2024-05-21T21:27:16+00:00"
+            "time": "2024-05-29T14:18:17+00:00"
         },
         {
             "name": "wp-cli/wp-config-transformer",
@@ -4189,12 +4189,6 @@
     ],
     "aliases": [
         {
-            "package": "newfold-labs/wp-module-help-center",
-            "version": "dev-feature/help-center-feature",
-            "alias": "2.0.0",
-            "alias_normalized": "2.0.0.0"
-        },
-        {
             "package": "newfold-labs/wp-module-patterns",
             "version": "dev-add/feature-module",
             "alias": "1.9.0",
@@ -4205,20 +4199,12 @@
             "version": "dev-add/feature-module",
             "alias": "1.9.0",
             "alias_normalized": "1.9.0.0"
-        },
-        {
-            "package": "newfold-labs/wp-module-staging",
-            "version": "dev-add/staging-feature",
-            "alias": "2.0.0",
-            "alias_normalized": "2.0.0.0"
         }
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "newfold-labs/wp-module-help-center": 20,
         "newfold-labs/wp-module-patterns": 20,
         "newfold-labs/wp-module-performance": 20,
-        "newfold-labs/wp-module-staging": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
