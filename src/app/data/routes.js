@@ -17,6 +17,7 @@ import Performance from '../pages/performance';
 import Settings from '../pages/settings';
 import Staging from '../pages/staging';
 import Help from '../pages/help';
+import Admin from '../pages/admin';
 import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
 import { ReactComponent as HelpIcon } from '../components/icons/HelpIcon.svg';
 import PagesAndPosts from '../pages/pages-and-posts';
@@ -133,7 +134,7 @@ export const routes = [
 		title: __( 'Performance', 'wp-plugin-bluehost' ),
 		Component: Performance,
 		Icon: BoltIcon,
-		condition: 'atomic' !== window.NewfoldRuntime.context.platform,
+		condition: await window.NewfoldFeatures.isEnabled( 'performance' ),
 	},
 	{
 		name: '/settings',
@@ -147,7 +148,7 @@ export const routes = [
 		title: __( 'Staging', 'wp-plugin-bluehost' ),
 		Component: Staging,
 		Icon: WrenchScrewdriverIcon,
-		condition: 'atomic' !== window.NewfoldRuntime.context.platform,
+		condition: await window.NewfoldFeatures.isEnabled( 'staging' ),
 	},
 	{
 		name: '/help',
@@ -158,6 +159,12 @@ export const routes = [
 		action: NewfoldRuntime.hasCapability( 'canAccessHelpCenter' )
 			? HelpCenterAI
 			: false,
+	},
+	{
+		name: '/admin',
+		title: __( 'Admin', 'wp-plugin-bluehost' ),
+		Component: Admin,
+		condition: true,
 	},
 ];
 
