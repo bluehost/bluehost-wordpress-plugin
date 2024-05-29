@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "58534e07ba922d999682c7939a7f3f71",
+    "content-hash": "bc7a7f18d475189ff7d20bdbabaae096",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -451,19 +451,20 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.5.0",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "42bdfdece373e194b405f6b9a9e2a9e07154dfb9"
+                "reference": "b9cb6839f891ee05b77b98ca2f961fc8dfac5112"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/42bdfdece373e194b405f6b9a9e2a9e07154dfb9",
-                "reference": "42bdfdece373e194b405f6b9a9e2a9e07154dfb9",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/b9cb6839f891ee05b77b98ca2f961fc8dfac5112",
+                "reference": "b9cb6839f891ee05b77b98ca2f961fc8dfac5112",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "newfold-labs/wp-module-loader": "^1.0",
                 "wp-forge/helpers": "^2.0",
                 "wp-forge/wp-query-builder": "^1.0",
@@ -493,6 +494,9 @@
                 "fix": [
                     "vendor/bin/phpcbf . --standard=phpcs.xml"
                 ],
+                "cs-changes": [
+                    "updated_files=$( git status | grep '\\(new file\\|modified\\):\\s.*.php$' | cut -c14- | awk '{ printf(\"%s \", $0) }' ); echo \"\\nChecking\"$(git status | grep '\\(new file\\|modified\\):\\s.*.php$' | tail -n+2 | wc -l)\" files\"; phpcbf $(echo $updated_files); phpcs $(echo $updated_files);"
+                ],
                 "lint": [
                     "vendor/bin/phpcs . --standard=phpcs.xml -s"
                 ]
@@ -502,10 +506,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.5.0",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.5.1",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-05-15T00:31:16+00:00"
+            "time": "2024-05-28T14:16:02+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
