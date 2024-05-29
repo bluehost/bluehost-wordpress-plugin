@@ -164,7 +164,6 @@ export const routes = [
 		name: '/admin',
 		title: __( 'Admin', 'wp-plugin-bluehost' ),
 		Component: Admin,
-		Icon: WrenchScrewdriverIcon,
 		condition: true,
 	},
 ];
