@@ -26,7 +26,7 @@ describe( 'Help Page', function () {
 	} );
 
 	it( 'Is Accessible', () => {
-		cy.checkA11y( '.wppbh-app-body' , {timeout : 20000 });
+		cy.checkA11y( '.wppbh-app-body' );
 	} );
 
 	it( 'Phone Card Exists', () => {
