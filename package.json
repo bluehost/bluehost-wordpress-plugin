@@ -1,6 +1,6 @@
 {
     "name": "bluehost-wordpress-plugin",
-    "version": "3.10.2",
+    "version": "3.11.0",
     "description": "WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
     "author": {
         "name": "Bluehost",
