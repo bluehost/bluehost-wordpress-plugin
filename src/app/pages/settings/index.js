@@ -47,10 +47,15 @@ const Settings = () => {
 				>
 					<Container.SettingsField
 						title={ __( 'Features', 'wp-plugin-bluehost' ) }
-					></Container.SettingsField>
-					<WonderBlocksSettings />
-					<br />
-					<HelpCenterSettings />
+						description={ __(
+							'Customize the available features as you manage your website.',
+							'wp-plugin-bluehost'
+						) }
+					>
+						<WonderBlocksSettings />
+						<br />
+						<HelpCenterSettings />
+					</Container.SettingsField>
 				</Container.Block>
 
 				<Container.Block
