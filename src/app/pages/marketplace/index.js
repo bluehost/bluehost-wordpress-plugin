@@ -1,6 +1,6 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect } from '@wordpress/element';
-import { useLocation, useMatch } from 'react-router-dom';
+import { useLocation, useMatch, useNavigate } from 'react-router-dom';
 import classnames from 'classnames';
 import { Container, Page } from '@newfold/ui-component-library';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
@@ -49,6 +49,7 @@ const MarketplacePage = () => {
 		useEffect,
 		useLocation,
 		useMatch,
+		useNavigate,
 		NewfoldRuntime,
 	};
 
