@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0cfa67d6d87adb5abeaf89ab4e7f0f8",
+    "content-hash": "e3b877b88b3047b4843928adb0d767bc",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -686,16 +686,16 @@
         },
         {
             "name": "newfold-labs/wp-module-facebook",
-            "version": "v1.0.7",
+            "version": "v1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-facebook.git",
-                "reference": "77a433621894590b3d38c511d880d830fb3b4b64"
+                "reference": "c63bbf439eb6dd41d2923712794c2a49ff119101"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-facebook/zipball/77a433621894590b3d38c511d880d830fb3b4b64",
-                "reference": "77a433621894590b3d38c511d880d830fb3b4b64",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-facebook/zipball/c63bbf439eb6dd41d2923712794c2a49ff119101",
+                "reference": "c63bbf439eb6dd41d2923712794c2a49ff119101",
                 "shasum": ""
             },
             "require": {
@@ -721,10 +721,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-facebook/tree/v1.0.7",
+                "source": "https://github.com/newfold-labs/wp-module-facebook/tree/v1.0.8",
                 "issues": "https://github.com/newfold-labs/wp-module-facebook/issues"
             },
-            "time": "2024-05-03T10:09:41+00:00"
+            "time": "2024-05-31T10:37:34+00:00"
         },
         {
             "name": "newfold-labs/wp-module-features",
