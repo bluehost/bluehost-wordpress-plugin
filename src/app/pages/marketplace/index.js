@@ -55,7 +55,11 @@ const MarketplacePage = () => {
 
 	return (
 		<Page className={ 'wppbh-app-marketplace-page' }>
-			<Container className={ 'wppbh-app-marketplace-container' }>
+			<Container
+				className={
+					'wppbh-app-marketplace-container nfd-overflow-hidden'
+				}
+			>
 				<NewfoldMarketplace
 					methods={ moduleMethods }
 					constants={ moduleConstants }
