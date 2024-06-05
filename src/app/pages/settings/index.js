@@ -1,10 +1,13 @@
 import classNames from 'classnames';
 import { Container, Page } from '@newfold/ui-component-library';
 import useContainerBlockIsTarget from 'App/util/hooks/useContainerBlockTarget';
-import AutomaticUpdates from './automaticUpdates';
-import CommentSettings from './commentSettings';
 import ComingSoon from './comingSoon';
+import AutomaticUpdates from './automaticUpdates';
+import HelpCenterSettings from './helpCenterSettings';
+import WonderBlocksSettings from './wonderBlocksSettings';
 import ContentSettings from './contentSettings';
+import CommentSettings from './commentSettings';
+import SocialMediaAccounts from './socialMediaAccounts';
 
 const Settings = () => {
 	return (
@@ -29,6 +32,30 @@ const Settings = () => {
 					) }
 				>
 					<ComingSoon />
+				</Container.Block>
+
+				<Container.Block
+					separator={ true }
+					className={ 'wppbh-app-settings-social' }
+				>
+					<SocialMediaAccounts />
+				</Container.Block>
+
+				<Container.Block
+					separator={ true }
+					className={ 'wppbh-app-settings-wonder-blocks' }
+				>
+					<Container.SettingsField
+						title={ __( 'Features', 'wp-plugin-bluehost' ) }
+						description={ __(
+							'Customize the available features as you manage your website.',
+							'wp-plugin-bluehost'
+						) }
+					>
+						<WonderBlocksSettings />
+						<br />
+						<HelpCenterSettings />
+					</Container.SettingsField>
 				</Container.Block>
 
 				<Container.Block

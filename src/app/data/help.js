@@ -93,7 +93,7 @@ const help = [
 		),
 		icon: false,
 		cta: __( 'More Info', 'wp-plugin-bluehost' ),
-		url: 'https://www.bluehost.com/learn/?utm_campaign=&utm_content=help_blog_link&utm_term=learn_stuff&utm_medium=brand_plugin&utm_source=wp-admin/admin.php?page=bluehost#/help',
+		url: 'https://www.bluehost.com/blog/events/?utm_campaign=&utm_content=help_blog_link&utm_term=learn_stuff&utm_medium=brand_plugin&utm_source=wp-admin',
 	},
 	{
 		name: 'website',
