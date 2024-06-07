@@ -57,7 +57,7 @@ const MarketplacePage = () => {
 		<Page className={ 'wppbh-app-marketplace-page' }>
 			<Container
 				className={
-					'wppbh-app-marketplace-container nfd-overflow-hidden'
+					'wppbh-app-marketplace-container nfd-overflow-clip'
 				}
 			>
 				<NewfoldMarketplace
