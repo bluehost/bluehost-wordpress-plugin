@@ -1,7 +1,7 @@
 // <reference types="Cypress" />
 
-describe( 'Page', () => {
-	before( () => {
+describe( 'Page', { testIsolation: true }, () => {
+	beforeEach( () => {
 		cy.login();
 		cy.visit( '/wp-admin/site-health.php?tab=debug' );
 	} );

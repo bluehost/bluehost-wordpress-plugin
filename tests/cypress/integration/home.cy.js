@@ -1,9 +1,12 @@
 // <reference types="Cypress" />
+const webinarsFixture = require( '../fixtures/webinars.json' );
+const webinarsPastFixture = require( '../fixtures/webinars-past.json' );
+const webinarsInactiveFixture = require( '../fixtures/webinars-inactive.json' );
 
-describe( 'Home Page', function () {
+describe( 'Home Page', { testIsolation: true }, function () {
 	let NewfoldRuntime;
 
-	before( () => {
+	beforeEach( () => {
 		cy.visit(
 			'/wp-admin/admin.php?page=' + Cypress.env( 'pluginId' ) + '#/home'
 		);
@@ -12,7 +15,6 @@ describe( 'Home Page', function () {
 			.then( ( data ) => {
 				NewfoldRuntime = data;
 			} );
-		cy.injectAxe();
 	} );
 
 	it( 'Site Info Exists', () => {
@@ -23,6 +25,7 @@ describe( 'Home Page', function () {
 	} );
 
 	it( 'Is Accessible', () => {
+		cy.injectAxe();
 		cy.wait( 500 );
 		cy.checkA11y( '.wppbh-app-body' );
 	} );
@@ -55,12 +58,16 @@ describe( 'Home Page', function () {
 			.should( 'be.visible' );
 	} );
 
-	it( 'Webinars Section Exists', () => {
+	it( 'Webinars Section Exists and Renders Properly', () => {
 		cy.intercept(
-			'https://cdn.hiive.space/resources/bluehost-webinars.json',
-			{ fixture: 'webinars.json' }
-		);
+			{
+				method: 'GET',
+				url: 'https://cdn.hiive.space/resources/bluehost-webinars.json',
+			},
+			webinarsFixture
+		).as( 'webinarsFixture' );
 		cy.reload();
+		cy.wait( '@webinarsFixture' );
 		cy.get( '.wppbh-webinars-banner-section' )
 			.contains(
 				'h2',
@@ -68,9 +75,7 @@ describe( 'Home Page', function () {
 			)
 			.scrollIntoView()
 			.should( 'be.visible' );
-	} );
 
-	it( 'Webinars Section Renders Correctly', () => {
 		// Title
 		cy.get( '.wppbh-webinars-banner-section' )
 			.contains(
@@ -120,19 +125,27 @@ describe( 'Home Page', function () {
 
 	it( "Webinars Section Doesn't Render When Active Propety is False", () => {
 		cy.intercept(
-			'https://cdn.hiive.space/resources/bluehost-webinars.json',
-			{ fixture: 'webinars-inactive.json' }
-		);
+			{
+				method: 'GET',
+				url: 'https://cdn.hiive.space/resources/bluehost-webinars.json',
+			},
+			webinarsInactiveFixture
+		).as( 'webinarsInactiveFixture' );
 		cy.reload();
+		cy.wait( '@webinarsInactiveFixture' );
 		cy.get( '.wppbh-webinars-banner-section' ).should( 'not.exist' );
 	} );
 
 	it( "Webinars Section Doesn't Render Items Are in the Past", () => {
 		cy.intercept(
-			'https://cdn.hiive.space/resources/bluehost-webinars.json',
-			{ fixture: 'webinars-past.json' }
-		);
+			{
+				method: 'GET',
+				url: 'https://cdn.hiive.space/resources/bluehost-webinars.json',
+			},
+			webinarsPastFixture
+		).as( 'webinarsPastFixture' );
 		cy.reload();
+		cy.wait( '@webinarsPastFixture' );
 		cy.get( '.wppbh-webinars-banner-section' ).should( 'not.exist' );
 	} );
 } );
