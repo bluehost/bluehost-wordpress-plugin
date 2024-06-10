@@ -17,7 +17,7 @@ const SocialMediaAccounts = () => {
 			setFbLogin( res === 'token not found!' ? false : true );
 			if ( Array.isArray( res ) ) {
 				setLoginInfo( res[ 0 ] );
-			} else { 
+			} else {
 				setLoginInfo( res );
 			}
 		} );
