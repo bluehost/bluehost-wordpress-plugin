@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3197dd5d34c42e25a193a02e09fc1e8b",
+    "content-hash": "5b9516ff091e5fa5a7b563d6beabbaa9",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1066,16 +1066,16 @@
         },
         {
             "name": "newfold-labs/wp-module-migration",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-migration.git",
-                "reference": "69407754a69cd6e8bc6fb48e9daa361285541e45"
+                "reference": "64e9c6cb82382fcc063e3362cf50dff9e89a148d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/69407754a69cd6e8bc6fb48e9daa361285541e45",
-                "reference": "69407754a69cd6e8bc6fb48e9daa361285541e45",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/64e9c6cb82382fcc063e3362cf50dff9e89a148d",
+                "reference": "64e9c6cb82382fcc063e3362cf50dff9e89a148d",
                 "shasum": ""
             },
             "require": {
@@ -1113,10 +1113,10 @@
             ],
             "description": "Initiates the migration process",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-migration/tree/v1.0.3",
+                "source": "https://github.com/newfold-labs/wp-module-migration/tree/v1.0.4",
                 "issues": "https://github.com/newfold-labs/wp-module-migration/issues"
             },
-            "time": "2024-05-27T06:29:53+00:00"
+            "time": "2024-06-07T07:19:16+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
@@ -1165,16 +1165,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "2.3.2",
+            "version": "2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "5d73dec28f11e3ab305ee3ebd05c118636af4d70"
+                "reference": "61bc13e39dee05de8fe9a13a0b68c69bc5bab83c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/5d73dec28f11e3ab305ee3ebd05c118636af4d70",
-                "reference": "5d73dec28f11e3ab305ee3ebd05c118636af4d70",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/61bc13e39dee05de8fe9a13a0b68c69bc5bab83c",
+                "reference": "61bc13e39dee05de8fe9a13a0b68c69bc5bab83c",
                 "shasum": ""
             },
             "require": {
@@ -1220,23 +1220,23 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.3.2",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.3.3",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2024-05-28T09:12:14+00:00"
+            "time": "2024-06-05T12:14:42+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
-            "version": "1.1.10",
+            "version": "1.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
-                "reference": "32963151eda0eb2f93a77a9a0fa55d1ec8c9aed5"
+                "reference": "16b522291f29fad9d3067da1634a7362ad889953"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/32963151eda0eb2f93a77a9a0fa55d1ec8c9aed5",
-                "reference": "32963151eda0eb2f93a77a9a0fa55d1ec8c9aed5",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/16b522291f29fad9d3067da1634a7362ad889953",
+                "reference": "16b522291f29fad9d3067da1634a7362ad889953",
                 "shasum": ""
             },
             "require": {
@@ -1271,10 +1271,10 @@
             ],
             "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.1.10",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.1.11",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
             },
-            "time": "2024-05-27T09:30:23+00:00"
+            "time": "2024-06-05T08:28:57+00:00"
         },
         {
             "name": "newfold-labs/wp-module-patterns",
@@ -4215,5 +4215,5 @@
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
