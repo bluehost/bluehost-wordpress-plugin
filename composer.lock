@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3197dd5d34c42e25a193a02e09fc1e8b",
+    "content-hash": "271c6dd754bb2fdb53347957a760b7b0",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -627,16 +627,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.3.31",
+            "version": "v1.3.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "24ef99c9b697f2c30172a95c5f6fa0470b9b2604"
+                "reference": "f984224d5e4436e34896940f5b8db14a1cc0aefd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/24ef99c9b697f2c30172a95c5f6fa0470b9b2604",
-                "reference": "24ef99c9b697f2c30172a95c5f6fa0470b9b2604",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/f984224d5e4436e34896940f5b8db14a1cc0aefd",
+                "reference": "f984224d5e4436e34896940f5b8db14a1cc0aefd",
                 "shasum": ""
             },
             "require": {
@@ -679,10 +679,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.31",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.32",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-05-20T12:40:55+00:00"
+            "time": "2024-06-12T09:56:35+00:00"
         },
         {
             "name": "newfold-labs/wp-module-facebook",
@@ -1227,16 +1227,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
-            "version": "1.1.10",
+            "version": "1.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
-                "reference": "32963151eda0eb2f93a77a9a0fa55d1ec8c9aed5"
+                "reference": "efce79142be2deb7382b0c500a17be75fc9a5708"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/32963151eda0eb2f93a77a9a0fa55d1ec8c9aed5",
-                "reference": "32963151eda0eb2f93a77a9a0fa55d1ec8c9aed5",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/efce79142be2deb7382b0c500a17be75fc9a5708",
+                "reference": "efce79142be2deb7382b0c500a17be75fc9a5708",
                 "shasum": ""
             },
             "require": {
@@ -1271,10 +1271,10 @@
             ],
             "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.1.10",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.1.12",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
             },
-            "time": "2024-05-27T09:30:23+00:00"
+            "time": "2024-06-14T12:45:33+00:00"
         },
         {
             "name": "newfold-labs/wp-module-patterns",
@@ -4215,5 +4215,5 @@
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
