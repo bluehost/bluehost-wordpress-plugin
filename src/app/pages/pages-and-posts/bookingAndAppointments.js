@@ -34,14 +34,30 @@ const BookingAndAppointments = () => {
 					) }
 				</p>
 			</Card.Content>
-			<div className="nfd-flex nfd-justify-end nfd-gap-6 nfd-items-center">
-				<a href="edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1">
-					{ __( 'View all', 'wp-plugin-bluehost' ) }
-				</a>
-				<a href="edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1">
-					<Button>{ __( 'Add New', 'wp-plugin-bluehost' ) }</Button>
-				</a>
-			</div>
+			{ window.NewfoldRuntime.isYithBookingActive &&
+			window.NewfoldRuntime.isWoocommerceActive ? (
+				<>
+					<a href="edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1">
+						{ __( 'View all', 'wp-plugin-bluehost' ) }
+					</a>
+					<a href="edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1">
+						<Button>
+							{ __( 'Add New', 'wp-plugin-bluehost' ) }
+						</Button>
+					</a>
+				</>
+			) : (
+				<Button
+					as="a"
+					type="button"
+					data-ctb-id={ 'e2f4caa1-411c-468b-86b1-a3c4e4e8cec6' }
+					data-action="load-nfd-ctb"
+					target="_blank"
+					variant="upsell"
+				>
+					{ __( 'Buy Now', 'wp-plugin-bluehost' ) }
+				</Button>
+			) }
 		</Card>
 	);
 };
