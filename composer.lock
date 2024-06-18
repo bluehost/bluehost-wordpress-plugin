@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3197dd5d34c42e25a193a02e09fc1e8b",
+    "content-hash": "99b7c1ad2aec59177f25bdd742adaa23",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1165,16 +1165,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "2.3.2",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "5d73dec28f11e3ab305ee3ebd05c118636af4d70"
+                "reference": "243277e79a3bd42f16b4d186f4575bf46fea67c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/5d73dec28f11e3ab305ee3ebd05c118636af4d70",
-                "reference": "5d73dec28f11e3ab305ee3ebd05c118636af4d70",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/243277e79a3bd42f16b4d186f4575bf46fea67c7",
+                "reference": "243277e79a3bd42f16b4d186f4575bf46fea67c7",
                 "shasum": ""
             },
             "require": {
@@ -1220,10 +1220,10 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.3.2",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.3.4",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2024-05-28T09:12:14+00:00"
+            "time": "2024-06-14T13:15:51+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
@@ -4215,5 +4215,5 @@
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
