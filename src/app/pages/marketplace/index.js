@@ -1,11 +1,11 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect } from '@wordpress/element';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useMatch, useNavigate } from 'react-router-dom';
 import classnames from 'classnames';
 import { Container, Page } from '@newfold/ui-component-library';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 // component sourced from marketplace module
-import { default as NewfoldMarketplace } from '@modules/wp-module-marketplace/components/marketplace/';
+import { default as NewfoldMarketplace } from '@modules/wp-module-marketplace/components/';
 
 const MarketplacePage = () => {
 	// constants to pass to module
@@ -26,6 +26,18 @@ const MarketplacePage = () => {
 				'bluehost-wordpress-plugin'
 			),
 			loadMore: __( 'Load More', 'bluehost-wordpress-plugin' ),
+			productPage: {
+				error: {
+					title: __(
+						'Oops! Something Went Wrong',
+						'bluehost-wordpress-plugin'
+					),
+					description: __(
+						'An error occurred while loading the content. Please try again later.',
+						'bluehost-wordpress-plugin'
+					),
+				},
+			},
 		},
 	};
 
@@ -36,12 +48,18 @@ const MarketplacePage = () => {
 		useState,
 		useEffect,
 		useLocation,
+		useMatch,
+		useNavigate,
 		NewfoldRuntime,
 	};
 
 	return (
 		<Page className={ 'wppbh-app-marketplace-page' }>
-			<Container className={ 'wppbh-app-marketplace-container' }>
+			<Container
+				className={
+					'wppbh-app-marketplace-container nfd-overflow-clip'
+				}
+			>
 				<NewfoldMarketplace
 					methods={ moduleMethods }
 					constants={ moduleConstants }
