@@ -43,7 +43,7 @@
         "@wordpress/element": "^6.1.0",
         "@wordpress/html-entities": "^4.1.0",
         "@wordpress/i18n": "^4.58.0",
-        "@wordpress/icons": "^9.49.0",
+        "@wordpress/icons": "^10.1.0",
         "classnames": "^2.5.1",
         "jquery": "^3.7.1",
         "lodash": "^4.17.21",
