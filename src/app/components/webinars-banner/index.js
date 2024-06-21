@@ -114,7 +114,7 @@ const WebinarsBanner = () => {
 
 					<div className="nfd-flex nfd-flex-col nfd-gap-4 nfd-w-full">
 						<Title as="h2" className="nfd-text-base">
-							FREE Monthly Webinar: { upcomingWebinar.title }
+							{ upcomingWebinar.title }
 						</Title>
 
 						{ ( upcomingWebinar.hasDescription ||
