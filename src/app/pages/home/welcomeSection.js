@@ -18,9 +18,9 @@ const WelcomeSection = ( {} ) => {
 			() => setStore( { ...store, comingSoon: ! store.comingSoon } )
 		);
 
-		useUpdateEffect(() => {
-			comingSoonAdminbarToggle(store.comingSoon)
-		}, [store.comingSoon])
+		useUpdateEffect( () => {
+			comingSoonAdminbarToggle( store.comingSoon )
+		}, [store.comingSoon] )
 
 	return (
 		<OnboardingScreen
