@@ -1,125 +1,31 @@
-import {
-	CpuChipIcon,
-	CreditCardIcon,
-	EnvelopeIcon,
-	GiftIcon,
-	IdentificationIcon,
-	ShieldCheckIcon,
-} from '@heroicons/react/24/outline';
+import { CpuChipIcon } from '@heroicons/react/24/outline';
 import { Card, Title } from '@newfold/ui-component-library';
-import {
-	addUtmParams,
-	getPlatformPathUrl,
-	getPlatformBaseUrl,
-	isJarvis,
-	productApiFetch,
-} from '../../util/helpers';
-import classNames from 'classnames';
-import { useEffect } from 'react';
-import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
-import apiFetch from '@wordpress/api-fetch';
-
-const base = [
-	{
-		icon: CpuChipIcon,
-		id: 'account_link',
-		href: addUtmParams( getPlatformPathUrl( 'hosting/list', 'app' ) ),
-		label: isJarvis()
-			? __( 'Hosting', 'bluehost-wordpress-plugin' )
-			: __( 'Control Panel', 'bluehost-wordpress-plugin' ),
-		color: 'nfd-fill-gray',
-	},
-	{
-		icon: GiftIcon,
-		id: 'products_link',
-		href: addUtmParams(
-			getPlatformPathUrl( 'renewal-center', 'account_center#products' )
-		),
-		label: isJarvis()
-			? __( 'Renewal Center', 'bluehost-wordpress-plugin' )
-			: __( 'Products', 'bluehost-wordpress-plugin' ),
-		color: 'nfd-fill-primary-dark',
-	},
-	{
-		icon: CreditCardIcon,
-		id: 'billing_link',
-		href: addUtmParams(
-			getPlatformPathUrl( 'billing-center', 'account_center#billing' )
-		),
-		label: isJarvis()
-			? __( 'Payment Methods', 'bluehost-wordpress-plugin' )
-			: __( 'Billing', 'bluehost-wordpress-plugin' ),
-		color: 'nfd-fill-primary',
-	},
-	{
-		icon: EnvelopeIcon,
-		id: 'mail_link',
-		href: addUtmParams( getPlatformPathUrl( 'home', 'app#/email-office' ) ),
-		label: isJarvis()
-			? __( 'Mail', 'bluehost-wordpress-plugin' )
-			: __( 'Mail & Office', 'bluehost-wordpress-plugin' ),
-		color: 'nfd-fill-[#5b5b5b]',
-	},
-	{
-		icon: ShieldCheckIcon,
-		id: 'security_link',
-		href: addUtmParams(
-			getPlatformPathUrl( 'account-center', 'account_center#security' )
-		),
-		label: __( 'Security', 'bluehost-wordpress-plugin' ),
-		color: 'nfd-fill-[#17b212]',
-	},
-	{
-		icon: IdentificationIcon,
-		id: 'validation_token_link',
-		href: isJarvis()
-			? addUtmParams( getPlatformPathUrl( 'account-center' ) )
-			: addUtmParams( getPlatformBaseUrl( '/cgi/token' ) ),
-		label: isJarvis()
-			? __( 'Profile', 'bluehost-wordpress-plugin' )
-			: __( 'Validation Token', 'bluehost-wordpress-plugin' ),
-		color: 'nfd-fill-[#f89c24]',
-	},
-];
+import { productApiFetch } from '../../util/helpers';
 
 const ProductCard = ( { props } ) => {
-	const [ productData, setProductData ] = useState();
+	const [ productData, setProductData ] = useState( '' );
 	useEffect( () => {
-		return apiFetch( {
-			url: NewfoldRuntime.createApiUrl( '/newfold-data/v1/events' ),
-			method: 'POST',
-		} )
-			.then( ( response ) => {
-				setProductData( response );
-			} )
-			.catch( ( error ) => {
-				console.error( error );
-			} );
+		productApiFetch( [], console.error, ( response ) => {
+			setProductData( response );
+		} );
 	}, [] );
 	return (
 		<Card { ...props }>
 			<Card.Content>
-				<Title size={ 2 }>Bluehost Account</Title>
-				<ul className="nfd-grid nfd-grid-cols-3 nfd-h-full">
-					{ base.map( ( link ) => (
-						<li
-							key={ link.id }
-							className="nfd-flex nfd-items-center nfd-justify-center"
-						>
-							<a
-								href={ link.href }
-								className={ classNames(
-									'nfd-flex nfd-flex-col nfd-gap-3',
-									'nfd-items-center nfd-text-center',
-									'nfd-text-[#404040] hover:nfd-text-primary'
-								) }
+				<Title size={ 2 }>Active Products</Title>
+				{ productData && (
+					<ul className="nfd-grid nfd-grid-cols-3 nfd-h-full">
+						{ productData.map( ( link ) => (
+							<li
+								key={ link.prodId }
+								className="nfd-flex nfd-items-center nfd-justify-center"
 							>
-								<link.icon className={ 'nfd-w-12' } />
-								{ link.label }
-							</a>
-						</li>
-					) ) }
-				</ul>
+								<CpuChipIcon className={ 'nfd-w-12' } />
+								{ link.prodName }
+							</li>
+						) ) }
+					</ul>
+				) }
 			</Card.Content>
 		</Card>
 	);
