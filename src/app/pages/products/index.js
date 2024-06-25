@@ -8,7 +8,7 @@ const Products = () => {
 			<WebinarsBanner />
 			<Container className="wppbh-account-help-section">
 				<Container.Header
-					title={ __( 'Active Products', 'wp-plugin-bluehost' ) }
+					title={ __( 'Products', 'wp-plugin-bluehost' ) }
 				></Container.Header>
 				<Container.Block>
 					<div className="nfd-grid nfd-grid-cols-1 nfd-gap-6">
