@@ -17,7 +17,7 @@ describe( 'Home Page', function () {
 
 	it( 'Site Info Exists', () => {
 		cy.get( '.wppbh-app-site-info' )
-			.contains( 'h3', NewfoldRuntime.site.title )
+			.contains( 'h3', NewfoldRuntime.siteTitle )
 			.scrollIntoView()
 			.should( 'be.visible' );
 	} );
