@@ -1,12 +1,20 @@
-import { CpuChipIcon } from '@heroicons/react/24/outline';
-import { Card, Title, Table } from '@newfold/ui-component-library';
+import { Card, Table } from '@newfold/ui-component-library';
 import { productApiFetch } from '../../util/helpers';
 
+const formatDate = ( dateString ) => {
+	const date = new Date( dateString );
+	const month = ( date.getMonth() + 1 ).toString().padStart( 2, '0' );
+	const day = date.getDate().toString().padStart( 2, '0' );
+	const year = date.getFullYear();
+	return `${ month }/${ day }/${ year }`;
+};
+
 const determineMessage = ( autoRenewFlag, expirationDate ) => {
+	const formattedDate = formatDate( expirationDate );
 	if ( autoRenewFlag === true ) {
-		return `Auto-renews: ${ expirationDate }`;
+		return `Auto-renews: ${ formattedDate }`;
 	}
-	return `Expires: ${ expirationDate }`;
+	return `Expires: ${ formattedDate }`;
 };
 
 const ProductCard = ( { props } ) => {
