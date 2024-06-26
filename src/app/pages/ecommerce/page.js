@@ -34,7 +34,7 @@ const ECommerce = () => {
 						...store,
 						comingSoon: ! store.comingSoon,
 					} );
-					comingSoonAdminbarToggle(!store.comingSoon)
+					comingSoonAdminbarToggle( ! store.comingSoon );
 				}
 			),
 	};
