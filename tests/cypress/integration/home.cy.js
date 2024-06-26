@@ -17,7 +17,7 @@ describe( 'Home Page', function () {
 
 	it( 'Site Info Exists', () => {
 		cy.get( '.wppbh-app-site-info' )
-			.contains( 'h3', NewfoldRuntime.site.title )
+			.contains( 'h3', NewfoldRuntime.siteTitle )
 			.scrollIntoView()
 			.should( 'be.visible' );
 	} );
@@ -62,10 +62,7 @@ describe( 'Home Page', function () {
 		);
 		cy.reload();
 		cy.get( '.wppbh-webinars-banner-section' )
-			.contains(
-				'h2',
-				'FREE Monthly Webinar: Build your brand with WordPress'
-			)
+			.contains( 'h2', 'Build your brand with WordPress' )
 			.scrollIntoView()
 			.should( 'be.visible' );
 	} );
@@ -73,10 +70,7 @@ describe( 'Home Page', function () {
 	it( 'Webinars Section Renders Correctly', () => {
 		// Title
 		cy.get( '.wppbh-webinars-banner-section' )
-			.contains(
-				'h2',
-				'FREE Monthly Webinar: Build your brand with WordPress'
-			)
+			.contains( 'h2', 'Build your brand with WordPress' )
 			.scrollIntoView()
 			.should( 'be.visible' );
 
