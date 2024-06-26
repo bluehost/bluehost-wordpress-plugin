@@ -8,8 +8,21 @@ const Products = () => {
 			<WebinarsBanner />
 			<Container className="wppbh-account-help-section">
 				<Container.Header
-					title={ __( 'Products', 'wp-plugin-bluehost' ) }
-				></Container.Header>
+					title={ __( 'My Products', 'wp-plugin-bluehost' ) }
+				>
+					<p>
+						{ __(
+							'A list of products associated with your Bluehost hosting package. For more information, check out the ',
+							'wp-plugin-bluehost'
+						) }
+						<a href="https://www.bluehost.com/my-account/renewal-center">
+							{ __(
+								'Bluehost Account Manager',
+								'wp-plugin-bluehost'
+							) }
+						</a>
+					</p>
+				</Container.Header>
 				<Container.Block>
 					<div className="nfd-grid nfd-grid-cols-1 nfd-gap-6">
 						<ProductCard />

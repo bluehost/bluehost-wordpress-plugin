@@ -92,7 +92,7 @@ final class Admin {
 			)
 			: array();
 		$products = array(
-				'bluehost#/products' => __( 'Products', 'wp-plugin-bluehost' ),
+				'bluehost#/products' => __( 'My Products', 'wp-plugin-bluehost' ),
 			);	
 		$help    = array(
 			'bluehost#/help' => __( 'Help', 'wp-plugin-bluehost' ),
