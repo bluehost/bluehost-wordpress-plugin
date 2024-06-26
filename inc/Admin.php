@@ -38,6 +38,8 @@ final class Admin {
 
 		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) { // phpcs:ignore
 			\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
+			/* Disable admin notices on App pages */
+			\add_action( 'admin_init', array( __CLASS__, 'disable_admin_notices' ) );
 		}
 	}
 
@@ -276,6 +278,16 @@ final class Admin {
 			),
 			$actions
 		);
+	}
+
+	/**
+	 * Disable admin notices on App pages
+	 *
+	 * @return void
+	 */
+	public static function disable_admin_notices() {
+		remove_all_actions( 'admin_notices' );
+		remove_all_actions( 'all_admin_notices' );
 	}
 
 	/**
