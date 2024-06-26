@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e180979b303913510ec0c2cfbd9642a3",
+    "content-hash": "c667c764fa83fdf6b5319af7413f2519",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -652,16 +652,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.3.33",
+            "version": "v1.3.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "9b848fee173f5688e4424dd010cad18914975678"
+                "reference": "9fba36ec1df919d911e38dac66180999c896a2a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/9b848fee173f5688e4424dd010cad18914975678",
-                "reference": "9b848fee173f5688e4424dd010cad18914975678",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/9fba36ec1df919d911e38dac66180999c896a2a1",
+                "reference": "9fba36ec1df919d911e38dac66180999c896a2a1",
                 "shasum": ""
             },
             "require": {
@@ -704,10 +704,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.33",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.34",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-06-18T08:53:05+00:00"
+            "time": "2024-06-26T11:40:56+00:00"
         },
         {
             "name": "newfold-labs/wp-module-facebook",
@@ -810,16 +810,16 @@
         },
         {
             "name": "newfold-labs/wp-module-global-ctb",
-            "version": "1.0.12",
+            "version": "1.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-global-ctb.git",
-                "reference": "cdc28498a0a31f889bac58639735110fd285bcbb"
+                "reference": "f27fc58ca74df9d6ef0aca4d5e3603f48fd17f05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-global-ctb/zipball/cdc28498a0a31f889bac58639735110fd285bcbb",
-                "reference": "cdc28498a0a31f889bac58639735110fd285bcbb",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-global-ctb/zipball/f27fc58ca74df9d6ef0aca4d5e3603f48fd17f05",
+                "reference": "f27fc58ca74df9d6ef0aca4d5e3603f48fd17f05",
                 "shasum": ""
             },
             "require-dev": {
@@ -853,10 +853,10 @@
             ],
             "description": "Newfold module for 'Click to Buy' functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-global-ctb/tree/1.0.12",
+                "source": "https://github.com/newfold-labs/wp-module-global-ctb/tree/1.0.13",
                 "issues": "https://github.com/newfold-labs/wp-module-global-ctb/issues"
             },
-            "time": "2024-05-30T16:00:35+00:00"
+            "time": "2024-06-25T00:12:44+00:00"
         },
         {
             "name": "newfold-labs/wp-module-help-center",
@@ -1091,16 +1091,16 @@
         },
         {
             "name": "newfold-labs/wp-module-migration",
-            "version": "v1.0.7",
+            "version": "v1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-migration.git",
-                "reference": "48ae5be126f080220c58e5b607355dc52dfcc575"
+                "reference": "b09db1b19a4ab9d807063f6e74be5f8a11fc6be0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/48ae5be126f080220c58e5b607355dc52dfcc575",
-                "reference": "48ae5be126f080220c58e5b607355dc52dfcc575",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/b09db1b19a4ab9d807063f6e74be5f8a11fc6be0",
+                "reference": "b09db1b19a4ab9d807063f6e74be5f8a11fc6be0",
                 "shasum": ""
             },
             "require": {
@@ -1138,10 +1138,10 @@
             ],
             "description": "Initiates the migration process",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-migration/tree/v1.0.7",
+                "source": "https://github.com/newfold-labs/wp-module-migration/tree/v1.0.8",
                 "issues": "https://github.com/newfold-labs/wp-module-migration/issues"
             },
-            "time": "2024-06-20T21:06:00+00:00"
+            "time": "2024-06-26T07:21:55+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
@@ -2763,12 +2763,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "22f9af2d843383f1c25638b07d8cbcf18482527e"
+                "reference": "59b0da5b0c3aea934f731036370e1dcb7c56da19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/22f9af2d843383f1c25638b07d8cbcf18482527e",
-                "reference": "22f9af2d843383f1c25638b07d8cbcf18482527e",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/59b0da5b0c3aea934f731036370e1dcb7c56da19",
+                "reference": "59b0da5b0c3aea934f731036370e1dcb7c56da19",
                 "shasum": ""
             },
             "conflict": {
@@ -2776,8 +2776,8 @@
                 "admidio/admidio": "<4.2.13",
                 "adodb/adodb-php": "<=5.20.20|>=5.21,<=5.21.3",
                 "aheinze/cockpit": "<2.2",
-                "aimeos/ai-client-html": ">=2020.04.1,<2020.10.27|>=2021.04.1,<2021.10.21|>=2022.04.1,<2022.10.12|>=2023.04.1,<2023.10.14|>=2024.04.1,<2024.04.4",
-                "aimeos/aimeos-core": "<2024.04.7",
+                "aimeos/ai-client-html": ">=2020.04.1,<2020.10.27|>=2021.04.1,<2021.10.22|>=2022.04.1,<2022.10.13|>=2023.04.1,<2023.10.15|>=2024.04.1,<2024.04.7",
+                "aimeos/aimeos-core": ">=2022.04.1,<2022.10.17|>=2023.04.1,<2023.10.17|>=2024.04.1,<2024.04.7",
                 "aimeos/aimeos-typo3": "<19.10.12|>=20,<20.10.5",
                 "airesvsg/acf-to-rest-api": "<=3.1",
                 "akaunting/akaunting": "<2.1.13",
@@ -3051,6 +3051,7 @@
                 "jsdecena/laracom": "<2.0.9",
                 "jsmitty12/phpwhois": "<5.1",
                 "juzaweb/cms": "<=3.4",
+                "jweiland/events2": "<8.3.8|>=9,<9.0.6",
                 "kazist/phpwhois": "<=4.2.6",
                 "kelvinmo/simplexrd": "<3.1.1",
                 "kevinpapst/kimai2": "<1.16.7",
@@ -3163,7 +3164,7 @@
                 "onelogin/php-saml": "<2.10.4",
                 "oneup/uploader-bundle": ">=1,<1.9.3|>=2,<2.1.5",
                 "open-web-analytics/open-web-analytics": "<1.7.4",
-                "opencart/opencart": "<=3.0.3.7|>=4,<4.0.2.3-dev",
+                "opencart/opencart": "<=3.0.3.9|>=4",
                 "openid/php-openid": "<2.3",
                 "openmage/magento-lts": "<20.5",
                 "opensolutions/vimbadmin": "<=3.0.15",
@@ -3327,6 +3328,7 @@
                 "statamic/cms": "<4.46|>=5.3,<5.6.2",
                 "stormpath/sdk": "<9.9.99",
                 "studio-42/elfinder": "<2.1.62",
+                "studiomitte/friendlycaptcha": "<0.1.4",
                 "subhh/libconnect": "<7.0.8|>=8,<8.1",
                 "sukohi/surpass": "<1",
                 "sulu/form-bundle": ">=2,<2.5.3",
@@ -3393,7 +3395,7 @@
                 "thorsten/phpmyfaq": "<3.2.2",
                 "tikiwiki/tiki-manager": "<=17.1",
                 "timber/timber": ">=0.16.6,<1.23.1|>=1.24,<1.24.1|>=2,<2.1",
-                "tinymce/tinymce": "<7",
+                "tinymce/tinymce": "<7.2",
                 "tinymighty/wiki-seo": "<1.2.2",
                 "titon/framework": "<9.9.99",
                 "tobiasbg/tablepress": "<=2.0.0.0-RC1",
@@ -3558,7 +3560,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-18T22:04:21+00:00"
+            "time": "2024-06-25T18:06:06+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -3772,16 +3774,16 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.29.0",
+            "version": "v1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "87b68208d5c1188808dd7839ee1e6c8ec3b02f1b"
+                "reference": "77fa7995ac1b21ab60769b7323d600a991a90433"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/87b68208d5c1188808dd7839ee1e6c8ec3b02f1b",
-                "reference": "87b68208d5c1188808dd7839ee1e6c8ec3b02f1b",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/77fa7995ac1b21ab60769b7323d600a991a90433",
+                "reference": "77fa7995ac1b21ab60769b7323d600a991a90433",
                 "shasum": ""
             },
             "require": {
@@ -3832,7 +3834,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.29.0"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.30.0"
             },
             "funding": [
                 {
@@ -3848,7 +3850,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-29T20:11:03+00:00"
+            "time": "2024-05-31T15:07:36+00:00"
         },
         {
             "name": "wp-cli/i18n-command",
