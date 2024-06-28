@@ -1,6 +1,6 @@
 {
     "name": "bluehost-wordpress-plugin",
-    "version": "3.12.1",
+    "version": "3.12.2",
     "description": "WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
     "author": {
         "name": "Bluehost",
@@ -39,11 +39,11 @@
         "@newfold/ui-component-library": "^1.1.0",
         "@reduxjs/toolkit": "^2.2.5",
         "@wordpress/compose": "^7.1.0",
-        "@wordpress/dom-ready": "^4.1.0",
+        "@wordpress/dom-ready": "^4.2.0",
         "@wordpress/element": "^6.1.0",
         "@wordpress/html-entities": "^4.1.0",
         "@wordpress/i18n": "^4.58.0",
-        "@wordpress/icons": "^9.49.0",
+        "@wordpress/icons": "^10.2.0",
         "classnames": "^2.5.1",
         "jquery": "^3.7.1",
         "lodash": "^4.17.21",
@@ -56,14 +56,14 @@
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.7",
         "@testing-library/cypress": "^10.0.2",
-        "@wordpress/env": "^9.10.0",
-        "@wordpress/eslint-plugin": "^18.1.0",
+        "@wordpress/env": "^10.2.0",
+        "@wordpress/eslint-plugin": "^19.2.0",
         "@wordpress/scripts": "^27.4.0",
         "cypress": "^13.12.0",
         "cypress-axe": "^1.5.0",
         "eslint-import-resolver-alias": "^1.1.2",
         "eslint-plugin-import": "^2.29.1",
-        "tailwindcss": "^3.4.1"
+        "tailwindcss": "^3.4.4"
     },
     "scripts": {
         "build": "NODE_ENV=production wp-scripts build",
