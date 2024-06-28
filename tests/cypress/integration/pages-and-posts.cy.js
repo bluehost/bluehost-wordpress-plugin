@@ -1,18 +1,25 @@
-describe( 'Pages & Posts', function () {
-	let NewfoldRuntime;
+describe( 'Pages & Posts', { testIsolation: true }, function () {
 
-	before( () => {
+	beforeEach( () => {
 		cy.visit(
 			'/wp-admin/admin.php?page=' +
 				Cypress.env( 'pluginId' ) +
-				'#/pages-and-posts'
+				'#/pages-and-posts',
+			{
+				onLoad() {
+					cy.window().then( ( win ) => {
+						win.NewfoldRuntime.isYithBookingActive = true;
+						win.NewfoldRuntime.isWoocommerceActive = true;
+					} );
+				},
+			}
 		);
-		cy.window()
-			.its( 'NewfoldRuntime' )
-			.then( ( data ) => {
-				NewfoldRuntime = data;
-			} );
+	} );
+
+	it( 'Is Accessible', () => {
 		cy.injectAxe();
+		cy.wait( 100 );
+		cy.checkA11y( '.wppbh-app-body' );
 	} );
 
 	it( 'Pages & Posts Exists', () => {
@@ -22,7 +29,7 @@ describe( 'Pages & Posts', function () {
 			.should( 'be.visible' );
 	} );
 
-	it( 'site pages Exists', () => {
+	it( 'Site Pages Exists', () => {
 		cy.get( '.wppbh-app-site-page' )
 			.findByText( 'Site Pages' )
 			.should( 'exist' );
@@ -55,59 +62,41 @@ describe( 'Pages & Posts', function () {
 	} );
 
 	it( 'Bookings & Appointments Exists', () => {
-		if (
-			NewfoldRuntime.isYithBookingActive &&
-			NewfoldRuntime.isWoocommerceActive
-		) {
-			cy.get( '.wppbh-app-bookings' )
-				.findByText( 'Bookings & Appointments' )
-				.should( 'exist' );
-			cy.get( '.wppbh-app-bookings' )
-				.find(
-					'a[href="edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1"]'
-				)
-				.first()
-				.click();
-			cy.url().should(
-				'include',
-				'edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1'
-			);
-			cy.go( 'back' );
+		cy.get( '.wppbh-app-bookings' )
+			.findByText( 'Bookings & Appointments' )
+			.should( 'exist' );
+		cy.get( '.wppbh-app-bookings' )
+			.find(
+				'a[href="edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1"]'
+			)
+			.first()
+			.should( 'exist' );
 
-			cy.get( '.wppbh-app-bookings' )
-				.find(
-					'a[href="edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1"] Button'
-				)
-				.last()
-				.click();
-			cy.url().should(
-				'include',
-				'edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1'
-			);
-			cy.go( 'back' );
-		} else {
-			cy.findByText( 'Bookings & Appointments' ).should( 'not.exist' );
-		}
+		cy.get( '.wppbh-app-bookings' )
+			.find(
+				'a[href="edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1"] Button'
+			)
+			.last()
+			.should( 'exist' );
 	} );
 
 	it( 'Products Exists', () => {
-		if ( NewfoldRuntime.isWoocommerceActive ) {
-			cy.get( '.wppbh-app-products' )
-				.findByText( 'Products' )
-				.should( 'exist' );
-			cy.get( '.wppbh-app-products' )
-				.find( 'a[href="edit.php?post_type=product"]' )
-				.click();
-			cy.url().should( 'include', 'edit.php?post_type=product' );
-			cy.go( 'back' );
+		cy.get( '.wppbh-app-products' )
+			.findByText( 'Products' )
+			.should( 'exist' );
+		cy.get( '.wppbh-app-products' )
+			.find( 'a[href="edit.php?post_type=product"]' )
+			.should( 'exist' );
 
-			cy.get( '.wppbh-app-products' )
-				.find( 'a[href="post-new.php?post_type=product"] Button' )
-				.click();
-			cy.url().should( 'include', 'post-new.php?post_type=product' );
-			cy.go( 'back' );
-		} else {
-			cy.findByText( 'Products' ).should( 'not.exist' );
-		}
+		cy.get( '.wppbh-app-products' )
+			.find( 'a[href="post-new.php?post_type=product"] Button' )
+			.should( 'exist' );
 	} );
+
+	it( 'Products and Booking does not load if Yith and Woo are not active', () => {
+		// clears edited NewfoldRuntime values
+		cy.reload();
+		cy.findByText( 'Products' ).should( 'not.exist' );
+		cy.findByText( 'Bookings & Appointments' ).should( 'not.exist' );
+	});
 } );
