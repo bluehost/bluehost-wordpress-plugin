@@ -30,7 +30,7 @@ const ProductCard = ( { props } ) => {
 		<Card { ...props }>
 			<Card.Content>
 				{ productData && (
-					<Table>
+					<Table className='wppbh-products-data-section'>
 						<Table.Head>
 							<Table.Row>
 								<Table.Header>Products & Services</Table.Header>

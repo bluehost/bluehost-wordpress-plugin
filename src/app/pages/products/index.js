@@ -6,7 +6,7 @@ const Products = () => {
 	return (
 		<Page className="wppbh-products" title="Active Products">
 			<WebinarsBanner />
-			<Container className="wppbh-account-help-section">
+			<Container className="wppbh-products-section">
 				<Container.Header
 					title={ __( 'My Products', 'wp-plugin-bluehost' ) }
 				>
@@ -24,9 +24,7 @@ const Products = () => {
 					</p>
 				</Container.Header>
 				<Container.Block>
-					<div className="nfd-grid nfd-grid-cols-1 nfd-gap-6">
 						<ProductCard />
-					</div>
 				</Container.Block>
 			</Container>
 		</Page>
