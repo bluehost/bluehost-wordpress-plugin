@@ -228,3 +228,27 @@ export const isJarvis = () => {
 	}
 	return true;
 };
+
+/**
+ * Wrapper method to fetch customer's products
+ *
+ * @param {Object}   data         object of data
+ * @param {Function} passError    setter for the error in component
+ * @param {Function} thenCallback method to call in promise then
+ */
+
+export const productApiFetch = ( data, passError, thenCallback ) => {
+	return apiFetch( {
+		url: NewfoldRuntime.createApiUrl(
+			'/newfold-data/v1/customer/products'
+		),
+		method: 'POST',
+		data,
+	} )
+		.then( ( response ) => {
+			thenCallback( response );
+		} )
+		.catch( ( error ) => {
+			passError( error );
+		} );
+};

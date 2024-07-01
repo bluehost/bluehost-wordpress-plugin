@@ -21,6 +21,8 @@ import Admin from '../pages/admin';
 import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
 import { ReactComponent as HelpIcon } from '../components/icons/HelpIcon.svg';
 import PagesAndPosts from '../pages/pages-and-posts';
+import Products from '../pages/products';
+import { BluehostIcon } from '../components/icons';
 
 const addPartialMatch = ( prefix, path ) =>
 	prefix === path ? `${ prefix }/*` : path;
@@ -73,6 +75,7 @@ const topRoutePaths = [
 	'/performance',
 	'/settings',
 	'/staging',
+	'/products',
 ];
 const utilityRoutePaths = [ '/help' ];
 
@@ -164,6 +167,13 @@ export const routes = [
 		name: '/admin',
 		title: __( 'Admin', 'wp-plugin-bluehost' ),
 		Component: Admin,
+		condition: true,
+	},
+	{
+		name: '/products',
+		title: __( 'My Products', 'wp-plugin-bluehost' ),
+		Component: Products,
+		Icon: BluehostIcon,
 		condition: true,
 	},
 ];
