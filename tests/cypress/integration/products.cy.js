@@ -24,7 +24,7 @@ describe( 'My Products', function () {
 			.should( 'be.visible' );
 	} );
 
-	it( 'Webinars Section Exists', () => {
+	it( 'Products Section Renders Correctly', () => {
 		cy.intercept( 'POST', '/wp-json/newfold-data/v1/customer/products', {
 			fixture: 'products.json',
 		} );

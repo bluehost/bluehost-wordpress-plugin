@@ -27,8 +27,7 @@ const ProductCard = ( { props } ) => {
 		}
 	}, [] );
 	return (
-		<Card { ...props }>
-			<Card.Content>
+			<div>
 				{ productData && (
 					<Table className='wppbh-products-data-section'>
 						<Table.Head>
@@ -63,8 +62,7 @@ const ProductCard = ( { props } ) => {
 				{ ! isJarvis() && (
 					<p>Please login to your account manager to see products</p>
 				) }
-			</Card.Content>
-		</Card>
+			</div>
 	);
 };
 
