@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3fe2c57d603b585abd00143039e6ad11",
+    "content-hash": "28446131dd919399a28244fd002d1307",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -652,7 +652,6 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-
             "version": "v1.3.35",
             "source": {
                 "type": "git",
