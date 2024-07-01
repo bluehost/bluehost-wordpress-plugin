@@ -37,7 +37,7 @@
         "@newfold-labs/wp-module-facebook": "1.0.7",
         "@newfold-labs/wp-module-runtime": "^1.0.10",
         "@newfold/ui-component-library": "^1.1.0",
-        "@reduxjs/toolkit": "^2.2.5",
+        "@reduxjs/toolkit": "^2.2.6",
         "@wordpress/compose": "^7.2.0",
         "@wordpress/dom-ready": "^4.2.0",
         "@wordpress/element": "^6.1.0",
