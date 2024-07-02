@@ -22,7 +22,7 @@ import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/compo
 import { ReactComponent as HelpIcon } from '../components/icons/HelpIcon.svg';
 import PagesAndPosts from '../pages/pages-and-posts';
 import Products from '../pages/products';
-import { BluehostIcon } from '../components/icons';
+import { Squares2X2Icon } from '@heroicons/react/24/outline';
 
 const addPartialMatch = ( prefix, path ) =>
 	prefix === path ? `${ prefix }/*` : path;
@@ -173,7 +173,7 @@ export const routes = [
 		name: '/products',
 		title: __( 'My Products', 'wp-plugin-bluehost' ),
 		Component: Products,
-		Icon: BluehostIcon,
+		Icon: Squares2X2Icon,
 		condition: true,
 	},
 ];

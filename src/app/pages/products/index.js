@@ -1,11 +1,9 @@
 import { Container, Page } from '@newfold/ui-component-library';
-import WebinarsBanner from 'App/components/webinars-banner';
-import ProductCard from './ProductCard';
+import ProductsTable from './ProductsTable';
 
 const Products = () => {
 	return (
 		<Page className="wppbh-products" title="Active Products">
-			<WebinarsBanner />
 			<Container className="wppbh-products-section">
 				<Container.Header
 					title={ __( 'My Products', 'wp-plugin-bluehost' ) }
@@ -24,7 +22,7 @@ const Products = () => {
 					</p>
 				</Container.Header>
 				<Container.Block>
-						<ProductCard />
+						<ProductsTable />
 				</Container.Block>
 			</Container>
 		</Page>
