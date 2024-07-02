@@ -59,7 +59,7 @@
         "@wordpress/env": "^10.2.0",
         "@wordpress/eslint-plugin": "^19.2.0",
         "@wordpress/scripts": "^27.4.0",
-        "cypress": "^13.12.0",
+        "cypress": "^13.13.0",
         "cypress-axe": "^1.5.0",
         "eslint-import-resolver-alias": "^1.1.2",
         "eslint-plugin-import": "^2.29.1",
