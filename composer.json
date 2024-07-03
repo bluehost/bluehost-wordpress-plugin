@@ -48,12 +48,12 @@
     "i18n-pot": "vendor/bin/wp i18n make-pot . ./languages/wp-plugin-bluehost.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/bluehost/bluehost-wordpress-plugin/issues\",\"POT-Creation-Date\":\"2023-03-08T20:13:41+00:00\"}' --exclude=assets,tests,src",
     "i18n-po": "vendor/bin/wp i18n update-po ./languages/wp-plugin-bluehost.pot ./languages",
     "i18n-mo": "vendor/bin/wp i18n make-mo ./languages",
-    "i18n-json": "vendor/bin/wp i18n make-json ./languages --no-purge --pretty-print",
-    "i18n-json-rename": "for f in ./languages/*.json; do mv \"$f\" \"$(echo \"$f\" | sed 's/[0-9a-fA-F]\\{32\\}/bluehost-script/')\"; done",
+    "i18n-json": "rm -f languages/*.json && vendor/bin/wp i18n make-json ./languages --no-purge --pretty-print",
     "i18n": [
       "@i18n-pot",
       "@i18n-po",
-      "@i18n-mo"
+      "@i18n-mo",
+      "@i18n-json"
     ]
   },
   "scripts-descriptions": {
@@ -63,8 +63,7 @@
     "i18n-pot": "Generate a .pot file for translation.",
     "i18n-po": "Update existing .po files.",
     "i18n-mo": "Generate new language .mo files.",
-    "i18n-json": "Generate new language .json files.",
-    "i18n-json-rename": "Rename the language json files to remove the pesky hash."
+    "i18n-json": "Generate new language .json files."
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
