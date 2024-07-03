@@ -1,7 +1,6 @@
 import './stylesheet.scss';
 import { useState, useEffect } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
-import classnames from 'classnames';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import { useNotification } from 'App/components/notifications';
 // component sourced from staging module
@@ -18,7 +17,7 @@ const Staging = () => {
 	// methods to pass to module
 	const moduleMethods = {
 		apiFetch,
-		classnames,
+		classNames,
 		useState,
 		useEffect,
 		NewfoldRuntime,
