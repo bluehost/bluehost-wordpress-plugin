@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ac4713c83fa5d89cc5a1c4eb8e9b096",
+    "content-hash": "e20a3efd2ea7eb063728b831bca7dd9d",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1034,16 +1034,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "2.3.1",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "a3d9b4121d1de7dbf6ec1e23aa60cb851cf2f39c"
+                "reference": "71f46b229d1ba96abbd0c673d45b9fa03fdf4145"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/a3d9b4121d1de7dbf6ec1e23aa60cb851cf2f39c",
-                "reference": "a3d9b4121d1de7dbf6ec1e23aa60cb851cf2f39c",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/71f46b229d1ba96abbd0c673d45b9fa03fdf4145",
+                "reference": "71f46b229d1ba96abbd0c673d45b9fa03fdf4145",
                 "shasum": ""
             },
             "require": {
@@ -1084,10 +1084,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/2.3.1",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/2.4.0",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2024-06-26T20:22:11+00:00"
+            "time": "2024-07-03T17:26:23+00:00"
         },
         {
             "name": "newfold-labs/wp-module-migration",
@@ -1145,16 +1145,16 @@
         },
         {
             "name": "newfold-labs/wp-module-notifications",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-notifications.git",
-                "reference": "2e0474d648bafadb6367e7323ed898b429bc0ef2"
+                "reference": "7c9b2d94df068b8df52ff50f393014db785036b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/2e0474d648bafadb6367e7323ed898b429bc0ef2",
-                "reference": "2e0474d648bafadb6367e7323ed898b429bc0ef2",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/7c9b2d94df068b8df52ff50f393014db785036b1",
+                "reference": "7c9b2d94df068b8df52ff50f393014db785036b1",
                 "shasum": ""
             },
             "require": {
@@ -1183,10 +1183,10 @@
             ],
             "description": "A module for managing Newfold in-site notifications.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.3.0",
+                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.4.0",
                 "issues": "https://github.com/newfold-labs/wp-module-notifications/issues"
             },
-            "time": "2024-04-30T04:47:27+00:00"
+            "time": "2024-07-03T17:27:19+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
@@ -1555,16 +1555,16 @@
         },
         {
             "name": "newfold-labs/wp-module-staging",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-staging.git",
-                "reference": "dae822eec83521f6538844877ee98e637004514d"
+                "reference": "87116edaff795913173dd5d0dc4cb258d6cda8ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/dae822eec83521f6538844877ee98e637004514d",
-                "reference": "dae822eec83521f6538844877ee98e637004514d",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-staging/zipball/87116edaff795913173dd5d0dc4cb258d6cda8ef",
+                "reference": "87116edaff795913173dd5d0dc4cb258d6cda8ef",
                 "shasum": ""
             },
             "require": {
@@ -1602,10 +1602,10 @@
             ],
             "description": "Newfold module for staging functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-staging/tree/2.0.0",
+                "source": "https://github.com/newfold-labs/wp-module-staging/tree/2.1.0",
                 "issues": "https://github.com/newfold-labs/wp-module-staging/issues"
             },
-            "time": "2024-05-29T14:18:17+00:00"
+            "time": "2024-07-03T17:28:16+00:00"
         },
         {
             "name": "newfold-labs/wp-module-survey",
