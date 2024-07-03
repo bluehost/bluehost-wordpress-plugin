@@ -25,12 +25,44 @@ describe( 'My Products', function () {
 	} );
 
 	it( 'Products Section Renders Correctly', () => {
-		cy.intercept( 'POST', '/wp-json/newfold-data/v1/customer/products', {
-			fixture: 'products.json',
-		} );
+		cy.intercept(
+			'POST',
+			'/index.php?rest_route=%2Fnewfold-data%2Fv1%2Fcustomer%2Fproducts&_locale=user',
+			{
+				fixture: 'products.json',
+			}
+		);
 		cy.reload();
 		cy.get( '.wppbh-products-data-section' )
 			.contains( 'Products & Services' )
+			.scrollIntoView()
+			.should( 'be.visible' );
+	} );
+
+	it( 'Products Section Renders Correctly for No products response', () => {
+		cy.intercept(
+			'POST',
+			'/index.php?rest_route=%2Fnewfold-data%2Fv1%2Fcustomer%2Fproducts&_locale=user',
+			[]
+		);
+		cy.reload();
+		cy.get( '.wppbh-products' )
+			.contains( 'Sorry, no products. Please, try again later.' )
+			.scrollIntoView()
+			.should( 'be.visible' );
+	} );
+
+	it( 'Products Section Renders Correctly for Empty response', () => {
+		cy.intercept(
+			'POST',
+			'/index.php?rest_route=%2Fnewfold-data%2Fv1%2Fcustomer%2Fproducts&_locale=user',
+			{}
+		);
+		cy.reload();
+		cy.get( '.wppbh-products' )
+			.contains(
+				'Oops, there was an error loading products, please try again later.'
+			)
 			.scrollIntoView()
 			.should( 'be.visible' );
 	} );
