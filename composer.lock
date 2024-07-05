@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e20a3efd2ea7eb063728b831bca7dd9d",
+    "content-hash": "edd9011fd18f58ab36baa4110f9ef95e",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -652,16 +652,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.3.35",
+            "version": "v1.3.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "3478b6e1a8ce2938ab2fc74229ea2707cbff7aac"
+                "reference": "35acde73891a861ce9e4308c2294f8a76584e2e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/3478b6e1a8ce2938ab2fc74229ea2707cbff7aac",
-                "reference": "3478b6e1a8ce2938ab2fc74229ea2707cbff7aac",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/35acde73891a861ce9e4308c2294f8a76584e2e6",
+                "reference": "35acde73891a861ce9e4308c2294f8a76584e2e6",
                 "shasum": ""
             },
             "require": {
@@ -704,10 +704,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.35",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.36",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-06-27T15:00:00+00:00"
+            "time": "2024-07-05T12:56:42+00:00"
         },
         {
             "name": "newfold-labs/wp-module-facebook",
