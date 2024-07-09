@@ -48,12 +48,12 @@
     "i18n-pot": "vendor/bin/wp i18n make-pot . ./languages/wp-plugin-bluehost.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/bluehost/bluehost-wordpress-plugin/issues\",\"POT-Creation-Date\":\"2023-03-08T20:13:41+00:00\"}' --exclude=assets,tests,src",
     "i18n-po": "vendor/bin/wp i18n update-po ./languages/wp-plugin-bluehost.pot ./languages",
     "i18n-mo": "vendor/bin/wp i18n make-mo ./languages",
-    "i18n-json": "vendor/bin/wp i18n make-json ./languages --no-purge --pretty-print",
-    "i18n-json-rename": "for f in ./languages/*.json; do mv \"$f\" \"$(echo \"$f\" | sed 's/[0-9a-fA-F]\\{32\\}/bluehost-script/')\"; done",
+    "i18n-json": "rm -f languages/*.json && vendor/bin/wp i18n make-json ./languages --no-purge --pretty-print",
     "i18n": [
       "@i18n-pot",
       "@i18n-po",
-      "@i18n-mo"
+      "@i18n-mo",
+      "@i18n-json"
     ]
   },
   "scripts-descriptions": {
@@ -63,8 +63,7 @@
     "i18n-pot": "Generate a .pot file for translation.",
     "i18n-po": "Update existing .po files.",
     "i18n-mo": "Generate new language .mo files.",
-    "i18n-json": "Generate new language .json files.",
-    "i18n-json-rename": "Rename the language json files to remove the pesky hash."
+    "i18n-json": "Generate new language .json files."
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
@@ -79,22 +78,22 @@
     "newfold-labs/wp-module-context": "^1.0.1",
     "newfold-labs/wp-module-data": "^2.5.3",
     "newfold-labs/wp-module-deactivation": "^1.2.1",
-    "newfold-labs/wp-module-ecommerce": "1.3.31",
+    "newfold-labs/wp-module-ecommerce": "^1.3.36",
     "newfold-labs/wp-module-facebook": "^1.0.9",
     "newfold-labs/wp-module-features": "^1.4.2",
     "newfold-labs/wp-module-global-ctb": "^1.0.13",
     "newfold-labs/wp-module-help-center": "^2.0.0",
     "newfold-labs/wp-module-loader": "^1.0.10",
-    "newfold-labs/wp-module-marketplace": "^2.3.0",
-    "newfold-labs/wp-module-migration": "^1.0.7",
-    "newfold-labs/wp-module-notifications": "^1.3.0",
-    "newfold-labs/wp-module-onboarding": "^2.3.4",
+    "newfold-labs/wp-module-marketplace": "^2.4.0",
+    "newfold-labs/wp-module-migration": "^1.0.8",
+    "newfold-labs/wp-module-notifications": "^1.4.0",
+    "newfold-labs/wp-module-onboarding": "^2.3.5",
     "newfold-labs/wp-module-patterns": "2.0.0 as 1.9.9",
     "newfold-labs/wp-module-performance": "2.0.0 as 1.9.9",
     "newfold-labs/wp-module-runtime": "^1.0.11",
     "newfold-labs/wp-module-secure-passwords": "^1.1.1",
     "newfold-labs/wp-module-sso": "^1.0.5",
-    "newfold-labs/wp-module-staging": "^2.0.0",
+    "newfold-labs/wp-module-staging": "^2.1.0",
     "wp-forge/wp-update-handler": "^1.0.2",
     "wp-forge/wp-upgrade-handler": "^1.0"
   }
