@@ -2,7 +2,7 @@
 # This file is distributed under the GPL 2.0 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: The Bluehost Plugin 3.9.2\n"
+"Project-Id-Version: The Bluehost Plugin 3.13.0\n"
 "Report-Msgid-Bugs-To: https://github.com/bluehost/bluehost-wordpress-plugin/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,108 +32,113 @@ msgstr ""
 
 #. Author of the plugin
 #: bluehost-wordpress-plugin.php
-#: inc/Admin.php:131
-#: inc/Admin.php:132
+#: inc/Admin.php:133
+#: inc/Admin.php:134
 msgid "Bluehost"
 msgstr ""
 
-#: bootstrap.php:24
+#: bootstrap.php:25
 msgid "Please install the Bluehost Plugin dependencies."
 msgstr ""
 
-#: bootstrap.php:98
+#: bootstrap.php:99
 msgid "Coming Soon!"
 msgstr ""
 
-#: bootstrap.php:99
+#: bootstrap.php:100
 msgid "A New WordPress Site"
 msgstr ""
 
-#: bootstrap.php:102
+#: bootstrap.php:103
 msgid "How to Build a Website: A Practical Guide to WordPress on Bluehost"
 msgstr ""
 
-#: bootstrap.php:105
+#: bootstrap.php:106
 msgid "How to Migrate a Website to Bluehost?"
 msgstr ""
 
-#: bootstrap.php:108
+#: bootstrap.php:109
 msgid "Why choose Bluehost for your WordPress site?"
 msgstr ""
 
 #. translators: %1$s is replaced with opening link tag taking you to bluehost.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.bluehost.com, %6$s is replaced with closing link tag
-#: bootstrap.php:112
+#: bootstrap.php:113
 msgid "A %1$sBluehost%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sBluehost%6$s."
 msgstr ""
 
 #. translators: %s: Blog name
-#: bootstrap.php:122
+#: bootstrap.php:123
 msgid "%s &mdash; Coming Soon"
 msgstr ""
 
-#: bootstrap.php:125
+#: bootstrap.php:126
 msgid "Coming Soon Active"
 msgstr ""
 
 #. translators: %1$s is replaced with the opening link tag to preview the page, and %2$s is replaced with the closing link tag, %3$s is the opening link tag, %4$s is the closing link tag.
-#: bootstrap.php:128
+#: bootstrap.php:129
 msgid "Your site is currently displaying a %1$scoming soon page%2$s. Once you are ready, %3$slaunch your site%4$s."
 msgstr ""
 
-#: bootstrap.php:129
+#: bootstrap.php:130
 msgid "Preview the coming soon landing page"
 msgstr ""
 
-#: inc/Admin.php:67
-#: inc/Admin.php:274
-#: build/3.9.2/index.js:1
+#: inc/Admin.php:70
+#: inc/Admin.php:276
+#: build/3.13.0/index.js:1
 msgid "Home"
 msgstr ""
 
-#: inc/Admin.php:70
-#: build/3.9.2/index.js:1
-msgid "Store"
-msgstr ""
-
 #: inc/Admin.php:73
-#: build/3.9.2/index.js:1
-msgid "Marketplace"
+#: build/3.13.0/index.js:1
+msgid "Pages & Posts"
 msgstr ""
 
 #: inc/Admin.php:76
-#: build/3.9.2/index.js:1
-msgid "Performance"
+#: build/3.13.0/index.js:1
+msgid "Store"
 msgstr ""
 
 #: inc/Admin.php:79
-#: inc/Admin.php:275
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
+msgid "Marketplace"
+msgstr ""
+
+#: inc/Admin.php:84
+#: build/3.13.0/index.js:1
+msgid "Performance"
+msgstr ""
+
+#: inc/Admin.php:88
+#: inc/Admin.php:277
+#: build/3.13.0/index.js:1
 msgid "Settings"
 msgstr ""
 
-#: inc/Admin.php:82
-#: build/3.9.2/index.js:1
+#: inc/Admin.php:93
+#: build/3.13.0/index.js:1
 msgid "Staging"
 msgstr ""
 
-#: inc/Admin.php:85
-#: build/3.9.2/index.js:1
+#: inc/Admin.php:97
+#: build/3.13.0/index.js:1
 msgid "Help"
 msgstr ""
 
-#: inc/Admin.php:174
+#: inc/Admin.php:176
 msgid "Please update to a newer WordPress version."
 msgstr ""
 
-#: inc/Admin.php:175
+#: inc/Admin.php:177
 msgid "There are new WordPress components which this plugin requires in order to render the interface."
 msgstr ""
 
-#: inc/Admin.php:176
+#: inc/Admin.php:178
 msgid "Please update now"
 msgstr ""
 
-#: inc/Admin.php:289
+#: inc/Admin.php:301
 msgid "Thank you for creating with <a href=\"https://wordpress.org/\">WordPress</a> and <a href=\"https://bluehost.com/about\">Bluehost</a>."
 msgstr ""
 
@@ -187,178 +192,220 @@ msgstr ""
 msgid "Auto-updates enabled"
 msgstr ""
 
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
 msgid "Bluehost WordPress Plugin"
 msgstr ""
 
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
 msgid "Oh No, An Error!"
 msgstr ""
 
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
 msgid "You found an error, please refresh the page and try again!"
 msgstr ""
 
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
 msgid "If the error persists, please contact support."
 msgstr ""
 
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
 msgid " Error code: "
 msgstr ""
 
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
 msgid "Bluehost Account"
 msgstr ""
 
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
 msgid "There's nothing here!"
 msgstr ""
 
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
 msgid "Products & Services"
 msgstr ""
 
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
 msgid "Sales & Promotions"
 msgstr ""
 
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
 msgid "Payments"
 msgstr ""
 
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
 msgid "Store Details"
 msgstr ""
 
-#: build/3.9.2/index.js:1
-msgid "Phone"
+#: build/3.13.0/index.js:1
+msgid "Admin"
 msgstr ""
 
-#: build/3.9.2/index.js:1
-msgid "Call Us"
+#: build/3.13.0/index.js:1
+msgid "The staging feature provides a way to copy a site to test new updates, features or content."
 msgstr ""
 
-#: build/3.9.2/index.js:1
-msgid "Chat"
+#: build/3.13.0/index.js:1
+msgid "Sorry, that is not allowed."
 msgstr ""
 
-#: build/3.9.2/index.js:1
-msgid "Chat with one of our friendly Customer Care Specialists, as we are waiting to help. Open 24 hours - 7 days."
+#: build/3.13.0/index.js:1
+msgid "This feature cannot currently be modified."
 msgstr ""
 
-#: build/3.9.2/index.js:1
-msgid "Live Chat"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Tweet"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Find our team at @bluehost for updates on our products and support from our team."
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Tweet Us"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "YouTube"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Find tutorials, answers, interviews and guides on our YouTube channel."
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Watch Now"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Knowledge Base"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Articles, guides, how-tos, instructions, and answers to our client's most frequently asked questions."
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Visit Knowledge Base"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Resources"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Boost your online knowledge and get ahead of the competition."
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Explore Resources"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Events and Webinars"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Team Bluehost organizes multiple webinars and events throughout the year. We are also sponsors and speak at most WordCamps across the world. Join us at our next event!"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "More Info"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Bluehost Website"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Not finding what you need? Visit our website for more information about our products and services."
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Go to Bluehost"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Automatically keep all up to date"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "WordPress Core"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Plugins"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Themes"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Automatic Updates"
-msgstr ""
-
-#: build/3.9.2/index.js:1
-msgid "Keeping automatic updates on ensures timely security fixes and the latest features."
-msgstr ""
-
-#: build/3.9.2/index.js:1
+#: build/3.13.0/index.js:1
 msgid "Oops! Something went wrong. Please try again."
 msgstr ""
 
-#: build/3.9.2/index.js:1
-msgid " day."
-msgid_plural " days."
+#: build/3.13.0/index.js:1
+msgid "Phone"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Call Us"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Chat"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Chat with one of our friendly Customer Care Specialists, as we are waiting to help. Open 24 hours - 7 days."
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Live Chat"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Tweet"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Find our team at @bluehost for updates on our products and support from our team."
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Tweet Us"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "YouTube"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Find tutorials, answers, interviews and guides on our YouTube channel."
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Watch Now"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Knowledge Base"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Articles, guides, how-tos, instructions, and answers to our client's most frequently asked questions."
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Visit Knowledge Base"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Resources"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Boost your online knowledge and get ahead of the competition."
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Explore Resources"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Events and Webinars"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Team Bluehost organizes multiple webinars and events throughout the year. We are also sponsors and speak at most WordCamps across the world. Join us at our next event!"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "More Info"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Bluehost Website"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Not finding what you need? Visit our website for more information about our products and services."
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Go to Bluehost"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Site Pages"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Edit your homepage and other existing pages or add new pages to your site."
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "View all"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Add New"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "The Help Center provides guided, step-by-step assistance as you build your site."
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Site Status"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Not Live"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Live"
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Your Bluehost Coming Soon page lets you hide your site from visitors while you make the magic happen."
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid "Your website is currently displaying a \"Coming Soon\" page."
+msgstr ""
+
+#: build/3.13.0/index.js:1
+msgid " revision."
+msgid_plural " revisions."
 msgstr[0] ""
 msgstr[1] ""
 
-#: build/3.9.2/index.js:1
-msgid " comment at a time."
-msgid_plural " comments at a time."
+#: build/3.13.0/index.js:1
+msgid " step back."
+msgid_plural " steps back."
 msgstr[0] ""
 msgstr[1] ""
+
+#: build/3.13.0/index.js:1
+msgid " week."
+msgid_plural " weeks."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/3.13.0/index.js:1
+msgid "Wonder Blocks provides a library of customizable block patterns and page templates."
+msgstr ""
