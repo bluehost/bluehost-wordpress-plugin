@@ -113,8 +113,8 @@ export const routes = [
 				? {
 						name: '/store/sales_channel',
 						title: __( 'Sales Channel', 'wp-plugin-bluehost' ),
-					}
-				: null,			
+				  }
+				: null,
 			NewfoldRuntime.isWoo
 				? {
 						name: '/store/payments',
