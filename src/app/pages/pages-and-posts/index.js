@@ -6,6 +6,7 @@ import BlogPosts from './blogPosts';
 import BookingAndAppointments from './bookingAndAppointments';
 import ProductsPages from './ProductsPages';
 import AppStore from '../../data/store';
+import TransformStore from './TransformStore';
 
 const PagesAndPosts = () => {
 	const { store } = useContext( AppStore );
@@ -78,9 +79,9 @@ const PagesAndPosts = () => {
 						<ProductsPages />
 					) }
 					{ window.NewfoldRuntime.isYithBookingActive &&
-						window.NewfoldRuntime.isWoocommerceActive && (
-							<BookingAndAppointments />
-						) }
+						window.NewfoldRuntime.isWoocommerceActive ? (
+						<BookingAndAppointments />
+					) : <TransformStore /> }
 				</div>
 			</Container>
 		</Page>
