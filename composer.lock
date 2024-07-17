@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "edd9011fd18f58ab36baa4110f9ef95e",
+    "content-hash": "5101d468a5acbfdddd69f92316ff03a5",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -591,16 +591,16 @@
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
-            "version": "1.2.1",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-deactivation.git",
-                "reference": "7aa6aa4e9b594929c9c4f3088320b5db6b537ee5"
+                "reference": "77fba9e7289ef3924bc349b549ce53e9f494565e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-deactivation/zipball/7aa6aa4e9b594929c9c4f3088320b5db6b537ee5",
-                "reference": "7aa6aa4e9b594929c9c4f3088320b5db6b537ee5",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-deactivation/zipball/77fba9e7289ef3924bc349b549ce53e9f494565e",
+                "reference": "77fba9e7289ef3924bc349b549ce53e9f494565e",
                 "shasum": ""
             },
             "require": {
@@ -645,23 +645,23 @@
             ],
             "description": "A Module for handling WordPress brand plugins and modules deactivations",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-deactivation/tree/1.2.1",
+                "source": "https://github.com/newfold-labs/wp-module-deactivation/tree/1.2.3",
                 "issues": "https://github.com/newfold-labs/wp-module-deactivation/issues"
             },
-            "time": "2024-06-19T18:29:23+00:00"
+            "time": "2024-07-10T16:05:32+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.3.36",
+            "version": "v1.3.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "35acde73891a861ce9e4308c2294f8a76584e2e6"
+                "reference": "6de1a4be520e0f82d8c23b2d2c11f2825f5a520a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/35acde73891a861ce9e4308c2294f8a76584e2e6",
-                "reference": "35acde73891a861ce9e4308c2294f8a76584e2e6",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/6de1a4be520e0f82d8c23b2d2c11f2825f5a520a",
+                "reference": "6de1a4be520e0f82d8c23b2d2c11f2825f5a520a",
                 "shasum": ""
             },
             "require": {
@@ -704,10 +704,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.36",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.37",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-07-05T12:56:42+00:00"
+            "time": "2024-07-10T13:06:32+00:00"
         },
         {
             "name": "newfold-labs/wp-module-facebook",
@@ -2807,12 +2807,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "fed98f59fae0ca97a0753263270f4a8680d09f03"
+                "reference": "c31e886d98723c528ab99e920e7903ccb7391bd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/fed98f59fae0ca97a0753263270f4a8680d09f03",
-                "reference": "fed98f59fae0ca97a0753263270f4a8680d09f03",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/c31e886d98723c528ab99e920e7903ccb7391bd0",
+                "reference": "c31e886d98723c528ab99e920e7903ccb7391bd0",
                 "shasum": ""
             },
             "conflict": {
@@ -2823,6 +2823,7 @@
                 "aimeos/ai-admin-graphql": ">=2022.04.1,<2022.10.10|>=2023.04.1,<2023.10.6|>=2024.04.1,<2024.04.6",
                 "aimeos/ai-admin-jsonadm": "<2020.10.13|>=2021.04.1,<2021.10.6|>=2022.04.1,<2022.10.3|>=2023.04.1,<2023.10.4|==2024.04.1",
                 "aimeos/ai-client-html": ">=2020.04.1,<2020.10.27|>=2021.04.1,<2021.10.22|>=2022.04.1,<2022.10.13|>=2023.04.1,<2023.10.15|>=2024.04.1,<2024.04.7",
+                "aimeos/ai-controller-frontend": "<2020.10.15|>=2021.04.1,<2021.10.8|>=2022.04.1,<2022.10.8|>=2023.04.1,<2023.10.9",
                 "aimeos/aimeos-core": ">=2022.04.1,<2022.10.17|>=2023.04.1,<2023.10.17|>=2024.04.1,<2024.04.7",
                 "aimeos/aimeos-typo3": "<19.10.12|>=20,<20.10.5",
                 "airesvsg/acf-to-rest-api": "<=3.1",
@@ -2848,6 +2849,7 @@
                 "athlon1600/php-proxy": "<=5.1",
                 "athlon1600/php-proxy-app": "<=3",
                 "austintoddj/canvas": "<=3.4.2",
+                "auth0/wordpress": "<=4.6",
                 "automad/automad": "<=1.10.9",
                 "automattic/jetpack": "<9.8",
                 "awesome-support/awesome-support": "<=6.0.7",
@@ -2953,7 +2955,7 @@
                 "ec-cube/ec-cube": "<2.4.4|>=2.11,<=2.17.1|>=3,<=3.0.18.0-patch4|>=4,<=4.1.2",
                 "ecodev/newsletter": "<=4",
                 "ectouch/ectouch": "<=2.7.2",
-                "egroupware/egroupware": "<16.1.20170922",
+                "egroupware/egroupware": "<23.1.20240624",
                 "elefant/cms": "<2.0.7",
                 "elgg/elgg": "<3.3.24|>=4,<4.0.5",
                 "elijaa/phpmemcacheadmin": "<=1.3",
@@ -3286,7 +3288,7 @@
                 "prestashop/ps_emailsubscription": "<2.6.1",
                 "prestashop/ps_facetedsearch": "<3.4.1",
                 "prestashop/ps_linklist": "<3.1",
-                "privatebin/privatebin": "<1.4",
+                "privatebin/privatebin": "<1.4|>=1.5,<1.7.4",
                 "processwire/processwire": "<=3.0.210",
                 "propel/propel": ">=2.0.0.0-alpha1,<=2.0.0.0-alpha7",
                 "propel/propel1": ">=1,<=1.7.1",
@@ -3326,9 +3328,9 @@
                 "shopware/core": "<6.5.8.8-dev|>=6.6.0.0-RC1-dev,<6.6.1",
                 "shopware/platform": "<6.5.8.8-dev|>=6.6.0.0-RC1-dev,<6.6.1",
                 "shopware/production": "<=6.3.5.2",
-                "shopware/shopware": "<6.2.3",
+                "shopware/shopware": "<=5.7.17",
                 "shopware/storefront": "<=6.4.8.1|>=6.5.8,<6.5.8.7-dev",
-                "shopxo/shopxo": "<2.2.6",
+                "shopxo/shopxo": "<=6.1",
                 "showdoc/showdoc": "<2.10.4",
                 "silverstripe-australia/advancedreports": ">=1,<=2",
                 "silverstripe/admin": "<1.13.19|>=2,<2.1.8",
@@ -3370,7 +3372,7 @@
                 "spoon/library": "<1.4.1",
                 "spoonity/tcpdf": "<6.2.22",
                 "squizlabs/php_codesniffer": ">=1,<2.8.1|>=3,<3.0.1",
-                "ssddanbrown/bookstack": "<22.02.3",
+                "ssddanbrown/bookstack": "<24.05.1",
                 "statamic/cms": "<4.46|>=5.3,<5.6.2",
                 "stormpath/sdk": "<9.9.99",
                 "studio-42/elfinder": "<2.1.62",
@@ -3520,7 +3522,7 @@
                 "yidashi/yii2cmf": "<=2",
                 "yii2mod/yii2-cms": "<1.9.2",
                 "yiisoft/yii": "<1.1.29",
-                "yiisoft/yii2": "<2.0.50",
+                "yiisoft/yii2": "<2.0.49.4-dev",
                 "yiisoft/yii2-authclient": "<2.2.15",
                 "yiisoft/yii2-bootstrap": "<2.0.4",
                 "yiisoft/yii2-dev": "<2.0.43",
@@ -3606,7 +3608,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-02T22:05:16+00:00"
+            "time": "2024-07-11T20:05:10+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -4291,5 +4293,5 @@
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
