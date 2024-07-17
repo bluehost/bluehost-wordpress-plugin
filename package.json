@@ -57,7 +57,7 @@
         "@tailwindcss/forms": "^0.5.7",
         "@testing-library/cypress": "^10.0.2",
         "@wordpress/env": "^10.2.0",
-        "@wordpress/eslint-plugin": "^19.2.0",
+        "@wordpress/eslint-plugin": "^20.0.0",
         "@wordpress/scripts": "^27.4.0",
         "cypress": "^13.13.0",
         "cypress-axe": "^1.5.0",
