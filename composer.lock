@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "411fa9fd85d1856c69ea67d46d9c6392",
+    "content-hash": "7a05b7f385f2acf976869e7d012f455b",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -504,16 +504,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.6.0",
+            "version": "2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "6af57da8765a4db2d89e7ee737726f797945de0b"
+                "reference": "6c0941bc9ac3d18820f924de8c4afe58bb421782"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/6af57da8765a4db2d89e7ee737726f797945de0b",
-                "reference": "6af57da8765a4db2d89e7ee737726f797945de0b",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/6c0941bc9ac3d18820f924de8c4afe58bb421782",
+                "reference": "6c0941bc9ac3d18820f924de8c4afe58bb421782",
                 "shasum": ""
             },
             "require": {
@@ -532,7 +532,6 @@
                 "kporras07/composer-symlinks": "^1.2",
                 "lucatume/wp-browser": "^3",
                 "newfold-labs/wp-php-standards": "^1.2",
-                "phpunit/phpcov": "^5.0",
                 "wpackagist-plugin/woocommerce": "*"
             },
             "type": "library",
@@ -573,16 +572,6 @@
                 "create-symlinks": [
                     "Kporras07\\ComposerSymlinks\\ScriptHandler::createSymlinks"
                 ],
-                "test": [
-                    "phpunit --bootstrap tests/phpunit/bootstrap.php",
-                    "codecept run wpunit"
-                ],
-                "test-coverage": [
-                    "phpunit --bootstrap tests/phpunit/bootstrap.php --coverage-php tests/_output/unit.cov --coverage-text",
-                    "codecept run wpunit --coverage wpunit.cov",
-                    "phpcov merge --php tests/_output/merged.cov --html tests/_output/html tests/_output;",
-                    "echo \"open tests/_output/html/index.html\" to view the report"
-                ],
                 "post-install-cmd": [
                     "@create-symlinks"
                 ],
@@ -595,10 +584,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.0",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.5.3",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-07-16T23:30:45+00:00"
+            "time": "2024-06-19T17:34:08+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
