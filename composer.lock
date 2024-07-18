@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0dea33950ac0f63bb828da1cf04e544a",
+    "content-hash": "dbd27212a9e1e066fcf6186b6a1e800e",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1521,16 +1521,16 @@
         },
         {
             "name": "newfold-labs/wp-module-sso",
-            "version": "1.0.5",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-sso.git",
-                "reference": "3281a2a73b6d74bcb01ab8cde01854ed064ba5a7"
+                "reference": "663e82e5e044f3394dfe6254c2da1e68fc648d9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-sso/zipball/3281a2a73b6d74bcb01ab8cde01854ed064ba5a7",
-                "reference": "3281a2a73b6d74bcb01ab8cde01854ed064ba5a7",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-sso/zipball/663e82e5e044f3394dfe6254c2da1e68fc648d9e",
+                "reference": "663e82e5e044f3394dfe6254c2da1e68fc648d9e",
                 "shasum": ""
             },
             "require": {
@@ -1559,10 +1559,10 @@
             ],
             "description": "Single sign-on functionality for Newfold WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-sso/tree/1.0.5",
+                "source": "https://github.com/newfold-labs/wp-module-sso/tree/1.0.6",
                 "issues": "https://github.com/newfold-labs/wp-module-sso/issues"
             },
-            "time": "2024-04-18T19:11:14+00:00"
+            "time": "2024-07-18T16:12:05+00:00"
         },
         {
             "name": "newfold-labs/wp-module-staging",
