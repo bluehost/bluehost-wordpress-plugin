@@ -1,5 +1,5 @@
 import { Button, Card, Title } from '@newfold/ui-component-library';
-import { ReactComponent as TransformLogo } from 'Assets/svg/TransformStore.svg';
+import { ReactComponent as TransformLogo } from '../../../../assets/svg/transformStore.svg';
 
 const TransformStore = () => {
 	return (
