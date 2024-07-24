@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { Container, Page } from '@newfold/ui-component-library';
 import useContainerBlockIsTarget from 'App/util/hooks/useContainerBlockTarget';
 import ComingSoon from './comingSoon';

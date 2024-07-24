@@ -13,7 +13,6 @@ import {
 	getPlatformBaseUrl,
 	isJarvis,
 } from '../../util/helpers';
-import classNames from 'classnames';
 
 const base = [
 	{
