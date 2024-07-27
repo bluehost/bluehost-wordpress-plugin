@@ -1,7 +1,16 @@
 import { Button, Card, Title } from '@newfold/ui-component-library';
-import { ReactComponent as TransformLogo } from '../../../../assets/svg/transformStore.svg';
+import ecommAddonIconUrl from 'Assets/images/ecomm-addon-ctb-icon.png';
 
-const TransformStore = () => {
+const EcommAddonCTB = () => {
+	const EcommAddonCtbIcon = () => (
+		<img
+			src={ ecommAddonIconUrl }
+			width="44px"
+			height="48px"
+			alt={ __( 'eCommerce bundle upgrade icon', 'wp-plugin-bluehost' ) }
+		/>
+	);
+
 	return (
 		<Card
 			className="wppbh-app-transform nfd-border-0 nfd-border-t md:nfd-border-t-0 nfd-shadow-none hover:nfd-bg-[#F2F9FE]"
@@ -10,7 +19,7 @@ const TransformStore = () => {
 			} }
 		>
 			<Card.Content>
-				<TransformLogo />
+				<EcommAddonCtbIcon />
 				<Title size="4" className="nfd-leading-normal nfd-my-4">
 					{ __( 'Transform your store!', 'wp-plugin-bluehost' ) }
 				</Title>
@@ -32,4 +41,4 @@ const TransformStore = () => {
 	);
 };
 
-export default TransformStore;
+export default EcommAddonCTB;
