@@ -56,7 +56,7 @@ describe('Pages & Posts', function () {
 
 	it('Bookings & Appointments Exists', () => {
 		if (
-			NewfoldRuntime.isYithBookingActive &&
+			NewfoldRuntime.capabilities.hasYithExtended &&
 			NewfoldRuntime.isWoocommerceActive
 		) {
 			cy.get('.wppbh-app-bookings')
