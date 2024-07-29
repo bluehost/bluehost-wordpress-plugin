@@ -77,7 +77,7 @@ const WonderBlocksSettings = () => {
 	return (
 		<div className="nfd-flex nfd-flex-col nfd-gap-6">
 			<ToggleField
-				id="help-center-toggle"
+				id="wonderblocks-toggle"
 				label="WonderBlocks"
 				description={ __(
 					'WonderBlocks provides a library of customizable block patterns and page templates.',
