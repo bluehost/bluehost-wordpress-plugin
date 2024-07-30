@@ -2,7 +2,7 @@ import { Container } from '@newfold/ui-component-library';
 import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect } from '@wordpress/element';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
-import { default as NewfoldProducts } from '@newfold-labs/wp-module-my-products/components/product';
+import { default as NewfoldMyProducts } from '@modules/wp-module-my-products/components/product';
 import { isJarvis } from '../../util/helpers';
 
 // constants to pass to module
@@ -52,7 +52,7 @@ const ProductSection = () => {
 					</a>
 				</p>
 			</Container.Header>
-			<NewfoldProducts
+			<NewfoldMyProducts
 				methods={ moduleMethods }
 				constants={ moduleConstants }
 			/>
