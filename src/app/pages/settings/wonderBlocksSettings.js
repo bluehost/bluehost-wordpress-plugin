@@ -18,17 +18,17 @@ const WonderBlocksSettings = () => {
 
 	const getWonderBlocksNoticeTitle = () => {
 		return wonderBlocks
-			? __( 'Wonder Blocks Enabled', 'wp-plugin-bluehost' )
-			: __( 'Wonder Blocks Disabled', 'wp-plugin-bluehost' );
+			? __( 'WonderBlocks Enabled', 'wp-plugin-bluehost' )
+			: __( 'WonderBlocks Disabled', 'wp-plugin-bluehost' );
 	};
 	const getWonderBlocksNoticeText = () => {
 		return wonderBlocks
 			? __(
-					'Create new content to see Wonder Blocks in action.',
+					'Create new content to see WonderBlocks in action.',
 					'wp-plugin-bluehost'
 			  )
 			: __(
-					'Wonder Blocks will no longer display.',
+					'WonderBlocks will no longer display.',
 					'wp-plugin-bluehost'
 			  );
 	};
@@ -77,10 +77,10 @@ const WonderBlocksSettings = () => {
 	return (
 		<div className="nfd-flex nfd-flex-col nfd-gap-6">
 			<ToggleField
-				id="help-center-toggle"
-				label="Wonder Blocks"
+				id="wonderblocks-toggle"
+				label="WonderBlocks"
 				description={ __(
-					'Wonder Blocks provides a library of customizable block patterns and page templates.',
+					'WonderBlocks provides a library of customizable block patterns and page templates.',
 					'wp-plugin-bluehost'
 				) }
 				disabled={ wonderBlocksLocked }
