@@ -1201,16 +1201,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "2.3.8",
+            "version": "2.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "887c36f2cfdfad4cf17a2e1625f8bcae805398fa"
+                "reference": "60a559a9418c3254bc2138b7f81be9888981d6ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/887c36f2cfdfad4cf17a2e1625f8bcae805398fa",
-                "reference": "887c36f2cfdfad4cf17a2e1625f8bcae805398fa",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/60a559a9418c3254bc2138b7f81be9888981d6ad",
+                "reference": "60a559a9418c3254bc2138b7f81be9888981d6ad",
                 "shasum": ""
             },
             "require": {
@@ -1256,10 +1256,10 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.3.8",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.3.9",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2024-07-24T16:14:59+00:00"
+            "time": "2024-07-31T13:04:08+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
