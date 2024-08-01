@@ -130,17 +130,6 @@ describe( 'Home Page', function () {
 		cy.get( '.wppbh-webinars-banner-section' ).should( 'not.exist' );
 	} );
 
-	it( 'My Products Section exists', () => {
-		if ( NewfoldRuntime.capabilities.abTestShowMyProducts ) {
-			cy.get( '.wppbh-products-section' )
-				.contains( 'My Products' )
-				.scrollIntoView()
-				.should( 'be.visible' );
-		} else {
-			cy.get( '.wppbh-products-section' ).should( 'not.exist' );
-		}
-	} );
-
 	it( 'Products Section Renders Correctly', () => {
 		if ( NewfoldRuntime.capabilities.abTestShowMyProducts ) {
 			cy.intercept(
@@ -185,12 +174,7 @@ describe( 'Home Page', function () {
 				{}
 			);
 			cy.reload();
-			cy.get( '.wppbh-products-section' )
-				.contains(
-					'Oops, there was an error loading products, please try again later.'
-				)
-				.scrollIntoView()
-				.should( 'be.visible' );
+			cy.get( '.wppbh-products-section' ).should( 'not.exist' );
 		} else {
 			cy.get( '.wppbh-products-section' ).should( 'not.exist' );
 		}

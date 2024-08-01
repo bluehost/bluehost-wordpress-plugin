@@ -20,6 +20,16 @@ const moduleConstants = {
 			'Please login to your account manager to see products.',
 			'bluehost-wordpress-plugin'
 		),
+		title: __( 'My Products', 'bluehost-wordpress-plugin' ),
+		subTitle: __(
+			'A list of products associated with your Bluehost hosting package. For more information, check out the ',
+			'bluehost-wordpress-plugin'
+		),
+		renewalText: __(
+			'Bluehost Account Manager',
+			'bluehost-wordpress-plugin'
+		),
+		renewalCenterUrl: 'https://www.bluehost.com/my-account/renewal-center',
 	},
 };
 
@@ -35,23 +45,6 @@ const moduleMethods = {
 const ProductSection = () => {
 	return (
 		<Container className="wppbh-products-section">
-			<Container.Header
-				title={ __( 'My Products', 'bluehost-wordpress-plugin' ) }
-			>
-				<p>
-					{ __(
-						'A list of products associated with your Bluehost hosting package. For more information, check out the ',
-						'bluehost-wordpress-plugin'
-					) }
-
-					<a href="https://www.bluehost.com/my-account/renewal-center">
-						{ __(
-							'Bluehost Account Manager',
-							'bluehost-wordpress-plugin'
-						) }
-					</a>
-				</p>
-			</Container.Header>
 			<NewfoldMyProducts
 				methods={ moduleMethods }
 				constants={ moduleConstants }
