@@ -1,5 +1,5 @@
 {
-  "core": "WordPress/WordPress#tags/6.6",
+  "core": "WordPress/WordPress#tags/6.6.1",
   "config": {
     "WP_DEBUG": true,
     "WP_DEBUG_LOG": true,
