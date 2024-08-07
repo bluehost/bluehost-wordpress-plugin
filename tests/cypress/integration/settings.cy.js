@@ -1,7 +1,7 @@
 // <reference types="Cypress" />
 
-describe( 'Settings Page', function () {
-	before( () => {
+describe( 'Settings Page', { testIsolation: true }, function () {
+	beforeEach( () => {
 		cy.visit(
 			'/wp-admin/admin.php?page=' +
 				Cypress.env( 'pluginId' ) +
@@ -15,31 +15,18 @@ describe( 'Settings Page', function () {
 		cy.checkA11y( '.wppbh-app-body' );
 	} );
 
-	it( 'Has Coming Soon', () => {
+	it( 'Has All Settings Sections', () => {
 		cy.get( '.wppbh-app-settings-coming-soon' )
 			.scrollIntoView()
 			.should( 'be.visible' );
+		// further tests exist in coming soon module
 	} );
 
-	it( 'Has Auto Updates Settings', () => {
+	it( 'Autoupdate Toggles function properly', () => {
 		cy.get( '.wppbh-app-settings-update' )
 			.scrollIntoView()
 			.should( 'be.visible' );
-	} );
-
-	it( 'Has Content Settings', () => {
-		cy.get( '.wppbh-app-settings-content' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-	} );
-
-	it( 'Has Comments Settings', () => {
-		cy.get( '.wppbh-app-settings-comments' )
-			.scrollIntoView()
-			.should( 'be.visible' );
-	} );
-
-	it( 'On load update all is checked, which forces other updates to check and disabled state', () => {
+		// On load update all is checked, which forces other updates to check and disabled state
 		cy.get( '[data-id="autoupdate-all-toggle"]' )
 			.should( 'have.attr', 'aria-checked' )
 			.and( 'include', 'true' );
@@ -55,9 +42,7 @@ describe( 'Settings Page', function () {
 			.should( 'be.disabled' )
 			.should( 'have.attr', 'aria-checked' )
 			.and( 'include', 'true' );
-	} );
-
-	it( 'Disable ALL toggle, leaves everything checked, but enables them', () => {
+		//Disable ALL toggle, leaves everything checked, but enables them
 		cy.get( '[data-id="autoupdate-all-toggle"]' ).click();
 		cy.wait( 100 );
 		cy.get( '.nfd-notifications' )
@@ -78,9 +63,8 @@ describe( 'Settings Page', function () {
 			.should( 'not.be.disabled' )
 			.should( 'have.attr', 'aria-checked' )
 			.and( 'include', 'true' );
-	} );
 
-	it( 'Core toggle works', () => {
+		//Core toggle works
 		cy.get( '[data-id="autoupdate-core-toggle"]' )
 			.should( 'not.be.disabled' )
 			.should( 'have.attr', 'aria-checked' )
@@ -96,9 +80,7 @@ describe( 'Settings Page', function () {
 		cy.get( '[data-id="autoupdate-all-toggle"]' )
 			.should( 'have.attr', 'aria-checked' )
 			.and( 'include', 'false' );
-	} );
-
-	it( 'Plugins toggle works', () => {
+		//Plugins toggle works
 		cy.get( '[data-id="autoupdate-plugins-toggle"]' )
 			.should( 'not.be.disabled' )
 			.should( 'have.attr', 'aria-checked' )
@@ -114,9 +96,7 @@ describe( 'Settings Page', function () {
 		cy.get( '[data-id="autoupdate-all-toggle"]' )
 			.should( 'have.attr', 'aria-checked' )
 			.and( 'include', 'false' );
-	} );
-
-	it( 'Themes toggle works', () => {
+		// Themes toggle works
 		cy.get( '[data-id="autoupdate-themes-toggle"]' )
 			.should( 'not.be.disabled' )
 			.should( 'have.attr', 'aria-checked' )
@@ -132,9 +112,7 @@ describe( 'Settings Page', function () {
 		cy.get( '[data-id="autoupdate-all-toggle"]' )
 			.should( 'have.attr', 'aria-checked' )
 			.and( 'include', 'false' );
-	} );
-
-	it( 'All toggle activates all', () => {
+		// All toggle activates all
 		cy.get( '[data-id="autoupdate-all-toggle"]' ).click();
 		cy.wait( 100 );
 		cy.get( '[data-id="autoupdate-all-toggle"]' )
@@ -152,9 +130,7 @@ describe( 'Settings Page', function () {
 			.should( 'be.disabled' )
 			.should( 'have.attr', 'aria-checked' )
 			.and( 'include', 'true' );
-	} );
-
-	it( 'Disabling All toggle returns to previous state', () => {
+		// Disabling All toggle returns to previous state
 		cy.get( '[data-id="autoupdate-all-toggle"]' ).click();
 		cy.wait( 100 );
 		cy.get( '.nfd-notifications' )
@@ -175,9 +151,7 @@ describe( 'Settings Page', function () {
 			.should( 'not.be.disabled' )
 			.should( 'have.attr', 'aria-checked' )
 			.and( 'include', 'false' );
-	} );
-
-	it( 'All Toggle takes over again when all are enabled', () => {
+		// All Toggle takes over again when all are enabled
 		cy.get( '[data-id="autoupdate-core-toggle"]' ).click();
 		cy.get( '[data-id="autoupdate-plugins-toggle"]' ).click();
 		cy.get( '[data-id="autoupdate-themes-toggle"]' ).click();
@@ -200,6 +174,10 @@ describe( 'Settings Page', function () {
 	} );
 
 	it( 'Content Settings Work', () => {
+		cy.get( '.wppbh-app-settings-content' )
+			.scrollIntoView()
+			.should( 'be.visible' );
+
 		cy.get( '[data-id="content-revisions-select"]' ).click();
 		cy.wait( 100 );
 		cy.get( '[data-id="content-revisions-select"]' )
@@ -262,6 +240,9 @@ describe( 'Settings Page', function () {
 	} );
 
 	it( 'Comment Settings Work', () => {
+		cy.get( '.wppbh-app-settings-comments' )
+			.scrollIntoView()
+			.should( 'be.visible' );
 		cy.get( '[data-id="comments-per-page-select"]' ).click();
 		cy.wait( 500 );
 		cy.get( '[data-id="comments-per-page-select"]' )

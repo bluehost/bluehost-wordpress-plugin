@@ -1,7 +1,7 @@
 // <reference types="Cypress" />
 
-describe( 'Navigation', function () {
-	before( () => {
+describe( 'Navigation', { testIsolation: true }, function () {
+	beforeEach( () => {
 		cy.visit( '/wp-admin/admin.php?page=' + Cypress.env( 'pluginId' ) );
 	} );
 
@@ -118,49 +118,19 @@ describe( 'Navigation', function () {
 		).should( 'exist' );
 	} );
 
-	// utility nav is no more, leaving this in place un case we bring it back anytime soon.
-	it.skip( 'Utility nav links properly navigates', () => {
-		cy.get( '.utility-link-Performance' ).should(
-			'not.have.class',
-			'active'
-		);
-		cy.get( '.utility-link-Performance' ).click();
-		cy.wait( 500 );
-		cy.hash().should( 'eq', '#/performance' );
-		cy.get( '.utility-link-Performance' ).should( 'have.class', 'active' );
-
-		cy.get( '.utility-link-Settings' ).click();
-		cy.wait( 500 );
-		cy.hash().should( 'eq', '#/settings' );
-		cy.get( '.utility-link-Settings' ).should( 'have.class', 'active' );
-		cy.get( '.utility-link-Performance' ).should(
-			'not.have.class',
-			'active'
-		);
-
-		cy.get( '.utility-link-Help' ).click();
-		cy.wait( 500 );
-		cy.hash().should( 'eq', '#/help' );
-		cy.get( '.utility-link-Help' ).should( 'have.class', 'active' );
-		cy.get( '.utility-link-Settings' ).should( 'not.have.class', 'active' );
-	} );
-
-	// no mobile nav, but should probably add
-	it.skip( 'Mobile nav links dispaly for mobile', () => {
-		cy.get( '.mobile-toggle' ).should( 'not.exist' );
+	it( 'Mobile nav links dispaly and link properly on mobile', () => {
+		cy.get( '#nfd-app-mobile-nav' ).should( 'not.exist' );
 
 		cy.viewport( 'iphone-x' );
-		cy.get( '.mobile-toggle' ).should( 'be.visible' );
-	} );
+		cy.get( '#nfd-app-mobile-nav' ).should( 'be.visible' );
 
-	it.skip( 'Mobile nav links properly navigates', () => {
-		cy.get( '.mobile-link-Home' ).should( 'not.exist' );
-		cy.viewport( 'iphone-x' );
-		cy.get( '.mobile-toggle' ).click();
+		cy.get( '.wppbh-app-navitem-Home' ).should( 'not.exist' );
+
+		cy.get( '#nfd-app-mobile-nav' ).click();
 		cy.wait( 500 );
-		cy.get( '.mobile-link-Home' ).should( 'be.visible' );
-		cy.get( 'button[aria-label="Close"]' ).should( 'be.visible' );
-		cy.get( 'button[aria-label="Close"]' ).click();
-		cy.get( '.mobile-link-Home' ).should( 'not.exist' );
+		cy.get( '.wppbh-app-navitem-Home' ).should( 'be.visible' );
+		cy.get( 'button.nfd-modal__close-button' ).should( 'be.visible' );
+		cy.get( 'button.nfd-modal__close-button' ).click();
+		cy.get( '.wppbh-app-navitem-Home' ).should( 'not.exist' );
 	} );
 } );
