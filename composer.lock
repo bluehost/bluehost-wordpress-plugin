@@ -298,16 +298,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ai",
-            "version": "1.1.9",
+            "version": "1.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ai.git",
-                "reference": "961dc65294b3b4a2c5cc4d2694bcff521cbd3ef8"
+                "reference": "ebb63253228ce82b972a25c3b28787f8ef7ba0d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ai/zipball/961dc65294b3b4a2c5cc4d2694bcff521cbd3ef8",
-                "reference": "961dc65294b3b4a2c5cc4d2694bcff521cbd3ef8",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ai/zipball/ebb63253228ce82b972a25c3b28787f8ef7ba0d8",
+                "reference": "ebb63253228ce82b972a25c3b28787f8ef7ba0d8",
                 "shasum": ""
             },
             "require": {
@@ -336,10 +336,10 @@
             ],
             "description": "A module for providing artificial intelligence capabilities.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ai/tree/1.1.9",
+                "source": "https://github.com/newfold-labs/wp-module-ai/tree/1.1.10",
                 "issues": "https://github.com/newfold-labs/wp-module-ai/issues"
             },
-            "time": "2024-05-20T17:10:20+00:00"
+            "time": "2024-08-07T14:29:43+00:00"
         },
         {
             "name": "newfold-labs/wp-module-atomic",
