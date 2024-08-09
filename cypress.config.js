@@ -53,12 +53,12 @@ module.exports = defineConfig( {
 				}
 			}
 
-			// Exclude ecommerce tests for WordPress lower than 6.5 (6.4 or 6.3) or PHP lower than 7.4 (7.1, 7.2 and 7.3)
+			// Exclude Onboarding and ecommerce tests for WordPress lower than 6.5 (6.4 or 6.3) or PHP lower than 7.4 (7.1, 7.2 and 7.3)
 			if ( semver.satisfies( config.env.wpSemverVersion, '<6.5.0' ) || semver.satisfies( config.env.phpSemverVersion, '<7.4.0' )) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
 					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Site-Capabilities/**',
 					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/homePageWithWoo.cy.js',
-					'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/5-AI-SiteGen-onboarding-flow/*.cy.js' // Works but failing on cypress
+					'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/**' // Onboarding requires WP 6.5 or greater, as it uses the Wonder Theme which has the same requirement
 				] );
 			}
 
