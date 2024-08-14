@@ -211,13 +211,13 @@ Features::getInstance();
  */
 add_filter(
 	'transient_nfd_site_capabilities',
-    function( $transient ) {
-        if( empty( $transient ) ) {
-            return array(
+	function( $transient ) {
+		if( empty( $transient ) ) {
+			return array(
 				'canMigrateSites' => true,
 			);
-        }
-    },
-    10,
-    2
+		}
+	},
+	10,
+	2
 );
