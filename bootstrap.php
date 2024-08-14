@@ -217,6 +217,7 @@ add_filter(
 				'canMigrateSite' => true,
 			);
 		}
+		return $transient;
 	},
 	10,
 	2
