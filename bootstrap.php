@@ -203,3 +203,22 @@ if ( is_admin() ) {
 
 // Instantiate the Features singleton
 Features::getInstance();
+
+/**
+ * Temporary hook to filter the capabilities in case they are empty
+ * This is to fix an issue where the migration value is not found on new sites
+ * Temporary fix to keep things working while we determing the root cause
+ */
+add_filter(
+	'transient_nfd_site_capabilities',
+	function ( $transient ) {
+		if ( empty( $transient ) ) {
+			return array(
+				'canMigrateSite' => true,
+			);
+		}
+		return $transient;
+	},
+	10,
+	2
+);
