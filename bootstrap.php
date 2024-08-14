@@ -211,8 +211,8 @@ Features::getInstance();
  */
 add_filter(
 	'transient_nfd_site_capabilities',
-	function( $transient ) {
-		if( empty( $transient ) ) {
+	function ( $transient ) {
+		if ( empty ( $transient ) ) {
 			return array(
 				'canMigrateSites' => true,
 			);
