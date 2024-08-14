@@ -214,7 +214,7 @@ add_filter(
 	function ( $transient ) {
 		if ( empty( $transient ) ) {
 			return array(
-				'canMigrateSites' => true,
+				'canMigrateSite' => true,
 			);
 		}
 	},
