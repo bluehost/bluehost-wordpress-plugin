@@ -26,7 +26,9 @@ describe( 'Help Page', function () {
 	} );
 
 	it( 'Is Accessible', () => {
-		cy.checkA11y( '.wppbh-app-body', { retries: 10 } );
+		cy.injectAxe();
+		cy.wait( 500 );
+		cy.checkA11y( '.wppbh-app-body' );
 	} );
 
 	it( 'Phone Card Exists', () => {
