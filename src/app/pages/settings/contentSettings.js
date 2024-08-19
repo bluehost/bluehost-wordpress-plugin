@@ -157,7 +157,7 @@ const EmptyTrash = ( { setError, notify } ) => {
 		<SelectField
 			id="empty-trash-select"
 			label={ __(
-				'Number of weeks inbetween emptying trash ',
+				'Number of weeks in between emptying trash ',
 				'wp-plugin-bluehost'
 			) }
 			description={
