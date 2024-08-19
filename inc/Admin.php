@@ -92,7 +92,7 @@ final class Admin {
 			? array(
 				'bluehost#/staging' => __( 'Staging', 'wp-plugin-bluehost' ),
 			)
-			: array();	
+			: array();
 		$help    = array(
 			'bluehost#/help' => __( 'Help', 'wp-plugin-bluehost' ),
 		);
