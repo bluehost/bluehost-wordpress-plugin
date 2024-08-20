@@ -1620,16 +1620,16 @@
         },
         {
             "name": "newfold-labs/wp-module-survey",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-survey.git",
-                "reference": "6c37264f2a607a330ac25e65555d99ec38972b2e"
+                "reference": "8bf26c9bc6b1da4c09e03e747da0d525c11df07b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-survey/zipball/6c37264f2a607a330ac25e65555d99ec38972b2e",
-                "reference": "6c37264f2a607a330ac25e65555d99ec38972b2e",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-survey/zipball/8bf26c9bc6b1da4c09e03e747da0d525c11df07b",
+                "reference": "8bf26c9bc6b1da4c09e03e747da0d525c11df07b",
                 "shasum": ""
             },
             "require-dev": {
@@ -1656,10 +1656,10 @@
             ],
             "description": "A Newfold module to collect customer satisfaction feedback via surveys in the WordPress admin dashboard.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-survey/tree/1.0.0",
+                "source": "https://github.com/newfold-labs/wp-module-survey/tree/1.0.1",
                 "issues": "https://github.com/newfold-labs/wp-module-survey/issues"
             },
-            "time": "2024-06-27T09:50:43+00:00"
+            "time": "2024-08-20T05:34:40+00:00"
         },
         {
             "name": "wp-cli/wp-config-transformer",
