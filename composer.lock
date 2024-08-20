@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11c7f52792a412c64915f7fcfa8da604",
+    "content-hash": "1b3c0adf75e076db3e6d457232df4b19",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1102,16 +1102,16 @@
         },
         {
             "name": "newfold-labs/wp-module-migration",
-            "version": "v1.0.9",
+            "version": "v1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-migration.git",
-                "reference": "b9b94c9906c917b9c1d47d926fe10f48cb8f4315"
+                "reference": "853d4fa02f83889ac3045c23a4e4744c85c49022"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/b9b94c9906c917b9c1d47d926fe10f48cb8f4315",
-                "reference": "b9b94c9906c917b9c1d47d926fe10f48cb8f4315",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/853d4fa02f83889ac3045c23a4e4744c85c49022",
+                "reference": "853d4fa02f83889ac3045c23a4e4744c85c49022",
                 "shasum": ""
             },
             "require": {
@@ -1149,10 +1149,10 @@
             ],
             "description": "Initiates the migration process",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-migration/tree/v1.0.9",
+                "source": "https://github.com/newfold-labs/wp-module-migration/tree/v1.0.10",
                 "issues": "https://github.com/newfold-labs/wp-module-migration/issues"
             },
-            "time": "2024-07-24T13:47:14+00:00"
+            "time": "2024-08-20T13:34:22+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
@@ -1620,16 +1620,16 @@
         },
         {
             "name": "newfold-labs/wp-module-survey",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-survey.git",
-                "reference": "6c37264f2a607a330ac25e65555d99ec38972b2e"
+                "reference": "8bf26c9bc6b1da4c09e03e747da0d525c11df07b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-survey/zipball/6c37264f2a607a330ac25e65555d99ec38972b2e",
-                "reference": "6c37264f2a607a330ac25e65555d99ec38972b2e",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-survey/zipball/8bf26c9bc6b1da4c09e03e747da0d525c11df07b",
+                "reference": "8bf26c9bc6b1da4c09e03e747da0d525c11df07b",
                 "shasum": ""
             },
             "require-dev": {
@@ -1656,10 +1656,10 @@
             ],
             "description": "A Newfold module to collect customer satisfaction feedback via surveys in the WordPress admin dashboard.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-survey/tree/1.0.0",
+                "source": "https://github.com/newfold-labs/wp-module-survey/tree/1.0.1",
                 "issues": "https://github.com/newfold-labs/wp-module-survey/issues"
             },
-            "time": "2024-06-27T09:50:43+00:00"
+            "time": "2024-08-20T05:34:40+00:00"
         },
         {
             "name": "wp-cli/wp-config-transformer",
