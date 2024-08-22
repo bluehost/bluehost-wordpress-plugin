@@ -1,8 +1,14 @@
 import { Container, Page } from '@newfold/ui-component-library';
+import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import WebinarsBanner from 'App/components/webinars-banner';
 import AccountCard from './accountCard';
 import HelpCard from './helpCard';
 import WelcomeSection from './welcomeSection';
+import MyProductSection from './myProductsSection';
+
+const abTestShowMyProducts = NewfoldRuntime.hasCapability(
+	'abTestShowMyProducts'
+);
 
 const Home = () => {
 	return (
@@ -17,6 +23,7 @@ const Home = () => {
 					</div>
 				</Container.Block>
 			</Container>
+			{ abTestShowMyProducts && <MyProductSection /> }
 		</Page>
 	);
 };
