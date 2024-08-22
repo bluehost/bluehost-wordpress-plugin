@@ -1,9 +1,8 @@
-import { Container } from '@newfold/ui-component-library';
 import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect } from '@wordpress/element';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
-import { default as NewfoldMyProducts } from '@modules/wp-module-my-products/components/product';
 import { isJarvis } from '../../util/helpers';
+import { default as NewfoldMyProducts } from '@modules/wp-module-my-products/components/myProducts';
 
 // constants to pass to module
 const moduleConstants = {
@@ -42,15 +41,13 @@ const moduleMethods = {
 	isJarvis,
 };
 
-const ProductSection = () => {
+const MyProductsSection = () => {
 	return (
-		<Container className="wppbh-products-section">
-			<NewfoldMyProducts
-				methods={ moduleMethods }
-				constants={ moduleConstants }
-			/>
-		</Container>
+		<NewfoldMyProducts
+			methods={ moduleMethods }
+			constants={ moduleConstants }
+		/>
 	);
 };
 
-export default ProductSection;
+export default MyProductsSection;

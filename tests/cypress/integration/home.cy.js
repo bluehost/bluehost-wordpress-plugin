@@ -1,5 +1,5 @@
 // <reference types="Cypress" />
-const productFixtures = require( '../fixtures/products.json' );
+
 describe( 'Home Page', function () {
 	let NewfoldRuntime;
 
@@ -128,55 +128,5 @@ describe( 'Home Page', function () {
 		);
 		cy.reload();
 		cy.get( '.wppbh-webinars-banner-section' ).should( 'not.exist' );
-	} );
-
-	it( 'Products Section Renders Correctly', () => {
-		if ( NewfoldRuntime.capabilities.abTestShowMyProducts ) {
-			cy.intercept(
-				'GET',
-				'/index.php?rest_route=%2Fnewfold-my-products%2Fv1%2Fproducts&_locale=user',
-				productFixtures
-			);
-			cy.reload();
-			// Verify the table contains the correct product data
-			cy.get( '.wppbh-products-data-section' ).within( () => {
-				cy.contains( 'Products & Services' ).should( 'be.visible' );
-				cy.contains( 'Free SSL' ).should( 'be.visible' );
-				cy.contains( 'SiteLock Lite' ).should( 'be.visible' );
-			} );
-		} else {
-			cy.get( '.wppbh-products-section' ).should( 'not.exist' );
-		}
-	} );
-
-	it( 'Products Section Renders Correctly for No products response', () => {
-		if ( NewfoldRuntime.capabilities.abTestShowMyProducts ) {
-			cy.intercept(
-				'GET',
-				'/index.php?rest_route=%2Fnewfold-my-products%2Fv1%2Fproducts&_locale=user',
-				[]
-			);
-			cy.reload();
-			cy.get( '.wppbh-products-section' )
-				.contains( 'Sorry, no products. Please, try again later.' )
-				.scrollIntoView()
-				.should( 'be.visible' );
-		} else {
-			cy.get( '.wppbh-products-section' ).should( 'not.exist' );
-		}
-	} );
-
-	it( 'Products Section Renders Correctly for Empty response', () => {
-		if ( NewfoldRuntime.capabilities.abTestShowMyProducts ) {
-			cy.intercept(
-				'GET',
-				'/index.php?rest_route=%2Fnewfold-my-products%2Fv1%2Fproducts&_locale=user',
-				{}
-			);
-			cy.reload();
-			cy.get( '.wppbh-products-section' ).should( 'not.exist' );
-		} else {
-			cy.get( '.wppbh-products-section' ).should( 'not.exist' );
-		}
 	} );
 } );

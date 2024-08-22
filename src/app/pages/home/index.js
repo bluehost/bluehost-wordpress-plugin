@@ -4,7 +4,7 @@ import WebinarsBanner from 'App/components/webinars-banner';
 import AccountCard from './accountCard';
 import HelpCard from './helpCard';
 import WelcomeSection from './welcomeSection';
-import ProductSection from './productSection';
+import MyProductSection from './myProductsSection';
 
 const abTestShowMyProducts = NewfoldRuntime.hasCapability(
 	'abTestShowMyProducts'
@@ -23,7 +23,7 @@ const Home = () => {
 					</div>
 				</Container.Block>
 			</Container>
-			{ abTestShowMyProducts && <ProductSection /> }
+			{ abTestShowMyProducts && <MyProductSection /> }
 		</Page>
 	);
 };
