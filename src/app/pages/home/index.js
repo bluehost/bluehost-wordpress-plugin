@@ -3,7 +3,6 @@ import WebinarsBanner from 'App/components/webinars-banner';
 import AccountCard from './accountCard';
 import HelpCard from './helpCard';
 import WelcomeSection from './welcomeSection';
-import MyProductSection from './myProductsSection';
 
 const Home = () => {
 	return (
