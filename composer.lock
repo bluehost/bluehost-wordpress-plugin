@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6e0ff3ece4cdd6275d5fa174fe2e4af",
+    "content-hash": "460a529c9817ae719ddd78ed07ff66fc",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1153,65 +1153,6 @@
                 "issues": "https://github.com/newfold-labs/wp-module-migration/issues"
             },
             "time": "2024-08-21T14:04:06+00:00"
-        },
-        {
-            "name": "newfold-labs/wp-module-my-products",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/newfold-labs/wp-module-my-products.git",
-                "reference": "e0796b9087f5d4349ad0403a3bf55046ec620eb1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-my-products/zipball/e0796b9087f5d4349ad0403a3bf55046ec620eb1",
-                "reference": "e0796b9087f5d4349ad0403a3bf55046ec620eb1",
-                "shasum": ""
-            },
-            "require": {
-                "newfold-labs/wp-module-context": "^1.0",
-                "newfold-labs/wp-module-data": "^2.6.1",
-                "newfold-labs/wp-module-features": "^1.3.0"
-            },
-            "require-dev": {
-                "newfold-labs/wp-php-standards": "^1.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "NewfoldLabs\\WP\\Module\\MyProducts\\": "includes"
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "scripts": {
-                "fix": [
-                    "vendor/bin/phpcbf --standard=phpcs.xml ."
-                ],
-                "lint": [
-                    "vendor/bin/phpcs --standard=phpcs.xml -s ."
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Vara Prasad Maruboina",
-                    "email": "varaprasad.maruboina@newfold.com"
-                },
-                {
-                    "name": "Girish Lokapure",
-                    "email": "girish.lokapure@newfold.com"
-                }
-            ],
-            "description": "A module for rendering user-specific product data utilizing the Hiive Users API, which integrates with the Fulfilment Gateway API.",
-            "support": {
-                "source": "https://github.com/newfold-labs/wp-module-my-products/tree/1.0.3",
-                "issues": "https://github.com/newfold-labs/wp-module-my-products/issues"
-            },
-            "time": "2024-08-22T21:57:38+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
