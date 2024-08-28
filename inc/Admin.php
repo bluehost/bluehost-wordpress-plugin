@@ -118,6 +118,7 @@ final class Admin {
 		echo 'ul#adminmenu a.toplevel_page_bluehost.wp-has-current-submenu:after, ul#adminmenu>li#toplevel_page_bluehost.current>a.current:after { border-right-color: #fff !important; }';
 		echo 'li#toplevel_page_bluehost > ul > li.wp-first-item { display: none !important; }';
 		echo '#wp-toolbar #wp-admin-bar-bluehost-coming_soon .ab-item { padding: 0; }';
+		echo 'body.folded #adminmenu .toplevel_page_bluehost div.wp-menu-image { width: 36px; height: 34px; }';
 		echo '</style>';
 	}
 
