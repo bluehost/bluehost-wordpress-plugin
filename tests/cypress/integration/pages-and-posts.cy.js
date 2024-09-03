@@ -33,9 +33,9 @@ describe('Pages & Posts', function () {
 		cy.go('back');
 
 		cy.get('.wppbh-app-site-page')
-			.find('a[href="wp-admin/post-new.php?post_type=page&wb-library=patterns&wb-category=features"] Button')
+			.find('a[href="post-new.php?post_type=page&wb-library=patterns&wb-category=features"] Button')
 			.click();
-		cy.url().should('include', 'wp-admin/post-new.php?post_type=page&wb-library=patterns&wb-category=features');
+		cy.url().should('include', 'post-new.php?post_type=page&wb-library=patterns&wb-category=features');
 		cy.go('back');
 	});
 
