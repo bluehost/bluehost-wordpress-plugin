@@ -63,13 +63,6 @@ module.exports = defineConfig( {
 				] );
 			}
 
-			// Exclude WonderBlocks tests for WordPress lower than 6.6 (6.5 or 6.4)
-			if ( semver.satisfies( config.env.wpSemverVersion, '<6.6.0' ) ) {
-				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
-					'vendor/newfold-labs/wp-module-patterns/tests/cypress/integration/**',
-				] );
-			}
-
 			return config;
 		},
 		baseUrl: 'http://localhost:8882',
