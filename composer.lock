@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29b583ddd0e622393a2439ceb9c10e9c",
+    "content-hash": "404ff7512093017735c5eb53323442f7",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1483,16 +1483,16 @@
         },
         {
             "name": "newfold-labs/wp-module-my-products",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-my-products.git",
-                "reference": "e0796b9087f5d4349ad0403a3bf55046ec620eb1"
+                "reference": "55258da9b474aa42cba99b9bd9811e72ab6dca35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-my-products/zipball/e0796b9087f5d4349ad0403a3bf55046ec620eb1",
-                "reference": "e0796b9087f5d4349ad0403a3bf55046ec620eb1",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-my-products/zipball/55258da9b474aa42cba99b9bd9811e72ab6dca35",
+                "reference": "55258da9b474aa42cba99b9bd9811e72ab6dca35",
                 "shasum": ""
             },
             "require": {
@@ -1535,10 +1535,10 @@
             ],
             "description": "A module for rendering user-specific product data utilizing the Hiive Users API, which integrates with the Fulfilment Gateway API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-my-products/tree/1.0.3",
+                "source": "https://github.com/newfold-labs/wp-module-my-products/tree/1.0.4",
                 "issues": "https://github.com/newfold-labs/wp-module-my-products/issues"
             },
-            "time": "2024-08-22T21:57:38+00:00"
+            "time": "2024-09-05T23:41:06+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
