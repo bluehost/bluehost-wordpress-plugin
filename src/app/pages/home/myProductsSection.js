@@ -42,6 +42,7 @@ const moduleMethods = {
 };
 
 const MyProductsSection = () => {
+	console.log('isJarvis', isJarvis());
 	return (
 		<NewfoldMyProducts
 			methods={ moduleMethods }

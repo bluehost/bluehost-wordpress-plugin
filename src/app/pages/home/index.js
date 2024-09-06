@@ -10,7 +10,7 @@ const Home = () => {
 	const abTestShowMyProducts = NewfoldRuntime.hasCapability(
 		'abTestShowMyProducts'
 	);
-
+	console.log('abTestShowMyProducts', abTestShowMyProducts);
 	return (
 		<Page className="wppbh-home">
 			<WelcomeSection />
