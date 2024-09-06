@@ -10,7 +10,12 @@ const Home = () => {
 	const abTestShowMyProducts = NewfoldRuntime.hasCapability(
 		'abTestShowMyProducts'
 	);
-	console.log('abTestShowMyProducts', abTestShowMyProducts);
+	
+	if (abTestShowMyProducts) {
+		console.log('My Products Section Exists');
+	} else {
+		console.log('My Products Section Does Not Exist');
+	}
 	return (
 		<Page className="wppbh-home">
 			<WelcomeSection />
