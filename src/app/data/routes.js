@@ -6,6 +6,7 @@ import {
 	AdjustmentsHorizontalIcon,
 	BuildingStorefrontIcon,
 	DocumentDuplicateIcon,
+	PuzzlePieceIcon
 } from '@heroicons/react/24/outline';
 import { ReactComponent as HelpIcon } from '../components/icons/HelpIcon.svg';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
@@ -141,7 +142,7 @@ export const routes = [
 		name: '/my_plugins_and_tools',
 		title: __( 'My Plugins & Tools', 'wp-plugin-bluehost' ),
 		Component: WPSolution,
-		Icon: ShoppingBagIcon,
+		Icon: PuzzlePieceIcon,
 		condition: true,
 	},	
 	{
