@@ -200,7 +200,6 @@ const ContentSettings = () => {
 			) }
 		>
 			<div className="nfd-flex nfd-flex-col nfd-gap-4">
-				{/* <ContentRevisions setError={ setError } notify={ notify } /> */}
 				<EmptyTrash setError={ setError } notify={ notify } />
 
 				{ isError && (
