@@ -2,14 +2,14 @@
 # This file is distributed under the GPL 2.0 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: The Bluehost Plugin 3.14.3\n"
+"Project-Id-Version: The Bluehost Plugin 3.14.11\n"
 "Report-Msgid-Bugs-To: https://github.com/bluehost/bluehost-wordpress-plugin/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-08T20:13:41+00:00\n"
+"POT-Creation-Date: 2024-09-23T13:47:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: wp-plugin-bluehost\n"
@@ -32,8 +32,8 @@ msgstr ""
 
 #. Author of the plugin
 #: bluehost-wordpress-plugin.php
-#: inc/Admin.php:133
 #: inc/Admin.php:134
+#: inc/Admin.php:135
 msgid "Bluehost"
 msgstr ""
 
@@ -85,60 +85,63 @@ msgid "Preview the coming soon landing page"
 msgstr ""
 
 #: inc/Admin.php:70
-#: inc/Admin.php:276
-#: build/3.14.3/index.js:1
+#: inc/Admin.php:277
+#: src/app/data/routes.js:81
 msgid "Home"
 msgstr ""
 
 #: inc/Admin.php:73
-#: build/3.14.3/index.js:1
+#: src/app/data/routes.js:88
+#: src/app/pages/pages-and-posts/index.js:21
 msgid "Pages & Posts"
 msgstr ""
 
 #: inc/Admin.php:76
-#: build/3.14.3/index.js:1
+#: src/app/data/routes.js:95
 msgid "Store"
 msgstr ""
 
 #: inc/Admin.php:79
-#: build/3.14.3/index.js:1
+#: src/app/data/routes.js:132
 msgid "Marketplace"
 msgstr ""
 
 #: inc/Admin.php:84
-#: build/3.14.3/index.js:1
+#: src/app/data/routes.js:140
+#: src/app/pages/performance/index.js:41
 msgid "Performance"
 msgstr ""
 
 #: inc/Admin.php:88
-#: inc/Admin.php:277
-#: build/3.14.3/index.js:1
+#: inc/Admin.php:278
+#: src/app/data/routes.js:147
+#: src/app/pages/settings/index.js:16
 msgid "Settings"
 msgstr ""
 
 #: inc/Admin.php:93
-#: build/3.14.3/index.js:1
+#: src/app/data/routes.js:154
 msgid "Staging"
 msgstr ""
 
 #: inc/Admin.php:97
-#: build/3.14.3/index.js:1
+#: src/app/pages/help/index.js:51
 msgid "Help"
 msgstr ""
 
-#: inc/Admin.php:176
+#: inc/Admin.php:177
 msgid "Please update to a newer WordPress version."
 msgstr ""
 
-#: inc/Admin.php:177
+#: inc/Admin.php:178
 msgid "There are new WordPress components which this plugin requires in order to render the interface."
 msgstr ""
 
-#: inc/Admin.php:178
+#: inc/Admin.php:179
 msgid "Please update now"
 msgstr ""
 
-#: inc/Admin.php:301
+#: inc/Admin.php:302
 msgid "Thank you for creating with <a href=\"https://wordpress.org/\">WordPress</a> and <a href=\"https://bluehost.com/about\">Bluehost</a>."
 msgstr ""
 
@@ -192,224 +195,663 @@ msgstr ""
 msgid "Auto-updates enabled"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/components/app-nav/logo.js:31
 msgid "Bluehost WordPress Plugin"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/components/errorCard/index.js:27
 msgid "Oh No, An Error!"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/components/errorCard/index.js:32
 msgid "You found an error, please refresh the page and try again!"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/components/errorCard/index.js:38
 msgid "If the error persists, please contact support."
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/components/errorCard/index.js:48
 msgid " Error code: "
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/components/site-info/index.js:59
 msgid "Bluehost Account"
 msgstr ""
 
-#: build/3.14.3/index.js:1
-msgid "There's nothing here!"
+#: src/app/components/site-info/index.js:72
+msgid "View Store"
 msgstr ""
 
-#: build/3.14.3/index.js:1
-msgid "Products & Services"
+#: src/app/components/site-info/index.js:73
+msgid "View Site"
 msgstr ""
 
-#: build/3.14.3/index.js:1
-msgid "Sales & Promotions"
-msgstr ""
-
-#: build/3.14.3/index.js:1
-msgid "Sales Channel"
-msgstr ""
-
-#: build/3.14.3/index.js:1
-msgid "Payments"
-msgstr ""
-
-#: build/3.14.3/index.js:1
-msgid "Store Details"
-msgstr ""
-
-#: build/3.14.3/index.js:1
-msgid "Admin"
-msgstr ""
-
-#: build/3.14.3/index.js:1
-msgid "The staging feature provides a way to copy a site to test new updates, features or content."
-msgstr ""
-
-#: build/3.14.3/index.js:1
-msgid "Sorry, that is not allowed."
-msgstr ""
-
-#: build/3.14.3/index.js:1
-msgid "This feature cannot currently be modified."
-msgstr ""
-
-#: build/3.14.3/index.js:1
-msgid "Oops! Something went wrong. Please try again."
-msgstr ""
-
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:16
 msgid "Phone"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:23
 msgid "Call Us"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:28
 msgid "Chat"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:29
 msgid "Chat with one of our friendly Customer Care Specialists, as we are waiting to help. Open 24 hours - 7 days."
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:34
 msgid "Live Chat"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:41
 msgid "Tweet"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:42
 msgid "Find our team at @bluehost for updates on our products and support from our team."
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:47
 msgid "Tweet Us"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:52
 msgid "YouTube"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:53
 msgid "Find tutorials, answers, interviews and guides on our YouTube channel."
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:58
 msgid "Watch Now"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:63
 msgid "Knowledge Base"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:64
 msgid "Articles, guides, how-tos, instructions, and answers to our client's most frequently asked questions."
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:69
 msgid "Visit Knowledge Base"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:76
 msgid "Resources"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:77
 msgid "Boost your online knowledge and get ahead of the competition."
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:82
 msgid "Explore Resources"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:89
 msgid "Events and Webinars"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:90
 msgid "Team Bluehost organizes multiple webinars and events throughout the year. We are also sponsors and speak at most WordCamps across the world. Join us at our next event!"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:95
 msgid "More Info"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:100
 msgid "Bluehost Website"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:101
 msgid "Not finding what you need? Visit our website for more information about our products and services."
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/help.js:106
 msgid "Go to Bluehost"
 msgstr ""
 
-#: build/3.14.3/index.js:1
-msgid "Site Pages"
+#: src/app/data/routes.js:55
+msgid "There's nothing here!"
 msgstr ""
 
-#: build/3.14.3/index.js:1
-msgid "Edit your homepage and other existing pages or add new pages to your site."
+#: src/app/data/routes.js:101
+msgid "Products & Services"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/data/routes.js:107
+msgid "Sales & Promotions"
+msgstr ""
+
+#: src/app/data/routes.js:114
+msgid "Sales Channel"
+msgstr ""
+
+#: src/app/data/routes.js:120
+msgid "Payments"
+msgstr ""
+
+#: src/app/data/routes.js:125
+msgid "Store Details"
+msgstr ""
+
+#: src/app/data/routes.js:161
+msgid "Help with WordPress"
+msgstr ""
+
+#: src/app/data/routes.js:171
+#: src/app/pages/admin/index.js:12
+msgid "Admin"
+msgstr ""
+
+#: src/app/pages/admin/index.js:13
+msgid "Secret page to manage admin features and settings."
+msgstr ""
+
+#: src/app/pages/help/index.js:52
+msgid "We are available 24/7 to help answer questions and solve your problems."
+msgstr ""
+
+#: src/app/pages/home/helpCard.js:16
+msgid "From DIY to full-service help."
+msgstr ""
+
+#: src/app/pages/home/helpCard.js:22
+msgid "Call or chat 24/7 for support or let our experts build your site for you."
+msgstr ""
+
+#: src/app/pages/home/helpCard.js:33
+msgid "Get Help"
+msgstr ""
+
+#: src/app/pages/pages-and-posts/blogPosts.js:28
+msgid "Blog Posts"
+msgstr ""
+
+#: src/app/pages/pages-and-posts/blogPosts.js:31
+msgid "Add a new blog post or edit your existing posts."
+msgstr ""
+
+#: src/app/pages/pages-and-posts/blogPosts.js:39
+#: src/app/pages/pages-and-posts/bookingAndAppointments.js:39
+#: src/app/pages/pages-and-posts/ProductsPages.js:39
+#: src/app/pages/pages-and-posts/sitePages.js:39
 msgid "View all"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/pages/pages-and-posts/blogPosts.js:42
+#: src/app/pages/pages-and-posts/bookingAndAppointments.js:42
+#: src/app/pages/pages-and-posts/ProductsPages.js:42
+#: src/app/pages/pages-and-posts/sitePages.js:43
 msgid "Add New"
 msgstr ""
 
-#: build/3.14.3/index.js:1
-msgid "The Help Center provides guided, step-by-step assistance as you build your site."
+#: src/app/pages/pages-and-posts/bookingAndAppointments.js:28
+msgid "Bookings & Appointments"
 msgstr ""
 
-#: build/3.14.3/index.js:1
-msgid "Site Status"
+#: src/app/pages/pages-and-posts/bookingAndAppointments.js:31
+msgid "Add your list of services, setup a booking calendar, and edit your bookings form."
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/pages/pages-and-posts/ecommAddonCTB.js:10
+msgid "eCommerce bundle upgrade icon"
+msgstr ""
+
+#: src/app/pages/pages-and-posts/ecommAddonCTB.js:24
+msgid "Transform your store!"
+msgstr ""
+
+#: src/app/pages/pages-and-posts/ecommAddonCTB.js:27
+msgid "Our eCommerce bundle includes a comprehensive suite of advanced tools designed to boost the performance of your WooCommerce store."
+msgstr ""
+
+#: src/app/pages/pages-and-posts/ecommAddonCTB.js:36
+msgid "Learn More"
+msgstr ""
+
+#: src/app/pages/pages-and-posts/index.js:29
+msgid "Your site is not live."
+msgstr ""
+
+#: src/app/pages/pages-and-posts/index.js:41
+msgid "Your site is live."
+msgstr ""
+
+#: src/app/pages/pages-and-posts/index.js:53
+msgid "Visitors to your site will see your \"Coming Soon\" page and not your actual site. Visit"
+msgstr ""
+
+#: src/app/pages/pages-and-posts/index.js:58
+msgid "\"Settings\""
+msgstr ""
+
+#: src/app/pages/pages-and-posts/index.js:60
+msgid "to set your site live."
+msgstr ""
+
+#: src/app/pages/pages-and-posts/index.js:67
+msgid "Visitors to your site will see all your publicly published pages."
+msgstr ""
+
+#: src/app/pages/pages-and-posts/ProductsPages.js:28
+msgid "Products"
+msgstr ""
+
+#: src/app/pages/pages-and-posts/ProductsPages.js:31
+msgid "Showcase physical and digital goods, product variations, and custom configurations."
+msgstr ""
+
+#: src/app/pages/pages-and-posts/sitePages.js:28
+msgid "Site Pages"
+msgstr ""
+
+#: src/app/pages/pages-and-posts/sitePages.js:31
+msgid "Edit your homepage and other existing pages or add new pages to your site."
+msgstr ""
+
+#: src/app/pages/performance/index.js:42
+msgid "This is where you can manage cache settings for your website."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:20
+msgid "Enabled All auto-updates"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:21
+msgid "Disabled All auto-updates"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:25
+msgid "Everything will automatically update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:29
+msgid "Custom auto-update settings."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:91
+msgid "Automatically keep all up to date"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:109
+msgid "Enabled Core auto-updates"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:110
+msgid "Disabled Core auto-updates"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:114
+msgid "WordPress will automatically update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:115
+msgid "WordPress must be manually updated."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:150
+msgid "WordPress Core"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:166
+msgid "Enabled Plugins auto-update"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:167
+msgid "Disabled Plugins auto-update"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:171
+msgid "All plugins will automatically update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:175
+msgid "Each plugin must be manually updated."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:213
+msgid "Plugins"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:229
+msgid "Enabled Themes auto-update"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:230
+msgid "Disabled Themes auto-update"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:235
+msgid "All themes will automatically update."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:239
+msgid "Each theme must be manually updated."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:277
+msgid "Themes"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:292
+msgid "Automatic Updates"
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:293
+msgid "Keeping automatic updates on ensures timely security fixes and the latest features."
+msgstr ""
+
+#: src/app/pages/settings/automaticUpdates.js:314
+#: src/app/pages/settings/comingSoon.js:128
+#: src/app/pages/settings/commentSettings.js:260
+#: src/app/pages/settings/contentSettings.js:208
+#: src/app/pages/settings/helpCenterSettings.js:94
+#: src/app/pages/settings/performanceFeatureSettings.js:91
+#: src/app/pages/settings/stagingFeatureSettings.js:88
+#: src/app/pages/settings/wonderBlocksSettings.js:93
+msgid "Oops! Something went wrong. Please try again."
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:20
+msgid "Coming soon activated"
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:21
+msgid "Coming soon deactivated"
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:26
+msgid "Coming soon page is active. Site requires login."
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:30
+msgid "Coming soon page is not active. Site is live to visitors."
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:70
 msgid "Not Live"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/pages/settings/comingSoon.js:74
 msgid "Live"
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/pages/settings/comingSoon.js:81
+msgid "Site Status"
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:88
+msgid "Turn off your \"Coming Soon\" page when you are ready to launch your website."
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:92
+msgid "Turn on your \"Coming Soon\" page when you need to make major changes to your website."
+msgstr ""
+
+#: src/app/pages/settings/comingSoon.js:107
 msgid "Your Bluehost Coming Soon page lets you hide your site from visitors while you make the magic happen."
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/pages/settings/comingSoon.js:119
 msgid "Your website is currently displaying a \"Coming Soon\" page."
 msgstr ""
 
-#: build/3.14.3/index.js:1
+#: src/app/pages/settings/commentSettings.js:21
+msgid "Disabled old post comments"
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:22
+msgid "Enabled old post comments"
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:27
+msgid "Comments on old posts are disabled."
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:28
+msgid "Comments are allowed on old posts."
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:63
+msgid "Disable comments for older posts"
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:81
+msgid "Comments setting saved "
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:87
+msgid "Comments on posts are disabled after "
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:92
+#: src/app/pages/settings/commentSettings.js:106
+msgid " day."
+msgid_plural " days."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/app/pages/settings/commentSettings.js:104
+msgid "Close comments after "
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:177
+msgid "Comments setting saved."
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:183
+msgid "Posts will display "
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:185
+msgid " comment at a time."
+msgid_plural " comments at a time."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/app/pages/settings/commentSettings.js:226
+msgid "Comments to display per page"
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:248
+msgid "Comments"
+msgstr ""
+
+#: src/app/pages/settings/commentSettings.js:249
+msgid "Comments allow visitors to provide feedback and respond to your posts or pages."
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:15
+msgid "Post revision setting saved "
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:20
+msgid "Posts will save "
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:22
 msgid " revision."
 msgid_plural " revisions."
 msgstr[0] ""
 msgstr[1] ""
 
-#: build/3.14.3/index.js:1
+#: src/app/pages/settings/contentSettings.js:33
+msgid "Saving drafts and updating published content creates revisions. Make changes with confidence, knowing you can take "
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:38
 msgid " step back."
 msgid_plural " steps back."
 msgstr[0] ""
 msgstr[1] ""
 
-#: build/3.14.3/index.js:1
+#: src/app/pages/settings/contentSettings.js:79
+msgid "Number of revisions per post to save "
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:107
+msgid "Trash setting saved "
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:112
+#: src/app/pages/settings/contentSettings.js:164
+msgid "The trash will automatically empty every "
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:117
+#: src/app/pages/settings/contentSettings.js:169
 msgid " week."
 msgid_plural " weeks."
 msgstr[0] ""
 msgstr[1] ""
 
-#: build/3.14.3/index.js:1
+#: src/app/pages/settings/contentSettings.js:159
+msgid "Number of weeks in between emptying trash "
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:196
+msgid "Content Options"
+msgstr ""
+
+#: src/app/pages/settings/contentSettings.js:197
+msgid "Controls for content revisions and how often to empty the trash."
+msgstr ""
+
+#: src/app/pages/settings/helpCenterSettings.js:19
+msgid "Help Center Enabled"
+msgstr ""
+
+#: src/app/pages/settings/helpCenterSettings.js:20
+msgid "Help Center Disabled"
+msgstr ""
+
+#: src/app/pages/settings/helpCenterSettings.js:24
+msgid "Reload the page to access the Help Center."
+msgstr ""
+
+#: src/app/pages/settings/helpCenterSettings.js:28
+msgid "The Help Center will no longer display."
+msgstr ""
+
+#: src/app/pages/settings/helpCenterSettings.js:49
+#: src/app/pages/settings/performanceFeatureSettings.js:57
+#: src/app/pages/settings/stagingFeatureSettings.js:45
+#: src/app/pages/settings/wonderBlocksSettings.js:51
+msgid "Sorry, that is not allowed."
+msgstr ""
+
+#: src/app/pages/settings/helpCenterSettings.js:50
+#: src/app/pages/settings/performanceFeatureSettings.js:58
+#: src/app/pages/settings/stagingFeatureSettings.js:46
+#: src/app/pages/settings/wonderBlocksSettings.js:52
+msgid "This feature cannot currently be modified."
+msgstr ""
+
+#: src/app/pages/settings/helpCenterSettings.js:82
+msgid "The Help Center provides guided, step-by-step assistance as you build your site."
+msgstr ""
+
+#: src/app/pages/settings/index.js:17
+msgid "This is where you can manage common settings for your website."
+msgstr ""
+
+#: src/app/pages/settings/index.js:48
+msgid "Features"
+msgstr ""
+
+#: src/app/pages/settings/index.js:49
+msgid "Customize the available features as you manage your website."
+msgstr ""
+
+#: src/app/pages/settings/performanceFeatureSettings.js:21
+msgid "Performance Enabled"
+msgstr ""
+
+#: src/app/pages/settings/performanceFeatureSettings.js:22
+msgid "Performance Disabled"
+msgstr ""
+
+#: src/app/pages/settings/performanceFeatureSettings.js:27
+msgid "You need to reload the page to manage Performance."
+msgstr ""
+
+#: src/app/pages/settings/performanceFeatureSettings.js:31
+msgid "Performance will no longer display."
+msgstr ""
+
+#: src/app/pages/settings/performanceFeatureSettings.js:80
+msgid "The performance feature provides improvements to loads faster for visitors including cache settings."
+msgstr ""
+
+#: src/app/pages/settings/socialMediaAccounts.js:42
+msgid "Social Media Accounts"
+msgstr ""
+
+#: src/app/pages/settings/socialMediaAccounts.js:43
+msgid "Connect your social media accounts to your website."
+msgstr ""
+
+#: src/app/pages/settings/socialMediaAccounts.js:50
+msgid "Click 'Add' to connect to one of your social media accounts."
+msgstr ""
+
+#: src/app/pages/settings/socialMediaAccounts.js:59
+msgid "Add"
+msgstr ""
+
+#: src/app/pages/settings/socialMediaAccounts.js:98
+msgid "Search…"
+msgstr ""
+
+#: src/app/pages/settings/socialMediaAccounts.js:121
+msgid "Facebook"
+msgstr ""
+
+#: src/app/pages/settings/stagingFeatureSettings.js:19
+msgid "Staging Enabled"
+msgstr ""
+
+#: src/app/pages/settings/stagingFeatureSettings.js:20
+msgid "Staging Disabled"
+msgstr ""
+
+#: src/app/pages/settings/stagingFeatureSettings.js:24
+msgid "You need to reload the page to manage Staging."
+msgstr ""
+
+#: src/app/pages/settings/stagingFeatureSettings.js:28
+msgid "Staging will no longer display."
+msgstr ""
+
+#: src/app/pages/settings/stagingFeatureSettings.js:77
+msgid "The staging feature provides a way to copy a site to test new updates, features or content."
+msgstr ""
+
+#: src/app/pages/settings/wonderBlocksSettings.js:21
+msgid "WonderBlocks Enabled"
+msgstr ""
+
+#: src/app/pages/settings/wonderBlocksSettings.js:22
+msgid "WonderBlocks Disabled"
+msgstr ""
+
+#: src/app/pages/settings/wonderBlocksSettings.js:26
+msgid "Create new content to see WonderBlocks in action."
+msgstr ""
+
+#: src/app/pages/settings/wonderBlocksSettings.js:30
+msgid "WonderBlocks will no longer display."
+msgstr ""
+
+#: src/app/pages/settings/wonderBlocksSettings.js:82
 msgid "WonderBlocks provides a library of customizable block patterns and page templates."
 msgstr ""
