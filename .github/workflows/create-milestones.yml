@@ -40,7 +40,7 @@ jobs:
           fi
           
           # Set the date format for the milestone title and due date
-          DATE=$(date -u -d "$DUE_DATE" '+%B %d, %Y')  # Human-readable date
+          DATE=$(date -u -d "$DUE_DATE" '+%B %-d, %Y')  # Human-readable date
           DATE_ISO8601=$(date -u -d "$DUE_DATE" '+%Y-%m-%dT23:59:59Z')  # ISO8601 format
 
           # Prepare the description for the milestone
