@@ -1,3 +1,4 @@
+/* global sprintf */
 import { useState } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
 import {
@@ -9,7 +10,6 @@ import {
 import AppStore from '../../data/store';
 import { bluehostSettingsApiFetch } from '../../util/helpers';
 import { useNotification } from 'App/components/notifications';
-
 const OldPostsComments = ( { setError, notify } ) => {
 	const { store, setStore } = useContext( AppStore );
 	const [ disableCommentsOldPosts, setDisableCommentsOldPosts ] = useState(
@@ -78,37 +78,32 @@ const CloseCommentsDays = ( { setError, notify } ) => {
 	);
 
 	const closeCommentsDaysNoticeTitle = () => {
-		return __( 'Comments setting saved ', 'wp-plugin-bluehost' );
+		return __( 'Comments setting saved', 'wp-plugin-bluehost' );
 	};
 
 	const closeCommentsDaysNoticeText = () => {
-		//`Comments on posts are disabled after ${closeCommentsDays} days.`
-		return (
-			__(
-				'Comments on posts are disabled after ',
-				'wp-plugin-bluehost'
-			) +
-			closeCommentsDays +
+		return sprintf(
+			//translators: %s: number of days. `Comments on posts are disabled after ${closeCommentsDays} days.`
 			_n(
-				' day.',
-				' days.',
+				'Comments on posts are disabled after %s day.',
+				'Comments on posts are disabled after %s days.',
 				parseInt( closeCommentsDays ),
 				'wp-plugin-bluehost'
-			)
+			),
+			closeCommentsDays
 		);
 	};
 
 	const closeCommentsDaysLabelText = () => {
-		//`Close comments after ${closeCommentsDays} days.`
-		return (
-			__( 'Close comments after ', 'wp-plugin-bluehost' ) +
-			closeCommentsDays +
+		return sprintf(
+			//translators: %s: number of days. `Close comments after ${closeCommentsDays} days.`
 			_n(
-				' day.',
-				' days.',
+				'Close comments after %s day.',
+				'Close comments after %s days.',
 				parseInt( closeCommentsDays ),
 				'wp-plugin-bluehost'
-			)
+			),
+			closeCommentsDays
 		);
 	};
 
@@ -178,16 +173,15 @@ const CommentsPerPage = ( { setError, notify } ) => {
 	};
 
 	const commentsPerPageNoticeText = () => {
-		//`Posts will display ${commentsPerPage} comments at a time.`
-		return (
-			__( 'Posts will display ', 'wp-plugin-bluehost' ) +
-			commentsPerPage +
+		return sprintf(
+			//translators: %s: number of comments. `Posts will display ${commentsPerPage} comments at a time.`
 			_n(
-				' comment at a time.',
-				' comments at a time.',
+				'Posts will display %s comment at a time.',
+				'Posts will display %s comments at a time.',
 				parseInt( commentsPerPage ),
 				'wp-plugin-bluehost'
-			)
+			),
+			commentsPerPage
 		);
 	};
 
