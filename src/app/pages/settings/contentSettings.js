@@ -1,3 +1,4 @@
+/* global sprintf */
 import { useState } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
 import { Alert, Container, SelectField } from '@newfold/ui-component-library';
@@ -13,22 +14,19 @@ const EmptyTrash = ( { setError, notify } ) => {
 	let numTrashWeeks = Math.floor( emptyTrashDays / 7 );
 
 	const emptyTrashNoticeTitle = () => {
-		return __( 'Trash setting saved ', 'wp-plugin-bluehost' );
+		return __( 'Trash setting saved', 'wp-plugin-bluehost' );
 	};
 
 	const emptyTrashNoticeText = () => {
-		return (
-			__(
-				'The trash will automatically empty every ',
-				'wp-plugin-bluehost'
-			) +
-			numTrashWeeks +
+		return sprintf(
+			//translators: %s: number of weeks. `The trash will automatically empty every ${numTrashWeeks} weeks.`
 			_n(
-				' week.',
-				' weeks.',
+				'The trash will automatically empty every %s week.',
+				'The trash will automatically empty every %s weeks.',
 				parseInt( numTrashWeeks ),
 				'wp-plugin-bluehost'
-			)
+			),
+			numTrashWeeks
 		);
 	};
 
@@ -66,22 +64,10 @@ const EmptyTrash = ( { setError, notify } ) => {
 		<SelectField
 			id="empty-trash-select"
 			label={ __(
-				'Number of weeks in between emptying trash ',
+				'Number of weeks in between emptying trash',
 				'wp-plugin-bluehost'
 			) }
-			description={
-				__(
-					'The trash will automatically empty every ',
-					'wp-plugin-bluehost'
-				) +
-				numTrashWeeks +
-				_n(
-					' week.',
-					' weeks.',
-					parseInt( numTrashWeeks ),
-					'wp-plugin-bluehost'
-				)
-			}
+			description={ emptyTrashNoticeText() }
 			value={ emptyTrashDays }
 			selectedLabel={ numTrashWeeks }
 			options={ [
@@ -104,7 +90,7 @@ const ContentSettings = () => {
 		<Container.SettingsField
 			title={ __( 'Content Options', 'wp-plugin-bluehost' ) }
 			description={ __(
-				'Controls for content revisions and how often to empty the trash.',
+				'Controls for how often to empty the trash.',
 				'wp-plugin-bluehost'
 			) }
 		>
