@@ -41,7 +41,7 @@
         "@wordpress/compose": "^7.8.0",
         "@wordpress/dom-ready": "^4.6.0",
         "@wordpress/element": "^6.8.0",
-        "@wordpress/html-entities": "^4.6.0",
+        "@wordpress/html-entities": "^4.8.0",
         "@wordpress/i18n": "^5.7.0",
         "@wordpress/icons": "^10.8.0",
         "ajv": "^8.17.1",
