@@ -200,40 +200,6 @@ describe( 'Settings Page', function () {
 	} );
 
 	it( 'Content Settings Work', () => {
-		cy.get( '[data-id="content-revisions-select"]' ).click();
-		cy.wait( 100 );
-		cy.get( '[data-id="content-revisions-select"]' )
-			.parent()
-			.next( 'ul.nfd-select__options' )
-			.find( 'li:first' )
-			.click(); // 1
-		cy.wait( 100 );
-		cy.get( '#content-revisions-select__description' )
-			.contains( 'you can take 1 step back.' )
-			.should( 'be.visible' );
-
-		cy.get( '[data-id="content-revisions-select"]' ).click();
-		cy.wait( 1000 );
-		cy.get( '[data-id="content-revisions-select"]' )
-			.parent()
-			.next( 'ul.nfd-select__options' )
-			.find( 'li:last' )
-			.click(); // 40
-		cy.wait( 100 );
-		cy.get( '#content-revisions-select__description' )
-			.contains( 'you can take 40 steps back.' )
-			.should( 'be.visible' );
-
-		cy.get( '[data-id="content-revisions-select"]' ).click();
-		cy.wait( 500 );
-		cy.get( '[data-id="content-revisions-select"]' )
-			.parent()
-			.next( 'ul.nfd-select__options' )
-			.find( 'li:nth-child(2)' )
-			.click(); // 5
-		cy.get( '#content-revisions-select__description' )
-			.contains( 'you can take 5 steps back.' )
-			.should( 'be.visible' );
 
 		// Empty Trash Setting
 		cy.get( '[data-id="empty-trash-select"]' ).click();

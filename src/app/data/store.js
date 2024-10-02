@@ -37,7 +37,12 @@ export const AppStoreProvider = ( { children } ) => {
 		if ( false === booted ) {
 			bluehostApiFetchSettings()
 				.then( ( settings ) => {
-					setStore( { ...store, ...settings } );
+					setStore( {
+						...store,
+						...settings,
+						features: window.NewfoldFeatures.features,
+						toggleableFeatures: window.NewfoldFeatures.togglable,
+					} );
 					setBooted( true );
 				} )
 				.catch( ( error ) => {

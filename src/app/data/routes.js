@@ -5,19 +5,21 @@ import {
 	BoltIcon,
 	AdjustmentsHorizontalIcon,
 	BuildingStorefrontIcon,
+	DocumentDuplicateIcon,
 } from '@heroicons/react/24/outline';
+import { ReactComponent as HelpIcon } from '../components/icons/HelpIcon.svg';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
+import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
 import { Route, Routes } from 'react-router-dom';
-import { __ } from '@wordpress/i18n';
 import Home from '../pages/home';
+import PagesAndPosts from '../pages/pages-and-posts';
 import Store from '../pages/ecommerce/page';
 import Marketplace from '../pages/marketplace';
 import Performance from '../pages/performance';
 import Settings from '../pages/settings';
 import Staging from '../pages/staging';
 import Help from '../pages/help';
-import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
-import { ReactComponent as HelpIcon } from '../components/icons/HelpIcon.svg';
+import Admin from '../pages/admin';
 
 const addPartialMatch = ( prefix, path ) =>
 	prefix === path ? `${ prefix }/*` : path;
@@ -64,6 +66,7 @@ export const AppRoutes = () => {
 
 const topRoutePaths = [
 	'/home',
+	'/pages-and-posts',
 	'/store',
 	'/marketplace',
 	'/performance',
@@ -81,6 +84,13 @@ export const routes = [
 		condition: true,
 	},
 	{
+		name: '/pages-and-posts',
+		title: __( 'Pages & Posts', 'wp-plugin-bluehost' ),
+		Component: PagesAndPosts,
+		Icon: DocumentDuplicateIcon,
+		condition: true,
+	},
+	{
 		name: '/store',
 		title: __( 'Store', 'wp-plugin-bluehost' ),
 		Component: Store,
@@ -95,6 +105,13 @@ export const routes = [
 				? {
 						name: '/store/sales_discounts',
 						title: __( 'Sales & Promotions', 'wp-plugin-bluehost' ),
+				  }
+				: null,
+			NewfoldRuntime.hasCapability( 'hasYithExtended' ) &&
+			NewfoldRuntime.hasCapability( 'hasEcomdash' )
+				? {
+						name: '/store/sales_channel',
+						title: __( 'Sales Channel', 'wp-plugin-bluehost' ),
 				  }
 				: null,
 			NewfoldRuntime.isWoo
@@ -123,7 +140,7 @@ export const routes = [
 		title: __( 'Performance', 'wp-plugin-bluehost' ),
 		Component: Performance,
 		Icon: BoltIcon,
-		condition: 'atomic' !== window.NewfoldRuntime.context.platform,
+		condition: await window.NewfoldFeatures.isEnabled( 'performance' ),
 	},
 	{
 		name: '/settings',
@@ -137,17 +154,23 @@ export const routes = [
 		title: __( 'Staging', 'wp-plugin-bluehost' ),
 		Component: Staging,
 		Icon: WrenchScrewdriverIcon,
-		condition: 'atomic' !== window.NewfoldRuntime.context.platform,
+		condition: await window.NewfoldFeatures.isEnabled( 'staging' ),
 	},
 	{
 		name: '/help',
-		title: __( 'Help', 'wp-plugin-bluehost' ),
+		title: __( 'Help with WordPress', 'wp-plugin-bluehost' ),
 		Component: Help,
 		Icon: HelpIcon,
 		condition: true,
 		action: NewfoldRuntime.hasCapability( 'canAccessHelpCenter' )
 			? HelpCenterAI
 			: false,
+	},
+	{
+		name: '/admin',
+		title: __( 'Admin', 'wp-plugin-bluehost' ),
+		Component: Admin,
+		condition: true,
 	},
 ];
 

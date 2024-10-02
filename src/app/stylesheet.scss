@@ -81,6 +81,12 @@ body.toplevel_page_bluehost {
     }
 
 }
+
+.nfd-disabled {
+    opacity: .5;
+    pointer-events: disabled;
+}
+
 .wppbh {
     /* color: var(--color-text);
 

@@ -51,7 +51,7 @@ Steps to follow when releasing a new version of the plugin:
 - Ensure `release` branch has properly bumped the version.
   - The [plugin header version](bluehost-wordpress-plugin.php#L5).
   - The [plugin constant version](bluehost-wordpress-plugin.php#L35).
-  - The [plugin package veresion](package.json#L5).
+  - The [plugin package version](package.json#L5).
 - Ensure the `release` branch has passing tests.
 - Ensure the `release` branch passes linting.
 - Tag an initial release candidate version of the plugin (e.g. `X.Y.Z-rc.1`) and be sure to mark it as a pre-release.

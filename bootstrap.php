@@ -10,8 +10,19 @@ namespace Bluehost;
 use NewfoldLabs\WP\Context\Context;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
+<<<<<<< HEAD
 use WP_Forge\UpgradeHandler\UpgradeHandler;
 use WP_Forge\WPUpdateHandler\PluginUpdater;
+||||||| 72e3d866bcfe
+use NewfoldLabs\WP\Context\Context;
+use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
+use function NewfoldLabs\WP\Context\setContext;
+=======
+use NewfoldLabs\WP\Context\Context;
+use NewfoldLabs\WP\Module\Features\Features;
+use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
+use function NewfoldLabs\WP\Context\setContext;
+>>>>>>> main
 use function NewfoldLabs\WP\Context\getContext;
 use function NewfoldLabs\WP\Context\setContext;
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
@@ -199,3 +210,6 @@ require BLUEHOST_PLUGIN_DIR . '/inc/YoastAI.php';
 if ( is_admin() ) {
 	new Admin();
 }
+
+// Instantiate the Features singleton
+Features::getInstance();
