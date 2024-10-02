@@ -18,7 +18,7 @@ add_action(
 				wp_enqueue_style(
 					'bluehost-style',
 					BLUEHOST_BUILD_URL . '/index.css',
-					[ 'wp-components' ],
+					array( 'wp-components' ),
 					$version
 				);
 
