@@ -1,9 +1,8 @@
 <?php
 /**
- * Bluehost WordPress Plugin.
+ * Bluehost WordPress Plugin
  *
  * @package           WPPluginBluehost
- *
  * @author            Newfold Digital
  * @copyright         Copyright 2024 by Newfold Digital - All rights reserved.
  * @license           GPL-2.0-or-later
@@ -37,21 +36,17 @@ define( 'BLUEHOST_PLUGIN_VERSION', '3.14.12' );
 define( 'BLUEHOST_PLUGIN_FILE', __FILE__ );
 define( 'BLUEHOST_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLUEHOST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'BLUEHOST_BUILD_DIR', BLUEHOST_PLUGIN_DIR . 'build/' . BLUEHOST_PLUGIN_VERSION );
+define( 'BLUEHOST_BUILD_URL', BLUEHOST_PLUGIN_URL . 'build/' . BLUEHOST_PLUGIN_VERSION );
 if ( ! defined( 'NFD_HIIVE_URL' ) ) {
 	define( 'NFD_HIIVE_URL', 'https://hiive.cloud/api' );
 }
 
+// Load alternate experience and short-circuit plugin functionality.
 if ( defined( 'BURST_SAFETY_MODE' ) && BURST_SAFETY_MODE ) {
-
-	// Load alternate experience
 	require __DIR__ . '/inc/alt-experience/init.php';
-
-	// Short-circuit all plugin functionality
 	return;
 }
-
-define( 'BLUEHOST_BUILD_DIR', BLUEHOST_PLUGIN_DIR . 'build/' . BLUEHOST_PLUGIN_VERSION );
-define( 'BLUEHOST_BUILD_URL', BLUEHOST_PLUGIN_URL . 'build/' . BLUEHOST_PLUGIN_VERSION );
 
 global $pagenow;
 if ( 'plugins.php' === $pagenow ) {

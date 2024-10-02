@@ -11,28 +11,28 @@
 namespace Bluehost;
 
 /**
- * Class NDF_Plugin_Compat_Check.
+ * Class NDF_Plugin_Compat_Check
  *
  * This class is responsible for performing basic checks to see if there are other plugins that would conflict with this one.
  */
 class NFD_Plugin_Compat_Check {
 
 	/**
-	 * A reference to the main plugin file (relative to plugins dir) or plugin slug.
+	 * A reference to the main plugin file (relative to plugins dir) or plugin slug
 	 *
 	 * @var string
 	 */
 	public $slug;
 
 	/**
-	 * Plugin name.
+	 * Plugin name
 	 *
 	 * @var string
 	 */
 	public $name = '';
 
 	/**
-	 * Global list of plugins with associated error (to prevent duplicate notices).
+	 * Global list of plugins with associated error (to prevent duplicate notices)
 	 *
 	 * conflict {
 	 *  plugin: slug,
@@ -42,6 +42,7 @@ class NFD_Plugin_Compat_Check {
 	 * @var array
 	 */
 	public $conflicts;
+
 
 	/**
 	 * Newfold incompatibe plugins
@@ -62,7 +63,7 @@ class NFD_Plugin_Compat_Check {
 	public $legacy_plugins = [];
 
 	/**
-	 * Setup our class properties.
+	 * Setup our class properties
 	 *
 	 * @param string $file Plugin file
 	 */
@@ -75,10 +76,9 @@ class NFD_Plugin_Compat_Check {
 	}
 
 	/**
-	 * Get the plugin name from the plugin file headers.
+	 * Get the plugin name from the plugin file headers
 	 *
 	 * @param string $file Plugin file
-	 *
 	 * @return string
 	 */
 	public function get_plugin_name( $file ) {
@@ -87,15 +87,14 @@ class NFD_Plugin_Compat_Check {
 	}
 
 	/**
-	 * Get the plugin slug from the plugin path.
+	 * Get the plugin slug from the plugin path
 	 *
 	 * @param string $file Plugin file
-	 *
 	 * @return string
 	 */
 	public function get_plugin_slug( $file ) {
 		$wp = ABSPATH . 'wp-content/plugins/';
-		if ( 0 === strpos( $file, $wp ) ) {
+		if ( strpos( $file, $wp ) === 0 ) {
 			$file = substr( $file, strlen( $wp ) );
 		}
 		return $file;
@@ -202,7 +201,7 @@ class NFD_Plugin_Compat_Check {
 	}
 
 	/**
-	 * Check if any errors were encountered during our plugin checks.
+	 * Check if any errors were encountered during our plugin checks
 	 *
 	 * @return bool
 	 */
@@ -216,7 +215,7 @@ class NFD_Plugin_Compat_Check {
 	}
 
 	/**
-	 * Deactivate the plugin.
+	 * Deactivate the plugin
 	 */
 	public function deactivate() {
 		$conflict_plugins = array_column( $this->conflicts, 'slug' );
@@ -226,7 +225,7 @@ class NFD_Plugin_Compat_Check {
 	}
 
 	/**
-	 * Display error messages in the admin.
+	 * Display error messages in the admin
 	 */
 	public function admin_notices() {
 		$conflict_errors = array_column( $this->conflicts, 'error' );

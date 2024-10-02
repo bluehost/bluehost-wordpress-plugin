@@ -1,6 +1,6 @@
 <?php
 /**
- * Base functions.
+ * Base functions
  *
  * @package WPPluginBluehost
  */
@@ -34,6 +34,7 @@ function bluehost_set_plugin_install_date( $value ) {
 	update_option( 'bluehost_plugin_install_date', $value, true );
 }
 
+
 /**
  * Get the number of days since the plugin was installed.
  *
@@ -44,7 +45,7 @@ function bluehost_get_days_since_plugin_install_date() {
 }
 
 /**
- * Basic setup.
+ * Basic setup
  */
 function bluehost_setup() {
 	if ( ( '' === get_option( 'mm_master_aff' ) || false === get_option( 'mm_master_aff' ) ) && defined( 'MMAFF' ) ) {
@@ -75,14 +76,13 @@ function bluehost_setup() {
 
 add_action( 'admin_init', __NAMESPACE__ . '\\bluehost_setup' );
 
+
 /**
- * Filter the date used in data module.
- *
- * @param string $install_date value from hook
+ * Filter the date used in data module
  *
  * @return int
  */
-function bluehost_install_date_filter( $install_date ) {
+function bluehost_install_date_filter() {
 	return bluehost_get_plugin_install_date();
 }
 add_filter( 'nfd_install_date_filter', __NAMESPACE__ . '\\bluehost_install_date_filter' );

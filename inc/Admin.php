@@ -11,7 +11,7 @@ use function NewfoldLabs\WP\Context\getContext;
 use function NewfoldLabs\WP\Module\Features\isEnabled;
 
 /**
- * \Bluehost\Admin.
+ * \Bluehost\Admin
  */
 final class Admin {
 
@@ -37,20 +37,14 @@ final class Admin {
 		\add_filter( 'newfold_runtime', [ __CLASS__, 'add_to_runtime' ] );
 
 		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) { // phpcs:ignore
-<<<<<<< HEAD
 			\add_action( 'admin_footer_text', [ __CLASS__, 'add_brand_to_admin_footer' ] );
-||||||| 72e3d866bcfe
-			\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
-=======
-			\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
 			/* Disable admin notices on App pages */
-			\add_action( 'admin_init', array( __CLASS__, 'disable_admin_notices' ) );
->>>>>>> main
+			\add_action( 'admin_init', [ __CLASS__, 'disable_admin_notices' ] );
 		}
 	}
 
 	/**
-	 * Add to runtime.
+	 * Add to runtime
 	 *
 	 * @param Array $sdk - The runtime array
 	 *
@@ -72,84 +66,34 @@ final class Admin {
 	public static function subpages() {
 		global $bluehost_module_container;
 
-<<<<<<< HEAD
-		$home        = [
-||||||| 72e3d866bcfe
-		$home        = array(
-=======
-		$home          = array(
->>>>>>> main
+		$home          = [
 			'bluehost#/home' => __( 'Home', 'wp-plugin-bluehost' ),
-<<<<<<< HEAD
 		];
-		$store       = [
-||||||| 72e3d866bcfe
-		);
-		$store       = array(
-=======
-		);
-		$pagesAndPosts = array(
+		$pagesAndPosts = [
 			'bluehost#/pages-and-posts' => __( 'Pages & Posts', 'wp-plugin-bluehost' ),
-		);
-		$store         = array(
->>>>>>> main
+		];
+		$store         = [
 			'bluehost#/store' => __( 'Store', 'wp-plugin-bluehost' ),
-<<<<<<< HEAD
 		];
-		$marketplace = [
-||||||| 72e3d866bcfe
-		);
-		$marketplace = array(
-=======
-		);
-		$marketplace   = array(
->>>>>>> main
+		$marketplace   = [
 			'bluehost#/marketplace' => __( 'Marketplace', 'wp-plugin-bluehost' ),
-<<<<<<< HEAD
 		];
-		$performance = [
-			'bluehost#/performance' => __( 'Performance', 'wp-plugin-bluehost' ),
-		];
-		$settings    = [
-||||||| 72e3d866bcfe
-		);
-		$performance = array(
-			'bluehost#/performance' => __( 'Performance', 'wp-plugin-bluehost' ),
-		);
-		$settings    = array(
-=======
-		);
 		// add performance if enabled
 		$performance = isEnabled( 'performance' )
-			? array(
+			? [
 				'bluehost#/performance' => __( 'Performance', 'wp-plugin-bluehost' ),
-			)
-			: array();
-		$settings    = array(
->>>>>>> main
+			]
+			: [];
+		$settings    = [
 			'bluehost#/settings' => __( 'Settings', 'wp-plugin-bluehost' ),
-<<<<<<< HEAD
 		];
-		$staging     = [
-			'bluehost#/staging' => __( 'Staging', 'wp-plugin-bluehost' ),
-		];
-		$help        = [
-||||||| 72e3d866bcfe
-		);
-		$staging     = array(
-			'bluehost#/staging' => __( 'Staging', 'wp-plugin-bluehost' ),
-		);
-		$help        = array(
-=======
-		);
 		// add staging if enabled
 		$staging = isEnabled( 'staging' )
-			? array(
+			? [
 				'bluehost#/staging' => __( 'Staging', 'wp-plugin-bluehost' ),
-			)
-			: array();
-		$help    = array(
->>>>>>> main
+			]
+			: [];
+		$help    = [
 			'bluehost#/help' => __( 'Help', 'wp-plugin-bluehost' ),
 		];
 
@@ -167,7 +111,7 @@ final class Admin {
 
 	/**
 	 * Add inline script to admin screens
-	 *  - hide extra link in subnav.
+	 *  - hide extra link in subnav
 	 */
 	public static function admin_nav_style() {
 		echo '<style>';
@@ -180,6 +124,8 @@ final class Admin {
 
 	/**
 	 * Add WordPress Page to Appearance submenu.
+	 *
+	 * @return void
 	 */
 	public static function page() {
 		$bluehost_icon = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA0MCA0MCI+CiAgICA8cGF0aCBmaWxsPSIjYTdhYWFkIiBkPSJNNCA0aDguOTMzdjguOTIzSDRWNFptMTEuNTMgMGg4Ljk0djguOTIzaC04Ljk0VjRabTExLjUzMSAwSDM2djguOTIzaC04LjkzOVY0Wk00IDE1LjUzOGg4LjkzM3Y4LjkyNEg0di04LjkyNFptMTEuNTMgMGg4Ljk0djguOTI0aC04Ljk0di04LjkyNFptMTEuNTMxIDBIMzZ2OC45MjRoLTguOTM5di04LjkyNFpNNCAyNy4wNzdoOC45MzNWMzZINHYtOC45MjNabTExLjUzIDBoOC45NFYzNmgtOC45NHYtOC45MjNabTExLjUzMSAwSDM2VjM2aC04LjkzOXYtOC45MjNaIi8+Cjwvc3ZnPg==';
@@ -211,6 +157,8 @@ final class Admin {
 
 	/**
 	 * Render DOM element for React to load onto.
+	 *
+	 * @return void
 	 */
 	public static function render() {
 		global $wp_version;
@@ -239,6 +187,8 @@ final class Admin {
 	 * Load Page Scripts & Styles.
 	 *
 	 * @param String $hook - The hook name
+	 *
+	 * @return void
 	 */
 	public static function assets( $hook ) {
 
@@ -256,13 +206,7 @@ final class Admin {
 			\wp_register_script(
 				'bluehost-script',
 				BLUEHOST_BUILD_URL . '/index.js',
-<<<<<<< HEAD
-				array_merge( $asset['dependencies'], [ 'nfd-runtime' ] ),
-||||||| 72e3d866bcfe
-				array_merge( $asset['dependencies'], array( 'nfd-runtime' ) ),
-=======
-				array_merge( $asset['dependencies'], array( 'newfold-features', 'nfd-runtime' ) ),
->>>>>>> main
+				array_merge( $asset['dependencies'], [ 'newfold-features', 'nfd-runtime' ] ),
 				$asset['version'],
 				true
 			);
@@ -301,7 +245,9 @@ final class Admin {
 	}
 
 	/**
-	 * Load text domain for plugin.
+	 * Load text domain for plugin
+	 *
+	 * @return void
 	 */
 	public static function load_text_domain() {
 
@@ -336,11 +282,6 @@ final class Admin {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Filter WordPress Admin Footer Text "Thank you for creating with...".
-||||||| 72e3d866bcfe
-	 * Filter WordPress Admin Footer Text "Thank you for creating with..."
-=======
 	 * Disable admin notices on App pages
 	 *
 	 * @return void
@@ -352,7 +293,6 @@ final class Admin {
 
 	/**
 	 * Filter WordPress Admin Footer Text "Thank you for creating with..."
->>>>>>> main
 	 *
 	 * @param string $footer_text footer text
 	 *
