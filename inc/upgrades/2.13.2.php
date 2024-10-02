@@ -1,6 +1,6 @@
 <?php
 /**
- * Handle updates for version 2.13.2
+ * Handle updates for version 2.13.2.
  *
  * Delete bh_platform option since it's no longer used.
  *

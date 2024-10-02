@@ -1,6 +1,6 @@
 <?php
 /**
- * Handle updates for version 2.2.2
+ * Handle updates for version 2.2.2.
  *
  * @package Bluehost
  */

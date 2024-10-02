@@ -1,4 +1,9 @@
 <?php
+/**
+ * Bootstrap file for setting up tests.
+ *
+ * @package WPPluginBluehost
+ */
 
 // Load up Composer dependencies
 require dirname( dirname( __DIR__ ) ) . '/vendor/autoload.php';

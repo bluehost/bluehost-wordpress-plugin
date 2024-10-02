@@ -1,3 +1,4 @@
+/* eslint-disable @wordpress/i18n-no-flanking-whitespace */
 import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect } from '@wordpress/element';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';

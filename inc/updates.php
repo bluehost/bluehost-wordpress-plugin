@@ -12,20 +12,22 @@ namespace Bluehost;
 /**
  * Convert string boolean values to actual booleans.
  *
- * @param string $value   The value to convert.
- * @param bool   $default Default value to use if $value is neither 'true' or 'false'.
+ * @param string $value        The value to convert.
+ * @param bool   $defaultValue Default value to use if $value is neither 'true' or 'false'.
  *
  * @return bool The conversion result.
  */
-function auto_update_make_bool( $value, $default = true ) {
+function auto_update_make_bool( $value, $defaultValue = true ) {
 	if ( 'false' === $value ) {
-		$value = false;
+		return false;
 	}
+
 	if ( 'true' === $value ) {
-		$value = true;
+		return true;
 	}
+
 	if ( true !== $value && false !== $value ) {
-		$value = $default;
+		return $defaultValue;
 	}
 
 	return $value;
@@ -43,12 +45,12 @@ function auto_update_make_bool( $value, $default = true ) {
 function auto_update_configure() {
 	global $wp_version;
 
-	$settings = array(
+	$settings = [
 		'allow_major_auto_core_updates' => get_option( 'allow_major_auto_core_updates', true ),
 		'allow_minor_auto_core_updates' => get_option( 'allow_minor_auto_core_updates', true ),
 		'auto_update_plugin'            => get_option( 'auto_update_plugin', true ),
 		'auto_update_theme'             => get_option( 'auto_update_theme', true ),
-	);
+	];
 
 	// only change setting if the updater is not disabled
 	if ( ! defined( 'AUTOMATIC_UPDATER_DISABLED' ) || AUTOMATIC_UPDATER_DISABLED === false ) {
@@ -196,7 +198,6 @@ function sync_plugin_major_auto_core_update_option( $old_value, $value ) {
 
 add_action( 'update_option_auto_update_core_major', __NAMESPACE__ . '\\sync_plugin_major_auto_core_update_option', 10, 2 );
 
-
 /**
  * Ensures all installed plugins are set to auto-update.
  *
@@ -304,10 +305,10 @@ add_action( 'delete_site_transient_update_themes', __NAMESPACE__ . '\\delete_sit
 /**
  * Updates the WordPress Core options for plugin and theme auto-updates when one is updated.
  *
- * @param WP_Upgrader $upgrader WP_Upgrader instance. In other contexts, $this, might be a
- *                              Theme_Upgrader, Plugin_Upgrader, Core_Upgrade, or Language_Pack_Upgrader instance.
+ * @param WP_Upgrader $upgrader   WP_Upgrader instance. In other contexts, $this, might be a
+ *                                Theme_Upgrader, Plugin_Upgrader, Core_Upgrade, or Language_Pack_Upgrader instance.
  * @param array       $hook_extra {
- *     Array of bulk item update data.
+ *                                Array of bulk item update data.
  *
  *     @type string $action       Type of action. Default 'update'.
  *     @type string $type         Type of update process. Accepts 'plugin', 'theme', 'translation', or 'core'.
@@ -326,7 +327,7 @@ add_action( 'delete_site_transient_update_themes', __NAMESPACE__ . '\\delete_sit
  * }
  */
 function upgrader_process_complete( $upgrader, $hook_extra ) {
-	if ( ! in_array( $hook_extra['type'], array( 'plugin', 'theme' ), true ) ) {
+	if ( ! in_array( $hook_extra['type'], [ 'plugin', 'theme' ], true ) ) {
 		return;
 	}
 

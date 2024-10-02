@@ -1,7 +1,9 @@
 <?php
 
+namespace Bluehost\Tests;
+
 /**
- * Class ExampleTest
+ * Class ExampleTest.
  */
 class ExampleTest extends WP_UnitTestCase {
 
@@ -11,5 +13,4 @@ class ExampleTest extends WP_UnitTestCase {
 	public function test_is_working() {
 		$this->assertEquals( true, true );
 	}
-
 }
