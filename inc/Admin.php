@@ -8,6 +8,7 @@
 namespace Bluehost;
 
 use function NewfoldLabs\WP\Context\getContext;
+use function NewfoldLabs\WP\Module\Features\isEnabled;
 
 /**
  * \Bluehost\Admin
@@ -37,6 +38,8 @@ final class Admin {
 
 		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) { // phpcs:ignore
 			\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
+			/* Disable admin notices on App pages */
+			\add_action( 'admin_init', array( __CLASS__, 'disable_admin_notices' ) );
 		}
 	}
 
@@ -63,41 +66,40 @@ final class Admin {
 	public static function subpages() {
 		global $bluehost_module_container;
 
-		$home        = array(
+		$home          = array(
 			'bluehost#/home' => __( 'Home', 'wp-plugin-bluehost' ),
 		);
-		$store       = array(
+		$pagesAndPosts = array(
+			'bluehost#/pages-and-posts' => __( 'Pages & Posts', 'wp-plugin-bluehost' ),
+		);
+		$store         = array(
 			'bluehost#/store' => __( 'Store', 'wp-plugin-bluehost' ),
 		);
-		$marketplace = array(
+		$marketplace   = array(
 			'bluehost#/marketplace' => __( 'Marketplace', 'wp-plugin-bluehost' ),
 		);
-		$performance = array(
-			'bluehost#/performance' => __( 'Performance', 'wp-plugin-bluehost' ),
-		);
+		// add performance if enabled
+		$performance = isEnabled( 'performance' )
+			? array(
+				'bluehost#/performance' => __( 'Performance', 'wp-plugin-bluehost' ),
+			)
+			: array();
 		$settings    = array(
 			'bluehost#/settings' => __( 'Settings', 'wp-plugin-bluehost' ),
 		);
-		$staging     = array(
-			'bluehost#/staging' => __( 'Staging', 'wp-plugin-bluehost' ),
-		);
-		$help        = array(
+		// add staging if enabled
+		$staging = isEnabled( 'staging' )
+			? array(
+				'bluehost#/staging' => __( 'Staging', 'wp-plugin-bluehost' ),
+			)
+			: array();
+		$help    = array(
 			'bluehost#/help' => __( 'Help', 'wp-plugin-bluehost' ),
 		);
 
-		// wp-cloud adjustments
-		if ( 'atomic' === getContext( 'platform' ) ) {
-			return array_merge(
-				$home,
-				$store,
-				$marketplace,
-				$settings,
-				$help
-			);
-		}
-
 		return array_merge(
 			$home,
+			$pagesAndPosts,
 			$store,
 			$marketplace,
 			$performance,
@@ -116,6 +118,7 @@ final class Admin {
 		echo 'ul#adminmenu a.toplevel_page_bluehost.wp-has-current-submenu:after, ul#adminmenu>li#toplevel_page_bluehost.current>a.current:after { border-right-color: #fff !important; }';
 		echo 'li#toplevel_page_bluehost > ul > li.wp-first-item { display: none !important; }';
 		echo '#wp-toolbar #wp-admin-bar-bluehost-coming_soon .ab-item { padding: 0; }';
+		echo 'body.folded #adminmenu .toplevel_page_bluehost div.wp-menu-image { width: 36px; height: 34px; }';
 		echo '</style>';
 	}
 
@@ -203,7 +206,7 @@ final class Admin {
 			\wp_register_script(
 				'bluehost-script',
 				BLUEHOST_BUILD_URL . '/index.js',
-				array_merge( $asset['dependencies'], array( 'nfd-runtime' ) ),
+				array_merge( $asset['dependencies'], array( 'newfold-features', 'nfd-runtime' ) ),
 				$asset['version'],
 				true
 			);
@@ -276,6 +279,16 @@ final class Admin {
 			),
 			$actions
 		);
+	}
+
+	/**
+	 * Disable admin notices on App pages
+	 *
+	 * @return void
+	 */
+	public static function disable_admin_notices() {
+		remove_all_actions( 'admin_notices' );
+		remove_all_actions( 'all_admin_notices' );
 	}
 
 	/**

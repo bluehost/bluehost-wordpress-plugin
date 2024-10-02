@@ -12,6 +12,7 @@ use WP_Forge\UpgradeHandler\UpgradeHandler;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
 use NewfoldLabs\WP\Context\Context;
+use NewfoldLabs\WP\Module\Features\Features;
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 use function NewfoldLabs\WP\Context\setContext;
 use function NewfoldLabs\WP\Context\getContext;
@@ -199,3 +200,6 @@ require BLUEHOST_PLUGIN_DIR . '/inc/YoastAI.php';
 if ( is_admin() ) {
 	new Admin();
 }
+
+// Instantiate the Features singleton
+Features::getInstance();
