@@ -74,7 +74,6 @@
     "i18n-po": "Update existing .po files.",
     "i18n-mo": "Generate new language .mo files.",
     "i18n-json": "Generate new language .json files.",
-    "i18n-json-rename": "Rename the language json files to remove the pesky hash.",
     "test": "Run all test scripts.",
     "test-standards": "Check files against coding standards without fixing."
   },
