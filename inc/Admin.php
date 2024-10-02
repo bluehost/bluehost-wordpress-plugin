@@ -7,11 +7,10 @@
 
 namespace Bluehost;
 
-use function NewfoldLabs\WP\Context\getContext;
 use function NewfoldLabs\WP\Module\Features\isEnabled;
 
 /**
- * \Bluehost\Admin
+ * \Bluehost\Admin.
  */
 final class Admin {
 
@@ -44,7 +43,7 @@ final class Admin {
 	}
 
 	/**
-	 * Add to runtime
+	 * Add to runtime.
 	 *
 	 * @param Array $sdk - The runtime array
 	 *
@@ -111,7 +110,7 @@ final class Admin {
 
 	/**
 	 * Add inline script to admin screens
-	 *  - hide extra link in subnav
+	 *  - hide extra link in subnav.
 	 */
 	public static function admin_nav_style() {
 		echo '<style>';
@@ -124,8 +123,6 @@ final class Admin {
 
 	/**
 	 * Add WordPress Page to Appearance submenu.
-	 *
-	 * @return void
 	 */
 	public static function page() {
 		$bluehost_icon = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA0MCA0MCI+CiAgICA8cGF0aCBmaWxsPSIjYTdhYWFkIiBkPSJNNCA0aDguOTMzdjguOTIzSDRWNFptMTEuNTMgMGg4Ljk0djguOTIzaC04Ljk0VjRabTExLjUzMSAwSDM2djguOTIzaC04LjkzOVY0Wk00IDE1LjUzOGg4LjkzM3Y4LjkyNEg0di04LjkyNFptMTEuNTMgMGg4Ljk0djguOTI0aC04Ljk0di04LjkyNFptMTEuNTMxIDBIMzZ2OC45MjRoLTguOTM5di04LjkyNFpNNCAyNy4wNzdoOC45MzNWMzZINHYtOC45MjNabTExLjUzIDBoOC45NFYzNmgtOC45NHYtOC45MjNabTExLjUzMSAwSDM2VjM2aC04LjkzOXYtOC45MjNaIi8+Cjwvc3ZnPg==';
@@ -157,8 +154,6 @@ final class Admin {
 
 	/**
 	 * Render DOM element for React to load onto.
-	 *
-	 * @return void
 	 */
 	public static function render() {
 		global $wp_version;
@@ -187,8 +182,6 @@ final class Admin {
 	 * Load Page Scripts & Styles.
 	 *
 	 * @param String $hook - The hook name
-	 *
-	 * @return void
 	 */
 	public static function assets( $hook ) {
 
@@ -245,9 +238,7 @@ final class Admin {
 	}
 
 	/**
-	 * Load text domain for plugin
-	 *
-	 * @return void
+	 * Load text domain for plugin.
 	 */
 	public static function load_text_domain() {
 
@@ -282,9 +273,7 @@ final class Admin {
 	}
 
 	/**
-	 * Disable admin notices on App pages
-	 *
-	 * @return void
+	 * Disable admin notices on App pages.
 	 */
 	public static function disable_admin_notices() {
 		remove_all_actions( 'admin_notices' );
@@ -292,7 +281,7 @@ final class Admin {
 	}
 
 	/**
-	 * Filter WordPress Admin Footer Text "Thank you for creating with..."
+	 * Filter WordPress Admin Footer Text "Thank you for creating with...".
 	 *
 	 * @param string $footer_text footer text
 	 *

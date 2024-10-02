@@ -8,63 +8,63 @@
 namespace Bluehost;
 
 /**
- * Class Plugin_PHP_Compat_Check
+ * Class Plugin_PHP_Compat_Check.
  *
  * This class is responsible for performing basic checks to see if the minimum requirements for the plugin have been met.
  */
 class Plugin_PHP_Compat_Check {
 
 	/**
-	 * Callbacks for additional checks
+	 * Callbacks for additional checks.
 	 *
 	 * @var array
 	 */
 	public $callbacks = [];
 
 	/**
-	 * Collection of errors
+	 * Collection of errors.
 	 *
 	 * @var \WP_Error
 	 */
 	public $errors;
 
 	/**
-	 * A reference to the main plugin file
+	 * A reference to the main plugin file.
 	 *
 	 * @var string
 	 */
 	public $file;
 
 	/**
-	 * Minimum PHP version required for this plugin
+	 * Minimum PHP version required for this plugin.
 	 *
 	 * @var string
 	 */
 	public $min_php_version;
 
 	/**
-	 * Minimum WordPress version required for this plugin
+	 * Minimum WordPress version required for this plugin.
 	 *
 	 * @var string
 	 */
 	public $min_wp_version;
 
 	/**
-	 * Plugin name
+	 * Plugin name.
 	 *
 	 * @var string
 	 */
 	public $name = '';
 
 	/**
-	 * Required PHP extensions
+	 * Required PHP extensions.
 	 *
 	 * @var array
 	 */
 	public $req_php_extensions = [];
 
 	/**
-	 * Setup our class properties
+	 * Setup our class properties.
 	 *
 	 * @param string $file Plugin file
 	 */
@@ -75,7 +75,7 @@ class Plugin_PHP_Compat_Check {
 	}
 
 	/**
-	 * Get the plugin name from the plugin file headers
+	 * Get the plugin name from the plugin file headers.
 	 *
 	 * @return string
 	 */
@@ -115,7 +115,7 @@ class Plugin_PHP_Compat_Check {
 	}
 
 	/**
-	 * Check if the minimum required PHP version is available
+	 * Check if the minimum required PHP version is available.
 	 */
 	public function check_has_min_php_version() {
 		if ( version_compare( PHP_VERSION, $this->min_php_version, '<' ) ) {
@@ -143,7 +143,7 @@ class Plugin_PHP_Compat_Check {
 	}
 
 	/**
-	 * Check if the minimum required WordPress version is available
+	 * Check if the minimum required WordPress version is available.
 	 */
 	public function check_has_min_wp_version() {
 		global $wp_version;
@@ -162,7 +162,7 @@ class Plugin_PHP_Compat_Check {
 	}
 
 	/**
-	 * Check if any errors were encountered during our plugin checks
+	 * Check if any errors were encountered during our plugin checks.
 	 *
 	 * @return bool
 	 */
@@ -171,7 +171,7 @@ class Plugin_PHP_Compat_Check {
 	}
 
 	/**
-	 * Deactivate the plugin
+	 * Deactivate the plugin.
 	 */
 	public function deactivate() {
 		require_once ABSPATH . '/wp-admin/includes/plugin.php';
@@ -181,7 +181,7 @@ class Plugin_PHP_Compat_Check {
 	}
 
 	/**
-	 * Display error messages in the admin
+	 * Display error messages in the admin.
 	 */
 	public function admin_notices() {
 		echo '<div class="error">';

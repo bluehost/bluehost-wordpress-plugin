@@ -14,7 +14,7 @@ namespace Bluehost;
 final class Data {
 
 	/**
-	 * Data loaded onto window.NewfoldRuntime
+	 * Data loaded onto window.NewfoldRuntime.
 	 *
 	 * @return array
 	 */

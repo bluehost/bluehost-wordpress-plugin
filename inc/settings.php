@@ -1,7 +1,7 @@
 <?php
 /**
  * Functionality related to Settings
- * see RestApi/SettingsController.php for implementation
+ * see RestApi/SettingsController.php for implementation.
  *
  * @package WPPluginBluehost
  */

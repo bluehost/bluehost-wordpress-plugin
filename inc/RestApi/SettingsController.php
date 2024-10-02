@@ -5,7 +5,7 @@ namespace Bluehost\RestApi;
 use function NewfoldLabs\WP\ModuleLoader\container;
 
 /**
- * Class SettingsController
+ * Class SettingsController.
  */
 class SettingsController extends \WP_REST_Controller {
 
@@ -17,7 +17,7 @@ class SettingsController extends \WP_REST_Controller {
 	protected $namespace = 'bluehost/v1';
 
 	/**
-	 * Registers the settings route
+	 * Registers the settings route.
 	 */
 	public function register_routes() {
 
@@ -145,7 +145,7 @@ class SettingsController extends \WP_REST_Controller {
 	}
 
 	/**
-	 * Retrieve the existing saved array of settings
+	 * Retrieve the existing saved array of settings.
 	 *
 	 * @return array $settings List of the settings and their values
 	 */
