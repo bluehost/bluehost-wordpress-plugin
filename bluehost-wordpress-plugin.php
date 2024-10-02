@@ -36,6 +36,8 @@ define( 'BLUEHOST_PLUGIN_VERSION', '3.14.12' );
 define( 'BLUEHOST_PLUGIN_FILE', __FILE__ );
 define( 'BLUEHOST_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLUEHOST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'BLUEHOST_BUILD_DIR', BLUEHOST_PLUGIN_DIR . 'build/' . BLUEHOST_PLUGIN_VERSION );
+define( 'BLUEHOST_BUILD_URL', BLUEHOST_PLUGIN_URL . 'build/' . BLUEHOST_PLUGIN_VERSION );
 if ( ! defined( 'NFD_HIIVE_URL' ) ) {
 	define( 'NFD_HIIVE_URL', 'https://hiive.cloud/api' );
 }
@@ -48,9 +50,6 @@ if ( defined( 'BURST_SAFETY_MODE' ) && BURST_SAFETY_MODE ) {
 	// Short-circuit all plugin functionality
 	return;
 }
-
-define( 'BLUEHOST_BUILD_DIR', BLUEHOST_PLUGIN_DIR . 'build/' . BLUEHOST_PLUGIN_VERSION );
-define( 'BLUEHOST_BUILD_URL', BLUEHOST_PLUGIN_URL . 'build/' . BLUEHOST_PLUGIN_VERSION );
 
 global $pagenow;
 if ( 'plugins.php' === $pagenow ) {
@@ -69,15 +68,15 @@ if ( 'plugins.php' === $pagenow ) {
 require_once BLUEHOST_PLUGIN_DIR . '/inc/plugin-nfd-compat-check.php';
 $nfd_plugins_check = new NFD_Plugin_Compat_Check( BLUEHOST_PLUGIN_FILE );
 // Defer to Incompatible plugin, self-deactivate
-$nfd_plugins_check->incompatible_plugins = array();
+$nfd_plugins_check->incompatible_plugins = [];
 // Deactivate legacy plugin
-$nfd_plugins_check->legacy_plugins = array(
+$nfd_plugins_check->legacy_plugins = [
 	'The MOJO Marketplace'     => 'mojo-marketplace-wp-plugin/mojo-marketplace.php',
 	'The MOJO Plugin'          => 'wp-plugin-mojo/wp-plugin-mojo.php',
 	'The HostGator Plugin'     => 'wp-plugin-hostgator/wp-plugin-hostgator.php',
 	'The Web.com Plugin'       => 'wp-plugin-web/wp-plugin-web.php',
 	'The Crazy Domains Plugin' => 'wp-plugin-web/wp-plugin-crazy-domains.php',
-);
+];
 // Check plugin requirements
 $pass_nfd_check = $nfd_plugins_check->check_plugin_requirements();
 
