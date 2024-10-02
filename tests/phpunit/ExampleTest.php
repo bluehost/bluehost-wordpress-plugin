@@ -1,5 +1,7 @@
 <?php
 
+namespace Bluehost\Tests;
+
 /**
  * Class ExampleTest.
  */
