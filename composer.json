@@ -43,7 +43,7 @@
     }
   },
   "scripts": {
-    "fix-standards": [
+    "fix:standards": [
         "./vendor/bin/phpcbf --standard=./.phpcs.dist.xml .",
         "PHP_CS_FIXER_IGNORE_ENV=true ./vendor/bin/php-cs-fixer fix -v --diff"
     ],
@@ -55,20 +55,14 @@
     "i18n": [
       "@i18n-pot",
       "@i18n-po",
-<<<<<<< HEAD
-      "@i18n-mo"
+      "@i18n-mo",
+      "@i18n-json"
     ],
     "lint": "@test",
     "test": "@test-standards",
     "test-standards": [
       "./vendor/bin/phpcs --standard=./.phpcs.dist.xml",
       "PHP_CS_FIXER_IGNORE_ENV=true ./vendor/bin/php-cs-fixer fix -v --diff --dry-run"
-||||||| 72e3d866bcfe
-      "@i18n-mo"
-=======
-      "@i18n-mo",
-      "@i18n-json"
->>>>>>> main
     ]
   },
   "scripts-descriptions": {
@@ -79,65 +73,23 @@
     "i18n-pot": "Generate a .pot file for translation.",
     "i18n-po": "Update existing .po files.",
     "i18n-mo": "Generate new language .mo files.",
-<<<<<<< HEAD
     "i18n-json": "Generate new language .json files.",
     "i18n-json-rename": "Rename the language json files to remove the pesky hash.",
     "test": "Run all test scripts.",
     "test-standards": "Check files against coding standards without fixing."
-||||||| 72e3d866bcfe
-    "i18n-json": "Generate new language .json files.",
-    "i18n-json-rename": "Rename the language json files to remove the pesky hash."
-=======
-    "i18n-json": "Generate new language .json files."
->>>>>>> main
   },
   "require-dev": {
-<<<<<<< HEAD
     "dealerdirect/phpcodesniffer-composer-installer": "@stable",
     "friendsofphp/php-cs-fixer": "^2.19",
-    "newfold-labs/wp-php-standards": "^1.2",
     "phpcompatibility/phpcompatibility-wp": "@stable",
     "roave/security-advisories": "dev-latest",
     "squizlabs/php_codesniffer": "@stable",
-    "wp-cli/i18n-command": "^2.5.0",
     "wp-coding-standards/wpcs": "^3.0",
-    "wp-phpunit/wp-phpunit": "^6.4.2"
-||||||| 72e3d866bcfe
-    "roave/security-advisories": "dev-latest",
-    "newfold-labs/wp-php-standards": "^1.2",
-    "wp-cli/i18n-command": "^2.5.0",
-    "wp-phpunit/wp-phpunit": "^6.4.2"
-=======
-    "roave/security-advisories": "dev-latest",
     "newfold-labs/wp-php-standards": "^1.2.4",
     "wp-cli/i18n-command": "^2.6.2",
     "wp-phpunit/wp-phpunit": "^6.6.2"
->>>>>>> main
   },
   "require": {
-<<<<<<< HEAD
-    "wp-forge/wp-upgrade-handler": "^1.0",
-    "newfold-labs/wp-module-sso": "^1.0.4",
-||||||| 72e3d866bcfe
-    "newfold-labs/wp-module-activation": "^1.0.1",
-    "newfold-labs/wp-module-coming-soon": "^1.2.3",
-    "newfold-labs/wp-module-context": "^1.0.0",
-    "newfold-labs/wp-module-data": "^2.4.20",
-    "newfold-labs/wp-module-deactivation": "^1.1.1",
-    "newfold-labs/wp-module-ecommerce": "^1.3.25",
-    "newfold-labs/wp-module-global-ctb": "^1.0.11",
-    "newfold-labs/wp-module-help-center": "^1.0.24",
-    "newfold-labs/wp-module-loader": "^1.0.10",
-    "newfold-labs/wp-module-marketplace": "^2.2.4",
-    "newfold-labs/wp-module-notifications": "^1.2.5",
-    "newfold-labs/wp-module-onboarding": "^2.1.8",
-    "newfold-labs/wp-module-patterns": "^0.1.15",
-    "newfold-labs/wp-module-performance": "^1.4.0",
-    "newfold-labs/wp-module-runtime": "^1.0.9",
-    "newfold-labs/wp-module-secure-passwords": "^1.1.1",
-    "newfold-labs/wp-module-sso": "^1.0.4",
-    "newfold-labs/wp-module-staging": "^1.3.0",
-=======
     "newfold-labs/wp-module-activation": "^1.0.3",
     "newfold-labs/wp-module-atomic": "^1.3.0",
     "newfold-labs/wp-module-coming-soon": "^1.2.6",
@@ -161,24 +113,7 @@
     "newfold-labs/wp-module-secure-passwords": "^1.1.1",
     "newfold-labs/wp-module-sso": "^1.0.6",
     "newfold-labs/wp-module-staging": "^2.1.1",
->>>>>>> main
     "wp-forge/wp-update-handler": "^1.0.2",
-    "newfold-labs/wp-module-data": "^2.4.20",
-    "newfold-labs/wp-module-context": "^1.0.0",
-    "newfold-labs/wp-module-loader": "^1.0.10",
-    "newfold-labs/wp-module-runtime": "^1.0.9",
-    "newfold-labs/wp-module-staging": "^1.3.0",
-    "newfold-labs/wp-module-patterns": "^0.1.15",
-    "newfold-labs/wp-module-activation": "^1.0.1",
-    "newfold-labs/wp-module-ecommerce": "^1.3.25",
-    "newfold-labs/wp-module-onboarding": "^2.1.8",
-    "newfold-labs/wp-module-coming-soon": "^1.2.3",
-    "newfold-labs/wp-module-global-ctb": "^1.0.11",
-    "newfold-labs/wp-module-marketplace": "^2.2.4",
-    "newfold-labs/wp-module-performance": "^1.4.0",
-    "newfold-labs/wp-module-deactivation": "^1.1.1",
-    "newfold-labs/wp-module-help-center": "^1.0.24",
-    "newfold-labs/wp-module-notifications": "^1.2.5",
-    "newfold-labs/wp-module-secure-passwords": "^1.1.1"
+    "wp-forge/wp-upgrade-handler": "^1.0"
   }
 }
