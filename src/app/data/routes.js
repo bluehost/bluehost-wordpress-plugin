@@ -141,7 +141,7 @@ export const routes = [
 	{
 		name: '/my_plugins_and_tools',
 		title: __( 'My Plugins & Tools', 'wp-plugin-bluehost' ),
-		Component: WPSolution,
+		Component: Solutions,
 		Icon: PuzzlePieceIcon,
 		condition: true,
 	},	
