@@ -6,6 +6,7 @@ import {
 	AdjustmentsHorizontalIcon,
 	BuildingStorefrontIcon,
 	DocumentDuplicateIcon,
+	PuzzlePieceIcon,
 } from '@heroicons/react/24/outline';
 import { ReactComponent as HelpIcon } from '../components/icons/HelpIcon.svg';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
@@ -15,6 +16,7 @@ import Home from '../pages/home';
 import PagesAndPosts from '../pages/pages-and-posts';
 import Store from '../pages/ecommerce/page';
 import Marketplace from '../pages/marketplace';
+import WPSolution from '../pages/wpsolutions';
 import Performance from '../pages/performance';
 import Settings from '../pages/settings';
 import Staging from '../pages/staging';
@@ -69,6 +71,7 @@ const topRoutePaths = [
 	'/pages-and-posts',
 	'/store',
 	'/marketplace',
+	'/my_plugins_and_tools',	
 	'/performance',
 	'/settings',
 	'/staging',
@@ -135,6 +138,13 @@ export const routes = [
 		subRoutes: await getMarketplaceSubnavRoutes(),
 		condition: true,
 	},
+	{
+		name: '/my_plugins_and_tools',
+		title: __( 'My Plugins & Tools', 'wp-plugin-bluehost' ),
+		Component: WPSolution,
+		Icon: PuzzlePieceIcon,
+		condition: true,
+	},	
 	{
 		name: '/performance',
 		title: __( 'Performance', 'wp-plugin-bluehost' ),
