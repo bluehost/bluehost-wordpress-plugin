@@ -43,8 +43,8 @@
     }
   },
   "scripts": {
-    "fix": "vendor/bin/phpcbf --standard=phpcs.xml .",
-    "lint": "vendor/bin/phpcs --standard=phpcs.xml -s .",
+    "fix-standards": "./vendor/bin/phpcbf --standard=./.phpcs.dist.xml . && PHP_CS_FIXER_IGNORE_ENV=true ./vendor/bin/php-cs-fixer fix -v --diff",
+    "fix": "@fix:standards",
     "i18n-pot": "vendor/bin/wp i18n make-pot . ./languages/wp-plugin-bluehost.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/bluehost/bluehost-wordpress-plugin/issues\",\"POT-Creation-Date\":\"2023-03-08T20:13:41+00:00\"}' --exclude=assets,tests,src",
     "i18n-po": "vendor/bin/wp i18n update-po ./languages/wp-plugin-bluehost.pot ./languages",
     "i18n-mo": "vendor/bin/wp i18n make-mo ./languages",
@@ -54,19 +54,31 @@
       "@i18n-po",
       "@i18n-mo",
       "@i18n-json"
-    ]
+    ],
+    "lint": "@test",
+    "test": "@test-standards",
+    "test-standards": "./vendor/bin/phpcs --standard=./.phpcs.dist.xml . && PHP_CS_FIXER_IGNORE_ENV=true ./vendor/bin/php-cs-fixer fix -v --diff --dry-run"
   },
   "scripts-descriptions": {
-    "fix": "Automatically fix coding standards issues where possible.",
+    "fix": "Run all fix scripts.",
+    "fix-standards": "Automatically fix coding standards issues where possible.",
     "lint": "Check files against coding standards.",
     "i18n": "Generate new language files.",
     "i18n-pot": "Generate a .pot file for translation.",
     "i18n-po": "Update existing .po files.",
     "i18n-mo": "Generate new language .mo files.",
-    "i18n-json": "Generate new language .json files."
+    "i18n-json": "Generate new language .json files.",
+    "i18n-json-rename": "Rename the language json files to remove the pesky hash.",
+    "test": "Run all test scripts.",
+    "test-standards": "Check files against coding standards without fixing."
   },
   "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "@stable",
+    "friendsofphp/php-cs-fixer": "^2.19",
+    "phpcompatibility/phpcompatibility-wp": "@stable",
     "roave/security-advisories": "dev-latest",
+    "squizlabs/php_codesniffer": "@stable",
+    "wp-coding-standards/wpcs": "^3.0",
     "newfold-labs/wp-php-standards": "^1.2.4",
     "wp-cli/i18n-command": "^2.6.2",
     "wp-phpunit/wp-phpunit": "^6.6.2"
