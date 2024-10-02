@@ -43,10 +43,7 @@
     }
   },
   "scripts": {
-    "fix:standards": [
-        "./vendor/bin/phpcbf --standard=./.phpcs.dist.xml .",
-        "PHP_CS_FIXER_IGNORE_ENV=true ./vendor/bin/php-cs-fixer fix -v --diff"
-    ],
+    "fix-standards": "./vendor/bin/phpcbf --standard=./.phpcs.dist.xml . && PHP_CS_FIXER_IGNORE_ENV=true ./vendor/bin/php-cs-fixer fix -v --diff",
     "fix": "@fix:standards",
     "i18n-pot": "vendor/bin/wp i18n make-pot . ./languages/wp-plugin-bluehost.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/bluehost/bluehost-wordpress-plugin/issues\",\"POT-Creation-Date\":\"2023-03-08T20:13:41+00:00\"}' --exclude=assets,tests,src",
     "i18n-po": "vendor/bin/wp i18n update-po ./languages/wp-plugin-bluehost.pot ./languages",
@@ -60,10 +57,7 @@
     ],
     "lint": "@test",
     "test": "@test-standards",
-    "test-standards": [
-      "./vendor/bin/phpcs --standard=./.phpcs.dist.xml",
-      "PHP_CS_FIXER_IGNORE_ENV=true ./vendor/bin/php-cs-fixer fix -v --diff --dry-run"
-    ]
+    "test-standards": "./vendor/bin/phpcs --standard=./.phpcs.dist.xml . && PHP_CS_FIXER_IGNORE_ENV=true ./vendor/bin/php-cs-fixer fix -v --diff --dry-run"
   },
   "scripts-descriptions": {
     "fix": "Run all fix scripts.",
