@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3bf91854bcfd1a318855705fd1524811",
+    "content-hash": "1167cfa5eecc85cb4a812a64d60918b5",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1907,16 +1907,16 @@
         },
         {
             "name": "newfold-labs/wp-module-solutions",
-            "version": "dev-update/buildless-component",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:newfold-labs/wp-module-solutions.git",
-                "reference": "835364c1bd3117c8fabb6b3fc07c60ff5b4655b5"
+                "reference": "594739553c8d1a5d281cc432c7bdbd64200d4c0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-solutions/zipball/835364c1bd3117c8fabb6b3fc07c60ff5b4655b5",
-                "reference": "835364c1bd3117c8fabb6b3fc07c60ff5b4655b5",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-solutions/zipball/594739553c8d1a5d281cc432c7bdbd64200d4c0d",
+                "reference": "594739553c8d1a5d281cc432c7bdbd64200d4c0d",
                 "shasum": ""
             },
             "require": {
@@ -1947,10 +1947,10 @@
             ],
             "description": "A Newfold module that handles integration of WordPress Solutions Addon packages (content creator/ service / ecommerce) for BlueHost &amp; HostGator customers",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-solutions/tree/update/buildless-component",
+                "source": "https://github.com/newfold-labs/wp-module-solutions/tree/0.1.0",
                 "issues": "https://github.com/newfold-labs/wp-module-solutions/issues"
             },
-            "time": "2024-10-02T17:57:59+00:00"
+            "time": "2024-10-03T16:27:00+00:00"
         },
         {
             "name": "newfold-labs/wp-module-sso",
@@ -4985,7 +4985,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "newfold-labs/wp-module-solutions": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
