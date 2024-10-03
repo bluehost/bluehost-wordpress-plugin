@@ -16,7 +16,7 @@ import Home from '../pages/home';
 import PagesAndPosts from '../pages/pages-and-posts';
 import Store from '../pages/ecommerce/page';
 import Marketplace from '../pages/marketplace';
-import WPSolution from '../pages/wpsolutions';
+import Solutions from '../pages/solutions';
 import Performance from '../pages/performance';
 import Settings from '../pages/settings';
 import Staging from '../pages/staging';
@@ -141,7 +141,7 @@ export const routes = [
 	{
 		name: '/my_plugins_and_tools',
 		title: __( 'My Plugins & Tools', 'wp-plugin-bluehost' ),
-		Component: WPSolution,
+		Component: Solutions,
 		Icon: PuzzlePieceIcon,
 		condition: true,
 	},	
