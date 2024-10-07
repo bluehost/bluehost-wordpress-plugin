@@ -158,7 +158,7 @@ export const routes = [
 	},
 	{
 		name: '/help',
-		title: __( 'Help', 'wp-plugin-bluehost' ),
+		title: __( 'Help with WordPress', 'wp-plugin-bluehost' ),
 		Component: Help,
 		Icon: HelpIcon,
 		condition: true,

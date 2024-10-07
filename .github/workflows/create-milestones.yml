@@ -1,0 +1,83 @@
+name: Create Milestone
+
+on:
+  workflow_dispatch:
+    inputs:
+      due_date:
+        description: "Provide the due date for the milestone (format: YYYY-MM-DD)"
+        required: false
+        default: ""
+  schedule:
+    - cron: '0 12 * * 3' # Every Wednesday at noon UTC
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  create-milestone:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create Milestone
+        run: |
+          #!/bin/bash
+
+          # Explicitly set the timezone to UTC
+          export TZ=UTC
+
+          echo "Debug: Manually Entered Due Date: ${{ github.event.inputs.due_date }}"
+
+          # Get the input date from workflow_dispatch (if provided) or use default logic
+          if [ -n "${{ github.event.inputs.due_date }}" ]; then
+            # Use the provided date from workflow_dispatch input
+            DUE_DATE="${{ github.event.inputs.due_date }}"
+            echo "Manual input provided. Using input date: $DUE_DATE"
+          else
+            # No manual input, use the default: 2 weeks from now
+            DUE_DATE=$(date -u -d '2 weeks' '+%Y-%m-%d')
+            echo "No manual input. Using default date 2 weeks from now: $DUE_DATE"
+          fi
+          
+          # Set the date format for the milestone title and due date
+          DATE=$(date -u -d "$DUE_DATE" '+%B %-d, %Y')  # Human-readable date
+          DATE_ISO8601=$(date -u -d "$DUE_DATE" '+%Y-%m-%dT23:59:59Z')  # ISO8601 format
+
+          # Prepare the description for the milestone
+          DESCRIPTION="The release is scheduled for $DATE, and PRs should be submitted and made mergeable by EOD $DATE. This means they should have tests passing and merge conflicts resolved. The description for the PR must include details of what is included in the PR and how to test it, and preferably new tests supporting the update.\n\nAny PRs submitted after the deadline will not be included in the release but go in the next release. This includes PRs with tests failing, no description, no screenshots/video demonstrating the update, sufficient Cypress tests, no link to associated JIRA ticket, etc. If no mergeable PRs are submitted for a release, there will be no release that week (unless there is a need for an out-of-cycle release)."
+
+          # Debugging outputs
+          echo "Debug: Human-readable Date: $DATE"
+          echo "Debug: ISO8601 Date: $DATE_ISO8601"
+          echo "Debug: Description content: $DESCRIPTION"
+
+          # Prepare the JSON payload for the API request
+          PAYLOAD="{\"title\":\"$DATE Release\", \"description\":\"$DESCRIPTION\", \"due_on\":\"$DATE_ISO8601\", \"state\":\"open\"}"
+
+          # Debugging the JSON payload
+          echo "Debug: Payload: $PAYLOAD"
+
+          # Perform the curl request and capture the response
+          RESPONSE=$(curl -s -w "%{http_code}" -o response_body.txt -X POST \
+            -H "User-Agent: GitHub-API-Request" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/milestones \
+            -d "$PAYLOAD")
+
+          # Capture HTTP status code and response body
+          HTTP_STATUS=$(tail -n1 <<< "$RESPONSE")
+          RESPONSE_BODY=$(cat response_body.txt)
+
+          # Debugging the HTTP status and response body
+          echo "Debug: HTTP Status: $HTTP_STATUS"
+          echo "Debug: Response Body: $RESPONSE_BODY"
+
+          # If the request fails, exit with an error
+          if [[ "$HTTP_STATUS" -ge 400 ]]; then
+            echo "Error: Failed to create a milestone."
+            exit 1
+          fi
+
+          echo "Milestone created successfully."
+          echo "Response body: $RESPONSE_BODY"
