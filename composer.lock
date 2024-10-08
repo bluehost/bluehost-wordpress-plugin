@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "31884e748960fc6411a22536e61303be",
+    "content-hash": "f11f9fc0643c5ee4ffed4a228eadcf17",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1429,16 +1429,16 @@
         },
         {
             "name": "newfold-labs/wp-module-migration",
-            "version": "v1.0.11",
+            "version": "v1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-migration.git",
-                "reference": "d84570b93abf5baade814bbb8d71871adff10e89"
+                "reference": "dad4efa9b8a02b2693fc3d26a228e4f58dde85e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/d84570b93abf5baade814bbb8d71871adff10e89",
-                "reference": "d84570b93abf5baade814bbb8d71871adff10e89",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/dad4efa9b8a02b2693fc3d26a228e4f58dde85e1",
+                "reference": "dad4efa9b8a02b2693fc3d26a228e4f58dde85e1",
                 "shasum": ""
             },
             "require": {
@@ -1476,10 +1476,10 @@
             ],
             "description": "Initiates the migration process",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-migration/tree/v1.0.11",
+                "source": "https://github.com/newfold-labs/wp-module-migration/tree/v1.0.12",
                 "issues": "https://github.com/newfold-labs/wp-module-migration/issues"
             },
-            "time": "2024-08-21T14:04:06+00:00"
+            "time": "2024-09-25T08:45:49+00:00"
         },
         {
             "name": "newfold-labs/wp-module-my-products",
