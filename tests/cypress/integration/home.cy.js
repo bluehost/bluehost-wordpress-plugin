@@ -23,7 +23,7 @@ describe( 'Home Page', function () {
 	} );
 
 	it( 'Is Accessible', () => {
-		cy.wait( 1000 );
+		cy.wait( 500 );
 		cy.checkA11y( '.wppbh-app-body' );
 	} );
 
