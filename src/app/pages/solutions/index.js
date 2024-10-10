@@ -7,7 +7,6 @@ import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import { default as NewfoldEntitlements } from '@modules/wp-module-solutions/components/entitlements';
 
 const Solutions = () => {
-
 	// constants to pass to module
 	const moduleConstants = {
 		text: {
@@ -38,13 +37,11 @@ const Solutions = () => {
 		useNavigate,
 		NewfoldRuntime,
 	};
-	
+
 	return (
 		<Page>
 			<Container
-				className={
-					'newfold-entitlements-container nfd-overflow-clip'
-				}
+				className={ 'newfold-entitlements-container nfd-overflow-clip' }
 			>
 				<NewfoldEntitlements
 					methods={ moduleMethods }

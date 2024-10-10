@@ -71,7 +71,7 @@ const topRoutePaths = [
 	'/pages-and-posts',
 	'/store',
 	'/marketplace',
-	'/my_plugins_and_tools',	
+	'/my_plugins_and_tools',
 	'/performance',
 	'/settings',
 	'/staging',
@@ -138,13 +138,13 @@ export const routes = [
 		subRoutes: await getMarketplaceSubnavRoutes(),
 		condition: true,
 	},
-	{
+	NewfoldRuntime.hasCapability( 'hasSolution' ) && {
 		name: '/my_plugins_and_tools',
 		title: __( 'My Plugins & Tools', 'wp-plugin-bluehost' ),
 		Component: Solutions,
 		Icon: PuzzlePieceIcon,
 		condition: true,
-	},	
+	},
 	{
 		name: '/performance',
 		title: __( 'Performance', 'wp-plugin-bluehost' ),
