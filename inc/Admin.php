@@ -66,10 +66,7 @@ final class Admin {
 	 */
 	public static function subpages() {
 		global $bluehost_module_container;
-
 		$capability = new SiteCapabilities();
- 
-        $hasSolution = $capability->get( 'hasSolution' );
 
 		$home          = array(
 			'bluehost#/home' => __( 'Home', 'wp-plugin-bluehost' ),
@@ -83,9 +80,12 @@ final class Admin {
 		$marketplace   = array(
 			'bluehost#/marketplace' => __( 'Marketplace', 'wp-plugin-bluehost' ),
 		);
-		$mypluginsandtools   = array(
-			'bluehost#/my_plugins_and_tools' => __( 'My Plugins & Tools', 'wp-plugin-bluehost' ),
-		);		
+		// add plugins and tools if has solution
+		$mypluginsandtools = $capability->get( 'hasSolution' )
+			? array(
+				'bluehost#/my_plugins_and_tools' => __( 'My Plugins & Tools', 'wp-plugin-bluehost' ),
+			)
+			: array();
 		// add performance if enabled
 		$performance = isEnabled( 'performance' )
 			? array(
@@ -105,31 +105,17 @@ final class Admin {
 			'bluehost#/help' => __( 'Help', 'wp-plugin-bluehost' ),
 		);
 
-		if($hasSolution){
-			return array_merge(
-				$home,
-				$pagesAndPosts,
-				$store,
-				$marketplace,
-				$mypluginsandtools,
-				$performance,
-				$settings,
-				$staging,
-				$help
-			);
-		}
-		else{
-			return array_merge(
-				$home,
-				$pagesAndPosts,
-				$store,
-				$marketplace,
-				$performance,
-				$settings,
-				$staging,
-				$help
-			);
-		}
+		return array_merge(
+			$home,
+			$pagesAndPosts,
+			$store,
+			$marketplace,
+			$mypluginsandtools,
+			$performance,
+			$settings,
+			$staging,
+			$help
+		);
 	}
 
 	/**
@@ -164,7 +150,7 @@ final class Admin {
 		);
 
 		// If we're outside of Bluehost, add subpages to Bluehost menu
-		if ( false === ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) ) { // phpcs:ignore
+		if   ( false === ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) ) { // phpcs:igno r e
 			foreach ( self::subpages() as $route => $title ) {
 				\add_submenu_page(
 					'bluehost',
