@@ -2,7 +2,7 @@ import './style.scss';
 import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect } from '@wordpress/element';
 import { useLocation, useMatch, useNavigate } from 'react-router-dom';
-import { Container, Page, Title } from '@newfold/ui-component-library';
+import { Container, Page } from '@newfold/ui-component-library';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import { default as NewfoldEntitlements } from '@modules/wp-module-solutions/components/entitlements';
 
