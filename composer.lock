@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ceb7171074eebdf0c687f82ed740b576",
+    "content-hash": "fc884c859d54a2a88968977037daaf1e",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1958,16 +1958,16 @@
         },
         {
             "name": "newfold-labs/wp-module-solutions",
-            "version": "0.5.0",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-solutions.git",
-                "reference": "ee8a4e469828391332fc8c0ad1507ed75b0b2ae3"
+                "reference": "8021fd6f530762606a13576213a33aa4930493aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-solutions/zipball/ee8a4e469828391332fc8c0ad1507ed75b0b2ae3",
-                "reference": "ee8a4e469828391332fc8c0ad1507ed75b0b2ae3",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-solutions/zipball/8021fd6f530762606a13576213a33aa4930493aa",
+                "reference": "8021fd6f530762606a13576213a33aa4930493aa",
                 "shasum": ""
             },
             "require": {
@@ -1998,10 +1998,10 @@
             ],
             "description": "A Newfold module that handles integration of WordPress Solutions Addon packages (content creator/ service / ecommerce) for BlueHost &amp; HostGator customers",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-solutions/tree/0.5.0",
+                "source": "https://github.com/newfold-labs/wp-module-solutions/tree/0.6.0",
                 "issues": "https://github.com/newfold-labs/wp-module-solutions/issues"
             },
-            "time": "2024-10-09T14:17:16+00:00"
+            "time": "2024-10-10T12:24:08+00:00"
         },
         {
             "name": "newfold-labs/wp-module-sso",
