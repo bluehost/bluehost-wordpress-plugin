@@ -150,7 +150,7 @@ final class Admin {
 		);
 
 		// If we're outside of Bluehost, add subpages to Bluehost menu
-		if   ( false === ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) ) { // phpcs:igno r e
+		if ( false === ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) ) { // phpcs:igno r e
 			foreach ( self::subpages() as $route => $title ) {
 				\add_submenu_page(
 					'bluehost',
