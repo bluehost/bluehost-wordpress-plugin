@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "31884e748960fc6411a22536e61303be",
+    "content-hash": "38ff26d88b06d00f1c8b210e362aaf77",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -623,16 +623,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ai",
-            "version": "1.1.11",
+            "version": "1.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ai.git",
-                "reference": "523fe373a723b2336e3043cbcaeac058734ed761"
+                "reference": "3836a576e83e068b53de1d850bcb60aac471656d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ai/zipball/523fe373a723b2336e3043cbcaeac058734ed761",
-                "reference": "523fe373a723b2336e3043cbcaeac058734ed761",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ai/zipball/3836a576e83e068b53de1d850bcb60aac471656d",
+                "reference": "3836a576e83e068b53de1d850bcb60aac471656d",
                 "shasum": ""
             },
             "require": {
@@ -662,10 +662,10 @@
             ],
             "description": "A module for providing artificial intelligence capabilities.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ai/tree/1.1.11",
+                "source": "https://github.com/newfold-labs/wp-module-ai/tree/1.1.12",
                 "issues": "https://github.com/newfold-labs/wp-module-ai/issues"
             },
-            "time": "2024-08-28T15:18:10+00:00"
+            "time": "2024-09-19T07:47:50+00:00"
         },
         {
             "name": "newfold-labs/wp-module-atomic",
@@ -1197,16 +1197,16 @@
         },
         {
             "name": "newfold-labs/wp-module-help-center",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-help-center.git",
-                "reference": "77e132e6c1974251b3889c4e9a6f80e38f91e6b3"
+                "reference": "0e92e33d127bea06f1ae42b56fd2cb63a3b4c1ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/77e132e6c1974251b3889c4e9a6f80e38f91e6b3",
-                "reference": "77e132e6c1974251b3889c4e9a6f80e38f91e6b3",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-help-center/zipball/0e92e33d127bea06f1ae42b56fd2cb63a3b4c1ae",
+                "reference": "0e92e33d127bea06f1ae42b56fd2cb63a3b4c1ae",
                 "shasum": ""
             },
             "require": {
@@ -1238,10 +1238,10 @@
             ],
             "description": "HelpCenter",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/2.1.0",
+                "source": "https://github.com/newfold-labs/wp-module-help-center/tree/2.1.1",
                 "issues": "https://github.com/newfold-labs/wp-module-help-center/issues"
             },
-            "time": "2024-08-30T09:05:05+00:00"
+            "time": "2024-10-10T14:35:47+00:00"
         },
         {
             "name": "newfold-labs/wp-module-install-checker",
