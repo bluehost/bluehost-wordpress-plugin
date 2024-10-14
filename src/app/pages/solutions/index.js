@@ -12,15 +12,15 @@ const Solutions = () => {
 		text: {
 			title: __( 'Solution', 'bluehost-wordpress-plugin' ),
 			subTitle: __(
-				'Explore the entitlements available with your solution.',
+				'Explore the plugins and tools available with your solution.',
 				'bluehost-wordpress-plugin'
 			),
 			error: __(
-				'Oops, there was an error loading the entitlements, please try again later.',
+				'Oops, there was an error loading your plugins and tools, please try again later.',
 				'bluehost-wordpress-plugin'
 			),
 			noEntitlements: __(
-				'Sorry, no current entitlements. Please, try again later.',
+				'Sorry, no current plugins and tools. Please, try again later.',
 				'bluehost-wordpress-plugin'
 			),
 		},
