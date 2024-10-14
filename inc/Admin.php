@@ -9,6 +9,7 @@ namespace Bluehost;
 
 use function NewfoldLabs\WP\Context\getContext;
 use function NewfoldLabs\WP\Module\Features\isEnabled;
+use NewfoldLabs\WP\Module\Data\SiteCapabilities;
 
 /**
  * \Bluehost\Admin
@@ -52,9 +53,11 @@ final class Admin {
 	 */
 	public static function add_to_runtime( $sdk ) {
 		include_once BLUEHOST_PLUGIN_DIR . '/inc/Data.php';
-
+		
 		return array_merge( $sdk, Data::runtime() );
 	}
+
+	
 
 	/**
 	 * Subpages to register with add_submenu_page().
@@ -66,6 +69,10 @@ final class Admin {
 	public static function subpages() {
 		global $bluehost_module_container;
 
+		$capability = new SiteCapabilities();
+ 
+        $hasSolution = $capability->get( 'hasSolution' );
+						
 		$home          = array(
 			'bluehost#/home' => __( 'Home', 'wp-plugin-bluehost' ),
 		);
@@ -77,6 +84,9 @@ final class Admin {
 		);
 		$marketplace   = array(
 			'bluehost#/marketplace' => __( 'Marketplace', 'wp-plugin-bluehost' ),
+		);
+		$mypluginsandtools   = array(
+				'bluehost#/my_plugins_and_tools' => __( 'My Plugins & Tools', 'wp-plugin-bluehost' ),
 		);
 		// add performance if enabled
 		$performance = isEnabled( 'performance' )
@@ -97,16 +107,33 @@ final class Admin {
 			'bluehost#/help' => __( 'Help', 'wp-plugin-bluehost' ),
 		);
 
-		return array_merge(
-			$home,
-			$pagesAndPosts,
-			$store,
-			$marketplace,
-			$performance,
-			$settings,
-			$staging,
-			$help
-		);
+		if($hasSolution){
+			return array_merge(
+				$home,
+				$pagesAndPosts,
+				$store,
+				$marketplace,
+				$mypluginsandtools,
+				$performance,
+				$settings,
+				$staging,
+				$help
+			);
+		}
+		else{
+			return array_merge(
+				$home,
+				$pagesAndPosts,
+				$store,
+				$marketplace,
+				$performance,
+				$settings,
+				$staging,
+				$help
+			);
+		}
+
+		
 	}
 
 	/**
