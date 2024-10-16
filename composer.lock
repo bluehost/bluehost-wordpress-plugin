@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fd40b61b66649a1ec4a76f003f0ec690",
+    "content-hash": "de56050238e43544d6e3fcdc5444e5c5",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1815,12 +1815,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-pls.git",
-                "reference": "f0191ceb2a8a7f4ba09dfb4dfbc84caeec60e325"
+                "reference": "ee3c6ef93f7fde4028f5c174097a76295c7ced0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-pls/zipball/f0191ceb2a8a7f4ba09dfb4dfbc84caeec60e325",
-                "reference": "f0191ceb2a8a7f4ba09dfb4dfbc84caeec60e325",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-pls/zipball/ee3c6ef93f7fde4028f5c174097a76295c7ced0f",
+                "reference": "ee3c6ef93f7fde4028f5c174097a76295c7ced0f",
                 "shasum": ""
             },
             "require": {
@@ -1854,7 +1854,7 @@
                 "source": "https://github.com/newfold-labs/wp-module-pls/tree/0.1.1",
                 "issues": "https://github.com/newfold-labs/wp-module-pls/issues"
             },
-            "time": "2024-10-16T04:20:15+00:00"
+            "time": "2024-10-16T08:38:17+00:00"
         },
         {
             "name": "newfold-labs/wp-module-runtime",
