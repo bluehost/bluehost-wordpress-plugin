@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de56050238e43544d6e3fcdc5444e5c5",
+    "content-hash": "ecd601d65f7325e53373679eb6cc0b28",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -993,12 +993,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "8225de4ee22d041d0051ff009fbb7c3eb3c84498"
+                "reference": "270f9d5cccbf52c723d002e4771c4823eb0c64dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/8225de4ee22d041d0051ff009fbb7c3eb3c84498",
-                "reference": "8225de4ee22d041d0051ff009fbb7c3eb3c84498",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/270f9d5cccbf52c723d002e4771c4823eb0c64dc",
+                "reference": "270f9d5cccbf52c723d002e4771c4823eb0c64dc",
                 "shasum": ""
             },
             "require": {
@@ -1044,7 +1044,7 @@
                 "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/1.4.0-beta.3",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-10-16T04:46:38+00:00"
+            "time": "2024-10-16T16:28:31+00:00"
         },
         {
             "name": "newfold-labs/wp-module-facebook",
@@ -1288,12 +1288,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "ac07e703eba762cb6b3ab98c2588d4a2f3c51592"
+                "reference": "8951a26fa00c4e10de24118dce6e9d8a6753521e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/ac07e703eba762cb6b3ab98c2588d4a2f3c51592",
-                "reference": "ac07e703eba762cb6b3ab98c2588d4a2f3c51592",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/8951a26fa00c4e10de24118dce6e9d8a6753521e",
+                "reference": "8951a26fa00c4e10de24118dce6e9d8a6753521e",
                 "shasum": ""
             },
             "require": {
@@ -1326,7 +1326,7 @@
                 "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.2.0-beta.3",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2024-10-16T04:12:13+00:00"
+            "time": "2024-10-16T19:23:04+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -1959,16 +1959,16 @@
         },
         {
             "name": "newfold-labs/wp-module-solutions",
-            "version": "0.7.1",
+            "version": "0.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-solutions.git",
-                "reference": "1caf58f3516e71e597d9222088a09367276fb51f"
+                "reference": "ec1a0d07c0cb2496f964934b86860dcd51cb3e32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-solutions/zipball/1caf58f3516e71e597d9222088a09367276fb51f",
-                "reference": "1caf58f3516e71e597d9222088a09367276fb51f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-solutions/zipball/ec1a0d07c0cb2496f964934b86860dcd51cb3e32",
+                "reference": "ec1a0d07c0cb2496f964934b86860dcd51cb3e32",
                 "shasum": ""
             },
             "require": {
@@ -1999,10 +1999,10 @@
             ],
             "description": "A Newfold module that handles integration of WordPress Solutions Addon packages (content creator/ service / ecommerce) for BlueHost &amp; HostGator customers",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-solutions/tree/0.7.1",
+                "source": "https://github.com/newfold-labs/wp-module-solutions/tree/0.7.2",
                 "issues": "https://github.com/newfold-labs/wp-module-solutions/issues"
             },
-            "time": "2024-10-16T04:14:10+00:00"
+            "time": "2024-10-16T16:59:39+00:00"
         },
         {
             "name": "newfold-labs/wp-module-sso",
@@ -2462,16 +2462,16 @@
         },
         {
             "name": "wp-cli/wp-config-transformer",
-            "version": "v1.4.0",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/wp-config-transformer.git",
-                "reference": "9b470f6f1a75707b22e9cfb85bb74120256243b4"
+                "reference": "9da378b5a4e28bba3bce4ff4ff04a54d8c9f1a01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/wp-config-transformer/zipball/9b470f6f1a75707b22e9cfb85bb74120256243b4",
-                "reference": "9b470f6f1a75707b22e9cfb85bb74120256243b4",
+                "url": "https://api.github.com/repos/wp-cli/wp-config-transformer/zipball/9da378b5a4e28bba3bce4ff4ff04a54d8c9f1a01",
+                "reference": "9da378b5a4e28bba3bce4ff4ff04a54d8c9f1a01",
                 "shasum": ""
             },
             "require": {
@@ -2481,6 +2481,11 @@
                 "wp-cli/wp-cli-tests": "^4.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.x-dev"
+                }
+            },
             "autoload": {
                 "files": [
                     "src/WPConfigTransformer.php"
@@ -2500,9 +2505,9 @@
             "homepage": "https://github.com/wp-cli/wp-config-transformer",
             "support": {
                 "issues": "https://github.com/wp-cli/wp-config-transformer/issues",
-                "source": "https://github.com/wp-cli/wp-config-transformer/tree/v1.4.0"
+                "source": "https://github.com/wp-cli/wp-config-transformer/tree/v1.4.1"
             },
-            "time": "2024-09-17T19:05:47+00:00"
+            "time": "2024-10-16T12:50:47+00:00"
         },
         {
             "name": "wp-forge/collection",
@@ -4668,16 +4673,16 @@
         },
         {
             "name": "wp-cli/i18n-command",
-            "version": "v2.6.2",
+            "version": "v2.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/i18n-command.git",
-                "reference": "53518a11f314119e320597c7a8274f11b1295bdc"
+                "reference": "065bb3758fcbff922f1b7a01ab702aab0da79803"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/i18n-command/zipball/53518a11f314119e320597c7a8274f11b1295bdc",
-                "reference": "53518a11f314119e320597c7a8274f11b1295bdc",
+                "url": "https://api.github.com/repos/wp-cli/i18n-command/zipball/065bb3758fcbff922f1b7a01ab702aab0da79803",
+                "reference": "065bb3758fcbff922f1b7a01ab702aab0da79803",
                 "shasum": ""
             },
             "require": {
@@ -4731,9 +4736,9 @@
             "homepage": "https://github.com/wp-cli/i18n-command",
             "support": {
                 "issues": "https://github.com/wp-cli/i18n-command/issues",
-                "source": "https://github.com/wp-cli/i18n-command/tree/v2.6.2"
+                "source": "https://github.com/wp-cli/i18n-command/tree/v2.6.3"
             },
-            "time": "2024-07-03T12:50:00+00:00"
+            "time": "2024-10-01T11:16:25+00:00"
         },
         {
             "name": "wp-cli/mustangostang-spyc",
