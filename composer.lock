@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2a39ef376c7d95a2966500ee3494445",
+    "content-hash": "c000a9b1718683d5f23d979c365353c5",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -230,16 +230,16 @@
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8"
+                "reference": "f9c436286ab2892c7db7be8c8da4ef61ccf7b455"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8",
-                "reference": "6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/f9c436286ab2892c7db7be8c8da4ef61ccf7b455",
+                "reference": "f9c436286ab2892c7db7be8c8da4ef61ccf7b455",
                 "shasum": ""
             },
             "require": {
@@ -293,7 +293,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.0.3"
+                "source": "https://github.com/guzzle/promises/tree/2.0.4"
             },
             "funding": [
                 {
@@ -309,7 +309,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-18T10:29:17+00:00"
+            "time": "2024-10-17T10:06:22+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -989,16 +989,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "1.4.0-beta.3",
+            "version": "v1.4.0-beta.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "270f9d5cccbf52c723d002e4771c4823eb0c64dc"
+                "reference": "d623d630679ba68b621da1443848b43d686692c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/270f9d5cccbf52c723d002e4771c4823eb0c64dc",
-                "reference": "270f9d5cccbf52c723d002e4771c4823eb0c64dc",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/d623d630679ba68b621da1443848b43d686692c5",
+                "reference": "d623d630679ba68b621da1443848b43d686692c5",
                 "shasum": ""
             },
             "require": {
@@ -1041,10 +1041,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/1.4.0-beta.3",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.4.0-beta.5",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-10-16T16:28:31+00:00"
+            "time": "2024-10-17T12:28:13+00:00"
         },
         {
             "name": "newfold-labs/wp-module-facebook",
@@ -1288,12 +1288,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "8951a26fa00c4e10de24118dce6e9d8a6753521e"
+                "reference": "8d513d668cccda7fb8c539e3bf0be1b09bdb9633"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/8951a26fa00c4e10de24118dce6e9d8a6753521e",
-                "reference": "8951a26fa00c4e10de24118dce6e9d8a6753521e",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/8d513d668cccda7fb8c539e3bf0be1b09bdb9633",
+                "reference": "8d513d668cccda7fb8c539e3bf0be1b09bdb9633",
                 "shasum": ""
             },
             "require": {
@@ -1326,7 +1326,7 @@
                 "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.2.0-beta.3",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2024-10-16T19:23:04+00:00"
+            "time": "2024-10-17T13:28:26+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -3622,17 +3622,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "c3c55a0f6643119fa8699577cc83ca6256d98ab5"
+                "reference": "6360940d585658ef1c4965a053b6632314d4bd5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/c3c55a0f6643119fa8699577cc83ca6256d98ab5",
-                "reference": "c3c55a0f6643119fa8699577cc83ca6256d98ab5",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/6360940d585658ef1c4965a053b6632314d4bd5b",
+                "reference": "6360940d585658ef1c4965a053b6632314d4bd5b",
                 "shasum": ""
             },
             "conflict": {
                 "3f/pygmentize": "<1.2",
-                "admidio/admidio": "<4.3.10",
+                "admidio/admidio": "<4.3.12",
                 "adodb/adodb-php": "<=5.20.20|>=5.21,<=5.21.3",
                 "aheinze/cockpit": "<2.2",
                 "aimeos/ai-admin-graphql": ">=2022.04.1,<2022.10.10|>=2023.04.1,<2023.10.6|>=2024.04.1,<2024.04.6",
@@ -4446,7 +4446,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-11T18:06:00+00:00"
+            "time": "2024-10-16T20:05:11+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
