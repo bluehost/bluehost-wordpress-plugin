@@ -9,6 +9,7 @@ namespace Bluehost;
 
 use function NewfoldLabs\WP\Context\getContext;
 use function NewfoldLabs\WP\Module\Features\isEnabled;
+use NewfoldLabs\WP\Module\Data\SiteCapabilities;
 
 /**
  * \Bluehost\Admin
@@ -65,6 +66,7 @@ final class Admin {
 	 */
 	public static function subpages() {
 		global $bluehost_module_container;
+		$capability = new SiteCapabilities();
 
 		$home          = array(
 			'bluehost#/home' => __( 'Home', 'wp-plugin-bluehost' ),
@@ -78,6 +80,12 @@ final class Admin {
 		$marketplace   = array(
 			'bluehost#/marketplace' => __( 'Marketplace', 'wp-plugin-bluehost' ),
 		);
+		// add plugins and tools if has solution
+		$mypluginsandtools = $capability->get( 'hasSolution' )
+			? array(
+				'bluehost#/my_plugins_and_tools' => __( 'My Plugins & Tools', 'wp-plugin-bluehost' ),
+			)
+			: array();
 		// add performance if enabled
 		$performance = isEnabled( 'performance' )
 			? array(
@@ -102,6 +110,7 @@ final class Admin {
 			$pagesAndPosts,
 			$store,
 			$marketplace,
+			$mypluginsandtools,
 			$performance,
 			$settings,
 			$staging,

@@ -13,6 +13,7 @@ import {
 	getPlatformBaseUrl,
 	isJarvis,
 } from '../../util/helpers';
+import classNames from 'classnames';
 
 const base = [
 	{
@@ -82,11 +83,19 @@ const AccountCard = ( { props } ) => {
 		<Card { ...props }>
 			<Card.Content>
 				<Title size={ 2 }>Bluehost Account</Title>
-				<ul className="nfd-grid nfd-grid-cols-3 nfd-h-full">
+				<ul
+					className={ classNames(
+						'max-[575px]:nfd-grid-cols-2 nfd-gap-3',
+						'nfd-grid nfd-grid-cols-3 nfd-h-full'
+					) }
+				>
 					{ base.map( ( link ) => (
 						<li
 							key={ link.id }
-							className="nfd-flex nfd-items-center nfd-justify-center"
+							className={ classNames(
+								'max-[575px]:nfd-items-start',
+								'nfd-flex nfd-items-center nfd-justify-center'
+							) }
 						>
 							<a
 								href={ link.href }
