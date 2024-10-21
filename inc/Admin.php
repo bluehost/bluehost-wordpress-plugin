@@ -7,9 +7,9 @@
 
 namespace Bluehost;
 
+use NewfoldLabs\WP\Module\Data\SiteCapabilities;
 use function NewfoldLabs\WP\Context\getContext;
 use function NewfoldLabs\WP\Module\Features\isEnabled;
-use NewfoldLabs\WP\Module\Data\SiteCapabilities;
 
 /**
  * \Bluehost\Admin
