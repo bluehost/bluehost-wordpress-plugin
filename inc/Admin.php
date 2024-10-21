@@ -212,6 +212,9 @@ final class Admin {
 				return;
 			}
 
+			// TODO: update this to a dependency script
+			do_action( 'newfold/installer/enqueue_scripts' );
+
 			\wp_register_script(
 				'bluehost-script',
 				BLUEHOST_BUILD_URL . '/index.js',
