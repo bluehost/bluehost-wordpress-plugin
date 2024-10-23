@@ -32,7 +32,7 @@ if ( defined( 'BLUEHOST_PLUGIN_VERSION' ) ) {
 }
 
 // Define constants
-define( 'BLUEHOST_PLUGIN_VERSION', '3.15.0-beta' );
+define( 'BLUEHOST_PLUGIN_VERSION', '3.15.0' );
 define( 'BLUEHOST_PLUGIN_FILE', __FILE__ );
 define( 'BLUEHOST_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLUEHOST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
