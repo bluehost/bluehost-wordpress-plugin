@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f37abebbec550f0ea62aa02adc1806c4",
+    "content-hash": "7f052fe743bdff597a3bcfca1610bc2b",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -230,16 +230,16 @@
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8"
+                "reference": "f9c436286ab2892c7db7be8c8da4ef61ccf7b455"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8",
-                "reference": "6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/f9c436286ab2892c7db7be8c8da4ef61ccf7b455",
+                "reference": "f9c436286ab2892c7db7be8c8da4ef61ccf7b455",
                 "shasum": ""
             },
             "require": {
@@ -293,7 +293,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.0.3"
+                "source": "https://github.com/guzzle/promises/tree/2.0.4"
             },
             "funding": [
                 {
@@ -309,7 +309,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-18T10:29:17+00:00"
+            "time": "2024-10-17T10:06:22+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -830,16 +830,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.6.4",
+            "version": "2.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "e5c949ac106c867c6c64a83429c27d800b0d43ac"
+                "reference": "002cc3da70565af1708408f7d7604396d2af55e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/e5c949ac106c867c6c64a83429c27d800b0d43ac",
-                "reference": "e5c949ac106c867c6c64a83429c27d800b0d43ac",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/002cc3da70565af1708408f7d7604396d2af55e3",
+                "reference": "002cc3da70565af1708408f7d7604396d2af55e3",
                 "shasum": ""
             },
             "require": {
@@ -922,10 +922,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.4",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.5",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-10-17T16:16:30+00:00"
+            "time": "2024-10-18T19:30:28+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
@@ -990,16 +990,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.3.44",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "af885e2ea3a9bb55d5543bf2ef61b74b3b8c6e2f"
+                "reference": "3ed0abe0cf756c859642fefb5f636b43753dad48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/af885e2ea3a9bb55d5543bf2ef61b74b3b8c6e2f",
-                "reference": "af885e2ea3a9bb55d5543bf2ef61b74b3b8c6e2f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/3ed0abe0cf756c859642fefb5f636b43753dad48",
+                "reference": "3ed0abe0cf756c859642fefb5f636b43753dad48",
                 "shasum": ""
             },
             "require": {
@@ -1042,10 +1042,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.44",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/1.4.1",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-09-19T06:45:48+00:00"
+            "time": "2024-10-23T22:05:42+00:00"
         },
         {
             "name": "newfold-labs/wp-module-facebook",
@@ -1285,20 +1285,24 @@
         },
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "1.1.5",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "b418c3aa8c192e805930abd9871b301d16671ba8"
+                "reference": "4c5b0e49c53eb34feb5b438175d114dd2570d013"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/b418c3aa8c192e805930abd9871b301d16671ba8",
-                "reference": "b418c3aa8c192e805930abd9871b301d16671ba8",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/4c5b0e49c53eb34feb5b438175d114dd2570d013",
+                "reference": "4c5b0e49c53eb34feb5b438175d114dd2570d013",
                 "shasum": ""
             },
+            "require": {
+                "newfold-labs/wp-module-pls": "^1.0.0"
+            },
             "require-dev": {
-                "newfold-labs/wp-php-standards": "^1.2"
+                "newfold-labs/wp-php-standards": "^1.2",
+                "wp-cli/wp-cli": "^2.11"
             },
             "type": "library",
             "autoload": {
@@ -1320,10 +1324,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.1.5",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.2.1",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2024-08-28T06:37:38+00:00"
+            "time": "2024-10-23T23:13:54+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -1430,16 +1434,16 @@
         },
         {
             "name": "newfold-labs/wp-module-migration",
-            "version": "v1.0.11",
+            "version": "v1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-migration.git",
-                "reference": "d84570b93abf5baade814bbb8d71871adff10e89"
+                "reference": "dad4efa9b8a02b2693fc3d26a228e4f58dde85e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/d84570b93abf5baade814bbb8d71871adff10e89",
-                "reference": "d84570b93abf5baade814bbb8d71871adff10e89",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/dad4efa9b8a02b2693fc3d26a228e4f58dde85e1",
+                "reference": "dad4efa9b8a02b2693fc3d26a228e4f58dde85e1",
                 "shasum": ""
             },
             "require": {
@@ -1477,10 +1481,10 @@
             ],
             "description": "Initiates the migration process",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-migration/tree/v1.0.11",
+                "source": "https://github.com/newfold-labs/wp-module-migration/tree/v1.0.12",
                 "issues": "https://github.com/newfold-labs/wp-module-migration/issues"
             },
-            "time": "2024-08-21T14:04:06+00:00"
+            "time": "2024-09-25T08:45:49+00:00"
         },
         {
             "name": "newfold-labs/wp-module-my-products",
@@ -1588,24 +1592,24 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "2.4.2",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "88893d89dda0af3ee013e2d6cf5432475fae6f35"
+                "reference": "4a517294657f4c895b2f3dbc025fc93dbab263ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/88893d89dda0af3ee013e2d6cf5432475fae6f35",
-                "reference": "88893d89dda0af3ee013e2d6cf5432475fae6f35",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/4a517294657f4c895b2f3dbc025fc93dbab263ab",
+                "reference": "4a517294657f4c895b2f3dbc025fc93dbab263ab",
                 "shasum": ""
             },
             "require": {
                 "mustache/mustache": "^2.14",
                 "newfold-labs/wp-module-facebook": "^1.0",
                 "newfold-labs/wp-module-migration": "^1.0",
-                "newfold-labs/wp-module-onboarding-data": "^1.0",
-                "newfold-labs/wp-module-patterns": "^2.0",
+                "newfold-labs/wp-module-onboarding-data": "^1.2",
+                "newfold-labs/wp-module-patterns": "^2.5",
                 "wp-cli/wp-config-transformer": "^1.3",
                 "wp-forge/helpers": "^2.0"
             },
@@ -1643,40 +1647,40 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.4.2",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.5.0",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2024-09-25T11:59:03+00:00"
+            "time": "2024-10-23T12:55:56+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
-            "version": "1.1.17",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
-                "reference": "1c60007a352cb18511536b8b58c3b9dc65821f73"
+                "reference": "6f7a785e9501942a54b947ad5c52f94c24fe0ef4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/1c60007a352cb18511536b8b58c3b9dc65821f73",
-                "reference": "1c60007a352cb18511536b8b58c3b9dc65821f73",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/6f7a785e9501942a54b947ad5c52f94c24fe0ef4",
+                "reference": "6f7a785e9501942a54b947ad5c52f94c24fe0ef4",
                 "shasum": ""
             },
             "require": {
-                "mustache/mustache": "^2.14",
-                "newfold-labs/wp-module-ai": "^1.1",
-                "newfold-labs/wp-module-coming-soon": "^1.2",
-                "newfold-labs/wp-module-data": "^2.0",
-                "newfold-labs/wp-module-install-checker": "^1.0",
-                "newfold-labs/wp-module-installer": "^1.1",
-                "newfold-labs/wp-module-patterns": "^2.0",
-                "newfold-labs/wp-module-performance": "^1.4",
-                "newfold-labs/wp-module-survey": "^1.0",
+                "mustache/mustache": "^2.14.2",
+                "newfold-labs/wp-module-ai": "^1.1.12",
+                "newfold-labs/wp-module-coming-soon": "^1.2.6",
+                "newfold-labs/wp-module-data": "^2.6.5",
+                "newfold-labs/wp-module-install-checker": "^1.0.3",
+                "newfold-labs/wp-module-installer": "^1.2.0",
+                "newfold-labs/wp-module-patterns": "^2.6",
+                "newfold-labs/wp-module-performance": "^2.0.1",
+                "newfold-labs/wp-module-survey": "^1.0.1",
                 "wp-forge/wp-upgrade-handler": "^1.0"
             },
             "require-dev": {
-                "newfold-labs/wp-php-standards": "^1.2",
-                "wp-cli/i18n-command": "^2.4.3"
+                "newfold-labs/wp-php-standards": "^1.2.4",
+                "wp-cli/i18n-command": "^2.6.2"
             },
             "type": "library",
             "autoload": {
@@ -1695,28 +1699,29 @@
             ],
             "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.1.17",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.2.1",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
             },
-            "time": "2024-09-11T05:58:44+00:00"
+            "time": "2024-10-23T09:51:12+00:00"
         },
         {
             "name": "newfold-labs/wp-module-patterns",
-            "version": "2.4.1",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-patterns.git",
-                "reference": "2d8bb11201123adc6505afd89af6494490f929ed"
+                "reference": "df06479f0715d40e4aadfc299e77c9062c9165db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/2d8bb11201123adc6505afd89af6494490f929ed",
-                "reference": "2d8bb11201123adc6505afd89af6494490f929ed",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/df06479f0715d40e4aadfc299e77c9062c9165db",
+                "reference": "df06479f0715d40e4aadfc299e77c9062c9165db",
                 "shasum": ""
             },
             "require": {
                 "newfold-labs/wp-module-data": "^2.5.1",
-                "newfold-labs/wp-module-features": "^1.4"
+                "newfold-labs/wp-module-features": "^1.4",
+                "newfold-labs/wp-module-installer": "^1.1"
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "^1.2.2"
@@ -1749,10 +1754,10 @@
             ],
             "description": "WordPress Cloud Patterns",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/2.4.1",
+                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/2.6.0",
                 "issues": "https://github.com/newfold-labs/wp-module-patterns/issues"
             },
-            "time": "2024-09-04T13:49:43+00:00"
+            "time": "2024-10-18T16:33:56+00:00"
         },
         {
             "name": "newfold-labs/wp-module-performance",
@@ -1804,6 +1809,53 @@
                 "issues": "https://github.com/newfold-labs/wp-module-performance/issues"
             },
             "time": "2024-08-15T22:17:47+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-pls",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-pls.git",
+                "reference": "08b7c41b3d52d66414b6234389d7f4c414477d91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-pls/zipball/08b7c41b3d52d66414b6234389d7f4c414477d91",
+                "reference": "08b7c41b3d52d66414b6234389d7f4c414477d91",
+                "shasum": ""
+            },
+            "require": {
+                "newfold-labs/wp-module-data": "^2.0"
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2",
+                "wp-cli/i18n-command": "^2.4.3",
+                "wp-cli/wp-cli": "^2.11"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\PLS\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "arunshenoy99",
+                    "email": "devarunshenoy99@gmail.com"
+                }
+            ],
+            "description": "A Newfold module that handles license key provisioning, validation, and other lifecycle events for registered plugins using the PLS API via Hiive.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-pls/tree/1.0.0",
+                "issues": "https://github.com/newfold-labs/wp-module-pls/issues"
+            },
+            "time": "2024-10-23T09:11:18+00:00"
         },
         {
             "name": "newfold-labs/wp-module-runtime",
@@ -1905,6 +1957,53 @@
                 "issues": "https://github.com/newfold-labs/wp-module-secure-passwords/issues"
             },
             "time": "2024-01-31T18:14:24+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-solutions",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-solutions.git",
+                "reference": "54366a325423896bed1381630171266633a387b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-solutions/zipball/54366a325423896bed1381630171266633a387b0",
+                "reference": "54366a325423896bed1381630171266633a387b0",
+                "shasum": ""
+            },
+            "require": {
+                "newfold-labs/wp-module-data": "^2.6.3",
+                "newfold-labs/wp-module-loader": "^1.0.10"
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2",
+                "wp-cli/i18n-command": "^2.6.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Solutions\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "arati bhandare AKA aratidgr8",
+                    "email": "aratidgr8@gmail.com"
+                }
+            ],
+            "description": "A Newfold module that handles integration of WordPress Solutions Addon packages (content creator/ service / ecommerce) for BlueHost &amp; HostGator customers",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-solutions/tree/1.0.2",
+                "issues": "https://github.com/newfold-labs/wp-module-solutions/issues"
+            },
+            "time": "2024-10-23T22:27:57+00:00"
         },
         {
             "name": "newfold-labs/wp-module-sso",
@@ -2364,16 +2463,16 @@
         },
         {
             "name": "wp-cli/wp-config-transformer",
-            "version": "v1.4.0",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/wp-config-transformer.git",
-                "reference": "9b470f6f1a75707b22e9cfb85bb74120256243b4"
+                "reference": "9da378b5a4e28bba3bce4ff4ff04a54d8c9f1a01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/wp-config-transformer/zipball/9b470f6f1a75707b22e9cfb85bb74120256243b4",
-                "reference": "9b470f6f1a75707b22e9cfb85bb74120256243b4",
+                "url": "https://api.github.com/repos/wp-cli/wp-config-transformer/zipball/9da378b5a4e28bba3bce4ff4ff04a54d8c9f1a01",
+                "reference": "9da378b5a4e28bba3bce4ff4ff04a54d8c9f1a01",
                 "shasum": ""
             },
             "require": {
@@ -2383,6 +2482,11 @@
                 "wp-cli/wp-cli-tests": "^4.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.x-dev"
+                }
+            },
             "autoload": {
                 "files": [
                     "src/WPConfigTransformer.php"
@@ -2402,9 +2506,9 @@
             "homepage": "https://github.com/wp-cli/wp-config-transformer",
             "support": {
                 "issues": "https://github.com/wp-cli/wp-config-transformer/issues",
-                "source": "https://github.com/wp-cli/wp-config-transformer/tree/v1.4.0"
+                "source": "https://github.com/wp-cli/wp-config-transformer/tree/v1.4.1"
             },
-            "time": "2024-09-17T19:05:47+00:00"
+            "time": "2024-10-16T12:50:47+00:00"
         },
         {
             "name": "wp-forge/collection",
@@ -3519,23 +3623,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "22aca9a3467be44288882a3bcf7f2865abe08ca3"
+                "reference": "51e3fa290bca57eca7ba6c261b8a1278eb13a98a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/22aca9a3467be44288882a3bcf7f2865abe08ca3",
-                "reference": "22aca9a3467be44288882a3bcf7f2865abe08ca3",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/51e3fa290bca57eca7ba6c261b8a1278eb13a98a",
+                "reference": "51e3fa290bca57eca7ba6c261b8a1278eb13a98a",
                 "shasum": ""
             },
             "conflict": {
                 "3f/pygmentize": "<1.2",
-                "admidio/admidio": "<4.3.10",
+                "admidio/admidio": "<4.3.12",
                 "adodb/adodb-php": "<=5.20.20|>=5.21,<=5.21.3",
                 "aheinze/cockpit": "<2.2",
                 "aimeos/ai-admin-graphql": ">=2022.04.1,<2022.10.10|>=2023.04.1,<2023.10.6|>=2024.04.1,<2024.04.6",
                 "aimeos/ai-admin-jsonadm": "<2020.10.13|>=2021.04.1,<2021.10.6|>=2022.04.1,<2022.10.3|>=2023.04.1,<2023.10.4|==2024.04.1",
                 "aimeos/ai-client-html": ">=2020.04.1,<2020.10.27|>=2021.04.1,<2021.10.22|>=2022.04.1,<2022.10.13|>=2023.04.1,<2023.10.15|>=2024.04.1,<2024.04.7",
-                "aimeos/ai-controller-frontend": "<2020.10.15|>=2021.04.1,<2021.10.8|>=2022.04.1,<2022.10.8|>=2023.04.1,<2023.10.9",
+                "aimeos/ai-controller-frontend": "<2020.10.15|>=2021.04.1,<2021.10.8|>=2022.04.1,<2022.10.8|>=2023.04.1,<2023.10.9|==2024.04.1",
                 "aimeos/aimeos-core": ">=2022.04.1,<2022.10.17|>=2023.04.1,<2023.10.17|>=2024.04.1,<2024.04.7",
                 "aimeos/aimeos-typo3": "<19.10.12|>=20,<20.10.5",
                 "airesvsg/acf-to-rest-api": "<=3.1",
@@ -3625,7 +3729,7 @@
                 "concrete5/core": "<8.5.8|>=9,<9.1",
                 "contao-components/mediaelement": ">=2.14.2,<2.21.1",
                 "contao/comments-bundle": ">=2,<4.13.40|>=5.0.0.0-RC1-dev,<5.3.4",
-                "contao/contao": ">=3,<3.5.37|>=4,<4.4.56|>=4.5,<4.9.40|>=4.10,<4.11.7|>=4.13,<4.13.21|>=5.1,<5.1.4",
+                "contao/contao": "<=5.4.1",
                 "contao/core": "<3.5.39",
                 "contao/core-bundle": "<4.13.49|>=5,<5.3.15|>=5.4,<5.4.3",
                 "contao/listing-bundle": ">=3,<=3.5.30|>=4,<4.4.8",
@@ -3648,6 +3752,7 @@
                 "derhansen/fe_change_pwd": "<2.0.5|>=3,<3.0.3",
                 "derhansen/sf_event_mgt": "<4.3.1|>=5,<5.1.1|>=7,<7.4",
                 "desperado/xml-bundle": "<=0.1.7",
+                "dev-lancer/minecraft-motd-parser": "<=1.0.5",
                 "devgroup/dotplant": "<2020.09.14-dev",
                 "directmailteam/direct-mail": "<6.0.3|>=7,<7.0.3|>=8,<9.5.2",
                 "doctrine/annotations": "<1.2.7",
@@ -3662,9 +3767,9 @@
                 "dolibarr/dolibarr": "<19.0.2",
                 "dompdf/dompdf": "<2.0.4",
                 "doublethreedigital/guest-entries": "<3.1.2",
-                "drupal/core": ">=6,<6.38|>=7,<7.96|>=8,<10.1.8|>=10.2,<10.2.2|==11.9999999.9999999.9999999-dev",
-                "drupal/core-recommended": "==11.9999999.9999999.9999999-dev",
-                "drupal/drupal": ">=5,<5.11|>=6,<6.38|>=7,<7.80|>=8,<8.9.16|>=9,<9.1.12|>=9.2,<9.2.4|==11.9999999.9999999.9999999-dev",
+                "drupal/core": ">=6,<6.38|>=7,<7.96|>=8,<10.2.9|>=10.3,<10.3.6|>=11,<11.0.5",
+                "drupal/core-recommended": ">=8,<10.2.9|>=10.3,<10.3.6|>=11,<11.0.5",
+                "drupal/drupal": ">=5,<5.11|>=6,<6.38|>=7,<7.80|>=8,<10.2.9|>=10.3,<10.3.6|>=11,<11.0.5",
                 "duncanmcclean/guest-entries": "<3.1.2",
                 "dweeves/magmi": "<=0.7.24",
                 "ec-cube/ec-cube": "<2.4.4|>=2.11,<=2.17.1|>=3,<=3.0.18.0-patch4|>=4,<=4.1.2",
@@ -3707,6 +3812,8 @@
                 "feehi/cms": "<=2.1.1",
                 "feehi/feehicms": "<=2.1.1",
                 "fenom/fenom": "<=2.12.1",
+                "filament/infolists": ">=3,<3.2.115",
+                "filament/tables": ">=3,<3.2.115",
                 "filegator/filegator": "<7.8",
                 "filp/whoops": "<2.1.13",
                 "fineuploader/php-traditional-server": "<=1.2.2",
@@ -3741,7 +3848,7 @@
                 "froxlor/froxlor": "<=2.2.0.0-RC3",
                 "frozennode/administrator": "<=5.0.12",
                 "fuel/core": "<1.8.1",
-                "funadmin/funadmin": "<=3.2|>=3.3.2,<=3.3.3",
+                "funadmin/funadmin": "<=5.0.2",
                 "gaoming13/wechat-php-sdk": "<=1.10.2",
                 "genix/cms": "<=1.1.11",
                 "getformwork/formwork": "<1.13.1|==2.0.0.0-beta1",
@@ -3828,13 +3935,15 @@
                 "klaviyo/magento2-extension": ">=1,<3",
                 "knplabs/knp-snappy": "<=1.4.2",
                 "kohana/core": "<3.3.3",
-                "krayin/laravel-crm": "<1.2.2",
+                "krayin/laravel-crm": "<=1.3",
                 "kreait/firebase-php": ">=3.2,<3.8.1",
                 "kumbiaphp/kumbiapp": "<=1.1.1",
                 "la-haute-societe/tcpdf": "<6.2.22",
                 "laminas/laminas-diactoros": "<2.18.1|==2.19|==2.20|==2.21|==2.22|==2.23|>=2.24,<2.24.2|>=2.25,<2.25.2",
                 "laminas/laminas-form": "<2.17.1|>=3,<3.0.2|>=3.1,<3.1.1",
                 "laminas/laminas-http": "<2.14.2",
+                "lara-zeus/artemis": ">=1,<=1.0.6",
+                "lara-zeus/dynamic-dashboard": ">=3,<=3.0.1",
                 "laravel/fortify": "<1.11.1",
                 "laravel/framework": "<6.20.44|>=7,<7.30.6|>=8,<8.75",
                 "laravel/laravel": ">=5.4,<5.4.22",
@@ -3850,13 +3959,13 @@
                 "librenms/librenms": "<2017.08.18",
                 "liftkit/database": "<2.13.2",
                 "lightsaml/lightsaml": "<1.3.5",
-                "limesurvey/limesurvey": "<3.27.19",
+                "limesurvey/limesurvey": "<6.5.12",
                 "livehelperchat/livehelperchat": "<=3.91",
-                "livewire/livewire": ">2.2.4,<2.2.6|>=3.3.5,<3.4.9",
+                "livewire/livewire": "<2.12.7|>=3.0.0.0-beta1,<3.5.2",
                 "lms/routes": "<2.1.1",
                 "localizationteam/l10nmgr": "<7.4|>=8,<8.7|>=9,<9.2",
                 "luyadev/yii-helpers": "<1.2.1",
-                "magento/community-edition": "<2.4.5|==2.4.5|>=2.4.5.0-patch1,<2.4.5.0-patch9|==2.4.6|>=2.4.6.0-patch1,<2.4.6.0-patch7|==2.4.7|>=2.4.7.0-patch1,<2.4.7.0-patch2",
+                "magento/community-edition": "<2.4.5|==2.4.5|>=2.4.5.0-patch1,<2.4.5.0-patch10|==2.4.6|>=2.4.6.0-patch1,<2.4.6.0-patch8|>=2.4.7.0-beta1,<2.4.7.0-patch3",
                 "magento/core": "<=1.9.4.5",
                 "magento/magento1ce": "<1.9.4.3-dev",
                 "magento/magento1ee": ">=1,<1.14.4.3-dev",
@@ -3864,12 +3973,13 @@
                 "magneto/core": "<1.9.4.4-dev",
                 "maikuolan/phpmussel": ">=1,<1.6",
                 "mainwp/mainwp": "<=4.4.3.3",
-                "mantisbt/mantisbt": "<2.26.2",
+                "mantisbt/mantisbt": "<=2.26.3",
                 "marcwillmann/turn": "<0.3.3",
                 "matyhtf/framework": "<3.0.6",
-                "mautic/core": "<4.4.13|>=5.0.0.0-alpha,<5.1.1",
+                "mautic/core": "<4.4.13|>=5,<5.1.1",
                 "mautic/core-lib": ">=1.0.0.0-beta,<4.4.13|>=5.0.0.0-alpha,<5.1.1",
                 "mdanter/ecc": "<2",
+                "mediawiki/cargo": "<3.6.1",
                 "mediawiki/core": "<1.36.2",
                 "mediawiki/matomo": "<2.4.3",
                 "mediawiki/semantic-media-wiki": "<4.0.2",
@@ -3926,7 +4036,7 @@
                 "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
                 "october/backend": "<1.1.2",
                 "october/cms": "<1.0.469|==1.0.469|==1.0.471|==1.1.1",
-                "october/october": "<=3.4.4",
+                "october/october": "<=3.6.4",
                 "october/rain": "<1.0.472|>=1.1,<1.1.2",
                 "october/system": "<1.0.476|>=1.1,<1.1.12|>=2,<2.2.34|>=3,<3.5.15",
                 "omeka/omeka-s": "<4.0.3",
@@ -3978,7 +4088,7 @@
                 "phpmyfaq/phpmyfaq": "<3.2.5|==3.2.5",
                 "phpoffice/common": "<0.2.9",
                 "phpoffice/phpexcel": "<1.8",
-                "phpoffice/phpspreadsheet": "<1.29.1|>=2,<2.1.1|>=2.2,<2.2.1",
+                "phpoffice/phpspreadsheet": "<1.29.2|>=2,<2.1.1|>=2.2,<2.3",
                 "phpseclib/phpseclib": "<2.0.47|>=3,<3.0.36",
                 "phpservermon/phpservermon": "<3.6",
                 "phpsysinfo/phpsysinfo": "<3.4.3",
@@ -4032,7 +4142,7 @@
                 "rap2hpoutre/laravel-log-viewer": "<0.13",
                 "react/http": ">=0.7,<1.9",
                 "really-simple-plugins/complianz-gdpr": "<6.4.2",
-                "redaxo/source": "<=5.15.1",
+                "redaxo/source": "<=5.17.1",
                 "remdex/livehelperchat": "<4.29",
                 "reportico-web/reportico": "<=8.1",
                 "rhukster/dom-sanitizer": "<1.0.7",
@@ -4088,7 +4198,7 @@
                 "slim/slim": "<2.6",
                 "slub/slub-events": "<3.0.3",
                 "smarty/smarty": "<4.5.3|>=5,<5.1.1",
-                "snipe/snipe-it": "<6.4.2",
+                "snipe/snipe-it": "<7.0.10",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "socialiteproviders/steam": "<1.1",
                 "spatie/browsershot": "<3.57.4",
@@ -4098,6 +4208,7 @@
                 "spoonity/tcpdf": "<6.2.22",
                 "squizlabs/php_codesniffer": ">=1,<2.8.1|>=3,<3.0.1",
                 "ssddanbrown/bookstack": "<24.05.1",
+                "starcitizentools/citizen-skin": ">=2.6.3,<2.31",
                 "statamic/cms": "<4.46|>=5.3,<5.6.2",
                 "stormpath/sdk": "<9.9.99",
                 "studio-42/elfinder": "<=2.1.64",
@@ -4105,7 +4216,7 @@
                 "subhh/libconnect": "<7.0.8|>=8,<8.1",
                 "sukohi/surpass": "<1",
                 "sulu/form-bundle": ">=2,<2.5.3",
-                "sulu/sulu": "<1.6.44|>=2,<2.4.17|>=2.5,<2.5.13",
+                "sulu/sulu": "<1.6.44|>=2,<2.5.21|>=2.6,<2.6.5",
                 "sumocoders/framework-user-bundle": "<1.4",
                 "superbig/craft-audit": "<3.0.2",
                 "swag/paypal": "<5.4.4",
@@ -4177,13 +4288,13 @@
                 "topthink/thinkphp": "<=3.2.3",
                 "torrentpier/torrentpier": "<=2.4.3",
                 "tpwd/ke_search": "<4.0.3|>=4.1,<4.6.6|>=5,<5.0.2",
-                "tribalsystems/zenario": "<9.5.60602",
+                "tribalsystems/zenario": "<=9.7.61188",
                 "truckersmp/phpwhois": "<=4.3.1",
                 "ttskch/pagination-service-provider": "<1",
                 "twbs/bootstrap": "<=3.4.1|>=4,<=4.6.2",
                 "twig/twig": "<1.44.8|>=2,<2.16.1|>=3,<3.11.1|>=3.12,<3.14",
                 "typo3/cms": "<9.5.29|>=10,<10.4.35|>=11,<11.5.23|>=12,<12.2",
-                "typo3/cms-backend": "<4.1.14|>=4.2,<4.2.15|>=4.3,<4.3.7|>=4.4,<4.4.4|>=7,<=7.6.50|>=8,<=8.7.39|>=9,<=9.5.24|>=10,<=10.4.13|>=11,<=11.1",
+                "typo3/cms-backend": "<4.1.14|>=4.2,<4.2.15|>=4.3,<4.3.7|>=4.4,<4.4.4|>=7,<=7.6.50|>=8,<=8.7.39|>=9,<=9.5.24|>=10,<10.4.46|>=11,<11.5.40|>=12,<12.4.21|>=13,<13.3.1",
                 "typo3/cms-core": "<=8.7.56|>=9,<=9.5.47|>=10,<=10.4.44|>=11,<=11.5.36|>=12,<=12.4.14|>=13,<=13.1",
                 "typo3/cms-extbase": "<6.2.24|>=7,<7.6.8|==8.1.1",
                 "typo3/cms-fluid": "<4.3.4|>=4.4,<4.4.1",
@@ -4336,7 +4447,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-18T23:05:04+00:00"
+            "time": "2024-10-21T20:05:20+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -4563,16 +4674,16 @@
         },
         {
             "name": "wp-cli/i18n-command",
-            "version": "v2.6.2",
+            "version": "v2.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/i18n-command.git",
-                "reference": "53518a11f314119e320597c7a8274f11b1295bdc"
+                "reference": "065bb3758fcbff922f1b7a01ab702aab0da79803"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/i18n-command/zipball/53518a11f314119e320597c7a8274f11b1295bdc",
-                "reference": "53518a11f314119e320597c7a8274f11b1295bdc",
+                "url": "https://api.github.com/repos/wp-cli/i18n-command/zipball/065bb3758fcbff922f1b7a01ab702aab0da79803",
+                "reference": "065bb3758fcbff922f1b7a01ab702aab0da79803",
                 "shasum": ""
             },
             "require": {
@@ -4626,9 +4737,9 @@
             "homepage": "https://github.com/wp-cli/i18n-command",
             "support": {
                 "issues": "https://github.com/wp-cli/i18n-command/issues",
-                "source": "https://github.com/wp-cli/i18n-command/tree/v2.6.2"
+                "source": "https://github.com/wp-cli/i18n-command/tree/v2.6.3"
             },
-            "time": "2024-07-03T12:50:00+00:00"
+            "time": "2024-10-01T11:16:25+00:00"
         },
         {
             "name": "wp-cli/mustangostang-spyc",
