@@ -1289,12 +1289,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "4c5b0e49c53eb34feb5b438175d114dd2570d013"
+                "reference": "decd749fb6718fcba0993580d078dba788d6620e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/4c5b0e49c53eb34feb5b438175d114dd2570d013",
-                "reference": "4c5b0e49c53eb34feb5b438175d114dd2570d013",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/decd749fb6718fcba0993580d078dba788d6620e",
+                "reference": "decd749fb6718fcba0993580d078dba788d6620e",
                 "shasum": ""
             },
             "require": {
@@ -1327,7 +1327,7 @@
                 "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.2.1",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2024-10-23T23:13:54+00:00"
+            "time": "2024-10-25T08:25:42+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
