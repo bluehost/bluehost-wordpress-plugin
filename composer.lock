@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc5e9c786206b41792fbe8a3b3797042",
+    "content-hash": "b81ceea661f3d1b33873cce5fa7d8cb2",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -4982,14 +4982,7 @@
             "time": "2024-07-17T01:13:44+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "newfold-labs/wp-module-performance",
-            "version": "2.0.1.0",
-            "alias": "1.9.9",
-            "alias_normalized": "1.9.9.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "roave/security-advisories": 20
