@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b81ceea661f3d1b33873cce5fa7d8cb2",
+    "content-hash": "f8474c2787861479409484ef8392a641",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -565,16 +565,16 @@
         },
         {
             "name": "newfold-labs/wp-module-activation",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-activation.git",
-                "reference": "6004a69982fd788f2781bcf6b35ee29394d477b5"
+                "reference": "66b5ecc883f0de1ac1345a10d6afc1a1df4d1b80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-activation/zipball/6004a69982fd788f2781bcf6b35ee29394d477b5",
-                "reference": "6004a69982fd788f2781bcf6b35ee29394d477b5",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-activation/zipball/66b5ecc883f0de1ac1345a10d6afc1a1df4d1b80",
+                "reference": "66b5ecc883f0de1ac1345a10d6afc1a1df4d1b80",
                 "shasum": ""
             },
             "require-dev": {
@@ -616,10 +616,10 @@
             ],
             "description": "A Module for handling WordPress brand plugins activations",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-activation/tree/1.0.4",
+                "source": "https://github.com/newfold-labs/wp-module-activation/tree/1.0.5",
                 "issues": "https://github.com/newfold-labs/wp-module-activation/issues"
             },
-            "time": "2024-10-07T21:35:20+00:00"
+            "time": "2024-10-25T20:19:11+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ai",
@@ -1533,16 +1533,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "2.5.0",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "4a517294657f4c895b2f3dbc025fc93dbab263ab"
+                "reference": "92f4bbeb9ed18ccc423501424d353a2dd0ea5d54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/4a517294657f4c895b2f3dbc025fc93dbab263ab",
-                "reference": "4a517294657f4c895b2f3dbc025fc93dbab263ab",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/92f4bbeb9ed18ccc423501424d353a2dd0ea5d54",
+                "reference": "92f4bbeb9ed18ccc423501424d353a2dd0ea5d54",
                 "shasum": ""
             },
             "require": {
@@ -1588,10 +1588,10 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.5.0",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.5.2",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2024-10-23T12:55:56+00:00"
+            "time": "2024-10-28T19:33:31+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
@@ -1800,16 +1800,16 @@
         },
         {
             "name": "newfold-labs/wp-module-runtime",
-            "version": "v1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-runtime.git",
-                "reference": "fe58c1d7db085b84214b90449314d6392ec966f6"
+                "reference": "c63ba65520c917a9be99a492bc824f4a54c2daef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/fe58c1d7db085b84214b90449314d6392ec966f6",
-                "reference": "fe58c1d7db085b84214b90449314d6392ec966f6",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/c63ba65520c917a9be99a492bc824f4a54c2daef",
+                "reference": "c63ba65520c917a9be99a492bc824f4a54c2daef",
                 "shasum": ""
             },
             "require-dev": {
@@ -1845,10 +1845,10 @@
             ],
             "description": "Runtime for Newfold WP modules and plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/v1.0.11",
+                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/1.0.12",
                 "issues": "https://github.com/newfold-labs/wp-module-runtime/issues"
             },
-            "time": "2024-05-06T07:16:26+00:00"
+            "time": "2024-10-25T21:53:35+00:00"
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",
