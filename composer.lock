@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b81ceea661f3d1b33873cce5fa7d8cb2",
+    "content-hash": "ed1caf8b2574032d17a832b4eab20a6a",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1800,16 +1800,16 @@
         },
         {
             "name": "newfold-labs/wp-module-runtime",
-            "version": "v1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-runtime.git",
-                "reference": "fe58c1d7db085b84214b90449314d6392ec966f6"
+                "reference": "c63ba65520c917a9be99a492bc824f4a54c2daef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/fe58c1d7db085b84214b90449314d6392ec966f6",
-                "reference": "fe58c1d7db085b84214b90449314d6392ec966f6",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/c63ba65520c917a9be99a492bc824f4a54c2daef",
+                "reference": "c63ba65520c917a9be99a492bc824f4a54c2daef",
                 "shasum": ""
             },
             "require-dev": {
@@ -1845,10 +1845,10 @@
             ],
             "description": "Runtime for Newfold WP modules and plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/v1.0.11",
+                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/1.0.12",
                 "issues": "https://github.com/newfold-labs/wp-module-runtime/issues"
             },
-            "time": "2024-05-06T07:16:26+00:00"
+            "time": "2024-10-25T21:53:35+00:00"
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",
