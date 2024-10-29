@@ -244,7 +244,7 @@ final class Admin {
 		}
 
 		// These assets are loaded in all wp-admin
-		\wp_register_script( 'newfold-plugin', null, null, BLUEHOST_PLUGIN_VERSION, true );
+		\wp_register_script( 'newfold-plugin', false, array(), BLUEHOST_PLUGIN_VERSION, true );
 		\wp_localize_script(
 			'newfold-plugin',
 			'nfdplugin',
