@@ -5,9 +5,11 @@ import { Page } from '@newfold/ui-component-library';
 import { NewfoldECommerce } from '@newfold-labs/wp-module-ecommerce';
 import '@newfold-labs/wp-module-ecommerce/bluehost.css';
 import AppStore from 'App/data/store';
-import { bluehostSettingsApiFetch } from 'App/util/helpers';
+import {
+	bluehostSettingsApiFetch,
+	comingSoonAdminbarToggle,
+} from 'App/util/helpers';
 import { useNotification } from 'App/components/notifications';
-import { comingSoonAdminbarToggle } from '../../util/helpers';
 
 const ECommerce = () => {
 	const { store, setStore } = useContext( AppStore );

@@ -38,7 +38,7 @@ const BlogPosts = () => {
 				<a href="edit.php">
 					{ __( 'View all', 'wp-plugin-bluehost' ) }
 				</a>
-				<a href="post-new.php">
+				<a href="post-new.php?wb-library=patterns&wb-category=text">
 					<Button>{ __( 'Add New', 'wp-plugin-bluehost' ) }</Button>
 				</a>
 			</div>

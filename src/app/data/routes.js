@@ -6,21 +6,22 @@ import {
 	AdjustmentsHorizontalIcon,
 	BuildingStorefrontIcon,
 	DocumentDuplicateIcon,
+	PuzzlePieceIcon,
 } from '@heroicons/react/24/outline';
+import { ReactComponent as HelpIcon } from '../components/icons/HelpIcon.svg';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
+import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
 import { Route, Routes } from 'react-router-dom';
-import { __ } from '@wordpress/i18n';
 import Home from '../pages/home';
+import PagesAndPosts from '../pages/pages-and-posts';
 import Store from '../pages/ecommerce/page';
 import Marketplace from '../pages/marketplace';
+import Solutions from '../pages/solutions';
 import Performance from '../pages/performance';
 import Settings from '../pages/settings';
 import Staging from '../pages/staging';
 import Help from '../pages/help';
 import Admin from '../pages/admin';
-import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
-import { ReactComponent as HelpIcon } from '../components/icons/HelpIcon.svg';
-import PagesAndPosts from '../pages/pages-and-posts';
 
 const addPartialMatch = ( prefix, path ) =>
 	prefix === path ? `${ prefix }/*` : path;
@@ -70,6 +71,7 @@ const topRoutePaths = [
 	'/pages-and-posts',
 	'/store',
 	'/marketplace',
+	'/my_plugins_and_tools',
 	'/performance',
 	'/settings',
 	'/staging',
@@ -108,6 +110,13 @@ export const routes = [
 						title: __( 'Sales & Promotions', 'wp-plugin-bluehost' ),
 				  }
 				: null,
+			NewfoldRuntime.hasCapability( 'hasYithExtended' ) &&
+			NewfoldRuntime.hasCapability( 'hasEcomdash' )
+				? {
+						name: '/store/sales_channel',
+						title: __( 'Sales Channel', 'wp-plugin-bluehost' ),
+				  }
+				: null,
 			NewfoldRuntime.isWoo
 				? {
 						name: '/store/payments',
@@ -127,6 +136,13 @@ export const routes = [
 		Component: Marketplace,
 		Icon: ShoppingBagIcon,
 		subRoutes: await getMarketplaceSubnavRoutes(),
+		condition: true,
+	},
+	NewfoldRuntime.hasCapability( 'hasSolution' ) && {
+		name: '/my_plugins_and_tools',
+		title: __( 'My Plugins & Tools', 'wp-plugin-bluehost' ),
+		Component: Solutions,
+		Icon: PuzzlePieceIcon,
 		condition: true,
 	},
 	{
@@ -152,7 +168,7 @@ export const routes = [
 	},
 	{
 		name: '/help',
-		title: __( 'Help', 'wp-plugin-bluehost' ),
+		title: __( 'Help with WordPress', 'wp-plugin-bluehost' ),
 		Component: Help,
 		Icon: HelpIcon,
 		condition: true,

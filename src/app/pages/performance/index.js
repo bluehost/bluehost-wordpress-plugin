@@ -1,7 +1,6 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect, useContext, Fragment } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
-import classnames from 'classnames';
 import { Container, Page } from '@newfold/ui-component-library';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import AppStore from '../../data/store';
@@ -20,7 +19,6 @@ const PerformancePage = () => {
 	// methods to pass to module
 	const moduleMethods = {
 		apiFetch,
-		classnames,
 		useState,
 		useEffect,
 		useContext,

@@ -7,6 +7,7 @@
 
 namespace Bluehost;
 
+use NewfoldLabs\WP\Module\Data\SiteCapabilities;
 use function NewfoldLabs\WP\Context\getContext;
 use function NewfoldLabs\WP\Module\Features\isEnabled;
 
@@ -38,6 +39,8 @@ final class Admin {
 
 		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'bluehost' ) >= 0 ) { // phpcs:ignore
 			\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
+			/* Disable admin notices on App pages */
+			\add_action( 'admin_init', array( __CLASS__, 'disable_admin_notices' ) );
 		}
 	}
 
@@ -63,6 +66,7 @@ final class Admin {
 	 */
 	public static function subpages() {
 		global $bluehost_module_container;
+		$capability = new SiteCapabilities();
 
 		$home          = array(
 			'bluehost#/home' => __( 'Home', 'wp-plugin-bluehost' ),
@@ -76,6 +80,12 @@ final class Admin {
 		$marketplace   = array(
 			'bluehost#/marketplace' => __( 'Marketplace', 'wp-plugin-bluehost' ),
 		);
+		// add plugins and tools if has solution
+		$mypluginsandtools = $capability->get( 'hasSolution' )
+			? array(
+				'bluehost#/my_plugins_and_tools' => __( 'My Plugins & Tools', 'wp-plugin-bluehost' ),
+			)
+			: array();
 		// add performance if enabled
 		$performance = isEnabled( 'performance' )
 			? array(
@@ -100,6 +110,7 @@ final class Admin {
 			$pagesAndPosts,
 			$store,
 			$marketplace,
+			$mypluginsandtools,
 			$performance,
 			$settings,
 			$staging,
@@ -116,6 +127,7 @@ final class Admin {
 		echo 'ul#adminmenu a.toplevel_page_bluehost.wp-has-current-submenu:after, ul#adminmenu>li#toplevel_page_bluehost.current>a.current:after { border-right-color: #fff !important; }';
 		echo 'li#toplevel_page_bluehost > ul > li.wp-first-item { display: none !important; }';
 		echo '#wp-toolbar #wp-admin-bar-bluehost-coming_soon .ab-item { padding: 0; }';
+		echo 'body.folded #adminmenu .toplevel_page_bluehost div.wp-menu-image { width: 36px; height: 34px; }';
 		echo '</style>';
 	}
 
@@ -200,6 +212,9 @@ final class Admin {
 				return;
 			}
 
+			// TODO: update this to a dependency script
+			do_action( 'newfold/installer/enqueue_scripts' );
+
 			\wp_register_script(
 				'bluehost-script',
 				BLUEHOST_BUILD_URL . '/index.js',
@@ -229,7 +244,7 @@ final class Admin {
 		}
 
 		// These assets are loaded in all wp-admin
-		\wp_register_script( 'newfold-plugin', null, null, BLUEHOST_PLUGIN_VERSION, true );
+		\wp_register_script( 'newfold-plugin', false, array(), BLUEHOST_PLUGIN_VERSION, true );
 		\wp_localize_script(
 			'newfold-plugin',
 			'nfdplugin',
@@ -276,6 +291,16 @@ final class Admin {
 			),
 			$actions
 		);
+	}
+
+	/**
+	 * Disable admin notices on App pages
+	 *
+	 * @return void
+	 */
+	public static function disable_admin_notices() {
+		remove_all_actions( 'admin_notices' );
+		remove_all_actions( 'all_admin_notices' );
 	}
 
 	/**
