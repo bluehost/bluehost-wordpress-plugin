@@ -1,7 +1,8 @@
 describe( 'Pages & Posts', { testIsolation: true }, function () {
 	let NewfoldRuntime;
 
-	before( () => {
+	beforeEach( () => {
+		cy.wpLogin();
 		cy.visit(
 			'/wp-admin/admin.php?page=' +
 				Cypress.env( 'pluginId' ) +

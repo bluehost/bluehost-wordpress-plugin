@@ -2,6 +2,7 @@
 
 describe( 'Navigation', { testIsolation: true }, function () {
 	beforeEach( () => {
+		cy.wpLogin();
 		cy.visit( '/wp-admin/admin.php?page=' + Cypress.env( 'pluginId' ) );
 	} );
 

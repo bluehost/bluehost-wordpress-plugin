@@ -7,6 +7,7 @@ describe( 'Home Page', { testIsolation: true }, function () {
 	let NewfoldRuntime;
 
 	beforeEach( () => {
+		cy.wpLogin();
 		cy.visit(
 			'/wp-admin/admin.php?page=' + Cypress.env( 'pluginId' ) + '#/home'
 		);

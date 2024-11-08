@@ -2,7 +2,7 @@
 
 describe( 'Page', { testIsolation: true }, () => {
 	beforeEach( () => {
-		cy.login();
+		cy.wpLogin();
 		cy.visit( '/wp-admin/site-health.php?tab=debug' );
 	} );
 

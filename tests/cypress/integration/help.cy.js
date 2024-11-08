@@ -4,6 +4,7 @@ const pluginProductsFixture = require( '../fixtures/plugin-products.json' );
 
 describe( 'Help Page', { testIsolation: true }, function () {
 	beforeEach( () => {
+		cy.wpLogin();
 		cy.intercept(
 			{
 				method: 'GET',
