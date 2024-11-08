@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f90ea5ce636ba61092f8d4c2ffa8b0d",
+    "content-hash": "b4697acf231c2d8a9949df53f123609c",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -830,16 +830,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.6.6",
+            "version": "dev-fix/undefined-wp_is_serving_rest_request",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "ddfeb6e4d3e74793fba9dac204db374f030e7a72"
+                "reference": "13e36144c63a193d27aa15814de1ad2c30943072"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/ddfeb6e4d3e74793fba9dac204db374f030e7a72",
-                "reference": "ddfeb6e4d3e74793fba9dac204db374f030e7a72",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/13e36144c63a193d27aa15814de1ad2c30943072",
+                "reference": "13e36144c63a193d27aa15814de1ad2c30943072",
                 "shasum": ""
             },
             "require": {
@@ -922,10 +922,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.6",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/fix/undefined-wp_is_serving_rest_request",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-11-07T22:23:10+00:00"
+            "time": "2024-11-08T16:31:32+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
@@ -1901,16 +1901,16 @@
         },
         {
             "name": "newfold-labs/wp-module-solutions",
-            "version": "1.0.5",
+            "version": "dev-update/use-cli-option-update",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-solutions.git",
-                "reference": "edd90b3e6e7b374c444982b0916989496da6c398"
+                "reference": "2f5147a8f75066b541324aed9ae830de82447d49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-solutions/zipball/edd90b3e6e7b374c444982b0916989496da6c398",
-                "reference": "edd90b3e6e7b374c444982b0916989496da6c398",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-solutions/zipball/2f5147a8f75066b541324aed9ae830de82447d49",
+                "reference": "2f5147a8f75066b541324aed9ae830de82447d49",
                 "shasum": ""
             },
             "require": {
@@ -1941,10 +1941,10 @@
             ],
             "description": "A Newfold module that handles integration of WordPress Solutions Addon packages (content creator/ service / ecommerce) for BlueHost &amp; HostGator customers",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-solutions/tree/1.0.5",
+                "source": "https://github.com/newfold-labs/wp-module-solutions/tree/update/use-cli-option-update",
                 "issues": "https://github.com/newfold-labs/wp-module-solutions/issues"
             },
-            "time": "2024-11-07T21:38:59+00:00"
+            "time": "2024-11-08T16:10:04+00:00"
         },
         {
             "name": "newfold-labs/wp-module-sso",
@@ -4984,9 +4984,24 @@
             "time": "2024-07-17T01:13:44+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "newfold-labs/wp-module-data",
+            "version": "dev-fix/undefined-wp_is_serving_rest_request",
+            "alias": "2.6.7",
+            "alias_normalized": "2.6.7.0"
+        },
+        {
+            "package": "newfold-labs/wp-module-solutions",
+            "version": "dev-update/use-cli-option-update",
+            "alias": "1.0.6",
+            "alias_normalized": "1.0.6.0"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "newfold-labs/wp-module-data": 20,
+        "newfold-labs/wp-module-solutions": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
