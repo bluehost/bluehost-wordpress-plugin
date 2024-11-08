@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cfb2c5d40c5d92053dda7096e3ec608e",
+    "content-hash": "1178b4d83455969a15e483320697b113",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1647,16 +1647,16 @@
         },
         {
             "name": "newfold-labs/wp-module-patterns",
-            "version": "2.6.0",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-patterns.git",
-                "reference": "df06479f0715d40e4aadfc299e77c9062c9165db"
+                "reference": "648b1448b9f8ce022950300f7aa67ee55a9a1e24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/df06479f0715d40e4aadfc299e77c9062c9165db",
-                "reference": "df06479f0715d40e4aadfc299e77c9062c9165db",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/648b1448b9f8ce022950300f7aa67ee55a9a1e24",
+                "reference": "648b1448b9f8ce022950300f7aa67ee55a9a1e24",
                 "shasum": ""
             },
             "require": {
@@ -1695,10 +1695,10 @@
             ],
             "description": "WordPress Cloud Patterns",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/2.6.0",
+                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/2.6.1",
                 "issues": "https://github.com/newfold-labs/wp-module-patterns/issues"
             },
-            "time": "2024-10-18T16:33:56+00:00"
+            "time": "2024-11-07T01:02:53+00:00"
         },
         {
             "name": "newfold-labs/wp-module-performance",
@@ -4991,8 +4991,8 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "7.3.0"
     },
