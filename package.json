@@ -95,6 +95,7 @@
         "storybook:dev": "start-storybook -c ./storybook",
         "storybook:build": "build-storybook -c ./storybook -o ./.docs",
         "test:e2e": "npx cypress run",
-        "test:unit": "wp-scripts test-unit-js"
+        "test:unit": "wp-scripts test-unit-js",
+        "test:clean-module": "bash scripts/test-clean-module"
     }
 }
