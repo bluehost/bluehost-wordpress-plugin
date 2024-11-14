@@ -11,7 +11,6 @@ use WP_Forge\WPUpdateHandler\PluginUpdater;
 use WP_Forge\UpgradeHandler\UpgradeHandler;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
-use NewfoldLabs\WP\Context\Context;
 use NewfoldLabs\WP\Module\Features\Features;
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 use function NewfoldLabs\WP\Context\setContext;
@@ -80,8 +79,7 @@ add_action(
 			$bluehost_module_container->set( 'cache_types', $cache_types );
 			$bluehost_module_container->set( 'marketplace_brand', $marketplace_brand );
 		}
-	},
-	11
+	}
 );
 
 // Properly get branding links depending on market
