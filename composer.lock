@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c42a034688c9ddac35279e28d7c2459c",
+    "content-hash": "f3310c9576fff067d7061ddeefaa903c",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -722,16 +722,16 @@
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
-            "version": "1.3.0",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
-                "reference": "d1a80250ee5a2efe83ca979d6977de769885dd44"
+                "reference": "3b43b08f02348e4d016392247dc4503df5d48b39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/d1a80250ee5a2efe83ca979d6977de769885dd44",
-                "reference": "d1a80250ee5a2efe83ca979d6977de769885dd44",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/3b43b08f02348e4d016392247dc4503df5d48b39",
+                "reference": "3b43b08f02348e4d016392247dc4503df5d48b39",
                 "shasum": ""
             },
             "require": {
@@ -769,10 +769,10 @@
             ],
             "description": "Coming Soon module for WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.3.0",
+                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.2.6",
                 "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
             },
-            "time": "2024-11-12T02:16:36+00:00"
+            "time": "2024-08-30T20:32:49+00:00"
         },
         {
             "name": "newfold-labs/wp-module-context",
@@ -1488,16 +1488,16 @@
         },
         {
             "name": "newfold-labs/wp-module-notifications",
-            "version": "1.6.5",
+            "version": "1.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-notifications.git",
-                "reference": "a2703f25843168312897ed5cec402a8aea4f53f1"
+                "reference": "14a89f38091a7bf48404740c5f64087a3010ee03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/a2703f25843168312897ed5cec402a8aea4f53f1",
-                "reference": "a2703f25843168312897ed5cec402a8aea4f53f1",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/14a89f38091a7bf48404740c5f64087a3010ee03",
+                "reference": "14a89f38091a7bf48404740c5f64087a3010ee03",
                 "shasum": ""
             },
             "require": {
@@ -1526,10 +1526,10 @@
             ],
             "description": "A module for managing Newfold in-site notifications.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.6.5",
+                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.6.6",
                 "issues": "https://github.com/newfold-labs/wp-module-notifications/issues"
             },
-            "time": "2024-11-13T21:00:16+00:00"
+            "time": "2024-11-18T20:26:18+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
