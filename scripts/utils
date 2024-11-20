@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Colors
+GREEN='\033[0;32m'
+TEXT='\033[0m'
+BLUE='\033[0;34m'
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+YELLOW='\033[0;33m'
+
+print_success() {
+    echo -e "${GREEN}Success:${TEXT} $1"
+}
+
+print_error() {
+    echo -e "${RED}Error:${TEXT} $1"
+}
+
+print_info() {
+    echo -e "${CYAN}$1"
+}
+
+print_warning() {
+    echo -e "${YELLOW}Warning:${TEXT} $1"
+}
+
+confirm_prompt() {
+    local message=$1
+    read -p "$(echo -e ${message}) (y/n): " -n 1 -r
+    echo    # Move to a new line
+    [[ $REPLY =~ ^[Yy]$ ]] # Returns 0 if y/Y is entered, 1 otherwise
+}

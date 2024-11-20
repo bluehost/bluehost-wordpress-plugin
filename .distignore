@@ -3,6 +3,7 @@
 .github
 /bin
 node_modules
+/scripts
 /src
 /tests
 

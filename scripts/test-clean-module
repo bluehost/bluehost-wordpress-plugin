@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# This script runs Cypress clean tests (reset db before test) for a specific module.
+
+# Source utils
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$SCRIPT_DIR"
+source ./utils
+
+# Project root
+cd ../
+
+# Check if a module is provided
+if [ -z "$1" ]; then
+    print_error "No module provided."
+    echo "Usage: npm run test:clean-module -- <wp-module-name>"
+    exit 1
+fi
+
+MODULE=$1
+MODULE_DIR="vendor/newfold-labs/$MODULE"
+
+# Check if the module exists
+if [ ! -d "$MODULE_DIR" ]; then
+    print_error "Can't find $MODULE in vendor/newfold-labs."
+    exit 1
+fi
+
+# Check if the module has tests
+if ! find "$MODULE_DIR/tests" -type f -name "*.cy.js" 2>/dev/null | grep -q .; then
+    print_error "Can't find any test files in $MODULE_DIR."
+    exit 1
+fi
+
+# Warn the user that the database will be reset
+confirm_prompt "${YELLOW}Running a clean test will reset the database. Proceed?${TEXT}"
+
+# Check if the answer is "y" or "Y"
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo -e "Proceeding with tests for ${CYAN}${MODULE}${TEXT}..."
+
+    # Run the commands
+    wp-env stop
+    wp-env clean all
+    wp-env start
+    npm run test:e2e -- --browser chrome --spec "vendor/(newfold-labs/$MODULE/tests/**/*.cy.js)"
+else
+    echo "Cancelled."
+    exit 0
+fi

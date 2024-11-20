@@ -24,6 +24,9 @@ Cypress.on( 'uncaught:exception', ( err ) => {
 	}
 } );
 
+// This needs to remain until all tests have been updated with testIsolation:
+// at that point this can be updated to a beforeEach and testIsolation can be
+// removed from the config as the default is true.
 before( () => {
-	cy.login( Cypress.env( 'wpUsername' ), Cypress.env( 'wpPassword' ) );
+	cy.wpLogin();
 } );
