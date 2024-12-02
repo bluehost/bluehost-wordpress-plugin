@@ -63,7 +63,7 @@ module.exports = defineConfig( {
 					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/homePageWithWoo.cy.js',
 					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/ecommerce-next-steps.cy.js', // Skip this since Onboarding does not support this version
 					'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/**', // Onboarding requires WP 6.5 or greater, as it uses the Wonder Theme which has the same requirement
-					'vendor/newfold-labs/wp-module-coming-soon/cypress/integration/coming-soon-woo.cy.js', // woo is required and is not supported in older WP or PHP
+					'vendor/newfold-labs/wp-module-coming-soon/tests/cypress/integration/coming-soon-woo.cy.js', // woo is required and is not supported in older WP or PHP
 				] );
 			}
 
