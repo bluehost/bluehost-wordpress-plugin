@@ -32,7 +32,7 @@
         "npm": ">=10"
     },
     "dependencies": {
-        "@heroicons/react": "^2.1.5",
+        "@heroicons/react": "^2.2.0",
         "@newfold-labs/wp-module-ecommerce": "^1.4.4",
         "@newfold-labs/wp-module-facebook": "^1.0.9",
         "@newfold-labs/wp-module-runtime": "^1.0.12",
