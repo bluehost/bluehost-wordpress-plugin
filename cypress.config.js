@@ -54,15 +54,15 @@ module.exports = defineConfig( {
 			// Tests require Wondor Theme, exclude if not supported due to WP or PHP versions
 			if ( ! supportsWonderTheme( config.env ) ) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
-					'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/**', // Onboarding requires WP 6.5 or greater, as it uses the Wonder Theme which has the same requirement
-					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/ecommerce-next-steps.cy.js', // Skip this since Onboarding does not support this version
-					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Site-Capabilities/**',
+					'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/**', // Onboarding requires Wonder Theme
+					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/ecommerce-next-steps.cy.js', // Requires Onboarding
 				] );
 			}
 
 			// Tests requires Woo, so exclude if not supported due to WP or PHP versions
 			if ( ! supportsWoo( config.env ) ) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
+					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Site-Capabilities/**',
 					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/homePageWithWoo.cy.js',
 					'vendor/newfold-labs/wp-module-coming-soon/tests/cypress/integration/coming-soon-woo.cy.js',
 				] );
@@ -94,9 +94,7 @@ module.exports = defineConfig( {
 	experimentalMemoryManagement: true,
 } );
 
-// Check against plugin support at
-// https://wordpress.org/plugins/woocommerce/ OR
-// https://plugins.trac.wordpress.org/browser/woocommerce/trunk/woocommerce.php
+// Check against plugin support at https://wordpress.org/plugins/woocommerce/
 const supportsWoo = ( env ) => {
 	const semver = require( 'semver' );
 	if (
@@ -107,9 +105,7 @@ const supportsWoo = ( env ) => {
 	}
 	return false;
 };
-// Check against plugin support at
-// https://wordpress.org/plugins/jetpack/ OR
-// https://plugins.trac.wordpress.org/browser/jetpack/trunk/jetpack.php
+// Check against plugin support at https://wordpress.org/plugins/jetpack/
 const supportsJetpack = ( env ) => {
 	const semver = require( 'semver' );
 	if (
@@ -120,9 +116,7 @@ const supportsJetpack = ( env ) => {
 	}
 	return false;
 };
-// Check against theme support at latest version
-// https://github.com/newfold-labs/yith-wonder/blob/master/style.css
-// https://themes.trac.wordpress.org/browser/yith-wonder/2.1.0/style.css
+// Check against theme support at https://github.com/newfold-labs/yith-wonder/blob/master/style.css
 const supportsWonderTheme = ( env ) => {
 	const semver = require( 'semver' );
 	if (
