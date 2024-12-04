@@ -28,8 +28,6 @@ module.exports = defineConfig( {
 	],
 	e2e: {
 		setupNodeEvents( on, config ) {
-			const semver = require( 'semver' );
-
 			// Ensure that the base URL is always properly set.
 			if ( config.env && config.env.baseUrl ) {
 				config.baseUrl = config.env.baseUrl;
@@ -53,17 +51,27 @@ module.exports = defineConfig( {
 				}
 			}
 
-			// Exclude tests for WordPress lower than 6.5 (6.4 or 6.3) or PHP lower than 7.4 (7.1, 7.2 and 7.3)
-			if (
-				semver.satisfies( config.env.wpSemverVersion, '<6.5.0' ) ||
-				semver.satisfies( config.env.phpSemverVersion, '<7.4.0' )
-			) {
+			// Tests require Wondor Theme, exclude if not supported due to WP or PHP versions
+			if ( ! supportsWonderTheme( config.env ) ) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
-					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Site-Capabilities/**',
-					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/homePageWithWoo.cy.js',
-					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/ecommerce-next-steps.cy.js', // Skip this since Onboarding does not support this version
 					'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/**', // Onboarding requires WP 6.5 or greater, as it uses the Wonder Theme which has the same requirement
-					'vendor/newfold-labs/wp-module-coming-soon/tests/cypress/integration/coming-soon-woo.cy.js', // woo is required and is not supported in older WP or PHP
+					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/ecommerce-next-steps.cy.js', // Skip this since Onboarding does not support this version
+					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Site-Capabilities/**',
+				] );
+			}
+
+			// Tests requires Woo, so exclude if not supported due to WP or PHP versions
+			if ( ! supportsWoo( config.env ) ) {
+				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
+					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/homePageWithWoo.cy.js',
+					'vendor/newfold-labs/wp-module-coming-soon/tests/cypress/integration/coming-soon-woo.cy.js',
+				] );
+			}
+
+			// Test requires Jetpack, so exclude if not supported due to WP or PHP versions
+			if ( ! supportsJetpack( config.env ) ) {
+				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
+					'vendor/newfold-labs/wp-module-solutions/tests/cypress/integration/wp-plugins-installation-check.cy.js',
 				] );
 			}
 
@@ -85,3 +93,43 @@ module.exports = defineConfig( {
 	retries: 1,
 	experimentalMemoryManagement: true,
 } );
+
+// Check against plugin support at
+// https://wordpress.org/plugins/woocommerce/ OR
+// https://plugins.trac.wordpress.org/browser/woocommerce/trunk/woocommerce.php
+const supportsWoo = ( env ) => {
+	const semver = require( 'semver' );
+	if (
+		semver.satisfies( env.wpSemverVersion, '>=6.5.0' ) &&
+		semver.satisfies( env.phpSemverVersion, '>=7.4.0' )
+	) {
+		return true;
+	}
+	return false;
+};
+// Check against plugin support at
+// https://wordpress.org/plugins/jetpack/ OR
+// https://plugins.trac.wordpress.org/browser/jetpack/trunk/jetpack.php
+const supportsJetpack = ( env ) => {
+	const semver = require( 'semver' );
+	if (
+		semver.satisfies( env.wpSemverVersion, '>=6.6.0' ) &&
+		semver.satisfies( env.phpSemverVersion, '>=7.2.0' )
+	) {
+		return true;
+	}
+	return false;
+};
+// Check against theme support at latest version
+// https://github.com/newfold-labs/yith-wonder/blob/master/style.css
+// https://themes.trac.wordpress.org/browser/yith-wonder/2.1.0/style.css
+const supportsWonderTheme = ( env ) => {
+	const semver = require( 'semver' );
+	if (
+		semver.satisfies( env.wpSemverVersion, '>=6.5.0' ) &&
+		semver.satisfies( env.phpSemverVersion, '>=7.0.0' )
+	) {
+		return true;
+	}
+	return false;
+};
