@@ -99,7 +99,11 @@ jobs:
         run: echo '{"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: Install WordPress
-        run: npx wp-env start --debug
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 4
+          max_attempts: 3
+          command: npx wp-env start --debug
 
       - name: Run Cypress Tests
         if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || github.actor == 'dependabot[bot]' }}
