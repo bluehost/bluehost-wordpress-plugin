@@ -87,7 +87,7 @@
         "php-deps": "composer install --no-dev --optimize-autoloader",
         "postprepare": "npm run set-wp-version",
         "prebuild:cleanup": "rm -rf ./build ./bluehost-wordpress-plugin ./bluehost-wordpress-plugin.zip ./vendor",
-        "set-version-bump": "node ./set-version-bump.js && rm -rf ./build && npm run build && composer run i18n",
+        "set-version-bump": "node ./set-version-bump.js && npm i && rm -rf ./build && npm run build && composer run i18n",
         "set-wp-version": "node ./set-latest-wp-version.js",
         "simulate-runner-build": "npm run prebuild:cleanup && npm i --legacy-peer-deps && npm run php-deps && npm run build && npm run create:dist && npm run create:zip",
         "srb": "npm run simulate-runner-build",
