@@ -5,6 +5,7 @@
   "license": [
     "GPL-2.0-or-later"
   ],
+  "abandoned": "newfold-labs/wp-plugin-bluehost",
   "authors": [
     {
       "name": "Evan Mullins",
