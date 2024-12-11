@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0304cca2492bd1cb5936d1b48a795d7",
+    "content-hash": "70cc6eab025790226946c73e8686c9e7",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -830,16 +830,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.6.7",
+            "version": "2.6.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "4e06582959bbf8ebdfe053d7be27dc3e2dcba69a"
+                "reference": "ee5d861ed085e67fe102ffebae1cb46ed3ee0d49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/4e06582959bbf8ebdfe053d7be27dc3e2dcba69a",
-                "reference": "4e06582959bbf8ebdfe053d7be27dc3e2dcba69a",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/ee5d861ed085e67fe102ffebae1cb46ed3ee0d49",
+                "reference": "ee5d861ed085e67fe102ffebae1cb46ed3ee0d49",
                 "shasum": ""
             },
             "require": {
@@ -925,10 +925,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.7",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.8",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-11-19T20:09:13+00:00"
+            "time": "2024-12-06T21:56:08+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
@@ -5023,8 +5023,8 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "7.3.0"
     },
