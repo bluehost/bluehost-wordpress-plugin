@@ -223,8 +223,8 @@ export const handleHelpLinksClick = () => {
  * @return {boolean} Whether or not this is a jarvis site.
  */
 export const isJarvis = () => {
-	if ( NewfoldRuntime.hasCapability( 'isJarvis' ) ) {
-		return window.NewfoldRuntime.capabilities.isJarvis;
+	if ( window.NewfoldRuntime.capabilities.hasOwnProperty( 'isJarvis' ) ) {
+		return NewfoldRuntime.hasCapability( 'isJarvis' );
 	}
 	return true;
 };
