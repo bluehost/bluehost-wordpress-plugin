@@ -71,7 +71,7 @@ module.exports = defineConfig( {
 			// Test requires Jetpack, so exclude if not supported due to WP or PHP versions
 			if ( ! supportsJetpack( config.env ) ) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
-					'vendor/newfold-labs/wp-module-solutions/tests/cypress/integration/wp-plugins-installation-check.cy.js',
+					'vendor/newfold-labs/wp-module-solutions/tests/cypress/integration/wp-plugins-installation-jetpack.cy.js',
 				] );
 			}
 
