@@ -18,6 +18,7 @@ const Settings = () => {
 						'This is where you can manage common settings for your website.',
 						'wp-plugin-bluehost'
 					) }
+					id={ 'settings-header' }
 					className={ 'wppbh-app-settings-header' }
 				/>
 
@@ -35,6 +36,7 @@ const Settings = () => {
 
 				<Container.Block
 					separator={ true }
+					id={ 'social-media-accounts-section' }
 					className={ 'wppbh-app-settings-social' }
 				>
 					<SocialMediaAccounts />
@@ -42,6 +44,7 @@ const Settings = () => {
 
 				<Container.Block
 					separator={ true }
+					id={ 'wonder-blocks-section' }
 					className={ 'wppbh-app-settings-wonder-blocks' }
 				>
 					<Container.SettingsField
@@ -66,12 +69,16 @@ const Settings = () => {
 
 				<Container.Block
 					separator={ true }
+					id={ 'content-section' }
 					className={ 'wppbh-app-settings-content' }
 				>
 					<ContentSettings />
 				</Container.Block>
 
-				<Container.Block className={ 'wppbh-app-settings-comments' }>
+				<Container.Block
+					id={ 'comments-section' }
+					className={ 'wppbh-app-settings-comments' }
+				>
 					<CommentSettings />
 				</Container.Block>
 			</Container>
