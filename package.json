@@ -1,6 +1,6 @@
 {
     "name": "bluehost-wordpress-plugin",
-    "version": "3.15.6",
+    "version": "3.15.7",
     "description": "WordPress plugin that integrates your WordPress site with the Bluehost control panel, including performance, security, and update features.",
     "author": {
         "name": "Bluehost",
@@ -32,17 +32,17 @@
         "npm": ">=10"
     },
     "dependencies": {
-        "@heroicons/react": "^2.1.5",
+        "@heroicons/react": "^2.2.0",
         "@newfold-labs/wp-module-ecommerce": "^1.4.4",
         "@newfold-labs/wp-module-facebook": "^1.0.9",
         "@newfold-labs/wp-module-runtime": "^1.0.12",
         "@newfold/ui-component-library": "^1.1.0",
         "@reduxjs/toolkit": "^2.4.0",
         "@wordpress/compose": "^7.13.0",
-        "@wordpress/dom-ready": "^4.13.0",
+        "@wordpress/dom-ready": "^4.14.0",
         "@wordpress/element": "^6.13.0",
         "@wordpress/html-entities": "^4.13.0",
-        "@wordpress/i18n": "^5.12.0",
+        "@wordpress/i18n": "^5.13.0",
         "@wordpress/icons": "^10.13.0",
         "ajv": "^8.17.1",
         "classnames": "^2.5.1",
@@ -50,8 +50,8 @@
         "lodash": "^4.17.21",
         "react": "^18.2.0",
         "react-error-boundary": "^4.1.2",
-        "react-router-dom": "^6.28.0",
-        "react-use": "^17.5.1",
+        "react-router-dom": "^7.0.2",
+        "react-use": "^17.6.0",
         "semver": "^7.6.3"
     },
     "devDependencies": {
@@ -60,12 +60,12 @@
         "@wordpress/env": "^10.13.0",
         "@wordpress/eslint-plugin": "^21.6.0",
         "@wordpress/scripts": "^30.6.0",
-        "cypress": "^13.16.0",
+        "cypress": "^13.16.1",
         "cypress-axe": "^1.5.0",
         "eslint-import-resolver-alias": "^1.1.2",
         "eslint-plugin-import": "^2.29.1",
         "node-fetch": "^2.7.0",
-        "tailwindcss": "^3.4.15"
+        "tailwindcss": "^3.4.16"
     },
     "scripts": {
         "build": "NODE_ENV=production wp-scripts build",
@@ -87,6 +87,7 @@
         "php-deps": "composer install --no-dev --optimize-autoloader",
         "postprepare": "npm run set-wp-version",
         "prebuild:cleanup": "rm -rf ./build ./bluehost-wordpress-plugin ./bluehost-wordpress-plugin.zip ./vendor",
+        "set-version-bump": "node ./set-version-bump.js && npm i && rm -rf ./build && npm run build && composer run i18n",
         "set-wp-version": "node ./set-latest-wp-version.js",
         "simulate-runner-build": "npm run prebuild:cleanup && npm i --legacy-peer-deps && npm run php-deps && npm run build && npm run create:dist && npm run create:zip",
         "srb": "npm run simulate-runner-build",
