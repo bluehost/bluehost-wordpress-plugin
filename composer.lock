@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbf825858f653c4a7ef4b978235d0d4b",
+    "content-hash": "54425a4bd052c90d973ece3caaf63e0f",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -993,16 +993,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.4.4",
+            "version": "v1.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "cceb17d7e4ac0bb70e070f0d9f13f3567010cbe7"
+                "reference": "f45d50f3bc0b4021223c5feafedebb4399a33078"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/cceb17d7e4ac0bb70e070f0d9f13f3567010cbe7",
-                "reference": "cceb17d7e4ac0bb70e070f0d9f13f3567010cbe7",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/f45d50f3bc0b4021223c5feafedebb4399a33078",
+                "reference": "f45d50f3bc0b4021223c5feafedebb4399a33078",
                 "shasum": ""
             },
             "require": {
@@ -1045,10 +1045,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.4.4",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.4.5",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-11-20T12:14:02+00:00"
+            "time": "2024-12-12T11:26:40+00:00"
         },
         {
             "name": "newfold-labs/wp-module-facebook",
@@ -5023,8 +5023,8 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "7.3.0"
     },
