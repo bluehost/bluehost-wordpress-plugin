@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbf825858f653c4a7ef4b978235d0d4b",
+    "content-hash": "6f7f209e1200d4ee2a1a255c35d65682",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -993,16 +993,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.4.4",
+            "version": "v1.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "cceb17d7e4ac0bb70e070f0d9f13f3567010cbe7"
+                "reference": "fe45bd77f1ab5a9342f84dc38be7ea82d1541ed2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/cceb17d7e4ac0bb70e070f0d9f13f3567010cbe7",
-                "reference": "cceb17d7e4ac0bb70e070f0d9f13f3567010cbe7",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/fe45bd77f1ab5a9342f84dc38be7ea82d1541ed2",
+                "reference": "fe45bd77f1ab5a9342f84dc38be7ea82d1541ed2",
                 "shasum": ""
             },
             "require": {
@@ -1045,10 +1045,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.4.4",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.4.6",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-11-20T12:14:02+00:00"
+            "time": "2024-12-16T11:08:52+00:00"
         },
         {
             "name": "newfold-labs/wp-module-facebook",
@@ -2792,17 +2792,23 @@
         },
         {
             "name": "wpscholar/url",
-            "version": "1.2.3",
+            "version": "1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wpscholar/url.git",
-                "reference": "6e97376a1cf3a9f4d0f0ae976cece6123d1bd4b8"
+                "reference": "8a8fa6dc257d75353782a7acd9b1194a17d8eadd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wpscholar/url/zipball/6e97376a1cf3a9f4d0f0ae976cece6123d1bd4b8",
-                "reference": "6e97376a1cf3a9f4d0f0ae976cece6123d1bd4b8",
+                "url": "https://api.github.com/repos/wpscholar/url/zipball/8a8fa6dc257d75353782a7acd9b1194a17d8eadd",
+                "reference": "8a8fa6dc257d75353782a7acd9b1194a17d8eadd",
                 "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5.36 || ^9.0"
             },
             "type": "library",
             "autoload": {
@@ -2824,9 +2830,9 @@
             "description": "A PHP class for parsing and manipulating URLs.",
             "support": {
                 "issues": "https://github.com/wpscholar/url/issues",
-                "source": "https://github.com/wpscholar/url/tree/1.2.3"
+                "source": "https://github.com/wpscholar/url/tree/1.2.5"
             },
-            "time": "2024-12-01T20:43:41+00:00"
+            "time": "2024-12-13T17:40:54+00:00"
         }
     ],
     "packages-dev": [
@@ -5023,8 +5029,8 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "7.3.0"
     },
