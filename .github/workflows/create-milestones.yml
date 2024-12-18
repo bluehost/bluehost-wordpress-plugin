@@ -41,10 +41,11 @@ jobs:
           
           # Set the date format for the milestone title and due date
           DATE=$(date -u -d "$DUE_DATE" '+%B %-d, %Y')  # Human-readable date
+          PR_DEADLINE=$(date -u -d "$DUE_DATE - 1 week" '+%B %-d, %Y')  # Date 1 week before
           DATE_ISO8601=$(date -u -d "$DUE_DATE" '+%Y-%m-%dT23:59:59Z')  # ISO8601 format
 
           # Prepare the description for the milestone
-          DESCRIPTION="The release is scheduled for $DATE, and PRs should be submitted and made mergeable by EOD $DATE. This means they should have tests passing and merge conflicts resolved. The description for the PR must include details of what is included in the PR and how to test it, and preferably new tests supporting the update.\n\nAny PRs submitted after the deadline will not be included in the release but go in the next release. This includes PRs with tests failing, no description, no screenshots/video demonstrating the update, sufficient Cypress tests, no link to associated JIRA ticket, etc. If no mergeable PRs are submitted for a release, there will be no release that week (unless there is a need for an out-of-cycle release)."
+          DESCRIPTION="The release is scheduled for $DATE. PRs must be submitted and made mergeable by EOD $PR_DEADLINE (one week before release). This means they should have tests passing and merge conflicts resolved. The description for the PR must include details of what is included in the PR and how to test it, and preferably new tests supporting the update.\n\nAny PRs submitted after the deadline will not be included in the release but go in the next release. This includes PRs with tests failing, no description, no screenshots/video demonstrating the update, sufficient Cypress tests, no link to associated JIRA ticket, etc. If no mergeable PRs are submitted for a release, there will be no release that week (unless there is a need for an out-of-cycle release)."
 
           # Debugging outputs
           echo "Debug: Human-readable Date: $DATE"
