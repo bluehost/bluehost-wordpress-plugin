@@ -98,7 +98,7 @@ module.exports = defineConfig( {
 const supportsWoo = ( env ) => {
 	const semver = require( 'semver' );
 	if (
-		semver.satisfies( env.wpSemverVersion, '>=6.5.0' ) &&
+		semver.satisfies( env.wpSemverVersion, '>=6.6.0' ) &&
 		semver.satisfies( env.phpSemverVersion, '>=7.4.0' )
 	) {
 		return true;
