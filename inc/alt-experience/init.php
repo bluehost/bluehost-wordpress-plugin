@@ -30,7 +30,7 @@ add_action(
 	}
 );
 
-$bust_mode_path = dirname( __DIR__, 2 ) . '/vendor/newfold-labs/wp-module-performance/includes/BurstSafetyMode/init.php';
+$bust_mode_path = BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-performance/includes/BurstSafetyMode/init.php';
 if ( file_exists( $bust_mode_path ) ) {
 	require_once $bust_mode_path;
 }
