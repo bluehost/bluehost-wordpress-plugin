@@ -43,7 +43,7 @@
         "@wordpress/element": "^6.15.1",
         "@wordpress/html-entities": "^4.15.0",
         "@wordpress/i18n": "^5.15.1",
-        "@wordpress/icons": "^10.14.0",
+        "@wordpress/icons": "^10.15.1",
         "ajv": "^8.17.1",
         "classnames": "^2.5.1",
         "jquery": "^3.7.1",
