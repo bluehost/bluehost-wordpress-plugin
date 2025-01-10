@@ -33,8 +33,8 @@
     },
     "dependencies": {
         "@heroicons/react": "^2.2.0",
-        "@newfold-labs/wp-module-ecommerce": "^1.4.6",
-        "@newfold-labs/wp-module-facebook": "^1.0.9",
+        "@newfold/wp-module-ecommerce": "^1.4.7",
+        "@newfold/wp-module-facebook": "^1.0.10",
         "@newfold/wp-module-runtime": "^1.1.0",
         "@newfold/ui-component-library": "^1.1.0",
         "@reduxjs/toolkit": "^2.5.0",

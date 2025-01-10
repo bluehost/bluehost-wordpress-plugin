@@ -1,4 +1,4 @@
-import { FreePlugins } from '@newfold-labs/wp-module-ecommerce';
+import { FreePlugins } from '@newfold/wp-module-ecommerce';
 import { useNotification } from 'App/components/notifications';
 
 export const FreeAddonsSection = ( { props } ) => {
