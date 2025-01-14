@@ -1,6 +1,8 @@
 import { useContext } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
-import { OnboardingScreen } from '@newfold-labs/wp-module-ecommerce';
+// import { OnboardingScreen } from '@newfold-labs/wp-module-ecommerce';
+import { OnboardingScreen } from '@modules/wp-module-ecommerce/src/components/OnboardingScreen';
+
 import AppStore from 'App/data/store';
 import { bluehostSettingsApiFetch } from 'App/util/helpers';
 import { useNotification } from 'App/components/notifications';
