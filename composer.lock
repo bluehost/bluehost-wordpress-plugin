@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "886e32efe62e8df7ebe3c0743e700702",
+    "content-hash": "892c56f97f56f086f0ad3248a9867433",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1085,20 +1085,20 @@
         },
         {
             "name": "newfold-labs/wp-module-facebook",
-            "version": "v1.0.9",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-facebook.git",
-                "reference": "5526497969f6a3fc4d4b2fa728ee1c9c52d132b8"
+                "reference": "fdfb175dff1544886ff23936f64227c8763b3267"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-facebook/zipball/5526497969f6a3fc4d4b2fa728ee1c9c52d132b8",
-                "reference": "5526497969f6a3fc4d4b2fa728ee1c9c52d132b8",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-facebook/zipball/fdfb175dff1544886ff23936f64227c8763b3267",
+                "reference": "fdfb175dff1544886ff23936f64227c8763b3267",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-data": "^2.3.1",
+                "newfold-labs/wp-module-data": "^2.6.8",
                 "newfold-labs/wp-module-loader": "^1.0.10"
             },
             "require-dev": {
@@ -1120,10 +1120,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-facebook/tree/v1.0.9",
+                "source": "https://github.com/newfold-labs/wp-module-facebook/tree/1.1.0",
                 "issues": "https://github.com/newfold-labs/wp-module-facebook/issues"
             },
-            "time": "2024-06-05T11:02:38+00:00"
+            "time": "2025-01-15T23:10:07+00:00"
         },
         {
             "name": "newfold-labs/wp-module-features",
