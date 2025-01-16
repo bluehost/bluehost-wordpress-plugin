@@ -2624,16 +2624,16 @@
         },
         {
             "name": "wp-forge/wp-htaccess-manager",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-forge/wp-htaccess-manager.git",
-                "reference": "203f0e54378ce2cad9ec8c272851bc7170efcbb1"
+                "reference": "8b565cb9bd75ff1c415e4974c3b4812c5b50da63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-forge/wp-htaccess-manager/zipball/203f0e54378ce2cad9ec8c272851bc7170efcbb1",
-                "reference": "203f0e54378ce2cad9ec8c272851bc7170efcbb1",
+                "url": "https://api.github.com/repos/wp-forge/wp-htaccess-manager/zipball/8b565cb9bd75ff1c415e4974c3b4812c5b50da63",
+                "reference": "8b565cb9bd75ff1c415e4974c3b4812c5b50da63",
                 "shasum": ""
             },
             "type": "library",
@@ -2658,9 +2658,9 @@
             "description": "A helper library for making changes to .htaccess files in WordPress.",
             "support": {
                 "issues": "https://github.com/wp-forge/wp-htaccess-manager/issues",
-                "source": "https://github.com/wp-forge/wp-htaccess-manager/tree/1.0.1"
+                "source": "https://github.com/wp-forge/wp-htaccess-manager/tree/1.0.2"
             },
-            "time": "2025-01-13T16:12:03+00:00"
+            "time": "2025-01-16T22:09:14+00:00"
         },
         {
             "name": "wp-forge/wp-options",
@@ -5068,10 +5068,10 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
