@@ -56,7 +56,7 @@
         "semver": "^7.6.3"
     },
     "devDependencies": {
-        "@tailwindcss/forms": "^0.5.8",
+        "@tailwindcss/forms": "^0.5.10",
         "@testing-library/cypress": "^10.0.2",
         "@wordpress/env": "^10.16.0",
         "@wordpress/eslint-plugin": "^22.1.1",
