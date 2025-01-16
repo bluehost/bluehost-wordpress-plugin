@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a304abfe0ac1d419c42479abf8cf616",
+    "content-hash": "afcb04d64ae80ba486d9e8d0c0ad9aee",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -722,20 +722,20 @@
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
-            "version": "1.3.3",
+            "version": "1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
-                "reference": "434965049cc251b31afdaed89eb4bfd31db8a378"
+                "reference": "db1f3f04a99154abe2a184c58a16e38ac68b7836"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/434965049cc251b31afdaed89eb4bfd31db8a378",
-                "reference": "434965049cc251b31afdaed89eb4bfd31db8a378",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/db1f3f04a99154abe2a184c58a16e38ac68b7836",
+                "reference": "db1f3f04a99154abe2a184c58a16e38ac68b7836",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-data": "^2.6.7",
+                "newfold-labs/wp-module-data": "^2.6.8",
                 "wp-forge/wp-upgrade-handler": "^1.0"
             },
             "require-dev": {
@@ -769,10 +769,10 @@
             ],
             "description": "Coming Soon module for WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.3.3",
+                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.3.4",
                 "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
             },
-            "time": "2024-12-16T17:41:39+00:00"
+            "time": "2025-01-14T20:03:03+00:00"
         },
         {
             "name": "newfold-labs/wp-module-context",
@@ -5068,10 +5068,10 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
