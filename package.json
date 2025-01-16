@@ -44,6 +44,7 @@
         "@wordpress/html-entities": "^4.15.0",
         "@wordpress/i18n": "^5.15.1",
         "@wordpress/icons": "^10.16.0",
+        "@wordpress/url": "^4.16.0",
         "ajv": "^8.17.1",
         "classnames": "^2.5.1",
         "html-react-parser": "^5.2.2",
