@@ -48,5 +48,4 @@ const webConfig = {
 	resolve: { alias },
 	plugins: [ new ProvidePlugin( mostCommonImports ) ],
 };
-
 module.exports = merge( wpScriptsConfig, webConfig );
