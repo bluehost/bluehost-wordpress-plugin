@@ -220,7 +220,7 @@ final class Admin {
 				\wp_register_script(
 					'react-jsx-runtime',
 					'@react/jsx-runtime.js',
-					[ 'react' ],
+					array( 'react' ),
 					'18.3.0',
 					true
 				);
