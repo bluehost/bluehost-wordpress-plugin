@@ -219,7 +219,7 @@ final class Admin {
 			if ( version_compare( $wp_version, '6.6', '>' ) ) {
 				\wp_register_script(
 					'react-jsx-runtime',
-					'@react/jsx-runtime.js',
+					BLUEHOST_PLUGIN_DIR . '/assets/js/react-jsx-runtime.js',
 					array( 'react' ),
 					'18.3.0',
 					true

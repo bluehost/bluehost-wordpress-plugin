@@ -49,25 +49,4 @@ const webConfig = {
 	plugins: [ new ProvidePlugin( mostCommonImports ) ],
 };
 
-// jsx polyfill - https://github.com/WordPress/gutenberg/issues/62202#issuecomment-2156796649
-// Also see includes/Admin.php:218-227
-const reactJSXRuntimePolyfill = {
-	entry: {
-		'react-jsx-runtime': {
-			import: 'react/jsx-runtime',
-		},
-	},
-	output: {
-		path: path.resolve(__dirname, 'assets/js'),
-		filename: 'react-jsx-runtime.js',
-		library: {
-			name: 'ReactJSXRuntime',
-			type: 'window',
-		},
-	},
-	externals: {
-		react: 'React',
-	},
-};
-
-module.exports = merge( wpScriptsConfig, webConfig, reactJSXRuntimePolyfill );
+module.exports = merge( wpScriptsConfig, webConfig );
