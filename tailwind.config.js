@@ -9,6 +9,7 @@ module.exports = {
 		'./node_modules/@newfold/wp-module-*/build/index.js', // all npmjs sourced module builds
 		'./node_modules/@newfold-labs/wp-module-*/build/index.js', // all github npm sourced module builds
 		'./vendor/newfold-labs/wp-module-*/components/**/*.js', // all composer sourced module components
+		'./vendor/newfold-labs/wp-module-*/src/components/**/*.js', // more composer sourced module components
 	],
 	theme: {
 		extend: {

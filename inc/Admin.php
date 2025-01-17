@@ -215,17 +215,6 @@ final class Admin {
 			// TODO: update this to a dependency script
 			do_action( 'newfold/installer/enqueue_scripts' );
 
-			// polyfill for wp6.5 support - https://github.com/WordPress/gutenberg/issues/62202#issuecomment-2156796649
-			if ( version_compare( $wp_version, '6.6', '>' ) ) {
-				\wp_register_script(
-					'react-jsx-runtime',
-					BLUEHOST_PLUGIN_DIR . '/assets/js/react-jsx-runtime.js',
-					array( 'react' ),
-					'18.3.0',
-					true
-				);
-			}
-
 			\wp_register_script(
 				'bluehost-script',
 				BLUEHOST_BUILD_URL . '/index.js',
