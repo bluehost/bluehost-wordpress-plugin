@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79b1b6187dcec180fe7a5fb4a19f0be4",
+    "content-hash": "449afcd4ab5cd046b15a27c159a2ddf2",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1085,16 +1085,16 @@
         },
         {
             "name": "newfold-labs/wp-module-facebook",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-facebook.git",
-                "reference": "fdfb175dff1544886ff23936f64227c8763b3267"
+                "reference": "d5fb8ebf4e3cc08532883e26f53dd55fde473228"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-facebook/zipball/fdfb175dff1544886ff23936f64227c8763b3267",
-                "reference": "fdfb175dff1544886ff23936f64227c8763b3267",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-facebook/zipball/d5fb8ebf4e3cc08532883e26f53dd55fde473228",
+                "reference": "d5fb8ebf4e3cc08532883e26f53dd55fde473228",
                 "shasum": ""
             },
             "require": {
@@ -1113,17 +1113,21 @@
                     "bootstrap.php"
                 ]
             },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
             "authors": [
                 {
                     "name": "Beyond",
                     "email": "team-spartans@newfold.com"
                 }
             ],
+            "description": "Module connects to Customers Facebook profile and fetches data",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-facebook/tree/1.1.0",
+                "source": "https://github.com/newfold-labs/wp-module-facebook/tree/1.1.1",
                 "issues": "https://github.com/newfold-labs/wp-module-facebook/issues"
             },
-            "time": "2025-01-15T23:10:07+00:00"
+            "time": "2025-01-17T20:34:34+00:00"
         },
         {
             "name": "newfold-labs/wp-module-features",
