@@ -3,7 +3,7 @@ import WebinarsBanner from 'App/components/webinars-banner';
 import AccountCard from './accountCard';
 import HelpCard from './helpCard';
 import WelcomeSection from './welcomeSection';
-// import { WPSolutionsBanner } from '@newfold-labs/wp-module-ecommerce';
+// import { WPSolutionsBanner } from '@newfold/wp-module-ecommerce';
 import { WPSolutionsBanner } from '@modules/wp-module-ecommerce/src/components/WPSolutionsBanner';
 
 const Home = () => {

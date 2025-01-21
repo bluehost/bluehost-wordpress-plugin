@@ -1,4 +1,4 @@
-// import { FreePlugins } from '@newfold-labs/wp-module-ecommerce';
+// import { FreePlugins } from '@newfold/wp-module-ecommerce';
 import { FreePlugins } from '@modules/wp-module-ecommerce/src/components/FreePlugins';
 import { useNotification } from 'App/components/notifications';
 

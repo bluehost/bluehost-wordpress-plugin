@@ -2,7 +2,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect, useContext, Fragment } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
 import { Container, Page } from '@newfold/ui-component-library';
-import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
+import { NewfoldRuntime } from '@newfold/wp-module-runtime';
 import AppStore from '../../data/store';
 import {
 	bluehostSettingsApiFetch as newfoldSettingsApiFetch,
