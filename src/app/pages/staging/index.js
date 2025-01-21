@@ -1,7 +1,7 @@
 import './stylesheet.scss';
 import { useState, useEffect } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
-import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
+import { NewfoldRuntime } from '@newfold/wp-module-runtime';
 import { useNotification } from 'App/components/notifications';
 // component sourced from staging module
 import { default as NewfoldStaging } from '@modules/wp-module-staging/components/staging/';

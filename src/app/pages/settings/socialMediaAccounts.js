@@ -4,7 +4,7 @@ import {
 	FacebookConnectPluginView,
 	facebookConnectHelper,
 	getFacebookUserProfileDetails,
-} from '@newfold-labs/wp-module-facebook';
+} from '@newfold/wp-module-facebook';
 
 const SocialMediaAccounts = () => {
 	const [ showModal, setShowModal ] = useState( false );
