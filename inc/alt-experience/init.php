@@ -8,10 +8,10 @@ add_action(
 			'manage_options',
 			'bluehost',
 			function () {
-				$version = BLUEHOST_PLUGIN_VERSION;
+				$version    = BLUEHOST_PLUGIN_VERSION;
 				$asset_file = BLUEHOST_BUILD_DIR . '/index.asset.php';
 				if ( is_readable( $asset_file ) ) {
-					$asset = include_once $asset_file;
+					$asset   = include_once $asset_file;
 					$version = $asset['version'];
 				}
 
@@ -29,3 +29,8 @@ add_action(
 		);
 	}
 );
+
+$bust_mode_path = BLUEHOST_PLUGIN_DIR . 'vendor/newfold-labs/wp-module-performance/includes/BurstSafetyMode/init.php';
+if ( file_exists( $bust_mode_path ) ) {
+	require_once $bust_mode_path;
+}

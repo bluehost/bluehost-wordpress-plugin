@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d24c99dca1a3558e00905a5dfa5c743a",
+    "content-hash": "817c1ae1eeab41205392916524d4de59",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -722,20 +722,20 @@
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
-            "version": "1.3.3",
+            "version": "1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
-                "reference": "434965049cc251b31afdaed89eb4bfd31db8a378"
+                "reference": "db1f3f04a99154abe2a184c58a16e38ac68b7836"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/434965049cc251b31afdaed89eb4bfd31db8a378",
-                "reference": "434965049cc251b31afdaed89eb4bfd31db8a378",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/db1f3f04a99154abe2a184c58a16e38ac68b7836",
+                "reference": "db1f3f04a99154abe2a184c58a16e38ac68b7836",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-data": "^2.6.7",
+                "newfold-labs/wp-module-data": "^2.6.8",
                 "wp-forge/wp-upgrade-handler": "^1.0"
             },
             "require-dev": {
@@ -769,10 +769,10 @@
             ],
             "description": "Coming Soon module for WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.3.3",
+                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.3.4",
                 "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
             },
-            "time": "2024-12-16T17:41:39+00:00"
+            "time": "2025-01-14T20:03:03+00:00"
         },
         {
             "name": "newfold-labs/wp-module-context",
@@ -1011,16 +1011,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.4.6",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "fe45bd77f1ab5a9342f84dc38be7ea82d1541ed2"
+                "reference": "d5f56d572f27fd626cc5aeac37894d00d7e78328"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/fe45bd77f1ab5a9342f84dc38be7ea82d1541ed2",
-                "reference": "fe45bd77f1ab5a9342f84dc38be7ea82d1541ed2",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/d5f56d572f27fd626cc5aeac37894d00d7e78328",
+                "reference": "d5f56d572f27fd626cc5aeac37894d00d7e78328",
                 "shasum": ""
             },
             "require": {
@@ -1042,11 +1042,26 @@
                 ]
             },
             "scripts": {
-                "i18n": [
-                    "vendor/bin/wp i18n make-pot . ./languages/wp-module-ecommerce.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/newfold-labs/wp-module-ecommerce/issues\",\"POT-Creation-Date\":null}' --exclude=node_modules,src,tests"
-                ],
                 "fix": [
                     "vendor/bin/phpcbf --standard=phpcs.xml ."
+                ],
+                "i18n-pot": [
+                    "vendor/bin/wp i18n make-pot . ./languages/wp-module-ecommerce.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/newfold-labs/wp-module-ecommerce/issues\",\"POT-Creation-Date\":\"2024-11-18T11:38:47+00:00\"}' --exclude=node_modules,assets,tests,src"
+                ],
+                "i18n-po": [
+                    "vendor/bin/wp i18n update-po ./languages/wp-module-ecommerce.pot ./languages"
+                ],
+                "i18n-mo": [
+                    "vendor/bin/wp i18n make-mo ./languages"
+                ],
+                "i18n-json": [
+                    "rm -f languages/*.json && vendor/bin/wp i18n make-json ./languages --no-purge --pretty-print"
+                ],
+                "i18n": [
+                    "@i18n-pot",
+                    "@i18n-po",
+                    "@i18n-mo",
+                    "@i18n-json"
                 ],
                 "lint": [
                     "vendor/bin/phpcs --standard=phpcs.xml -s ."
@@ -1063,27 +1078,27 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.4.6",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/1.5.1",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2024-12-16T11:08:52+00:00"
+            "time": "2025-01-17T20:31:58+00:00"
         },
         {
             "name": "newfold-labs/wp-module-facebook",
-            "version": "v1.0.9",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-facebook.git",
-                "reference": "5526497969f6a3fc4d4b2fa728ee1c9c52d132b8"
+                "reference": "d5fb8ebf4e3cc08532883e26f53dd55fde473228"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-facebook/zipball/5526497969f6a3fc4d4b2fa728ee1c9c52d132b8",
-                "reference": "5526497969f6a3fc4d4b2fa728ee1c9c52d132b8",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-facebook/zipball/d5fb8ebf4e3cc08532883e26f53dd55fde473228",
+                "reference": "d5fb8ebf4e3cc08532883e26f53dd55fde473228",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-data": "^2.3.1",
+                "newfold-labs/wp-module-data": "^2.6.8",
                 "newfold-labs/wp-module-loader": "^1.0.10"
             },
             "require-dev": {
@@ -1098,17 +1113,21 @@
                     "bootstrap.php"
                 ]
             },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
             "authors": [
                 {
                     "name": "Beyond",
                     "email": "team-spartans@newfold.com"
                 }
             ],
+            "description": "Module connects to Customers Facebook profile and fetches data",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-facebook/tree/v1.0.9",
+                "source": "https://github.com/newfold-labs/wp-module-facebook/tree/1.1.1",
                 "issues": "https://github.com/newfold-labs/wp-module-facebook/issues"
             },
-            "time": "2024-06-05T11:02:38+00:00"
+            "time": "2025-01-17T20:34:34+00:00"
         },
         {
             "name": "newfold-labs/wp-module-features",
@@ -1169,16 +1188,16 @@
         },
         {
             "name": "newfold-labs/wp-module-global-ctb",
-            "version": "1.0.13",
+            "version": "1.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-global-ctb.git",
-                "reference": "f27fc58ca74df9d6ef0aca4d5e3603f48fd17f05"
+                "reference": "4e57b20d1f1b536c11947512bf64b8639908cedd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-global-ctb/zipball/f27fc58ca74df9d6ef0aca4d5e3603f48fd17f05",
-                "reference": "f27fc58ca74df9d6ef0aca4d5e3603f48fd17f05",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-global-ctb/zipball/4e57b20d1f1b536c11947512bf64b8639908cedd",
+                "reference": "4e57b20d1f1b536c11947512bf64b8639908cedd",
                 "shasum": ""
             },
             "require-dev": {
@@ -1212,10 +1231,10 @@
             ],
             "description": "Newfold module for 'Click to Buy' functionality in brand plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-global-ctb/tree/1.0.13",
+                "source": "https://github.com/newfold-labs/wp-module-global-ctb/tree/1.0.14",
                 "issues": "https://github.com/newfold-labs/wp-module-global-ctb/issues"
             },
-            "time": "2024-06-25T00:12:44+00:00"
+            "time": "2025-01-07T22:27:52+00:00"
         },
         {
             "name": "newfold-labs/wp-module-help-center",
@@ -1306,20 +1325,20 @@
         },
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "1.2.2",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "4b994a784f1de5c80dcf274e51ab34f083e4a26d"
+                "reference": "e8dbc7a117c7f9ebeb2c9620ab6689c49ca1d3fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/4b994a784f1de5c80dcf274e51ab34f083e4a26d",
-                "reference": "4b994a784f1de5c80dcf274e51ab34f083e4a26d",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/e8dbc7a117c7f9ebeb2c9620ab6689c49ca1d3fe",
+                "reference": "e8dbc7a117c7f9ebeb2c9620ab6689c49ca1d3fe",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-pls": "^1.0.0"
+                "newfold-labs/wp-module-pls": "^1.0.1"
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "^1.2",
@@ -1345,10 +1364,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.2.2",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.3.0",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2024-10-25T14:26:52+00:00"
+            "time": "2025-01-16T16:51:53+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -1398,20 +1417,20 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "2.4.0",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "71f46b229d1ba96abbd0c673d45b9fa03fdf4145"
+                "reference": "ad3017045901ac63da497072f0fa6c44f96f47f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/71f46b229d1ba96abbd0c673d45b9fa03fdf4145",
-                "reference": "71f46b229d1ba96abbd0c673d45b9fa03fdf4145",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/ad3017045901ac63da497072f0fa6c44f96f47f6",
+                "reference": "ad3017045901ac63da497072f0fa6c44f96f47f6",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-data": "^2.5.2"
+                "newfold-labs/wp-module-data": "^2.6.3"
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "^1.2"
@@ -1448,10 +1467,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/2.4.0",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/2.5.0",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2024-07-03T17:26:23+00:00"
+            "time": "2025-01-16T15:23:16+00:00"
         },
         {
             "name": "newfold-labs/wp-module-migration",
@@ -1554,16 +1573,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "2.5.5",
+            "version": "2.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "b5c3e52bb9565461c7b35c4e4fbbb915327800e3"
+                "reference": "b901f549e402e35da1231b5fc5003facda23e9cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/b5c3e52bb9565461c7b35c4e4fbbb915327800e3",
-                "reference": "b5c3e52bb9565461c7b35c4e4fbbb915327800e3",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/b901f549e402e35da1231b5fc5003facda23e9cc",
+                "reference": "b901f549e402e35da1231b5fc5003facda23e9cc",
                 "shasum": ""
             },
             "require": {
@@ -1626,10 +1645,10 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.5.5",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.5.6",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2024-11-21T12:07:48+00:00"
+            "time": "2025-01-13T21:04:40+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
@@ -1739,28 +1758,28 @@
         },
         {
             "name": "newfold-labs/wp-module-performance",
-            "version": "2.2.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-performance.git",
-                "reference": "a941dd7424672e51f6c47b69ec8e3427c8ebc850"
+                "reference": "ec56891eaf7131a4e9212a9956f2a19a713c3006"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/a941dd7424672e51f6c47b69ec8e3427c8ebc850",
-                "reference": "a941dd7424672e51f6c47b69ec8e3427c8ebc850",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/ec56891eaf7131a4e9212a9956f2a19a713c3006",
+                "reference": "ec56891eaf7131a4e9212a9956f2a19a713c3006",
                 "shasum": ""
             },
             "require": {
                 "newfold-labs/wp-module-context": "^1.0",
-                "newfold-labs/wp-module-features": "^1.3",
+                "newfold-labs/wp-module-features": "^1.4",
                 "newfold-labs/wp-module-installer": "^1.2.2",
                 "wp-forge/collection": "^1.0.2",
                 "wp-forge/wp-htaccess-manager": "^1.0",
-                "wpscholar/url": "^1.2.2"
+                "wpscholar/url": "^1.2.5"
             },
             "require-dev": {
-                "newfold-labs/wp-php-standards": "^1.2.3"
+                "newfold-labs/wp-php-standards": "^1.2.4"
             },
             "type": "library",
             "autoload": {
@@ -1784,10 +1803,10 @@
             ],
             "description": "A module for managing caching functionality.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-performance/tree/2.2.0",
+                "source": "https://github.com/newfold-labs/wp-module-performance/tree/2.4.0",
                 "issues": "https://github.com/newfold-labs/wp-module-performance/issues"
             },
-            "time": "2025-01-02T11:49:56+00:00"
+            "time": "2025-01-16T15:45:04+00:00"
         },
         {
             "name": "newfold-labs/wp-module-pls",
@@ -1838,16 +1857,16 @@
         },
         {
             "name": "newfold-labs/wp-module-runtime",
-            "version": "1.0.12",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-runtime.git",
-                "reference": "c63ba65520c917a9be99a492bc824f4a54c2daef"
+                "reference": "04362e97a281b492e523e579326f080033d5d962"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/c63ba65520c917a9be99a492bc824f4a54c2daef",
-                "reference": "c63ba65520c917a9be99a492bc824f4a54c2daef",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-runtime/zipball/04362e97a281b492e523e579326f080033d5d962",
+                "reference": "04362e97a281b492e523e579326f080033d5d962",
                 "shasum": ""
             },
             "require-dev": {
@@ -1883,10 +1902,10 @@
             ],
             "description": "Runtime for Newfold WP modules and plugins",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/1.0.12",
+                "source": "https://github.com/newfold-labs/wp-module-runtime/tree/1.1.3",
                 "issues": "https://github.com/newfold-labs/wp-module-runtime/issues"
             },
-            "time": "2024-10-25T21:53:35+00:00"
+            "time": "2025-01-13T23:22:56+00:00"
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",
@@ -2085,16 +2104,16 @@
         },
         {
             "name": "newfold-labs/wp-module-survey",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-survey.git",
-                "reference": "8bf26c9bc6b1da4c09e03e747da0d525c11df07b"
+                "reference": "e41860c62d1b0c3d4e752b140b8df0773b1be459"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-survey/zipball/8bf26c9bc6b1da4c09e03e747da0d525c11df07b",
-                "reference": "8bf26c9bc6b1da4c09e03e747da0d525c11df07b",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-survey/zipball/e41860c62d1b0c3d4e752b140b8df0773b1be459",
+                "reference": "e41860c62d1b0c3d4e752b140b8df0773b1be459",
                 "shasum": ""
             },
             "require-dev": {
@@ -2121,10 +2140,10 @@
             ],
             "description": "A Newfold module to collect customer satisfaction feedback via surveys in the WordPress admin dashboard.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-survey/tree/1.0.1",
+                "source": "https://github.com/newfold-labs/wp-module-survey/tree/1.0.2",
                 "issues": "https://github.com/newfold-labs/wp-module-survey/issues"
             },
-            "time": "2024-08-20T05:34:40+00:00"
+            "time": "2025-01-03T04:32:27+00:00"
         },
         {
             "name": "psr/http-client",
@@ -2609,16 +2628,16 @@
         },
         {
             "name": "wp-forge/wp-htaccess-manager",
-            "version": "1.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-forge/wp-htaccess-manager.git",
-                "reference": "f1fac7af85c0d75a211a5d0e73cd43a7d62debe8"
+                "reference": "8b565cb9bd75ff1c415e4974c3b4812c5b50da63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-forge/wp-htaccess-manager/zipball/f1fac7af85c0d75a211a5d0e73cd43a7d62debe8",
-                "reference": "f1fac7af85c0d75a211a5d0e73cd43a7d62debe8",
+                "url": "https://api.github.com/repos/wp-forge/wp-htaccess-manager/zipball/8b565cb9bd75ff1c415e4974c3b4812c5b50da63",
+                "reference": "8b565cb9bd75ff1c415e4974c3b4812c5b50da63",
                 "shasum": ""
             },
             "type": "library",
@@ -2643,9 +2662,9 @@
             "description": "A helper library for making changes to .htaccess files in WordPress.",
             "support": {
                 "issues": "https://github.com/wp-forge/wp-htaccess-manager/issues",
-                "source": "https://github.com/wp-forge/wp-htaccess-manager/tree/1.0"
+                "source": "https://github.com/wp-forge/wp-htaccess-manager/tree/1.0.2"
             },
-            "time": "2022-04-01T16:21:01+00:00"
+            "time": "2025-01-16T22:09:14+00:00"
         },
         {
             "name": "wp-forge/wp-options",
@@ -5053,8 +5072,8 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "platform-overrides": {
         "php": "7.3.0"
     },

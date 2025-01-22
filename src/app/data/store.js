@@ -1,4 +1,4 @@
-import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
+import { NewfoldRuntime } from '@newfold/wp-module-runtime';
 import { createContext, useMemo } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 

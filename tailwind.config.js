@@ -6,8 +6,10 @@ module.exports = {
 		// Include all JS files inside the UI library in your content.
 		...TAILWINDCSS_PRESET.content,
 		'./src/**/*.js', // all source files
-		'./node_modules/@newfold-labs/wp-module-*/build/index.js', // all npm sourced module builds
+		'./node_modules/@newfold/wp-module-*/build/index.js', // all npmjs sourced module builds
+		'./node_modules/@newfold-labs/wp-module-*/build/index.js', // all github npm sourced module builds
 		'./vendor/newfold-labs/wp-module-*/components/**/*.js', // all composer sourced module components
+		'./vendor/newfold-labs/wp-module-*/src/components/**/*.js', // more composer sourced module components
 	],
 	theme: {
 		extend: {
