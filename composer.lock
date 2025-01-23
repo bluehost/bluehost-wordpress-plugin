@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b3fa8b3ffde5295e9c58f3d4928efe1",
+    "content-hash": "48e1efab8892a65b862a092c3df9bf01",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -830,16 +830,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.6.8",
+            "version": "2.6.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "ee5d861ed085e67fe102ffebae1cb46ed3ee0d49"
+                "reference": "368b604257780658caa4d83c3cc15f8fa2d48ffa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/ee5d861ed085e67fe102ffebae1cb46ed3ee0d49",
-                "reference": "ee5d861ed085e67fe102ffebae1cb46ed3ee0d49",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/368b604257780658caa4d83c3cc15f8fa2d48ffa",
+                "reference": "368b604257780658caa4d83c3cc15f8fa2d48ffa",
                 "shasum": ""
             },
             "require": {
@@ -862,6 +862,7 @@
                 "phpunit/phpcov": "^8.2.1",
                 "wpackagist-plugin/jetpack": "^14.0",
                 "wpackagist-plugin/woocommerce": ">=9",
+                "wpackagist-plugin/woocommerce-payments": "^8.7",
                 "wpackagist-theme/twentytwentyfive": "*"
             },
             "type": "library",
@@ -925,10 +926,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.8",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.9",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-12-06T21:56:08+00:00"
+            "time": "2025-01-22T18:55:15+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
