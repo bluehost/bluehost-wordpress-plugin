@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d55b2dca33d8f40e4e041b25ff6f0602",
+    "content-hash": "233c625d0ee34dfc651be7fc7f126094",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -722,16 +722,16 @@
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
-            "version": "1.3.4",
+            "version": "1.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
-                "reference": "db1f3f04a99154abe2a184c58a16e38ac68b7836"
+                "reference": "972de310081a3ba6f41df938185424dca23236b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/db1f3f04a99154abe2a184c58a16e38ac68b7836",
-                "reference": "db1f3f04a99154abe2a184c58a16e38ac68b7836",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/972de310081a3ba6f41df938185424dca23236b9",
+                "reference": "972de310081a3ba6f41df938185424dca23236b9",
                 "shasum": ""
             },
             "require": {
@@ -769,10 +769,10 @@
             ],
             "description": "Coming Soon module for WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.3.4",
+                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.3.5",
                 "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
             },
-            "time": "2025-01-14T20:03:03+00:00"
+            "time": "2025-01-23T18:45:50+00:00"
         },
         {
             "name": "newfold-labs/wp-module-context",
@@ -5073,10 +5073,10 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
