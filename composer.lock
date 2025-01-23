@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5fa4fe36fa3444a940245c17161a926",
+    "content-hash": "9b3fa8b3ffde5295e9c58f3d4928efe1",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1371,23 +1371,23 @@
         },
         {
             "name": "newfold-labs/wp-module-loader",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-loader.git",
-                "reference": "bb470f8c57b0bca62548e65b210df0a13ddce767"
+                "reference": "3fd178cfe9d5a5919eadabd71ab8a7d01011062a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-loader/zipball/bb470f8c57b0bca62548e65b210df0a13ddce767",
-                "reference": "bb470f8c57b0bca62548e65b210df0a13ddce767",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-loader/zipball/3fd178cfe9d5a5919eadabd71ab8a7d01011062a",
+                "reference": "3fd178cfe9d5a5919eadabd71ab8a7d01011062a",
                 "shasum": ""
             },
             "require": {
                 "newfold-labs/container": "^1.2",
                 "wp-forge/collection": "^1.0",
                 "wp-forge/fluent": "^1.0",
-                "wp-forge/wp-options": "^1.0"
+                "wp-forge/wp-options": "^1.1"
             },
             "type": "library",
             "autoload": {
@@ -1410,10 +1410,10 @@
             ],
             "description": "A module that handles registration and management of Newfold modules used within our WordPress plugins.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-loader/tree/1.0.11",
+                "source": "https://github.com/newfold-labs/wp-module-loader/tree/1.0.12",
                 "issues": "https://github.com/newfold-labs/wp-module-loader/issues"
             },
-            "time": "2024-12-11T18:25:14+00:00"
+            "time": "2024-12-11T20:17:09+00:00"
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
@@ -5072,10 +5072,10 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
