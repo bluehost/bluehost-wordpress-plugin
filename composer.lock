@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48e1efab8892a65b862a092c3df9bf01",
+    "content-hash": "6dae67169d4b27e0e533a69476dc67b6",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2006,20 +2006,20 @@
         },
         {
             "name": "newfold-labs/wp-module-sso",
-            "version": "1.0.7",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-sso.git",
-                "reference": "539f86884ef91ae5bd9971ee3a1918afd1cb9448"
+                "reference": "ad1006a0be4105a732b6edfe531f46f711a9f7dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-sso/zipball/539f86884ef91ae5bd9971ee3a1918afd1cb9448",
-                "reference": "539f86884ef91ae5bd9971ee3a1918afd1cb9448",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-sso/zipball/ad1006a0be4105a732b6edfe531f46f711a9f7dd",
+                "reference": "ad1006a0be4105a732b6edfe531f46f711a9f7dd",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-data": ">=2.1"
+                "newfold-labs/wp-module-data": ">=2.6.8"
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "^1.2"
@@ -2044,10 +2044,10 @@
             ],
             "description": "Single sign-on functionality for Newfold WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-sso/tree/1.0.7",
+                "source": "https://github.com/newfold-labs/wp-module-sso/tree/1.0.8",
                 "issues": "https://github.com/newfold-labs/wp-module-sso/issues"
             },
-            "time": "2024-11-06T16:20:22+00:00"
+            "time": "2025-01-22T16:59:30+00:00"
         },
         {
             "name": "newfold-labs/wp-module-staging",
