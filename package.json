@@ -12,13 +12,13 @@
         "wordpress",
         "plugin"
     ],
-    "homepage": "https://github.com/bluehost/bluehost-wordpress-plugin#readme",
+    "homepage": "https://github.com/newfold-labs/wp-plugin-bluehost#readme",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/bluehost/bluehost-wordpress-plugin.git"
+        "url": "git+https://github.com/newfold-labs/wp-plugin-bluehost.git"
     },
     "bugs": {
-        "url": "https://github.com/bluehost/bluehost-wordpress-plugin/issues"
+        "url": "https://github.com/newfold-labs/wp-plugin-bluehost/issues"
     },
     "contributors": [
         "Abdulrahman Al Ani (https://alani.dev/)",

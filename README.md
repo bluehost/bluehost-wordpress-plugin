@@ -2,6 +2,12 @@
     <img src="https://raw.githubusercontent.com/bluehost/bluehost-wordpress-plugin/main/assets/svg/bluehost-logo.svg" alt="Bluehost Logo" title="Bluehost" align="right" height="32" />
 </a>
 
+# Attention
+> [!NOTE]
+> **This repository has moved!**
+> Ongoing development has migrated to https://github.com/newfold-labs/wp-plugin-bluehost.
+> Installed plugins updating to this version will continue receiving updates to releases of the new repository automatically, in other words, no steps are required to keep a site updated via automatic or manual updates.
+
 # Bluehost WordPress Plugin
 [![Version Number](https://img.shields.io/github/v/release/bluehost/bluehost-wordpress-plugin?color=21a0ed&labelColor=333333)](https://github.com/bluehost/bluehost-wordpress-plugin/releases)
 [![Package Plugin](https://github.com/bluehost/bluehost-wordpress-plugin/actions/workflows/upload-asset-on-release.yml/badge.svg?event=release)](https://github.com/bluehost/bluehost-wordpress-plugin/actions/workflows/upload-asset-on-release.yml)
