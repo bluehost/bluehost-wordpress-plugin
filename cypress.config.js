@@ -71,7 +71,7 @@ module.exports = defineConfig( {
 			// Test requires Jetpack, so exclude if not supported due to WP or PHP versions
 			if ( ! supportsJetpack( config.env ) ) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
-					'vendor/newfold-labs/wp-module-solutions/tests/cypress/integration/wp-plugins-installation-check.cy.js',
+					'vendor/newfold-labs/wp-module-solutions/tests/cypress/integration/wp-plugins-installation-jetpack.cy.js',
 				] );
 			}
 
@@ -98,7 +98,7 @@ module.exports = defineConfig( {
 const supportsWoo = ( env ) => {
 	const semver = require( 'semver' );
 	if (
-		semver.satisfies( env.wpSemverVersion, '>=6.5.0' ) &&
+		semver.satisfies( env.wpSemverVersion, '>=6.6.0' ) &&
 		semver.satisfies( env.phpSemverVersion, '>=7.4.0' )
 	) {
 		return true;
